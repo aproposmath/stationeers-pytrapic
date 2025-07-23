@@ -1,0 +1,26 @@
+{
+  "version": "0.0.1",
+  "description": "PyTrapIC - Python Transpiler to IC10 for Stationeers",
+  "name": "stationeers-pytrapic",
+  "license": "MIT",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview"
+  },
+  "devDependencies": {
+    "arraybuffer-loader": "^1.0.8",
+    "ts-loader": "^9.5.1",
+    "typescript": "^5.8.3",
+    "vite": "^7.0.5",
+    "worker-loader": "^3.0.8"
+  },
+  "dependencies": {
+    "css-loader": "^7.1.2",
+    "highlight.js": "^11.11.1",
+    "lucide": "^0.525.0",
+    "monaco-editor": "^0.52.0",
+    "monaco-pyright-lsp": "^0.1.7",
+    "style-loader": "^4.0.0"
+  }
+}

@@ -1,0 +1,74 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>PyTrapIC - Python Transpiler to IC10 for Stationeers</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/pyodide/v0.28.0/full/pyodide.js"></script>
+    <script type="module" src="/src/index.ts"></script>
+  </head>
+  <body class="h-screen bg-gray-100 text-sm text-gray-800">
+    <div class="flex h-full">
+      <!-- Pane -->
+      <div class="w-1/2 border-r border-gray-300 flex flex-col">
+        <!-- Toolbar -->
+        <div
+          class="flex items-center justify-between px-3 py-2 bg-white shadow-sm border-b"
+        >
+          <div class="flex items-center gap-3">
+            <label class="flex items-center gap-1">
+              <input type="checkbox" class="form-checkbox" id="emit-comments" />
+              <span>Comments</span>
+            </label>
+            <label class="flex items-center gap-1">
+            </label>
+          </div>
+          <div class="flex items-center gap-2">
+            <button class="p-1.5 rounded hover:bg-gray-200" title="Save" id="save">
+              <i data-lucide="save" class="w-4 h-4"></i>
+            </button>
+            <button class="p-1.5 rounded hover:bg-gray-200" title="Load" id="load">
+              <i data-lucide="folder-open" class="w-4 h-4"></i>
+            </button>
+            <button class="p-1.5 rounded hover:bg-gray-200" title="Paste" id="paste">
+              <i data-lucide="clipboard-paste" class="w-4 h-4"></i>
+            </button>
+            <button class="p-1.5 rounded hover:bg-gray-200" title="Copy" id="copy-python">
+              <i data-lucide="copy" class="w-4 h-4"></i>
+            </button>
+            <button class="p-1.5 rounded hover:bg-gray-200" title="Share" id="share">
+              <i data-lucide="share-2" class="w-4 h-4"></i>
+            </button>
+          </div>
+        </div>
+        <!-- Content Area -->
+        <div class="flex-1 overflow-auto bg-white p-4">
+          <!-- Content goes here -->
+          <div class="h-full" id="editor"></div>
+        </div>
+      </div>
+
+      <!-- Duplicate Pane -->
+      <div class="w-1/2 flex flex-col">
+        <!-- Toolbar -->
+        <div
+          class="flex items-center justify-between px-3 py-2 bg-white shadow-sm border-b"
+        >
+          <div class="flex items-center gap-3">
+            <pre id="statistics"></pre>
+          </div>
+          <div class="flex items-center gap-2">
+            <button class="p-1.5 rounded hover:bg-gray-200" title="Copy" id="copy-ic10">
+              <i data-lucide="copy" class="w-4 h-4"></i>
+            </button>
+          </div>
+        </div>
+        <!-- Content Area -->
+        <div class="flex-1 overflow-auto bg-gray-50 p-4">
+          <pre class="whitespace-pre-wrap"><code id="output" class="language-mips">Compiling...</code></pre>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
