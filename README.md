@@ -42,7 +42,7 @@ The output is written to stdout.
 **NOT working**
 
 - slots (will be added soon)
-- call functions from another function (use manual `push ra/pop ra` for now)
+- call functions from another function ([use manual `push ra/pop ra` for now)](https://aproposmath.github.io/stationeers-pytrapic?fileUrl=https://raw.githubusercontent.com/aproposmath/stationeers-pytrapic/refs/heads/main/examples/solar.py))
 - function arguments / return values (use `global` variables)
 
 **Planned Features**
