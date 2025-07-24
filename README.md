@@ -36,7 +36,7 @@ The output is written to stdout.
 - simple functions (no arguments, no return values)
 - no automatic `push ra/pop ra` on nested function calls ([see this example](https://aproposmath.github.io/stationeers-pytrapic?fileUrl=https://raw.githubusercontent.com/aproposmath/stationeers-pytrapic/refs/heads/main/examples/nested_function_calls.py))
 - `global` statement (useful to mimic function return values)
-- remove unused functions ([you can have one code file for ICs!](https://aproposmath.github.io/stationeers-pytrapic?fileUrl=https://raw.githubusercontent.com/aproposmath/stationeers-pytrapic/refs/heads/main/examples/one_file_rules_them_all.py))
+- remove unused functions ([you can have one code file for ICs!](https://aproposmath.github.io/stationeers-pytrapic?fileUrl=https://raw.githubusercontent.com/aproposmath/stationeers-pytrapic/refs/heads/main/examples/one_file_to_rule_them_all.py))
 - remove unused labels
 
 **NOT working**
@@ -79,7 +79,7 @@ The web application uses [Pyodide](https://pyodide.org/) to run the transpiler i
 - [Airlock](https://aproposmath.github.io/stationeers-pytrapic?fileUrl=https://raw.githubusercontent.com/aproposmath/stationeers-pytrapic/refs/heads/main/examples/airlock.py)
 - [Solar tracking](https://aproposmath.github.io/stationeers-pytrapic?fileUrl=https://raw.githubusercontent.com/aproposmath/stationeers-pytrapic/refs/heads/main/examples/solar.py)
 - [Nested function calls](https://aproposmath.github.io/stationeers-pytrapic?fileUrl=https://raw.githubusercontent.com/aproposmath/stationeers-pytrapic/refs/heads/main/examples/solar.py)
-- [Have code for multiple ICs in one File](https://aproposmath.github.io/stationeers-pytrapic?fileUrl=https://raw.githubusercontent.com/aproposmath/stationeers-pytrapic/refs/heads/main/examples/one_file_rules_them_all.py)
+- [Have code for multiple ICs in one File](https://aproposmath.github.io/stationeers-pytrapic?fileUrl=https://raw.githubusercontent.com/aproposmath/stationeers-pytrapic/refs/heads/main/examples/one_file_to_rule_them_all.py)
 
 <table>
 <th>Python</th>
