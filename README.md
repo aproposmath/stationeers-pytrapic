@@ -41,11 +41,13 @@ The output is written to stdout.
 
 **NOT working**
 
+- slots (will be added soon)
 - call functions from another function (use manual `push ra/pop ra` for now)
 - function arguments / return values (use `global` variables)
 
 **Planned Features**
 
+- slots
 - use `define` for constant expressions instead of `move`
 - function inlining (if a function is only called once, it will be inlined into the caller)
 - remove all labels (use relative jumps instead)
