@@ -157,7 +157,7 @@ async function init() {
   else if (urlData) {
     const data = JSON.parse(pyodide.runPython(
       `import base64, zlib; zlib.decompress(base64.b64decode("${urlData}")).decode()`,
-    )).toJs();
+    ));
     pyodide.runPython('print')(data);
     console.log("Loaded data from URL", data);
     loadData(data);
