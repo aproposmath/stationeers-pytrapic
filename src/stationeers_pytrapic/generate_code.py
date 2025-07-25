@@ -130,6 +130,7 @@ class CompilerPassGenerateCode(CompilerPass):
         return name
 
     def compile_node(self, node: astroid.NodeNG):
+        # print("compile node", node)
         if node._ndata.is_compiled:
             return node._ndata.result
         self._visit_node(node)
@@ -156,6 +157,12 @@ class CompilerPassGenerateCode(CompilerPass):
         data = node._ndata
 
         attr = getattr(expr, attrname)
+        if isinstance(expr, type) and issubclass(expr, types._BaseStructure):
+            name = expr.__name__
+            raise CompilerError(
+                f"""Cannot use "{name}"" directly, either use "{name}s" to read from all devices of this type or create a specific device with "{name}(d0)".""",
+                node,
+            )
 
         if attrname in ["Minimum", "Maximum", "Sum", "Average"]:
             symbol = self.get_name(node)
@@ -168,19 +175,20 @@ class CompilerPassGenerateCode(CompilerPass):
         else:
             data.result = attr
 
-
     def handle_call(self, node: astroid.Call):
         data = node._ndata
 
         fname = node.func.name
-        if not hasattr(intrinsics, fname):
+        if not hasattr(symbols, fname):
             data.add(f"jal {fname}", f"call {fname}")
             return
 
-        func = getattr(intrinsics, fname)
+        func = getattr(symbols, fname)
         args = [self.compile_node(arg) for arg in node.args]
         result = func(*args)
-        if fname == "HASH" or hasattr(types, fname):
+        if isinstance(result, (symbols.GenericStructures, symbols.GenericStructure, types._BaseStructure, types._BaseStructures)):
+            data.result = result
+        elif fname == "HASH" or hasattr(types, fname):
             data.result = str(result)
         else:
             data.add(result, "intrinsic called")
@@ -236,6 +244,7 @@ class CompilerPassGenerateCode(CompilerPass):
             self._visit_node(stmt)
 
     def handle_assign_name(self, node: astroid.AssignName):
+        print("Assign name", node.name)
         data = node._ndata
         reg = self.get_name(node, node.name)
         data.result = reg
@@ -256,7 +265,16 @@ class CompilerPassGenerateCode(CompilerPass):
 
         elif isinstance(target, astroid.AssignName):
             value = self.compile_node(node.value)
-            if isinstance(value, (symbols.GenericStructures, symbols.GenericStructure)):
+            value_name = value.__name__ if isinstance(value, type) else value
+            if value_name in symbols.__dict__ or isinstance(
+                value,
+                (
+                    symbols.GenericStructures,
+                    symbols.GenericStructure,
+                    types._BaseStructure,
+                    types._BaseStructures,
+                ),
+            ):
                 data.result = value
                 self.set_name(target, value, target.name)
             elif isinstance(value, Symbol):
@@ -272,6 +290,17 @@ class CompilerPassGenerateCode(CompilerPass):
         elif isinstance(target, astroid.AssignAttr):
             rhs = self.compile_node(list(node.get_children())[1])
             lhs = self.compile_node(target)
+            if isinstance(lhs, symbols.DeviceLogicType) and lhs._device_id is None:
+                name = lhs._cls.__name__
+                raise CompilerError(
+                    f"""Cannot use "{name}"" directly, either use "{name}s" to set all devices of this type or create a specific device with "{name}(d0)".""",
+                    target,
+                )
+
+            if isinstance(rhs, symbols.DevicesLogicType):
+                raise CompilerError(
+                    "You need to take either Minimum/Maximum/Average/Sum", target
+                )
             expr = lhs._set(rhs)
             data.add(f"{expr}", "assign attribute")
         else:
@@ -280,6 +309,8 @@ class CompilerPassGenerateCode(CompilerPass):
     def handle_assign_attr(self, node: astroid.AssignAttr):
         expr = self.compile_node(node.expr)
         val = getattr(expr, node.attrname)
+        if isinstance(val, property):
+            val = val.fget(expr)
         node._ndata.result = val
 
     def handle_subscript(self, node: astroid.Subscript):
@@ -498,11 +529,10 @@ class CompilerPassGatherCode(CompilerPass):
             data.code = [data.code]
 
         if isinstance(node, astroid.While):
-            if data.code[''][0].code.endswith(":"):
+            if data.code[""][0].code.endswith(":"):
                 # emit while loop start label explicitly now, before any comparison is generated
-                self.add_line(data.code[''][0])
+                self.add_line(data.code[""][0])
                 data.code[""] = data.code[""][1:]
-
 
         special_nodes = set()
         if hasattr(node, "test"):

@@ -1,7 +1,7 @@
 from stationeers_pytrapic.symbols import *
 
-panels = SolarPanel  # port facing north
-sensor = d1  # port facing east
+panels = SolarPanels  # port facing north
+sensor = DaylightSensor(d0)  # port facing east
 
 while True:
     panels.Horizontal = sensor.Horizontal

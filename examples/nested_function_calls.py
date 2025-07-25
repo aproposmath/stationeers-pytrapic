@@ -1,8 +1,7 @@
 from stationeers_pytrapic.symbols import *
 
-
 def inner_function():
-    GrowLight.On = True
+    GrowLights.On = True
 
 
 def outer_function():
@@ -12,7 +11,7 @@ def outer_function():
     push(ra)
 
     # do some stuff
-    GrowLight.On = False
+    GrowLights.On = False
 
     # call the inner function
     inner_function()
@@ -22,4 +21,5 @@ def outer_function():
 
 
 outer_function()
-db.Setting = GrowLight.Power
+
+db.Setting = GrowLights.On.Maximum

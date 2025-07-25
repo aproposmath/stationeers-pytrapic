@@ -754,5 +754,5 @@ def bnezal(a: Register | float, b: Register | float):
     return "bnezal " + f"{a} {b}"
 
 
-def HASH(name: str) -> float:
+def HASH(name: str) -> int:
     return f"HASH({name})"
