@@ -1,8 +1,8 @@
 # registers: 9
 # lines: 30
-move r0 HASH("In")
-move r1 HASH("Out")
-move r2 HASH("Switch")
+move r0 2049575211
+move r1 1918735551
+move r2 -1732148268
 sbn -324331872 r0 Lock 1
 sbn -324331872 r1 Lock 1
 sbn -1129453144 r0 Mode 1

@@ -8,6 +8,7 @@ class Compiler:
     def __init__(self):
         self.passes = [
             CompilerPassSetNodeData,
+            CompilerPassCheckConstValue,
             CompilerPassCheckUsed,
             # CompilerPassAssignScope,
             # CompilerPassAssignSymbols,

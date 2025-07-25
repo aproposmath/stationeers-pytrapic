@@ -347,7 +347,7 @@ class CompilerPassGenerateCode(CompilerPass):
         test_data = node.test._ndata
 
         if test_data.is_constant_value:
-            if test_data.result:
+            if test_data.constant_value:
                 emit_else = False
             else:
                 emit_if = False

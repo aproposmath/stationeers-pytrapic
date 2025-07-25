@@ -11,8 +11,8 @@ handle_growlight:
   s d1 On r3
   j ra
 setup_airlock:
-  move r5 HASH("In")
-  move r6 HASH("Out")
+  move r5 2049575211
+  move r6 1918735551
   sbn -324331872 r5 Lock 1
   sbn -324331872 r6 Lock 1
   sbn -1129453144 r5 Mode 1
@@ -21,9 +21,9 @@ setup_airlock:
   sbn -1129453144 r6 On 0
   j ra
 handle_airlock:
-  move r7 HASH("In")
-  move r8 HASH("Out")
-  move r9 HASH("Switch")
+  move r7 2049575211
+  move r8 1918735551
+  move r9 -1732148268
   lbn r10 576516101 r9 On 3
   ble r10 0 lbelse6
     lbn r12 -324331872 r7 Open 3

@@ -4,7 +4,10 @@ from typing import Literal
 
 import astroid
 
+from . import symbols
 from .utils import is_constant, logger
+
+h = symbols.HASH
 
 
 class CompilerError(Exception):
@@ -70,6 +73,8 @@ class Symbol:
 class NodeData:
     CodeType = Literal["", "end", "else"]
     is_used: bool = None
+    is_written: int = 0
+    is_read: bool = None
     is_reachable: bool = None
     is_constant: bool = None
     is_constant_value: bool = None
@@ -303,8 +308,9 @@ def mark_used_nodes(node: astroid.NodeNG, used: bool | None = None) -> None:
         used = used and check_used(node)
         data.is_used = used
 
-    for child in node.get_children():
-        mark_used_nodes(child, data.is_used)
+    if data.is_used:
+        for child in node.get_children():
+            mark_used_nodes(child, data.is_used)
 
 
 class CompilerPassCheckConstValue(CompilerPass):
@@ -313,15 +319,68 @@ class CompilerPassCheckConstValue(CompilerPass):
         node._ndata.is_constant_value = is_const
         if is_const:
             node._ndata.constant_value = value
+            node._ndata.result = value
 
 
 class CompilerPassCheckUsed(CompilerPass):
+    def __init__(self, tree: astroid.Module):
+        super().__init__(tree)
+        self._have_unset_nodes = True
+        self._throw_on_unset = False
+
+        self._functions = {}
+
     def handle_node(self, node: astroid.NodeNG):
-        pass
+        data = node._ndata
+
+        if isinstance(node, astroid.FunctionDef):
+            self._functions[node.name] = node
+            data.is_used = data.is_used or False
+            self._have_unset_nodes = True
+
+        if data.is_used is None:
+            if self._throw_on_unset:
+                raise CompilerError(
+                    f"Node has no used flag set: {node}",
+                    node,
+                )
+            self._have_unset_nodes = True
+            return
+
+        if isinstance(node, astroid.Call):
+            if node.func.name in self._functions:
+                func = self._functions[node.func.name]
+                func._ndata.is_used = func._ndata.is_used or data.is_used
+            elif node.func.name not in symbols.__dict__:
+                print(
+                    f"Call to undefined function '{node.func.name}' in {node.lineno}:{node.col_offset}"
+                )
+
+        for child in node.get_children():
+            child._ndata.is_used = data.is_used
+
+        if isinstance(node, (astroid.If, astroid.While)):
+            test_data = node.test._ndata
+            if test_data.is_constant_value:
+                test_data.is_used = False
 
     def handle_module(self, node: astroid.Module):
         node._ndata.is_used = True
-        mark_used_nodes(node)
+
+        for child in node.get_children():
+            if not isinstance(child, astroid.FunctionDef):
+                child._ndata.is_used = True
+
+    def run(self):
+        for _ in range(10):
+            self._have_unset_nodes = False
+            self._visit_node_recursive(self.tree)
+            if not self._have_unset_nodes:
+                break
+
+        self._throw_on_unset = True
+        self._have_unset_nodes = False
+        self._visit_node_recursive(self.tree)
 
 
 class CompilerPassAssignSymbols(CompilerPass):
