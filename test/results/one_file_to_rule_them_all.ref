@@ -1,0 +1,46 @@
+# registers: 16
+# lines: 44
+  jal setup_airlock
+lbwhile16:
+    jal handle_airlock
+    jal handle_growlight
+    j lbwhile16
+handle_growlight:
+  l r4 d0 Vertical
+  sgt r3 r4 90
+  s d1 On r3
+  j ra
+setup_airlock:
+  move r5 HASH("In")
+  move r6 HASH("Out")
+  sbn -324331872 r5 Lock 1
+  sbn -324331872 r6 Lock 1
+  sbn -1129453144 r5 Mode 1
+  sbn -1129453144 r5 On 0
+  sbn -1129453144 r6 Mode 1
+  sbn -1129453144 r6 On 0
+  j ra
+handle_airlock:
+  move r7 HASH("In")
+  move r8 HASH("Out")
+  move r9 HASH("Switch")
+  lbn r10 576516101 r9 On 3
+  ble r10 0 lbelse6
+    lbn r12 -324331872 r7 Open 3
+    sgt r11 r12 0
+    select r13 r11 r8 r7
+    select r14 r11 r7 r8
+    sbn -324331872 r14 Open 0
+    sbn -1129453144 r14 On 1
+lbwhile13:
+    lb r15 -1252983604 Pressure 3
+    beq r15 0 lbwhile.end13
+      j lbwhile13
+lbwhile.end13:
+    sleep 0.2
+    sbn -1129453144 r14 On 0
+    sbn -324331872 r13 Open 1
+    sbn 576516101 r9 On 0
+    sleep 1
+lbelse6:
+  j ra

@@ -1,0 +1,14 @@
+# registers: 1
+# lines: 12
+jal outer_function
+lb r0 -1758710260 On 3
+s db Setting r0
+inner_function:
+  sb -1758710260 On 1
+  j ra
+outer_function:
+  push ra
+  sb -1758710260 On 0
+  jal inner_function
+  pop ra
+  j ra

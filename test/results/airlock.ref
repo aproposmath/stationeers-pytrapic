@@ -1,0 +1,32 @@
+# registers: 9
+# lines: 30
+move r0 HASH("In")
+move r1 HASH("Out")
+move r2 HASH("Switch")
+sbn -324331872 r0 Lock 1
+sbn -324331872 r1 Lock 1
+sbn -1129453144 r0 Mode 1
+sbn -1129453144 r0 On 0
+sbn -1129453144 r1 Mode 1
+sbn -1129453144 r1 On 0
+lbwhile1:
+  lbn r3 576516101 r2 On 3
+  ble r3 0 lbelse2
+    lbn r5 -324331872 r0 Open 3
+    sgt r4 r5 0
+    select r6 r4 r1 r0
+    select r7 r4 r0 r1
+    sbn -324331872 r7 Open 0
+    sbn -1129453144 r7 On 1
+lbwhile9:
+    lb r8 -1252983604 Pressure 3
+    beq r8 0 lbwhile.end9
+      j lbwhile9
+lbwhile.end9:
+    sleep 0.2
+    sbn -1129453144 r7 On 0
+    sbn -324331872 r6 Open 1
+    sbn 576516101 r2 On 0
+    sleep 1
+lbelse2:
+  j lbwhile1
