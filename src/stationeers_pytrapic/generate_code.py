@@ -130,7 +130,6 @@ class CompilerPassGenerateCode(CompilerPass):
         return name
 
     def compile_node(self, node: astroid.NodeNG):
-        # print("compile node", node)
         if node._ndata.is_compiled:
             return node._ndata.result
         self._visit_node(node)
@@ -244,7 +243,6 @@ class CompilerPassGenerateCode(CompilerPass):
             self._visit_node(stmt)
 
     def handle_assign_name(self, node: astroid.AssignName):
-        print("Assign name", node.name)
         data = node._ndata
         reg = self.get_name(node, node.name)
         data.result = reg
