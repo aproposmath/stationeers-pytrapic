@@ -6,24 +6,27 @@ from .types_generated import *
 
 
 class Register:
-    def __init__(self, num: int):
-        self.num = num
+    def __init__(self, name: str):
+        self.name = name
 
     def __str__(self):
-        return f"r{self.num}"
+        return self.name
 
 
 def compute_hash(name: str | Register) -> int:
     if isinstance(name, Register):
         return name
 
+    if name.startswith("__register."):
+        return name
+
+    if name[0] == '"' and name[-1] == '"':
+        name = name[1:-1]
+
     import zlib
-
     val = zlib.crc32(name.encode())
-    if val >= 2**31:
-        val -= 2**32
+    val = (val ^ 0x80000000) - 0x80000000
     return val
-
 
 class deviceHash(int):
     pass
@@ -49,36 +52,35 @@ class reagentMode(enum.IntEnum):
 class slotIndex(int):
     pass
 
+@dataclass
+class DeviceId:
+    _id: str | None = None
+    _is_ref_id: bool = False
+
 
 @dataclass
 class DeviceLogicType:
     _cls: any
-    _device_id: str
+    _device_id: DeviceId
     _logic_type: str
 
     def _load(self, output: Register) -> float:
-        from .intrinsics import l
+        from .intrinsics import l, ld
 
-        return l(output, self._device_id, self._logic_type)
+        id = self._device_id
+        if id._is_ref_id:
+            return ld(output, id._id ,self._logic_type)
+        else:
+            return l(output, id._id ,self._logic_type)
 
     def _set(self, value: float | Register):
-        from .intrinsics import s
+        from .intrinsics import s, sd
 
-        return s(self._device_id, self._logic_type, value)
-
-
-class Device(GenericStructure):
-    def __init__(self, num: int | str):
-        self.__num = num
-
-    def __str__(self):
-        return f"d{self.__num}"
-
-    def __getattr__(self, attr_name: str) -> DeviceLogicType:
-        if attr_name.startswith("__"):
-            return super().__getattr__(attr_name)
-
-        return DeviceLogicType(self, str(self), attr_name)
+        id = self._device_id
+        if id._is_ref_id:
+            return sd(id._id, self._logic_type, value)
+        else:
+            return s(id._id, self._logic_type, value)
 
 
 @dataclass
@@ -156,13 +158,12 @@ class DevicesLogicType:
 
 del enum
 
-
 class _BaseStructure:
     _hash: int = None
-    _id: str | None = None
+    _id: DeviceId
 
-    def __init__(self, device_id: str):
-        self._id = device_id
+    def __init__(self, device_id: str | None = None, ref_id: str | None = None):
+        self._id = DeviceId(device_id or ref_id, ref_id is not None)
 
     @property
     def PrefabHash(self) -> float:
@@ -182,7 +183,10 @@ class _BaseStructures:
     _name_hash: nameHash | None = None
 
     def __init__(self, name: str | int | None = None):
-        self._name_hash = compute_hash(name) if isinstance(name, str) else name
+        # print("make base structures", name, type(name))
+        if isinstance(name, str) and not name.startswith("__register."):
+            name = compute_hash(name)
+        self._name_hash = name
 
     @property
     def PrefabHash(self) -> DevicesLogicType:
@@ -197,29 +201,40 @@ class _BaseStructures:
         return DevicesLogicType(self._hash, "NameHash", self._name)
 
 
-ra = Register("a")
-r0 = Register(0)
-r1 = Register(1)
-r2 = Register(2)
-r3 = Register(3)
-r4 = Register(4)
-r5 = Register(5)
-r6 = Register(6)
-r7 = Register(7)
-r8 = Register(8)
-r9 = Register(9)
-r10 = Register(10)
-r11 = Register(11)
-r12 = Register(12)
-r13 = Register(13)
-r14 = Register(14)
-r15 = Register(15)
-r16 = Register(16)
+class Device(_BaseStructure, GenericStructure):
+    def __getattr__(self, attr_name: str) -> DeviceLogicType:
+        if attr_name in ["_id" , "_hash"] or attr_name.startswith("__"):
+            return super().__getattr__(attr_name)
 
-d0 = Device(0)
-d1 = Device(1)
-d2 = Device(2)
-d3 = Device(3)
-d4 = Device(4)
-d5 = Device(5)
-db = Device("b")
+        return DeviceLogicType(type(self), self._id, attr_name)
+
+    def __str__(self):
+        return f"{self._id._id}"
+
+ra = Register("ra")
+r0 = Register("r0")
+r1 = Register("r1")
+r2 = Register("r2")
+r3 = Register("r3")
+r4 = Register("r4")
+r5 = Register("r5")
+r6 = Register("r6")
+r7 = Register("r7")
+r8 = Register("r8")
+r9 = Register("r9")
+r10 = Register("r10")
+r11 = Register("r11")
+r12 = Register("r12")
+r13 = Register("r13")
+r14 = Register("r14")
+r15 = Register("r15")
+r16 = Register("r16")
+sp = Register("sp")
+
+d0 = Device("d0")
+d1 = Device("d1")
+d2 = Device("d2")
+d3 = Device("d3")
+d4 = Device("d4")
+d5 = Device("d5")
+db = Device("db")

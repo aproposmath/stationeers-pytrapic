@@ -26,7 +26,9 @@ def test_examples(example_file):
             )
 
         result = f"# registers: {result['num_registers']}\n# lines: {result['num_lines']}\n{result['code']}\n"
-        result_file = Path(__file__).parent / "results" / example_file.with_suffix(".ic10").name
+        result_file = (
+            Path(__file__).parent / "results" / example_file.with_suffix(".ic10").name
+        )
         result_file.write_text(result, encoding="utf-8")
 
         reference_file = result_file.with_suffix(".ref")
@@ -34,8 +36,6 @@ def test_examples(example_file):
         reference = reference_file.read_text(encoding="utf-8")
 
         if result != reference:
-            pytest.fail(
-                f"Compilation result for {example_file} does not match reference.\n"
-            )
+            pytest.fail(f"Different code generated.\n")
     except Exception as e:
         pytest.fail(f"Compilation failed for {example_file}: {e}")

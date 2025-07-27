@@ -53,6 +53,7 @@ while True:
   handle_solar_panels()
 `,
   comments: true,
+  compact: false,
 };
 
 const urlParams = new URLSearchParams(window.location.search);
@@ -62,6 +63,10 @@ let ic10Code = "";
 
 function useComments() {
   return document.querySelector("#emit-comments").checked;
+}
+
+function compactOutput() {
+  return document.querySelector("#compact-output").checked;
 }
 
 let pyodide = null;
@@ -77,11 +82,11 @@ async function compileCode() {
     if (editor === null) return;
     if (pyodide === null) return;
 
-    const { code, comments } = getData();
+    const { code, comments, compact } = getData();
     ic10Element.innerHTML = "Compiling...";
     statisticsElement.innerHTML = "";
     const compileFunction = pyodide.runPython(`from stationeers_pytrapic.compiler import compile_code; compile_code`);
-    const result = compileFunction.callKwargs(code, { append_original_line: comments }).toJs();
+    const result = compileFunction.callKwargs(code, { comments, compact }).toJs();
     if (result.error) {
       console.log("Compilation error:", result.error);
       statisticsElement.innerHTML = "";
@@ -95,7 +100,7 @@ async function compileCode() {
       return;
     }
     ic10Code = result["code"];
-    statisticsElement.innerHTML = `Lines: ${result.num_lines}/128, Registers: ${result.num_registers}/16`;
+    statisticsElement.innerHTML = `Lines: ${result.num_lines}/128, Registers: ${result.num_registers}/16, Bytes: ${result.num_bytes}`;
     ic10Element.innerHTML = hljs.highlight(result.code, {
       language: "ic10",
     }).value;
@@ -114,6 +119,7 @@ function getData() {
   return {
     code: editor?.getValue() || "",
     comments: useComments(),
+    compact: compactOutput(),
   };
 }
 
@@ -185,6 +191,10 @@ async function init() {
 
   document
     .querySelector("#emit-comments")
+    ?.addEventListener("click", compileCode);
+
+  document
+    .querySelector("#compact-output")
     ?.addEventListener("click", compileCode);
 
   compileCode(); // Initial compilation

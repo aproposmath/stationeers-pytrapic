@@ -15,9 +15,9 @@ def handle_solar_panels():
 def handle_growlight():
     grow_light.On = light_sensor.Vertical > 90
 
+h_in = HASH("In")
+h_out = HASH("Out")
 def setup_airlock():
-    h_in = HASH("In")
-    h_out = HASH("Out")
 
     GlassDoors[h_in].Lock = True
     GlassDoors[h_out].Lock = True
@@ -27,8 +27,6 @@ def setup_airlock():
     ActiveVents[h_out].On = False
 
 def handle_airlock():
-    h_in = HASH("In")
-    h_out = HASH("Out")
     h_switch = HASH("Switch")
 
     if DiodeSlides[h_switch].On.Maximum > 0:

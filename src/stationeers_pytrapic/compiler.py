@@ -1,32 +1,47 @@
 import astroid
 
 from .compile_pass import *
-from .generate_code import CompilerPassGenerateCode, CompilerPassGatherCode
+from .generate_code import CompilerPassGatherCode, CompilerPassGenerateCode
 
 
 class Compiler:
     def __init__(self):
         self.passes = [
             CompilerPassSetNodeData,
-            CompilerPassCheckConstValue,
             CompilerPassCheckUsed,
-            # CompilerPassAssignScope,
-            # CompilerPassAssignSymbols,
-            CompilerPassCheckConstValue,
+            CompilerPassFindNames,
+            CompilerPassResetReadWritten,
+            CompilerPassSetReadWritten,
+            CompilerPassCheckReadWritten,
+            # CompilerPassListSymbols,
+            # CompilerPassCheckConstValue,
+            # CompilerPassCheckConstValue,
+            # CompilerPassCheckRead,
             CompilerPassGenerateCode,
+            # CompilerPassAssignRegisters,
             CompilerPassGatherCode,
         ]
 
-    def compile(self, src: str, append_original_line: bool = False):
+    def compile(
+        self, src: str, comments: bool = False, compact: bool = False
+    ):
         try:
             self.tree = astroid.parse(src)
-            passes = [cls(self.tree) for cls in self.passes]
-            for compiler_pass in passes:
+            self.data = CodeData(self.tree)
+            for pass_cls in self.passes:
+                compiler_pass = pass_cls(self.data)
                 compiler_pass.run()
-            return passes[-1].get_code(
-                original_code=src, append_original_line=append_original_line
-            )
+            if isinstance(compiler_pass, CompilerPassGatherCode):
+                return compiler_pass.get_code(
+                    original_code=src,
+                    comments=comments,
+                    compact=compact,
+                )
+            return {"code": "No code generated"}
         except CompilerError as e:
+            import traceback
+
+            stack_trace = traceback.print_exc()
             return {"error": str(e)}
         except astroid.AstroidSyntaxError as e:
             return {"error": f"Syntax error: {str(e)}"}
@@ -40,5 +55,9 @@ class Compiler:
             }
 
 
-def compile_code(src: str, append_original_line: bool = False):
-    return Compiler().compile(src, append_original_line=append_original_line)
+def compile_code(
+    src: str, comments: bool = False, compact: bool = False
+):
+    return Compiler().compile(
+        src, comments=comments, compact=compact
+    )
