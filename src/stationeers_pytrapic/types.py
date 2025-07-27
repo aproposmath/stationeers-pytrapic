@@ -10,6 +10,8 @@ class Register:
         self.num = num
 
     def __str__(self):
+        if isinstance(self.num, str):
+            return self.num
         return f"r{self.num}"
 
 
@@ -186,18 +188,18 @@ class _BaseStructures:
 
     @property
     def PrefabHash(self) -> DevicesLogicType:
-        return DevicesLogicType(self._hash, "PrefabHash", self._name)
+        return DevicesLogicType(self._hash, "PrefabHash", self._name_hash)
 
     @property
     def ReferenceId(self) -> DevicesLogicType:
-        return DevicesLogicType(self._hash, "ReferenceId", self._name)
+        return DevicesLogicType(self._hash, "ReferenceId", self._name_hash)
 
     @property
     def NameHash(self) -> DevicesLogicType:
-        return DevicesLogicType(self._hash, "NameHash", self._name)
+        return DevicesLogicType(self._hash, "NameHash", self._name_hash)
 
 
-ra = Register("a")
+ra = Register("ra")
 r0 = Register(0)
 r1 = Register(1)
 r2 = Register(2)
@@ -223,3 +225,5 @@ d3 = Device(3)
 d4 = Device(4)
 d5 = Device(5)
 db = Device("b")
+
+sp = Register("sp")  # Stack Pointer
