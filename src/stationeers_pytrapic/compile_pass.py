@@ -1,14 +1,11 @@
 import logging
-from dataclasses import dataclass
+from dataclasses import dataclass, field
 from typing import Literal
 
 import astroid
 
-from . import symbols
-from .utils import is_constant, logger
-
-h = symbols.HASH
-
+from . import symbols, types
+from .utils import is_builtin_name, is_constant, logger
 
 class CompilerError(Exception):
     def __init__(self, message, node=None):
@@ -29,52 +26,140 @@ class CodeLine:
     node: astroid.NodeNG = None
 
 
+@dataclass
+class SymbolData:
+    name: str
+    scope: str = ""
+    code_expr: str | types._BaseStructure | types._BaseStructures = ""
+
+    nodes_reading: list[astroid.NodeNG] = field(default_factory=list)
+    nodes_writing: list[astroid.NodeNG] = field(default_factory=list)
+
+    @property
+    def is_overwritten(self) -> int:
+        return len(self.nodes_writing) > 1
+
+    @property
+    def is_written(self) -> int:
+        return len(self.nodes_writing)
+
+    @property
+    def is_read(self) -> int:
+        return len(self.nodes_reading)
+
+    @property
+    def is_builtin_object(self) -> bool:
+        return isinstance(self.code_expr, types._BaseStructure) or isinstance(
+            self.code_expr, types._BaseStructures
+        )
+
+    @property
+    def is_register(self) -> bool:
+        return isinstance(self.code_expr, str) and self.code_expr.startswith(
+            "__register."
+        )
+
+
+@dataclass
 class CodeData:
-    _symbol_counter: int = 0
-    symbols: dict[astroid.NodeNG, dict[str, astroid.NodeNG]] = None
-    symbols_by_name: dict[astroid.NodeNG, dict[str, astroid.NodeNG]] = None
+    tree: astroid.Module
+    symbols: dict[str, dict[str, SymbolData]]
+    codes: dict[str, list[CodeLine]]
+    register_map: dict[str, str]
 
-    def __init__(self):
-        self.symbols = {}
-        self.scopes = {}
-        self._symbol_counter = 0
+    def __init__(self, tree: astroid.Module):
+        self.tree = tree
+        self.symbols = {"": {}}
+        self.codes = {}
+        self.register_map = None
 
-    def get_symbol_name(self, node: astroid.NodeNG) -> str:
-        if hasattr(node, "name") and node.name:
-            return node.name
+    def _scope_name(self, node: astroid.AssignName | astroid.Name) -> str:
+        if isinstance(node.parent, astroid.Call):
+            return ""  # no nested functions, all functions are global
 
-        name = f"symbol_{self._symbol_counter}"
-        self._symbol_counter += 1
-        return name
+        if isinstance(node, astroid.FunctionDef) or (
+            isinstance(node, astroid.Name) and isinstance(node.parent, astroid.Call)
+        ):
+            return ""
 
-    def get_symbol(self, node: astroid.NodeNG) -> str:
-        scope_name = node.scope().name
+        scope = node.scope()
+        if hasattr(node, "name") and node.name not in scope.locals:
+            return ""  # if the name is not in the local scope, it is a global name
+        if scope.name not in self.symbols:
+            self.symbols[scope.name] = {}
+        return scope.name
 
-        if scope_name not in self.symbols:
-            self.symbols[scope_name] = {}
-            self.symbols_by_name[scope_name] = {}
+    def get_tmp_sym_data(self, node: astroid.NodeNG, name: str) -> SymbolData:
+        scope = self._scope_name(node)
+        local_symbols = self.symbols[scope]
+        local_symbols[name] = SymbolData(name)
+        return local_symbols[name]
+
+    def get_sym_data(
+        self, node: astroid.AssignName | astroid.Name, new_if_not_existing: bool = False
+    ) -> SymbolData:
+
+        scope = self._scope_name(node)
+        local_symbols = self.symbols[scope]
+        name = node.name
+        if name not in local_symbols:
+            if new_if_not_existing:
+                # print("create new name data for", name, "in scope", scope)
+                local_symbols[name] = SymbolData(name)
+            else:
+                raise CompilerError(
+                    f"Name '{name}' not found in scope '{scope}'",
+                    node,
+                )
+        return local_symbols[name]
+
+    def add_name(self, node: astroid.FunctionDef | astroid.Name | astroid.AssignName):
+        if is_builtin_name(node.name):
+            return
+        self.get_sym_data(node, new_if_not_existing=True)
+
+    def set_name_read(self, node: astroid.NodeNG):
+        if is_builtin_name(node.name):
+            return
+
+        if not node._ndata.is_used:
+            return
+
+        self.get_sym_data(node).nodes_reading.append(node)
+
+    def set_name_written(self, node):
+        if is_builtin_name(node.name):
+            raise CompilerError(
+                f"Cannot write to built-in name '{node.name}'",
+                node,
+            )
+
+        if not node._ndata.is_used:
+            return
+
+        self.get_sym_data(node).nodes_writing.append(node)
 
 
-class Symbol:
-    def __init__(self, i, scope: str, name: str):
-        self.id = i
-        self.name = name
-        self.scope = scope
-        self.nodes_reading = set()
-        self.nodes_writing = set()
-
-    def __str__(self):
-        return f"__symbol_{self.id:02}"
-
-    def __repr__(self):
-        return self.__str__()
+# class Symbol:
+#     def __init__(self, i, scope: str, name: str):
+#         self.id = i
+#         self.name = name
+#         self.scope = scope
+#         self.is_constant = False
+#
+#     def __str__(self):
+#         if self.is_constant:
+#             return self.name
+#         return f"__symbol_{self.id:02}"
+#
+#     def __repr__(self):
+#         return self.__str__()
+#
 
 
 class NodeData:
     CodeType = Literal["", "end", "else"]
     is_used: bool = None
-    is_written: int = 0
-    is_read: bool = None
     is_reachable: bool = None
     is_constant: bool = None
     is_constant_value: bool = None
@@ -125,14 +210,16 @@ class NodeData:
 
 
 class CompilerPass:
-    def __init__(self, tree: astroid.Module):
-        self.tree = tree
+    def __init__(self, data: CodeData):
+        self.data = data
+        self.tree = data.tree
 
         self._handlers = {
             astroid.Pass: self.handle_pass,
             astroid.Global: self.handle_global,
             astroid.Module: self.handle_module,
             astroid.FunctionDef: self.handle_function_def,
+            astroid.Keyword: self.handle_keyword,
             astroid.Expr: self.handle_expr,
             astroid.Import: self.handle_import,
             astroid.While: self.handle_while,
@@ -221,6 +308,9 @@ class CompilerPass:
     def handle_ifexp(self, node: astroid.IfExp):
         self.handle_node(node)
 
+    def handle_keyword(self, node: astroid.Keyword):
+        self.handle_node(node)
+
     def handle_attribute(self, node: astroid.Attribute):
         self.handle_node(node)
 
@@ -265,61 +355,62 @@ class CompilerPass:
 
 
 class CompilerPassSetNodeData(CompilerPass):
-    def __init__(self, tree: astroid.Module):
-        super().__init__(tree)
-        self.code_data = CodeData()
-
     def handle_node(self, node: astroid.NodeNG):
         if hasattr(node, "_ndata"):
             raise ValueError(
                 f"Node {node} already has _ndata set. "
                 "This pass should only be run once per node."
             )
-        node._ndata = NodeData(node, self.code_data)
+        node._ndata = NodeData(node, self.data)
 
 
-def check_used(node: astroid.NodeNG):
-    data = node._ndata
-    if data.is_used is not None:
-        return data.is_used
-
-    if isinstance(node, astroid.While):
-        if isinstance(node.test, astroid.Const):
-            data.is_used = node.test.value
-            return data.is_used
-        else:
-            data.is_used = True
-
-    if isinstance(node, astroid.Module):
-        data.is_used = True
-
-    data.is_used = True
-
-    return data.is_used
-
-
-def mark_used_nodes(node: astroid.NodeNG, used: bool | None = None) -> None:
-    data = node._ndata
-    if isinstance(node, astroid.Module):
-        used = True
-        data.used = True
-
-    if data.is_used is None:
-        used = used and check_used(node)
-        data.is_used = used
-
-    if data.is_used:
-        for child in node.get_children():
-            mark_used_nodes(child, data.is_used)
+class CompilerPassFindNames(CompilerPass):
+    def handle_node(self, node: astroid.NodeNG):
+        if isinstance(node, (astroid.FunctionDef, astroid.Name, astroid.AssignName)):
+            self.data.add_name(node)
 
 
 class CompilerPassCheckConstValue(CompilerPass):
-    def handle_node(self, node: astroid.Module):
+    def handle_module(self, node: astroid.NodeNG):
+        pass
+
+    def handle_node(self, node: astroid.NodeNG):
+        data = node._ndata
+        if node.parent._ndata.is_constant_value:
+            # print('node parent is constant', type(node).__name__, type(node.parent).__name__)
+            # data.is_constant_value = True
+            return
         is_const, value = is_constant(node)
-        node._ndata.is_constant_value = is_const
+
+        data.is_constant_value = is_const
+
         if is_const:
+            # print("is constant", node, value)
             node._ndata.constant_value = value
             node._ndata.result = value
+
+    def run(self):
+        super().run()
+        for scope, symbols in self.data.symbols.items():
+            for name, symbol_data in symbols.items():
+                if (
+                    len(symbol_data.nodes_writing) == 1
+                    and symbol_data.nodes_writing[0]._ndata.is_constant_value
+                ):
+                    value = symbol_data.nodes_writing[0]._ndata.constant_value
+                    # print("constant name", name, "in scope", scope, "value", value)
+                    for node in symbol_data.nodes_reading:
+                        data = node._ndata
+                        data.is_constant_value = True
+                        data.constant_value = value
+                        data.result = value
+                else:
+                    for node in symbol_data.nodes_reading:
+                        # print("not constant name", name, "in scope", scope)
+                        data = node._ndata
+                        data.is_constant = False
+                        data.is_constant_value = None
+                        data.result = None
 
 
 class CompilerPassCheckUsed(CompilerPass):
@@ -381,6 +472,68 @@ class CompilerPassCheckUsed(CompilerPass):
         self._throw_on_unset = True
         self._have_unset_nodes = False
         self._visit_node_recursive(self.tree)
+
+
+class CompilerPassResetReadWritten(CompilerPass):
+    def handle_node(self, node: astroid.NodeNG):
+        pass
+
+    def handle_assign_name(self, node: astroid.AssignName):
+        if not is_builtin_name(node.name):
+            sym_data = self.data.get_sym_data(node)
+            sym_data.nodes_writing.clear()
+            sym_data.nodes_reading.clear()
+
+    def handle_name(self, node: astroid.Name):
+        if not is_builtin_name(node.name):
+            sym_data = self.data.get_sym_data(node)
+            sym_data.nodes_writing.clear()
+            sym_data.nodes_reading.clear()
+
+    def run(self):
+        # print(f"pass {type(self).__name__} run")
+        # print(f"symbols: {self.data.symbols}")
+        self._visit_node_recursive(self.tree)
+
+
+class CompilerPassSetReadWritten(CompilerPassResetReadWritten):
+    def handle_assign_name(self, node: astroid.AssignName):
+        self.data.set_name_written(node)
+
+    def handle_name(self, node: astroid.Name):
+        self.data.set_name_read(node)
+
+    def handle_function_def(self, node: astroid.FunctionDef):
+        self.data.set_name_written(node)
+
+
+class CompilerPassCheckReadWritten(CompilerPassResetReadWritten):
+    def handle_assign_name(self, node: astroid.AssignName):
+        if node._ndata.is_used and not is_builtin_name(node.name):
+            sym_data = self.data.get_sym_data(node)
+            if sym_data.is_read == 0:
+                print(f"mark unused name '{node.name}' in scope '{sym_data.scope}'")
+                node._ndata.is_used = False
+
+    def handle_name(self, node: astroid.Name):
+        pass
+        # if node._ndata.is_used and not is_builtin_name(node.name):
+        #     parent = node.parent
+        #     if isinstance(parent, astroid.Call):
+        #         self.data.set_function_called(node.name)
+        #     else:
+        #         self.data.set_name_read(node.scope(), node.name)
+
+
+class CompilerPassListSymbols(CompilerPass):
+    def run(self):
+        print("Listing symbols")
+        for scope, symbols in self.data.symbols.items():
+            print(f"Scope: {scope}")
+            for name, symbol_data in symbols.items():
+                print(
+                    f"  {name}: {symbol_data.is_read} reads, {symbol_data.is_written} writes"
+                )
 
 
 class CompilerPassAssignSymbols(CompilerPass):

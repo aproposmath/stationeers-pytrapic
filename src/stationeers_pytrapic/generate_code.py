@@ -1,10 +1,11 @@
 from contextlib import contextmanager
 
 import astroid
+import re
 
 from . import intrinsics, structures_generated, symbols, types
-from .compile_pass import CodeLine, CompilerError, CompilerPass, Symbol
-from .utils import is_constant, logger
+from .compile_pass import CodeLine, CompilerError, CompilerPass, SymbolData, CodeData
+from .utils import is_builtin_name, is_constant, logger
 
 
 def get_comparison_suffix(op: str):
@@ -68,9 +69,9 @@ def remove_unused_labels(code: str) -> str:
 
 
 class CompilerPassGenerateCode(CompilerPass):
-    def __init__(self, tree: astroid.Module):
+    def __init__(self, data: CodeData):
+        super().__init__(data)
         logger.info("Initializing CompilerPassGenerateCode")
-        super().__init__(tree)
         self._name_counter = 0
         self._symbol_counter = 0
 
@@ -78,22 +79,43 @@ class CompilerPassGenerateCode(CompilerPass):
 
         self.ignore_nodes(astroid.ImportFrom, astroid.Import, astroid.Pass)
 
-    def set_name(
-        self, node: astroid.NodeNG, symbol: Symbol, identifyer: str | None = None
+    def set_name_(
+        self, node: astroid.NodeNG, symbol: SymbolData, identifyer: str | None = None
     ):
         logger.info("set name %s %s %s", node, symbol, identifyer)
         if identifyer is not None:
             scope_name = node.scope().name
             key = (scope_name, identifyer)
             if key in self._names:
-                raise CompilerError(
-                    f"Name {identifyer} already exists in scope {scope_name}", node
-                )
-            self._names[key] = symbol
+                self._names[key].is_written += 1
+                # raise CompilerError(
+                #     f"Name {identifyer} already exists in scope {scope_name}", node
+                # )
+            else:
+                self._names[key] = symbol
         else:
             self._names[node] = symbol
 
+    def get_constant_name(self) -> str:
+        name = f"c.{self._name_counter}"
+        self._name_counter += 1
+        return name
+
+    def get_intermediate_symbol(self, node) -> str:
+        reg = self.get_register_name()
+        sym = self.data.get_tmp_sym_data(node, reg)
+        sym.code_expr = reg
+        sym.nodes_writing.append(node)
+        return sym
+
+    def get_register_name(self) -> str:
+        name = f"__register.{self._name_counter}"
+        self._name_counter += 1
+        return name
+
     def get_name(self, node: astroid.NodeNG, identifyer: str | None = None) -> str:
+        return self.data.get_sym_data(node)
+
         logger.debug("get name %s %s", node, identifyer)
         scope_name = node.scope().name
         symbol_id = self._symbol_counter
@@ -101,7 +123,7 @@ class CompilerPassGenerateCode(CompilerPass):
         if identifyer is None:
             if node not in self._names:
                 identifyer = f"tmp_{self._name_counter}"
-                self._names[node] = Symbol(
+                self._names[node] = SymbolData(
                     symbol_id, scope_name, str(self._name_counter)
                 )
                 self._name_counter += 1
@@ -114,7 +136,7 @@ class CompilerPassGenerateCode(CompilerPass):
             key = (scope_name, identifyer)
             if key not in self._names:
                 # self._name_counter += 1
-                self._names[key] = Symbol(symbol_id, scope_name, identifyer)
+                self._names[key] = SymbolData(symbol_id, scope_name, identifyer)
                 # self._names[key] = types.Register(f"_{scope_name}_{identifyer}")
             # print("\treturn name", self._names[key])
             return self._names[key]
@@ -130,11 +152,13 @@ class CompilerPassGenerateCode(CompilerPass):
         return name
 
     def compile_node(self, node: astroid.NodeNG):
-        if node._ndata.is_compiled:
-            return node._ndata.result
-        self._visit_node(node)
-        node._ndata.is_compiled = True
-        return node._ndata.result
+        if not node._ndata.is_compiled:
+            self._visit_node(node)
+            node._ndata.is_compiled = True
+        res = node._ndata.result
+        if isinstance(res, SymbolData):
+            return res.code_expr
+        return res
 
     def handle_not_implemented(self, node: astroid.NodeNG):
         comment = f"not implemented: {type(node).__name__} at line {node.lineno}"
@@ -164,12 +188,12 @@ class CompilerPassGenerateCode(CompilerPass):
             )
 
         if attrname in ["Minimum", "Maximum", "Sum", "Average"]:
-            symbol = self.get_name(node)
-            data.add(attr(symbol), attrname)
+            symbol = self.get_intermediate_symbol(node)
+            data.add(attr(symbol.code_expr), attrname)
             data.result = symbol
         elif isinstance(attr, symbols.DeviceLogicType):
-            symbol = self.get_name(node)
-            data.add(attr._load(symbol), attrname)
+            symbol = self.get_intermediate_symbol(node)
+            data.add(attr._load(symbol.code_expr), attrname)
             data.result = symbol
         else:
             data.result = attr
@@ -183,12 +207,21 @@ class CompilerPassGenerateCode(CompilerPass):
             return
 
         func = getattr(symbols, fname)
+        kwargs = {kw.arg: self.compile_node(kw.value) for kw in node.keywords}
         args = [self.compile_node(arg) for arg in node.args]
-        result = func(*args)
-        if isinstance(result, (symbols.GenericStructures, symbols.GenericStructure, types._BaseStructure, types._BaseStructures)):
+        result = func(*args, **kwargs)
+        if isinstance(
+            result,
+            (
+                symbols.GenericStructures,
+                symbols.GenericStructure,
+                types._BaseStructure,
+                types._BaseStructures,
+            ),
+        ):
             data.result = result
         elif fname == "HASH" or hasattr(types, fname):
-            data.result = str(result)
+            data.result = result
         else:
             data.add(result, "intrinsic called")
 
@@ -215,14 +248,15 @@ class CompilerPassGenerateCode(CompilerPass):
         elif name in types.__dict__:
             node._ndata.result = types.__dict__[name]
         else:
-            node._ndata.result = self.get_name(node, name)
+            sym_data = self.data.get_sym_data(node)
+            node._ndata.result = sym_data.code_expr
 
     def handle_const(self, node: astroid.Const):
         data = node._ndata
         if isinstance(node.value, bool):
             data.result = int(node.value)
         elif isinstance(node.value, (int, float)):
-            data.result = str(node.value)
+            data.result = node.value
         elif isinstance(node.value, str):
             data.result = f'"{node.value}"'
         else:
@@ -246,9 +280,11 @@ class CompilerPassGenerateCode(CompilerPass):
         data = node._ndata
         reg = self.get_name(node, node.name)
         data.result = reg
+        list(node.get_children())[0]._ndata.result = reg
 
     def handle_assign(self, node: astroid.Assign):
         target = node.targets[0]
+        # print("assign", target, node.value)
         data = node._ndata
 
         if data.is_compiled:
@@ -264,7 +300,16 @@ class CompilerPassGenerateCode(CompilerPass):
         elif isinstance(target, astroid.AssignName):
             value = self.compile_node(node.value)
             value_name = value.__name__ if isinstance(value, type) else value
-            if value_name in symbols.__dict__ or isinstance(
+            if isinstance(value, SymbolData):
+                # raise CompilerError(
+                #     f"Cannot assign symbol {value.name} to name {target.name}", target
+                # )
+                value.code_expr = target.name
+                # data.result = value
+                # # assign new name to symbol instead of extra move instruction
+                # value.name = target.name
+                # self.set_name(target, value, target.name)
+            elif value_name in symbols.__dict__ or isinstance(
                 value,
                 (
                     symbols.GenericStructures,
@@ -274,21 +319,27 @@ class CompilerPassGenerateCode(CompilerPass):
                 ),
             ):
                 data.result = value
-                self.set_name(target, value, target.name)
-            elif isinstance(value, Symbol):
-                data.result = value
-                # assign new name to symbol instead of extra move instruction
-                value.name = target.name
-                self.set_name(target, value, target.name)
+                sym_data = self.data.get_sym_data(target)
+                sym_data.code_expr = value
+                # self.set_name(target, value, target.name)
             else:
-                value = self.compile_node(node.value)
-                reg = self.get_name(target, target.name)
-                data.add(f"move {reg} {value}", "assign name")
-                data.result = reg
+                sym_data = self.data.get_sym_data(target)
+                if node.value._ndata.is_constant_value or not sym_data.is_overwritten:
+                    sym_data.code_expr = value  # self.get_constant_name()
+                    # sym.name = value
+                    # sym.is_constant = True
+                    data.result = value
+                else:
+                    reg = self.get_register_name()
+                    data.add(f"move {reg} {value}", "assign name")
+                    sym_data.code_expr = reg
+                    data.result = reg
+            target._ndata.result = data.result
+            target._ndata.is_compiled = True
         elif isinstance(target, astroid.AssignAttr):
             rhs = self.compile_node(list(node.get_children())[1])
             lhs = self.compile_node(target)
-            if isinstance(lhs, symbols.DeviceLogicType) and lhs._device_id is None:
+            if isinstance(lhs, symbols.DeviceLogicType) and lhs._device_id._id is None:
                 name = lhs._cls.__name__
                 raise CompilerError(
                     f"""Cannot use "{name}"" directly, either use "{name}s" to set all devices of this type or create a specific device with "{name}(d0)".""",
@@ -306,9 +357,12 @@ class CompilerPassGenerateCode(CompilerPass):
 
     def handle_assign_attr(self, node: astroid.AssignAttr):
         expr = self.compile_node(node.expr)
+        if isinstance(expr, SymbolData):
+            raise CompilerError(f"Cannot assign to symbol {expr.name} directly", node)
         val = getattr(expr, node.attrname)
         if isinstance(val, property):
             val = val.fget(expr)
+
         node._ndata.result = val
 
     def handle_subscript(self, node: astroid.Subscript):
@@ -317,23 +371,24 @@ class CompilerPassGenerateCode(CompilerPass):
         node._ndata.result = value[slice_]
 
     def handle_compare(self, node: astroid.Compare):
-        reg = self.get_name(node)
+        sym = self.get_intermediate_symbol(node)
         left = self.compile_node(node.left)
         right = self.compile_node(node.ops[0][1])
 
         instruction = "s" + get_comparison_suffix(node.ops[0][0])
         data = node._ndata
-        data.add(f"{instruction} {reg} {left} {right}", "compare")
-        data.result = reg
+        data.add(f"{instruction} {sym.code_expr} {left} {right}", "compare")
+        data.result = sym
 
     def handle_ifexp(self, node: astroid.IfExp):
         test = self.compile_node(node.test)
         left = self.compile_node(node.body)
         right = self.compile_node(node.orelse)
 
+        sym = self.get_intermediate_symbol(node)
         data = node._ndata
-        data.result = self.get_name(node)
-        data.add(f"select {data.result} {test} {left} {right}", "if expression")
+        data.result = sym
+        data.add(f"select {sym.code_expr} {test} {left} {right}", "if expression")
 
     def handle_if(self, node: astroid.If):
         else_label = self.get_label("else")
@@ -384,19 +439,26 @@ class CompilerPassGenerateCode(CompilerPass):
                 stmt._ndata.is_used = False
 
     def handle_binop(self, node: astroid.BinOp):
+        data = node._ndata
+
+        if data.is_constant_value:
+            # print("BinOp is constant", node, data.constant_value)
+            data.result = data.constant_value
+            return
+
         left_name = self.compile_node(node.left)
         right_name = self.compile_node(node.right)
 
         op = node.op
 
-        data = node._ndata
-        data.result = self.get_name(node)
+        sym = self.get_intermediate_symbol(node)
+        data.result = sym
         instruction = get_binop_instruction(op)
         if instruction is None:
             raise CompilerError(f"Unsupported binary operation: {op}", node)
 
         data.add(
-            f"{instruction} {data.result} {left_name} {right_name}", "binary operation"
+            f"{instruction} {sym.code_expr} {left_name} {right_name}", "binary operation"
         )
 
     def handle_while(self, node: astroid.While):
@@ -427,19 +489,22 @@ class CompilerPassGenerateCode(CompilerPass):
     def run(self):
         self._visit_node(self.tree)
 
-
 class CompilerPassGatherCode(CompilerPass):
-    def __init__(self, tree: astroid.Module):
-        super().__init__(tree)
+    def __init__(self, data: CodeData):
+        super().__init__(data)
         self.code = []
         self._indent_level = 0
-        self._symbols = set()
 
         self._functions = []
         self._called_functions = set()
 
         self._target = None
         self._function_codes = {}
+
+        # for scope, data in self.data.symbols.items():
+        #     print(f"Symbols in scope '{scope}'")
+        #     for name, d in data.items():
+        #         print(f"\t{name} {d.is_read} {d.is_written}")
 
     def add_line(self, line: CodeLine):
         line.indent += self._indent_level
@@ -450,22 +515,7 @@ class CompilerPassGatherCode(CompilerPass):
         else:
             code = self.code
         code.append(line)
-        self.scan_symbols(line)
 
-    def scan_symbols(self, line: CodeLine):
-        tokens = line.code.split()
-        for token in tokens:
-            if token.startswith("__symbol_"):
-                self._symbols.add(token)
-
-    def replace_symbols(self, line: CodeLine):
-        symbols = sorted(self._symbols)
-        symbol_map = {symbol: f"r{i}" for i, symbol in enumerate(symbols)}
-
-        for line in self.code:
-            for symbol in symbols:
-                if symbol in line.code:
-                    line.code = line.code.replace(symbol, symbol_map[symbol])
 
     @contextmanager
     def indent(self, num_indents=1):
@@ -577,11 +627,69 @@ class CompilerPassGatherCode(CompilerPass):
                 for line in self._function_codes[func.name]:
                     self.add_line(line)
 
+        self.assign_registers()
+
+    def assign_registers(self):
+        registers = list(range(16))
+
+        tokens = set(' '.join([line.code.split("#")[0] for line in self.code]).split())
+
+        mapping = {}
+
+        scope_names = sorted(self.data.symbols.keys())
+        for scope in scope_names:
+            scope_registers = registers.copy()
+            for name, symbol in self.data.symbols[scope].items():
+                if not symbol.code_expr in tokens:
+                    continue
+
+                if symbol.is_register and symbol.code_expr not in mapping:
+                    reg_num = scope_registers.pop(0)
+                    mapping[symbol.code_expr] = f"r{reg_num}"
+                    # print("assign name", symbol.code_expr, "to", mapping[symbol.code_expr])
+
+            if scope == '':
+                registers = scope_registers
+
+        pattern = re.compile("|".join(re.escape(k) for k in mapping))
+        replacer = lambda x: mapping[x.group(0)]
+
+        for line in self.code:
+            line.code  = pattern.sub(replacer, line.code)
+
+    
+        self.used_registers = sorted(set(mapping.values()))
+
+    def remove_labels(self, code):
+
+        label_map = {}
+        i_line = 0
+        new_code = []
+        for line in code.splitlines():
+            cline = line.split("#")[0].strip()
+            if cline.endswith(":"):
+                label = cline[:-1]
+                label_map[label] = len(new_code) + 1
+            else:
+                i_line += 1
+                new_code.append(line)
+
+        new_code = "\n".join(new_code)
+
+        for label, line_num in label_map.items():
+            new_code = new_code.replace(label, str(line_num))
+
+        return new_code
+
+    def strip_code(self, code: str) -> str:
+        return "\n".join([ line.strip() for line in code.splitlines() ])
+    
     def get_code(
         self,
         append_comments=False,
-        append_original_line=True,
+        comments=True,
         original_code: str = None,
+        compact: bool = False,
     ) -> dict:
         s = ""
         if original_code is not None:
@@ -591,15 +699,15 @@ class CompilerPassGatherCode(CompilerPass):
         code_width = 0
 
         for line in self.code:
-            self.replace_symbols(line)
             line.code = " " * (line.indent * shift) + line.code
             code_width = max(code_width, len(line.code))
 
         just_width = min(60, code_width + 4)
 
+        comments = comments and not compact
+
         prev_comment = None
         for line in self.code:
-            self.replace_symbols(line)
             c = line.code
             if line.code.endswith(":"):
                 # labels are not allowed to have indentation
@@ -609,7 +717,7 @@ class CompilerPassGatherCode(CompilerPass):
                 if prev_comment != line.comment:
                     c = c.ljust(just_width) + " # " + line.comment
                     prev_comment = line.comment
-            elif append_original_line and line.node and original_code:
+            elif comments and line.node and original_code:
                 ori_line = original_code[line.node.lineno - 1]
                 if prev_comment != ori_line:
                     c = c.ljust(just_width)
@@ -620,14 +728,21 @@ class CompilerPassGatherCode(CompilerPass):
 
         s = s[:-1]  # remove last newline
 
-        logger.info("Number of used registers: %i", len(self._symbols))
+        # logger.info("Number of used registers: %i", len(self._symbols))
 
-        if len(self._symbols) > 16:
-            raise CompilerError("Running out of registers.")
+        # if len(self._symbols) > 16:
+        #     raise CompilerError("Running out of registers.")
 
-        s = remove_unused_labels(s)
+
+        if compact:
+            s = self.remove_labels(s)
+            s = self.strip_code(s)
+        else:
+            s = remove_unused_labels(s)
+
 
         num_lines = len(s.splitlines())
-        num_registers = len(self._symbols)
+        num_registers = len(self.used_registers)
+        num_bytes = len(s)+num_lines
 
-        return {"code": s, "num_lines": num_lines, "num_registers": num_registers}
+        return {"code": s, "num_lines": num_lines, "num_registers": num_registers, "num_bytes": num_bytes, "used_registers": self.used_registers}

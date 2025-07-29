@@ -1,46 +1,41 @@
-# registers: 16
-# lines: 44
+# registers: 6
+# lines: 39
   jal setup_airlock
 lbwhile16:
     jal handle_airlock
     jal handle_growlight
     j lbwhile16
 handle_growlight:
-  l r4 d0 Vertical
-  sgt r3 r4 90
-  s d1 On r3
+  l r1 d0 Vertical
+  sgt r0 r1 90
+  s d1 On r0
   j ra
 setup_airlock:
-  move r5 2049575211
-  move r6 1918735551
-  sbn -324331872 r5 Lock 1
-  sbn -324331872 r6 Lock 1
-  sbn -1129453144 r5 Mode 1
-  sbn -1129453144 r5 On 0
-  sbn -1129453144 r6 Mode 1
-  sbn -1129453144 r6 On 0
+  sbn -324331872 -899110164 Lock 1
+  sbn -324331872 -2119750791 Lock 1
+  sbn -1129453144 -899110164 Mode 1
+  sbn -1129453144 -899110164 On 0
+  sbn -1129453144 -2119750791 Mode 1
+  sbn -1129453144 -2119750791 On 0
   j ra
 handle_airlock:
-  move r7 2049575211
-  move r8 1918735551
-  move r9 -1732148268
-  lbn r10 576516101 r9 On 3
-  ble r10 0 lbelse6
-    lbn r12 -324331872 r7 Open 3
-    sgt r11 r12 0
-    select r13 r11 r8 r7
-    select r14 r11 r7 r8
-    sbn -324331872 r14 Open 0
-    sbn -1129453144 r14 On 1
+  lbn r3 576516101 1749372462 On 3
+  ble r3 0 lbelse6
+    lbn r4 -324331872 -899110164 Open 3
+    sgt r0 r4 0
+    select r1 r0 -2119750791 -899110164
+    select r2 r0 -899110164 -2119750791
+    sbn -324331872 r2 Open 0
+    sbn -1129453144 r2 On 1
 lbwhile13:
-    lb r15 -1252983604 Pressure 3
-    beq r15 0 lbwhile.end13
+    lb r5 -1252983604 Pressure 3
+    beq r5 0 lbwhile.end13
       j lbwhile13
 lbwhile.end13:
     sleep 0.2
-    sbn -1129453144 r14 On 0
-    sbn -324331872 r13 Open 1
-    sbn 576516101 r9 On 0
+    sbn -1129453144 r2 On 0
+    sbn -324331872 r1 Open 1
+    sbn 576516101 1749372462 On 0
     sleep 1
 lbelse6:
   j ra
