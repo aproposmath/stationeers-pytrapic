@@ -23,50 +23,42 @@ The output is written to stdout.
 
 **Features**
 
-- autocomplete for all structure names and logic types (e.g. `WallLight["Some Name"].On.Maximum`) (limitation: currently any structure suggests any logic type)
 - variable assignments
 - arithmetic operations (`+`, `-`, `*`, `/`)
 - if-else statements
 - while loops
+- type hints/autocomplete for all structure names and logic types (e.g. `WallLights["Some Name"].On.Maximum`)
 - intrinsics (all IC10 instructions can be called as functions with either variables / constants as arguments)
 - optimization for constant expressions (e.g. `1 + 2` becomes `3`)
-- read/write acessing individual structures (`d0.Activate = True`)
-- read/write acessing structures by type (`AutoLathe.Activate = True`)
-- read/write acessing structures by name (`my_value = WallLight["Some Name"].On.Maximum`)
+- read/write acessing individual structures (`WallHeater(d0).Activate = True`)
+- read/write acessing structures by type (`AutoLathes.Activate = True`)
+- read/write acessing structures by name (`my_value = WallLights["Some Name"].On.Maximum`)
 - simple functions (no arguments, no return values)
-- no automatic `push ra/pop ra` on nested function calls ([see this example](https://aproposmath.github.io/stationeers-pytrapic?fileUrl=https://raw.githubusercontent.com/aproposmath/stationeers-pytrapic/refs/heads/main/examples/nested_function_calls.py))
-- `global` statement (useful to mimic function return values)
-- remove unused functions ([you can have one code file for ICs!](https://aproposmath.github.io/stationeers-pytrapic?fileUrl=https://raw.githubusercontent.com/aproposmath/stationeers-pytrapic/refs/heads/main/examples/one_file_to_rule_them_all.py))
-- remove unused labels
+- `global` statement (useful to mimic function return values or store state between function calls)
+- remove unused functions ([you can have one code file for all your ICs!](https://aproposmath.github.io/stationeers-pytrapic?fileUrl=https://raw.githubusercontent.com/aproposmath/stationeers-pytrapic/refs/heads/main/examples/one_file_to_rule_them_all.py))
+- remove all labels
 
-**NOT working**
+**Limitations**
 
 - slots (will be added soon)
-- call functions from another function ([use manual `push ra/pop ra` for now)](https://aproposmath.github.io/stationeers-pytrapic?fileUrl=https://raw.githubusercontent.com/aproposmath/stationeers-pytrapic/refs/heads/main/examples/solar.py))
+- `ra` is not stored automatically in nested function calls ([use manual `push ra/pop ra` for now)](https://aproposmath.github.io/stationeers-pytrapic?fileUrl=https://raw.githubusercontent.com/aproposmath/stationeers-pytrapic/refs/heads/main/examples/nested_function_calls.py))
 - function arguments / return values (use `global` variables)
 
 **Planned Features**
 
-- slots
-- use `define` for constant expressions instead of `move`
-- function inlining (if a function is only called once, it will be inlined into the caller)
-- remove all labels (use relative jumps instead)
 - boolean operations (`and`, `or`, `not`)
+- function inlining (if a function is only called once, it will be inlined into the caller)
 - function arguments
 - break and continue statements
-- lambda functions
-- better type annotations for logic types (e.g. autocomplete shouldn't suggest `WallLight.RatioHydrogen`)
-  -> Any source for structured data with all available types would be helpful
-- more optimizations (constant expressions, dead code elimination, etc.)
 - better register allocation (respect not only function scope but also variable scope)
 - [you tell me!](https://github.com/aproposmath/stationeers-pytrapic/issues/new)
 
 **NOT planned**
 
+- lambda functions
 - anything that is not supported by IC10 (e.g. classes, exceptions, etc.)
 - anything provided by the Python standard library (e.g. `math`, `random`, etc.)
-- list, dict, set, tuple (maybe for constant expressions)
-- comprehensions (maybe for constant expressions)
+- list, dict, set, tuple, comprehensions (maybe later for constant expressions)
 
 ## How does it work
 

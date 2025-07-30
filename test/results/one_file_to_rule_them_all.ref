@@ -1,10 +1,6 @@
 # registers: 6
-# lines: 39
-  jal setup_airlock
-lbwhile16:
-    jal handle_airlock
-    jal handle_growlight
-    j lbwhile16
+# lines: 42
+jal ic_airlock_greenhouse
 handle_growlight:
   l r1 d0 Vertical
   sgt r0 r1 90
@@ -38,4 +34,11 @@ lbwhile.end13:
     sbn 576516101 1749372462 On 0
     sleep 1
 lbelse6:
+  j ra
+ic_airlock_greenhouse:
+  jal setup_airlock
+lbwhile15:
+    jal handle_airlock
+    jal handle_growlight
+    j lbwhile15
   j ra

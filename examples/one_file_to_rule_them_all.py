@@ -15,9 +15,9 @@ def handle_solar_panels():
 def handle_growlight():
     grow_light.On = light_sensor.Vertical > 90
 
-h_in = HASH("In")
-h_out = HASH("Out")
 def setup_airlock():
+    h_in = HASH("In")
+    h_out = HASH("Out")
 
     GlassDoors[h_in].Lock = True
     GlassDoors[h_out].Lock = True
@@ -27,6 +27,8 @@ def setup_airlock():
     ActiveVents[h_out].On = False
 
 def handle_airlock():
+    h_in = HASH("In")
+    h_out = HASH("Out")
     h_switch = HASH("Switch")
 
     if DiodeSlides[h_switch].On.Maximum > 0:
@@ -45,17 +47,17 @@ def handle_airlock():
         DiodeSlides[h_switch].On = False
         sleep(1)
 
-
-# set only one if statement to True, to ignore the other function calls
-
-# first IC: grow light and airlock
-if True:
+# define one function per IC type
+def ic_airlock_greenhouse():
     setup_airlock()
     while True:
         handle_airlock()
         handle_growlight()
 
-# second IC: solar panels
-if False:
+def ic_solar():
     while True:
         handle_solar_panels()
+
+# uncomment the ic type you want to compile
+ic_airlock_greenhouse()
+#ic_solar()
