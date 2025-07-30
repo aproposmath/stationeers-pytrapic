@@ -39,9 +39,6 @@ class Compiler:
                 )
             return {"code": "No code generated"}
         except CompilerError as e:
-            import traceback
-
-            stack_trace = traceback.print_exc()
             return {"error": str(e)}
         except astroid.AstroidSyntaxError as e:
             return {"error": f"Syntax error: {str(e)}"}

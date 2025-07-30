@@ -278,9 +278,10 @@ class CompilerPassGenerateCode(CompilerPass):
 
     def handle_assign_name(self, node: astroid.AssignName):
         data = node._ndata
-        reg = self.get_name(node, node.name)
-        data.result = reg
-        list(node.get_children())[0]._ndata.result = reg
+        sym = self.data.get_sym_data(node.targets[0])
+        node.targets[0]._ndata.result = sym
+        data.result = sym
+        # list(node.get_children())[0]._ndata.result = sym
 
     def handle_assign(self, node: astroid.Assign):
         target = node.targets[0]
@@ -320,6 +321,16 @@ class CompilerPassGenerateCode(CompilerPass):
             ):
                 data.result = value
                 sym_data = self.data.get_sym_data(target)
+                if sym_data.code_expr and sym_data.code_expr != value:
+                    other_line = ""
+                    for n in sym_data.nodes_writing:
+                        if n is not node:
+                            other_line = n.lineno
+                            break
+                    raise CompilerError(
+                        f"Cannot reassign assign {value_name} to {target.name}, already assigned to {sym_data.code_expr} at line {other_line}",
+                        target,
+                    )
                 sym_data.code_expr = value
                 # self.set_name(target, value, target.name)
             else:
@@ -330,7 +341,7 @@ class CompilerPassGenerateCode(CompilerPass):
                     # sym.is_constant = True
                     data.result = value
                 else:
-                    reg = self.get_register_name()
+                    reg = sym_data.code_expr or self.get_register_name()
                     data.add(f"move {reg} {value}", "assign name")
                     sym_data.code_expr = reg
                     data.result = reg
@@ -657,6 +668,16 @@ class CompilerPassGatherCode(CompilerPass):
             for line in self.code:
                 line.code  = pattern.sub(replacer, line.code)
 
+        for token in tokens:
+            if token.startswith("__register.") and token not in mapping:
+                for line in self.code:
+                    if token in line.code:
+                        raise CompilerError(
+                                f"Internal error: register {token} not assigned, node: {line.node}"
+                        )
+                raise RuntimeError(
+                        "Internal error: register not assigned: %s" % token
+                )
     
         self.used_registers = sorted(set(mapping.values()))
 

@@ -24,9 +24,11 @@ def compute_hash(name: str | Register) -> int:
         name = name[1:-1]
 
     import zlib
+
     val = zlib.crc32(name.encode())
     val = (val ^ 0x80000000) - 0x80000000
     return val
+
 
 class deviceHash(int):
     pass
@@ -52,6 +54,7 @@ class reagentMode(enum.IntEnum):
 class slotIndex(int):
     pass
 
+
 @dataclass
 class DeviceId:
     _id: str | None = None
@@ -69,9 +72,9 @@ class DeviceLogicType:
 
         id = self._device_id
         if id._is_ref_id:
-            return ld(output, id._id ,self._logic_type)
+            return ld(output, id._id, self._logic_type)
         else:
-            return l(output, id._id ,self._logic_type)
+            return l(output, id._id, self._logic_type)
 
     def _set(self, value: float | Register):
         from .intrinsics import s, sd
@@ -128,38 +131,10 @@ class DevicesLogicType:
             return sbn(self._device_hash, self._name_hash, self._logic_type, value)
 
 
-# @dataclass
-# class DevicesByName(GenericStructures):
-#     device_hash: deviceHash
-#     name_hash: nameHash
-#
-#     def __getattr__(self, attr_name: str) -> DevicesLogicType:
-#         if attr_name == "device_hash" or attr_name.startswith("__"):
-#             return super().__getattr__(attr_name)
-#
-#         return DevicesLogicType(self.device_hash, attr_name, self.name_hash)
-#
-#
-# class DevicesByType(GenericStructures):
-#     def __init__(self, structure_name: str):
-#         self.device_hash = compute_hash(structure_name)
-#
-#     def __getattr__(self, attr_name: str) -> DevicesLogicType:
-#         if attr_name == "device_hash" or attr_name.startswith("__"):
-#             return super().__getattr__(attr_name)
-#
-#         return DevicesLogicType(self.device_hash, attr_name)
-#
-#     def __getitem__(self, name: str | Register) -> DevicesByName:
-#         if isinstance(name, str):
-#             name = compute_hash(name)
-#         return DevicesByName(self.device_hash, name)
-
-
 del enum
 
+
 class _BaseStructure:
-    _hash: int = None
     _id: DeviceId
 
     def __init__(self, device_id: str | None = None, ref_id: str | None = None):
@@ -176,6 +151,9 @@ class _BaseStructure:
     @property
     def NameHash(self) -> float:
         return DeviceLogicType(type(self), self._id, "NameHash")
+
+    def __str__(self):
+        return type(self).__name__ + f"({self._id._id})"
 
 
 class _BaseStructures:
@@ -200,15 +178,19 @@ class _BaseStructures:
     def NameHash(self) -> DevicesLogicType:
         return DevicesLogicType(self._hash, "NameHash", self._name_hash)
 
+    def __str__(self):
+        return type(self).__name__[1:] + f"(name_hash={self._name_hash})"
+
 
 class Device(_BaseStructure, GenericStructure):
     def __getattr__(self, attr_name: str) -> DeviceLogicType:
-        if attr_name in ["_id" , "_hash"] or attr_name.startswith("__"):
+        if attr_name in ["_id", "_hash"] or attr_name.startswith("__"):
             return super().__getattr__(attr_name)
         return DeviceLogicType(type(self), self._id, attr_name)
 
     def __str__(self):
         return f"{self._id._id}"
+
 
 ra = Register("ra")
 r0 = Register("r0")

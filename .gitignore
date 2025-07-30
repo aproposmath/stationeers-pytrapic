@@ -8,3 +8,5 @@ scripts/*.html
 typings
 *.zip
 *.whl
+*.xml
+*.asm
