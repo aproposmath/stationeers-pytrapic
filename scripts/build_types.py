@@ -21,61 +21,16 @@ gases = [
 
 __header = """
 from stationeers_pytrapic.types import DevicesLogicType, DeviceLogicType, _BaseStructure, _BaseStructures
-
-
-
-
 """
-
-__types_template = """
-import enum
-
-class logicType(enum.StrEnum):
-    {logic_types}
-
-class logicSlotType:
-    {logic_slot_types}
-
-del enum
-"""
-
-
-__generic_structure_header = """
-
-class GenericStructure:
-"""
-
-__generic_structures_property = """
-    @property
-    def {property_name}(self) -> "stationeers_pytrapic.types.DevicesLogicType":
-        return self.__getattr__("{property_name}")
-
-    @{property_name}.setter
-    def {property_name}(self, value: int|float):
-        return self.__setattr__("{property_name}")
-"""
-
-__generic_structures_header = """
-
-class GenericStructures:
-"""
-
-__generic_structure_property = """
-    @property
-    def {property_name}(self) -> "stationeers_pytrapic.types.DeviceLogicType":
-        return self.__getattr__("{property_name}")
-
-    @{property_name}.setter
-    def {property_name}(self, value):
-        return self.__setattr__("{property_name}")
-"""
-
 
 @dataclass
 class Property:
     name: str
     can_write: bool = False
     can_read: bool = True
+
+    def __lt__(self, other: "Property") -> bool:
+        return (self.name, self.can_read, self.can_write) < (other.name, other.can_read, other.can_write)
 
     def __hash__(self):
         return hash((self.name, self.can_read, self.can_write))
@@ -106,12 +61,16 @@ class Property:
             code += f"      pass\n"
         return code
 
+@dataclass
+class Slot:
+    number: int
 
 @dataclass
 class Structure:
     name: str
     id: int | None
     properties: set[Property]
+    # slots: set[Slot]
     bases: set[str]
 
 
@@ -120,7 +79,7 @@ def generate_generic_structure(struct: Structure, multiple: bool = False) -> str
     is_base = struct.id is None
     suffix = "s" if multiple else ""
     bases = (
-        ", ".join([f"_BaseStructure"+suffix] + [b + suffix for b in struct.bases])
+        ", ".join([f"_BaseStructure"+suffix] + sorted([b + suffix for b in struct.bases]))
         if not is_base
         else ""
     )
@@ -136,7 +95,7 @@ def generate_generic_structure(struct: Structure, multiple: bool = False) -> str
         code += f"  def __getitem__(self, name: str | int) -> '{classname}':\n"
         code += f"      return {classname}(name)\n"
 
-    for prop in struct.properties:
+    for prop in sorted(struct.properties):
         code += prop.generate_code(multiple)
     if multiple and not is_base:
         code += f"{name} : {classname} = {classname}()\n"

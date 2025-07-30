@@ -754,10 +754,6 @@ def bnezal(a: Register | float, b: Register | float):
     return "bnezal " + f"{a} {b}"
 
 
-def HASH(name: str) -> int:
+def HASH(name: str) -> float:
     from .types import compute_hash
     return compute_hash(name)
-    s = f'HASH({name})'
-    if len(str(h)) < len(s):
-        return h
-    return s
