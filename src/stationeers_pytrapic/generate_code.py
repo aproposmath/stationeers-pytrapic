@@ -651,11 +651,11 @@ class CompilerPassGatherCode(CompilerPass):
             if scope == '':
                 registers = scope_registers
 
-        pattern = re.compile("|".join(re.escape(k) for k in mapping))
-        replacer = lambda x: mapping[x.group(0)]
-
-        for line in self.code:
-            line.code  = pattern.sub(replacer, line.code)
+        if mapping:
+            pattern = re.compile("|".join(re.escape(k) for k in mapping))
+            replacer = lambda x: mapping[x.group(0)]
+            for line in self.code:
+                line.code  = pattern.sub(replacer, line.code)
 
     
         self.used_registers = sorted(set(mapping.values()))
