@@ -1,12 +1,12 @@
 # registers: 6
 # lines: 42
-jal ic_airlock_greenhouse
-handle_growlight:
+jal ic.airlock.greenhouse
+handle.growlight:
   l r1 d0 Vertical
   sgt r0 r1 90
   s d1 On r0
   j ra
-setup_airlock:
+setup.airlock:
   sbn -324331872 -899110164 Lock 1
   sbn -324331872 -2119750791 Lock 1
   sbn -1129453144 -899110164 Mode 1
@@ -14,7 +14,7 @@ setup_airlock:
   sbn -1129453144 -2119750791 Mode 1
   sbn -1129453144 -2119750791 On 0
   j ra
-handle_airlock:
+handle.airlock:
   lbn r3 576516101 1749372462 On 3
   ble r3 0 lbelse6
     lbn r4 -324331872 -899110164 Open 3
@@ -35,10 +35,10 @@ lbwhile.end13:
     sleep 1
 lbelse6:
   j ra
-ic_airlock_greenhouse:
-  jal setup_airlock
+ic.airlock.greenhouse:
+  jal setup.airlock
 lbwhile15:
-    jal handle_airlock
-    jal handle_growlight
+    jal handle.airlock
+    jal handle.growlight
     j lbwhile15
   j ra

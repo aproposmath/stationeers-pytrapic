@@ -203,7 +203,7 @@ class CompilerPassGenerateCode(CompilerPass):
 
         fname = node.func.name
         if not hasattr(symbols, fname):
-            data.add(f"jal {fname}", f"call {fname}")
+            data.add(f"jal {fname.replace('_','.')}", f"call {fname}")
             return
 
         func = getattr(symbols, fname)
@@ -264,7 +264,7 @@ class CompilerPassGenerateCode(CompilerPass):
 
     def handle_function_def(self, node: astroid.FunctionDef):
         data = node._ndata
-        data.add(f"{node.name}:", "function definition")
+        data.add(f"{node.name}:".replace("_", "."), "function definition")
         data.add_end("j ra", "return from function", 1)
 
         if len(node.args.args):
@@ -690,7 +690,7 @@ class CompilerPassGatherCode(CompilerPass):
             cline = line.split("#")[0].strip()
             if cline.endswith(":"):
                 label = cline[:-1]
-                label_map[label] = len(new_code) + 1
+                label_map[label] = len(new_code)
             else:
                 i_line += 1
                 new_code.append(line)
