@@ -236,6 +236,7 @@ class CompilerPass:
             astroid.Subscript: self.handle_subscript,
             astroid.If: self.handle_if,
             astroid.BinOp: self.handle_binop,
+            astroid.BoolOp: self.handle_binop,
             astroid.Arguments: self.handle_arguments,
         }
 

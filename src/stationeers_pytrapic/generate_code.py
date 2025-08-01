@@ -1,10 +1,11 @@
+import re
 from contextlib import contextmanager
 
 import astroid
-import re
 
 from . import intrinsics, structures_generated, symbols, types
-from .compile_pass import CodeLine, CompilerError, CompilerPass, SymbolData, CodeData
+from .compile_pass import (CodeData, CodeLine, CompilerError, CompilerPass,
+                           SymbolData)
 from .utils import is_builtin_name, is_constant, logger
 
 
@@ -32,12 +33,14 @@ def get_negated_comparison_suffix(op: str):
 
 def get_binop_instruction(op: str):
     return {
-        "+": "add",
-        "-": "sub",
-        "*": "mul",
-        "/": "div",
-        "%": "mod",
-    }.get(op, None)
+        "+": ("add", lambda x, y: x + y),
+        "-": ("sub", lambda x, y: x - y),
+        "*": ("mul", lambda x, y: x * y),
+        "/": ("div", lambda x, y: x / y),
+        "%": ("mod", lambda x, y: x % y),
+        "and": ("and", lambda x, y: x and y),
+        "or": ("or", lambda x, y: x and y),
+    }.get(op, (None, None))
 
 
 def remove_unused_labels(code: str) -> str:
@@ -429,8 +432,11 @@ class CompilerPassGenerateCode(CompilerPass):
                 emit_else = False
             else:
                 emit_if = False
-        elif isinstance(node.test, astroid.Attribute):
-            data.add(f"bne {test} {else_label}", "if with attribute")
+        # elif isinstance(node.test, astroid.Attribute):
+        #     data.add(f"bne {test} {else_label}", "if with attribute")
+        elif isinstance(node.test, astroid.BoolOp):
+            test = self.compile_node(node.test)
+            data.add(f"bnz {test} {else_label}", "if with bool op")
         else:
             raise NotImplementedError(f"Unsupported if test: {type(node.test)}")
 
@@ -453,24 +459,25 @@ class CompilerPassGenerateCode(CompilerPass):
         data = node._ndata
 
         if data.is_constant_value:
-            # print("BinOp is constant", node, data.constant_value)
             data.result = data.constant_value
             return
 
-        left_name = self.compile_node(node.left)
-        right_name = self.compile_node(node.right)
-
+        left, right = node.get_children()
+        left_name = self.compile_node(left)
+        right_name = self.compile_node(right)
         op = node.op
-
-        sym = self.get_intermediate_symbol(node)
-        data.result = sym
-        instruction = get_binop_instruction(op)
+        instruction, func = get_binop_instruction(op)
         if instruction is None:
             raise CompilerError(f"Unsupported binary operation: {op}", node)
 
-        data.add(
-            f"{instruction} {sym.code_expr} {left_name} {right_name}", "binary operation"
-        )
+        if isinstance(left, astroid.Const) and isinstance(right, astroid.Const):
+            data.result = func(left.value, right.value)
+        else:
+            sym = self.get_intermediate_symbol(node)
+            data.result = sym
+            data.add_end(
+                f"{instruction} {sym.code_expr} {left_name} {right_name}", "binary operation"
+            )
 
     def handle_while(self, node: astroid.While):
         test = node.test
