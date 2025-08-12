@@ -780,6 +780,6 @@ class CompilerPassGatherCode(CompilerPass):
 
         num_lines = len(s.splitlines())
         num_registers = len(self.used_registers)
-        num_bytes = len(s)+num_lines
+        num_bytes = len(s)+num_lines - 1
 
         return {"code": s, "num_lines": num_lines, "num_registers": num_registers, "num_bytes": num_bytes, "used_registers": self.used_registers}
