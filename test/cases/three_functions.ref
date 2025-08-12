@@ -50,7 +50,7 @@ handle.furnace:
   sgt r2 r3 0.95
   sgt r4 r1 0
   and r5 r2 r4
-  bnez r5 lbelse17
+  beqz r5 lbelse17
     sbn -1129453144 -2085733260 On 1
     sb -247344692 On 0
                 sbn -1129453144 -2085733260 On 0

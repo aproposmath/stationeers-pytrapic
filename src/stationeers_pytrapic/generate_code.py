@@ -436,7 +436,7 @@ class CompilerPassGenerateCode(CompilerPass):
         #     data.add(f"bne {test} {else_label}", "if with attribute")
         elif isinstance(node.test, astroid.BoolOp):
             test = self.compile_node(node.test)
-            data.add(f"bnez {test} {else_label}", "if with bool op")
+            data.add(f"beqz {test} {else_label}", "if with bool op")
         else:
             raise NotImplementedError(f"Unsupported if test: {type(node.test)}")
 
