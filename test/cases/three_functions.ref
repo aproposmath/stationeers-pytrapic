@@ -1,5 +1,5 @@
 # registers: 7
-# lines: 63
+# lines: 60
 sbn -324331872 -899110164 Lock 1
 sbn -324331872 -899110164 Lock 1
 sbn -1129453144 -899110164 Mode 1
@@ -53,13 +53,10 @@ handle.furnace:
   beqz r5 lbelse17
     sbn -1129453144 -2085733260 On 1
     sb -247344692 On 0
-                sbn -1129453144 -2085733260 On 0
-                sb -247344692 On 1
-                sb -247344692 Activate 1
 lbelse17:
-                sbn -1129453144 -2085733260 On 0
-                sb -247344692 On 1
-                sb -247344692 Activate 1
+    sbn -1129453144 -2085733260 On 0
+    sb -247344692 On 1
+    sb -247344692 Activate 1
   sgt r6 r0 150
   sbn -739292323 -2085733260 On r6
   j ra

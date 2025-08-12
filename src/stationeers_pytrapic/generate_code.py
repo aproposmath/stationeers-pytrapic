@@ -614,6 +614,10 @@ class CompilerPassGatherCode(CompilerPass):
                 special_nodes.add(child)
                 self._visit_node(child)
 
+        if isinstance(node, astroid.If):
+            for child in node.orelse:
+                special_nodes.add(child)
+
         if isinstance(node, astroid.Compare):
             special_nodes.add(node.left)
             self._visit_node(node.left)
