@@ -112,7 +112,7 @@ class CompilerPassGenerateCode(CompilerPass):
         return sym
 
     def get_register_name(self) -> str:
-        name = f"__register.{self._name_counter}"
+        name = f"__register.{self._name_counter}_"
         self._name_counter += 1
         return name
 
@@ -436,7 +436,7 @@ class CompilerPassGenerateCode(CompilerPass):
         #     data.add(f"bne {test} {else_label}", "if with attribute")
         elif isinstance(node.test, astroid.BoolOp):
             test = self.compile_node(node.test)
-            data.add(f"bnz {test} {else_label}", "if with bool op")
+            data.add(f"bnez {test} {else_label}", "if with bool op")
         else:
             raise NotImplementedError(f"Unsupported if test: {type(node.test)}")
 
