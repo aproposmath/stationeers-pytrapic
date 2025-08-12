@@ -405,7 +405,7 @@ class CompilerPassGenerateCode(CompilerPass):
         data.add(f"select {sym.code_expr} {test} {left} {right}", "if expression")
 
     def handle_if(self, node: astroid.If):
-        else_label = self.get_label("else")
+        else_label, end_label = self.get_label("else", "end")
 
         test = self.compile_node(node.test)
 
@@ -447,6 +447,8 @@ class CompilerPassGenerateCode(CompilerPass):
                 stmt._ndata.is_used = False
 
         if emit_if:
+            if emit_else:
+                data.add_else(f"j {end_label}", "jump to end of if")
             data.add_else(f"{else_label}:", "", -1)
 
         for stmt in node.orelse:
@@ -454,6 +456,8 @@ class CompilerPassGenerateCode(CompilerPass):
                 self._visit_node(stmt)
             else:
                 stmt._ndata.is_used = False
+
+        data.add_end(f"{end_label}:", "", -1)
 
     def handle_binop(self, node: astroid.BinOp):
         data = node._ndata
@@ -709,7 +713,8 @@ class CompilerPassGatherCode(CompilerPass):
         new_code = "\n".join(new_code)
 
         for label, line_num in label_map.items():
-            new_code = new_code.replace(label, str(line_num))
+            pattern = r'\b{}\b'.format(re.escape(label))
+            new_code = re.sub(pattern, str(line_num), new_code)
 
         return new_code
 

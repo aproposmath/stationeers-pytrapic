@@ -1,0 +1,36 @@
+# registers: 6
+# lines: 34
+jal 29
+l r1 d0 Vertical
+sgt r0 r1 90
+s d1 On r0
+j ra
+sbn -324331872 -899110164 Lock 1
+sbn -324331872 -2119750791 Lock 1
+sbn -1129453144 -899110164 Mode 1
+sbn -1129453144 -899110164 On 0
+sbn -1129453144 -2119750791 Mode 1
+sbn -1129453144 -2119750791 On 0
+j ra
+lbn r3 576516101 1749372462 On 3
+ble r3 0 28
+lbn r4 -324331872 -899110164 Open 3
+sgt r0 r4 0
+select r1 r0 -2119750791 -899110164
+select r2 r0 -899110164 -2119750791
+sbn -324331872 r2 Open 0
+sbn -1129453144 r2 On 1
+lb r5 -1252983604 Pressure 3
+beq r5 0 23
+j 20
+sleep 0.2
+sbn -1129453144 r2 On 0
+sbn -324331872 r1 Open 1
+sbn 576516101 1749372462 On 0
+sleep 1
+j ra
+jal 5
+jal 12
+jal 1
+j 30
+j ra

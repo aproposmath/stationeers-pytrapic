@@ -9,12 +9,14 @@ case_files = glob.glob(str(Path(__file__).parent / "cases" / "*.py"))
 example_files = glob.glob(str(Path(__file__).parent.parent / "examples" / "*.py"))
 
 
-def run_case(code_file, result_file, reference_file, write_reference=False):
+def run_case(
+    code_file, result_file, reference_file, write_reference=False, compact=False
+):
     code_file = Path(code_file)
     code = code_file.read_text(encoding="utf-8")
 
     try:
-        result = compile_code(code)
+        result = compile_code(code, compact=compact)
 
         if "error" in result:
             result_str = "Error: " + result["error"] + "\n"
@@ -48,12 +50,14 @@ def run_case(code_file, result_file, reference_file, write_reference=False):
 
 
 @pytest.mark.parametrize("case_file", case_files, ids=lambda x: Path(x).stem)
-def test_cases(case_file):
+@pytest.mark.parametrize("compact", [False, True], ids=["full", "compact"])
+def test_cases(case_file, compact):
     case_file = Path(case_file)
-    reference_file = case_file.with_suffix(".ref")
-    result_file = case_file.with_suffix(".ic10")
+    suffix = ".compact" if compact else ""
+    reference_file = case_file.with_suffix(suffix + ".ref")
+    result_file = case_file.with_suffix(suffix + ".ic10")
 
-    run_case(case_file, result_file, reference_file)
+    run_case(case_file, result_file, reference_file, compact=compact)
 
 
 @pytest.mark.parametrize("example_file", example_files, ids=lambda x: Path(x).stem)
@@ -67,18 +71,26 @@ def test_examples(example_file):
 
 
 if __name__ == "__main__":
-    for c in case_files:
-        run_case(
-            c,
-            Path(c).with_suffix(".ic10"),
-            Path(c).with_suffix(".ref"),
-            write_reference=True,
-        )
+    for compact in [False, True]:
+        suffix = ".compact" if compact else ""
+        for c in case_files:
+            run_case(
+                c,
+                Path(c).with_suffix(suffix + ".ic10"),
+                Path(c).with_suffix(suffix + ".ref"),
+                write_reference=True,
+                compact=compact,
+            )
 
-    for e in example_files:
-        run_case(
-            e,
-            Path(__file__).parent / "results" / Path(e).with_suffix(".ic10").name,
-            Path(__file__).parent / "results" / Path(e).with_suffix(".ref").name,
-            write_reference=True,
-        )
+        for e in example_files:
+            run_case(
+                e,
+                Path(__file__).parent
+                / "results"
+                / Path(e).with_suffix(suffix + ".ic10").name,
+                Path(__file__).parent
+                / "results"
+                / Path(e).with_suffix(suffix + ".ref").name,
+                write_reference=True,
+                compact=compact,
+            )

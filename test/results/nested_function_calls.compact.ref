@@ -1,0 +1,12 @@
+# registers: 1
+# lines: 10
+jal 5
+lb r0 -1758710260 On 3
+s db Setting r0
+sb -1758710260 On 1
+j ra
+push ra
+sb -1758710260 On 0
+jal 3
+pop ra
+j ra
