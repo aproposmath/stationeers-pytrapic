@@ -59,19 +59,36 @@ class SymbolData:
             "__register."
         )
 
+@dataclass
+class FunctionData:
+    node: astroid.FunctionDef
+    calling_nodes: list[astroid.Call] = field(default_factory=list)
+    code: list[CodeLine] = field(default_factory=list)
+
+    @property
+    def name(self) -> str:
+        return self.node.name if self.node else ""
+
+    @property
+    def is_inlined(self) -> bool:
+        return len(self.calling_nodes) == 1
+
+    @property
+    def is_called(self) -> bool:
+        return len(self.calling_nodes) > 0
 
 @dataclass
 class CodeData:
     tree: astroid.Module
     symbols: dict[str, dict[str, SymbolData]]
-    codes: dict[str, list[CodeLine]]
     register_map: dict[str, str]
+    functions: dict[str, FunctionData]
 
     def __init__(self, tree: astroid.Module):
         self.tree = tree
         self.symbols = {"": {}}
-        self.codes = {}
         self.register_map = None
+        self.functions = {}
 
     def _scope_name(self, node: astroid.AssignName | astroid.Name) -> str:
         if isinstance(node.parent, astroid.Call):
@@ -138,23 +155,6 @@ class CodeData:
             return
 
         self.get_sym_data(node).nodes_writing.append(node)
-
-
-# class Symbol:
-#     def __init__(self, i, scope: str, name: str):
-#         self.id = i
-#         self.name = name
-#         self.scope = scope
-#         self.is_constant = False
-#
-#     def __str__(self):
-#         if self.is_constant:
-#             return self.name
-#         return f"__symbol_{self.id:02}"
-#
-#     def __repr__(self):
-#         return self.__str__()
-#
 
 
 class NodeData:

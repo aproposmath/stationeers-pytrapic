@@ -4,8 +4,14 @@ from contextlib import contextmanager
 import astroid
 
 from . import intrinsics, structures_generated, symbols, types
-from .compile_pass import (CodeData, CodeLine, CompilerError, CompilerPass,
-                           SymbolData)
+from .compile_pass import (
+    CodeData,
+    CodeLine,
+    CompilerError,
+    CompilerPass,
+    FunctionData,
+    SymbolData,
+)
 from .utils import is_builtin_name, is_constant, logger
 
 
@@ -480,7 +486,8 @@ class CompilerPassGenerateCode(CompilerPass):
             sym = self.get_intermediate_symbol(node)
             data.result = sym
             data.add_end(
-                f"{instruction} {sym.code_expr} {left_name} {right_name}", "binary operation"
+                f"{instruction} {sym.code_expr} {left_name} {right_name}",
+                "binary operation",
             )
 
     def handle_while(self, node: astroid.While):
@@ -511,6 +518,7 @@ class CompilerPassGenerateCode(CompilerPass):
     def run(self):
         self._visit_node(self.tree)
 
+
 class CompilerPassGatherCode(CompilerPass):
     def __init__(self, data: CodeData):
         super().__init__(data)
@@ -530,14 +538,7 @@ class CompilerPassGatherCode(CompilerPass):
 
     def add_line(self, line: CodeLine):
         line.indent += self._indent_level
-        if self._target is not None:
-            if self._target not in self._function_codes:
-                self._function_codes[self._target] = []
-            code = self._function_codes[self._target]
-        else:
-            code = self.code
-        code.append(line)
-
+        self._target.code.append(line)
 
     @contextmanager
     def indent(self, num_indents=1):
@@ -589,11 +590,17 @@ class CompilerPassGatherCode(CompilerPass):
         if isinstance(node, astroid.FunctionDef):
             # emit function definitions after all other code
             # otherwise the function would be executed if it's defined before the call
-            self._target = node.name
+            self._target = self.data.functions[node.name] = FunctionData(node)
             self._functions.append(node)
 
         if isinstance(node, astroid.Call):
-            self._called_functions.add(node.func.name)
+            fname = node.func.name
+            if not is_builtin_name(fname):
+                if fname not in self.data.functions:
+                    raise CompilerError(
+                        f"Function {node.func.name} is not defined.", node
+                    )
+                self.data.functions[node.func.name].calling_nodes.append(node)
 
         if isinstance(data.code, str):
             data.code = [data.code]
@@ -640,25 +647,23 @@ class CompilerPassGatherCode(CompilerPass):
         self._target = old_target
 
     def run(self):
+        functions = self.data.functions
+        self._target = functions[""] = FunctionData(None)
+
         self._visit_node(self.tree)
 
-        function_names = set()
-        for func in self._functions:
-            if func.name in function_names:
-                raise CompilerError(f"Function {func.name} is defined multiple times.")
-            function_names.add(func.name)
-
-        for func in self._functions:
-            if func.name in self._called_functions:
-                for line in self._function_codes[func.name]:
-                    self.add_line(line)
+        for fname in self.data.functions.keys():
+            func = self.data.functions[fname]
+            if fname == "" or func.is_called:
+                for line in func.code:
+                    self.code.append(line)
 
         self.assign_registers()
 
     def assign_registers(self):
         registers = list(range(16))
 
-        tokens = set(' '.join([line.code.split("#")[0] for line in self.code]).split())
+        tokens = set(" ".join([line.code.split("#")[0] for line in self.code]).split())
 
         mapping = {}
 
@@ -674,26 +679,24 @@ class CompilerPassGatherCode(CompilerPass):
                     mapping[symbol.code_expr] = f"r{reg_num}"
                     # print("assign name", symbol.code_expr, "to", mapping[symbol.code_expr])
 
-            if scope == '':
+            if scope == "":
                 registers = scope_registers
 
         if mapping:
             pattern = re.compile("|".join(re.escape(k) for k in mapping))
             replacer = lambda x: mapping[x.group(0)]
             for line in self.code:
-                line.code  = pattern.sub(replacer, line.code)
+                line.code = pattern.sub(replacer, line.code)
 
         for token in tokens:
             if token.startswith("__register.") and token not in mapping:
                 for line in self.code:
                     if token in line.code:
                         raise CompilerError(
-                                f"Internal error: register {token} not assigned, node: {line.node}"
+                            f"Internal error: register {token} not assigned, node: {line.node}"
                         )
-                raise RuntimeError(
-                        "Internal error: register not assigned: %s" % token
-                )
-    
+                raise RuntimeError("Internal error: register not assigned: %s" % token)
+
         self.used_registers = sorted(set(mapping.values()))
 
     def remove_labels(self, code):
@@ -713,14 +716,14 @@ class CompilerPassGatherCode(CompilerPass):
         new_code = "\n".join(new_code)
 
         for label, line_num in label_map.items():
-            pattern = r'\b{}\b'.format(re.escape(label))
+            pattern = r"\b{}\b".format(re.escape(label))
             new_code = re.sub(pattern, str(line_num), new_code)
 
         return new_code
 
     def strip_code(self, code: str) -> str:
-        return "\n".join([ line.strip() for line in code.splitlines() ])
-    
+        return "\n".join([line.strip() for line in code.splitlines()])
+
     def get_code(
         self,
         append_comments=False,
@@ -770,16 +773,20 @@ class CompilerPassGatherCode(CompilerPass):
         # if len(self._symbols) > 16:
         #     raise CompilerError("Running out of registers.")
 
-
         if compact:
             s = self.remove_labels(s)
             s = self.strip_code(s)
         else:
             s = remove_unused_labels(s)
 
-
         num_lines = len(s.splitlines())
         num_registers = len(self.used_registers)
-        num_bytes = len(s)+num_lines - 1
+        num_bytes = len(s) + num_lines - 1
 
-        return {"code": s, "num_lines": num_lines, "num_registers": num_registers, "num_bytes": num_bytes, "used_registers": self.used_registers}
+        return {
+            "code": s,
+            "num_lines": num_lines,
+            "num_registers": num_registers,
+            "num_bytes": num_bytes,
+            "used_registers": self.used_registers,
+        }
