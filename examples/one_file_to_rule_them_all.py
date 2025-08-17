@@ -15,6 +15,7 @@ def handle_solar_panels():
 def handle_growlight():
     grow_light.On = light_sensor.Vertical > 90
 
+
 def setup_airlock():
     h_in = HASH("In")
     h_out = HASH("Out")
@@ -25,6 +26,7 @@ def setup_airlock():
     ActiveVents[h_in].On = False
     ActiveVents[h_out].Mode = True
     ActiveVents[h_out].On = False
+
 
 def handle_airlock():
     h_in = HASH("In")
@@ -47,6 +49,7 @@ def handle_airlock():
         DiodeSlides[h_switch].On = False
         sleep(1)
 
+
 # define one function per IC type
 def ic_airlock_greenhouse():
     setup_airlock()
@@ -54,10 +57,12 @@ def ic_airlock_greenhouse():
         handle_airlock()
         handle_growlight()
 
+
 def ic_solar():
     while True:
         handle_solar_panels()
 
+
 # uncomment the ic type you want to compile
 ic_airlock_greenhouse()
-#ic_solar()
+# ic_solar()

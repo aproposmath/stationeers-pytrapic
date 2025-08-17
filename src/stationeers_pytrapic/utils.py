@@ -7,6 +7,7 @@ logger = logging.getLogger("stationeers_pytrapic")
 
 def is_builtin_name(name: str) -> bool:
     from . import symbols
+
     return name in symbols.__dict__
 
 
@@ -20,6 +21,7 @@ def is_constant(node):
     if isinstance(node, astroid.Call):
         if node.func.name == "HASH":
             from . import symbols
+
             return True, symbols.HASH(node.args[0].value)
         else:
             return False, None

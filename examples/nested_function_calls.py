@@ -1,5 +1,6 @@
 from stationeers_pytrapic.symbols import *
 
+
 def inner_function():
     GrowLights.On = True
 

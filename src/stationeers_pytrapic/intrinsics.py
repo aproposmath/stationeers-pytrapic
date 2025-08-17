@@ -756,4 +756,5 @@ def bnezal(a: Register | float, b: Register | float):
 
 def HASH(name: str) -> float:
     from .types import compute_hash
+
     return compute_hash(name)

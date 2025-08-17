@@ -23,6 +23,7 @@ __header = """
 from stationeers_pytrapic.types import DevicesLogicType, DeviceLogicType, _BaseStructure, _BaseStructures
 """
 
+
 @dataclass
 class Property:
     name: str
@@ -30,7 +31,11 @@ class Property:
     can_read: bool = True
 
     def __lt__(self, other: "Property") -> bool:
-        return (self.name, self.can_read, self.can_write) < (other.name, other.can_read, other.can_write)
+        return (self.name, self.can_read, self.can_write) < (
+            other.name,
+            other.can_read,
+            other.can_write,
+        )
 
     def __hash__(self):
         return hash((self.name, self.can_read, self.can_write))
@@ -61,9 +66,11 @@ class Property:
             code += f"      pass\n"
         return code
 
+
 @dataclass
 class Slot:
     number: int
+
 
 @dataclass
 class Structure:
@@ -79,7 +86,9 @@ def generate_generic_structure(struct: Structure, multiple: bool = False) -> str
     is_base = struct.id is None
     suffix = "s" if multiple else ""
     bases = (
-        ", ".join([f"_BaseStructure"+suffix] + sorted([b + suffix for b in struct.bases]))
+        ", ".join(
+            [f"_BaseStructure" + suffix] + sorted([b + suffix for b in struct.bases])
+        )
         if not is_base
         else ""
     )

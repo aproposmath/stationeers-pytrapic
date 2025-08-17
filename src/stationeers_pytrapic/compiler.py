@@ -22,9 +22,7 @@ class Compiler:
             CompilerPassGatherCode,
         ]
 
-    def compile(
-        self, src: str, comments: bool = False, compact: bool = False
-    ):
+    def compile(self, src: str, comments: bool = False, compact: bool = False):
         try:
             self.tree = astroid.parse(src)
             self.data = CodeData(self.tree)
@@ -52,9 +50,5 @@ class Compiler:
             }
 
 
-def compile_code(
-    src: str, comments: bool = False, compact: bool = False
-):
-    return Compiler().compile(
-        src, comments=comments, compact=compact
-    )
+def compile_code(src: str, comments: bool = False, compact: bool = False):
+    return Compiler().compile(src, comments=comments, compact=compact)

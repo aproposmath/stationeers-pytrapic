@@ -7,6 +7,7 @@ import astroid
 from . import symbols, types
 from .utils import is_builtin_name, is_constant, logger
 
+
 class CompilerError(Exception):
     def __init__(self, message, node=None):
         super().__init__(message)
@@ -59,6 +60,7 @@ class SymbolData:
             "__register."
         )
 
+
 @dataclass
 class FunctionData:
     node: astroid.FunctionDef
@@ -76,6 +78,7 @@ class FunctionData:
     @property
     def is_called(self) -> bool:
         return len(self.calling_nodes) > 0
+
 
 @dataclass
 class CodeData:

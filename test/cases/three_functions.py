@@ -25,6 +25,7 @@ switch = LightLongWides["Switch"]
 gas_airlock = GasSensors["Airlock"]
 gas_greenhouse = GasSensors["Greenhouse"]
 
+
 def handle_airlock():
     if switch.On.Maximum > 0:
         going_out = GlassDoors["In"].Open.Maximum > 0
@@ -42,11 +43,13 @@ def handle_airlock():
         switch.On = False
         sleep(1)
 
+
 def handle_heating():
     charge = Batterys.Ratio.Average
     temp = gas_greenhouse.Temperature.Average
     WallHeaters.On = charge > 0.1 and temp < 273.15 + 20
     db.Setting = charge
+
 
 def handle_furnace():
     sensor = GasSensors["Furnace"]
