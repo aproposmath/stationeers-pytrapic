@@ -1,11 +1,13 @@
 [project]
-version = "0.0.1"
 description="PyTrapIC - Python Transpiler to IC10 for Stationeers"
 license = "MIT"
 name = "stationeers_pytrapic"
 dependencies = ['astroid']
 requires-python = ">=3.10"
+dynamic = ["version"]
 
 [build-system]
-requires = ["setuptools>=60", "wheel"]
+requires = ["setuptools>=64", "wheel", "setuptools_scm>=8"]
 build-backend = "setuptools.build_meta"
+
+[tool.setuptools_scm]
