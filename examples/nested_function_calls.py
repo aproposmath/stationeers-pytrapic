@@ -16,6 +16,7 @@ def outer_function():
 
     # call the inner function
     inner_function()
+    inner_function()
 
     # pop ra again before the function returns
     pop(ra)

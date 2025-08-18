@@ -64,7 +64,7 @@ class SymbolData:
 @dataclass
 class FunctionData:
     node: astroid.FunctionDef
-    calling_nodes: list[astroid.Call] = field(default_factory=list)
+    sym_data: SymbolData
     code: list[CodeLine] = field(default_factory=list)
 
     @property
@@ -72,26 +72,40 @@ class FunctionData:
         return self.node.name if self.node else ""
 
     @property
-    def is_inlined(self) -> bool:
-        return len(self.calling_nodes) == 1
+    def can_inline(self) -> bool:
+        return self.node and self.sym_data.is_read == 1
 
     @property
     def is_called(self) -> bool:
-        return len(self.calling_nodes) > 0
+        return self.node is None or self.sym_data.is_read > 0
+
+
+@dataclass
+class CompileOptions:
+    original_code_as_comment: bool = False
+    generated_comments: bool = False
+    inline_functions: bool = False
+    remove_labels: bool = False
 
 
 @dataclass
 class CodeData:
+    original_code: list[str]
     tree: astroid.Module
+    options: CompileOptions
     symbols: dict[str, dict[str, SymbolData]]
     register_map: dict[str, str]
     functions: dict[str, FunctionData]
+    result: dict[str, str | int]
 
-    def __init__(self, tree: astroid.Module):
+    def __init__(self, code: str, tree: astroid.Module, options: CompileOptions):
+        self.original_code = code.splitlines()
         self.tree = tree
+        self.options = options
         self.symbols = {"": {}}
         self.register_map = None
         self.functions = {}
+        self.result = {"code": "No code generated"}
 
     def _scope_name(self, node: astroid.AssignName | astroid.Name) -> str:
         if isinstance(node.parent, astroid.Call):

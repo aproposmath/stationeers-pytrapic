@@ -37,6 +37,7 @@ The output is written to stdout.
 - `global` statement (useful to mimic function return values or store state between function calls)
 - remove unused functions ([you can have one code file for all your ICs!](https://aproposmath.github.io/stationeers-pytrapic?fileUrl=https://raw.githubusercontent.com/aproposmath/stationeers-pytrapic/refs/heads/main/examples/one_file_to_rule_them_all.py))
 - remove all labels
+- function inlining (if a function is only called once, it will be inlined into the caller)
 
 **Limitations**
 
@@ -47,7 +48,6 @@ The output is written to stdout.
 **Planned Features**
 
 - boolean operations (`and`, `or`, `not`)
-- function inlining (if a function is only called once, it will be inlined into the caller)
 - function arguments
 - break and continue statements
 - better register allocation (respect not only function scope but also variable scope)

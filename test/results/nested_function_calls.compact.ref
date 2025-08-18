@@ -1,13 +1,11 @@
-jal 5
+push ra
+sb -1758710260 On 0
+jal 7
+jal 7
+pop ra
 lb r0 -1758710260 On 3
 s db Setting r0
 sb -1758710260 On 1
 j ra
-push ra
-sb -1758710260 On 0
-jal 3
-jal 3
-pop ra
-j ra
 # registers: 1
-# lines: 11
+# lines: 9

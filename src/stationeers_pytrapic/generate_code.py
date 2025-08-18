@@ -525,7 +525,6 @@ class CompilerPassGatherCode(CompilerPass):
         self.code = []
         self._indent_level = 0
 
-        self._functions = []
         self._called_functions = set()
 
         self._target = None
@@ -590,8 +589,8 @@ class CompilerPassGatherCode(CompilerPass):
         if isinstance(node, astroid.FunctionDef):
             # emit function definitions after all other code
             # otherwise the function would be executed if it's defined before the call
-            self._target = self.data.functions[node.name] = FunctionData(node)
-            self._functions.append(node)
+            sym_data = self.data.get_sym_data(node)
+            self._target = self.data.functions[node.name] = FunctionData(node, sym_data)
 
         if isinstance(node, astroid.Call):
             fname = node.func.name
@@ -600,7 +599,11 @@ class CompilerPassGatherCode(CompilerPass):
                     raise CompilerError(
                         f"Function {node.func.name} is not defined.", node
                     )
-                self.data.functions[node.func.name].calling_nodes.append(node)
+
+                func = self.data.functions[fname]
+                if self.data.options.inline_functions and func.can_inline:
+                    node._ndata.code[""] = func.code[:-1]
+                    func.code = []
 
         if isinstance(data.code, str):
             data.code = [data.code]
@@ -648,7 +651,7 @@ class CompilerPassGatherCode(CompilerPass):
 
     def run(self):
         functions = self.data.functions
-        self._target = functions[""] = FunctionData(None)
+        self._target = functions[""] = FunctionData(None, None)
 
         self._visit_node(self.tree)
 
@@ -659,6 +662,8 @@ class CompilerPassGatherCode(CompilerPass):
                     self.code.append(line)
 
         self.assign_registers()
+
+        self.get_code()
 
     def assign_registers(self):
         registers = list(range(16))
@@ -726,14 +731,8 @@ class CompilerPassGatherCode(CompilerPass):
 
     def get_code(
         self,
-        append_comments=False,
-        comments=True,
-        original_code: str = None,
-        compact: bool = False,
-    ) -> dict:
+    ):
         s = ""
-        if original_code is not None:
-            original_code = original_code.splitlines()
 
         shift = 2
         code_width = 0
@@ -744,7 +743,8 @@ class CompilerPassGatherCode(CompilerPass):
 
         just_width = min(60, code_width + 4)
 
-        comments = comments and not compact
+        options = self.data.options
+        original_code = self.data.original_code
 
         prev_comment = None
         for line in self.code:
@@ -753,16 +753,17 @@ class CompilerPassGatherCode(CompilerPass):
                 # labels are not allowed to have indentation
                 c = c.strip()
 
-            if append_comments and line.comment:
-                if prev_comment != line.comment:
-                    c = c.ljust(just_width) + " # " + line.comment
-                    prev_comment = line.comment
-            elif comments and line.node and original_code:
+            if options.original_code_as_comment and line.node:
                 ori_line = original_code[line.node.lineno - 1]
                 if prev_comment != ori_line:
                     c = c.ljust(just_width)
                     c += f" # {ori_line}"
                     prev_comment = ori_line
+
+            if options.generated_comments and line.comment:
+                if prev_comment != line.comment:
+                    c = c.ljust(just_width) + " # " + line.comment
+                    prev_comment = line.comment
 
             s += c + "\n"
 
@@ -773,7 +774,7 @@ class CompilerPassGatherCode(CompilerPass):
         # if len(self._symbols) > 16:
         #     raise CompilerError("Running out of registers.")
 
-        if compact:
+        if options.remove_labels:
             s = self.remove_labels(s)
             s = self.strip_code(s)
         else:
@@ -783,7 +784,7 @@ class CompilerPassGatherCode(CompilerPass):
         num_registers = len(self.used_registers)
         num_bytes = len(s) + num_lines - 1
 
-        return {
+        self.data.result = {
             "code": s,
             "num_lines": num_lines,
             "num_registers": num_registers,
