@@ -2,6 +2,7 @@ import astroid
 
 from .compile_pass import *
 from .generate_code import CompilerPassGatherCode, CompilerPassGenerateCode
+from . import types
 
 
 class Compiler:
@@ -45,7 +46,12 @@ class Compiler:
             }
 
 
-def compile_code(src: str, comments: bool = False, compact: bool = False, append_version: bool = False):
+def compile_code(
+    src: str,
+    comments: bool = False,
+    compact: bool = False,
+    append_version: bool = False,
+):
     original_code_as_comment = comments and not compact
     inline_functions = compact
     remove_labels = compact
@@ -55,5 +61,7 @@ def compile_code(src: str, comments: bool = False, compact: bool = False, append
         remove_labels=remove_labels,
         append_version=append_version,
     )
+
+    types.hash_mode = types.HashMode.COMPACT if compact else types.HashMode.VERBOSE
 
     return Compiler(options).compile(src)

@@ -6,7 +6,14 @@ import hljs_ic10 from "./highlight_ic10";
 hljs.registerLanguage("ic10", hljs_ic10);
 hljs.registerLanguage("txt", hljs_plain);
 
-import { createIcons, ClipboardPaste, Copy, Share2, Save, FolderOpen } from "lucide";
+import {
+  createIcons,
+  ClipboardPaste,
+  Copy,
+  Share2,
+  Save,
+  FolderOpen,
+} from "lucide";
 
 createIcons({
   icons: {
@@ -26,7 +33,7 @@ import workerUrl from "../node_modules/monaco-pyright-lsp/dist/worker.js?url";
 
 function debounce(fn, delay) {
   let timer;
-  const debounced = function(...args) {
+  const debounced = function (...args) {
     const context = this;
     clearTimeout(timer);
     timer = setTimeout(() => fn.apply(context, args), delay);
@@ -90,8 +97,12 @@ async function compileCode() {
     const { code, comments, compact, append_version } = getData();
     ic10Element.innerHTML = "Compiling...";
     statisticsElement.innerHTML = "";
-    const compileFunction = pyodide.runPython(`from stationeers_pytrapic.compiler import compile_code; compile_code`);
-    const result = compileFunction.callKwargs(code, { comments, compact, append_version }).toJs();
+    const compileFunction = pyodide.runPython(
+      `from stationeers_pytrapic.compiler import compile_code; compile_code`,
+    );
+    const result = compileFunction
+      .callKwargs(code, { comments, compact, append_version })
+      .toJs();
     if (result.error) {
       console.log("Compilation error:", result.error);
       statisticsElement.innerHTML = "";
@@ -130,13 +141,11 @@ function getData() {
 }
 
 function loadData(data) {
-  console.log("Loading data", data);
   editor.setValue(data.code);
   document.querySelector("#emit-comments").checked = data.comments || false;
   document.querySelector("#compact-output").checked = data.compact || false;
   let appendVersion = data.version !== undefined ? data.version : true;
   document.querySelector("#append-version").checked = appendVersion;
-
 }
 
 async function init() {
@@ -164,38 +173,29 @@ async function init() {
 
   pyodide = await pyodideReady;
 
-  let urlData = urlParams.get("data");
-  let fileUrl = urlParams.get("fileUrl");
-  if (fileUrl) {
-    const code = await (await fetch(fileUrl)).text();
-    loadData({ code });
-  }
-  else if (urlData) {
-    const data = JSON.parse(pyodide.runPython(
-      `import base64, zlib; zlib.decompress(base64.b64decode("${urlData}")).decode()`,
-    ));
-    pyodide.runPython('print')(data);
-    console.log("Loaded data from URL", data);
-    loadData(data);
-  }
-  else if (localStorage.getItem("data")) {
-    loadData(JSON.parse(localStorage.getItem("data")));
-  }
-  else {
-    loadData(defaultData);
-  }
-
-
-
-
   console.log("Pyodide loaded", pyodide);
   await pyodide.loadPackage("micropip");
   await pyodide.runPythonAsync(
     "import micropip; await micropip.install('astroid')",
   );
-  // await pyodide.loadPackage(wheelUrl);
   const wheelData = await (await fetch(wheelUrl)).arrayBuffer();
   await pyodide.unpackArchive(wheelData, "zip");
+
+  let urlData = urlParams.get("data");
+  let fileUrl = urlParams.get("fileUrl");
+  if (fileUrl) {
+    const code = await (await fetch(fileUrl)).text();
+    loadData({ code });
+  } else if (urlData) {
+    const data = pyodide.runPython(
+      `import stationeers_pytrapic.types; stationeers_pytrapic.decode_data`,
+    )(pyodide.toPy(urlData));
+    loadData(data);
+  } else if (localStorage.getItem("data")) {
+    loadData(JSON.parse(localStorage.getItem("data")));
+  } else {
+    loadData(defaultData);
+  }
 
   editor.onDidChangeModelContent(compileCodeDebounced);
 
@@ -221,7 +221,7 @@ function setEditorCode(code: string) {
 }
 
 const onClick = (id, func) => {
-  document.querySelector(`#${id}`)?.addEventListener("click", func)
+  document.querySelector(`#${id}`)?.addEventListener("click", func);
 };
 
 onClick("copy-ic10", () => {
@@ -235,11 +235,10 @@ onClick("copy-python", () => {
 
 onClick("share", async () => {
   await pyodideReady;
-  const data = JSON.stringify(getData());
   const url = new URL(window.location.href);
   const shareUrl = pyodide.runPython(
-    `import base64, zlib; base64.b64encode(zlib.compress("""${data}""".encode())).decode()`,
-  );
+    `import stationeers_pytrapic.types; stationeers_pytrapic.encode_data`,
+  )(pyodide.toPy(getData()));
   url.searchParams.set("data", shareUrl);
   navigator.clipboard.writeText(url.toString());
 });
@@ -255,6 +254,5 @@ onClick("save", () => {
 });
 
 onClick("load", () => {
-  console.log("Loading code from localStorage");
   loadData(JSON.parse(localStorage.getItem("data")) || defaultData);
 });

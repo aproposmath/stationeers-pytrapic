@@ -5,6 +5,46 @@ from logging import warn
 from .types_generated import *
 
 
+def encode_data(data: dict) -> str:
+    """Encodes a dictionary into a base64-encoded, zlib-compressed string. Replaces + and / with _ and - respectively, and removes padding (=) to make it URL-safe."""
+    import base64
+    import json
+    import zlib
+
+    res = (
+        base64.b64encode(zlib.compress(json.dumps(data).encode()))
+        .decode()
+        .replace("+", "-")
+        .replace("/", "_")
+        .replace("=", "")
+    )
+    return res
+
+
+def decode_data(encoded: str) -> dict:
+    """Decodes a base64-encoded, zlib-compressed string back into a dictionary. Replaces - and _ with + and / respectively, and adds padding (=) if necessary."""
+    import base64
+    import json
+    import zlib
+
+    if len(encoded) % 4:
+        encoded += "=" * (4 - len(encoded) % 4)
+
+    encoded = encoded.replace("-", "+").replace("_", "/")
+    return json.loads(zlib.decompress(base64.b64decode(encoded)).decode())
+
+
+class HashMode(enum.Enum):
+    """Hashing mode for names."""
+
+    VERBOSE = 0  # keep HASH("name") in the code
+    COMPACT = 1  # keep HASH("name") in the code only if it's shorter
+    EVAL = 0  # always evaluate the hash
+
+
+hash_mode = HashMode.VERBOSE
+
+
 class Register:
     def __init__(self, name: str):
         self.name = name
@@ -13,8 +53,8 @@ class Register:
         return self.name
 
 
-def compute_hash(name: str | Register) -> int:
-    if isinstance(name, Register):
+def compute_hash(name: int | str | Register) -> int | str:
+    if not isinstance(name, str):
         return name
 
     if name.startswith("__register."):
@@ -23,11 +63,26 @@ def compute_hash(name: str | Register) -> int:
     if name[0] == '"' and name[-1] == '"':
         name = name[1:-1]
 
+    if name.startswith('HASH("') and name.endswith('")'):
+        name = name[6:-2]
+
+    # return f'HASH("{name}")'
+
     import zlib
 
     val = zlib.crc32(name.encode())
     val = (val ^ 0x80000000) - 0x80000000
-    return val
+    eval_str = str(val)
+    hash_str = f'HASH("{name}")'
+
+    if hash_mode == HashMode.VERBOSE:
+        return hash_str
+    elif hash_mode == HashMode.COMPACT:
+        return eval_str if len(eval_str) < len(hash_str) else hash_str
+    elif hash_mode == HashMode.EVAL:
+        return eval_str
+
+    raise ValueError(f"Invalid hash mode: {hash_mode}")
 
 
 class deviceHash(int):
@@ -90,12 +145,18 @@ class DeviceLogicType:
 class DevicesLogicType:
     _device_hash: deviceHash
     _logic_type: str
-    _name_hash: nameHash | None = None
+    _name: str | int | None = None
+
+    @property
+    def _name_hash(self) -> int | str | None:
+        if self._name is None:
+            raise ValueError("Name must be set to compute name hash")
+        return compute_hash(self._name)
 
     def _load(self, batch_mode: batchMode):
         from .intrinsics import lb, lbn
 
-        if self._name_hash is None:
+        if self._name is None:
             # All devices of a specific type
             return lambda r: lb(r, self._device_hash, self._logic_type, batch_mode)
         else:
@@ -123,7 +184,7 @@ class DevicesLogicType:
     def _set(self, value: float | Register):
         from .intrinsics import sb, sbn
 
-        if self._name_hash is None:
+        if self._name is None:
             # All devices of a specific type
             return sb(self._device_hash, self._logic_type, value)
         else:
@@ -158,28 +219,25 @@ class _BaseStructure:
 
 class _BaseStructures:
     _hash: int = None
-    _name_hash: nameHash | None = None
+    _name: str | int | None = None
 
     def __init__(self, name: str | int | None = None):
-        # print("make base structures", name, type(name))
-        if isinstance(name, str) and not name.startswith("__register."):
-            name = compute_hash(name)
-        self._name_hash = name
+        self._name = name
 
     @property
     def PrefabHash(self) -> DevicesLogicType:
-        return DevicesLogicType(self._hash, "PrefabHash", self._name_hash)
+        return DevicesLogicType(self._hash, "PrefabHash", self._name)
 
     @property
     def ReferenceId(self) -> DevicesLogicType:
-        return DevicesLogicType(self._hash, "ReferenceId", self._name_hash)
+        return DevicesLogicType(self._hash, "ReferenceId", self._name)
 
     @property
     def NameHash(self) -> DevicesLogicType:
-        return DevicesLogicType(self._hash, "NameHash", self._name_hash)
+        return DevicesLogicType(self._hash, "NameHash", self._name)
 
     def __str__(self):
-        return type(self).__name__[1:] + f"(name_hash={self._name_hash})"
+        return type(self).__name__[1:] + f"(name={self._name})"
 
 
 class Device(_BaseStructure, GenericStructure):

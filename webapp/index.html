@@ -17,35 +17,71 @@
           class="flex items-center justify-between px-3 py-2 bg-white shadow-sm border-b"
         >
           <div class="flex items-center gap-3">
-            <label class="flex items-center gap-1">
+            <label
+              title="Add original code as comment"
+              class="flex items-center gap-1"
+            >
               <input type="checkbox" class="form-checkbox" id="emit-comments" />
               <span>Comments</span>
             </label>
-            <label class="flex items-center gap-1">
-              <input type="checkbox" class="form-checkbox" id="compact-output" />
+            <label
+              title="Remove labels, inline function calls, evaluate hashes of long names"
+              class="flex items-center gap-1"
+            >
+              <input
+                type="checkbox"
+                class="form-checkbox"
+                id="compact-output"
+              />
               <span>Compact</span>
             </label>
-            <label class="flex items-center gap-1">
-              <input type="checkbox" class="form-checkbox" id="append-version" />
+            <label
+              title="Append line with PyTrapIC version"
+              class="flex items-center gap-1"
+            >
+              <input
+                type="checkbox"
+                class="form-checkbox"
+                id="append-version"
+              />
               <span>Version</span>
             </label>
-            <label class="flex items-center gap-1">
-            </label>
+            <label class="flex items-center gap-1"> </label>
           </div>
           <div class="flex items-center gap-2">
-            <button class="p-1.5 rounded hover:bg-gray-200" title="Save" id="save">
+            <button
+              class="p-1.5 rounded hover:bg-gray-200"
+              title="Save"
+              id="save"
+            >
               <i data-lucide="save" class="w-4 h-4"></i>
             </button>
-            <button class="p-1.5 rounded hover:bg-gray-200" title="Load" id="load">
+            <button
+              class="p-1.5 rounded hover:bg-gray-200"
+              title="Load"
+              id="load"
+            >
               <i data-lucide="folder-open" class="w-4 h-4"></i>
             </button>
-            <button class="p-1.5 rounded hover:bg-gray-200" title="Paste" id="paste">
+            <button
+              class="p-1.5 rounded hover:bg-gray-200"
+              title="Paste"
+              id="paste"
+            >
               <i data-lucide="clipboard-paste" class="w-4 h-4"></i>
             </button>
-            <button class="p-1.5 rounded hover:bg-gray-200" title="Copy" id="copy-python">
+            <button
+              class="p-1.5 rounded hover:bg-gray-200"
+              title="Copy"
+              id="copy-python"
+            >
               <i data-lucide="copy" class="w-4 h-4"></i>
             </button>
-            <button class="p-1.5 rounded hover:bg-gray-200" title="Share" id="share">
+            <button
+              class="p-1.5 rounded hover:bg-gray-200"
+              title="Share"
+              id="share"
+            >
               <i data-lucide="share-2" class="w-4 h-4"></i>
             </button>
           </div>
@@ -67,14 +103,20 @@
             <pre id="statistics"></pre>
           </div>
           <div class="flex items-center gap-2">
-            <button class="p-1.5 rounded hover:bg-gray-200" title="Copy" id="copy-ic10">
+            <button
+              class="p-1.5 rounded hover:bg-gray-200"
+              title="Copy"
+              id="copy-ic10"
+            >
               <i data-lucide="copy" class="w-4 h-4"></i>
             </button>
           </div>
         </div>
         <!-- Content Area -->
         <div class="flex-1 overflow-auto bg-gray-50 p-4">
-          <pre class="whitespace-pre-wrap"><code id="output" class="language-mips">Compiling...</code></pre>
+          <pre
+            class="whitespace-pre-wrap"
+          ><code id="output" class="language-mips">Compiling...</code></pre>
         </div>
       </div>
     </div>

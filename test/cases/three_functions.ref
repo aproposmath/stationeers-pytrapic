@@ -1,9 +1,9 @@
-sbn -324331872 -899110164 Lock 1
-sbn -324331872 -899110164 Lock 1
-sbn -1129453144 -899110164 Mode 1
-sbn -1129453144 -899110164 On 0
-sbn -1129453144 -899110164 Mode 1
-sbn -1129453144 -899110164 On 0
+sbn -324331872 HASH("In") Lock 1
+sbn -324331872 HASH("In") Lock 1
+sbn -1129453144 HASH("In") Mode 1
+sbn -1129453144 HASH("In") On 0
+sbn -1129453144 HASH("In") Mode 1
+sbn -1129453144 HASH("In") On 0
 sb -247344692 On 1
 lbwhile23:
   jal handle.airlock
@@ -11,29 +11,29 @@ lbwhile23:
   jal handle.furnace
   j lbwhile23
 handle.airlock:
-  lbn r3 555215790 1749372462 On 3
+  lbn r3 555215790 HASH("Switch") On 3
   ble r3 0 lbelse1
-    lbn r4 -324331872 -899110164 Open 3
+    lbn r4 -324331872 HASH("In") Open 3
     sgt r0 r4 0
-    select r1 r0 -2119750791 -899110164
-    select r2 r0 -899110164 -2119750791
+    select r1 r0 HASH("Out") HASH("In")
+    select r2 r0 HASH("In") HASH("Out")
     sbn -324331872 r2 Open 0
     sbn -1129453144 r2 On 1
 lbwhile8:
-    lbn r5 -1252983604 1966213276 Pressure 3
+    lbn r5 -1252983604 HASH("Airlock") Pressure 3
     beq r5 0 lbwhile.end8
       j lbwhile8
 lbwhile.end8:
     sleep 0.2
     sbn -1129453144 r2 On 0
     sbn -324331872 r1 Open 1
-    sbn 555215790 1749372462 On 0
+    sbn 555215790 HASH("Switch") On 0
     sleep 1
 lbelse1:
   j ra
 handle.heating:
   lb r0 -400115994 Ratio 0
-  lbn r1 -1252983604 -1825180981 Temperature 0
+  lbn r1 -1252983604 HASH("Greenhouse") Temperature 0
   sgt r2 r0 0.1
   slt r3 r1 293.15
   and r4 r2 r3
@@ -41,24 +41,24 @@ handle.heating:
   s db Setting r0
   j ra
 handle.furnace:
-  sbn -1129453144 -2085733260 Mode 1
-  lbn r0 -1252983604 -2085733260 Temperature 0
-  lbn r1 -1252983604 -2085733260 Pressure 0
-  lbn r3 -1252983604 -2085733260 RatioOxygen 0
+  sbn -1129453144 HASH("Furnace") Mode 1
+  lbn r0 -1252983604 HASH("Furnace") Temperature 0
+  lbn r1 -1252983604 HASH("Furnace") Pressure 0
+  lbn r3 -1252983604 HASH("Furnace") RatioOxygen 0
   sgt r2 r3 0.95
   sgt r4 r1 0
   and r5 r2 r4
   beqz r5 lbelse17
-    sbn -1129453144 -2085733260 On 1
+    sbn -1129453144 HASH("Furnace") On 1
     sb -247344692 On 0
     j lbend17
 lbelse17:
-    sbn -1129453144 -2085733260 On 0
+    sbn -1129453144 HASH("Furnace") On 0
     sb -247344692 On 1
     sb -247344692 Activate 1
 lbend17:
   sgt r6 r0 150
-  sbn -739292323 -2085733260 On r6
+  sbn -739292323 HASH("Furnace") On r6
   j ra
 # registers: 7
 # lines: 62

@@ -1,9 +1,9 @@
-move r0 -1938594527
+move r0 HASH("foo")
 sbn -1758710260 r0 Lock 1
 jal f
 sbn -1758710260 r0 Lock 1
 f:
-  move r0 1996459178
+  move r0 HASH("bar")
   sbn -1758710260 r0 Lock 1
   j ra
 # registers: 1

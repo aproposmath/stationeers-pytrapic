@@ -67,59 +67,59 @@ class _BaseGas:
 class _BaseGass:
     @property
     def RatioCarbonDioxide(self) -> DevicesLogicType:
-        return DevicesLogicType(self._hash, "RatioCarbonDioxide", self._name_hash)
+        return DevicesLogicType(self._hash, "RatioCarbonDioxide", self._name)
 
     @property
     def RatioLiquidCarbonDioxide(self) -> DevicesLogicType:
-        return DevicesLogicType(self._hash, "RatioLiquidCarbonDioxide", self._name_hash)
+        return DevicesLogicType(self._hash, "RatioLiquidCarbonDioxide", self._name)
 
     @property
     def RatioLiquidNitrogen(self) -> DevicesLogicType:
-        return DevicesLogicType(self._hash, "RatioLiquidNitrogen", self._name_hash)
+        return DevicesLogicType(self._hash, "RatioLiquidNitrogen", self._name)
 
     @property
     def RatioLiquidNitrousOxide(self) -> DevicesLogicType:
-        return DevicesLogicType(self._hash, "RatioLiquidNitrousOxide", self._name_hash)
+        return DevicesLogicType(self._hash, "RatioLiquidNitrousOxide", self._name)
 
     @property
     def RatioLiquidOxygen(self) -> DevicesLogicType:
-        return DevicesLogicType(self._hash, "RatioLiquidOxygen", self._name_hash)
+        return DevicesLogicType(self._hash, "RatioLiquidOxygen", self._name)
 
     @property
     def RatioLiquidPollutant(self) -> DevicesLogicType:
-        return DevicesLogicType(self._hash, "RatioLiquidPollutant", self._name_hash)
+        return DevicesLogicType(self._hash, "RatioLiquidPollutant", self._name)
 
     @property
     def RatioLiquidVolatiles(self) -> DevicesLogicType:
-        return DevicesLogicType(self._hash, "RatioLiquidVolatiles", self._name_hash)
+        return DevicesLogicType(self._hash, "RatioLiquidVolatiles", self._name)
 
     @property
     def RatioNitrogen(self) -> DevicesLogicType:
-        return DevicesLogicType(self._hash, "RatioNitrogen", self._name_hash)
+        return DevicesLogicType(self._hash, "RatioNitrogen", self._name)
 
     @property
     def RatioNitrousOxide(self) -> DevicesLogicType:
-        return DevicesLogicType(self._hash, "RatioNitrousOxide", self._name_hash)
+        return DevicesLogicType(self._hash, "RatioNitrousOxide", self._name)
 
     @property
     def RatioOxygen(self) -> DevicesLogicType:
-        return DevicesLogicType(self._hash, "RatioOxygen", self._name_hash)
+        return DevicesLogicType(self._hash, "RatioOxygen", self._name)
 
     @property
     def RatioPollutant(self) -> DevicesLogicType:
-        return DevicesLogicType(self._hash, "RatioPollutant", self._name_hash)
+        return DevicesLogicType(self._hash, "RatioPollutant", self._name)
 
     @property
     def RatioSteam(self) -> DevicesLogicType:
-        return DevicesLogicType(self._hash, "RatioSteam", self._name_hash)
+        return DevicesLogicType(self._hash, "RatioSteam", self._name)
 
     @property
     def RatioVolatiles(self) -> DevicesLogicType:
-        return DevicesLogicType(self._hash, "RatioVolatiles", self._name_hash)
+        return DevicesLogicType(self._hash, "RatioVolatiles", self._name)
 
     @property
     def RatioWater(self) -> DevicesLogicType:
-        return DevicesLogicType(self._hash, "RatioWater", self._name_hash)
+        return DevicesLogicType(self._hash, "RatioWater", self._name)
 
 
 class _BaseGasInput:
@@ -183,67 +183,59 @@ class _BaseGasInput:
 class _BaseGasInputs:
     @property
     def RatioCarbonDioxideInput(self) -> DevicesLogicType:
-        return DevicesLogicType(self._hash, "RatioCarbonDioxideInput", self._name_hash)
+        return DevicesLogicType(self._hash, "RatioCarbonDioxideInput", self._name)
 
     @property
     def RatioLiquidCarbonDioxideInput(self) -> DevicesLogicType:
-        return DevicesLogicType(
-            self._hash, "RatioLiquidCarbonDioxideInput", self._name_hash
-        )
+        return DevicesLogicType(self._hash, "RatioLiquidCarbonDioxideInput", self._name)
 
     @property
     def RatioLiquidNitrogenInput(self) -> DevicesLogicType:
-        return DevicesLogicType(self._hash, "RatioLiquidNitrogenInput", self._name_hash)
+        return DevicesLogicType(self._hash, "RatioLiquidNitrogenInput", self._name)
 
     @property
     def RatioLiquidNitrousOxideInput(self) -> DevicesLogicType:
-        return DevicesLogicType(
-            self._hash, "RatioLiquidNitrousOxideInput", self._name_hash
-        )
+        return DevicesLogicType(self._hash, "RatioLiquidNitrousOxideInput", self._name)
 
     @property
     def RatioLiquidOxygenInput(self) -> DevicesLogicType:
-        return DevicesLogicType(self._hash, "RatioLiquidOxygenInput", self._name_hash)
+        return DevicesLogicType(self._hash, "RatioLiquidOxygenInput", self._name)
 
     @property
     def RatioLiquidPollutantInput(self) -> DevicesLogicType:
-        return DevicesLogicType(
-            self._hash, "RatioLiquidPollutantInput", self._name_hash
-        )
+        return DevicesLogicType(self._hash, "RatioLiquidPollutantInput", self._name)
 
     @property
     def RatioLiquidVolatilesInput(self) -> DevicesLogicType:
-        return DevicesLogicType(
-            self._hash, "RatioLiquidVolatilesInput", self._name_hash
-        )
+        return DevicesLogicType(self._hash, "RatioLiquidVolatilesInput", self._name)
 
     @property
     def RatioNitrogenInput(self) -> DevicesLogicType:
-        return DevicesLogicType(self._hash, "RatioNitrogenInput", self._name_hash)
+        return DevicesLogicType(self._hash, "RatioNitrogenInput", self._name)
 
     @property
     def RatioNitrousOxideInput(self) -> DevicesLogicType:
-        return DevicesLogicType(self._hash, "RatioNitrousOxideInput", self._name_hash)
+        return DevicesLogicType(self._hash, "RatioNitrousOxideInput", self._name)
 
     @property
     def RatioOxygenInput(self) -> DevicesLogicType:
-        return DevicesLogicType(self._hash, "RatioOxygenInput", self._name_hash)
+        return DevicesLogicType(self._hash, "RatioOxygenInput", self._name)
 
     @property
     def RatioPollutantInput(self) -> DevicesLogicType:
-        return DevicesLogicType(self._hash, "RatioPollutantInput", self._name_hash)
+        return DevicesLogicType(self._hash, "RatioPollutantInput", self._name)
 
     @property
     def RatioSteamInput(self) -> DevicesLogicType:
-        return DevicesLogicType(self._hash, "RatioSteamInput", self._name_hash)
+        return DevicesLogicType(self._hash, "RatioSteamInput", self._name)
 
     @property
     def RatioVolatilesInput(self) -> DevicesLogicType:
-        return DevicesLogicType(self._hash, "RatioVolatilesInput", self._name_hash)
+        return DevicesLogicType(self._hash, "RatioVolatilesInput", self._name)
 
     @property
     def RatioWaterInput(self) -> DevicesLogicType:
-        return DevicesLogicType(self._hash, "RatioWaterInput", self._name_hash)
+        return DevicesLogicType(self._hash, "RatioWaterInput", self._name)
 
 
 class _BaseGasOutput:
@@ -307,69 +299,61 @@ class _BaseGasOutput:
 class _BaseGasOutputs:
     @property
     def RatioCarbonDioxideOutput(self) -> DevicesLogicType:
-        return DevicesLogicType(self._hash, "RatioCarbonDioxideOutput", self._name_hash)
+        return DevicesLogicType(self._hash, "RatioCarbonDioxideOutput", self._name)
 
     @property
     def RatioLiquidCarbonDioxideOutput(self) -> DevicesLogicType:
         return DevicesLogicType(
-            self._hash, "RatioLiquidCarbonDioxideOutput", self._name_hash
+            self._hash, "RatioLiquidCarbonDioxideOutput", self._name
         )
 
     @property
     def RatioLiquidNitrogenOutput(self) -> DevicesLogicType:
-        return DevicesLogicType(
-            self._hash, "RatioLiquidNitrogenOutput", self._name_hash
-        )
+        return DevicesLogicType(self._hash, "RatioLiquidNitrogenOutput", self._name)
 
     @property
     def RatioLiquidNitrousOxideOutput(self) -> DevicesLogicType:
-        return DevicesLogicType(
-            self._hash, "RatioLiquidNitrousOxideOutput", self._name_hash
-        )
+        return DevicesLogicType(self._hash, "RatioLiquidNitrousOxideOutput", self._name)
 
     @property
     def RatioLiquidOxygenOutput(self) -> DevicesLogicType:
-        return DevicesLogicType(self._hash, "RatioLiquidOxygenOutput", self._name_hash)
+        return DevicesLogicType(self._hash, "RatioLiquidOxygenOutput", self._name)
 
     @property
     def RatioLiquidPollutantOutput(self) -> DevicesLogicType:
-        return DevicesLogicType(
-            self._hash, "RatioLiquidPollutantOutput", self._name_hash
-        )
+        return DevicesLogicType(self._hash, "RatioLiquidPollutantOutput", self._name)
 
     @property
     def RatioLiquidVolatilesOutput(self) -> DevicesLogicType:
-        return DevicesLogicType(
-            self._hash, "RatioLiquidVolatilesOutput", self._name_hash
-        )
+        return DevicesLogicType(self._hash, "RatioLiquidVolatilesOutput", self._name)
 
     @property
     def RatioNitrogenOutput(self) -> DevicesLogicType:
-        return DevicesLogicType(self._hash, "RatioNitrogenOutput", self._name_hash)
+        return DevicesLogicType(self._hash, "RatioNitrogenOutput", self._name)
 
     @property
     def RatioNitrousOxideOutput(self) -> DevicesLogicType:
-        return DevicesLogicType(self._hash, "RatioNitrousOxideOutput", self._name_hash)
+        return DevicesLogicType(self._hash, "RatioNitrousOxideOutput", self._name)
 
     @property
     def RatioOxygenOutput(self) -> DevicesLogicType:
-        return DevicesLogicType(self._hash, "RatioOxygenOutput", self._name_hash)
+        return DevicesLogicType(self._hash, "RatioOxygenOutput", self._name)
 
     @property
     def RatioPollutantOutput(self) -> DevicesLogicType:
-        return DevicesLogicType(self._hash, "RatioPollutantOutput", self._name_hash)
+        return DevicesLogicType(self._hash, "RatioPollutantOutput", self._name)
 
     @property
     def RatioSteamOutput(self) -> DevicesLogicType:
-        return DevicesLogicType(self._hash, "RatioSteamOutput", self._name_hash)
+        return DevicesLogicType(self._hash, "RatioSteamOutput", self._name)
 
     @property
     def RatioVolatilesOutput(self) -> DevicesLogicType:
-        return DevicesLogicType(self._hash, "RatioVolatilesOutput", self._name_hash)
+        return DevicesLogicType(self._hash, "RatioVolatilesOutput", self._name)
 
     @property
     def RatioWaterOutput(self) -> DevicesLogicType:
-        return DevicesLogicType(self._hash, "RatioWaterOutput", self._name_hash)
+        return DevicesLogicType(self._hash, "RatioWaterOutput", self._name)
 
 
 class _BaseGasOutput2:
@@ -433,71 +417,63 @@ class _BaseGasOutput2:
 class _BaseGasOutput2s:
     @property
     def RatioCarbonDioxideOutput2(self) -> DevicesLogicType:
-        return DevicesLogicType(
-            self._hash, "RatioCarbonDioxideOutput2", self._name_hash
-        )
+        return DevicesLogicType(self._hash, "RatioCarbonDioxideOutput2", self._name)
 
     @property
     def RatioLiquidCarbonDioxideOutput2(self) -> DevicesLogicType:
         return DevicesLogicType(
-            self._hash, "RatioLiquidCarbonDioxideOutput2", self._name_hash
+            self._hash, "RatioLiquidCarbonDioxideOutput2", self._name
         )
 
     @property
     def RatioLiquidNitrogenOutput2(self) -> DevicesLogicType:
-        return DevicesLogicType(
-            self._hash, "RatioLiquidNitrogenOutput2", self._name_hash
-        )
+        return DevicesLogicType(self._hash, "RatioLiquidNitrogenOutput2", self._name)
 
     @property
     def RatioLiquidNitrousOxideOutput2(self) -> DevicesLogicType:
         return DevicesLogicType(
-            self._hash, "RatioLiquidNitrousOxideOutput2", self._name_hash
+            self._hash, "RatioLiquidNitrousOxideOutput2", self._name
         )
 
     @property
     def RatioLiquidOxygenOutput2(self) -> DevicesLogicType:
-        return DevicesLogicType(self._hash, "RatioLiquidOxygenOutput2", self._name_hash)
+        return DevicesLogicType(self._hash, "RatioLiquidOxygenOutput2", self._name)
 
     @property
     def RatioLiquidPollutantOutput2(self) -> DevicesLogicType:
-        return DevicesLogicType(
-            self._hash, "RatioLiquidPollutantOutput2", self._name_hash
-        )
+        return DevicesLogicType(self._hash, "RatioLiquidPollutantOutput2", self._name)
 
     @property
     def RatioLiquidVolatilesOutput2(self) -> DevicesLogicType:
-        return DevicesLogicType(
-            self._hash, "RatioLiquidVolatilesOutput2", self._name_hash
-        )
+        return DevicesLogicType(self._hash, "RatioLiquidVolatilesOutput2", self._name)
 
     @property
     def RatioNitrogenOutput2(self) -> DevicesLogicType:
-        return DevicesLogicType(self._hash, "RatioNitrogenOutput2", self._name_hash)
+        return DevicesLogicType(self._hash, "RatioNitrogenOutput2", self._name)
 
     @property
     def RatioNitrousOxideOutput2(self) -> DevicesLogicType:
-        return DevicesLogicType(self._hash, "RatioNitrousOxideOutput2", self._name_hash)
+        return DevicesLogicType(self._hash, "RatioNitrousOxideOutput2", self._name)
 
     @property
     def RatioOxygenOutput2(self) -> DevicesLogicType:
-        return DevicesLogicType(self._hash, "RatioOxygenOutput2", self._name_hash)
+        return DevicesLogicType(self._hash, "RatioOxygenOutput2", self._name)
 
     @property
     def RatioPollutantOutput2(self) -> DevicesLogicType:
-        return DevicesLogicType(self._hash, "RatioPollutantOutput2", self._name_hash)
+        return DevicesLogicType(self._hash, "RatioPollutantOutput2", self._name)
 
     @property
     def RatioSteamOutput2(self) -> DevicesLogicType:
-        return DevicesLogicType(self._hash, "RatioSteamOutput2", self._name_hash)
+        return DevicesLogicType(self._hash, "RatioSteamOutput2", self._name)
 
     @property
     def RatioVolatilesOutput2(self) -> DevicesLogicType:
-        return DevicesLogicType(self._hash, "RatioVolatilesOutput2", self._name_hash)
+        return DevicesLogicType(self._hash, "RatioVolatilesOutput2", self._name)
 
     @property
     def RatioWaterOutput2(self) -> DevicesLogicType:
-        return DevicesLogicType(self._hash, "RatioWaterOutput2", self._name_hash)
+        return DevicesLogicType(self._hash, "RatioWaterOutput2", self._name)
 
 
 class _Power:
@@ -521,7 +497,7 @@ class _Power:
 class _Powers:
     @property
     def On(self) -> DevicesLogicType:
-        return DevicesLogicType(self._hash, "On", self._name_hash)
+        return DevicesLogicType(self._hash, "On", self._name)
 
     @On.setter
     def On(self, value: int | float):
@@ -529,11 +505,11 @@ class _Powers:
 
     @property
     def Power(self) -> DevicesLogicType:
-        return DevicesLogicType(self._hash, "Power", self._name_hash)
+        return DevicesLogicType(self._hash, "Power", self._name)
 
     @property
     def RequiredPower(self) -> DevicesLogicType:
-        return DevicesLogicType(self._hash, "RequiredPower", self._name_hash)
+        return DevicesLogicType(self._hash, "RequiredPower", self._name)
 
 
 class _On:
@@ -549,7 +525,7 @@ class _On:
 class _Ons:
     @property
     def On(self) -> DevicesLogicType:
-        return DevicesLogicType(self._hash, "On", self._name_hash)
+        return DevicesLogicType(self._hash, "On", self._name)
 
     @On.setter
     def On(self, value: int | float):
@@ -569,7 +545,7 @@ class _Activate:
 class _Activates:
     @property
     def Activate(self) -> DevicesLogicType:
-        return DevicesLogicType(self._hash, "Activate", self._name_hash)
+        return DevicesLogicType(self._hash, "Activate", self._name)
 
     @Activate.setter
     def Activate(self, value: int | float):
@@ -589,7 +565,7 @@ class _Lock:
 class _Locks:
     @property
     def Lock(self) -> DevicesLogicType:
-        return DevicesLogicType(self._hash, "Lock", self._name_hash)
+        return DevicesLogicType(self._hash, "Lock", self._name)
 
     @Lock.setter
     def Lock(self, value: int | float):
@@ -609,7 +585,7 @@ class _Open:
 class _Opens:
     @property
     def Open(self) -> DevicesLogicType:
-        return DevicesLogicType(self._hash, "Open", self._name_hash)
+        return DevicesLogicType(self._hash, "Open", self._name)
 
     @Open.setter
     def Open(self, value: int | float):
@@ -625,7 +601,7 @@ class _Error:
 class _Errors:
     @property
     def Error(self) -> DevicesLogicType:
-        return DevicesLogicType(self._hash, "Error", self._name_hash)
+        return DevicesLogicType(self._hash, "Error", self._name)
 
 
 class _Ratio:
@@ -637,7 +613,7 @@ class _Ratio:
 class _Ratios:
     @property
     def Ratio(self) -> DevicesLogicType:
-        return DevicesLogicType(self._hash, "Ratio", self._name_hash)
+        return DevicesLogicType(self._hash, "Ratio", self._name)
 
 
 class _Maximum:
@@ -649,7 +625,7 @@ class _Maximum:
 class _Maximums:
     @property
     def Maximum(self) -> DevicesLogicType:
-        return DevicesLogicType(self._hash, "Maximum", self._name_hash)
+        return DevicesLogicType(self._hash, "Maximum", self._name)
 
 
 class _SettingW:
@@ -665,7 +641,7 @@ class _SettingW:
 class _SettingWs:
     @property
     def Setting(self) -> DevicesLogicType:
-        return DevicesLogicType(self._hash, "Setting", self._name_hash)
+        return DevicesLogicType(self._hash, "Setting", self._name)
 
     @Setting.setter
     def Setting(self, value: int | float):
@@ -681,7 +657,7 @@ class _SettingR:
 class _SettingRs:
     @property
     def Setting(self) -> DevicesLogicType:
-        return DevicesLogicType(self._hash, "Setting", self._name_hash)
+        return DevicesLogicType(self._hash, "Setting", self._name)
 
 
 class _Mode:
@@ -697,7 +673,7 @@ class _Mode:
 class _Modes:
     @property
     def Mode(self) -> DevicesLogicType:
-        return DevicesLogicType(self._hash, "Mode", self._name_hash)
+        return DevicesLogicType(self._hash, "Mode", self._name)
 
     @Mode.setter
     def Mode(self, value: int | float):
@@ -713,7 +689,7 @@ class _ModeR:
 class _ModeRs:
     @property
     def Mode(self) -> DevicesLogicType:
-        return DevicesLogicType(self._hash, "Mode", self._name_hash)
+        return DevicesLogicType(self._hash, "Mode", self._name)
 
 
 class _Temperature:
@@ -729,11 +705,11 @@ class _Temperature:
 class _Temperatures:
     @property
     def Pressure(self) -> DevicesLogicType:
-        return DevicesLogicType(self._hash, "Pressure", self._name_hash)
+        return DevicesLogicType(self._hash, "Pressure", self._name)
 
     @property
     def Temperature(self) -> DevicesLogicType:
-        return DevicesLogicType(self._hash, "Temperature", self._name_hash)
+        return DevicesLogicType(self._hash, "Temperature", self._name)
 
 
 class _PollWater:
@@ -745,7 +721,7 @@ class _PollWater:
 class _PollWaters:
     @property
     def RatioPollutedWater(self) -> DevicesLogicType:
-        return DevicesLogicType(self._hash, "RatioPollutedWater", self._name_hash)
+        return DevicesLogicType(self._hash, "RatioPollutedWater", self._name)
 
 
 class _Combustion:
@@ -761,11 +737,11 @@ class _Combustion:
 class _Combustions:
     @property
     def Combustion(self) -> DevicesLogicType:
-        return DevicesLogicType(self._hash, "Combustion", self._name_hash)
+        return DevicesLogicType(self._hash, "Combustion", self._name)
 
     @property
     def TotalMoles(self) -> DevicesLogicType:
-        return DevicesLogicType(self._hash, "TotalMoles", self._name_hash)
+        return DevicesLogicType(self._hash, "TotalMoles", self._name)
 
 
 class _Idle:
@@ -777,7 +753,7 @@ class _Idle:
 class _Idles:
     @property
     def Idle(self) -> DevicesLogicType:
-        return DevicesLogicType(self._hash, "Idle", self._name_hash)
+        return DevicesLogicType(self._hash, "Idle", self._name)
 
 
 class _ImportCount:
@@ -793,7 +769,7 @@ class _ImportCount:
 class _ImportCounts:
     @property
     def ImportCount(self) -> DevicesLogicType:
-        return DevicesLogicType(self._hash, "ImportCount", self._name_hash)
+        return DevicesLogicType(self._hash, "ImportCount", self._name)
 
     @ImportCount.setter
     def ImportCount(self, value: int | float):
@@ -813,7 +789,7 @@ class _ClearMemory:
 class _ClearMemorys:
     @property
     def ClearMemory(self) -> DevicesLogicType:
-        return DevicesLogicType(self._hash, "ClearMemory", self._name_hash)
+        return DevicesLogicType(self._hash, "ClearMemory", self._name)
 
     @ClearMemory.setter
     def ClearMemory(self, value: int | float):
@@ -833,11 +809,11 @@ class _Hydrogen:
 class _Hydrogens:
     @property
     def RatioHydrogen(self) -> DevicesLogicType:
-        return DevicesLogicType(self._hash, "RatioHydrogen", self._name_hash)
+        return DevicesLogicType(self._hash, "RatioHydrogen", self._name)
 
     @property
     def RatioLiquidHydrogen(self) -> DevicesLogicType:
-        return DevicesLogicType(self._hash, "RatioLiquidHydrogen", self._name_hash)
+        return DevicesLogicType(self._hash, "RatioLiquidHydrogen", self._name)
 
 
 class _ImportCount:
@@ -849,7 +825,7 @@ class _ImportCount:
 class _ImportCounts:
     @property
     def ImportCount(self) -> DevicesLogicType:
-        return DevicesLogicType(self._hash, "ImportCount", self._name_hash)
+        return DevicesLogicType(self._hash, "ImportCount", self._name)
 
 
 class _ExportCount:
@@ -861,7 +837,7 @@ class _ExportCount:
 class _ExportCounts:
     @property
     def ExportCount(self) -> DevicesLogicType:
-        return DevicesLogicType(self._hash, "ExportCount", self._name_hash)
+        return DevicesLogicType(self._hash, "ExportCount", self._name)
 
 
 class _Volume:
@@ -877,11 +853,11 @@ class _Volume:
 class _Volumes:
     @property
     def Volume(self) -> DevicesLogicType:
-        return DevicesLogicType(self._hash, "Volume", self._name_hash)
+        return DevicesLogicType(self._hash, "Volume", self._name)
 
     @property
     def VolumeOfLiquid(self) -> DevicesLogicType:
-        return DevicesLogicType(self._hash, "VolumeOfLiquid", self._name_hash)
+        return DevicesLogicType(self._hash, "VolumeOfLiquid", self._name)
 
 
 class _Vertical:
@@ -897,11 +873,11 @@ class _Vertical:
 class _Verticals:
     @property
     def Horizontal(self) -> DevicesLogicType:
-        return DevicesLogicType(self._hash, "Horizontal", self._name_hash)
+        return DevicesLogicType(self._hash, "Horizontal", self._name)
 
     @property
     def Vertical(self) -> DevicesLogicType:
-        return DevicesLogicType(self._hash, "Vertical", self._name_hash)
+        return DevicesLogicType(self._hash, "Vertical", self._name)
 
 
 class _VerticalW:
@@ -925,7 +901,7 @@ class _VerticalW:
 class _VerticalWs:
     @property
     def Horizontal(self) -> DevicesLogicType:
-        return DevicesLogicType(self._hash, "Horizontal", self._name_hash)
+        return DevicesLogicType(self._hash, "Horizontal", self._name)
 
     @Horizontal.setter
     def Horizontal(self, value: int | float):
@@ -933,7 +909,7 @@ class _VerticalWs:
 
     @property
     def Vertical(self) -> DevicesLogicType:
-        return DevicesLogicType(self._hash, "Vertical", self._name_hash)
+        return DevicesLogicType(self._hash, "Vertical", self._name)
 
     @Vertical.setter
     def Vertical(self, value: int | float):
@@ -953,7 +929,7 @@ class _RecipeHash:
 class _RecipeHashs:
     @property
     def RecipeHash(self) -> DevicesLogicType:
-        return DevicesLogicType(self._hash, "RecipeHash", self._name_hash)
+        return DevicesLogicType(self._hash, "RecipeHash", self._name)
 
     @RecipeHash.setter
     def RecipeHash(self, value: int | float):
@@ -969,7 +945,7 @@ class _Charge:
 class _Charges:
     @property
     def Charge(self) -> DevicesLogicType:
-        return DevicesLogicType(self._hash, "Charge", self._name_hash)
+        return DevicesLogicType(self._hash, "Charge", self._name)
 
 
 class _Reagents:
@@ -981,7 +957,7 @@ class _Reagents:
 class _Reagentss:
     @property
     def Reagents(self) -> DevicesLogicType:
-        return DevicesLogicType(self._hash, "Reagents", self._name_hash)
+        return DevicesLogicType(self._hash, "Reagents", self._name)
 
 
 class _Quantity:
@@ -993,7 +969,7 @@ class _Quantity:
 class _Quantitys:
     @property
     def Quantity(self) -> DevicesLogicType:
-        return DevicesLogicType(self._hash, "Quantity", self._name_hash)
+        return DevicesLogicType(self._hash, "Quantity", self._name)
 
 
 class AccessBridge(_BaseStructure, _Activate, _Lock, _Open, _Power):
@@ -1003,7 +979,7 @@ class AccessBridge(_BaseStructure, _Activate, _Lock, _Open, _Power):
 class _AccessBridges(_BaseStructures, _Activates, _Locks, _Opens, _Powers):
     _hash: int = 1298920475
 
-    def __getitem__(self, name: str | int) -> "_AccessBridges":
+    def __getitem__(self, name: str | int | float) -> "_AccessBridges":
         return _AccessBridges(name)
 
 
@@ -1019,7 +995,7 @@ class _LiquidDrains(
 ):
     _hash: int = 1687692899
 
-    def __getitem__(self, name: str | int) -> "_LiquidDrains":
+    def __getitem__(self, name: str | int | float) -> "_LiquidDrains":
         return _LiquidDrains(name)
 
 
@@ -1061,12 +1037,12 @@ class _ActiveVents(
 ):
     _hash: int = -1129453144
 
-    def __getitem__(self, name: str | int) -> "_ActiveVents":
+    def __getitem__(self, name: str | int | float) -> "_ActiveVents":
         return _ActiveVents(name)
 
     @property
     def PressureExternal(self) -> DevicesLogicType:
-        return DevicesLogicType(self._hash, "PressureExternal", self._name_hash)
+        return DevicesLogicType(self._hash, "PressureExternal", self._name)
 
     @PressureExternal.setter
     def PressureExternal(self, value: int | float):
@@ -1074,7 +1050,7 @@ class _ActiveVents(
 
     @property
     def PressureInternal(self) -> DevicesLogicType:
-        return DevicesLogicType(self._hash, "PressureInternal", self._name_hash)
+        return DevicesLogicType(self._hash, "PressureInternal", self._name)
 
     @PressureInternal.setter
     def PressureInternal(self, value: int | float):
@@ -1121,7 +1097,7 @@ class _AdvancedComposters(
 ):
     _hash: int = 446212963
 
-    def __getitem__(self, name: str | int) -> "_AdvancedComposters":
+    def __getitem__(self, name: str | int | float) -> "_AdvancedComposters":
         return _AdvancedComposters(name)
 
 
@@ -1195,16 +1171,16 @@ class _AdvancedFurnaces(
 ):
     _hash: int = 545937711
 
-    def __getitem__(self, name: str | int) -> "_AdvancedFurnaces":
+    def __getitem__(self, name: str | int | float) -> "_AdvancedFurnaces":
         return _AdvancedFurnaces(name)
 
     @property
     def RecipeHash(self) -> DevicesLogicType:
-        return DevicesLogicType(self._hash, "RecipeHash", self._name_hash)
+        return DevicesLogicType(self._hash, "RecipeHash", self._name)
 
     @property
     def SettingInput(self) -> DevicesLogicType:
-        return DevicesLogicType(self._hash, "SettingInput", self._name_hash)
+        return DevicesLogicType(self._hash, "SettingInput", self._name)
 
     @SettingInput.setter
     def SettingInput(self, value: int | float):
@@ -1212,7 +1188,7 @@ class _AdvancedFurnaces(
 
     @property
     def SettingOutput(self) -> DevicesLogicType:
-        return DevicesLogicType(self._hash, "SettingOutput", self._name_hash)
+        return DevicesLogicType(self._hash, "SettingOutput", self._name)
 
     @SettingOutput.setter
     def SettingOutput(self, value: int | float):
@@ -1257,12 +1233,12 @@ class _AdvancedPackagingMachines(
 ):
     _hash: int = -463037670
 
-    def __getitem__(self, name: str | int) -> "_AdvancedPackagingMachines":
+    def __getitem__(self, name: str | int | float) -> "_AdvancedPackagingMachines":
         return _AdvancedPackagingMachines(name)
 
     @property
     def CompletionRatio(self) -> DevicesLogicType:
-        return DevicesLogicType(self._hash, "CompletionRatio", self._name_hash)
+        return DevicesLogicType(self._hash, "CompletionRatio", self._name)
 
 
 AdvancedPackagingMachines: _AdvancedPackagingMachines = _AdvancedPackagingMachines()
@@ -1361,72 +1337,72 @@ class _AirConditioners(
 ):
     _hash: int = -2087593337
 
-    def __getitem__(self, name: str | int) -> "_AirConditioners":
+    def __getitem__(self, name: str | int | float) -> "_AirConditioners":
         return _AirConditioners(name)
 
     @property
     def CombustionInput(self) -> DevicesLogicType:
-        return DevicesLogicType(self._hash, "CombustionInput", self._name_hash)
+        return DevicesLogicType(self._hash, "CombustionInput", self._name)
 
     @property
     def CombustionOutput(self) -> DevicesLogicType:
-        return DevicesLogicType(self._hash, "CombustionOutput", self._name_hash)
+        return DevicesLogicType(self._hash, "CombustionOutput", self._name)
 
     @property
     def CombustionOutput2(self) -> DevicesLogicType:
-        return DevicesLogicType(self._hash, "CombustionOutput2", self._name_hash)
+        return DevicesLogicType(self._hash, "CombustionOutput2", self._name)
 
     @property
     def OperationalTemperatureEfficiency(self) -> DevicesLogicType:
         return DevicesLogicType(
-            self._hash, "OperationalTemperatureEfficiency", self._name_hash
+            self._hash, "OperationalTemperatureEfficiency", self._name
         )
 
     @property
     def PressureEfficiency(self) -> DevicesLogicType:
-        return DevicesLogicType(self._hash, "PressureEfficiency", self._name_hash)
+        return DevicesLogicType(self._hash, "PressureEfficiency", self._name)
 
     @property
     def PressureInput(self) -> DevicesLogicType:
-        return DevicesLogicType(self._hash, "PressureInput", self._name_hash)
+        return DevicesLogicType(self._hash, "PressureInput", self._name)
 
     @property
     def PressureOutput(self) -> DevicesLogicType:
-        return DevicesLogicType(self._hash, "PressureOutput", self._name_hash)
+        return DevicesLogicType(self._hash, "PressureOutput", self._name)
 
     @property
     def PressureOutput2(self) -> DevicesLogicType:
-        return DevicesLogicType(self._hash, "PressureOutput2", self._name_hash)
+        return DevicesLogicType(self._hash, "PressureOutput2", self._name)
 
     @property
     def TemperatureDifferentialEfficiency(self) -> DevicesLogicType:
         return DevicesLogicType(
-            self._hash, "TemperatureDifferentialEfficiency", self._name_hash
+            self._hash, "TemperatureDifferentialEfficiency", self._name
         )
 
     @property
     def TemperatureInput(self) -> DevicesLogicType:
-        return DevicesLogicType(self._hash, "TemperatureInput", self._name_hash)
+        return DevicesLogicType(self._hash, "TemperatureInput", self._name)
 
     @property
     def TemperatureOutput(self) -> DevicesLogicType:
-        return DevicesLogicType(self._hash, "TemperatureOutput", self._name_hash)
+        return DevicesLogicType(self._hash, "TemperatureOutput", self._name)
 
     @property
     def TemperatureOutput2(self) -> DevicesLogicType:
-        return DevicesLogicType(self._hash, "TemperatureOutput2", self._name_hash)
+        return DevicesLogicType(self._hash, "TemperatureOutput2", self._name)
 
     @property
     def TotalMolesInput(self) -> DevicesLogicType:
-        return DevicesLogicType(self._hash, "TotalMolesInput", self._name_hash)
+        return DevicesLogicType(self._hash, "TotalMolesInput", self._name)
 
     @property
     def TotalMolesOutput(self) -> DevicesLogicType:
-        return DevicesLogicType(self._hash, "TotalMolesOutput", self._name_hash)
+        return DevicesLogicType(self._hash, "TotalMolesOutput", self._name)
 
     @property
     def TotalMolesOutput2(self) -> DevicesLogicType:
-        return DevicesLogicType(self._hash, "TotalMolesOutput2", self._name_hash)
+        return DevicesLogicType(self._hash, "TotalMolesOutput2", self._name)
 
 
 AirConditioners: _AirConditioners = _AirConditioners()
@@ -1439,7 +1415,7 @@ class Airlock(_BaseStructure, _Idle, _Lock, _Mode, _Open, _Power, _SettingW):
 class _Airlocks(_BaseStructures, _Idles, _Locks, _Modes, _Opens, _Powers, _SettingWs):
     _hash: int = -2105052344
 
-    def __getitem__(self, name: str | int) -> "_Airlocks":
+    def __getitem__(self, name: str | int | float) -> "_Airlocks":
         return _Airlocks(name)
 
 
@@ -1479,12 +1455,12 @@ class _ArcFurnaces(
 ):
     _hash: int = -247344692
 
-    def __getitem__(self, name: str | int) -> "_ArcFurnaces":
+    def __getitem__(self, name: str | int | float) -> "_ArcFurnaces":
         return _ArcFurnaces(name)
 
     @property
     def RecipeHash(self) -> DevicesLogicType:
-        return DevicesLogicType(self._hash, "RecipeHash", self._name_hash)
+        return DevicesLogicType(self._hash, "RecipeHash", self._name)
 
 
 ArcFurnaces: _ArcFurnaces = _ArcFurnaces()
@@ -1517,16 +1493,16 @@ class _AreaPowerControls(
 ):
     _hash: int = 1999523701
 
-    def __getitem__(self, name: str | int) -> "_AreaPowerControls":
+    def __getitem__(self, name: str | int | float) -> "_AreaPowerControls":
         return _AreaPowerControls(name)
 
     @property
     def PowerActual(self) -> DevicesLogicType:
-        return DevicesLogicType(self._hash, "PowerActual", self._name_hash)
+        return DevicesLogicType(self._hash, "PowerActual", self._name)
 
     @property
     def PowerPotential(self) -> DevicesLogicType:
-        return DevicesLogicType(self._hash, "PowerPotential", self._name_hash)
+        return DevicesLogicType(self._hash, "PowerPotential", self._name)
 
 
 AreaPowerControls: _AreaPowerControls = _AreaPowerControls()
@@ -1559,16 +1535,16 @@ class _AreaPowerControlReverseds(
 ):
     _hash: int = -1032513487
 
-    def __getitem__(self, name: str | int) -> "_AreaPowerControlReverseds":
+    def __getitem__(self, name: str | int | float) -> "_AreaPowerControlReverseds":
         return _AreaPowerControlReverseds(name)
 
     @property
     def PowerActual(self) -> DevicesLogicType:
-        return DevicesLogicType(self._hash, "PowerActual", self._name_hash)
+        return DevicesLogicType(self._hash, "PowerActual", self._name)
 
     @property
     def PowerPotential(self) -> DevicesLogicType:
-        return DevicesLogicType(self._hash, "PowerPotential", self._name_hash)
+        return DevicesLogicType(self._hash, "PowerPotential", self._name)
 
 
 AreaPowerControlReverseds: _AreaPowerControlReverseds = _AreaPowerControlReverseds()
@@ -1609,12 +1585,12 @@ class _Autolathes(
 ):
     _hash: int = 336213101
 
-    def __getitem__(self, name: str | int) -> "_Autolathes":
+    def __getitem__(self, name: str | int | float) -> "_Autolathes":
         return _Autolathes(name)
 
     @property
     def CompletionRatio(self) -> DevicesLogicType:
-        return DevicesLogicType(self._hash, "CompletionRatio", self._name_hash)
+        return DevicesLogicType(self._hash, "CompletionRatio", self._name)
 
 
 Autolathes: _Autolathes = _Autolathes()
@@ -1655,12 +1631,12 @@ class _AutomatedOvens(
 ):
     _hash: int = -1672404896
 
-    def __getitem__(self, name: str | int) -> "_AutomatedOvens":
+    def __getitem__(self, name: str | int | float) -> "_AutomatedOvens":
         return _AutomatedOvens(name)
 
     @property
     def CompletionRatio(self) -> DevicesLogicType:
-        return DevicesLogicType(self._hash, "CompletionRatio", self._name_hash)
+        return DevicesLogicType(self._hash, "CompletionRatio", self._name)
 
 
 AutomatedOvens: _AutomatedOvens = _AutomatedOvens()
@@ -1691,7 +1667,7 @@ class _AutoMinerSmalls(
 ):
     _hash: int = 7274344
 
-    def __getitem__(self, name: str | int) -> "_AutoMinerSmalls":
+    def __getitem__(self, name: str | int | float) -> "_AutoMinerSmalls":
         return _AutoMinerSmalls(name)
 
 
@@ -1717,20 +1693,20 @@ class BatterySmall(_BaseStructure, _Charge, _Maximum, _ModeR, _On, _Ratio):
 class _BatterySmalls(_BaseStructures, _Charges, _Maximums, _ModeRs, _Ons, _Ratios):
     _hash: int = -2123455080
 
-    def __getitem__(self, name: str | int) -> "_BatterySmalls":
+    def __getitem__(self, name: str | int | float) -> "_BatterySmalls":
         return _BatterySmalls(name)
 
     @property
     def Power(self) -> DevicesLogicType:
-        return DevicesLogicType(self._hash, "Power", self._name_hash)
+        return DevicesLogicType(self._hash, "Power", self._name)
 
     @property
     def PowerActual(self) -> DevicesLogicType:
-        return DevicesLogicType(self._hash, "PowerActual", self._name_hash)
+        return DevicesLogicType(self._hash, "PowerActual", self._name)
 
     @property
     def PowerPotential(self) -> DevicesLogicType:
-        return DevicesLogicType(self._hash, "PowerPotential", self._name_hash)
+        return DevicesLogicType(self._hash, "PowerPotential", self._name)
 
 
 BatterySmalls: _BatterySmalls = _BatterySmalls()
@@ -1747,7 +1723,7 @@ class _BackPressureRegulators(
 ):
     _hash: int = -1149857558
 
-    def __getitem__(self, name: str | int) -> "_BackPressureRegulators":
+    def __getitem__(self, name: str | int | float) -> "_BackPressureRegulators":
         return _BackPressureRegulators(name)
 
 
@@ -1761,7 +1737,7 @@ class BasketHoop(_BaseStructure, _Lock, _Power, _SettingW):
 class _BasketHoops(_BaseStructures, _Locks, _Powers, _SettingWs):
     _hash: int = -1613497288
 
-    def __getitem__(self, name: str | int) -> "_BasketHoops":
+    def __getitem__(self, name: str | int | float) -> "_BasketHoops":
         return _BasketHoops(name)
 
 
@@ -1775,7 +1751,7 @@ class LogicBatchReader(_BaseStructure, _Error, _Power, _SettingR):
 class _LogicBatchReaders(_BaseStructures, _Errors, _Powers, _SettingRs):
     _hash: int = 264413729
 
-    def __getitem__(self, name: str | int) -> "_LogicBatchReaders":
+    def __getitem__(self, name: str | int | float) -> "_LogicBatchReaders":
         return _LogicBatchReaders(name)
 
 
@@ -1789,7 +1765,7 @@ class LogicBatchSlotReader(_BaseStructure, _Error, _Power, _SettingR):
 class _LogicBatchSlotReaders(_BaseStructures, _Errors, _Powers, _SettingRs):
     _hash: int = 436888930
 
-    def __getitem__(self, name: str | int) -> "_LogicBatchSlotReaders":
+    def __getitem__(self, name: str | int | float) -> "_LogicBatchSlotReaders":
         return _LogicBatchSlotReaders(name)
 
 
@@ -1811,12 +1787,12 @@ class LogicBatchWriter(_BaseStructure, _Error, _Power):
 class _LogicBatchWriters(_BaseStructures, _Errors, _Powers):
     _hash: int = 1415443359
 
-    def __getitem__(self, name: str | int) -> "_LogicBatchWriters":
+    def __getitem__(self, name: str | int | float) -> "_LogicBatchWriters":
         return _LogicBatchWriters(name)
 
     @property
     def ForceWrite(self) -> DevicesLogicType:
-        return DevicesLogicType(self._hash, "ForceWrite", self._name_hash)
+        return DevicesLogicType(self._hash, "ForceWrite", self._name)
 
     @ForceWrite.setter
     def ForceWrite(self, value: int | float):
@@ -1845,20 +1821,20 @@ class BatteryMedium(_BaseStructure, _Charge, _Maximum, _ModeR, _On, _Ratio):
 class _BatteryMediums(_BaseStructures, _Charges, _Maximums, _ModeRs, _Ons, _Ratios):
     _hash: int = -1125305264
 
-    def __getitem__(self, name: str | int) -> "_BatteryMediums":
+    def __getitem__(self, name: str | int | float) -> "_BatteryMediums":
         return _BatteryMediums(name)
 
     @property
     def Power(self) -> DevicesLogicType:
-        return DevicesLogicType(self._hash, "Power", self._name_hash)
+        return DevicesLogicType(self._hash, "Power", self._name)
 
     @property
     def PowerActual(self) -> DevicesLogicType:
-        return DevicesLogicType(self._hash, "PowerActual", self._name_hash)
+        return DevicesLogicType(self._hash, "PowerActual", self._name)
 
     @property
     def PowerPotential(self) -> DevicesLogicType:
-        return DevicesLogicType(self._hash, "PowerPotential", self._name_hash)
+        return DevicesLogicType(self._hash, "PowerPotential", self._name)
 
 
 BatteryMediums: _BatteryMediums = _BatteryMediums()
@@ -1871,7 +1847,7 @@ class BatteryCharger(_BaseStructure, _Activate, _Error, _Power):
 class _BatteryChargers(_BaseStructures, _Activates, _Errors, _Powers):
     _hash: int = 1945930022
 
-    def __getitem__(self, name: str | int) -> "_BatteryChargers":
+    def __getitem__(self, name: str | int | float) -> "_BatteryChargers":
         return _BatteryChargers(name)
 
 
@@ -1885,7 +1861,7 @@ class BatteryChargerSmall(_BaseStructure, _Activate, _Error, _Power):
 class _BatteryChargerSmalls(_BaseStructures, _Activates, _Errors, _Powers):
     _hash: int = -761772413
 
-    def __getitem__(self, name: str | int) -> "_BatteryChargerSmalls":
+    def __getitem__(self, name: str | int | float) -> "_BatteryChargerSmalls":
         return _BatteryChargerSmalls(name)
 
 
@@ -1907,12 +1883,12 @@ class Beacon(_BaseStructure, _Error, _Lock, _Power):
 class _Beacons(_BaseStructures, _Errors, _Locks, _Powers):
     _hash: int = -188177083
 
-    def __getitem__(self, name: str | int) -> "_Beacons":
+    def __getitem__(self, name: str | int | float) -> "_Beacons":
         return _Beacons(name)
 
     @property
     def Color(self) -> DevicesLogicType:
-        return DevicesLogicType(self._hash, "Color", self._name_hash)
+        return DevicesLogicType(self._hash, "Color", self._name)
 
     @Color.setter
     def Color(self, value: int | float):
@@ -1929,7 +1905,7 @@ class Bench1(_BaseStructure, _Error, _Power):
 class _Bench1s(_BaseStructures, _Errors, _Powers):
     _hash: int = 406745009
 
-    def __getitem__(self, name: str | int) -> "_Bench1s":
+    def __getitem__(self, name: str | int | float) -> "_Bench1s":
         return _Bench1s(name)
 
 
@@ -1943,7 +1919,7 @@ class Bench3(_BaseStructure, _Error, _Power):
 class _Bench3s(_BaseStructures, _Errors, _Powers):
     _hash: int = -164622691
 
-    def __getitem__(self, name: str | int) -> "_Bench3s":
+    def __getitem__(self, name: str | int | float) -> "_Bench3s":
         return _Bench3s(name)
 
 
@@ -1957,7 +1933,7 @@ class Bench2(_BaseStructure, _Error, _Power):
 class _Bench2s(_BaseStructures, _Errors, _Powers):
     _hash: int = -2127086069
 
-    def __getitem__(self, name: str | int) -> "_Bench2s":
+    def __getitem__(self, name: str | int | float) -> "_Bench2s":
         return _Bench2s(name)
 
 
@@ -1971,7 +1947,7 @@ class Bench4(_BaseStructure, _Error, _Power):
 class _Bench4s(_BaseStructures, _Errors, _Powers):
     _hash: int = 1750375230
 
-    def __getitem__(self, name: str | int) -> "_Bench4s":
+    def __getitem__(self, name: str | int | float) -> "_Bench4s":
         return _Bench4s(name)
 
 
@@ -1985,7 +1961,7 @@ class BlastDoor(_BaseStructure, _Idle, _Lock, _Mode, _Open, _Power, _SettingW):
 class _BlastDoors(_BaseStructures, _Idles, _Locks, _Modes, _Opens, _Powers, _SettingWs):
     _hash: int = 337416191
 
-    def __getitem__(self, name: str | int) -> "_BlastDoors":
+    def __getitem__(self, name: str | int | float) -> "_BlastDoors":
         return _BlastDoors(name)
 
 
@@ -1999,7 +1975,7 @@ class BlockBed(_BaseStructure, _Activate, _Error, _Power):
 class _BlockBeds(_BaseStructures, _Activates, _Errors, _Powers):
     _hash: int = 697908419
 
-    def __getitem__(self, name: str | int) -> "_BlockBeds":
+    def __getitem__(self, name: str | int | float) -> "_BlockBeds":
         return _BlockBeds(name)
 
 
@@ -2013,7 +1989,7 @@ class LogicButton(_BaseStructure, _Activate, _Lock, _SettingR):
 class _LogicButtons(_BaseStructures, _Activates, _Locks, _SettingRs):
     _hash: int = 491845673
 
-    def __getitem__(self, name: str | int) -> "_LogicButtons":
+    def __getitem__(self, name: str | int | float) -> "_LogicButtons":
         return _LogicButtons(name)
 
 
@@ -2039,20 +2015,20 @@ class CableAnalysizer(_BaseStructure):
 class _CableAnalysizers(_BaseStructures):
     _hash: int = 1036015121
 
-    def __getitem__(self, name: str | int) -> "_CableAnalysizers":
+    def __getitem__(self, name: str | int | float) -> "_CableAnalysizers":
         return _CableAnalysizers(name)
 
     @property
     def PowerActual(self) -> DevicesLogicType:
-        return DevicesLogicType(self._hash, "PowerActual", self._name_hash)
+        return DevicesLogicType(self._hash, "PowerActual", self._name)
 
     @property
     def PowerPotential(self) -> DevicesLogicType:
-        return DevicesLogicType(self._hash, "PowerPotential", self._name_hash)
+        return DevicesLogicType(self._hash, "PowerPotential", self._name)
 
     @property
     def PowerRequired(self) -> DevicesLogicType:
-        return DevicesLogicType(self._hash, "PowerRequired", self._name_hash)
+        return DevicesLogicType(self._hash, "PowerRequired", self._name)
 
 
 CableAnalysizers: _CableAnalysizers = _CableAnalysizers()
@@ -2065,7 +2041,7 @@ class Camera(_BaseStructure, _Mode, _On):
 class _Cameras(_BaseStructures, _Modes, _Ons):
     _hash: int = -342072665
 
-    def __getitem__(self, name: str | int) -> "_Cameras":
+    def __getitem__(self, name: str | int | float) -> "_Cameras":
         return _Cameras(name)
 
 
@@ -2103,7 +2079,7 @@ class _CarbonSequesters(
 ):
     _hash: int = -865415211
 
-    def __getitem__(self, name: str | int) -> "_CarbonSequesters":
+    def __getitem__(self, name: str | int | float) -> "_CarbonSequesters":
         return _CarbonSequesters(name)
 
 
@@ -2139,7 +2115,7 @@ class _CargoStorageMediums(
 ):
     _hash: int = 1151864003
 
-    def __getitem__(self, name: str | int) -> "_CargoStorageMediums":
+    def __getitem__(self, name: str | int | float) -> "_CargoStorageMediums":
         return _CargoStorageMediums(name)
 
 
@@ -2175,7 +2151,7 @@ class _CargoStorageSmalls(
 ):
     _hash: int = -1493672123
 
-    def __getitem__(self, name: str | int) -> "_CargoStorageSmalls":
+    def __getitem__(self, name: str | int | float) -> "_CargoStorageSmalls":
         return _CargoStorageSmalls(name)
 
 
@@ -2207,7 +2183,7 @@ class _Centrifuges(
 ):
     _hash: int = 690945935
 
-    def __getitem__(self, name: str | int) -> "_Centrifuges":
+    def __getitem__(self, name: str | int | float) -> "_Centrifuges":
         return _Centrifuges(name)
 
 
@@ -2237,12 +2213,14 @@ class ChuteDigitalFlipFlopSplitterLeft(_BaseStructure, _Mode, _Power, _SettingW)
 class _ChuteDigitalFlipFlopSplitterLefts(_BaseStructures, _Modes, _Powers, _SettingWs):
     _hash: int = -810874728
 
-    def __getitem__(self, name: str | int) -> "_ChuteDigitalFlipFlopSplitterLefts":
+    def __getitem__(
+        self, name: str | int | float
+    ) -> "_ChuteDigitalFlipFlopSplitterLefts":
         return _ChuteDigitalFlipFlopSplitterLefts(name)
 
     @property
     def Quantity(self) -> DevicesLogicType:
-        return DevicesLogicType(self._hash, "Quantity", self._name_hash)
+        return DevicesLogicType(self._hash, "Quantity", self._name)
 
     @Quantity.setter
     def Quantity(self, value: int | float):
@@ -2250,7 +2228,7 @@ class _ChuteDigitalFlipFlopSplitterLefts(_BaseStructures, _Modes, _Powers, _Sett
 
     @property
     def SettingOutput(self) -> DevicesLogicType:
-        return DevicesLogicType(self._hash, "SettingOutput", self._name_hash)
+        return DevicesLogicType(self._hash, "SettingOutput", self._name)
 
     @SettingOutput.setter
     def SettingOutput(self, value: int | float):
@@ -2285,12 +2263,14 @@ class ChuteDigitalFlipFlopSplitterRight(_BaseStructure, _Mode, _Power, _SettingW
 class _ChuteDigitalFlipFlopSplitterRights(_BaseStructures, _Modes, _Powers, _SettingWs):
     _hash: int = 163728359
 
-    def __getitem__(self, name: str | int) -> "_ChuteDigitalFlipFlopSplitterRights":
+    def __getitem__(
+        self, name: str | int | float
+    ) -> "_ChuteDigitalFlipFlopSplitterRights":
         return _ChuteDigitalFlipFlopSplitterRights(name)
 
     @property
     def Quantity(self) -> DevicesLogicType:
-        return DevicesLogicType(self._hash, "Quantity", self._name_hash)
+        return DevicesLogicType(self._hash, "Quantity", self._name)
 
     @Quantity.setter
     def Quantity(self, value: int | float):
@@ -2298,7 +2278,7 @@ class _ChuteDigitalFlipFlopSplitterRights(_BaseStructures, _Modes, _Powers, _Set
 
     @property
     def SettingOutput(self) -> DevicesLogicType:
-        return DevicesLogicType(self._hash, "SettingOutput", self._name_hash)
+        return DevicesLogicType(self._hash, "SettingOutput", self._name)
 
     @SettingOutput.setter
     def SettingOutput(self, value: int | float):
@@ -2325,12 +2305,12 @@ class ChuteDigitalValveLeft(_BaseStructure, _Lock, _Open, _Power, _SettingW):
 class _ChuteDigitalValveLefts(_BaseStructures, _Locks, _Opens, _Powers, _SettingWs):
     _hash: int = 648608238
 
-    def __getitem__(self, name: str | int) -> "_ChuteDigitalValveLefts":
+    def __getitem__(self, name: str | int | float) -> "_ChuteDigitalValveLefts":
         return _ChuteDigitalValveLefts(name)
 
     @property
     def Quantity(self) -> DevicesLogicType:
-        return DevicesLogicType(self._hash, "Quantity", self._name_hash)
+        return DevicesLogicType(self._hash, "Quantity", self._name)
 
     @Quantity.setter
     def Quantity(self, value: int | float):
@@ -2355,12 +2335,12 @@ class ChuteDigitalValveRight(_BaseStructure, _Lock, _Open, _Power, _SettingW):
 class _ChuteDigitalValveRights(_BaseStructures, _Locks, _Opens, _Powers, _SettingWs):
     _hash: int = -1337091041
 
-    def __getitem__(self, name: str | int) -> "_ChuteDigitalValveRights":
+    def __getitem__(self, name: str | int | float) -> "_ChuteDigitalValveRights":
         return _ChuteDigitalValveRights(name)
 
     @property
     def Quantity(self) -> DevicesLogicType:
-        return DevicesLogicType(self._hash, "Quantity", self._name_hash)
+        return DevicesLogicType(self._hash, "Quantity", self._name)
 
     @Quantity.setter
     def Quantity(self, value: int | float):
@@ -2377,7 +2357,7 @@ class ChuteExportBin(_BaseStructure, _Error, _Lock, _Open, _Power):
 class _ChuteExportBins(_BaseStructures, _Errors, _Locks, _Opens, _Powers):
     _hash: int = 1957571043
 
-    def __getitem__(self, name: str | int) -> "_ChuteExportBins":
+    def __getitem__(self, name: str | int | float) -> "_ChuteExportBins":
         return _ChuteExportBins(name)
 
 
@@ -2391,7 +2371,7 @@ class ChuteBin(_BaseStructure, _Error, _Lock, _Open, _Power):
 class _ChuteBins(_BaseStructures, _Errors, _Locks, _Opens, _Powers):
     _hash: int = -850484480
 
-    def __getitem__(self, name: str | int) -> "_ChuteBins":
+    def __getitem__(self, name: str | int | float) -> "_ChuteBins":
         return _ChuteBins(name)
 
 
@@ -2405,7 +2385,7 @@ class ChuteInlet(_BaseStructure, _ClearMemory, _ImportCount, _Lock):
 class _ChuteInlets(_BaseStructures, _ClearMemorys, _ImportCounts, _Locks):
     _hash: int = -1469588766
 
-    def __getitem__(self, name: str | int) -> "_ChuteInlets":
+    def __getitem__(self, name: str | int | float) -> "_ChuteInlets":
         return _ChuteInlets(name)
 
 
@@ -2421,7 +2401,7 @@ class _ChuteOutlets(
 ):
     _hash: int = -1022714809
 
-    def __getitem__(self, name: str | int) -> "_ChuteOutlets":
+    def __getitem__(self, name: str | int | float) -> "_ChuteOutlets":
         return _ChuteOutlets(name)
 
 
@@ -2525,16 +2505,16 @@ class _CombustionCentrifuges(
 ):
     _hash: int = 1238905683
 
-    def __getitem__(self, name: str | int) -> "_CombustionCentrifuges":
+    def __getitem__(self, name: str | int | float) -> "_CombustionCentrifuges":
         return _CombustionCentrifuges(name)
 
     @property
     def CombustionInput(self) -> DevicesLogicType:
-        return DevicesLogicType(self._hash, "CombustionInput", self._name_hash)
+        return DevicesLogicType(self._hash, "CombustionInput", self._name)
 
     @property
     def CombustionLimiter(self) -> DevicesLogicType:
-        return DevicesLogicType(self._hash, "CombustionLimiter", self._name_hash)
+        return DevicesLogicType(self._hash, "CombustionLimiter", self._name)
 
     @CombustionLimiter.setter
     def CombustionLimiter(self, value: int | float):
@@ -2542,35 +2522,35 @@ class _CombustionCentrifuges(
 
     @property
     def CombustionOutput(self) -> DevicesLogicType:
-        return DevicesLogicType(self._hash, "CombustionOutput", self._name_hash)
+        return DevicesLogicType(self._hash, "CombustionOutput", self._name)
 
     @property
     def PressureInput(self) -> DevicesLogicType:
-        return DevicesLogicType(self._hash, "PressureInput", self._name_hash)
+        return DevicesLogicType(self._hash, "PressureInput", self._name)
 
     @property
     def PressureOutput(self) -> DevicesLogicType:
-        return DevicesLogicType(self._hash, "PressureOutput", self._name_hash)
+        return DevicesLogicType(self._hash, "PressureOutput", self._name)
 
     @property
     def Rpm(self) -> DevicesLogicType:
-        return DevicesLogicType(self._hash, "Rpm", self._name_hash)
+        return DevicesLogicType(self._hash, "Rpm", self._name)
 
     @property
     def Stress(self) -> DevicesLogicType:
-        return DevicesLogicType(self._hash, "Stress", self._name_hash)
+        return DevicesLogicType(self._hash, "Stress", self._name)
 
     @property
     def TemperatureInput(self) -> DevicesLogicType:
-        return DevicesLogicType(self._hash, "TemperatureInput", self._name_hash)
+        return DevicesLogicType(self._hash, "TemperatureInput", self._name)
 
     @property
     def TemperatureOutput(self) -> DevicesLogicType:
-        return DevicesLogicType(self._hash, "TemperatureOutput", self._name_hash)
+        return DevicesLogicType(self._hash, "TemperatureOutput", self._name)
 
     @property
     def Throttle(self) -> DevicesLogicType:
-        return DevicesLogicType(self._hash, "Throttle", self._name_hash)
+        return DevicesLogicType(self._hash, "Throttle", self._name)
 
     @Throttle.setter
     def Throttle(self, value: int | float):
@@ -2578,11 +2558,11 @@ class _CombustionCentrifuges(
 
     @property
     def TotalMolesInput(self) -> DevicesLogicType:
-        return DevicesLogicType(self._hash, "TotalMolesInput", self._name_hash)
+        return DevicesLogicType(self._hash, "TotalMolesInput", self._name)
 
     @property
     def TotalMolesOutput(self) -> DevicesLogicType:
-        return DevicesLogicType(self._hash, "TotalMolesOutput", self._name_hash)
+        return DevicesLogicType(self._hash, "TotalMolesOutput", self._name)
 
 
 CombustionCentrifuges: _CombustionCentrifuges = _CombustionCentrifuges()
@@ -2597,7 +2577,7 @@ class _CompositeDoors(
 ):
     _hash: int = -793837322
 
-    def __getitem__(self, name: str | int) -> "_CompositeDoors":
+    def __getitem__(self, name: str | int | float) -> "_CompositeDoors":
         return _CompositeDoors(name)
 
 
@@ -2613,7 +2593,9 @@ class _CompositeWindowShutterControllers(
 ):
     _hash: int = -2078371660
 
-    def __getitem__(self, name: str | int) -> "_CompositeWindowShutterControllers":
+    def __getitem__(
+        self, name: str | int | float
+    ) -> "_CompositeWindowShutterControllers":
         return _CompositeWindowShutterControllers(name)
 
 
@@ -2629,7 +2611,7 @@ class Computer(_BaseStructure, _Error, _Lock, _Open, _Power):
 class _Computers(_BaseStructures, _Errors, _Locks, _Opens, _Powers):
     _hash: int = -626563514
 
-    def __getitem__(self, name: str | int) -> "_Computers":
+    def __getitem__(self, name: str | int | float) -> "_Computers":
         return _Computers(name)
 
 
@@ -2643,7 +2625,7 @@ class ComputerUpright(_BaseStructure, _Error, _Lock, _Open, _Power):
 class _ComputerUprights(_BaseStructures, _Errors, _Locks, _Opens, _Powers):
     _hash: int = -405593895
 
-    def __getitem__(self, name: str | int) -> "_ComputerUprights":
+    def __getitem__(self, name: str | int | float) -> "_ComputerUprights":
         return _ComputerUprights(name)
 
 
@@ -2685,7 +2667,7 @@ class _CondensationChambers(
 ):
     _hash: int = 1420719315
 
-    def __getitem__(self, name: str | int) -> "_CondensationChambers":
+    def __getitem__(self, name: str | int | float) -> "_CondensationChambers":
         return _CondensationChambers(name)
 
 
@@ -2699,7 +2681,7 @@ class CondensationValve(_BaseStructure, _Maximum, _On, _Ratio, _SettingW):
 class _CondensationValves(_BaseStructures, _Maximums, _Ons, _Ratios, _SettingWs):
     _hash: int = -965741795
 
-    def __getitem__(self, name: str | int) -> "_CondensationValves":
+    def __getitem__(self, name: str | int | float) -> "_CondensationValves":
         return _CondensationValves(name)
 
 
@@ -2713,7 +2695,7 @@ class Console(_BaseStructure, _Error, _Open, _Power, _SettingR):
 class _Consoles(_BaseStructures, _Errors, _Opens, _Powers, _SettingRs):
     _hash: int = 235638270
 
-    def __getitem__(self, name: str | int) -> "_Consoles":
+    def __getitem__(self, name: str | int | float) -> "_Consoles":
         return _Consoles(name)
 
 
@@ -2727,7 +2709,7 @@ class ConsoleDual(_BaseStructure, _Error, _Open, _Power, _SettingR):
 class _ConsoleDuals(_BaseStructures, _Errors, _Opens, _Powers, _SettingRs):
     _hash: int = -722284333
 
-    def __getitem__(self, name: str | int) -> "_ConsoleDuals":
+    def __getitem__(self, name: str | int | float) -> "_ConsoleDuals":
         return _ConsoleDuals(name)
 
 
@@ -2741,7 +2723,7 @@ class ConsoleMonitor(_BaseStructure, _Error, _Open, _Power, _SettingR):
 class _ConsoleMonitors(_BaseStructures, _Errors, _Opens, _Powers, _SettingRs):
     _hash: int = 801677497
 
-    def __getitem__(self, name: str | int) -> "_ConsoleMonitors":
+    def __getitem__(self, name: str | int | float) -> "_ConsoleMonitors":
         return _ConsoleMonitors(name)
 
 
@@ -2781,7 +2763,7 @@ class _ControlChairs(
 ):
     _hash: int = -1961153710
 
-    def __getitem__(self, name: str | int) -> "_ControlChairs":
+    def __getitem__(self, name: str | int | float) -> "_ControlChairs":
         return _ControlChairs(name)
 
 
@@ -2795,7 +2777,7 @@ class CornerLocker(_BaseStructure, _Lock, _Open):
 class _CornerLockers(_BaseStructures, _Locks, _Opens):
     _hash: int = -1968255729
 
-    def __getitem__(self, name: str | int) -> "_CornerLockers":
+    def __getitem__(self, name: str | int | float) -> "_CornerLockers":
         return _CornerLockers(name)
 
 
@@ -2811,7 +2793,9 @@ class _PassthroughHeatExchangerGasToGass(
 ):
     _hash: int = -1674187440
 
-    def __getitem__(self, name: str | int) -> "_PassthroughHeatExchangerGasToGass":
+    def __getitem__(
+        self, name: str | int | float
+    ) -> "_PassthroughHeatExchangerGasToGass":
         return _PassthroughHeatExchangerGasToGass(name)
 
 
@@ -2829,7 +2813,9 @@ class _PassthroughHeatExchangerGasToLiquids(
 ):
     _hash: int = 1928991265
 
-    def __getitem__(self, name: str | int) -> "_PassthroughHeatExchangerGasToLiquids":
+    def __getitem__(
+        self, name: str | int | float
+    ) -> "_PassthroughHeatExchangerGasToLiquids":
         return _PassthroughHeatExchangerGasToLiquids(name)
 
 
@@ -2850,7 +2836,7 @@ class _PassthroughHeatExchangerLiquidToLiquids(
     _hash: int = -1472829583
 
     def __getitem__(
-        self, name: str | int
+        self, name: str | int | float
     ) -> "_PassthroughHeatExchangerLiquidToLiquids":
         return _PassthroughHeatExchangerLiquidToLiquids(name)
 
@@ -2893,12 +2879,12 @@ class _CryoTubeHorizontals(
 ):
     _hash: int = 1443059329
 
-    def __getitem__(self, name: str | int) -> "_CryoTubeHorizontals":
+    def __getitem__(self, name: str | int | float) -> "_CryoTubeHorizontals":
         return _CryoTubeHorizontals(name)
 
     @property
     def EntityState(self) -> DevicesLogicType:
-        return DevicesLogicType(self._hash, "EntityState", self._name_hash)
+        return DevicesLogicType(self._hash, "EntityState", self._name)
 
 
 CryoTubeHorizontals: _CryoTubeHorizontals = _CryoTubeHorizontals()
@@ -2937,12 +2923,12 @@ class _CryoTubeVerticals(
 ):
     _hash: int = -1381321828
 
-    def __getitem__(self, name: str | int) -> "_CryoTubeVerticals":
+    def __getitem__(self, name: str | int | float) -> "_CryoTubeVerticals":
         return _CryoTubeVerticals(name)
 
     @property
     def EntityState(self) -> DevicesLogicType:
-        return DevicesLogicType(self._hash, "EntityState", self._name_hash)
+        return DevicesLogicType(self._hash, "EntityState", self._name)
 
 
 CryoTubeVerticals: _CryoTubeVerticals = _CryoTubeVerticals()
@@ -2981,12 +2967,12 @@ class _CryoTubes(
 ):
     _hash: int = 1938254586
 
-    def __getitem__(self, name: str | int) -> "_CryoTubes":
+    def __getitem__(self, name: str | int | float) -> "_CryoTubes":
         return _CryoTubes(name)
 
     @property
     def EntityState(self) -> DevicesLogicType:
-        return DevicesLogicType(self._hash, "EntityState", self._name_hash)
+        return DevicesLogicType(self._hash, "EntityState", self._name)
 
 
 CryoTubes: _CryoTubes = _CryoTubes()
@@ -3007,16 +2993,16 @@ class DaylightSensor(_BaseStructure, _Activate, _Mode, _On, _Vertical):
 class _DaylightSensors(_BaseStructures, _Activates, _Modes, _Ons, _Verticals):
     _hash: int = 1076425094
 
-    def __getitem__(self, name: str | int) -> "_DaylightSensors":
+    def __getitem__(self, name: str | int | float) -> "_DaylightSensors":
         return _DaylightSensors(name)
 
     @property
     def SolarAngle(self) -> DevicesLogicType:
-        return DevicesLogicType(self._hash, "SolarAngle", self._name_hash)
+        return DevicesLogicType(self._hash, "SolarAngle", self._name)
 
     @property
     def SolarIrradiance(self) -> DevicesLogicType:
-        return DevicesLogicType(self._hash, "SolarIrradiance", self._name_hash)
+        return DevicesLogicType(self._hash, "SolarIrradiance", self._name)
 
 
 DaylightSensors: _DaylightSensors = _DaylightSensors()
@@ -3049,7 +3035,7 @@ class _DeepMiners(
 ):
     _hash: int = 265720906
 
-    def __getitem__(self, name: str | int) -> "_DeepMiners":
+    def __getitem__(self, name: str | int | float) -> "_DeepMiners":
         return _DeepMiners(name)
 
 
@@ -3063,7 +3049,7 @@ class LogicDial(_BaseStructure, _Mode, _Ratio, _SettingW):
 class _LogicDials(_BaseStructures, _Modes, _Ratios, _SettingWs):
     _hash: int = 554524804
 
-    def __getitem__(self, name: str | int) -> "_LogicDials":
+    def __getitem__(self, name: str | int | float) -> "_LogicDials":
         return _LogicDials(name)
 
 
@@ -3079,7 +3065,7 @@ class _DigitalValves(
 ):
     _hash: int = -1280984102
 
-    def __getitem__(self, name: str | int) -> "_DigitalValves":
+    def __getitem__(self, name: str | int | float) -> "_DigitalValves":
         return _DigitalValves(name)
 
 
@@ -3093,7 +3079,7 @@ class DiodeSlide(_BaseStructure, _Lock, _Power, _SettingW):
 class _DiodeSlides(_BaseStructures, _Locks, _Powers, _SettingWs):
     _hash: int = 576516101
 
-    def __getitem__(self, name: str | int) -> "_DiodeSlides":
+    def __getitem__(self, name: str | int | float) -> "_DiodeSlides":
         return _DiodeSlides(name)
 
 
@@ -3149,24 +3135,24 @@ class _DispersalTowers(
 ):
     _hash: int = -1868831137
 
-    def __getitem__(self, name: str | int) -> "_DispersalTowers":
+    def __getitem__(self, name: str | int | float) -> "_DispersalTowers":
         return _DispersalTowers(name)
 
     @property
     def CombustionInput(self) -> DevicesLogicType:
-        return DevicesLogicType(self._hash, "CombustionInput", self._name_hash)
+        return DevicesLogicType(self._hash, "CombustionInput", self._name)
 
     @property
     def PressureInput(self) -> DevicesLogicType:
-        return DevicesLogicType(self._hash, "PressureInput", self._name_hash)
+        return DevicesLogicType(self._hash, "PressureInput", self._name)
 
     @property
     def TemperatureInput(self) -> DevicesLogicType:
-        return DevicesLogicType(self._hash, "TemperatureInput", self._name_hash)
+        return DevicesLogicType(self._hash, "TemperatureInput", self._name)
 
     @property
     def TotalMolesInput(self) -> DevicesLogicType:
-        return DevicesLogicType(self._hash, "TotalMolesInput", self._name_hash)
+        return DevicesLogicType(self._hash, "TotalMolesInput", self._name)
 
 
 DispersalTowers: _DispersalTowers = _DispersalTowers()
@@ -3179,7 +3165,7 @@ class DockPortSide(_BaseStructure, _Idle, _Lock, _Open, _Power, _SettingW):
 class _DockPortSides(_BaseStructures, _Idles, _Locks, _Opens, _Powers, _SettingWs):
     _hash: int = -137465079
 
-    def __getitem__(self, name: str | int) -> "_DockPortSides":
+    def __getitem__(self, name: str | int | float) -> "_DockPortSides":
         return _DockPortSides(name)
 
 
@@ -3193,7 +3179,7 @@ class DrinkingFountain(_BaseStructure, _Error, _Power):
 class _DrinkingFountains(_BaseStructures, _Errors, _Powers):
     _hash: int = 1968371847
 
-    def __getitem__(self, name: str | int) -> "_DrinkingFountains":
+    def __getitem__(self, name: str | int | float) -> "_DrinkingFountains":
         return _DrinkingFountains(name)
 
 
@@ -3209,7 +3195,7 @@ class _SleeperVerticalDroids(
 ):
     _hash: int = 1382098999
 
-    def __getitem__(self, name: str | int) -> "_SleeperVerticalDroids":
+    def __getitem__(self, name: str | int | float) -> "_SleeperVerticalDroids":
         return _SleeperVerticalDroids(name)
 
 
@@ -3291,40 +3277,40 @@ class _Electrolyzers(
 ):
     _hash: int = -1668992663
 
-    def __getitem__(self, name: str | int) -> "_Electrolyzers":
+    def __getitem__(self, name: str | int | float) -> "_Electrolyzers":
         return _Electrolyzers(name)
 
     @property
     def CombustionInput(self) -> DevicesLogicType:
-        return DevicesLogicType(self._hash, "CombustionInput", self._name_hash)
+        return DevicesLogicType(self._hash, "CombustionInput", self._name)
 
     @property
     def CombustionOutput(self) -> DevicesLogicType:
-        return DevicesLogicType(self._hash, "CombustionOutput", self._name_hash)
+        return DevicesLogicType(self._hash, "CombustionOutput", self._name)
 
     @property
     def PressureInput(self) -> DevicesLogicType:
-        return DevicesLogicType(self._hash, "PressureInput", self._name_hash)
+        return DevicesLogicType(self._hash, "PressureInput", self._name)
 
     @property
     def PressureOutput(self) -> DevicesLogicType:
-        return DevicesLogicType(self._hash, "PressureOutput", self._name_hash)
+        return DevicesLogicType(self._hash, "PressureOutput", self._name)
 
     @property
     def TemperatureInput(self) -> DevicesLogicType:
-        return DevicesLogicType(self._hash, "TemperatureInput", self._name_hash)
+        return DevicesLogicType(self._hash, "TemperatureInput", self._name)
 
     @property
     def TemperatureOutput(self) -> DevicesLogicType:
-        return DevicesLogicType(self._hash, "TemperatureOutput", self._name_hash)
+        return DevicesLogicType(self._hash, "TemperatureOutput", self._name)
 
     @property
     def TotalMolesInput(self) -> DevicesLogicType:
-        return DevicesLogicType(self._hash, "TotalMolesInput", self._name_hash)
+        return DevicesLogicType(self._hash, "TotalMolesInput", self._name)
 
     @property
     def TotalMolesOutput(self) -> DevicesLogicType:
-        return DevicesLogicType(self._hash, "TotalMolesOutput", self._name_hash)
+        return DevicesLogicType(self._hash, "TotalMolesOutput", self._name)
 
 
 Electrolyzers: _Electrolyzers = _Electrolyzers()
@@ -3365,12 +3351,12 @@ class _ElectronicsPrinters(
 ):
     _hash: int = 1307165496
 
-    def __getitem__(self, name: str | int) -> "_ElectronicsPrinters":
+    def __getitem__(self, name: str | int | float) -> "_ElectronicsPrinters":
         return _ElectronicsPrinters(name)
 
     @property
     def CompletionRatio(self) -> DevicesLogicType:
-        return DevicesLogicType(self._hash, "CompletionRatio", self._name_hash)
+        return DevicesLogicType(self._hash, "CompletionRatio", self._name)
 
 
 ElectronicsPrinters: _ElectronicsPrinters = _ElectronicsPrinters()
@@ -3401,12 +3387,12 @@ class _ElevatorLevelIndustrials(
 ):
     _hash: int = 2060648791
 
-    def __getitem__(self, name: str | int) -> "_ElevatorLevelIndustrials":
+    def __getitem__(self, name: str | int | float) -> "_ElevatorLevelIndustrials":
         return _ElevatorLevelIndustrials(name)
 
     @property
     def ElevatorLevel(self) -> DevicesLogicType:
-        return DevicesLogicType(self._hash, "ElevatorLevel", self._name_hash)
+        return DevicesLogicType(self._hash, "ElevatorLevel", self._name)
 
     @ElevatorLevel.setter
     def ElevatorLevel(self, value: int | float):
@@ -3414,7 +3400,7 @@ class _ElevatorLevelIndustrials(
 
     @property
     def ElevatorSpeed(self) -> DevicesLogicType:
-        return DevicesLogicType(self._hash, "ElevatorSpeed", self._name_hash)
+        return DevicesLogicType(self._hash, "ElevatorSpeed", self._name)
 
     @ElevatorSpeed.setter
     def ElevatorSpeed(self, value: int | float):
@@ -3449,12 +3435,12 @@ class _ElevatorLevelFronts(
 ):
     _hash: int = -827912235
 
-    def __getitem__(self, name: str | int) -> "_ElevatorLevelFronts":
+    def __getitem__(self, name: str | int | float) -> "_ElevatorLevelFronts":
         return _ElevatorLevelFronts(name)
 
     @property
     def ElevatorLevel(self) -> DevicesLogicType:
-        return DevicesLogicType(self._hash, "ElevatorLevel", self._name_hash)
+        return DevicesLogicType(self._hash, "ElevatorLevel", self._name)
 
     @ElevatorLevel.setter
     def ElevatorLevel(self, value: int | float):
@@ -3462,7 +3448,7 @@ class _ElevatorLevelFronts(
 
     @property
     def ElevatorSpeed(self) -> DevicesLogicType:
-        return DevicesLogicType(self._hash, "ElevatorSpeed", self._name_hash)
+        return DevicesLogicType(self._hash, "ElevatorSpeed", self._name)
 
     @ElevatorSpeed.setter
     def ElevatorSpeed(self, value: int | float):
@@ -3495,12 +3481,12 @@ class ElevatorShaftIndustrial(_BaseStructure):
 class _ElevatorShaftIndustrials(_BaseStructures):
     _hash: int = 1998354978
 
-    def __getitem__(self, name: str | int) -> "_ElevatorShaftIndustrials":
+    def __getitem__(self, name: str | int | float) -> "_ElevatorShaftIndustrials":
         return _ElevatorShaftIndustrials(name)
 
     @property
     def ElevatorLevel(self) -> DevicesLogicType:
-        return DevicesLogicType(self._hash, "ElevatorLevel", self._name_hash)
+        return DevicesLogicType(self._hash, "ElevatorLevel", self._name)
 
     @ElevatorLevel.setter
     def ElevatorLevel(self, value: int | float):
@@ -3508,7 +3494,7 @@ class _ElevatorShaftIndustrials(_BaseStructures):
 
     @property
     def ElevatorSpeed(self) -> DevicesLogicType:
-        return DevicesLogicType(self._hash, "ElevatorSpeed", self._name_hash)
+        return DevicesLogicType(self._hash, "ElevatorSpeed", self._name)
 
     @ElevatorSpeed.setter
     def ElevatorSpeed(self, value: int | float):
@@ -3541,12 +3527,12 @@ class ElevatorShaft(_BaseStructure, _Power):
 class _ElevatorShafts(_BaseStructures, _Powers):
     _hash: int = 826144419
 
-    def __getitem__(self, name: str | int) -> "_ElevatorShafts":
+    def __getitem__(self, name: str | int | float) -> "_ElevatorShafts":
         return _ElevatorShafts(name)
 
     @property
     def ElevatorLevel(self) -> DevicesLogicType:
-        return DevicesLogicType(self._hash, "ElevatorLevel", self._name_hash)
+        return DevicesLogicType(self._hash, "ElevatorLevel", self._name)
 
     @ElevatorLevel.setter
     def ElevatorLevel(self, value: int | float):
@@ -3554,7 +3540,7 @@ class _ElevatorShafts(_BaseStructures, _Powers):
 
     @property
     def ElevatorSpeed(self) -> DevicesLogicType:
-        return DevicesLogicType(self._hash, "ElevatorSpeed", self._name_hash)
+        return DevicesLogicType(self._hash, "ElevatorSpeed", self._name)
 
     @ElevatorSpeed.setter
     def ElevatorSpeed(self, value: int | float):
@@ -3599,7 +3585,7 @@ class _EvaporationChambers(
 ):
     _hash: int = -1429782576
 
-    def __getitem__(self, name: str | int) -> "_EvaporationChambers":
+    def __getitem__(self, name: str | int | float) -> "_EvaporationChambers":
         return _EvaporationChambers(name)
 
 
@@ -3613,7 +3599,7 @@ class ExpansionValve(_BaseStructure, _Maximum, _On, _Ratio, _SettingW):
 class _ExpansionValves(_BaseStructures, _Maximums, _Ons, _Ratios, _SettingWs):
     _hash: int = 195298587
 
-    def __getitem__(self, name: str | int) -> "_ExpansionValves":
+    def __getitem__(self, name: str | int | float) -> "_ExpansionValves":
         return _ExpansionValves(name)
 
 
@@ -3701,56 +3687,56 @@ class _Filtrations(
 ):
     _hash: int = -348054045
 
-    def __getitem__(self, name: str | int) -> "_Filtrations":
+    def __getitem__(self, name: str | int | float) -> "_Filtrations":
         return _Filtrations(name)
 
     @property
     def CombustionInput(self) -> DevicesLogicType:
-        return DevicesLogicType(self._hash, "CombustionInput", self._name_hash)
+        return DevicesLogicType(self._hash, "CombustionInput", self._name)
 
     @property
     def CombustionOutput(self) -> DevicesLogicType:
-        return DevicesLogicType(self._hash, "CombustionOutput", self._name_hash)
+        return DevicesLogicType(self._hash, "CombustionOutput", self._name)
 
     @property
     def CombustionOutput2(self) -> DevicesLogicType:
-        return DevicesLogicType(self._hash, "CombustionOutput2", self._name_hash)
+        return DevicesLogicType(self._hash, "CombustionOutput2", self._name)
 
     @property
     def PressureInput(self) -> DevicesLogicType:
-        return DevicesLogicType(self._hash, "PressureInput", self._name_hash)
+        return DevicesLogicType(self._hash, "PressureInput", self._name)
 
     @property
     def PressureOutput(self) -> DevicesLogicType:
-        return DevicesLogicType(self._hash, "PressureOutput", self._name_hash)
+        return DevicesLogicType(self._hash, "PressureOutput", self._name)
 
     @property
     def PressureOutput2(self) -> DevicesLogicType:
-        return DevicesLogicType(self._hash, "PressureOutput2", self._name_hash)
+        return DevicesLogicType(self._hash, "PressureOutput2", self._name)
 
     @property
     def TemperatureInput(self) -> DevicesLogicType:
-        return DevicesLogicType(self._hash, "TemperatureInput", self._name_hash)
+        return DevicesLogicType(self._hash, "TemperatureInput", self._name)
 
     @property
     def TemperatureOutput(self) -> DevicesLogicType:
-        return DevicesLogicType(self._hash, "TemperatureOutput", self._name_hash)
+        return DevicesLogicType(self._hash, "TemperatureOutput", self._name)
 
     @property
     def TemperatureOutput2(self) -> DevicesLogicType:
-        return DevicesLogicType(self._hash, "TemperatureOutput2", self._name_hash)
+        return DevicesLogicType(self._hash, "TemperatureOutput2", self._name)
 
     @property
     def TotalMolesInput(self) -> DevicesLogicType:
-        return DevicesLogicType(self._hash, "TotalMolesInput", self._name_hash)
+        return DevicesLogicType(self._hash, "TotalMolesInput", self._name)
 
     @property
     def TotalMolesOutput(self) -> DevicesLogicType:
-        return DevicesLogicType(self._hash, "TotalMolesOutput", self._name_hash)
+        return DevicesLogicType(self._hash, "TotalMolesOutput", self._name)
 
     @property
     def TotalMolesOutput2(self) -> DevicesLogicType:
-        return DevicesLogicType(self._hash, "TotalMolesOutput2", self._name_hash)
+        return DevicesLogicType(self._hash, "TotalMolesOutput2", self._name)
 
 
 Filtrations: _Filtrations = _Filtrations()
@@ -3763,7 +3749,7 @@ class FlashingLight(_BaseStructure, _Lock, _Power):
 class _FlashingLights(_BaseStructures, _Locks, _Powers):
     _hash: int = -1535893860
 
-    def __getitem__(self, name: str | int) -> "_FlashingLights":
+    def __getitem__(self, name: str | int | float) -> "_FlashingLights":
         return _FlashingLights(name)
 
 
@@ -3803,7 +3789,7 @@ class _FridgeBigs(
 ):
     _hash: int = 958476921
 
-    def __getitem__(self, name: str | int) -> "_FridgeBigs":
+    def __getitem__(self, name: str | int | float) -> "_FridgeBigs":
         return _FridgeBigs(name)
 
 
@@ -3839,7 +3825,7 @@ class _FridgeSmalls(
 ):
     _hash: int = 751887598
 
-    def __getitem__(self, name: str | int) -> "_FridgeSmalls":
+    def __getitem__(self, name: str | int | float) -> "_FridgeSmalls":
         return _FridgeSmalls(name)
 
 
@@ -3893,12 +3879,12 @@ class _Furnaces(
 ):
     _hash: int = 1947944864
 
-    def __getitem__(self, name: str | int) -> "_Furnaces":
+    def __getitem__(self, name: str | int | float) -> "_Furnaces":
         return _Furnaces(name)
 
     @property
     def RecipeHash(self) -> DevicesLogicType:
-        return DevicesLogicType(self._hash, "RecipeHash", self._name_hash)
+        return DevicesLogicType(self._hash, "RecipeHash", self._name)
 
 
 Furnaces: _Furnaces = _Furnaces()
@@ -3933,7 +3919,7 @@ class _MediumRocketGasFuelTanks(
 ):
     _hash: int = -1093860567
 
-    def __getitem__(self, name: str | int) -> "_MediumRocketGasFuelTanks":
+    def __getitem__(self, name: str | int | float) -> "_MediumRocketGasFuelTanks":
         return _MediumRocketGasFuelTanks(name)
 
 
@@ -3969,7 +3955,7 @@ class _CapsuleTankGass(
 ):
     _hash: int = -1385712131
 
-    def __getitem__(self, name: str | int) -> "_CapsuleTankGass":
+    def __getitem__(self, name: str | int | float) -> "_CapsuleTankGass":
         return _CapsuleTankGass(name)
 
 
@@ -4011,12 +3997,12 @@ class _GasGenerators(
 ):
     _hash: int = 1165997963
 
-    def __getitem__(self, name: str | int) -> "_GasGenerators":
+    def __getitem__(self, name: str | int | float) -> "_GasGenerators":
         return _GasGenerators(name)
 
     @property
     def PowerGeneration(self) -> DevicesLogicType:
-        return DevicesLogicType(self._hash, "PowerGeneration", self._name_hash)
+        return DevicesLogicType(self._hash, "PowerGeneration", self._name)
 
 
 GasGenerators: _GasGenerators = _GasGenerators()
@@ -4031,7 +4017,7 @@ class _GasMixers(
 ):
     _hash: int = 2104106366
 
-    def __getitem__(self, name: str | int) -> "_GasMixers":
+    def __getitem__(self, name: str | int | float) -> "_GasMixers":
         return _GasMixers(name)
 
 
@@ -4049,12 +4035,12 @@ class GasSensor(_BaseStructure, _BaseGas, _Hydrogen, _PollWater, _Temperature):
 class _GasSensors(_BaseStructures, _BaseGass, _Hydrogens, _PollWaters, _Temperatures):
     _hash: int = -1252983604
 
-    def __getitem__(self, name: str | int) -> "_GasSensors":
+    def __getitem__(self, name: str | int | float) -> "_GasSensors":
         return _GasSensors(name)
 
     @property
     def Combustion(self) -> DevicesLogicType:
-        return DevicesLogicType(self._hash, "Combustion", self._name_hash)
+        return DevicesLogicType(self._hash, "Combustion", self._name)
 
 
 GasSensors: _GasSensors = _GasSensors()
@@ -4095,36 +4081,36 @@ class GasTankStorage(_BaseStructure, _Quantity, _Temperature):
 class _GasTankStorages(_BaseStructures, _Quantitys, _Temperatures):
     _hash: int = 1632165346
 
-    def __getitem__(self, name: str | int) -> "_GasTankStorages":
+    def __getitem__(self, name: str | int | float) -> "_GasTankStorages":
         return _GasTankStorages(name)
 
     @property
     def RatioCarbonDioxide(self) -> DevicesLogicType:
-        return DevicesLogicType(self._hash, "RatioCarbonDioxide", self._name_hash)
+        return DevicesLogicType(self._hash, "RatioCarbonDioxide", self._name)
 
     @property
     def RatioNitrogen(self) -> DevicesLogicType:
-        return DevicesLogicType(self._hash, "RatioNitrogen", self._name_hash)
+        return DevicesLogicType(self._hash, "RatioNitrogen", self._name)
 
     @property
     def RatioNitrousOxide(self) -> DevicesLogicType:
-        return DevicesLogicType(self._hash, "RatioNitrousOxide", self._name_hash)
+        return DevicesLogicType(self._hash, "RatioNitrousOxide", self._name)
 
     @property
     def RatioOxygen(self) -> DevicesLogicType:
-        return DevicesLogicType(self._hash, "RatioOxygen", self._name_hash)
+        return DevicesLogicType(self._hash, "RatioOxygen", self._name)
 
     @property
     def RatioPollutant(self) -> DevicesLogicType:
-        return DevicesLogicType(self._hash, "RatioPollutant", self._name_hash)
+        return DevicesLogicType(self._hash, "RatioPollutant", self._name)
 
     @property
     def RatioVolatiles(self) -> DevicesLogicType:
-        return DevicesLogicType(self._hash, "RatioVolatiles", self._name_hash)
+        return DevicesLogicType(self._hash, "RatioVolatiles", self._name)
 
     @property
     def RatioWater(self) -> DevicesLogicType:
-        return DevicesLogicType(self._hash, "RatioWater", self._name_hash)
+        return DevicesLogicType(self._hash, "RatioWater", self._name)
 
 
 GasTankStorages: _GasTankStorages = _GasTankStorages()
@@ -4141,12 +4127,12 @@ class SolidFuelGenerator(_BaseStructure, _ClearMemory, _ImportCount, _Lock, _On)
 class _SolidFuelGenerators(_BaseStructures, _ClearMemorys, _ImportCounts, _Locks, _Ons):
     _hash: int = 813146305
 
-    def __getitem__(self, name: str | int) -> "_SolidFuelGenerators":
+    def __getitem__(self, name: str | int | float) -> "_SolidFuelGenerators":
         return _SolidFuelGenerators(name)
 
     @property
     def PowerGeneration(self) -> DevicesLogicType:
-        return DevicesLogicType(self._hash, "PowerGeneration", self._name_hash)
+        return DevicesLogicType(self._hash, "PowerGeneration", self._name)
 
 
 SolidFuelGenerators: _SolidFuelGenerators = _SolidFuelGenerators()
@@ -4159,7 +4145,7 @@ class GlassDoor(_BaseStructure, _Idle, _Lock, _Mode, _Open, _Power, _SettingW):
 class _GlassDoors(_BaseStructures, _Idles, _Locks, _Modes, _Opens, _Powers, _SettingWs):
     _hash: int = -324331872
 
-    def __getitem__(self, name: str | int) -> "_GlassDoors":
+    def __getitem__(self, name: str | int | float) -> "_GlassDoors":
         return _GlassDoors(name)
 
 
@@ -4173,7 +4159,7 @@ class GrowLight(_BaseStructure, _Lock, _Power):
 class _GrowLights(_BaseStructures, _Locks, _Powers):
     _hash: int = -1758710260
 
-    def __getitem__(self, name: str | int) -> "_GrowLights":
+    def __getitem__(self, name: str | int | float) -> "_GrowLights":
         return _GrowLights(name)
 
 
@@ -4223,12 +4209,12 @@ class _Harvies(
 ):
     _hash: int = 958056199
 
-    def __getitem__(self, name: str | int) -> "_Harvies":
+    def __getitem__(self, name: str | int | float) -> "_Harvies":
         return _Harvies(name)
 
     @property
     def Harvest(self) -> DevicesLogicType:
-        return DevicesLogicType(self._hash, "Harvest", self._name_hash)
+        return DevicesLogicType(self._hash, "Harvest", self._name)
 
     @Harvest.setter
     def Harvest(self, value: int | float):
@@ -4236,7 +4222,7 @@ class _Harvies(
 
     @property
     def Plant(self) -> DevicesLogicType:
-        return DevicesLogicType(self._hash, "Plant", self._name_hash)
+        return DevicesLogicType(self._hash, "Plant", self._name)
 
     @Plant.setter
     def Plant(self, value: int | float):
@@ -4253,7 +4239,7 @@ class HeatExchangeLiquidtoGas(_BaseStructure, _Maximum, _Ratio, _SettingW):
 class _HeatExchangeLiquidtoGass(_BaseStructures, _Maximums, _Ratios, _SettingWs):
     _hash: int = 944685608
 
-    def __getitem__(self, name: str | int) -> "_HeatExchangeLiquidtoGass":
+    def __getitem__(self, name: str | int | float) -> "_HeatExchangeLiquidtoGass":
         return _HeatExchangeLiquidtoGass(name)
 
 
@@ -4267,7 +4253,7 @@ class HeatExchangerGastoGas(_BaseStructure, _Maximum, _Ratio, _SettingW):
 class _HeatExchangerGastoGass(_BaseStructures, _Maximums, _Ratios, _SettingWs):
     _hash: int = 21266291
 
-    def __getitem__(self, name: str | int) -> "_HeatExchangerGastoGass":
+    def __getitem__(self, name: str | int | float) -> "_HeatExchangerGastoGass":
         return _HeatExchangerGastoGass(name)
 
 
@@ -4281,7 +4267,7 @@ class HeatExchangerLiquidtoLiquid(_BaseStructure, _Maximum, _Ratio, _SettingW):
 class _HeatExchangerLiquidtoLiquids(_BaseStructures, _Maximums, _Ratios, _SettingWs):
     _hash: int = -613784254
 
-    def __getitem__(self, name: str | int) -> "_HeatExchangerLiquidtoLiquids":
+    def __getitem__(self, name: str | int | float) -> "_HeatExchangerLiquidtoLiquids":
         return _HeatExchangerLiquidtoLiquids(name)
 
 
@@ -4325,12 +4311,12 @@ class _HydraulicPipeBenders(
 ):
     _hash: int = -1888248335
 
-    def __getitem__(self, name: str | int) -> "_HydraulicPipeBenders":
+    def __getitem__(self, name: str | int | float) -> "_HydraulicPipeBenders":
         return _HydraulicPipeBenders(name)
 
     @property
     def CompletionRatio(self) -> DevicesLogicType:
-        return DevicesLogicType(self._hash, "CompletionRatio", self._name_hash)
+        return DevicesLogicType(self._hash, "CompletionRatio", self._name)
 
 
 HydraulicPipeBenders: _HydraulicPipeBenders = _HydraulicPipeBenders()
@@ -4347,7 +4333,7 @@ class _HydroponicsTrayDatas(
 ):
     _hash: int = -1841632400
 
-    def __getitem__(self, name: str | int) -> "_HydroponicsTrayDatas":
+    def __getitem__(self, name: str | int | float) -> "_HydroponicsTrayDatas":
         return _HydroponicsTrayDatas(name)
 
 
@@ -4385,7 +4371,7 @@ class _HydroponicsStations(
 ):
     _hash: int = 1441767298
 
-    def __getitem__(self, name: str | int) -> "_HydroponicsStations":
+    def __getitem__(self, name: str | int | float) -> "_HydroponicsStations":
         return _HydroponicsStations(name)
 
 
@@ -4407,12 +4393,12 @@ class CircuitHousing(_BaseStructure, _Error, _Power, _SettingW):
 class _CircuitHousings(_BaseStructures, _Errors, _Powers, _SettingWs):
     _hash: int = -128473777
 
-    def __getitem__(self, name: str | int) -> "_CircuitHousings":
+    def __getitem__(self, name: str | int | float) -> "_CircuitHousings":
         return _CircuitHousings(name)
 
     @property
     def LineNumber(self) -> DevicesLogicType:
-        return DevicesLogicType(self._hash, "LineNumber", self._name_hash)
+        return DevicesLogicType(self._hash, "LineNumber", self._name)
 
     @LineNumber.setter
     def LineNumber(self, value: int | float):
@@ -4451,7 +4437,7 @@ class _IceCrushers(
 ):
     _hash: int = 443849486
 
-    def __getitem__(self, name: str | int) -> "_IceCrushers":
+    def __getitem__(self, name: str | int | float) -> "_IceCrushers":
         return _IceCrushers(name)
 
 
@@ -4465,7 +4451,7 @@ class Igniter(_BaseStructure, _On):
 class _Igniters(_BaseStructures, _Ons):
     _hash: int = 1005491513
 
-    def __getitem__(self, name: str | int) -> "_Igniters":
+    def __getitem__(self, name: str | int | float) -> "_Igniters":
         return _Igniters(name)
 
 
@@ -4483,7 +4469,7 @@ class _EmergencyButtons(
 ):
     _hash: int = 1668452680
 
-    def __getitem__(self, name: str | int) -> "_EmergencyButtons":
+    def __getitem__(self, name: str | int | float) -> "_EmergencyButtons":
         return _EmergencyButtons(name)
 
 
@@ -4543,12 +4529,12 @@ class _IndustrialBurners(
 ):
     _hash: int = 1493870235
 
-    def __getitem__(self, name: str | int) -> "_IndustrialBurners":
+    def __getitem__(self, name: str | int | float) -> "_IndustrialBurners":
         return _IndustrialBurners(name)
 
     @property
     def Activate(self) -> DevicesLogicType:
-        return DevicesLogicType(self._hash, "Activate", self._name_hash)
+        return DevicesLogicType(self._hash, "Activate", self._name)
 
     @Activate.setter
     def Activate(self, value: int | float):
@@ -4556,7 +4542,7 @@ class _IndustrialBurners(
 
     @property
     def RecipeHash(self) -> DevicesLogicType:
-        return DevicesLogicType(self._hash, "RecipeHash", self._name_hash)
+        return DevicesLogicType(self._hash, "RecipeHash", self._name)
 
 
 IndustrialBurners: _IndustrialBurners = _IndustrialBurners()
@@ -4707,122 +4693,114 @@ class _IndustrialCombustors(
 ):
     _hash: int = -586072380
 
-    def __getitem__(self, name: str | int) -> "_IndustrialCombustors":
+    def __getitem__(self, name: str | int | float) -> "_IndustrialCombustors":
         return _IndustrialCombustors(name)
 
     @property
     def CombustionInput(self) -> DevicesLogicType:
-        return DevicesLogicType(self._hash, "CombustionInput", self._name_hash)
+        return DevicesLogicType(self._hash, "CombustionInput", self._name)
 
     @property
     def CombustionInput2(self) -> DevicesLogicType:
-        return DevicesLogicType(self._hash, "CombustionInput2", self._name_hash)
+        return DevicesLogicType(self._hash, "CombustionInput2", self._name)
 
     @property
     def CombustionOutput(self) -> DevicesLogicType:
-        return DevicesLogicType(self._hash, "CombustionOutput", self._name_hash)
+        return DevicesLogicType(self._hash, "CombustionOutput", self._name)
 
     @property
     def PressureInput(self) -> DevicesLogicType:
-        return DevicesLogicType(self._hash, "PressureInput", self._name_hash)
+        return DevicesLogicType(self._hash, "PressureInput", self._name)
 
     @property
     def PressureInput2(self) -> DevicesLogicType:
-        return DevicesLogicType(self._hash, "PressureInput2", self._name_hash)
+        return DevicesLogicType(self._hash, "PressureInput2", self._name)
 
     @property
     def PressureOutput(self) -> DevicesLogicType:
-        return DevicesLogicType(self._hash, "PressureOutput", self._name_hash)
+        return DevicesLogicType(self._hash, "PressureOutput", self._name)
 
     @property
     def RatioCarbonDioxideInput2(self) -> DevicesLogicType:
-        return DevicesLogicType(self._hash, "RatioCarbonDioxideInput2", self._name_hash)
+        return DevicesLogicType(self._hash, "RatioCarbonDioxideInput2", self._name)
 
     @property
     def RatioLiquidCarbonDioxideInput2(self) -> DevicesLogicType:
         return DevicesLogicType(
-            self._hash, "RatioLiquidCarbonDioxideInput2", self._name_hash
+            self._hash, "RatioLiquidCarbonDioxideInput2", self._name
         )
 
     @property
     def RatioLiquidNitrogenInput2(self) -> DevicesLogicType:
-        return DevicesLogicType(
-            self._hash, "RatioLiquidNitrogenInput2", self._name_hash
-        )
+        return DevicesLogicType(self._hash, "RatioLiquidNitrogenInput2", self._name)
 
     @property
     def RatioLiquidNitrousOxideInput2(self) -> DevicesLogicType:
-        return DevicesLogicType(
-            self._hash, "RatioLiquidNitrousOxideInput2", self._name_hash
-        )
+        return DevicesLogicType(self._hash, "RatioLiquidNitrousOxideInput2", self._name)
 
     @property
     def RatioLiquidOxygenInput2(self) -> DevicesLogicType:
-        return DevicesLogicType(self._hash, "RatioLiquidOxygenInput2", self._name_hash)
+        return DevicesLogicType(self._hash, "RatioLiquidOxygenInput2", self._name)
 
     @property
     def RatioLiquidPollutantInput2(self) -> DevicesLogicType:
-        return DevicesLogicType(
-            self._hash, "RatioLiquidPollutantInput2", self._name_hash
-        )
+        return DevicesLogicType(self._hash, "RatioLiquidPollutantInput2", self._name)
 
     @property
     def RatioLiquidVolatilesInput2(self) -> DevicesLogicType:
-        return DevicesLogicType(
-            self._hash, "RatioLiquidVolatilesInput2", self._name_hash
-        )
+        return DevicesLogicType(self._hash, "RatioLiquidVolatilesInput2", self._name)
 
     @property
     def RatioNitrogenInput2(self) -> DevicesLogicType:
-        return DevicesLogicType(self._hash, "RatioNitrogenInput2", self._name_hash)
+        return DevicesLogicType(self._hash, "RatioNitrogenInput2", self._name)
 
     @property
     def RatioNitrousOxideInput2(self) -> DevicesLogicType:
-        return DevicesLogicType(self._hash, "RatioNitrousOxideInput2", self._name_hash)
+        return DevicesLogicType(self._hash, "RatioNitrousOxideInput2", self._name)
 
     @property
     def RatioOxygenInput2(self) -> DevicesLogicType:
-        return DevicesLogicType(self._hash, "RatioOxygenInput2", self._name_hash)
+        return DevicesLogicType(self._hash, "RatioOxygenInput2", self._name)
 
     @property
     def RatioPollutantInput2(self) -> DevicesLogicType:
-        return DevicesLogicType(self._hash, "RatioPollutantInput2", self._name_hash)
+        return DevicesLogicType(self._hash, "RatioPollutantInput2", self._name)
 
     @property
     def RatioSteamInput2(self) -> DevicesLogicType:
-        return DevicesLogicType(self._hash, "RatioSteamInput2", self._name_hash)
+        return DevicesLogicType(self._hash, "RatioSteamInput2", self._name)
 
     @property
     def RatioVolatilesInput2(self) -> DevicesLogicType:
-        return DevicesLogicType(self._hash, "RatioVolatilesInput2", self._name_hash)
+        return DevicesLogicType(self._hash, "RatioVolatilesInput2", self._name)
 
     @property
     def RatioWaterInput2(self) -> DevicesLogicType:
-        return DevicesLogicType(self._hash, "RatioWaterInput2", self._name_hash)
+        return DevicesLogicType(self._hash, "RatioWaterInput2", self._name)
 
     @property
     def TemperatureInput(self) -> DevicesLogicType:
-        return DevicesLogicType(self._hash, "TemperatureInput", self._name_hash)
+        return DevicesLogicType(self._hash, "TemperatureInput", self._name)
 
     @property
     def TemperatureInput2(self) -> DevicesLogicType:
-        return DevicesLogicType(self._hash, "TemperatureInput2", self._name_hash)
+        return DevicesLogicType(self._hash, "TemperatureInput2", self._name)
 
     @property
     def TemperatureOutput(self) -> DevicesLogicType:
-        return DevicesLogicType(self._hash, "TemperatureOutput", self._name_hash)
+        return DevicesLogicType(self._hash, "TemperatureOutput", self._name)
 
     @property
     def TotalMolesInput(self) -> DevicesLogicType:
-        return DevicesLogicType(self._hash, "TotalMolesInput", self._name_hash)
+        return DevicesLogicType(self._hash, "TotalMolesInput", self._name)
 
     @property
     def TotalMolesInput2(self) -> DevicesLogicType:
-        return DevicesLogicType(self._hash, "TotalMolesInput2", self._name_hash)
+        return DevicesLogicType(self._hash, "TotalMolesInput2", self._name)
 
     @property
     def TotalMolesOutput(self) -> DevicesLogicType:
-        return DevicesLogicType(self._hash, "TotalMolesOutput", self._name_hash)
+        return DevicesLogicType(self._hash, "TotalMolesOutput", self._name)
 
 
 IndustrialCombustors: _IndustrialCombustors = _IndustrialCombustors()
@@ -4891,40 +4869,40 @@ class _IndustrialFiltrations(
 ):
     _hash: int = 1167018773
 
-    def __getitem__(self, name: str | int) -> "_IndustrialFiltrations":
+    def __getitem__(self, name: str | int | float) -> "_IndustrialFiltrations":
         return _IndustrialFiltrations(name)
 
     @property
     def CombustionOutput(self) -> DevicesLogicType:
-        return DevicesLogicType(self._hash, "CombustionOutput", self._name_hash)
+        return DevicesLogicType(self._hash, "CombustionOutput", self._name)
 
     @property
     def CombustionOutput2(self) -> DevicesLogicType:
-        return DevicesLogicType(self._hash, "CombustionOutput2", self._name_hash)
+        return DevicesLogicType(self._hash, "CombustionOutput2", self._name)
 
     @property
     def PressureOutput(self) -> DevicesLogicType:
-        return DevicesLogicType(self._hash, "PressureOutput", self._name_hash)
+        return DevicesLogicType(self._hash, "PressureOutput", self._name)
 
     @property
     def PressureOutput2(self) -> DevicesLogicType:
-        return DevicesLogicType(self._hash, "PressureOutput2", self._name_hash)
+        return DevicesLogicType(self._hash, "PressureOutput2", self._name)
 
     @property
     def TemperatureOutput(self) -> DevicesLogicType:
-        return DevicesLogicType(self._hash, "TemperatureOutput", self._name_hash)
+        return DevicesLogicType(self._hash, "TemperatureOutput", self._name)
 
     @property
     def TemperatureOutput2(self) -> DevicesLogicType:
-        return DevicesLogicType(self._hash, "TemperatureOutput2", self._name_hash)
+        return DevicesLogicType(self._hash, "TemperatureOutput2", self._name)
 
     @property
     def TotalMolesOutput(self) -> DevicesLogicType:
-        return DevicesLogicType(self._hash, "TotalMolesOutput", self._name_hash)
+        return DevicesLogicType(self._hash, "TotalMolesOutput", self._name)
 
     @property
     def TotalMolesOutput2(self) -> DevicesLogicType:
-        return DevicesLogicType(self._hash, "TotalMolesOutput2", self._name_hash)
+        return DevicesLogicType(self._hash, "TotalMolesOutput2", self._name)
 
 
 IndustrialFiltrations: _IndustrialFiltrations = _IndustrialFiltrations()
@@ -4939,7 +4917,7 @@ class _InteriorDoorGlasss(
 ):
     _hash: int = -2096421875
 
-    def __getitem__(self, name: str | int) -> "_InteriorDoorGlasss":
+    def __getitem__(self, name: str | int | float) -> "_InteriorDoorGlasss":
         return _InteriorDoorGlasss(name)
 
 
@@ -4955,7 +4933,7 @@ class _InteriorDoorPaddeds(
 ):
     _hash: int = 847461335
 
-    def __getitem__(self, name: str | int) -> "_InteriorDoorPaddeds":
+    def __getitem__(self, name: str | int | float) -> "_InteriorDoorPaddeds":
         return _InteriorDoorPaddeds(name)
 
 
@@ -4973,7 +4951,7 @@ class _InteriorDoorPaddedThins(
 ):
     _hash: int = 1981698201
 
-    def __getitem__(self, name: str | int) -> "_InteriorDoorPaddedThins":
+    def __getitem__(self, name: str | int | float) -> "_InteriorDoorPaddedThins":
         return _InteriorDoorPaddedThins(name)
 
 
@@ -4991,7 +4969,7 @@ class _InteriorDoorTriangles(
 ):
     _hash: int = -1182923101
 
-    def __getitem__(self, name: str | int) -> "_InteriorDoorTriangles":
+    def __getitem__(self, name: str | int | float) -> "_InteriorDoorTriangles":
         return _InteriorDoorTriangles(name)
 
 
@@ -5021,12 +4999,12 @@ class Klaxon(_BaseStructure, _Mode, _Power):
 class _Klaxons(_BaseStructures, _Modes, _Powers):
     _hash: int = -828056979
 
-    def __getitem__(self, name: str | int) -> "_Klaxons":
+    def __getitem__(self, name: str | int | float) -> "_Klaxons":
         return _Klaxons(name)
 
     @property
     def SoundAlert(self) -> DevicesLogicType:
-        return DevicesLogicType(self._hash, "SoundAlert", self._name_hash)
+        return DevicesLogicType(self._hash, "SoundAlert", self._name)
 
     @SoundAlert.setter
     def SoundAlert(self, value: int | float):
@@ -5034,7 +5012,7 @@ class _Klaxons(_BaseStructures, _Modes, _Powers):
 
     @property
     def Volume(self) -> DevicesLogicType:
-        return DevicesLogicType(self._hash, "Volume", self._name_hash)
+        return DevicesLogicType(self._hash, "Volume", self._name)
 
     @Volume.setter
     def Volume(self, value: int | float):
@@ -5061,16 +5039,16 @@ class _RoboticArmDocks(
 ):
     _hash: int = -1818718810
 
-    def __getitem__(self, name: str | int) -> "_RoboticArmDocks":
+    def __getitem__(self, name: str | int | float) -> "_RoboticArmDocks":
         return _RoboticArmDocks(name)
 
     @property
     def Extended(self) -> DevicesLogicType:
-        return DevicesLogicType(self._hash, "Extended", self._name_hash)
+        return DevicesLogicType(self._hash, "Extended", self._name)
 
     @property
     def PositionX(self) -> DevicesLogicType:
-        return DevicesLogicType(self._hash, "PositionX", self._name_hash)
+        return DevicesLogicType(self._hash, "PositionX", self._name)
 
 
 RoboticArmDocks: _RoboticArmDocks = _RoboticArmDocks()
@@ -5153,24 +5131,24 @@ class _LarreDockAtmoss(
 ):
     _hash: int = 1978422481
 
-    def __getitem__(self, name: str | int) -> "_LarreDockAtmoss":
+    def __getitem__(self, name: str | int | float) -> "_LarreDockAtmoss":
         return _LarreDockAtmoss(name)
 
     @property
     def CombustionInput(self) -> DevicesLogicType:
-        return DevicesLogicType(self._hash, "CombustionInput", self._name_hash)
+        return DevicesLogicType(self._hash, "CombustionInput", self._name)
 
     @property
     def Extended(self) -> DevicesLogicType:
-        return DevicesLogicType(self._hash, "Extended", self._name_hash)
+        return DevicesLogicType(self._hash, "Extended", self._name)
 
     @property
     def PositionX(self) -> DevicesLogicType:
-        return DevicesLogicType(self._hash, "PositionX", self._name_hash)
+        return DevicesLogicType(self._hash, "PositionX", self._name)
 
     @property
     def PressureExternal(self) -> DevicesLogicType:
-        return DevicesLogicType(self._hash, "PressureExternal", self._name_hash)
+        return DevicesLogicType(self._hash, "PressureExternal", self._name)
 
     @PressureExternal.setter
     def PressureExternal(self, value: int | float):
@@ -5178,11 +5156,11 @@ class _LarreDockAtmoss(
 
     @property
     def PressureInput(self) -> DevicesLogicType:
-        return DevicesLogicType(self._hash, "PressureInput", self._name_hash)
+        return DevicesLogicType(self._hash, "PressureInput", self._name)
 
     @property
     def PressureInternal(self) -> DevicesLogicType:
-        return DevicesLogicType(self._hash, "PressureInternal", self._name_hash)
+        return DevicesLogicType(self._hash, "PressureInternal", self._name)
 
     @PressureInternal.setter
     def PressureInternal(self, value: int | float):
@@ -5190,11 +5168,11 @@ class _LarreDockAtmoss(
 
     @property
     def TemperatureInput(self) -> DevicesLogicType:
-        return DevicesLogicType(self._hash, "TemperatureInput", self._name_hash)
+        return DevicesLogicType(self._hash, "TemperatureInput", self._name)
 
     @property
     def TotalMolesInput(self) -> DevicesLogicType:
-        return DevicesLogicType(self._hash, "TotalMolesInput", self._name_hash)
+        return DevicesLogicType(self._hash, "TotalMolesInput", self._name)
 
 
 LarreDockAtmoss: _LarreDockAtmoss = _LarreDockAtmoss()
@@ -5207,7 +5185,7 @@ class LarreDockBypass(_BaseStructure, _Open, _Power):
 class _LarreDockBypasss(_BaseStructures, _Opens, _Powers):
     _hash: int = 1011275082
 
-    def __getitem__(self, name: str | int) -> "_LarreDockBypasss":
+    def __getitem__(self, name: str | int | float) -> "_LarreDockBypasss":
         return _LarreDockBypasss(name)
 
 
@@ -5245,24 +5223,24 @@ class _LarreDockCargos(
 ):
     _hash: int = -1555459562
 
-    def __getitem__(self, name: str | int) -> "_LarreDockCargos":
+    def __getitem__(self, name: str | int | float) -> "_LarreDockCargos":
         return _LarreDockCargos(name)
 
     @property
     def Extended(self) -> DevicesLogicType:
-        return DevicesLogicType(self._hash, "Extended", self._name_hash)
+        return DevicesLogicType(self._hash, "Extended", self._name)
 
     @property
     def PositionX(self) -> DevicesLogicType:
-        return DevicesLogicType(self._hash, "PositionX", self._name_hash)
+        return DevicesLogicType(self._hash, "PositionX", self._name)
 
     @property
     def TargetPrefabHash(self) -> DevicesLogicType:
-        return DevicesLogicType(self._hash, "TargetPrefabHash", self._name_hash)
+        return DevicesLogicType(self._hash, "TargetPrefabHash", self._name)
 
     @property
     def TargetSlotIndex(self) -> DevicesLogicType:
-        return DevicesLogicType(self._hash, "TargetSlotIndex", self._name_hash)
+        return DevicesLogicType(self._hash, "TargetSlotIndex", self._name)
 
     @TargetSlotIndex.setter
     def TargetSlotIndex(self, value: int | float):
@@ -5309,16 +5287,16 @@ class _LarreDockCollectors(
 ):
     _hash: int = -522428667
 
-    def __getitem__(self, name: str | int) -> "_LarreDockCollectors":
+    def __getitem__(self, name: str | int | float) -> "_LarreDockCollectors":
         return _LarreDockCollectors(name)
 
     @property
     def Extended(self) -> DevicesLogicType:
-        return DevicesLogicType(self._hash, "Extended", self._name_hash)
+        return DevicesLogicType(self._hash, "Extended", self._name)
 
     @property
     def PositionX(self) -> DevicesLogicType:
-        return DevicesLogicType(self._hash, "PositionX", self._name_hash)
+        return DevicesLogicType(self._hash, "PositionX", self._name)
 
 
 LarreDockCollectors: _LarreDockCollectors = _LarreDockCollectors()
@@ -5351,24 +5329,24 @@ class _LarreDockHydroponicss(
 ):
     _hash: int = 85133079
 
-    def __getitem__(self, name: str | int) -> "_LarreDockHydroponicss":
+    def __getitem__(self, name: str | int | float) -> "_LarreDockHydroponicss":
         return _LarreDockHydroponicss(name)
 
     @property
     def Extended(self) -> DevicesLogicType:
-        return DevicesLogicType(self._hash, "Extended", self._name_hash)
+        return DevicesLogicType(self._hash, "Extended", self._name)
 
     @property
     def PositionX(self) -> DevicesLogicType:
-        return DevicesLogicType(self._hash, "PositionX", self._name_hash)
+        return DevicesLogicType(self._hash, "PositionX", self._name)
 
     @property
     def TargetPrefabHash(self) -> DevicesLogicType:
-        return DevicesLogicType(self._hash, "TargetPrefabHash", self._name_hash)
+        return DevicesLogicType(self._hash, "TargetPrefabHash", self._name)
 
     @property
     def TargetSlotIndex(self) -> DevicesLogicType:
-        return DevicesLogicType(self._hash, "TargetSlotIndex", self._name_hash)
+        return DevicesLogicType(self._hash, "TargetSlotIndex", self._name)
 
 
 LarreDockHydroponicss: _LarreDockHydroponicss = _LarreDockHydroponicss()
@@ -5389,12 +5367,12 @@ class Diode(_BaseStructure, _Lock, _Power):
 class _Diodes(_BaseStructures, _Locks, _Powers):
     _hash: int = 1944485013
 
-    def __getitem__(self, name: str | int) -> "_Diodes":
+    def __getitem__(self, name: str | int | float) -> "_Diodes":
         return _Diodes(name)
 
     @property
     def Color(self) -> DevicesLogicType:
-        return DevicesLogicType(self._hash, "Color", self._name_hash)
+        return DevicesLogicType(self._hash, "Color", self._name)
 
     @Color.setter
     def Color(self, value: int | float):
@@ -5419,12 +5397,12 @@ class ConsoleLED1x3(_BaseStructure, _Error, _Mode, _Power, _SettingW):
 class _ConsoleLED1x3s(_BaseStructures, _Errors, _Modes, _Powers, _SettingWs):
     _hash: int = -1949054743
 
-    def __getitem__(self, name: str | int) -> "_ConsoleLED1x3s":
+    def __getitem__(self, name: str | int | float) -> "_ConsoleLED1x3s":
         return _ConsoleLED1x3s(name)
 
     @property
     def Color(self) -> DevicesLogicType:
-        return DevicesLogicType(self._hash, "Color", self._name_hash)
+        return DevicesLogicType(self._hash, "Color", self._name)
 
     @Color.setter
     def Color(self, value: int | float):
@@ -5449,12 +5427,12 @@ class ConsoleLED1x2(_BaseStructure, _Error, _Mode, _Power, _SettingW):
 class _ConsoleLED1x2s(_BaseStructures, _Errors, _Modes, _Powers, _SettingWs):
     _hash: int = -53151617
 
-    def __getitem__(self, name: str | int) -> "_ConsoleLED1x2s":
+    def __getitem__(self, name: str | int | float) -> "_ConsoleLED1x2s":
         return _ConsoleLED1x2s(name)
 
     @property
     def Color(self) -> DevicesLogicType:
-        return DevicesLogicType(self._hash, "Color", self._name_hash)
+        return DevicesLogicType(self._hash, "Color", self._name)
 
     @Color.setter
     def Color(self, value: int | float):
@@ -5479,12 +5457,12 @@ class ConsoleLED5(_BaseStructure, _Error, _Mode, _Power, _SettingW):
 class _ConsoleLED5s(_BaseStructures, _Errors, _Modes, _Powers, _SettingWs):
     _hash: int = -815193061
 
-    def __getitem__(self, name: str | int) -> "_ConsoleLED5s":
+    def __getitem__(self, name: str | int | float) -> "_ConsoleLED5s":
         return _ConsoleLED5s(name)
 
     @property
     def Color(self) -> DevicesLogicType:
-        return DevicesLogicType(self._hash, "Color", self._name_hash)
+        return DevicesLogicType(self._hash, "Color", self._name)
 
     @Color.setter
     def Color(self, value: int | float):
@@ -5505,7 +5483,9 @@ class _LargeDirectHeatExchangeLiquidtoLiquids(
 ):
     _hash: int = 792686502
 
-    def __getitem__(self, name: str | int) -> "_LargeDirectHeatExchangeLiquidtoLiquids":
+    def __getitem__(
+        self, name: str | int | float
+    ) -> "_LargeDirectHeatExchangeLiquidtoLiquids":
         return _LargeDirectHeatExchangeLiquidtoLiquids(name)
 
 
@@ -5523,7 +5503,9 @@ class _LargeDirectHeatExchangeGastoGass(
 ):
     _hash: int = -1230658883
 
-    def __getitem__(self, name: str | int) -> "_LargeDirectHeatExchangeGastoGass":
+    def __getitem__(
+        self, name: str | int | float
+    ) -> "_LargeDirectHeatExchangeGastoGass":
         return _LargeDirectHeatExchangeGastoGass(name)
 
 
@@ -5541,7 +5523,9 @@ class _LargeDirectHeatExchangeGastoLiquids(
 ):
     _hash: int = 1412338038
 
-    def __getitem__(self, name: str | int) -> "_LargeDirectHeatExchangeGastoLiquids":
+    def __getitem__(
+        self, name: str | int | float
+    ) -> "_LargeDirectHeatExchangeGastoLiquids":
         return _LargeDirectHeatExchangeGastoLiquids(name)
 
 
@@ -5569,12 +5553,12 @@ class _LargeExtendableRadiators(
 ):
     _hash: int = -566775170
 
-    def __getitem__(self, name: str | int) -> "_LargeExtendableRadiators":
+    def __getitem__(self, name: str | int | float) -> "_LargeExtendableRadiators":
         return _LargeExtendableRadiators(name)
 
     @property
     def Horizontal(self) -> DevicesLogicType:
-        return DevicesLogicType(self._hash, "Horizontal", self._name_hash)
+        return DevicesLogicType(self._hash, "Horizontal", self._name)
 
     @Horizontal.setter
     def Horizontal(self, value: int | float):
@@ -5593,7 +5577,7 @@ class _LargeHangerDoors(
 ):
     _hash: int = -1351081801
 
-    def __getitem__(self, name: str | int) -> "_LargeHangerDoors":
+    def __getitem__(self, name: str | int | float) -> "_LargeHangerDoors":
         return _LargeHangerDoors(name)
 
 
@@ -5659,12 +5643,12 @@ class _LargeSatelliteDishs(
 ):
     _hash: int = 1913391845
 
-    def __getitem__(self, name: str | int) -> "_LargeSatelliteDishs":
+    def __getitem__(self, name: str | int | float) -> "_LargeSatelliteDishs":
         return _LargeSatelliteDishs(name)
 
     @property
     def BestContactFilter(self) -> DevicesLogicType:
-        return DevicesLogicType(self._hash, "BestContactFilter", self._name_hash)
+        return DevicesLogicType(self._hash, "BestContactFilter", self._name)
 
     @BestContactFilter.setter
     def BestContactFilter(self, value: int | float):
@@ -5672,35 +5656,35 @@ class _LargeSatelliteDishs(
 
     @property
     def ContactTypeId(self) -> DevicesLogicType:
-        return DevicesLogicType(self._hash, "ContactTypeId", self._name_hash)
+        return DevicesLogicType(self._hash, "ContactTypeId", self._name)
 
     @property
     def InterrogationProgress(self) -> DevicesLogicType:
-        return DevicesLogicType(self._hash, "InterrogationProgress", self._name_hash)
+        return DevicesLogicType(self._hash, "InterrogationProgress", self._name)
 
     @property
     def MinimumWattsToContact(self) -> DevicesLogicType:
-        return DevicesLogicType(self._hash, "MinimumWattsToContact", self._name_hash)
+        return DevicesLogicType(self._hash, "MinimumWattsToContact", self._name)
 
     @property
     def SignalID(self) -> DevicesLogicType:
-        return DevicesLogicType(self._hash, "SignalID", self._name_hash)
+        return DevicesLogicType(self._hash, "SignalID", self._name)
 
     @property
     def SignalStrength(self) -> DevicesLogicType:
-        return DevicesLogicType(self._hash, "SignalStrength", self._name_hash)
+        return DevicesLogicType(self._hash, "SignalStrength", self._name)
 
     @property
     def SizeX(self) -> DevicesLogicType:
-        return DevicesLogicType(self._hash, "SizeX", self._name_hash)
+        return DevicesLogicType(self._hash, "SizeX", self._name)
 
     @property
     def SizeZ(self) -> DevicesLogicType:
-        return DevicesLogicType(self._hash, "SizeZ", self._name_hash)
+        return DevicesLogicType(self._hash, "SizeZ", self._name)
 
     @property
     def TargetPadIndex(self) -> DevicesLogicType:
-        return DevicesLogicType(self._hash, "TargetPadIndex", self._name_hash)
+        return DevicesLogicType(self._hash, "TargetPadIndex", self._name)
 
     @TargetPadIndex.setter
     def TargetPadIndex(self, value: int | float):
@@ -5708,7 +5692,7 @@ class _LargeSatelliteDishs(
 
     @property
     def WattsReachingContact(self) -> DevicesLogicType:
-        return DevicesLogicType(self._hash, "WattsReachingContact", self._name_hash)
+        return DevicesLogicType(self._hash, "WattsReachingContact", self._name)
 
 
 LargeSatelliteDishs: _LargeSatelliteDishs = _LargeSatelliteDishs()
@@ -5745,7 +5729,7 @@ class _TankBigs(
 ):
     _hash: int = -1606848156
 
-    def __getitem__(self, name: str | int) -> "_TankBigs":
+    def __getitem__(self, name: str | int | float) -> "_TankBigs":
         return _TankBigs(name)
 
 
@@ -5759,7 +5743,7 @@ class LogicSwitch(_BaseStructure, _Lock, _Open, _SettingR):
 class _LogicSwitchs(_BaseStructures, _Locks, _Opens, _SettingRs):
     _hash: int = 1220484876
 
-    def __getitem__(self, name: str | int) -> "_LogicSwitchs":
+    def __getitem__(self, name: str | int | float) -> "_LogicSwitchs":
         return _LogicSwitchs(name)
 
 
@@ -5773,7 +5757,7 @@ class LightRound(_BaseStructure, _Lock, _Power):
 class _LightRounds(_BaseStructures, _Locks, _Powers):
     _hash: int = 1514476632
 
-    def __getitem__(self, name: str | int) -> "_LightRounds":
+    def __getitem__(self, name: str | int | float) -> "_LightRounds":
         return _LightRounds(name)
 
 
@@ -5787,7 +5771,7 @@ class LightRoundAngled(_BaseStructure, _Lock, _Power):
 class _LightRoundAngleds(_BaseStructures, _Locks, _Powers):
     _hash: int = 1592905386
 
-    def __getitem__(self, name: str | int) -> "_LightRoundAngleds":
+    def __getitem__(self, name: str | int | float) -> "_LightRoundAngleds":
         return _LightRoundAngleds(name)
 
 
@@ -5801,7 +5785,7 @@ class LightRoundSmall(_BaseStructure, _Lock, _Power):
 class _LightRoundSmalls(_BaseStructures, _Locks, _Powers):
     _hash: int = 1436121888
 
-    def __getitem__(self, name: str | int) -> "_LightRoundSmalls":
+    def __getitem__(self, name: str | int | float) -> "_LightRoundSmalls":
         return _LightRoundSmalls(name)
 
 
@@ -5823,16 +5807,16 @@ class RobotArmDoor(_BaseStructure, _Open):
 class _RobotArmDoors(_BaseStructures, _Opens):
     _hash: int = -2131782367
 
-    def __getitem__(self, name: str | int) -> "_RobotArmDoors":
+    def __getitem__(self, name: str | int | float) -> "_RobotArmDoors":
         return _RobotArmDoors(name)
 
     @property
     def Power(self) -> DevicesLogicType:
-        return DevicesLogicType(self._hash, "Power", self._name_hash)
+        return DevicesLogicType(self._hash, "Power", self._name)
 
     @property
     def RequiredPower(self) -> DevicesLogicType:
-        return DevicesLogicType(self._hash, "RequiredPower", self._name_hash)
+        return DevicesLogicType(self._hash, "RequiredPower", self._name)
 
 
 RobotArmDoors: _RobotArmDoors = _RobotArmDoors()
@@ -5849,7 +5833,7 @@ class _BackLiquidPressureRegulators(
 ):
     _hash: int = 2099900163
 
-    def __getitem__(self, name: str | int) -> "_BackLiquidPressureRegulators":
+    def __getitem__(self, name: str | int | float) -> "_BackLiquidPressureRegulators":
         return _BackLiquidPressureRegulators(name)
 
 
@@ -5887,7 +5871,7 @@ class _MediumRocketLiquidFuelTanks(
 ):
     _hash: int = 1143639539
 
-    def __getitem__(self, name: str | int) -> "_MediumRocketLiquidFuelTanks":
+    def __getitem__(self, name: str | int | float) -> "_MediumRocketLiquidFuelTanks":
         return _MediumRocketLiquidFuelTanks(name)
 
 
@@ -5925,7 +5909,7 @@ class _CapsuleTankLiquids(
 ):
     _hash: int = 1415396263
 
-    def __getitem__(self, name: str | int) -> "_CapsuleTankLiquids":
+    def __getitem__(self, name: str | int | float) -> "_CapsuleTankLiquids":
         return _CapsuleTankLiquids(name)
 
 
@@ -5943,7 +5927,7 @@ class _WaterDigitalValves(
 ):
     _hash: int = -517628750
 
-    def __getitem__(self, name: str | int) -> "_WaterDigitalValves":
+    def __getitem__(self, name: str | int | float) -> "_WaterDigitalValves":
         return _WaterDigitalValves(name)
 
 
@@ -5979,7 +5963,7 @@ class _LiquidPipeAnalyzers(
 ):
     _hash: int = -2113838091
 
-    def __getitem__(self, name: str | int) -> "_LiquidPipeAnalyzers":
+    def __getitem__(self, name: str | int | float) -> "_LiquidPipeAnalyzers":
         return _LiquidPipeAnalyzers(name)
 
 
@@ -6015,7 +5999,7 @@ class _LiquidTankBigs(
 ):
     _hash: int = 1098900430
 
-    def __getitem__(self, name: str | int) -> "_LiquidTankBigs":
+    def __getitem__(self, name: str | int | float) -> "_LiquidTankBigs":
         return _LiquidTankBigs(name)
 
 
@@ -6051,7 +6035,7 @@ class _LiquidTankBigInsulateds(
 ):
     _hash: int = -1430440215
 
-    def __getitem__(self, name: str | int) -> "_LiquidTankBigInsulateds":
+    def __getitem__(self, name: str | int | float) -> "_LiquidTankBigInsulateds":
         return _LiquidTankBigInsulateds(name)
 
 
@@ -6087,7 +6071,7 @@ class _LiquidTankSmalls(
 ):
     _hash: int = 1988118157
 
-    def __getitem__(self, name: str | int) -> "_LiquidTankSmalls":
+    def __getitem__(self, name: str | int | float) -> "_LiquidTankSmalls":
         return _LiquidTankSmalls(name)
 
 
@@ -6123,7 +6107,7 @@ class _LiquidTankSmallInsulateds(
 ):
     _hash: int = 608607718
 
-    def __getitem__(self, name: str | int) -> "_LiquidTankSmallInsulateds":
+    def __getitem__(self, name: str | int | float) -> "_LiquidTankSmallInsulateds":
         return _LiquidTankSmallInsulateds(name)
 
 
@@ -6165,36 +6149,36 @@ class LiquidTankStorage(_BaseStructure, _Quantity, _Temperature):
 class _LiquidTankStorages(_BaseStructures, _Quantitys, _Temperatures):
     _hash: int = 1691898022
 
-    def __getitem__(self, name: str | int) -> "_LiquidTankStorages":
+    def __getitem__(self, name: str | int | float) -> "_LiquidTankStorages":
         return _LiquidTankStorages(name)
 
     @property
     def RatioCarbonDioxide(self) -> DevicesLogicType:
-        return DevicesLogicType(self._hash, "RatioCarbonDioxide", self._name_hash)
+        return DevicesLogicType(self._hash, "RatioCarbonDioxide", self._name)
 
     @property
     def RatioNitrogen(self) -> DevicesLogicType:
-        return DevicesLogicType(self._hash, "RatioNitrogen", self._name_hash)
+        return DevicesLogicType(self._hash, "RatioNitrogen", self._name)
 
     @property
     def RatioNitrousOxide(self) -> DevicesLogicType:
-        return DevicesLogicType(self._hash, "RatioNitrousOxide", self._name_hash)
+        return DevicesLogicType(self._hash, "RatioNitrousOxide", self._name)
 
     @property
     def RatioOxygen(self) -> DevicesLogicType:
-        return DevicesLogicType(self._hash, "RatioOxygen", self._name_hash)
+        return DevicesLogicType(self._hash, "RatioOxygen", self._name)
 
     @property
     def RatioPollutant(self) -> DevicesLogicType:
-        return DevicesLogicType(self._hash, "RatioPollutant", self._name_hash)
+        return DevicesLogicType(self._hash, "RatioPollutant", self._name)
 
     @property
     def RatioVolatiles(self) -> DevicesLogicType:
-        return DevicesLogicType(self._hash, "RatioVolatiles", self._name_hash)
+        return DevicesLogicType(self._hash, "RatioVolatiles", self._name)
 
     @property
     def RatioWater(self) -> DevicesLogicType:
-        return DevicesLogicType(self._hash, "RatioWater", self._name_hash)
+        return DevicesLogicType(self._hash, "RatioWater", self._name)
 
 
 LiquidTankStorages: _LiquidTankStorages = _LiquidTankStorages()
@@ -6211,7 +6195,7 @@ class _LiquidVolumePumps(
 ):
     _hash: int = -454028979
 
-    def __getitem__(self, name: str | int) -> "_LiquidVolumePumps":
+    def __getitem__(self, name: str | int | float) -> "_LiquidVolumePumps":
         return _LiquidVolumePumps(name)
 
 
@@ -6229,7 +6213,7 @@ class _LiquidPressureRegulators(
 ):
     _hash: int = 482248766
 
-    def __getitem__(self, name: str | int) -> "_LiquidPressureRegulators":
+    def __getitem__(self, name: str | int | float) -> "_LiquidPressureRegulators":
         return _LiquidPressureRegulators(name)
 
 
@@ -6247,7 +6231,7 @@ class _WaterWallCoolers(
 ):
     _hash: int = -1369060582
 
-    def __getitem__(self, name: str | int) -> "_WaterWallCoolers":
+    def __getitem__(self, name: str | int | float) -> "_WaterWallCoolers":
         return _WaterWallCoolers(name)
 
 
@@ -6261,7 +6245,7 @@ class StorageLocker(_BaseStructure, _Lock, _Open):
 class _StorageLockers(_BaseStructures, _Locks, _Opens):
     _hash: int = -793623899
 
-    def __getitem__(self, name: str | int) -> "_StorageLockers":
+    def __getitem__(self, name: str | int | float) -> "_StorageLockers":
         return _StorageLockers(name)
 
 
@@ -6275,7 +6259,7 @@ class LockerSmall(_BaseStructure, _Lock, _Open):
 class _LockerSmalls(_BaseStructures, _Locks, _Opens):
     _hash: int = -647164662
 
-    def __getitem__(self, name: str | int) -> "_LockerSmalls":
+    def __getitem__(self, name: str | int | float) -> "_LockerSmalls":
         return _LockerSmalls(name)
 
 
@@ -6289,7 +6273,7 @@ class LogicCompare(_BaseStructure, _Error, _Mode, _Power, _SettingR):
 class _LogicCompares(_BaseStructures, _Errors, _Modes, _Powers, _SettingRs):
     _hash: int = -1489728908
 
-    def __getitem__(self, name: str | int) -> "_LogicCompares":
+    def __getitem__(self, name: str | int | float) -> "_LogicCompares":
         return _LogicCompares(name)
 
 
@@ -6303,7 +6287,7 @@ class LogicGate(_BaseStructure, _Error, _Mode, _Power, _SettingR):
 class _LogicGates(_BaseStructures, _Errors, _Modes, _Powers, _SettingRs):
     _hash: int = 1942143074
 
-    def __getitem__(self, name: str | int) -> "_LogicGates":
+    def __getitem__(self, name: str | int | float) -> "_LogicGates":
         return _LogicGates(name)
 
 
@@ -6317,7 +6301,7 @@ class LogicHashGen(_BaseStructure, _SettingR):
 class _LogicHashGens(_BaseStructures, _SettingRs):
     _hash: int = 2077593121
 
-    def __getitem__(self, name: str | int) -> "_LogicHashGens":
+    def __getitem__(self, name: str | int | float) -> "_LogicHashGens":
         return _LogicHashGens(name)
 
 
@@ -6331,7 +6315,7 @@ class LogicMath(_BaseStructure, _Error, _Mode, _Power, _SettingR):
 class _LogicMaths(_BaseStructures, _Errors, _Modes, _Powers, _SettingRs):
     _hash: int = 1657691323
 
-    def __getitem__(self, name: str | int) -> "_LogicMaths":
+    def __getitem__(self, name: str | int | float) -> "_LogicMaths":
         return _LogicMaths(name)
 
 
@@ -6345,7 +6329,7 @@ class LogicMemory(_BaseStructure, _SettingW):
 class _LogicMemorys(_BaseStructures, _SettingWs):
     _hash: int = -851746783
 
-    def __getitem__(self, name: str | int) -> "_LogicMemorys":
+    def __getitem__(self, name: str | int | float) -> "_LogicMemorys":
         return _LogicMemorys(name)
 
 
@@ -6359,7 +6343,7 @@ class LogicMinMax(_BaseStructure, _Error, _Mode, _Power, _SettingR):
 class _LogicMinMaxs(_BaseStructures, _Errors, _Modes, _Powers, _SettingRs):
     _hash: int = 929022276
 
-    def __getitem__(self, name: str | int) -> "_LogicMinMaxs":
+    def __getitem__(self, name: str | int | float) -> "_LogicMinMaxs":
         return _LogicMinMaxs(name)
 
 
@@ -6373,7 +6357,7 @@ class LogicReader(_BaseStructure, _Error, _Power, _SettingR):
 class _LogicReaders(_BaseStructures, _Errors, _Powers, _SettingRs):
     _hash: int = -345383640
 
-    def __getitem__(self, name: str | int) -> "_LogicReaders":
+    def __getitem__(self, name: str | int | float) -> "_LogicReaders":
         return _LogicReaders(name)
 
 
@@ -6395,16 +6379,16 @@ class LogicRocketDownlink(_BaseStructure):
 class _LogicRocketDownlinks(_BaseStructures):
     _hash: int = 876108549
 
-    def __getitem__(self, name: str | int) -> "_LogicRocketDownlinks":
+    def __getitem__(self, name: str | int | float) -> "_LogicRocketDownlinks":
         return _LogicRocketDownlinks(name)
 
     @property
     def Power(self) -> DevicesLogicType:
-        return DevicesLogicType(self._hash, "Power", self._name_hash)
+        return DevicesLogicType(self._hash, "Power", self._name)
 
     @property
     def RequiredPower(self) -> DevicesLogicType:
-        return DevicesLogicType(self._hash, "RequiredPower", self._name_hash)
+        return DevicesLogicType(self._hash, "RequiredPower", self._name)
 
 
 LogicRocketDownlinks: _LogicRocketDownlinks = _LogicRocketDownlinks()
@@ -6417,7 +6401,7 @@ class LogicSelect(_BaseStructure, _Error, _Mode, _Power, _SettingR):
 class _LogicSelects(_BaseStructures, _Errors, _Modes, _Powers, _SettingRs):
     _hash: int = 1822736084
 
-    def __getitem__(self, name: str | int) -> "_LogicSelects":
+    def __getitem__(self, name: str | int | float) -> "_LogicSelects":
         return _LogicSelects(name)
 
 
@@ -6449,7 +6433,7 @@ class _LogicSorters(
 ):
     _hash: int = 873418029
 
-    def __getitem__(self, name: str | int) -> "_LogicSorters":
+    def __getitem__(self, name: str | int | float) -> "_LogicSorters":
         return _LogicSorters(name)
 
 
@@ -6463,7 +6447,7 @@ class LogicRocketUplink(_BaseStructure, _Error, _Power):
 class _LogicRocketUplinks(_BaseStructures, _Errors, _Powers):
     _hash: int = 546002924
 
-    def __getitem__(self, name: str | int) -> "_LogicRocketUplinks":
+    def __getitem__(self, name: str | int | float) -> "_LogicRocketUplinks":
         return _LogicRocketUplinks(name)
 
 
@@ -6485,12 +6469,12 @@ class LogicWriter(_BaseStructure, _Error, _Power):
 class _LogicWriters(_BaseStructures, _Errors, _Powers):
     _hash: int = -1326019434
 
-    def __getitem__(self, name: str | int) -> "_LogicWriters":
+    def __getitem__(self, name: str | int | float) -> "_LogicWriters":
         return _LogicWriters(name)
 
     @property
     def ForceWrite(self) -> DevicesLogicType:
-        return DevicesLogicType(self._hash, "ForceWrite", self._name_hash)
+        return DevicesLogicType(self._hash, "ForceWrite", self._name)
 
     @ForceWrite.setter
     def ForceWrite(self, value: int | float):
@@ -6515,12 +6499,12 @@ class LogicWriterSwitch(_BaseStructure, _Activate, _Error, _Power):
 class _LogicWriterSwitchs(_BaseStructures, _Activates, _Errors, _Powers):
     _hash: int = -1321250424
 
-    def __getitem__(self, name: str | int) -> "_LogicWriterSwitchs":
+    def __getitem__(self, name: str | int | float) -> "_LogicWriterSwitchs":
         return _LogicWriterSwitchs(name)
 
     @property
     def ForceWrite(self) -> DevicesLogicType:
-        return DevicesLogicType(self._hash, "ForceWrite", self._name_hash)
+        return DevicesLogicType(self._hash, "ForceWrite", self._name)
 
     @ForceWrite.setter
     def ForceWrite(self, value: int | float):
@@ -6537,7 +6521,7 @@ class ManualFloorHatch(_BaseStructure, _Idle, _Lock, _Open, _SettingW):
 class _ManualFloorHatchs(_BaseStructures, _Idles, _Locks, _Opens, _SettingWs):
     _hash: int = 1435578852
 
-    def __getitem__(self, name: str | int) -> "_ManualFloorHatchs":
+    def __getitem__(self, name: str | int | float) -> "_ManualFloorHatchs":
         return _ManualFloorHatchs(name)
 
 
@@ -6553,7 +6537,7 @@ class _ManualHatchs(
 ):
     _hash: int = -1808154199
 
-    def __getitem__(self, name: str | int) -> "_ManualHatchs":
+    def __getitem__(self, name: str | int | float) -> "_ManualHatchs":
         return _ManualHatchs(name)
 
 
@@ -6567,7 +6551,7 @@ class LogicMathUnary(_BaseStructure, _Error, _Mode, _Power, _SettingR):
 class _LogicMathUnarys(_BaseStructures, _Errors, _Modes, _Powers, _SettingRs):
     _hash: int = -1160020195
 
-    def __getitem__(self, name: str | int) -> "_LogicMathUnarys":
+    def __getitem__(self, name: str | int | float) -> "_LogicMathUnarys":
         return _LogicMathUnarys(name)
 
 
@@ -6581,7 +6565,7 @@ class MediumConvectionRadiator(_BaseStructure, _Maximum, _Ratio, _SettingW):
 class _MediumConvectionRadiators(_BaseStructures, _Maximums, _Ratios, _SettingWs):
     _hash: int = -1918215845
 
-    def __getitem__(self, name: str | int) -> "_MediumConvectionRadiators":
+    def __getitem__(self, name: str | int | float) -> "_MediumConvectionRadiators":
         return _MediumConvectionRadiators(name)
 
 
@@ -6595,7 +6579,7 @@ class PassiveLargeRadiatorGas(_BaseStructure, _Maximum, _Ratio, _SettingW):
 class _PassiveLargeRadiatorGass(_BaseStructures, _Maximums, _Ratios, _SettingWs):
     _hash: int = 2066977095
 
-    def __getitem__(self, name: str | int) -> "_PassiveLargeRadiatorGass":
+    def __getitem__(self, name: str | int | float) -> "_PassiveLargeRadiatorGass":
         return _PassiveLargeRadiatorGass(name)
 
 
@@ -6609,7 +6593,9 @@ class MediumConvectionRadiatorLiquid(_BaseStructure, _Maximum, _Ratio, _SettingW
 class _MediumConvectionRadiatorLiquids(_BaseStructures, _Maximums, _Ratios, _SettingWs):
     _hash: int = -1169014183
 
-    def __getitem__(self, name: str | int) -> "_MediumConvectionRadiatorLiquids":
+    def __getitem__(
+        self, name: str | int | float
+    ) -> "_MediumConvectionRadiatorLiquids":
         return _MediumConvectionRadiatorLiquids(name)
 
 
@@ -6625,7 +6611,7 @@ class PassiveLargeRadiatorLiquid(_BaseStructure, _Maximum, _Ratio, _SettingW):
 class _PassiveLargeRadiatorLiquids(_BaseStructures, _Maximums, _Ratios, _SettingWs):
     _hash: int = 24786172
 
-    def __getitem__(self, name: str | int) -> "_PassiveLargeRadiatorLiquids":
+    def __getitem__(self, name: str | int | float) -> "_PassiveLargeRadiatorLiquids":
         return _PassiveLargeRadiatorLiquids(name)
 
 
@@ -6643,7 +6629,7 @@ class _MediumHangerDoors(
 ):
     _hash: int = -566348148
 
-    def __getitem__(self, name: str | int) -> "_MediumHangerDoors":
+    def __getitem__(self, name: str | int | float) -> "_MediumHangerDoors":
         return _MediumHangerDoors(name)
 
 
@@ -6657,7 +6643,7 @@ class MediumRadiator(_BaseStructure, _Maximum, _Ratio, _SettingW):
 class _MediumRadiators(_BaseStructures, _Maximums, _Ratios, _SettingWs):
     _hash: int = -975966237
 
-    def __getitem__(self, name: str | int) -> "_MediumRadiators":
+    def __getitem__(self, name: str | int | float) -> "_MediumRadiators":
         return _MediumRadiators(name)
 
 
@@ -6671,7 +6657,7 @@ class MediumRadiatorLiquid(_BaseStructure, _Maximum, _Ratio, _SettingW):
 class _MediumRadiatorLiquids(_BaseStructures, _Maximums, _Ratios, _SettingWs):
     _hash: int = -1141760613
 
-    def __getitem__(self, name: str | int) -> "_MediumRadiatorLiquids":
+    def __getitem__(self, name: str | int | float) -> "_MediumRadiatorLiquids":
         return _MediumRadiatorLiquids(name)
 
 
@@ -6737,12 +6723,12 @@ class _SatelliteDishs(
 ):
     _hash: int = 439026183
 
-    def __getitem__(self, name: str | int) -> "_SatelliteDishs":
+    def __getitem__(self, name: str | int | float) -> "_SatelliteDishs":
         return _SatelliteDishs(name)
 
     @property
     def BestContactFilter(self) -> DevicesLogicType:
-        return DevicesLogicType(self._hash, "BestContactFilter", self._name_hash)
+        return DevicesLogicType(self._hash, "BestContactFilter", self._name)
 
     @BestContactFilter.setter
     def BestContactFilter(self, value: int | float):
@@ -6750,35 +6736,35 @@ class _SatelliteDishs(
 
     @property
     def ContactTypeId(self) -> DevicesLogicType:
-        return DevicesLogicType(self._hash, "ContactTypeId", self._name_hash)
+        return DevicesLogicType(self._hash, "ContactTypeId", self._name)
 
     @property
     def InterrogationProgress(self) -> DevicesLogicType:
-        return DevicesLogicType(self._hash, "InterrogationProgress", self._name_hash)
+        return DevicesLogicType(self._hash, "InterrogationProgress", self._name)
 
     @property
     def MinimumWattsToContact(self) -> DevicesLogicType:
-        return DevicesLogicType(self._hash, "MinimumWattsToContact", self._name_hash)
+        return DevicesLogicType(self._hash, "MinimumWattsToContact", self._name)
 
     @property
     def SignalID(self) -> DevicesLogicType:
-        return DevicesLogicType(self._hash, "SignalID", self._name_hash)
+        return DevicesLogicType(self._hash, "SignalID", self._name)
 
     @property
     def SignalStrength(self) -> DevicesLogicType:
-        return DevicesLogicType(self._hash, "SignalStrength", self._name_hash)
+        return DevicesLogicType(self._hash, "SignalStrength", self._name)
 
     @property
     def SizeX(self) -> DevicesLogicType:
-        return DevicesLogicType(self._hash, "SizeX", self._name_hash)
+        return DevicesLogicType(self._hash, "SizeX", self._name)
 
     @property
     def SizeZ(self) -> DevicesLogicType:
-        return DevicesLogicType(self._hash, "SizeZ", self._name_hash)
+        return DevicesLogicType(self._hash, "SizeZ", self._name)
 
     @property
     def TargetPadIndex(self) -> DevicesLogicType:
-        return DevicesLogicType(self._hash, "TargetPadIndex", self._name_hash)
+        return DevicesLogicType(self._hash, "TargetPadIndex", self._name)
 
     @TargetPadIndex.setter
     def TargetPadIndex(self, value: int | float):
@@ -6786,7 +6772,7 @@ class _SatelliteDishs(
 
     @property
     def WattsReachingContact(self) -> DevicesLogicType:
-        return DevicesLogicType(self._hash, "WattsReachingContact", self._name_hash)
+        return DevicesLogicType(self._hash, "WattsReachingContact", self._name)
 
 
 SatelliteDishs: _SatelliteDishs = _SatelliteDishs()
@@ -6823,28 +6809,28 @@ class _PowerTransmitterReceivers(
 ):
     _hash: int = 1195820278
 
-    def __getitem__(self, name: str | int) -> "_PowerTransmitterReceivers":
+    def __getitem__(self, name: str | int | float) -> "_PowerTransmitterReceivers":
         return _PowerTransmitterReceivers(name)
 
     @property
     def PositionX(self) -> DevicesLogicType:
-        return DevicesLogicType(self._hash, "PositionX", self._name_hash)
+        return DevicesLogicType(self._hash, "PositionX", self._name)
 
     @property
     def PositionY(self) -> DevicesLogicType:
-        return DevicesLogicType(self._hash, "PositionY", self._name_hash)
+        return DevicesLogicType(self._hash, "PositionY", self._name)
 
     @property
     def PositionZ(self) -> DevicesLogicType:
-        return DevicesLogicType(self._hash, "PositionZ", self._name_hash)
+        return DevicesLogicType(self._hash, "PositionZ", self._name)
 
     @property
     def PowerActual(self) -> DevicesLogicType:
-        return DevicesLogicType(self._hash, "PowerActual", self._name_hash)
+        return DevicesLogicType(self._hash, "PowerActual", self._name)
 
     @property
     def PowerPotential(self) -> DevicesLogicType:
-        return DevicesLogicType(self._hash, "PowerPotential", self._name_hash)
+        return DevicesLogicType(self._hash, "PowerPotential", self._name)
 
 
 PowerTransmitterReceivers: _PowerTransmitterReceivers = _PowerTransmitterReceivers()
@@ -6879,28 +6865,28 @@ class _PowerTransmitters(
 ):
     _hash: int = -65087121
 
-    def __getitem__(self, name: str | int) -> "_PowerTransmitters":
+    def __getitem__(self, name: str | int | float) -> "_PowerTransmitters":
         return _PowerTransmitters(name)
 
     @property
     def PositionX(self) -> DevicesLogicType:
-        return DevicesLogicType(self._hash, "PositionX", self._name_hash)
+        return DevicesLogicType(self._hash, "PositionX", self._name)
 
     @property
     def PositionY(self) -> DevicesLogicType:
-        return DevicesLogicType(self._hash, "PositionY", self._name_hash)
+        return DevicesLogicType(self._hash, "PositionY", self._name)
 
     @property
     def PositionZ(self) -> DevicesLogicType:
-        return DevicesLogicType(self._hash, "PositionZ", self._name_hash)
+        return DevicesLogicType(self._hash, "PositionZ", self._name)
 
     @property
     def PowerActual(self) -> DevicesLogicType:
-        return DevicesLogicType(self._hash, "PowerActual", self._name_hash)
+        return DevicesLogicType(self._hash, "PowerActual", self._name)
 
     @property
     def PowerPotential(self) -> DevicesLogicType:
-        return DevicesLogicType(self._hash, "PowerPotential", self._name_hash)
+        return DevicesLogicType(self._hash, "PowerPotential", self._name)
 
 
 PowerTransmitters: _PowerTransmitters = _PowerTransmitters()
@@ -6913,7 +6899,7 @@ class MotionSensor(_BaseStructure, _Activate, _On, _Quantity):
 class _MotionSensors(_BaseStructures, _Activates, _Ons, _Quantitys):
     _hash: int = -1713470563
 
-    def __getitem__(self, name: str | int) -> "_MotionSensors":
+    def __getitem__(self, name: str | int | float) -> "_MotionSensors":
         return _MotionSensors(name)
 
 
@@ -7065,122 +7051,114 @@ class _Nitrolyzers(
 ):
     _hash: int = 1898243702
 
-    def __getitem__(self, name: str | int) -> "_Nitrolyzers":
+    def __getitem__(self, name: str | int | float) -> "_Nitrolyzers":
         return _Nitrolyzers(name)
 
     @property
     def CombustionInput(self) -> DevicesLogicType:
-        return DevicesLogicType(self._hash, "CombustionInput", self._name_hash)
+        return DevicesLogicType(self._hash, "CombustionInput", self._name)
 
     @property
     def CombustionInput2(self) -> DevicesLogicType:
-        return DevicesLogicType(self._hash, "CombustionInput2", self._name_hash)
+        return DevicesLogicType(self._hash, "CombustionInput2", self._name)
 
     @property
     def CombustionOutput(self) -> DevicesLogicType:
-        return DevicesLogicType(self._hash, "CombustionOutput", self._name_hash)
+        return DevicesLogicType(self._hash, "CombustionOutput", self._name)
 
     @property
     def PressureInput(self) -> DevicesLogicType:
-        return DevicesLogicType(self._hash, "PressureInput", self._name_hash)
+        return DevicesLogicType(self._hash, "PressureInput", self._name)
 
     @property
     def PressureInput2(self) -> DevicesLogicType:
-        return DevicesLogicType(self._hash, "PressureInput2", self._name_hash)
+        return DevicesLogicType(self._hash, "PressureInput2", self._name)
 
     @property
     def PressureOutput(self) -> DevicesLogicType:
-        return DevicesLogicType(self._hash, "PressureOutput", self._name_hash)
+        return DevicesLogicType(self._hash, "PressureOutput", self._name)
 
     @property
     def RatioCarbonDioxideInput2(self) -> DevicesLogicType:
-        return DevicesLogicType(self._hash, "RatioCarbonDioxideInput2", self._name_hash)
+        return DevicesLogicType(self._hash, "RatioCarbonDioxideInput2", self._name)
 
     @property
     def RatioLiquidCarbonDioxideInput2(self) -> DevicesLogicType:
         return DevicesLogicType(
-            self._hash, "RatioLiquidCarbonDioxideInput2", self._name_hash
+            self._hash, "RatioLiquidCarbonDioxideInput2", self._name
         )
 
     @property
     def RatioLiquidNitrogenInput2(self) -> DevicesLogicType:
-        return DevicesLogicType(
-            self._hash, "RatioLiquidNitrogenInput2", self._name_hash
-        )
+        return DevicesLogicType(self._hash, "RatioLiquidNitrogenInput2", self._name)
 
     @property
     def RatioLiquidNitrousOxideInput2(self) -> DevicesLogicType:
-        return DevicesLogicType(
-            self._hash, "RatioLiquidNitrousOxideInput2", self._name_hash
-        )
+        return DevicesLogicType(self._hash, "RatioLiquidNitrousOxideInput2", self._name)
 
     @property
     def RatioLiquidOxygenInput2(self) -> DevicesLogicType:
-        return DevicesLogicType(self._hash, "RatioLiquidOxygenInput2", self._name_hash)
+        return DevicesLogicType(self._hash, "RatioLiquidOxygenInput2", self._name)
 
     @property
     def RatioLiquidPollutantInput2(self) -> DevicesLogicType:
-        return DevicesLogicType(
-            self._hash, "RatioLiquidPollutantInput2", self._name_hash
-        )
+        return DevicesLogicType(self._hash, "RatioLiquidPollutantInput2", self._name)
 
     @property
     def RatioLiquidVolatilesInput2(self) -> DevicesLogicType:
-        return DevicesLogicType(
-            self._hash, "RatioLiquidVolatilesInput2", self._name_hash
-        )
+        return DevicesLogicType(self._hash, "RatioLiquidVolatilesInput2", self._name)
 
     @property
     def RatioNitrogenInput2(self) -> DevicesLogicType:
-        return DevicesLogicType(self._hash, "RatioNitrogenInput2", self._name_hash)
+        return DevicesLogicType(self._hash, "RatioNitrogenInput2", self._name)
 
     @property
     def RatioNitrousOxideInput2(self) -> DevicesLogicType:
-        return DevicesLogicType(self._hash, "RatioNitrousOxideInput2", self._name_hash)
+        return DevicesLogicType(self._hash, "RatioNitrousOxideInput2", self._name)
 
     @property
     def RatioOxygenInput2(self) -> DevicesLogicType:
-        return DevicesLogicType(self._hash, "RatioOxygenInput2", self._name_hash)
+        return DevicesLogicType(self._hash, "RatioOxygenInput2", self._name)
 
     @property
     def RatioPollutantInput2(self) -> DevicesLogicType:
-        return DevicesLogicType(self._hash, "RatioPollutantInput2", self._name_hash)
+        return DevicesLogicType(self._hash, "RatioPollutantInput2", self._name)
 
     @property
     def RatioSteamInput2(self) -> DevicesLogicType:
-        return DevicesLogicType(self._hash, "RatioSteamInput2", self._name_hash)
+        return DevicesLogicType(self._hash, "RatioSteamInput2", self._name)
 
     @property
     def RatioVolatilesInput2(self) -> DevicesLogicType:
-        return DevicesLogicType(self._hash, "RatioVolatilesInput2", self._name_hash)
+        return DevicesLogicType(self._hash, "RatioVolatilesInput2", self._name)
 
     @property
     def RatioWaterInput2(self) -> DevicesLogicType:
-        return DevicesLogicType(self._hash, "RatioWaterInput2", self._name_hash)
+        return DevicesLogicType(self._hash, "RatioWaterInput2", self._name)
 
     @property
     def TemperatureInput(self) -> DevicesLogicType:
-        return DevicesLogicType(self._hash, "TemperatureInput", self._name_hash)
+        return DevicesLogicType(self._hash, "TemperatureInput", self._name)
 
     @property
     def TemperatureInput2(self) -> DevicesLogicType:
-        return DevicesLogicType(self._hash, "TemperatureInput2", self._name_hash)
+        return DevicesLogicType(self._hash, "TemperatureInput2", self._name)
 
     @property
     def TemperatureOutput(self) -> DevicesLogicType:
-        return DevicesLogicType(self._hash, "TemperatureOutput", self._name_hash)
+        return DevicesLogicType(self._hash, "TemperatureOutput", self._name)
 
     @property
     def TotalMolesInput(self) -> DevicesLogicType:
-        return DevicesLogicType(self._hash, "TotalMolesInput", self._name_hash)
+        return DevicesLogicType(self._hash, "TotalMolesInput", self._name)
 
     @property
     def TotalMolesInput2(self) -> DevicesLogicType:
-        return DevicesLogicType(self._hash, "TotalMolesInput2", self._name_hash)
+        return DevicesLogicType(self._hash, "TotalMolesInput2", self._name)
 
     @property
     def TotalMolesOutput(self) -> DevicesLogicType:
-        return DevicesLogicType(self._hash, "TotalMolesOutput", self._name_hash)
+        return DevicesLogicType(self._hash, "TotalMolesOutput", self._name)
 
 
 Nitrolyzers: _Nitrolyzers = _Nitrolyzers()
@@ -7213,7 +7191,7 @@ class _HorizontalAutoMiners(
 ):
     _hash: int = 1070427573
 
-    def __getitem__(self, name: str | int) -> "_HorizontalAutoMiners":
+    def __getitem__(self, name: str | int | float) -> "_HorizontalAutoMiners":
         return _HorizontalAutoMiners(name)
 
 
@@ -7231,12 +7209,12 @@ class OccupancySensor(_BaseStructure, _Quantity):
 class _OccupancySensors(_BaseStructures, _Quantitys):
     _hash: int = 322782515
 
-    def __getitem__(self, name: str | int) -> "_OccupancySensors":
+    def __getitem__(self, name: str | int | float) -> "_OccupancySensors":
         return _OccupancySensors(name)
 
     @property
     def Activate(self) -> DevicesLogicType:
-        return DevicesLogicType(self._hash, "Activate", self._name_hash)
+        return DevicesLogicType(self._hash, "Activate", self._name)
 
 
 OccupancySensors: _OccupancySensors = _OccupancySensors()
@@ -7249,7 +7227,7 @@ class PipeOneWayValveLever(_BaseStructure, _Maximum, _On, _Ratio, _SettingW):
 class _PipeOneWayValveLevers(_BaseStructures, _Maximums, _Ons, _Ratios, _SettingWs):
     _hash: int = 1289581593
 
-    def __getitem__(self, name: str | int) -> "_PipeOneWayValveLevers":
+    def __getitem__(self, name: str | int | float) -> "_PipeOneWayValveLevers":
         return _PipeOneWayValveLevers(name)
 
 
@@ -7265,7 +7243,7 @@ class _PipeLiquidOneWayValveLevers(
 ):
     _hash: int = -523832822
 
-    def __getitem__(self, name: str | int) -> "_PipeLiquidOneWayValveLevers":
+    def __getitem__(self, name: str | int | float) -> "_PipeLiquidOneWayValveLevers":
         return _PipeLiquidOneWayValveLevers(name)
 
 
@@ -7281,7 +7259,7 @@ class OverheadShortCornerLocker(_BaseStructure, _Lock, _Open):
 class _OverheadShortCornerLockers(_BaseStructures, _Locks, _Opens):
     _hash: int = -1794932560
 
-    def __getitem__(self, name: str | int) -> "_OverheadShortCornerLockers":
+    def __getitem__(self, name: str | int | float) -> "_OverheadShortCornerLockers":
         return _OverheadShortCornerLockers(name)
 
 
@@ -7295,7 +7273,7 @@ class OverheadShortLocker(_BaseStructure, _Lock, _Open):
 class _OverheadShortLockers(_BaseStructures, _Locks, _Opens):
     _hash: int = 1468249454
 
-    def __getitem__(self, name: str | int) -> "_OverheadShortLockers":
+    def __getitem__(self, name: str | int | float) -> "_OverheadShortLockers":
         return _OverheadShortLockers(name)
 
 
@@ -7331,7 +7309,7 @@ class _PipeAnalysizers(
 ):
     _hash: int = 435685051
 
-    def __getitem__(self, name: str | int) -> "_PipeAnalysizers":
+    def __getitem__(self, name: str | int | float) -> "_PipeAnalysizers":
         return _PipeAnalysizers(name)
 
 
@@ -7345,7 +7323,7 @@ class PipeHeater(_BaseStructure, _Error, _Lock, _Power):
 class _PipeHeaters(_BaseStructures, _Errors, _Locks, _Powers):
     _hash: int = -419758574
 
-    def __getitem__(self, name: str | int) -> "_PipeHeaters":
+    def __getitem__(self, name: str | int | float) -> "_PipeHeaters":
         return _PipeHeaters(name)
 
 
@@ -7359,7 +7337,7 @@ class LiquidPipeHeater(_BaseStructure, _Error, _Lock, _Power):
 class _LiquidPipeHeaters(_BaseStructures, _Errors, _Locks, _Powers):
     _hash: int = -287495560
 
-    def __getitem__(self, name: str | int) -> "_LiquidPipeHeaters":
+    def __getitem__(self, name: str | int | float) -> "_LiquidPipeHeaters":
         return _LiquidPipeHeaters(name)
 
 
@@ -7381,16 +7359,16 @@ class PipeIgniter(_BaseStructure, _Activate, _Error):
 class _PipeIgniters(_BaseStructures, _Activates, _Errors):
     _hash: int = 1286441942
 
-    def __getitem__(self, name: str | int) -> "_PipeIgniters":
+    def __getitem__(self, name: str | int | float) -> "_PipeIgniters":
         return _PipeIgniters(name)
 
     @property
     def Power(self) -> DevicesLogicType:
-        return DevicesLogicType(self._hash, "Power", self._name_hash)
+        return DevicesLogicType(self._hash, "Power", self._name)
 
     @property
     def RequiredPower(self) -> DevicesLogicType:
-        return DevicesLogicType(self._hash, "RequiredPower", self._name_hash)
+        return DevicesLogicType(self._hash, "RequiredPower", self._name)
 
 
 PipeIgniters: _PipeIgniters = _PipeIgniters()
@@ -7403,7 +7381,7 @@ class PortablesConnector(_BaseStructure, _Maximum, _Open, _Ratio, _SettingW):
 class _PortablesConnectors(_BaseStructures, _Maximums, _Opens, _Ratios, _SettingWs):
     _hash: int = -899013427
 
-    def __getitem__(self, name: str | int) -> "_PortablesConnectors":
+    def __getitem__(self, name: str | int | float) -> "_PortablesConnectors":
         return _PortablesConnectors(name)
 
 
@@ -7417,7 +7395,7 @@ class PowerConnector(_BaseStructure, _Open):
 class _PowerConnectors(_BaseStructures, _Opens):
     _hash: int = -782951720
 
-    def __getitem__(self, name: str | int) -> "_PowerConnectors":
+    def __getitem__(self, name: str | int | float) -> "_PowerConnectors":
         return _PowerConnectors(name)
 
 
@@ -7431,7 +7409,7 @@ class PowerTransmitterOmni(_BaseStructure, _Error, _Power):
 class _PowerTransmitterOmnis(_BaseStructures, _Errors, _Powers):
     _hash: int = -327468845
 
-    def __getitem__(self, name: str | int) -> "_PowerTransmitterOmnis":
+    def __getitem__(self, name: str | int | float) -> "_PowerTransmitterOmnis":
         return _PowerTransmitterOmnis(name)
 
 
@@ -7445,7 +7423,7 @@ class Bench(_BaseStructure, _Error, _Power):
 class _Benchs(_BaseStructures, _Errors, _Powers):
     _hash: int = -2042448192
 
-    def __getitem__(self, name: str | int) -> "_Benchs":
+    def __getitem__(self, name: str | int | float) -> "_Benchs":
         return _Benchs(name)
 
 
@@ -7467,12 +7445,12 @@ class PoweredVent(_BaseStructure, _Error, _Lock, _Mode, _Power):
 class _PoweredVents(_BaseStructures, _Errors, _Locks, _Modes, _Powers):
     _hash: int = 938836756
 
-    def __getitem__(self, name: str | int) -> "_PoweredVents":
+    def __getitem__(self, name: str | int | float) -> "_PoweredVents":
         return _PoweredVents(name)
 
     @property
     def PressureExternal(self) -> DevicesLogicType:
-        return DevicesLogicType(self._hash, "PressureExternal", self._name_hash)
+        return DevicesLogicType(self._hash, "PressureExternal", self._name)
 
     @PressureExternal.setter
     def PressureExternal(self, value: int | float):
@@ -7497,12 +7475,12 @@ class PoweredVentLarge(_BaseStructure, _Error, _Lock, _Mode, _Power):
 class _PoweredVentLarges(_BaseStructures, _Errors, _Locks, _Modes, _Powers):
     _hash: int = -785498334
 
-    def __getitem__(self, name: str | int) -> "_PoweredVentLarges":
+    def __getitem__(self, name: str | int | float) -> "_PoweredVentLarges":
         return _PoweredVentLarges(name)
 
     @property
     def PressureExternal(self) -> DevicesLogicType:
-        return DevicesLogicType(self._hash, "PressureExternal", self._name_hash)
+        return DevicesLogicType(self._hash, "PressureExternal", self._name)
 
     @PressureExternal.setter
     def PressureExternal(self, value: int | float):
@@ -7523,7 +7501,7 @@ class _PressurantValves(
 ):
     _hash: int = 23052817
 
-    def __getitem__(self, name: str | int) -> "_PressurantValves":
+    def __getitem__(self, name: str | int | float) -> "_PressurantValves":
         return _PressurantValves(name)
 
 
@@ -7567,16 +7545,16 @@ class _PressureFedGasEngines(
 ):
     _hash: int = -624011170
 
-    def __getitem__(self, name: str | int) -> "_PressureFedGasEngines":
+    def __getitem__(self, name: str | int | float) -> "_PressureFedGasEngines":
         return _PressureFedGasEngines(name)
 
     @property
     def PassedMoles(self) -> DevicesLogicType:
-        return DevicesLogicType(self._hash, "PassedMoles", self._name_hash)
+        return DevicesLogicType(self._hash, "PassedMoles", self._name)
 
     @property
     def Throttle(self) -> DevicesLogicType:
-        return DevicesLogicType(self._hash, "Throttle", self._name_hash)
+        return DevicesLogicType(self._hash, "Throttle", self._name)
 
     @Throttle.setter
     def Throttle(self, value: int | float):
@@ -7629,16 +7607,16 @@ class _PressureFedLiquidEngines(
 ):
     _hash: int = 379750958
 
-    def __getitem__(self, name: str | int) -> "_PressureFedLiquidEngines":
+    def __getitem__(self, name: str | int | float) -> "_PressureFedLiquidEngines":
         return _PressureFedLiquidEngines(name)
 
     @property
     def PassedMoles(self) -> DevicesLogicType:
-        return DevicesLogicType(self._hash, "PassedMoles", self._name_hash)
+        return DevicesLogicType(self._hash, "PassedMoles", self._name)
 
     @property
     def Throttle(self) -> DevicesLogicType:
-        return DevicesLogicType(self._hash, "Throttle", self._name_hash)
+        return DevicesLogicType(self._hash, "Throttle", self._name)
 
     @Throttle.setter
     def Throttle(self, value: int | float):
@@ -7659,7 +7637,7 @@ class _PressureRegulators(
 ):
     _hash: int = 209854039
 
-    def __getitem__(self, name: str | int) -> "_PressureRegulators":
+    def __getitem__(self, name: str | int | float) -> "_PressureRegulators":
         return _PressureRegulators(name)
 
 
@@ -7677,12 +7655,12 @@ class ProximitySensor(_BaseStructure, _Quantity, _SettingW):
 class _ProximitySensors(_BaseStructures, _Quantitys, _SettingWs):
     _hash: int = 568800213
 
-    def __getitem__(self, name: str | int) -> "_ProximitySensors":
+    def __getitem__(self, name: str | int | float) -> "_ProximitySensors":
         return _ProximitySensors(name)
 
     @property
     def Activate(self) -> DevicesLogicType:
-        return DevicesLogicType(self._hash, "Activate", self._name_hash)
+        return DevicesLogicType(self._hash, "Activate", self._name)
 
 
 ProximitySensors: _ProximitySensors = _ProximitySensors()
@@ -7725,16 +7703,16 @@ class _GovernedGasEngines(
 ):
     _hash: int = -214232602
 
-    def __getitem__(self, name: str | int) -> "_GovernedGasEngines":
+    def __getitem__(self, name: str | int | float) -> "_GovernedGasEngines":
         return _GovernedGasEngines(name)
 
     @property
     def PassedMoles(self) -> DevicesLogicType:
-        return DevicesLogicType(self._hash, "PassedMoles", self._name_hash)
+        return DevicesLogicType(self._hash, "PassedMoles", self._name)
 
     @property
     def Throttle(self) -> DevicesLogicType:
-        return DevicesLogicType(self._hash, "Throttle", self._name_hash)
+        return DevicesLogicType(self._hash, "Throttle", self._name)
 
     @Throttle.setter
     def Throttle(self, value: int | float):
@@ -7787,16 +7765,16 @@ class _PumpedLiquidEngines(
 ):
     _hash: int = -2031440019
 
-    def __getitem__(self, name: str | int) -> "_PumpedLiquidEngines":
+    def __getitem__(self, name: str | int | float) -> "_PumpedLiquidEngines":
         return _PumpedLiquidEngines(name)
 
     @property
     def PassedMoles(self) -> DevicesLogicType:
-        return DevicesLogicType(self._hash, "PassedMoles", self._name_hash)
+        return DevicesLogicType(self._hash, "PassedMoles", self._name)
 
     @property
     def Throttle(self) -> DevicesLogicType:
-        return DevicesLogicType(self._hash, "Throttle", self._name_hash)
+        return DevicesLogicType(self._hash, "Throttle", self._name)
 
     @Throttle.setter
     def Throttle(self, value: int | float):
@@ -7815,7 +7793,7 @@ class _PurgeValves(
 ):
     _hash: int = -737232128
 
-    def __getitem__(self, name: str | int) -> "_PurgeValves":
+    def __getitem__(self, name: str | int | float) -> "_PurgeValves":
         return _PurgeValves(name)
 
 
@@ -7829,7 +7807,7 @@ class LogicReagentReader(_BaseStructure, _Error, _Power, _SettingR):
 class _LogicReagentReaders(_BaseStructures, _Errors, _Powers, _SettingRs):
     _hash: int = -124308857
 
-    def __getitem__(self, name: str | int) -> "_LogicReagentReaders":
+    def __getitem__(self, name: str | int | float) -> "_LogicReagentReaders":
         return _LogicReagentReaders(name)
 
 
@@ -7861,7 +7839,7 @@ class _Recyclers(
 ):
     _hash: int = -1633947337
 
-    def __getitem__(self, name: str | int) -> "_Recyclers":
+    def __getitem__(self, name: str | int | float) -> "_Recyclers":
         return _Recyclers(name)
 
 
@@ -7917,12 +7895,12 @@ class _RefrigeratedVendingMachines(
 ):
     _hash: int = -1577831321
 
-    def __getitem__(self, name: str | int) -> "_RefrigeratedVendingMachines":
+    def __getitem__(self, name: str | int | float) -> "_RefrigeratedVendingMachines":
         return _RefrigeratedVendingMachines(name)
 
     @property
     def RequestHash(self) -> DevicesLogicType:
-        return DevicesLogicType(self._hash, "RequestHash", self._name_hash)
+        return DevicesLogicType(self._hash, "RequestHash", self._name)
 
     @RequestHash.setter
     def RequestHash(self, value: int | float):
@@ -8097,24 +8075,24 @@ class _RocketAvionicss(
 ):
     _hash: int = 808389066
 
-    def __getitem__(self, name: str | int) -> "_RocketAvionicss":
+    def __getitem__(self, name: str | int | float) -> "_RocketAvionicss":
         return _RocketAvionicss(name)
 
     @property
     def Acceleration(self) -> DevicesLogicType:
-        return DevicesLogicType(self._hash, "Acceleration", self._name_hash)
+        return DevicesLogicType(self._hash, "Acceleration", self._name)
 
     @property
     def Altitude(self) -> DevicesLogicType:
-        return DevicesLogicType(self._hash, "Altitude", self._name_hash)
+        return DevicesLogicType(self._hash, "Altitude", self._name)
 
     @property
     def Apex(self) -> DevicesLogicType:
-        return DevicesLogicType(self._hash, "Apex", self._name_hash)
+        return DevicesLogicType(self._hash, "Apex", self._name)
 
     @property
     def AutoLand(self) -> DevicesLogicType:
-        return DevicesLogicType(self._hash, "AutoLand", self._name_hash)
+        return DevicesLogicType(self._hash, "AutoLand", self._name)
 
     @AutoLand.setter
     def AutoLand(self, value: int | float):
@@ -8122,7 +8100,7 @@ class _RocketAvionicss(
 
     @property
     def AutoShutOff(self) -> DevicesLogicType:
-        return DevicesLogicType(self._hash, "AutoShutOff", self._name_hash)
+        return DevicesLogicType(self._hash, "AutoShutOff", self._name)
 
     @AutoShutOff.setter
     def AutoShutOff(self, value: int | float):
@@ -8130,27 +8108,27 @@ class _RocketAvionicss(
 
     @property
     def BurnTimeRemaining(self) -> DevicesLogicType:
-        return DevicesLogicType(self._hash, "BurnTimeRemaining", self._name_hash)
+        return DevicesLogicType(self._hash, "BurnTimeRemaining", self._name)
 
     @property
     def Chart(self) -> DevicesLogicType:
-        return DevicesLogicType(self._hash, "Chart", self._name_hash)
+        return DevicesLogicType(self._hash, "Chart", self._name)
 
     @property
     def ChartedNavPoints(self) -> DevicesLogicType:
-        return DevicesLogicType(self._hash, "ChartedNavPoints", self._name_hash)
+        return DevicesLogicType(self._hash, "ChartedNavPoints", self._name)
 
     @property
     def CurrentCode(self) -> DevicesLogicType:
-        return DevicesLogicType(self._hash, "CurrentCode", self._name_hash)
+        return DevicesLogicType(self._hash, "CurrentCode", self._name)
 
     @property
     def Density(self) -> DevicesLogicType:
-        return DevicesLogicType(self._hash, "Density", self._name_hash)
+        return DevicesLogicType(self._hash, "Density", self._name)
 
     @property
     def DestinationCode(self) -> DevicesLogicType:
-        return DevicesLogicType(self._hash, "DestinationCode", self._name_hash)
+        return DevicesLogicType(self._hash, "DestinationCode", self._name)
 
     @DestinationCode.setter
     def DestinationCode(self, value: int | float):
@@ -8158,83 +8136,83 @@ class _RocketAvionicss(
 
     @property
     def Discover(self) -> DevicesLogicType:
-        return DevicesLogicType(self._hash, "Discover", self._name_hash)
+        return DevicesLogicType(self._hash, "Discover", self._name)
 
     @property
     def DryMass(self) -> DevicesLogicType:
-        return DevicesLogicType(self._hash, "DryMass", self._name_hash)
+        return DevicesLogicType(self._hash, "DryMass", self._name)
 
     @property
     def FlightControlRule(self) -> DevicesLogicType:
-        return DevicesLogicType(self._hash, "FlightControlRule", self._name_hash)
+        return DevicesLogicType(self._hash, "FlightControlRule", self._name)
 
     @property
     def Mass(self) -> DevicesLogicType:
-        return DevicesLogicType(self._hash, "Mass", self._name_hash)
+        return DevicesLogicType(self._hash, "Mass", self._name)
 
     @property
     def MinedQuantity(self) -> DevicesLogicType:
-        return DevicesLogicType(self._hash, "MinedQuantity", self._name_hash)
+        return DevicesLogicType(self._hash, "MinedQuantity", self._name)
 
     @property
     def NavPoints(self) -> DevicesLogicType:
-        return DevicesLogicType(self._hash, "NavPoints", self._name_hash)
+        return DevicesLogicType(self._hash, "NavPoints", self._name)
 
     @property
     def Progress(self) -> DevicesLogicType:
-        return DevicesLogicType(self._hash, "Progress", self._name_hash)
+        return DevicesLogicType(self._hash, "Progress", self._name)
 
     @property
     def ReEntryAltitude(self) -> DevicesLogicType:
-        return DevicesLogicType(self._hash, "ReEntryAltitude", self._name_hash)
+        return DevicesLogicType(self._hash, "ReEntryAltitude", self._name)
 
     @property
     def Richness(self) -> DevicesLogicType:
-        return DevicesLogicType(self._hash, "Richness", self._name_hash)
+        return DevicesLogicType(self._hash, "Richness", self._name)
 
     @property
     def Sites(self) -> DevicesLogicType:
-        return DevicesLogicType(self._hash, "Sites", self._name_hash)
+        return DevicesLogicType(self._hash, "Sites", self._name)
 
     @property
     def Size(self) -> DevicesLogicType:
-        return DevicesLogicType(self._hash, "Size", self._name_hash)
+        return DevicesLogicType(self._hash, "Size", self._name)
 
     @property
     def Survey(self) -> DevicesLogicType:
-        return DevicesLogicType(self._hash, "Survey", self._name_hash)
+        return DevicesLogicType(self._hash, "Survey", self._name)
 
     @property
     def Temperature(self) -> DevicesLogicType:
-        return DevicesLogicType(self._hash, "Temperature", self._name_hash)
+        return DevicesLogicType(self._hash, "Temperature", self._name)
 
     @property
     def Thrust(self) -> DevicesLogicType:
-        return DevicesLogicType(self._hash, "Thrust", self._name_hash)
+        return DevicesLogicType(self._hash, "Thrust", self._name)
 
     @property
     def ThrustToWeight(self) -> DevicesLogicType:
-        return DevicesLogicType(self._hash, "ThrustToWeight", self._name_hash)
+        return DevicesLogicType(self._hash, "ThrustToWeight", self._name)
 
     @property
     def TimeToDestination(self) -> DevicesLogicType:
-        return DevicesLogicType(self._hash, "TimeToDestination", self._name_hash)
+        return DevicesLogicType(self._hash, "TimeToDestination", self._name)
 
     @property
     def TotalMoles(self) -> DevicesLogicType:
-        return DevicesLogicType(self._hash, "TotalMoles", self._name_hash)
+        return DevicesLogicType(self._hash, "TotalMoles", self._name)
 
     @property
     def TotalQuantity(self) -> DevicesLogicType:
-        return DevicesLogicType(self._hash, "TotalQuantity", self._name_hash)
+        return DevicesLogicType(self._hash, "TotalQuantity", self._name)
 
     @property
     def VelocityRelativeY(self) -> DevicesLogicType:
-        return DevicesLogicType(self._hash, "VelocityRelativeY", self._name_hash)
+        return DevicesLogicType(self._hash, "VelocityRelativeY", self._name)
 
     @property
     def Weight(self) -> DevicesLogicType:
-        return DevicesLogicType(self._hash, "Weight", self._name_hash)
+        return DevicesLogicType(self._hash, "Weight", self._name)
 
 
 RocketAvionicss: _RocketAvionicss = _RocketAvionicss()
@@ -8247,7 +8225,7 @@ class RocketCargoBay(_BaseStructure, _Error, _Lock, _Power):
 class _RocketCargoBays(_BaseStructures, _Errors, _Locks, _Powers):
     _hash: int = -682274666
 
-    def __getitem__(self, name: str | int) -> "_RocketCargoBays":
+    def __getitem__(self, name: str | int | float) -> "_RocketCargoBays":
         return _RocketCargoBays(name)
 
 
@@ -8273,16 +8251,16 @@ class RocketCelestialTracker(_BaseStructure, _Error, _Power, _Vertical):
 class _RocketCelestialTrackers(_BaseStructures, _Errors, _Powers, _Verticals):
     _hash: int = 997453927
 
-    def __getitem__(self, name: str | int) -> "_RocketCelestialTrackers":
+    def __getitem__(self, name: str | int | float) -> "_RocketCelestialTrackers":
         return _RocketCelestialTrackers(name)
 
     @property
     def CelestialHash(self) -> DevicesLogicType:
-        return DevicesLogicType(self._hash, "CelestialHash", self._name_hash)
+        return DevicesLogicType(self._hash, "CelestialHash", self._name)
 
     @property
     def Index(self) -> DevicesLogicType:
-        return DevicesLogicType(self._hash, "Index", self._name_hash)
+        return DevicesLogicType(self._hash, "Index", self._name)
 
     @Index.setter
     def Index(self, value: int | float):
@@ -8307,12 +8285,12 @@ class RocketCircuitHousing(_BaseStructure, _Error, _Power, _SettingW):
 class _RocketCircuitHousings(_BaseStructures, _Errors, _Powers, _SettingWs):
     _hash: int = 150135861
 
-    def __getitem__(self, name: str | int) -> "_RocketCircuitHousings":
+    def __getitem__(self, name: str | int | float) -> "_RocketCircuitHousings":
         return _RocketCircuitHousings(name)
 
     @property
     def LineNumber(self) -> DevicesLogicType:
-        return DevicesLogicType(self._hash, "LineNumber", self._name_hash)
+        return DevicesLogicType(self._hash, "LineNumber", self._name)
 
     @LineNumber.setter
     def LineNumber(self, value: int | float):
@@ -8333,7 +8311,7 @@ class _RocketEngineTinys(
 ):
     _hash: int = 178472613
 
-    def __getitem__(self, name: str | int) -> "_RocketEngineTinys":
+    def __getitem__(self, name: str | int | float) -> "_RocketEngineTinys":
         return _RocketEngineTinys(name)
 
 
@@ -8375,12 +8353,12 @@ class _RocketManufactorys(
 ):
     _hash: int = 1781051034
 
-    def __getitem__(self, name: str | int) -> "_RocketManufactorys":
+    def __getitem__(self, name: str | int | float) -> "_RocketManufactorys":
         return _RocketManufactorys(name)
 
     @property
     def CompletionRatio(self) -> DevicesLogicType:
-        return DevicesLogicType(self._hash, "CompletionRatio", self._name_hash)
+        return DevicesLogicType(self._hash, "CompletionRatio", self._name)
 
 
 RocketManufactorys: _RocketManufactorys = _RocketManufactorys()
@@ -8415,12 +8393,12 @@ class _RocketMiners(
 ):
     _hash: int = -2087223687
 
-    def __getitem__(self, name: str | int) -> "_RocketMiners":
+    def __getitem__(self, name: str | int | float) -> "_RocketMiners":
         return _RocketMiners(name)
 
     @property
     def DrillCondition(self) -> DevicesLogicType:
-        return DevicesLogicType(self._hash, "DrillCondition", self._name_hash)
+        return DevicesLogicType(self._hash, "DrillCondition", self._name)
 
 
 RocketMiners: _RocketMiners = _RocketMiners()
@@ -8433,7 +8411,7 @@ class RocketScanner(_BaseStructure, _Error, _Lock, _Power):
 class _RocketScanners(_BaseStructures, _Errors, _Locks, _Powers):
     _hash: int = 2014252591
 
-    def __getitem__(self, name: str | int) -> "_RocketScanners":
+    def __getitem__(self, name: str | int | float) -> "_RocketScanners":
         return _RocketScanners(name)
 
 
@@ -8447,7 +8425,7 @@ class SDBHopper(_BaseStructure, _ClearMemory, _ImportCount, _Open):
 class _SDBHoppers(_BaseStructures, _ClearMemorys, _ImportCounts, _Opens):
     _hash: int = -1875856925
 
-    def __getitem__(self, name: str | int) -> "_SDBHoppers":
+    def __getitem__(self, name: str | int | float) -> "_SDBHoppers":
         return _SDBHoppers(name)
 
 
@@ -8463,7 +8441,7 @@ class _SDBHopperAdvanceds(
 ):
     _hash: int = 467225612
 
-    def __getitem__(self, name: str | int) -> "_SDBHopperAdvanceds":
+    def __getitem__(self, name: str | int | float) -> "_SDBHopperAdvanceds":
         return _SDBHopperAdvanceds(name)
 
 
@@ -8501,7 +8479,7 @@ class _SDBSilos(
 ):
     _hash: int = 1155865682
 
-    def __getitem__(self, name: str | int) -> "_SDBSilos":
+    def __getitem__(self, name: str | int | float) -> "_SDBSilos":
         return _SDBSilos(name)
 
 
@@ -8543,12 +8521,12 @@ class _SecurityPrinters(
 ):
     _hash: int = -641491515
 
-    def __getitem__(self, name: str | int) -> "_SecurityPrinters":
+    def __getitem__(self, name: str | int | float) -> "_SecurityPrinters":
         return _SecurityPrinters(name)
 
     @property
     def CompletionRatio(self) -> DevicesLogicType:
-        return DevicesLogicType(self._hash, "CompletionRatio", self._name_hash)
+        return DevicesLogicType(self._hash, "CompletionRatio", self._name)
 
 
 SecurityPrinters: _SecurityPrinters = _SecurityPrinters()
@@ -8561,7 +8539,7 @@ class ShelfMedium(_BaseStructure, _Open):
 class _ShelfMediums(_BaseStructures, _Opens):
     _hash: int = 182006674
 
-    def __getitem__(self, name: str | int) -> "_ShelfMediums":
+    def __getitem__(self, name: str | int | float) -> "_ShelfMediums":
         return _ShelfMediums(name)
 
 
@@ -8575,7 +8553,7 @@ class ShortCornerLocker(_BaseStructure, _Lock, _Open):
 class _ShortCornerLockers(_BaseStructures, _Locks, _Opens):
     _hash: int = 1330754486
 
-    def __getitem__(self, name: str | int) -> "_ShortCornerLockers":
+    def __getitem__(self, name: str | int | float) -> "_ShortCornerLockers":
         return _ShortCornerLockers(name)
 
 
@@ -8589,7 +8567,7 @@ class ShortLocker(_BaseStructure, _Lock, _Open):
 class _ShortLockers(_BaseStructures, _Locks, _Opens):
     _hash: int = -554553467
 
-    def __getitem__(self, name: str | int) -> "_ShortLockers":
+    def __getitem__(self, name: str | int | float) -> "_ShortLockers":
         return _ShortLockers(name)
 
 
@@ -8603,7 +8581,7 @@ class Shower(_BaseStructure, _Activate, _Maximum, _Open, _Ratio, _SettingW):
 class _Showers(_BaseStructures, _Activates, _Maximums, _Opens, _Ratios, _SettingWs):
     _hash: int = -775128944
 
-    def __getitem__(self, name: str | int) -> "_Showers":
+    def __getitem__(self, name: str | int | float) -> "_Showers":
         return _Showers(name)
 
 
@@ -8617,7 +8595,7 @@ class ShowerPowered(_BaseStructure, _Error, _Open, _Power):
 class _ShowerPowereds(_BaseStructures, _Errors, _Opens, _Powers):
     _hash: int = -1081797501
 
-    def __getitem__(self, name: str | int) -> "_ShowerPowereds":
+    def __getitem__(self, name: str | int | float) -> "_ShowerPowereds":
         return _ShowerPowereds(name)
 
 
@@ -8647,12 +8625,12 @@ class _Sleepers(
 ):
     _hash: int = -1467449329
 
-    def __getitem__(self, name: str | int) -> "_Sleepers":
+    def __getitem__(self, name: str | int | float) -> "_Sleepers":
         return _Sleepers(name)
 
     @property
     def EntityState(self) -> DevicesLogicType:
-        return DevicesLogicType(self._hash, "EntityState", self._name_hash)
+        return DevicesLogicType(self._hash, "EntityState", self._name)
 
 
 Sleepers: _Sleepers = _Sleepers()
@@ -8691,12 +8669,12 @@ class _SleeperLefts(
 ):
     _hash: int = 1213495833
 
-    def __getitem__(self, name: str | int) -> "_SleeperLefts":
+    def __getitem__(self, name: str | int | float) -> "_SleeperLefts":
         return _SleeperLefts(name)
 
     @property
     def EntityState(self) -> DevicesLogicType:
-        return DevicesLogicType(self._hash, "EntityState", self._name_hash)
+        return DevicesLogicType(self._hash, "EntityState", self._name)
 
 
 SleeperLefts: _SleeperLefts = _SleeperLefts()
@@ -8735,12 +8713,12 @@ class _SleeperRights(
 ):
     _hash: int = -1812330717
 
-    def __getitem__(self, name: str | int) -> "_SleeperRights":
+    def __getitem__(self, name: str | int | float) -> "_SleeperRights":
         return _SleeperRights(name)
 
     @property
     def EntityState(self) -> DevicesLogicType:
-        return DevicesLogicType(self._hash, "EntityState", self._name_hash)
+        return DevicesLogicType(self._hash, "EntityState", self._name)
 
 
 SleeperRights: _SleeperRights = _SleeperRights()
@@ -8779,12 +8757,12 @@ class _SleeperVerticals(
 ):
     _hash: int = -1300059018
 
-    def __getitem__(self, name: str | int) -> "_SleeperVerticals":
+    def __getitem__(self, name: str | int | float) -> "_SleeperVerticals":
         return _SleeperVerticals(name)
 
     @property
     def EntityState(self) -> DevicesLogicType:
-        return DevicesLogicType(self._hash, "EntityState", self._name_hash)
+        return DevicesLogicType(self._hash, "EntityState", self._name)
 
 
 SleeperVerticals: _SleeperVerticals = _SleeperVerticals()
@@ -8797,7 +8775,7 @@ class LogicSlotReader(_BaseStructure, _Error, _Power, _SettingR):
 class _LogicSlotReaders(_BaseStructures, _Errors, _Powers, _SettingRs):
     _hash: int = -767867194
 
-    def __getitem__(self, name: str | int) -> "_LogicSlotReaders":
+    def __getitem__(self, name: str | int | float) -> "_LogicSlotReaders":
         return _LogicSlotReaders(name)
 
 
@@ -8813,7 +8791,9 @@ class _SmallDirectHeatExchangeGastoGass(
 ):
     _hash: int = 1310303582
 
-    def __getitem__(self, name: str | int) -> "_SmallDirectHeatExchangeGastoGass":
+    def __getitem__(
+        self, name: str | int | float
+    ) -> "_SmallDirectHeatExchangeGastoGass":
         return _SmallDirectHeatExchangeGastoGass(name)
 
 
@@ -8831,7 +8811,9 @@ class _SmallDirectHeatExchangeLiquidtoGass(
 ):
     _hash: int = 1825212016
 
-    def __getitem__(self, name: str | int) -> "_SmallDirectHeatExchangeLiquidtoGass":
+    def __getitem__(
+        self, name: str | int | float
+    ) -> "_SmallDirectHeatExchangeLiquidtoGass":
         return _SmallDirectHeatExchangeLiquidtoGass(name)
 
 
@@ -8851,7 +8833,9 @@ class _SmallDirectHeatExchangeLiquidtoLiquids(
 ):
     _hash: int = -507770416
 
-    def __getitem__(self, name: str | int) -> "_SmallDirectHeatExchangeLiquidtoLiquids":
+    def __getitem__(
+        self, name: str | int | float
+    ) -> "_SmallDirectHeatExchangeLiquidtoLiquids":
         return _SmallDirectHeatExchangeLiquidtoLiquids(name)
 
 
@@ -8869,7 +8853,7 @@ class _AirlockGates(
 ):
     _hash: int = 1736080881
 
-    def __getitem__(self, name: str | int) -> "_AirlockGates":
+    def __getitem__(self, name: str | int | float) -> "_AirlockGates":
         return _AirlockGates(name)
 
 
@@ -8935,12 +8919,12 @@ class _SmallSatelliteDishs(
 ):
     _hash: int = -2138748650
 
-    def __getitem__(self, name: str | int) -> "_SmallSatelliteDishs":
+    def __getitem__(self, name: str | int | float) -> "_SmallSatelliteDishs":
         return _SmallSatelliteDishs(name)
 
     @property
     def BestContactFilter(self) -> DevicesLogicType:
-        return DevicesLogicType(self._hash, "BestContactFilter", self._name_hash)
+        return DevicesLogicType(self._hash, "BestContactFilter", self._name)
 
     @BestContactFilter.setter
     def BestContactFilter(self, value: int | float):
@@ -8948,35 +8932,35 @@ class _SmallSatelliteDishs(
 
     @property
     def ContactTypeId(self) -> DevicesLogicType:
-        return DevicesLogicType(self._hash, "ContactTypeId", self._name_hash)
+        return DevicesLogicType(self._hash, "ContactTypeId", self._name)
 
     @property
     def InterrogationProgress(self) -> DevicesLogicType:
-        return DevicesLogicType(self._hash, "InterrogationProgress", self._name_hash)
+        return DevicesLogicType(self._hash, "InterrogationProgress", self._name)
 
     @property
     def MinimumWattsToContact(self) -> DevicesLogicType:
-        return DevicesLogicType(self._hash, "MinimumWattsToContact", self._name_hash)
+        return DevicesLogicType(self._hash, "MinimumWattsToContact", self._name)
 
     @property
     def SignalID(self) -> DevicesLogicType:
-        return DevicesLogicType(self._hash, "SignalID", self._name_hash)
+        return DevicesLogicType(self._hash, "SignalID", self._name)
 
     @property
     def SignalStrength(self) -> DevicesLogicType:
-        return DevicesLogicType(self._hash, "SignalStrength", self._name_hash)
+        return DevicesLogicType(self._hash, "SignalStrength", self._name)
 
     @property
     def SizeX(self) -> DevicesLogicType:
-        return DevicesLogicType(self._hash, "SizeX", self._name_hash)
+        return DevicesLogicType(self._hash, "SizeX", self._name)
 
     @property
     def SizeZ(self) -> DevicesLogicType:
-        return DevicesLogicType(self._hash, "SizeZ", self._name_hash)
+        return DevicesLogicType(self._hash, "SizeZ", self._name)
 
     @property
     def TargetPadIndex(self) -> DevicesLogicType:
-        return DevicesLogicType(self._hash, "TargetPadIndex", self._name_hash)
+        return DevicesLogicType(self._hash, "TargetPadIndex", self._name)
 
     @TargetPadIndex.setter
     def TargetPadIndex(self, value: int | float):
@@ -8984,7 +8968,7 @@ class _SmallSatelliteDishs(
 
     @property
     def WattsReachingContact(self) -> DevicesLogicType:
-        return DevicesLogicType(self._hash, "WattsReachingContact", self._name_hash)
+        return DevicesLogicType(self._hash, "WattsReachingContact", self._name)
 
 
 SmallSatelliteDishs: _SmallSatelliteDishs = _SmallSatelliteDishs()
@@ -9021,7 +9005,7 @@ class _TankSmalls(
 ):
     _hash: int = 1013514688
 
-    def __getitem__(self, name: str | int) -> "_TankSmalls":
+    def __getitem__(self, name: str | int | float) -> "_TankSmalls":
         return _TankSmalls(name)
 
 
@@ -9059,7 +9043,7 @@ class _TankSmallAirs(
 ):
     _hash: int = 955744474
 
-    def __getitem__(self, name: str | int) -> "_TankSmallAirs":
+    def __getitem__(self, name: str | int | float) -> "_TankSmallAirs":
         return _TankSmallAirs(name)
 
 
@@ -9097,7 +9081,7 @@ class _TankSmallFuels(
 ):
     _hash: int = 2102454415
 
-    def __getitem__(self, name: str | int) -> "_TankSmallFuels":
+    def __getitem__(self, name: str | int | float) -> "_TankSmallFuels":
         return _TankSmallFuels(name)
 
 
@@ -9111,7 +9095,7 @@ class SolarPanel(_BaseStructure, _Charge, _Maximum, _Ratio, _VerticalW):
 class _SolarPanels(_BaseStructures, _Charges, _Maximums, _Ratios, _VerticalWs):
     _hash: int = -2045627372
 
-    def __getitem__(self, name: str | int) -> "_SolarPanels":
+    def __getitem__(self, name: str | int | float) -> "_SolarPanels":
         return _SolarPanels(name)
 
 
@@ -9125,7 +9109,7 @@ class SolarPanel45(_BaseStructure, _Charge, _Maximum, _Ratio, _VerticalW):
 class _SolarPanel45s(_BaseStructures, _Charges, _Maximums, _Ratios, _VerticalWs):
     _hash: int = -1554349863
 
-    def __getitem__(self, name: str | int) -> "_SolarPanel45s":
+    def __getitem__(self, name: str | int | float) -> "_SolarPanel45s":
         return _SolarPanel45s(name)
 
 
@@ -9139,7 +9123,7 @@ class SolarPanelDual(_BaseStructure, _Charge, _Maximum, _Ratio, _VerticalW):
 class _SolarPanelDuals(_BaseStructures, _Charges, _Maximums, _Ratios, _VerticalWs):
     _hash: int = -539224550
 
-    def __getitem__(self, name: str | int) -> "_SolarPanelDuals":
+    def __getitem__(self, name: str | int | float) -> "_SolarPanelDuals":
         return _SolarPanelDuals(name)
 
 
@@ -9153,7 +9137,7 @@ class SolarPanelFlat(_BaseStructure, _Charge, _Maximum, _Ratio, _VerticalW):
 class _SolarPanelFlats(_BaseStructures, _Charges, _Maximums, _Ratios, _VerticalWs):
     _hash: int = 1968102968
 
-    def __getitem__(self, name: str | int) -> "_SolarPanelFlats":
+    def __getitem__(self, name: str | int | float) -> "_SolarPanelFlats":
         return _SolarPanelFlats(name)
 
 
@@ -9169,7 +9153,7 @@ class _SolarPanel45Reinforceds(
 ):
     _hash: int = 930865127
 
-    def __getitem__(self, name: str | int) -> "_SolarPanel45Reinforceds":
+    def __getitem__(self, name: str | int | float) -> "_SolarPanel45Reinforceds":
         return _SolarPanel45Reinforceds(name)
 
 
@@ -9185,7 +9169,7 @@ class _SolarPanelDualReinforceds(
 ):
     _hash: int = -1545574413
 
-    def __getitem__(self, name: str | int) -> "_SolarPanelDualReinforceds":
+    def __getitem__(self, name: str | int | float) -> "_SolarPanelDualReinforceds":
         return _SolarPanelDualReinforceds(name)
 
 
@@ -9201,7 +9185,7 @@ class _SolarPanelFlatReinforceds(
 ):
     _hash: int = 1697196770
 
-    def __getitem__(self, name: str | int) -> "_SolarPanelFlatReinforceds":
+    def __getitem__(self, name: str | int | float) -> "_SolarPanelFlatReinforceds":
         return _SolarPanelFlatReinforceds(name)
 
 
@@ -9217,7 +9201,7 @@ class _SolarPanelReinforceds(
 ):
     _hash: int = -934345724
 
-    def __getitem__(self, name: str | int) -> "_SolarPanelReinforceds":
+    def __getitem__(self, name: str | int | float) -> "_SolarPanelReinforceds":
         return _SolarPanelReinforceds(name)
 
 
@@ -9257,12 +9241,12 @@ class _Sorters(
 ):
     _hash: int = -1009150565
 
-    def __getitem__(self, name: str | int) -> "_Sorters":
+    def __getitem__(self, name: str | int | float) -> "_Sorters":
         return _Sorters(name)
 
     @property
     def Output(self) -> DevicesLogicType:
-        return DevicesLogicType(self._hash, "Output", self._name_hash)
+        return DevicesLogicType(self._hash, "Output", self._name)
 
     @Output.setter
     def Output(self, value: int | float):
@@ -9309,12 +9293,12 @@ class _StackerReverses(
 ):
     _hash: int = 1585641623
 
-    def __getitem__(self, name: str | int) -> "_StackerReverses":
+    def __getitem__(self, name: str | int | float) -> "_StackerReverses":
         return _StackerReverses(name)
 
     @property
     def Output(self) -> DevicesLogicType:
-        return DevicesLogicType(self._hash, "Output", self._name_hash)
+        return DevicesLogicType(self._hash, "Output", self._name)
 
     @Output.setter
     def Output(self, value: int | float):
@@ -9361,12 +9345,12 @@ class _Stackers(
 ):
     _hash: int = -2020231820
 
-    def __getitem__(self, name: str | int) -> "_Stackers":
+    def __getitem__(self, name: str | int | float) -> "_Stackers":
         return _Stackers(name)
 
     @property
     def Output(self) -> DevicesLogicType:
-        return DevicesLogicType(self._hash, "Output", self._name_hash)
+        return DevicesLogicType(self._hash, "Output", self._name)
 
     @Output.setter
     def Output(self, value: int | float):
@@ -9397,20 +9381,20 @@ class _Batterys(
 ):
     _hash: int = -400115994
 
-    def __getitem__(self, name: str | int) -> "_Batterys":
+    def __getitem__(self, name: str | int | float) -> "_Batterys":
         return _Batterys(name)
 
     @property
     def Power(self) -> DevicesLogicType:
-        return DevicesLogicType(self._hash, "Power", self._name_hash)
+        return DevicesLogicType(self._hash, "Power", self._name)
 
     @property
     def PowerActual(self) -> DevicesLogicType:
-        return DevicesLogicType(self._hash, "PowerActual", self._name_hash)
+        return DevicesLogicType(self._hash, "PowerActual", self._name)
 
     @property
     def PowerPotential(self) -> DevicesLogicType:
-        return DevicesLogicType(self._hash, "PowerPotential", self._name_hash)
+        return DevicesLogicType(self._hash, "PowerPotential", self._name)
 
 
 Batterys: _Batterys = _Batterys()
@@ -9439,20 +9423,20 @@ class _BatteryLarges(
 ):
     _hash: int = -1388288459
 
-    def __getitem__(self, name: str | int) -> "_BatteryLarges":
+    def __getitem__(self, name: str | int | float) -> "_BatteryLarges":
         return _BatteryLarges(name)
 
     @property
     def Power(self) -> DevicesLogicType:
-        return DevicesLogicType(self._hash, "Power", self._name_hash)
+        return DevicesLogicType(self._hash, "Power", self._name)
 
     @property
     def PowerActual(self) -> DevicesLogicType:
-        return DevicesLogicType(self._hash, "PowerActual", self._name_hash)
+        return DevicesLogicType(self._hash, "PowerActual", self._name)
 
     @property
     def PowerPotential(self) -> DevicesLogicType:
-        return DevicesLogicType(self._hash, "PowerPotential", self._name_hash)
+        return DevicesLogicType(self._hash, "PowerPotential", self._name)
 
 
 BatteryLarges: _BatteryLarges = _BatteryLarges()
@@ -9507,24 +9491,24 @@ class _StirlingEngines(
 ):
     _hash: int = -260316435
 
-    def __getitem__(self, name: str | int) -> "_StirlingEngines":
+    def __getitem__(self, name: str | int | float) -> "_StirlingEngines":
         return _StirlingEngines(name)
 
     @property
     def EnvironmentEfficiency(self) -> DevicesLogicType:
-        return DevicesLogicType(self._hash, "EnvironmentEfficiency", self._name_hash)
+        return DevicesLogicType(self._hash, "EnvironmentEfficiency", self._name)
 
     @property
     def PowerGeneration(self) -> DevicesLogicType:
-        return DevicesLogicType(self._hash, "PowerGeneration", self._name_hash)
+        return DevicesLogicType(self._hash, "PowerGeneration", self._name)
 
     @property
     def Volume(self) -> DevicesLogicType:
-        return DevicesLogicType(self._hash, "Volume", self._name_hash)
+        return DevicesLogicType(self._hash, "Volume", self._name)
 
     @property
     def WorkingGasEfficiency(self) -> DevicesLogicType:
-        return DevicesLogicType(self._hash, "WorkingGasEfficiency", self._name_hash)
+        return DevicesLogicType(self._hash, "WorkingGasEfficiency", self._name)
 
 
 StirlingEngines: _StirlingEngines = _StirlingEngines()
@@ -9537,7 +9521,7 @@ class SuitStorage(_BaseStructure, _Error, _Maximum, _Power, _Ratio, _SettingW):
 class _SuitStorages(_BaseStructures, _Errors, _Maximums, _Powers, _Ratios, _SettingWs):
     _hash: int = 255034731
 
-    def __getitem__(self, name: str | int) -> "_SuitStorages":
+    def __getitem__(self, name: str | int | float) -> "_SuitStorages":
         return _SuitStorages(name)
 
 
@@ -9551,7 +9535,7 @@ class LogicSwitch2(_BaseStructure, _Lock, _Open, _SettingR):
 class _LogicSwitch2s(_BaseStructures, _Locks, _Opens, _SettingRs):
     _hash: int = 321604921
 
-    def __getitem__(self, name: str | int) -> "_LogicSwitch2s":
+    def __getitem__(self, name: str | int | float) -> "_LogicSwitch2s":
         return _LogicSwitch2s(name)
 
 
@@ -9589,7 +9573,7 @@ class _TankBigInsulateds(
 ):
     _hash: int = 1280378227
 
-    def __getitem__(self, name: str | int) -> "_TankBigInsulateds":
+    def __getitem__(self, name: str | int | float) -> "_TankBigInsulateds":
         return _TankBigInsulateds(name)
 
 
@@ -9627,7 +9611,7 @@ class _TankSmallInsulateds(
 ):
     _hash: int = 272136332
 
-    def __getitem__(self, name: str | int) -> "_TankSmallInsulateds":
+    def __getitem__(self, name: str | int | float) -> "_TankSmallInsulateds":
         return _TankSmallInsulateds(name)
 
 
@@ -9701,36 +9685,36 @@ class _GroundBasedTelescopes(
 ):
     _hash: int = -619745681
 
-    def __getitem__(self, name: str | int) -> "_GroundBasedTelescopes":
+    def __getitem__(self, name: str | int | float) -> "_GroundBasedTelescopes":
         return _GroundBasedTelescopes(name)
 
     @property
     def AlignmentError(self) -> DevicesLogicType:
-        return DevicesLogicType(self._hash, "AlignmentError", self._name_hash)
+        return DevicesLogicType(self._hash, "AlignmentError", self._name)
 
     @property
     def CelestialHash(self) -> DevicesLogicType:
-        return DevicesLogicType(self._hash, "CelestialHash", self._name_hash)
+        return DevicesLogicType(self._hash, "CelestialHash", self._name)
 
     @property
     def CelestialParentHash(self) -> DevicesLogicType:
-        return DevicesLogicType(self._hash, "CelestialParentHash", self._name_hash)
+        return DevicesLogicType(self._hash, "CelestialParentHash", self._name)
 
     @property
     def DistanceAu(self) -> DevicesLogicType:
-        return DevicesLogicType(self._hash, "DistanceAu", self._name_hash)
+        return DevicesLogicType(self._hash, "DistanceAu", self._name)
 
     @property
     def DistanceKm(self) -> DevicesLogicType:
-        return DevicesLogicType(self._hash, "DistanceKm", self._name_hash)
+        return DevicesLogicType(self._hash, "DistanceKm", self._name)
 
     @property
     def Eccentricity(self) -> DevicesLogicType:
-        return DevicesLogicType(self._hash, "Eccentricity", self._name_hash)
+        return DevicesLogicType(self._hash, "Eccentricity", self._name)
 
     @property
     def HorizontalRatio(self) -> DevicesLogicType:
-        return DevicesLogicType(self._hash, "HorizontalRatio", self._name_hash)
+        return DevicesLogicType(self._hash, "HorizontalRatio", self._name)
 
     @HorizontalRatio.setter
     def HorizontalRatio(self, value: int | float):
@@ -9738,23 +9722,23 @@ class _GroundBasedTelescopes(
 
     @property
     def Inclination(self) -> DevicesLogicType:
-        return DevicesLogicType(self._hash, "Inclination", self._name_hash)
+        return DevicesLogicType(self._hash, "Inclination", self._name)
 
     @property
     def OrbitPeriod(self) -> DevicesLogicType:
-        return DevicesLogicType(self._hash, "OrbitPeriod", self._name_hash)
+        return DevicesLogicType(self._hash, "OrbitPeriod", self._name)
 
     @property
     def SemiMajorAxis(self) -> DevicesLogicType:
-        return DevicesLogicType(self._hash, "SemiMajorAxis", self._name_hash)
+        return DevicesLogicType(self._hash, "SemiMajorAxis", self._name)
 
     @property
     def TrueAnomaly(self) -> DevicesLogicType:
-        return DevicesLogicType(self._hash, "TrueAnomaly", self._name_hash)
+        return DevicesLogicType(self._hash, "TrueAnomaly", self._name)
 
     @property
     def VerticalRatio(self) -> DevicesLogicType:
-        return DevicesLogicType(self._hash, "VerticalRatio", self._name_hash)
+        return DevicesLogicType(self._hash, "VerticalRatio", self._name)
 
     @VerticalRatio.setter
     def VerticalRatio(self, value: int | float):
@@ -9799,12 +9783,12 @@ class _TerraformingManufactorys(
 ):
     _hash: int = 1549873866
 
-    def __getitem__(self, name: str | int) -> "_TerraformingManufactorys":
+    def __getitem__(self, name: str | int | float) -> "_TerraformingManufactorys":
         return _TerraformingManufactorys(name)
 
     @property
     def CompletionRatio(self) -> DevicesLogicType:
-        return DevicesLogicType(self._hash, "CompletionRatio", self._name_hash)
+        return DevicesLogicType(self._hash, "CompletionRatio", self._name)
 
 
 TerraformingManufactorys: _TerraformingManufactorys = _TerraformingManufactorys()
@@ -9845,12 +9829,12 @@ class _ToolManufactorys(
 ):
     _hash: int = -465741100
 
-    def __getitem__(self, name: str | int) -> "_ToolManufactorys":
+    def __getitem__(self, name: str | int | float) -> "_ToolManufactorys":
         return _ToolManufactorys(name)
 
     @property
     def CompletionRatio(self) -> DevicesLogicType:
-        return DevicesLogicType(self._hash, "CompletionRatio", self._name_hash)
+        return DevicesLogicType(self._hash, "CompletionRatio", self._name)
 
 
 ToolManufactorys: _ToolManufactorys = _ToolManufactorys()
@@ -9863,7 +9847,7 @@ class TraderWaypoint(_BaseStructure, _Error, _Power):
 class _TraderWaypoints(_BaseStructures, _Errors, _Powers):
     _hash: int = 1570931620
 
-    def __getitem__(self, name: str | int) -> "_TraderWaypoints":
+    def __getitem__(self, name: str | int | float) -> "_TraderWaypoints":
         return _TraderWaypoints(name)
 
 
@@ -9879,7 +9863,7 @@ class _Transformers(
 ):
     _hash: int = -1423212473
 
-    def __getitem__(self, name: str | int) -> "_Transformers":
+    def __getitem__(self, name: str | int | float) -> "_Transformers":
         return _Transformers(name)
 
 
@@ -9897,7 +9881,7 @@ class _TransformerMediums(
 ):
     _hash: int = -1065725831
 
-    def __getitem__(self, name: str | int) -> "_TransformerMediums":
+    def __getitem__(self, name: str | int | float) -> "_TransformerMediums":
         return _TransformerMediums(name)
 
 
@@ -9915,7 +9899,7 @@ class _TransformerSmalls(
 ):
     _hash: int = -890946730
 
-    def __getitem__(self, name: str | int) -> "_TransformerSmalls":
+    def __getitem__(self, name: str | int | float) -> "_TransformerSmalls":
         return _TransformerSmalls(name)
 
 
@@ -9933,7 +9917,7 @@ class _TransformerMediumReverseds(
 ):
     _hash: int = 833912764
 
-    def __getitem__(self, name: str | int) -> "_TransformerMediumReverseds":
+    def __getitem__(self, name: str | int | float) -> "_TransformerMediumReverseds":
         return _TransformerMediumReverseds(name)
 
 
@@ -9951,7 +9935,7 @@ class _TransformerSmallReverseds(
 ):
     _hash: int = 1054059374
 
-    def __getitem__(self, name: str | int) -> "_TransformerSmallReverseds":
+    def __getitem__(self, name: str | int | float) -> "_TransformerSmallReverseds":
         return _TransformerSmallReverseds(name)
 
 
@@ -9969,7 +9953,7 @@ class _RocketTransformerSmalls(
 ):
     _hash: int = 518925193
 
-    def __getitem__(self, name: str | int) -> "_RocketTransformerSmalls":
+    def __getitem__(self, name: str | int | float) -> "_RocketTransformerSmalls":
         return _RocketTransformerSmalls(name)
 
 
@@ -9983,7 +9967,7 @@ class PressurePlateLarge(_BaseStructure, _SettingR):
 class _PressurePlateLarges(_BaseStructures, _SettingRs):
     _hash: int = -2008706143
 
-    def __getitem__(self, name: str | int) -> "_PressurePlateLarges":
+    def __getitem__(self, name: str | int | float) -> "_PressurePlateLarges":
         return _PressurePlateLarges(name)
 
 
@@ -9997,7 +9981,7 @@ class PressurePlateMedium(_BaseStructure, _SettingR):
 class _PressurePlateMediums(_BaseStructures, _SettingRs):
     _hash: int = 1269458680
 
-    def __getitem__(self, name: str | int) -> "_PressurePlateMediums":
+    def __getitem__(self, name: str | int | float) -> "_PressurePlateMediums":
         return _PressurePlateMediums(name)
 
 
@@ -10011,7 +9995,7 @@ class PressurePlateSmall(_BaseStructure, _SettingR):
 class _PressurePlateSmalls(_BaseStructures, _SettingRs):
     _hash: int = -1536471028
 
-    def __getitem__(self, name: str | int) -> "_PressurePlateSmalls":
+    def __getitem__(self, name: str | int | float) -> "_PressurePlateSmalls":
         return _PressurePlateSmalls(name)
 
 
@@ -10029,12 +10013,12 @@ class TurbineGenerator(_BaseStructure):
 class _TurbineGenerators(_BaseStructures):
     _hash: int = 1282191063
 
-    def __getitem__(self, name: str | int) -> "_TurbineGenerators":
+    def __getitem__(self, name: str | int | float) -> "_TurbineGenerators":
         return _TurbineGenerators(name)
 
     @property
     def PowerGeneration(self) -> DevicesLogicType:
-        return DevicesLogicType(self._hash, "PowerGeneration", self._name_hash)
+        return DevicesLogicType(self._hash, "PowerGeneration", self._name)
 
 
 TurbineGenerators: _TurbineGenerators = _TurbineGenerators()
@@ -10051,7 +10035,7 @@ class _TurboVolumePumps(
 ):
     _hash: int = 1310794736
 
-    def __getitem__(self, name: str | int) -> "_TurboVolumePumps":
+    def __getitem__(self, name: str | int | float) -> "_TurboVolumePumps":
         return _TurboVolumePumps(name)
 
 
@@ -10069,7 +10053,7 @@ class _LiquidTurboVolumePumps(
 ):
     _hash: int = -1051805505
 
-    def __getitem__(self, name: str | int) -> "_LiquidTurboVolumePumps":
+    def __getitem__(self, name: str | int | float) -> "_LiquidTurboVolumePumps":
         return _LiquidTurboVolumePumps(name)
 
 
@@ -10083,7 +10067,7 @@ class ChuteUmbilicalMale(_BaseStructure, _Error, _Lock, _ModeR, _Open, _Power):
 class _ChuteUmbilicalMales(_BaseStructures, _Errors, _Locks, _ModeRs, _Opens, _Powers):
     _hash: int = -958884053
 
-    def __getitem__(self, name: str | int) -> "_ChuteUmbilicalMales":
+    def __getitem__(self, name: str | int | float) -> "_ChuteUmbilicalMales":
         return _ChuteUmbilicalMales(name)
 
 
@@ -10109,7 +10093,7 @@ class _GasUmbilicalMales(
 ):
     _hash: int = -1814939203
 
-    def __getitem__(self, name: str | int) -> "_GasUmbilicalMales":
+    def __getitem__(self, name: str | int | float) -> "_GasUmbilicalMales":
         return _GasUmbilicalMales(name)
 
 
@@ -10135,7 +10119,7 @@ class _LiquidUmbilicalMales(
 ):
     _hash: int = -1798420047
 
-    def __getitem__(self, name: str | int) -> "_LiquidUmbilicalMales":
+    def __getitem__(self, name: str | int | float) -> "_LiquidUmbilicalMales":
         return _LiquidUmbilicalMales(name)
 
 
@@ -10149,7 +10133,7 @@ class PowerUmbilicalMale(_BaseStructure, _Error, _Lock, _ModeR, _Open, _Power):
 class _PowerUmbilicalMales(_BaseStructures, _Errors, _Locks, _ModeRs, _Opens, _Powers):
     _hash: int = 1529453938
 
-    def __getitem__(self, name: str | int) -> "_PowerUmbilicalMales":
+    def __getitem__(self, name: str | int | float) -> "_PowerUmbilicalMales":
         return _PowerUmbilicalMales(name)
 
 
@@ -10163,7 +10147,7 @@ class GasUmbilicalFemale(_BaseStructure, _Maximum, _Ratio, _SettingW):
 class _GasUmbilicalFemales(_BaseStructures, _Maximums, _Ratios, _SettingWs):
     _hash: int = -1680477930
 
-    def __getitem__(self, name: str | int) -> "_GasUmbilicalFemales":
+    def __getitem__(self, name: str | int | float) -> "_GasUmbilicalFemales":
         return _GasUmbilicalFemales(name)
 
 
@@ -10177,7 +10161,7 @@ class LiquidUmbilicalFemale(_BaseStructure, _Maximum, _Ratio, _SettingW):
 class _LiquidUmbilicalFemales(_BaseStructures, _Maximums, _Ratios, _SettingWs):
     _hash: int = 1734723642
 
-    def __getitem__(self, name: str | int) -> "_LiquidUmbilicalFemales":
+    def __getitem__(self, name: str | int | float) -> "_LiquidUmbilicalFemales":
         return _LiquidUmbilicalFemales(name)
 
 
@@ -10191,7 +10175,7 @@ class GasUmbilicalFemaleSide(_BaseStructure, _Maximum, _Ratio, _SettingW):
 class _GasUmbilicalFemaleSides(_BaseStructures, _Maximums, _Ratios, _SettingWs):
     _hash: int = -648683847
 
-    def __getitem__(self, name: str | int) -> "_GasUmbilicalFemaleSides":
+    def __getitem__(self, name: str | int | float) -> "_GasUmbilicalFemaleSides":
         return _GasUmbilicalFemaleSides(name)
 
 
@@ -10205,7 +10189,7 @@ class LiquidUmbilicalFemaleSide(_BaseStructure, _Maximum, _Ratio, _SettingW):
 class _LiquidUmbilicalFemaleSides(_BaseStructures, _Maximums, _Ratios, _SettingWs):
     _hash: int = 1220870319
 
-    def __getitem__(self, name: str | int) -> "_LiquidUmbilicalFemaleSides":
+    def __getitem__(self, name: str | int | float) -> "_LiquidUmbilicalFemaleSides":
         return _LiquidUmbilicalFemaleSides(name)
 
 
@@ -10245,12 +10229,12 @@ class _Unloaders(
 ):
     _hash: int = 750118160
 
-    def __getitem__(self, name: str | int) -> "_Unloaders":
+    def __getitem__(self, name: str | int | float) -> "_Unloaders":
         return _Unloaders(name)
 
     @property
     def Output(self) -> DevicesLogicType:
-        return DevicesLogicType(self._hash, "Output", self._name_hash)
+        return DevicesLogicType(self._hash, "Output", self._name)
 
     @Output.setter
     def Output(self, value: int | float):
@@ -10271,12 +10255,12 @@ class UprightWindTurbine(_BaseStructure):
 class _UprightWindTurbines(_BaseStructures):
     _hash: int = 1622183451
 
-    def __getitem__(self, name: str | int) -> "_UprightWindTurbines":
+    def __getitem__(self, name: str | int | float) -> "_UprightWindTurbines":
         return _UprightWindTurbines(name)
 
     @property
     def PowerGeneration(self) -> DevicesLogicType:
-        return DevicesLogicType(self._hash, "PowerGeneration", self._name_hash)
+        return DevicesLogicType(self._hash, "PowerGeneration", self._name)
 
 
 UprightWindTurbines: _UprightWindTurbines = _UprightWindTurbines()
@@ -10289,7 +10273,7 @@ class Valve(_BaseStructure, _Maximum, _On, _Ratio, _SettingW):
 class _Valves(_BaseStructures, _Maximums, _Ons, _Ratios, _SettingWs):
     _hash: int = -692036078
 
-    def __getitem__(self, name: str | int) -> "_Valves":
+    def __getitem__(self, name: str | int | float) -> "_Valves":
         return _Valves(name)
 
 
@@ -10303,7 +10287,7 @@ class LiquidValve(_BaseStructure, _Maximum, _On, _Ratio, _SettingW):
 class _LiquidValves(_BaseStructures, _Maximums, _Ons, _Ratios, _SettingWs):
     _hash: int = 1849974453
 
-    def __getitem__(self, name: str | int) -> "_LiquidValves":
+    def __getitem__(self, name: str | int | float) -> "_LiquidValves":
         return _LiquidValves(name)
 
 
@@ -10347,12 +10331,12 @@ class _VendingMachines(
 ):
     _hash: int = -443130773
 
-    def __getitem__(self, name: str | int) -> "_VendingMachines":
+    def __getitem__(self, name: str | int | float) -> "_VendingMachines":
         return _VendingMachines(name)
 
     @property
     def RequestHash(self) -> DevicesLogicType:
-        return DevicesLogicType(self._hash, "RequestHash", self._name_hash)
+        return DevicesLogicType(self._hash, "RequestHash", self._name)
 
     @RequestHash.setter
     def RequestHash(self, value: int | float):
@@ -10371,7 +10355,7 @@ class _VolumePumps(
 ):
     _hash: int = -321403609
 
-    def __getitem__(self, name: str | int) -> "_VolumePumps":
+    def __getitem__(self, name: str | int | float) -> "_VolumePumps":
         return _VolumePumps(name)
 
 
@@ -10387,7 +10371,7 @@ class _WallCoolers(
 ):
     _hash: int = -739292323
 
-    def __getitem__(self, name: str | int) -> "_WallCoolers":
+    def __getitem__(self, name: str | int | float) -> "_WallCoolers":
         return _WallCoolers(name)
 
 
@@ -10401,7 +10385,7 @@ class WallHeater(_BaseStructure, _Error, _Lock, _Power):
 class _WallHeaters(_BaseStructures, _Errors, _Locks, _Powers):
     _hash: int = 24258244
 
-    def __getitem__(self, name: str | int) -> "_WallHeaters":
+    def __getitem__(self, name: str | int | float) -> "_WallHeaters":
         return _WallHeaters(name)
 
 
@@ -10415,7 +10399,7 @@ class WallLight(_BaseStructure, _Lock, _Power):
 class _WallLights(_BaseStructures, _Locks, _Powers):
     _hash: int = -1860064656
 
-    def __getitem__(self, name: str | int) -> "_WallLights":
+    def __getitem__(self, name: str | int | float) -> "_WallLights":
         return _WallLights(name)
 
 
@@ -10429,7 +10413,7 @@ class WallLightBattery(_BaseStructure, _Lock, _Power):
 class _WallLightBatterys(_BaseStructures, _Locks, _Powers):
     _hash: int = -1306415132
 
-    def __getitem__(self, name: str | int) -> "_WallLightBatterys":
+    def __getitem__(self, name: str | int | float) -> "_WallLightBatterys":
         return _WallLightBatterys(name)
 
 
@@ -10443,7 +10427,7 @@ class LightLongAngled(_BaseStructure, _Lock, _Power):
 class _LightLongAngleds(_BaseStructures, _Locks, _Powers):
     _hash: int = 1847265835
 
-    def __getitem__(self, name: str | int) -> "_LightLongAngleds":
+    def __getitem__(self, name: str | int | float) -> "_LightLongAngleds":
         return _LightLongAngleds(name)
 
 
@@ -10457,7 +10441,7 @@ class LightLongWide(_BaseStructure, _Lock, _Power):
 class _LightLongWides(_BaseStructures, _Locks, _Powers):
     _hash: int = 555215790
 
-    def __getitem__(self, name: str | int) -> "_LightLongWides":
+    def __getitem__(self, name: str | int | float) -> "_LightLongWides":
         return _LightLongWides(name)
 
 
@@ -10471,7 +10455,7 @@ class LightLong(_BaseStructure, _Lock, _Power):
 class _LightLongs(_BaseStructures, _Locks, _Powers):
     _hash: int = 797794350
 
-    def __getitem__(self, name: str | int) -> "_LightLongs":
+    def __getitem__(self, name: str | int | float) -> "_LightLongs":
         return _LightLongs(name)
 
 
@@ -10485,7 +10469,7 @@ class WaterBottleFiller(_BaseStructure, _Activate, _Error):
 class _WaterBottleFillers(_BaseStructures, _Activates, _Errors):
     _hash: int = -1178961954
 
-    def __getitem__(self, name: str | int) -> "_WaterBottleFillers":
+    def __getitem__(self, name: str | int | float) -> "_WaterBottleFillers":
         return _WaterBottleFillers(name)
 
 
@@ -10499,7 +10483,7 @@ class WaterBottleFillerBottom(_BaseStructure, _Activate, _Error):
 class _WaterBottleFillerBottoms(_BaseStructures, _Activates, _Errors):
     _hash: int = 1433754995
 
-    def __getitem__(self, name: str | int) -> "_WaterBottleFillerBottoms":
+    def __getitem__(self, name: str | int | float) -> "_WaterBottleFillerBottoms":
         return _WaterBottleFillerBottoms(name)
 
 
@@ -10515,7 +10499,7 @@ class _WaterPurifiers(
 ):
     _hash: int = 887383294
 
-    def __getitem__(self, name: str | int) -> "_WaterPurifiers":
+    def __getitem__(self, name: str | int | float) -> "_WaterPurifiers":
         return _WaterPurifiers(name)
 
 
@@ -10529,7 +10513,9 @@ class WaterBottleFillerPoweredBottom(_BaseStructure, _Activate, _Error, _Power):
 class _WaterBottleFillerPoweredBottoms(_BaseStructures, _Activates, _Errors, _Powers):
     _hash: int = 1986658780
 
-    def __getitem__(self, name: str | int) -> "_WaterBottleFillerPoweredBottoms":
+    def __getitem__(
+        self, name: str | int | float
+    ) -> "_WaterBottleFillerPoweredBottoms":
         return _WaterBottleFillerPoweredBottoms(name)
 
 
@@ -10545,7 +10531,7 @@ class WaterBottleFillerPowered(_BaseStructure, _Activate, _Error, _Power):
 class _WaterBottleFillerPowereds(_BaseStructures, _Activates, _Errors, _Powers):
     _hash: int = -756587791
 
-    def __getitem__(self, name: str | int) -> "_WaterBottleFillerPowereds":
+    def __getitem__(self, name: str | int | float) -> "_WaterBottleFillerPowereds":
         return _WaterBottleFillerPowereds(name)
 
 
@@ -10563,12 +10549,12 @@ class WeatherStation(_BaseStructure, _Activate, _Error, _Lock, _ModeR, _Power):
 class _WeatherStations(_BaseStructures, _Activates, _Errors, _Locks, _ModeRs, _Powers):
     _hash: int = 1997212478
 
-    def __getitem__(self, name: str | int) -> "_WeatherStations":
+    def __getitem__(self, name: str | int | float) -> "_WeatherStations":
         return _WeatherStations(name)
 
     @property
     def NextWeatherEventTime(self) -> DevicesLogicType:
-        return DevicesLogicType(self._hash, "NextWeatherEventTime", self._name_hash)
+        return DevicesLogicType(self._hash, "NextWeatherEventTime", self._name)
 
 
 WeatherStations: _WeatherStations = _WeatherStations()
@@ -10585,12 +10571,12 @@ class WindTurbine(_BaseStructure):
 class _WindTurbines(_BaseStructures):
     _hash: int = -2082355173
 
-    def __getitem__(self, name: str | int) -> "_WindTurbines":
+    def __getitem__(self, name: str | int | float) -> "_WindTurbines":
         return _WindTurbines(name)
 
     @property
     def PowerGeneration(self) -> DevicesLogicType:
-        return DevicesLogicType(self._hash, "PowerGeneration", self._name_hash)
+        return DevicesLogicType(self._hash, "PowerGeneration", self._name)
 
 
 WindTurbines: _WindTurbines = _WindTurbines()

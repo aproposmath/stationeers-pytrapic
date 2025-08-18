@@ -53,7 +53,7 @@ class Property:
             args.append("self._id")
         args.append(f"'{name}'")
         if multiple:
-            args.append("self._name_hash")
+            args.append("self._name")
         args = ", ".join(args)
         if self.can_read or self.can_write:
             code += f"  @property\n"
@@ -101,7 +101,7 @@ def generate_generic_structure(struct: Structure, multiple: bool = False) -> str
     if not is_base:
         code += f"  _hash: int = {struct.id}\n"
     if multiple and not is_base:
-        code += f"  def __getitem__(self, name: str | int) -> '{classname}':\n"
+        code += f"  def __getitem__(self, name: str | int | float) -> '{classname}':\n"
         code += f"      return {classname}(name)\n"
 
     for prop in sorted(struct.properties):
