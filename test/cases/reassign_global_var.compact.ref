@@ -1,5 +1,3 @@
-# registers: 1
-# lines: 7
 move r0 -1938594527
 sbn -1758710260 r0 Lock 1
 jal 4
@@ -7,3 +5,5 @@ sbn -1758710260 r0 Lock 1
 move r0 1996459178
 sbn -1758710260 r0 Lock 1
 j ra
+# registers: 1
+# lines: 7

@@ -21,7 +21,7 @@ def run_case(
         if "error" in result:
             result_str = "Error: " + result["error"] + "\n"
         else:
-            result_str = f"# registers: {result['num_registers']}\n# lines: {result['num_lines']}\n{result['code']}\n"
+            result_str = f"{result['code']}\n# registers: {result['num_registers']}\n# lines: {result['num_lines']}\n"
 
         if write_reference:
             if reference_file.exists():

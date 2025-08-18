@@ -1,5 +1,3 @@
-# registers: 1
-# lines: 12
 jal outer.function
 lb r0 -1758710260 On 3
 s db Setting r0
@@ -10,5 +8,8 @@ outer.function:
   push ra
   sb -1758710260 On 0
   jal inner.function
+  jal inner.function
   pop ra
   j ra
+# registers: 1
+# lines: 13

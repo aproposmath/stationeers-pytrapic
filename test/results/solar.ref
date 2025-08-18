@@ -1,5 +1,3 @@
-# registers: 3
-# lines: 7
 lbwhile1:
   l r0 d0 Horizontal
   sb -2045627372 Horizontal r0
@@ -7,3 +5,5 @@ lbwhile1:
   sub r2 90 r1
   sb -2045627372 Vertical r2
   j lbwhile1
+# registers: 3
+# lines: 7

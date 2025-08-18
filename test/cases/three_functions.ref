@@ -1,5 +1,3 @@
-# registers: 7
-# lines: 62
 sbn -324331872 -899110164 Lock 1
 sbn -324331872 -899110164 Lock 1
 sbn -1129453144 -899110164 Mode 1
@@ -62,3 +60,5 @@ lbend17:
   sgt r6 r0 150
   sbn -739292323 -2085733260 On r6
   j ra
+# registers: 7
+# lines: 62
