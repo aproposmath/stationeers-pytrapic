@@ -24,7 +24,7 @@ jobs:
 
     - name: Install Python dependencies
       run: |
-        python -m pip install --upgrade pip wheel astroid pyright build setuptools
+        python -m pip install --upgrade pip wheel astroid pyright build setuptools setuptools_scm
 
     - name: Run custom Python script
       run: |
