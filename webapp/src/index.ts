@@ -91,7 +91,6 @@ async function compileCode() {
     ic10Element.innerHTML = "Compiling...";
     statisticsElement.innerHTML = "";
     const compileFunction = pyodide.runPython(`from stationeers_pytrapic.compiler import compile_code; compile_code`);
-    console.log("args", comments, compact, append_version);
     const result = compileFunction.callKwargs(code, { comments, compact, append_version }).toJs();
     if (result.error) {
       console.log("Compilation error:", result.error);
