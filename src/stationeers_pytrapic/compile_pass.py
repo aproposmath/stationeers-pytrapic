@@ -86,6 +86,7 @@ class CompileOptions:
     generated_comments: bool = False
     inline_functions: bool = False
     remove_labels: bool = False
+    append_version: bool = False
 
 
 @dataclass

@@ -45,7 +45,7 @@ class Compiler:
             }
 
 
-def compile_code(src: str, comments: bool = False, compact: bool = False):
+def compile_code(src: str, comments: bool = False, compact: bool = False, append_version: bool = False):
     original_code_as_comment = comments and not compact
     inline_functions = compact
     remove_labels = compact
@@ -53,6 +53,7 @@ def compile_code(src: str, comments: bool = False, compact: bool = False):
         original_code_as_comment=original_code_as_comment,
         inline_functions=inline_functions,
         remove_labels=remove_labels,
+        append_version=append_version,
     )
 
     return Compiler(options).compile(src)

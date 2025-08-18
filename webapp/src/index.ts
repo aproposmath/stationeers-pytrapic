@@ -54,6 +54,7 @@ while True:
 `,
   comments: true,
   compact: false,
+  version: true,
 };
 
 const urlParams = new URLSearchParams(window.location.search);
@@ -69,6 +70,10 @@ function compactOutput() {
   return document.querySelector("#compact-output").checked;
 }
 
+function appendVersion() {
+  return document.querySelector("#append-version").checked;
+}
+
 let pyodide = null;
 let pyodideReady = null;
 
@@ -82,11 +87,12 @@ async function compileCode() {
     if (editor === null) return;
     if (pyodide === null) return;
 
-    const { code, comments, compact } = getData();
+    const { code, comments, compact, append_version } = getData();
     ic10Element.innerHTML = "Compiling...";
     statisticsElement.innerHTML = "";
     const compileFunction = pyodide.runPython(`from stationeers_pytrapic.compiler import compile_code; compile_code`);
-    const result = compileFunction.callKwargs(code, { comments, compact }).toJs();
+    console.log("args", comments, compact, append_version);
+    const result = compileFunction.callKwargs(code, { comments, compact, append_version }).toJs();
     if (result.error) {
       console.log("Compilation error:", result.error);
       statisticsElement.innerHTML = "";
@@ -120,6 +126,7 @@ function getData() {
     code: editor?.getValue() || "",
     comments: useComments(),
     compact: compactOutput(),
+    append_version: appendVersion(),
   };
 }
 
@@ -127,6 +134,10 @@ function loadData(data) {
   console.log("Loading data", data);
   editor.setValue(data.code);
   document.querySelector("#emit-comments").checked = data.comments || false;
+  document.querySelector("#compact-output").checked = data.compact || false;
+  let appendVersion = data.version !== undefined ? data.version : true;
+  document.querySelector("#append-version").checked = appendVersion;
+
 }
 
 async function init() {
@@ -158,7 +169,7 @@ async function init() {
   let fileUrl = urlParams.get("fileUrl");
   if (fileUrl) {
     const code = await (await fetch(fileUrl)).text();
-    loadData({code});
+    loadData({ code });
   }
   else if (urlData) {
     const data = JSON.parse(pyodide.runPython(
@@ -189,13 +200,8 @@ async function init() {
 
   editor.onDidChangeModelContent(compileCodeDebounced);
 
-  document
-    .querySelector("#emit-comments")
-    ?.addEventListener("click", compileCode);
-
-  document
-    .querySelector("#compact-output")
-    ?.addEventListener("click", compileCode);
+  for (const id of ["emit-comments", "compact-output", "append-version"])
+    document.querySelector("#" + id)?.addEventListener("click", compileCode);
 
   compileCode(); // Initial compilation
 }
