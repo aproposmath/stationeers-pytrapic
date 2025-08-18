@@ -50,6 +50,7 @@ The output is written to stdout.
 - boolean operations (`and`, `or`, `not`)
 - function arguments
 - break and continue statements
+- return statements
 - better register allocation (respect not only function scope but also variable scope)
 - [you tell me!](https://github.com/aproposmath/stationeers-pytrapic/issues/new)
 
