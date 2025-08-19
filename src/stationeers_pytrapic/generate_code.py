@@ -87,6 +87,7 @@ class CompilerPassGenerateCode(CompilerPass):
         self._names = {}
 
         self.ignore_nodes(astroid.ImportFrom, astroid.Import, astroid.Pass)
+        self.functions = {}
 
     def set_name_(
         self, node: astroid.NodeNG, symbol: SymbolData, identifyer: str | None = None
@@ -213,11 +214,13 @@ class CompilerPassGenerateCode(CompilerPass):
         fname = node.func.name
         if not hasattr(symbols, fname):
             data.add(f"jal {fname.replace('_','.')}", f"call {fname}")
+            self.compile_function(self.functions[fname])
             return
 
         func = getattr(symbols, fname)
         kwargs = {kw.arg: self.compile_node(kw.value) for kw in node.keywords}
         args = [self.compile_node(arg) for arg in node.args]
+
         result = func(*args, **kwargs)
         if isinstance(
             result,
@@ -240,7 +243,22 @@ class CompilerPassGenerateCode(CompilerPass):
     def handle_return(self, node: astroid.Return):
         if node.value is not None:
             raise CompilerError("Return value is not supported", node)
-        node._ndata.add("j ra", "return from function")
+        while node.parent and not isinstance(node.parent, astroid.FunctionDef):
+            node = node.parent
+        label = node.parent.name.replace("_", ".") + "end"
+        node._ndata.add(f"j {label}", "return from function")
+
+    def handle_continue(self, node: astroid.Continue):
+        while not isinstance(node.parent, (astroid.While, astroid.For)):
+            node = node.parent
+        start_label = node.parent._ndata.start_label
+        node._ndata.add(f"j {start_label}", "continue loop")
+
+    def handle_break(self, node: astroid.Break):
+        while not isinstance(node.parent, (astroid.While, astroid.For)):
+            node = node.parent
+        end_label = node.parent._ndata.end_label
+        node._ndata.add(f"j {end_label}", "break loop")
 
     def handle_name(self, node: astroid.Name):
         # todo: detect if name is in locals/globals
@@ -272,9 +290,19 @@ class CompilerPassGenerateCode(CompilerPass):
             raise CompilerError(f"Unsupported constant type: {type(node.value)}", node)
 
     def handle_function_def(self, node: astroid.FunctionDef):
+        self.functions[node.name] = node
+
+    def compile_function(self, node: astroid.FunctionDef):
         data = node._ndata
-        data.add(f"{node.name}:".replace("_", "."), "function definition")
-        data.add_end("j ra", "return from function", 1)
+        if data.code[""]:
+            # function already compiled
+            return
+        sym_data = self.data.get_sym_data(node)
+        label = node.name.replace("_", ".")
+        data.add(f"{label}:", "function definition")
+        data.add_end(f"{label}end:", "function end label")
+        if sym_data.is_read != 1 or not self.data.options.inline_functions:
+            data.add_end("j ra", "return from function", 1)
 
         if len(node.args.args):
             raise CompilerError("Function arguments are not supported yet", node)
@@ -495,6 +523,9 @@ class CompilerPassGenerateCode(CompilerPass):
         while_label, end_label = self.get_label("while", "while.end")
         data = node._ndata
 
+        data.start_label = while_label
+        data.end_label = end_label
+
         data.add(f"{while_label}:", "while loop start")
         if isinstance(test, astroid.Compare):
             left = self.compile_node(test.left)
@@ -599,7 +630,7 @@ class CompilerPassGatherCode(CompilerPass):
 
                 func = self.data.functions[fname]
                 if self.data.options.inline_functions and func.can_inline:
-                    node._ndata.code[""] = func.code[:-1]
+                    node._ndata.code[""] = func.code
                     func.code = []
 
         if isinstance(data.code, str):

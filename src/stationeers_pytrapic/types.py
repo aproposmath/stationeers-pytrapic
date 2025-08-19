@@ -60,6 +60,9 @@ def compute_hash(name: int | str | Register) -> int | str:
     if name.startswith("__register."):
         return name
 
+    if name == "":
+        raise ValueError("Name cannot be an empty string")
+
     if name[0] == '"' and name[-1] == '"':
         name = name[1:-1]
 

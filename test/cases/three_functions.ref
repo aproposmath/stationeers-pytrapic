@@ -5,31 +5,31 @@ sbn -1129453144 HASH("In") On 0
 sbn -1129453144 HASH("In") Mode 1
 sbn -1129453144 HASH("In") On 0
 sb -247344692 On 1
-lbwhile23:
+lbwhile1:
   jal handle.airlock
   jal handle.heating
   jal handle.furnace
-  j lbwhile23
+  j lbwhile1
 handle.airlock:
   lbn r3 555215790 HASH("Switch") On 3
-  ble r3 0 lbelse1
+  ble r3 0 lbelse2
     lbn r4 -324331872 HASH("In") Open 3
     sgt r0 r4 0
     select r1 r0 HASH("Out") HASH("In")
     select r2 r0 HASH("In") HASH("Out")
     sbn -324331872 r2 Open 0
     sbn -1129453144 r2 On 1
-lbwhile8:
+lbwhile9:
     lbn r5 -1252983604 HASH("Airlock") Pressure 3
-    beq r5 0 lbwhile.end8
-      j lbwhile8
-lbwhile.end8:
+    beq r5 0 lbwhile.end9
+      j lbwhile9
+lbwhile.end9:
     sleep 0.2
     sbn -1129453144 r2 On 0
     sbn -324331872 r1 Open 1
     sbn 555215790 HASH("Switch") On 0
     sleep 1
-lbelse1:
+lbelse2:
   j ra
 handle.heating:
   lb r0 -400115994 Ratio 0
@@ -48,15 +48,15 @@ handle.furnace:
   sgt r2 r3 0.95
   sgt r4 r1 0
   and r5 r2 r4
-  beqz r5 lbelse17
+  beqz r5 lbelse18
     sbn -1129453144 HASH("Furnace") On 1
     sb -247344692 On 0
-    j lbend17
-lbelse17:
+    j lbend18
+lbelse18:
     sbn -1129453144 HASH("Furnace") On 0
     sb -247344692 On 1
     sb -247344692 Activate 1
-lbend17:
+lbend18:
   sgt r6 r0 150
   sbn -739292323 HASH("Furnace") On r6
   j ra

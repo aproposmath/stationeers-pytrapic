@@ -186,6 +186,8 @@ class NodeData:
     code_data: CodeData = None
     indent: int = 0
     is_compiled = False
+    start_label: str = None
+    end_label: str = None
 
     code: dict[CodeType, list[CodeLine]] = None
     result = None
@@ -256,6 +258,9 @@ class CompilerPass:
             astroid.BinOp: self.handle_binop,
             astroid.BoolOp: self.handle_binop,
             astroid.Arguments: self.handle_arguments,
+            astroid.Return: self.handle_return,
+            astroid.Continue: self.handle_continue,
+            astroid.Break: self.handle_break,
         }
 
     def _log(self, level, *args):
@@ -370,6 +375,15 @@ class CompilerPass:
         pass
 
     def handle_global(self, node: astroid.Global):
+        self.handle_node(node)
+
+    def handle_return(self, node: astroid.Return):
+        self.handle_node(node)
+
+    def handle_continue(self, node: astroid.Continue):
+        self.handle_node(node)
+
+    def handle_break(self, node: astroid.Break):
         self.handle_node(node)
 
 
@@ -542,25 +556,3 @@ class CompilerPassCheckReadWritten(CompilerPassResetReadWritten):
         #         self.data.set_function_called(node.name)
         #     else:
         #         self.data.set_name_read(node.scope(), node.name)
-
-
-class CompilerPassListSymbols(CompilerPass):
-    def run(self):
-        print("Listing symbols")
-        for scope, symbols in self.data.symbols.items():
-            print(f"Scope: {scope}")
-            for name, symbol_data in symbols.items():
-                print(
-                    f"  {name}: {symbol_data.is_read} reads, {symbol_data.is_written} writes"
-                )
-
-
-class CompilerPassAssignSymbols(CompilerPass):
-    def handle_module(self, node: astroid.FunctionDef):
-        self.tree._ndata.symbols[node] = node.locals.copy()
-
-    def handle_function_def(self, node: astroid.FunctionDef):
-        self.tree._ndata.symbols[node] = node.locals.copy()
-
-    def handle_node(self, node: astroid.Assign):
-        pass

@@ -1,0 +1,34 @@
+lbwhile1:
+  jal f0
+  jal f1
+  jal f1
+  jal f2
+  jal f3
+  jal f3
+  j lbwhile1
+f0:
+  j f0end
+f0end:
+  j ra
+f1:
+  j f1end
+f1end:
+  j ra
+f2:
+  lb r0 -400115994 Ratio 0
+  ble r0 0.2 lbelse3
+  j f2end
+lbelse3:
+  sb -247344692 Activate 1
+f2end:
+  j ra
+f3:
+  lb r0 -400115994 Ratio 0
+  bge r0 0.2 lbelse6
+  j f3end
+lbelse6:
+  sb -247344692 Activate 1
+f3end:
+  j ra
+# registers: 1
+# lines: 32
