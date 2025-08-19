@@ -471,6 +471,11 @@ class CompilerPassGenerateCode(CompilerPass):
         elif isinstance(node.test, astroid.BoolOp):
             test = self.compile_node(node.test)
             data.add(f"beqz {test} {else_label}", "if with bool op")
+        elif isinstance(node.test, astroid.Name):
+            test_name = self.compile_node(node.test)
+            if isinstance(test_name, SymbolData):
+                test_name = test_name.code_expr
+            data.add(f"beqz {test_name} {else_label}", "if with name")
         else:
             raise NotImplementedError(f"Unsupported if test: {type(node.test)}")
 
@@ -492,6 +497,31 @@ class CompilerPassGenerateCode(CompilerPass):
                 stmt._ndata.is_used = False
 
         data.add_end(f"{end_label}:", "", -1)
+
+    def handle_unop(self, node: astroid.UnaryOp):
+        data = node._ndata
+
+        operand = node.operand
+        opdata = operand._ndata
+
+        if node.op not in ["not", "-"]:
+            raise CompilerError(f"Unsupported unary operation: {node.op}", node)
+
+        if opdata.is_constant_value:
+            if node.op == "not":
+                data.result = not data.constant_value
+            else:
+                data.result = -data.constant_value
+            return
+
+        opname = self.compile_node(operand)
+
+        sym = self.get_intermediate_symbol(node)
+        data.result = sym
+        if node.op == "not":
+            data.add(f"seqz {sym.code_expr} {opname}", "unary not")
+        else:
+            data.add(f"sub {sym.code_expr} 0 {opname}", "unary negation")
 
     def handle_binop(self, node: astroid.BinOp):
         data = node._ndata

@@ -25,6 +25,8 @@ The output is written to stdout.
 
 - variable assignments
 - arithmetic operations (`+`, `-`, `*`, `/`)
+- boolean operations (`and`, `or`, `not`)
+- unary operations (`not`, `-`)
 - if-else statements
 - while loops
 - type hints/autocomplete for all structure names and logic types (e.g. `WallLights["Some Name"].On.Maximum`)
@@ -43,12 +45,12 @@ The output is written to stdout.
 
 **Planned Features**
 
-- boolean operations (`and`, `or`, `not`)
-- push/pop `ra` is automatically in nested function calls ([use manual `push ra/pop ra` for now)](https://aproposmath.github.io/stationeers-pytrapic?fileUrl=https://raw.githubusercontent.com/aproposmath/stationeers-pytrapic/refs/heads/main/examples/nested_function_calls.py))
+- push/pop `ra` automatically in nested function calls ([use manual `push ra/pop ra` for now)](https://aproposmath.github.io/stationeers-pytrapic?fileUrl=https://raw.githubusercontent.com/aproposmath/stationeers-pytrapic/refs/heads/main/examples/nested_function_calls.py))
 - slots (will be added soon)
 - function arguments
 - function return values
 - better register allocation (respect not only function scope but also variable scope)
+- for loops
 - [you tell me!](https://github.com/aproposmath/stationeers-pytrapic/issues/new)
 
 **NOT planned**
@@ -56,7 +58,7 @@ The output is written to stdout.
 - lambda functions
 - anything that is not supported by IC10 (e.g. classes, exceptions, etc.)
 - anything provided by the Python standard library (e.g. `math`, `random`, etc.)
-- list, dict, set, tuple, comprehensions (maybe later for constant expressions)
+- list, dict, set, tuple, comprehensions (maybe later, but only for constant expressions)
 
 ## How does it work
 

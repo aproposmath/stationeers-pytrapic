@@ -257,6 +257,7 @@ class CompilerPass:
             astroid.If: self.handle_if,
             astroid.BinOp: self.handle_binop,
             astroid.BoolOp: self.handle_binop,
+            astroid.UnaryOp: self.handle_unop,
             astroid.Arguments: self.handle_arguments,
             astroid.Return: self.handle_return,
             astroid.Continue: self.handle_continue,
@@ -369,6 +370,9 @@ class CompilerPass:
         self.handle_node(node)
 
     def handle_binop(self, node: astroid.BinOp):
+        self.handle_node(node)
+
+    def handle_unop(self, node: astroid.UnaryOp):
         self.handle_node(node)
 
     def handle_ignore(self, node: astroid.NodeNG):

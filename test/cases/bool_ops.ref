@@ -1,0 +1,17 @@
+lbwhile1:
+  lb r0 -400115994 Ratio 0
+  lb r4 1997212478 NextWeatherEventTime 0
+  slt r1 r4 1
+  slt r5 r0 0.2
+  and r2 r5 r1
+  seqz r3 r2
+  beqz r2 lbelse8
+    s db Setting 2
+lbelse8:
+  beqz r3 lbelse9
+    sub r6 0 r0
+    s db Setting r6
+lbelse9:
+  j lbwhile1
+# registers: 7
+# lines: 15
