@@ -1,0 +1,11 @@
+l r1 d0 Vertical
+slt r0 r1 100
+sb -1758710260 On r0
+l r0 d0 Horizontal
+sb -539224550 Horizontal r0
+l r1 d0 Vertical
+add r2 r1 90
+sb -539224550 Vertical r2
+j 0
+# registers: 3
+# lines: 9

@@ -45,15 +45,15 @@ function debounce(fn, delay) {
 const defaultData = {
   code: `from stationeers_pytrapic.symbols import *
 
-light_sensor = d0
+light_sensor = DaylightSensor(d0)
 
 def handle_solar_panels():
-  panels = SolarPanelDual
+  panels = SolarPanelDuals
   panels.Horizontal = light_sensor.Horizontal
   panels.Vertical = light_sensor.Vertical + 90
 
 def handle_growlight():
-  GrowLight.On = light_sensor.Vertical > 90
+  GrowLights.On = light_sensor.Vertical < 100
 
 while True:
   handle_growlight()
