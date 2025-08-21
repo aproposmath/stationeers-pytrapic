@@ -42,6 +42,17 @@ namespace StationeersPyTrapIC
         public bool AppendVersion { get; set; } = true;
     }
 
+    public class ChipData
+    {
+        public string PythonCode { get; set; }
+        public string IC10Code { get; set; }
+    }
+
+    public class UploadData : ChipData
+    {
+        public string OldIC10Code { get; set; }
+    }
+
     public static class F
     {
         private static readonly string FilePath = Path.Combine(
@@ -57,14 +68,10 @@ namespace StationeersPyTrapIC
         }
     }
 
-    public class PythonCompiler //: IDisposable
+    public class PythonCompiler
     {
         public static readonly PythonCompiler Instance = new PythonCompiler();
 
-        // public static readonly Lazy<PythonCompiler> _instance = new Lazy<PythonCompiler>(() =>
-        //     new PythonCompiler()
-        // );
-        // public static PythonCompiler Instance => _instance.Value;
         private readonly Process _process;
         private readonly StreamWriter _stdin;
         private readonly StreamReader _stdout;
@@ -223,25 +230,6 @@ namespace StationeersPyTrapIC
                 return $"Error: {ex.Message}";
             }
         }
-
-        // public void Dispose()
-        // {
-        //     F.Log("Disposing PythonCompiler");
-        //     if (!_process.HasExited)
-        //         _process.Kill();
-        //     _process.Dispose();
-        // }
-    }
-
-    public class ChipData
-    {
-        public string PythonCode { get; set; }
-        public string IC10Code { get; set; }
-    }
-
-    public class UploadData : ChipData
-    {
-        public string OldIC10Code { get; set; }
     }
 
     [HarmonyPatch]
