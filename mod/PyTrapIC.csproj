@@ -1,0 +1,39 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net46</TargetFramework>
+    <AssemblyName>PyTrapIC</AssemblyName>
+    <Description>Python to IC10 Transpiler</Description>
+    <Version>0.0.1</Version>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+    <LangVersion>latest</LangVersion>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="BepInEx.Analyzers" Version="1.*" PrivateAssets="all" />
+    <PackageReference Include="BepInEx.Core" Version="5.*" />
+    <PackageReference Include="BepInEx.PluginInfoProps" Version="1.*" />
+    <!-- <PackageReference Include="Newtonsoft.Json" Version="12.0.0" /> -->
+    <Reference Include="Unity.TextMeshPro">
+      <HintPath>$(HOME)/.sa/Stationeers/rocketstation_Data/Managed/Unity.TextMeshPro.dll</HintPath>
+      </Reference>
+    <Reference Include="UnityEngine.UI">
+      <HintPath>$(HOME)/.sa/Stationeers/rocketstation_Data/Managed/UnityEngine.UI.dll</HintPath>
+      </Reference>
+    <Reference Include="Newtonsoft.Json">
+      <HintPath>$(HOME)/.sa/Stationeers/rocketstation_Data/Managed/Newtonsoft.Json.dll</HintPath>
+      </Reference>
+    <Reference Include="netstandard">
+      <HintPath>$(HOME)/.sa/Stationeers/rocketstation_Data/Managed/netstandard.dll</HintPath>
+      </Reference>
+    <PackageReference Include="UnityEngine.Modules" Version="2021.2.3" IncludeAssets="compile" />
+    <Reference Include="Assembly-CSharp">
+      <HintPath>$(HOME)/.sa/Stationeers/rocketstation_Data/Managed/Assembly-CSharp.dll</HintPath>
+      </Reference>
+    <!-- <Reference Include="Newtonsoft.Json"><HintPath>E:\Games\SteamLibrary\steamapps\common\Stationeers\rocketstation_Data\Managed\Newtonsoft.Json</HintPath></Reference> -->
+  </ItemGroup>
+  
+  <ItemGroup Condition="'$(TargetFramework.TrimEnd(`0123456789`))' == 'net'">
+    <PackageReference Include="Microsoft.NETFramework.ReferenceAssemblies" Version="1.0.2" PrivateAssets="all" />
+  </ItemGroup>
+</Project>

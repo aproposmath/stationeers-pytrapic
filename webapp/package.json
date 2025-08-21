@@ -21,6 +21,7 @@
     "lucide": "^0.525.0",
     "monaco-editor": "^0.52.0",
     "monaco-pyright-lsp": "^0.1.7",
+    "simple-notify": "^1.0.6",
     "style-loader": "^4.0.0"
   }
 }

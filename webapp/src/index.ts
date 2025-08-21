@@ -1,3 +1,5 @@
+import Notify from 'simple-notify'
+import 'simple-notify/dist/simple-notify.css'
 import * as monaco from "monaco-editor";
 import { MonacoPyrightProvider } from "monaco-pyright-lsp";
 import hljs from "highlight.js/lib/core";
@@ -13,6 +15,8 @@ import {
   Share2,
   Save,
   FolderOpen,
+  RefreshCw,
+  Microchip
 } from "lucide";
 
 createIcons({
@@ -22,6 +26,8 @@ createIcons({
     Share2,
     Save,
     FolderOpen,
+    RefreshCw,
+    Microchip
   },
 });
 
@@ -33,7 +39,7 @@ import workerUrl from "../node_modules/monaco-pyright-lsp/dist/worker.js?url";
 
 function debounce(fn, delay) {
   let timer;
-  const debounced = function (...args) {
+  const debounced = function(...args) {
     const context = this;
     clearTimeout(timer);
     timer = setTimeout(() => fn.apply(context, args), delay);
@@ -68,6 +74,12 @@ const urlParams = new URLSearchParams(window.location.search);
 
 let editor: monaco.editor.IStandaloneCodeEditor | null = null;
 let ic10Code = "";
+
+let gameData = {
+  PythonCode: "",
+  IC10Code: "",
+  OldIC10Code: "",
+};
 
 function useComments() {
   return document.querySelector("#emit-comments").checked;
@@ -256,3 +268,77 @@ onClick("save", () => {
 onClick("load", () => {
   loadData(JSON.parse(localStorage.getItem("data")) || defaultData);
 });
+
+onClick("reload-game", async () => {
+  gameData = await (await fetch("http://localhost:8080/api/get")).json();
+  if (!gameData || Object.keys(gameData).length === 0) {
+    new Notify({
+      title: "Error",
+      text: "No chip selected in-game",
+      status: "warning",
+      autoclose: true,
+    });
+    return;
+  }
+  if (!gameData.PythonCode) {
+    new Notify({
+      title: "Info",
+      text: "No Python code found in game data",
+      status: "info",
+      autoclose: true,
+    });
+  }
+  if(gameData.IC10Code != gameData.OldIC10Code) {
+    new Notify({
+      title: "Warning",
+      text: "IC10 code was changed manually. Are you sure you want to overwrite it with Python code?",
+      status: "warning",
+      autoclose: false,
+    })
+  }
+  gameData.OldIC10Code = gameData.IC10Code;
+  console.log("Game data loaded", gameData);
+  const fullRange = editor.getModel()?.getFullModelRange();
+  editor.executeEdits("paste", [
+    {
+      range: fullRange || new monaco.Range(1, 1, 1, 1),
+      text: gameData.PythonCode || "",
+      forceMoveMarkers: true,
+    },
+  ]);
+  editor.pushUndoStop();
+  //   ic10Element.innerHTML = hljs.highlight(gameData.IC10Code || "", {
+  //     language: "ic10",
+  //   }).value;
+})
+
+onClick("upload-game", async () => {
+  gameData.PythonCode = editor.getValue();
+  gameData.IC10Code = ic10Code;
+
+  const response = await fetch("http://localhost:8080/api/upload", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify(gameData),
+  });
+  if (response.ok) {
+    console.log("Game data uploaded successfully");
+    Notify({
+      title: "Success",
+      text: "Code uploaded successfully",
+      status: "success",
+      autoclose: true,
+    });
+  } else {
+    Notify({
+      title: "Error",
+      text: "Failed to upload code",
+      status: "error",
+      autoclose: true,
+    });
+    console.error("Failed to upload game data", response.statusText);
+  }
+});
+

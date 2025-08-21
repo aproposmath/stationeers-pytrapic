@@ -857,5 +857,4 @@ class CompilerPassGatherCode(CompilerPass):
             "num_lines": num_lines,
             "num_registers": num_registers,
             "num_bytes": num_bytes,
-            "used_registers": self.used_registers,
         }
