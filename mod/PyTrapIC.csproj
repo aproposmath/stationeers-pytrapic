@@ -10,27 +10,15 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="UnityEngine.Modules" Version="2021.2.3" IncludeAssets="compile" />
     <PackageReference Include="BepInEx.Analyzers" Version="1.*" PrivateAssets="all" />
     <PackageReference Include="BepInEx.Core" Version="5.*" />
     <PackageReference Include="BepInEx.PluginInfoProps" Version="1.*" />
-    <!-- <PackageReference Include="Newtonsoft.Json" Version="12.0.0" /> -->
-    <Reference Include="Unity.TextMeshPro">
-      <HintPath>$(HOME)/.sa/Stationeers/rocketstation_Data/Managed/Unity.TextMeshPro.dll</HintPath>
-      </Reference>
-    <Reference Include="UnityEngine.UI">
-      <HintPath>$(HOME)/.sa/Stationeers/rocketstation_Data/Managed/UnityEngine.UI.dll</HintPath>
-      </Reference>
-    <Reference Include="Newtonsoft.Json">
-      <HintPath>$(HOME)/.sa/Stationeers/rocketstation_Data/Managed/Newtonsoft.Json.dll</HintPath>
-      </Reference>
-    <Reference Include="netstandard">
-      <HintPath>$(HOME)/.sa/Stationeers/rocketstation_Data/Managed/netstandard.dll</HintPath>
-      </Reference>
-    <PackageReference Include="UnityEngine.Modules" Version="2021.2.3" IncludeAssets="compile" />
-    <Reference Include="Assembly-CSharp">
-      <HintPath>$(HOME)/.sa/Stationeers/rocketstation_Data/Managed/Assembly-CSharp.dll</HintPath>
-      </Reference>
-    <!-- <Reference Include="Newtonsoft.Json"><HintPath>E:\Games\SteamLibrary\steamapps\common\Stationeers\rocketstation_Data\Managed\Newtonsoft.Json</HintPath></Reference> -->
+    <Reference Include="Unity.TextMeshPro"> <HintPath>$(STATIONEERS_DLL_DIR)/Unity.TextMeshPro.dll</HintPath> </Reference>
+    <Reference Include="UnityEngine.UI"> <HintPath>$(STATIONEERS_DLL_DIR)/UnityEngine.UI.dll</HintPath> </Reference>
+    <Reference Include="Newtonsoft.Json"> <HintPath>$(STATIONEERS_DLL_DIR)/Newtonsoft.Json.dll</HintPath> </Reference>
+    <Reference Include="netstandard"> <HintPath>$(STATIONEERS_DLL_DIR)/netstandard.dll</HintPath> </Reference>
+    <Reference Include="Assembly-CSharp"><HintPath>$(STATIONEERS_DLL_DIR)/Assembly-CSharp.dll</HintPath></Reference>
   </ItemGroup>
   
   <ItemGroup Condition="'$(TargetFramework.TrimEnd(`0123456789`))' == 'net'">
