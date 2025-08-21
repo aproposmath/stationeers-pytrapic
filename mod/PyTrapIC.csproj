@@ -1,5 +1,5 @@
+<?xml version="1.0"?>
 <Project Sdk="Microsoft.NET.Sdk">
-
   <PropertyGroup>
     <TargetFramework>net46</TargetFramework>
     <AssemblyName>PyTrapIC</AssemblyName>
@@ -7,21 +7,33 @@
     <Version>0.0.1</Version>
     <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
     <LangVersion>latest</LangVersion>
+    <Deterministic>true</Deterministic>
+    <PathMap>$(MSBuildProjectDirectory)=.</PathMap>
+    <ContinuousIntegrationBuild>true</ContinuousIntegrationBuild>
+    <EnableSourceControlManagerQueries>false</EnableSourceControlManagerQueries>
   </PropertyGroup>
-
   <ItemGroup>
-    <PackageReference Include="UnityEngine.Modules" Version="2021.2.3" IncludeAssets="compile" />
-    <PackageReference Include="BepInEx.Analyzers" Version="1.*" PrivateAssets="all" />
-    <PackageReference Include="BepInEx.Core" Version="5.*" />
-    <PackageReference Include="BepInEx.PluginInfoProps" Version="1.*" />
-    <Reference Include="Unity.TextMeshPro"> <HintPath>$(STATIONEERS_DLL_DIR)/Unity.TextMeshPro.dll</HintPath> </Reference>
-    <Reference Include="UnityEngine.UI"> <HintPath>$(STATIONEERS_DLL_DIR)/UnityEngine.UI.dll</HintPath> </Reference>
-    <Reference Include="Newtonsoft.Json"> <HintPath>$(STATIONEERS_DLL_DIR)/Newtonsoft.Json.dll</HintPath> </Reference>
-    <Reference Include="netstandard"> <HintPath>$(STATIONEERS_DLL_DIR)/netstandard.dll</HintPath> </Reference>
-    <Reference Include="Assembly-CSharp"><HintPath>$(STATIONEERS_DLL_DIR)/Assembly-CSharp.dll</HintPath></Reference>
+    <PackageReference Include="UnityEngine.Modules" Version="2021.2.3" IncludeAssets="compile"/>
+    <PackageReference Include="BepInEx.Analyzers" Version="1.*" PrivateAssets="all"/>
+    <PackageReference Include="BepInEx.Core" Version="5.*"/>
+    <PackageReference Include="BepInEx.PluginInfoProps" Version="1.*"/>
+    <Reference Include="Unity.TextMeshPro">
+      <HintPath>$(STATIONEERS_DLL_DIR)Unity.TextMeshPro.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.UI">
+      <HintPath>$(STATIONEERS_DLL_DIR)UnityEngine.UI.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json">
+      <HintPath>$(STATIONEERS_DLL_DIR)Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="netstandard">
+      <HintPath>$(STATIONEERS_DLL_DIR)netstandard.dll</HintPath>
+    </Reference>
+    <Reference Include="Assembly-CSharp">
+      <HintPath>$(STATIONEERS_DLL_DIR)Assembly-CSharp.dll</HintPath>
+    </Reference>
   </ItemGroup>
-  
   <ItemGroup Condition="'$(TargetFramework.TrimEnd(`0123456789`))' == 'net'">
-    <PackageReference Include="Microsoft.NETFramework.ReferenceAssemblies" Version="1.0.2" PrivateAssets="all" />
+    <PackageReference Include="Microsoft.NETFramework.ReferenceAssemblies" Version="1.0.2" PrivateAssets="all"/>
   </ItemGroup>
 </Project>
