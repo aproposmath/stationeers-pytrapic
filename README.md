@@ -24,7 +24,7 @@ The output is written to stdout.
 **Features**
 
 - variable assignments
-- arithmetic operations (`+`, `-`, `*`, `/`)
+- arithmetic operations (`+`, `-`, `*`, `/`, `%`, `+=`, `-=`, `*=`, `/=`)
 - boolean operations (`and`, `or`, `not`)
 - unary operations (`not`, `-`)
 - if-else statements
