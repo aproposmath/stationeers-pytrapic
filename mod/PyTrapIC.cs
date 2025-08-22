@@ -6,6 +6,7 @@ using System.Linq;
 using System.Net;
 using System.Reflection;
 using System.Reflection.Emit;
+using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
@@ -42,15 +43,27 @@ namespace StationeersPyTrapIC
         public bool AppendVersion { get; set; } = true;
     }
 
-    public class ChipData
+    public class SourceData
     {
+        public static bool IsPython(string code)
+        {
+            return code.StartsWith("from stationeers_pytrapic.symbols import *");
+        }
+
         public string PythonCode { get; set; }
         public string IC10Code { get; set; }
-    }
 
-    public class UploadData : ChipData
-    {
-        public string OldIC10Code { get; set; }
+        public string Serialize()
+        {
+            return JsonConvert.SerializeObject(this);
+        }
+
+        public void Deserialize(string json)
+        {
+            var obj = JsonConvert.DeserializeObject<SourceData>(json);
+            PythonCode = obj.PythonCode;
+            IC10Code = obj.IC10Code;
+        }
     }
 
     public static class F
@@ -62,15 +75,29 @@ namespace StationeersPyTrapIC
             "pytrapic.log"
         );
 
-        public static void Log(string message)
+        public static void Log(string message, string type = "[LOG]   ")
         {
-            File.AppendAllText(FilePath, $"{DateTime.Now}: {message}\n");
+            File.AppendAllText(FilePath, $"[LOG]   {DateTime.Now}:   {message}\n");
+        }
+
+        [Conditional("DEBUG")]
+        public static void Debug(string message)
+        {
+            Log(message, "[DEBUG]");
+        }
+
+        public static void Error(string message)
+        {
+            Log(message, "[ERROR]");
         }
     }
 
     public class PythonCompiler
     {
         public static readonly PythonCompiler Instance = new PythonCompiler();
+
+        public static ConditionalWeakTable<ISourceCode, SourceData> Data =
+            new ConditionalWeakTable<ISourceCode, SourceData>();
 
         private readonly Process _process;
         private readonly StreamWriter _stdin;
@@ -93,7 +120,7 @@ namespace StationeersPyTrapIC
 
         ~PythonCompiler()
         {
-            F.Log("Dying PythonCompiler instance");
+            F.Log("Stopping PythonCompiler instance");
             if (!_process.HasExited)
             {
                 _stdin?.WriteLine("EXIT");
@@ -103,7 +130,7 @@ namespace StationeersPyTrapIC
 
         public PythonCompiler()
         {
-            F.Log($"new pyhton compiler");
+            F.Log($"Starting PythonCompiler instance");
             var pythonPath = Path.Combine(
                 Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location),
                 "..",
@@ -111,7 +138,6 @@ namespace StationeersPyTrapIC
                 "venv",
                 "python.exe"
             );
-            F.Log($"have path ${pythonPath}");
             _process = new Process
             {
                 StartInfo = new ProcessStartInfo
@@ -125,35 +151,35 @@ namespace StationeersPyTrapIC
                     CreateNoWindow = true,
                 },
             };
-            F.Log($"have process");
 
             _process.Start();
-            F.Log($"started process");
             _stdin = _process.StandardInput;
             _stdout = _process.StandardOutput;
             if (_process.HasExited)
             {
-                F.Log($"Python compiler process exited unexpectedly");
+                F.Error($"Tried to run python compiler at: ${pythonPath}");
+                F.Error($"Python compiler process exited unexpectedly");
                 throw new InvalidOperationException("Python compiler process exited unexpectedly");
             }
             if (_stdout == null || _stdin == null)
             {
-                F.Log($"Failed to get standard input/output streams from Python compiler");
+                F.Error($"Tried to run python compiler at: ${pythonPath}");
+                F.Error($"Failed to get standard input/output streams from Python compiler");
                 throw new InvalidOperationException("Failed to get standard input/output streams");
             }
             _stdin.WriteLine("READY");
             string line = _stdout.ReadLine();
-            F.Log($"Python compiler response: {line}");
             if (line != "READY")
             {
-                F.Log($"Python compiler did not respond with READY, got: {line}");
+                F.Error($"Python compiler did not respond with READY, got: {line}");
                 throw new InvalidOperationException("Python compiler did not start correctly");
             }
-            F.Log($"Python compiler ready");
+            F.Log($"PythonCompiler running");
         }
 
-        public CompileResponse Compile(string pythonCode, CompileOptions options)
+        public CompileResponse Compile(string pythonCode, CompileOptions options = null)
         {
+            options ??= new CompileOptions();
             return JsonConvert.DeserializeObject<CompileResponse>(
                 SendData(
                     JsonConvert.SerializeObject(
@@ -172,6 +198,7 @@ namespace StationeersPyTrapIC
 
         public string Highlight(string pythonCode)
         {
+            F.Debug($"Highlighting code: {pythonCode}");
             if (pythonCode.Length == 0)
                 return pythonCode;
 
@@ -183,18 +210,17 @@ namespace StationeersPyTrapIC
 
             if (data == null || data.error != null)
             {
-                F.Log($"Error highlighting code: {data?.error}");
+                F.Error($"Error highlighting code: {data?.error}");
                 return pythonCode; // Return original code if error
             }
 
-            return "<color=#ffffff>" + data.highlighted + "</color>";
+            return data.highlighted;
         }
 
         public void Send(string message)
         {
             // Prefix with length so Python knows where message ends
             var data = Convert.ToBase64String(Encoding.UTF8.GetBytes(message));
-            F.Log($"Sending encoded to Python compiler: {data}");
             _stdin.WriteLine(data);
             _stdin.Flush();
         }
@@ -204,6 +230,7 @@ namespace StationeersPyTrapIC
             string line = _stdout.ReadLine();
             if (line == null)
                 return null;
+            F.Debug($"Received encoded from Python compiler: {line}");
             byte[] raw = Convert.FromBase64String(line);
             return Encoding.UTF8.GetString(raw);
         }
@@ -212,36 +239,74 @@ namespace StationeersPyTrapIC
         {
             try
             {
-                F.Log($"Sending data to Python compiler: {data}");
-                // SendAsync(data).Wait();
-                // var response = ReceiveAsync().Result;
                 Send(data);
                 var response = Receive();
-                F.Log($"Response from python: {response}");
                 if (response == null)
                 {
+                    F.Error($"No response from Python compiler, was sent: {data}");
                     return "Error: No response from Python compiler";
                 }
                 return response;
             }
             catch (Exception ex)
             {
-                F.Log($"Error sending Python data: {ex}");
+                F.Error($"Error sending Python data: {ex}");
                 return $"Error: {ex.Message}";
             }
         }
     }
 
     [HarmonyPatch]
-    public static class ProgrammableChipMotherboardPath
+    public static class Patch_ProgrammableChip
     {
         [HarmonyPatch(
-            typeof(ProgrammableChipMotherboard),
-            nameof(ProgrammableChipMotherboard.SetSourceCode)
+            typeof(ProgrammableChip),
+            nameof(ProgrammableChip.SetSourceCode),
+            new[] { typeof(string) }
         )]
-        public static void Prefix(ref string sourceCode)
+        public static void Prefix(ProgrammableChip __instance, ref string sourceCode)
         {
-            sourceCode = PythonCompiler.Instance.Compile(sourceCode, new CompileOptions()).code;
+            F.Debug($"Setting source code for chip {__instance.ReferenceId}: {sourceCode}");
+            if (SourceData.IsPython(sourceCode))
+            {
+                var ic10code = PythonCompiler.Instance.Compile(sourceCode).code;
+                var sourceData = PythonCompiler.Data.GetOrCreateValue(__instance);
+                sourceData.IC10Code = ic10code;
+                sourceData.PythonCode = sourceCode;
+                sourceCode = ic10code;
+            }
+        }
+
+        [HarmonyPatch(typeof(ProgrammableChip), nameof(ProgrammableChip.GetSourceCode))]
+        public static void Postfix(ProgrammableChip __instance, ref AsciiString __result)
+        {
+            var sourceData = new SourceData { };
+            if (PythonCompiler.Data.TryGetValue(__instance, out sourceData))
+            {
+                __result = AsciiString.Parse(sourceData.PythonCode);
+            }
+        }
+    }
+
+    [HarmonyPatch(
+        typeof(ProgrammableChipMotherboard),
+        nameof(ProgrammableChipMotherboard.SetSourceCode)
+    )]
+    public static class PatchProgrammableChipMotherboardSetSourceCode
+    {
+        static readonly FieldInfo privateSourceCode = AccessTools.Field(
+            typeof(ProgrammableChipMotherboard),
+            "SourceCode"
+        );
+
+        public static void Postfix(ProgrammableChipMotherboard __instance, ref string sourceCode)
+        {
+            if (SourceData.IsPython(sourceCode))
+            {
+                var sourceCodeObj = privateSourceCode.GetValue(__instance);
+                var textProp = AccessTools.Property(sourceCodeObj.GetType(), "text");
+                textProp.SetValue(sourceCodeObj, PythonCompiler.Instance.Highlight(sourceCode));
+            }
         }
     }
 
@@ -255,18 +320,17 @@ namespace StationeersPyTrapIC
         )]
         public static bool Prefix(EditorLineOfCode __instance, string inputString)
         {
-            F.Log($"Highlighting input string: {inputString}");
-            F.Log($"Old input: {inputString}");
-            foreach (EditorLineOfCode item in __instance.Parent.LinesOfCode)
+            string sourceCode = InputSourceCode.Copy();
+            if (!SourceData.IsPython(sourceCode))
             {
-                if (item.FormattedText.text.TrimEnd().Length > 0)
-                {
-                    F.Log($"{item.LineNumber.text} {item.InputText.text.TrimEnd()}");
-                    F.Log($"{item.LineNumber.text} {item.FormattedText.text.TrimEnd()}");
-                }
-                // item.FormattedText.text = line[item.LineNumber];
+                return true; // run original method
             }
-            __instance.FormattedText.text = PythonCompiler.Instance.Highlight(inputString);
+            var highlighted = PythonCompiler.Instance.Highlight(sourceCode);
+            var lines = highlighted.Split(new[] { '\n' }, StringSplitOptions.None);
+            for (int i = 0; i < lines.Length; i++)
+            {
+                __instance.Parent.LinesOfCode[i].FormattedText.text = lines[i];
+            }
             return false;
         }
     }
@@ -274,38 +338,38 @@ namespace StationeersPyTrapIC
     [HarmonyPatch]
     public static class ChipPatch
     {
-        public static Dictionary<long, ChipData> ChipsData = new Dictionary<long, ChipData>();
-
         [HarmonyPatch(typeof(ProgrammableChip), "SerializeSave")]
         static void Postfix(ProgrammableChip __instance, ref ThingSaveData __result)
         {
             var data = __result as ProgrammableChipSaveData;
             if (data == null)
             {
-                F.Log("Save data is not of type ProgrammableChipSaveData");
+                F.Debug("Save data is not of type ProgrammableChipSaveData");
                 return;
             }
 
-            if (ChipsData.ContainsKey(data.ReferenceId))
+            var sourceData = new SourceData { };
+            if (PythonCompiler.Data.TryGetValue(__instance, out sourceData))
             {
-                var chipData = ChipsData[data.ReferenceId];
-                F.Log($"Saving Python code: {chipData.PythonCode}");
-                F.Log($"Saving IC10 code: {chipData.IC10Code}");
-                var concatData = new[] { JsonConvert.SerializeObject(chipData) };
+                F.Debug($"Saving Python code: {sourceData.PythonCode}");
+                F.Debug($"Saving IC10 code: {sourceData.IC10Code}");
                 if (data.AliasesKeys == null)
                 {
-                    data.AliasesKeys = concatData;
+                    data.AliasesKeys = new[] { sourceData.Serialize() };
                 }
                 else
                 {
                     var listData = new List<string>(data.AliasesKeys);
-                    listData.AddRange(concatData);
+                    listData.Add(sourceData.Serialize());
                     data.AliasesKeys = listData.ToArray();
                 }
+                // make sure the IC10 code is set as the main source code
+                // such that the save game can be loaded without this mod
+                data.SourceCode = sourceData.IC10Code;
             }
             else
             {
-                F.Log($"No chip data found for ID {data.ReferenceId}");
+                F.Debug($"No chip data found for ID {data.ReferenceId}");
             }
         }
 
@@ -315,7 +379,7 @@ namespace StationeersPyTrapIC
             var data = savedData as ProgrammableChipSaveData;
             if (data == null)
             {
-                F.Log("Load data is not of type ProgrammableChipSaveData");
+                F.Error("Load data is not of type ProgrammableChipSaveData");
                 return;
             }
 
@@ -326,31 +390,26 @@ namespace StationeersPyTrapIC
 
             try
             {
-                F.Log($"Load data {data}");
-                F.Log($"ReferenceId {data.ReferenceId}");
-                F.Log($"AliasesKeys {data.AliasesKeys}");
-                F.Log($"AliasesValues {data.AliasesValues}");
+                F.Debug($"Loading source data for ID {data.ReferenceId}");
                 if (
                     data.AliasesValues == null
                     || data.AliasesKeys.Length > data.AliasesValues.Length
                 )
                 {
-                    var chipData = JsonConvert.DeserializeObject<ChipData>(
-                        data.AliasesKeys[data.AliasesKeys.Length - 1]
-                    );
-                    ChipsData[data.ReferenceId] = chipData;
-                    F.Log($"Loaded Python code: {chipData.PythonCode}");
-                    F.Log($"Loaded IC10 code: {chipData.IC10Code}");
+                    SourceData sourceData = PythonCompiler.Data.GetOrCreateValue(__instance);
+                    sourceData.Deserialize(data.AliasesKeys[data.AliasesKeys.Length - 1]);
+                    F.Debug($"Loaded Python code: {sourceData.PythonCode}");
+                    F.Debug($"Loaded IC10 code: {sourceData.IC10Code}");
                     data.AliasesKeys = data.AliasesKeys.Take(data.AliasesKeys.Length - 1).ToArray();
                 }
                 else
                 {
-                    F.Log($"No chip data found for ID {data.ReferenceId}");
+                    F.Debug($"No python sources data found for ID {data.ReferenceId}");
                 }
             }
             catch (Exception ex)
             {
-                F.Log($"Error deserializing chip data: {ex}");
+                F.Error($"Error loading source data for ID ${data.ReferenceId}: {ex}");
             }
         }
     }
@@ -364,7 +423,7 @@ namespace StationeersPyTrapIC
 
         private void Awake()
         {
-            F.Log("Mylog called!!!");
+            F.Log("PyTrapIC loaded");
 
             var harmony = new Harmony(pluginGuid);
             harmony.PatchAll();
