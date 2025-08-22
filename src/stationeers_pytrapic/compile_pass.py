@@ -1,6 +1,7 @@
 import logging
 from dataclasses import dataclass, field
 from typing import Literal
+import sys
 
 import astroid
 
@@ -109,11 +110,10 @@ class CodeData:
         self.result = {"code": "No code generated"}
 
     def _scope_name(self, node: astroid.AssignName | astroid.Name) -> str:
-        if isinstance(node.parent, astroid.Call):
-            return ""  # no nested functions, all functions are global
-
         if isinstance(node, astroid.FunctionDef) or (
-            isinstance(node, astroid.Name) and isinstance(node.parent, astroid.Call)
+            isinstance(node, astroid.Name)
+            and isinstance(node.parent, astroid.Call)
+            and node == node.parent.func
         ):
             return ""
 
@@ -262,6 +262,7 @@ class CompilerPass:
             astroid.Return: self.handle_return,
             astroid.Continue: self.handle_continue,
             astroid.Break: self.handle_break,
+            astroid.AugAssign: self.handle_immediate_op,
         }
 
     def _log(self, level, *args):
@@ -361,6 +362,9 @@ class CompilerPass:
         self.handle_node(node)
 
     def handle_assign(self, node: astroid.Assign):
+        self.handle_node(node)
+
+    def handle_immediate_op(self, node: astroid.AugAssign):
         self.handle_node(node)
 
     def handle_subscript(self, node: astroid.Subscript):
@@ -481,7 +485,8 @@ class CompilerPassCheckUsed(CompilerPass):
                 func._ndata.is_used = func._ndata.is_used or data.is_used
             elif node.func.name not in symbols.__dict__:
                 print(
-                    f"Call to undefined function '{node.func.name}' in {node.lineno}:{node.col_offset}"
+                    f"Call to undefined function '{node.func.name}' in {node.lineno}:{node.col_offset}",
+                    file=sys.stderr,
                 )
 
         for child in node.get_children():
@@ -549,7 +554,7 @@ class CompilerPassCheckReadWritten(CompilerPassResetReadWritten):
         if node._ndata.is_used and not is_builtin_name(node.name):
             sym_data = self.data.get_sym_data(node)
             if sym_data.is_read == 0:
-                print(f"mark unused name '{node.name}' in scope '{sym_data.scope}'")
+                # print(f"mark unused name '{node.name}' in scope '{sym_data.scope}'")
                 node._ndata.is_used = False
 
     def handle_name(self, node: astroid.Name):

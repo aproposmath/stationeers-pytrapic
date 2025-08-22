@@ -3,7 +3,6 @@ import atexit
 import base64
 import datetime
 import json
-import os
 import sys
 
 from pygments import highlight as _highlight
@@ -40,7 +39,10 @@ _lexer = PythonLexer()
 
 
 def highlight(code):
-    return _highlight(code, _lexer, formatter)
+    lines = _highlight(code, _lexer, formatter).splitlines()
+    for i, line in enumerate(lines):
+        lines[i] = "<color=#ffffff>" + line + "</color>"
+    return "\n".join(lines)
 
 
 def process_input(line):
@@ -88,6 +90,7 @@ def process_input(line):
                 "ascii"
             )
             print(encoded, flush=True)
+
 
 async def main():
     try:

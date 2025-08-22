@@ -523,6 +523,21 @@ class CompilerPassGenerateCode(CompilerPass):
         else:
             data.add(f"sub {sym.code_expr} 0 {opname}", "unary negation")
 
+    def handle_immediate_op(self, node: astroid.AugAssign):
+        if node.op[-1] != "=":
+            raise CompilerError(f"Unsupported immediate operation: {node.op}", node)
+        op = node.op[:-1]
+        instruction = get_binop_instruction(op)[0]
+        sym = self.data.get_sym_data(node.target)
+        left_name = sym.code_expr
+        right_name = self.compile_node(node.value)
+        data = node._ndata
+        data.result = sym
+        data.add_end(
+            f"{instruction} {left_name} {left_name} {right_name}",
+            "binary operation",
+        )
+
     def handle_binop(self, node: astroid.BinOp):
         data = node._ndata
 
