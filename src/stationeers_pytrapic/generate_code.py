@@ -345,6 +345,8 @@ class CompilerPassGenerateCode(CompilerPass):
             data.result = node.value
         elif isinstance(node.value, str):
             data.result = f'"{node.value}"'
+        elif isinstance(node.value, type(None)):
+            data.result = ""
         else:
             raise CompilerError(f"Unsupported constant type: {type(node.value)}", node)
 

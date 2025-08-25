@@ -74,6 +74,7 @@ const urlParams = new URLSearchParams(window.location.search);
 
 let editor: monaco.editor.IStandaloneCodeEditor | null = null;
 let ic10Code = "";
+let pyrightProvider: MonacoPyrightProvider = null;
 
 let gameData = {
   PythonCode: "",
@@ -108,10 +109,22 @@ async function compileCode() {
 
     const { code, comments, compact, append_version } = getData();
 
-    if (code.startsWith("require")) {
-      editor.getModel().setLanguage("lua");
-    } else {
-      editor.getModel().setLanguage("python");
+    const modelLanguage = editor.getModel().getLanguageId();
+    const sourceLanguage = code.startsWith("require") ? "lua" : "python";
+
+    if (modelLanguage !== sourceLanguage) {
+      console.log(
+        `Switching language from ${modelLanguage} to ${sourceLanguage}`,
+      );
+      editor.getModel().setLanguage(sourceLanguage);
+      if (modelLanguage === "python") {
+        console.log("Removing Python diagnostics");
+        await pyrightProvider.stopDiagnostics();
+        monaco.editor.removeAllMarkers("pyright");
+      } else {
+        console.log("Setting up Python diagnostics");
+        await pyrightProvider.setupDiagnostics(editor);
+      }
     }
 
     ic10Element.innerHTML = "Compiling...";
@@ -171,7 +184,7 @@ async function init() {
   pyodideReady = loadPyodide();
 
   const typingData = await (await fetch(typingUrl)).arrayBuffer();
-  const pyrightProvider = new MonacoPyrightProvider(workerUrl, {
+  pyrightProvider = new MonacoPyrightProvider(workerUrl, {
     typeStubs: {
       stationeers_pytrapic: typingData,
     },
@@ -188,7 +201,8 @@ async function init() {
       fontSize: 18,
     },
   );
-  pyrightProvider.setupDiagnostics(editor);
+  await pyrightProvider.setupDiagnostics(editor);
+  console.log("pyrightProvider initialized", pyrightProvider);
 
   pyodide = await pyodideReady;
 

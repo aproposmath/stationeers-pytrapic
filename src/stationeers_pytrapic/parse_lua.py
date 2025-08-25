@@ -64,14 +64,20 @@ class LuaToAstroid:
         if isinstance(node, L.Assign):
             targets = [self.visit_stmt(t, True) for t in node.targets]
             values = [self.visit_stmt(v) for v in node.values]
+            if len(targets) != 1:
+                raise NotImplementedError("Multiple assignment targets not supported")
+            if len(values) != 1:
+                raise NotImplementedError("Multiple assignment values not supported")
+
+            value = values[0]
             node = astroid.Assign(**kwargs)
-            for t in targets:
-                t.parent = node
-            for v in values:
-                v.parent = node
+            targets[0].parent = node
+            value.parent = node
+            if len(values) > 1:
+                raise NotImplementedError("Multiple return values not supported")
             node.postinit(
                 targets,
-                values[0] if values else astroid.Const(None),
+                value,
                 None,
             )
             return node
@@ -205,6 +211,18 @@ class LuaToAstroid:
             right.parent = node
             return node
         # Fallback
+        if isinstance(node, L.Return):
+            values = [self.visit_stmt(v) for v in node.values]
+            if len(values) > 1:
+                raise NotImplementedError("Multiple return values not supported")
+            ret = astroid.Return(**kwargs)
+            if values:
+                values[0].parent = ret
+                ret.postinit(values[0])
+            else:
+                ret.postinit(None)
+            return ret
+
         return astroid.Const(
             None,
             **kwargs,
