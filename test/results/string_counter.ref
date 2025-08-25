@@ -6,51 +6,49 @@ lbwhile2:
   put db 510 r1
   put db 509 r0
   jal append.number
-  get r2 db 511
-  move r1 r2
+  get r1 db 511
   mul r1 r1 256
   add r1 r1 47
   put db 510 r1
   put db 509 50
   jal append.number
-  get r3 db 511
-  move r1 r3
+  get r1 db 511
   sb -1949054743 Setting r1
   add r0 r0 1
   j lbwhile2
 append.number:
-get r4 db 510
-get r5 db 509
-  bne r5 0 lbelse6
-    mul r8 256 r4
-    add r9 r8 48
-    put db 511 r9
+get r2 db 510
+get r3 db 509
+  bne r3 0 lbelse6
+    mul r6 256 r2
+    add r7 r6 48
+    put db 511 r7
   j append.numberend
 lbelse6:
-  move r6 1
+  move r4 1
 lbwhile11:
-  div r10 r5 10
-  bgt r6 r10 lbwhile.end11
-    mul r6 r6 10
+  div r8 r3 10
+  bgt r4 r8 lbwhile.end11
+    mul r4 r4 10
     j lbwhile11
 lbwhile.end11:
-  s db Setting r6
+  s db Setting r4
 lbwhile13:
-  blt r6 1 lbwhile.end13
-    round r6 r6
-    div r7 r5 r6
-    trunc r7 r7
-    mul r4 r4 256
-    add r4 r4 r7
-    add r4 r4 48
-    mul r11 r7 r6
-    sub r5 r5 r11
-    div r12 r6 10
-    move r6 r12
+  blt r4 1 lbwhile.end13
+    round r4 r4
+    div r5 r3 r4
+    trunc r5 r5
+    mul r2 r2 256
+    add r2 r2 r5
+    add r2 r2 48
+    mul r9 r5 r4
+    sub r3 r3 r9
+    div r10 r4 10
+    move r4 r10
     j lbwhile13
 lbwhile.end13:
-  put db 511 r4
+  put db 511 r2
 append.numberend:
   j ra
-# registers: 13
-# lines: 54
+# registers: 11
+# lines: 52

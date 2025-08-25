@@ -197,7 +197,6 @@ class NodeData:
     result = None
 
     scope: str = None
-    symbol: str = None
 
     func_has_return_value: bool = False
 

@@ -237,7 +237,16 @@ class CompilerPassGenerateCode(CompilerPass):
             func_node = self.functions[fname]
             self.compile_function(self.functions[fname])
             if func_node._ndata.func_has_return_value:
-                symbol = self.get_intermediate_symbol(node)
+                if (
+                    isinstance(node.parent, astroid.Assign)
+                    and isinstance(node.parent.targets[0], astroid.AssignName)
+                    and node.parent.value is node
+                ):
+                    symbol = self.data.get_sym_data(node.parent.targets[0])
+                    data.result = symbol
+                    node.parent._ndata.result = symbol
+                else:
+                    symbol = self.get_intermediate_symbol(node)
                 data.add_end(
                     f"get {symbol.code_expr} db {_RETURN_VALUE_ADDRESS}",
                     "get return value",
@@ -420,7 +429,8 @@ class CompilerPassGenerateCode(CompilerPass):
                     data.result = value
                 else:
                     reg = sym_data.code_expr or self.get_register_name()
-                    data.add(f"move {reg} {value}", "assign name")
+                    if reg != value:
+                        data.add(f"move {reg} {value}", "assign name")
                     sym_data.code_expr = reg
                     data.result = reg
             target._ndata.result = data.result
