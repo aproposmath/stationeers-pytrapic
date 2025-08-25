@@ -3,36 +3,18 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
 using System.Linq;
-using System.Net;
 using System.Reflection;
-using System.Reflection.Emit;
 using System.Runtime.CompilerServices;
 using System.Text;
-using System.Threading;
-using System.Threading.Tasks;
-using System.Xml.Serialization;
-using Assets.Scripts;
-using Assets.Scripts.Atmospherics;
-using Assets.Scripts.Inventory;
+using System.Text.RegularExpressions;
+using Assets.Scripts.Networking.Transports;
 using Assets.Scripts.Objects;
-using Assets.Scripts.Objects.Appliances;
-using Assets.Scripts.Objects.Clothing;
 using Assets.Scripts.Objects.Electrical;
-using Assets.Scripts.Objects.Entities;
-using Assets.Scripts.Objects.Items;
 using Assets.Scripts.Objects.Motherboards;
-using Assets.Scripts.Objects.Pipes;
 using Assets.Scripts.UI;
 using BepInEx;
 using HarmonyLib;
 using Newtonsoft.Json;
-using Newtonsoft.Json.Linq;
-using Objects.Items;
-using Objects.Rockets;
-using Reagents;
-using UnityEngine;
-using Util.Commands;
-using Object = UnityEngine.Object;
 
 namespace StationeersPyTrapIC
 {
@@ -48,6 +30,51 @@ namespace StationeersPyTrapIC
         public static bool IsPython(string code)
         {
             return code.StartsWith("from stationeers_pytrapic.symbols import *");
+        }
+
+        public static string ReplaceLibraryCode(string code)
+        {
+            // Regex to capture lines of the form "import library.something"
+            var regex = new Regex(@"^\s*import\s+library\.(\w+)\s*$", RegexOptions.Multiline);
+
+            var matches = regex.Matches(code);
+
+            if (matches.Count == 0)
+            {
+                return code; // No library imports found
+            }
+
+            var type = SteamTransport.WorkshopType.ICCode;
+            DirectoryInfo localDirInfo = type.GetLocalDirInfo();
+            string fileName = type.GetLocalFileName();
+            List<SteamTransport.ItemWrapper> libraries = new List<SteamTransport.ItemWrapper>();
+            if (localDirInfo.Exists)
+            {
+                IEnumerable<SteamTransport.ItemWrapper> collection =
+                    from f in localDirInfo
+                        .GetDirectories("*", SearchOption.AllDirectories)
+                        .SelectMany((DirectoryInfo d) => d.GetFiles())
+                    where f.Name == fileName
+                    select SteamTransport.ItemWrapper.WrapLocalItem(f, type);
+                libraries.AddRange(collection);
+            }
+
+            foreach (Match match in matches)
+            {
+                string libName = match.Groups[1].Value;
+                string libCode = $"# here comes the library code for ${libName}\n";
+                var lib = libraries.FirstOrDefault(l => l.DirectoryName == libName);
+                F.Log($"Found matching library {libName}: {lib}");
+                if (lib.FilePathFullName == null)
+                {
+                    F.Error($"Library {libName} not found, skipping import");
+                    continue; // Library not found, skip replacement
+                }
+                InstructionData instructionData = InstructionData.GetFromFile(lib.FilePathFullName);
+                code = code.Replace(match.Value, instructionData.Instructions);
+            }
+
+            return code;
         }
 
         public string PythonCode { get; set; }
@@ -75,9 +102,9 @@ namespace StationeersPyTrapIC
             "pytrapic.log"
         );
 
-        public static void Log(string message, string type = "[LOG]   ")
+        public static void Log(string message, string type = "[LOG]  ")
         {
-            File.AppendAllText(FilePath, $"[LOG]   {DateTime.Now}:   {message}\n");
+            File.AppendAllText(FilePath, $"{type} {DateTime.Now}:   {message}\n");
         }
 
         [Conditional("DEBUG")]
@@ -179,6 +206,7 @@ namespace StationeersPyTrapIC
 
         public CompileResponse Compile(string pythonCode, CompileOptions options = null)
         {
+            pythonCode = SourceData.ReplaceLibraryCode(pythonCode);
             options ??= new CompileOptions();
             return JsonConvert.DeserializeObject<CompileResponse>(
                 SendData(
