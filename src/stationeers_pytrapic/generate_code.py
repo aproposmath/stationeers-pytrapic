@@ -12,7 +12,13 @@ from .compile_pass import (
     FunctionData,
     SymbolData,
 )
-from .utils import is_builtin_name, is_constant, logger, is_structure
+from .utils import (
+    get_function_parent,
+    is_builtin_name,
+    is_constant,
+    logger,
+    is_structure,
+)
 
 # use stack addresses 511 for function return values
 # and 510, 509, ... for function arguments
@@ -234,6 +240,11 @@ class CompilerPassGenerateCode(CompilerPass):
                 data.add(result, "intrinsic called")
             return
 
+        func_node = self.functions[fname]
+        func_data = self.data.functions[fname]
+
+        do_inline = self.data.options.inline_functions and func_data.can_inline
+
         for i, arg in enumerate(node.args):
             d = self.compile_node(arg)
             if is_structure(d):
@@ -241,43 +252,55 @@ class CompilerPassGenerateCode(CompilerPass):
                     f"Structures as function arguments are not yet supported: {d}",
                     arg,
                 )
-            data.add(f"put db {_RETURN_VALUE_ADDRESS-1-i} {d}", f"load argument {i}")
+            if not do_inline:
+                data.add(
+                    f"put db {_RETURN_VALUE_ADDRESS-1-i} {d}", f"load argument {i}"
+                )
 
         data.add(f"jal {fname.replace('_','.')}", f"call {fname}")
-        func_node = self.functions[fname]
         self.compile_function(self.functions[fname])
+
+        do_inline = self.data.options.inline_functions and func_data.can_inline
+
         if func_node._ndata.func_has_return_value:
-            if (
-                isinstance(node.parent, astroid.Assign)
-                and isinstance(node.parent.targets[0], astroid.AssignName)
-                and node.parent.value is node
-            ):
-                symbol = self.data.get_sym_data(node.parent.targets[0])
-                data.result = symbol
-                node.parent._ndata.result = symbol
+            if do_inline:
+                data.result = func_data.sym_data.code_expr
             else:
-                symbol = self.get_intermediate_symbol(node)
-            data.add_end(
-                f"get {symbol.code_expr} db {_RETURN_VALUE_ADDRESS}",
-                "get return value",
-            )
-            data.result = symbol
+                if (
+                    isinstance(node.parent, astroid.Assign)
+                    and isinstance(node.parent.targets[0], astroid.AssignName)
+                    and node.parent.value is node
+                ):
+                    symbol = self.data.get_sym_data(node.parent.targets[0])
+                    data.result = symbol
+                    node.parent._ndata.result = symbol
+                else:
+                    symbol = self.get_intermediate_symbol(node)
+                data.add_end(
+                    f"get {symbol.code_expr} db {_RETURN_VALUE_ADDRESS}",
+                    "get return value",
+                )
+                data.result = symbol
 
     def handle_expr(self, node: astroid.Expr):
         self._visit_node(node.value)
 
     def handle_return(self, node: astroid.Return):
-        func_node = node.parent
+        func_node = get_function_parent(node)
+        func_data = self.data.functions[func_node.name]
 
-        while not isinstance(func_node, astroid.FunctionDef):
-            if func_node.parent is None:
-                raise CompilerError("Return statement not inside a function", node)
-            func_node = func_node.parent
+        do_inline = self.data.options.inline_functions and func_data.can_inline
 
         data = node._ndata
         if node.value is not None:
             d = self.compile_node(node.value)
-            data.add(f"put db {_RETURN_VALUE_ADDRESS} {d}", "store return value")
+            if do_inline:
+                # todo: check if there are multiple return statements
+                # if not, we can avoid this move instruction
+                sym_data = self.data.get_sym_data(func_node)
+                data.add(f"move {sym_data.code_expr} {d}", "store return value")
+            else:
+                data.add(f"put db {_RETURN_VALUE_ADDRESS} {d}", "store return value")
 
         if node != func_node.body[-1]:
             # only jump to end of function, if return is not the last statement
@@ -337,30 +360,47 @@ class CompilerPassGenerateCode(CompilerPass):
         label = node.name.replace("_", ".")
         data.add(f"{label}:", "function definition")
         data.add_end(f"{label}end:", "function end label")
+
+        func_data = self.data.functions[node.name]
+
+        if self.data.options.inline_functions and func_data.can_inline:
+            ret_value = self.get_register_name() if func_data.has_return_value else ""
+            sym_data.code_expr = ret_value
+            calling_node = sym_data.nodes_reading[0].parent
+            for i, arg in enumerate(node.args.args):
+                arg_sym = self.data.get_sym_data(arg)
+                calling_arg = calling_node.args[i]._ndata.result
+                if isinstance(calling_arg, SymbolData):
+                    calling_arg = calling_arg.code_expr
+                if arg_sym.is_overwritten:
+                    # need to copy argument to a register, as it is overwritten in the function
+                    reg = self.get_register_name()
+                    data.add(f"move {reg} {calling_arg}", "copy function argument")
+                    arg_sym.code_expr = reg
+                else:
+                    arg_sym.code_expr = calling_arg
+                func_data.args.append(arg_sym)
+        else:
+            for i, arg in enumerate(node.args.args):
+                reg = self.get_register_name()
+                sym = self.data.get_sym_data(arg)
+                sym.code_expr = reg
+                data.add(
+                    f"get {sym.code_expr} db {_RETURN_VALUE_ADDRESS-1-i}",
+                    f"load argument {arg.name}",
+                    1,
+                )
+                if arg.name in symbols.__dict__:
+                    raise CompilerError(
+                        f"Function argument name {arg.name} conflicts with a built-in name",
+                        arg,
+                    )
+                sym.nodes_writing.append(arg)
+                arg._ndata.result = sym
+                func_data.args.append(sym)
+
         if sym_data.is_read != 1 or not self.data.options.inline_functions:
             data.add_end("j ra", "return from function", 1)
-
-        for i, arg in enumerate(node.args.args):
-            reg = self.get_register_name()
-            # sym = self.data.get_tmp_sym_data(arg, reg)
-            sym = self.data.get_sym_data(arg)
-            sym.code_expr = reg
-            data.add(
-                f"get {sym.code_expr} db {_RETURN_VALUE_ADDRESS-1-i}",
-                f"load argument {arg.name}",
-            )
-            if arg.name in symbols.__dict__:
-                raise CompilerError(
-                    f"Function argument name {arg.name} conflicts with a built-in name",
-                    arg,
-                )
-            sym.nodes_writing.append(arg)
-            arg._ndata.result = sym
-        # if len(node.args.args):
-        #     raise CompilerError("Function arguments are not supported yet", node)
-
-        if node.returns:
-            raise CompilerError("Function return values not supported yet", node)
 
         for stmt in node.body:
             self._visit_node(stmt)

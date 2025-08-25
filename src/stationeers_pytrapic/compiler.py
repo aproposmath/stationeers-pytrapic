@@ -19,9 +19,9 @@ class Compiler:
             # CompilerPassCheckConstValue,
             # CompilerPassCheckRead,
             CompilerPassCheckReturnValues,
+            CompilerPassCreateFunctionData,
             CompilerPassGenerateCode,
             # CompilerPassAssignRegisters,
-            CompilerPassCreateFunctionData,
             CompilerPassGatherCode,
         ]
         self.options = options

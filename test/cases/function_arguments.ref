@@ -5,7 +5,7 @@ lbwhile1:
   jal set.enable.fuel.generator
   j lbwhile1
 set.enable.fuel.generator:
-get r2 db 510
+  get r2 db 510
   sb 813146305 On r2
   j ra
 # registers: 3

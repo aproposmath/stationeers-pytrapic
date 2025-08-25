@@ -1,54 +1,56 @@
-move r0 0
 sb -1949054743 Mode 10
-lbwhile2:
+move r0 55
+move r1 999
+lbwhile3:
   yield 
-  move r1 0
-  put db 510 r1
+  move r2 0
+  put db 510 r2
   put db 509 r0
   jal append.number
-  get r1 db 511
-  mul r1 r1 256
-  add r1 r1 47
-  put db 510 r1
-  put db 509 50
+  get r2 db 511
+  mul r2 r2 256
+  add r2 r2 47
+  put db 510 r2
+  put db 509 r1
   jal append.number
-  get r1 db 511
-  sb -1949054743 Setting r1
+  get r2 db 511
+  sb -1949054743 Setting r2
   add r0 r0 1
-  j lbwhile2
+  sub r1 r1 1
+  j lbwhile3
 append.number:
-get r2 db 510
-get r3 db 509
-  bne r3 0 lbelse6
-    mul r6 256 r2
-    add r7 r6 48
-    put db 511 r7
+  get r3 db 510
+  get r4 db 509
+  bne r4 0 lbelse7
+    mul r7 256 r3
+    add r8 r7 48
+    put db 511 r8
   j append.numberend
-lbelse6:
-  move r4 1
-lbwhile11:
-  div r8 r3 10
-  bgt r4 r8 lbwhile.end11
-    mul r4 r4 10
-    j lbwhile11
-lbwhile.end11:
-  s db Setting r4
-lbwhile13:
-  blt r4 1 lbwhile.end13
-    round r4 r4
-    div r5 r3 r4
-    trunc r5 r5
-    mul r2 r2 256
-    add r2 r2 r5
-    add r2 r2 48
-    mul r9 r5 r4
-    sub r3 r3 r9
-    div r10 r4 10
-    move r4 r10
-    j lbwhile13
-lbwhile.end13:
-  put db 511 r2
+lbelse7:
+  move r5 1
+lbwhile12:
+  div r9 r4 10
+  bgt r5 r9 lbwhile.end12
+    mul r5 r5 10
+    j lbwhile12
+lbwhile.end12:
+  s db Setting r5
+lbwhile14:
+  blt r5 1 lbwhile.end14
+    round r5 r5
+    div r6 r4 r5
+    trunc r6 r6
+    mul r3 r3 256
+    add r3 r3 r6
+    add r3 r3 48
+    mul r10 r6 r5
+    sub r4 r4 r10
+    div r11 r5 10
+    move r5 r11
+    j lbwhile14
+lbwhile.end14:
+  put db 511 r3
 append.numberend:
   j ra
-# registers: 11
-# lines: 52
+# registers: 12
+# lines: 54

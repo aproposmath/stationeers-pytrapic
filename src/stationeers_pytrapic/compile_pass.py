@@ -62,6 +62,7 @@ class FunctionData:
     node: astroid.FunctionDef
     sym_data: SymbolData
     code: list[CodeLine] = field(default_factory=list)
+    args: list[SymbolData] = field(default_factory=list)
 
     @property
     def name(self) -> str:

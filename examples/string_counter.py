@@ -1,5 +1,8 @@
 from stationeers_pytrapic.symbols import *
 
+display = ConsoleLED1x3s
+display.Mode = 10
+
 
 def append_number(num_string, n):
     if n == 0:
@@ -20,11 +23,8 @@ def append_number(num_string, n):
     return num_string
 
 
-num0 = 0
-num1 = 50
-
-display = ConsoleLED1x3s
-display.Mode = 10
+num0 = 55
+num1 = 999
 
 while True:
     yield_()
@@ -36,3 +36,4 @@ while True:
     display.Setting = num_string
 
     num0 += 1
+    num1 -= 1
