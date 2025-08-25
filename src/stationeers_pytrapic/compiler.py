@@ -1,8 +1,8 @@
 import astroid
 
+from . import types
 from .compile_pass import *
 from .generate_code import CompilerPassGatherCode, CompilerPassGenerateCode
-from . import types
 
 
 class Compiler:
@@ -28,7 +28,12 @@ class Compiler:
 
     def compile(self, src: str):
         try:
-            self.tree = astroid.parse(src)
+            if src.startswith('require "stationeers_pytrapic.symbols"'):
+                from .parse_lua import parse_lua
+
+                self.tree = parse_lua(src)
+            else:
+                self.tree = astroid.parse(src)
             self.data = CodeData(src, self.tree, self.options)
             for pass_cls in self.passes:
                 compiler_pass = pass_cls(self.data)

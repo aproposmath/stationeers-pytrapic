@@ -1,5 +1,5 @@
-import Notify from 'simple-notify'
-import 'simple-notify/dist/simple-notify.css'
+import Notify from "simple-notify";
+import "simple-notify/dist/simple-notify.css";
 import * as monaco from "monaco-editor";
 import { MonacoPyrightProvider } from "monaco-pyright-lsp";
 import hljs from "highlight.js/lib/core";
@@ -16,7 +16,7 @@ import {
   Save,
   FolderOpen,
   RefreshCw,
-  Microchip
+  Microchip,
 } from "lucide";
 
 createIcons({
@@ -27,7 +27,7 @@ createIcons({
     Save,
     FolderOpen,
     RefreshCw,
-    Microchip
+    Microchip,
   },
 });
 
@@ -39,7 +39,7 @@ import workerUrl from "../node_modules/monaco-pyright-lsp/dist/worker.js?url";
 
 function debounce(fn, delay) {
   let timer;
-  const debounced = function(...args) {
+  const debounced = function (...args) {
     const context = this;
     clearTimeout(timer);
     timer = setTimeout(() => fn.apply(context, args), delay);
@@ -107,6 +107,13 @@ async function compileCode() {
     if (pyodide === null) return;
 
     const { code, comments, compact, append_version } = getData();
+
+    if (code.startsWith("require")) {
+      editor.getModel().setLanguage("lua");
+    } else {
+      editor.getModel().setLanguage("python");
+    }
+
     ic10Element.innerHTML = "Compiling...";
     statisticsElement.innerHTML = "";
     const compileFunction = pyodide.runPython(
@@ -188,7 +195,7 @@ async function init() {
   console.log("Pyodide loaded", pyodide);
   await pyodide.loadPackage("micropip");
   await pyodide.runPythonAsync(
-    "import micropip; await micropip.install('astroid')",
+    "import micropip; await micropip.install(['astroid', 'luaparser'])",
   );
   const wheelData = await (await fetch(wheelUrl)).arrayBuffer();
   await pyodide.unpackArchive(wheelData, "zip");
@@ -288,13 +295,13 @@ onClick("reload-game", async () => {
       autoclose: true,
     });
   }
-  if(gameData.IC10Code != gameData.OldIC10Code) {
+  if (gameData.IC10Code != gameData.OldIC10Code) {
     new Notify({
       title: "Warning",
       text: "IC10 code was changed manually. Are you sure you want to overwrite it with Python code?",
       status: "warning",
       autoclose: false,
-    })
+    });
   }
   gameData.OldIC10Code = gameData.IC10Code;
   console.log("Game data loaded", gameData);
@@ -310,7 +317,7 @@ onClick("reload-game", async () => {
   //   ic10Element.innerHTML = hljs.highlight(gameData.IC10Code || "", {
   //     language: "ic10",
   //   }).value;
-})
+});
 
 onClick("upload-game", async () => {
   gameData.PythonCode = editor.getValue();
@@ -341,4 +348,3 @@ onClick("upload-game", async () => {
     console.error("Failed to upload game data", response.statusText);
   }
 });
-
