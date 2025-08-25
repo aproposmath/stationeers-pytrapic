@@ -220,50 +220,48 @@ class CompilerPassGenerateCode(CompilerPass):
         if node.kwargs:
             raise CompilerError("**kwargs are not supported", node)
 
-        if not hasattr(symbols, fname):
-            for i, arg in enumerate(node.args):
-                d = self.compile_node(arg)
-                if is_structure(d):
-                    raise CompilerError(
-                        f"Structures as function arguments are not yet supported: {d}",
-                        arg,
-                    )
-                data.add(
-                    f"put db {_RETURN_VALUE_ADDRESS-1-i} {d}", f"load argument {i}"
-                )
+        if is_builtin_name(fname):
+            func = getattr(symbols, fname)
+            kwargs = {kw.arg: self.compile_node(kw.value) for kw in node.keywords}
+            args = [self.compile_node(arg) for arg in node.args]
 
-            data.add(f"jal {fname.replace('_','.')}", f"call {fname}")
-            func_node = self.functions[fname]
-            self.compile_function(self.functions[fname])
-            if func_node._ndata.func_has_return_value:
-                if (
-                    isinstance(node.parent, astroid.Assign)
-                    and isinstance(node.parent.targets[0], astroid.AssignName)
-                    and node.parent.value is node
-                ):
-                    symbol = self.data.get_sym_data(node.parent.targets[0])
-                    data.result = symbol
-                    node.parent._ndata.result = symbol
-                else:
-                    symbol = self.get_intermediate_symbol(node)
-                data.add_end(
-                    f"get {symbol.code_expr} db {_RETURN_VALUE_ADDRESS}",
-                    "get return value",
-                )
-                data.result = symbol
+            result = func(*args, **kwargs)
+            if is_structure(result):
+                data.result = result
+            elif fname == "HASH" or hasattr(types, fname):
+                data.result = result
+            else:
+                data.add(result, "intrinsic called")
             return
 
-        func = getattr(symbols, fname)
-        kwargs = {kw.arg: self.compile_node(kw.value) for kw in node.keywords}
-        args = [self.compile_node(arg) for arg in node.args]
+        for i, arg in enumerate(node.args):
+            d = self.compile_node(arg)
+            if is_structure(d):
+                raise CompilerError(
+                    f"Structures as function arguments are not yet supported: {d}",
+                    arg,
+                )
+            data.add(f"put db {_RETURN_VALUE_ADDRESS-1-i} {d}", f"load argument {i}")
 
-        result = func(*args, **kwargs)
-        if is_structure(result):
-            data.result = result
-        elif fname == "HASH" or hasattr(types, fname):
-            data.result = result
-        else:
-            data.add(result, "intrinsic called")
+        data.add(f"jal {fname.replace('_','.')}", f"call {fname}")
+        func_node = self.functions[fname]
+        self.compile_function(self.functions[fname])
+        if func_node._ndata.func_has_return_value:
+            if (
+                isinstance(node.parent, astroid.Assign)
+                and isinstance(node.parent.targets[0], astroid.AssignName)
+                and node.parent.value is node
+            ):
+                symbol = self.data.get_sym_data(node.parent.targets[0])
+                data.result = symbol
+                node.parent._ndata.result = symbol
+            else:
+                symbol = self.get_intermediate_symbol(node)
+            data.add_end(
+                f"get {symbol.code_expr} db {_RETURN_VALUE_ADDRESS}",
+                "get return value",
+            )
+            data.result = symbol
 
     def handle_expr(self, node: astroid.Expr):
         self._visit_node(node.value)
