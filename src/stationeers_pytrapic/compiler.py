@@ -18,6 +18,7 @@ class Compiler:
             # CompilerPassCheckConstValue,
             # CompilerPassCheckConstValue,
             # CompilerPassCheckRead,
+            CompilerPassCheckReturnValues,
             CompilerPassGenerateCode,
             # CompilerPassAssignRegisters,
             CompilerPassGatherCode,

@@ -1,0 +1,8 @@
+lb r1 -400115994 Ratio 0
+slt r0 r1 0.2
+put 510 r0
+get r2 510
+sb 813146305 On r2
+j 0
+# registers: 3
+# lines: 6

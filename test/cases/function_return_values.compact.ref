@@ -1,0 +1,7 @@
+lb r1 -400115994 Ratio 0
+put 511 r1
+slt r0 None 0.2
+sb 813146305 On r0
+j 0
+# registers: 2
+# lines: 5

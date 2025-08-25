@@ -67,6 +67,7 @@ class FunctionData:
     node: astroid.FunctionDef
     sym_data: SymbolData
     code: list[CodeLine] = field(default_factory=list)
+    has_return_value: bool = True
 
     @property
     def name(self) -> str:
@@ -194,6 +195,8 @@ class NodeData:
 
     scope: str = None
     symbol: str = None
+
+    func_has_return_value: bool = False
 
     def __init__(self, node, code_data):
         self.code_data = code_data
@@ -565,3 +568,12 @@ class CompilerPassCheckReadWritten(CompilerPassResetReadWritten):
         #         self.data.set_function_called(node.name)
         #     else:
         #         self.data.set_name_read(node.scope(), node.name)
+
+
+class CompilerPassCheckReturnValues(CompilerPass):
+    def handle_return(self, node: astroid.Return):
+        if node.value:
+            node.scope()._ndata.func_has_return_value = True
+
+    def handle_node(self, node: astroid.NodeNG):
+        pass

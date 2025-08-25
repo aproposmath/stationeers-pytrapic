@@ -12,7 +12,11 @@ from .compile_pass import (
     FunctionData,
     SymbolData,
 )
-from .utils import is_builtin_name, is_constant, logger
+from .utils import is_builtin_name, is_constant, logger, is_structure
+
+# use stack addresses 511 for function return values
+# and 510, 509, ... for function arguments
+_RETURN_VALUE_ADDRESS = 511
 
 
 def get_comparison_suffix(op: str):
@@ -212,9 +216,30 @@ class CompilerPassGenerateCode(CompilerPass):
         data = node._ndata
 
         fname = node.func.name
+        func = self.data.functions.get(node.func.name)
+
+        if node.kwargs:
+            raise CompilerError("**kwargs are not supported", node)
+
         if not hasattr(symbols, fname):
+            for i, arg in enumerate(node.args):
+                d = self.compile_node(arg)
+                if is_structure(d):
+                    raise CompilerError(
+                        f"Structures as function arguments are not yet supported: {d}",
+                        arg,
+                    )
+                data.add(f"put {_RETURN_VALUE_ADDRESS-1-i} {d}", f"load argument {i}")
+
             data.add(f"jal {fname.replace('_','.')}", f"call {fname}")
             self.compile_function(self.functions[fname])
+            if data.func_has_return_value:
+                symbol = self.get_intermediate_symbol(node)
+                data.add_end(
+                    f"get {symbol.code_expr} {_RETURN_VALUE_ADDRESS}",
+                    "get return value",
+                )
+                data.result = symbol
             return
 
         func = getattr(symbols, fname)
@@ -222,15 +247,7 @@ class CompilerPassGenerateCode(CompilerPass):
         args = [self.compile_node(arg) for arg in node.args]
 
         result = func(*args, **kwargs)
-        if isinstance(
-            result,
-            (
-                symbols.GenericStructures,
-                symbols.GenericStructure,
-                types._BaseStructure,
-                types._BaseStructures,
-            ),
-        ):
+        if is_structure(result):
             data.result = result
         elif fname == "HASH" or hasattr(types, fname):
             data.result = result
@@ -241,12 +258,17 @@ class CompilerPassGenerateCode(CompilerPass):
         self._visit_node(node.value)
 
     def handle_return(self, node: astroid.Return):
+        data = node._ndata
         if node.value is not None:
-            raise CompilerError("Return value is not supported", node)
+            d = self.compile_node(node.value)
+            data.add(f"put {_RETURN_VALUE_ADDRESS} {d}", "store return value")
         while node.parent and not isinstance(node.parent, astroid.FunctionDef):
             node = node.parent
-        label = node.parent.name.replace("_", ".") + "end"
-        node._ndata.add(f"j {label}", "return from function")
+
+        if node != node.parent.body[-1]:
+            # only jump to end of function, if return is not the last statement
+            label = node.parent.name.replace("_", ".") + "end"
+            data.add(f"j {label}", "return from function", -1)
 
     def handle_continue(self, node: astroid.Continue):
         while not isinstance(node.parent, (astroid.While, astroid.For)):
@@ -304,8 +326,24 @@ class CompilerPassGenerateCode(CompilerPass):
         if sym_data.is_read != 1 or not self.data.options.inline_functions:
             data.add_end("j ra", "return from function", 1)
 
-        if len(node.args.args):
-            raise CompilerError("Function arguments are not supported yet", node)
+        for i, arg in enumerate(node.args.args):
+            reg = self.get_register_name()
+            # sym = self.data.get_tmp_sym_data(arg, reg)
+            sym = self.data.get_sym_data(arg)
+            sym.code_expr = reg
+            data.add(
+                f"get {sym.code_expr} {_RETURN_VALUE_ADDRESS-1-i}",
+                f"load argument {arg.name}",
+            )
+            if arg.name in symbols.__dict__:
+                raise CompilerError(
+                    f"Function argument name {arg.name} conflicts with a built-in name",
+                    arg,
+                )
+            sym.nodes_writing.append(arg)
+            arg._ndata.result = sym
+        # if len(node.args.args):
+        #     raise CompilerError("Function arguments are not supported yet", node)
 
         if node.returns:
             raise CompilerError("Function return values not supported yet", node)
@@ -675,7 +713,10 @@ class CompilerPassGatherCode(CompilerPass):
 
                 func = self.data.functions[fname]
                 if self.data.options.inline_functions and func.can_inline:
-                    node._ndata.code[""] = func.code
+                    node._ndata.code[""] = [
+                        l for l in node._ndata.code[""] if not l.code.startswith("jal ")
+                    ]
+                    node._ndata.code[""] += func.code
                     func.code = []
 
         if isinstance(data.code, str):
@@ -717,6 +758,15 @@ class CompilerPassGatherCode(CompilerPass):
             ):
                 # no need to calculate comparison result, it's done by the branch instruction of the parent
                 data.code[""] = []
+
+        if isinstance(node, astroid.Call):
+            for arg in node.args:
+                special_nodes.add(arg)
+                self._visit_node(arg)
+
+        if isinstance(node, astroid.Return) and node.value is not None:
+            special_nodes.add(node.value)
+            self._visit_node(node.value)
 
         self.gather_code(node, special_nodes)
 

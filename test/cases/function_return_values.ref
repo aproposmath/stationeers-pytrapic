@@ -1,0 +1,11 @@
+lbwhile1:
+  jal get.battery.charge
+  slt r0 None 0.2
+  sb 813146305 On r0
+  j lbwhile1
+get.battery.charge:
+  lb r1 -400115994 Ratio 0
+  put 511 r1
+  j ra
+# registers: 2
+# lines: 9

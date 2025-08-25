@@ -35,21 +35,22 @@ The output is written to stdout.
 - read/write acessing individual structures (`WallHeater(d0).Activate = True`)
 - read/write acessing structures by type (`AutoLathes.Activate = True`)
 - read/write acessing structures by name (`my_value = WallLights["Some Name"].On.Maximum`)
-- simple functions (no arguments, no return values)
+- functions
 - `global` statement (useful to mimic function return values or store state between function calls)
 - remove unused functions ([you can have one code file for all your ICs!](https://aproposmath.github.io/stationeers-pytrapic?fileUrl=https://raw.githubusercontent.com/aproposmath/stationeers-pytrapic/refs/heads/main/examples/one_file_to_rule_them_all.py))
 - remove all labels
 - function inlining (if a function is only called once, it will be inlined into the caller)
 - break and continue statements
 - return statements ( no return values yet )
+- function arguments (only simple values (float), no structures like `DaylightSensor(d0)` )
+- function return values
 
 **Planned Features**
 
 - push/pop `ra` automatically in nested function calls ([use manual `push ra/pop ra` for now)](https://aproposmath.github.io/stationeers-pytrapic?fileUrl=https://raw.githubusercontent.com/aproposmath/stationeers-pytrapic/refs/heads/main/examples/nested_function_calls.py))
 - slots (will be added soon)
-- function arguments
-- function return values
 - better register allocation (respect not only function scope but also variable scope)
+- pass function arguments/return values in registers (currently only via stack)
 - for loops
 - [you tell me!](https://github.com/aproposmath/stationeers-pytrapic/issues/new)
 

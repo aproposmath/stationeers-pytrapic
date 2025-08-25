@@ -7,12 +7,8 @@ lbwhile1:
   jal f3
   j lbwhile1
 f0:
-  j f0end
-f0end:
   j ra
 f1:
-  j f1end
-f1end:
   j ra
 f2:
   lb r0 -400115994 Ratio 0
@@ -31,4 +27,4 @@ lbelse6:
 f3end:
   j ra
 # registers: 1
-# lines: 32
+# lines: 28
