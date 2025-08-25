@@ -6,18 +6,13 @@ import sys
 import astroid
 
 from . import symbols, types
-from .utils import is_builtin_name, is_constant, logger
-
-
-class CompilerError(Exception):
-    def __init__(self, message, node=None):
-        super().__init__(message)
-        self.node = node
-
-    def __str__(self):
-        if self.node:
-            return f"Compiler error at line {self.node.lineno}:{self.node.col_offset}:\n\t{super().__str__()}"
-        return super().__str__()
+from .utils import (
+    is_builtin_name,
+    is_constant,
+    logger,
+    CompilerError,
+    get_function_parent,
+)
 
 
 @dataclass
@@ -580,13 +575,18 @@ class CompilerPassCheckReturnValues(CompilerPass):
         if node.value is None:
             return
 
-        while node.parent and not isinstance(node, astroid.FunctionDef):
-            node = node.parent
+        function_node = get_function_parent(node)
+        function_node._ndata.func_has_return_value = True
 
-        if isinstance(node, astroid.FunctionDef):
-            node._ndata.func_has_return_value = True
-        else:
-            raise CompilerError("Return statement not inside a function", node)
+    def handle_node(self, node: astroid.NodeNG):
+        pass
+
+
+class CompilerPassCreateFunctionData(CompilerPass):
+
+    def handle_function_def(self, node: astroid.FunctionDef):
+        sym_data = self.data.get_sym_data(node)
+        self.data.functions[node.name] = FunctionData(node, sym_data)
 
     def handle_node(self, node: astroid.NodeNG):
         pass

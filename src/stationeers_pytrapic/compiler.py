@@ -21,6 +21,7 @@ class Compiler:
             CompilerPassCheckReturnValues,
             CompilerPassGenerateCode,
             # CompilerPassAssignRegisters,
+            CompilerPassCreateFunctionData,
             CompilerPassGatherCode,
         ]
         self.options = options

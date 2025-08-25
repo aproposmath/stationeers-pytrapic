@@ -31,15 +31,6 @@ lbwhile.end9:
     sleep 1
 lbelse2:
   j ra
-handle.heating:
-  lb r0 -400115994 Ratio 0
-  lbn r1 -1252983604 HASH("Greenhouse") Temperature 0
-  sgt r2 r0 0.1
-  slt r3 r1 293.15
-  and r4 r2 r3
-  sb 24258244 On r4
-  s db Setting r0
-  j ra
 handle.furnace:
   sbn -1129453144 HASH("Furnace") Mode 1
   lbn r0 -1252983604 HASH("Furnace") Temperature 0
@@ -59,6 +50,15 @@ lbelse18:
 lbend18:
   sgt r6 r0 150
   sbn -739292323 HASH("Furnace") On r6
+  j ra
+handle.heating:
+  lb r0 -400115994 Ratio 0
+  lbn r1 -1252983604 HASH("Greenhouse") Temperature 0
+  sgt r2 r0 0.1
+  slt r3 r1 293.15
+  and r4 r2 r3
+  sb 24258244 On r4
+  s db Setting r0
   j ra
 # registers: 7
 # lines: 62

@@ -216,7 +216,6 @@ class CompilerPassGenerateCode(CompilerPass):
         data = node._ndata
 
         fname = node.func.name
-        func = self.data.functions.get(node.func.name)
 
         if node.kwargs:
             raise CompilerError("**kwargs are not supported", node)
@@ -270,16 +269,21 @@ class CompilerPassGenerateCode(CompilerPass):
         self._visit_node(node.value)
 
     def handle_return(self, node: astroid.Return):
+        func_node = node.parent
+
+        while not isinstance(func_node, astroid.FunctionDef):
+            if func_node.parent is None:
+                raise CompilerError("Return statement not inside a function", node)
+            func_node = func_node.parent
+
         data = node._ndata
         if node.value is not None:
             d = self.compile_node(node.value)
             data.add(f"put db {_RETURN_VALUE_ADDRESS} {d}", "store return value")
-        while node.parent and not isinstance(node.parent, astroid.FunctionDef):
-            node = node.parent
 
-        if node != node.parent.body[-1]:
+        if node != func_node.body[-1]:
             # only jump to end of function, if return is not the last statement
-            label = node.parent.name.replace("_", ".") + "end"
+            label = func_node.name.replace("_", ".") + "end"
             data.add(f"j {label}", "return from function", -1)
 
     def handle_continue(self, node: astroid.Continue):
@@ -711,10 +715,7 @@ class CompilerPassGatherCode(CompilerPass):
         old_target = self._target
 
         if isinstance(node, astroid.FunctionDef):
-            # emit function definitions after all other code
-            # otherwise the function would be executed if it's defined before the call
-            sym_data = self.data.get_sym_data(node)
-            self._target = self.data.functions[node.name] = FunctionData(node, sym_data)
+            self._target = self.data.functions[node.name]
 
         if isinstance(node, astroid.Call):
             fname = node.func.name
@@ -791,7 +792,7 @@ class CompilerPassGatherCode(CompilerPass):
 
         self._visit_node(self.tree)
 
-        for fname in self.data.functions.keys():
+        for fname in sorted(self.data.functions.keys()):
             func = self.data.functions[fname]
             if fname == "" or func.is_called:
                 for line in func.code:

@@ -5,6 +5,24 @@ import astroid
 logger = logging.getLogger("stationeers_pytrapic")
 
 
+class CompilerError(Exception):
+    def __init__(self, message, node=None):
+        super().__init__(message)
+        self.node = node
+
+    def __str__(self):
+        if self.node:
+            return f"Compiler error at line {self.node.lineno}:{self.node.col_offset}:\n\t{super().__str__()}"
+        return super().__str__()
+
+
+def get_function_parent(node):
+    for par in node.node_ancestors():
+        if isinstance(par, astroid.FunctionDef):
+            return par
+    raise CompilerError("No parent function found", node)
+
+
 def is_builtin_name(name: str) -> bool:
     from . import symbols
 

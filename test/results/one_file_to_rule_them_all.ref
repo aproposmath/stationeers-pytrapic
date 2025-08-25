@@ -1,17 +1,4 @@
 jal ic.airlock.greenhouse
-handle.growlight:
-  l r1 d0 Vertical
-  sgt r0 r1 90
-  s d1 On r0
-  j ra
-setup.airlock:
-  sbn -324331872 HASH("In") Lock 1
-  sbn -324331872 HASH("Out") Lock 1
-  sbn -1129453144 HASH("In") Mode 1
-  sbn -1129453144 HASH("In") On 0
-  sbn -1129453144 HASH("Out") Mode 1
-  sbn -1129453144 HASH("Out") On 0
-  j ra
 handle.airlock:
   lbn r3 576516101 HASH("Switch") On 3
   ble r3 0 lbelse2
@@ -33,12 +20,25 @@ lbwhile.end9:
     sleep 1
 lbelse2:
   j ra
+handle.growlight:
+  l r1 d0 Vertical
+  sgt r0 r1 90
+  s d1 On r0
+  j ra
 ic.airlock.greenhouse:
   jal setup.airlock
 lbwhile1:
     jal handle.airlock
     jal handle.growlight
     j lbwhile1
+  j ra
+setup.airlock:
+  sbn -324331872 HASH("In") Lock 1
+  sbn -324331872 HASH("Out") Lock 1
+  sbn -1129453144 HASH("In") Mode 1
+  sbn -1129453144 HASH("In") On 0
+  sbn -1129453144 HASH("Out") Mode 1
+  sbn -1129453144 HASH("Out") On 0
   j ra
 # registers: 6
 # lines: 42
