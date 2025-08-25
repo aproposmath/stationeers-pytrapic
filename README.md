@@ -51,6 +51,7 @@ The output is written to stdout.
 - slots (will be added soon)
 - better register allocation (respect not only function scope but also variable scope)
 - pass function arguments/return values in registers (currently only via stack)
+- allow structures as function arguments/return values (currently only simple values like `float` are allowed)
 - for loops
 - [you tell me!](https://github.com/aproposmath/stationeers-pytrapic/issues/new)
 
