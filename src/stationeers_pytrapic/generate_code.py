@@ -229,14 +229,17 @@ class CompilerPassGenerateCode(CompilerPass):
                         f"Structures as function arguments are not yet supported: {d}",
                         arg,
                     )
-                data.add(f"put {_RETURN_VALUE_ADDRESS-1-i} {d}", f"load argument {i}")
+                data.add(
+                    f"put db {_RETURN_VALUE_ADDRESS-1-i} {d}", f"load argument {i}"
+                )
 
             data.add(f"jal {fname.replace('_','.')}", f"call {fname}")
+            func_node = self.functions[fname]
             self.compile_function(self.functions[fname])
-            if data.func_has_return_value:
+            if func_node._ndata.func_has_return_value:
                 symbol = self.get_intermediate_symbol(node)
                 data.add_end(
-                    f"get {symbol.code_expr} {_RETURN_VALUE_ADDRESS}",
+                    f"get {symbol.code_expr} db {_RETURN_VALUE_ADDRESS}",
                     "get return value",
                 )
                 data.result = symbol
@@ -261,7 +264,7 @@ class CompilerPassGenerateCode(CompilerPass):
         data = node._ndata
         if node.value is not None:
             d = self.compile_node(node.value)
-            data.add(f"put {_RETURN_VALUE_ADDRESS} {d}", "store return value")
+            data.add(f"put db {_RETURN_VALUE_ADDRESS} {d}", "store return value")
         while node.parent and not isinstance(node.parent, astroid.FunctionDef):
             node = node.parent
 
@@ -332,7 +335,7 @@ class CompilerPassGenerateCode(CompilerPass):
             sym = self.data.get_sym_data(arg)
             sym.code_expr = reg
             data.add(
-                f"get {sym.code_expr} {_RETURN_VALUE_ADDRESS-1-i}",
+                f"get {sym.code_expr} db {_RETURN_VALUE_ADDRESS-1-i}",
                 f"load argument {arg.name}",
             )
             if arg.name in symbols.__dict__:

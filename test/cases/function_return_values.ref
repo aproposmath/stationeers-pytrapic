@@ -1,11 +1,12 @@
 lbwhile1:
   jal get.battery.charge
-  slt r0 None 0.2
+  get r1 db 511
+  slt r0 r1 0.2
   sb 813146305 On r0
   j lbwhile1
 get.battery.charge:
-  lb r1 -400115994 Ratio 0
-  put 511 r1
+  lb r2 -400115994 Ratio 0
+  put db 511 r2
   j ra
-# registers: 2
-# lines: 9
+# registers: 3
+# lines: 10

@@ -1,7 +1,8 @@
-lb r1 -400115994 Ratio 0
-put 511 r1
-slt r0 None 0.2
+lb r2 -400115994 Ratio 0
+put db 511 r2
+get r1 db 511
+slt r0 r1 0.2
 sb 813146305 On r0
 j 0
-# registers: 2
-# lines: 5
+# registers: 3
+# lines: 6

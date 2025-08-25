@@ -67,7 +67,6 @@ class FunctionData:
     node: astroid.FunctionDef
     sym_data: SymbolData
     code: list[CodeLine] = field(default_factory=list)
-    has_return_value: bool = True
 
     @property
     def name(self) -> str:
@@ -80,6 +79,10 @@ class FunctionData:
     @property
     def is_called(self) -> bool:
         return self.node is None or self.sym_data.is_read > 0
+
+    @property
+    def has_return_value(self) -> bool:
+        return self.node and self.node._ndata.func_has_return_value
 
 
 @dataclass
@@ -572,8 +575,19 @@ class CompilerPassCheckReadWritten(CompilerPassResetReadWritten):
 
 class CompilerPassCheckReturnValues(CompilerPass):
     def handle_return(self, node: astroid.Return):
-        if node.value:
-            node.scope()._ndata.func_has_return_value = True
+        if not node._ndata.is_used:
+            return
+
+        if node.value is None:
+            return
+
+        while node.parent and not isinstance(node, astroid.FunctionDef):
+            node = node.parent
+
+        if isinstance(node, astroid.FunctionDef):
+            node._ndata.func_has_return_value = True
+        else:
+            raise CompilerError("Return statement not inside a function", node)
 
     def handle_node(self, node: astroid.NodeNG):
         pass
