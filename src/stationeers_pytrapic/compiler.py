@@ -41,16 +41,39 @@ class Compiler:
                 compiler_pass.run()
             return self.data.result
         except CompilerError as e:
-            return {"error": str(e)}
+            msg = {"description": str(e)}
+            if e.node:
+                msg["line"] = e.node.lineno
+                msg["column"] = e.node.col_offset
+                msg["line_end"] = e.node.end_lineno
+                msg["column_end"] = e.node.end_col_offset
+            return {
+                "error": msg,
+            }
         except astroid.AstroidSyntaxError as e:
-            return {"error": f"Syntax error: {str(e)}"}
+
+            d = {
+                "error": {
+                    "description": f"Syntax error: {str(e)}",
+                }
+            }
+            if isinstance(e.error, SyntaxError):
+                d["error"].update(
+                    {
+                        "line": e.error.lineno,
+                        "column": e.error.offset,
+                    }
+                )
+            return d
         except Exception as e:
             import traceback
 
             stack_trace = traceback.format_exc()
             return {
-                "error": f"Internal compiler error: {str(e)}",
-                "stack_trace": stack_trace,
+                "error": {
+                    "description": f"Internal compiler error: {str(e)}",
+                    "stack_trace": stack_trace,
+                }
             }
 
 

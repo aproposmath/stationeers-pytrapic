@@ -7,7 +7,7 @@ import sys
 
 from pygments import highlight as _highlight
 from pygments.formatters import BBCodeFormatter
-from pygments.lexers import PythonLexer, LuaLexer
+from pygments.lexers import LuaLexer, PythonLexer
 
 from .compiler import compile_code
 
@@ -22,11 +22,12 @@ for ttype in formatter.styles:
         formatter.styles[ttype] = replace(start), replace(end)
 
 _log_file = None  # Global log file handle
+ENABLE_LOGGING = __name__ == "__main__"
 
 
 def log(msg):
     global _log_file
-    if __name__ == "__main__":
+    if ENABLE_LOGGING:
         if _log_file is None:
             _log_file = open("mod_daemon.log", "w")
         _log_file.write(f"{datetime.datetime.now().isoformat()} - {msg}\n")
@@ -49,10 +50,13 @@ def get_lexer(code):
     return _lexer[get_languate(code)]
 
 
-def highlight(code):
+def highlight(code, error_line=None):
     lines = _highlight(code, get_lexer(code), formatter).splitlines()
     for i, line in enumerate(lines):
-        lines[i] = "<color=#ffffff>" + line + "</color>"
+        if error_line is not None and i + 1 == error_line:
+            lines[i] = "<color=#ff0000>" + line + "</color>"
+        else:
+            lines[i] = "<color=#ffffff>" + line + "</color>"
     return "\n".join(lines)
 
 
@@ -76,24 +80,33 @@ def process_input(line):
             response = {"error": "No code provided"}
             return
 
-        if action == "compile":
-            compact = msg.get("compact", False)
-            append_version = msg.get("append_version", True)
-            comments = msg.get("comments", False)
-            response = compile_code(
-                code,
-                comments=comments,
-                compact=compact,
-                append_version=append_version,
-            )
-        elif action == "highlight":
-            highlighted = highlight(code)
-            response = {"highlighted": highlighted}
+        compact = msg.get("compact", False)
+        append_version = msg.get("append_version", True)
+        comments = msg.get("comments", False)
+        response = compile_code(
+            code,
+            comments=comments,
+            compact=compact,
+            append_version=append_version,
+        )
+        error_line = None
+        if response and "error" in response and "line" in response["error"]:
+            error_line = response["error"]["line"]
+        highlighted = highlight(code, error_line=error_line)
+        response["highlighted"] = highlighted
 
     except json.JSONDecodeError:
-        response = {"error": "Invalid JSON format"}
+        response = {"error": {"message": "Invalid JSON format"}}
     except Exception as e:
-        response = {"error": f"Internal Error: {e}"}
+        import traceback
+
+        stack_trace = traceback.format_exc()
+        response = {
+            "error": {
+                "description": f"Internal compiler error: {str(e)}",
+                "stack_trace": stack_trace,
+            }
+        }
     finally:
         if response is not None:
             log(f"Response: {response}")

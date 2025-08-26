@@ -17,6 +17,7 @@ using BepInEx;
 using BepInEx.Logging;
 using HarmonyLib;
 using Newtonsoft.Json;
+using UI.Tooltips;
 using Util.Commands;
 
 namespace StationeersPyTrapIC
@@ -85,10 +86,9 @@ namespace StationeersPyTrapIC
 
         public static string ReplaceLibraryCode(string code)
         {
-            // Regex to capture lines of the form "import library.something"
-            var regex = new Regex(getImportRegex(code), RegexOptions.Multiline);
+            var importRegex = new Regex(getImportRegex(code), RegexOptions.Multiline);
 
-            var matches = regex.Matches(code);
+            var matches = importRegex.Matches(code);
 
             if (matches.Count == 0)
             {
@@ -108,7 +108,7 @@ namespace StationeersPyTrapIC
                 }
 
                 var lib = libraries[libName];
-                L.Log($"Found matching library {libName}: {lib.FilePathFullName}");
+                L.Debug($"Found matching library {libName}: {lib.FilePathFullName}");
                 InstructionData instructionData = InstructionData.GetFromFile(lib.FilePathFullName);
                 code = code.Replace(match.Value, instructionData.Instructions);
             }
@@ -135,7 +135,11 @@ namespace StationeersPyTrapIC
     public static class L
     {
         private static ManualLogSource _logger;
+#if DEBUG
         private static bool _debugEnabled = true;
+#else
+        private static bool _debugEnabled = false;
+#endif
 
         public static void Initialize(ManualLogSource logger)
         {
@@ -173,6 +177,7 @@ namespace StationeersPyTrapIC
 
     public class PythonCompiler
     {
+        public static readonly string PYTHON_VERSION = "3.13.7";
         public static readonly PythonCompiler Instance = new PythonCompiler();
 
         public static ConditionalWeakTable<ISourceCode, SourceData> Data =
@@ -181,16 +186,22 @@ namespace StationeersPyTrapIC
         private Process _process;
         private StreamWriter _stdin;
         private StreamReader _stdout;
+        private string lastInput = "";
+        private string lastOutput = "";
 
-        public class HighlightResponse
+        public class CompileError
         {
-            public string error { get; set; }
-            public string highlighted { get; set; }
+            public string description { get; set; }
+            public int line { get; set; }
+            public int column { get; set; }
+            public int line_end { get; set; }
+            public int column_end { get; set; }
         }
 
         public class CompileResponse
         {
-            public string error { get; set; }
+            public CompileError error { get; set; }
+            public string highlighted { get; set; }
             public string code { get; set; }
             public int num_lines { get; set; }
             public int num_registers { get; set; }
@@ -199,6 +210,8 @@ namespace StationeersPyTrapIC
 
         private void StopProcess()
         {
+            if (_process == null)
+                return;
             L.Log("Stopping PythonCompiler instance");
             if (!_process.HasExited)
             {
@@ -219,8 +232,85 @@ namespace StationeersPyTrapIC
             return _process != null && !_process.HasExited;
         }
 
+        public string GetCacheDir()
+        {
+            return Path.Combine(BepInEx.Paths.CachePath, "pytrapic");
+        }
+
+        public string GetVenvDir()
+        {
+            return Path.Combine(GetCacheDir(), $"venv");
+        }
+
+        public string GetPythonExePath()
+        {
+            return Path.Combine(GetVenvDir(), "python.exe");
+        }
+
+        public void InstallPython(bool force = false)
+        {
+            if (
+                File.Exists(GetPythonExePath())
+                && File.Exists(Path.Combine(GetVenvDir(), "pytrapic_python_modules.zip"))
+                && !force
+            )
+            {
+                L.Debug("Python already installed");
+                return;
+            }
+
+            StopProcess();
+
+            if (File.Exists(GetPythonExePath()) && force)
+            {
+                L.Log($"Forcing re-install of Python {PYTHON_VERSION} and dependencies");
+                try
+                {
+                    Directory.Delete(GetVenvDir(), true);
+                }
+                catch (Exception ex)
+                {
+                    L.Error($"Error deleting existing venv: {ex}");
+                    return;
+                }
+            }
+
+            L.Log("Installing Python and dependencies");
+            var pythonZipName = $"python-{PYTHON_VERSION}-embed-amd64.zip";
+            var url = $"https://www.python.org/ftp/python/{PYTHON_VERSION}/{pythonZipName}";
+            var pythonDir = GetVenvDir();
+            var pythonZipPath = Path.Combine(BepInEx.Paths.CachePath, "pytrapic", pythonZipName);
+            Directory.CreateDirectory(pythonDir);
+            using (var client = new System.Net.WebClient())
+            {
+                client.DownloadFile(url, pythonZipPath);
+            }
+            System.IO.Compression.ZipFile.ExtractToDirectory(pythonZipPath, pythonDir);
+
+            System.IO.File.Copy(
+                Path.Combine(
+                    Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location),
+                    "pytrapic_python_modules.zip"
+                ),
+                Path.Combine(pythonDir, "pytrapic_python_modules.zip")
+            );
+
+            var pythonVersion = PYTHON_VERSION
+                .Substring(0, PYTHON_VERSION.LastIndexOf('.'))
+                .Replace(".", "");
+
+            File.AppendAllText(
+                Path.Combine(pythonDir, $"python{pythonVersion}._pth"),
+                "\npytrapic_python_modules.zip\n.",
+                Encoding.UTF8
+            );
+
+            L.Log($"Installed Python {PYTHON_VERSION} to {pythonDir}");
+        }
+
         public void Init(bool forceRestart = false)
         {
+            InstallPython();
             if (IsRunning())
             {
                 if (!forceRestart)
@@ -229,13 +319,7 @@ namespace StationeersPyTrapIC
                 StopProcess();
             }
             L.Log($"Starting PythonCompiler instance");
-            var pythonPath = Path.Combine(
-                Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location),
-                "..",
-                "pytrapic",
-                "venv",
-                "python.exe"
-            );
+            var pythonPath = GetPythonExePath();
             _process = new Process
             {
                 StartInfo = new ProcessStartInfo
@@ -285,7 +369,10 @@ namespace StationeersPyTrapIC
             if (!IsRunning())
             {
                 L.Error("Python compiler is not running, cannot compile");
-                return new CompileResponse { error = "Python compiler is not running" };
+                return new CompileResponse
+                {
+                    error = { description = "Python compiler is not running" },
+                };
             }
             pythonCode = SourceData.ReplaceLibraryCode(pythonCode);
             options ??= new CompileOptions();
@@ -312,20 +399,16 @@ namespace StationeersPyTrapIC
                 L.Error("Python compiler is not running, cannot highlight");
                 return pythonCode;
             }
-            // L.Debug($"Highlighting code: {pythonCode}");
+
             if (pythonCode.Length == 0)
                 return pythonCode;
 
-            var data = JsonConvert.DeserializeObject<HighlightResponse>(
-                SendData(
-                    JsonConvert.SerializeObject(new { action = "highlight", code = pythonCode })
-                )
-            );
+            CompileResponse data = Compile(pythonCode);
 
-            if (data == null || data.error != null)
+            if (data == null || data.highlighted == null)
             {
                 L.Error($"Error highlighting code: {data?.error}");
-                return pythonCode; // Return original code if error
+                return pythonCode;
             }
 
             return data.highlighted;
@@ -333,7 +416,6 @@ namespace StationeersPyTrapIC
 
         public void Send(string message)
         {
-            // Prefix with length so Python knows where message ends
             var data = Convert.ToBase64String(Encoding.UTF8.GetBytes(message));
             _stdin.WriteLine(data);
             _stdin.Flush();
@@ -351,21 +433,31 @@ namespace StationeersPyTrapIC
 
         public string SendData(string data)
         {
-            try
+            lock (lastInput)
             {
-                Send(data);
-                var response = Receive();
-                if (response == null)
+                if (data == lastInput)
                 {
-                    L.Error($"No response from Python compiler, was sent: {data}");
-                    return "Error: No response from Python compiler";
+                    return lastOutput;
                 }
-                return response;
-            }
-            catch (Exception ex)
-            {
-                L.Error($"Error sending Python data: {ex}");
-                return $"Error: {ex.Message}";
+
+                try
+                {
+                    Send(data);
+                    var response = Receive();
+                    if (response == null)
+                    {
+                        L.Error($"No response from Python compiler, was sent: {data}");
+                        return "Error: No response from Python compiler";
+                    }
+                    lastInput = data;
+                    lastOutput = response;
+                    return response;
+                }
+                catch (Exception ex)
+                {
+                    L.Error($"Error sending Python data: {ex}");
+                    return $"Error: {ex.Message}";
+                }
             }
         }
     }
@@ -425,28 +517,91 @@ namespace StationeersPyTrapIC
         }
     }
 
-    [HarmonyPatch]
-    public static class HighlightPatch
+    public static class InputPatches
     {
-        [HarmonyPatch(
-            typeof(EditorLineOfCode),
-            nameof(EditorLineOfCode.ReformatText),
-            new[] { typeof(string) }
-        )]
-        public static bool Prefix(EditorLineOfCode __instance, string inputString)
+        private static string inputCode = "";
+        private static string[] highlightedLines = null;
+        private static PythonCompiler.CompileResponse compiledCode = null;
+
+        public static void SetInputCode(string code)
         {
-            string sourceCode = InputSourceCode.Copy();
-            if (!SourceData.NeedsCompile(sourceCode))
+            L.Debug($"SetInputCode: {code}");
+            if (code == null)
+                code = "";
+            lock (inputCode)
             {
-                return true; // run original method
+                L.Debug($"SetInputCode - have lock");
+                if (code != inputCode)
+                {
+                    L.Debug($"SetInputCode - code changed");
+                    inputCode = code;
+                    if (SourceData.NeedsCompile(inputCode))
+                    {
+                        L.Debug($"SetInputCode - recompile");
+                        compiledCode = PythonCompiler.Instance.Compile(inputCode);
+                        highlightedLines = compiledCode.highlighted.Split(
+                            new[] { '\n' },
+                            StringSplitOptions.None
+                        );
+                        L.Debug($"SetInputCode - got {highlightedLines.Length} highlighted lines");
+                        for (int i = 0; i < highlightedLines.Length; i++)
+                        {
+                            L.Debug($"{i}\t{highlightedLines[i]}");
+                        }
+                        L.Debug($"SetInputCode - done");
+                    }
+                    else
+                    {
+                        L.Debug($"SetInputCode - reset data");
+                        compiledCode = null;
+                        highlightedLines = null;
+                    }
+                }
             }
-            var highlighted = PythonCompiler.Instance.Highlight(sourceCode);
-            var lines = highlighted.Split(new[] { '\n' }, StringSplitOptions.None);
-            for (int i = 0; i < lines.Length; i++)
+        }
+
+        [HarmonyPatch]
+        public static class ReformatPatch
+        {
+            [HarmonyPatch(
+                typeof(EditorLineOfCode),
+                nameof(EditorLineOfCode.ReformatText),
+                new[] { typeof(string) }
+            )]
+            public static bool Prefix(EditorLineOfCode __instance, string inputString)
             {
-                __instance.Parent.LinesOfCode[i].FormattedText.text = lines[i];
+                L.Debug($"Reformatting line of code: {inputString}");
+                SetInputCode(InputSourceCode.Copy());
+                if (compiledCode == null)
+                {
+                    L.Debug($"No compiled code, skipping reformat");
+                    return true; // run original method
+                }
+
+                for (int i = 0; i < highlightedLines.Length; i++)
+                    __instance.Parent.LinesOfCode[i].FormattedText.text = highlightedLines[i];
+                return false;
             }
-            return false;
+        }
+
+        [HarmonyPatch(typeof(InputSourceCode), "HandleInput")]
+        public static class PatchInputSourceCodeHandleInput
+        {
+            // public static void Prefix(InputSourceCode __instance) {}
+
+            public static void Postfix(InputSourceCode __instance)
+            {
+                if (compiledCode != null && compiledCode.error != null)
+                {
+                    UITooltipManager.SetTooltip(
+                        $"<color=red>{compiledCode.error.description} at line {compiledCode.error.line}:{compiledCode.error.column}</color>"
+                    );
+                }
+                else
+                {
+                    UITooltipManager.ClearTooltip();
+                }
+            }
         }
     }
 

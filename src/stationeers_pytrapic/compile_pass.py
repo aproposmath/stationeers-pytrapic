@@ -534,8 +534,6 @@ class CompilerPassResetReadWritten(CompilerPass):
             sym_data.nodes_reading.clear()
 
     def run(self):
-        # print(f"pass {type(self).__name__} run")
-        # print(f"symbols: {self.data.symbols}")
         self._visit_node_recursive(self.tree)
 
 

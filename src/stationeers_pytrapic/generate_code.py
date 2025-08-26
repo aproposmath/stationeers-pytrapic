@@ -199,6 +199,11 @@ class CompilerPassGenerateCode(CompilerPass):
         attrname = node.attrname
         data = node._ndata
 
+        if not hasattr(expr, node.attrname):
+            expr = (
+                str(expr) if isinstance(expr, (str, int, float, bool)) else type(expr)
+            )
+            raise CompilerError(f"Invalid attribute {node.attrname}", node)
         attr = getattr(expr, attrname)
         if isinstance(expr, type) and issubclass(expr, types._BaseStructure):
             name = expr.__name__
@@ -240,6 +245,9 @@ class CompilerPassGenerateCode(CompilerPass):
                 data.add(result, "intrinsic called")
             return
 
+        if fname not in self.functions:
+            raise CompilerError(f"Function {fname} is not defined.", node)
+
         func_node = self.functions[fname]
         func_data = self.data.functions[fname]
 
@@ -274,6 +282,9 @@ class CompilerPassGenerateCode(CompilerPass):
                     symbol = self.data.get_sym_data(node.parent.targets[0])
                     data.result = symbol
                     node.parent._ndata.result = symbol
+                    if not symbol.code_expr:
+                        # target has no register assigned yet
+                        symbol.code_expr = self.get_register_name()
                 else:
                     symbol = self.get_intermediate_symbol(node)
                 data.add_end(
@@ -466,7 +477,11 @@ class CompilerPassGenerateCode(CompilerPass):
                 # self.set_name(target, value, target.name)
             else:
                 sym_data = self.data.get_sym_data(target)
-                if node.value._ndata.is_constant_value or not sym_data.is_overwritten:
+                if (
+                    node.value._ndata.is_constant_value
+                    or not sym_data.is_overwritten
+                    and not isinstance(node.value, astroid.Call)
+                ):
                     sym_data.code_expr = value  # self.get_constant_name()
                     # sym.name = value
                     # sym.is_constant = True
@@ -500,8 +515,11 @@ class CompilerPassGenerateCode(CompilerPass):
 
     def handle_assign_attr(self, node: astroid.AssignAttr):
         expr = self.compile_node(node.expr)
-        if isinstance(expr, SymbolData):
-            raise CompilerError(f"Cannot assign to symbol {expr.name} directly", node)
+        if not hasattr(expr, node.attrname):
+            expr = (
+                str(expr) if isinstance(expr, (str, int, float, bool)) else type(expr)
+            )
+            raise CompilerError(f"Invalid attribute {node.attrname}", node)
         val = getattr(expr, node.attrname)
         if isinstance(val, property):
             val = val.fget(expr)
