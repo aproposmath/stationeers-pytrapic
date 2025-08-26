@@ -28,7 +28,8 @@ class Compiler:
 
     def compile(self, src: str):
         try:
-            if src.startswith('require "stationeers_pytrapic.symbols"'):
+            src_stripped = src.lstrip()
+            if src_stripped.startswith("require") or src_stripped.startswith("--"):
                 from .parse_lua import parse_lua
 
                 self.tree = parse_lua(src)

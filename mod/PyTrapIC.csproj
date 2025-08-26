@@ -20,6 +20,9 @@
     <Reference Include="Unity.TextMeshPro">
       <HintPath>$(STATIONEERS_DLL_DIR)Unity.TextMeshPro.dll</HintPath>
     </Reference>
+    <Reference Include="UniTask">
+      <HintPath>$(STATIONEERS_DLL_DIR)UniTask.dll</HintPath>
+    </Reference>
     <Reference Include="Newtonsoft.Json">
       <HintPath>$(STATIONEERS_DLL_DIR)Newtonsoft.Json.dll</HintPath>
     </Reference>

@@ -7,14 +7,17 @@ using System.Reflection;
 using System.Runtime.CompilerServices;
 using System.Text;
 using System.Text.RegularExpressions;
+using Assets.Scripts.Networking;
 using Assets.Scripts.Networking.Transports;
 using Assets.Scripts.Objects;
 using Assets.Scripts.Objects.Electrical;
 using Assets.Scripts.Objects.Motherboards;
 using Assets.Scripts.UI;
 using BepInEx;
+using BepInEx.Logging;
 using HarmonyLib;
 using Newtonsoft.Json;
+using Util.Commands;
 
 namespace StationeersPyTrapIC
 {
@@ -27,15 +30,63 @@ namespace StationeersPyTrapIC
 
     public class SourceData
     {
-        public static bool IsPython(string code)
+        public static bool IsPythonCode(string code)
         {
-            return code.StartsWith("from stationeers_pytrapic.symbols import *");
+            return code != null && code.StartsWith("from stationeers_pytrapic.symbols import *");
+        }
+
+        public static bool IsLuaCode(string code)
+        {
+            return code != null && code.StartsWith("require");
+        }
+
+        public static bool NeedsCompile(string code)
+        {
+            return IsPythonCode(code) || IsLuaCode(code);
+        }
+
+        public static string getImportRegex(string code)
+        {
+            if (IsPythonCode(code))
+            {
+                return @"^\s*import\s+library\.(\w+)\s*$";
+            }
+            if (IsLuaCode(code))
+            {
+                return @"require\s*[""']library\.(?:[A-Za-z0-9_]+\.)*([A-Za-z0-9_]+)[""']";
+            }
+            return @"$^"; // matches nothing
+        }
+
+        public static Dictionary<string, SteamTransport.ItemWrapper> loadLibraries()
+        {
+            var sw = Stopwatch.StartNew();
+
+            // todo: can we cache this without missing updates?
+            // todo: can this be loaded async without blocking?
+
+            var libraries = NetworkManager
+                .GetLocalAndWorkshopItems(SteamTransport.WorkshopType.ICCode)
+                .GetAwaiter()
+                .GetResult();
+
+            Dictionary<string, SteamTransport.ItemWrapper> libraryMap =
+                new Dictionary<string, SteamTransport.ItemWrapper>();
+
+            foreach (var lib in libraries)
+                libraryMap[lib.DirectoryName.ToLowerInvariant()] = lib;
+
+            sw.Stop();
+
+            L.Debug($"Loaded {libraries.Count} libraries in {sw.ElapsedMilliseconds}ms");
+
+            return libraryMap;
         }
 
         public static string ReplaceLibraryCode(string code)
         {
             // Regex to capture lines of the form "import library.something"
-            var regex = new Regex(@"^\s*import\s+library\.(\w+)\s*$", RegexOptions.Multiline);
+            var regex = new Regex(getImportRegex(code), RegexOptions.Multiline);
 
             var matches = regex.Matches(code);
 
@@ -44,32 +95,20 @@ namespace StationeersPyTrapIC
                 return code; // No library imports found
             }
 
-            var type = SteamTransport.WorkshopType.ICCode;
-            DirectoryInfo localDirInfo = type.GetLocalDirInfo();
-            string fileName = type.GetLocalFileName();
-            List<SteamTransport.ItemWrapper> libraries = new List<SteamTransport.ItemWrapper>();
-            if (localDirInfo.Exists)
-            {
-                IEnumerable<SteamTransport.ItemWrapper> collection =
-                    from f in localDirInfo
-                        .GetDirectories("*", SearchOption.AllDirectories)
-                        .SelectMany((DirectoryInfo d) => d.GetFiles())
-                    where f.Name == fileName
-                    select SteamTransport.ItemWrapper.WrapLocalItem(f, type);
-                libraries.AddRange(collection);
-            }
+            var libraries = loadLibraries();
 
             foreach (Match match in matches)
             {
-                string libName = match.Groups[1].Value;
-                string libCode = $"# here comes the library code for ${libName}\n";
-                var lib = libraries.FirstOrDefault(l => l.DirectoryName == libName);
-                F.Log($"Found matching library {libName}: {lib}");
-                if (lib.FilePathFullName == null)
+                string libName = match.Groups[1].Value.ToLowerInvariant();
+
+                if (!libraries.ContainsKey(libName))
                 {
-                    F.Error($"Library {libName} not found, skipping import");
+                    L.Error($"Library {libName} not found in library map, skipping import");
                     continue; // Library not found, skip replacement
                 }
+
+                var lib = libraries[libName];
+                L.Log($"Found matching library {libName}: {lib.FilePathFullName}");
                 InstructionData instructionData = InstructionData.GetFromFile(lib.FilePathFullName);
                 code = code.Replace(match.Value, instructionData.Instructions);
             }
@@ -93,29 +132,42 @@ namespace StationeersPyTrapIC
         }
     }
 
-    public static class F
+    public static class L
     {
-        private static readonly string FilePath = Path.Combine(
-            Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location),
-            "..",
-            "..",
-            "pytrapic.log"
-        );
+        private static ManualLogSource _logger;
+        private static bool _debugEnabled = true;
 
-        public static void Log(string message, string type = "[LOG]  ")
+        public static void Initialize(ManualLogSource logger)
         {
-            File.AppendAllText(FilePath, $"{type} {DateTime.Now}:   {message}\n");
+            _logger = logger;
         }
 
-        [Conditional("DEBUG")]
-        public static void Debug(string message)
+        public static bool ToggleDebug()
         {
-            Log(message, "[DEBUG]");
+            _debugEnabled = !_debugEnabled;
+            return _debugEnabled;
         }
 
-        public static void Error(string message)
+        public static void Log(string message)
         {
-            Log(message, "[ERROR]");
+            _logger?.LogMessage(message?.ToString());
+        }
+
+        public static void Info(object msg)
+        {
+            _logger?.LogInfo(msg?.ToString());
+        }
+
+        public static void Error(object msg)
+        {
+            _logger?.LogError(msg?.ToString());
+        }
+
+        public static void Debug(object msg)
+        {
+            if (!_debugEnabled)
+                return;
+            _logger?.LogDebug(msg?.ToString());
         }
     }
 
@@ -126,9 +178,9 @@ namespace StationeersPyTrapIC
         public static ConditionalWeakTable<ISourceCode, SourceData> Data =
             new ConditionalWeakTable<ISourceCode, SourceData>();
 
-        private readonly Process _process;
-        private readonly StreamWriter _stdin;
-        private readonly StreamReader _stdout;
+        private Process _process;
+        private StreamWriter _stdin;
+        private StreamReader _stdout;
 
         public class HighlightResponse
         {
@@ -145,19 +197,38 @@ namespace StationeersPyTrapIC
             public int num_bytes { get; set; }
         }
 
-        ~PythonCompiler()
+        private void StopProcess()
         {
-            F.Log("Stopping PythonCompiler instance");
+            L.Log("Stopping PythonCompiler instance");
             if (!_process.HasExited)
             {
                 _stdin?.WriteLine("EXIT");
-                _process.Kill();
+                System.Threading.Thread.Sleep(100);
+                if (!_process.HasExited)
+                    _process.Kill();
             }
         }
 
-        public PythonCompiler()
+        ~PythonCompiler()
         {
-            F.Log($"Starting PythonCompiler instance");
+            StopProcess();
+        }
+
+        public bool IsRunning()
+        {
+            return _process != null && !_process.HasExited;
+        }
+
+        public void Init(bool forceRestart = false)
+        {
+            if (IsRunning())
+            {
+                if (!forceRestart)
+                    return;
+
+                StopProcess();
+            }
+            L.Log($"Starting PythonCompiler instance");
             var pythonPath = Path.Combine(
                 Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location),
                 "..",
@@ -184,28 +255,38 @@ namespace StationeersPyTrapIC
             _stdout = _process.StandardOutput;
             if (_process.HasExited)
             {
-                F.Error($"Tried to run python compiler at: ${pythonPath}");
-                F.Error($"Python compiler process exited unexpectedly");
+                L.Error($"Tried to run python compiler at: ${pythonPath}");
+                L.Error($"Python compiler process exited unexpectedly");
                 throw new InvalidOperationException("Python compiler process exited unexpectedly");
             }
             if (_stdout == null || _stdin == null)
             {
-                F.Error($"Tried to run python compiler at: ${pythonPath}");
-                F.Error($"Failed to get standard input/output streams from Python compiler");
+                L.Error($"Tried to run python compiler at: ${pythonPath}");
+                L.Error($"Failed to get standard input/output streams from Python compiler");
                 throw new InvalidOperationException("Failed to get standard input/output streams");
             }
             _stdin.WriteLine("READY");
             string line = _stdout.ReadLine();
             if (line != "READY")
             {
-                F.Error($"Python compiler did not respond with READY, got: {line}");
+                L.Error($"Python compiler did not respond with READY, got: {line}");
                 throw new InvalidOperationException("Python compiler did not start correctly");
             }
-            F.Log($"PythonCompiler running");
+            L.Log($"PythonCompiler running");
+        }
+
+        public PythonCompiler()
+        {
+            Init();
         }
 
         public CompileResponse Compile(string pythonCode, CompileOptions options = null)
         {
+            if (!IsRunning())
+            {
+                L.Error("Python compiler is not running, cannot compile");
+                return new CompileResponse { error = "Python compiler is not running" };
+            }
             pythonCode = SourceData.ReplaceLibraryCode(pythonCode);
             options ??= new CompileOptions();
             return JsonConvert.DeserializeObject<CompileResponse>(
@@ -226,7 +307,12 @@ namespace StationeersPyTrapIC
 
         public string Highlight(string pythonCode)
         {
-            F.Debug($"Highlighting code: {pythonCode}");
+            if (!IsRunning())
+            {
+                L.Error("Python compiler is not running, cannot highlight");
+                return pythonCode;
+            }
+            // L.Debug($"Highlighting code: {pythonCode}");
             if (pythonCode.Length == 0)
                 return pythonCode;
 
@@ -238,7 +324,7 @@ namespace StationeersPyTrapIC
 
             if (data == null || data.error != null)
             {
-                F.Error($"Error highlighting code: {data?.error}");
+                L.Error($"Error highlighting code: {data?.error}");
                 return pythonCode; // Return original code if error
             }
 
@@ -258,7 +344,7 @@ namespace StationeersPyTrapIC
             string line = _stdout.ReadLine();
             if (line == null)
                 return null;
-            F.Debug($"Received encoded from Python compiler: {line}");
+            L.Debug($"Received encoded from Python compiler: {line}");
             byte[] raw = Convert.FromBase64String(line);
             return Encoding.UTF8.GetString(raw);
         }
@@ -271,14 +357,14 @@ namespace StationeersPyTrapIC
                 var response = Receive();
                 if (response == null)
                 {
-                    F.Error($"No response from Python compiler, was sent: {data}");
+                    L.Error($"No response from Python compiler, was sent: {data}");
                     return "Error: No response from Python compiler";
                 }
                 return response;
             }
             catch (Exception ex)
             {
-                F.Error($"Error sending Python data: {ex}");
+                L.Error($"Error sending Python data: {ex}");
                 return $"Error: {ex.Message}";
             }
         }
@@ -294,14 +380,15 @@ namespace StationeersPyTrapIC
         )]
         public static void Prefix(ProgrammableChip __instance, ref string sourceCode)
         {
-            F.Debug($"Setting source code for chip {__instance.ReferenceId}: {sourceCode}");
-            if (SourceData.IsPython(sourceCode))
+            L.Debug($"Setting source code for chip {__instance.ReferenceId}:\n{sourceCode}");
+            if (SourceData.NeedsCompile(sourceCode))
             {
                 var ic10code = PythonCompiler.Instance.Compile(sourceCode).code;
                 var sourceData = PythonCompiler.Data.GetOrCreateValue(__instance);
                 sourceData.IC10Code = ic10code;
                 sourceData.PythonCode = sourceCode;
                 sourceCode = ic10code;
+                L.Debug($"Compiled IC10 code:\n{ic10code}");
             }
         }
 
@@ -329,7 +416,7 @@ namespace StationeersPyTrapIC
 
         public static void Postfix(ProgrammableChipMotherboard __instance, ref string sourceCode)
         {
-            if (SourceData.IsPython(sourceCode))
+            if (SourceData.NeedsCompile(sourceCode))
             {
                 var sourceCodeObj = privateSourceCode.GetValue(__instance);
                 var textProp = AccessTools.Property(sourceCodeObj.GetType(), "text");
@@ -349,7 +436,7 @@ namespace StationeersPyTrapIC
         public static bool Prefix(EditorLineOfCode __instance, string inputString)
         {
             string sourceCode = InputSourceCode.Copy();
-            if (!SourceData.IsPython(sourceCode))
+            if (!SourceData.NeedsCompile(sourceCode))
             {
                 return true; // run original method
             }
@@ -372,15 +459,15 @@ namespace StationeersPyTrapIC
             var data = __result as ProgrammableChipSaveData;
             if (data == null)
             {
-                F.Debug("Save data is not of type ProgrammableChipSaveData");
+                L.Debug("Save data is not of type ProgrammableChipSaveData");
                 return;
             }
 
             var sourceData = new SourceData { };
             if (PythonCompiler.Data.TryGetValue(__instance, out sourceData))
             {
-                F.Debug($"Saving Python code: {sourceData.PythonCode}");
-                F.Debug($"Saving IC10 code: {sourceData.IC10Code}");
+                L.Debug($"Saving Python code: {sourceData.PythonCode}");
+                L.Debug($"Saving IC10 code: {sourceData.IC10Code}");
                 if (data.AliasesKeys == null)
                 {
                     data.AliasesKeys = new[] { sourceData.Serialize() };
@@ -397,7 +484,7 @@ namespace StationeersPyTrapIC
             }
             else
             {
-                F.Debug($"No chip data found for ID {data.ReferenceId}");
+                L.Debug($"No chip data found for ID {data.ReferenceId}");
             }
         }
 
@@ -407,7 +494,7 @@ namespace StationeersPyTrapIC
             var data = savedData as ProgrammableChipSaveData;
             if (data == null)
             {
-                F.Error("Load data is not of type ProgrammableChipSaveData");
+                L.Error("Load data is not of type ProgrammableChipSaveData");
                 return;
             }
 
@@ -418,7 +505,7 @@ namespace StationeersPyTrapIC
 
             try
             {
-                F.Debug($"Loading source data for ID {data.ReferenceId}");
+                L.Debug($"Loading source data for ID {data.ReferenceId}");
                 if (
                     data.AliasesValues == null
                     || data.AliasesKeys.Length > data.AliasesValues.Length
@@ -426,18 +513,18 @@ namespace StationeersPyTrapIC
                 {
                     SourceData sourceData = PythonCompiler.Data.GetOrCreateValue(__instance);
                     sourceData.Deserialize(data.AliasesKeys[data.AliasesKeys.Length - 1]);
-                    F.Debug($"Loaded Python code: {sourceData.PythonCode}");
-                    F.Debug($"Loaded IC10 code: {sourceData.IC10Code}");
+                    L.Debug($"Loaded Python code: {sourceData.PythonCode}");
+                    L.Debug($"Loaded IC10 code: {sourceData.IC10Code}");
                     data.AliasesKeys = data.AliasesKeys.Take(data.AliasesKeys.Length - 1).ToArray();
                 }
                 else
                 {
-                    F.Debug($"No python sources data found for ID {data.ReferenceId}");
+                    L.Debug($"No python sources data found for ID {data.ReferenceId}");
                 }
             }
             catch (Exception ex)
             {
-                F.Error($"Error loading source data for ID ${data.ReferenceId}: {ex}");
+                L.Error($"Error loading source data for ID ${data.ReferenceId}: {ex}");
             }
         }
     }
@@ -451,13 +538,58 @@ namespace StationeersPyTrapIC
 
         private void Awake()
         {
-            F.Log("PyTrapIC loaded");
+            var sw = Stopwatch.StartNew();
+            L.Initialize(Logger);
 
             var harmony = new Harmony(pluginGuid);
             harmony.PatchAll();
 
-            // trigger startup of Python compiler
-            PythonCompiler.Instance.Highlight("");
+            PythonCompiler.Instance.Init();
+            CommandLine.AddCommand("pytrapic", new PyTrapICCommand());
+            sw.Stop();
+            L.Log($"PyTrapIC initialized in {sw.ElapsedMilliseconds}ms");
+        }
+    }
+
+    class PyTrapICCommand : CommandBase
+    {
+        public override string HelpText =>
+            @"Usage: pytrapic <command>
+
+Available commands:
+    help           Show this help message
+    restart        Restart Python daemon for compiling
+    status         Check if Python daemon is running
+    libraries      List available libraries
+    debug_logging  Toggle debug logging";
+
+        public override string[] Arguments { get; } = new string[] { };
+
+        public override bool IsLaunchCmd { get; }
+
+        public override string Execute(string[] args)
+        {
+            if (args.Length == 0 || args[0] == "help" || args.Length > 1)
+            {
+                return HelpText;
+            }
+
+            switch (args[0].ToLowerInvariant())
+            {
+                case "restart":
+                    PythonCompiler.Instance.Init(true);
+                    return "Python daemon restarted.";
+                case "status":
+                    return PythonCompiler.Instance.IsRunning()
+                        ? "Python daemon is running."
+                        : "Python daemon is not running.";
+                case "debug_logging":
+                    return "Debug logging " + (L.ToggleDebug() ? "enabled." : "disabled.");
+                case "libraries":
+                    return string.Join("\n", SourceData.loadLibraries().Keys.OrderBy(x => x));
+                default:
+                    return HelpText;
+            }
         }
     }
 }

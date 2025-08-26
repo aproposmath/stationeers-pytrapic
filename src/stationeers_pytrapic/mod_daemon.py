@@ -7,7 +7,7 @@ import sys
 
 from pygments import highlight as _highlight
 from pygments.formatters import BBCodeFormatter
-from pygments.lexers import PythonLexer
+from pygments.lexers import PythonLexer, LuaLexer
 
 from .compiler import compile_code
 
@@ -35,11 +35,22 @@ def log(msg):
 
 log(f"Started")
 
-_lexer = PythonLexer()
+_lexer = {
+    "python": PythonLexer(),
+    "lua": LuaLexer(),
+}
+
+
+def get_languate(code):
+    return "lua" if code.lstrip().startswith("require") else "python"
+
+
+def get_lexer(code):
+    return _lexer[get_languate(code)]
 
 
 def highlight(code):
-    lines = _highlight(code, _lexer, formatter).splitlines()
+    lines = _highlight(code, get_lexer(code), formatter).splitlines()
     for i, line in enumerate(lines):
         lines[i] = "<color=#ffffff>" + line + "</color>"
     return "\n".join(lines)
