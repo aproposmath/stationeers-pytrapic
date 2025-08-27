@@ -25,6 +25,9 @@ Download the latest release from the [releases page](https://github.com/aproposm
 - IC10 code is still supported
 - When you remove the mod, your ICs will still work as they are still running IC10 code, but the original Python code of the chip will be lost. (your libraries are still kept though)
 - The last stack entries (511, 510, ...) are used for function arguments and return values, the stack pointer is not modified by the transpiler
+- All structures have the same name as in the Stationpedia, but without the `Structure` suffix (e.g. `WallHeater`, `SolarPanels`, `DaylightSensor`, etc.)
+- Use single structures by port (`WallHeater(d0)`) or multiple structures by type with suffix `s` (`WallHeaters`).
+- Access structures by name using square brackets (`WallHeaters["Greenhouse"]`)
 
 ## Libraries
 You can store commonly used functions in a `Library` and import them into your Python code using `import library.your_lib_name`.
