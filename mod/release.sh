@@ -14,6 +14,7 @@ rm -rf $DIST_DIR
 mkdir -p $DIST_DIR/pytrapic
 
 cp bin/Release/net46/PyTrapIC.dll $DIST_DIR/pytrapic/
+cp version.txt build_time.txt $DIST_DIR/pytrapic/
 
 cd $DIST_DIR
 
@@ -23,10 +24,9 @@ source venv/bin/activate
 pip install $MOD_DIR/..
 
 cd venv/lib/python3*/site-packages
-zip -r $DIST_DIR/pytrapic/pytrapic_python_modules.zip antlr4 astroid luaparser multimethod stationeers_pytrapic
+zip -r $DIST_DIR/pytrapic/pytrapic_python_modules.zip antlr4 astroid luaparser multimethod stationeers_pytrapic pygments
                 
 cd $DIST_DIR
-echo $PYTRAPIC_VERSION > pytrapic/version.txt
 zip -r PyTrapIC.zip pytrapic
 
 cd $MOD_DIR

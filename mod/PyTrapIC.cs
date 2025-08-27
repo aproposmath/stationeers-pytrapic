@@ -178,7 +178,7 @@ namespace StationeersPyTrapIC
     public class PythonCompiler
     {
         public static readonly string PYTHON_VERSION = "3.13.7";
-        public static readonly PythonCompiler Instance = new PythonCompiler();
+        public static PythonCompiler Instance = null;
 
         public static ConditionalWeakTable<ISourceCode, SourceData> Data =
             new ConditionalWeakTable<ISourceCode, SourceData>();
@@ -212,7 +212,7 @@ namespace StationeersPyTrapIC
         {
             if (_process == null)
                 return;
-            L.Log("Stopping PythonCompiler instance");
+            L.Info("Stopping PythonCompiler instance");
             if (!_process.HasExited)
             {
                 _stdin?.WriteLine("EXIT");
@@ -247,70 +247,89 @@ namespace StationeersPyTrapIC
             return Path.Combine(GetVenvDir(), "python.exe");
         }
 
-        public void InstallPython(bool force = false)
+        public void UpdatePythonModules(bool force = false)
         {
-            if (
-                File.Exists(GetPythonExePath())
-                && File.Exists(Path.Combine(GetVenvDir(), "pytrapic_python_modules.zip"))
-                && !force
-            )
-            {
-                L.Debug("Python already installed");
-                return;
-            }
-
-            StopProcess();
-
-            if (File.Exists(GetPythonExePath()) && force)
-            {
-                L.Log($"Forcing re-install of Python {PYTHON_VERSION} and dependencies");
-                try
-                {
-                    Directory.Delete(GetVenvDir(), true);
-                }
-                catch (Exception ex)
-                {
-                    L.Error($"Error deleting existing venv: {ex}");
-                    return;
-                }
-            }
-
-            L.Log("Installing Python and dependencies");
-            var pythonZipName = $"python-{PYTHON_VERSION}-embed-amd64.zip";
-            var url = $"https://www.python.org/ftp/python/{PYTHON_VERSION}/{pythonZipName}";
-            var pythonDir = GetVenvDir();
-            var pythonZipPath = Path.Combine(BepInEx.Paths.CachePath, "pytrapic", pythonZipName);
-            Directory.CreateDirectory(pythonDir);
-            using (var client = new System.Net.WebClient())
-            {
-                client.DownloadFile(url, pythonZipPath);
-            }
-            System.IO.Compression.ZipFile.ExtractToDirectory(pythonZipPath, pythonDir);
-
+            // Todo: check for verison number and build time, do this only when changed
             System.IO.File.Copy(
                 Path.Combine(
                     Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location),
                     "pytrapic_python_modules.zip"
                 ),
-                Path.Combine(pythonDir, "pytrapic_python_modules.zip")
+                Path.Combine(GetVenvDir(), "pytrapic_python_modules.zip"),
+                true
             );
+        }
 
-            var pythonVersion = PYTHON_VERSION
-                .Substring(0, PYTHON_VERSION.LastIndexOf('.'))
-                .Replace(".", "");
+        public void InstallPython(bool force = false)
+        {
+            try
+            {
+                if (
+                    File.Exists(GetPythonExePath())
+                    && File.Exists(Path.Combine(GetVenvDir(), "pytrapic_python_modules.zip"))
+                    && !force
+                )
+                {
+                    L.Debug("Python already installed");
+                    return;
+                }
 
-            File.AppendAllText(
-                Path.Combine(pythonDir, $"python{pythonVersion}._pth"),
-                "\npytrapic_python_modules.zip\n.",
-                Encoding.UTF8
-            );
+                StopProcess();
 
-            L.Log($"Installed Python {PYTHON_VERSION} to {pythonDir}");
+                if (File.Exists(GetPythonExePath()) && force)
+                {
+                    L.Info($"Forcing re-install of Python {PYTHON_VERSION} and dependencies");
+                    try
+                    {
+                        Directory.Delete(GetVenvDir(), true);
+                    }
+                    catch (Exception ex)
+                    {
+                        L.Error($"Error deleting existing venv: {ex}");
+                        return;
+                    }
+                }
+
+                L.Info("Installing Python and dependencies");
+                var pythonZipName = $"python-{PYTHON_VERSION}-embed-amd64.zip";
+                var url = $"https://www.python.org/ftp/python/{PYTHON_VERSION}/{pythonZipName}";
+                var pythonDir = GetVenvDir();
+                var pythonZipPath = Path.Combine(
+                    BepInEx.Paths.CachePath,
+                    "pytrapic",
+                    pythonZipName
+                );
+                Directory.CreateDirectory(pythonDir);
+                using (var client = new System.Net.WebClient())
+                {
+                    client.DownloadFile(url, pythonZipPath);
+                }
+                System.IO.Compression.ZipFile.ExtractToDirectory(pythonZipPath, pythonDir);
+
+                var pythonVersion = PYTHON_VERSION
+                    .Substring(0, PYTHON_VERSION.LastIndexOf('.'))
+                    .Replace(".", "");
+
+                File.AppendAllText(
+                    Path.Combine(pythonDir, $"python{pythonVersion}._pth"),
+                    "\npytrapic_python_modules.zip\n.",
+                    Encoding.UTF8
+                );
+
+                L.Info($"Installed Python {PYTHON_VERSION} to {pythonDir}");
+            }
+            catch (Exception ex)
+            {
+                L.Error($"Error installing Python: {ex}");
+            }
         }
 
         public void Init(bool forceRestart = false)
         {
+            L.Debug("Initializing PythonCompiler");
             InstallPython();
+            UpdatePythonModules();
+            L.Debug("Python installation checked");
             if (IsRunning())
             {
                 if (!forceRestart)
@@ -318,7 +337,7 @@ namespace StationeersPyTrapIC
 
                 StopProcess();
             }
-            L.Log($"Starting PythonCompiler instance");
+            L.Debug($"Starting PythonCompiler instance");
             var pythonPath = GetPythonExePath();
             _process = new Process
             {
@@ -341,22 +360,23 @@ namespace StationeersPyTrapIC
             {
                 L.Error($"Tried to run python compiler at: ${pythonPath}");
                 L.Error($"Python compiler process exited unexpectedly");
-                throw new InvalidOperationException("Python compiler process exited unexpectedly");
+                throw new Exception("Python compiler process exited unexpectedly");
             }
             if (_stdout == null || _stdin == null)
             {
                 L.Error($"Tried to run python compiler at: ${pythonPath}");
                 L.Error($"Failed to get standard input/output streams from Python compiler");
-                throw new InvalidOperationException("Failed to get standard input/output streams");
+                throw new Exception("Failed to get standard input/output streams");
             }
             _stdin.WriteLine("READY");
             string line = _stdout.ReadLine();
             if (line != "READY")
             {
                 L.Error($"Python compiler did not respond with READY, got: {line}");
-                throw new InvalidOperationException("Python compiler did not start correctly");
+                L.Error($"stderr: \n{_process.StandardError.ReadToEnd()}");
+                throw new Exception("Python compiler did not start correctly");
             }
-            L.Log($"PythonCompiler running");
+            L.Info($"PythonCompiler running");
         }
 
         public PythonCompiler()
@@ -693,16 +713,29 @@ namespace StationeersPyTrapIC
 
         private void Awake()
         {
-            var sw = Stopwatch.StartNew();
-            L.Initialize(Logger);
+            try
+            {
+                var sw = Stopwatch.StartNew();
+                L.Initialize(Logger);
+                L.Info(
+                    $"Awake PyTrapIC {VersionInfo.VersionGit} build time {VersionInfo.BuildTime}"
+                );
 
-            var harmony = new Harmony(pluginGuid);
-            harmony.PatchAll();
+                PythonCompiler.Instance = new PythonCompiler();
+                CommandLine.AddCommand("pytrapic", new PyTrapICCommand());
 
-            PythonCompiler.Instance.Init();
-            CommandLine.AddCommand("pytrapic", new PyTrapICCommand());
-            sw.Stop();
-            L.Log($"PyTrapIC {VersionInfo.VersionGit} initialized in {sw.ElapsedMilliseconds}ms");
+                var harmony = new Harmony(pluginGuid);
+                harmony.PatchAll();
+
+                sw.Stop();
+                L.Info(
+                    $"PyTrapIC {VersionInfo.VersionGit} initialized in {sw.ElapsedMilliseconds}ms"
+                );
+            }
+            catch (Exception ex)
+            {
+                L.Error($"Error during PyTrapIC {VersionInfo.VersionGit} init: {ex}");
+            }
         }
     }
 
