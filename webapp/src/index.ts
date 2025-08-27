@@ -138,13 +138,24 @@ async function compileCode() {
     if (result.error) {
       console.log("Compilation error:", result.error);
       statisticsElement.innerHTML = "";
-      const stackTrace = result.stack_trace || "";
-      ic10Element.innerHTML = hljs.highlight(
-        result.error + "\n\n" + stackTrace,
-        {
-          language: "txt",
-        },
-      ).value;
+      const stackTrace = result.error.stack_trace || "";
+
+      var msg = result.error.description;
+
+      if (result.error.line !== undefined) {
+        msg += ` on line ${result.error.lineno}`;
+      }
+      if (result.error.offset !== undefined) {
+        msg += `:${result.error.offset}`;
+      }
+
+      if (result.error.stack_trace) {
+        msg += `\n\nStack trace:\n${result.error.stack_trace}`;
+      }
+
+      ic10Element.innerHTML = hljs.highlight(msg, {
+        language: "txt",
+      }).value;
       return;
     }
     ic10Code = result["code"];
