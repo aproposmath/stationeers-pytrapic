@@ -687,9 +687,9 @@ namespace StationeersPyTrapIC
     [BepInPlugin(pluginGuid, pluginName, pluginVersion)]
     public class PyTrapICPlugin : BaseUnityPlugin
     {
-        private const string pluginGuid = "io.inp.stationeers.stationeers_pytrapic";
-        private const string pluginName = "PyTrapIC";
-        private const string pluginVersion = "0.0.1";
+        public const string pluginGuid = "3f6a33e3-915f-4e35-90b0-2f07b29a91af";
+        public const string pluginName = "PyTrapIC";
+        public const string pluginVersion = VersionInfo.Version;
 
         private void Awake()
         {
@@ -702,7 +702,7 @@ namespace StationeersPyTrapIC
             PythonCompiler.Instance.Init();
             CommandLine.AddCommand("pytrapic", new PyTrapICCommand());
             sw.Stop();
-            L.Log($"PyTrapIC initialized in {sw.ElapsedMilliseconds}ms");
+            L.Log($"PyTrapIC {VersionInfo.VersionGit} initialized in {sw.ElapsedMilliseconds}ms");
         }
     }
 
@@ -716,6 +716,7 @@ Available commands:
     restart        Restart Python daemon for compiling
     status         Check if Python daemon is running
     libraries      List available libraries
+    version        Show PyTrapIC version
     debug_logging  Toggle debug logging";
 
         public override string[] Arguments { get; } = new string[] { };
@@ -742,6 +743,8 @@ Available commands:
                     return "Debug logging " + (L.ToggleDebug() ? "enabled." : "disabled.");
                 case "libraries":
                     return string.Join("\n", SourceData.loadLibraries().Keys.OrderBy(x => x));
+                case "version":
+                    return VersionInfo.VersionGit;
                 default:
                     return HelpText;
             }

@@ -4,7 +4,7 @@
     <TargetFramework>net46</TargetFramework>
     <AssemblyName>PyTrapIC</AssemblyName>
     <Description>Python to IC10 Transpiler</Description>
-    <Version>0.0.1</Version>
+    <Version>$(PYTRAPIC_VERSION)</Version>
     <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
     <LangVersion>latest</LangVersion>
     <Deterministic>true</Deterministic>
