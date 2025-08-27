@@ -64,6 +64,8 @@ while True:
 ## Planned Features
 
 - Support for more Python features [see here](https://github.com/aproposmath/stationeers-pytrapic)
+- More compile options in-game (e.g. optimization level, function inlining, etc.)
+- IC10 preview in-game
 - Better Lua support (see below)
 - Importing Lua libraries from Python and vice versa
 - [you tell me!](https://github.com/aproposmath/stationeers-pytrapic/issues/new)
