@@ -875,6 +875,10 @@ class CompilerPassGatherCode(CompilerPass):
                     continue
 
                 if symbol.is_register and symbol.code_expr not in mapping:
+                    if not scope_registers:
+                        raise CompilerError(
+                            f"Running out of registers, try to simplify your code."
+                        )
                     reg_num = scope_registers.pop(0)
                     mapping[symbol.code_expr] = f"r{reg_num}"
                     # print("assign name", symbol.code_expr, "to", mapping[symbol.code_expr])

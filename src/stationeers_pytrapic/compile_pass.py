@@ -485,9 +485,9 @@ class CompilerPassCheckUsed(CompilerPass):
                 func = self._functions[node.func.name]
                 func._ndata.is_used = func._ndata.is_used or data.is_used
             elif node.func.name not in symbols.__dict__:
-                print(
-                    f"Call to undefined function '{node.func.name}' in {node.lineno}:{node.col_offset}",
-                    file=sys.stderr,
+                raise CompilerError(
+                    f"Calling undefined function {node.func.name}",
+                    node,
                 )
 
         for child in node.get_children():

@@ -1,3 +1,8 @@
+import sys
+
+_stdout = sys.stdout
+sys.stdout = sys.stderr
+
 import asyncio
 import atexit
 import base64
@@ -113,7 +118,7 @@ def process_input(line):
             encoded = base64.b64encode(json.dumps(response).encode("utf-8")).decode(
                 "ascii"
             )
-            print(encoded, flush=True)
+            print(encoded, flush=True, file=_stdout)
 
 
 async def main():
@@ -143,13 +148,4 @@ if __name__ == "__main__":
             _log_file.close()
 
     atexit.register(at_exit_handler)
-
-    token = sys.stdin.readline().strip()
-    log(f"Token received: {token}")
-    if token != "READY":
-        log("Invalid token, exiting...")
-        sys.exit(1)
-
-    print("READY", flush=True)  # Notify parent that we are ready
-
     asyncio.run(main())

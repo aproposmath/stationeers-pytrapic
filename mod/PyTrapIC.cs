@@ -18,10 +18,29 @@ using BepInEx.Logging;
 using HarmonyLib;
 using Newtonsoft.Json;
 using UI.Tooltips;
+using UnityEngine;
 using Util.Commands;
 
 namespace StationeersPyTrapIC
 {
+    public class Timer : IDisposable
+    {
+        public Stopwatch stopwatch;
+        public string name;
+
+        public Timer(string name)
+        {
+            this.name = name;
+            stopwatch = Stopwatch.StartNew();
+        }
+
+        public void Dispose()
+        {
+            stopwatch.Stop();
+            L.Debug($"{name} took {stopwatch.ElapsedMilliseconds}ms");
+        }
+    }
+
     public class CompileOptions
     {
         public bool Comments { get; set; } = false;
@@ -61,27 +80,24 @@ namespace StationeersPyTrapIC
 
         public static Dictionary<string, SteamTransport.ItemWrapper> loadLibraries()
         {
-            var sw = Stopwatch.StartNew();
+            using (new Timer("Load libraries"))
+            {
+                // todo: can we cache this without missing updates?
+                // todo: can this be loaded async without blocking?
 
-            // todo: can we cache this without missing updates?
-            // todo: can this be loaded async without blocking?
+                var libraries = NetworkManager
+                    .GetLocalAndWorkshopItems(SteamTransport.WorkshopType.ICCode)
+                    .GetAwaiter()
+                    .GetResult();
 
-            var libraries = NetworkManager
-                .GetLocalAndWorkshopItems(SteamTransport.WorkshopType.ICCode)
-                .GetAwaiter()
-                .GetResult();
+                Dictionary<string, SteamTransport.ItemWrapper> libraryMap =
+                    new Dictionary<string, SteamTransport.ItemWrapper>();
 
-            Dictionary<string, SteamTransport.ItemWrapper> libraryMap =
-                new Dictionary<string, SteamTransport.ItemWrapper>();
+                foreach (var lib in libraries)
+                    libraryMap[lib.DirectoryName.ToLowerInvariant()] = lib;
 
-            foreach (var lib in libraries)
-                libraryMap[lib.DirectoryName.ToLowerInvariant()] = lib;
-
-            sw.Stop();
-
-            L.Debug($"Loaded {libraries.Count} libraries in {sw.ElapsedMilliseconds}ms");
-
-            return libraryMap;
+                return libraryMap;
+            }
         }
 
         public static string ReplaceLibraryCode(string code)
@@ -191,21 +207,21 @@ namespace StationeersPyTrapIC
 
         public class CompileError
         {
-            public string description { get; set; }
-            public int line { get; set; }
-            public int column { get; set; }
-            public int line_end { get; set; }
-            public int column_end { get; set; }
+            public string description;
+            public int line = -1;
+            public int column = -1;
+            public int line_end = -1;
+            public int column_end = -1;
         }
 
         public class CompileResponse
         {
-            public CompileError error { get; set; }
-            public string highlighted { get; set; }
-            public string code { get; set; }
-            public int num_lines { get; set; }
-            public int num_registers { get; set; }
-            public int num_bytes { get; set; }
+            public CompileError error;
+            public string highlighted;
+            public string code;
+            public int num_lines;
+            public int num_registers;
+            public int num_bytes;
         }
 
         private void StopProcess()
@@ -273,6 +289,7 @@ namespace StationeersPyTrapIC
                     L.Debug("Python already installed");
                     return;
                 }
+                Timer t = new Timer("InstallPython");
 
                 StopProcess();
 
@@ -317,6 +334,7 @@ namespace StationeersPyTrapIC
                 );
 
                 L.Info($"Installed Python {PYTHON_VERSION} to {pythonDir}");
+                t.Dispose();
             }
             catch (Exception ex)
             {
@@ -327,8 +345,10 @@ namespace StationeersPyTrapIC
         public void Init(bool forceRestart = false)
         {
             L.Debug("Initializing PythonCompiler");
-            InstallPython();
-            UpdatePythonModules();
+            using (new Timer("Install Python"))
+                InstallPython();
+            using (new Timer("Update Python modules"))
+                UpdatePythonModules();
             L.Debug("Python installation checked");
             if (IsRunning())
             {
@@ -367,14 +387,6 @@ namespace StationeersPyTrapIC
                 L.Error($"Tried to run python compiler at: ${pythonPath}");
                 L.Error($"Failed to get standard input/output streams from Python compiler");
                 throw new Exception("Failed to get standard input/output streams");
-            }
-            _stdin.WriteLine("READY");
-            string line = _stdout.ReadLine();
-            if (line != "READY")
-            {
-                L.Error($"Python compiler did not respond with READY, got: {line}");
-                L.Error($"stderr: \n{_process.StandardError.ReadToEnd()}");
-                throw new Exception("Python compiler did not start correctly");
             }
             L.Info($"PythonCompiler running");
         }
@@ -434,50 +446,44 @@ namespace StationeersPyTrapIC
             return data.highlighted;
         }
 
-        public void Send(string message)
+        public string SendCommand(string message)
         {
             var data = Convert.ToBase64String(Encoding.UTF8.GetBytes(message));
             _stdin.WriteLine(data);
             _stdin.Flush();
-        }
 
-        public string Receive()
-        {
+            // Read response
             string line = _stdout.ReadLine();
             if (line == null)
                 return null;
-            L.Debug($"Received encoded from Python compiler: {line}");
             byte[] raw = Convert.FromBase64String(line);
             return Encoding.UTF8.GetString(raw);
         }
 
         public string SendData(string data)
         {
-            lock (lastInput)
-            {
-                if (data == lastInput)
-                {
-                    return lastOutput;
-                }
+            if (data == lastInput)
+                return lastOutput;
 
-                try
+            try
+            {
+                L.Debug($"Sending data to Python compiler");
+                String response = null;
+                using (new Timer("Compile"))
+                    response = SendCommand(data);
+                if (response == null)
                 {
-                    Send(data);
-                    var response = Receive();
-                    if (response == null)
-                    {
-                        L.Error($"No response from Python compiler, was sent: {data}");
-                        return "Error: No response from Python compiler";
-                    }
-                    lastInput = data;
-                    lastOutput = response;
-                    return response;
+                    L.Error($"No response from Python compiler, was sent: {data}");
+                    return "Error: No response from Python compiler";
                 }
-                catch (Exception ex)
-                {
-                    L.Error($"Error sending Python data: {ex}");
-                    return $"Error: {ex.Message}";
-                }
+                lastInput = data;
+                lastOutput = response;
+                return response;
+            }
+            catch (Exception ex)
+            {
+                L.Error($"Error sending Python data: {ex}");
+                return $"Error: {ex.Message}";
             }
         }
     }
@@ -545,37 +551,25 @@ namespace StationeersPyTrapIC
 
         public static void SetInputCode(string code)
         {
-            L.Debug($"SetInputCode: {code}");
             if (code == null)
                 code = "";
-            lock (inputCode)
+
+            if (code != inputCode)
             {
-                L.Debug($"SetInputCode - have lock");
-                if (code != inputCode)
+                inputCode = code;
+                if (SourceData.NeedsCompile(inputCode))
                 {
-                    L.Debug($"SetInputCode - code changed");
-                    inputCode = code;
-                    if (SourceData.NeedsCompile(inputCode))
-                    {
-                        L.Debug($"SetInputCode - recompile");
-                        compiledCode = PythonCompiler.Instance.Compile(inputCode);
-                        highlightedLines = compiledCode.highlighted.Split(
-                            new[] { '\n' },
-                            StringSplitOptions.None
-                        );
-                        L.Debug($"SetInputCode - got {highlightedLines.Length} highlighted lines");
-                        for (int i = 0; i < highlightedLines.Length; i++)
-                        {
-                            L.Debug($"{i}\t{highlightedLines[i]}");
-                        }
-                        L.Debug($"SetInputCode - done");
-                    }
-                    else
-                    {
-                        L.Debug($"SetInputCode - reset data");
-                        compiledCode = null;
-                        highlightedLines = null;
-                    }
+                    compiledCode = PythonCompiler.Instance.Compile(inputCode);
+                    highlightedLines = compiledCode.highlighted.Split(
+                        new[] { '\n' },
+                        StringSplitOptions.None
+                    );
+                    L.Debug($"SetInputCode - got {highlightedLines.Length} highlighted lines");
+                }
+                else
+                {
+                    compiledCode = null;
+                    highlightedLines = null;
                 }
             }
         }
@@ -590,7 +584,6 @@ namespace StationeersPyTrapIC
             )]
             public static bool Prefix(EditorLineOfCode __instance, string inputString)
             {
-                L.Debug($"Reformatting line of code: {inputString}");
                 SetInputCode(InputSourceCode.Copy());
                 if (compiledCode == null)
                 {
@@ -598,8 +591,34 @@ namespace StationeersPyTrapIC
                     return true; // run original method
                 }
 
-                for (int i = 0; i < highlightedLines.Length; i++)
-                    __instance.Parent.LinesOfCode[i].FormattedText.text = highlightedLines[i];
+                for (int i = 0; i < __instance.Parent.LinesOfCode.Count; i++)
+                    __instance.Parent.LinesOfCode[i].FormattedText.text =
+                        i < highlightedLines.Length ? highlightedLines[i] : "";
+
+                return false;
+            }
+        }
+
+        [HarmonyPatch(typeof(InputSourceCode), "UpdateFileSize")]
+        public static class PatchInputSourceCodeUpdateFileSize
+        {
+            public static string FormatSize(int num, int max, string label)
+            {
+                return (
+                        num > max ? $"<color=red>{num}</color>"
+                        : num > max * 0.9 ? $"<color=yellow>{num}</color>"
+                        : $"{num}"
+                    ) + $"/{max} {label}";
+            }
+
+            public static bool Prefix(InputSourceCode __instance)
+            {
+                if (compiledCode == null)
+                    return true; // run original method
+
+                __instance.SizeText.text =
+                    $"{FormatSize(compiledCode.num_registers, 16, "registers")}, {FormatSize(compiledCode.num_lines, 128, "lines")}, {FormatSize(compiledCode.num_bytes, 4096, "bytes")}";
+                __instance.SizeText.color = Color.white;
                 return false;
             }
         }
@@ -607,14 +626,15 @@ namespace StationeersPyTrapIC
         [HarmonyPatch(typeof(InputSourceCode), "HandleInput")]
         public static class PatchInputSourceCodeHandleInput
         {
-            // public static void Prefix(InputSourceCode __instance) {}
-
             public static void Postfix(InputSourceCode __instance)
             {
                 if (compiledCode != null && compiledCode.error != null)
                 {
+                    var error = compiledCode.error;
+                    string pos =
+                        error.line != -1 ? $" at line {error.line - 1}:{error.column}" : "";
                     UITooltipManager.SetTooltip(
-                        $"<color=red>{compiledCode.error.description} at line {compiledCode.error.line}:{compiledCode.error.column}</color>"
+                        $"<color=red>{compiledCode.error.description}{pos}</color>"
                     );
                 }
                 else
@@ -750,6 +770,7 @@ Available commands:
     status         Check if Python daemon is running
     libraries      List available libraries
     version        Show PyTrapIC version
+    reinstall      Reinstall Python and dependencies
     debug_logging  Toggle debug logging";
 
         public override string[] Arguments { get; } = new string[] { };
@@ -778,6 +799,10 @@ Available commands:
                     return string.Join("\n", SourceData.loadLibraries().Keys.OrderBy(x => x));
                 case "version":
                     return VersionInfo.VersionGit;
+                case "reinstall":
+                    PythonCompiler.Instance.InstallPython(true);
+                    PythonCompiler.Instance.Init(true);
+                    return "Python and dependencies reinstalled.";
                 default:
                     return HelpText;
             }
