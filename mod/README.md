@@ -7,24 +7,65 @@ This mod allows you to write code for Stationeers' ICs in Python instead of IC10
 This mode requires [BepInEx](https://github.com/BepInEx/BepInEx).
 Download the latest release from the [releases page](https://github.com/aproposmath/stationeers-pytrapic/releases) and unzip it into your `BepInEx/plugins` folder.
 
+## Features
+
+- Write code in Python instead of IC10 assembly language
+- Supports a subset of Python (see [here](https://github.com/aproposmath/stationeers-pytrapic/blob/dev/README.md#implementation-status) for details)
+- Use the in-game [libraries](#Libraries) feature to reuse commonly used functions across multiple ICs/save games
+- Syntax highlighting
+- Compile errors are shown as tooltip
+- Intrinsics: all IC10 commands are available as Python function
+
 ## Usage Notes
 
+- ICs are not running Python, your Python code is tranlated to IC10 code when you `Export` it from the in-game editor
 - No new parts are added to the game, you do the programming with a Computer/Laptop and the IC Editor Motherboard
-- To write Python code, the first line of your code must **exactly** match `from stationeers_pytrapic.symbols import *`, otherwise it is treated as IC10 code
-- Syntax highlighting is available
-- Compile errors are shown in the tooltip
+- To write Python code, the **first** line of your code must **exactly** match `from stationeers_pytrapic.symbols import *`, otherwise it is treated as IC10 code
 - You can use the [online editor](https://aproposmath.github.io/stationeers-pytrapic/) to write and test your code before using it in-game (better autocompletion, syntax highlighting, error checking, etc.)
-- On clicking `Export` in the in-game editor, your Python code is transpiled to IC10 and written to the IC
 - IC10 code is still supported
 - When you remove the mod, your ICs will still work as they are still running IC10 code, but the original Python code of the chip will be lost. (your libraries are still kept though)
+- The last stack entries (511, 510, ...) are used for function arguments and return values, the stack pointer is not modified by the transpiler
 
-### Libraries
-You can store common functions in a `Library` and import them into your Python code using `import library.your_lib_name`.
+## Libraries
+You can store commonly used functions in a `Library` and import them into your Python code using `import library.your_lib_name`.
 
-Known issue: The compile errors show wrong line numbers when using libraries. (This is because the library code is prepended to your code before compiling it)
+```python
+from stationeers_pytrapic.symbols import *
+
+# This is your library code stored in a Library named "python_solar"
+
+def align_solar_panels():
+    panels = SolarPanels  # port facing north
+    sensor = DaylightSensor(d0)  # port facing east
+    panels.Horizontal = sensor.Horizontal
+    panels.Vertical = 90 - sensor.Vertical
+
+```
+
+```python
+from stationeers_pytrapic.symbols import *
+
+# import your library
+import library.python_solar
+
+while True:
+    align_solar_panels()  # call the function from your library
+```
+
+
+## Known Limitations/Issues
+
+- Compile errors in tooltip show wrong line numbers when using libraries.
+- No slots access (only via intrinsics)
 
 ## Planned Features
 
-- Show code size (bytes and lines) and register usage in the editor
 - Support for more Python features [see here](https://github.com/aproposmath/stationeers-pytrapic)
+- Better Lua support (see below)
+- Importing Lua libraries from Python and vice versa
 - [you tell me!](https://github.com/aproposmath/stationeers-pytrapic/issues/new)
+
+## Experimental Features
+
+- Limited Lua support (the first code line must be `require("stationeers_pytrapic.symbols")`)
+
