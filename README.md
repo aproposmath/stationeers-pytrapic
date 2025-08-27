@@ -8,9 +8,11 @@ Some code examples are [below](#examples).
 
 ## How to use
 
-[Online (recommended)](https://aproposmath.github.io/stationeers-pytrapic)
+- [Stationeers Mod](mod/README.md)
 
-Offline
+- [Online Editor](https://aproposmath.github.io/stationeers-pytrapic)
+
+- Command line tool
 
 ```
 pip install git+https://github.com/aproposmath/stationeers-pytrapic.git
@@ -21,7 +23,7 @@ The output is written to stdout.
 
 ## Implementation status
 
-**Features**
+**Python Features**
 
 - variable assignments
 - arithmetic operations (`+`, `-`, `*`, `/`, `%`, `+=`, `-=`, `*=`, `/=`)
