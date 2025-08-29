@@ -489,14 +489,20 @@ namespace StationeersPyTrapIC
     }
 
     [HarmonyPatch]
-    public static class Patch_ProgrammableChip
+    public static class PyTrapICPatches
     {
-        [HarmonyPatch(
-            typeof(ProgrammableChip),
-            nameof(ProgrammableChip.SetSourceCode),
-            new[] { typeof(string) }
-        )]
-        public static void Prefix(ProgrammableChip __instance, ref string sourceCode)
+        [
+            HarmonyPatch(
+                typeof(ProgrammableChip),
+                nameof(ProgrammableChip.SetSourceCode),
+                new[] { typeof(string) }
+            ),
+            HarmonyPrefix
+        ]
+        public static void ProgrammableChip_SetSourceCode(
+            ProgrammableChip __instance,
+            ref string sourceCode
+        )
         {
             L.Debug($"Setting source code for chip {__instance.ReferenceId}:\n{sourceCode}");
             if (SourceData.NeedsCompile(sourceCode))
@@ -510,8 +516,14 @@ namespace StationeersPyTrapIC
             }
         }
 
-        [HarmonyPatch(typeof(ProgrammableChip), nameof(ProgrammableChip.GetSourceCode))]
-        public static void Postfix(ProgrammableChip __instance, ref AsciiString __result)
+        [
+            HarmonyPatch(typeof(ProgrammableChip), nameof(ProgrammableChip.GetSourceCode)),
+            HarmonyPostfix
+        ]
+        public static void ProgrammableChip_GetSourceCode(
+            ProgrammableChip __instance,
+            ref AsciiString __result
+        )
         {
             var sourceData = new SourceData { };
             if (PythonCompiler.Data.TryGetValue(__instance, out sourceData))
@@ -519,44 +531,39 @@ namespace StationeersPyTrapIC
                 __result = AsciiString.Parse(sourceData.PythonCode);
             }
         }
-    }
 
-    [HarmonyPatch(
-        typeof(ProgrammableChipMotherboard),
-        nameof(ProgrammableChipMotherboard.SetSourceCode)
-    )]
-    public static class PatchProgrammableChipMotherboardSetSourceCode
-    {
-        static readonly FieldInfo privateSourceCode = AccessTools.Field(
-            typeof(ProgrammableChipMotherboard),
-            "SourceCode"
-        );
-
-        public static void Postfix(ProgrammableChipMotherboard __instance, ref string sourceCode)
+        [
+            HarmonyPatch(
+                typeof(ProgrammableChipMotherboard),
+                nameof(ProgrammableChipMotherboard.SetSourceCode)
+            ),
+            HarmonyPostfix
+        ]
+        public static void ProgrammableChipMotherboard_SetSourceCode(
+            ProgrammableChipMotherboard __instance,
+            ref string sourceCode
+        )
         {
             if (SourceData.NeedsCompile(sourceCode))
             {
-                var sourceCodeObj = privateSourceCode.GetValue(__instance);
+                var sourceCodeProp = AccessTools.Property(__instance.GetType(), "SourceCode");
+                var sourceCodeObj = sourceCodeProp.GetValue(__instance) as ISourceCode;
                 var textProp = AccessTools.Property(sourceCodeObj.GetType(), "text");
                 textProp.SetValue(sourceCodeObj, PythonCompiler.Instance.Highlight(sourceCode));
             }
         }
-    }
 
-    public static class InputPatches
-    {
         private static string inputCode = "";
         private static string[] highlightedLines = null;
         private static PythonCompiler.CompileResponse compiledCode = null;
 
         public static void SetInputCode(string code)
         {
-            if (code == null)
-                code = "";
+            string newInput = code ?? "";
 
-            if (code != inputCode)
+            if (newInput != inputCode)
             {
-                inputCode = code;
+                inputCode = newInput;
                 if (SourceData.NeedsCompile(inputCode))
                 {
                     compiledCode = PythonCompiler.Instance.Compile(inputCode);
@@ -574,82 +581,79 @@ namespace StationeersPyTrapIC
             }
         }
 
-        [HarmonyPatch]
-        public static class ReformatPatch
-        {
-            [HarmonyPatch(
+        [
+            HarmonyPatch(
                 typeof(EditorLineOfCode),
                 nameof(EditorLineOfCode.ReformatText),
                 new[] { typeof(string) }
-            )]
-            public static bool Prefix(EditorLineOfCode __instance, string inputString)
-            {
-                SetInputCode(InputSourceCode.Copy());
-                if (compiledCode == null)
-                {
-                    L.Debug($"No compiled code, skipping reformat");
-                    return true; // run original method
-                }
-
-                for (int i = 0; i < __instance.Parent.LinesOfCode.Count; i++)
-                    __instance.Parent.LinesOfCode[i].FormattedText.text =
-                        i < highlightedLines.Length ? highlightedLines[i] : "";
-
-                return false;
-            }
-        }
-
-        [HarmonyPatch(typeof(InputSourceCode), "UpdateFileSize")]
-        public static class PatchInputSourceCodeUpdateFileSize
+            ),
+            HarmonyPrefix
+        ]
+        public static bool EditorLineOfCode_ReformatText(
+            EditorLineOfCode __instance,
+            string inputString
+        )
         {
-            public static string FormatSize(int num, int max, string label)
+            SetInputCode(InputSourceCode.Copy());
+            if (compiledCode == null)
             {
-                return (
-                        num > max ? $"<color=red>{num}</color>"
-                        : num > max * 0.9 ? $"<color=yellow>{num}</color>"
-                        : $"{num}"
-                    ) + $"/{max} {label}";
+                L.Debug($"No compiled code, skipping reformat");
+                return true; // run original method
             }
 
-            public static bool Prefix(InputSourceCode __instance)
-            {
-                if (compiledCode == null)
-                    return true; // run original method
+            for (int i = 0; i < __instance.Parent.LinesOfCode.Count; i++)
+                __instance.Parent.LinesOfCode[i].FormattedText.text =
+                    i < highlightedLines.Length ? highlightedLines[i] : "";
 
-                __instance.SizeText.text =
-                    $"{FormatSize(compiledCode.num_registers, 16, "registers")}, {FormatSize(compiledCode.num_lines, 128, "lines")}, {FormatSize(compiledCode.num_bytes, 4096, "bytes")}";
-                __instance.SizeText.color = Color.white;
-                return false;
-            }
+            return false;
         }
 
-        [HarmonyPatch(typeof(InputSourceCode), "HandleInput")]
-        public static class PatchInputSourceCodeHandleInput
+        public static string FormatSize(int num, int max, string label)
         {
-            public static void Postfix(InputSourceCode __instance)
+            return (
+                    num > max ? $"<color=red>{num}</color>"
+                    : num > max * 0.9 ? $"<color=yellow>{num}</color>"
+                    : $"{num}"
+                ) + $"/{max} {label}";
+        }
+
+        [
+            HarmonyPatch(typeof(InputSourceCode), nameof(InputSourceCode.UpdateFileSize)),
+            HarmonyPrefix
+        ]
+        public static bool PatchInputSourceCodeUpdateFileSize(InputSourceCode __instance)
+        {
+            if (compiledCode == null)
+                return true; // run original method
+
+            __instance.SizeText.text =
+                $"{FormatSize(compiledCode.num_registers, 16, "registers")}, {FormatSize(compiledCode.num_lines, 128, "lines")}, {FormatSize(compiledCode.num_bytes, 4096, "bytes")}";
+            __instance.SizeText.color = Color.white;
+            return false;
+        }
+
+        [HarmonyPatch(typeof(InputSourceCode), "HandleInput"), HarmonyPostfix]
+        public static void InputSourceCode_HandleInput(InputSourceCode __instance)
+        {
+            if (compiledCode != null && compiledCode.error != null)
             {
-                if (compiledCode != null && compiledCode.error != null)
-                {
-                    var error = compiledCode.error;
-                    string pos =
-                        error.line != -1 ? $" at line {error.line - 1}:{error.column}" : "";
-                    UITooltipManager.SetTooltip(
-                        $"<color=red>{compiledCode.error.description}{pos}</color>"
-                    );
-                }
-                else
-                {
-                    UITooltipManager.ClearTooltip();
-                }
+                var error = compiledCode.error;
+                string pos = error.line != -1 ? $" at line {error.line - 1}:{error.column}" : "";
+                UITooltipManager.SetTooltip(
+                    $"<color=red>{compiledCode.error.description}{pos}</color>"
+                );
+            }
+            else
+            {
+                UITooltipManager.ClearTooltip();
             }
         }
-    }
 
-    [HarmonyPatch]
-    public static class ChipPatch
-    {
-        [HarmonyPatch(typeof(ProgrammableChip), "SerializeSave")]
-        static void Postfix(ProgrammableChip __instance, ref ThingSaveData __result)
+        [HarmonyPatch(typeof(ProgrammableChip), "SerializeSave"), HarmonyPostfix]
+        static void ProgrammableChip_SerializeSave(
+            ProgrammableChip __instance,
+            ref ThingSaveData __result
+        )
         {
             var data = __result as ProgrammableChipSaveData;
             if (data == null)
@@ -659,32 +663,34 @@ namespace StationeersPyTrapIC
             }
 
             var sourceData = new SourceData { };
-            if (PythonCompiler.Data.TryGetValue(__instance, out sourceData))
+            if (!PythonCompiler.Data.TryGetValue(__instance, out sourceData))
             {
-                L.Debug($"Saving Python code: {sourceData.PythonCode}");
-                L.Debug($"Saving IC10 code: {sourceData.IC10Code}");
-                if (data.AliasesKeys == null)
-                {
-                    data.AliasesKeys = new[] { sourceData.Serialize() };
-                }
-                else
-                {
-                    var listData = new List<string>(data.AliasesKeys);
-                    listData.Add(sourceData.Serialize());
-                    data.AliasesKeys = listData.ToArray();
-                }
-                // make sure the IC10 code is set as the main source code
-                // such that the save game can be loaded without this mod
-                data.SourceCode = sourceData.IC10Code;
+                L.Debug($"No chip data found for ID {data.ReferenceId}");
+                return;
+            }
+
+            L.Debug($"Saving Python code: {sourceData.PythonCode}");
+            L.Debug($"Saving IC10 code: {sourceData.IC10Code}");
+            if (data.AliasesKeys == null)
+            {
+                data.AliasesKeys = new[] { sourceData.Serialize() };
             }
             else
             {
-                L.Debug($"No chip data found for ID {data.ReferenceId}");
+                var listData = new List<string>(data.AliasesKeys);
+                listData.Add(sourceData.Serialize());
+                data.AliasesKeys = listData.ToArray();
             }
+            // make sure the IC10 code is set as the main source code
+            // such that the save game can be loaded without this mod
+            data.SourceCode = sourceData.IC10Code;
         }
 
-        [HarmonyPatch(typeof(ProgrammableChip), "DeserializeSave")]
-        static void Prefix(ref ThingSaveData savedData, ProgrammableChip __instance)
+        [HarmonyPatch(typeof(ProgrammableChip), "DeserializeSave"), HarmonyPrefix]
+        static void ProgrammableChip_DeserializeSave(
+            ref ThingSaveData savedData,
+            ProgrammableChip __instance
+        )
         {
             var data = savedData as ProgrammableChipSaveData;
             if (data == null)
