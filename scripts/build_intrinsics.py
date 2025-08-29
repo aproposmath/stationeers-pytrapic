@@ -41,6 +41,19 @@ def parse_dl_entry(entry):
         param_type = param_type.replace("d?", "Device")
         param_type = param_type.replace("num", "float")
 
+        for t in [
+            "Device",
+            "Register",
+            "logicType",
+            "reagentMode",
+            "slotIndex",
+            "logicSlotType",
+            "deviceHash",
+            "batchMode",
+            "nameHash",
+        ]:
+            param_type = param_type.replace(t, f"_{t}")
+
         parameters.append({"name": param_name, "type": param_type})
 
     if (
@@ -64,7 +77,7 @@ def parse_dl_entry(entry):
             or name.startswith("get")
             or description.startswith("Register = ")
         )
-        and parameters[0]["type"] == "Register"
+        and parameters[0]["type"] == "_Register"
         and parameters[0]["name"] == ""
     ):
         # The first parameter is an output parameter in load/get instructions,
@@ -134,7 +147,8 @@ def {name}({params}):
         builtins_code.append(code.strip())
 
     code = f"""# This file is auto-generated from IC10 instructions_data
-from stationeers_pytrapic.types import *
+from .types import *
+from .types_generated import *
 
 """
     code += "\n\n".join(builtins_code)

@@ -1,7 +1,7 @@
 import enum
 
 
-class logicType(enum.StrEnum):
+class _logicType(enum.StrEnum):
     None_ = "None"
     Power = "Power"
     Open = "Open"
@@ -220,7 +220,7 @@ class logicType(enum.StrEnum):
     WorkingGasEfficiency = "WorkingGasEfficiency"
 
 
-class logicSlotType:
+class _logicSlotType:
     None_ = "None"
     Occupied = "Occupied"
     OccupantHash = "OccupantHash"
@@ -246,7 +246,7 @@ class logicSlotType:
 del enum
 
 
-class GenericStructures:
+class _GenericStructures:
 
     @property
     def None_(self) -> "stationeers_pytrapic.types.DevicesLogicType":
@@ -2021,7 +2021,7 @@ class GenericStructures:
         return self.__setattr__("WorkingGasEfficiency")
 
 
-class GenericStructure:
+class _GenericStructure:
 
     @property
     def None_(self) -> "stationeers_pytrapic.types.DeviceLogicType":
@@ -3784,3 +3784,6 @@ class GenericStructure:
     @WorkingGasEfficiency.setter
     def WorkingGasEfficiency(self, value):
         return self.__setattr__("WorkingGasEfficiency")
+
+
+__all__ = ["_logicType", "_GenericStructures", "_GenericStructure", "_logicSlotType"]

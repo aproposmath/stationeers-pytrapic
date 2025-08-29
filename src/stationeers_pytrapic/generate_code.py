@@ -455,8 +455,8 @@ class CompilerPassGenerateCode(CompilerPass):
             elif value_name in symbols.__dict__ or isinstance(
                 value,
                 (
-                    symbols.GenericStructures,
-                    symbols.GenericStructure,
+                    symbols._GenericStructures,
+                    symbols._GenericStructure,
                     types._BaseStructure,
                     types._BaseStructures,
                 ),

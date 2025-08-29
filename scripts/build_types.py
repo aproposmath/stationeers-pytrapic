@@ -20,7 +20,7 @@ gases = [
 ]
 
 __header = """
-from stationeers_pytrapic.types import DevicesLogicType, DeviceLogicType, _BaseStructure, _BaseStructures
+from stationeers_pytrapic.types import _DevicesLogicType, _DeviceLogicType, _BaseStructure, _BaseStructures
 """
 
 
@@ -41,8 +41,8 @@ class Property:
         return hash((self.name, self.can_read, self.can_write))
 
     def generate_code(self, multiple: bool = False) -> str:
-        logic_type = "DevicesLogicType" if multiple else "DeviceLogicType"
-        return_type = "DevicesLogicType" if multiple else "float"
+        logic_type = "_DevicesLogicType" if multiple else "_DeviceLogicType"
+        return_type = "_DevicesLogicType" if multiple else "float"
         name = self.name
         code = ""
         args = []

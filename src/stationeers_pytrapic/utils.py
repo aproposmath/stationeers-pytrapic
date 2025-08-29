@@ -35,8 +35,8 @@ def is_structure(val):
     return isinstance(
         val,
         (
-            symbols.GenericStructures,
-            symbols.GenericStructure,
+            symbols._GenericStructures,
+            symbols._GenericStructure,
             types._BaseStructure,
             types._BaseStructures,
         ),
