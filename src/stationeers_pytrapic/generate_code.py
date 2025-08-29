@@ -477,11 +477,14 @@ class CompilerPassGenerateCode(CompilerPass):
                 # self.set_name(target, value, target.name)
             else:
                 sym_data = self.data.get_sym_data(target)
-                if (
-                    node.value._ndata.is_constant_value
-                    or not sym_data.is_overwritten
-                    and not isinstance(node.value, astroid.Call)
-                ):
+                can_assign_directly = (
+                    node.value._ndata.is_constant_value or not sym_data.is_overwritten
+                )
+                if isinstance(node.value, astroid.Call):
+                    can_assign_directly = (
+                        can_assign_directly and node.value.func.name in ["HASH", "STR"]
+                    )
+                if can_assign_directly:
                     sym_data.code_expr = value  # self.get_constant_name()
                     # sym.name = value
                     # sym.is_constant = True

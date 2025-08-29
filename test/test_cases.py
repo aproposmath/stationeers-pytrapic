@@ -19,7 +19,7 @@ def run_case(
         result = compile_code(code, compact=compact)
 
         if "error" in result:
-            result_str = "Error: " + result["error"] + "\n"
+            result_str = "Error: " + result["error"]["description"] + "\n"
         else:
             result_str = f"{result['code']}\n# registers: {result['num_registers']}\n# lines: {result['num_lines']}\n"
 
