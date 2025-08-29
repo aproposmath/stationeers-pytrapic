@@ -989,6 +989,50 @@ AccessBridges: _AccessBridges = _AccessBridges()
 class LiquidDrain(_BaseStructure, _Error, _Lock, _Maximum, _Power, _Ratio, _SettingW):
     _hash: int = 1687692899
 
+    @property
+    def CombustionOutput(self) -> float:
+        return DeviceLogicType(self, self._id, "CombustionOutput")
+
+    @property
+    def PressureOutput(self) -> float:
+        return DeviceLogicType(self, self._id, "PressureOutput")
+
+    @property
+    def RatioCarbonDioxideOutput(self) -> float:
+        return DeviceLogicType(self, self._id, "RatioCarbonDioxideOutput")
+
+    @property
+    def RatioNitrogenOutput(self) -> float:
+        return DeviceLogicType(self, self._id, "RatioNitrogenOutput")
+
+    @property
+    def RatioNitrousOxideOutput(self) -> float:
+        return DeviceLogicType(self, self._id, "RatioNitrousOxideOutput")
+
+    @property
+    def RatioOxygenOutput(self) -> float:
+        return DeviceLogicType(self, self._id, "RatioOxygenOutput")
+
+    @property
+    def RatioPollutantOutput(self) -> float:
+        return DeviceLogicType(self, self._id, "RatioPollutantOutput")
+
+    @property
+    def RatioVolatilesOutput(self) -> float:
+        return DeviceLogicType(self, self._id, "RatioVolatilesOutput")
+
+    @property
+    def RatioWaterOutput(self) -> float:
+        return DeviceLogicType(self, self._id, "RatioWaterOutput")
+
+    @property
+    def TemperatureOutput(self) -> float:
+        return DeviceLogicType(self, self._id, "TemperatureOutput")
+
+    @property
+    def TotalMolesOutput(self) -> float:
+        return DeviceLogicType(self, self._id, "TotalMolesOutput")
+
 
 class _LiquidDrains(
     _BaseStructures, _Errors, _Locks, _Maximums, _Powers, _Ratios, _SettingWs
@@ -998,6 +1042,50 @@ class _LiquidDrains(
     def __getitem__(self, name: str | int | float) -> "_LiquidDrains":
         return _LiquidDrains(name)
 
+    @property
+    def CombustionOutput(self) -> DevicesLogicType:
+        return DevicesLogicType(self._hash, "CombustionOutput", self._name)
+
+    @property
+    def PressureOutput(self) -> DevicesLogicType:
+        return DevicesLogicType(self._hash, "PressureOutput", self._name)
+
+    @property
+    def RatioCarbonDioxideOutput(self) -> DevicesLogicType:
+        return DevicesLogicType(self._hash, "RatioCarbonDioxideOutput", self._name)
+
+    @property
+    def RatioNitrogenOutput(self) -> DevicesLogicType:
+        return DevicesLogicType(self._hash, "RatioNitrogenOutput", self._name)
+
+    @property
+    def RatioNitrousOxideOutput(self) -> DevicesLogicType:
+        return DevicesLogicType(self._hash, "RatioNitrousOxideOutput", self._name)
+
+    @property
+    def RatioOxygenOutput(self) -> DevicesLogicType:
+        return DevicesLogicType(self._hash, "RatioOxygenOutput", self._name)
+
+    @property
+    def RatioPollutantOutput(self) -> DevicesLogicType:
+        return DevicesLogicType(self._hash, "RatioPollutantOutput", self._name)
+
+    @property
+    def RatioVolatilesOutput(self) -> DevicesLogicType:
+        return DevicesLogicType(self._hash, "RatioVolatilesOutput", self._name)
+
+    @property
+    def RatioWaterOutput(self) -> DevicesLogicType:
+        return DevicesLogicType(self._hash, "RatioWaterOutput", self._name)
+
+    @property
+    def TemperatureOutput(self) -> DevicesLogicType:
+        return DevicesLogicType(self._hash, "TemperatureOutput", self._name)
+
+    @property
+    def TotalMolesOutput(self) -> DevicesLogicType:
+        return DevicesLogicType(self._hash, "TotalMolesOutput", self._name)
+
 
 LiquidDrains: _LiquidDrains = _LiquidDrains()
 
@@ -1006,6 +1094,10 @@ class ActiveVent(
     _BaseStructure, _Error, _Lock, _Maximum, _Mode, _Open, _Power, _Ratio, _SettingW
 ):
     _hash: int = -1129453144
+
+    @property
+    def CombustionOutput(self) -> float:
+        return DeviceLogicType(self, self._id, "CombustionOutput")
 
     @property
     def PressureExternal(self) -> float:
@@ -1022,6 +1114,46 @@ class ActiveVent(
     @PressureInternal.setter
     def PressureInternal(self, value: int | float):
         pass
+
+    @property
+    def PressureOutput(self) -> float:
+        return DeviceLogicType(self, self._id, "PressureOutput")
+
+    @property
+    def RatioCarbonDioxideOutput(self) -> float:
+        return DeviceLogicType(self, self._id, "RatioCarbonDioxideOutput")
+
+    @property
+    def RatioNitrogenOutput(self) -> float:
+        return DeviceLogicType(self, self._id, "RatioNitrogenOutput")
+
+    @property
+    def RatioNitrousOxideOutput(self) -> float:
+        return DeviceLogicType(self, self._id, "RatioNitrousOxideOutput")
+
+    @property
+    def RatioOxygenOutput(self) -> float:
+        return DeviceLogicType(self, self._id, "RatioOxygenOutput")
+
+    @property
+    def RatioPollutantOutput(self) -> float:
+        return DeviceLogicType(self, self._id, "RatioPollutantOutput")
+
+    @property
+    def RatioVolatilesOutput(self) -> float:
+        return DeviceLogicType(self, self._id, "RatioVolatilesOutput")
+
+    @property
+    def RatioWaterOutput(self) -> float:
+        return DeviceLogicType(self, self._id, "RatioWaterOutput")
+
+    @property
+    def TemperatureOutput(self) -> float:
+        return DeviceLogicType(self, self._id, "TemperatureOutput")
+
+    @property
+    def TotalMolesOutput(self) -> float:
+        return DeviceLogicType(self, self._id, "TotalMolesOutput")
 
 
 class _ActiveVents(
@@ -1041,6 +1173,10 @@ class _ActiveVents(
         return _ActiveVents(name)
 
     @property
+    def CombustionOutput(self) -> DevicesLogicType:
+        return DevicesLogicType(self._hash, "CombustionOutput", self._name)
+
+    @property
     def PressureExternal(self) -> DevicesLogicType:
         return DevicesLogicType(self._hash, "PressureExternal", self._name)
 
@@ -1055,6 +1191,46 @@ class _ActiveVents(
     @PressureInternal.setter
     def PressureInternal(self, value: int | float):
         pass
+
+    @property
+    def PressureOutput(self) -> DevicesLogicType:
+        return DevicesLogicType(self._hash, "PressureOutput", self._name)
+
+    @property
+    def RatioCarbonDioxideOutput(self) -> DevicesLogicType:
+        return DevicesLogicType(self._hash, "RatioCarbonDioxideOutput", self._name)
+
+    @property
+    def RatioNitrogenOutput(self) -> DevicesLogicType:
+        return DevicesLogicType(self._hash, "RatioNitrogenOutput", self._name)
+
+    @property
+    def RatioNitrousOxideOutput(self) -> DevicesLogicType:
+        return DevicesLogicType(self._hash, "RatioNitrousOxideOutput", self._name)
+
+    @property
+    def RatioOxygenOutput(self) -> DevicesLogicType:
+        return DevicesLogicType(self._hash, "RatioOxygenOutput", self._name)
+
+    @property
+    def RatioPollutantOutput(self) -> DevicesLogicType:
+        return DevicesLogicType(self._hash, "RatioPollutantOutput", self._name)
+
+    @property
+    def RatioVolatilesOutput(self) -> DevicesLogicType:
+        return DevicesLogicType(self._hash, "RatioVolatilesOutput", self._name)
+
+    @property
+    def RatioWaterOutput(self) -> DevicesLogicType:
+        return DevicesLogicType(self._hash, "RatioWaterOutput", self._name)
+
+    @property
+    def TemperatureOutput(self) -> DevicesLogicType:
+        return DevicesLogicType(self._hash, "TemperatureOutput", self._name)
+
+    @property
+    def TotalMolesOutput(self) -> DevicesLogicType:
+        return DevicesLogicType(self._hash, "TotalMolesOutput", self._name)
 
 
 ActiveVents: _ActiveVents = _ActiveVents()
@@ -1217,6 +1393,10 @@ class AdvancedPackagingMachine(
     def CompletionRatio(self) -> float:
         return DeviceLogicType(self, self._id, "CompletionRatio")
 
+    @property
+    def StackSize(self) -> float:
+        return DeviceLogicType(self, self._id, "StackSize")
+
 
 class _AdvancedPackagingMachines(
     _BaseStructures,
@@ -1239,6 +1419,10 @@ class _AdvancedPackagingMachines(
     @property
     def CompletionRatio(self) -> DevicesLogicType:
         return DevicesLogicType(self._hash, "CompletionRatio", self._name)
+
+    @property
+    def StackSize(self) -> DevicesLogicType:
+        return DevicesLogicType(self._hash, "StackSize", self._name)
 
 
 AdvancedPackagingMachines: _AdvancedPackagingMachines = _AdvancedPackagingMachines()
@@ -1422,6 +1606,22 @@ class _Airlocks(_BaseStructures, _Idles, _Locks, _Modes, _Opens, _Powers, _Setti
 Airlocks: _Airlocks = _Airlocks()
 
 
+class AirlockWide(_BaseStructure, _Idle, _Lock, _Mode, _Open, _Power, _SettingW):
+    _hash: int = 1941072263
+
+
+class _AirlockWides(
+    _BaseStructures, _Idles, _Locks, _Modes, _Opens, _Powers, _SettingWs
+):
+    _hash: int = 1941072263
+
+    def __getitem__(self, name: str | int | float) -> "_AirlockWides":
+        return _AirlockWides(name)
+
+
+AirlockWides: _AirlockWides = _AirlockWides()
+
+
 class ArcFurnace(
     _BaseStructure,
     _Activate,
@@ -1569,6 +1769,10 @@ class Autolathe(
     def CompletionRatio(self) -> float:
         return DeviceLogicType(self, self._id, "CompletionRatio")
 
+    @property
+    def StackSize(self) -> float:
+        return DeviceLogicType(self, self._id, "StackSize")
+
 
 class _Autolathes(
     _BaseStructures,
@@ -1591,6 +1795,10 @@ class _Autolathes(
     @property
     def CompletionRatio(self) -> DevicesLogicType:
         return DevicesLogicType(self._hash, "CompletionRatio", self._name)
+
+    @property
+    def StackSize(self) -> DevicesLogicType:
+        return DevicesLogicType(self._hash, "StackSize", self._name)
 
 
 Autolathes: _Autolathes = _Autolathes()
@@ -1615,6 +1823,10 @@ class AutomatedOven(
     def CompletionRatio(self) -> float:
         return DeviceLogicType(self, self._id, "CompletionRatio")
 
+    @property
+    def StackSize(self) -> float:
+        return DeviceLogicType(self, self._id, "StackSize")
+
 
 class _AutomatedOvens(
     _BaseStructures,
@@ -1637,6 +1849,10 @@ class _AutomatedOvens(
     @property
     def CompletionRatio(self) -> DevicesLogicType:
         return DevicesLogicType(self._hash, "CompletionRatio", self._name)
+
+    @property
+    def StackSize(self) -> DevicesLogicType:
+        return DevicesLogicType(self._hash, "StackSize", self._name)
 
 
 AutomatedOvens: _AutomatedOvens = _AutomatedOvens()
@@ -2046,44 +2262,6 @@ class _Cameras(_BaseStructures, _Modes, _Ons):
 
 
 Cameras: _Cameras = _Cameras()
-
-
-class CarbonSequester(
-    _BaseStructure,
-    _ClearMemory,
-    _Error,
-    _ExportCount,
-    _ImportCount,
-    _Lock,
-    _Maximum,
-    _Open,
-    _Power,
-    _Ratio,
-    _SettingW,
-):
-    _hash: int = -865415211
-
-
-class _CarbonSequesters(
-    _BaseStructures,
-    _ClearMemorys,
-    _Errors,
-    _ExportCounts,
-    _ImportCounts,
-    _Locks,
-    _Maximums,
-    _Opens,
-    _Powers,
-    _Ratios,
-    _SettingWs,
-):
-    _hash: int = -865415211
-
-    def __getitem__(self, name: str | int | float) -> "_CarbonSequesters":
-        return _CarbonSequesters(name)
-
-
-CarbonSequesters: _CarbonSequesters = _CarbonSequesters()
 
 
 class CargoStorageMedium(
@@ -2604,6 +2782,36 @@ CompositeWindowShutterControllers: _CompositeWindowShutterControllers = (
 )
 
 
+class ComputerBigScreenWallMounted(_BaseStructure, _Error, _Lock, _Open, _Power):
+    _hash: int = -868055390
+
+
+class _ComputerBigScreenWallMounteds(_BaseStructures, _Errors, _Locks, _Opens, _Powers):
+    _hash: int = -868055390
+
+    def __getitem__(self, name: str | int | float) -> "_ComputerBigScreenWallMounteds":
+        return _ComputerBigScreenWallMounteds(name)
+
+
+ComputerBigScreenWallMounteds: _ComputerBigScreenWallMounteds = (
+    _ComputerBigScreenWallMounteds()
+)
+
+
+class ComputerBigScreen(_BaseStructure, _Error, _Lock, _Open, _Power):
+    _hash: int = 1952395881
+
+
+class _ComputerBigScreens(_BaseStructures, _Errors, _Locks, _Opens, _Powers):
+    _hash: int = 1952395881
+
+    def __getitem__(self, name: str | int | float) -> "_ComputerBigScreens":
+        return _ComputerBigScreens(name)
+
+
+ComputerBigScreens: _ComputerBigScreens = _ComputerBigScreens()
+
+
 class Computer(_BaseStructure, _Error, _Lock, _Open, _Power):
     _hash: int = -626563514
 
@@ -2730,46 +2938,6 @@ class _ConsoleMonitors(_BaseStructures, _Errors, _Opens, _Powers, _SettingRs):
 ConsoleMonitors: _ConsoleMonitors = _ConsoleMonitors()
 
 
-class ControlChair(
-    _BaseStructure,
-    _BaseGas,
-    _Combustion,
-    _Error,
-    _Hydrogen,
-    _Maximum,
-    _Mode,
-    _PollWater,
-    _Power,
-    _Ratio,
-    _SettingW,
-    _Temperature,
-):
-    _hash: int = -1961153710
-
-
-class _ControlChairs(
-    _BaseStructures,
-    _BaseGass,
-    _Combustions,
-    _Errors,
-    _Hydrogens,
-    _Maximums,
-    _Modes,
-    _PollWaters,
-    _Powers,
-    _Ratios,
-    _SettingWs,
-    _Temperatures,
-):
-    _hash: int = -1961153710
-
-    def __getitem__(self, name: str | int | float) -> "_ControlChairs":
-        return _ControlChairs(name)
-
-
-ControlChairs: _ControlChairs = _ControlChairs()
-
-
 class CornerLocker(_BaseStructure, _Lock, _Open):
     _hash: int = -1968255729
 
@@ -2852,6 +3020,7 @@ class CryoTubeHorizontal(
     _Error,
     _Lock,
     _Maximum,
+    _Mode,
     _Open,
     _Power,
     _Ratio,
@@ -2871,6 +3040,7 @@ class _CryoTubeHorizontals(
     _Errors,
     _Locks,
     _Maximums,
+    _Modes,
     _Opens,
     _Powers,
     _Ratios,
@@ -2896,6 +3066,7 @@ class CryoTubeVertical(
     _Error,
     _Lock,
     _Maximum,
+    _Mode,
     _Open,
     _Power,
     _Ratio,
@@ -2915,6 +3086,7 @@ class _CryoTubeVerticals(
     _Errors,
     _Locks,
     _Maximums,
+    _Modes,
     _Opens,
     _Powers,
     _Ratios,
@@ -2932,50 +3104,6 @@ class _CryoTubeVerticals(
 
 
 CryoTubeVerticals: _CryoTubeVerticals = _CryoTubeVerticals()
-
-
-class CryoTube(
-    _BaseStructure,
-    _Activate,
-    _Error,
-    _Lock,
-    _Maximum,
-    _Open,
-    _Power,
-    _Ratio,
-    _SettingW,
-    _Temperature,
-):
-    _hash: int = 1938254586
-
-    @property
-    def EntityState(self) -> float:
-        return DeviceLogicType(self, self._id, "EntityState")
-
-
-class _CryoTubes(
-    _BaseStructures,
-    _Activates,
-    _Errors,
-    _Locks,
-    _Maximums,
-    _Opens,
-    _Powers,
-    _Ratios,
-    _SettingWs,
-    _Temperatures,
-):
-    _hash: int = 1938254586
-
-    def __getitem__(self, name: str | int | float) -> "_CryoTubes":
-        return _CryoTubes(name)
-
-    @property
-    def EntityState(self) -> DevicesLogicType:
-        return DevicesLogicType(self._hash, "EntityState", self._name)
-
-
-CryoTubes: _CryoTubes = _CryoTubes()
 
 
 class DaylightSensor(_BaseStructure, _Activate, _Mode, _On, _Vertical):
@@ -3084,92 +3212,6 @@ class _DiodeSlides(_BaseStructures, _Locks, _Powers, _SettingWs):
 
 
 DiodeSlides: _DiodeSlides = _DiodeSlides()
-
-
-class DispersalTower(
-    _BaseStructure,
-    _BaseGasInput,
-    _ClearMemory,
-    _Error,
-    _ExportCount,
-    _ImportCount,
-    _Lock,
-    _Maximum,
-    _Open,
-    _Power,
-    _Ratio,
-    _SettingW,
-):
-    _hash: int = -1868831137
-
-    @property
-    def CombustionInput(self) -> float:
-        return DeviceLogicType(self, self._id, "CombustionInput")
-
-    @property
-    def PressureInput(self) -> float:
-        return DeviceLogicType(self, self._id, "PressureInput")
-
-    @property
-    def TemperatureInput(self) -> float:
-        return DeviceLogicType(self, self._id, "TemperatureInput")
-
-    @property
-    def TotalMolesInput(self) -> float:
-        return DeviceLogicType(self, self._id, "TotalMolesInput")
-
-
-class _DispersalTowers(
-    _BaseStructures,
-    _BaseGasInputs,
-    _ClearMemorys,
-    _Errors,
-    _ExportCounts,
-    _ImportCounts,
-    _Locks,
-    _Maximums,
-    _Opens,
-    _Powers,
-    _Ratios,
-    _SettingWs,
-):
-    _hash: int = -1868831137
-
-    def __getitem__(self, name: str | int | float) -> "_DispersalTowers":
-        return _DispersalTowers(name)
-
-    @property
-    def CombustionInput(self) -> DevicesLogicType:
-        return DevicesLogicType(self._hash, "CombustionInput", self._name)
-
-    @property
-    def PressureInput(self) -> DevicesLogicType:
-        return DevicesLogicType(self._hash, "PressureInput", self._name)
-
-    @property
-    def TemperatureInput(self) -> DevicesLogicType:
-        return DevicesLogicType(self._hash, "TemperatureInput", self._name)
-
-    @property
-    def TotalMolesInput(self) -> DevicesLogicType:
-        return DevicesLogicType(self._hash, "TotalMolesInput", self._name)
-
-
-DispersalTowers: _DispersalTowers = _DispersalTowers()
-
-
-class DockPortSide(_BaseStructure, _Idle, _Lock, _Open, _Power, _SettingW):
-    _hash: int = -137465079
-
-
-class _DockPortSides(_BaseStructures, _Idles, _Locks, _Opens, _Powers, _SettingWs):
-    _hash: int = -137465079
-
-    def __getitem__(self, name: str | int | float) -> "_DockPortSides":
-        return _DockPortSides(name)
-
-
-DockPortSides: _DockPortSides = _DockPortSides()
 
 
 class DrinkingFountain(_BaseStructure, _Error, _Power):
@@ -3335,6 +3377,10 @@ class ElectronicsPrinter(
     def CompletionRatio(self) -> float:
         return DeviceLogicType(self, self._id, "CompletionRatio")
 
+    @property
+    def StackSize(self) -> float:
+        return DeviceLogicType(self, self._id, "StackSize")
+
 
 class _ElectronicsPrinters(
     _BaseStructures,
@@ -3357,6 +3403,10 @@ class _ElectronicsPrinters(
     @property
     def CompletionRatio(self) -> DevicesLogicType:
         return DevicesLogicType(self._hash, "CompletionRatio", self._name)
+
+    @property
+    def StackSize(self) -> DevicesLogicType:
+        return DevicesLogicType(self._hash, "StackSize", self._name)
 
 
 ElectronicsPrinters: _ElectronicsPrinters = _ElectronicsPrinters()
@@ -3772,6 +3822,50 @@ class FridgeBig(
 ):
     _hash: int = 958476921
 
+    @property
+    def CombustionOutput(self) -> float:
+        return DeviceLogicType(self, self._id, "CombustionOutput")
+
+    @property
+    def PressureOutput(self) -> float:
+        return DeviceLogicType(self, self._id, "PressureOutput")
+
+    @property
+    def RatioCarbonDioxideOutput(self) -> float:
+        return DeviceLogicType(self, self._id, "RatioCarbonDioxideOutput")
+
+    @property
+    def RatioNitrogenOutput(self) -> float:
+        return DeviceLogicType(self, self._id, "RatioNitrogenOutput")
+
+    @property
+    def RatioNitrousOxideOutput(self) -> float:
+        return DeviceLogicType(self, self._id, "RatioNitrousOxideOutput")
+
+    @property
+    def RatioOxygenOutput(self) -> float:
+        return DeviceLogicType(self, self._id, "RatioOxygenOutput")
+
+    @property
+    def RatioPollutantOutput(self) -> float:
+        return DeviceLogicType(self, self._id, "RatioPollutantOutput")
+
+    @property
+    def RatioVolatilesOutput(self) -> float:
+        return DeviceLogicType(self, self._id, "RatioVolatilesOutput")
+
+    @property
+    def RatioWaterOutput(self) -> float:
+        return DeviceLogicType(self, self._id, "RatioWaterOutput")
+
+    @property
+    def TemperatureOutput(self) -> float:
+        return DeviceLogicType(self, self._id, "TemperatureOutput")
+
+    @property
+    def TotalMolesOutput(self) -> float:
+        return DeviceLogicType(self, self._id, "TotalMolesOutput")
+
 
 class _FridgeBigs(
     _BaseStructures,
@@ -3792,6 +3886,50 @@ class _FridgeBigs(
     def __getitem__(self, name: str | int | float) -> "_FridgeBigs":
         return _FridgeBigs(name)
 
+    @property
+    def CombustionOutput(self) -> DevicesLogicType:
+        return DevicesLogicType(self._hash, "CombustionOutput", self._name)
+
+    @property
+    def PressureOutput(self) -> DevicesLogicType:
+        return DevicesLogicType(self._hash, "PressureOutput", self._name)
+
+    @property
+    def RatioCarbonDioxideOutput(self) -> DevicesLogicType:
+        return DevicesLogicType(self._hash, "RatioCarbonDioxideOutput", self._name)
+
+    @property
+    def RatioNitrogenOutput(self) -> DevicesLogicType:
+        return DevicesLogicType(self._hash, "RatioNitrogenOutput", self._name)
+
+    @property
+    def RatioNitrousOxideOutput(self) -> DevicesLogicType:
+        return DevicesLogicType(self._hash, "RatioNitrousOxideOutput", self._name)
+
+    @property
+    def RatioOxygenOutput(self) -> DevicesLogicType:
+        return DevicesLogicType(self._hash, "RatioOxygenOutput", self._name)
+
+    @property
+    def RatioPollutantOutput(self) -> DevicesLogicType:
+        return DevicesLogicType(self._hash, "RatioPollutantOutput", self._name)
+
+    @property
+    def RatioVolatilesOutput(self) -> DevicesLogicType:
+        return DevicesLogicType(self._hash, "RatioVolatilesOutput", self._name)
+
+    @property
+    def RatioWaterOutput(self) -> DevicesLogicType:
+        return DevicesLogicType(self._hash, "RatioWaterOutput", self._name)
+
+    @property
+    def TemperatureOutput(self) -> DevicesLogicType:
+        return DevicesLogicType(self._hash, "TemperatureOutput", self._name)
+
+    @property
+    def TotalMolesOutput(self) -> DevicesLogicType:
+        return DevicesLogicType(self._hash, "TotalMolesOutput", self._name)
+
 
 FridgeBigs: _FridgeBigs = _FridgeBigs()
 
@@ -3810,6 +3948,50 @@ class FridgeSmall(
 ):
     _hash: int = 751887598
 
+    @property
+    def CombustionOutput(self) -> float:
+        return DeviceLogicType(self, self._id, "CombustionOutput")
+
+    @property
+    def PressureOutput(self) -> float:
+        return DeviceLogicType(self, self._id, "PressureOutput")
+
+    @property
+    def RatioCarbonDioxideOutput(self) -> float:
+        return DeviceLogicType(self, self._id, "RatioCarbonDioxideOutput")
+
+    @property
+    def RatioNitrogenOutput(self) -> float:
+        return DeviceLogicType(self, self._id, "RatioNitrogenOutput")
+
+    @property
+    def RatioNitrousOxideOutput(self) -> float:
+        return DeviceLogicType(self, self._id, "RatioNitrousOxideOutput")
+
+    @property
+    def RatioOxygenOutput(self) -> float:
+        return DeviceLogicType(self, self._id, "RatioOxygenOutput")
+
+    @property
+    def RatioPollutantOutput(self) -> float:
+        return DeviceLogicType(self, self._id, "RatioPollutantOutput")
+
+    @property
+    def RatioVolatilesOutput(self) -> float:
+        return DeviceLogicType(self, self._id, "RatioVolatilesOutput")
+
+    @property
+    def RatioWaterOutput(self) -> float:
+        return DeviceLogicType(self, self._id, "RatioWaterOutput")
+
+    @property
+    def TemperatureOutput(self) -> float:
+        return DeviceLogicType(self, self._id, "TemperatureOutput")
+
+    @property
+    def TotalMolesOutput(self) -> float:
+        return DeviceLogicType(self, self._id, "TotalMolesOutput")
+
 
 class _FridgeSmalls(
     _BaseStructures,
@@ -3827,6 +4009,50 @@ class _FridgeSmalls(
 
     def __getitem__(self, name: str | int | float) -> "_FridgeSmalls":
         return _FridgeSmalls(name)
+
+    @property
+    def CombustionOutput(self) -> DevicesLogicType:
+        return DevicesLogicType(self._hash, "CombustionOutput", self._name)
+
+    @property
+    def PressureOutput(self) -> DevicesLogicType:
+        return DevicesLogicType(self._hash, "PressureOutput", self._name)
+
+    @property
+    def RatioCarbonDioxideOutput(self) -> DevicesLogicType:
+        return DevicesLogicType(self._hash, "RatioCarbonDioxideOutput", self._name)
+
+    @property
+    def RatioNitrogenOutput(self) -> DevicesLogicType:
+        return DevicesLogicType(self._hash, "RatioNitrogenOutput", self._name)
+
+    @property
+    def RatioNitrousOxideOutput(self) -> DevicesLogicType:
+        return DevicesLogicType(self._hash, "RatioNitrousOxideOutput", self._name)
+
+    @property
+    def RatioOxygenOutput(self) -> DevicesLogicType:
+        return DevicesLogicType(self._hash, "RatioOxygenOutput", self._name)
+
+    @property
+    def RatioPollutantOutput(self) -> DevicesLogicType:
+        return DevicesLogicType(self._hash, "RatioPollutantOutput", self._name)
+
+    @property
+    def RatioVolatilesOutput(self) -> DevicesLogicType:
+        return DevicesLogicType(self._hash, "RatioVolatilesOutput", self._name)
+
+    @property
+    def RatioWaterOutput(self) -> DevicesLogicType:
+        return DevicesLogicType(self._hash, "RatioWaterOutput", self._name)
+
+    @property
+    def TemperatureOutput(self) -> DevicesLogicType:
+        return DevicesLogicType(self._hash, "TemperatureOutput", self._name)
+
+    @property
+    def TotalMolesOutput(self) -> DevicesLogicType:
+        return DevicesLogicType(self._hash, "TotalMolesOutput", self._name)
 
 
 FridgeSmalls: _FridgeSmalls = _FridgeSmalls()
@@ -3890,6 +4116,130 @@ class _Furnaces(
 Furnaces: _Furnaces = _Furnaces()
 
 
+class LargeRocketGasFuelTank(
+    _BaseStructure,
+    _BaseGas,
+    _Combustion,
+    _Hydrogen,
+    _Maximum,
+    _PollWater,
+    _Ratio,
+    _SettingW,
+    _Temperature,
+    _Volume,
+):
+    _hash: int = -988382953
+
+    @property
+    def CombustionOutput(self) -> float:
+        return DeviceLogicType(self, self._id, "CombustionOutput")
+
+    @property
+    def PressureOutput(self) -> float:
+        return DeviceLogicType(self, self._id, "PressureOutput")
+
+    @property
+    def RatioCarbonDioxideOutput(self) -> float:
+        return DeviceLogicType(self, self._id, "RatioCarbonDioxideOutput")
+
+    @property
+    def RatioNitrogenOutput(self) -> float:
+        return DeviceLogicType(self, self._id, "RatioNitrogenOutput")
+
+    @property
+    def RatioNitrousOxideOutput(self) -> float:
+        return DeviceLogicType(self, self._id, "RatioNitrousOxideOutput")
+
+    @property
+    def RatioOxygenOutput(self) -> float:
+        return DeviceLogicType(self, self._id, "RatioOxygenOutput")
+
+    @property
+    def RatioPollutantOutput(self) -> float:
+        return DeviceLogicType(self, self._id, "RatioPollutantOutput")
+
+    @property
+    def RatioVolatilesOutput(self) -> float:
+        return DeviceLogicType(self, self._id, "RatioVolatilesOutput")
+
+    @property
+    def RatioWaterOutput(self) -> float:
+        return DeviceLogicType(self, self._id, "RatioWaterOutput")
+
+    @property
+    def TemperatureOutput(self) -> float:
+        return DeviceLogicType(self, self._id, "TemperatureOutput")
+
+    @property
+    def TotalMolesOutput(self) -> float:
+        return DeviceLogicType(self, self._id, "TotalMolesOutput")
+
+
+class _LargeRocketGasFuelTanks(
+    _BaseStructures,
+    _BaseGass,
+    _Combustions,
+    _Hydrogens,
+    _Maximums,
+    _PollWaters,
+    _Ratios,
+    _SettingWs,
+    _Temperatures,
+    _Volumes,
+):
+    _hash: int = -988382953
+
+    def __getitem__(self, name: str | int | float) -> "_LargeRocketGasFuelTanks":
+        return _LargeRocketGasFuelTanks(name)
+
+    @property
+    def CombustionOutput(self) -> DevicesLogicType:
+        return DevicesLogicType(self._hash, "CombustionOutput", self._name)
+
+    @property
+    def PressureOutput(self) -> DevicesLogicType:
+        return DevicesLogicType(self._hash, "PressureOutput", self._name)
+
+    @property
+    def RatioCarbonDioxideOutput(self) -> DevicesLogicType:
+        return DevicesLogicType(self._hash, "RatioCarbonDioxideOutput", self._name)
+
+    @property
+    def RatioNitrogenOutput(self) -> DevicesLogicType:
+        return DevicesLogicType(self._hash, "RatioNitrogenOutput", self._name)
+
+    @property
+    def RatioNitrousOxideOutput(self) -> DevicesLogicType:
+        return DevicesLogicType(self._hash, "RatioNitrousOxideOutput", self._name)
+
+    @property
+    def RatioOxygenOutput(self) -> DevicesLogicType:
+        return DevicesLogicType(self._hash, "RatioOxygenOutput", self._name)
+
+    @property
+    def RatioPollutantOutput(self) -> DevicesLogicType:
+        return DevicesLogicType(self._hash, "RatioPollutantOutput", self._name)
+
+    @property
+    def RatioVolatilesOutput(self) -> DevicesLogicType:
+        return DevicesLogicType(self._hash, "RatioVolatilesOutput", self._name)
+
+    @property
+    def RatioWaterOutput(self) -> DevicesLogicType:
+        return DevicesLogicType(self._hash, "RatioWaterOutput", self._name)
+
+    @property
+    def TemperatureOutput(self) -> DevicesLogicType:
+        return DevicesLogicType(self._hash, "TemperatureOutput", self._name)
+
+    @property
+    def TotalMolesOutput(self) -> DevicesLogicType:
+        return DevicesLogicType(self._hash, "TotalMolesOutput", self._name)
+
+
+LargeRocketGasFuelTanks: _LargeRocketGasFuelTanks = _LargeRocketGasFuelTanks()
+
+
 class MediumRocketGasFuelTank(
     _BaseStructure,
     _BaseGas,
@@ -3903,6 +4253,50 @@ class MediumRocketGasFuelTank(
     _Volume,
 ):
     _hash: int = -1093860567
+
+    @property
+    def CombustionOutput(self) -> float:
+        return DeviceLogicType(self, self._id, "CombustionOutput")
+
+    @property
+    def PressureOutput(self) -> float:
+        return DeviceLogicType(self, self._id, "PressureOutput")
+
+    @property
+    def RatioCarbonDioxideOutput(self) -> float:
+        return DeviceLogicType(self, self._id, "RatioCarbonDioxideOutput")
+
+    @property
+    def RatioNitrogenOutput(self) -> float:
+        return DeviceLogicType(self, self._id, "RatioNitrogenOutput")
+
+    @property
+    def RatioNitrousOxideOutput(self) -> float:
+        return DeviceLogicType(self, self._id, "RatioNitrousOxideOutput")
+
+    @property
+    def RatioOxygenOutput(self) -> float:
+        return DeviceLogicType(self, self._id, "RatioOxygenOutput")
+
+    @property
+    def RatioPollutantOutput(self) -> float:
+        return DeviceLogicType(self, self._id, "RatioPollutantOutput")
+
+    @property
+    def RatioVolatilesOutput(self) -> float:
+        return DeviceLogicType(self, self._id, "RatioVolatilesOutput")
+
+    @property
+    def RatioWaterOutput(self) -> float:
+        return DeviceLogicType(self, self._id, "RatioWaterOutput")
+
+    @property
+    def TemperatureOutput(self) -> float:
+        return DeviceLogicType(self, self._id, "TemperatureOutput")
+
+    @property
+    def TotalMolesOutput(self) -> float:
+        return DeviceLogicType(self, self._id, "TotalMolesOutput")
 
 
 class _MediumRocketGasFuelTanks(
@@ -3922,6 +4316,50 @@ class _MediumRocketGasFuelTanks(
     def __getitem__(self, name: str | int | float) -> "_MediumRocketGasFuelTanks":
         return _MediumRocketGasFuelTanks(name)
 
+    @property
+    def CombustionOutput(self) -> DevicesLogicType:
+        return DevicesLogicType(self._hash, "CombustionOutput", self._name)
+
+    @property
+    def PressureOutput(self) -> DevicesLogicType:
+        return DevicesLogicType(self._hash, "PressureOutput", self._name)
+
+    @property
+    def RatioCarbonDioxideOutput(self) -> DevicesLogicType:
+        return DevicesLogicType(self._hash, "RatioCarbonDioxideOutput", self._name)
+
+    @property
+    def RatioNitrogenOutput(self) -> DevicesLogicType:
+        return DevicesLogicType(self._hash, "RatioNitrogenOutput", self._name)
+
+    @property
+    def RatioNitrousOxideOutput(self) -> DevicesLogicType:
+        return DevicesLogicType(self._hash, "RatioNitrousOxideOutput", self._name)
+
+    @property
+    def RatioOxygenOutput(self) -> DevicesLogicType:
+        return DevicesLogicType(self._hash, "RatioOxygenOutput", self._name)
+
+    @property
+    def RatioPollutantOutput(self) -> DevicesLogicType:
+        return DevicesLogicType(self._hash, "RatioPollutantOutput", self._name)
+
+    @property
+    def RatioVolatilesOutput(self) -> DevicesLogicType:
+        return DevicesLogicType(self._hash, "RatioVolatilesOutput", self._name)
+
+    @property
+    def RatioWaterOutput(self) -> DevicesLogicType:
+        return DevicesLogicType(self._hash, "RatioWaterOutput", self._name)
+
+    @property
+    def TemperatureOutput(self) -> DevicesLogicType:
+        return DevicesLogicType(self._hash, "TemperatureOutput", self._name)
+
+    @property
+    def TotalMolesOutput(self) -> DevicesLogicType:
+        return DevicesLogicType(self._hash, "TotalMolesOutput", self._name)
+
 
 MediumRocketGasFuelTanks: _MediumRocketGasFuelTanks = _MediumRocketGasFuelTanks()
 
@@ -3940,6 +4378,50 @@ class CapsuleTankGas(
 ):
     _hash: int = -1385712131
 
+    @property
+    def CombustionOutput(self) -> float:
+        return DeviceLogicType(self, self._id, "CombustionOutput")
+
+    @property
+    def PressureOutput(self) -> float:
+        return DeviceLogicType(self, self._id, "PressureOutput")
+
+    @property
+    def RatioCarbonDioxideOutput(self) -> float:
+        return DeviceLogicType(self, self._id, "RatioCarbonDioxideOutput")
+
+    @property
+    def RatioNitrogenOutput(self) -> float:
+        return DeviceLogicType(self, self._id, "RatioNitrogenOutput")
+
+    @property
+    def RatioNitrousOxideOutput(self) -> float:
+        return DeviceLogicType(self, self._id, "RatioNitrousOxideOutput")
+
+    @property
+    def RatioOxygenOutput(self) -> float:
+        return DeviceLogicType(self, self._id, "RatioOxygenOutput")
+
+    @property
+    def RatioPollutantOutput(self) -> float:
+        return DeviceLogicType(self, self._id, "RatioPollutantOutput")
+
+    @property
+    def RatioVolatilesOutput(self) -> float:
+        return DeviceLogicType(self, self._id, "RatioVolatilesOutput")
+
+    @property
+    def RatioWaterOutput(self) -> float:
+        return DeviceLogicType(self, self._id, "RatioWaterOutput")
+
+    @property
+    def TemperatureOutput(self) -> float:
+        return DeviceLogicType(self, self._id, "TemperatureOutput")
+
+    @property
+    def TotalMolesOutput(self) -> float:
+        return DeviceLogicType(self, self._id, "TotalMolesOutput")
+
 
 class _CapsuleTankGass(
     _BaseStructures,
@@ -3957,6 +4439,50 @@ class _CapsuleTankGass(
 
     def __getitem__(self, name: str | int | float) -> "_CapsuleTankGass":
         return _CapsuleTankGass(name)
+
+    @property
+    def CombustionOutput(self) -> DevicesLogicType:
+        return DevicesLogicType(self._hash, "CombustionOutput", self._name)
+
+    @property
+    def PressureOutput(self) -> DevicesLogicType:
+        return DevicesLogicType(self._hash, "PressureOutput", self._name)
+
+    @property
+    def RatioCarbonDioxideOutput(self) -> DevicesLogicType:
+        return DevicesLogicType(self._hash, "RatioCarbonDioxideOutput", self._name)
+
+    @property
+    def RatioNitrogenOutput(self) -> DevicesLogicType:
+        return DevicesLogicType(self._hash, "RatioNitrogenOutput", self._name)
+
+    @property
+    def RatioNitrousOxideOutput(self) -> DevicesLogicType:
+        return DevicesLogicType(self._hash, "RatioNitrousOxideOutput", self._name)
+
+    @property
+    def RatioOxygenOutput(self) -> DevicesLogicType:
+        return DevicesLogicType(self._hash, "RatioOxygenOutput", self._name)
+
+    @property
+    def RatioPollutantOutput(self) -> DevicesLogicType:
+        return DevicesLogicType(self._hash, "RatioPollutantOutput", self._name)
+
+    @property
+    def RatioVolatilesOutput(self) -> DevicesLogicType:
+        return DevicesLogicType(self._hash, "RatioVolatilesOutput", self._name)
+
+    @property
+    def RatioWaterOutput(self) -> DevicesLogicType:
+        return DevicesLogicType(self._hash, "RatioWaterOutput", self._name)
+
+    @property
+    def TemperatureOutput(self) -> DevicesLogicType:
+        return DevicesLogicType(self._hash, "TemperatureOutput", self._name)
+
+    @property
+    def TotalMolesOutput(self) -> DevicesLogicType:
+        return DevicesLogicType(self._hash, "TotalMolesOutput", self._name)
 
 
 CapsuleTankGass: _CapsuleTankGass = _CapsuleTankGass()
@@ -4232,50 +4758,6 @@ class _Harvies(
 Harvies: _Harvies = _Harvies()
 
 
-class HeatExchangeLiquidtoGas(_BaseStructure, _Maximum, _Ratio, _SettingW):
-    _hash: int = 944685608
-
-
-class _HeatExchangeLiquidtoGass(_BaseStructures, _Maximums, _Ratios, _SettingWs):
-    _hash: int = 944685608
-
-    def __getitem__(self, name: str | int | float) -> "_HeatExchangeLiquidtoGass":
-        return _HeatExchangeLiquidtoGass(name)
-
-
-HeatExchangeLiquidtoGass: _HeatExchangeLiquidtoGass = _HeatExchangeLiquidtoGass()
-
-
-class HeatExchangerGastoGas(_BaseStructure, _Maximum, _Ratio, _SettingW):
-    _hash: int = 21266291
-
-
-class _HeatExchangerGastoGass(_BaseStructures, _Maximums, _Ratios, _SettingWs):
-    _hash: int = 21266291
-
-    def __getitem__(self, name: str | int | float) -> "_HeatExchangerGastoGass":
-        return _HeatExchangerGastoGass(name)
-
-
-HeatExchangerGastoGass: _HeatExchangerGastoGass = _HeatExchangerGastoGass()
-
-
-class HeatExchangerLiquidtoLiquid(_BaseStructure, _Maximum, _Ratio, _SettingW):
-    _hash: int = -613784254
-
-
-class _HeatExchangerLiquidtoLiquids(_BaseStructures, _Maximums, _Ratios, _SettingWs):
-    _hash: int = -613784254
-
-    def __getitem__(self, name: str | int | float) -> "_HeatExchangerLiquidtoLiquids":
-        return _HeatExchangerLiquidtoLiquids(name)
-
-
-HeatExchangerLiquidtoLiquids: _HeatExchangerLiquidtoLiquids = (
-    _HeatExchangerLiquidtoLiquids()
-)
-
-
 class HydraulicPipeBender(
     _BaseStructure,
     _Activate,
@@ -4294,6 +4776,10 @@ class HydraulicPipeBender(
     @property
     def CompletionRatio(self) -> float:
         return DeviceLogicType(self, self._id, "CompletionRatio")
+
+    @property
+    def StackSize(self) -> float:
+        return DeviceLogicType(self, self._id, "StackSize")
 
 
 class _HydraulicPipeBenders(
@@ -4317,6 +4803,10 @@ class _HydraulicPipeBenders(
     @property
     def CompletionRatio(self) -> DevicesLogicType:
         return DevicesLogicType(self._hash, "CompletionRatio", self._name)
+
+    @property
+    def StackSize(self) -> DevicesLogicType:
+        return DevicesLogicType(self._hash, "StackSize", self._name)
 
 
 HydraulicPipeBenders: _HydraulicPipeBenders = _HydraulicPipeBenders()
@@ -4355,6 +4845,50 @@ class HydroponicsStation(
 ):
     _hash: int = 1441767298
 
+    @property
+    def CombustionOutput(self) -> float:
+        return DeviceLogicType(self, self._id, "CombustionOutput")
+
+    @property
+    def PressureOutput(self) -> float:
+        return DeviceLogicType(self, self._id, "PressureOutput")
+
+    @property
+    def RatioCarbonDioxideOutput(self) -> float:
+        return DeviceLogicType(self, self._id, "RatioCarbonDioxideOutput")
+
+    @property
+    def RatioNitrogenOutput(self) -> float:
+        return DeviceLogicType(self, self._id, "RatioNitrogenOutput")
+
+    @property
+    def RatioNitrousOxideOutput(self) -> float:
+        return DeviceLogicType(self, self._id, "RatioNitrousOxideOutput")
+
+    @property
+    def RatioOxygenOutput(self) -> float:
+        return DeviceLogicType(self, self._id, "RatioOxygenOutput")
+
+    @property
+    def RatioPollutantOutput(self) -> float:
+        return DeviceLogicType(self, self._id, "RatioPollutantOutput")
+
+    @property
+    def RatioVolatilesOutput(self) -> float:
+        return DeviceLogicType(self, self._id, "RatioVolatilesOutput")
+
+    @property
+    def RatioWaterOutput(self) -> float:
+        return DeviceLogicType(self, self._id, "RatioWaterOutput")
+
+    @property
+    def TemperatureOutput(self) -> float:
+        return DeviceLogicType(self, self._id, "TemperatureOutput")
+
+    @property
+    def TotalMolesOutput(self) -> float:
+        return DeviceLogicType(self, self._id, "TotalMolesOutput")
+
 
 class _HydroponicsStations(
     _BaseStructures,
@@ -4374,11 +4908,55 @@ class _HydroponicsStations(
     def __getitem__(self, name: str | int | float) -> "_HydroponicsStations":
         return _HydroponicsStations(name)
 
+    @property
+    def CombustionOutput(self) -> DevicesLogicType:
+        return DevicesLogicType(self._hash, "CombustionOutput", self._name)
+
+    @property
+    def PressureOutput(self) -> DevicesLogicType:
+        return DevicesLogicType(self._hash, "PressureOutput", self._name)
+
+    @property
+    def RatioCarbonDioxideOutput(self) -> DevicesLogicType:
+        return DevicesLogicType(self._hash, "RatioCarbonDioxideOutput", self._name)
+
+    @property
+    def RatioNitrogenOutput(self) -> DevicesLogicType:
+        return DevicesLogicType(self._hash, "RatioNitrogenOutput", self._name)
+
+    @property
+    def RatioNitrousOxideOutput(self) -> DevicesLogicType:
+        return DevicesLogicType(self._hash, "RatioNitrousOxideOutput", self._name)
+
+    @property
+    def RatioOxygenOutput(self) -> DevicesLogicType:
+        return DevicesLogicType(self._hash, "RatioOxygenOutput", self._name)
+
+    @property
+    def RatioPollutantOutput(self) -> DevicesLogicType:
+        return DevicesLogicType(self._hash, "RatioPollutantOutput", self._name)
+
+    @property
+    def RatioVolatilesOutput(self) -> DevicesLogicType:
+        return DevicesLogicType(self._hash, "RatioVolatilesOutput", self._name)
+
+    @property
+    def RatioWaterOutput(self) -> DevicesLogicType:
+        return DevicesLogicType(self._hash, "RatioWaterOutput", self._name)
+
+    @property
+    def TemperatureOutput(self) -> DevicesLogicType:
+        return DevicesLogicType(self._hash, "TemperatureOutput", self._name)
+
+    @property
+    def TotalMolesOutput(self) -> DevicesLogicType:
+        return DevicesLogicType(self._hash, "TotalMolesOutput", self._name)
+
 
 HydroponicsStations: _HydroponicsStations = _HydroponicsStations()
 
 
-class CircuitHousing(_BaseStructure, _Error, _Power, _SettingW):
+class CircuitHousing(_BaseStructure, _Error, _Mode, _Power, _SettingW):
     _hash: int = -128473777
 
     @property
@@ -4389,8 +4967,12 @@ class CircuitHousing(_BaseStructure, _Error, _Power, _SettingW):
     def LineNumber(self, value: int | float):
         pass
 
+    @property
+    def StackSize(self) -> float:
+        return DeviceLogicType(self, self._id, "StackSize")
 
-class _CircuitHousings(_BaseStructures, _Errors, _Powers, _SettingWs):
+
+class _CircuitHousings(_BaseStructures, _Errors, _Modes, _Powers, _SettingWs):
     _hash: int = -128473777
 
     def __getitem__(self, name: str | int | float) -> "_CircuitHousings":
@@ -4404,8 +4986,50 @@ class _CircuitHousings(_BaseStructures, _Errors, _Powers, _SettingWs):
     def LineNumber(self, value: int | float):
         pass
 
+    @property
+    def StackSize(self) -> DevicesLogicType:
+        return DevicesLogicType(self._hash, "StackSize", self._name)
+
 
 CircuitHousings: _CircuitHousings = _CircuitHousings()
+
+
+class CircuitHousingCompact(_BaseStructure, _Error, _Mode, _Power, _SettingW):
+    _hash: int = 2037291645
+
+    @property
+    def LineNumber(self) -> float:
+        return DeviceLogicType(self, self._id, "LineNumber")
+
+    @LineNumber.setter
+    def LineNumber(self, value: int | float):
+        pass
+
+    @property
+    def StackSize(self) -> float:
+        return DeviceLogicType(self, self._id, "StackSize")
+
+
+class _CircuitHousingCompacts(_BaseStructures, _Errors, _Modes, _Powers, _SettingWs):
+    _hash: int = 2037291645
+
+    def __getitem__(self, name: str | int | float) -> "_CircuitHousingCompacts":
+        return _CircuitHousingCompacts(name)
+
+    @property
+    def LineNumber(self) -> DevicesLogicType:
+        return DevicesLogicType(self._hash, "LineNumber", self._name)
+
+    @LineNumber.setter
+    def LineNumber(self, value: int | float):
+        pass
+
+    @property
+    def StackSize(self) -> DevicesLogicType:
+        return DevicesLogicType(self._hash, "StackSize", self._name)
+
+
+CircuitHousingCompacts: _CircuitHousingCompacts = _CircuitHousingCompacts()
 
 
 class IceCrusher(
@@ -4474,438 +5098,6 @@ class _EmergencyButtons(
 
 
 EmergencyButtons: _EmergencyButtons = _EmergencyButtons()
-
-
-class IndustrialBurner(
-    _BaseStructure,
-    _BaseGas,
-    _ClearMemory,
-    _Combustion,
-    _Error,
-    _ExportCount,
-    _Hydrogen,
-    _ImportCount,
-    _Lock,
-    _Maximum,
-    _PollWater,
-    _Power,
-    _Ratio,
-    _Reagents,
-    _SettingW,
-    _Temperature,
-):
-    _hash: int = 1493870235
-
-    @property
-    def Activate(self) -> float:
-        return DeviceLogicType(self, self._id, "Activate")
-
-    @Activate.setter
-    def Activate(self, value: int | float):
-        pass
-
-    @property
-    def RecipeHash(self) -> float:
-        return DeviceLogicType(self, self._id, "RecipeHash")
-
-
-class _IndustrialBurners(
-    _BaseStructures,
-    _BaseGass,
-    _ClearMemorys,
-    _Combustions,
-    _Errors,
-    _ExportCounts,
-    _Hydrogens,
-    _ImportCounts,
-    _Locks,
-    _Maximums,
-    _PollWaters,
-    _Powers,
-    _Ratios,
-    _Reagentss,
-    _SettingWs,
-    _Temperatures,
-):
-    _hash: int = 1493870235
-
-    def __getitem__(self, name: str | int | float) -> "_IndustrialBurners":
-        return _IndustrialBurners(name)
-
-    @property
-    def Activate(self) -> DevicesLogicType:
-        return DevicesLogicType(self._hash, "Activate", self._name)
-
-    @Activate.setter
-    def Activate(self, value: int | float):
-        pass
-
-    @property
-    def RecipeHash(self) -> DevicesLogicType:
-        return DevicesLogicType(self._hash, "RecipeHash", self._name)
-
-
-IndustrialBurners: _IndustrialBurners = _IndustrialBurners()
-
-
-class IndustrialCombustor(
-    _BaseStructure,
-    _BaseGas,
-    _BaseGasInput,
-    _BaseGasOutput,
-    _Combustion,
-    _Error,
-    _Hydrogen,
-    _Lock,
-    _Maximum,
-    _Mode,
-    _Open,
-    _PollWater,
-    _Power,
-    _Ratio,
-    _SettingW,
-    _Temperature,
-):
-    _hash: int = -586072380
-
-    @property
-    def CombustionInput(self) -> float:
-        return DeviceLogicType(self, self._id, "CombustionInput")
-
-    @property
-    def CombustionInput2(self) -> float:
-        return DeviceLogicType(self, self._id, "CombustionInput2")
-
-    @property
-    def CombustionOutput(self) -> float:
-        return DeviceLogicType(self, self._id, "CombustionOutput")
-
-    @property
-    def PressureInput(self) -> float:
-        return DeviceLogicType(self, self._id, "PressureInput")
-
-    @property
-    def PressureInput2(self) -> float:
-        return DeviceLogicType(self, self._id, "PressureInput2")
-
-    @property
-    def PressureOutput(self) -> float:
-        return DeviceLogicType(self, self._id, "PressureOutput")
-
-    @property
-    def RatioCarbonDioxideInput2(self) -> float:
-        return DeviceLogicType(self, self._id, "RatioCarbonDioxideInput2")
-
-    @property
-    def RatioLiquidCarbonDioxideInput2(self) -> float:
-        return DeviceLogicType(self, self._id, "RatioLiquidCarbonDioxideInput2")
-
-    @property
-    def RatioLiquidNitrogenInput2(self) -> float:
-        return DeviceLogicType(self, self._id, "RatioLiquidNitrogenInput2")
-
-    @property
-    def RatioLiquidNitrousOxideInput2(self) -> float:
-        return DeviceLogicType(self, self._id, "RatioLiquidNitrousOxideInput2")
-
-    @property
-    def RatioLiquidOxygenInput2(self) -> float:
-        return DeviceLogicType(self, self._id, "RatioLiquidOxygenInput2")
-
-    @property
-    def RatioLiquidPollutantInput2(self) -> float:
-        return DeviceLogicType(self, self._id, "RatioLiquidPollutantInput2")
-
-    @property
-    def RatioLiquidVolatilesInput2(self) -> float:
-        return DeviceLogicType(self, self._id, "RatioLiquidVolatilesInput2")
-
-    @property
-    def RatioNitrogenInput2(self) -> float:
-        return DeviceLogicType(self, self._id, "RatioNitrogenInput2")
-
-    @property
-    def RatioNitrousOxideInput2(self) -> float:
-        return DeviceLogicType(self, self._id, "RatioNitrousOxideInput2")
-
-    @property
-    def RatioOxygenInput2(self) -> float:
-        return DeviceLogicType(self, self._id, "RatioOxygenInput2")
-
-    @property
-    def RatioPollutantInput2(self) -> float:
-        return DeviceLogicType(self, self._id, "RatioPollutantInput2")
-
-    @property
-    def RatioSteamInput2(self) -> float:
-        return DeviceLogicType(self, self._id, "RatioSteamInput2")
-
-    @property
-    def RatioVolatilesInput2(self) -> float:
-        return DeviceLogicType(self, self._id, "RatioVolatilesInput2")
-
-    @property
-    def RatioWaterInput2(self) -> float:
-        return DeviceLogicType(self, self._id, "RatioWaterInput2")
-
-    @property
-    def TemperatureInput(self) -> float:
-        return DeviceLogicType(self, self._id, "TemperatureInput")
-
-    @property
-    def TemperatureInput2(self) -> float:
-        return DeviceLogicType(self, self._id, "TemperatureInput2")
-
-    @property
-    def TemperatureOutput(self) -> float:
-        return DeviceLogicType(self, self._id, "TemperatureOutput")
-
-    @property
-    def TotalMolesInput(self) -> float:
-        return DeviceLogicType(self, self._id, "TotalMolesInput")
-
-    @property
-    def TotalMolesInput2(self) -> float:
-        return DeviceLogicType(self, self._id, "TotalMolesInput2")
-
-    @property
-    def TotalMolesOutput(self) -> float:
-        return DeviceLogicType(self, self._id, "TotalMolesOutput")
-
-
-class _IndustrialCombustors(
-    _BaseStructures,
-    _BaseGasInputs,
-    _BaseGasOutputs,
-    _BaseGass,
-    _Combustions,
-    _Errors,
-    _Hydrogens,
-    _Locks,
-    _Maximums,
-    _Modes,
-    _Opens,
-    _PollWaters,
-    _Powers,
-    _Ratios,
-    _SettingWs,
-    _Temperatures,
-):
-    _hash: int = -586072380
-
-    def __getitem__(self, name: str | int | float) -> "_IndustrialCombustors":
-        return _IndustrialCombustors(name)
-
-    @property
-    def CombustionInput(self) -> DevicesLogicType:
-        return DevicesLogicType(self._hash, "CombustionInput", self._name)
-
-    @property
-    def CombustionInput2(self) -> DevicesLogicType:
-        return DevicesLogicType(self._hash, "CombustionInput2", self._name)
-
-    @property
-    def CombustionOutput(self) -> DevicesLogicType:
-        return DevicesLogicType(self._hash, "CombustionOutput", self._name)
-
-    @property
-    def PressureInput(self) -> DevicesLogicType:
-        return DevicesLogicType(self._hash, "PressureInput", self._name)
-
-    @property
-    def PressureInput2(self) -> DevicesLogicType:
-        return DevicesLogicType(self._hash, "PressureInput2", self._name)
-
-    @property
-    def PressureOutput(self) -> DevicesLogicType:
-        return DevicesLogicType(self._hash, "PressureOutput", self._name)
-
-    @property
-    def RatioCarbonDioxideInput2(self) -> DevicesLogicType:
-        return DevicesLogicType(self._hash, "RatioCarbonDioxideInput2", self._name)
-
-    @property
-    def RatioLiquidCarbonDioxideInput2(self) -> DevicesLogicType:
-        return DevicesLogicType(
-            self._hash, "RatioLiquidCarbonDioxideInput2", self._name
-        )
-
-    @property
-    def RatioLiquidNitrogenInput2(self) -> DevicesLogicType:
-        return DevicesLogicType(self._hash, "RatioLiquidNitrogenInput2", self._name)
-
-    @property
-    def RatioLiquidNitrousOxideInput2(self) -> DevicesLogicType:
-        return DevicesLogicType(self._hash, "RatioLiquidNitrousOxideInput2", self._name)
-
-    @property
-    def RatioLiquidOxygenInput2(self) -> DevicesLogicType:
-        return DevicesLogicType(self._hash, "RatioLiquidOxygenInput2", self._name)
-
-    @property
-    def RatioLiquidPollutantInput2(self) -> DevicesLogicType:
-        return DevicesLogicType(self._hash, "RatioLiquidPollutantInput2", self._name)
-
-    @property
-    def RatioLiquidVolatilesInput2(self) -> DevicesLogicType:
-        return DevicesLogicType(self._hash, "RatioLiquidVolatilesInput2", self._name)
-
-    @property
-    def RatioNitrogenInput2(self) -> DevicesLogicType:
-        return DevicesLogicType(self._hash, "RatioNitrogenInput2", self._name)
-
-    @property
-    def RatioNitrousOxideInput2(self) -> DevicesLogicType:
-        return DevicesLogicType(self._hash, "RatioNitrousOxideInput2", self._name)
-
-    @property
-    def RatioOxygenInput2(self) -> DevicesLogicType:
-        return DevicesLogicType(self._hash, "RatioOxygenInput2", self._name)
-
-    @property
-    def RatioPollutantInput2(self) -> DevicesLogicType:
-        return DevicesLogicType(self._hash, "RatioPollutantInput2", self._name)
-
-    @property
-    def RatioSteamInput2(self) -> DevicesLogicType:
-        return DevicesLogicType(self._hash, "RatioSteamInput2", self._name)
-
-    @property
-    def RatioVolatilesInput2(self) -> DevicesLogicType:
-        return DevicesLogicType(self._hash, "RatioVolatilesInput2", self._name)
-
-    @property
-    def RatioWaterInput2(self) -> DevicesLogicType:
-        return DevicesLogicType(self._hash, "RatioWaterInput2", self._name)
-
-    @property
-    def TemperatureInput(self) -> DevicesLogicType:
-        return DevicesLogicType(self._hash, "TemperatureInput", self._name)
-
-    @property
-    def TemperatureInput2(self) -> DevicesLogicType:
-        return DevicesLogicType(self._hash, "TemperatureInput2", self._name)
-
-    @property
-    def TemperatureOutput(self) -> DevicesLogicType:
-        return DevicesLogicType(self._hash, "TemperatureOutput", self._name)
-
-    @property
-    def TotalMolesInput(self) -> DevicesLogicType:
-        return DevicesLogicType(self._hash, "TotalMolesInput", self._name)
-
-    @property
-    def TotalMolesInput2(self) -> DevicesLogicType:
-        return DevicesLogicType(self._hash, "TotalMolesInput2", self._name)
-
-    @property
-    def TotalMolesOutput(self) -> DevicesLogicType:
-        return DevicesLogicType(self._hash, "TotalMolesOutput", self._name)
-
-
-IndustrialCombustors: _IndustrialCombustors = _IndustrialCombustors()
-
-
-class IndustrialFiltration(
-    _BaseStructure,
-    _BaseGasOutput,
-    _BaseGasOutput2,
-    _Error,
-    _Lock,
-    _Maximum,
-    _Mode,
-    _Open,
-    _Power,
-    _Ratio,
-    _SettingW,
-):
-    _hash: int = 1167018773
-
-    @property
-    def CombustionOutput(self) -> float:
-        return DeviceLogicType(self, self._id, "CombustionOutput")
-
-    @property
-    def CombustionOutput2(self) -> float:
-        return DeviceLogicType(self, self._id, "CombustionOutput2")
-
-    @property
-    def PressureOutput(self) -> float:
-        return DeviceLogicType(self, self._id, "PressureOutput")
-
-    @property
-    def PressureOutput2(self) -> float:
-        return DeviceLogicType(self, self._id, "PressureOutput2")
-
-    @property
-    def TemperatureOutput(self) -> float:
-        return DeviceLogicType(self, self._id, "TemperatureOutput")
-
-    @property
-    def TemperatureOutput2(self) -> float:
-        return DeviceLogicType(self, self._id, "TemperatureOutput2")
-
-    @property
-    def TotalMolesOutput(self) -> float:
-        return DeviceLogicType(self, self._id, "TotalMolesOutput")
-
-    @property
-    def TotalMolesOutput2(self) -> float:
-        return DeviceLogicType(self, self._id, "TotalMolesOutput2")
-
-
-class _IndustrialFiltrations(
-    _BaseStructures,
-    _BaseGasOutput2s,
-    _BaseGasOutputs,
-    _Errors,
-    _Locks,
-    _Maximums,
-    _Modes,
-    _Opens,
-    _Powers,
-    _Ratios,
-    _SettingWs,
-):
-    _hash: int = 1167018773
-
-    def __getitem__(self, name: str | int | float) -> "_IndustrialFiltrations":
-        return _IndustrialFiltrations(name)
-
-    @property
-    def CombustionOutput(self) -> DevicesLogicType:
-        return DevicesLogicType(self._hash, "CombustionOutput", self._name)
-
-    @property
-    def CombustionOutput2(self) -> DevicesLogicType:
-        return DevicesLogicType(self._hash, "CombustionOutput2", self._name)
-
-    @property
-    def PressureOutput(self) -> DevicesLogicType:
-        return DevicesLogicType(self._hash, "PressureOutput", self._name)
-
-    @property
-    def PressureOutput2(self) -> DevicesLogicType:
-        return DevicesLogicType(self._hash, "PressureOutput2", self._name)
-
-    @property
-    def TemperatureOutput(self) -> DevicesLogicType:
-        return DevicesLogicType(self._hash, "TemperatureOutput", self._name)
-
-    @property
-    def TemperatureOutput2(self) -> DevicesLogicType:
-        return DevicesLogicType(self._hash, "TemperatureOutput2", self._name)
-
-    @property
-    def TotalMolesOutput(self) -> DevicesLogicType:
-        return DevicesLogicType(self._hash, "TotalMolesOutput", self._name)
-
-    @property
-    def TotalMolesOutput2(self) -> DevicesLogicType:
-        return DevicesLogicType(self._hash, "TotalMolesOutput2", self._name)
-
-
-IndustrialFiltrations: _IndustrialFiltrations = _IndustrialFiltrations()
 
 
 class InteriorDoorGlass(_BaseStructure, _Idle, _Lock, _Mode, _Open, _Power, _SettingW):
@@ -5713,6 +5905,50 @@ class TankBig(
 ):
     _hash: int = -1606848156
 
+    @property
+    def CombustionOutput(self) -> float:
+        return DeviceLogicType(self, self._id, "CombustionOutput")
+
+    @property
+    def PressureOutput(self) -> float:
+        return DeviceLogicType(self, self._id, "PressureOutput")
+
+    @property
+    def RatioCarbonDioxideOutput(self) -> float:
+        return DeviceLogicType(self, self._id, "RatioCarbonDioxideOutput")
+
+    @property
+    def RatioNitrogenOutput(self) -> float:
+        return DeviceLogicType(self, self._id, "RatioNitrogenOutput")
+
+    @property
+    def RatioNitrousOxideOutput(self) -> float:
+        return DeviceLogicType(self, self._id, "RatioNitrousOxideOutput")
+
+    @property
+    def RatioOxygenOutput(self) -> float:
+        return DeviceLogicType(self, self._id, "RatioOxygenOutput")
+
+    @property
+    def RatioPollutantOutput(self) -> float:
+        return DeviceLogicType(self, self._id, "RatioPollutantOutput")
+
+    @property
+    def RatioVolatilesOutput(self) -> float:
+        return DeviceLogicType(self, self._id, "RatioVolatilesOutput")
+
+    @property
+    def RatioWaterOutput(self) -> float:
+        return DeviceLogicType(self, self._id, "RatioWaterOutput")
+
+    @property
+    def TemperatureOutput(self) -> float:
+        return DeviceLogicType(self, self._id, "TemperatureOutput")
+
+    @property
+    def TotalMolesOutput(self) -> float:
+        return DeviceLogicType(self, self._id, "TotalMolesOutput")
+
 
 class _TankBigs(
     _BaseStructures,
@@ -5731,6 +5967,50 @@ class _TankBigs(
 
     def __getitem__(self, name: str | int | float) -> "_TankBigs":
         return _TankBigs(name)
+
+    @property
+    def CombustionOutput(self) -> DevicesLogicType:
+        return DevicesLogicType(self._hash, "CombustionOutput", self._name)
+
+    @property
+    def PressureOutput(self) -> DevicesLogicType:
+        return DevicesLogicType(self._hash, "PressureOutput", self._name)
+
+    @property
+    def RatioCarbonDioxideOutput(self) -> DevicesLogicType:
+        return DevicesLogicType(self._hash, "RatioCarbonDioxideOutput", self._name)
+
+    @property
+    def RatioNitrogenOutput(self) -> DevicesLogicType:
+        return DevicesLogicType(self._hash, "RatioNitrogenOutput", self._name)
+
+    @property
+    def RatioNitrousOxideOutput(self) -> DevicesLogicType:
+        return DevicesLogicType(self._hash, "RatioNitrousOxideOutput", self._name)
+
+    @property
+    def RatioOxygenOutput(self) -> DevicesLogicType:
+        return DevicesLogicType(self._hash, "RatioOxygenOutput", self._name)
+
+    @property
+    def RatioPollutantOutput(self) -> DevicesLogicType:
+        return DevicesLogicType(self._hash, "RatioPollutantOutput", self._name)
+
+    @property
+    def RatioVolatilesOutput(self) -> DevicesLogicType:
+        return DevicesLogicType(self._hash, "RatioVolatilesOutput", self._name)
+
+    @property
+    def RatioWaterOutput(self) -> DevicesLogicType:
+        return DevicesLogicType(self._hash, "RatioWaterOutput", self._name)
+
+    @property
+    def TemperatureOutput(self) -> DevicesLogicType:
+        return DevicesLogicType(self._hash, "TemperatureOutput", self._name)
+
+    @property
+    def TotalMolesOutput(self) -> DevicesLogicType:
+        return DevicesLogicType(self._hash, "TotalMolesOutput", self._name)
 
 
 TankBigs: _TankBigs = _TankBigs()
@@ -5842,6 +6122,130 @@ BackLiquidPressureRegulators: _BackLiquidPressureRegulators = (
 )
 
 
+class LargeRocketLiquidFuelTank(
+    _BaseStructure,
+    _BaseGas,
+    _Combustion,
+    _Hydrogen,
+    _Maximum,
+    _PollWater,
+    _Ratio,
+    _SettingW,
+    _Temperature,
+    _Volume,
+):
+    _hash: int = -1374757070
+
+    @property
+    def CombustionOutput(self) -> float:
+        return DeviceLogicType(self, self._id, "CombustionOutput")
+
+    @property
+    def PressureOutput(self) -> float:
+        return DeviceLogicType(self, self._id, "PressureOutput")
+
+    @property
+    def RatioCarbonDioxideOutput(self) -> float:
+        return DeviceLogicType(self, self._id, "RatioCarbonDioxideOutput")
+
+    @property
+    def RatioNitrogenOutput(self) -> float:
+        return DeviceLogicType(self, self._id, "RatioNitrogenOutput")
+
+    @property
+    def RatioNitrousOxideOutput(self) -> float:
+        return DeviceLogicType(self, self._id, "RatioNitrousOxideOutput")
+
+    @property
+    def RatioOxygenOutput(self) -> float:
+        return DeviceLogicType(self, self._id, "RatioOxygenOutput")
+
+    @property
+    def RatioPollutantOutput(self) -> float:
+        return DeviceLogicType(self, self._id, "RatioPollutantOutput")
+
+    @property
+    def RatioVolatilesOutput(self) -> float:
+        return DeviceLogicType(self, self._id, "RatioVolatilesOutput")
+
+    @property
+    def RatioWaterOutput(self) -> float:
+        return DeviceLogicType(self, self._id, "RatioWaterOutput")
+
+    @property
+    def TemperatureOutput(self) -> float:
+        return DeviceLogicType(self, self._id, "TemperatureOutput")
+
+    @property
+    def TotalMolesOutput(self) -> float:
+        return DeviceLogicType(self, self._id, "TotalMolesOutput")
+
+
+class _LargeRocketLiquidFuelTanks(
+    _BaseStructures,
+    _BaseGass,
+    _Combustions,
+    _Hydrogens,
+    _Maximums,
+    _PollWaters,
+    _Ratios,
+    _SettingWs,
+    _Temperatures,
+    _Volumes,
+):
+    _hash: int = -1374757070
+
+    def __getitem__(self, name: str | int | float) -> "_LargeRocketLiquidFuelTanks":
+        return _LargeRocketLiquidFuelTanks(name)
+
+    @property
+    def CombustionOutput(self) -> DevicesLogicType:
+        return DevicesLogicType(self._hash, "CombustionOutput", self._name)
+
+    @property
+    def PressureOutput(self) -> DevicesLogicType:
+        return DevicesLogicType(self._hash, "PressureOutput", self._name)
+
+    @property
+    def RatioCarbonDioxideOutput(self) -> DevicesLogicType:
+        return DevicesLogicType(self._hash, "RatioCarbonDioxideOutput", self._name)
+
+    @property
+    def RatioNitrogenOutput(self) -> DevicesLogicType:
+        return DevicesLogicType(self._hash, "RatioNitrogenOutput", self._name)
+
+    @property
+    def RatioNitrousOxideOutput(self) -> DevicesLogicType:
+        return DevicesLogicType(self._hash, "RatioNitrousOxideOutput", self._name)
+
+    @property
+    def RatioOxygenOutput(self) -> DevicesLogicType:
+        return DevicesLogicType(self._hash, "RatioOxygenOutput", self._name)
+
+    @property
+    def RatioPollutantOutput(self) -> DevicesLogicType:
+        return DevicesLogicType(self._hash, "RatioPollutantOutput", self._name)
+
+    @property
+    def RatioVolatilesOutput(self) -> DevicesLogicType:
+        return DevicesLogicType(self._hash, "RatioVolatilesOutput", self._name)
+
+    @property
+    def RatioWaterOutput(self) -> DevicesLogicType:
+        return DevicesLogicType(self._hash, "RatioWaterOutput", self._name)
+
+    @property
+    def TemperatureOutput(self) -> DevicesLogicType:
+        return DevicesLogicType(self._hash, "TemperatureOutput", self._name)
+
+    @property
+    def TotalMolesOutput(self) -> DevicesLogicType:
+        return DevicesLogicType(self._hash, "TotalMolesOutput", self._name)
+
+
+LargeRocketLiquidFuelTanks: _LargeRocketLiquidFuelTanks = _LargeRocketLiquidFuelTanks()
+
+
 class MediumRocketLiquidFuelTank(
     _BaseStructure,
     _BaseGas,
@@ -5855,6 +6259,50 @@ class MediumRocketLiquidFuelTank(
     _Volume,
 ):
     _hash: int = 1143639539
+
+    @property
+    def CombustionOutput(self) -> float:
+        return DeviceLogicType(self, self._id, "CombustionOutput")
+
+    @property
+    def PressureOutput(self) -> float:
+        return DeviceLogicType(self, self._id, "PressureOutput")
+
+    @property
+    def RatioCarbonDioxideOutput(self) -> float:
+        return DeviceLogicType(self, self._id, "RatioCarbonDioxideOutput")
+
+    @property
+    def RatioNitrogenOutput(self) -> float:
+        return DeviceLogicType(self, self._id, "RatioNitrogenOutput")
+
+    @property
+    def RatioNitrousOxideOutput(self) -> float:
+        return DeviceLogicType(self, self._id, "RatioNitrousOxideOutput")
+
+    @property
+    def RatioOxygenOutput(self) -> float:
+        return DeviceLogicType(self, self._id, "RatioOxygenOutput")
+
+    @property
+    def RatioPollutantOutput(self) -> float:
+        return DeviceLogicType(self, self._id, "RatioPollutantOutput")
+
+    @property
+    def RatioVolatilesOutput(self) -> float:
+        return DeviceLogicType(self, self._id, "RatioVolatilesOutput")
+
+    @property
+    def RatioWaterOutput(self) -> float:
+        return DeviceLogicType(self, self._id, "RatioWaterOutput")
+
+    @property
+    def TemperatureOutput(self) -> float:
+        return DeviceLogicType(self, self._id, "TemperatureOutput")
+
+    @property
+    def TotalMolesOutput(self) -> float:
+        return DeviceLogicType(self, self._id, "TotalMolesOutput")
 
 
 class _MediumRocketLiquidFuelTanks(
@@ -5873,6 +6321,50 @@ class _MediumRocketLiquidFuelTanks(
 
     def __getitem__(self, name: str | int | float) -> "_MediumRocketLiquidFuelTanks":
         return _MediumRocketLiquidFuelTanks(name)
+
+    @property
+    def CombustionOutput(self) -> DevicesLogicType:
+        return DevicesLogicType(self._hash, "CombustionOutput", self._name)
+
+    @property
+    def PressureOutput(self) -> DevicesLogicType:
+        return DevicesLogicType(self._hash, "PressureOutput", self._name)
+
+    @property
+    def RatioCarbonDioxideOutput(self) -> DevicesLogicType:
+        return DevicesLogicType(self._hash, "RatioCarbonDioxideOutput", self._name)
+
+    @property
+    def RatioNitrogenOutput(self) -> DevicesLogicType:
+        return DevicesLogicType(self._hash, "RatioNitrogenOutput", self._name)
+
+    @property
+    def RatioNitrousOxideOutput(self) -> DevicesLogicType:
+        return DevicesLogicType(self._hash, "RatioNitrousOxideOutput", self._name)
+
+    @property
+    def RatioOxygenOutput(self) -> DevicesLogicType:
+        return DevicesLogicType(self._hash, "RatioOxygenOutput", self._name)
+
+    @property
+    def RatioPollutantOutput(self) -> DevicesLogicType:
+        return DevicesLogicType(self._hash, "RatioPollutantOutput", self._name)
+
+    @property
+    def RatioVolatilesOutput(self) -> DevicesLogicType:
+        return DevicesLogicType(self._hash, "RatioVolatilesOutput", self._name)
+
+    @property
+    def RatioWaterOutput(self) -> DevicesLogicType:
+        return DevicesLogicType(self._hash, "RatioWaterOutput", self._name)
+
+    @property
+    def TemperatureOutput(self) -> DevicesLogicType:
+        return DevicesLogicType(self._hash, "TemperatureOutput", self._name)
+
+    @property
+    def TotalMolesOutput(self) -> DevicesLogicType:
+        return DevicesLogicType(self._hash, "TotalMolesOutput", self._name)
 
 
 MediumRocketLiquidFuelTanks: _MediumRocketLiquidFuelTanks = (
@@ -5894,6 +6386,50 @@ class CapsuleTankLiquid(
 ):
     _hash: int = 1415396263
 
+    @property
+    def CombustionOutput(self) -> float:
+        return DeviceLogicType(self, self._id, "CombustionOutput")
+
+    @property
+    def PressureOutput(self) -> float:
+        return DeviceLogicType(self, self._id, "PressureOutput")
+
+    @property
+    def RatioCarbonDioxideOutput(self) -> float:
+        return DeviceLogicType(self, self._id, "RatioCarbonDioxideOutput")
+
+    @property
+    def RatioNitrogenOutput(self) -> float:
+        return DeviceLogicType(self, self._id, "RatioNitrogenOutput")
+
+    @property
+    def RatioNitrousOxideOutput(self) -> float:
+        return DeviceLogicType(self, self._id, "RatioNitrousOxideOutput")
+
+    @property
+    def RatioOxygenOutput(self) -> float:
+        return DeviceLogicType(self, self._id, "RatioOxygenOutput")
+
+    @property
+    def RatioPollutantOutput(self) -> float:
+        return DeviceLogicType(self, self._id, "RatioPollutantOutput")
+
+    @property
+    def RatioVolatilesOutput(self) -> float:
+        return DeviceLogicType(self, self._id, "RatioVolatilesOutput")
+
+    @property
+    def RatioWaterOutput(self) -> float:
+        return DeviceLogicType(self, self._id, "RatioWaterOutput")
+
+    @property
+    def TemperatureOutput(self) -> float:
+        return DeviceLogicType(self, self._id, "TemperatureOutput")
+
+    @property
+    def TotalMolesOutput(self) -> float:
+        return DeviceLogicType(self, self._id, "TotalMolesOutput")
+
 
 class _CapsuleTankLiquids(
     _BaseStructures,
@@ -5911,6 +6447,50 @@ class _CapsuleTankLiquids(
 
     def __getitem__(self, name: str | int | float) -> "_CapsuleTankLiquids":
         return _CapsuleTankLiquids(name)
+
+    @property
+    def CombustionOutput(self) -> DevicesLogicType:
+        return DevicesLogicType(self._hash, "CombustionOutput", self._name)
+
+    @property
+    def PressureOutput(self) -> DevicesLogicType:
+        return DevicesLogicType(self._hash, "PressureOutput", self._name)
+
+    @property
+    def RatioCarbonDioxideOutput(self) -> DevicesLogicType:
+        return DevicesLogicType(self._hash, "RatioCarbonDioxideOutput", self._name)
+
+    @property
+    def RatioNitrogenOutput(self) -> DevicesLogicType:
+        return DevicesLogicType(self._hash, "RatioNitrogenOutput", self._name)
+
+    @property
+    def RatioNitrousOxideOutput(self) -> DevicesLogicType:
+        return DevicesLogicType(self._hash, "RatioNitrousOxideOutput", self._name)
+
+    @property
+    def RatioOxygenOutput(self) -> DevicesLogicType:
+        return DevicesLogicType(self._hash, "RatioOxygenOutput", self._name)
+
+    @property
+    def RatioPollutantOutput(self) -> DevicesLogicType:
+        return DevicesLogicType(self._hash, "RatioPollutantOutput", self._name)
+
+    @property
+    def RatioVolatilesOutput(self) -> DevicesLogicType:
+        return DevicesLogicType(self._hash, "RatioVolatilesOutput", self._name)
+
+    @property
+    def RatioWaterOutput(self) -> DevicesLogicType:
+        return DevicesLogicType(self._hash, "RatioWaterOutput", self._name)
+
+    @property
+    def TemperatureOutput(self) -> DevicesLogicType:
+        return DevicesLogicType(self._hash, "TemperatureOutput", self._name)
+
+    @property
+    def TotalMolesOutput(self) -> DevicesLogicType:
+        return DevicesLogicType(self._hash, "TotalMolesOutput", self._name)
 
 
 CapsuleTankLiquids: _CapsuleTankLiquids = _CapsuleTankLiquids()
@@ -5948,6 +6528,10 @@ class LiquidPipeAnalyzer(
 ):
     _hash: int = -2113838091
 
+    @property
+    def NetworkFault(self) -> float:
+        return DeviceLogicType(self, self._id, "NetworkFault")
+
 
 class _LiquidPipeAnalyzers(
     _BaseStructures,
@@ -5965,6 +6549,10 @@ class _LiquidPipeAnalyzers(
 
     def __getitem__(self, name: str | int | float) -> "_LiquidPipeAnalyzers":
         return _LiquidPipeAnalyzers(name)
+
+    @property
+    def NetworkFault(self) -> DevicesLogicType:
+        return DevicesLogicType(self._hash, "NetworkFault", self._name)
 
 
 LiquidPipeAnalyzers: _LiquidPipeAnalyzers = _LiquidPipeAnalyzers()
@@ -5984,6 +6572,50 @@ class LiquidTankBig(
 ):
     _hash: int = 1098900430
 
+    @property
+    def CombustionOutput(self) -> float:
+        return DeviceLogicType(self, self._id, "CombustionOutput")
+
+    @property
+    def PressureOutput(self) -> float:
+        return DeviceLogicType(self, self._id, "PressureOutput")
+
+    @property
+    def RatioCarbonDioxideOutput(self) -> float:
+        return DeviceLogicType(self, self._id, "RatioCarbonDioxideOutput")
+
+    @property
+    def RatioNitrogenOutput(self) -> float:
+        return DeviceLogicType(self, self._id, "RatioNitrogenOutput")
+
+    @property
+    def RatioNitrousOxideOutput(self) -> float:
+        return DeviceLogicType(self, self._id, "RatioNitrousOxideOutput")
+
+    @property
+    def RatioOxygenOutput(self) -> float:
+        return DeviceLogicType(self, self._id, "RatioOxygenOutput")
+
+    @property
+    def RatioPollutantOutput(self) -> float:
+        return DeviceLogicType(self, self._id, "RatioPollutantOutput")
+
+    @property
+    def RatioVolatilesOutput(self) -> float:
+        return DeviceLogicType(self, self._id, "RatioVolatilesOutput")
+
+    @property
+    def RatioWaterOutput(self) -> float:
+        return DeviceLogicType(self, self._id, "RatioWaterOutput")
+
+    @property
+    def TemperatureOutput(self) -> float:
+        return DeviceLogicType(self, self._id, "TemperatureOutput")
+
+    @property
+    def TotalMolesOutput(self) -> float:
+        return DeviceLogicType(self, self._id, "TotalMolesOutput")
+
 
 class _LiquidTankBigs(
     _BaseStructures,
@@ -6001,6 +6633,50 @@ class _LiquidTankBigs(
 
     def __getitem__(self, name: str | int | float) -> "_LiquidTankBigs":
         return _LiquidTankBigs(name)
+
+    @property
+    def CombustionOutput(self) -> DevicesLogicType:
+        return DevicesLogicType(self._hash, "CombustionOutput", self._name)
+
+    @property
+    def PressureOutput(self) -> DevicesLogicType:
+        return DevicesLogicType(self._hash, "PressureOutput", self._name)
+
+    @property
+    def RatioCarbonDioxideOutput(self) -> DevicesLogicType:
+        return DevicesLogicType(self._hash, "RatioCarbonDioxideOutput", self._name)
+
+    @property
+    def RatioNitrogenOutput(self) -> DevicesLogicType:
+        return DevicesLogicType(self._hash, "RatioNitrogenOutput", self._name)
+
+    @property
+    def RatioNitrousOxideOutput(self) -> DevicesLogicType:
+        return DevicesLogicType(self._hash, "RatioNitrousOxideOutput", self._name)
+
+    @property
+    def RatioOxygenOutput(self) -> DevicesLogicType:
+        return DevicesLogicType(self._hash, "RatioOxygenOutput", self._name)
+
+    @property
+    def RatioPollutantOutput(self) -> DevicesLogicType:
+        return DevicesLogicType(self._hash, "RatioPollutantOutput", self._name)
+
+    @property
+    def RatioVolatilesOutput(self) -> DevicesLogicType:
+        return DevicesLogicType(self._hash, "RatioVolatilesOutput", self._name)
+
+    @property
+    def RatioWaterOutput(self) -> DevicesLogicType:
+        return DevicesLogicType(self._hash, "RatioWaterOutput", self._name)
+
+    @property
+    def TemperatureOutput(self) -> DevicesLogicType:
+        return DevicesLogicType(self._hash, "TemperatureOutput", self._name)
+
+    @property
+    def TotalMolesOutput(self) -> DevicesLogicType:
+        return DevicesLogicType(self._hash, "TotalMolesOutput", self._name)
 
 
 LiquidTankBigs: _LiquidTankBigs = _LiquidTankBigs()
@@ -6020,6 +6696,50 @@ class LiquidTankBigInsulated(
 ):
     _hash: int = -1430440215
 
+    @property
+    def CombustionOutput(self) -> float:
+        return DeviceLogicType(self, self._id, "CombustionOutput")
+
+    @property
+    def PressureOutput(self) -> float:
+        return DeviceLogicType(self, self._id, "PressureOutput")
+
+    @property
+    def RatioCarbonDioxideOutput(self) -> float:
+        return DeviceLogicType(self, self._id, "RatioCarbonDioxideOutput")
+
+    @property
+    def RatioNitrogenOutput(self) -> float:
+        return DeviceLogicType(self, self._id, "RatioNitrogenOutput")
+
+    @property
+    def RatioNitrousOxideOutput(self) -> float:
+        return DeviceLogicType(self, self._id, "RatioNitrousOxideOutput")
+
+    @property
+    def RatioOxygenOutput(self) -> float:
+        return DeviceLogicType(self, self._id, "RatioOxygenOutput")
+
+    @property
+    def RatioPollutantOutput(self) -> float:
+        return DeviceLogicType(self, self._id, "RatioPollutantOutput")
+
+    @property
+    def RatioVolatilesOutput(self) -> float:
+        return DeviceLogicType(self, self._id, "RatioVolatilesOutput")
+
+    @property
+    def RatioWaterOutput(self) -> float:
+        return DeviceLogicType(self, self._id, "RatioWaterOutput")
+
+    @property
+    def TemperatureOutput(self) -> float:
+        return DeviceLogicType(self, self._id, "TemperatureOutput")
+
+    @property
+    def TotalMolesOutput(self) -> float:
+        return DeviceLogicType(self, self._id, "TotalMolesOutput")
+
 
 class _LiquidTankBigInsulateds(
     _BaseStructures,
@@ -6037,6 +6757,50 @@ class _LiquidTankBigInsulateds(
 
     def __getitem__(self, name: str | int | float) -> "_LiquidTankBigInsulateds":
         return _LiquidTankBigInsulateds(name)
+
+    @property
+    def CombustionOutput(self) -> DevicesLogicType:
+        return DevicesLogicType(self._hash, "CombustionOutput", self._name)
+
+    @property
+    def PressureOutput(self) -> DevicesLogicType:
+        return DevicesLogicType(self._hash, "PressureOutput", self._name)
+
+    @property
+    def RatioCarbonDioxideOutput(self) -> DevicesLogicType:
+        return DevicesLogicType(self._hash, "RatioCarbonDioxideOutput", self._name)
+
+    @property
+    def RatioNitrogenOutput(self) -> DevicesLogicType:
+        return DevicesLogicType(self._hash, "RatioNitrogenOutput", self._name)
+
+    @property
+    def RatioNitrousOxideOutput(self) -> DevicesLogicType:
+        return DevicesLogicType(self._hash, "RatioNitrousOxideOutput", self._name)
+
+    @property
+    def RatioOxygenOutput(self) -> DevicesLogicType:
+        return DevicesLogicType(self._hash, "RatioOxygenOutput", self._name)
+
+    @property
+    def RatioPollutantOutput(self) -> DevicesLogicType:
+        return DevicesLogicType(self._hash, "RatioPollutantOutput", self._name)
+
+    @property
+    def RatioVolatilesOutput(self) -> DevicesLogicType:
+        return DevicesLogicType(self._hash, "RatioVolatilesOutput", self._name)
+
+    @property
+    def RatioWaterOutput(self) -> DevicesLogicType:
+        return DevicesLogicType(self._hash, "RatioWaterOutput", self._name)
+
+    @property
+    def TemperatureOutput(self) -> DevicesLogicType:
+        return DevicesLogicType(self._hash, "TemperatureOutput", self._name)
+
+    @property
+    def TotalMolesOutput(self) -> DevicesLogicType:
+        return DevicesLogicType(self._hash, "TotalMolesOutput", self._name)
 
 
 LiquidTankBigInsulateds: _LiquidTankBigInsulateds = _LiquidTankBigInsulateds()
@@ -6056,6 +6820,50 @@ class LiquidTankSmall(
 ):
     _hash: int = 1988118157
 
+    @property
+    def CombustionOutput(self) -> float:
+        return DeviceLogicType(self, self._id, "CombustionOutput")
+
+    @property
+    def PressureOutput(self) -> float:
+        return DeviceLogicType(self, self._id, "PressureOutput")
+
+    @property
+    def RatioCarbonDioxideOutput(self) -> float:
+        return DeviceLogicType(self, self._id, "RatioCarbonDioxideOutput")
+
+    @property
+    def RatioNitrogenOutput(self) -> float:
+        return DeviceLogicType(self, self._id, "RatioNitrogenOutput")
+
+    @property
+    def RatioNitrousOxideOutput(self) -> float:
+        return DeviceLogicType(self, self._id, "RatioNitrousOxideOutput")
+
+    @property
+    def RatioOxygenOutput(self) -> float:
+        return DeviceLogicType(self, self._id, "RatioOxygenOutput")
+
+    @property
+    def RatioPollutantOutput(self) -> float:
+        return DeviceLogicType(self, self._id, "RatioPollutantOutput")
+
+    @property
+    def RatioVolatilesOutput(self) -> float:
+        return DeviceLogicType(self, self._id, "RatioVolatilesOutput")
+
+    @property
+    def RatioWaterOutput(self) -> float:
+        return DeviceLogicType(self, self._id, "RatioWaterOutput")
+
+    @property
+    def TemperatureOutput(self) -> float:
+        return DeviceLogicType(self, self._id, "TemperatureOutput")
+
+    @property
+    def TotalMolesOutput(self) -> float:
+        return DeviceLogicType(self, self._id, "TotalMolesOutput")
+
 
 class _LiquidTankSmalls(
     _BaseStructures,
@@ -6073,6 +6881,50 @@ class _LiquidTankSmalls(
 
     def __getitem__(self, name: str | int | float) -> "_LiquidTankSmalls":
         return _LiquidTankSmalls(name)
+
+    @property
+    def CombustionOutput(self) -> DevicesLogicType:
+        return DevicesLogicType(self._hash, "CombustionOutput", self._name)
+
+    @property
+    def PressureOutput(self) -> DevicesLogicType:
+        return DevicesLogicType(self._hash, "PressureOutput", self._name)
+
+    @property
+    def RatioCarbonDioxideOutput(self) -> DevicesLogicType:
+        return DevicesLogicType(self._hash, "RatioCarbonDioxideOutput", self._name)
+
+    @property
+    def RatioNitrogenOutput(self) -> DevicesLogicType:
+        return DevicesLogicType(self._hash, "RatioNitrogenOutput", self._name)
+
+    @property
+    def RatioNitrousOxideOutput(self) -> DevicesLogicType:
+        return DevicesLogicType(self._hash, "RatioNitrousOxideOutput", self._name)
+
+    @property
+    def RatioOxygenOutput(self) -> DevicesLogicType:
+        return DevicesLogicType(self._hash, "RatioOxygenOutput", self._name)
+
+    @property
+    def RatioPollutantOutput(self) -> DevicesLogicType:
+        return DevicesLogicType(self._hash, "RatioPollutantOutput", self._name)
+
+    @property
+    def RatioVolatilesOutput(self) -> DevicesLogicType:
+        return DevicesLogicType(self._hash, "RatioVolatilesOutput", self._name)
+
+    @property
+    def RatioWaterOutput(self) -> DevicesLogicType:
+        return DevicesLogicType(self._hash, "RatioWaterOutput", self._name)
+
+    @property
+    def TemperatureOutput(self) -> DevicesLogicType:
+        return DevicesLogicType(self._hash, "TemperatureOutput", self._name)
+
+    @property
+    def TotalMolesOutput(self) -> DevicesLogicType:
+        return DevicesLogicType(self._hash, "TotalMolesOutput", self._name)
 
 
 LiquidTankSmalls: _LiquidTankSmalls = _LiquidTankSmalls()
@@ -6092,6 +6944,50 @@ class LiquidTankSmallInsulated(
 ):
     _hash: int = 608607718
 
+    @property
+    def CombustionOutput(self) -> float:
+        return DeviceLogicType(self, self._id, "CombustionOutput")
+
+    @property
+    def PressureOutput(self) -> float:
+        return DeviceLogicType(self, self._id, "PressureOutput")
+
+    @property
+    def RatioCarbonDioxideOutput(self) -> float:
+        return DeviceLogicType(self, self._id, "RatioCarbonDioxideOutput")
+
+    @property
+    def RatioNitrogenOutput(self) -> float:
+        return DeviceLogicType(self, self._id, "RatioNitrogenOutput")
+
+    @property
+    def RatioNitrousOxideOutput(self) -> float:
+        return DeviceLogicType(self, self._id, "RatioNitrousOxideOutput")
+
+    @property
+    def RatioOxygenOutput(self) -> float:
+        return DeviceLogicType(self, self._id, "RatioOxygenOutput")
+
+    @property
+    def RatioPollutantOutput(self) -> float:
+        return DeviceLogicType(self, self._id, "RatioPollutantOutput")
+
+    @property
+    def RatioVolatilesOutput(self) -> float:
+        return DeviceLogicType(self, self._id, "RatioVolatilesOutput")
+
+    @property
+    def RatioWaterOutput(self) -> float:
+        return DeviceLogicType(self, self._id, "RatioWaterOutput")
+
+    @property
+    def TemperatureOutput(self) -> float:
+        return DeviceLogicType(self, self._id, "TemperatureOutput")
+
+    @property
+    def TotalMolesOutput(self) -> float:
+        return DeviceLogicType(self, self._id, "TotalMolesOutput")
+
 
 class _LiquidTankSmallInsulateds(
     _BaseStructures,
@@ -6109,6 +7005,50 @@ class _LiquidTankSmallInsulateds(
 
     def __getitem__(self, name: str | int | float) -> "_LiquidTankSmallInsulateds":
         return _LiquidTankSmallInsulateds(name)
+
+    @property
+    def CombustionOutput(self) -> DevicesLogicType:
+        return DevicesLogicType(self._hash, "CombustionOutput", self._name)
+
+    @property
+    def PressureOutput(self) -> DevicesLogicType:
+        return DevicesLogicType(self._hash, "PressureOutput", self._name)
+
+    @property
+    def RatioCarbonDioxideOutput(self) -> DevicesLogicType:
+        return DevicesLogicType(self._hash, "RatioCarbonDioxideOutput", self._name)
+
+    @property
+    def RatioNitrogenOutput(self) -> DevicesLogicType:
+        return DevicesLogicType(self._hash, "RatioNitrogenOutput", self._name)
+
+    @property
+    def RatioNitrousOxideOutput(self) -> DevicesLogicType:
+        return DevicesLogicType(self._hash, "RatioNitrousOxideOutput", self._name)
+
+    @property
+    def RatioOxygenOutput(self) -> DevicesLogicType:
+        return DevicesLogicType(self._hash, "RatioOxygenOutput", self._name)
+
+    @property
+    def RatioPollutantOutput(self) -> DevicesLogicType:
+        return DevicesLogicType(self._hash, "RatioPollutantOutput", self._name)
+
+    @property
+    def RatioVolatilesOutput(self) -> DevicesLogicType:
+        return DevicesLogicType(self._hash, "RatioVolatilesOutput", self._name)
+
+    @property
+    def RatioWaterOutput(self) -> DevicesLogicType:
+        return DevicesLogicType(self._hash, "RatioWaterOutput", self._name)
+
+    @property
+    def TemperatureOutput(self) -> DevicesLogicType:
+        return DevicesLogicType(self._hash, "TemperatureOutput", self._name)
+
+    @property
+    def TotalMolesOutput(self) -> DevicesLogicType:
+        return DevicesLogicType(self._hash, "TotalMolesOutput", self._name)
 
 
 LiquidTankSmallInsulateds: _LiquidTankSmallInsulateds = _LiquidTankSmallInsulateds()
@@ -6225,6 +7165,50 @@ class WaterWallCooler(
 ):
     _hash: int = -1369060582
 
+    @property
+    def CombustionOutput(self) -> float:
+        return DeviceLogicType(self, self._id, "CombustionOutput")
+
+    @property
+    def PressureOutput(self) -> float:
+        return DeviceLogicType(self, self._id, "PressureOutput")
+
+    @property
+    def RatioCarbonDioxideOutput(self) -> float:
+        return DeviceLogicType(self, self._id, "RatioCarbonDioxideOutput")
+
+    @property
+    def RatioNitrogenOutput(self) -> float:
+        return DeviceLogicType(self, self._id, "RatioNitrogenOutput")
+
+    @property
+    def RatioNitrousOxideOutput(self) -> float:
+        return DeviceLogicType(self, self._id, "RatioNitrousOxideOutput")
+
+    @property
+    def RatioOxygenOutput(self) -> float:
+        return DeviceLogicType(self, self._id, "RatioOxygenOutput")
+
+    @property
+    def RatioPollutantOutput(self) -> float:
+        return DeviceLogicType(self, self._id, "RatioPollutantOutput")
+
+    @property
+    def RatioVolatilesOutput(self) -> float:
+        return DeviceLogicType(self, self._id, "RatioVolatilesOutput")
+
+    @property
+    def RatioWaterOutput(self) -> float:
+        return DeviceLogicType(self, self._id, "RatioWaterOutput")
+
+    @property
+    def TemperatureOutput(self) -> float:
+        return DeviceLogicType(self, self._id, "TemperatureOutput")
+
+    @property
+    def TotalMolesOutput(self) -> float:
+        return DeviceLogicType(self, self._id, "TotalMolesOutput")
+
 
 class _WaterWallCoolers(
     _BaseStructures, _Errors, _Locks, _Maximums, _Powers, _Ratios, _SettingWs
@@ -6233,6 +7217,50 @@ class _WaterWallCoolers(
 
     def __getitem__(self, name: str | int | float) -> "_WaterWallCoolers":
         return _WaterWallCoolers(name)
+
+    @property
+    def CombustionOutput(self) -> DevicesLogicType:
+        return DevicesLogicType(self._hash, "CombustionOutput", self._name)
+
+    @property
+    def PressureOutput(self) -> DevicesLogicType:
+        return DevicesLogicType(self._hash, "PressureOutput", self._name)
+
+    @property
+    def RatioCarbonDioxideOutput(self) -> DevicesLogicType:
+        return DevicesLogicType(self._hash, "RatioCarbonDioxideOutput", self._name)
+
+    @property
+    def RatioNitrogenOutput(self) -> DevicesLogicType:
+        return DevicesLogicType(self._hash, "RatioNitrogenOutput", self._name)
+
+    @property
+    def RatioNitrousOxideOutput(self) -> DevicesLogicType:
+        return DevicesLogicType(self._hash, "RatioNitrousOxideOutput", self._name)
+
+    @property
+    def RatioOxygenOutput(self) -> DevicesLogicType:
+        return DevicesLogicType(self._hash, "RatioOxygenOutput", self._name)
+
+    @property
+    def RatioPollutantOutput(self) -> DevicesLogicType:
+        return DevicesLogicType(self._hash, "RatioPollutantOutput", self._name)
+
+    @property
+    def RatioVolatilesOutput(self) -> DevicesLogicType:
+        return DevicesLogicType(self._hash, "RatioVolatilesOutput", self._name)
+
+    @property
+    def RatioWaterOutput(self) -> DevicesLogicType:
+        return DevicesLogicType(self._hash, "RatioWaterOutput", self._name)
+
+    @property
+    def TemperatureOutput(self) -> DevicesLogicType:
+        return DevicesLogicType(self._hash, "TemperatureOutput", self._name)
+
+    @property
+    def TotalMolesOutput(self) -> DevicesLogicType:
+        return DevicesLogicType(self._hash, "TotalMolesOutput", self._name)
 
 
 WaterWallCoolers: _WaterWallCoolers = _WaterWallCoolers()
@@ -6420,6 +7448,10 @@ class LogicSorter(
 ):
     _hash: int = 873418029
 
+    @property
+    def StackSize(self) -> float:
+        return DeviceLogicType(self, self._id, "StackSize")
+
 
 class _LogicSorters(
     _BaseStructures,
@@ -6435,6 +7467,10 @@ class _LogicSorters(
 
     def __getitem__(self, name: str | int | float) -> "_LogicSorters":
         return _LogicSorters(name)
+
+    @property
+    def StackSize(self) -> DevicesLogicType:
+        return DevicesLogicType(self._hash, "StackSize", self._name)
 
 
 LogicSorters: _LogicSorters = _LogicSorters()
@@ -6558,20 +7594,6 @@ class _LogicMathUnarys(_BaseStructures, _Errors, _Modes, _Powers, _SettingRs):
 LogicMathUnarys: _LogicMathUnarys = _LogicMathUnarys()
 
 
-class MediumConvectionRadiator(_BaseStructure, _Maximum, _Ratio, _SettingW):
-    _hash: int = -1918215845
-
-
-class _MediumConvectionRadiators(_BaseStructures, _Maximums, _Ratios, _SettingWs):
-    _hash: int = -1918215845
-
-    def __getitem__(self, name: str | int | float) -> "_MediumConvectionRadiators":
-        return _MediumConvectionRadiators(name)
-
-
-MediumConvectionRadiators: _MediumConvectionRadiators = _MediumConvectionRadiators()
-
-
 class PassiveLargeRadiatorGas(_BaseStructure, _Maximum, _Ratio, _SettingW):
     _hash: int = 2066977095
 
@@ -6584,6 +7606,20 @@ class _PassiveLargeRadiatorGass(_BaseStructures, _Maximums, _Ratios, _SettingWs)
 
 
 PassiveLargeRadiatorGass: _PassiveLargeRadiatorGass = _PassiveLargeRadiatorGass()
+
+
+class MediumConvectionRadiator(_BaseStructure, _Maximum, _Ratio, _SettingW):
+    _hash: int = -1918215845
+
+
+class _MediumConvectionRadiators(_BaseStructures, _Maximums, _Ratios, _SettingWs):
+    _hash: int = -1918215845
+
+    def __getitem__(self, name: str | int | float) -> "_MediumConvectionRadiators":
+        return _MediumConvectionRadiators(name)
+
+
+MediumConvectionRadiators: _MediumConvectionRadiators = _MediumConvectionRadiators()
 
 
 class MediumConvectionRadiatorLiquid(_BaseStructure, _Maximum, _Ratio, _SettingW):
@@ -6706,6 +7742,10 @@ class SatelliteDish(
         return DeviceLogicType(self, self._id, "SizeZ")
 
     @property
+    def StackSize(self) -> float:
+        return DeviceLogicType(self, self._id, "StackSize")
+
+    @property
     def TargetPadIndex(self) -> float:
         return DeviceLogicType(self, self._id, "TargetPadIndex")
 
@@ -6761,6 +7801,10 @@ class _SatelliteDishs(
     @property
     def SizeZ(self) -> DevicesLogicType:
         return DevicesLogicType(self._hash, "SizeZ", self._name)
+
+    @property
+    def StackSize(self) -> DevicesLogicType:
+        return DevicesLogicType(self._hash, "StackSize", self._name)
 
     @property
     def TargetPadIndex(self) -> DevicesLogicType:
@@ -7280,6 +8324,132 @@ class _OverheadShortLockers(_BaseStructures, _Locks, _Opens):
 OverheadShortLockers: _OverheadShortLockers = _OverheadShortLockers()
 
 
+class LogicPidController(_BaseStructure, _Error, _Power, _SettingR):
+    _hash: int = -1905534007
+
+    @property
+    def DerivativeGain(self) -> float:
+        return DeviceLogicType(self, self._id, "DerivativeGain")
+
+    @DerivativeGain.setter
+    def DerivativeGain(self, value: int | float):
+        pass
+
+    @property
+    def IntegralGain(self) -> float:
+        return DeviceLogicType(self, self._id, "IntegralGain")
+
+    @IntegralGain.setter
+    def IntegralGain(self, value: int | float):
+        pass
+
+    @property
+    def Maximum(self) -> float:
+        return DeviceLogicType(self, self._id, "Maximum")
+
+    @Maximum.setter
+    def Maximum(self, value: int | float):
+        pass
+
+    @property
+    def Minimum(self) -> float:
+        return DeviceLogicType(self, self._id, "Minimum")
+
+    @Minimum.setter
+    def Minimum(self, value: int | float):
+        pass
+
+    @property
+    def ProportionalGain(self) -> float:
+        return DeviceLogicType(self, self._id, "ProportionalGain")
+
+    @ProportionalGain.setter
+    def ProportionalGain(self, value: int | float):
+        pass
+
+    @property
+    def Reset(self) -> float:
+        return DeviceLogicType(self, self._id, "Reset")
+
+    @Reset.setter
+    def Reset(self, value: int | float):
+        pass
+
+    @property
+    def Setpoint(self) -> float:
+        return DeviceLogicType(self, self._id, "Setpoint")
+
+    @Setpoint.setter
+    def Setpoint(self, value: int | float):
+        pass
+
+
+class _LogicPidControllers(_BaseStructures, _Errors, _Powers, _SettingRs):
+    _hash: int = -1905534007
+
+    def __getitem__(self, name: str | int | float) -> "_LogicPidControllers":
+        return _LogicPidControllers(name)
+
+    @property
+    def DerivativeGain(self) -> DevicesLogicType:
+        return DevicesLogicType(self._hash, "DerivativeGain", self._name)
+
+    @DerivativeGain.setter
+    def DerivativeGain(self, value: int | float):
+        pass
+
+    @property
+    def IntegralGain(self) -> DevicesLogicType:
+        return DevicesLogicType(self._hash, "IntegralGain", self._name)
+
+    @IntegralGain.setter
+    def IntegralGain(self, value: int | float):
+        pass
+
+    @property
+    def Maximum(self) -> DevicesLogicType:
+        return DevicesLogicType(self._hash, "Maximum", self._name)
+
+    @Maximum.setter
+    def Maximum(self, value: int | float):
+        pass
+
+    @property
+    def Minimum(self) -> DevicesLogicType:
+        return DevicesLogicType(self._hash, "Minimum", self._name)
+
+    @Minimum.setter
+    def Minimum(self, value: int | float):
+        pass
+
+    @property
+    def ProportionalGain(self) -> DevicesLogicType:
+        return DevicesLogicType(self._hash, "ProportionalGain", self._name)
+
+    @ProportionalGain.setter
+    def ProportionalGain(self, value: int | float):
+        pass
+
+    @property
+    def Reset(self) -> DevicesLogicType:
+        return DevicesLogicType(self._hash, "Reset", self._name)
+
+    @Reset.setter
+    def Reset(self, value: int | float):
+        pass
+
+    @property
+    def Setpoint(self) -> DevicesLogicType:
+        return DevicesLogicType(self._hash, "Setpoint", self._name)
+
+    @Setpoint.setter
+    def Setpoint(self, value: int | float):
+        pass
+
+
+LogicPidControllers: _LogicPidControllers = _LogicPidControllers()
+
+
 class PipeAnalysizer(
     _BaseStructure,
     _BaseGas,
@@ -7293,6 +8463,10 @@ class PipeAnalysizer(
     _Volume,
 ):
     _hash: int = 435685051
+
+    @property
+    def NetworkFault(self) -> float:
+        return DeviceLogicType(self, self._id, "NetworkFault")
 
 
 class _PipeAnalysizers(
@@ -7311,6 +8485,10 @@ class _PipeAnalysizers(
 
     def __getitem__(self, name: str | int | float) -> "_PipeAnalysizers":
         return _PipeAnalysizers(name)
+
+    @property
+    def NetworkFault(self) -> DevicesLogicType:
+        return DevicesLogicType(self._hash, "NetworkFault", self._name)
 
 
 PipeAnalysizers: _PipeAnalysizers = _PipeAnalysizers()
@@ -7434,12 +8612,56 @@ class PoweredVent(_BaseStructure, _Error, _Lock, _Mode, _Power):
     _hash: int = 938836756
 
     @property
+    def CombustionOutput(self) -> float:
+        return DeviceLogicType(self, self._id, "CombustionOutput")
+
+    @property
     def PressureExternal(self) -> float:
         return DeviceLogicType(self, self._id, "PressureExternal")
 
     @PressureExternal.setter
     def PressureExternal(self, value: int | float):
         pass
+
+    @property
+    def PressureOutput(self) -> float:
+        return DeviceLogicType(self, self._id, "PressureOutput")
+
+    @property
+    def RatioCarbonDioxideOutput(self) -> float:
+        return DeviceLogicType(self, self._id, "RatioCarbonDioxideOutput")
+
+    @property
+    def RatioNitrogenOutput(self) -> float:
+        return DeviceLogicType(self, self._id, "RatioNitrogenOutput")
+
+    @property
+    def RatioNitrousOxideOutput(self) -> float:
+        return DeviceLogicType(self, self._id, "RatioNitrousOxideOutput")
+
+    @property
+    def RatioOxygenOutput(self) -> float:
+        return DeviceLogicType(self, self._id, "RatioOxygenOutput")
+
+    @property
+    def RatioPollutantOutput(self) -> float:
+        return DeviceLogicType(self, self._id, "RatioPollutantOutput")
+
+    @property
+    def RatioVolatilesOutput(self) -> float:
+        return DeviceLogicType(self, self._id, "RatioVolatilesOutput")
+
+    @property
+    def RatioWaterOutput(self) -> float:
+        return DeviceLogicType(self, self._id, "RatioWaterOutput")
+
+    @property
+    def TemperatureOutput(self) -> float:
+        return DeviceLogicType(self, self._id, "TemperatureOutput")
+
+    @property
+    def TotalMolesOutput(self) -> float:
+        return DeviceLogicType(self, self._id, "TotalMolesOutput")
 
 
 class _PoweredVents(_BaseStructures, _Errors, _Locks, _Modes, _Powers):
@@ -7449,12 +8671,56 @@ class _PoweredVents(_BaseStructures, _Errors, _Locks, _Modes, _Powers):
         return _PoweredVents(name)
 
     @property
+    def CombustionOutput(self) -> DevicesLogicType:
+        return DevicesLogicType(self._hash, "CombustionOutput", self._name)
+
+    @property
     def PressureExternal(self) -> DevicesLogicType:
         return DevicesLogicType(self._hash, "PressureExternal", self._name)
 
     @PressureExternal.setter
     def PressureExternal(self, value: int | float):
         pass
+
+    @property
+    def PressureOutput(self) -> DevicesLogicType:
+        return DevicesLogicType(self._hash, "PressureOutput", self._name)
+
+    @property
+    def RatioCarbonDioxideOutput(self) -> DevicesLogicType:
+        return DevicesLogicType(self._hash, "RatioCarbonDioxideOutput", self._name)
+
+    @property
+    def RatioNitrogenOutput(self) -> DevicesLogicType:
+        return DevicesLogicType(self._hash, "RatioNitrogenOutput", self._name)
+
+    @property
+    def RatioNitrousOxideOutput(self) -> DevicesLogicType:
+        return DevicesLogicType(self._hash, "RatioNitrousOxideOutput", self._name)
+
+    @property
+    def RatioOxygenOutput(self) -> DevicesLogicType:
+        return DevicesLogicType(self._hash, "RatioOxygenOutput", self._name)
+
+    @property
+    def RatioPollutantOutput(self) -> DevicesLogicType:
+        return DevicesLogicType(self._hash, "RatioPollutantOutput", self._name)
+
+    @property
+    def RatioVolatilesOutput(self) -> DevicesLogicType:
+        return DevicesLogicType(self._hash, "RatioVolatilesOutput", self._name)
+
+    @property
+    def RatioWaterOutput(self) -> DevicesLogicType:
+        return DevicesLogicType(self._hash, "RatioWaterOutput", self._name)
+
+    @property
+    def TemperatureOutput(self) -> DevicesLogicType:
+        return DevicesLogicType(self._hash, "TemperatureOutput", self._name)
+
+    @property
+    def TotalMolesOutput(self) -> DevicesLogicType:
+        return DevicesLogicType(self._hash, "TotalMolesOutput", self._name)
 
 
 PoweredVents: _PoweredVents = _PoweredVents()
@@ -7464,12 +8730,56 @@ class PoweredVentLarge(_BaseStructure, _Error, _Lock, _Mode, _Power):
     _hash: int = -785498334
 
     @property
+    def CombustionOutput(self) -> float:
+        return DeviceLogicType(self, self._id, "CombustionOutput")
+
+    @property
     def PressureExternal(self) -> float:
         return DeviceLogicType(self, self._id, "PressureExternal")
 
     @PressureExternal.setter
     def PressureExternal(self, value: int | float):
         pass
+
+    @property
+    def PressureOutput(self) -> float:
+        return DeviceLogicType(self, self._id, "PressureOutput")
+
+    @property
+    def RatioCarbonDioxideOutput(self) -> float:
+        return DeviceLogicType(self, self._id, "RatioCarbonDioxideOutput")
+
+    @property
+    def RatioNitrogenOutput(self) -> float:
+        return DeviceLogicType(self, self._id, "RatioNitrogenOutput")
+
+    @property
+    def RatioNitrousOxideOutput(self) -> float:
+        return DeviceLogicType(self, self._id, "RatioNitrousOxideOutput")
+
+    @property
+    def RatioOxygenOutput(self) -> float:
+        return DeviceLogicType(self, self._id, "RatioOxygenOutput")
+
+    @property
+    def RatioPollutantOutput(self) -> float:
+        return DeviceLogicType(self, self._id, "RatioPollutantOutput")
+
+    @property
+    def RatioVolatilesOutput(self) -> float:
+        return DeviceLogicType(self, self._id, "RatioVolatilesOutput")
+
+    @property
+    def RatioWaterOutput(self) -> float:
+        return DeviceLogicType(self, self._id, "RatioWaterOutput")
+
+    @property
+    def TemperatureOutput(self) -> float:
+        return DeviceLogicType(self, self._id, "TemperatureOutput")
+
+    @property
+    def TotalMolesOutput(self) -> float:
+        return DeviceLogicType(self, self._id, "TotalMolesOutput")
 
 
 class _PoweredVentLarges(_BaseStructures, _Errors, _Locks, _Modes, _Powers):
@@ -7479,12 +8789,56 @@ class _PoweredVentLarges(_BaseStructures, _Errors, _Locks, _Modes, _Powers):
         return _PoweredVentLarges(name)
 
     @property
+    def CombustionOutput(self) -> DevicesLogicType:
+        return DevicesLogicType(self._hash, "CombustionOutput", self._name)
+
+    @property
     def PressureExternal(self) -> DevicesLogicType:
         return DevicesLogicType(self._hash, "PressureExternal", self._name)
 
     @PressureExternal.setter
     def PressureExternal(self, value: int | float):
         pass
+
+    @property
+    def PressureOutput(self) -> DevicesLogicType:
+        return DevicesLogicType(self._hash, "PressureOutput", self._name)
+
+    @property
+    def RatioCarbonDioxideOutput(self) -> DevicesLogicType:
+        return DevicesLogicType(self._hash, "RatioCarbonDioxideOutput", self._name)
+
+    @property
+    def RatioNitrogenOutput(self) -> DevicesLogicType:
+        return DevicesLogicType(self._hash, "RatioNitrogenOutput", self._name)
+
+    @property
+    def RatioNitrousOxideOutput(self) -> DevicesLogicType:
+        return DevicesLogicType(self._hash, "RatioNitrousOxideOutput", self._name)
+
+    @property
+    def RatioOxygenOutput(self) -> DevicesLogicType:
+        return DevicesLogicType(self._hash, "RatioOxygenOutput", self._name)
+
+    @property
+    def RatioPollutantOutput(self) -> DevicesLogicType:
+        return DevicesLogicType(self._hash, "RatioPollutantOutput", self._name)
+
+    @property
+    def RatioVolatilesOutput(self) -> DevicesLogicType:
+        return DevicesLogicType(self._hash, "RatioVolatilesOutput", self._name)
+
+    @property
+    def RatioWaterOutput(self) -> DevicesLogicType:
+        return DevicesLogicType(self._hash, "RatioWaterOutput", self._name)
+
+    @property
+    def TemperatureOutput(self) -> DevicesLogicType:
+        return DevicesLogicType(self._hash, "TemperatureOutput", self._name)
+
+    @property
+    def TotalMolesOutput(self) -> DevicesLogicType:
+        return DevicesLogicType(self._hash, "TotalMolesOutput", self._name)
 
 
 PoweredVentLarges: _PoweredVentLarges = _PoweredVentLarges()
@@ -8026,6 +9380,10 @@ class RocketAvionics(
         return DeviceLogicType(self, self._id, "Size")
 
     @property
+    def StackSize(self) -> float:
+        return DeviceLogicType(self, self._id, "StackSize")
+
+    @property
     def Survey(self) -> float:
         return DeviceLogicType(self, self._id, "Survey")
 
@@ -8179,6 +9537,10 @@ class _RocketAvionicss(
         return DevicesLogicType(self._hash, "Size", self._name)
 
     @property
+    def StackSize(self) -> DevicesLogicType:
+        return DevicesLogicType(self._hash, "StackSize", self._name)
+
+    @property
     def Survey(self) -> DevicesLogicType:
         return DevicesLogicType(self._hash, "Survey", self._name)
 
@@ -8218,20 +9580,6 @@ class _RocketAvionicss(
 RocketAvionicss: _RocketAvionicss = _RocketAvionicss()
 
 
-class RocketCargoBay(_BaseStructure, _Error, _Lock, _Power):
-    _hash: int = -682274666
-
-
-class _RocketCargoBays(_BaseStructures, _Errors, _Locks, _Powers):
-    _hash: int = -682274666
-
-    def __getitem__(self, name: str | int | float) -> "_RocketCargoBays":
-        return _RocketCargoBays(name)
-
-
-RocketCargoBays: _RocketCargoBays = _RocketCargoBays()
-
-
 class RocketCelestialTracker(_BaseStructure, _Error, _Power, _Vertical):
     _hash: int = 997453927
 
@@ -8246,6 +9594,10 @@ class RocketCelestialTracker(_BaseStructure, _Error, _Power, _Vertical):
     @Index.setter
     def Index(self, value: int | float):
         pass
+
+    @property
+    def StackSize(self) -> float:
+        return DeviceLogicType(self, self._id, "StackSize")
 
 
 class _RocketCelestialTrackers(_BaseStructures, _Errors, _Powers, _Verticals):
@@ -8266,11 +9618,15 @@ class _RocketCelestialTrackers(_BaseStructures, _Errors, _Powers, _Verticals):
     def Index(self, value: int | float):
         pass
 
+    @property
+    def StackSize(self) -> DevicesLogicType:
+        return DevicesLogicType(self._hash, "StackSize", self._name)
+
 
 RocketCelestialTrackers: _RocketCelestialTrackers = _RocketCelestialTrackers()
 
 
-class RocketCircuitHousing(_BaseStructure, _Error, _Power, _SettingW):
+class RocketCircuitHousing(_BaseStructure, _Error, _Mode, _Power, _SettingW):
     _hash: int = 150135861
 
     @property
@@ -8281,8 +9637,12 @@ class RocketCircuitHousing(_BaseStructure, _Error, _Power, _SettingW):
     def LineNumber(self, value: int | float):
         pass
 
+    @property
+    def StackSize(self) -> float:
+        return DeviceLogicType(self, self._id, "StackSize")
 
-class _RocketCircuitHousings(_BaseStructures, _Errors, _Powers, _SettingWs):
+
+class _RocketCircuitHousings(_BaseStructures, _Errors, _Modes, _Powers, _SettingWs):
     _hash: int = 150135861
 
     def __getitem__(self, name: str | int | float) -> "_RocketCircuitHousings":
@@ -8296,6 +9656,10 @@ class _RocketCircuitHousings(_BaseStructures, _Errors, _Powers, _SettingWs):
     def LineNumber(self, value: int | float):
         pass
 
+    @property
+    def StackSize(self) -> DevicesLogicType:
+        return DevicesLogicType(self._hash, "StackSize", self._name)
+
 
 RocketCircuitHousings: _RocketCircuitHousings = _RocketCircuitHousings()
 
@@ -8304,6 +9668,50 @@ class RocketEngineTiny(
     _BaseStructure, _Error, _Lock, _Maximum, _Power, _Ratio, _SettingW
 ):
     _hash: int = 178472613
+
+    @property
+    def CombustionOutput(self) -> float:
+        return DeviceLogicType(self, self._id, "CombustionOutput")
+
+    @property
+    def PressureOutput(self) -> float:
+        return DeviceLogicType(self, self._id, "PressureOutput")
+
+    @property
+    def RatioCarbonDioxideOutput(self) -> float:
+        return DeviceLogicType(self, self._id, "RatioCarbonDioxideOutput")
+
+    @property
+    def RatioNitrogenOutput(self) -> float:
+        return DeviceLogicType(self, self._id, "RatioNitrogenOutput")
+
+    @property
+    def RatioNitrousOxideOutput(self) -> float:
+        return DeviceLogicType(self, self._id, "RatioNitrousOxideOutput")
+
+    @property
+    def RatioOxygenOutput(self) -> float:
+        return DeviceLogicType(self, self._id, "RatioOxygenOutput")
+
+    @property
+    def RatioPollutantOutput(self) -> float:
+        return DeviceLogicType(self, self._id, "RatioPollutantOutput")
+
+    @property
+    def RatioVolatilesOutput(self) -> float:
+        return DeviceLogicType(self, self._id, "RatioVolatilesOutput")
+
+    @property
+    def RatioWaterOutput(self) -> float:
+        return DeviceLogicType(self, self._id, "RatioWaterOutput")
+
+    @property
+    def TemperatureOutput(self) -> float:
+        return DeviceLogicType(self, self._id, "TemperatureOutput")
+
+    @property
+    def TotalMolesOutput(self) -> float:
+        return DeviceLogicType(self, self._id, "TotalMolesOutput")
 
 
 class _RocketEngineTinys(
@@ -8314,8 +9722,218 @@ class _RocketEngineTinys(
     def __getitem__(self, name: str | int | float) -> "_RocketEngineTinys":
         return _RocketEngineTinys(name)
 
+    @property
+    def CombustionOutput(self) -> DevicesLogicType:
+        return DevicesLogicType(self._hash, "CombustionOutput", self._name)
+
+    @property
+    def PressureOutput(self) -> DevicesLogicType:
+        return DevicesLogicType(self._hash, "PressureOutput", self._name)
+
+    @property
+    def RatioCarbonDioxideOutput(self) -> DevicesLogicType:
+        return DevicesLogicType(self._hash, "RatioCarbonDioxideOutput", self._name)
+
+    @property
+    def RatioNitrogenOutput(self) -> DevicesLogicType:
+        return DevicesLogicType(self._hash, "RatioNitrogenOutput", self._name)
+
+    @property
+    def RatioNitrousOxideOutput(self) -> DevicesLogicType:
+        return DevicesLogicType(self._hash, "RatioNitrousOxideOutput", self._name)
+
+    @property
+    def RatioOxygenOutput(self) -> DevicesLogicType:
+        return DevicesLogicType(self._hash, "RatioOxygenOutput", self._name)
+
+    @property
+    def RatioPollutantOutput(self) -> DevicesLogicType:
+        return DevicesLogicType(self._hash, "RatioPollutantOutput", self._name)
+
+    @property
+    def RatioVolatilesOutput(self) -> DevicesLogicType:
+        return DevicesLogicType(self._hash, "RatioVolatilesOutput", self._name)
+
+    @property
+    def RatioWaterOutput(self) -> DevicesLogicType:
+        return DevicesLogicType(self._hash, "RatioWaterOutput", self._name)
+
+    @property
+    def TemperatureOutput(self) -> DevicesLogicType:
+        return DevicesLogicType(self._hash, "TemperatureOutput", self._name)
+
+    @property
+    def TotalMolesOutput(self) -> DevicesLogicType:
+        return DevicesLogicType(self._hash, "TotalMolesOutput", self._name)
+
 
 RocketEngineTinys: _RocketEngineTinys = _RocketEngineTinys()
+
+
+class RocketGasCollector(
+    _BaseStructure,
+    _BaseGas,
+    _Combustion,
+    _Hydrogen,
+    _Lock,
+    _PollWater,
+    _Power,
+    _Temperature,
+):
+    _hash: int = -1720125735
+
+
+class _RocketGasCollectors(
+    _BaseStructures,
+    _BaseGass,
+    _Combustions,
+    _Hydrogens,
+    _Locks,
+    _PollWaters,
+    _Powers,
+    _Temperatures,
+):
+    _hash: int = -1720125735
+
+    def __getitem__(self, name: str | int | float) -> "_RocketGasCollectors":
+        return _RocketGasCollectors(name)
+
+
+RocketGasCollectors: _RocketGasCollectors = _RocketGasCollectors()
+
+
+class RocketFiltrationGas(
+    _BaseStructure,
+    _BaseGasInput,
+    _BaseGasOutput,
+    _BaseGasOutput2,
+    _Error,
+    _Lock,
+    _Maximum,
+    _Mode,
+    _Power,
+    _Ratio,
+    _SettingW,
+):
+    _hash: int = -1061194321
+
+    @property
+    def CombustionInput(self) -> float:
+        return DeviceLogicType(self, self._id, "CombustionInput")
+
+    @property
+    def CombustionOutput(self) -> float:
+        return DeviceLogicType(self, self._id, "CombustionOutput")
+
+    @property
+    def CombustionOutput2(self) -> float:
+        return DeviceLogicType(self, self._id, "CombustionOutput2")
+
+    @property
+    def PressureInput(self) -> float:
+        return DeviceLogicType(self, self._id, "PressureInput")
+
+    @property
+    def PressureOutput(self) -> float:
+        return DeviceLogicType(self, self._id, "PressureOutput")
+
+    @property
+    def PressureOutput2(self) -> float:
+        return DeviceLogicType(self, self._id, "PressureOutput2")
+
+    @property
+    def TemperatureInput(self) -> float:
+        return DeviceLogicType(self, self._id, "TemperatureInput")
+
+    @property
+    def TemperatureOutput(self) -> float:
+        return DeviceLogicType(self, self._id, "TemperatureOutput")
+
+    @property
+    def TemperatureOutput2(self) -> float:
+        return DeviceLogicType(self, self._id, "TemperatureOutput2")
+
+    @property
+    def TotalMolesInput(self) -> float:
+        return DeviceLogicType(self, self._id, "TotalMolesInput")
+
+    @property
+    def TotalMolesOutput(self) -> float:
+        return DeviceLogicType(self, self._id, "TotalMolesOutput")
+
+    @property
+    def TotalMolesOutput2(self) -> float:
+        return DeviceLogicType(self, self._id, "TotalMolesOutput2")
+
+
+class _RocketFiltrationGass(
+    _BaseStructures,
+    _BaseGasInputs,
+    _BaseGasOutput2s,
+    _BaseGasOutputs,
+    _Errors,
+    _Locks,
+    _Maximums,
+    _Modes,
+    _Powers,
+    _Ratios,
+    _SettingWs,
+):
+    _hash: int = -1061194321
+
+    def __getitem__(self, name: str | int | float) -> "_RocketFiltrationGass":
+        return _RocketFiltrationGass(name)
+
+    @property
+    def CombustionInput(self) -> DevicesLogicType:
+        return DevicesLogicType(self._hash, "CombustionInput", self._name)
+
+    @property
+    def CombustionOutput(self) -> DevicesLogicType:
+        return DevicesLogicType(self._hash, "CombustionOutput", self._name)
+
+    @property
+    def CombustionOutput2(self) -> DevicesLogicType:
+        return DevicesLogicType(self._hash, "CombustionOutput2", self._name)
+
+    @property
+    def PressureInput(self) -> DevicesLogicType:
+        return DevicesLogicType(self._hash, "PressureInput", self._name)
+
+    @property
+    def PressureOutput(self) -> DevicesLogicType:
+        return DevicesLogicType(self._hash, "PressureOutput", self._name)
+
+    @property
+    def PressureOutput2(self) -> DevicesLogicType:
+        return DevicesLogicType(self._hash, "PressureOutput2", self._name)
+
+    @property
+    def TemperatureInput(self) -> DevicesLogicType:
+        return DevicesLogicType(self._hash, "TemperatureInput", self._name)
+
+    @property
+    def TemperatureOutput(self) -> DevicesLogicType:
+        return DevicesLogicType(self._hash, "TemperatureOutput", self._name)
+
+    @property
+    def TemperatureOutput2(self) -> DevicesLogicType:
+        return DevicesLogicType(self._hash, "TemperatureOutput2", self._name)
+
+    @property
+    def TotalMolesInput(self) -> DevicesLogicType:
+        return DevicesLogicType(self._hash, "TotalMolesInput", self._name)
+
+    @property
+    def TotalMolesOutput(self) -> DevicesLogicType:
+        return DevicesLogicType(self._hash, "TotalMolesOutput", self._name)
+
+    @property
+    def TotalMolesOutput2(self) -> DevicesLogicType:
+        return DevicesLogicType(self._hash, "TotalMolesOutput2", self._name)
+
+
+RocketFiltrationGass: _RocketFiltrationGass = _RocketFiltrationGass()
 
 
 class RocketManufactory(
@@ -8336,6 +9954,10 @@ class RocketManufactory(
     @property
     def CompletionRatio(self) -> float:
         return DeviceLogicType(self, self._id, "CompletionRatio")
+
+    @property
+    def StackSize(self) -> float:
+        return DeviceLogicType(self, self._id, "StackSize")
 
 
 class _RocketManufactorys(
@@ -8359,6 +9981,10 @@ class _RocketManufactorys(
     @property
     def CompletionRatio(self) -> DevicesLogicType:
         return DevicesLogicType(self._hash, "CompletionRatio", self._name)
+
+    @property
+    def StackSize(self) -> DevicesLogicType:
+        return DevicesLogicType(self._hash, "StackSize", self._name)
 
 
 RocketManufactorys: _RocketManufactorys = _RocketManufactorys()
@@ -8505,6 +10131,10 @@ class SecurityPrinter(
     def CompletionRatio(self) -> float:
         return DeviceLogicType(self, self._id, "CompletionRatio")
 
+    @property
+    def StackSize(self) -> float:
+        return DeviceLogicType(self, self._id, "StackSize")
+
 
 class _SecurityPrinters(
     _BaseStructures,
@@ -8527,6 +10157,10 @@ class _SecurityPrinters(
     @property
     def CompletionRatio(self) -> DevicesLogicType:
         return DevicesLogicType(self._hash, "CompletionRatio", self._name)
+
+    @property
+    def StackSize(self) -> DevicesLogicType:
+        return DevicesLogicType(self._hash, "StackSize", self._name)
 
 
 SecurityPrinters: _SecurityPrinters = _SecurityPrinters()
@@ -8989,6 +10623,50 @@ class TankSmall(
 ):
     _hash: int = 1013514688
 
+    @property
+    def CombustionOutput(self) -> float:
+        return DeviceLogicType(self, self._id, "CombustionOutput")
+
+    @property
+    def PressureOutput(self) -> float:
+        return DeviceLogicType(self, self._id, "PressureOutput")
+
+    @property
+    def RatioCarbonDioxideOutput(self) -> float:
+        return DeviceLogicType(self, self._id, "RatioCarbonDioxideOutput")
+
+    @property
+    def RatioNitrogenOutput(self) -> float:
+        return DeviceLogicType(self, self._id, "RatioNitrogenOutput")
+
+    @property
+    def RatioNitrousOxideOutput(self) -> float:
+        return DeviceLogicType(self, self._id, "RatioNitrousOxideOutput")
+
+    @property
+    def RatioOxygenOutput(self) -> float:
+        return DeviceLogicType(self, self._id, "RatioOxygenOutput")
+
+    @property
+    def RatioPollutantOutput(self) -> float:
+        return DeviceLogicType(self, self._id, "RatioPollutantOutput")
+
+    @property
+    def RatioVolatilesOutput(self) -> float:
+        return DeviceLogicType(self, self._id, "RatioVolatilesOutput")
+
+    @property
+    def RatioWaterOutput(self) -> float:
+        return DeviceLogicType(self, self._id, "RatioWaterOutput")
+
+    @property
+    def TemperatureOutput(self) -> float:
+        return DeviceLogicType(self, self._id, "TemperatureOutput")
+
+    @property
+    def TotalMolesOutput(self) -> float:
+        return DeviceLogicType(self, self._id, "TotalMolesOutput")
+
 
 class _TankSmalls(
     _BaseStructures,
@@ -9007,6 +10685,50 @@ class _TankSmalls(
 
     def __getitem__(self, name: str | int | float) -> "_TankSmalls":
         return _TankSmalls(name)
+
+    @property
+    def CombustionOutput(self) -> DevicesLogicType:
+        return DevicesLogicType(self._hash, "CombustionOutput", self._name)
+
+    @property
+    def PressureOutput(self) -> DevicesLogicType:
+        return DevicesLogicType(self._hash, "PressureOutput", self._name)
+
+    @property
+    def RatioCarbonDioxideOutput(self) -> DevicesLogicType:
+        return DevicesLogicType(self._hash, "RatioCarbonDioxideOutput", self._name)
+
+    @property
+    def RatioNitrogenOutput(self) -> DevicesLogicType:
+        return DevicesLogicType(self._hash, "RatioNitrogenOutput", self._name)
+
+    @property
+    def RatioNitrousOxideOutput(self) -> DevicesLogicType:
+        return DevicesLogicType(self._hash, "RatioNitrousOxideOutput", self._name)
+
+    @property
+    def RatioOxygenOutput(self) -> DevicesLogicType:
+        return DevicesLogicType(self._hash, "RatioOxygenOutput", self._name)
+
+    @property
+    def RatioPollutantOutput(self) -> DevicesLogicType:
+        return DevicesLogicType(self._hash, "RatioPollutantOutput", self._name)
+
+    @property
+    def RatioVolatilesOutput(self) -> DevicesLogicType:
+        return DevicesLogicType(self._hash, "RatioVolatilesOutput", self._name)
+
+    @property
+    def RatioWaterOutput(self) -> DevicesLogicType:
+        return DevicesLogicType(self._hash, "RatioWaterOutput", self._name)
+
+    @property
+    def TemperatureOutput(self) -> DevicesLogicType:
+        return DevicesLogicType(self._hash, "TemperatureOutput", self._name)
+
+    @property
+    def TotalMolesOutput(self) -> DevicesLogicType:
+        return DevicesLogicType(self._hash, "TotalMolesOutput", self._name)
 
 
 TankSmalls: _TankSmalls = _TankSmalls()
@@ -9027,6 +10749,50 @@ class TankSmallAir(
 ):
     _hash: int = 955744474
 
+    @property
+    def CombustionOutput(self) -> float:
+        return DeviceLogicType(self, self._id, "CombustionOutput")
+
+    @property
+    def PressureOutput(self) -> float:
+        return DeviceLogicType(self, self._id, "PressureOutput")
+
+    @property
+    def RatioCarbonDioxideOutput(self) -> float:
+        return DeviceLogicType(self, self._id, "RatioCarbonDioxideOutput")
+
+    @property
+    def RatioNitrogenOutput(self) -> float:
+        return DeviceLogicType(self, self._id, "RatioNitrogenOutput")
+
+    @property
+    def RatioNitrousOxideOutput(self) -> float:
+        return DeviceLogicType(self, self._id, "RatioNitrousOxideOutput")
+
+    @property
+    def RatioOxygenOutput(self) -> float:
+        return DeviceLogicType(self, self._id, "RatioOxygenOutput")
+
+    @property
+    def RatioPollutantOutput(self) -> float:
+        return DeviceLogicType(self, self._id, "RatioPollutantOutput")
+
+    @property
+    def RatioVolatilesOutput(self) -> float:
+        return DeviceLogicType(self, self._id, "RatioVolatilesOutput")
+
+    @property
+    def RatioWaterOutput(self) -> float:
+        return DeviceLogicType(self, self._id, "RatioWaterOutput")
+
+    @property
+    def TemperatureOutput(self) -> float:
+        return DeviceLogicType(self, self._id, "TemperatureOutput")
+
+    @property
+    def TotalMolesOutput(self) -> float:
+        return DeviceLogicType(self, self._id, "TotalMolesOutput")
+
 
 class _TankSmallAirs(
     _BaseStructures,
@@ -9045,6 +10811,50 @@ class _TankSmallAirs(
 
     def __getitem__(self, name: str | int | float) -> "_TankSmallAirs":
         return _TankSmallAirs(name)
+
+    @property
+    def CombustionOutput(self) -> DevicesLogicType:
+        return DevicesLogicType(self._hash, "CombustionOutput", self._name)
+
+    @property
+    def PressureOutput(self) -> DevicesLogicType:
+        return DevicesLogicType(self._hash, "PressureOutput", self._name)
+
+    @property
+    def RatioCarbonDioxideOutput(self) -> DevicesLogicType:
+        return DevicesLogicType(self._hash, "RatioCarbonDioxideOutput", self._name)
+
+    @property
+    def RatioNitrogenOutput(self) -> DevicesLogicType:
+        return DevicesLogicType(self._hash, "RatioNitrogenOutput", self._name)
+
+    @property
+    def RatioNitrousOxideOutput(self) -> DevicesLogicType:
+        return DevicesLogicType(self._hash, "RatioNitrousOxideOutput", self._name)
+
+    @property
+    def RatioOxygenOutput(self) -> DevicesLogicType:
+        return DevicesLogicType(self._hash, "RatioOxygenOutput", self._name)
+
+    @property
+    def RatioPollutantOutput(self) -> DevicesLogicType:
+        return DevicesLogicType(self._hash, "RatioPollutantOutput", self._name)
+
+    @property
+    def RatioVolatilesOutput(self) -> DevicesLogicType:
+        return DevicesLogicType(self._hash, "RatioVolatilesOutput", self._name)
+
+    @property
+    def RatioWaterOutput(self) -> DevicesLogicType:
+        return DevicesLogicType(self._hash, "RatioWaterOutput", self._name)
+
+    @property
+    def TemperatureOutput(self) -> DevicesLogicType:
+        return DevicesLogicType(self._hash, "TemperatureOutput", self._name)
+
+    @property
+    def TotalMolesOutput(self) -> DevicesLogicType:
+        return DevicesLogicType(self._hash, "TotalMolesOutput", self._name)
 
 
 TankSmallAirs: _TankSmallAirs = _TankSmallAirs()
@@ -9065,6 +10875,50 @@ class TankSmallFuel(
 ):
     _hash: int = 2102454415
 
+    @property
+    def CombustionOutput(self) -> float:
+        return DeviceLogicType(self, self._id, "CombustionOutput")
+
+    @property
+    def PressureOutput(self) -> float:
+        return DeviceLogicType(self, self._id, "PressureOutput")
+
+    @property
+    def RatioCarbonDioxideOutput(self) -> float:
+        return DeviceLogicType(self, self._id, "RatioCarbonDioxideOutput")
+
+    @property
+    def RatioNitrogenOutput(self) -> float:
+        return DeviceLogicType(self, self._id, "RatioNitrogenOutput")
+
+    @property
+    def RatioNitrousOxideOutput(self) -> float:
+        return DeviceLogicType(self, self._id, "RatioNitrousOxideOutput")
+
+    @property
+    def RatioOxygenOutput(self) -> float:
+        return DeviceLogicType(self, self._id, "RatioOxygenOutput")
+
+    @property
+    def RatioPollutantOutput(self) -> float:
+        return DeviceLogicType(self, self._id, "RatioPollutantOutput")
+
+    @property
+    def RatioVolatilesOutput(self) -> float:
+        return DeviceLogicType(self, self._id, "RatioVolatilesOutput")
+
+    @property
+    def RatioWaterOutput(self) -> float:
+        return DeviceLogicType(self, self._id, "RatioWaterOutput")
+
+    @property
+    def TemperatureOutput(self) -> float:
+        return DeviceLogicType(self, self._id, "TemperatureOutput")
+
+    @property
+    def TotalMolesOutput(self) -> float:
+        return DeviceLogicType(self, self._id, "TotalMolesOutput")
+
 
 class _TankSmallFuels(
     _BaseStructures,
@@ -9083,6 +10937,50 @@ class _TankSmallFuels(
 
     def __getitem__(self, name: str | int | float) -> "_TankSmallFuels":
         return _TankSmallFuels(name)
+
+    @property
+    def CombustionOutput(self) -> DevicesLogicType:
+        return DevicesLogicType(self._hash, "CombustionOutput", self._name)
+
+    @property
+    def PressureOutput(self) -> DevicesLogicType:
+        return DevicesLogicType(self._hash, "PressureOutput", self._name)
+
+    @property
+    def RatioCarbonDioxideOutput(self) -> DevicesLogicType:
+        return DevicesLogicType(self._hash, "RatioCarbonDioxideOutput", self._name)
+
+    @property
+    def RatioNitrogenOutput(self) -> DevicesLogicType:
+        return DevicesLogicType(self._hash, "RatioNitrogenOutput", self._name)
+
+    @property
+    def RatioNitrousOxideOutput(self) -> DevicesLogicType:
+        return DevicesLogicType(self._hash, "RatioNitrousOxideOutput", self._name)
+
+    @property
+    def RatioOxygenOutput(self) -> DevicesLogicType:
+        return DevicesLogicType(self._hash, "RatioOxygenOutput", self._name)
+
+    @property
+    def RatioPollutantOutput(self) -> DevicesLogicType:
+        return DevicesLogicType(self._hash, "RatioPollutantOutput", self._name)
+
+    @property
+    def RatioVolatilesOutput(self) -> DevicesLogicType:
+        return DevicesLogicType(self._hash, "RatioVolatilesOutput", self._name)
+
+    @property
+    def RatioWaterOutput(self) -> DevicesLogicType:
+        return DevicesLogicType(self._hash, "RatioWaterOutput", self._name)
+
+    @property
+    def TemperatureOutput(self) -> DevicesLogicType:
+        return DevicesLogicType(self._hash, "TemperatureOutput", self._name)
+
+    @property
+    def TotalMolesOutput(self) -> DevicesLogicType:
+        return DevicesLogicType(self._hash, "TotalMolesOutput", self._name)
 
 
 TankSmallFuels: _TankSmallFuels = _TankSmallFuels()
@@ -9557,6 +11455,50 @@ class TankBigInsulated(
 ):
     _hash: int = 1280378227
 
+    @property
+    def CombustionOutput(self) -> float:
+        return DeviceLogicType(self, self._id, "CombustionOutput")
+
+    @property
+    def PressureOutput(self) -> float:
+        return DeviceLogicType(self, self._id, "PressureOutput")
+
+    @property
+    def RatioCarbonDioxideOutput(self) -> float:
+        return DeviceLogicType(self, self._id, "RatioCarbonDioxideOutput")
+
+    @property
+    def RatioNitrogenOutput(self) -> float:
+        return DeviceLogicType(self, self._id, "RatioNitrogenOutput")
+
+    @property
+    def RatioNitrousOxideOutput(self) -> float:
+        return DeviceLogicType(self, self._id, "RatioNitrousOxideOutput")
+
+    @property
+    def RatioOxygenOutput(self) -> float:
+        return DeviceLogicType(self, self._id, "RatioOxygenOutput")
+
+    @property
+    def RatioPollutantOutput(self) -> float:
+        return DeviceLogicType(self, self._id, "RatioPollutantOutput")
+
+    @property
+    def RatioVolatilesOutput(self) -> float:
+        return DeviceLogicType(self, self._id, "RatioVolatilesOutput")
+
+    @property
+    def RatioWaterOutput(self) -> float:
+        return DeviceLogicType(self, self._id, "RatioWaterOutput")
+
+    @property
+    def TemperatureOutput(self) -> float:
+        return DeviceLogicType(self, self._id, "TemperatureOutput")
+
+    @property
+    def TotalMolesOutput(self) -> float:
+        return DeviceLogicType(self, self._id, "TotalMolesOutput")
+
 
 class _TankBigInsulateds(
     _BaseStructures,
@@ -9575,6 +11517,50 @@ class _TankBigInsulateds(
 
     def __getitem__(self, name: str | int | float) -> "_TankBigInsulateds":
         return _TankBigInsulateds(name)
+
+    @property
+    def CombustionOutput(self) -> DevicesLogicType:
+        return DevicesLogicType(self._hash, "CombustionOutput", self._name)
+
+    @property
+    def PressureOutput(self) -> DevicesLogicType:
+        return DevicesLogicType(self._hash, "PressureOutput", self._name)
+
+    @property
+    def RatioCarbonDioxideOutput(self) -> DevicesLogicType:
+        return DevicesLogicType(self._hash, "RatioCarbonDioxideOutput", self._name)
+
+    @property
+    def RatioNitrogenOutput(self) -> DevicesLogicType:
+        return DevicesLogicType(self._hash, "RatioNitrogenOutput", self._name)
+
+    @property
+    def RatioNitrousOxideOutput(self) -> DevicesLogicType:
+        return DevicesLogicType(self._hash, "RatioNitrousOxideOutput", self._name)
+
+    @property
+    def RatioOxygenOutput(self) -> DevicesLogicType:
+        return DevicesLogicType(self._hash, "RatioOxygenOutput", self._name)
+
+    @property
+    def RatioPollutantOutput(self) -> DevicesLogicType:
+        return DevicesLogicType(self._hash, "RatioPollutantOutput", self._name)
+
+    @property
+    def RatioVolatilesOutput(self) -> DevicesLogicType:
+        return DevicesLogicType(self._hash, "RatioVolatilesOutput", self._name)
+
+    @property
+    def RatioWaterOutput(self) -> DevicesLogicType:
+        return DevicesLogicType(self._hash, "RatioWaterOutput", self._name)
+
+    @property
+    def TemperatureOutput(self) -> DevicesLogicType:
+        return DevicesLogicType(self._hash, "TemperatureOutput", self._name)
+
+    @property
+    def TotalMolesOutput(self) -> DevicesLogicType:
+        return DevicesLogicType(self._hash, "TotalMolesOutput", self._name)
 
 
 TankBigInsulateds: _TankBigInsulateds = _TankBigInsulateds()
@@ -9595,6 +11581,50 @@ class TankSmallInsulated(
 ):
     _hash: int = 272136332
 
+    @property
+    def CombustionOutput(self) -> float:
+        return DeviceLogicType(self, self._id, "CombustionOutput")
+
+    @property
+    def PressureOutput(self) -> float:
+        return DeviceLogicType(self, self._id, "PressureOutput")
+
+    @property
+    def RatioCarbonDioxideOutput(self) -> float:
+        return DeviceLogicType(self, self._id, "RatioCarbonDioxideOutput")
+
+    @property
+    def RatioNitrogenOutput(self) -> float:
+        return DeviceLogicType(self, self._id, "RatioNitrogenOutput")
+
+    @property
+    def RatioNitrousOxideOutput(self) -> float:
+        return DeviceLogicType(self, self._id, "RatioNitrousOxideOutput")
+
+    @property
+    def RatioOxygenOutput(self) -> float:
+        return DeviceLogicType(self, self._id, "RatioOxygenOutput")
+
+    @property
+    def RatioPollutantOutput(self) -> float:
+        return DeviceLogicType(self, self._id, "RatioPollutantOutput")
+
+    @property
+    def RatioVolatilesOutput(self) -> float:
+        return DeviceLogicType(self, self._id, "RatioVolatilesOutput")
+
+    @property
+    def RatioWaterOutput(self) -> float:
+        return DeviceLogicType(self, self._id, "RatioWaterOutput")
+
+    @property
+    def TemperatureOutput(self) -> float:
+        return DeviceLogicType(self, self._id, "TemperatureOutput")
+
+    @property
+    def TotalMolesOutput(self) -> float:
+        return DeviceLogicType(self, self._id, "TotalMolesOutput")
+
 
 class _TankSmallInsulateds(
     _BaseStructures,
@@ -9613,6 +11643,50 @@ class _TankSmallInsulateds(
 
     def __getitem__(self, name: str | int | float) -> "_TankSmallInsulateds":
         return _TankSmallInsulateds(name)
+
+    @property
+    def CombustionOutput(self) -> DevicesLogicType:
+        return DevicesLogicType(self._hash, "CombustionOutput", self._name)
+
+    @property
+    def PressureOutput(self) -> DevicesLogicType:
+        return DevicesLogicType(self._hash, "PressureOutput", self._name)
+
+    @property
+    def RatioCarbonDioxideOutput(self) -> DevicesLogicType:
+        return DevicesLogicType(self._hash, "RatioCarbonDioxideOutput", self._name)
+
+    @property
+    def RatioNitrogenOutput(self) -> DevicesLogicType:
+        return DevicesLogicType(self._hash, "RatioNitrogenOutput", self._name)
+
+    @property
+    def RatioNitrousOxideOutput(self) -> DevicesLogicType:
+        return DevicesLogicType(self._hash, "RatioNitrousOxideOutput", self._name)
+
+    @property
+    def RatioOxygenOutput(self) -> DevicesLogicType:
+        return DevicesLogicType(self._hash, "RatioOxygenOutput", self._name)
+
+    @property
+    def RatioPollutantOutput(self) -> DevicesLogicType:
+        return DevicesLogicType(self._hash, "RatioPollutantOutput", self._name)
+
+    @property
+    def RatioVolatilesOutput(self) -> DevicesLogicType:
+        return DevicesLogicType(self._hash, "RatioVolatilesOutput", self._name)
+
+    @property
+    def RatioWaterOutput(self) -> DevicesLogicType:
+        return DevicesLogicType(self._hash, "RatioWaterOutput", self._name)
+
+    @property
+    def TemperatureOutput(self) -> DevicesLogicType:
+        return DevicesLogicType(self._hash, "TemperatureOutput", self._name)
+
+    @property
+    def TotalMolesOutput(self) -> DevicesLogicType:
+        return DevicesLogicType(self._hash, "TotalMolesOutput", self._name)
 
 
 TankSmallInsulateds: _TankSmallInsulateds = _TankSmallInsulateds()
@@ -9748,52 +11822,6 @@ class _GroundBasedTelescopes(
 GroundBasedTelescopes: _GroundBasedTelescopes = _GroundBasedTelescopes()
 
 
-class TerraformingManufactory(
-    _BaseStructure,
-    _Activate,
-    _ClearMemory,
-    _Error,
-    _ExportCount,
-    _ImportCount,
-    _Lock,
-    _Open,
-    _Power,
-    _Reagents,
-    _RecipeHash,
-):
-    _hash: int = 1549873866
-
-    @property
-    def CompletionRatio(self) -> float:
-        return DeviceLogicType(self, self._id, "CompletionRatio")
-
-
-class _TerraformingManufactorys(
-    _BaseStructures,
-    _Activates,
-    _ClearMemorys,
-    _Errors,
-    _ExportCounts,
-    _ImportCounts,
-    _Locks,
-    _Opens,
-    _Powers,
-    _Reagentss,
-    _RecipeHashs,
-):
-    _hash: int = 1549873866
-
-    def __getitem__(self, name: str | int | float) -> "_TerraformingManufactorys":
-        return _TerraformingManufactorys(name)
-
-    @property
-    def CompletionRatio(self) -> DevicesLogicType:
-        return DevicesLogicType(self._hash, "CompletionRatio", self._name)
-
-
-TerraformingManufactorys: _TerraformingManufactorys = _TerraformingManufactorys()
-
-
 class ToolManufactory(
     _BaseStructure,
     _Activate,
@@ -9812,6 +11840,10 @@ class ToolManufactory(
     @property
     def CompletionRatio(self) -> float:
         return DeviceLogicType(self, self._id, "CompletionRatio")
+
+    @property
+    def StackSize(self) -> float:
+        return DeviceLogicType(self, self._id, "StackSize")
 
 
 class _ToolManufactorys(
@@ -9835,6 +11867,10 @@ class _ToolManufactorys(
     @property
     def CompletionRatio(self) -> DevicesLogicType:
         return DevicesLogicType(self._hash, "CompletionRatio", self._name)
+
+    @property
+    def StackSize(self) -> DevicesLogicType:
+        return DevicesLogicType(self._hash, "StackSize", self._name)
 
 
 ToolManufactorys: _ToolManufactorys = _ToolManufactorys()
@@ -9904,24 +11940,6 @@ class _TransformerSmalls(
 
 
 TransformerSmalls: _TransformerSmalls = _TransformerSmalls()
-
-
-class TransformerMediumReversed(
-    _BaseStructure, _Error, _Lock, _Maximum, _Power, _Ratio, _SettingW
-):
-    _hash: int = 833912764
-
-
-class _TransformerMediumReverseds(
-    _BaseStructures, _Errors, _Locks, _Maximums, _Powers, _Ratios, _SettingWs
-):
-    _hash: int = 833912764
-
-    def __getitem__(self, name: str | int | float) -> "_TransformerMediumReverseds":
-        return _TransformerMediumReverseds(name)
-
-
-TransformerMediumReverseds: _TransformerMediumReverseds = _TransformerMediumReverseds()
 
 
 class TransformerSmallReversed(
@@ -10000,28 +12018,6 @@ class _PressurePlateSmalls(_BaseStructures, _SettingRs):
 
 
 PressurePlateSmalls: _PressurePlateSmalls = _PressurePlateSmalls()
-
-
-class TurbineGenerator(_BaseStructure):
-    _hash: int = 1282191063
-
-    @property
-    def PowerGeneration(self) -> float:
-        return DeviceLogicType(self, self._id, "PowerGeneration")
-
-
-class _TurbineGenerators(_BaseStructures):
-    _hash: int = 1282191063
-
-    def __getitem__(self, name: str | int | float) -> "_TurbineGenerators":
-        return _TurbineGenerators(name)
-
-    @property
-    def PowerGeneration(self) -> DevicesLogicType:
-        return DevicesLogicType(self._hash, "PowerGeneration", self._name)
-
-
-TurbineGenerators: _TurbineGenerators = _TurbineGenerators()
 
 
 class TurboVolumePump(
@@ -10365,6 +12361,50 @@ VolumePumps: _VolumePumps = _VolumePumps()
 class WallCooler(_BaseStructure, _Error, _Lock, _Maximum, _Power, _Ratio, _SettingW):
     _hash: int = -739292323
 
+    @property
+    def CombustionOutput(self) -> float:
+        return DeviceLogicType(self, self._id, "CombustionOutput")
+
+    @property
+    def PressureOutput(self) -> float:
+        return DeviceLogicType(self, self._id, "PressureOutput")
+
+    @property
+    def RatioCarbonDioxideOutput(self) -> float:
+        return DeviceLogicType(self, self._id, "RatioCarbonDioxideOutput")
+
+    @property
+    def RatioNitrogenOutput(self) -> float:
+        return DeviceLogicType(self, self._id, "RatioNitrogenOutput")
+
+    @property
+    def RatioNitrousOxideOutput(self) -> float:
+        return DeviceLogicType(self, self._id, "RatioNitrousOxideOutput")
+
+    @property
+    def RatioOxygenOutput(self) -> float:
+        return DeviceLogicType(self, self._id, "RatioOxygenOutput")
+
+    @property
+    def RatioPollutantOutput(self) -> float:
+        return DeviceLogicType(self, self._id, "RatioPollutantOutput")
+
+    @property
+    def RatioVolatilesOutput(self) -> float:
+        return DeviceLogicType(self, self._id, "RatioVolatilesOutput")
+
+    @property
+    def RatioWaterOutput(self) -> float:
+        return DeviceLogicType(self, self._id, "RatioWaterOutput")
+
+    @property
+    def TemperatureOutput(self) -> float:
+        return DeviceLogicType(self, self._id, "TemperatureOutput")
+
+    @property
+    def TotalMolesOutput(self) -> float:
+        return DeviceLogicType(self, self._id, "TotalMolesOutput")
+
 
 class _WallCoolers(
     _BaseStructures, _Errors, _Locks, _Maximums, _Powers, _Ratios, _SettingWs
@@ -10373,6 +12413,50 @@ class _WallCoolers(
 
     def __getitem__(self, name: str | int | float) -> "_WallCoolers":
         return _WallCoolers(name)
+
+    @property
+    def CombustionOutput(self) -> DevicesLogicType:
+        return DevicesLogicType(self._hash, "CombustionOutput", self._name)
+
+    @property
+    def PressureOutput(self) -> DevicesLogicType:
+        return DevicesLogicType(self._hash, "PressureOutput", self._name)
+
+    @property
+    def RatioCarbonDioxideOutput(self) -> DevicesLogicType:
+        return DevicesLogicType(self._hash, "RatioCarbonDioxideOutput", self._name)
+
+    @property
+    def RatioNitrogenOutput(self) -> DevicesLogicType:
+        return DevicesLogicType(self._hash, "RatioNitrogenOutput", self._name)
+
+    @property
+    def RatioNitrousOxideOutput(self) -> DevicesLogicType:
+        return DevicesLogicType(self._hash, "RatioNitrousOxideOutput", self._name)
+
+    @property
+    def RatioOxygenOutput(self) -> DevicesLogicType:
+        return DevicesLogicType(self._hash, "RatioOxygenOutput", self._name)
+
+    @property
+    def RatioPollutantOutput(self) -> DevicesLogicType:
+        return DevicesLogicType(self._hash, "RatioPollutantOutput", self._name)
+
+    @property
+    def RatioVolatilesOutput(self) -> DevicesLogicType:
+        return DevicesLogicType(self._hash, "RatioVolatilesOutput", self._name)
+
+    @property
+    def RatioWaterOutput(self) -> DevicesLogicType:
+        return DevicesLogicType(self._hash, "RatioWaterOutput", self._name)
+
+    @property
+    def TemperatureOutput(self) -> DevicesLogicType:
+        return DevicesLogicType(self._hash, "TemperatureOutput", self._name)
+
+    @property
+    def TotalMolesOutput(self) -> DevicesLogicType:
+        return DevicesLogicType(self._hash, "TotalMolesOutput", self._name)
 
 
 WallCoolers: _WallCoolers = _WallCoolers()
@@ -10462,34 +12546,6 @@ class _LightLongs(_BaseStructures, _Locks, _Powers):
 LightLongs: _LightLongs = _LightLongs()
 
 
-class WaterBottleFiller(_BaseStructure, _Activate, _Error):
-    _hash: int = -1178961954
-
-
-class _WaterBottleFillers(_BaseStructures, _Activates, _Errors):
-    _hash: int = -1178961954
-
-    def __getitem__(self, name: str | int | float) -> "_WaterBottleFillers":
-        return _WaterBottleFillers(name)
-
-
-WaterBottleFillers: _WaterBottleFillers = _WaterBottleFillers()
-
-
-class WaterBottleFillerBottom(_BaseStructure, _Activate, _Error):
-    _hash: int = 1433754995
-
-
-class _WaterBottleFillerBottoms(_BaseStructures, _Activates, _Errors):
-    _hash: int = 1433754995
-
-    def __getitem__(self, name: str | int | float) -> "_WaterBottleFillerBottoms":
-        return _WaterBottleFillerBottoms(name)
-
-
-WaterBottleFillerBottoms: _WaterBottleFillerBottoms = _WaterBottleFillerBottoms()
-
-
 class WaterPurifier(_BaseStructure, _ClearMemory, _Error, _ImportCount, _Lock, _Power):
     _hash: int = 887383294
 
@@ -10504,6 +12560,20 @@ class _WaterPurifiers(
 
 
 WaterPurifiers: _WaterPurifiers = _WaterPurifiers()
+
+
+class WaterBottleFillerPowered(_BaseStructure, _Activate, _Error, _Power):
+    _hash: int = -756587791
+
+
+class _WaterBottleFillerPowereds(_BaseStructures, _Activates, _Errors, _Powers):
+    _hash: int = -756587791
+
+    def __getitem__(self, name: str | int | float) -> "_WaterBottleFillerPowereds":
+        return _WaterBottleFillerPowereds(name)
+
+
+WaterBottleFillerPowereds: _WaterBottleFillerPowereds = _WaterBottleFillerPowereds()
 
 
 class WaterBottleFillerPoweredBottom(_BaseStructure, _Activate, _Error, _Power):
@@ -10522,20 +12592,6 @@ class _WaterBottleFillerPoweredBottoms(_BaseStructures, _Activates, _Errors, _Po
 WaterBottleFillerPoweredBottoms: _WaterBottleFillerPoweredBottoms = (
     _WaterBottleFillerPoweredBottoms()
 )
-
-
-class WaterBottleFillerPowered(_BaseStructure, _Activate, _Error, _Power):
-    _hash: int = -756587791
-
-
-class _WaterBottleFillerPowereds(_BaseStructures, _Activates, _Errors, _Powers):
-    _hash: int = -756587791
-
-    def __getitem__(self, name: str | int | float) -> "_WaterBottleFillerPowereds":
-        return _WaterBottleFillerPowereds(name)
-
-
-WaterBottleFillerPowereds: _WaterBottleFillerPowereds = _WaterBottleFillerPowereds()
 
 
 class WeatherStation(_BaseStructure, _Activate, _Error, _Lock, _ModeR, _Power):

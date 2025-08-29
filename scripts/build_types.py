@@ -1,6 +1,6 @@
-import xml.etree.ElementTree
 from dataclasses import dataclass
 from pathlib import Path
+import json
 
 gases = [
     "RatioCarbonDioxide",
@@ -111,7 +111,7 @@ def generate_generic_structure(struct: Structure, multiple: bool = False) -> str
     return code
 
 
-def parse_xml_file(xml_file: str) -> dict:
+def parse_json_file(json_file: Path) -> dict:
     structures = []
 
     structure_types = set()
@@ -153,101 +153,100 @@ def parse_xml_file(xml_file: str) -> dict:
         S("_Quantity", None, set([P("Quantity")]), []),
     ]
 
-    with open(xml_file, "r") as file:
-        tree = xml.etree.ElementTree.parse(file)
-        root = tree.getroot()
+    data = json.loads(json_file.read_text(encoding="utf-8"))
+    for page in data["pages"]:
+        name = page["Key"]
+        if not name.startswith("ThingStructure"):
+            print("skipping", name)
+            continue
 
-        for page in root.findall("./Page"):
-            name = page.find("Key").text
-            if not name.startswith("ThingStructure"):
+        var_name = name.replace("ThingStructure", "")
+        print("Generating", var_name)
+        prefab_hash = page["PrefabHash"]
+        # print(f"Processing page: {var_name}")
+        properties = set()
+        for prop in page["LogicInsert"]:
+            prop_name = prop["LogicName"]
+            while "<" in prop_name:
+                i0 = prop_name.index("<")
+                i1 = prop_name.index(">")
+                prop_name = prop_name[:i0] + prop_name[i1 + 1 :]
+
+            if prop_name in ["NameHash", "PrefabHash", "ReferenceId"]:
                 continue
+            access = prop["LogicAccessTypes"]
+            can_read = "Read" in access
+            can_write = "Write" in access
+            properties.add(Property(prop_name, can_write, can_read))
+            # print(f"  {'r' if can_read else ' '}{'w' if can_write else ' '} {prop_name}")
 
-            var_name = name.replace("ThingStructure", "")
-            prefab_hash = int(page.find("PrefabHash").text)
-            # print(f"Processing page: {var_name}")
-            properties = set()
-            for prop in page.findall("./LogicInsert/Entry"):
-                prop_name = prop.find("LogicName").text
-                while "<" in prop_name:
-                    i0 = prop_name.index("<")
-                    i1 = prop_name.index(">")
-                    prop_name = prop_name[:i0] + prop_name[i1 + 1 :]
+        bases = set()
+        if properties:
+            for base_class in base_classes:
+                if base_class.properties.issubset(properties):
+                    properties = properties - base_class.properties
+                    bases.add(base_class.name)
 
-                if prop_name in ["NameHash", "PrefabHash", "ReferenceId"]:
-                    continue
-                access = prop.find("LogicAccessTypes").text
-                can_read = "Read" in access
-                can_write = "Write" in access
-                properties.add(Property(prop_name, can_write, can_read))
-                # print(f"  {'r' if can_read else ' '}{'w' if can_write else ' '} {prop_name}")
+            structures.append(Structure(var_name, prefab_hash, properties, bases))
 
-            bases = set()
-            if properties:
-                for base_class in base_classes:
-                    if base_class.properties.issubset(properties):
-                        properties = properties - base_class.properties
-                        bases.add(base_class.name)
+            # prop_name = prop.find("Key").text
+            # can_read = prop.find("CanRead").text == "true"
+            # can_write = prop.find("CanWrite").text == "true"
+            # properties.append(Property(name=prop_name, can_read=can_read, can_write=can_write))
+        # if name.startswith("LogicType"):
+        #     name = name.replace("LogicType", "")
+        #     value = name
+        #     if keyword.iskeyword(name):
+        #         name = name + "_"
+        #     logic_types.append(f"{name} = '{value}'")
+        #
+        # if name.startswith("LogicSlotType"):
+        #     name = name.replace("LogicSlotType", "")
+        #     value = name
+        #     if keyword.iskeyword(name):
+        #         name = name + "_"
+        #     logic_slot_types.append(f"{name} = '{value}'")
 
-                structures.append(Structure(var_name, prefab_hash, properties, bases))
+    prop_count = {}
 
-                # prop_name = prop.find("Key").text
-                # can_read = prop.find("CanRead").text == "true"
-                # can_write = prop.find("CanWrite").text == "true"
-                # properties.append(Property(name=prop_name, can_read=can_read, can_write=can_write))
-            # if name.startswith("LogicType"):
-            #     name = name.replace("LogicType", "")
-            #     value = name
-            #     if keyword.iskeyword(name):
-            #         name = name + "_"
-            #     logic_types.append(f"{name} = '{value}'")
-            #
-            # if name.startswith("LogicSlotType"):
-            #     name = name.replace("LogicSlotType", "")
-            #     value = name
-            #     if keyword.iskeyword(name):
-            #         name = name + "_"
-            #     logic_slot_types.append(f"{name} = '{value}'")
+    code = __header
 
-        prop_count = {}
+    structures = base_classes + structures
+    for struct in structures:
+        code += generate_generic_structure(struct, False)
+        code += generate_generic_structure(struct, True)
+        for p in struct.properties:
+            prop_count[p.name] = prop_count.get(p.name, 0) + 1
 
-        code = __header
-
-        structures = base_classes + structures
-        for struct in structures:
-            code += generate_generic_structure(struct, False)
-            code += generate_generic_structure(struct, True)
-            for p in struct.properties:
-                prop_count[p.name] = prop_count.get(p.name, 0) + 1
-
-        for struct in structures:
-            structure_types.add(
-                tuple(
-                    sorted(
-                        [
-                            (p.name, p.can_read, p.can_write)
-                            for p in struct.properties
-                            if prop_count[p.name] < 80
-                        ]
-                    )
+    for struct in structures:
+        structure_types.add(
+            tuple(
+                sorted(
+                    [
+                        (p.name, p.can_read, p.can_write)
+                        for p in struct.properties
+                        if prop_count[p.name] < 80
+                    ]
                 )
             )
-        print("Found structures:", len(structures))
-        print("Found structure types:", len(structure_types))
-        print("Found properties", len(prop_count))
-        print("Property counts:")
-        for prop, count in prop_count.items():
-            if count > 10:
-                print(f"  {prop}: {count}")
+        )
+    print("Found structures:", len(structures))
+    print("Found structure types:", len(structure_types))
+    print("Found properties", len(prop_count))
+    print("Property counts:")
+    for prop, count in prop_count.items():
+        if count > 10:
+            print(f"  {prop}: {count}")
 
-        # print("Structure types:")
-        # for struct_type in structure_types:
-        #     print("  ", struct_type)
-        return {"structures_generated.py": code}
+    # print("Structure types:")
+    # for struct_type in structure_types:
+    #     print("  ", struct_type)
+    return {"structures_generated.py": code}
 
 
 if __name__ == "__main__":
-    xml_file = Path(__file__).parent / "stationpedia.xml"
-    for file_name, content in parse_xml_file(xml_file).items():
+    json_file = Path(__file__).parent / "Stationpedia.json"
+    for file_name, content in parse_json_file(json_file).items():
         out_file = (
             Path(__file__).parent.parent / "src" / "stationeers_pytrapic" / file_name
         )
