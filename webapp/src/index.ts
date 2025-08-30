@@ -232,7 +232,7 @@ async function init() {
     loadData({ code });
   } else if (urlData) {
     const data = pyodide.runPython(
-      `import stationeers_pytrapic.types; stationeers_pytrapic.decode_data`,
+      `import stationeers_pytrapic.types; stationeers_pytrapic.types.decode_data`,
     )(pyodide.toPy(urlData));
     loadData(data);
   } else if (localStorage.getItem("data")) {
@@ -281,7 +281,7 @@ onClick("share", async () => {
   await pyodideReady;
   const url = new URL(window.location.href);
   const shareUrl = pyodide.runPython(
-    `import stationeers_pytrapic.types; stationeers_pytrapic.encode_data`,
+    `import stationeers_pytrapic.types; stationeers_pytrapic.types.encode_data`,
   )(pyodide.toPy(getData()));
   url.searchParams.set("data", shareUrl);
   navigator.clipboard.writeText(url.toString());
