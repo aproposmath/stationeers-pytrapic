@@ -5,6 +5,30 @@ import astroid
 logger = logging.getLogger("stationeers_pytrapic")
 
 
+def is_builtin_function(name: str) -> bool:
+    return name in ["HASH", "STR"]
+
+
+def get_unop_instruction(op: str):
+    return {
+        "-": ("sub", lambda x: -x),
+        "~": ("neg", lambda x: ~x),
+        "not": ("seqz", lambda x: not x),
+    }.get(op, (None, None))
+
+
+def get_binop_instruction(op: str):
+    return {
+        "+": ("add", lambda x, y: x + y),
+        "-": ("sub", lambda x, y: x - y),
+        "*": ("mul", lambda x, y: x * y),
+        "/": ("div", lambda x, y: x / y),
+        "%": ("mod", lambda x, y: x % y),
+        "and": ("and", lambda x, y: x and y),
+        "or": ("or", lambda x, y: x and y),
+    }.get(op, (None, None))
+
+
 class CompilerError(Exception):
     def __init__(self, message, node=None):
         super().__init__(message)
@@ -51,10 +75,10 @@ def is_constant(node):
         return True, node.value
 
     if isinstance(node, astroid.Call):
-        if node.func.name == "HASH":
+        if is_builtin_function(node.func.name):
             from . import symbols
 
-            return True, symbols.HASH(node.args[0].value)
+            return True, getattr(symbols, node.func.name)(node.args[0].value)
         else:
             return False, None
 
@@ -62,6 +86,8 @@ def is_constant(node):
         inferred = node.inferred()
     except Exception:
         return False, None
+
+    return False, None
 
     if len(inferred) > 1 or len(inferred) == 0:
         return False, None

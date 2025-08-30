@@ -18,6 +18,9 @@ from .utils import (
     is_constant,
     logger,
     is_structure,
+    get_binop_instruction,
+    is_builtin_function,
+    get_unop_instruction,
 )
 
 # use stack addresses 511 for function return values
@@ -45,18 +48,6 @@ def get_negated_comparison_suffix(op: str):
         ">": "le",
         ">=": "lt",
     }[op]
-
-
-def get_binop_instruction(op: str):
-    return {
-        "+": ("add", lambda x, y: x + y),
-        "-": ("sub", lambda x, y: x - y),
-        "*": ("mul", lambda x, y: x * y),
-        "/": ("div", lambda x, y: x / y),
-        "%": ("mod", lambda x, y: x % y),
-        "and": ("and", lambda x, y: x and y),
-        "or": ("or", lambda x, y: x and y),
-    }.get(op, (None, None))
 
 
 def remove_unused_labels(code: str) -> str:
@@ -88,6 +79,8 @@ def remove_unused_labels(code: str) -> str:
 
 
 class CompilerPassGenerateCode(CompilerPass):
+    skip_unused_nodes = True
+
     def __init__(self, data: CodeData):
         super().__init__(data)
         logger.info("Initializing CompilerPassGenerateCode")
@@ -239,7 +232,7 @@ class CompilerPassGenerateCode(CompilerPass):
             result = func(*args, **kwargs)
             if is_structure(result):
                 data.result = result
-            elif fname == "HASH" or hasattr(types, fname):
+            elif is_builtin_function(fname) or hasattr(types, fname):
                 data.result = result
             else:
                 data.add(result, "intrinsic called")
@@ -481,8 +474,8 @@ class CompilerPassGenerateCode(CompilerPass):
                     node.value._ndata.is_constant_value or not sym_data.is_overwritten
                 )
                 if isinstance(node.value, astroid.Call):
-                    can_assign_directly = (
-                        can_assign_directly and node.value.func.name in ["HASH", "STR"]
+                    can_assign_directly = can_assign_directly and is_builtin_function(
+                        node.value.func.name
                     )
                 if can_assign_directly:
                     sym_data.code_expr = value  # self.get_constant_name()
@@ -617,20 +610,14 @@ class CompilerPassGenerateCode(CompilerPass):
     def handle_unop(self, node: astroid.UnaryOp):
         data = node._ndata
 
-        operand = node.operand
-        opdata = operand._ndata
+        if data.is_constant_value:
+            data.result = data.constant_value
+            return
 
         if node.op not in ["not", "-"]:
             raise CompilerError(f"Unsupported unary operation: {node.op}", node)
 
-        if opdata.is_constant_value:
-            if node.op == "not":
-                data.result = not data.constant_value
-            else:
-                data.result = -data.constant_value
-            return
-
-        opname = self.compile_node(operand)
+        opname = self.compile_node(node.operand)
 
         sym = self.get_intermediate_symbol(node)
         data.result = sym

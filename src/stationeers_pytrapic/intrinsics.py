@@ -777,3 +777,7 @@ def bnezal(a: _Register | float, b: _Register | float):
 
 def HASH(name: str) -> float:
     return f"HASH({name})"
+
+
+def STR(s: str) -> float:
+    return f"STR({s})"

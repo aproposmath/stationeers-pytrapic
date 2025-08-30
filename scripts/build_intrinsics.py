@@ -155,6 +155,8 @@ from .types_generated import *
     code += """
 def HASH(name: str) -> float:
     return f'HASH({name})'
+def STR(s: str) -> float:
+    return f'STR({s})'
 """
     out_path = Path("../src/stationeers_pytrapic/intrinsics.py")
     out_path.write_text(code, encoding="utf-8")

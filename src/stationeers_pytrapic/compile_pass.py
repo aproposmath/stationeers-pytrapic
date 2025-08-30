@@ -12,6 +12,8 @@ from .utils import (
     logger,
     CompilerError,
     get_function_parent,
+    get_binop_instruction,
+    get_unop_instruction,
 )
 
 
@@ -231,6 +233,8 @@ class NodeData:
 
 
 class CompilerPass:
+    skip_unused_nodes: bool = False
+
     def __init__(self, data: CodeData):
         self.data = data
         self.tree = data.tree
@@ -295,6 +299,11 @@ class CompilerPass:
 
     def _visit_node(self, node: astroid.NodeNG):
         self._debug("_visit_node", node)
+        if self.skip_unused_nodes and hasattr(node, "_ndata"):
+            if node._ndata.is_used is False:
+                self._debug("Skipping unused node", node)
+                return
+
         if type(node) not in self._handlers:
             raise CompilerError(
                 f"Unsupported node type '{type(node)}' in compiler pass '{type(self).__name__}'",
@@ -416,20 +425,47 @@ class CompilerPassCheckConstValue(CompilerPass):
     def handle_module(self, node: astroid.NodeNG):
         pass
 
+    def handle_binop(self, node: astroid.BinOp):
+        left, right = node.get_children()
+        self.handle_node(left)
+        self.handle_node(right)
+
+        if left._ndata.is_constant_value and right._ndata.is_constant_value:
+            _, func = get_binop_instruction(node.op)
+            val = func(left._ndata.constant_value, right._ndata.constant_value)
+            node._ndata.is_constant_value = True
+            node._ndata.constant_value = val
+            self._visit_node(node.parent)
+
+    def handle_unop(self, node: astroid.UnaryOp):
+        self.handle_node(node.operand)
+        if node.operand._ndata.is_constant_value:
+            node._ndata.is_constant_value = True
+            _, func = get_unop_instruction(node.op)
+            node._ndata.constant_value = func(node.operand._ndata.constant_value)
+            self._visit_node(node.parent)
+
     def handle_node(self, node: astroid.NodeNG):
         data = node._ndata
+
+        if data.is_constant_value:
+            return
+
         if node.parent._ndata.is_constant_value:
-            # print('node parent is constant', type(node).__name__, type(node.parent).__name__)
             # data.is_constant_value = True
             return
+
+        if data.is_constant_value:
+            return
+
         is_const, value = is_constant(node)
 
         data.is_constant_value = is_const
 
         if is_const:
-            # print("is constant", node, value)
             node._ndata.constant_value = value
             node._ndata.result = value
+            self._visit_node(node.parent)
 
     def run(self):
         super().run()
