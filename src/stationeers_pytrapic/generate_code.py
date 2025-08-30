@@ -17,10 +17,9 @@ from .utils import (
     is_builtin_name,
     is_constant,
     logger,
-    is_structure,
     get_binop_instruction,
     is_builtin_function,
-    get_unop_instruction,
+    is_builtin_structure,
 )
 
 # use stack addresses 511 for function return values
@@ -209,7 +208,7 @@ class CompilerPassGenerateCode(CompilerPass):
             symbol = self.get_intermediate_symbol(node)
             data.add(attr(symbol.code_expr), attrname)
             data.result = symbol
-        elif isinstance(attr, symbols.DeviceLogicType):
+        elif isinstance(attr, symbols._DeviceLogicType):
             symbol = self.get_intermediate_symbol(node)
             data.add(attr._load(symbol.code_expr), attrname)
             data.result = symbol
@@ -230,7 +229,7 @@ class CompilerPassGenerateCode(CompilerPass):
             args = [self.compile_node(arg) for arg in node.args]
 
             result = func(*args, **kwargs)
-            if is_structure(result):
+            if is_builtin_structure(result):
                 data.result = result
             elif is_builtin_function(fname) or hasattr(types, fname):
                 data.result = result
@@ -248,7 +247,7 @@ class CompilerPassGenerateCode(CompilerPass):
 
         for i, arg in enumerate(node.args):
             d = self.compile_node(arg)
-            if is_structure(d):
+            if is_builtin_structure(d):
                 raise CompilerError(
                     f"Structures as function arguments are not yet supported: {d}",
                     arg,
@@ -445,15 +444,7 @@ class CompilerPassGenerateCode(CompilerPass):
                 # # assign new name to symbol instead of extra move instruction
                 # value.name = target.name
                 # self.set_name(target, value, target.name)
-            elif value_name in symbols.__dict__ or isinstance(
-                value,
-                (
-                    symbols._GenericStructures,
-                    symbols._GenericStructure,
-                    types._BaseStructure,
-                    types._BaseStructures,
-                ),
-            ):
+            elif value_name in symbols.__dict__ or is_builtin_structure(value):
                 data.result = value
                 sym_data = self.data.get_sym_data(target)
                 if sym_data.code_expr and sym_data.code_expr != value:
@@ -491,14 +482,14 @@ class CompilerPassGenerateCode(CompilerPass):
         elif isinstance(target, astroid.AssignAttr):
             rhs = self.compile_node(list(node.get_children())[1])
             lhs = self.compile_node(target)
-            if isinstance(lhs, symbols.DeviceLogicType) and lhs._device_id._id is None:
+            if isinstance(lhs, symbols._DeviceLogicType) and lhs._device_id._id is None:
                 name = lhs._cls.__name__
                 raise CompilerError(
                     f"""Cannot use "{name}"" directly, either use "{name}s" to set all devices of this type or create a specific device with "{name}(d0)".""",
                     target,
                 )
 
-            if isinstance(rhs, symbols.DevicesLogicType):
+            if isinstance(rhs, symbols._DevicesLogicType):
                 raise CompilerError(
                     "You need to take either Minimum/Maximum/Average/Sum", target
                 )

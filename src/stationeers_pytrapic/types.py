@@ -120,7 +120,7 @@ class DeviceId:
 
 
 @dataclass
-class DeviceLogicType:
+class _DeviceLogicType:
     _cls: any
     _device_id: DeviceId
     _logic_type: str
@@ -145,7 +145,7 @@ class DeviceLogicType:
 
 
 @dataclass
-class DevicesLogicType:
+class _DevicesLogicType:
     _device_hash: _deviceHash
     _logic_type: str
     _name: str | int | None = None
@@ -206,15 +206,15 @@ class _BaseStructure:
 
     @property
     def PrefabHash(self) -> float:
-        return DeviceLogicType(type(self), self._id, "PrefabHash")
+        return _DeviceLogicType(type(self), self._id, "PrefabHash")
 
     @property
     def ReferenceId(self) -> float:
-        return DeviceLogicType(type(self), self._id, "ReferenceId")
+        return _DeviceLogicType(type(self), self._id, "ReferenceId")
 
     @property
     def NameHash(self) -> float:
-        return DeviceLogicType(type(self), self._id, "NameHash")
+        return _DeviceLogicType(type(self), self._id, "NameHash")
 
     def __str__(self):
         return type(self).__name__ + f"({self._id._id})"
@@ -228,29 +228,38 @@ class _BaseStructures:
         self._name = name
 
     @property
-    def PrefabHash(self) -> DevicesLogicType:
-        return DevicesLogicType(self._hash, "PrefabHash", self._name)
+    def PrefabHash(self) -> _DevicesLogicType:
+        return _DevicesLogicType(self._hash, "PrefabHash", self._name)
 
     @property
-    def ReferenceId(self) -> DevicesLogicType:
-        return DevicesLogicType(self._hash, "ReferenceId", self._name)
+    def ReferenceId(self) -> _DevicesLogicType:
+        return _DevicesLogicType(self._hash, "ReferenceId", self._name)
 
     @property
-    def NameHash(self) -> DevicesLogicType:
-        return DevicesLogicType(self._hash, "NameHash", self._name)
+    def NameHash(self) -> _DevicesLogicType:
+        return _DevicesLogicType(self._hash, "NameHash", self._name)
 
     def __str__(self):
         return type(self).__name__[1:] + f"(name={self._name})"
 
 
 class _Device(_BaseStructure, _GenericStructure):
-    def __getattr__(self, attr_name: str) -> DeviceLogicType:
+    def __getattr__(self, attr_name: str) -> _DeviceLogicType:
         if attr_name in ["_id", "_hash"] or attr_name.startswith("__"):
             return super().__getattr__(attr_name)
-        return DeviceLogicType(type(self), self._id, attr_name)
+        return _DeviceLogicType(type(self), self._id, attr_name)
 
     def __str__(self):
         return f"{self._id._id}"
+
+
+class _Stack:
+    def __getitem__(self, index: int | _Register) -> _Register:
+        if not isinstance(index, int):
+            raise TypeError("Index must be an integer")
+        if index < 0 or index > 16:
+            raise IndexError("Index must be between 0 and 16")
+        return _Register(f"r{index}")
 
 
 ra = _Register("ra")
@@ -318,4 +327,6 @@ __all__ = [
     "_nameHash",
     "_GenericStructure",
     "_GenericStructures",
+    "_DeviceLogicType",
+    "_DevicesLogicType",
 ]

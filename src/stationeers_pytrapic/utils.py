@@ -53,7 +53,7 @@ def is_builtin_name(name: str) -> bool:
     return name in symbols.__dict__
 
 
-def is_structure(val):
+def is_builtin_structure(val):
     from . import symbols, types
 
     return isinstance(

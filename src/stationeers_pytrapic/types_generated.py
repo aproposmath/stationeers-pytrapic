@@ -249,7 +249,7 @@ del enum
 class _GenericStructures:
 
     @property
-    def None_(self) -> "stationeers_pytrapic.types.DevicesLogicType":
+    def None_(self) -> "stationeers_pytrapic.types._DevicesLogicType":
         return self.__getattr__("None_")
 
     @None_.setter
@@ -257,7 +257,7 @@ class _GenericStructures:
         return self.__setattr__("None_")
 
     @property
-    def Power(self) -> "stationeers_pytrapic.types.DevicesLogicType":
+    def Power(self) -> "stationeers_pytrapic.types._DevicesLogicType":
         return self.__getattr__("Power")
 
     @Power.setter
@@ -265,7 +265,7 @@ class _GenericStructures:
         return self.__setattr__("Power")
 
     @property
-    def Open(self) -> "stationeers_pytrapic.types.DevicesLogicType":
+    def Open(self) -> "stationeers_pytrapic.types._DevicesLogicType":
         return self.__getattr__("Open")
 
     @Open.setter
@@ -273,7 +273,7 @@ class _GenericStructures:
         return self.__setattr__("Open")
 
     @property
-    def Mode(self) -> "stationeers_pytrapic.types.DevicesLogicType":
+    def Mode(self) -> "stationeers_pytrapic.types._DevicesLogicType":
         return self.__getattr__("Mode")
 
     @Mode.setter
@@ -281,7 +281,7 @@ class _GenericStructures:
         return self.__setattr__("Mode")
 
     @property
-    def Error(self) -> "stationeers_pytrapic.types.DevicesLogicType":
+    def Error(self) -> "stationeers_pytrapic.types._DevicesLogicType":
         return self.__getattr__("Error")
 
     @Error.setter
@@ -289,7 +289,7 @@ class _GenericStructures:
         return self.__setattr__("Error")
 
     @property
-    def Flush(self) -> "stationeers_pytrapic.types.DevicesLogicType":
+    def Flush(self) -> "stationeers_pytrapic.types._DevicesLogicType":
         return self.__getattr__("Flush")
 
     @Flush.setter
@@ -297,7 +297,7 @@ class _GenericStructures:
         return self.__setattr__("Flush")
 
     @property
-    def SoundAlert(self) -> "stationeers_pytrapic.types.DevicesLogicType":
+    def SoundAlert(self) -> "stationeers_pytrapic.types._DevicesLogicType":
         return self.__getattr__("SoundAlert")
 
     @SoundAlert.setter
@@ -305,7 +305,7 @@ class _GenericStructures:
         return self.__setattr__("SoundAlert")
 
     @property
-    def VolumeOfLiquid(self) -> "stationeers_pytrapic.types.DevicesLogicType":
+    def VolumeOfLiquid(self) -> "stationeers_pytrapic.types._DevicesLogicType":
         return self.__getattr__("VolumeOfLiquid")
 
     @VolumeOfLiquid.setter
@@ -313,7 +313,7 @@ class _GenericStructures:
         return self.__setattr__("VolumeOfLiquid")
 
     @property
-    def Lock(self) -> "stationeers_pytrapic.types.DevicesLogicType":
+    def Lock(self) -> "stationeers_pytrapic.types._DevicesLogicType":
         return self.__getattr__("Lock")
 
     @Lock.setter
@@ -321,7 +321,7 @@ class _GenericStructures:
         return self.__setattr__("Lock")
 
     @property
-    def Pressure(self) -> "stationeers_pytrapic.types.DevicesLogicType":
+    def Pressure(self) -> "stationeers_pytrapic.types._DevicesLogicType":
         return self.__getattr__("Pressure")
 
     @Pressure.setter
@@ -329,7 +329,7 @@ class _GenericStructures:
         return self.__setattr__("Pressure")
 
     @property
-    def Temperature(self) -> "stationeers_pytrapic.types.DevicesLogicType":
+    def Temperature(self) -> "stationeers_pytrapic.types._DevicesLogicType":
         return self.__getattr__("Temperature")
 
     @Temperature.setter
@@ -337,7 +337,7 @@ class _GenericStructures:
         return self.__setattr__("Temperature")
 
     @property
-    def PressureInput(self) -> "stationeers_pytrapic.types.DevicesLogicType":
+    def PressureInput(self) -> "stationeers_pytrapic.types._DevicesLogicType":
         return self.__getattr__("PressureInput")
 
     @PressureInput.setter
@@ -345,7 +345,7 @@ class _GenericStructures:
         return self.__setattr__("PressureInput")
 
     @property
-    def TemperatureInput(self) -> "stationeers_pytrapic.types.DevicesLogicType":
+    def TemperatureInput(self) -> "stationeers_pytrapic.types._DevicesLogicType":
         return self.__getattr__("TemperatureInput")
 
     @TemperatureInput.setter
@@ -353,7 +353,7 @@ class _GenericStructures:
         return self.__setattr__("TemperatureInput")
 
     @property
-    def PressureInput2(self) -> "stationeers_pytrapic.types.DevicesLogicType":
+    def PressureInput2(self) -> "stationeers_pytrapic.types._DevicesLogicType":
         return self.__getattr__("PressureInput2")
 
     @PressureInput2.setter
@@ -361,7 +361,7 @@ class _GenericStructures:
         return self.__setattr__("PressureInput2")
 
     @property
-    def TemperatureInput2(self) -> "stationeers_pytrapic.types.DevicesLogicType":
+    def TemperatureInput2(self) -> "stationeers_pytrapic.types._DevicesLogicType":
         return self.__getattr__("TemperatureInput2")
 
     @TemperatureInput2.setter
@@ -369,7 +369,7 @@ class _GenericStructures:
         return self.__setattr__("TemperatureInput2")
 
     @property
-    def PressureOutput(self) -> "stationeers_pytrapic.types.DevicesLogicType":
+    def PressureOutput(self) -> "stationeers_pytrapic.types._DevicesLogicType":
         return self.__getattr__("PressureOutput")
 
     @PressureOutput.setter
@@ -377,7 +377,7 @@ class _GenericStructures:
         return self.__setattr__("PressureOutput")
 
     @property
-    def TargetPadIndex(self) -> "stationeers_pytrapic.types.DevicesLogicType":
+    def TargetPadIndex(self) -> "stationeers_pytrapic.types._DevicesLogicType":
         return self.__getattr__("TargetPadIndex")
 
     @TargetPadIndex.setter
@@ -385,7 +385,7 @@ class _GenericStructures:
         return self.__setattr__("TargetPadIndex")
 
     @property
-    def InterrogationProgress(self) -> "stationeers_pytrapic.types.DevicesLogicType":
+    def InterrogationProgress(self) -> "stationeers_pytrapic.types._DevicesLogicType":
         return self.__getattr__("InterrogationProgress")
 
     @InterrogationProgress.setter
@@ -393,7 +393,7 @@ class _GenericStructures:
         return self.__setattr__("InterrogationProgress")
 
     @property
-    def SizeX(self) -> "stationeers_pytrapic.types.DevicesLogicType":
+    def SizeX(self) -> "stationeers_pytrapic.types._DevicesLogicType":
         return self.__getattr__("SizeX")
 
     @SizeX.setter
@@ -401,7 +401,7 @@ class _GenericStructures:
         return self.__setattr__("SizeX")
 
     @property
-    def SizeY(self) -> "stationeers_pytrapic.types.DevicesLogicType":
+    def SizeY(self) -> "stationeers_pytrapic.types._DevicesLogicType":
         return self.__getattr__("SizeY")
 
     @SizeY.setter
@@ -409,7 +409,7 @@ class _GenericStructures:
         return self.__setattr__("SizeY")
 
     @property
-    def SizeZ(self) -> "stationeers_pytrapic.types.DevicesLogicType":
+    def SizeZ(self) -> "stationeers_pytrapic.types._DevicesLogicType":
         return self.__getattr__("SizeZ")
 
     @SizeZ.setter
@@ -417,7 +417,7 @@ class _GenericStructures:
         return self.__setattr__("SizeZ")
 
     @property
-    def MinWattsToContact(self) -> "stationeers_pytrapic.types.DevicesLogicType":
+    def MinWattsToContact(self) -> "stationeers_pytrapic.types._DevicesLogicType":
         return self.__getattr__("MinWattsToContact")
 
     @MinWattsToContact.setter
@@ -425,7 +425,7 @@ class _GenericStructures:
         return self.__setattr__("MinWattsToContact")
 
     @property
-    def WattsReachingContact(self) -> "stationeers_pytrapic.types.DevicesLogicType":
+    def WattsReachingContact(self) -> "stationeers_pytrapic.types._DevicesLogicType":
         return self.__getattr__("WattsReachingContact")
 
     @WattsReachingContact.setter
@@ -433,7 +433,7 @@ class _GenericStructures:
         return self.__setattr__("WattsReachingContact")
 
     @property
-    def LineNumber(self) -> "stationeers_pytrapic.types.DevicesLogicType":
+    def LineNumber(self) -> "stationeers_pytrapic.types._DevicesLogicType":
         return self.__getattr__("LineNumber")
 
     @LineNumber.setter
@@ -441,7 +441,7 @@ class _GenericStructures:
         return self.__setattr__("LineNumber")
 
     @property
-    def TemperatureOutput(self) -> "stationeers_pytrapic.types.DevicesLogicType":
+    def TemperatureOutput(self) -> "stationeers_pytrapic.types._DevicesLogicType":
         return self.__getattr__("TemperatureOutput")
 
     @TemperatureOutput.setter
@@ -449,7 +449,7 @@ class _GenericStructures:
         return self.__setattr__("TemperatureOutput")
 
     @property
-    def PressureOutput2(self) -> "stationeers_pytrapic.types.DevicesLogicType":
+    def PressureOutput2(self) -> "stationeers_pytrapic.types._DevicesLogicType":
         return self.__getattr__("PressureOutput2")
 
     @PressureOutput2.setter
@@ -457,7 +457,7 @@ class _GenericStructures:
         return self.__setattr__("PressureOutput2")
 
     @property
-    def TemperatureOutput2(self) -> "stationeers_pytrapic.types.DevicesLogicType":
+    def TemperatureOutput2(self) -> "stationeers_pytrapic.types._DevicesLogicType":
         return self.__getattr__("TemperatureOutput2")
 
     @TemperatureOutput2.setter
@@ -465,7 +465,7 @@ class _GenericStructures:
         return self.__setattr__("TemperatureOutput2")
 
     @property
-    def PressureExternal(self) -> "stationeers_pytrapic.types.DevicesLogicType":
+    def PressureExternal(self) -> "stationeers_pytrapic.types._DevicesLogicType":
         return self.__getattr__("PressureExternal")
 
     @PressureExternal.setter
@@ -473,7 +473,7 @@ class _GenericStructures:
         return self.__setattr__("PressureExternal")
 
     @property
-    def PressureInternal(self) -> "stationeers_pytrapic.types.DevicesLogicType":
+    def PressureInternal(self) -> "stationeers_pytrapic.types._DevicesLogicType":
         return self.__getattr__("PressureInternal")
 
     @PressureInternal.setter
@@ -481,7 +481,7 @@ class _GenericStructures:
         return self.__setattr__("PressureInternal")
 
     @property
-    def Activate(self) -> "stationeers_pytrapic.types.DevicesLogicType":
+    def Activate(self) -> "stationeers_pytrapic.types._DevicesLogicType":
         return self.__getattr__("Activate")
 
     @Activate.setter
@@ -489,7 +489,7 @@ class _GenericStructures:
         return self.__setattr__("Activate")
 
     @property
-    def Charge(self) -> "stationeers_pytrapic.types.DevicesLogicType":
+    def Charge(self) -> "stationeers_pytrapic.types._DevicesLogicType":
         return self.__getattr__("Charge")
 
     @Charge.setter
@@ -497,7 +497,7 @@ class _GenericStructures:
         return self.__setattr__("Charge")
 
     @property
-    def Setting(self) -> "stationeers_pytrapic.types.DevicesLogicType":
+    def Setting(self) -> "stationeers_pytrapic.types._DevicesLogicType":
         return self.__getattr__("Setting")
 
     @Setting.setter
@@ -505,7 +505,7 @@ class _GenericStructures:
         return self.__setattr__("Setting")
 
     @property
-    def Reagents(self) -> "stationeers_pytrapic.types.DevicesLogicType":
+    def Reagents(self) -> "stationeers_pytrapic.types._DevicesLogicType":
         return self.__getattr__("Reagents")
 
     @Reagents.setter
@@ -513,7 +513,7 @@ class _GenericStructures:
         return self.__setattr__("Reagents")
 
     @property
-    def RatioOxygen(self) -> "stationeers_pytrapic.types.DevicesLogicType":
+    def RatioOxygen(self) -> "stationeers_pytrapic.types._DevicesLogicType":
         return self.__getattr__("RatioOxygen")
 
     @RatioOxygen.setter
@@ -521,7 +521,7 @@ class _GenericStructures:
         return self.__setattr__("RatioOxygen")
 
     @property
-    def RatioCarbonDioxide(self) -> "stationeers_pytrapic.types.DevicesLogicType":
+    def RatioCarbonDioxide(self) -> "stationeers_pytrapic.types._DevicesLogicType":
         return self.__getattr__("RatioCarbonDioxide")
 
     @RatioCarbonDioxide.setter
@@ -529,7 +529,7 @@ class _GenericStructures:
         return self.__setattr__("RatioCarbonDioxide")
 
     @property
-    def RatioNitrogen(self) -> "stationeers_pytrapic.types.DevicesLogicType":
+    def RatioNitrogen(self) -> "stationeers_pytrapic.types._DevicesLogicType":
         return self.__getattr__("RatioNitrogen")
 
     @RatioNitrogen.setter
@@ -537,7 +537,7 @@ class _GenericStructures:
         return self.__setattr__("RatioNitrogen")
 
     @property
-    def RatioPollutant(self) -> "stationeers_pytrapic.types.DevicesLogicType":
+    def RatioPollutant(self) -> "stationeers_pytrapic.types._DevicesLogicType":
         return self.__getattr__("RatioPollutant")
 
     @RatioPollutant.setter
@@ -545,7 +545,7 @@ class _GenericStructures:
         return self.__setattr__("RatioPollutant")
 
     @property
-    def RatioVolatiles(self) -> "stationeers_pytrapic.types.DevicesLogicType":
+    def RatioVolatiles(self) -> "stationeers_pytrapic.types._DevicesLogicType":
         return self.__getattr__("RatioVolatiles")
 
     @RatioVolatiles.setter
@@ -553,7 +553,7 @@ class _GenericStructures:
         return self.__setattr__("RatioVolatiles")
 
     @property
-    def RatioWater(self) -> "stationeers_pytrapic.types.DevicesLogicType":
+    def RatioWater(self) -> "stationeers_pytrapic.types._DevicesLogicType":
         return self.__getattr__("RatioWater")
 
     @RatioWater.setter
@@ -561,7 +561,7 @@ class _GenericStructures:
         return self.__setattr__("RatioWater")
 
     @property
-    def RatioPollutedWater(self) -> "stationeers_pytrapic.types.DevicesLogicType":
+    def RatioPollutedWater(self) -> "stationeers_pytrapic.types._DevicesLogicType":
         return self.__getattr__("RatioPollutedWater")
 
     @RatioPollutedWater.setter
@@ -569,7 +569,7 @@ class _GenericStructures:
         return self.__setattr__("RatioPollutedWater")
 
     @property
-    def RatioNitrousOxide(self) -> "stationeers_pytrapic.types.DevicesLogicType":
+    def RatioNitrousOxide(self) -> "stationeers_pytrapic.types._DevicesLogicType":
         return self.__getattr__("RatioNitrousOxide")
 
     @RatioNitrousOxide.setter
@@ -577,7 +577,7 @@ class _GenericStructures:
         return self.__setattr__("RatioNitrousOxide")
 
     @property
-    def RatioLiquidNitrogen(self) -> "stationeers_pytrapic.types.DevicesLogicType":
+    def RatioLiquidNitrogen(self) -> "stationeers_pytrapic.types._DevicesLogicType":
         return self.__getattr__("RatioLiquidNitrogen")
 
     @RatioLiquidNitrogen.setter
@@ -585,7 +585,7 @@ class _GenericStructures:
         return self.__setattr__("RatioLiquidNitrogen")
 
     @property
-    def Combustion(self) -> "stationeers_pytrapic.types.DevicesLogicType":
+    def Combustion(self) -> "stationeers_pytrapic.types._DevicesLogicType":
         return self.__getattr__("Combustion")
 
     @Combustion.setter
@@ -593,7 +593,7 @@ class _GenericStructures:
         return self.__setattr__("Combustion")
 
     @property
-    def RatioOxygenInput(self) -> "stationeers_pytrapic.types.DevicesLogicType":
+    def RatioOxygenInput(self) -> "stationeers_pytrapic.types._DevicesLogicType":
         return self.__getattr__("RatioOxygenInput")
 
     @RatioOxygenInput.setter
@@ -601,7 +601,7 @@ class _GenericStructures:
         return self.__setattr__("RatioOxygenInput")
 
     @property
-    def RatioCarbonDioxideInput(self) -> "stationeers_pytrapic.types.DevicesLogicType":
+    def RatioCarbonDioxideInput(self) -> "stationeers_pytrapic.types._DevicesLogicType":
         return self.__getattr__("RatioCarbonDioxideInput")
 
     @RatioCarbonDioxideInput.setter
@@ -609,7 +609,7 @@ class _GenericStructures:
         return self.__setattr__("RatioCarbonDioxideInput")
 
     @property
-    def RatioNitrogenInput(self) -> "stationeers_pytrapic.types.DevicesLogicType":
+    def RatioNitrogenInput(self) -> "stationeers_pytrapic.types._DevicesLogicType":
         return self.__getattr__("RatioNitrogenInput")
 
     @RatioNitrogenInput.setter
@@ -617,7 +617,7 @@ class _GenericStructures:
         return self.__setattr__("RatioNitrogenInput")
 
     @property
-    def RatioPollutantInput(self) -> "stationeers_pytrapic.types.DevicesLogicType":
+    def RatioPollutantInput(self) -> "stationeers_pytrapic.types._DevicesLogicType":
         return self.__getattr__("RatioPollutantInput")
 
     @RatioPollutantInput.setter
@@ -625,7 +625,7 @@ class _GenericStructures:
         return self.__setattr__("RatioPollutantInput")
 
     @property
-    def RatioVolatilesInput(self) -> "stationeers_pytrapic.types.DevicesLogicType":
+    def RatioVolatilesInput(self) -> "stationeers_pytrapic.types._DevicesLogicType":
         return self.__getattr__("RatioVolatilesInput")
 
     @RatioVolatilesInput.setter
@@ -633,7 +633,7 @@ class _GenericStructures:
         return self.__setattr__("RatioVolatilesInput")
 
     @property
-    def RatioWaterInput(self) -> "stationeers_pytrapic.types.DevicesLogicType":
+    def RatioWaterInput(self) -> "stationeers_pytrapic.types._DevicesLogicType":
         return self.__getattr__("RatioWaterInput")
 
     @RatioWaterInput.setter
@@ -641,7 +641,7 @@ class _GenericStructures:
         return self.__setattr__("RatioWaterInput")
 
     @property
-    def RatioNitrousOxideInput(self) -> "stationeers_pytrapic.types.DevicesLogicType":
+    def RatioNitrousOxideInput(self) -> "stationeers_pytrapic.types._DevicesLogicType":
         return self.__getattr__("RatioNitrousOxideInput")
 
     @RatioNitrousOxideInput.setter
@@ -649,7 +649,9 @@ class _GenericStructures:
         return self.__setattr__("RatioNitrousOxideInput")
 
     @property
-    def RatioLiquidNitrogenInput(self) -> "stationeers_pytrapic.types.DevicesLogicType":
+    def RatioLiquidNitrogenInput(
+        self,
+    ) -> "stationeers_pytrapic.types._DevicesLogicType":
         return self.__getattr__("RatioLiquidNitrogenInput")
 
     @RatioLiquidNitrogenInput.setter
@@ -657,7 +659,7 @@ class _GenericStructures:
         return self.__setattr__("RatioLiquidNitrogenInput")
 
     @property
-    def CombustionInput(self) -> "stationeers_pytrapic.types.DevicesLogicType":
+    def CombustionInput(self) -> "stationeers_pytrapic.types._DevicesLogicType":
         return self.__getattr__("CombustionInput")
 
     @CombustionInput.setter
@@ -665,7 +667,7 @@ class _GenericStructures:
         return self.__setattr__("CombustionInput")
 
     @property
-    def RatioOxygenInput2(self) -> "stationeers_pytrapic.types.DevicesLogicType":
+    def RatioOxygenInput2(self) -> "stationeers_pytrapic.types._DevicesLogicType":
         return self.__getattr__("RatioOxygenInput2")
 
     @RatioOxygenInput2.setter
@@ -673,7 +675,9 @@ class _GenericStructures:
         return self.__setattr__("RatioOxygenInput2")
 
     @property
-    def RatioCarbonDioxideInput2(self) -> "stationeers_pytrapic.types.DevicesLogicType":
+    def RatioCarbonDioxideInput2(
+        self,
+    ) -> "stationeers_pytrapic.types._DevicesLogicType":
         return self.__getattr__("RatioCarbonDioxideInput2")
 
     @RatioCarbonDioxideInput2.setter
@@ -681,7 +685,7 @@ class _GenericStructures:
         return self.__setattr__("RatioCarbonDioxideInput2")
 
     @property
-    def RatioNitrogenInput2(self) -> "stationeers_pytrapic.types.DevicesLogicType":
+    def RatioNitrogenInput2(self) -> "stationeers_pytrapic.types._DevicesLogicType":
         return self.__getattr__("RatioNitrogenInput2")
 
     @RatioNitrogenInput2.setter
@@ -689,7 +693,7 @@ class _GenericStructures:
         return self.__setattr__("RatioNitrogenInput2")
 
     @property
-    def RatioPollutantInput2(self) -> "stationeers_pytrapic.types.DevicesLogicType":
+    def RatioPollutantInput2(self) -> "stationeers_pytrapic.types._DevicesLogicType":
         return self.__getattr__("RatioPollutantInput2")
 
     @RatioPollutantInput2.setter
@@ -697,7 +701,7 @@ class _GenericStructures:
         return self.__setattr__("RatioPollutantInput2")
 
     @property
-    def RatioVolatilesInput2(self) -> "stationeers_pytrapic.types.DevicesLogicType":
+    def RatioVolatilesInput2(self) -> "stationeers_pytrapic.types._DevicesLogicType":
         return self.__getattr__("RatioVolatilesInput2")
 
     @RatioVolatilesInput2.setter
@@ -705,7 +709,7 @@ class _GenericStructures:
         return self.__setattr__("RatioVolatilesInput2")
 
     @property
-    def RatioWaterInput2(self) -> "stationeers_pytrapic.types.DevicesLogicType":
+    def RatioWaterInput2(self) -> "stationeers_pytrapic.types._DevicesLogicType":
         return self.__getattr__("RatioWaterInput2")
 
     @RatioWaterInput2.setter
@@ -713,7 +717,7 @@ class _GenericStructures:
         return self.__setattr__("RatioWaterInput2")
 
     @property
-    def RatioNitrousOxideInput2(self) -> "stationeers_pytrapic.types.DevicesLogicType":
+    def RatioNitrousOxideInput2(self) -> "stationeers_pytrapic.types._DevicesLogicType":
         return self.__getattr__("RatioNitrousOxideInput2")
 
     @RatioNitrousOxideInput2.setter
@@ -723,7 +727,7 @@ class _GenericStructures:
     @property
     def RatioLiquidNitrogenInput2(
         self,
-    ) -> "stationeers_pytrapic.types.DevicesLogicType":
+    ) -> "stationeers_pytrapic.types._DevicesLogicType":
         return self.__getattr__("RatioLiquidNitrogenInput2")
 
     @RatioLiquidNitrogenInput2.setter
@@ -731,7 +735,7 @@ class _GenericStructures:
         return self.__setattr__("RatioLiquidNitrogenInput2")
 
     @property
-    def CombustionInput2(self) -> "stationeers_pytrapic.types.DevicesLogicType":
+    def CombustionInput2(self) -> "stationeers_pytrapic.types._DevicesLogicType":
         return self.__getattr__("CombustionInput2")
 
     @CombustionInput2.setter
@@ -739,7 +743,7 @@ class _GenericStructures:
         return self.__setattr__("CombustionInput2")
 
     @property
-    def RatioOxygenOutput(self) -> "stationeers_pytrapic.types.DevicesLogicType":
+    def RatioOxygenOutput(self) -> "stationeers_pytrapic.types._DevicesLogicType":
         return self.__getattr__("RatioOxygenOutput")
 
     @RatioOxygenOutput.setter
@@ -747,7 +751,9 @@ class _GenericStructures:
         return self.__setattr__("RatioOxygenOutput")
 
     @property
-    def RatioCarbonDioxideOutput(self) -> "stationeers_pytrapic.types.DevicesLogicType":
+    def RatioCarbonDioxideOutput(
+        self,
+    ) -> "stationeers_pytrapic.types._DevicesLogicType":
         return self.__getattr__("RatioCarbonDioxideOutput")
 
     @RatioCarbonDioxideOutput.setter
@@ -755,7 +761,7 @@ class _GenericStructures:
         return self.__setattr__("RatioCarbonDioxideOutput")
 
     @property
-    def RatioNitrogenOutput(self) -> "stationeers_pytrapic.types.DevicesLogicType":
+    def RatioNitrogenOutput(self) -> "stationeers_pytrapic.types._DevicesLogicType":
         return self.__getattr__("RatioNitrogenOutput")
 
     @RatioNitrogenOutput.setter
@@ -763,7 +769,7 @@ class _GenericStructures:
         return self.__setattr__("RatioNitrogenOutput")
 
     @property
-    def RatioPollutantOutput(self) -> "stationeers_pytrapic.types.DevicesLogicType":
+    def RatioPollutantOutput(self) -> "stationeers_pytrapic.types._DevicesLogicType":
         return self.__getattr__("RatioPollutantOutput")
 
     @RatioPollutantOutput.setter
@@ -771,7 +777,7 @@ class _GenericStructures:
         return self.__setattr__("RatioPollutantOutput")
 
     @property
-    def RatioVolatilesOutput(self) -> "stationeers_pytrapic.types.DevicesLogicType":
+    def RatioVolatilesOutput(self) -> "stationeers_pytrapic.types._DevicesLogicType":
         return self.__getattr__("RatioVolatilesOutput")
 
     @RatioVolatilesOutput.setter
@@ -779,7 +785,7 @@ class _GenericStructures:
         return self.__setattr__("RatioVolatilesOutput")
 
     @property
-    def RatioWaterOutput(self) -> "stationeers_pytrapic.types.DevicesLogicType":
+    def RatioWaterOutput(self) -> "stationeers_pytrapic.types._DevicesLogicType":
         return self.__getattr__("RatioWaterOutput")
 
     @RatioWaterOutput.setter
@@ -787,7 +793,7 @@ class _GenericStructures:
         return self.__setattr__("RatioWaterOutput")
 
     @property
-    def RatioNitrousOxideOutput(self) -> "stationeers_pytrapic.types.DevicesLogicType":
+    def RatioNitrousOxideOutput(self) -> "stationeers_pytrapic.types._DevicesLogicType":
         return self.__getattr__("RatioNitrousOxideOutput")
 
     @RatioNitrousOxideOutput.setter
@@ -797,7 +803,7 @@ class _GenericStructures:
     @property
     def RatioLiquidNitrogenOutput(
         self,
-    ) -> "stationeers_pytrapic.types.DevicesLogicType":
+    ) -> "stationeers_pytrapic.types._DevicesLogicType":
         return self.__getattr__("RatioLiquidNitrogenOutput")
 
     @RatioLiquidNitrogenOutput.setter
@@ -805,7 +811,7 @@ class _GenericStructures:
         return self.__setattr__("RatioLiquidNitrogenOutput")
 
     @property
-    def CombustionOutput(self) -> "stationeers_pytrapic.types.DevicesLogicType":
+    def CombustionOutput(self) -> "stationeers_pytrapic.types._DevicesLogicType":
         return self.__getattr__("CombustionOutput")
 
     @CombustionOutput.setter
@@ -813,7 +819,7 @@ class _GenericStructures:
         return self.__setattr__("CombustionOutput")
 
     @property
-    def RatioOxygenOutput2(self) -> "stationeers_pytrapic.types.DevicesLogicType":
+    def RatioOxygenOutput2(self) -> "stationeers_pytrapic.types._DevicesLogicType":
         return self.__getattr__("RatioOxygenOutput2")
 
     @RatioOxygenOutput2.setter
@@ -823,7 +829,7 @@ class _GenericStructures:
     @property
     def RatioCarbonDioxideOutput2(
         self,
-    ) -> "stationeers_pytrapic.types.DevicesLogicType":
+    ) -> "stationeers_pytrapic.types._DevicesLogicType":
         return self.__getattr__("RatioCarbonDioxideOutput2")
 
     @RatioCarbonDioxideOutput2.setter
@@ -831,7 +837,7 @@ class _GenericStructures:
         return self.__setattr__("RatioCarbonDioxideOutput2")
 
     @property
-    def RatioNitrogenOutput2(self) -> "stationeers_pytrapic.types.DevicesLogicType":
+    def RatioNitrogenOutput2(self) -> "stationeers_pytrapic.types._DevicesLogicType":
         return self.__getattr__("RatioNitrogenOutput2")
 
     @RatioNitrogenOutput2.setter
@@ -839,7 +845,7 @@ class _GenericStructures:
         return self.__setattr__("RatioNitrogenOutput2")
 
     @property
-    def RatioPollutantOutput2(self) -> "stationeers_pytrapic.types.DevicesLogicType":
+    def RatioPollutantOutput2(self) -> "stationeers_pytrapic.types._DevicesLogicType":
         return self.__getattr__("RatioPollutantOutput2")
 
     @RatioPollutantOutput2.setter
@@ -847,7 +853,7 @@ class _GenericStructures:
         return self.__setattr__("RatioPollutantOutput2")
 
     @property
-    def RatioVolatilesOutput2(self) -> "stationeers_pytrapic.types.DevicesLogicType":
+    def RatioVolatilesOutput2(self) -> "stationeers_pytrapic.types._DevicesLogicType":
         return self.__getattr__("RatioVolatilesOutput2")
 
     @RatioVolatilesOutput2.setter
@@ -855,7 +861,7 @@ class _GenericStructures:
         return self.__setattr__("RatioVolatilesOutput2")
 
     @property
-    def RatioWaterOutput2(self) -> "stationeers_pytrapic.types.DevicesLogicType":
+    def RatioWaterOutput2(self) -> "stationeers_pytrapic.types._DevicesLogicType":
         return self.__getattr__("RatioWaterOutput2")
 
     @RatioWaterOutput2.setter
@@ -863,7 +869,9 @@ class _GenericStructures:
         return self.__setattr__("RatioWaterOutput2")
 
     @property
-    def RatioNitrousOxideOutput2(self) -> "stationeers_pytrapic.types.DevicesLogicType":
+    def RatioNitrousOxideOutput2(
+        self,
+    ) -> "stationeers_pytrapic.types._DevicesLogicType":
         return self.__getattr__("RatioNitrousOxideOutput2")
 
     @RatioNitrousOxideOutput2.setter
@@ -873,7 +881,7 @@ class _GenericStructures:
     @property
     def RatioLiquidNitrogenOutput2(
         self,
-    ) -> "stationeers_pytrapic.types.DevicesLogicType":
+    ) -> "stationeers_pytrapic.types._DevicesLogicType":
         return self.__getattr__("RatioLiquidNitrogenOutput2")
 
     @RatioLiquidNitrogenOutput2.setter
@@ -881,7 +889,7 @@ class _GenericStructures:
         return self.__setattr__("RatioLiquidNitrogenOutput2")
 
     @property
-    def CombustionOutput2(self) -> "stationeers_pytrapic.types.DevicesLogicType":
+    def CombustionOutput2(self) -> "stationeers_pytrapic.types._DevicesLogicType":
         return self.__getattr__("CombustionOutput2")
 
     @CombustionOutput2.setter
@@ -889,7 +897,7 @@ class _GenericStructures:
         return self.__setattr__("CombustionOutput2")
 
     @property
-    def Horizontal(self) -> "stationeers_pytrapic.types.DevicesLogicType":
+    def Horizontal(self) -> "stationeers_pytrapic.types._DevicesLogicType":
         return self.__getattr__("Horizontal")
 
     @Horizontal.setter
@@ -897,7 +905,7 @@ class _GenericStructures:
         return self.__setattr__("Horizontal")
 
     @property
-    def Vertical(self) -> "stationeers_pytrapic.types.DevicesLogicType":
+    def Vertical(self) -> "stationeers_pytrapic.types._DevicesLogicType":
         return self.__getattr__("Vertical")
 
     @Vertical.setter
@@ -905,7 +913,7 @@ class _GenericStructures:
         return self.__setattr__("Vertical")
 
     @property
-    def SolarAngle(self) -> "stationeers_pytrapic.types.DevicesLogicType":
+    def SolarAngle(self) -> "stationeers_pytrapic.types._DevicesLogicType":
         return self.__getattr__("SolarAngle")
 
     @SolarAngle.setter
@@ -913,7 +921,7 @@ class _GenericStructures:
         return self.__setattr__("SolarAngle")
 
     @property
-    def SolarConstant(self) -> "stationeers_pytrapic.types.DevicesLogicType":
+    def SolarConstant(self) -> "stationeers_pytrapic.types._DevicesLogicType":
         return self.__getattr__("SolarConstant")
 
     @SolarConstant.setter
@@ -921,7 +929,7 @@ class _GenericStructures:
         return self.__setattr__("SolarConstant")
 
     @property
-    def Maximum(self) -> "stationeers_pytrapic.types.DevicesLogicType":
+    def Maximum(self) -> "stationeers_pytrapic.types._DevicesLogicType":
         return self.__getattr__("Maximum")
 
     @Maximum.setter
@@ -929,7 +937,7 @@ class _GenericStructures:
         return self.__setattr__("Maximum")
 
     @property
-    def Ratio(self) -> "stationeers_pytrapic.types.DevicesLogicType":
+    def Ratio(self) -> "stationeers_pytrapic.types._DevicesLogicType":
         return self.__getattr__("Ratio")
 
     @Ratio.setter
@@ -937,7 +945,7 @@ class _GenericStructures:
         return self.__setattr__("Ratio")
 
     @property
-    def PowerPotential(self) -> "stationeers_pytrapic.types.DevicesLogicType":
+    def PowerPotential(self) -> "stationeers_pytrapic.types._DevicesLogicType":
         return self.__getattr__("PowerPotential")
 
     @PowerPotential.setter
@@ -945,7 +953,7 @@ class _GenericStructures:
         return self.__setattr__("PowerPotential")
 
     @property
-    def PowerActual(self) -> "stationeers_pytrapic.types.DevicesLogicType":
+    def PowerActual(self) -> "stationeers_pytrapic.types._DevicesLogicType":
         return self.__getattr__("PowerActual")
 
     @PowerActual.setter
@@ -953,7 +961,7 @@ class _GenericStructures:
         return self.__setattr__("PowerActual")
 
     @property
-    def Quantity(self) -> "stationeers_pytrapic.types.DevicesLogicType":
+    def Quantity(self) -> "stationeers_pytrapic.types._DevicesLogicType":
         return self.__getattr__("Quantity")
 
     @Quantity.setter
@@ -961,7 +969,7 @@ class _GenericStructures:
         return self.__setattr__("Quantity")
 
     @property
-    def On(self) -> "stationeers_pytrapic.types.DevicesLogicType":
+    def On(self) -> "stationeers_pytrapic.types._DevicesLogicType":
         return self.__getattr__("On")
 
     @On.setter
@@ -969,7 +977,7 @@ class _GenericStructures:
         return self.__setattr__("On")
 
     @property
-    def ImportQuantity(self) -> "stationeers_pytrapic.types.DevicesLogicType":
+    def ImportQuantity(self) -> "stationeers_pytrapic.types._DevicesLogicType":
         return self.__getattr__("ImportQuantity")
 
     @ImportQuantity.setter
@@ -977,7 +985,7 @@ class _GenericStructures:
         return self.__setattr__("ImportQuantity")
 
     @property
-    def ImportSlotOccupant(self) -> "stationeers_pytrapic.types.DevicesLogicType":
+    def ImportSlotOccupant(self) -> "stationeers_pytrapic.types._DevicesLogicType":
         return self.__getattr__("ImportSlotOccupant")
 
     @ImportSlotOccupant.setter
@@ -985,7 +993,7 @@ class _GenericStructures:
         return self.__setattr__("ImportSlotOccupant")
 
     @property
-    def ExportQuantity(self) -> "stationeers_pytrapic.types.DevicesLogicType":
+    def ExportQuantity(self) -> "stationeers_pytrapic.types._DevicesLogicType":
         return self.__getattr__("ExportQuantity")
 
     @ExportQuantity.setter
@@ -993,7 +1001,7 @@ class _GenericStructures:
         return self.__setattr__("ExportQuantity")
 
     @property
-    def ExportSlotOccupant(self) -> "stationeers_pytrapic.types.DevicesLogicType":
+    def ExportSlotOccupant(self) -> "stationeers_pytrapic.types._DevicesLogicType":
         return self.__getattr__("ExportSlotOccupant")
 
     @ExportSlotOccupant.setter
@@ -1001,7 +1009,7 @@ class _GenericStructures:
         return self.__setattr__("ExportSlotOccupant")
 
     @property
-    def RequiredPower(self) -> "stationeers_pytrapic.types.DevicesLogicType":
+    def RequiredPower(self) -> "stationeers_pytrapic.types._DevicesLogicType":
         return self.__getattr__("RequiredPower")
 
     @RequiredPower.setter
@@ -1009,7 +1017,7 @@ class _GenericStructures:
         return self.__setattr__("RequiredPower")
 
     @property
-    def HorizontalRatio(self) -> "stationeers_pytrapic.types.DevicesLogicType":
+    def HorizontalRatio(self) -> "stationeers_pytrapic.types._DevicesLogicType":
         return self.__getattr__("HorizontalRatio")
 
     @HorizontalRatio.setter
@@ -1017,7 +1025,7 @@ class _GenericStructures:
         return self.__setattr__("HorizontalRatio")
 
     @property
-    def VerticalRatio(self) -> "stationeers_pytrapic.types.DevicesLogicType":
+    def VerticalRatio(self) -> "stationeers_pytrapic.types._DevicesLogicType":
         return self.__getattr__("VerticalRatio")
 
     @VerticalRatio.setter
@@ -1025,7 +1033,7 @@ class _GenericStructures:
         return self.__setattr__("VerticalRatio")
 
     @property
-    def PowerRequired(self) -> "stationeers_pytrapic.types.DevicesLogicType":
+    def PowerRequired(self) -> "stationeers_pytrapic.types._DevicesLogicType":
         return self.__getattr__("PowerRequired")
 
     @PowerRequired.setter
@@ -1033,7 +1041,7 @@ class _GenericStructures:
         return self.__setattr__("PowerRequired")
 
     @property
-    def Idle(self) -> "stationeers_pytrapic.types.DevicesLogicType":
+    def Idle(self) -> "stationeers_pytrapic.types._DevicesLogicType":
         return self.__getattr__("Idle")
 
     @Idle.setter
@@ -1041,7 +1049,7 @@ class _GenericStructures:
         return self.__setattr__("Idle")
 
     @property
-    def Color(self) -> "stationeers_pytrapic.types.DevicesLogicType":
+    def Color(self) -> "stationeers_pytrapic.types._DevicesLogicType":
         return self.__getattr__("Color")
 
     @Color.setter
@@ -1049,7 +1057,7 @@ class _GenericStructures:
         return self.__setattr__("Color")
 
     @property
-    def ElevatorSpeed(self) -> "stationeers_pytrapic.types.DevicesLogicType":
+    def ElevatorSpeed(self) -> "stationeers_pytrapic.types._DevicesLogicType":
         return self.__getattr__("ElevatorSpeed")
 
     @ElevatorSpeed.setter
@@ -1057,7 +1065,7 @@ class _GenericStructures:
         return self.__setattr__("ElevatorSpeed")
 
     @property
-    def ElevatorLevel(self) -> "stationeers_pytrapic.types.DevicesLogicType":
+    def ElevatorLevel(self) -> "stationeers_pytrapic.types._DevicesLogicType":
         return self.__getattr__("ElevatorLevel")
 
     @ElevatorLevel.setter
@@ -1065,7 +1073,7 @@ class _GenericStructures:
         return self.__setattr__("ElevatorLevel")
 
     @property
-    def RecipeHash(self) -> "stationeers_pytrapic.types.DevicesLogicType":
+    def RecipeHash(self) -> "stationeers_pytrapic.types._DevicesLogicType":
         return self.__getattr__("RecipeHash")
 
     @RecipeHash.setter
@@ -1073,7 +1081,7 @@ class _GenericStructures:
         return self.__setattr__("RecipeHash")
 
     @property
-    def ExportSlotHash(self) -> "stationeers_pytrapic.types.DevicesLogicType":
+    def ExportSlotHash(self) -> "stationeers_pytrapic.types._DevicesLogicType":
         return self.__getattr__("ExportSlotHash")
 
     @ExportSlotHash.setter
@@ -1081,7 +1089,7 @@ class _GenericStructures:
         return self.__setattr__("ExportSlotHash")
 
     @property
-    def ImportSlotHash(self) -> "stationeers_pytrapic.types.DevicesLogicType":
+    def ImportSlotHash(self) -> "stationeers_pytrapic.types._DevicesLogicType":
         return self.__getattr__("ImportSlotHash")
 
     @ImportSlotHash.setter
@@ -1089,7 +1097,7 @@ class _GenericStructures:
         return self.__setattr__("ImportSlotHash")
 
     @property
-    def PlantHealth1(self) -> "stationeers_pytrapic.types.DevicesLogicType":
+    def PlantHealth1(self) -> "stationeers_pytrapic.types._DevicesLogicType":
         return self.__getattr__("PlantHealth1")
 
     @PlantHealth1.setter
@@ -1097,7 +1105,7 @@ class _GenericStructures:
         return self.__setattr__("PlantHealth1")
 
     @property
-    def PlantHealth2(self) -> "stationeers_pytrapic.types.DevicesLogicType":
+    def PlantHealth2(self) -> "stationeers_pytrapic.types._DevicesLogicType":
         return self.__getattr__("PlantHealth2")
 
     @PlantHealth2.setter
@@ -1105,7 +1113,7 @@ class _GenericStructures:
         return self.__setattr__("PlantHealth2")
 
     @property
-    def PlantHealth3(self) -> "stationeers_pytrapic.types.DevicesLogicType":
+    def PlantHealth3(self) -> "stationeers_pytrapic.types._DevicesLogicType":
         return self.__getattr__("PlantHealth3")
 
     @PlantHealth3.setter
@@ -1113,7 +1121,7 @@ class _GenericStructures:
         return self.__setattr__("PlantHealth3")
 
     @property
-    def PlantHealth4(self) -> "stationeers_pytrapic.types.DevicesLogicType":
+    def PlantHealth4(self) -> "stationeers_pytrapic.types._DevicesLogicType":
         return self.__getattr__("PlantHealth4")
 
     @PlantHealth4.setter
@@ -1121,7 +1129,7 @@ class _GenericStructures:
         return self.__setattr__("PlantHealth4")
 
     @property
-    def PlantGrowth1(self) -> "stationeers_pytrapic.types.DevicesLogicType":
+    def PlantGrowth1(self) -> "stationeers_pytrapic.types._DevicesLogicType":
         return self.__getattr__("PlantGrowth1")
 
     @PlantGrowth1.setter
@@ -1129,7 +1137,7 @@ class _GenericStructures:
         return self.__setattr__("PlantGrowth1")
 
     @property
-    def PlantGrowth2(self) -> "stationeers_pytrapic.types.DevicesLogicType":
+    def PlantGrowth2(self) -> "stationeers_pytrapic.types._DevicesLogicType":
         return self.__getattr__("PlantGrowth2")
 
     @PlantGrowth2.setter
@@ -1137,7 +1145,7 @@ class _GenericStructures:
         return self.__setattr__("PlantGrowth2")
 
     @property
-    def PlantGrowth3(self) -> "stationeers_pytrapic.types.DevicesLogicType":
+    def PlantGrowth3(self) -> "stationeers_pytrapic.types._DevicesLogicType":
         return self.__getattr__("PlantGrowth3")
 
     @PlantGrowth3.setter
@@ -1145,7 +1153,7 @@ class _GenericStructures:
         return self.__setattr__("PlantGrowth3")
 
     @property
-    def PlantGrowth4(self) -> "stationeers_pytrapic.types.DevicesLogicType":
+    def PlantGrowth4(self) -> "stationeers_pytrapic.types._DevicesLogicType":
         return self.__getattr__("PlantGrowth4")
 
     @PlantGrowth4.setter
@@ -1153,7 +1161,7 @@ class _GenericStructures:
         return self.__setattr__("PlantGrowth4")
 
     @property
-    def PlantEfficiency1(self) -> "stationeers_pytrapic.types.DevicesLogicType":
+    def PlantEfficiency1(self) -> "stationeers_pytrapic.types._DevicesLogicType":
         return self.__getattr__("PlantEfficiency1")
 
     @PlantEfficiency1.setter
@@ -1161,7 +1169,7 @@ class _GenericStructures:
         return self.__setattr__("PlantEfficiency1")
 
     @property
-    def PlantEfficiency2(self) -> "stationeers_pytrapic.types.DevicesLogicType":
+    def PlantEfficiency2(self) -> "stationeers_pytrapic.types._DevicesLogicType":
         return self.__getattr__("PlantEfficiency2")
 
     @PlantEfficiency2.setter
@@ -1169,7 +1177,7 @@ class _GenericStructures:
         return self.__setattr__("PlantEfficiency2")
 
     @property
-    def PlantEfficiency3(self) -> "stationeers_pytrapic.types.DevicesLogicType":
+    def PlantEfficiency3(self) -> "stationeers_pytrapic.types._DevicesLogicType":
         return self.__getattr__("PlantEfficiency3")
 
     @PlantEfficiency3.setter
@@ -1177,7 +1185,7 @@ class _GenericStructures:
         return self.__setattr__("PlantEfficiency3")
 
     @property
-    def PlantEfficiency4(self) -> "stationeers_pytrapic.types.DevicesLogicType":
+    def PlantEfficiency4(self) -> "stationeers_pytrapic.types._DevicesLogicType":
         return self.__getattr__("PlantEfficiency4")
 
     @PlantEfficiency4.setter
@@ -1185,7 +1193,7 @@ class _GenericStructures:
         return self.__setattr__("PlantEfficiency4")
 
     @property
-    def PlantHash1(self) -> "stationeers_pytrapic.types.DevicesLogicType":
+    def PlantHash1(self) -> "stationeers_pytrapic.types._DevicesLogicType":
         return self.__getattr__("PlantHash1")
 
     @PlantHash1.setter
@@ -1193,7 +1201,7 @@ class _GenericStructures:
         return self.__setattr__("PlantHash1")
 
     @property
-    def PlantHash2(self) -> "stationeers_pytrapic.types.DevicesLogicType":
+    def PlantHash2(self) -> "stationeers_pytrapic.types._DevicesLogicType":
         return self.__getattr__("PlantHash2")
 
     @PlantHash2.setter
@@ -1201,7 +1209,7 @@ class _GenericStructures:
         return self.__setattr__("PlantHash2")
 
     @property
-    def PlantHash3(self) -> "stationeers_pytrapic.types.DevicesLogicType":
+    def PlantHash3(self) -> "stationeers_pytrapic.types._DevicesLogicType":
         return self.__getattr__("PlantHash3")
 
     @PlantHash3.setter
@@ -1209,7 +1217,7 @@ class _GenericStructures:
         return self.__setattr__("PlantHash3")
 
     @property
-    def PlantHash4(self) -> "stationeers_pytrapic.types.DevicesLogicType":
+    def PlantHash4(self) -> "stationeers_pytrapic.types._DevicesLogicType":
         return self.__getattr__("PlantHash4")
 
     @PlantHash4.setter
@@ -1217,7 +1225,7 @@ class _GenericStructures:
         return self.__setattr__("PlantHash4")
 
     @property
-    def RequestHash(self) -> "stationeers_pytrapic.types.DevicesLogicType":
+    def RequestHash(self) -> "stationeers_pytrapic.types._DevicesLogicType":
         return self.__getattr__("RequestHash")
 
     @RequestHash.setter
@@ -1225,7 +1233,7 @@ class _GenericStructures:
         return self.__setattr__("RequestHash")
 
     @property
-    def CompletionRatio(self) -> "stationeers_pytrapic.types.DevicesLogicType":
+    def CompletionRatio(self) -> "stationeers_pytrapic.types._DevicesLogicType":
         return self.__getattr__("CompletionRatio")
 
     @CompletionRatio.setter
@@ -1233,7 +1241,7 @@ class _GenericStructures:
         return self.__setattr__("CompletionRatio")
 
     @property
-    def ClearMemory(self) -> "stationeers_pytrapic.types.DevicesLogicType":
+    def ClearMemory(self) -> "stationeers_pytrapic.types._DevicesLogicType":
         return self.__getattr__("ClearMemory")
 
     @ClearMemory.setter
@@ -1241,7 +1249,7 @@ class _GenericStructures:
         return self.__setattr__("ClearMemory")
 
     @property
-    def ExportCount(self) -> "stationeers_pytrapic.types.DevicesLogicType":
+    def ExportCount(self) -> "stationeers_pytrapic.types._DevicesLogicType":
         return self.__getattr__("ExportCount")
 
     @ExportCount.setter
@@ -1249,7 +1257,7 @@ class _GenericStructures:
         return self.__setattr__("ExportCount")
 
     @property
-    def ImportCount(self) -> "stationeers_pytrapic.types.DevicesLogicType":
+    def ImportCount(self) -> "stationeers_pytrapic.types._DevicesLogicType":
         return self.__getattr__("ImportCount")
 
     @ImportCount.setter
@@ -1257,7 +1265,7 @@ class _GenericStructures:
         return self.__setattr__("ImportCount")
 
     @property
-    def PowerGeneration(self) -> "stationeers_pytrapic.types.DevicesLogicType":
+    def PowerGeneration(self) -> "stationeers_pytrapic.types._DevicesLogicType":
         return self.__getattr__("PowerGeneration")
 
     @PowerGeneration.setter
@@ -1265,7 +1273,7 @@ class _GenericStructures:
         return self.__setattr__("PowerGeneration")
 
     @property
-    def TotalMoles(self) -> "stationeers_pytrapic.types.DevicesLogicType":
+    def TotalMoles(self) -> "stationeers_pytrapic.types._DevicesLogicType":
         return self.__getattr__("TotalMoles")
 
     @TotalMoles.setter
@@ -1273,7 +1281,7 @@ class _GenericStructures:
         return self.__setattr__("TotalMoles")
 
     @property
-    def TotalMolesInput(self) -> "stationeers_pytrapic.types.DevicesLogicType":
+    def TotalMolesInput(self) -> "stationeers_pytrapic.types._DevicesLogicType":
         return self.__getattr__("TotalMolesInput")
 
     @TotalMolesInput.setter
@@ -1281,7 +1289,7 @@ class _GenericStructures:
         return self.__setattr__("TotalMolesInput")
 
     @property
-    def TotalMolesInput2(self) -> "stationeers_pytrapic.types.DevicesLogicType":
+    def TotalMolesInput2(self) -> "stationeers_pytrapic.types._DevicesLogicType":
         return self.__getattr__("TotalMolesInput2")
 
     @TotalMolesInput2.setter
@@ -1289,7 +1297,7 @@ class _GenericStructures:
         return self.__setattr__("TotalMolesInput2")
 
     @property
-    def TotalMolesOutput(self) -> "stationeers_pytrapic.types.DevicesLogicType":
+    def TotalMolesOutput(self) -> "stationeers_pytrapic.types._DevicesLogicType":
         return self.__getattr__("TotalMolesOutput")
 
     @TotalMolesOutput.setter
@@ -1297,7 +1305,7 @@ class _GenericStructures:
         return self.__setattr__("TotalMolesOutput")
 
     @property
-    def TotalMolesOutput2(self) -> "stationeers_pytrapic.types.DevicesLogicType":
+    def TotalMolesOutput2(self) -> "stationeers_pytrapic.types._DevicesLogicType":
         return self.__getattr__("TotalMolesOutput2")
 
     @TotalMolesOutput2.setter
@@ -1305,7 +1313,7 @@ class _GenericStructures:
         return self.__setattr__("TotalMolesOutput2")
 
     @property
-    def Volume(self) -> "stationeers_pytrapic.types.DevicesLogicType":
+    def Volume(self) -> "stationeers_pytrapic.types._DevicesLogicType":
         return self.__getattr__("Volume")
 
     @Volume.setter
@@ -1313,7 +1321,7 @@ class _GenericStructures:
         return self.__setattr__("Volume")
 
     @property
-    def Plant(self) -> "stationeers_pytrapic.types.DevicesLogicType":
+    def Plant(self) -> "stationeers_pytrapic.types._DevicesLogicType":
         return self.__getattr__("Plant")
 
     @Plant.setter
@@ -1321,7 +1329,7 @@ class _GenericStructures:
         return self.__setattr__("Plant")
 
     @property
-    def Harvest(self) -> "stationeers_pytrapic.types.DevicesLogicType":
+    def Harvest(self) -> "stationeers_pytrapic.types._DevicesLogicType":
         return self.__getattr__("Harvest")
 
     @Harvest.setter
@@ -1329,7 +1337,7 @@ class _GenericStructures:
         return self.__setattr__("Harvest")
 
     @property
-    def Output(self) -> "stationeers_pytrapic.types.DevicesLogicType":
+    def Output(self) -> "stationeers_pytrapic.types._DevicesLogicType":
         return self.__getattr__("Output")
 
     @Output.setter
@@ -1337,7 +1345,7 @@ class _GenericStructures:
         return self.__setattr__("Output")
 
     @property
-    def PressureSetting(self) -> "stationeers_pytrapic.types.DevicesLogicType":
+    def PressureSetting(self) -> "stationeers_pytrapic.types._DevicesLogicType":
         return self.__getattr__("PressureSetting")
 
     @PressureSetting.setter
@@ -1345,7 +1353,7 @@ class _GenericStructures:
         return self.__setattr__("PressureSetting")
 
     @property
-    def TemperatureSetting(self) -> "stationeers_pytrapic.types.DevicesLogicType":
+    def TemperatureSetting(self) -> "stationeers_pytrapic.types._DevicesLogicType":
         return self.__getattr__("TemperatureSetting")
 
     @TemperatureSetting.setter
@@ -1353,7 +1361,7 @@ class _GenericStructures:
         return self.__setattr__("TemperatureSetting")
 
     @property
-    def TemperatureExternal(self) -> "stationeers_pytrapic.types.DevicesLogicType":
+    def TemperatureExternal(self) -> "stationeers_pytrapic.types._DevicesLogicType":
         return self.__getattr__("TemperatureExternal")
 
     @TemperatureExternal.setter
@@ -1361,7 +1369,7 @@ class _GenericStructures:
         return self.__setattr__("TemperatureExternal")
 
     @property
-    def Filtration(self) -> "stationeers_pytrapic.types.DevicesLogicType":
+    def Filtration(self) -> "stationeers_pytrapic.types._DevicesLogicType":
         return self.__getattr__("Filtration")
 
     @Filtration.setter
@@ -1369,7 +1377,7 @@ class _GenericStructures:
         return self.__setattr__("Filtration")
 
     @property
-    def AirRelease(self) -> "stationeers_pytrapic.types.DevicesLogicType":
+    def AirRelease(self) -> "stationeers_pytrapic.types._DevicesLogicType":
         return self.__getattr__("AirRelease")
 
     @AirRelease.setter
@@ -1377,7 +1385,7 @@ class _GenericStructures:
         return self.__setattr__("AirRelease")
 
     @property
-    def PositionX(self) -> "stationeers_pytrapic.types.DevicesLogicType":
+    def PositionX(self) -> "stationeers_pytrapic.types._DevicesLogicType":
         return self.__getattr__("PositionX")
 
     @PositionX.setter
@@ -1385,7 +1393,7 @@ class _GenericStructures:
         return self.__setattr__("PositionX")
 
     @property
-    def PositionY(self) -> "stationeers_pytrapic.types.DevicesLogicType":
+    def PositionY(self) -> "stationeers_pytrapic.types._DevicesLogicType":
         return self.__getattr__("PositionY")
 
     @PositionY.setter
@@ -1393,7 +1401,7 @@ class _GenericStructures:
         return self.__setattr__("PositionY")
 
     @property
-    def PositionZ(self) -> "stationeers_pytrapic.types.DevicesLogicType":
+    def PositionZ(self) -> "stationeers_pytrapic.types._DevicesLogicType":
         return self.__getattr__("PositionZ")
 
     @PositionZ.setter
@@ -1401,7 +1409,7 @@ class _GenericStructures:
         return self.__setattr__("PositionZ")
 
     @property
-    def VelocityMagnitude(self) -> "stationeers_pytrapic.types.DevicesLogicType":
+    def VelocityMagnitude(self) -> "stationeers_pytrapic.types._DevicesLogicType":
         return self.__getattr__("VelocityMagnitude")
 
     @VelocityMagnitude.setter
@@ -1409,7 +1417,7 @@ class _GenericStructures:
         return self.__setattr__("VelocityMagnitude")
 
     @property
-    def VelocityRelativeX(self) -> "stationeers_pytrapic.types.DevicesLogicType":
+    def VelocityRelativeX(self) -> "stationeers_pytrapic.types._DevicesLogicType":
         return self.__getattr__("VelocityRelativeX")
 
     @VelocityRelativeX.setter
@@ -1417,7 +1425,7 @@ class _GenericStructures:
         return self.__setattr__("VelocityRelativeX")
 
     @property
-    def VelocityRelativeY(self) -> "stationeers_pytrapic.types.DevicesLogicType":
+    def VelocityRelativeY(self) -> "stationeers_pytrapic.types._DevicesLogicType":
         return self.__getattr__("VelocityRelativeY")
 
     @VelocityRelativeY.setter
@@ -1425,7 +1433,7 @@ class _GenericStructures:
         return self.__setattr__("VelocityRelativeY")
 
     @property
-    def VelocityRelativeZ(self) -> "stationeers_pytrapic.types.DevicesLogicType":
+    def VelocityRelativeZ(self) -> "stationeers_pytrapic.types._DevicesLogicType":
         return self.__getattr__("VelocityRelativeZ")
 
     @VelocityRelativeZ.setter
@@ -1433,7 +1441,7 @@ class _GenericStructures:
         return self.__setattr__("VelocityRelativeZ")
 
     @property
-    def PrefabHash(self) -> "stationeers_pytrapic.types.DevicesLogicType":
+    def PrefabHash(self) -> "stationeers_pytrapic.types._DevicesLogicType":
         return self.__getattr__("PrefabHash")
 
     @PrefabHash.setter
@@ -1441,7 +1449,7 @@ class _GenericStructures:
         return self.__setattr__("PrefabHash")
 
     @property
-    def ForceWrite(self) -> "stationeers_pytrapic.types.DevicesLogicType":
+    def ForceWrite(self) -> "stationeers_pytrapic.types._DevicesLogicType":
         return self.__getattr__("ForceWrite")
 
     @ForceWrite.setter
@@ -1449,7 +1457,7 @@ class _GenericStructures:
         return self.__setattr__("ForceWrite")
 
     @property
-    def SignalStrength(self) -> "stationeers_pytrapic.types.DevicesLogicType":
+    def SignalStrength(self) -> "stationeers_pytrapic.types._DevicesLogicType":
         return self.__getattr__("SignalStrength")
 
     @SignalStrength.setter
@@ -1457,7 +1465,7 @@ class _GenericStructures:
         return self.__setattr__("SignalStrength")
 
     @property
-    def SignalID(self) -> "stationeers_pytrapic.types.DevicesLogicType":
+    def SignalID(self) -> "stationeers_pytrapic.types._DevicesLogicType":
         return self.__getattr__("SignalID")
 
     @SignalID.setter
@@ -1467,7 +1475,7 @@ class _GenericStructures:
     @property
     def OperationalTemperatureEfficiency(
         self,
-    ) -> "stationeers_pytrapic.types.DevicesLogicType":
+    ) -> "stationeers_pytrapic.types._DevicesLogicType":
         return self.__getattr__("OperationalTemperatureEfficiency")
 
     @OperationalTemperatureEfficiency.setter
@@ -1477,7 +1485,7 @@ class _GenericStructures:
     @property
     def TemperatureDifferentialEfficiency(
         self,
-    ) -> "stationeers_pytrapic.types.DevicesLogicType":
+    ) -> "stationeers_pytrapic.types._DevicesLogicType":
         return self.__getattr__("TemperatureDifferentialEfficiency")
 
     @TemperatureDifferentialEfficiency.setter
@@ -1485,7 +1493,7 @@ class _GenericStructures:
         return self.__setattr__("TemperatureDifferentialEfficiency")
 
     @property
-    def CombustionLimiter(self) -> "stationeers_pytrapic.types.DevicesLogicType":
+    def CombustionLimiter(self) -> "stationeers_pytrapic.types._DevicesLogicType":
         return self.__getattr__("CombustionLimiter")
 
     @CombustionLimiter.setter
@@ -1493,7 +1501,7 @@ class _GenericStructures:
         return self.__setattr__("CombustionLimiter")
 
     @property
-    def Throttle(self) -> "stationeers_pytrapic.types.DevicesLogicType":
+    def Throttle(self) -> "stationeers_pytrapic.types._DevicesLogicType":
         return self.__getattr__("Throttle")
 
     @Throttle.setter
@@ -1501,7 +1509,7 @@ class _GenericStructures:
         return self.__setattr__("Throttle")
 
     @property
-    def Rpm(self) -> "stationeers_pytrapic.types.DevicesLogicType":
+    def Rpm(self) -> "stationeers_pytrapic.types._DevicesLogicType":
         return self.__getattr__("Rpm")
 
     @Rpm.setter
@@ -1509,7 +1517,7 @@ class _GenericStructures:
         return self.__setattr__("Rpm")
 
     @property
-    def Stress(self) -> "stationeers_pytrapic.types.DevicesLogicType":
+    def Stress(self) -> "stationeers_pytrapic.types._DevicesLogicType":
         return self.__getattr__("Stress")
 
     @Stress.setter
@@ -1517,7 +1525,7 @@ class _GenericStructures:
         return self.__setattr__("Stress")
 
     @property
-    def PressureEfficiency(self) -> "stationeers_pytrapic.types.DevicesLogicType":
+    def PressureEfficiency(self) -> "stationeers_pytrapic.types._DevicesLogicType":
         return self.__getattr__("PressureEfficiency")
 
     @PressureEfficiency.setter
@@ -1525,7 +1533,7 @@ class _GenericStructures:
         return self.__setattr__("PressureEfficiency")
 
     @property
-    def RatioLiquidOxygen(self) -> "stationeers_pytrapic.types.DevicesLogicType":
+    def RatioLiquidOxygen(self) -> "stationeers_pytrapic.types._DevicesLogicType":
         return self.__getattr__("RatioLiquidOxygen")
 
     @RatioLiquidOxygen.setter
@@ -1533,7 +1541,7 @@ class _GenericStructures:
         return self.__setattr__("RatioLiquidOxygen")
 
     @property
-    def RatioLiquidOxygenInput(self) -> "stationeers_pytrapic.types.DevicesLogicType":
+    def RatioLiquidOxygenInput(self) -> "stationeers_pytrapic.types._DevicesLogicType":
         return self.__getattr__("RatioLiquidOxygenInput")
 
     @RatioLiquidOxygenInput.setter
@@ -1541,7 +1549,7 @@ class _GenericStructures:
         return self.__setattr__("RatioLiquidOxygenInput")
 
     @property
-    def RatioLiquidOxygenInput2(self) -> "stationeers_pytrapic.types.DevicesLogicType":
+    def RatioLiquidOxygenInput2(self) -> "stationeers_pytrapic.types._DevicesLogicType":
         return self.__getattr__("RatioLiquidOxygenInput2")
 
     @RatioLiquidOxygenInput2.setter
@@ -1549,7 +1557,7 @@ class _GenericStructures:
         return self.__setattr__("RatioLiquidOxygenInput2")
 
     @property
-    def RatioLiquidOxygenOutput(self) -> "stationeers_pytrapic.types.DevicesLogicType":
+    def RatioLiquidOxygenOutput(self) -> "stationeers_pytrapic.types._DevicesLogicType":
         return self.__getattr__("RatioLiquidOxygenOutput")
 
     @RatioLiquidOxygenOutput.setter
@@ -1557,7 +1565,9 @@ class _GenericStructures:
         return self.__setattr__("RatioLiquidOxygenOutput")
 
     @property
-    def RatioLiquidOxygenOutput2(self) -> "stationeers_pytrapic.types.DevicesLogicType":
+    def RatioLiquidOxygenOutput2(
+        self,
+    ) -> "stationeers_pytrapic.types._DevicesLogicType":
         return self.__getattr__("RatioLiquidOxygenOutput2")
 
     @RatioLiquidOxygenOutput2.setter
@@ -1565,7 +1575,7 @@ class _GenericStructures:
         return self.__setattr__("RatioLiquidOxygenOutput2")
 
     @property
-    def RatioLiquidVolatiles(self) -> "stationeers_pytrapic.types.DevicesLogicType":
+    def RatioLiquidVolatiles(self) -> "stationeers_pytrapic.types._DevicesLogicType":
         return self.__getattr__("RatioLiquidVolatiles")
 
     @RatioLiquidVolatiles.setter
@@ -1575,7 +1585,7 @@ class _GenericStructures:
     @property
     def RatioLiquidVolatilesInput(
         self,
-    ) -> "stationeers_pytrapic.types.DevicesLogicType":
+    ) -> "stationeers_pytrapic.types._DevicesLogicType":
         return self.__getattr__("RatioLiquidVolatilesInput")
 
     @RatioLiquidVolatilesInput.setter
@@ -1585,7 +1595,7 @@ class _GenericStructures:
     @property
     def RatioLiquidVolatilesInput2(
         self,
-    ) -> "stationeers_pytrapic.types.DevicesLogicType":
+    ) -> "stationeers_pytrapic.types._DevicesLogicType":
         return self.__getattr__("RatioLiquidVolatilesInput2")
 
     @RatioLiquidVolatilesInput2.setter
@@ -1595,7 +1605,7 @@ class _GenericStructures:
     @property
     def RatioLiquidVolatilesOutput(
         self,
-    ) -> "stationeers_pytrapic.types.DevicesLogicType":
+    ) -> "stationeers_pytrapic.types._DevicesLogicType":
         return self.__getattr__("RatioLiquidVolatilesOutput")
 
     @RatioLiquidVolatilesOutput.setter
@@ -1605,7 +1615,7 @@ class _GenericStructures:
     @property
     def RatioLiquidVolatilesOutput2(
         self,
-    ) -> "stationeers_pytrapic.types.DevicesLogicType":
+    ) -> "stationeers_pytrapic.types._DevicesLogicType":
         return self.__getattr__("RatioLiquidVolatilesOutput2")
 
     @RatioLiquidVolatilesOutput2.setter
@@ -1613,7 +1623,7 @@ class _GenericStructures:
         return self.__setattr__("RatioLiquidVolatilesOutput2")
 
     @property
-    def RatioSteam(self) -> "stationeers_pytrapic.types.DevicesLogicType":
+    def RatioSteam(self) -> "stationeers_pytrapic.types._DevicesLogicType":
         return self.__getattr__("RatioSteam")
 
     @RatioSteam.setter
@@ -1621,7 +1631,7 @@ class _GenericStructures:
         return self.__setattr__("RatioSteam")
 
     @property
-    def RatioSteamInput(self) -> "stationeers_pytrapic.types.DevicesLogicType":
+    def RatioSteamInput(self) -> "stationeers_pytrapic.types._DevicesLogicType":
         return self.__getattr__("RatioSteamInput")
 
     @RatioSteamInput.setter
@@ -1629,7 +1639,7 @@ class _GenericStructures:
         return self.__setattr__("RatioSteamInput")
 
     @property
-    def RatioSteamInput2(self) -> "stationeers_pytrapic.types.DevicesLogicType":
+    def RatioSteamInput2(self) -> "stationeers_pytrapic.types._DevicesLogicType":
         return self.__getattr__("RatioSteamInput2")
 
     @RatioSteamInput2.setter
@@ -1637,7 +1647,7 @@ class _GenericStructures:
         return self.__setattr__("RatioSteamInput2")
 
     @property
-    def RatioSteamOutput(self) -> "stationeers_pytrapic.types.DevicesLogicType":
+    def RatioSteamOutput(self) -> "stationeers_pytrapic.types._DevicesLogicType":
         return self.__getattr__("RatioSteamOutput")
 
     @RatioSteamOutput.setter
@@ -1645,7 +1655,7 @@ class _GenericStructures:
         return self.__setattr__("RatioSteamOutput")
 
     @property
-    def RatioSteamOutput2(self) -> "stationeers_pytrapic.types.DevicesLogicType":
+    def RatioSteamOutput2(self) -> "stationeers_pytrapic.types._DevicesLogicType":
         return self.__getattr__("RatioSteamOutput2")
 
     @RatioSteamOutput2.setter
@@ -1653,7 +1663,9 @@ class _GenericStructures:
         return self.__setattr__("RatioSteamOutput2")
 
     @property
-    def RatioLiquidCarbonDioxide(self) -> "stationeers_pytrapic.types.DevicesLogicType":
+    def RatioLiquidCarbonDioxide(
+        self,
+    ) -> "stationeers_pytrapic.types._DevicesLogicType":
         return self.__getattr__("RatioLiquidCarbonDioxide")
 
     @RatioLiquidCarbonDioxide.setter
@@ -1663,7 +1675,7 @@ class _GenericStructures:
     @property
     def RatioLiquidCarbonDioxideInput(
         self,
-    ) -> "stationeers_pytrapic.types.DevicesLogicType":
+    ) -> "stationeers_pytrapic.types._DevicesLogicType":
         return self.__getattr__("RatioLiquidCarbonDioxideInput")
 
     @RatioLiquidCarbonDioxideInput.setter
@@ -1673,7 +1685,7 @@ class _GenericStructures:
     @property
     def RatioLiquidCarbonDioxideInput2(
         self,
-    ) -> "stationeers_pytrapic.types.DevicesLogicType":
+    ) -> "stationeers_pytrapic.types._DevicesLogicType":
         return self.__getattr__("RatioLiquidCarbonDioxideInput2")
 
     @RatioLiquidCarbonDioxideInput2.setter
@@ -1683,7 +1695,7 @@ class _GenericStructures:
     @property
     def RatioLiquidCarbonDioxideOutput(
         self,
-    ) -> "stationeers_pytrapic.types.DevicesLogicType":
+    ) -> "stationeers_pytrapic.types._DevicesLogicType":
         return self.__getattr__("RatioLiquidCarbonDioxideOutput")
 
     @RatioLiquidCarbonDioxideOutput.setter
@@ -1693,7 +1705,7 @@ class _GenericStructures:
     @property
     def RatioLiquidCarbonDioxideOutput2(
         self,
-    ) -> "stationeers_pytrapic.types.DevicesLogicType":
+    ) -> "stationeers_pytrapic.types._DevicesLogicType":
         return self.__getattr__("RatioLiquidCarbonDioxideOutput2")
 
     @RatioLiquidCarbonDioxideOutput2.setter
@@ -1701,7 +1713,7 @@ class _GenericStructures:
         return self.__setattr__("RatioLiquidCarbonDioxideOutput2")
 
     @property
-    def RatioLiquidPollutant(self) -> "stationeers_pytrapic.types.DevicesLogicType":
+    def RatioLiquidPollutant(self) -> "stationeers_pytrapic.types._DevicesLogicType":
         return self.__getattr__("RatioLiquidPollutant")
 
     @RatioLiquidPollutant.setter
@@ -1711,7 +1723,7 @@ class _GenericStructures:
     @property
     def RatioLiquidPollutantInput(
         self,
-    ) -> "stationeers_pytrapic.types.DevicesLogicType":
+    ) -> "stationeers_pytrapic.types._DevicesLogicType":
         return self.__getattr__("RatioLiquidPollutantInput")
 
     @RatioLiquidPollutantInput.setter
@@ -1721,7 +1733,7 @@ class _GenericStructures:
     @property
     def RatioLiquidPollutantInput2(
         self,
-    ) -> "stationeers_pytrapic.types.DevicesLogicType":
+    ) -> "stationeers_pytrapic.types._DevicesLogicType":
         return self.__getattr__("RatioLiquidPollutantInput2")
 
     @RatioLiquidPollutantInput2.setter
@@ -1731,7 +1743,7 @@ class _GenericStructures:
     @property
     def RatioLiquidPollutantOutput(
         self,
-    ) -> "stationeers_pytrapic.types.DevicesLogicType":
+    ) -> "stationeers_pytrapic.types._DevicesLogicType":
         return self.__getattr__("RatioLiquidPollutantOutput")
 
     @RatioLiquidPollutantOutput.setter
@@ -1741,7 +1753,7 @@ class _GenericStructures:
     @property
     def RatioLiquidPollutantOutput2(
         self,
-    ) -> "stationeers_pytrapic.types.DevicesLogicType":
+    ) -> "stationeers_pytrapic.types._DevicesLogicType":
         return self.__getattr__("RatioLiquidPollutantOutput2")
 
     @RatioLiquidPollutantOutput2.setter
@@ -1749,7 +1761,7 @@ class _GenericStructures:
         return self.__setattr__("RatioLiquidPollutantOutput2")
 
     @property
-    def RatioLiquidNitrousOxide(self) -> "stationeers_pytrapic.types.DevicesLogicType":
+    def RatioLiquidNitrousOxide(self) -> "stationeers_pytrapic.types._DevicesLogicType":
         return self.__getattr__("RatioLiquidNitrousOxide")
 
     @RatioLiquidNitrousOxide.setter
@@ -1759,7 +1771,7 @@ class _GenericStructures:
     @property
     def RatioLiquidNitrousOxideInput(
         self,
-    ) -> "stationeers_pytrapic.types.DevicesLogicType":
+    ) -> "stationeers_pytrapic.types._DevicesLogicType":
         return self.__getattr__("RatioLiquidNitrousOxideInput")
 
     @RatioLiquidNitrousOxideInput.setter
@@ -1769,7 +1781,7 @@ class _GenericStructures:
     @property
     def RatioLiquidNitrousOxideInput2(
         self,
-    ) -> "stationeers_pytrapic.types.DevicesLogicType":
+    ) -> "stationeers_pytrapic.types._DevicesLogicType":
         return self.__getattr__("RatioLiquidNitrousOxideInput2")
 
     @RatioLiquidNitrousOxideInput2.setter
@@ -1779,7 +1791,7 @@ class _GenericStructures:
     @property
     def RatioLiquidNitrousOxideOutput(
         self,
-    ) -> "stationeers_pytrapic.types.DevicesLogicType":
+    ) -> "stationeers_pytrapic.types._DevicesLogicType":
         return self.__getattr__("RatioLiquidNitrousOxideOutput")
 
     @RatioLiquidNitrousOxideOutput.setter
@@ -1789,7 +1801,7 @@ class _GenericStructures:
     @property
     def RatioLiquidNitrousOxideOutput2(
         self,
-    ) -> "stationeers_pytrapic.types.DevicesLogicType":
+    ) -> "stationeers_pytrapic.types._DevicesLogicType":
         return self.__getattr__("RatioLiquidNitrousOxideOutput2")
 
     @RatioLiquidNitrousOxideOutput2.setter
@@ -1797,7 +1809,7 @@ class _GenericStructures:
         return self.__setattr__("RatioLiquidNitrousOxideOutput2")
 
     @property
-    def RatioHydrogen(self) -> "stationeers_pytrapic.types.DevicesLogicType":
+    def RatioHydrogen(self) -> "stationeers_pytrapic.types._DevicesLogicType":
         return self.__getattr__("RatioHydrogen")
 
     @RatioHydrogen.setter
@@ -1805,7 +1817,7 @@ class _GenericStructures:
         return self.__setattr__("RatioHydrogen")
 
     @property
-    def RatioLiquidHydrogen(self) -> "stationeers_pytrapic.types.DevicesLogicType":
+    def RatioLiquidHydrogen(self) -> "stationeers_pytrapic.types._DevicesLogicType":
         return self.__getattr__("RatioLiquidHydrogen")
 
     @RatioLiquidHydrogen.setter
@@ -1813,7 +1825,7 @@ class _GenericStructures:
         return self.__setattr__("RatioLiquidHydrogen")
 
     @property
-    def ContactTypeId(self) -> "stationeers_pytrapic.types.DevicesLogicType":
+    def ContactTypeId(self) -> "stationeers_pytrapic.types._DevicesLogicType":
         return self.__getattr__("ContactTypeId")
 
     @ContactTypeId.setter
@@ -1821,7 +1833,7 @@ class _GenericStructures:
         return self.__setattr__("ContactTypeId")
 
     @property
-    def Bypass(self) -> "stationeers_pytrapic.types.DevicesLogicType":
+    def Bypass(self) -> "stationeers_pytrapic.types._DevicesLogicType":
         return self.__getattr__("Bypass")
 
     @Bypass.setter
@@ -1829,7 +1841,7 @@ class _GenericStructures:
         return self.__setattr__("Bypass")
 
     @property
-    def Progress(self) -> "stationeers_pytrapic.types.DevicesLogicType":
+    def Progress(self) -> "stationeers_pytrapic.types._DevicesLogicType":
         return self.__getattr__("Progress")
 
     @Progress.setter
@@ -1837,7 +1849,7 @@ class _GenericStructures:
         return self.__setattr__("Progress")
 
     @property
-    def DestinationCode(self) -> "stationeers_pytrapic.types.DevicesLogicType":
+    def DestinationCode(self) -> "stationeers_pytrapic.types._DevicesLogicType":
         return self.__getattr__("DestinationCode")
 
     @DestinationCode.setter
@@ -1845,7 +1857,7 @@ class _GenericStructures:
         return self.__setattr__("DestinationCode")
 
     @property
-    def Acceleration(self) -> "stationeers_pytrapic.types.DevicesLogicType":
+    def Acceleration(self) -> "stationeers_pytrapic.types._DevicesLogicType":
         return self.__getattr__("Acceleration")
 
     @Acceleration.setter
@@ -1853,7 +1865,7 @@ class _GenericStructures:
         return self.__setattr__("Acceleration")
 
     @property
-    def AutoShutOff(self) -> "stationeers_pytrapic.types.DevicesLogicType":
+    def AutoShutOff(self) -> "stationeers_pytrapic.types._DevicesLogicType":
         return self.__getattr__("AutoShutOff")
 
     @AutoShutOff.setter
@@ -1861,7 +1873,7 @@ class _GenericStructures:
         return self.__setattr__("AutoShutOff")
 
     @property
-    def Thrust(self) -> "stationeers_pytrapic.types.DevicesLogicType":
+    def Thrust(self) -> "stationeers_pytrapic.types._DevicesLogicType":
         return self.__getattr__("Thrust")
 
     @Thrust.setter
@@ -1869,7 +1881,7 @@ class _GenericStructures:
         return self.__setattr__("Thrust")
 
     @property
-    def ThrustToWeight(self) -> "stationeers_pytrapic.types.DevicesLogicType":
+    def ThrustToWeight(self) -> "stationeers_pytrapic.types._DevicesLogicType":
         return self.__getattr__("ThrustToWeight")
 
     @ThrustToWeight.setter
@@ -1877,7 +1889,7 @@ class _GenericStructures:
         return self.__setattr__("ThrustToWeight")
 
     @property
-    def Weight(self) -> "stationeers_pytrapic.types.DevicesLogicType":
+    def Weight(self) -> "stationeers_pytrapic.types._DevicesLogicType":
         return self.__getattr__("Weight")
 
     @Weight.setter
@@ -1885,7 +1897,7 @@ class _GenericStructures:
         return self.__setattr__("Weight")
 
     @property
-    def OverShootTarget(self) -> "stationeers_pytrapic.types.DevicesLogicType":
+    def OverShootTarget(self) -> "stationeers_pytrapic.types._DevicesLogicType":
         return self.__getattr__("OverShootTarget")
 
     @OverShootTarget.setter
@@ -1893,7 +1905,7 @@ class _GenericStructures:
         return self.__setattr__("OverShootTarget")
 
     @property
-    def TimeToDestination(self) -> "stationeers_pytrapic.types.DevicesLogicType":
+    def TimeToDestination(self) -> "stationeers_pytrapic.types._DevicesLogicType":
         return self.__getattr__("TimeToDestination")
 
     @TimeToDestination.setter
@@ -1901,7 +1913,7 @@ class _GenericStructures:
         return self.__setattr__("TimeToDestination")
 
     @property
-    def BurnTimeRemaining(self) -> "stationeers_pytrapic.types.DevicesLogicType":
+    def BurnTimeRemaining(self) -> "stationeers_pytrapic.types._DevicesLogicType":
         return self.__getattr__("BurnTimeRemaining")
 
     @BurnTimeRemaining.setter
@@ -1909,7 +1921,7 @@ class _GenericStructures:
         return self.__setattr__("BurnTimeRemaining")
 
     @property
-    def AutoLand(self) -> "stationeers_pytrapic.types.DevicesLogicType":
+    def AutoLand(self) -> "stationeers_pytrapic.types._DevicesLogicType":
         return self.__getattr__("AutoLand")
 
     @AutoLand.setter
@@ -1917,7 +1929,7 @@ class _GenericStructures:
         return self.__setattr__("AutoLand")
 
     @property
-    def DryMass(self) -> "stationeers_pytrapic.types.DevicesLogicType":
+    def DryMass(self) -> "stationeers_pytrapic.types._DevicesLogicType":
         return self.__getattr__("DryMass")
 
     @DryMass.setter
@@ -1925,7 +1937,7 @@ class _GenericStructures:
         return self.__setattr__("DryMass")
 
     @property
-    def Mass(self) -> "stationeers_pytrapic.types.DevicesLogicType":
+    def Mass(self) -> "stationeers_pytrapic.types._DevicesLogicType":
         return self.__getattr__("Mass")
 
     @Mass.setter
@@ -1933,7 +1945,7 @@ class _GenericStructures:
         return self.__setattr__("Mass")
 
     @property
-    def TargetX(self) -> "stationeers_pytrapic.types.DevicesLogicType":
+    def TargetX(self) -> "stationeers_pytrapic.types._DevicesLogicType":
         return self.__getattr__("TargetX")
 
     @TargetX.setter
@@ -1941,7 +1953,7 @@ class _GenericStructures:
         return self.__setattr__("TargetX")
 
     @property
-    def TargetY(self) -> "stationeers_pytrapic.types.DevicesLogicType":
+    def TargetY(self) -> "stationeers_pytrapic.types._DevicesLogicType":
         return self.__getattr__("TargetY")
 
     @TargetY.setter
@@ -1949,7 +1961,7 @@ class _GenericStructures:
         return self.__setattr__("TargetY")
 
     @property
-    def TargetZ(self) -> "stationeers_pytrapic.types.DevicesLogicType":
+    def TargetZ(self) -> "stationeers_pytrapic.types._DevicesLogicType":
         return self.__getattr__("TargetZ")
 
     @TargetZ.setter
@@ -1957,7 +1969,7 @@ class _GenericStructures:
         return self.__setattr__("TargetZ")
 
     @property
-    def SettingInputHash(self) -> "stationeers_pytrapic.types.DevicesLogicType":
+    def SettingInputHash(self) -> "stationeers_pytrapic.types._DevicesLogicType":
         return self.__getattr__("SettingInputHash")
 
     @SettingInputHash.setter
@@ -1965,7 +1977,7 @@ class _GenericStructures:
         return self.__setattr__("SettingInputHash")
 
     @property
-    def SettingOutputHash(self) -> "stationeers_pytrapic.types.DevicesLogicType":
+    def SettingOutputHash(self) -> "stationeers_pytrapic.types._DevicesLogicType":
         return self.__getattr__("SettingOutputHash")
 
     @SettingOutputHash.setter
@@ -1973,7 +1985,7 @@ class _GenericStructures:
         return self.__setattr__("SettingOutputHash")
 
     @property
-    def Channel(self) -> "stationeers_pytrapic.types.DevicesLogicType":
+    def Channel(self) -> "stationeers_pytrapic.types._DevicesLogicType":
         return self.__getattr__("Channel")
 
     @Channel.setter
@@ -1981,7 +1993,7 @@ class _GenericStructures:
         return self.__setattr__("Channel")
 
     @property
-    def Unknown(self) -> "stationeers_pytrapic.types.DevicesLogicType":
+    def Unknown(self) -> "stationeers_pytrapic.types._DevicesLogicType":
         return self.__getattr__("Unknown")
 
     @Unknown.setter
@@ -1989,7 +2001,7 @@ class _GenericStructures:
         return self.__setattr__("Unknown")
 
     @property
-    def Time(self) -> "stationeers_pytrapic.types.DevicesLogicType":
+    def Time(self) -> "stationeers_pytrapic.types._DevicesLogicType":
         return self.__getattr__("Time")
 
     @Time.setter
@@ -1997,7 +2009,7 @@ class _GenericStructures:
         return self.__setattr__("Time")
 
     @property
-    def Bpm(self) -> "stationeers_pytrapic.types.DevicesLogicType":
+    def Bpm(self) -> "stationeers_pytrapic.types._DevicesLogicType":
         return self.__getattr__("Bpm")
 
     @Bpm.setter
@@ -2005,7 +2017,7 @@ class _GenericStructures:
         return self.__setattr__("Bpm")
 
     @property
-    def EnvironmentEfficiency(self) -> "stationeers_pytrapic.types.DevicesLogicType":
+    def EnvironmentEfficiency(self) -> "stationeers_pytrapic.types._DevicesLogicType":
         return self.__getattr__("EnvironmentEfficiency")
 
     @EnvironmentEfficiency.setter
@@ -2013,7 +2025,7 @@ class _GenericStructures:
         return self.__setattr__("EnvironmentEfficiency")
 
     @property
-    def WorkingGasEfficiency(self) -> "stationeers_pytrapic.types.DevicesLogicType":
+    def WorkingGasEfficiency(self) -> "stationeers_pytrapic.types._DevicesLogicType":
         return self.__getattr__("WorkingGasEfficiency")
 
     @WorkingGasEfficiency.setter
@@ -2024,7 +2036,7 @@ class _GenericStructures:
 class _GenericStructure:
 
     @property
-    def None_(self) -> "stationeers_pytrapic.types.DeviceLogicType":
+    def None_(self) -> "stationeers_pytrapic.types._DeviceLogicType":
         return self.__getattr__("None_")
 
     @None_.setter
@@ -2032,7 +2044,7 @@ class _GenericStructure:
         return self.__setattr__("None_")
 
     @property
-    def Power(self) -> "stationeers_pytrapic.types.DeviceLogicType":
+    def Power(self) -> "stationeers_pytrapic.types._DeviceLogicType":
         return self.__getattr__("Power")
 
     @Power.setter
@@ -2040,7 +2052,7 @@ class _GenericStructure:
         return self.__setattr__("Power")
 
     @property
-    def Open(self) -> "stationeers_pytrapic.types.DeviceLogicType":
+    def Open(self) -> "stationeers_pytrapic.types._DeviceLogicType":
         return self.__getattr__("Open")
 
     @Open.setter
@@ -2048,7 +2060,7 @@ class _GenericStructure:
         return self.__setattr__("Open")
 
     @property
-    def Mode(self) -> "stationeers_pytrapic.types.DeviceLogicType":
+    def Mode(self) -> "stationeers_pytrapic.types._DeviceLogicType":
         return self.__getattr__("Mode")
 
     @Mode.setter
@@ -2056,7 +2068,7 @@ class _GenericStructure:
         return self.__setattr__("Mode")
 
     @property
-    def Error(self) -> "stationeers_pytrapic.types.DeviceLogicType":
+    def Error(self) -> "stationeers_pytrapic.types._DeviceLogicType":
         return self.__getattr__("Error")
 
     @Error.setter
@@ -2064,7 +2076,7 @@ class _GenericStructure:
         return self.__setattr__("Error")
 
     @property
-    def Flush(self) -> "stationeers_pytrapic.types.DeviceLogicType":
+    def Flush(self) -> "stationeers_pytrapic.types._DeviceLogicType":
         return self.__getattr__("Flush")
 
     @Flush.setter
@@ -2072,7 +2084,7 @@ class _GenericStructure:
         return self.__setattr__("Flush")
 
     @property
-    def SoundAlert(self) -> "stationeers_pytrapic.types.DeviceLogicType":
+    def SoundAlert(self) -> "stationeers_pytrapic.types._DeviceLogicType":
         return self.__getattr__("SoundAlert")
 
     @SoundAlert.setter
@@ -2080,7 +2092,7 @@ class _GenericStructure:
         return self.__setattr__("SoundAlert")
 
     @property
-    def VolumeOfLiquid(self) -> "stationeers_pytrapic.types.DeviceLogicType":
+    def VolumeOfLiquid(self) -> "stationeers_pytrapic.types._DeviceLogicType":
         return self.__getattr__("VolumeOfLiquid")
 
     @VolumeOfLiquid.setter
@@ -2088,7 +2100,7 @@ class _GenericStructure:
         return self.__setattr__("VolumeOfLiquid")
 
     @property
-    def Lock(self) -> "stationeers_pytrapic.types.DeviceLogicType":
+    def Lock(self) -> "stationeers_pytrapic.types._DeviceLogicType":
         return self.__getattr__("Lock")
 
     @Lock.setter
@@ -2096,7 +2108,7 @@ class _GenericStructure:
         return self.__setattr__("Lock")
 
     @property
-    def Pressure(self) -> "stationeers_pytrapic.types.DeviceLogicType":
+    def Pressure(self) -> "stationeers_pytrapic.types._DeviceLogicType":
         return self.__getattr__("Pressure")
 
     @Pressure.setter
@@ -2104,7 +2116,7 @@ class _GenericStructure:
         return self.__setattr__("Pressure")
 
     @property
-    def Temperature(self) -> "stationeers_pytrapic.types.DeviceLogicType":
+    def Temperature(self) -> "stationeers_pytrapic.types._DeviceLogicType":
         return self.__getattr__("Temperature")
 
     @Temperature.setter
@@ -2112,7 +2124,7 @@ class _GenericStructure:
         return self.__setattr__("Temperature")
 
     @property
-    def PressureInput(self) -> "stationeers_pytrapic.types.DeviceLogicType":
+    def PressureInput(self) -> "stationeers_pytrapic.types._DeviceLogicType":
         return self.__getattr__("PressureInput")
 
     @PressureInput.setter
@@ -2120,7 +2132,7 @@ class _GenericStructure:
         return self.__setattr__("PressureInput")
 
     @property
-    def TemperatureInput(self) -> "stationeers_pytrapic.types.DeviceLogicType":
+    def TemperatureInput(self) -> "stationeers_pytrapic.types._DeviceLogicType":
         return self.__getattr__("TemperatureInput")
 
     @TemperatureInput.setter
@@ -2128,7 +2140,7 @@ class _GenericStructure:
         return self.__setattr__("TemperatureInput")
 
     @property
-    def PressureInput2(self) -> "stationeers_pytrapic.types.DeviceLogicType":
+    def PressureInput2(self) -> "stationeers_pytrapic.types._DeviceLogicType":
         return self.__getattr__("PressureInput2")
 
     @PressureInput2.setter
@@ -2136,7 +2148,7 @@ class _GenericStructure:
         return self.__setattr__("PressureInput2")
 
     @property
-    def TemperatureInput2(self) -> "stationeers_pytrapic.types.DeviceLogicType":
+    def TemperatureInput2(self) -> "stationeers_pytrapic.types._DeviceLogicType":
         return self.__getattr__("TemperatureInput2")
 
     @TemperatureInput2.setter
@@ -2144,7 +2156,7 @@ class _GenericStructure:
         return self.__setattr__("TemperatureInput2")
 
     @property
-    def PressureOutput(self) -> "stationeers_pytrapic.types.DeviceLogicType":
+    def PressureOutput(self) -> "stationeers_pytrapic.types._DeviceLogicType":
         return self.__getattr__("PressureOutput")
 
     @PressureOutput.setter
@@ -2152,7 +2164,7 @@ class _GenericStructure:
         return self.__setattr__("PressureOutput")
 
     @property
-    def TargetPadIndex(self) -> "stationeers_pytrapic.types.DeviceLogicType":
+    def TargetPadIndex(self) -> "stationeers_pytrapic.types._DeviceLogicType":
         return self.__getattr__("TargetPadIndex")
 
     @TargetPadIndex.setter
@@ -2160,7 +2172,7 @@ class _GenericStructure:
         return self.__setattr__("TargetPadIndex")
 
     @property
-    def InterrogationProgress(self) -> "stationeers_pytrapic.types.DeviceLogicType":
+    def InterrogationProgress(self) -> "stationeers_pytrapic.types._DeviceLogicType":
         return self.__getattr__("InterrogationProgress")
 
     @InterrogationProgress.setter
@@ -2168,7 +2180,7 @@ class _GenericStructure:
         return self.__setattr__("InterrogationProgress")
 
     @property
-    def SizeX(self) -> "stationeers_pytrapic.types.DeviceLogicType":
+    def SizeX(self) -> "stationeers_pytrapic.types._DeviceLogicType":
         return self.__getattr__("SizeX")
 
     @SizeX.setter
@@ -2176,7 +2188,7 @@ class _GenericStructure:
         return self.__setattr__("SizeX")
 
     @property
-    def SizeY(self) -> "stationeers_pytrapic.types.DeviceLogicType":
+    def SizeY(self) -> "stationeers_pytrapic.types._DeviceLogicType":
         return self.__getattr__("SizeY")
 
     @SizeY.setter
@@ -2184,7 +2196,7 @@ class _GenericStructure:
         return self.__setattr__("SizeY")
 
     @property
-    def SizeZ(self) -> "stationeers_pytrapic.types.DeviceLogicType":
+    def SizeZ(self) -> "stationeers_pytrapic.types._DeviceLogicType":
         return self.__getattr__("SizeZ")
 
     @SizeZ.setter
@@ -2192,7 +2204,7 @@ class _GenericStructure:
         return self.__setattr__("SizeZ")
 
     @property
-    def MinWattsToContact(self) -> "stationeers_pytrapic.types.DeviceLogicType":
+    def MinWattsToContact(self) -> "stationeers_pytrapic.types._DeviceLogicType":
         return self.__getattr__("MinWattsToContact")
 
     @MinWattsToContact.setter
@@ -2200,7 +2212,7 @@ class _GenericStructure:
         return self.__setattr__("MinWattsToContact")
 
     @property
-    def WattsReachingContact(self) -> "stationeers_pytrapic.types.DeviceLogicType":
+    def WattsReachingContact(self) -> "stationeers_pytrapic.types._DeviceLogicType":
         return self.__getattr__("WattsReachingContact")
 
     @WattsReachingContact.setter
@@ -2208,7 +2220,7 @@ class _GenericStructure:
         return self.__setattr__("WattsReachingContact")
 
     @property
-    def LineNumber(self) -> "stationeers_pytrapic.types.DeviceLogicType":
+    def LineNumber(self) -> "stationeers_pytrapic.types._DeviceLogicType":
         return self.__getattr__("LineNumber")
 
     @LineNumber.setter
@@ -2216,7 +2228,7 @@ class _GenericStructure:
         return self.__setattr__("LineNumber")
 
     @property
-    def TemperatureOutput(self) -> "stationeers_pytrapic.types.DeviceLogicType":
+    def TemperatureOutput(self) -> "stationeers_pytrapic.types._DeviceLogicType":
         return self.__getattr__("TemperatureOutput")
 
     @TemperatureOutput.setter
@@ -2224,7 +2236,7 @@ class _GenericStructure:
         return self.__setattr__("TemperatureOutput")
 
     @property
-    def PressureOutput2(self) -> "stationeers_pytrapic.types.DeviceLogicType":
+    def PressureOutput2(self) -> "stationeers_pytrapic.types._DeviceLogicType":
         return self.__getattr__("PressureOutput2")
 
     @PressureOutput2.setter
@@ -2232,7 +2244,7 @@ class _GenericStructure:
         return self.__setattr__("PressureOutput2")
 
     @property
-    def TemperatureOutput2(self) -> "stationeers_pytrapic.types.DeviceLogicType":
+    def TemperatureOutput2(self) -> "stationeers_pytrapic.types._DeviceLogicType":
         return self.__getattr__("TemperatureOutput2")
 
     @TemperatureOutput2.setter
@@ -2240,7 +2252,7 @@ class _GenericStructure:
         return self.__setattr__("TemperatureOutput2")
 
     @property
-    def PressureExternal(self) -> "stationeers_pytrapic.types.DeviceLogicType":
+    def PressureExternal(self) -> "stationeers_pytrapic.types._DeviceLogicType":
         return self.__getattr__("PressureExternal")
 
     @PressureExternal.setter
@@ -2248,7 +2260,7 @@ class _GenericStructure:
         return self.__setattr__("PressureExternal")
 
     @property
-    def PressureInternal(self) -> "stationeers_pytrapic.types.DeviceLogicType":
+    def PressureInternal(self) -> "stationeers_pytrapic.types._DeviceLogicType":
         return self.__getattr__("PressureInternal")
 
     @PressureInternal.setter
@@ -2256,7 +2268,7 @@ class _GenericStructure:
         return self.__setattr__("PressureInternal")
 
     @property
-    def Activate(self) -> "stationeers_pytrapic.types.DeviceLogicType":
+    def Activate(self) -> "stationeers_pytrapic.types._DeviceLogicType":
         return self.__getattr__("Activate")
 
     @Activate.setter
@@ -2264,7 +2276,7 @@ class _GenericStructure:
         return self.__setattr__("Activate")
 
     @property
-    def Charge(self) -> "stationeers_pytrapic.types.DeviceLogicType":
+    def Charge(self) -> "stationeers_pytrapic.types._DeviceLogicType":
         return self.__getattr__("Charge")
 
     @Charge.setter
@@ -2272,7 +2284,7 @@ class _GenericStructure:
         return self.__setattr__("Charge")
 
     @property
-    def Setting(self) -> "stationeers_pytrapic.types.DeviceLogicType":
+    def Setting(self) -> "stationeers_pytrapic.types._DeviceLogicType":
         return self.__getattr__("Setting")
 
     @Setting.setter
@@ -2280,7 +2292,7 @@ class _GenericStructure:
         return self.__setattr__("Setting")
 
     @property
-    def Reagents(self) -> "stationeers_pytrapic.types.DeviceLogicType":
+    def Reagents(self) -> "stationeers_pytrapic.types._DeviceLogicType":
         return self.__getattr__("Reagents")
 
     @Reagents.setter
@@ -2288,7 +2300,7 @@ class _GenericStructure:
         return self.__setattr__("Reagents")
 
     @property
-    def RatioOxygen(self) -> "stationeers_pytrapic.types.DeviceLogicType":
+    def RatioOxygen(self) -> "stationeers_pytrapic.types._DeviceLogicType":
         return self.__getattr__("RatioOxygen")
 
     @RatioOxygen.setter
@@ -2296,7 +2308,7 @@ class _GenericStructure:
         return self.__setattr__("RatioOxygen")
 
     @property
-    def RatioCarbonDioxide(self) -> "stationeers_pytrapic.types.DeviceLogicType":
+    def RatioCarbonDioxide(self) -> "stationeers_pytrapic.types._DeviceLogicType":
         return self.__getattr__("RatioCarbonDioxide")
 
     @RatioCarbonDioxide.setter
@@ -2304,7 +2316,7 @@ class _GenericStructure:
         return self.__setattr__("RatioCarbonDioxide")
 
     @property
-    def RatioNitrogen(self) -> "stationeers_pytrapic.types.DeviceLogicType":
+    def RatioNitrogen(self) -> "stationeers_pytrapic.types._DeviceLogicType":
         return self.__getattr__("RatioNitrogen")
 
     @RatioNitrogen.setter
@@ -2312,7 +2324,7 @@ class _GenericStructure:
         return self.__setattr__("RatioNitrogen")
 
     @property
-    def RatioPollutant(self) -> "stationeers_pytrapic.types.DeviceLogicType":
+    def RatioPollutant(self) -> "stationeers_pytrapic.types._DeviceLogicType":
         return self.__getattr__("RatioPollutant")
 
     @RatioPollutant.setter
@@ -2320,7 +2332,7 @@ class _GenericStructure:
         return self.__setattr__("RatioPollutant")
 
     @property
-    def RatioVolatiles(self) -> "stationeers_pytrapic.types.DeviceLogicType":
+    def RatioVolatiles(self) -> "stationeers_pytrapic.types._DeviceLogicType":
         return self.__getattr__("RatioVolatiles")
 
     @RatioVolatiles.setter
@@ -2328,7 +2340,7 @@ class _GenericStructure:
         return self.__setattr__("RatioVolatiles")
 
     @property
-    def RatioWater(self) -> "stationeers_pytrapic.types.DeviceLogicType":
+    def RatioWater(self) -> "stationeers_pytrapic.types._DeviceLogicType":
         return self.__getattr__("RatioWater")
 
     @RatioWater.setter
@@ -2336,7 +2348,7 @@ class _GenericStructure:
         return self.__setattr__("RatioWater")
 
     @property
-    def RatioPollutedWater(self) -> "stationeers_pytrapic.types.DeviceLogicType":
+    def RatioPollutedWater(self) -> "stationeers_pytrapic.types._DeviceLogicType":
         return self.__getattr__("RatioPollutedWater")
 
     @RatioPollutedWater.setter
@@ -2344,7 +2356,7 @@ class _GenericStructure:
         return self.__setattr__("RatioPollutedWater")
 
     @property
-    def RatioNitrousOxide(self) -> "stationeers_pytrapic.types.DeviceLogicType":
+    def RatioNitrousOxide(self) -> "stationeers_pytrapic.types._DeviceLogicType":
         return self.__getattr__("RatioNitrousOxide")
 
     @RatioNitrousOxide.setter
@@ -2352,7 +2364,7 @@ class _GenericStructure:
         return self.__setattr__("RatioNitrousOxide")
 
     @property
-    def RatioLiquidNitrogen(self) -> "stationeers_pytrapic.types.DeviceLogicType":
+    def RatioLiquidNitrogen(self) -> "stationeers_pytrapic.types._DeviceLogicType":
         return self.__getattr__("RatioLiquidNitrogen")
 
     @RatioLiquidNitrogen.setter
@@ -2360,7 +2372,7 @@ class _GenericStructure:
         return self.__setattr__("RatioLiquidNitrogen")
 
     @property
-    def Combustion(self) -> "stationeers_pytrapic.types.DeviceLogicType":
+    def Combustion(self) -> "stationeers_pytrapic.types._DeviceLogicType":
         return self.__getattr__("Combustion")
 
     @Combustion.setter
@@ -2368,7 +2380,7 @@ class _GenericStructure:
         return self.__setattr__("Combustion")
 
     @property
-    def RatioOxygenInput(self) -> "stationeers_pytrapic.types.DeviceLogicType":
+    def RatioOxygenInput(self) -> "stationeers_pytrapic.types._DeviceLogicType":
         return self.__getattr__("RatioOxygenInput")
 
     @RatioOxygenInput.setter
@@ -2376,7 +2388,7 @@ class _GenericStructure:
         return self.__setattr__("RatioOxygenInput")
 
     @property
-    def RatioCarbonDioxideInput(self) -> "stationeers_pytrapic.types.DeviceLogicType":
+    def RatioCarbonDioxideInput(self) -> "stationeers_pytrapic.types._DeviceLogicType":
         return self.__getattr__("RatioCarbonDioxideInput")
 
     @RatioCarbonDioxideInput.setter
@@ -2384,7 +2396,7 @@ class _GenericStructure:
         return self.__setattr__("RatioCarbonDioxideInput")
 
     @property
-    def RatioNitrogenInput(self) -> "stationeers_pytrapic.types.DeviceLogicType":
+    def RatioNitrogenInput(self) -> "stationeers_pytrapic.types._DeviceLogicType":
         return self.__getattr__("RatioNitrogenInput")
 
     @RatioNitrogenInput.setter
@@ -2392,7 +2404,7 @@ class _GenericStructure:
         return self.__setattr__("RatioNitrogenInput")
 
     @property
-    def RatioPollutantInput(self) -> "stationeers_pytrapic.types.DeviceLogicType":
+    def RatioPollutantInput(self) -> "stationeers_pytrapic.types._DeviceLogicType":
         return self.__getattr__("RatioPollutantInput")
 
     @RatioPollutantInput.setter
@@ -2400,7 +2412,7 @@ class _GenericStructure:
         return self.__setattr__("RatioPollutantInput")
 
     @property
-    def RatioVolatilesInput(self) -> "stationeers_pytrapic.types.DeviceLogicType":
+    def RatioVolatilesInput(self) -> "stationeers_pytrapic.types._DeviceLogicType":
         return self.__getattr__("RatioVolatilesInput")
 
     @RatioVolatilesInput.setter
@@ -2408,7 +2420,7 @@ class _GenericStructure:
         return self.__setattr__("RatioVolatilesInput")
 
     @property
-    def RatioWaterInput(self) -> "stationeers_pytrapic.types.DeviceLogicType":
+    def RatioWaterInput(self) -> "stationeers_pytrapic.types._DeviceLogicType":
         return self.__getattr__("RatioWaterInput")
 
     @RatioWaterInput.setter
@@ -2416,7 +2428,7 @@ class _GenericStructure:
         return self.__setattr__("RatioWaterInput")
 
     @property
-    def RatioNitrousOxideInput(self) -> "stationeers_pytrapic.types.DeviceLogicType":
+    def RatioNitrousOxideInput(self) -> "stationeers_pytrapic.types._DeviceLogicType":
         return self.__getattr__("RatioNitrousOxideInput")
 
     @RatioNitrousOxideInput.setter
@@ -2424,7 +2436,7 @@ class _GenericStructure:
         return self.__setattr__("RatioNitrousOxideInput")
 
     @property
-    def RatioLiquidNitrogenInput(self) -> "stationeers_pytrapic.types.DeviceLogicType":
+    def RatioLiquidNitrogenInput(self) -> "stationeers_pytrapic.types._DeviceLogicType":
         return self.__getattr__("RatioLiquidNitrogenInput")
 
     @RatioLiquidNitrogenInput.setter
@@ -2432,7 +2444,7 @@ class _GenericStructure:
         return self.__setattr__("RatioLiquidNitrogenInput")
 
     @property
-    def CombustionInput(self) -> "stationeers_pytrapic.types.DeviceLogicType":
+    def CombustionInput(self) -> "stationeers_pytrapic.types._DeviceLogicType":
         return self.__getattr__("CombustionInput")
 
     @CombustionInput.setter
@@ -2440,7 +2452,7 @@ class _GenericStructure:
         return self.__setattr__("CombustionInput")
 
     @property
-    def RatioOxygenInput2(self) -> "stationeers_pytrapic.types.DeviceLogicType":
+    def RatioOxygenInput2(self) -> "stationeers_pytrapic.types._DeviceLogicType":
         return self.__getattr__("RatioOxygenInput2")
 
     @RatioOxygenInput2.setter
@@ -2448,7 +2460,7 @@ class _GenericStructure:
         return self.__setattr__("RatioOxygenInput2")
 
     @property
-    def RatioCarbonDioxideInput2(self) -> "stationeers_pytrapic.types.DeviceLogicType":
+    def RatioCarbonDioxideInput2(self) -> "stationeers_pytrapic.types._DeviceLogicType":
         return self.__getattr__("RatioCarbonDioxideInput2")
 
     @RatioCarbonDioxideInput2.setter
@@ -2456,7 +2468,7 @@ class _GenericStructure:
         return self.__setattr__("RatioCarbonDioxideInput2")
 
     @property
-    def RatioNitrogenInput2(self) -> "stationeers_pytrapic.types.DeviceLogicType":
+    def RatioNitrogenInput2(self) -> "stationeers_pytrapic.types._DeviceLogicType":
         return self.__getattr__("RatioNitrogenInput2")
 
     @RatioNitrogenInput2.setter
@@ -2464,7 +2476,7 @@ class _GenericStructure:
         return self.__setattr__("RatioNitrogenInput2")
 
     @property
-    def RatioPollutantInput2(self) -> "stationeers_pytrapic.types.DeviceLogicType":
+    def RatioPollutantInput2(self) -> "stationeers_pytrapic.types._DeviceLogicType":
         return self.__getattr__("RatioPollutantInput2")
 
     @RatioPollutantInput2.setter
@@ -2472,7 +2484,7 @@ class _GenericStructure:
         return self.__setattr__("RatioPollutantInput2")
 
     @property
-    def RatioVolatilesInput2(self) -> "stationeers_pytrapic.types.DeviceLogicType":
+    def RatioVolatilesInput2(self) -> "stationeers_pytrapic.types._DeviceLogicType":
         return self.__getattr__("RatioVolatilesInput2")
 
     @RatioVolatilesInput2.setter
@@ -2480,7 +2492,7 @@ class _GenericStructure:
         return self.__setattr__("RatioVolatilesInput2")
 
     @property
-    def RatioWaterInput2(self) -> "stationeers_pytrapic.types.DeviceLogicType":
+    def RatioWaterInput2(self) -> "stationeers_pytrapic.types._DeviceLogicType":
         return self.__getattr__("RatioWaterInput2")
 
     @RatioWaterInput2.setter
@@ -2488,7 +2500,7 @@ class _GenericStructure:
         return self.__setattr__("RatioWaterInput2")
 
     @property
-    def RatioNitrousOxideInput2(self) -> "stationeers_pytrapic.types.DeviceLogicType":
+    def RatioNitrousOxideInput2(self) -> "stationeers_pytrapic.types._DeviceLogicType":
         return self.__getattr__("RatioNitrousOxideInput2")
 
     @RatioNitrousOxideInput2.setter
@@ -2496,7 +2508,9 @@ class _GenericStructure:
         return self.__setattr__("RatioNitrousOxideInput2")
 
     @property
-    def RatioLiquidNitrogenInput2(self) -> "stationeers_pytrapic.types.DeviceLogicType":
+    def RatioLiquidNitrogenInput2(
+        self,
+    ) -> "stationeers_pytrapic.types._DeviceLogicType":
         return self.__getattr__("RatioLiquidNitrogenInput2")
 
     @RatioLiquidNitrogenInput2.setter
@@ -2504,7 +2518,7 @@ class _GenericStructure:
         return self.__setattr__("RatioLiquidNitrogenInput2")
 
     @property
-    def CombustionInput2(self) -> "stationeers_pytrapic.types.DeviceLogicType":
+    def CombustionInput2(self) -> "stationeers_pytrapic.types._DeviceLogicType":
         return self.__getattr__("CombustionInput2")
 
     @CombustionInput2.setter
@@ -2512,7 +2526,7 @@ class _GenericStructure:
         return self.__setattr__("CombustionInput2")
 
     @property
-    def RatioOxygenOutput(self) -> "stationeers_pytrapic.types.DeviceLogicType":
+    def RatioOxygenOutput(self) -> "stationeers_pytrapic.types._DeviceLogicType":
         return self.__getattr__("RatioOxygenOutput")
 
     @RatioOxygenOutput.setter
@@ -2520,7 +2534,7 @@ class _GenericStructure:
         return self.__setattr__("RatioOxygenOutput")
 
     @property
-    def RatioCarbonDioxideOutput(self) -> "stationeers_pytrapic.types.DeviceLogicType":
+    def RatioCarbonDioxideOutput(self) -> "stationeers_pytrapic.types._DeviceLogicType":
         return self.__getattr__("RatioCarbonDioxideOutput")
 
     @RatioCarbonDioxideOutput.setter
@@ -2528,7 +2542,7 @@ class _GenericStructure:
         return self.__setattr__("RatioCarbonDioxideOutput")
 
     @property
-    def RatioNitrogenOutput(self) -> "stationeers_pytrapic.types.DeviceLogicType":
+    def RatioNitrogenOutput(self) -> "stationeers_pytrapic.types._DeviceLogicType":
         return self.__getattr__("RatioNitrogenOutput")
 
     @RatioNitrogenOutput.setter
@@ -2536,7 +2550,7 @@ class _GenericStructure:
         return self.__setattr__("RatioNitrogenOutput")
 
     @property
-    def RatioPollutantOutput(self) -> "stationeers_pytrapic.types.DeviceLogicType":
+    def RatioPollutantOutput(self) -> "stationeers_pytrapic.types._DeviceLogicType":
         return self.__getattr__("RatioPollutantOutput")
 
     @RatioPollutantOutput.setter
@@ -2544,7 +2558,7 @@ class _GenericStructure:
         return self.__setattr__("RatioPollutantOutput")
 
     @property
-    def RatioVolatilesOutput(self) -> "stationeers_pytrapic.types.DeviceLogicType":
+    def RatioVolatilesOutput(self) -> "stationeers_pytrapic.types._DeviceLogicType":
         return self.__getattr__("RatioVolatilesOutput")
 
     @RatioVolatilesOutput.setter
@@ -2552,7 +2566,7 @@ class _GenericStructure:
         return self.__setattr__("RatioVolatilesOutput")
 
     @property
-    def RatioWaterOutput(self) -> "stationeers_pytrapic.types.DeviceLogicType":
+    def RatioWaterOutput(self) -> "stationeers_pytrapic.types._DeviceLogicType":
         return self.__getattr__("RatioWaterOutput")
 
     @RatioWaterOutput.setter
@@ -2560,7 +2574,7 @@ class _GenericStructure:
         return self.__setattr__("RatioWaterOutput")
 
     @property
-    def RatioNitrousOxideOutput(self) -> "stationeers_pytrapic.types.DeviceLogicType":
+    def RatioNitrousOxideOutput(self) -> "stationeers_pytrapic.types._DeviceLogicType":
         return self.__getattr__("RatioNitrousOxideOutput")
 
     @RatioNitrousOxideOutput.setter
@@ -2568,7 +2582,9 @@ class _GenericStructure:
         return self.__setattr__("RatioNitrousOxideOutput")
 
     @property
-    def RatioLiquidNitrogenOutput(self) -> "stationeers_pytrapic.types.DeviceLogicType":
+    def RatioLiquidNitrogenOutput(
+        self,
+    ) -> "stationeers_pytrapic.types._DeviceLogicType":
         return self.__getattr__("RatioLiquidNitrogenOutput")
 
     @RatioLiquidNitrogenOutput.setter
@@ -2576,7 +2592,7 @@ class _GenericStructure:
         return self.__setattr__("RatioLiquidNitrogenOutput")
 
     @property
-    def CombustionOutput(self) -> "stationeers_pytrapic.types.DeviceLogicType":
+    def CombustionOutput(self) -> "stationeers_pytrapic.types._DeviceLogicType":
         return self.__getattr__("CombustionOutput")
 
     @CombustionOutput.setter
@@ -2584,7 +2600,7 @@ class _GenericStructure:
         return self.__setattr__("CombustionOutput")
 
     @property
-    def RatioOxygenOutput2(self) -> "stationeers_pytrapic.types.DeviceLogicType":
+    def RatioOxygenOutput2(self) -> "stationeers_pytrapic.types._DeviceLogicType":
         return self.__getattr__("RatioOxygenOutput2")
 
     @RatioOxygenOutput2.setter
@@ -2592,7 +2608,9 @@ class _GenericStructure:
         return self.__setattr__("RatioOxygenOutput2")
 
     @property
-    def RatioCarbonDioxideOutput2(self) -> "stationeers_pytrapic.types.DeviceLogicType":
+    def RatioCarbonDioxideOutput2(
+        self,
+    ) -> "stationeers_pytrapic.types._DeviceLogicType":
         return self.__getattr__("RatioCarbonDioxideOutput2")
 
     @RatioCarbonDioxideOutput2.setter
@@ -2600,7 +2618,7 @@ class _GenericStructure:
         return self.__setattr__("RatioCarbonDioxideOutput2")
 
     @property
-    def RatioNitrogenOutput2(self) -> "stationeers_pytrapic.types.DeviceLogicType":
+    def RatioNitrogenOutput2(self) -> "stationeers_pytrapic.types._DeviceLogicType":
         return self.__getattr__("RatioNitrogenOutput2")
 
     @RatioNitrogenOutput2.setter
@@ -2608,7 +2626,7 @@ class _GenericStructure:
         return self.__setattr__("RatioNitrogenOutput2")
 
     @property
-    def RatioPollutantOutput2(self) -> "stationeers_pytrapic.types.DeviceLogicType":
+    def RatioPollutantOutput2(self) -> "stationeers_pytrapic.types._DeviceLogicType":
         return self.__getattr__("RatioPollutantOutput2")
 
     @RatioPollutantOutput2.setter
@@ -2616,7 +2634,7 @@ class _GenericStructure:
         return self.__setattr__("RatioPollutantOutput2")
 
     @property
-    def RatioVolatilesOutput2(self) -> "stationeers_pytrapic.types.DeviceLogicType":
+    def RatioVolatilesOutput2(self) -> "stationeers_pytrapic.types._DeviceLogicType":
         return self.__getattr__("RatioVolatilesOutput2")
 
     @RatioVolatilesOutput2.setter
@@ -2624,7 +2642,7 @@ class _GenericStructure:
         return self.__setattr__("RatioVolatilesOutput2")
 
     @property
-    def RatioWaterOutput2(self) -> "stationeers_pytrapic.types.DeviceLogicType":
+    def RatioWaterOutput2(self) -> "stationeers_pytrapic.types._DeviceLogicType":
         return self.__getattr__("RatioWaterOutput2")
 
     @RatioWaterOutput2.setter
@@ -2632,7 +2650,7 @@ class _GenericStructure:
         return self.__setattr__("RatioWaterOutput2")
 
     @property
-    def RatioNitrousOxideOutput2(self) -> "stationeers_pytrapic.types.DeviceLogicType":
+    def RatioNitrousOxideOutput2(self) -> "stationeers_pytrapic.types._DeviceLogicType":
         return self.__getattr__("RatioNitrousOxideOutput2")
 
     @RatioNitrousOxideOutput2.setter
@@ -2642,7 +2660,7 @@ class _GenericStructure:
     @property
     def RatioLiquidNitrogenOutput2(
         self,
-    ) -> "stationeers_pytrapic.types.DeviceLogicType":
+    ) -> "stationeers_pytrapic.types._DeviceLogicType":
         return self.__getattr__("RatioLiquidNitrogenOutput2")
 
     @RatioLiquidNitrogenOutput2.setter
@@ -2650,7 +2668,7 @@ class _GenericStructure:
         return self.__setattr__("RatioLiquidNitrogenOutput2")
 
     @property
-    def CombustionOutput2(self) -> "stationeers_pytrapic.types.DeviceLogicType":
+    def CombustionOutput2(self) -> "stationeers_pytrapic.types._DeviceLogicType":
         return self.__getattr__("CombustionOutput2")
 
     @CombustionOutput2.setter
@@ -2658,7 +2676,7 @@ class _GenericStructure:
         return self.__setattr__("CombustionOutput2")
 
     @property
-    def Horizontal(self) -> "stationeers_pytrapic.types.DeviceLogicType":
+    def Horizontal(self) -> "stationeers_pytrapic.types._DeviceLogicType":
         return self.__getattr__("Horizontal")
 
     @Horizontal.setter
@@ -2666,7 +2684,7 @@ class _GenericStructure:
         return self.__setattr__("Horizontal")
 
     @property
-    def Vertical(self) -> "stationeers_pytrapic.types.DeviceLogicType":
+    def Vertical(self) -> "stationeers_pytrapic.types._DeviceLogicType":
         return self.__getattr__("Vertical")
 
     @Vertical.setter
@@ -2674,7 +2692,7 @@ class _GenericStructure:
         return self.__setattr__("Vertical")
 
     @property
-    def SolarAngle(self) -> "stationeers_pytrapic.types.DeviceLogicType":
+    def SolarAngle(self) -> "stationeers_pytrapic.types._DeviceLogicType":
         return self.__getattr__("SolarAngle")
 
     @SolarAngle.setter
@@ -2682,7 +2700,7 @@ class _GenericStructure:
         return self.__setattr__("SolarAngle")
 
     @property
-    def SolarConstant(self) -> "stationeers_pytrapic.types.DeviceLogicType":
+    def SolarConstant(self) -> "stationeers_pytrapic.types._DeviceLogicType":
         return self.__getattr__("SolarConstant")
 
     @SolarConstant.setter
@@ -2690,7 +2708,7 @@ class _GenericStructure:
         return self.__setattr__("SolarConstant")
 
     @property
-    def Maximum(self) -> "stationeers_pytrapic.types.DeviceLogicType":
+    def Maximum(self) -> "stationeers_pytrapic.types._DeviceLogicType":
         return self.__getattr__("Maximum")
 
     @Maximum.setter
@@ -2698,7 +2716,7 @@ class _GenericStructure:
         return self.__setattr__("Maximum")
 
     @property
-    def Ratio(self) -> "stationeers_pytrapic.types.DeviceLogicType":
+    def Ratio(self) -> "stationeers_pytrapic.types._DeviceLogicType":
         return self.__getattr__("Ratio")
 
     @Ratio.setter
@@ -2706,7 +2724,7 @@ class _GenericStructure:
         return self.__setattr__("Ratio")
 
     @property
-    def PowerPotential(self) -> "stationeers_pytrapic.types.DeviceLogicType":
+    def PowerPotential(self) -> "stationeers_pytrapic.types._DeviceLogicType":
         return self.__getattr__("PowerPotential")
 
     @PowerPotential.setter
@@ -2714,7 +2732,7 @@ class _GenericStructure:
         return self.__setattr__("PowerPotential")
 
     @property
-    def PowerActual(self) -> "stationeers_pytrapic.types.DeviceLogicType":
+    def PowerActual(self) -> "stationeers_pytrapic.types._DeviceLogicType":
         return self.__getattr__("PowerActual")
 
     @PowerActual.setter
@@ -2722,7 +2740,7 @@ class _GenericStructure:
         return self.__setattr__("PowerActual")
 
     @property
-    def Quantity(self) -> "stationeers_pytrapic.types.DeviceLogicType":
+    def Quantity(self) -> "stationeers_pytrapic.types._DeviceLogicType":
         return self.__getattr__("Quantity")
 
     @Quantity.setter
@@ -2730,7 +2748,7 @@ class _GenericStructure:
         return self.__setattr__("Quantity")
 
     @property
-    def On(self) -> "stationeers_pytrapic.types.DeviceLogicType":
+    def On(self) -> "stationeers_pytrapic.types._DeviceLogicType":
         return self.__getattr__("On")
 
     @On.setter
@@ -2738,7 +2756,7 @@ class _GenericStructure:
         return self.__setattr__("On")
 
     @property
-    def ImportQuantity(self) -> "stationeers_pytrapic.types.DeviceLogicType":
+    def ImportQuantity(self) -> "stationeers_pytrapic.types._DeviceLogicType":
         return self.__getattr__("ImportQuantity")
 
     @ImportQuantity.setter
@@ -2746,7 +2764,7 @@ class _GenericStructure:
         return self.__setattr__("ImportQuantity")
 
     @property
-    def ImportSlotOccupant(self) -> "stationeers_pytrapic.types.DeviceLogicType":
+    def ImportSlotOccupant(self) -> "stationeers_pytrapic.types._DeviceLogicType":
         return self.__getattr__("ImportSlotOccupant")
 
     @ImportSlotOccupant.setter
@@ -2754,7 +2772,7 @@ class _GenericStructure:
         return self.__setattr__("ImportSlotOccupant")
 
     @property
-    def ExportQuantity(self) -> "stationeers_pytrapic.types.DeviceLogicType":
+    def ExportQuantity(self) -> "stationeers_pytrapic.types._DeviceLogicType":
         return self.__getattr__("ExportQuantity")
 
     @ExportQuantity.setter
@@ -2762,7 +2780,7 @@ class _GenericStructure:
         return self.__setattr__("ExportQuantity")
 
     @property
-    def ExportSlotOccupant(self) -> "stationeers_pytrapic.types.DeviceLogicType":
+    def ExportSlotOccupant(self) -> "stationeers_pytrapic.types._DeviceLogicType":
         return self.__getattr__("ExportSlotOccupant")
 
     @ExportSlotOccupant.setter
@@ -2770,7 +2788,7 @@ class _GenericStructure:
         return self.__setattr__("ExportSlotOccupant")
 
     @property
-    def RequiredPower(self) -> "stationeers_pytrapic.types.DeviceLogicType":
+    def RequiredPower(self) -> "stationeers_pytrapic.types._DeviceLogicType":
         return self.__getattr__("RequiredPower")
 
     @RequiredPower.setter
@@ -2778,7 +2796,7 @@ class _GenericStructure:
         return self.__setattr__("RequiredPower")
 
     @property
-    def HorizontalRatio(self) -> "stationeers_pytrapic.types.DeviceLogicType":
+    def HorizontalRatio(self) -> "stationeers_pytrapic.types._DeviceLogicType":
         return self.__getattr__("HorizontalRatio")
 
     @HorizontalRatio.setter
@@ -2786,7 +2804,7 @@ class _GenericStructure:
         return self.__setattr__("HorizontalRatio")
 
     @property
-    def VerticalRatio(self) -> "stationeers_pytrapic.types.DeviceLogicType":
+    def VerticalRatio(self) -> "stationeers_pytrapic.types._DeviceLogicType":
         return self.__getattr__("VerticalRatio")
 
     @VerticalRatio.setter
@@ -2794,7 +2812,7 @@ class _GenericStructure:
         return self.__setattr__("VerticalRatio")
 
     @property
-    def PowerRequired(self) -> "stationeers_pytrapic.types.DeviceLogicType":
+    def PowerRequired(self) -> "stationeers_pytrapic.types._DeviceLogicType":
         return self.__getattr__("PowerRequired")
 
     @PowerRequired.setter
@@ -2802,7 +2820,7 @@ class _GenericStructure:
         return self.__setattr__("PowerRequired")
 
     @property
-    def Idle(self) -> "stationeers_pytrapic.types.DeviceLogicType":
+    def Idle(self) -> "stationeers_pytrapic.types._DeviceLogicType":
         return self.__getattr__("Idle")
 
     @Idle.setter
@@ -2810,7 +2828,7 @@ class _GenericStructure:
         return self.__setattr__("Idle")
 
     @property
-    def Color(self) -> "stationeers_pytrapic.types.DeviceLogicType":
+    def Color(self) -> "stationeers_pytrapic.types._DeviceLogicType":
         return self.__getattr__("Color")
 
     @Color.setter
@@ -2818,7 +2836,7 @@ class _GenericStructure:
         return self.__setattr__("Color")
 
     @property
-    def ElevatorSpeed(self) -> "stationeers_pytrapic.types.DeviceLogicType":
+    def ElevatorSpeed(self) -> "stationeers_pytrapic.types._DeviceLogicType":
         return self.__getattr__("ElevatorSpeed")
 
     @ElevatorSpeed.setter
@@ -2826,7 +2844,7 @@ class _GenericStructure:
         return self.__setattr__("ElevatorSpeed")
 
     @property
-    def ElevatorLevel(self) -> "stationeers_pytrapic.types.DeviceLogicType":
+    def ElevatorLevel(self) -> "stationeers_pytrapic.types._DeviceLogicType":
         return self.__getattr__("ElevatorLevel")
 
     @ElevatorLevel.setter
@@ -2834,7 +2852,7 @@ class _GenericStructure:
         return self.__setattr__("ElevatorLevel")
 
     @property
-    def RecipeHash(self) -> "stationeers_pytrapic.types.DeviceLogicType":
+    def RecipeHash(self) -> "stationeers_pytrapic.types._DeviceLogicType":
         return self.__getattr__("RecipeHash")
 
     @RecipeHash.setter
@@ -2842,7 +2860,7 @@ class _GenericStructure:
         return self.__setattr__("RecipeHash")
 
     @property
-    def ExportSlotHash(self) -> "stationeers_pytrapic.types.DeviceLogicType":
+    def ExportSlotHash(self) -> "stationeers_pytrapic.types._DeviceLogicType":
         return self.__getattr__("ExportSlotHash")
 
     @ExportSlotHash.setter
@@ -2850,7 +2868,7 @@ class _GenericStructure:
         return self.__setattr__("ExportSlotHash")
 
     @property
-    def ImportSlotHash(self) -> "stationeers_pytrapic.types.DeviceLogicType":
+    def ImportSlotHash(self) -> "stationeers_pytrapic.types._DeviceLogicType":
         return self.__getattr__("ImportSlotHash")
 
     @ImportSlotHash.setter
@@ -2858,7 +2876,7 @@ class _GenericStructure:
         return self.__setattr__("ImportSlotHash")
 
     @property
-    def PlantHealth1(self) -> "stationeers_pytrapic.types.DeviceLogicType":
+    def PlantHealth1(self) -> "stationeers_pytrapic.types._DeviceLogicType":
         return self.__getattr__("PlantHealth1")
 
     @PlantHealth1.setter
@@ -2866,7 +2884,7 @@ class _GenericStructure:
         return self.__setattr__("PlantHealth1")
 
     @property
-    def PlantHealth2(self) -> "stationeers_pytrapic.types.DeviceLogicType":
+    def PlantHealth2(self) -> "stationeers_pytrapic.types._DeviceLogicType":
         return self.__getattr__("PlantHealth2")
 
     @PlantHealth2.setter
@@ -2874,7 +2892,7 @@ class _GenericStructure:
         return self.__setattr__("PlantHealth2")
 
     @property
-    def PlantHealth3(self) -> "stationeers_pytrapic.types.DeviceLogicType":
+    def PlantHealth3(self) -> "stationeers_pytrapic.types._DeviceLogicType":
         return self.__getattr__("PlantHealth3")
 
     @PlantHealth3.setter
@@ -2882,7 +2900,7 @@ class _GenericStructure:
         return self.__setattr__("PlantHealth3")
 
     @property
-    def PlantHealth4(self) -> "stationeers_pytrapic.types.DeviceLogicType":
+    def PlantHealth4(self) -> "stationeers_pytrapic.types._DeviceLogicType":
         return self.__getattr__("PlantHealth4")
 
     @PlantHealth4.setter
@@ -2890,7 +2908,7 @@ class _GenericStructure:
         return self.__setattr__("PlantHealth4")
 
     @property
-    def PlantGrowth1(self) -> "stationeers_pytrapic.types.DeviceLogicType":
+    def PlantGrowth1(self) -> "stationeers_pytrapic.types._DeviceLogicType":
         return self.__getattr__("PlantGrowth1")
 
     @PlantGrowth1.setter
@@ -2898,7 +2916,7 @@ class _GenericStructure:
         return self.__setattr__("PlantGrowth1")
 
     @property
-    def PlantGrowth2(self) -> "stationeers_pytrapic.types.DeviceLogicType":
+    def PlantGrowth2(self) -> "stationeers_pytrapic.types._DeviceLogicType":
         return self.__getattr__("PlantGrowth2")
 
     @PlantGrowth2.setter
@@ -2906,7 +2924,7 @@ class _GenericStructure:
         return self.__setattr__("PlantGrowth2")
 
     @property
-    def PlantGrowth3(self) -> "stationeers_pytrapic.types.DeviceLogicType":
+    def PlantGrowth3(self) -> "stationeers_pytrapic.types._DeviceLogicType":
         return self.__getattr__("PlantGrowth3")
 
     @PlantGrowth3.setter
@@ -2914,7 +2932,7 @@ class _GenericStructure:
         return self.__setattr__("PlantGrowth3")
 
     @property
-    def PlantGrowth4(self) -> "stationeers_pytrapic.types.DeviceLogicType":
+    def PlantGrowth4(self) -> "stationeers_pytrapic.types._DeviceLogicType":
         return self.__getattr__("PlantGrowth4")
 
     @PlantGrowth4.setter
@@ -2922,7 +2940,7 @@ class _GenericStructure:
         return self.__setattr__("PlantGrowth4")
 
     @property
-    def PlantEfficiency1(self) -> "stationeers_pytrapic.types.DeviceLogicType":
+    def PlantEfficiency1(self) -> "stationeers_pytrapic.types._DeviceLogicType":
         return self.__getattr__("PlantEfficiency1")
 
     @PlantEfficiency1.setter
@@ -2930,7 +2948,7 @@ class _GenericStructure:
         return self.__setattr__("PlantEfficiency1")
 
     @property
-    def PlantEfficiency2(self) -> "stationeers_pytrapic.types.DeviceLogicType":
+    def PlantEfficiency2(self) -> "stationeers_pytrapic.types._DeviceLogicType":
         return self.__getattr__("PlantEfficiency2")
 
     @PlantEfficiency2.setter
@@ -2938,7 +2956,7 @@ class _GenericStructure:
         return self.__setattr__("PlantEfficiency2")
 
     @property
-    def PlantEfficiency3(self) -> "stationeers_pytrapic.types.DeviceLogicType":
+    def PlantEfficiency3(self) -> "stationeers_pytrapic.types._DeviceLogicType":
         return self.__getattr__("PlantEfficiency3")
 
     @PlantEfficiency3.setter
@@ -2946,7 +2964,7 @@ class _GenericStructure:
         return self.__setattr__("PlantEfficiency3")
 
     @property
-    def PlantEfficiency4(self) -> "stationeers_pytrapic.types.DeviceLogicType":
+    def PlantEfficiency4(self) -> "stationeers_pytrapic.types._DeviceLogicType":
         return self.__getattr__("PlantEfficiency4")
 
     @PlantEfficiency4.setter
@@ -2954,7 +2972,7 @@ class _GenericStructure:
         return self.__setattr__("PlantEfficiency4")
 
     @property
-    def PlantHash1(self) -> "stationeers_pytrapic.types.DeviceLogicType":
+    def PlantHash1(self) -> "stationeers_pytrapic.types._DeviceLogicType":
         return self.__getattr__("PlantHash1")
 
     @PlantHash1.setter
@@ -2962,7 +2980,7 @@ class _GenericStructure:
         return self.__setattr__("PlantHash1")
 
     @property
-    def PlantHash2(self) -> "stationeers_pytrapic.types.DeviceLogicType":
+    def PlantHash2(self) -> "stationeers_pytrapic.types._DeviceLogicType":
         return self.__getattr__("PlantHash2")
 
     @PlantHash2.setter
@@ -2970,7 +2988,7 @@ class _GenericStructure:
         return self.__setattr__("PlantHash2")
 
     @property
-    def PlantHash3(self) -> "stationeers_pytrapic.types.DeviceLogicType":
+    def PlantHash3(self) -> "stationeers_pytrapic.types._DeviceLogicType":
         return self.__getattr__("PlantHash3")
 
     @PlantHash3.setter
@@ -2978,7 +2996,7 @@ class _GenericStructure:
         return self.__setattr__("PlantHash3")
 
     @property
-    def PlantHash4(self) -> "stationeers_pytrapic.types.DeviceLogicType":
+    def PlantHash4(self) -> "stationeers_pytrapic.types._DeviceLogicType":
         return self.__getattr__("PlantHash4")
 
     @PlantHash4.setter
@@ -2986,7 +3004,7 @@ class _GenericStructure:
         return self.__setattr__("PlantHash4")
 
     @property
-    def RequestHash(self) -> "stationeers_pytrapic.types.DeviceLogicType":
+    def RequestHash(self) -> "stationeers_pytrapic.types._DeviceLogicType":
         return self.__getattr__("RequestHash")
 
     @RequestHash.setter
@@ -2994,7 +3012,7 @@ class _GenericStructure:
         return self.__setattr__("RequestHash")
 
     @property
-    def CompletionRatio(self) -> "stationeers_pytrapic.types.DeviceLogicType":
+    def CompletionRatio(self) -> "stationeers_pytrapic.types._DeviceLogicType":
         return self.__getattr__("CompletionRatio")
 
     @CompletionRatio.setter
@@ -3002,7 +3020,7 @@ class _GenericStructure:
         return self.__setattr__("CompletionRatio")
 
     @property
-    def ClearMemory(self) -> "stationeers_pytrapic.types.DeviceLogicType":
+    def ClearMemory(self) -> "stationeers_pytrapic.types._DeviceLogicType":
         return self.__getattr__("ClearMemory")
 
     @ClearMemory.setter
@@ -3010,7 +3028,7 @@ class _GenericStructure:
         return self.__setattr__("ClearMemory")
 
     @property
-    def ExportCount(self) -> "stationeers_pytrapic.types.DeviceLogicType":
+    def ExportCount(self) -> "stationeers_pytrapic.types._DeviceLogicType":
         return self.__getattr__("ExportCount")
 
     @ExportCount.setter
@@ -3018,7 +3036,7 @@ class _GenericStructure:
         return self.__setattr__("ExportCount")
 
     @property
-    def ImportCount(self) -> "stationeers_pytrapic.types.DeviceLogicType":
+    def ImportCount(self) -> "stationeers_pytrapic.types._DeviceLogicType":
         return self.__getattr__("ImportCount")
 
     @ImportCount.setter
@@ -3026,7 +3044,7 @@ class _GenericStructure:
         return self.__setattr__("ImportCount")
 
     @property
-    def PowerGeneration(self) -> "stationeers_pytrapic.types.DeviceLogicType":
+    def PowerGeneration(self) -> "stationeers_pytrapic.types._DeviceLogicType":
         return self.__getattr__("PowerGeneration")
 
     @PowerGeneration.setter
@@ -3034,7 +3052,7 @@ class _GenericStructure:
         return self.__setattr__("PowerGeneration")
 
     @property
-    def TotalMoles(self) -> "stationeers_pytrapic.types.DeviceLogicType":
+    def TotalMoles(self) -> "stationeers_pytrapic.types._DeviceLogicType":
         return self.__getattr__("TotalMoles")
 
     @TotalMoles.setter
@@ -3042,7 +3060,7 @@ class _GenericStructure:
         return self.__setattr__("TotalMoles")
 
     @property
-    def TotalMolesInput(self) -> "stationeers_pytrapic.types.DeviceLogicType":
+    def TotalMolesInput(self) -> "stationeers_pytrapic.types._DeviceLogicType":
         return self.__getattr__("TotalMolesInput")
 
     @TotalMolesInput.setter
@@ -3050,7 +3068,7 @@ class _GenericStructure:
         return self.__setattr__("TotalMolesInput")
 
     @property
-    def TotalMolesInput2(self) -> "stationeers_pytrapic.types.DeviceLogicType":
+    def TotalMolesInput2(self) -> "stationeers_pytrapic.types._DeviceLogicType":
         return self.__getattr__("TotalMolesInput2")
 
     @TotalMolesInput2.setter
@@ -3058,7 +3076,7 @@ class _GenericStructure:
         return self.__setattr__("TotalMolesInput2")
 
     @property
-    def TotalMolesOutput(self) -> "stationeers_pytrapic.types.DeviceLogicType":
+    def TotalMolesOutput(self) -> "stationeers_pytrapic.types._DeviceLogicType":
         return self.__getattr__("TotalMolesOutput")
 
     @TotalMolesOutput.setter
@@ -3066,7 +3084,7 @@ class _GenericStructure:
         return self.__setattr__("TotalMolesOutput")
 
     @property
-    def TotalMolesOutput2(self) -> "stationeers_pytrapic.types.DeviceLogicType":
+    def TotalMolesOutput2(self) -> "stationeers_pytrapic.types._DeviceLogicType":
         return self.__getattr__("TotalMolesOutput2")
 
     @TotalMolesOutput2.setter
@@ -3074,7 +3092,7 @@ class _GenericStructure:
         return self.__setattr__("TotalMolesOutput2")
 
     @property
-    def Volume(self) -> "stationeers_pytrapic.types.DeviceLogicType":
+    def Volume(self) -> "stationeers_pytrapic.types._DeviceLogicType":
         return self.__getattr__("Volume")
 
     @Volume.setter
@@ -3082,7 +3100,7 @@ class _GenericStructure:
         return self.__setattr__("Volume")
 
     @property
-    def Plant(self) -> "stationeers_pytrapic.types.DeviceLogicType":
+    def Plant(self) -> "stationeers_pytrapic.types._DeviceLogicType":
         return self.__getattr__("Plant")
 
     @Plant.setter
@@ -3090,7 +3108,7 @@ class _GenericStructure:
         return self.__setattr__("Plant")
 
     @property
-    def Harvest(self) -> "stationeers_pytrapic.types.DeviceLogicType":
+    def Harvest(self) -> "stationeers_pytrapic.types._DeviceLogicType":
         return self.__getattr__("Harvest")
 
     @Harvest.setter
@@ -3098,7 +3116,7 @@ class _GenericStructure:
         return self.__setattr__("Harvest")
 
     @property
-    def Output(self) -> "stationeers_pytrapic.types.DeviceLogicType":
+    def Output(self) -> "stationeers_pytrapic.types._DeviceLogicType":
         return self.__getattr__("Output")
 
     @Output.setter
@@ -3106,7 +3124,7 @@ class _GenericStructure:
         return self.__setattr__("Output")
 
     @property
-    def PressureSetting(self) -> "stationeers_pytrapic.types.DeviceLogicType":
+    def PressureSetting(self) -> "stationeers_pytrapic.types._DeviceLogicType":
         return self.__getattr__("PressureSetting")
 
     @PressureSetting.setter
@@ -3114,7 +3132,7 @@ class _GenericStructure:
         return self.__setattr__("PressureSetting")
 
     @property
-    def TemperatureSetting(self) -> "stationeers_pytrapic.types.DeviceLogicType":
+    def TemperatureSetting(self) -> "stationeers_pytrapic.types._DeviceLogicType":
         return self.__getattr__("TemperatureSetting")
 
     @TemperatureSetting.setter
@@ -3122,7 +3140,7 @@ class _GenericStructure:
         return self.__setattr__("TemperatureSetting")
 
     @property
-    def TemperatureExternal(self) -> "stationeers_pytrapic.types.DeviceLogicType":
+    def TemperatureExternal(self) -> "stationeers_pytrapic.types._DeviceLogicType":
         return self.__getattr__("TemperatureExternal")
 
     @TemperatureExternal.setter
@@ -3130,7 +3148,7 @@ class _GenericStructure:
         return self.__setattr__("TemperatureExternal")
 
     @property
-    def Filtration(self) -> "stationeers_pytrapic.types.DeviceLogicType":
+    def Filtration(self) -> "stationeers_pytrapic.types._DeviceLogicType":
         return self.__getattr__("Filtration")
 
     @Filtration.setter
@@ -3138,7 +3156,7 @@ class _GenericStructure:
         return self.__setattr__("Filtration")
 
     @property
-    def AirRelease(self) -> "stationeers_pytrapic.types.DeviceLogicType":
+    def AirRelease(self) -> "stationeers_pytrapic.types._DeviceLogicType":
         return self.__getattr__("AirRelease")
 
     @AirRelease.setter
@@ -3146,7 +3164,7 @@ class _GenericStructure:
         return self.__setattr__("AirRelease")
 
     @property
-    def PositionX(self) -> "stationeers_pytrapic.types.DeviceLogicType":
+    def PositionX(self) -> "stationeers_pytrapic.types._DeviceLogicType":
         return self.__getattr__("PositionX")
 
     @PositionX.setter
@@ -3154,7 +3172,7 @@ class _GenericStructure:
         return self.__setattr__("PositionX")
 
     @property
-    def PositionY(self) -> "stationeers_pytrapic.types.DeviceLogicType":
+    def PositionY(self) -> "stationeers_pytrapic.types._DeviceLogicType":
         return self.__getattr__("PositionY")
 
     @PositionY.setter
@@ -3162,7 +3180,7 @@ class _GenericStructure:
         return self.__setattr__("PositionY")
 
     @property
-    def PositionZ(self) -> "stationeers_pytrapic.types.DeviceLogicType":
+    def PositionZ(self) -> "stationeers_pytrapic.types._DeviceLogicType":
         return self.__getattr__("PositionZ")
 
     @PositionZ.setter
@@ -3170,7 +3188,7 @@ class _GenericStructure:
         return self.__setattr__("PositionZ")
 
     @property
-    def VelocityMagnitude(self) -> "stationeers_pytrapic.types.DeviceLogicType":
+    def VelocityMagnitude(self) -> "stationeers_pytrapic.types._DeviceLogicType":
         return self.__getattr__("VelocityMagnitude")
 
     @VelocityMagnitude.setter
@@ -3178,7 +3196,7 @@ class _GenericStructure:
         return self.__setattr__("VelocityMagnitude")
 
     @property
-    def VelocityRelativeX(self) -> "stationeers_pytrapic.types.DeviceLogicType":
+    def VelocityRelativeX(self) -> "stationeers_pytrapic.types._DeviceLogicType":
         return self.__getattr__("VelocityRelativeX")
 
     @VelocityRelativeX.setter
@@ -3186,7 +3204,7 @@ class _GenericStructure:
         return self.__setattr__("VelocityRelativeX")
 
     @property
-    def VelocityRelativeY(self) -> "stationeers_pytrapic.types.DeviceLogicType":
+    def VelocityRelativeY(self) -> "stationeers_pytrapic.types._DeviceLogicType":
         return self.__getattr__("VelocityRelativeY")
 
     @VelocityRelativeY.setter
@@ -3194,7 +3212,7 @@ class _GenericStructure:
         return self.__setattr__("VelocityRelativeY")
 
     @property
-    def VelocityRelativeZ(self) -> "stationeers_pytrapic.types.DeviceLogicType":
+    def VelocityRelativeZ(self) -> "stationeers_pytrapic.types._DeviceLogicType":
         return self.__getattr__("VelocityRelativeZ")
 
     @VelocityRelativeZ.setter
@@ -3202,7 +3220,7 @@ class _GenericStructure:
         return self.__setattr__("VelocityRelativeZ")
 
     @property
-    def PrefabHash(self) -> "stationeers_pytrapic.types.DeviceLogicType":
+    def PrefabHash(self) -> "stationeers_pytrapic.types._DeviceLogicType":
         return self.__getattr__("PrefabHash")
 
     @PrefabHash.setter
@@ -3210,7 +3228,7 @@ class _GenericStructure:
         return self.__setattr__("PrefabHash")
 
     @property
-    def ForceWrite(self) -> "stationeers_pytrapic.types.DeviceLogicType":
+    def ForceWrite(self) -> "stationeers_pytrapic.types._DeviceLogicType":
         return self.__getattr__("ForceWrite")
 
     @ForceWrite.setter
@@ -3218,7 +3236,7 @@ class _GenericStructure:
         return self.__setattr__("ForceWrite")
 
     @property
-    def SignalStrength(self) -> "stationeers_pytrapic.types.DeviceLogicType":
+    def SignalStrength(self) -> "stationeers_pytrapic.types._DeviceLogicType":
         return self.__getattr__("SignalStrength")
 
     @SignalStrength.setter
@@ -3226,7 +3244,7 @@ class _GenericStructure:
         return self.__setattr__("SignalStrength")
 
     @property
-    def SignalID(self) -> "stationeers_pytrapic.types.DeviceLogicType":
+    def SignalID(self) -> "stationeers_pytrapic.types._DeviceLogicType":
         return self.__getattr__("SignalID")
 
     @SignalID.setter
@@ -3236,7 +3254,7 @@ class _GenericStructure:
     @property
     def OperationalTemperatureEfficiency(
         self,
-    ) -> "stationeers_pytrapic.types.DeviceLogicType":
+    ) -> "stationeers_pytrapic.types._DeviceLogicType":
         return self.__getattr__("OperationalTemperatureEfficiency")
 
     @OperationalTemperatureEfficiency.setter
@@ -3246,7 +3264,7 @@ class _GenericStructure:
     @property
     def TemperatureDifferentialEfficiency(
         self,
-    ) -> "stationeers_pytrapic.types.DeviceLogicType":
+    ) -> "stationeers_pytrapic.types._DeviceLogicType":
         return self.__getattr__("TemperatureDifferentialEfficiency")
 
     @TemperatureDifferentialEfficiency.setter
@@ -3254,7 +3272,7 @@ class _GenericStructure:
         return self.__setattr__("TemperatureDifferentialEfficiency")
 
     @property
-    def CombustionLimiter(self) -> "stationeers_pytrapic.types.DeviceLogicType":
+    def CombustionLimiter(self) -> "stationeers_pytrapic.types._DeviceLogicType":
         return self.__getattr__("CombustionLimiter")
 
     @CombustionLimiter.setter
@@ -3262,7 +3280,7 @@ class _GenericStructure:
         return self.__setattr__("CombustionLimiter")
 
     @property
-    def Throttle(self) -> "stationeers_pytrapic.types.DeviceLogicType":
+    def Throttle(self) -> "stationeers_pytrapic.types._DeviceLogicType":
         return self.__getattr__("Throttle")
 
     @Throttle.setter
@@ -3270,7 +3288,7 @@ class _GenericStructure:
         return self.__setattr__("Throttle")
 
     @property
-    def Rpm(self) -> "stationeers_pytrapic.types.DeviceLogicType":
+    def Rpm(self) -> "stationeers_pytrapic.types._DeviceLogicType":
         return self.__getattr__("Rpm")
 
     @Rpm.setter
@@ -3278,7 +3296,7 @@ class _GenericStructure:
         return self.__setattr__("Rpm")
 
     @property
-    def Stress(self) -> "stationeers_pytrapic.types.DeviceLogicType":
+    def Stress(self) -> "stationeers_pytrapic.types._DeviceLogicType":
         return self.__getattr__("Stress")
 
     @Stress.setter
@@ -3286,7 +3304,7 @@ class _GenericStructure:
         return self.__setattr__("Stress")
 
     @property
-    def PressureEfficiency(self) -> "stationeers_pytrapic.types.DeviceLogicType":
+    def PressureEfficiency(self) -> "stationeers_pytrapic.types._DeviceLogicType":
         return self.__getattr__("PressureEfficiency")
 
     @PressureEfficiency.setter
@@ -3294,7 +3312,7 @@ class _GenericStructure:
         return self.__setattr__("PressureEfficiency")
 
     @property
-    def RatioLiquidOxygen(self) -> "stationeers_pytrapic.types.DeviceLogicType":
+    def RatioLiquidOxygen(self) -> "stationeers_pytrapic.types._DeviceLogicType":
         return self.__getattr__("RatioLiquidOxygen")
 
     @RatioLiquidOxygen.setter
@@ -3302,7 +3320,7 @@ class _GenericStructure:
         return self.__setattr__("RatioLiquidOxygen")
 
     @property
-    def RatioLiquidOxygenInput(self) -> "stationeers_pytrapic.types.DeviceLogicType":
+    def RatioLiquidOxygenInput(self) -> "stationeers_pytrapic.types._DeviceLogicType":
         return self.__getattr__("RatioLiquidOxygenInput")
 
     @RatioLiquidOxygenInput.setter
@@ -3310,7 +3328,7 @@ class _GenericStructure:
         return self.__setattr__("RatioLiquidOxygenInput")
 
     @property
-    def RatioLiquidOxygenInput2(self) -> "stationeers_pytrapic.types.DeviceLogicType":
+    def RatioLiquidOxygenInput2(self) -> "stationeers_pytrapic.types._DeviceLogicType":
         return self.__getattr__("RatioLiquidOxygenInput2")
 
     @RatioLiquidOxygenInput2.setter
@@ -3318,7 +3336,7 @@ class _GenericStructure:
         return self.__setattr__("RatioLiquidOxygenInput2")
 
     @property
-    def RatioLiquidOxygenOutput(self) -> "stationeers_pytrapic.types.DeviceLogicType":
+    def RatioLiquidOxygenOutput(self) -> "stationeers_pytrapic.types._DeviceLogicType":
         return self.__getattr__("RatioLiquidOxygenOutput")
 
     @RatioLiquidOxygenOutput.setter
@@ -3326,7 +3344,7 @@ class _GenericStructure:
         return self.__setattr__("RatioLiquidOxygenOutput")
 
     @property
-    def RatioLiquidOxygenOutput2(self) -> "stationeers_pytrapic.types.DeviceLogicType":
+    def RatioLiquidOxygenOutput2(self) -> "stationeers_pytrapic.types._DeviceLogicType":
         return self.__getattr__("RatioLiquidOxygenOutput2")
 
     @RatioLiquidOxygenOutput2.setter
@@ -3334,7 +3352,7 @@ class _GenericStructure:
         return self.__setattr__("RatioLiquidOxygenOutput2")
 
     @property
-    def RatioLiquidVolatiles(self) -> "stationeers_pytrapic.types.DeviceLogicType":
+    def RatioLiquidVolatiles(self) -> "stationeers_pytrapic.types._DeviceLogicType":
         return self.__getattr__("RatioLiquidVolatiles")
 
     @RatioLiquidVolatiles.setter
@@ -3342,7 +3360,9 @@ class _GenericStructure:
         return self.__setattr__("RatioLiquidVolatiles")
 
     @property
-    def RatioLiquidVolatilesInput(self) -> "stationeers_pytrapic.types.DeviceLogicType":
+    def RatioLiquidVolatilesInput(
+        self,
+    ) -> "stationeers_pytrapic.types._DeviceLogicType":
         return self.__getattr__("RatioLiquidVolatilesInput")
 
     @RatioLiquidVolatilesInput.setter
@@ -3352,7 +3372,7 @@ class _GenericStructure:
     @property
     def RatioLiquidVolatilesInput2(
         self,
-    ) -> "stationeers_pytrapic.types.DeviceLogicType":
+    ) -> "stationeers_pytrapic.types._DeviceLogicType":
         return self.__getattr__("RatioLiquidVolatilesInput2")
 
     @RatioLiquidVolatilesInput2.setter
@@ -3362,7 +3382,7 @@ class _GenericStructure:
     @property
     def RatioLiquidVolatilesOutput(
         self,
-    ) -> "stationeers_pytrapic.types.DeviceLogicType":
+    ) -> "stationeers_pytrapic.types._DeviceLogicType":
         return self.__getattr__("RatioLiquidVolatilesOutput")
 
     @RatioLiquidVolatilesOutput.setter
@@ -3372,7 +3392,7 @@ class _GenericStructure:
     @property
     def RatioLiquidVolatilesOutput2(
         self,
-    ) -> "stationeers_pytrapic.types.DeviceLogicType":
+    ) -> "stationeers_pytrapic.types._DeviceLogicType":
         return self.__getattr__("RatioLiquidVolatilesOutput2")
 
     @RatioLiquidVolatilesOutput2.setter
@@ -3380,7 +3400,7 @@ class _GenericStructure:
         return self.__setattr__("RatioLiquidVolatilesOutput2")
 
     @property
-    def RatioSteam(self) -> "stationeers_pytrapic.types.DeviceLogicType":
+    def RatioSteam(self) -> "stationeers_pytrapic.types._DeviceLogicType":
         return self.__getattr__("RatioSteam")
 
     @RatioSteam.setter
@@ -3388,7 +3408,7 @@ class _GenericStructure:
         return self.__setattr__("RatioSteam")
 
     @property
-    def RatioSteamInput(self) -> "stationeers_pytrapic.types.DeviceLogicType":
+    def RatioSteamInput(self) -> "stationeers_pytrapic.types._DeviceLogicType":
         return self.__getattr__("RatioSteamInput")
 
     @RatioSteamInput.setter
@@ -3396,7 +3416,7 @@ class _GenericStructure:
         return self.__setattr__("RatioSteamInput")
 
     @property
-    def RatioSteamInput2(self) -> "stationeers_pytrapic.types.DeviceLogicType":
+    def RatioSteamInput2(self) -> "stationeers_pytrapic.types._DeviceLogicType":
         return self.__getattr__("RatioSteamInput2")
 
     @RatioSteamInput2.setter
@@ -3404,7 +3424,7 @@ class _GenericStructure:
         return self.__setattr__("RatioSteamInput2")
 
     @property
-    def RatioSteamOutput(self) -> "stationeers_pytrapic.types.DeviceLogicType":
+    def RatioSteamOutput(self) -> "stationeers_pytrapic.types._DeviceLogicType":
         return self.__getattr__("RatioSteamOutput")
 
     @RatioSteamOutput.setter
@@ -3412,7 +3432,7 @@ class _GenericStructure:
         return self.__setattr__("RatioSteamOutput")
 
     @property
-    def RatioSteamOutput2(self) -> "stationeers_pytrapic.types.DeviceLogicType":
+    def RatioSteamOutput2(self) -> "stationeers_pytrapic.types._DeviceLogicType":
         return self.__getattr__("RatioSteamOutput2")
 
     @RatioSteamOutput2.setter
@@ -3420,7 +3440,7 @@ class _GenericStructure:
         return self.__setattr__("RatioSteamOutput2")
 
     @property
-    def RatioLiquidCarbonDioxide(self) -> "stationeers_pytrapic.types.DeviceLogicType":
+    def RatioLiquidCarbonDioxide(self) -> "stationeers_pytrapic.types._DeviceLogicType":
         return self.__getattr__("RatioLiquidCarbonDioxide")
 
     @RatioLiquidCarbonDioxide.setter
@@ -3430,7 +3450,7 @@ class _GenericStructure:
     @property
     def RatioLiquidCarbonDioxideInput(
         self,
-    ) -> "stationeers_pytrapic.types.DeviceLogicType":
+    ) -> "stationeers_pytrapic.types._DeviceLogicType":
         return self.__getattr__("RatioLiquidCarbonDioxideInput")
 
     @RatioLiquidCarbonDioxideInput.setter
@@ -3440,7 +3460,7 @@ class _GenericStructure:
     @property
     def RatioLiquidCarbonDioxideInput2(
         self,
-    ) -> "stationeers_pytrapic.types.DeviceLogicType":
+    ) -> "stationeers_pytrapic.types._DeviceLogicType":
         return self.__getattr__("RatioLiquidCarbonDioxideInput2")
 
     @RatioLiquidCarbonDioxideInput2.setter
@@ -3450,7 +3470,7 @@ class _GenericStructure:
     @property
     def RatioLiquidCarbonDioxideOutput(
         self,
-    ) -> "stationeers_pytrapic.types.DeviceLogicType":
+    ) -> "stationeers_pytrapic.types._DeviceLogicType":
         return self.__getattr__("RatioLiquidCarbonDioxideOutput")
 
     @RatioLiquidCarbonDioxideOutput.setter
@@ -3460,7 +3480,7 @@ class _GenericStructure:
     @property
     def RatioLiquidCarbonDioxideOutput2(
         self,
-    ) -> "stationeers_pytrapic.types.DeviceLogicType":
+    ) -> "stationeers_pytrapic.types._DeviceLogicType":
         return self.__getattr__("RatioLiquidCarbonDioxideOutput2")
 
     @RatioLiquidCarbonDioxideOutput2.setter
@@ -3468,7 +3488,7 @@ class _GenericStructure:
         return self.__setattr__("RatioLiquidCarbonDioxideOutput2")
 
     @property
-    def RatioLiquidPollutant(self) -> "stationeers_pytrapic.types.DeviceLogicType":
+    def RatioLiquidPollutant(self) -> "stationeers_pytrapic.types._DeviceLogicType":
         return self.__getattr__("RatioLiquidPollutant")
 
     @RatioLiquidPollutant.setter
@@ -3476,7 +3496,9 @@ class _GenericStructure:
         return self.__setattr__("RatioLiquidPollutant")
 
     @property
-    def RatioLiquidPollutantInput(self) -> "stationeers_pytrapic.types.DeviceLogicType":
+    def RatioLiquidPollutantInput(
+        self,
+    ) -> "stationeers_pytrapic.types._DeviceLogicType":
         return self.__getattr__("RatioLiquidPollutantInput")
 
     @RatioLiquidPollutantInput.setter
@@ -3486,7 +3508,7 @@ class _GenericStructure:
     @property
     def RatioLiquidPollutantInput2(
         self,
-    ) -> "stationeers_pytrapic.types.DeviceLogicType":
+    ) -> "stationeers_pytrapic.types._DeviceLogicType":
         return self.__getattr__("RatioLiquidPollutantInput2")
 
     @RatioLiquidPollutantInput2.setter
@@ -3496,7 +3518,7 @@ class _GenericStructure:
     @property
     def RatioLiquidPollutantOutput(
         self,
-    ) -> "stationeers_pytrapic.types.DeviceLogicType":
+    ) -> "stationeers_pytrapic.types._DeviceLogicType":
         return self.__getattr__("RatioLiquidPollutantOutput")
 
     @RatioLiquidPollutantOutput.setter
@@ -3506,7 +3528,7 @@ class _GenericStructure:
     @property
     def RatioLiquidPollutantOutput2(
         self,
-    ) -> "stationeers_pytrapic.types.DeviceLogicType":
+    ) -> "stationeers_pytrapic.types._DeviceLogicType":
         return self.__getattr__("RatioLiquidPollutantOutput2")
 
     @RatioLiquidPollutantOutput2.setter
@@ -3514,7 +3536,7 @@ class _GenericStructure:
         return self.__setattr__("RatioLiquidPollutantOutput2")
 
     @property
-    def RatioLiquidNitrousOxide(self) -> "stationeers_pytrapic.types.DeviceLogicType":
+    def RatioLiquidNitrousOxide(self) -> "stationeers_pytrapic.types._DeviceLogicType":
         return self.__getattr__("RatioLiquidNitrousOxide")
 
     @RatioLiquidNitrousOxide.setter
@@ -3524,7 +3546,7 @@ class _GenericStructure:
     @property
     def RatioLiquidNitrousOxideInput(
         self,
-    ) -> "stationeers_pytrapic.types.DeviceLogicType":
+    ) -> "stationeers_pytrapic.types._DeviceLogicType":
         return self.__getattr__("RatioLiquidNitrousOxideInput")
 
     @RatioLiquidNitrousOxideInput.setter
@@ -3534,7 +3556,7 @@ class _GenericStructure:
     @property
     def RatioLiquidNitrousOxideInput2(
         self,
-    ) -> "stationeers_pytrapic.types.DeviceLogicType":
+    ) -> "stationeers_pytrapic.types._DeviceLogicType":
         return self.__getattr__("RatioLiquidNitrousOxideInput2")
 
     @RatioLiquidNitrousOxideInput2.setter
@@ -3544,7 +3566,7 @@ class _GenericStructure:
     @property
     def RatioLiquidNitrousOxideOutput(
         self,
-    ) -> "stationeers_pytrapic.types.DeviceLogicType":
+    ) -> "stationeers_pytrapic.types._DeviceLogicType":
         return self.__getattr__("RatioLiquidNitrousOxideOutput")
 
     @RatioLiquidNitrousOxideOutput.setter
@@ -3554,7 +3576,7 @@ class _GenericStructure:
     @property
     def RatioLiquidNitrousOxideOutput2(
         self,
-    ) -> "stationeers_pytrapic.types.DeviceLogicType":
+    ) -> "stationeers_pytrapic.types._DeviceLogicType":
         return self.__getattr__("RatioLiquidNitrousOxideOutput2")
 
     @RatioLiquidNitrousOxideOutput2.setter
@@ -3562,7 +3584,7 @@ class _GenericStructure:
         return self.__setattr__("RatioLiquidNitrousOxideOutput2")
 
     @property
-    def RatioHydrogen(self) -> "stationeers_pytrapic.types.DeviceLogicType":
+    def RatioHydrogen(self) -> "stationeers_pytrapic.types._DeviceLogicType":
         return self.__getattr__("RatioHydrogen")
 
     @RatioHydrogen.setter
@@ -3570,7 +3592,7 @@ class _GenericStructure:
         return self.__setattr__("RatioHydrogen")
 
     @property
-    def RatioLiquidHydrogen(self) -> "stationeers_pytrapic.types.DeviceLogicType":
+    def RatioLiquidHydrogen(self) -> "stationeers_pytrapic.types._DeviceLogicType":
         return self.__getattr__("RatioLiquidHydrogen")
 
     @RatioLiquidHydrogen.setter
@@ -3578,7 +3600,7 @@ class _GenericStructure:
         return self.__setattr__("RatioLiquidHydrogen")
 
     @property
-    def ContactTypeId(self) -> "stationeers_pytrapic.types.DeviceLogicType":
+    def ContactTypeId(self) -> "stationeers_pytrapic.types._DeviceLogicType":
         return self.__getattr__("ContactTypeId")
 
     @ContactTypeId.setter
@@ -3586,7 +3608,7 @@ class _GenericStructure:
         return self.__setattr__("ContactTypeId")
 
     @property
-    def Bypass(self) -> "stationeers_pytrapic.types.DeviceLogicType":
+    def Bypass(self) -> "stationeers_pytrapic.types._DeviceLogicType":
         return self.__getattr__("Bypass")
 
     @Bypass.setter
@@ -3594,7 +3616,7 @@ class _GenericStructure:
         return self.__setattr__("Bypass")
 
     @property
-    def Progress(self) -> "stationeers_pytrapic.types.DeviceLogicType":
+    def Progress(self) -> "stationeers_pytrapic.types._DeviceLogicType":
         return self.__getattr__("Progress")
 
     @Progress.setter
@@ -3602,7 +3624,7 @@ class _GenericStructure:
         return self.__setattr__("Progress")
 
     @property
-    def DestinationCode(self) -> "stationeers_pytrapic.types.DeviceLogicType":
+    def DestinationCode(self) -> "stationeers_pytrapic.types._DeviceLogicType":
         return self.__getattr__("DestinationCode")
 
     @DestinationCode.setter
@@ -3610,7 +3632,7 @@ class _GenericStructure:
         return self.__setattr__("DestinationCode")
 
     @property
-    def Acceleration(self) -> "stationeers_pytrapic.types.DeviceLogicType":
+    def Acceleration(self) -> "stationeers_pytrapic.types._DeviceLogicType":
         return self.__getattr__("Acceleration")
 
     @Acceleration.setter
@@ -3618,7 +3640,7 @@ class _GenericStructure:
         return self.__setattr__("Acceleration")
 
     @property
-    def AutoShutOff(self) -> "stationeers_pytrapic.types.DeviceLogicType":
+    def AutoShutOff(self) -> "stationeers_pytrapic.types._DeviceLogicType":
         return self.__getattr__("AutoShutOff")
 
     @AutoShutOff.setter
@@ -3626,7 +3648,7 @@ class _GenericStructure:
         return self.__setattr__("AutoShutOff")
 
     @property
-    def Thrust(self) -> "stationeers_pytrapic.types.DeviceLogicType":
+    def Thrust(self) -> "stationeers_pytrapic.types._DeviceLogicType":
         return self.__getattr__("Thrust")
 
     @Thrust.setter
@@ -3634,7 +3656,7 @@ class _GenericStructure:
         return self.__setattr__("Thrust")
 
     @property
-    def ThrustToWeight(self) -> "stationeers_pytrapic.types.DeviceLogicType":
+    def ThrustToWeight(self) -> "stationeers_pytrapic.types._DeviceLogicType":
         return self.__getattr__("ThrustToWeight")
 
     @ThrustToWeight.setter
@@ -3642,7 +3664,7 @@ class _GenericStructure:
         return self.__setattr__("ThrustToWeight")
 
     @property
-    def Weight(self) -> "stationeers_pytrapic.types.DeviceLogicType":
+    def Weight(self) -> "stationeers_pytrapic.types._DeviceLogicType":
         return self.__getattr__("Weight")
 
     @Weight.setter
@@ -3650,7 +3672,7 @@ class _GenericStructure:
         return self.__setattr__("Weight")
 
     @property
-    def OverShootTarget(self) -> "stationeers_pytrapic.types.DeviceLogicType":
+    def OverShootTarget(self) -> "stationeers_pytrapic.types._DeviceLogicType":
         return self.__getattr__("OverShootTarget")
 
     @OverShootTarget.setter
@@ -3658,7 +3680,7 @@ class _GenericStructure:
         return self.__setattr__("OverShootTarget")
 
     @property
-    def TimeToDestination(self) -> "stationeers_pytrapic.types.DeviceLogicType":
+    def TimeToDestination(self) -> "stationeers_pytrapic.types._DeviceLogicType":
         return self.__getattr__("TimeToDestination")
 
     @TimeToDestination.setter
@@ -3666,7 +3688,7 @@ class _GenericStructure:
         return self.__setattr__("TimeToDestination")
 
     @property
-    def BurnTimeRemaining(self) -> "stationeers_pytrapic.types.DeviceLogicType":
+    def BurnTimeRemaining(self) -> "stationeers_pytrapic.types._DeviceLogicType":
         return self.__getattr__("BurnTimeRemaining")
 
     @BurnTimeRemaining.setter
@@ -3674,7 +3696,7 @@ class _GenericStructure:
         return self.__setattr__("BurnTimeRemaining")
 
     @property
-    def AutoLand(self) -> "stationeers_pytrapic.types.DeviceLogicType":
+    def AutoLand(self) -> "stationeers_pytrapic.types._DeviceLogicType":
         return self.__getattr__("AutoLand")
 
     @AutoLand.setter
@@ -3682,7 +3704,7 @@ class _GenericStructure:
         return self.__setattr__("AutoLand")
 
     @property
-    def DryMass(self) -> "stationeers_pytrapic.types.DeviceLogicType":
+    def DryMass(self) -> "stationeers_pytrapic.types._DeviceLogicType":
         return self.__getattr__("DryMass")
 
     @DryMass.setter
@@ -3690,7 +3712,7 @@ class _GenericStructure:
         return self.__setattr__("DryMass")
 
     @property
-    def Mass(self) -> "stationeers_pytrapic.types.DeviceLogicType":
+    def Mass(self) -> "stationeers_pytrapic.types._DeviceLogicType":
         return self.__getattr__("Mass")
 
     @Mass.setter
@@ -3698,7 +3720,7 @@ class _GenericStructure:
         return self.__setattr__("Mass")
 
     @property
-    def TargetX(self) -> "stationeers_pytrapic.types.DeviceLogicType":
+    def TargetX(self) -> "stationeers_pytrapic.types._DeviceLogicType":
         return self.__getattr__("TargetX")
 
     @TargetX.setter
@@ -3706,7 +3728,7 @@ class _GenericStructure:
         return self.__setattr__("TargetX")
 
     @property
-    def TargetY(self) -> "stationeers_pytrapic.types.DeviceLogicType":
+    def TargetY(self) -> "stationeers_pytrapic.types._DeviceLogicType":
         return self.__getattr__("TargetY")
 
     @TargetY.setter
@@ -3714,7 +3736,7 @@ class _GenericStructure:
         return self.__setattr__("TargetY")
 
     @property
-    def TargetZ(self) -> "stationeers_pytrapic.types.DeviceLogicType":
+    def TargetZ(self) -> "stationeers_pytrapic.types._DeviceLogicType":
         return self.__getattr__("TargetZ")
 
     @TargetZ.setter
@@ -3722,7 +3744,7 @@ class _GenericStructure:
         return self.__setattr__("TargetZ")
 
     @property
-    def SettingInputHash(self) -> "stationeers_pytrapic.types.DeviceLogicType":
+    def SettingInputHash(self) -> "stationeers_pytrapic.types._DeviceLogicType":
         return self.__getattr__("SettingInputHash")
 
     @SettingInputHash.setter
@@ -3730,7 +3752,7 @@ class _GenericStructure:
         return self.__setattr__("SettingInputHash")
 
     @property
-    def SettingOutputHash(self) -> "stationeers_pytrapic.types.DeviceLogicType":
+    def SettingOutputHash(self) -> "stationeers_pytrapic.types._DeviceLogicType":
         return self.__getattr__("SettingOutputHash")
 
     @SettingOutputHash.setter
@@ -3738,7 +3760,7 @@ class _GenericStructure:
         return self.__setattr__("SettingOutputHash")
 
     @property
-    def Channel(self) -> "stationeers_pytrapic.types.DeviceLogicType":
+    def Channel(self) -> "stationeers_pytrapic.types._DeviceLogicType":
         return self.__getattr__("Channel")
 
     @Channel.setter
@@ -3746,7 +3768,7 @@ class _GenericStructure:
         return self.__setattr__("Channel")
 
     @property
-    def Unknown(self) -> "stationeers_pytrapic.types.DeviceLogicType":
+    def Unknown(self) -> "stationeers_pytrapic.types._DeviceLogicType":
         return self.__getattr__("Unknown")
 
     @Unknown.setter
@@ -3754,7 +3776,7 @@ class _GenericStructure:
         return self.__setattr__("Unknown")
 
     @property
-    def Time(self) -> "stationeers_pytrapic.types.DeviceLogicType":
+    def Time(self) -> "stationeers_pytrapic.types._DeviceLogicType":
         return self.__getattr__("Time")
 
     @Time.setter
@@ -3762,7 +3784,7 @@ class _GenericStructure:
         return self.__setattr__("Time")
 
     @property
-    def Bpm(self) -> "stationeers_pytrapic.types.DeviceLogicType":
+    def Bpm(self) -> "stationeers_pytrapic.types._DeviceLogicType":
         return self.__getattr__("Bpm")
 
     @Bpm.setter
@@ -3770,7 +3792,7 @@ class _GenericStructure:
         return self.__setattr__("Bpm")
 
     @property
-    def EnvironmentEfficiency(self) -> "stationeers_pytrapic.types.DeviceLogicType":
+    def EnvironmentEfficiency(self) -> "stationeers_pytrapic.types._DeviceLogicType":
         return self.__getattr__("EnvironmentEfficiency")
 
     @EnvironmentEfficiency.setter
@@ -3778,7 +3800,7 @@ class _GenericStructure:
         return self.__setattr__("EnvironmentEfficiency")
 
     @property
-    def WorkingGasEfficiency(self) -> "stationeers_pytrapic.types.DeviceLogicType":
+    def WorkingGasEfficiency(self) -> "stationeers_pytrapic.types._DeviceLogicType":
         return self.__getattr__("WorkingGasEfficiency")
 
     @WorkingGasEfficiency.setter
