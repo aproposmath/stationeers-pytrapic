@@ -15,7 +15,7 @@ class Compiler:
             CompilerPassSetReadWritten,
             CompilerPassCheckReadWritten,
             # CompilerPassListSymbols,
-            # CompilerPassCheckConstValue,
+            CompilerPassCheckConstValue,
             # CompilerPassCheckConstValue,
             # CompilerPassCheckRead,
             CompilerPassCheckReturnValues,

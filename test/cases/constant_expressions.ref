@@ -1,10 +1,6 @@
 s db Setting 0.5
 s db Setting 3.0
-add r0 3.0 2.0
-s db Setting r0
-add r1 3.0 2.0
-div r2 r1 5.0
-mod r3 r2 8324.92
-s db Setting r3
-# registers: 4
-# lines: 8
+s db Setting 5.0
+s db Setting 1.0
+# registers: 0
+# lines: 4
