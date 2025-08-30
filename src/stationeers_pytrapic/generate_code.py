@@ -470,9 +470,7 @@ class CompilerPassGenerateCode(CompilerPass):
                 # self.set_name(target, value, target.name)
             else:
                 sym_data = self.data.get_sym_data(target)
-                can_assign_directly = (
-                    node.value._ndata.is_constant_value or not sym_data.is_overwritten
-                )
+                can_assign_directly = not sym_data.is_overwritten
                 if isinstance(node.value, astroid.Call):
                     can_assign_directly = can_assign_directly and is_builtin_function(
                         node.value.func.name

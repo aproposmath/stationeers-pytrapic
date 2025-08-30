@@ -1,0 +1,2 @@
+Error: Compiler error at line 10:23:
+	Structures as function arguments are not yet supported: SolarPanels(name=None)
