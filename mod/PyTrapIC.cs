@@ -546,8 +546,9 @@ namespace StationeersPyTrapIC
         {
             if (SourceData.NeedsCompile(sourceCode))
             {
-                var sourceCodeProp = AccessTools.Property(__instance.GetType(), "SourceCode");
-                var sourceCodeObj = sourceCodeProp.GetValue(__instance) as ISourceCode;
+                var sourceCodeObj = AccessTools
+                    .Field(__instance.GetType(), "SourceCode")
+                    .GetValue(__instance);
                 var textProp = AccessTools.Property(sourceCodeObj.GetType(), "text");
                 textProp.SetValue(sourceCodeObj, PythonCompiler.Instance.Highlight(sourceCode));
             }
