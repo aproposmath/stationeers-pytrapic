@@ -840,30 +840,65 @@ class CompilerPassGatherCode(CompilerPass):
         self.get_code()
 
     def assign_registers(self):
+        # topological sort of function scopes
+        called_from = {}
+
+        for fname, func in self.data.functions.items():
+            if fname == "":
+                called_from[fname] = set()
+                continue
+            called_from[fname] = set(
+                (node.scope().name for node in func.sym_data.nodes_reading)
+            )
+
+        all_scopes = set(self.data.functions.keys())
+
+        sorted_scopes = []
+        while len(sorted_scopes) < len(all_scopes):
+            for scope in all_scopes - set(sorted_scopes):
+                if called_from[scope].issubset(set(sorted_scopes)):
+                    sorted_scopes.append(scope)
+                    break
+            else:
+                raise RuntimeError("Internal error: cannot sort scopes")
+
         registers = list(range(16))
+
+        registers_by_scope = {}
 
         tokens = set(" ".join([line.code.split("#")[0] for line in self.code]).split())
 
         mapping = {}
 
-        scope_names = sorted(self.data.symbols.keys())
-        for scope in scope_names:
-            scope_registers = registers.copy()
+        for scope in sorted_scopes:
+            if not scope in self.data.symbols:
+                continue
+            available_registers = set(registers)
+            parent_registers = set()
+            for calling_scope in called_from[scope]:
+                parent_registers = parent_registers.union(
+                    registers_by_scope.get(calling_scope, set())
+                )
+            available_registers = list(
+                reversed(sorted(set(registers) - parent_registers))
+            )
+            used_registers = set()
+
             for name, symbol in self.data.symbols[scope].items():
                 if not symbol.code_expr in tokens:
                     continue
 
                 if symbol.is_register and symbol.code_expr not in mapping:
-                    if not scope_registers:
+                    if not available_registers:
                         raise CompilerError(
                             f"Running out of registers, try to simplify your code."
                         )
-                    reg_num = scope_registers.pop(0)
+                    reg_num = available_registers.pop()
+                    used_registers.add(reg_num)
                     mapping[symbol.code_expr] = f"r{reg_num}"
                     # print("assign name", symbol.code_expr, "to", mapping[symbol.code_expr])
 
-            if scope == "":
-                registers = scope_registers
+            registers_by_scope[scope] = used_registers.union(parent_registers)
 
         if mapping:
             pattern = re.compile("|".join(re.escape(k) for k in mapping))
