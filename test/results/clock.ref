@@ -1,0 +1,82 @@
+move r0 0
+move r1 0
+move r2 0
+move r3 0
+lbwhile5:
+  yield 
+  jal get.vertical
+  get r4 db 511
+  put db 510 r4
+  jal handle.minmax
+  put db 510 r4
+  jal calc.time
+  get r5 db 511
+  s db Setting r5
+  sbn -815193061 HASH("time") Setting r5
+  sbn -815193061 HASH("min_vert") Setting r1
+  sbn -815193061 HASH("max_vert") Setting r0
+  j lbwhile5
+calc.time:
+  get r6 db 510
+  move r7 r0
+  sin r7 r7
+  mul r7 r7 0.5
+  move r8 r1
+  sin r8 r8
+  mul r8 r8 0.5
+  add r9 r7 r8
+  sub r10 r7 r8
+  move r11 r6
+  sin r11 r11
+  sub r11 r11 r9
+  div r11 r11 r10
+  max r11 r11 -1
+  min r11 r11 1
+  acos r11 r11
+  div r12 r11 6.283184
+  move r11 r12
+  ble r3 0 lbelse29
+    sub r13 1 r11
+    move r11 r13
+lbelse29:
+  add r11 r11 0.5
+  mod r11 r11 1
+  mul r11 r11 1200
+  put db 511 r11
+  j ra
+get.vertical:
+  l r7 d0 Vertical
+  move r6 r7
+  sub r8 90 r6
+  move r6 r8
+  div r6 r6 180
+  mul r6 r6 3.141592
+  put db 511 r6
+  j ra
+handle.minmax:
+  get r6 db 510
+  bne r2 0 lbelse11
+    move r2 r6
+  j handle.minmaxend
+lbelse11:
+  bne r3 0 lbelse13
+    sub r8 r6 r2
+    move r3 r8
+lbelse13:
+  sub r9 r6 r2
+  move r7 r9
+  mul r7 r7 r3
+  bge r7 0 lbelse18
+    ble r3 0 lbelse20
+      move r0 r2
+      j lbend20
+lbelse20:
+      move r1 r2
+lbend20:
+    mul r3 r3 -1.0
+lbelse18:
+  move r2 r6
+handle.minmaxend:
+  j ra
+# registers: 14
+# lines: 80
