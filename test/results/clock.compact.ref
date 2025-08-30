@@ -53,9 +53,6 @@ mul r12 r12 1200
 move r4 r12
 move r7 r4
 s db Setting r7
-sbn -815193061 1872009285 Setting r7
-sbn -815193061 -227144225 Setting r1
-sbn -815193061 337027646 Setting r0
 j 4
 # registers: 15
-# lines: 59
+# lines: 56

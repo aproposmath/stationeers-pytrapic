@@ -2,6 +2,7 @@ from stationeers_pytrapic.symbols import *
 
 # Calculate Seconds from midnight using the sun angles
 # assumes a DaylightSensor at d0
+# the time is stored in db.Setting
 sensor = DaylightSensor(d0)
 
 # min max values can be 0 at start,
@@ -80,8 +81,7 @@ while True:
   time = calc_time(vertical)
   db.Setting = time
 
-  display = ConsoleLED5s
-  display['time'].Setting = time
-  display['min_vert'].Setting = min_vertical
-  display['max_vert'].Setting = max_vertical
-
+  # display = ConsoleLED5s
+  # display['time'].Setting = time
+  # display['min_vert'].Setting = min_vertical
+  # display['max_vert'].Setting = max_vertical

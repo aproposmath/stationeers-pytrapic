@@ -12,9 +12,6 @@ lbwhile5:
   jal calc.time
   get r5 db 511
   s db Setting r5
-  sbn -815193061 HASH("time") Setting r5
-  sbn -815193061 HASH("min_vert") Setting r1
-  sbn -815193061 HASH("max_vert") Setting r0
   j lbwhile5
 calc.time:
   get r6 db 510
@@ -79,4 +76,4 @@ lbelse18:
 handle.minmaxend:
   j ra
 # registers: 14
-# lines: 80
+# lines: 77
