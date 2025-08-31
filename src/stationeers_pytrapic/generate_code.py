@@ -215,7 +215,7 @@ class CompilerPassGenerateCode(CompilerPass):
             symbol = self.get_intermediate_symbol(node)
             data.add(attr(symbol.code_expr), attrname)
             data.result = symbol
-        elif isinstance(attr, symbols._DeviceLogicType):
+        elif isinstance(attr, (symbols._DeviceLogicType, symbols._StackValue)):
             symbol = self.get_intermediate_symbol(node)
             data.add(attr._load(symbol.code_expr), attrname)
             data.result = symbol
@@ -502,6 +502,14 @@ class CompilerPassGenerateCode(CompilerPass):
                 )
             expr = lhs._set(rhs)
             data.add(f"{expr}", "assign attribute")
+        elif isinstance(target, astroid.Subscript):
+            rhs = self.compile_node(node.value)
+            lhs = self.compile_node(target.value)
+            slice_ = self.compile_node(target.slice)
+            if not isinstance(lhs, types.Stack):
+                raise CompilerError(f"Cannot subscript {type(lhs)}", target)
+            value = lhs[slice_]
+            data.add(value._set(rhs))
         else:
             raise CompilerError(f"Unsupported assignment target: {type(target)}")
 
@@ -519,9 +527,17 @@ class CompilerPassGenerateCode(CompilerPass):
         node._ndata.result = val
 
     def handle_subscript(self, node: astroid.Subscript):
+        from .types import _StackValue
+
         value = self.compile_node(node.value)
         slice_ = self.compile_node(node.slice)
-        node._ndata.result = value[slice_]
+        res = value[slice_]
+        data = node._ndata
+        if isinstance(res, _StackValue):
+            sym = self.get_intermediate_symbol(node)
+            data.add(value[slice_]._load(sym.code_expr))
+            res = sym
+        data.result = res
 
     def handle_compare(self, node: astroid.Compare):
         sym = self.get_intermediate_symbol(node)

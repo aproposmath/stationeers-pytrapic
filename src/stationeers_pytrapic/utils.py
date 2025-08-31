@@ -63,6 +63,7 @@ def is_builtin_structure(val):
             symbols._GenericStructure,
             types._BaseStructure,
             types._BaseStructures,
+            types.Stack,
         ),
     )
 

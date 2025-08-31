@@ -253,14 +253,57 @@ class _Device(_BaseStructure, _GenericStructure):
         return f"{self._id._id}"
 
 
-class _Stack:
-    def __getitem__(self, index: int | _Register) -> _Register:
-        if not isinstance(index, int):
-            raise TypeError("Index must be an integer")
-        if index < 0 or index > 16:
-            raise IndexError("Index must be between 0 and 16")
-        return _Register(f"r{index}")
+class _StackValue:
+    _id: str | None = None
+    _is_ref_id: bool = False
+    _addr: str | None = None
 
+    def __init__(self, _id, is_ref_id, _addr):
+        self._id = _id
+        self._is_ref_id = is_ref_id
+        self._addr = _addr
+
+    def _set(self, value: float | _Register):
+        from .intrinsics import poke, put, putd
+
+        if self._id is None:
+            return poke(self._addr, value)
+
+        if self._is_ref_id:
+            return putd(self._id, self._addr, value)
+
+        return put(self._id, self._addr, value)
+
+    def _load(self, output: _Register) -> float:
+        from .intrinsics import get, getd
+
+        if self._is_ref_id:
+            return getd(output, self._id, self._addr)
+
+        return get(output, self._id or "db", self._addr)
+
+
+class Stack:
+    _id: str | None = None
+    _is_ref_id: bool = False
+
+    def __init__(self, device_id: str | None = None, ref_id: str | None = None):
+        self._id = device_id or ref_id
+        self._is_ref_id = ref_id is not None
+
+    def __getitem__(self, index: int | _Register) -> _Register:
+        return _StackValue(self._id, self._is_ref_id, index)
+
+    def __setitem__(self, index: int | _Register, value: float | _Register) -> None:
+        return _StackValue(self._id, self._is_ref_id, index)
+
+    def clear(self):
+        from .intrinsics import clr, clrd
+
+        return clrd(self._id) if self._is_ref_id else clr(self._id or "db")
+
+
+stack = Stack()
 
 ra = _Register("ra")
 r0 = _Register("r0")
@@ -329,4 +372,7 @@ __all__ = [
     "_GenericStructures",
     "_DeviceLogicType",
     "_DevicesLogicType",
+    "Stack",
+    "stack",
+    "_StackValue",
 ]
