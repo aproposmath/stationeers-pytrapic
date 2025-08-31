@@ -297,11 +297,6 @@ class Stack:
     def __setitem__(self, index: int | _Register, value: float | _Register) -> None:
         return _StackValue(self._id, self._is_ref_id, index)
 
-    def clear(self):
-        from .intrinsics import clr, clrd
-
-        return clrd(self._id) if self._is_ref_id else clr(self._id or "db")
-
 
 stack = Stack()
 

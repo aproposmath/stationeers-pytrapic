@@ -1,73 +1,135 @@
-move r0 0
-move r1 0
-move r2 0
-move r3 0
-lbwhile5:
+sbn -815193061 HASH("Time") On 1
+sbn -815193061 HASH("Time") Setting 0
+sbn -815193061 HASH("Time") Mode 7
+sbn -815193061 HASH("Sunset") On 1
+sbn -815193061 HASH("Sunset") Setting 0
+sbn -815193061 HASH("Sunset") Mode 7
+jal init
+lbwhile16:
   yield 
   jal get.vertical
-  get r4 db 511
-  put db 510 r4
+  get r0 db 511
+  put db 510 r0
   jal handle.minmax
-  put db 510 r4
+  put db 510 r0
   jal calc.time
-  get r5 db 511
-  s db Setting r5
-  j lbwhile5
+  get r1 db 511
+  sbn -815193061 HASH("Time") Setting r1
+  s db Setting r1
+  poke 0 r1
+  put db 510 0
+  jal calc.time
+  get r2 db 511
+  bge r2 r1 lbelse43
+    sub r2 1200 r2
+lbelse43:
+  sub r3 r2 r1
+  add r3 r3 1200
+  mod r3 r3 1200
+  sbn -815193061 HASH("Sunset") Setting r3
+  poke 1 r3
+  j lbwhile16
 calc.time:
-  get r6 db 510
-  move r7 r0
-  sin r7 r7
-  mul r7 r7 0.5
-  move r8 r1
-  sin r8 r8
-  mul r8 r8 0.5
-  add r9 r7 r8
-  sub r10 r7 r8
-  move r11 r6
-  sin r11 r11
-  sub r11 r11 r9
-  div r11 r11 r10
-  max r11 r11 -1
-  min r11 r11 1
-  acos r11 r11
-  div r11 r11 6.283184
-  ble r3 0 lbelse24
-    sub r11 1 r11
-lbelse24:
-  add r11 r11 0.5
-  mod r11 r11 1
-  mul r11 r11 1200
-  put db 511 r11
+  get r4 db 510
+  get r5 db 3
+  sin r5 r5
+  mul r5 r5 0.5
+  get r6 db 2
+  sin r6 r6
+  mul r6 r6 0.5
+  add r7 r5 r6
+  sub r8 r5 r6
+  move r9 r4
+  sin r9 r9
+  sub r9 r9 r7
+  div r9 r9 r8
+  max r9 r9 -1
+  min r9 r9 1
+  acos r9 r9
+  div r9 r9 6.283184
+  get r10 db 5
+  ble r10 0 lbelse38
+    sub r9 1 r9
+lbelse38:
+  add r9 r9 0.5
+  mod r9 r9 1
+  mul r9 r9 1200
+  put db 511 r9
   j ra
 get.vertical:
-  l r6 d0 Vertical
-  sub r6 90 r6
-  div r6 r6 180
-  mul r6 r6 3.141592
-  put db 511 r6
+  l r11 d0 Vertical
+  sub r11 90 r11
+  div r11 r11 180
+  mul r11 r11 3.141592
+  put db 511 r11
   j ra
 handle.minmax:
-  get r6 db 510
-  bne r2 0 lbelse9
-    move r2 r6
-  j handle.minmaxend
-lbelse9:
-  bne r3 0 lbelse11
-    sub r3 r6 r2
-lbelse11:
-  sub r7 r6 r2
-  mul r7 r7 r3
-  bge r7 0 lbelse14
-    ble r3 0 lbelse16
-      move r0 r2
-      j lbend16
-lbelse16:
-      move r1 r2
-lbend16:
-    mul r3 r3 -1.0
-lbelse14:
-  move r2 r6
-handle.minmaxend:
+  get r4 db 510
+  get r5 db 4
+  beq r5 0 lbelse20
+    get r6 db 5
+    bne r6 0 lbelse23
+      sub r10 r4 r5
+      poke 5 r10
+lbelse23:
+    sub r7 r4 r5
+    mul r8 r7 r6
+    bge r8 0 lbelse28
+      sgt r11 r6 0
+      select r9 r11 3 2
+      poke r9 r5
+      poke 5 r7
+lbelse28:
+lbelse20:
+  poke 4 r4
+  j ra
+init:
+  clr db
+  move r4 0
+  move r5 0
+  move r6 0
+  move r7 0
+lbwhile5:
+  bge r4 3 lbwhile.end5
+    jal get.vertical
+    get r8 db 511
+    poke 4 r8
+    sin r8 r8
+    bne r4 0 lbelse8
+      sub r6 r6 r8
+      add r7 r7 r8
+      sleep 5
+lbelse8:
+    bne r4 1 lbelse10
+      move r5 r8
+      mul r8 r8 2
+      sub r7 r7 r8
+      sleep 5
+lbelse10:
+    bne r4 2 lbelse12
+      add r6 r6 r8
+      add r7 r7 r8
+lbelse12:
+    add r4 r4 1
+    j lbwhile5
+lbwhile.end5:
+  mul r6 r6 0.5
+  div r6 r6 0.026179938416666666
+  div r7 r7 0.026179938416666666
+  div r7 r7 0.026179938416666666
+  poke 5 r6
+  add r9 r5 r7
+  sub r5 r5 r9
+  mul r5 r5 r5
+  mul r6 r6 r6
+  add r10 r5 r6
+  sqrt r10 r10
+  sub r8 r9 r10
+  asin r8 r8
+  poke 2 r8
+  add r8 r9 r10
+  asin r8 r8
+  poke 3 r8
   j ra
 # registers: 12
-# lines: 71
+# lines: 133
