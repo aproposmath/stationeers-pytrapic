@@ -39,7 +39,7 @@ import workerUrl from "../node_modules/monaco-pyright-lsp/dist/worker.js?url";
 
 function debounce(fn, delay) {
   let timer;
-  const debounced = function (...args) {
+  const debounced = function(...args) {
     const context = this;
     clearTimeout(timer);
     timer = setTimeout(() => fn.apply(context, args), delay);
@@ -227,19 +227,24 @@ async function init() {
 
   let urlData = urlParams.get("data");
   let fileUrl = urlParams.get("fileUrl");
+
+  let data = defaultData;
+
   if (fileUrl) {
     const code = await (await fetch(fileUrl)).text();
-    loadData({ code });
+    data = { code };
   } else if (urlData) {
-    const data = pyodide.runPython(
+    data = pyodide.runPython(
       `import stationeers_pytrapic.types; stationeers_pytrapic.types.decode_data`,
     )(pyodide.toPy(urlData));
-    loadData(data);
   } else if (localStorage.getItem("data")) {
-    loadData(JSON.parse(localStorage.getItem("data")));
-  } else {
-    loadData(defaultData);
+    data = JSON.parse(localStorage.getItem("data"));
   }
+
+  if (urlParams.get("compact"))
+    data.compact = true;
+
+  loadData(data);
 
   editor.onDidChangeModelContent(compileCodeDebounced);
 
