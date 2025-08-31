@@ -11,6 +11,9 @@ def main():
     parser.add_argument("input_file", help="Input python file")
     parser.add_argument("--compact", help="Apply optimizations", action="store_true")
     parser.add_argument(
+        "--stats", help="Print statistisc as comment", action="store_true"
+    )
+    parser.add_argument(
         "--comments",
         help="Append input code as comment on each line",
         action="store_true",
@@ -34,6 +37,10 @@ def main():
         sys.exit(1)
     elif code:
         print(code)
+        if args.stats:
+            print(f"# num registers: {data.get('num_registers', -1)}")
+            print(f"# num lines:     {data.get('num_lines', -1)}")
+            print(f"# num bytes:     {data.get('num_bytes', -1)}")
 
 
 if __name__ == "__main__":
