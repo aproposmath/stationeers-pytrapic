@@ -5,110 +5,104 @@ sbn -815193061 -934885189 On 1
 sbn -815193061 -934885189 Setting 0
 sbn -815193061 -934885189 Mode 7
 clr db
+push ra
 move r4 0
 move r5 0
 move r6 0
-move r7 0
-bge r4 3 30
-jal 106
-get r8 db 511
-poke 4 r8
-sin r8 r8
-bne r4 0 20
-sub r6 r6 r8
-add r7 r7 r8
+jal 99
+get r7 db 511
+sub r5 r5 r7
+add r6 r6 r7
 sleep 5
-bne r4 1 25
-move r5 r8
-mul r8 r8 2
-sub r7 r7 r8
+jal 99
+get r7 db 511
+poke 504 r7
+move r4 r7
+mul r7 r7 2
+sub r6 r6 r7
 sleep 5
-bne r4 2 28
-add r6 r6 r8
-add r7 r7 r8
-add r4 r4 1
-j 11
-mul r6 r6 0.5
+jal 99
+get r7 db 511
+add r5 r5 r7
+add r6 r6 r7
+mul r5 r5 0.5
+div r5 r5 0.026179938416666666
 div r6 r6 0.026179938416666666
-div r7 r7 0.026179938416666666
-div r7 r7 0.026179938416666666
-poke 5 r6
-add r9 r5 r7
-sub r5 r5 r9
+div r6 r6 0.026179938416666666
+poke 505 r5
+add r8 r4 r6
+sub r4 r4 r8
+mul r4 r4 r4
 mul r5 r5 r5
-mul r6 r6 r6
-add r10 r5 r6
-sqrt r10 r10
-sub r8 r9 r10
-asin r8 r8
-poke 2 r8
-add r8 r9 r10
-asin r8 r8
-poke 3 r8
+add r9 r4 r5
+sqrt r9 r9
+sub r7 r8 r9
+poke 502 r7
+add r7 r8 r9
+poke 503 r7
+pop ra
 yield
-jal 106
+jal 99
 get r0 db 511
-get r4 db 4
-beq r4 0 63
-get r5 db 5
-bne r5 0 56
+get r4 db 504
+beq r4 0 59
+get r5 db 505
+bne r5 0 52
 sub r9 r0 r4
-poke 5 r9
+poke 505 r9
 sub r6 r0 r4
 mul r7 r6 r5
-bge r7 0 63
+bge r7 0 59
 sgt r10 r5 0
-select r8 r10 3 2
+select r8 r10 503 502
 poke r8 r4
-poke 5 r6
-poke 4 r0
+poke 505 r6
+poke 504 r0
 put db 510 r0
-jal 81
+jal 77
 get r1 db 511
 sbn -815193061 -811190405 Setting r1
 s db Setting r1
-poke 0 r1
+poke 500 r1
 put db 510 0
-jal 81
+jal 77
 get r2 db 511
-bge r2 r1 75
+bge r2 r1 71
 sub r2 1200 r2
 sub r3 r2 r1
 add r3 r3 1200
 mod r3 r3 1200
 sbn -815193061 -934885189 Setting r3
-poke 1 r3
-j 47
+poke 501 r3
+j 43
 get r4 db 510
-get r5 db 3
-sin r5 r5
+get r5 db 503
 mul r5 r5 0.5
-get r6 db 2
-sin r6 r6
+get r6 db 502
 mul r6 r6 0.5
 add r7 r5 r6
 sub r8 r5 r6
 move r9 r4
-sin r9 r9
 sub r9 r9 r7
 div r9 r9 r8
 max r9 r9 -1
 min r9 r9 1
 acos r9 r9
 div r9 r9 6.283184
-get r10 db 5
-ble r10 0 101
+get r10 db 505
+ble r10 0 94
 sub r9 1 r9
 add r9 r9 0.5
 mod r9 r9 1
 mul r9 r9 1200
 put db 511 r9
 j ra
-l r11 d0 Vertical
-sub r11 90 r11
-div r11 r11 180
-mul r11 r11 3.141592
-put db 511 r11
+l r10 d0 Vertical
+sub r10 90 r10
+div r10 r10 180
+mul r10 r10 3.141592
+sin r10 r10
+put db 511 r10
 j ra
-# registers: 12
-# lines: 112
+# registers: 11
+# lines: 106

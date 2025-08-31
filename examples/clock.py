@@ -9,12 +9,12 @@ sensor = DaylightSensor(d0)
 # wait for one in-game day to have them updated
 
 # stack offsets
-ITIME = 0
-ISUNSET = 1
-IMIN = 2
-IMAX = 3
-IVERT = 4
-ISIGN = 5
+ITIME = 500
+ISUNSET = 501
+IMIN = 502
+IMAX = 503
+IVERT = 504
+ISIGN = 505
 
 SECONDS_PER_DAY = 20 * 60
 TSLEEP = 5
@@ -52,16 +52,13 @@ def handle_minmax(vertical):
 
 def calc_time(vertical):
     smax = stack[IMAX]
-    sin(smax, smax)
     smax *= 0.5
     smin = stack[IMIN]
-    sin(smin, smin)
     smin *= 0.5
     a = smax + smin
     b = smax - smin
 
     time = vertical
-    sin(time, time)
     time -= a
     time /= b
     max(time, time, -1)
@@ -83,32 +80,32 @@ def get_vertical():
     vertical = 90 - vertical
     vertical /= 180
     vertical *= 3.141592
+    sin(vertical, vertical)
     return vertical
 
 
 def init():
     clr(db)
-    i = 0
+    push(ra)
     deriv0 = 0
     deriv1 = 0
     deriv2 = 0
-    while i < 3:
-        v = get_vertical()
-        stack[IVERT] = v
-        sin(v, v)
-        if i == 0:
-            deriv1 -= v
-            deriv2 += v
-            sleep(TSLEEP)
-        if i == 1:
-            deriv0 = v
-            v *= 2
-            deriv2 -= v
-            sleep(TSLEEP)
-        if i == 2:
-            deriv1 += v
-            deriv2 += v
-        i += 1
+
+    v = get_vertical()
+    deriv1 -= v
+    deriv2 += v
+    sleep(TSLEEP)
+
+    v = get_vertical()
+    stack[IVERT] = v
+    deriv0 = v
+    v *= 2
+    deriv2 -= v
+    sleep(TSLEEP)
+
+    v = get_vertical()
+    deriv1 += v
+    deriv2 += v
 
     deriv1 *= 0.5
     deriv1 /= DT
@@ -126,12 +123,11 @@ def init():
     sqrt(a, a)
 
     v = b - a
-    asin(v, v)
     stack[IMIN] = v
 
     v = b + a
-    asin(v, v)
     stack[IMAX] = v
+    pop(ra)
 
 
 init()
