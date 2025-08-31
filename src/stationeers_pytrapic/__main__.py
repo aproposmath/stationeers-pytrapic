@@ -10,6 +10,11 @@ def main():
     parser = argparse.ArgumentParser(description="A simple command-line tool.")
     parser.add_argument("input_file", help="Input python file")
     parser.add_argument("--compact", help="Apply optimizations", action="store_true")
+    parser.add_argument(
+        "--comments",
+        help="Append input code as comment on each line",
+        action="store_true",
+    )
     args = parser.parse_args()
 
     # logging.basicConfig(
@@ -18,12 +23,12 @@ def main():
     # )
 
     code = Path(args.input_file).read_text()
-    data = compile_code(code, compact=args.compact)
+    data = compile_code(code, compact=args.compact, comments=args.comments)
     code = data.get("code", "")
-    error = data.get("error", "")
-    stack_trace = data.get("stack_trace", "")
+    error = data.get("error", {})
+    stack_trace = error.get("stack_trace", "")
     if error:
-        print(f"Error: {error}", file=sys.stderr)
+        print(f"Error: {error['description']}", file=sys.stderr)
         if stack_trace:
             print(f"Stack trace: {stack_trace}", file=sys.stderr)
         sys.exit(1)
