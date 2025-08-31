@@ -114,6 +114,13 @@ class CompilerPassGenerateCode(CompilerPass):
         return name
 
     def get_intermediate_symbol(self, node) -> str:
+        if isinstance(node.parent, astroid.Assign):
+            target = node.parent.targets[0]
+            if isinstance(target, astroid.AssignName):
+                sym = self.data.get_sym_data(target)
+                if not sym.code_expr:
+                    sym.code_expr = self.get_register_name()
+                return sym
         reg = self.get_register_name()
         sym = self.data.get_tmp_sym_data(node, reg)
         sym.code_expr = reg

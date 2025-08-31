@@ -45,12 +45,11 @@ lbwhile14:
     add r3 r3 48
     mul r10 r6 r5
     sub r4 r4 r10
-    div r11 r5 10
-    move r5 r11
+    div r5 r5 10
     j lbwhile14
 lbwhile.end14:
   put db 511 r3
 append.numberend:
   j ra
-# registers: 12
-# lines: 54
+# registers: 11
+# lines: 53

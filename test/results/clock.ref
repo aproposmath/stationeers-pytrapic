@@ -30,50 +30,44 @@ calc.time:
   max r11 r11 -1
   min r11 r11 1
   acos r11 r11
-  div r12 r11 6.283184
-  move r11 r12
-  ble r3 0 lbelse29
-    sub r13 1 r11
-    move r11 r13
-lbelse29:
+  div r11 r11 6.283184
+  ble r3 0 lbelse24
+    sub r11 1 r11
+lbelse24:
   add r11 r11 0.5
   mod r11 r11 1
   mul r11 r11 1200
   put db 511 r11
   j ra
 get.vertical:
-  l r7 d0 Vertical
-  move r6 r7
-  sub r8 90 r6
-  move r6 r8
+  l r6 d0 Vertical
+  sub r6 90 r6
   div r6 r6 180
   mul r6 r6 3.141592
   put db 511 r6
   j ra
 handle.minmax:
   get r6 db 510
-  bne r2 0 lbelse11
+  bne r2 0 lbelse9
     move r2 r6
   j handle.minmaxend
+lbelse9:
+  bne r3 0 lbelse11
+    sub r3 r6 r2
 lbelse11:
-  bne r3 0 lbelse13
-    sub r8 r6 r2
-    move r3 r8
-lbelse13:
-  sub r9 r6 r2
-  move r7 r9
+  sub r7 r6 r2
   mul r7 r7 r3
-  bge r7 0 lbelse18
-    ble r3 0 lbelse20
+  bge r7 0 lbelse14
+    ble r3 0 lbelse16
       move r0 r2
-      j lbend20
-lbelse20:
+      j lbend16
+lbelse16:
       move r1 r2
-lbend20:
+lbend16:
     mul r3 r3 -1.0
-lbelse18:
+lbelse14:
   move r2 r6
 handle.minmaxend:
   j ra
-# registers: 14
-# lines: 77
+# registers: 12
+# lines: 71
