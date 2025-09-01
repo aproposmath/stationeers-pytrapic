@@ -862,6 +862,101 @@ class CompilerPassGatherCode(CompilerPass):
 
         self.get_code()
 
+    def _pack_registers(self, registers_by_scope, mapping):
+        """
+        Compact register numbers using live-range overlap and reserved-register avoidance.
+        Updates mapping in-place.
+
+        registers_by_scope: dict(scope -> set(old_reg_ints))  -- not used directly here
+        mapping: token -> 'r{old}'
+        """
+        # token -> old int
+        reg_token_to_old = {}
+        for tok, rname in mapping.items():
+            try:
+                old = int(rname[1:])
+            except Exception:
+                continue
+            reg_token_to_old[tok] = old
+
+        if not reg_token_to_old:
+            return
+
+        # Build token pattern (longest first to avoid partial matches)
+        toks_sorted = sorted(reg_token_to_old.keys(), key=len, reverse=True)
+        token_pattern = re.compile(r"(?<![A-Za-z0-9_])(" + "|".join(re.escape(t) for t in toks_sorted) + r")(?![A-Za-z0-9_])")
+
+        # 1) Find reserved physical registers already present in self.code (literal rN)
+        #    These are physical register usages produced elsewhere; avoid mapping tokens to them.
+        reserved_regs = set()
+        reg_lit_re = re.compile(r"\br(\d+)\b")
+        for line in self.code:
+            for m in reg_lit_re.finditer(line.code):
+                try:
+                    reserved_regs.add(int(m.group(1)))
+                except Exception:
+                    pass
+
+        # 2) For each token, collect the set of line indices where it appears (before replacement)
+        occurrences = {old: [] for old in set(reg_token_to_old.values())}
+        for idx, line in enumerate(self.code):
+            before = line.code.split("#", 1)[0]
+            for m in token_pattern.finditer(before):
+                tok = m.group(1)
+                old = reg_token_to_old.get(tok)
+                if old is not None:
+                    occurrences.setdefault(old, []).append(idx)
+
+        # 3) If a token never appears (defensive), remove it
+        occurrences = {old: sorted(idxs) for old, idxs in occurrences.items() if idxs}
+
+        if not occurrences:
+            # nothing found in code; fallback to packing unique_regs sequentially (but still avoid reserved)
+            unique_regs = sorted(set(reg_token_to_old.values()))
+            color_of = {}
+            next_color = 0
+            for old in unique_regs:
+                # pick next available color not reserved
+                while next_color in reserved_regs:
+                    next_color += 1
+                color_of[old] = next_color
+                next_color += 1
+        else:
+            # 4) Compute live ranges [first, last] for each old reg
+            ranges = {}
+            for old, idxs in occurrences.items():
+                ranges[old] = (idxs[0], idxs[-1])
+
+            # 5) Build adjacency: overlap of ranges -> conflict
+            all_regs = sorted(ranges.keys())
+            adj = {r: set() for r in all_regs}
+            for i in range(len(all_regs)):
+                a = all_regs[i]
+                a_first, a_last = ranges[a]
+                for j in range(i + 1, len(all_regs)):
+                    b = all_regs[j]
+                    b_first, b_last = ranges[b]
+                    # overlap if not (a_last < b_first or b_last < a_first)
+                    if not (a_last < b_first or b_last < a_first):
+                        adj[a].add(b)
+                        adj[b].add(a)
+
+            # 6) Greedy color (degree-desc order), but avoid reserved colors
+            nodes = sorted(adj.keys(), key=lambda r: -len(adj[r]))
+            color_of = {}
+            for node in nodes:
+                neighbor_colors = {color_of[n] for n in adj[node] if n in color_of}
+                c = 0
+                # find smallest c not in neighbor_colors and not in reserved_regs
+                while c in neighbor_colors or c in reserved_regs:
+                    c += 1
+                color_of[node] = c
+
+        # 7) Update mapping token -> new 'r{new}'
+        for tok, old in reg_token_to_old.items():
+            if old in color_of:
+                mapping[tok] = f"r{color_of[old]}"
+
     def assign_registers(self):
         # topological sort of function scopes
         called_from = {}
@@ -922,6 +1017,8 @@ class CompilerPassGatherCode(CompilerPass):
                     # print("assign name", symbol.code_expr, "to", mapping[symbol.code_expr])
 
             registers_by_scope[scope] = used_registers.union(parent_registers)
+
+        self._pack_registers(registers_by_scope, mapping)
 
         if mapping:
             pattern = re.compile("|".join(re.escape(k) for k in mapping))
