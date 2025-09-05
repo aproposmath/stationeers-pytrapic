@@ -3,7 +3,813 @@ from stationeers_pytrapic.types import (
     _DeviceLogicType,
     _BaseStructure,
     _BaseStructures,
+    _DeviceSlotType,
+    _DevicesSlotType,
+    _BaseSlotType,
+    _BaseSlotTypes,
 )
+
+
+class _SlotTypeCommon(_BaseSlotType):
+    @property
+    def Class(self) -> float:
+        return _DeviceSlotType(self, self._id, self._slot_index, "Class")
+
+    @Class.setter
+    def Class(self, value: int | float):
+        pass
+
+    @property
+    def Damage(self) -> float:
+        return _DeviceSlotType(self, self._id, self._slot_index, "Damage")
+
+    @Damage.setter
+    def Damage(self, value: int | float):
+        pass
+
+    @property
+    def MaxQuantity(self) -> float:
+        return _DeviceSlotType(self, self._id, self._slot_index, "MaxQuantity")
+
+    @MaxQuantity.setter
+    def MaxQuantity(self, value: int | float):
+        pass
+
+    @property
+    def OccupantHash(self) -> float:
+        return _DeviceSlotType(self, self._id, self._slot_index, "OccupantHash")
+
+    @OccupantHash.setter
+    def OccupantHash(self, value: int | float):
+        pass
+
+    @property
+    def Occupied(self) -> float:
+        return _DeviceSlotType(self, self._id, self._slot_index, "Occupied")
+
+    @Occupied.setter
+    def Occupied(self, value: int | float):
+        pass
+
+    @property
+    def PrefabHash(self) -> float:
+        return _DeviceSlotType(self, self._id, self._slot_index, "PrefabHash")
+
+    @PrefabHash.setter
+    def PrefabHash(self, value: int | float):
+        pass
+
+    @property
+    def Quantity(self) -> float:
+        return _DeviceSlotType(self, self._id, self._slot_index, "Quantity")
+
+    @Quantity.setter
+    def Quantity(self, value: int | float):
+        pass
+
+    @property
+    def ReferenceId(self) -> float:
+        return _DeviceSlotType(self, self._id, self._slot_index, "ReferenceId")
+
+    @ReferenceId.setter
+    def ReferenceId(self, value: int | float):
+        pass
+
+    @property
+    def SortingClass(self) -> float:
+        return _DeviceSlotType(self, self._id, self._slot_index, "SortingClass")
+
+    @SortingClass.setter
+    def SortingClass(self, value: int | float):
+        pass
+
+
+class _SlotTypeCommons(_BaseSlotTypes):
+    @property
+    def Class(self) -> _DevicesSlotType:
+        return _DevicesSlotType(self, self._hash, self._slot_index, "Class", self._name)
+
+    @Class.setter
+    def Class(self, value: int | float):
+        pass
+
+    @property
+    def Damage(self) -> _DevicesSlotType:
+        return _DevicesSlotType(
+            self, self._hash, self._slot_index, "Damage", self._name
+        )
+
+    @Damage.setter
+    def Damage(self, value: int | float):
+        pass
+
+    @property
+    def MaxQuantity(self) -> _DevicesSlotType:
+        return _DevicesSlotType(
+            self, self._hash, self._slot_index, "MaxQuantity", self._name
+        )
+
+    @MaxQuantity.setter
+    def MaxQuantity(self, value: int | float):
+        pass
+
+    @property
+    def OccupantHash(self) -> _DevicesSlotType:
+        return _DevicesSlotType(
+            self, self._hash, self._slot_index, "OccupantHash", self._name
+        )
+
+    @OccupantHash.setter
+    def OccupantHash(self, value: int | float):
+        pass
+
+    @property
+    def Occupied(self) -> _DevicesSlotType:
+        return _DevicesSlotType(
+            self, self._hash, self._slot_index, "Occupied", self._name
+        )
+
+    @Occupied.setter
+    def Occupied(self, value: int | float):
+        pass
+
+    @property
+    def PrefabHash(self) -> _DevicesSlotType:
+        return _DevicesSlotType(
+            self, self._hash, self._slot_index, "PrefabHash", self._name
+        )
+
+    @PrefabHash.setter
+    def PrefabHash(self, value: int | float):
+        pass
+
+    @property
+    def Quantity(self) -> _DevicesSlotType:
+        return _DevicesSlotType(
+            self, self._hash, self._slot_index, "Quantity", self._name
+        )
+
+    @Quantity.setter
+    def Quantity(self, value: int | float):
+        pass
+
+    @property
+    def ReferenceId(self) -> _DevicesSlotType:
+        return _DevicesSlotType(
+            self, self._hash, self._slot_index, "ReferenceId", self._name
+        )
+
+    @ReferenceId.setter
+    def ReferenceId(self, value: int | float):
+        pass
+
+    @property
+    def SortingClass(self) -> _DevicesSlotType:
+        return _DevicesSlotType(
+            self, self._hash, self._slot_index, "SortingClass", self._name
+        )
+
+    @SortingClass.setter
+    def SortingClass(self, value: int | float):
+        pass
+
+
+class _SlotTypeAppliance(_SlotTypeCommon):
+    @property
+    def On(self) -> float:
+        return _DeviceSlotType(self, self._id, self._slot_index, "On")
+
+    @On.setter
+    def On(self, value: int | float):
+        pass
+
+
+class _SlotTypeAppliances(_SlotTypeCommons):
+    @property
+    def On(self) -> _DevicesSlotType:
+        return _DevicesSlotType(self, self._hash, self._slot_index, "On", self._name)
+
+    @On.setter
+    def On(self, value: int | float):
+        pass
+
+
+class _SlotTypeBack(_SlotTypeCommon):
+    @property
+    def Charge(self) -> float:
+        return _DeviceSlotType(self, self._id, self._slot_index, "Charge")
+
+    @Charge.setter
+    def Charge(self, value: int | float):
+        pass
+
+    @property
+    def ChargeRatio(self) -> float:
+        return _DeviceSlotType(self, self._id, self._slot_index, "ChargeRatio")
+
+    @ChargeRatio.setter
+    def ChargeRatio(self, value: int | float):
+        pass
+
+    @property
+    def Pressure(self) -> float:
+        return _DeviceSlotType(self, self._id, self._slot_index, "Pressure")
+
+    @Pressure.setter
+    def Pressure(self, value: int | float):
+        pass
+
+
+class _SlotTypeBacks(_SlotTypeCommons):
+    @property
+    def Charge(self) -> _DevicesSlotType:
+        return _DevicesSlotType(
+            self, self._hash, self._slot_index, "Charge", self._name
+        )
+
+    @Charge.setter
+    def Charge(self, value: int | float):
+        pass
+
+    @property
+    def ChargeRatio(self) -> _DevicesSlotType:
+        return _DevicesSlotType(
+            self, self._hash, self._slot_index, "ChargeRatio", self._name
+        )
+
+    @ChargeRatio.setter
+    def ChargeRatio(self, value: int | float):
+        pass
+
+    @property
+    def Pressure(self) -> _DevicesSlotType:
+        return _DevicesSlotType(
+            self, self._hash, self._slot_index, "Pressure", self._name
+        )
+
+    @Pressure.setter
+    def Pressure(self, value: int | float):
+        pass
+
+
+class _SlotTypeBattery(_SlotTypeCommon):
+    @property
+    def Charge(self) -> float:
+        return _DeviceSlotType(self, self._id, self._slot_index, "Charge")
+
+    @Charge.setter
+    def Charge(self, value: int | float):
+        pass
+
+    @property
+    def ChargeRatio(self) -> float:
+        return _DeviceSlotType(self, self._id, self._slot_index, "ChargeRatio")
+
+    @ChargeRatio.setter
+    def ChargeRatio(self, value: int | float):
+        pass
+
+
+class _SlotTypeBatterys(_SlotTypeCommons):
+    @property
+    def Charge(self) -> _DevicesSlotType:
+        return _DevicesSlotType(
+            self, self._hash, self._slot_index, "Charge", self._name
+        )
+
+    @Charge.setter
+    def Charge(self, value: int | float):
+        pass
+
+    @property
+    def ChargeRatio(self) -> _DevicesSlotType:
+        return _DevicesSlotType(
+            self, self._hash, self._slot_index, "ChargeRatio", self._name
+        )
+
+    @ChargeRatio.setter
+    def ChargeRatio(self, value: int | float):
+        pass
+
+
+class _SlotTypeCircuitboard(_SlotTypeCommon):
+    @property
+    def Mode(self) -> float:
+        return _DeviceSlotType(self, self._id, self._slot_index, "Mode")
+
+    @Mode.setter
+    def Mode(self, value: int | float):
+        pass
+
+
+class _SlotTypeCircuitboards(_SlotTypeCommons):
+    @property
+    def Mode(self) -> _DevicesSlotType:
+        return _DevicesSlotType(self, self._hash, self._slot_index, "Mode", self._name)
+
+    @Mode.setter
+    def Mode(self, value: int | float):
+        pass
+
+
+class _SlotTypeFilter(_SlotTypeCommon):
+    @property
+    def FilterType(self) -> float:
+        return _DeviceSlotType(self, self._id, self._slot_index, "FilterType")
+
+    @FilterType.setter
+    def FilterType(self, value: int | float):
+        pass
+
+
+class _SlotTypeFilters(_SlotTypeCommons):
+    @property
+    def FilterType(self) -> _DevicesSlotType:
+        return _DevicesSlotType(
+            self, self._hash, self._slot_index, "FilterType", self._name
+        )
+
+    @FilterType.setter
+    def FilterType(self, value: int | float):
+        pass
+
+
+class _SlotTypeGasCanister(_SlotTypeCommon):
+    @property
+    def Open(self) -> float:
+        return _DeviceSlotType(self, self._id, self._slot_index, "Open")
+
+    @Open.setter
+    def Open(self, value: int | float):
+        pass
+
+    @property
+    def Pressure(self) -> float:
+        return _DeviceSlotType(self, self._id, self._slot_index, "Pressure")
+
+    @Pressure.setter
+    def Pressure(self, value: int | float):
+        pass
+
+    @property
+    def Temperature(self) -> float:
+        return _DeviceSlotType(self, self._id, self._slot_index, "Temperature")
+
+    @Temperature.setter
+    def Temperature(self, value: int | float):
+        pass
+
+    @property
+    def Volume(self) -> float:
+        return _DeviceSlotType(self, self._id, self._slot_index, "Volume")
+
+    @Volume.setter
+    def Volume(self, value: int | float):
+        pass
+
+
+class _SlotTypeGasCanisters(_SlotTypeCommons):
+    @property
+    def Open(self) -> _DevicesSlotType:
+        return _DevicesSlotType(self, self._hash, self._slot_index, "Open", self._name)
+
+    @Open.setter
+    def Open(self, value: int | float):
+        pass
+
+    @property
+    def Pressure(self) -> _DevicesSlotType:
+        return _DevicesSlotType(
+            self, self._hash, self._slot_index, "Pressure", self._name
+        )
+
+    @Pressure.setter
+    def Pressure(self, value: int | float):
+        pass
+
+    @property
+    def Temperature(self) -> _DevicesSlotType:
+        return _DevicesSlotType(
+            self, self._hash, self._slot_index, "Temperature", self._name
+        )
+
+    @Temperature.setter
+    def Temperature(self, value: int | float):
+        pass
+
+    @property
+    def Volume(self) -> _DevicesSlotType:
+        return _DevicesSlotType(
+            self, self._hash, self._slot_index, "Volume", self._name
+        )
+
+    @Volume.setter
+    def Volume(self, value: int | float):
+        pass
+
+
+class _SlotTypeHelmet(_SlotTypeCommon):
+    @property
+    def Charge(self) -> float:
+        return _DeviceSlotType(self, self._id, self._slot_index, "Charge")
+
+    @Charge.setter
+    def Charge(self, value: int | float):
+        pass
+
+    @property
+    def ChargeRatio(self) -> float:
+        return _DeviceSlotType(self, self._id, self._slot_index, "ChargeRatio")
+
+    @ChargeRatio.setter
+    def ChargeRatio(self, value: int | float):
+        pass
+
+    @property
+    def Lock(self) -> float:
+        return _DeviceSlotType(self, self._id, self._slot_index, "Lock")
+
+    @Lock.setter
+    def Lock(self, value: int | float):
+        pass
+
+    @property
+    def On(self) -> float:
+        return _DeviceSlotType(self, self._id, self._slot_index, "On")
+
+    @On.setter
+    def On(self, value: int | float):
+        pass
+
+    @property
+    def Open(self) -> float:
+        return _DeviceSlotType(self, self._id, self._slot_index, "Open")
+
+    @Open.setter
+    def Open(self, value: int | float):
+        pass
+
+    @property
+    def Pressure(self) -> float:
+        return _DeviceSlotType(self, self._id, self._slot_index, "Pressure")
+
+    @Pressure.setter
+    def Pressure(self, value: int | float):
+        pass
+
+
+class _SlotTypeHelmets(_SlotTypeCommons):
+    @property
+    def Charge(self) -> _DevicesSlotType:
+        return _DevicesSlotType(
+            self, self._hash, self._slot_index, "Charge", self._name
+        )
+
+    @Charge.setter
+    def Charge(self, value: int | float):
+        pass
+
+    @property
+    def ChargeRatio(self) -> _DevicesSlotType:
+        return _DevicesSlotType(
+            self, self._hash, self._slot_index, "ChargeRatio", self._name
+        )
+
+    @ChargeRatio.setter
+    def ChargeRatio(self, value: int | float):
+        pass
+
+    @property
+    def Lock(self) -> _DevicesSlotType:
+        return _DevicesSlotType(self, self._hash, self._slot_index, "Lock", self._name)
+
+    @Lock.setter
+    def Lock(self, value: int | float):
+        pass
+
+    @property
+    def On(self) -> _DevicesSlotType:
+        return _DevicesSlotType(self, self._hash, self._slot_index, "On", self._name)
+
+    @On.setter
+    def On(self, value: int | float):
+        pass
+
+    @property
+    def Open(self) -> _DevicesSlotType:
+        return _DevicesSlotType(self, self._hash, self._slot_index, "Open", self._name)
+
+    @Open.setter
+    def Open(self, value: int | float):
+        pass
+
+    @property
+    def Pressure(self) -> _DevicesSlotType:
+        return _DevicesSlotType(
+            self, self._hash, self._slot_index, "Pressure", self._name
+        )
+
+    @Pressure.setter
+    def Pressure(self, value: int | float):
+        pass
+
+
+class _SlotTypeMask(_SlotTypeCommon):
+    @property
+    def Lock(self) -> float:
+        return _DeviceSlotType(self, self._id, self._slot_index, "Lock")
+
+    @Lock.setter
+    def Lock(self, value: int | float):
+        pass
+
+    @property
+    def On(self) -> float:
+        return _DeviceSlotType(self, self._id, self._slot_index, "On")
+
+    @On.setter
+    def On(self, value: int | float):
+        pass
+
+    @property
+    def Open(self) -> float:
+        return _DeviceSlotType(self, self._id, self._slot_index, "Open")
+
+    @Open.setter
+    def Open(self, value: int | float):
+        pass
+
+
+class _SlotTypeMasks(_SlotTypeCommons):
+    @property
+    def Lock(self) -> _DevicesSlotType:
+        return _DevicesSlotType(self, self._hash, self._slot_index, "Lock", self._name)
+
+    @Lock.setter
+    def Lock(self, value: int | float):
+        pass
+
+    @property
+    def On(self) -> _DevicesSlotType:
+        return _DevicesSlotType(self, self._hash, self._slot_index, "On", self._name)
+
+    @On.setter
+    def On(self, value: int | float):
+        pass
+
+    @property
+    def Open(self) -> _DevicesSlotType:
+        return _DevicesSlotType(self, self._hash, self._slot_index, "Open", self._name)
+
+    @Open.setter
+    def Open(self, value: int | float):
+        pass
+
+
+class _SlotTypePlant(_SlotTypeCommon):
+    @property
+    def Efficiency(self) -> float:
+        return _DeviceSlotType(self, self._id, self._slot_index, "Efficiency")
+
+    @Efficiency.setter
+    def Efficiency(self, value: int | float):
+        pass
+
+    @property
+    def Growth(self) -> float:
+        return _DeviceSlotType(self, self._id, self._slot_index, "Growth")
+
+    @Growth.setter
+    def Growth(self, value: int | float):
+        pass
+
+    @property
+    def Health(self) -> float:
+        return _DeviceSlotType(self, self._id, self._slot_index, "Health")
+
+    @Health.setter
+    def Health(self, value: int | float):
+        pass
+
+    @property
+    def Mature(self) -> float:
+        return _DeviceSlotType(self, self._id, self._slot_index, "Mature")
+
+    @Mature.setter
+    def Mature(self, value: int | float):
+        pass
+
+    @property
+    def MaturityRatio(self) -> float:
+        return _DeviceSlotType(self, self._id, self._slot_index, "MaturityRatio")
+
+    @MaturityRatio.setter
+    def MaturityRatio(self, value: int | float):
+        pass
+
+    @property
+    def Seeding(self) -> float:
+        return _DeviceSlotType(self, self._id, self._slot_index, "Seeding")
+
+    @Seeding.setter
+    def Seeding(self, value: int | float):
+        pass
+
+    @property
+    def SeedingRatio(self) -> float:
+        return _DeviceSlotType(self, self._id, self._slot_index, "SeedingRatio")
+
+    @SeedingRatio.setter
+    def SeedingRatio(self, value: int | float):
+        pass
+
+
+class _SlotTypePlants(_SlotTypeCommons):
+    @property
+    def Efficiency(self) -> _DevicesSlotType:
+        return _DevicesSlotType(
+            self, self._hash, self._slot_index, "Efficiency", self._name
+        )
+
+    @Efficiency.setter
+    def Efficiency(self, value: int | float):
+        pass
+
+    @property
+    def Growth(self) -> _DevicesSlotType:
+        return _DevicesSlotType(
+            self, self._hash, self._slot_index, "Growth", self._name
+        )
+
+    @Growth.setter
+    def Growth(self, value: int | float):
+        pass
+
+    @property
+    def Health(self) -> _DevicesSlotType:
+        return _DevicesSlotType(
+            self, self._hash, self._slot_index, "Health", self._name
+        )
+
+    @Health.setter
+    def Health(self, value: int | float):
+        pass
+
+    @property
+    def Mature(self) -> _DevicesSlotType:
+        return _DevicesSlotType(
+            self, self._hash, self._slot_index, "Mature", self._name
+        )
+
+    @Mature.setter
+    def Mature(self, value: int | float):
+        pass
+
+    @property
+    def MaturityRatio(self) -> _DevicesSlotType:
+        return _DevicesSlotType(
+            self, self._hash, self._slot_index, "MaturityRatio", self._name
+        )
+
+    @MaturityRatio.setter
+    def MaturityRatio(self, value: int | float):
+        pass
+
+    @property
+    def Seeding(self) -> _DevicesSlotType:
+        return _DevicesSlotType(
+            self, self._hash, self._slot_index, "Seeding", self._name
+        )
+
+    @Seeding.setter
+    def Seeding(self, value: int | float):
+        pass
+
+    @property
+    def SeedingRatio(self) -> _DevicesSlotType:
+        return _DevicesSlotType(
+            self, self._hash, self._slot_index, "SeedingRatio", self._name
+        )
+
+    @SeedingRatio.setter
+    def SeedingRatio(self, value: int | float):
+        pass
+
+
+class _SlotTypeProgrammableChip(_SlotTypeCommon):
+    @property
+    def LineNumber(self) -> float:
+        return _DeviceSlotType(self, self._id, self._slot_index, "LineNumber")
+
+    @LineNumber.setter
+    def LineNumber(self, value: int | float):
+        pass
+
+
+class _SlotTypeProgrammableChips(_SlotTypeCommons):
+    @property
+    def LineNumber(self) -> _DevicesSlotType:
+        return _DevicesSlotType(
+            self, self._hash, self._slot_index, "LineNumber", self._name
+        )
+
+    @LineNumber.setter
+    def LineNumber(self, value: int | float):
+        pass
+
+
+class _SlotTypeSuit(_SlotTypeCommon):
+    @property
+    def Charge(self) -> float:
+        return _DeviceSlotType(self, self._id, self._slot_index, "Charge")
+
+    @Charge.setter
+    def Charge(self, value: int | float):
+        pass
+
+    @property
+    def ChargeRatio(self) -> float:
+        return _DeviceSlotType(self, self._id, self._slot_index, "ChargeRatio")
+
+    @ChargeRatio.setter
+    def ChargeRatio(self, value: int | float):
+        pass
+
+    @property
+    def Pressure(self) -> float:
+        return _DeviceSlotType(self, self._id, self._slot_index, "Pressure")
+
+    @Pressure.setter
+    def Pressure(self, value: int | float):
+        pass
+
+    @property
+    def PressureAir(self) -> float:
+        return _DeviceSlotType(self, self._id, self._slot_index, "PressureAir")
+
+    @PressureAir.setter
+    def PressureAir(self, value: int | float):
+        pass
+
+    @property
+    def PressureWaste(self) -> float:
+        return _DeviceSlotType(self, self._id, self._slot_index, "PressureWaste")
+
+    @PressureWaste.setter
+    def PressureWaste(self, value: int | float):
+        pass
+
+
+class _SlotTypeSuits(_SlotTypeCommons):
+    @property
+    def Charge(self) -> _DevicesSlotType:
+        return _DevicesSlotType(
+            self, self._hash, self._slot_index, "Charge", self._name
+        )
+
+    @Charge.setter
+    def Charge(self, value: int | float):
+        pass
+
+    @property
+    def ChargeRatio(self) -> _DevicesSlotType:
+        return _DevicesSlotType(
+            self, self._hash, self._slot_index, "ChargeRatio", self._name
+        )
+
+    @ChargeRatio.setter
+    def ChargeRatio(self, value: int | float):
+        pass
+
+    @property
+    def Pressure(self) -> _DevicesSlotType:
+        return _DevicesSlotType(
+            self, self._hash, self._slot_index, "Pressure", self._name
+        )
+
+    @Pressure.setter
+    def Pressure(self, value: int | float):
+        pass
+
+    @property
+    def PressureAir(self) -> _DevicesSlotType:
+        return _DevicesSlotType(
+            self, self._hash, self._slot_index, "PressureAir", self._name
+        )
+
+    @PressureAir.setter
+    def PressureAir(self, value: int | float):
+        pass
+
+    @property
+    def PressureWaste(self) -> _DevicesSlotType:
+        return _DevicesSlotType(
+            self, self._hash, self._slot_index, "PressureWaste", self._name
+        )
+
+    @PressureWaste.setter
+    def PressureWaste(self, value: int | float):
+        pass
 
 
 class _BaseGas:
@@ -1159,6 +1965,14 @@ class ActiveVent(
     def TotalMolesOutput(self) -> float:
         return _DeviceLogicType(self, self._id, "TotalMolesOutput")
 
+    @property
+    def slot0(self) -> _SlotTypeCommon:
+        return _SlotTypeCommon(type(self), self._id, 0)
+
+    @property
+    def DataDisk(self) -> _SlotTypeCommon:
+        return self.slot0
+
 
 class _ActiveVents(
     _BaseStructures,
@@ -1236,6 +2050,14 @@ class _ActiveVents(
     def TotalMolesOutput(self) -> _DevicesLogicType:
         return _DevicesLogicType(self._hash, "TotalMolesOutput", self._name)
 
+    @property
+    def slot0(self) -> _SlotTypeCommons:
+        return _SlotTypeCommons(type(self), self._hash, 0, self._name)
+
+    @property
+    def DataDisk(self) -> _SlotTypeCommons:
+        return self.slot0
+
 
 ActiveVents: _ActiveVents = _ActiveVents()
 
@@ -1258,6 +2080,22 @@ class AdvancedComposter(
 ):
     _hash: int = 446212963
 
+    @property
+    def slot0(self) -> _SlotTypeCommon:
+        return _SlotTypeCommon(type(self), self._id, 0)
+
+    @property
+    def Import(self) -> _SlotTypeCommon:
+        return self.slot0
+
+    @property
+    def slot1(self) -> _SlotTypeCommon:
+        return _SlotTypeCommon(type(self), self._id, 1)
+
+    @property
+    def Export(self) -> _SlotTypeCommon:
+        return self.slot1
+
 
 class _AdvancedComposters(
     _BaseStructures,
@@ -1279,6 +2117,22 @@ class _AdvancedComposters(
 
     def __getitem__(self, name: str | int | float) -> "_AdvancedComposters":
         return _AdvancedComposters(name)
+
+    @property
+    def slot0(self) -> _SlotTypeCommons:
+        return _SlotTypeCommons(type(self), self._hash, 0, self._name)
+
+    @property
+    def Import(self) -> _SlotTypeCommons:
+        return self.slot0
+
+    @property
+    def slot1(self) -> _SlotTypeCommons:
+        return _SlotTypeCommons(type(self), self._hash, 1, self._name)
+
+    @property
+    def Export(self) -> _SlotTypeCommons:
+        return self.slot1
 
 
 AdvancedComposters: _AdvancedComposters = _AdvancedComposters()
@@ -1327,6 +2181,22 @@ class AdvancedFurnace(
     def SettingOutput(self, value: int | float):
         pass
 
+    @property
+    def slot0(self) -> _SlotTypeCommon:
+        return _SlotTypeCommon(type(self), self._id, 0)
+
+    @property
+    def Import(self) -> _SlotTypeCommon:
+        return self.slot0
+
+    @property
+    def slot1(self) -> _SlotTypeCommon:
+        return _SlotTypeCommon(type(self), self._id, 1)
+
+    @property
+    def Export(self) -> _SlotTypeCommon:
+        return self.slot1
+
 
 class _AdvancedFurnaces(
     _BaseStructures,
@@ -1374,6 +2244,22 @@ class _AdvancedFurnaces(
     def SettingOutput(self, value: int | float):
         pass
 
+    @property
+    def slot0(self) -> _SlotTypeCommons:
+        return _SlotTypeCommons(type(self), self._hash, 0, self._name)
+
+    @property
+    def Import(self) -> _SlotTypeCommons:
+        return self.slot0
+
+    @property
+    def slot1(self) -> _SlotTypeCommons:
+        return _SlotTypeCommons(type(self), self._hash, 1, self._name)
+
+    @property
+    def Export(self) -> _SlotTypeCommons:
+        return self.slot1
+
 
 AdvancedFurnaces: _AdvancedFurnaces = _AdvancedFurnaces()
 
@@ -1401,6 +2287,22 @@ class AdvancedPackagingMachine(
     def StackSize(self) -> float:
         return _DeviceLogicType(self, self._id, "StackSize")
 
+    @property
+    def slot0(self) -> _SlotTypeCommon:
+        return _SlotTypeCommon(type(self), self._id, 0)
+
+    @property
+    def Import(self) -> _SlotTypeCommon:
+        return self.slot0
+
+    @property
+    def slot1(self) -> _SlotTypeCommon:
+        return _SlotTypeCommon(type(self), self._id, 1)
+
+    @property
+    def Export(self) -> _SlotTypeCommon:
+        return self.slot1
+
 
 class _AdvancedPackagingMachines(
     _BaseStructures,
@@ -1427,6 +2329,22 @@ class _AdvancedPackagingMachines(
     @property
     def StackSize(self) -> _DevicesLogicType:
         return _DevicesLogicType(self._hash, "StackSize", self._name)
+
+    @property
+    def slot0(self) -> _SlotTypeCommons:
+        return _SlotTypeCommons(type(self), self._hash, 0, self._name)
+
+    @property
+    def Import(self) -> _SlotTypeCommons:
+        return self.slot0
+
+    @property
+    def slot1(self) -> _SlotTypeCommons:
+        return _SlotTypeCommons(type(self), self._hash, 1, self._name)
+
+    @property
+    def Export(self) -> _SlotTypeCommons:
+        return self.slot1
 
 
 AdvancedPackagingMachines: _AdvancedPackagingMachines = _AdvancedPackagingMachines()
@@ -1507,6 +2425,14 @@ class AirConditioner(
     @property
     def TotalMolesOutput2(self) -> float:
         return _DeviceLogicType(self, self._id, "TotalMolesOutput2")
+
+    @property
+    def slot0(self) -> _SlotTypeCommon:
+        return _SlotTypeCommon(type(self), self._id, 0)
+
+    @property
+    def ProgrammableChip(self) -> _SlotTypeCommon:
+        return self.slot0
 
 
 class _AirConditioners(
@@ -1592,6 +2518,14 @@ class _AirConditioners(
     def TotalMolesOutput2(self) -> _DevicesLogicType:
         return _DevicesLogicType(self._hash, "TotalMolesOutput2", self._name)
 
+    @property
+    def slot0(self) -> _SlotTypeCommons:
+        return _SlotTypeCommons(type(self), self._hash, 0, self._name)
+
+    @property
+    def ProgrammableChip(self) -> _SlotTypeCommons:
+        return self.slot0
+
 
 AirConditioners: _AirConditioners = _AirConditioners()
 
@@ -1644,6 +2578,22 @@ class ArcFurnace(
     def RecipeHash(self) -> float:
         return _DeviceLogicType(self, self._id, "RecipeHash")
 
+    @property
+    def slot0(self) -> _SlotTypeCommon:
+        return _SlotTypeCommon(type(self), self._id, 0)
+
+    @property
+    def Import(self) -> _SlotTypeCommon:
+        return self.slot0
+
+    @property
+    def slot1(self) -> _SlotTypeCommon:
+        return _SlotTypeCommon(type(self), self._id, 1)
+
+    @property
+    def Export(self) -> _SlotTypeCommon:
+        return self.slot1
+
 
 class _ArcFurnaces(
     _BaseStructures,
@@ -1666,6 +2616,22 @@ class _ArcFurnaces(
     def RecipeHash(self) -> _DevicesLogicType:
         return _DevicesLogicType(self._hash, "RecipeHash", self._name)
 
+    @property
+    def slot0(self) -> _SlotTypeCommons:
+        return _SlotTypeCommons(type(self), self._hash, 0, self._name)
+
+    @property
+    def Import(self) -> _SlotTypeCommons:
+        return self.slot0
+
+    @property
+    def slot1(self) -> _SlotTypeCommons:
+        return _SlotTypeCommons(type(self), self._hash, 1, self._name)
+
+    @property
+    def Export(self) -> _SlotTypeCommons:
+        return self.slot1
+
 
 ArcFurnaces: _ArcFurnaces = _ArcFurnaces()
 
@@ -1682,6 +2648,22 @@ class AreaPowerControl(
     @property
     def PowerPotential(self) -> float:
         return _DeviceLogicType(self, self._id, "PowerPotential")
+
+    @property
+    def slot0(self) -> _SlotTypeBattery:
+        return _SlotTypeBattery(type(self), self._id, 0)
+
+    @property
+    def Battery(self) -> _SlotTypeBattery:
+        return self.slot0
+
+    @property
+    def slot1(self) -> _SlotTypeCommon:
+        return _SlotTypeCommon(type(self), self._id, 1)
+
+    @property
+    def DataDisk(self) -> _SlotTypeCommon:
+        return self.slot1
 
 
 class _AreaPowerControls(
@@ -1708,6 +2690,22 @@ class _AreaPowerControls(
     def PowerPotential(self) -> _DevicesLogicType:
         return _DevicesLogicType(self._hash, "PowerPotential", self._name)
 
+    @property
+    def slot0(self) -> _SlotTypeBatterys:
+        return _SlotTypeBatterys(type(self), self._hash, 0, self._name)
+
+    @property
+    def Battery(self) -> _SlotTypeBatterys:
+        return self.slot0
+
+    @property
+    def slot1(self) -> _SlotTypeCommons:
+        return _SlotTypeCommons(type(self), self._hash, 1, self._name)
+
+    @property
+    def DataDisk(self) -> _SlotTypeCommons:
+        return self.slot1
+
 
 AreaPowerControls: _AreaPowerControls = _AreaPowerControls()
 
@@ -1724,6 +2722,22 @@ class AreaPowerControlReversed(
     @property
     def PowerPotential(self) -> float:
         return _DeviceLogicType(self, self._id, "PowerPotential")
+
+    @property
+    def slot0(self) -> _SlotTypeBattery:
+        return _SlotTypeBattery(type(self), self._id, 0)
+
+    @property
+    def Battery(self) -> _SlotTypeBattery:
+        return self.slot0
+
+    @property
+    def slot1(self) -> _SlotTypeCommon:
+        return _SlotTypeCommon(type(self), self._id, 1)
+
+    @property
+    def DataDisk(self) -> _SlotTypeCommon:
+        return self.slot1
 
 
 class _AreaPowerControlReverseds(
@@ -1749,6 +2763,22 @@ class _AreaPowerControlReverseds(
     @property
     def PowerPotential(self) -> _DevicesLogicType:
         return _DevicesLogicType(self._hash, "PowerPotential", self._name)
+
+    @property
+    def slot0(self) -> _SlotTypeBatterys:
+        return _SlotTypeBatterys(type(self), self._hash, 0, self._name)
+
+    @property
+    def Battery(self) -> _SlotTypeBatterys:
+        return self.slot0
+
+    @property
+    def slot1(self) -> _SlotTypeCommons:
+        return _SlotTypeCommons(type(self), self._hash, 1, self._name)
+
+    @property
+    def DataDisk(self) -> _SlotTypeCommons:
+        return self.slot1
 
 
 AreaPowerControlReverseds: _AreaPowerControlReverseds = _AreaPowerControlReverseds()
@@ -1777,6 +2807,22 @@ class Autolathe(
     def StackSize(self) -> float:
         return _DeviceLogicType(self, self._id, "StackSize")
 
+    @property
+    def slot0(self) -> _SlotTypeCommon:
+        return _SlotTypeCommon(type(self), self._id, 0)
+
+    @property
+    def Import(self) -> _SlotTypeCommon:
+        return self.slot0
+
+    @property
+    def slot1(self) -> _SlotTypeCommon:
+        return _SlotTypeCommon(type(self), self._id, 1)
+
+    @property
+    def Export(self) -> _SlotTypeCommon:
+        return self.slot1
+
 
 class _Autolathes(
     _BaseStructures,
@@ -1803,6 +2849,22 @@ class _Autolathes(
     @property
     def StackSize(self) -> _DevicesLogicType:
         return _DevicesLogicType(self._hash, "StackSize", self._name)
+
+    @property
+    def slot0(self) -> _SlotTypeCommons:
+        return _SlotTypeCommons(type(self), self._hash, 0, self._name)
+
+    @property
+    def Import(self) -> _SlotTypeCommons:
+        return self.slot0
+
+    @property
+    def slot1(self) -> _SlotTypeCommons:
+        return _SlotTypeCommons(type(self), self._hash, 1, self._name)
+
+    @property
+    def Export(self) -> _SlotTypeCommons:
+        return self.slot1
 
 
 Autolathes: _Autolathes = _Autolathes()
@@ -1831,6 +2893,22 @@ class AutomatedOven(
     def StackSize(self) -> float:
         return _DeviceLogicType(self, self._id, "StackSize")
 
+    @property
+    def slot0(self) -> _SlotTypeCommon:
+        return _SlotTypeCommon(type(self), self._id, 0)
+
+    @property
+    def Import(self) -> _SlotTypeCommon:
+        return self.slot0
+
+    @property
+    def slot1(self) -> _SlotTypeCommon:
+        return _SlotTypeCommon(type(self), self._id, 1)
+
+    @property
+    def Export(self) -> _SlotTypeCommon:
+        return self.slot1
+
 
 class _AutomatedOvens(
     _BaseStructures,
@@ -1858,6 +2936,22 @@ class _AutomatedOvens(
     def StackSize(self) -> _DevicesLogicType:
         return _DevicesLogicType(self._hash, "StackSize", self._name)
 
+    @property
+    def slot0(self) -> _SlotTypeCommons:
+        return _SlotTypeCommons(type(self), self._hash, 0, self._name)
+
+    @property
+    def Import(self) -> _SlotTypeCommons:
+        return self.slot0
+
+    @property
+    def slot1(self) -> _SlotTypeCommons:
+        return _SlotTypeCommons(type(self), self._hash, 1, self._name)
+
+    @property
+    def Export(self) -> _SlotTypeCommons:
+        return self.slot1
+
 
 AutomatedOvens: _AutomatedOvens = _AutomatedOvens()
 
@@ -1874,6 +2968,22 @@ class AutoMinerSmall(
 ):
     _hash: int = 7274344
 
+    @property
+    def slot0(self) -> _SlotTypeCommon:
+        return _SlotTypeCommon(type(self), self._id, 0)
+
+    @property
+    def Import(self) -> _SlotTypeCommon:
+        return self.slot0
+
+    @property
+    def slot1(self) -> _SlotTypeCommon:
+        return _SlotTypeCommon(type(self), self._id, 1)
+
+    @property
+    def Export(self) -> _SlotTypeCommon:
+        return self.slot1
+
 
 class _AutoMinerSmalls(
     _BaseStructures,
@@ -1889,6 +2999,22 @@ class _AutoMinerSmalls(
 
     def __getitem__(self, name: str | int | float) -> "_AutoMinerSmalls":
         return _AutoMinerSmalls(name)
+
+    @property
+    def slot0(self) -> _SlotTypeCommons:
+        return _SlotTypeCommons(type(self), self._hash, 0, self._name)
+
+    @property
+    def Import(self) -> _SlotTypeCommons:
+        return self.slot0
+
+    @property
+    def slot1(self) -> _SlotTypeCommons:
+        return _SlotTypeCommons(type(self), self._hash, 1, self._name)
+
+    @property
+    def Export(self) -> _SlotTypeCommons:
+        return self.slot1
 
 
 AutoMinerSmalls: _AutoMinerSmalls = _AutoMinerSmalls()
@@ -2063,12 +3189,52 @@ BatteryMediums: _BatteryMediums = _BatteryMediums()
 class BatteryCharger(_BaseStructure, _Activate, _Error, _Power):
     _hash: int = 1945930022
 
+    @property
+    def slot0(self) -> _SlotTypeBattery:
+        return _SlotTypeBattery(type(self), self._id, 0)
+
+    @property
+    def slot1(self) -> _SlotTypeBattery:
+        return _SlotTypeBattery(type(self), self._id, 1)
+
+    @property
+    def slot2(self) -> _SlotTypeBattery:
+        return _SlotTypeBattery(type(self), self._id, 2)
+
+    @property
+    def slot3(self) -> _SlotTypeBattery:
+        return _SlotTypeBattery(type(self), self._id, 3)
+
+    @property
+    def slot4(self) -> _SlotTypeBattery:
+        return _SlotTypeBattery(type(self), self._id, 4)
+
 
 class _BatteryChargers(_BaseStructures, _Activates, _Errors, _Powers):
     _hash: int = 1945930022
 
     def __getitem__(self, name: str | int | float) -> "_BatteryChargers":
         return _BatteryChargers(name)
+
+    @property
+    def slot0(self) -> _SlotTypeBatterys:
+        return _SlotTypeBatterys(type(self), self._hash, 0, self._name)
+
+    @property
+    def slot1(self) -> _SlotTypeBatterys:
+        return _SlotTypeBatterys(type(self), self._hash, 1, self._name)
+
+    @property
+    def slot2(self) -> _SlotTypeBatterys:
+        return _SlotTypeBatterys(type(self), self._hash, 2, self._name)
+
+    @property
+    def slot3(self) -> _SlotTypeBatterys:
+        return _SlotTypeBatterys(type(self), self._hash, 3, self._name)
+
+    @property
+    def slot4(self) -> _SlotTypeBatterys:
+        return _SlotTypeBatterys(type(self), self._hash, 4, self._name)
 
 
 BatteryChargers: _BatteryChargers = _BatteryChargers()
@@ -2077,12 +3243,28 @@ BatteryChargers: _BatteryChargers = _BatteryChargers()
 class BatteryChargerSmall(_BaseStructure, _Activate, _Error, _Power):
     _hash: int = -761772413
 
+    @property
+    def slot0(self) -> _SlotTypeBattery:
+        return _SlotTypeBattery(type(self), self._id, 0)
+
+    @property
+    def slot1(self) -> _SlotTypeBattery:
+        return _SlotTypeBattery(type(self), self._id, 1)
+
 
 class _BatteryChargerSmalls(_BaseStructures, _Activates, _Errors, _Powers):
     _hash: int = -761772413
 
     def __getitem__(self, name: str | int | float) -> "_BatteryChargerSmalls":
         return _BatteryChargerSmalls(name)
+
+    @property
+    def slot0(self) -> _SlotTypeBatterys:
+        return _SlotTypeBatterys(type(self), self._hash, 0, self._name)
+
+    @property
+    def slot1(self) -> _SlotTypeBatterys:
+        return _SlotTypeBatterys(type(self), self._hash, 1, self._name)
 
 
 BatteryChargerSmalls: _BatteryChargerSmalls = _BatteryChargerSmalls()
@@ -2121,12 +3303,44 @@ Beacons: _Beacons = _Beacons()
 class Bench1(_BaseStructure, _Error, _Power):
     _hash: int = 406745009
 
+    @property
+    def slot0(self) -> _SlotTypeAppliance:
+        return _SlotTypeAppliance(type(self), self._id, 0)
+
+    @property
+    def Appliance1(self) -> _SlotTypeAppliance:
+        return self.slot0
+
+    @property
+    def slot1(self) -> _SlotTypeAppliance:
+        return _SlotTypeAppliance(type(self), self._id, 1)
+
+    @property
+    def Appliance2(self) -> _SlotTypeAppliance:
+        return self.slot1
+
 
 class _Bench1s(_BaseStructures, _Errors, _Powers):
     _hash: int = 406745009
 
     def __getitem__(self, name: str | int | float) -> "_Bench1s":
         return _Bench1s(name)
+
+    @property
+    def slot0(self) -> _SlotTypeAppliances:
+        return _SlotTypeAppliances(type(self), self._hash, 0, self._name)
+
+    @property
+    def Appliance1(self) -> _SlotTypeAppliances:
+        return self.slot0
+
+    @property
+    def slot1(self) -> _SlotTypeAppliances:
+        return _SlotTypeAppliances(type(self), self._hash, 1, self._name)
+
+    @property
+    def Appliance2(self) -> _SlotTypeAppliances:
+        return self.slot1
 
 
 Bench1s: _Bench1s = _Bench1s()
@@ -2135,12 +3349,44 @@ Bench1s: _Bench1s = _Bench1s()
 class Bench3(_BaseStructure, _Error, _Power):
     _hash: int = -164622691
 
+    @property
+    def slot0(self) -> _SlotTypeAppliance:
+        return _SlotTypeAppliance(type(self), self._id, 0)
+
+    @property
+    def Appliance1(self) -> _SlotTypeAppliance:
+        return self.slot0
+
+    @property
+    def slot1(self) -> _SlotTypeAppliance:
+        return _SlotTypeAppliance(type(self), self._id, 1)
+
+    @property
+    def Appliance2(self) -> _SlotTypeAppliance:
+        return self.slot1
+
 
 class _Bench3s(_BaseStructures, _Errors, _Powers):
     _hash: int = -164622691
 
     def __getitem__(self, name: str | int | float) -> "_Bench3s":
         return _Bench3s(name)
+
+    @property
+    def slot0(self) -> _SlotTypeAppliances:
+        return _SlotTypeAppliances(type(self), self._hash, 0, self._name)
+
+    @property
+    def Appliance1(self) -> _SlotTypeAppliances:
+        return self.slot0
+
+    @property
+    def slot1(self) -> _SlotTypeAppliances:
+        return _SlotTypeAppliances(type(self), self._hash, 1, self._name)
+
+    @property
+    def Appliance2(self) -> _SlotTypeAppliances:
+        return self.slot1
 
 
 Bench3s: _Bench3s = _Bench3s()
@@ -2149,12 +3395,44 @@ Bench3s: _Bench3s = _Bench3s()
 class Bench2(_BaseStructure, _Error, _Power):
     _hash: int = -2127086069
 
+    @property
+    def slot0(self) -> _SlotTypeAppliance:
+        return _SlotTypeAppliance(type(self), self._id, 0)
+
+    @property
+    def Appliance1(self) -> _SlotTypeAppliance:
+        return self.slot0
+
+    @property
+    def slot1(self) -> _SlotTypeAppliance:
+        return _SlotTypeAppliance(type(self), self._id, 1)
+
+    @property
+    def Appliance2(self) -> _SlotTypeAppliance:
+        return self.slot1
+
 
 class _Bench2s(_BaseStructures, _Errors, _Powers):
     _hash: int = -2127086069
 
     def __getitem__(self, name: str | int | float) -> "_Bench2s":
         return _Bench2s(name)
+
+    @property
+    def slot0(self) -> _SlotTypeAppliances:
+        return _SlotTypeAppliances(type(self), self._hash, 0, self._name)
+
+    @property
+    def Appliance1(self) -> _SlotTypeAppliances:
+        return self.slot0
+
+    @property
+    def slot1(self) -> _SlotTypeAppliances:
+        return _SlotTypeAppliances(type(self), self._hash, 1, self._name)
+
+    @property
+    def Appliance2(self) -> _SlotTypeAppliances:
+        return self.slot1
 
 
 Bench2s: _Bench2s = _Bench2s()
@@ -2163,12 +3441,44 @@ Bench2s: _Bench2s = _Bench2s()
 class Bench4(_BaseStructure, _Error, _Power):
     _hash: int = 1750375230
 
+    @property
+    def slot0(self) -> _SlotTypeAppliance:
+        return _SlotTypeAppliance(type(self), self._id, 0)
+
+    @property
+    def Appliance1(self) -> _SlotTypeAppliance:
+        return self.slot0
+
+    @property
+    def slot1(self) -> _SlotTypeAppliance:
+        return _SlotTypeAppliance(type(self), self._id, 1)
+
+    @property
+    def Appliance2(self) -> _SlotTypeAppliance:
+        return self.slot1
+
 
 class _Bench4s(_BaseStructures, _Errors, _Powers):
     _hash: int = 1750375230
 
     def __getitem__(self, name: str | int | float) -> "_Bench4s":
         return _Bench4s(name)
+
+    @property
+    def slot0(self) -> _SlotTypeAppliances:
+        return _SlotTypeAppliances(type(self), self._hash, 0, self._name)
+
+    @property
+    def Appliance1(self) -> _SlotTypeAppliances:
+        return self.slot0
+
+    @property
+    def slot1(self) -> _SlotTypeAppliances:
+        return _SlotTypeAppliances(type(self), self._hash, 1, self._name)
+
+    @property
+    def Appliance2(self) -> _SlotTypeAppliances:
+        return self.slot1
 
 
 Bench4s: _Bench4s = _Bench4s()
@@ -2191,12 +3501,28 @@ BlastDoors: _BlastDoors = _BlastDoors()
 class BlockBed(_BaseStructure, _Activate, _Error, _Power):
     _hash: int = 697908419
 
+    @property
+    def slot0(self) -> _SlotTypeCommon:
+        return _SlotTypeCommon(type(self), self._id, 0)
+
+    @property
+    def Bed(self) -> _SlotTypeCommon:
+        return self.slot0
+
 
 class _BlockBeds(_BaseStructures, _Activates, _Errors, _Powers):
     _hash: int = 697908419
 
     def __getitem__(self, name: str | int | float) -> "_BlockBeds":
         return _BlockBeds(name)
+
+    @property
+    def slot0(self) -> _SlotTypeCommons:
+        return _SlotTypeCommons(type(self), self._hash, 0, self._name)
+
+    @property
+    def Bed(self) -> _SlotTypeCommons:
+        return self.slot0
 
 
 BlockBeds: _BlockBeds = _BlockBeds()
@@ -2282,6 +3608,422 @@ class CargoStorageMedium(
 ):
     _hash: int = 1151864003
 
+    @property
+    def slot0(self) -> _SlotTypeCommon:
+        return _SlotTypeCommon(type(self), self._id, 0)
+
+    @property
+    def Import(self) -> _SlotTypeCommon:
+        return self.slot0
+
+    @property
+    def slot1(self) -> _SlotTypeCommon:
+        return _SlotTypeCommon(type(self), self._id, 1)
+
+    @property
+    def Export(self) -> _SlotTypeCommon:
+        return self.slot1
+
+    @property
+    def slot10(self) -> _SlotTypeCommon:
+        return _SlotTypeCommon(type(self), self._id, 10)
+
+    @property
+    def slot100(self) -> _SlotTypeCommon:
+        return _SlotTypeCommon(type(self), self._id, 100)
+
+    @property
+    def slot101(self) -> _SlotTypeCommon:
+        return _SlotTypeCommon(type(self), self._id, 101)
+
+    @property
+    def slot11(self) -> _SlotTypeCommon:
+        return _SlotTypeCommon(type(self), self._id, 11)
+
+    @property
+    def slot12(self) -> _SlotTypeCommon:
+        return _SlotTypeCommon(type(self), self._id, 12)
+
+    @property
+    def slot13(self) -> _SlotTypeCommon:
+        return _SlotTypeCommon(type(self), self._id, 13)
+
+    @property
+    def slot14(self) -> _SlotTypeCommon:
+        return _SlotTypeCommon(type(self), self._id, 14)
+
+    @property
+    def slot15(self) -> _SlotTypeCommon:
+        return _SlotTypeCommon(type(self), self._id, 15)
+
+    @property
+    def slot16(self) -> _SlotTypeCommon:
+        return _SlotTypeCommon(type(self), self._id, 16)
+
+    @property
+    def slot17(self) -> _SlotTypeCommon:
+        return _SlotTypeCommon(type(self), self._id, 17)
+
+    @property
+    def slot18(self) -> _SlotTypeCommon:
+        return _SlotTypeCommon(type(self), self._id, 18)
+
+    @property
+    def slot19(self) -> _SlotTypeCommon:
+        return _SlotTypeCommon(type(self), self._id, 19)
+
+    @property
+    def slot2(self) -> _SlotTypeCommon:
+        return _SlotTypeCommon(type(self), self._id, 2)
+
+    @property
+    def slot20(self) -> _SlotTypeCommon:
+        return _SlotTypeCommon(type(self), self._id, 20)
+
+    @property
+    def slot21(self) -> _SlotTypeCommon:
+        return _SlotTypeCommon(type(self), self._id, 21)
+
+    @property
+    def slot22(self) -> _SlotTypeCommon:
+        return _SlotTypeCommon(type(self), self._id, 22)
+
+    @property
+    def slot23(self) -> _SlotTypeCommon:
+        return _SlotTypeCommon(type(self), self._id, 23)
+
+    @property
+    def slot24(self) -> _SlotTypeCommon:
+        return _SlotTypeCommon(type(self), self._id, 24)
+
+    @property
+    def slot25(self) -> _SlotTypeCommon:
+        return _SlotTypeCommon(type(self), self._id, 25)
+
+    @property
+    def slot26(self) -> _SlotTypeCommon:
+        return _SlotTypeCommon(type(self), self._id, 26)
+
+    @property
+    def slot27(self) -> _SlotTypeCommon:
+        return _SlotTypeCommon(type(self), self._id, 27)
+
+    @property
+    def slot28(self) -> _SlotTypeCommon:
+        return _SlotTypeCommon(type(self), self._id, 28)
+
+    @property
+    def slot29(self) -> _SlotTypeCommon:
+        return _SlotTypeCommon(type(self), self._id, 29)
+
+    @property
+    def slot3(self) -> _SlotTypeCommon:
+        return _SlotTypeCommon(type(self), self._id, 3)
+
+    @property
+    def slot30(self) -> _SlotTypeCommon:
+        return _SlotTypeCommon(type(self), self._id, 30)
+
+    @property
+    def slot31(self) -> _SlotTypeCommon:
+        return _SlotTypeCommon(type(self), self._id, 31)
+
+    @property
+    def slot32(self) -> _SlotTypeCommon:
+        return _SlotTypeCommon(type(self), self._id, 32)
+
+    @property
+    def slot33(self) -> _SlotTypeCommon:
+        return _SlotTypeCommon(type(self), self._id, 33)
+
+    @property
+    def slot34(self) -> _SlotTypeCommon:
+        return _SlotTypeCommon(type(self), self._id, 34)
+
+    @property
+    def slot35(self) -> _SlotTypeCommon:
+        return _SlotTypeCommon(type(self), self._id, 35)
+
+    @property
+    def slot36(self) -> _SlotTypeCommon:
+        return _SlotTypeCommon(type(self), self._id, 36)
+
+    @property
+    def slot37(self) -> _SlotTypeCommon:
+        return _SlotTypeCommon(type(self), self._id, 37)
+
+    @property
+    def slot38(self) -> _SlotTypeCommon:
+        return _SlotTypeCommon(type(self), self._id, 38)
+
+    @property
+    def slot39(self) -> _SlotTypeCommon:
+        return _SlotTypeCommon(type(self), self._id, 39)
+
+    @property
+    def slot4(self) -> _SlotTypeCommon:
+        return _SlotTypeCommon(type(self), self._id, 4)
+
+    @property
+    def slot40(self) -> _SlotTypeCommon:
+        return _SlotTypeCommon(type(self), self._id, 40)
+
+    @property
+    def slot41(self) -> _SlotTypeCommon:
+        return _SlotTypeCommon(type(self), self._id, 41)
+
+    @property
+    def slot42(self) -> _SlotTypeCommon:
+        return _SlotTypeCommon(type(self), self._id, 42)
+
+    @property
+    def slot43(self) -> _SlotTypeCommon:
+        return _SlotTypeCommon(type(self), self._id, 43)
+
+    @property
+    def slot44(self) -> _SlotTypeCommon:
+        return _SlotTypeCommon(type(self), self._id, 44)
+
+    @property
+    def slot45(self) -> _SlotTypeCommon:
+        return _SlotTypeCommon(type(self), self._id, 45)
+
+    @property
+    def slot46(self) -> _SlotTypeCommon:
+        return _SlotTypeCommon(type(self), self._id, 46)
+
+    @property
+    def slot47(self) -> _SlotTypeCommon:
+        return _SlotTypeCommon(type(self), self._id, 47)
+
+    @property
+    def slot48(self) -> _SlotTypeCommon:
+        return _SlotTypeCommon(type(self), self._id, 48)
+
+    @property
+    def slot49(self) -> _SlotTypeCommon:
+        return _SlotTypeCommon(type(self), self._id, 49)
+
+    @property
+    def slot5(self) -> _SlotTypeCommon:
+        return _SlotTypeCommon(type(self), self._id, 5)
+
+    @property
+    def slot50(self) -> _SlotTypeCommon:
+        return _SlotTypeCommon(type(self), self._id, 50)
+
+    @property
+    def slot51(self) -> _SlotTypeCommon:
+        return _SlotTypeCommon(type(self), self._id, 51)
+
+    @property
+    def slot52(self) -> _SlotTypeCommon:
+        return _SlotTypeCommon(type(self), self._id, 52)
+
+    @property
+    def slot53(self) -> _SlotTypeCommon:
+        return _SlotTypeCommon(type(self), self._id, 53)
+
+    @property
+    def slot54(self) -> _SlotTypeCommon:
+        return _SlotTypeCommon(type(self), self._id, 54)
+
+    @property
+    def slot55(self) -> _SlotTypeCommon:
+        return _SlotTypeCommon(type(self), self._id, 55)
+
+    @property
+    def slot56(self) -> _SlotTypeCommon:
+        return _SlotTypeCommon(type(self), self._id, 56)
+
+    @property
+    def slot57(self) -> _SlotTypeCommon:
+        return _SlotTypeCommon(type(self), self._id, 57)
+
+    @property
+    def slot58(self) -> _SlotTypeCommon:
+        return _SlotTypeCommon(type(self), self._id, 58)
+
+    @property
+    def slot59(self) -> _SlotTypeCommon:
+        return _SlotTypeCommon(type(self), self._id, 59)
+
+    @property
+    def slot6(self) -> _SlotTypeCommon:
+        return _SlotTypeCommon(type(self), self._id, 6)
+
+    @property
+    def slot60(self) -> _SlotTypeCommon:
+        return _SlotTypeCommon(type(self), self._id, 60)
+
+    @property
+    def slot61(self) -> _SlotTypeCommon:
+        return _SlotTypeCommon(type(self), self._id, 61)
+
+    @property
+    def slot62(self) -> _SlotTypeCommon:
+        return _SlotTypeCommon(type(self), self._id, 62)
+
+    @property
+    def slot63(self) -> _SlotTypeCommon:
+        return _SlotTypeCommon(type(self), self._id, 63)
+
+    @property
+    def slot64(self) -> _SlotTypeCommon:
+        return _SlotTypeCommon(type(self), self._id, 64)
+
+    @property
+    def slot65(self) -> _SlotTypeCommon:
+        return _SlotTypeCommon(type(self), self._id, 65)
+
+    @property
+    def slot66(self) -> _SlotTypeCommon:
+        return _SlotTypeCommon(type(self), self._id, 66)
+
+    @property
+    def slot67(self) -> _SlotTypeCommon:
+        return _SlotTypeCommon(type(self), self._id, 67)
+
+    @property
+    def slot68(self) -> _SlotTypeCommon:
+        return _SlotTypeCommon(type(self), self._id, 68)
+
+    @property
+    def slot69(self) -> _SlotTypeCommon:
+        return _SlotTypeCommon(type(self), self._id, 69)
+
+    @property
+    def slot7(self) -> _SlotTypeCommon:
+        return _SlotTypeCommon(type(self), self._id, 7)
+
+    @property
+    def slot70(self) -> _SlotTypeCommon:
+        return _SlotTypeCommon(type(self), self._id, 70)
+
+    @property
+    def slot71(self) -> _SlotTypeCommon:
+        return _SlotTypeCommon(type(self), self._id, 71)
+
+    @property
+    def slot72(self) -> _SlotTypeCommon:
+        return _SlotTypeCommon(type(self), self._id, 72)
+
+    @property
+    def slot73(self) -> _SlotTypeCommon:
+        return _SlotTypeCommon(type(self), self._id, 73)
+
+    @property
+    def slot74(self) -> _SlotTypeCommon:
+        return _SlotTypeCommon(type(self), self._id, 74)
+
+    @property
+    def slot75(self) -> _SlotTypeCommon:
+        return _SlotTypeCommon(type(self), self._id, 75)
+
+    @property
+    def slot76(self) -> _SlotTypeCommon:
+        return _SlotTypeCommon(type(self), self._id, 76)
+
+    @property
+    def slot77(self) -> _SlotTypeCommon:
+        return _SlotTypeCommon(type(self), self._id, 77)
+
+    @property
+    def slot78(self) -> _SlotTypeCommon:
+        return _SlotTypeCommon(type(self), self._id, 78)
+
+    @property
+    def slot79(self) -> _SlotTypeCommon:
+        return _SlotTypeCommon(type(self), self._id, 79)
+
+    @property
+    def slot8(self) -> _SlotTypeCommon:
+        return _SlotTypeCommon(type(self), self._id, 8)
+
+    @property
+    def slot80(self) -> _SlotTypeCommon:
+        return _SlotTypeCommon(type(self), self._id, 80)
+
+    @property
+    def slot81(self) -> _SlotTypeCommon:
+        return _SlotTypeCommon(type(self), self._id, 81)
+
+    @property
+    def slot82(self) -> _SlotTypeCommon:
+        return _SlotTypeCommon(type(self), self._id, 82)
+
+    @property
+    def slot83(self) -> _SlotTypeCommon:
+        return _SlotTypeCommon(type(self), self._id, 83)
+
+    @property
+    def slot84(self) -> _SlotTypeCommon:
+        return _SlotTypeCommon(type(self), self._id, 84)
+
+    @property
+    def slot85(self) -> _SlotTypeCommon:
+        return _SlotTypeCommon(type(self), self._id, 85)
+
+    @property
+    def slot86(self) -> _SlotTypeCommon:
+        return _SlotTypeCommon(type(self), self._id, 86)
+
+    @property
+    def slot87(self) -> _SlotTypeCommon:
+        return _SlotTypeCommon(type(self), self._id, 87)
+
+    @property
+    def slot88(self) -> _SlotTypeCommon:
+        return _SlotTypeCommon(type(self), self._id, 88)
+
+    @property
+    def slot89(self) -> _SlotTypeCommon:
+        return _SlotTypeCommon(type(self), self._id, 89)
+
+    @property
+    def slot9(self) -> _SlotTypeCommon:
+        return _SlotTypeCommon(type(self), self._id, 9)
+
+    @property
+    def slot90(self) -> _SlotTypeCommon:
+        return _SlotTypeCommon(type(self), self._id, 90)
+
+    @property
+    def slot91(self) -> _SlotTypeCommon:
+        return _SlotTypeCommon(type(self), self._id, 91)
+
+    @property
+    def slot92(self) -> _SlotTypeCommon:
+        return _SlotTypeCommon(type(self), self._id, 92)
+
+    @property
+    def slot93(self) -> _SlotTypeCommon:
+        return _SlotTypeCommon(type(self), self._id, 93)
+
+    @property
+    def slot94(self) -> _SlotTypeCommon:
+        return _SlotTypeCommon(type(self), self._id, 94)
+
+    @property
+    def slot95(self) -> _SlotTypeCommon:
+        return _SlotTypeCommon(type(self), self._id, 95)
+
+    @property
+    def slot96(self) -> _SlotTypeCommon:
+        return _SlotTypeCommon(type(self), self._id, 96)
+
+    @property
+    def slot97(self) -> _SlotTypeCommon:
+        return _SlotTypeCommon(type(self), self._id, 97)
+
+    @property
+    def slot98(self) -> _SlotTypeCommon:
+        return _SlotTypeCommon(type(self), self._id, 98)
+
+    @property
+    def slot99(self) -> _SlotTypeCommon:
+        return _SlotTypeCommon(type(self), self._id, 99)
+
 
 class _CargoStorageMediums(
     _BaseStructures,
@@ -2299,6 +4041,422 @@ class _CargoStorageMediums(
 
     def __getitem__(self, name: str | int | float) -> "_CargoStorageMediums":
         return _CargoStorageMediums(name)
+
+    @property
+    def slot0(self) -> _SlotTypeCommons:
+        return _SlotTypeCommons(type(self), self._hash, 0, self._name)
+
+    @property
+    def Import(self) -> _SlotTypeCommons:
+        return self.slot0
+
+    @property
+    def slot1(self) -> _SlotTypeCommons:
+        return _SlotTypeCommons(type(self), self._hash, 1, self._name)
+
+    @property
+    def Export(self) -> _SlotTypeCommons:
+        return self.slot1
+
+    @property
+    def slot10(self) -> _SlotTypeCommons:
+        return _SlotTypeCommons(type(self), self._hash, 10, self._name)
+
+    @property
+    def slot100(self) -> _SlotTypeCommons:
+        return _SlotTypeCommons(type(self), self._hash, 100, self._name)
+
+    @property
+    def slot101(self) -> _SlotTypeCommons:
+        return _SlotTypeCommons(type(self), self._hash, 101, self._name)
+
+    @property
+    def slot11(self) -> _SlotTypeCommons:
+        return _SlotTypeCommons(type(self), self._hash, 11, self._name)
+
+    @property
+    def slot12(self) -> _SlotTypeCommons:
+        return _SlotTypeCommons(type(self), self._hash, 12, self._name)
+
+    @property
+    def slot13(self) -> _SlotTypeCommons:
+        return _SlotTypeCommons(type(self), self._hash, 13, self._name)
+
+    @property
+    def slot14(self) -> _SlotTypeCommons:
+        return _SlotTypeCommons(type(self), self._hash, 14, self._name)
+
+    @property
+    def slot15(self) -> _SlotTypeCommons:
+        return _SlotTypeCommons(type(self), self._hash, 15, self._name)
+
+    @property
+    def slot16(self) -> _SlotTypeCommons:
+        return _SlotTypeCommons(type(self), self._hash, 16, self._name)
+
+    @property
+    def slot17(self) -> _SlotTypeCommons:
+        return _SlotTypeCommons(type(self), self._hash, 17, self._name)
+
+    @property
+    def slot18(self) -> _SlotTypeCommons:
+        return _SlotTypeCommons(type(self), self._hash, 18, self._name)
+
+    @property
+    def slot19(self) -> _SlotTypeCommons:
+        return _SlotTypeCommons(type(self), self._hash, 19, self._name)
+
+    @property
+    def slot2(self) -> _SlotTypeCommons:
+        return _SlotTypeCommons(type(self), self._hash, 2, self._name)
+
+    @property
+    def slot20(self) -> _SlotTypeCommons:
+        return _SlotTypeCommons(type(self), self._hash, 20, self._name)
+
+    @property
+    def slot21(self) -> _SlotTypeCommons:
+        return _SlotTypeCommons(type(self), self._hash, 21, self._name)
+
+    @property
+    def slot22(self) -> _SlotTypeCommons:
+        return _SlotTypeCommons(type(self), self._hash, 22, self._name)
+
+    @property
+    def slot23(self) -> _SlotTypeCommons:
+        return _SlotTypeCommons(type(self), self._hash, 23, self._name)
+
+    @property
+    def slot24(self) -> _SlotTypeCommons:
+        return _SlotTypeCommons(type(self), self._hash, 24, self._name)
+
+    @property
+    def slot25(self) -> _SlotTypeCommons:
+        return _SlotTypeCommons(type(self), self._hash, 25, self._name)
+
+    @property
+    def slot26(self) -> _SlotTypeCommons:
+        return _SlotTypeCommons(type(self), self._hash, 26, self._name)
+
+    @property
+    def slot27(self) -> _SlotTypeCommons:
+        return _SlotTypeCommons(type(self), self._hash, 27, self._name)
+
+    @property
+    def slot28(self) -> _SlotTypeCommons:
+        return _SlotTypeCommons(type(self), self._hash, 28, self._name)
+
+    @property
+    def slot29(self) -> _SlotTypeCommons:
+        return _SlotTypeCommons(type(self), self._hash, 29, self._name)
+
+    @property
+    def slot3(self) -> _SlotTypeCommons:
+        return _SlotTypeCommons(type(self), self._hash, 3, self._name)
+
+    @property
+    def slot30(self) -> _SlotTypeCommons:
+        return _SlotTypeCommons(type(self), self._hash, 30, self._name)
+
+    @property
+    def slot31(self) -> _SlotTypeCommons:
+        return _SlotTypeCommons(type(self), self._hash, 31, self._name)
+
+    @property
+    def slot32(self) -> _SlotTypeCommons:
+        return _SlotTypeCommons(type(self), self._hash, 32, self._name)
+
+    @property
+    def slot33(self) -> _SlotTypeCommons:
+        return _SlotTypeCommons(type(self), self._hash, 33, self._name)
+
+    @property
+    def slot34(self) -> _SlotTypeCommons:
+        return _SlotTypeCommons(type(self), self._hash, 34, self._name)
+
+    @property
+    def slot35(self) -> _SlotTypeCommons:
+        return _SlotTypeCommons(type(self), self._hash, 35, self._name)
+
+    @property
+    def slot36(self) -> _SlotTypeCommons:
+        return _SlotTypeCommons(type(self), self._hash, 36, self._name)
+
+    @property
+    def slot37(self) -> _SlotTypeCommons:
+        return _SlotTypeCommons(type(self), self._hash, 37, self._name)
+
+    @property
+    def slot38(self) -> _SlotTypeCommons:
+        return _SlotTypeCommons(type(self), self._hash, 38, self._name)
+
+    @property
+    def slot39(self) -> _SlotTypeCommons:
+        return _SlotTypeCommons(type(self), self._hash, 39, self._name)
+
+    @property
+    def slot4(self) -> _SlotTypeCommons:
+        return _SlotTypeCommons(type(self), self._hash, 4, self._name)
+
+    @property
+    def slot40(self) -> _SlotTypeCommons:
+        return _SlotTypeCommons(type(self), self._hash, 40, self._name)
+
+    @property
+    def slot41(self) -> _SlotTypeCommons:
+        return _SlotTypeCommons(type(self), self._hash, 41, self._name)
+
+    @property
+    def slot42(self) -> _SlotTypeCommons:
+        return _SlotTypeCommons(type(self), self._hash, 42, self._name)
+
+    @property
+    def slot43(self) -> _SlotTypeCommons:
+        return _SlotTypeCommons(type(self), self._hash, 43, self._name)
+
+    @property
+    def slot44(self) -> _SlotTypeCommons:
+        return _SlotTypeCommons(type(self), self._hash, 44, self._name)
+
+    @property
+    def slot45(self) -> _SlotTypeCommons:
+        return _SlotTypeCommons(type(self), self._hash, 45, self._name)
+
+    @property
+    def slot46(self) -> _SlotTypeCommons:
+        return _SlotTypeCommons(type(self), self._hash, 46, self._name)
+
+    @property
+    def slot47(self) -> _SlotTypeCommons:
+        return _SlotTypeCommons(type(self), self._hash, 47, self._name)
+
+    @property
+    def slot48(self) -> _SlotTypeCommons:
+        return _SlotTypeCommons(type(self), self._hash, 48, self._name)
+
+    @property
+    def slot49(self) -> _SlotTypeCommons:
+        return _SlotTypeCommons(type(self), self._hash, 49, self._name)
+
+    @property
+    def slot5(self) -> _SlotTypeCommons:
+        return _SlotTypeCommons(type(self), self._hash, 5, self._name)
+
+    @property
+    def slot50(self) -> _SlotTypeCommons:
+        return _SlotTypeCommons(type(self), self._hash, 50, self._name)
+
+    @property
+    def slot51(self) -> _SlotTypeCommons:
+        return _SlotTypeCommons(type(self), self._hash, 51, self._name)
+
+    @property
+    def slot52(self) -> _SlotTypeCommons:
+        return _SlotTypeCommons(type(self), self._hash, 52, self._name)
+
+    @property
+    def slot53(self) -> _SlotTypeCommons:
+        return _SlotTypeCommons(type(self), self._hash, 53, self._name)
+
+    @property
+    def slot54(self) -> _SlotTypeCommons:
+        return _SlotTypeCommons(type(self), self._hash, 54, self._name)
+
+    @property
+    def slot55(self) -> _SlotTypeCommons:
+        return _SlotTypeCommons(type(self), self._hash, 55, self._name)
+
+    @property
+    def slot56(self) -> _SlotTypeCommons:
+        return _SlotTypeCommons(type(self), self._hash, 56, self._name)
+
+    @property
+    def slot57(self) -> _SlotTypeCommons:
+        return _SlotTypeCommons(type(self), self._hash, 57, self._name)
+
+    @property
+    def slot58(self) -> _SlotTypeCommons:
+        return _SlotTypeCommons(type(self), self._hash, 58, self._name)
+
+    @property
+    def slot59(self) -> _SlotTypeCommons:
+        return _SlotTypeCommons(type(self), self._hash, 59, self._name)
+
+    @property
+    def slot6(self) -> _SlotTypeCommons:
+        return _SlotTypeCommons(type(self), self._hash, 6, self._name)
+
+    @property
+    def slot60(self) -> _SlotTypeCommons:
+        return _SlotTypeCommons(type(self), self._hash, 60, self._name)
+
+    @property
+    def slot61(self) -> _SlotTypeCommons:
+        return _SlotTypeCommons(type(self), self._hash, 61, self._name)
+
+    @property
+    def slot62(self) -> _SlotTypeCommons:
+        return _SlotTypeCommons(type(self), self._hash, 62, self._name)
+
+    @property
+    def slot63(self) -> _SlotTypeCommons:
+        return _SlotTypeCommons(type(self), self._hash, 63, self._name)
+
+    @property
+    def slot64(self) -> _SlotTypeCommons:
+        return _SlotTypeCommons(type(self), self._hash, 64, self._name)
+
+    @property
+    def slot65(self) -> _SlotTypeCommons:
+        return _SlotTypeCommons(type(self), self._hash, 65, self._name)
+
+    @property
+    def slot66(self) -> _SlotTypeCommons:
+        return _SlotTypeCommons(type(self), self._hash, 66, self._name)
+
+    @property
+    def slot67(self) -> _SlotTypeCommons:
+        return _SlotTypeCommons(type(self), self._hash, 67, self._name)
+
+    @property
+    def slot68(self) -> _SlotTypeCommons:
+        return _SlotTypeCommons(type(self), self._hash, 68, self._name)
+
+    @property
+    def slot69(self) -> _SlotTypeCommons:
+        return _SlotTypeCommons(type(self), self._hash, 69, self._name)
+
+    @property
+    def slot7(self) -> _SlotTypeCommons:
+        return _SlotTypeCommons(type(self), self._hash, 7, self._name)
+
+    @property
+    def slot70(self) -> _SlotTypeCommons:
+        return _SlotTypeCommons(type(self), self._hash, 70, self._name)
+
+    @property
+    def slot71(self) -> _SlotTypeCommons:
+        return _SlotTypeCommons(type(self), self._hash, 71, self._name)
+
+    @property
+    def slot72(self) -> _SlotTypeCommons:
+        return _SlotTypeCommons(type(self), self._hash, 72, self._name)
+
+    @property
+    def slot73(self) -> _SlotTypeCommons:
+        return _SlotTypeCommons(type(self), self._hash, 73, self._name)
+
+    @property
+    def slot74(self) -> _SlotTypeCommons:
+        return _SlotTypeCommons(type(self), self._hash, 74, self._name)
+
+    @property
+    def slot75(self) -> _SlotTypeCommons:
+        return _SlotTypeCommons(type(self), self._hash, 75, self._name)
+
+    @property
+    def slot76(self) -> _SlotTypeCommons:
+        return _SlotTypeCommons(type(self), self._hash, 76, self._name)
+
+    @property
+    def slot77(self) -> _SlotTypeCommons:
+        return _SlotTypeCommons(type(self), self._hash, 77, self._name)
+
+    @property
+    def slot78(self) -> _SlotTypeCommons:
+        return _SlotTypeCommons(type(self), self._hash, 78, self._name)
+
+    @property
+    def slot79(self) -> _SlotTypeCommons:
+        return _SlotTypeCommons(type(self), self._hash, 79, self._name)
+
+    @property
+    def slot8(self) -> _SlotTypeCommons:
+        return _SlotTypeCommons(type(self), self._hash, 8, self._name)
+
+    @property
+    def slot80(self) -> _SlotTypeCommons:
+        return _SlotTypeCommons(type(self), self._hash, 80, self._name)
+
+    @property
+    def slot81(self) -> _SlotTypeCommons:
+        return _SlotTypeCommons(type(self), self._hash, 81, self._name)
+
+    @property
+    def slot82(self) -> _SlotTypeCommons:
+        return _SlotTypeCommons(type(self), self._hash, 82, self._name)
+
+    @property
+    def slot83(self) -> _SlotTypeCommons:
+        return _SlotTypeCommons(type(self), self._hash, 83, self._name)
+
+    @property
+    def slot84(self) -> _SlotTypeCommons:
+        return _SlotTypeCommons(type(self), self._hash, 84, self._name)
+
+    @property
+    def slot85(self) -> _SlotTypeCommons:
+        return _SlotTypeCommons(type(self), self._hash, 85, self._name)
+
+    @property
+    def slot86(self) -> _SlotTypeCommons:
+        return _SlotTypeCommons(type(self), self._hash, 86, self._name)
+
+    @property
+    def slot87(self) -> _SlotTypeCommons:
+        return _SlotTypeCommons(type(self), self._hash, 87, self._name)
+
+    @property
+    def slot88(self) -> _SlotTypeCommons:
+        return _SlotTypeCommons(type(self), self._hash, 88, self._name)
+
+    @property
+    def slot89(self) -> _SlotTypeCommons:
+        return _SlotTypeCommons(type(self), self._hash, 89, self._name)
+
+    @property
+    def slot9(self) -> _SlotTypeCommons:
+        return _SlotTypeCommons(type(self), self._hash, 9, self._name)
+
+    @property
+    def slot90(self) -> _SlotTypeCommons:
+        return _SlotTypeCommons(type(self), self._hash, 90, self._name)
+
+    @property
+    def slot91(self) -> _SlotTypeCommons:
+        return _SlotTypeCommons(type(self), self._hash, 91, self._name)
+
+    @property
+    def slot92(self) -> _SlotTypeCommons:
+        return _SlotTypeCommons(type(self), self._hash, 92, self._name)
+
+    @property
+    def slot93(self) -> _SlotTypeCommons:
+        return _SlotTypeCommons(type(self), self._hash, 93, self._name)
+
+    @property
+    def slot94(self) -> _SlotTypeCommons:
+        return _SlotTypeCommons(type(self), self._hash, 94, self._name)
+
+    @property
+    def slot95(self) -> _SlotTypeCommons:
+        return _SlotTypeCommons(type(self), self._hash, 95, self._name)
+
+    @property
+    def slot96(self) -> _SlotTypeCommons:
+        return _SlotTypeCommons(type(self), self._hash, 96, self._name)
+
+    @property
+    def slot97(self) -> _SlotTypeCommons:
+        return _SlotTypeCommons(type(self), self._hash, 97, self._name)
+
+    @property
+    def slot98(self) -> _SlotTypeCommons:
+        return _SlotTypeCommons(type(self), self._hash, 98, self._name)
+
+    @property
+    def slot99(self) -> _SlotTypeCommons:
+        return _SlotTypeCommons(type(self), self._hash, 99, self._name)
 
 
 CargoStorageMediums: _CargoStorageMediums = _CargoStorageMediums()
@@ -2318,6 +4476,222 @@ class CargoStorageSmall(
 ):
     _hash: int = -1493672123
 
+    @property
+    def slot0(self) -> _SlotTypeCommon:
+        return _SlotTypeCommon(type(self), self._id, 0)
+
+    @property
+    def Import(self) -> _SlotTypeCommon:
+        return self.slot0
+
+    @property
+    def slot1(self) -> _SlotTypeCommon:
+        return _SlotTypeCommon(type(self), self._id, 1)
+
+    @property
+    def Export(self) -> _SlotTypeCommon:
+        return self.slot1
+
+    @property
+    def slot10(self) -> _SlotTypeCommon:
+        return _SlotTypeCommon(type(self), self._id, 10)
+
+    @property
+    def slot11(self) -> _SlotTypeCommon:
+        return _SlotTypeCommon(type(self), self._id, 11)
+
+    @property
+    def slot12(self) -> _SlotTypeCommon:
+        return _SlotTypeCommon(type(self), self._id, 12)
+
+    @property
+    def slot13(self) -> _SlotTypeCommon:
+        return _SlotTypeCommon(type(self), self._id, 13)
+
+    @property
+    def slot14(self) -> _SlotTypeCommon:
+        return _SlotTypeCommon(type(self), self._id, 14)
+
+    @property
+    def slot15(self) -> _SlotTypeCommon:
+        return _SlotTypeCommon(type(self), self._id, 15)
+
+    @property
+    def slot16(self) -> _SlotTypeCommon:
+        return _SlotTypeCommon(type(self), self._id, 16)
+
+    @property
+    def slot17(self) -> _SlotTypeCommon:
+        return _SlotTypeCommon(type(self), self._id, 17)
+
+    @property
+    def slot18(self) -> _SlotTypeCommon:
+        return _SlotTypeCommon(type(self), self._id, 18)
+
+    @property
+    def slot19(self) -> _SlotTypeCommon:
+        return _SlotTypeCommon(type(self), self._id, 19)
+
+    @property
+    def slot2(self) -> _SlotTypeCommon:
+        return _SlotTypeCommon(type(self), self._id, 2)
+
+    @property
+    def slot20(self) -> _SlotTypeCommon:
+        return _SlotTypeCommon(type(self), self._id, 20)
+
+    @property
+    def slot21(self) -> _SlotTypeCommon:
+        return _SlotTypeCommon(type(self), self._id, 21)
+
+    @property
+    def slot22(self) -> _SlotTypeCommon:
+        return _SlotTypeCommon(type(self), self._id, 22)
+
+    @property
+    def slot23(self) -> _SlotTypeCommon:
+        return _SlotTypeCommon(type(self), self._id, 23)
+
+    @property
+    def slot24(self) -> _SlotTypeCommon:
+        return _SlotTypeCommon(type(self), self._id, 24)
+
+    @property
+    def slot25(self) -> _SlotTypeCommon:
+        return _SlotTypeCommon(type(self), self._id, 25)
+
+    @property
+    def slot26(self) -> _SlotTypeCommon:
+        return _SlotTypeCommon(type(self), self._id, 26)
+
+    @property
+    def slot27(self) -> _SlotTypeCommon:
+        return _SlotTypeCommon(type(self), self._id, 27)
+
+    @property
+    def slot28(self) -> _SlotTypeCommon:
+        return _SlotTypeCommon(type(self), self._id, 28)
+
+    @property
+    def slot29(self) -> _SlotTypeCommon:
+        return _SlotTypeCommon(type(self), self._id, 29)
+
+    @property
+    def slot3(self) -> _SlotTypeCommon:
+        return _SlotTypeCommon(type(self), self._id, 3)
+
+    @property
+    def slot30(self) -> _SlotTypeCommon:
+        return _SlotTypeCommon(type(self), self._id, 30)
+
+    @property
+    def slot31(self) -> _SlotTypeCommon:
+        return _SlotTypeCommon(type(self), self._id, 31)
+
+    @property
+    def slot32(self) -> _SlotTypeCommon:
+        return _SlotTypeCommon(type(self), self._id, 32)
+
+    @property
+    def slot33(self) -> _SlotTypeCommon:
+        return _SlotTypeCommon(type(self), self._id, 33)
+
+    @property
+    def slot34(self) -> _SlotTypeCommon:
+        return _SlotTypeCommon(type(self), self._id, 34)
+
+    @property
+    def slot35(self) -> _SlotTypeCommon:
+        return _SlotTypeCommon(type(self), self._id, 35)
+
+    @property
+    def slot36(self) -> _SlotTypeCommon:
+        return _SlotTypeCommon(type(self), self._id, 36)
+
+    @property
+    def slot37(self) -> _SlotTypeCommon:
+        return _SlotTypeCommon(type(self), self._id, 37)
+
+    @property
+    def slot38(self) -> _SlotTypeCommon:
+        return _SlotTypeCommon(type(self), self._id, 38)
+
+    @property
+    def slot39(self) -> _SlotTypeCommon:
+        return _SlotTypeCommon(type(self), self._id, 39)
+
+    @property
+    def slot4(self) -> _SlotTypeCommon:
+        return _SlotTypeCommon(type(self), self._id, 4)
+
+    @property
+    def slot40(self) -> _SlotTypeCommon:
+        return _SlotTypeCommon(type(self), self._id, 40)
+
+    @property
+    def slot41(self) -> _SlotTypeCommon:
+        return _SlotTypeCommon(type(self), self._id, 41)
+
+    @property
+    def slot42(self) -> _SlotTypeCommon:
+        return _SlotTypeCommon(type(self), self._id, 42)
+
+    @property
+    def slot43(self) -> _SlotTypeCommon:
+        return _SlotTypeCommon(type(self), self._id, 43)
+
+    @property
+    def slot44(self) -> _SlotTypeCommon:
+        return _SlotTypeCommon(type(self), self._id, 44)
+
+    @property
+    def slot45(self) -> _SlotTypeCommon:
+        return _SlotTypeCommon(type(self), self._id, 45)
+
+    @property
+    def slot46(self) -> _SlotTypeCommon:
+        return _SlotTypeCommon(type(self), self._id, 46)
+
+    @property
+    def slot47(self) -> _SlotTypeCommon:
+        return _SlotTypeCommon(type(self), self._id, 47)
+
+    @property
+    def slot48(self) -> _SlotTypeCommon:
+        return _SlotTypeCommon(type(self), self._id, 48)
+
+    @property
+    def slot49(self) -> _SlotTypeCommon:
+        return _SlotTypeCommon(type(self), self._id, 49)
+
+    @property
+    def slot5(self) -> _SlotTypeCommon:
+        return _SlotTypeCommon(type(self), self._id, 5)
+
+    @property
+    def slot50(self) -> _SlotTypeCommon:
+        return _SlotTypeCommon(type(self), self._id, 50)
+
+    @property
+    def slot51(self) -> _SlotTypeCommon:
+        return _SlotTypeCommon(type(self), self._id, 51)
+
+    @property
+    def slot6(self) -> _SlotTypeCommon:
+        return _SlotTypeCommon(type(self), self._id, 6)
+
+    @property
+    def slot7(self) -> _SlotTypeCommon:
+        return _SlotTypeCommon(type(self), self._id, 7)
+
+    @property
+    def slot8(self) -> _SlotTypeCommon:
+        return _SlotTypeCommon(type(self), self._id, 8)
+
+    @property
+    def slot9(self) -> _SlotTypeCommon:
+        return _SlotTypeCommon(type(self), self._id, 9)
+
 
 class _CargoStorageSmalls(
     _BaseStructures,
@@ -2336,6 +4710,222 @@ class _CargoStorageSmalls(
     def __getitem__(self, name: str | int | float) -> "_CargoStorageSmalls":
         return _CargoStorageSmalls(name)
 
+    @property
+    def slot0(self) -> _SlotTypeCommons:
+        return _SlotTypeCommons(type(self), self._hash, 0, self._name)
+
+    @property
+    def Import(self) -> _SlotTypeCommons:
+        return self.slot0
+
+    @property
+    def slot1(self) -> _SlotTypeCommons:
+        return _SlotTypeCommons(type(self), self._hash, 1, self._name)
+
+    @property
+    def Export(self) -> _SlotTypeCommons:
+        return self.slot1
+
+    @property
+    def slot10(self) -> _SlotTypeCommons:
+        return _SlotTypeCommons(type(self), self._hash, 10, self._name)
+
+    @property
+    def slot11(self) -> _SlotTypeCommons:
+        return _SlotTypeCommons(type(self), self._hash, 11, self._name)
+
+    @property
+    def slot12(self) -> _SlotTypeCommons:
+        return _SlotTypeCommons(type(self), self._hash, 12, self._name)
+
+    @property
+    def slot13(self) -> _SlotTypeCommons:
+        return _SlotTypeCommons(type(self), self._hash, 13, self._name)
+
+    @property
+    def slot14(self) -> _SlotTypeCommons:
+        return _SlotTypeCommons(type(self), self._hash, 14, self._name)
+
+    @property
+    def slot15(self) -> _SlotTypeCommons:
+        return _SlotTypeCommons(type(self), self._hash, 15, self._name)
+
+    @property
+    def slot16(self) -> _SlotTypeCommons:
+        return _SlotTypeCommons(type(self), self._hash, 16, self._name)
+
+    @property
+    def slot17(self) -> _SlotTypeCommons:
+        return _SlotTypeCommons(type(self), self._hash, 17, self._name)
+
+    @property
+    def slot18(self) -> _SlotTypeCommons:
+        return _SlotTypeCommons(type(self), self._hash, 18, self._name)
+
+    @property
+    def slot19(self) -> _SlotTypeCommons:
+        return _SlotTypeCommons(type(self), self._hash, 19, self._name)
+
+    @property
+    def slot2(self) -> _SlotTypeCommons:
+        return _SlotTypeCommons(type(self), self._hash, 2, self._name)
+
+    @property
+    def slot20(self) -> _SlotTypeCommons:
+        return _SlotTypeCommons(type(self), self._hash, 20, self._name)
+
+    @property
+    def slot21(self) -> _SlotTypeCommons:
+        return _SlotTypeCommons(type(self), self._hash, 21, self._name)
+
+    @property
+    def slot22(self) -> _SlotTypeCommons:
+        return _SlotTypeCommons(type(self), self._hash, 22, self._name)
+
+    @property
+    def slot23(self) -> _SlotTypeCommons:
+        return _SlotTypeCommons(type(self), self._hash, 23, self._name)
+
+    @property
+    def slot24(self) -> _SlotTypeCommons:
+        return _SlotTypeCommons(type(self), self._hash, 24, self._name)
+
+    @property
+    def slot25(self) -> _SlotTypeCommons:
+        return _SlotTypeCommons(type(self), self._hash, 25, self._name)
+
+    @property
+    def slot26(self) -> _SlotTypeCommons:
+        return _SlotTypeCommons(type(self), self._hash, 26, self._name)
+
+    @property
+    def slot27(self) -> _SlotTypeCommons:
+        return _SlotTypeCommons(type(self), self._hash, 27, self._name)
+
+    @property
+    def slot28(self) -> _SlotTypeCommons:
+        return _SlotTypeCommons(type(self), self._hash, 28, self._name)
+
+    @property
+    def slot29(self) -> _SlotTypeCommons:
+        return _SlotTypeCommons(type(self), self._hash, 29, self._name)
+
+    @property
+    def slot3(self) -> _SlotTypeCommons:
+        return _SlotTypeCommons(type(self), self._hash, 3, self._name)
+
+    @property
+    def slot30(self) -> _SlotTypeCommons:
+        return _SlotTypeCommons(type(self), self._hash, 30, self._name)
+
+    @property
+    def slot31(self) -> _SlotTypeCommons:
+        return _SlotTypeCommons(type(self), self._hash, 31, self._name)
+
+    @property
+    def slot32(self) -> _SlotTypeCommons:
+        return _SlotTypeCommons(type(self), self._hash, 32, self._name)
+
+    @property
+    def slot33(self) -> _SlotTypeCommons:
+        return _SlotTypeCommons(type(self), self._hash, 33, self._name)
+
+    @property
+    def slot34(self) -> _SlotTypeCommons:
+        return _SlotTypeCommons(type(self), self._hash, 34, self._name)
+
+    @property
+    def slot35(self) -> _SlotTypeCommons:
+        return _SlotTypeCommons(type(self), self._hash, 35, self._name)
+
+    @property
+    def slot36(self) -> _SlotTypeCommons:
+        return _SlotTypeCommons(type(self), self._hash, 36, self._name)
+
+    @property
+    def slot37(self) -> _SlotTypeCommons:
+        return _SlotTypeCommons(type(self), self._hash, 37, self._name)
+
+    @property
+    def slot38(self) -> _SlotTypeCommons:
+        return _SlotTypeCommons(type(self), self._hash, 38, self._name)
+
+    @property
+    def slot39(self) -> _SlotTypeCommons:
+        return _SlotTypeCommons(type(self), self._hash, 39, self._name)
+
+    @property
+    def slot4(self) -> _SlotTypeCommons:
+        return _SlotTypeCommons(type(self), self._hash, 4, self._name)
+
+    @property
+    def slot40(self) -> _SlotTypeCommons:
+        return _SlotTypeCommons(type(self), self._hash, 40, self._name)
+
+    @property
+    def slot41(self) -> _SlotTypeCommons:
+        return _SlotTypeCommons(type(self), self._hash, 41, self._name)
+
+    @property
+    def slot42(self) -> _SlotTypeCommons:
+        return _SlotTypeCommons(type(self), self._hash, 42, self._name)
+
+    @property
+    def slot43(self) -> _SlotTypeCommons:
+        return _SlotTypeCommons(type(self), self._hash, 43, self._name)
+
+    @property
+    def slot44(self) -> _SlotTypeCommons:
+        return _SlotTypeCommons(type(self), self._hash, 44, self._name)
+
+    @property
+    def slot45(self) -> _SlotTypeCommons:
+        return _SlotTypeCommons(type(self), self._hash, 45, self._name)
+
+    @property
+    def slot46(self) -> _SlotTypeCommons:
+        return _SlotTypeCommons(type(self), self._hash, 46, self._name)
+
+    @property
+    def slot47(self) -> _SlotTypeCommons:
+        return _SlotTypeCommons(type(self), self._hash, 47, self._name)
+
+    @property
+    def slot48(self) -> _SlotTypeCommons:
+        return _SlotTypeCommons(type(self), self._hash, 48, self._name)
+
+    @property
+    def slot49(self) -> _SlotTypeCommons:
+        return _SlotTypeCommons(type(self), self._hash, 49, self._name)
+
+    @property
+    def slot5(self) -> _SlotTypeCommons:
+        return _SlotTypeCommons(type(self), self._hash, 5, self._name)
+
+    @property
+    def slot50(self) -> _SlotTypeCommons:
+        return _SlotTypeCommons(type(self), self._hash, 50, self._name)
+
+    @property
+    def slot51(self) -> _SlotTypeCommons:
+        return _SlotTypeCommons(type(self), self._hash, 51, self._name)
+
+    @property
+    def slot6(self) -> _SlotTypeCommons:
+        return _SlotTypeCommons(type(self), self._hash, 6, self._name)
+
+    @property
+    def slot7(self) -> _SlotTypeCommons:
+        return _SlotTypeCommons(type(self), self._hash, 7, self._name)
+
+    @property
+    def slot8(self) -> _SlotTypeCommons:
+        return _SlotTypeCommons(type(self), self._hash, 8, self._name)
+
+    @property
+    def slot9(self) -> _SlotTypeCommons:
+        return _SlotTypeCommons(type(self), self._hash, 9, self._name)
+
 
 CargoStorageSmalls: _CargoStorageSmalls = _CargoStorageSmalls()
 
@@ -2352,6 +4942,22 @@ class Centrifuge(
 ):
     _hash: int = 690945935
 
+    @property
+    def slot0(self) -> _SlotTypeCommon:
+        return _SlotTypeCommon(type(self), self._id, 0)
+
+    @property
+    def Import(self) -> _SlotTypeCommon:
+        return self.slot0
+
+    @property
+    def slot1(self) -> _SlotTypeCommon:
+        return _SlotTypeCommon(type(self), self._id, 1)
+
+    @property
+    def Export(self) -> _SlotTypeCommon:
+        return self.slot1
+
 
 class _Centrifuges(
     _BaseStructures,
@@ -2367,6 +4973,22 @@ class _Centrifuges(
 
     def __getitem__(self, name: str | int | float) -> "_Centrifuges":
         return _Centrifuges(name)
+
+    @property
+    def slot0(self) -> _SlotTypeCommons:
+        return _SlotTypeCommons(type(self), self._hash, 0, self._name)
+
+    @property
+    def Import(self) -> _SlotTypeCommons:
+        return self.slot0
+
+    @property
+    def slot1(self) -> _SlotTypeCommons:
+        return _SlotTypeCommons(type(self), self._hash, 1, self._name)
+
+    @property
+    def Export(self) -> _SlotTypeCommons:
+        return self.slot1
 
 
 Centrifuges: _Centrifuges = _Centrifuges()
@@ -2390,6 +5012,14 @@ class ChuteDigitalFlipFlopSplitterLeft(_BaseStructure, _Mode, _Power, _SettingW)
     @SettingOutput.setter
     def SettingOutput(self, value: int | float):
         pass
+
+    @property
+    def slot0(self) -> _SlotTypeCommon:
+        return _SlotTypeCommon(type(self), self._id, 0)
+
+    @property
+    def TransportSlot(self) -> _SlotTypeCommon:
+        return self.slot0
 
 
 class _ChuteDigitalFlipFlopSplitterLefts(_BaseStructures, _Modes, _Powers, _SettingWs):
@@ -2416,6 +5046,14 @@ class _ChuteDigitalFlipFlopSplitterLefts(_BaseStructures, _Modes, _Powers, _Sett
     def SettingOutput(self, value: int | float):
         pass
 
+    @property
+    def slot0(self) -> _SlotTypeCommons:
+        return _SlotTypeCommons(type(self), self._hash, 0, self._name)
+
+    @property
+    def TransportSlot(self) -> _SlotTypeCommons:
+        return self.slot0
+
 
 ChuteDigitalFlipFlopSplitterLefts: _ChuteDigitalFlipFlopSplitterLefts = (
     _ChuteDigitalFlipFlopSplitterLefts()
@@ -2440,6 +5078,14 @@ class ChuteDigitalFlipFlopSplitterRight(_BaseStructure, _Mode, _Power, _SettingW
     @SettingOutput.setter
     def SettingOutput(self, value: int | float):
         pass
+
+    @property
+    def slot0(self) -> _SlotTypeCommon:
+        return _SlotTypeCommon(type(self), self._id, 0)
+
+    @property
+    def TransportSlot(self) -> _SlotTypeCommon:
+        return self.slot0
 
 
 class _ChuteDigitalFlipFlopSplitterRights(_BaseStructures, _Modes, _Powers, _SettingWs):
@@ -2466,6 +5112,14 @@ class _ChuteDigitalFlipFlopSplitterRights(_BaseStructures, _Modes, _Powers, _Set
     def SettingOutput(self, value: int | float):
         pass
 
+    @property
+    def slot0(self) -> _SlotTypeCommons:
+        return _SlotTypeCommons(type(self), self._hash, 0, self._name)
+
+    @property
+    def TransportSlot(self) -> _SlotTypeCommons:
+        return self.slot0
+
 
 ChuteDigitalFlipFlopSplitterRights: _ChuteDigitalFlipFlopSplitterRights = (
     _ChuteDigitalFlipFlopSplitterRights()
@@ -2483,6 +5137,14 @@ class ChuteDigitalValveLeft(_BaseStructure, _Lock, _Open, _Power, _SettingW):
     def Quantity(self, value: int | float):
         pass
 
+    @property
+    def slot0(self) -> _SlotTypeCommon:
+        return _SlotTypeCommon(type(self), self._id, 0)
+
+    @property
+    def TransportSlot(self) -> _SlotTypeCommon:
+        return self.slot0
+
 
 class _ChuteDigitalValveLefts(_BaseStructures, _Locks, _Opens, _Powers, _SettingWs):
     _hash: int = 648608238
@@ -2497,6 +5159,14 @@ class _ChuteDigitalValveLefts(_BaseStructures, _Locks, _Opens, _Powers, _Setting
     @Quantity.setter
     def Quantity(self, value: int | float):
         pass
+
+    @property
+    def slot0(self) -> _SlotTypeCommons:
+        return _SlotTypeCommons(type(self), self._hash, 0, self._name)
+
+    @property
+    def TransportSlot(self) -> _SlotTypeCommons:
+        return self.slot0
 
 
 ChuteDigitalValveLefts: _ChuteDigitalValveLefts = _ChuteDigitalValveLefts()
@@ -2513,6 +5183,14 @@ class ChuteDigitalValveRight(_BaseStructure, _Lock, _Open, _Power, _SettingW):
     def Quantity(self, value: int | float):
         pass
 
+    @property
+    def slot0(self) -> _SlotTypeCommon:
+        return _SlotTypeCommon(type(self), self._id, 0)
+
+    @property
+    def TransportSlot(self) -> _SlotTypeCommon:
+        return self.slot0
+
 
 class _ChuteDigitalValveRights(_BaseStructures, _Locks, _Opens, _Powers, _SettingWs):
     _hash: int = -1337091041
@@ -2528,12 +5206,28 @@ class _ChuteDigitalValveRights(_BaseStructures, _Locks, _Opens, _Powers, _Settin
     def Quantity(self, value: int | float):
         pass
 
+    @property
+    def slot0(self) -> _SlotTypeCommons:
+        return _SlotTypeCommons(type(self), self._hash, 0, self._name)
+
+    @property
+    def TransportSlot(self) -> _SlotTypeCommons:
+        return self.slot0
+
 
 ChuteDigitalValveRights: _ChuteDigitalValveRights = _ChuteDigitalValveRights()
 
 
 class ChuteExportBin(_BaseStructure, _Error, _Lock, _Open, _Power):
     _hash: int = 1957571043
+
+    @property
+    def slot0(self) -> _SlotTypeCommon:
+        return _SlotTypeCommon(type(self), self._id, 0)
+
+    @property
+    def Input(self) -> _SlotTypeCommon:
+        return self.slot0
 
 
 class _ChuteExportBins(_BaseStructures, _Errors, _Locks, _Opens, _Powers):
@@ -2542,12 +5236,28 @@ class _ChuteExportBins(_BaseStructures, _Errors, _Locks, _Opens, _Powers):
     def __getitem__(self, name: str | int | float) -> "_ChuteExportBins":
         return _ChuteExportBins(name)
 
+    @property
+    def slot0(self) -> _SlotTypeCommons:
+        return _SlotTypeCommons(type(self), self._hash, 0, self._name)
+
+    @property
+    def Input(self) -> _SlotTypeCommons:
+        return self.slot0
+
 
 ChuteExportBins: _ChuteExportBins = _ChuteExportBins()
 
 
 class ChuteBin(_BaseStructure, _Error, _Lock, _Open, _Power):
     _hash: int = -850484480
+
+    @property
+    def slot0(self) -> _SlotTypeCommon:
+        return _SlotTypeCommon(type(self), self._id, 0)
+
+    @property
+    def Input(self) -> _SlotTypeCommon:
+        return self.slot0
 
 
 class _ChuteBins(_BaseStructures, _Errors, _Locks, _Opens, _Powers):
@@ -2556,12 +5266,28 @@ class _ChuteBins(_BaseStructures, _Errors, _Locks, _Opens, _Powers):
     def __getitem__(self, name: str | int | float) -> "_ChuteBins":
         return _ChuteBins(name)
 
+    @property
+    def slot0(self) -> _SlotTypeCommons:
+        return _SlotTypeCommons(type(self), self._hash, 0, self._name)
+
+    @property
+    def Input(self) -> _SlotTypeCommons:
+        return self.slot0
+
 
 ChuteBins: _ChuteBins = _ChuteBins()
 
 
 class ChuteInlet(_BaseStructure, _ClearMemory, _ImportCount, _Lock):
     _hash: int = -1469588766
+
+    @property
+    def slot0(self) -> _SlotTypeCommon:
+        return _SlotTypeCommon(type(self), self._id, 0)
+
+    @property
+    def Import(self) -> _SlotTypeCommon:
+        return self.slot0
 
 
 class _ChuteInlets(_BaseStructures, _ClearMemorys, _ImportCounts, _Locks):
@@ -2570,12 +5296,28 @@ class _ChuteInlets(_BaseStructures, _ClearMemorys, _ImportCounts, _Locks):
     def __getitem__(self, name: str | int | float) -> "_ChuteInlets":
         return _ChuteInlets(name)
 
+    @property
+    def slot0(self) -> _SlotTypeCommons:
+        return _SlotTypeCommons(type(self), self._hash, 0, self._name)
+
+    @property
+    def Import(self) -> _SlotTypeCommons:
+        return self.slot0
+
 
 ChuteInlets: _ChuteInlets = _ChuteInlets()
 
 
 class ChuteOutlet(_BaseStructure, _ClearMemory, _ExportCount, _ImportCount, _Lock):
     _hash: int = -1022714809
+
+    @property
+    def slot0(self) -> _SlotTypeCommon:
+        return _SlotTypeCommon(type(self), self._id, 0)
+
+    @property
+    def Export(self) -> _SlotTypeCommon:
+        return self.slot0
 
 
 class _ChuteOutlets(
@@ -2585,6 +5327,14 @@ class _ChuteOutlets(
 
     def __getitem__(self, name: str | int | float) -> "_ChuteOutlets":
         return _ChuteOutlets(name)
+
+    @property
+    def slot0(self) -> _SlotTypeCommons:
+        return _SlotTypeCommons(type(self), self._hash, 0, self._name)
+
+    @property
+    def Export(self) -> _SlotTypeCommons:
+        return self.slot0
 
 
 ChuteOutlets: _ChuteOutlets = _ChuteOutlets()
@@ -2666,6 +5416,30 @@ class CombustionCentrifuge(
     def TotalMolesOutput(self) -> float:
         return _DeviceLogicType(self, self._id, "TotalMolesOutput")
 
+    @property
+    def slot0(self) -> _SlotTypeCommon:
+        return _SlotTypeCommon(type(self), self._id, 0)
+
+    @property
+    def Import(self) -> _SlotTypeCommon:
+        return self.slot0
+
+    @property
+    def slot1(self) -> _SlotTypeCommon:
+        return _SlotTypeCommon(type(self), self._id, 1)
+
+    @property
+    def Export(self) -> _SlotTypeCommon:
+        return self.slot1
+
+    @property
+    def slot2(self) -> _SlotTypeCommon:
+        return _SlotTypeCommon(type(self), self._id, 2)
+
+    @property
+    def ProgrammableChip(self) -> _SlotTypeCommon:
+        return self.slot2
+
 
 class _CombustionCentrifuges(
     _BaseStructures,
@@ -2746,6 +5520,30 @@ class _CombustionCentrifuges(
     def TotalMolesOutput(self) -> _DevicesLogicType:
         return _DevicesLogicType(self._hash, "TotalMolesOutput", self._name)
 
+    @property
+    def slot0(self) -> _SlotTypeCommons:
+        return _SlotTypeCommons(type(self), self._hash, 0, self._name)
+
+    @property
+    def Import(self) -> _SlotTypeCommons:
+        return self.slot0
+
+    @property
+    def slot1(self) -> _SlotTypeCommons:
+        return _SlotTypeCommons(type(self), self._hash, 1, self._name)
+
+    @property
+    def Export(self) -> _SlotTypeCommons:
+        return self.slot1
+
+    @property
+    def slot2(self) -> _SlotTypeCommons:
+        return _SlotTypeCommons(type(self), self._hash, 2, self._name)
+
+    @property
+    def ProgrammableChip(self) -> _SlotTypeCommons:
+        return self.slot2
+
 
 CombustionCentrifuges: _CombustionCentrifuges = _CombustionCentrifuges()
 
@@ -2789,12 +5587,28 @@ CompositeWindowShutterControllers: _CompositeWindowShutterControllers = (
 class ComputerBigScreenWallMounted(_BaseStructure, _Error, _Lock, _Open, _Power):
     _hash: int = -868055390
 
+    @property
+    def slot0(self) -> _SlotTypeCommon:
+        return _SlotTypeCommon(type(self), self._id, 0)
+
+    @property
+    def Motherboard(self) -> _SlotTypeCommon:
+        return self.slot0
+
 
 class _ComputerBigScreenWallMounteds(_BaseStructures, _Errors, _Locks, _Opens, _Powers):
     _hash: int = -868055390
 
     def __getitem__(self, name: str | int | float) -> "_ComputerBigScreenWallMounteds":
         return _ComputerBigScreenWallMounteds(name)
+
+    @property
+    def slot0(self) -> _SlotTypeCommons:
+        return _SlotTypeCommons(type(self), self._hash, 0, self._name)
+
+    @property
+    def Motherboard(self) -> _SlotTypeCommons:
+        return self.slot0
 
 
 ComputerBigScreenWallMounteds: _ComputerBigScreenWallMounteds = (
@@ -2805,12 +5619,28 @@ ComputerBigScreenWallMounteds: _ComputerBigScreenWallMounteds = (
 class ComputerBigScreen(_BaseStructure, _Error, _Lock, _Open, _Power):
     _hash: int = 1952395881
 
+    @property
+    def slot0(self) -> _SlotTypeCommon:
+        return _SlotTypeCommon(type(self), self._id, 0)
+
+    @property
+    def Motherboard(self) -> _SlotTypeCommon:
+        return self.slot0
+
 
 class _ComputerBigScreens(_BaseStructures, _Errors, _Locks, _Opens, _Powers):
     _hash: int = 1952395881
 
     def __getitem__(self, name: str | int | float) -> "_ComputerBigScreens":
         return _ComputerBigScreens(name)
+
+    @property
+    def slot0(self) -> _SlotTypeCommons:
+        return _SlotTypeCommons(type(self), self._hash, 0, self._name)
+
+    @property
+    def Motherboard(self) -> _SlotTypeCommons:
+        return self.slot0
 
 
 ComputerBigScreens: _ComputerBigScreens = _ComputerBigScreens()
@@ -2819,12 +5649,44 @@ ComputerBigScreens: _ComputerBigScreens = _ComputerBigScreens()
 class Computer(_BaseStructure, _Error, _Lock, _Open, _Power):
     _hash: int = -626563514
 
+    @property
+    def slot0(self) -> _SlotTypeCommon:
+        return _SlotTypeCommon(type(self), self._id, 0)
+
+    @property
+    def slot1(self) -> _SlotTypeCommon:
+        return _SlotTypeCommon(type(self), self._id, 1)
+
+    @property
+    def slot2(self) -> _SlotTypeCommon:
+        return _SlotTypeCommon(type(self), self._id, 2)
+
+    @property
+    def Motherboard(self) -> _SlotTypeCommon:
+        return self.slot2
+
 
 class _Computers(_BaseStructures, _Errors, _Locks, _Opens, _Powers):
     _hash: int = -626563514
 
     def __getitem__(self, name: str | int | float) -> "_Computers":
         return _Computers(name)
+
+    @property
+    def slot0(self) -> _SlotTypeCommons:
+        return _SlotTypeCommons(type(self), self._hash, 0, self._name)
+
+    @property
+    def slot1(self) -> _SlotTypeCommons:
+        return _SlotTypeCommons(type(self), self._hash, 1, self._name)
+
+    @property
+    def slot2(self) -> _SlotTypeCommons:
+        return _SlotTypeCommons(type(self), self._hash, 2, self._name)
+
+    @property
+    def Motherboard(self) -> _SlotTypeCommons:
+        return self.slot2
 
 
 Computers: _Computers = _Computers()
@@ -2833,12 +5695,44 @@ Computers: _Computers = _Computers()
 class ComputerUpright(_BaseStructure, _Error, _Lock, _Open, _Power):
     _hash: int = -405593895
 
+    @property
+    def slot0(self) -> _SlotTypeCommon:
+        return _SlotTypeCommon(type(self), self._id, 0)
+
+    @property
+    def slot1(self) -> _SlotTypeCommon:
+        return _SlotTypeCommon(type(self), self._id, 1)
+
+    @property
+    def slot2(self) -> _SlotTypeCommon:
+        return _SlotTypeCommon(type(self), self._id, 2)
+
+    @property
+    def Motherboard(self) -> _SlotTypeCommon:
+        return self.slot2
+
 
 class _ComputerUprights(_BaseStructures, _Errors, _Locks, _Opens, _Powers):
     _hash: int = -405593895
 
     def __getitem__(self, name: str | int | float) -> "_ComputerUprights":
         return _ComputerUprights(name)
+
+    @property
+    def slot0(self) -> _SlotTypeCommons:
+        return _SlotTypeCommons(type(self), self._hash, 0, self._name)
+
+    @property
+    def slot1(self) -> _SlotTypeCommons:
+        return _SlotTypeCommons(type(self), self._hash, 1, self._name)
+
+    @property
+    def slot2(self) -> _SlotTypeCommons:
+        return _SlotTypeCommons(type(self), self._hash, 2, self._name)
+
+    @property
+    def Motherboard(self) -> _SlotTypeCommons:
+        return self.slot2
 
 
 ComputerUprights: _ComputerUprights = _ComputerUprights()
@@ -2903,12 +5797,44 @@ CondensationValves: _CondensationValves = _CondensationValves()
 class Console(_BaseStructure, _Error, _Open, _Power, _SettingR):
     _hash: int = 235638270
 
+    @property
+    def slot0(self) -> _SlotTypeCircuitboard:
+        return _SlotTypeCircuitboard(type(self), self._id, 0)
+
+    @property
+    def Circuitboard(self) -> _SlotTypeCircuitboard:
+        return self.slot0
+
+    @property
+    def slot1(self) -> _SlotTypeCircuitboard:
+        return _SlotTypeCircuitboard(type(self), self._id, 1)
+
+    @property
+    def DataDisk(self) -> _SlotTypeCircuitboard:
+        return self.slot1
+
 
 class _Consoles(_BaseStructures, _Errors, _Opens, _Powers, _SettingRs):
     _hash: int = 235638270
 
     def __getitem__(self, name: str | int | float) -> "_Consoles":
         return _Consoles(name)
+
+    @property
+    def slot0(self) -> _SlotTypeCircuitboards:
+        return _SlotTypeCircuitboards(type(self), self._hash, 0, self._name)
+
+    @property
+    def Circuitboard(self) -> _SlotTypeCircuitboards:
+        return self.slot0
+
+    @property
+    def slot1(self) -> _SlotTypeCircuitboards:
+        return _SlotTypeCircuitboards(type(self), self._hash, 1, self._name)
+
+    @property
+    def DataDisk(self) -> _SlotTypeCircuitboards:
+        return self.slot1
 
 
 Consoles: _Consoles = _Consoles()
@@ -2917,12 +5843,44 @@ Consoles: _Consoles = _Consoles()
 class ConsoleDual(_BaseStructure, _Error, _Open, _Power, _SettingR):
     _hash: int = -722284333
 
+    @property
+    def slot0(self) -> _SlotTypeCircuitboard:
+        return _SlotTypeCircuitboard(type(self), self._id, 0)
+
+    @property
+    def Circuitboard(self) -> _SlotTypeCircuitboard:
+        return self.slot0
+
+    @property
+    def slot1(self) -> _SlotTypeCircuitboard:
+        return _SlotTypeCircuitboard(type(self), self._id, 1)
+
+    @property
+    def DataDisk(self) -> _SlotTypeCircuitboard:
+        return self.slot1
+
 
 class _ConsoleDuals(_BaseStructures, _Errors, _Opens, _Powers, _SettingRs):
     _hash: int = -722284333
 
     def __getitem__(self, name: str | int | float) -> "_ConsoleDuals":
         return _ConsoleDuals(name)
+
+    @property
+    def slot0(self) -> _SlotTypeCircuitboards:
+        return _SlotTypeCircuitboards(type(self), self._hash, 0, self._name)
+
+    @property
+    def Circuitboard(self) -> _SlotTypeCircuitboards:
+        return self.slot0
+
+    @property
+    def slot1(self) -> _SlotTypeCircuitboards:
+        return _SlotTypeCircuitboards(type(self), self._hash, 1, self._name)
+
+    @property
+    def DataDisk(self) -> _SlotTypeCircuitboards:
+        return self.slot1
 
 
 ConsoleDuals: _ConsoleDuals = _ConsoleDuals()
@@ -2931,12 +5889,44 @@ ConsoleDuals: _ConsoleDuals = _ConsoleDuals()
 class ConsoleMonitor(_BaseStructure, _Error, _Open, _Power, _SettingR):
     _hash: int = 801677497
 
+    @property
+    def slot0(self) -> _SlotTypeCircuitboard:
+        return _SlotTypeCircuitboard(type(self), self._id, 0)
+
+    @property
+    def Circuitboard(self) -> _SlotTypeCircuitboard:
+        return self.slot0
+
+    @property
+    def slot1(self) -> _SlotTypeCircuitboard:
+        return _SlotTypeCircuitboard(type(self), self._id, 1)
+
+    @property
+    def DataDisk(self) -> _SlotTypeCircuitboard:
+        return self.slot1
+
 
 class _ConsoleMonitors(_BaseStructures, _Errors, _Opens, _Powers, _SettingRs):
     _hash: int = 801677497
 
     def __getitem__(self, name: str | int | float) -> "_ConsoleMonitors":
         return _ConsoleMonitors(name)
+
+    @property
+    def slot0(self) -> _SlotTypeCircuitboards:
+        return _SlotTypeCircuitboards(type(self), self._hash, 0, self._name)
+
+    @property
+    def Circuitboard(self) -> _SlotTypeCircuitboards:
+        return self.slot0
+
+    @property
+    def slot1(self) -> _SlotTypeCircuitboards:
+        return _SlotTypeCircuitboards(type(self), self._hash, 1, self._name)
+
+    @property
+    def DataDisk(self) -> _SlotTypeCircuitboards:
+        return self.slot1
 
 
 ConsoleMonitors: _ConsoleMonitors = _ConsoleMonitors()
@@ -2945,12 +5935,60 @@ ConsoleMonitors: _ConsoleMonitors = _ConsoleMonitors()
 class CornerLocker(_BaseStructure, _Lock, _Open):
     _hash: int = -1968255729
 
+    @property
+    def slot0(self) -> _SlotTypeCommon:
+        return _SlotTypeCommon(type(self), self._id, 0)
+
+    @property
+    def slot1(self) -> _SlotTypeCommon:
+        return _SlotTypeCommon(type(self), self._id, 1)
+
+    @property
+    def slot2(self) -> _SlotTypeCommon:
+        return _SlotTypeCommon(type(self), self._id, 2)
+
+    @property
+    def slot3(self) -> _SlotTypeCommon:
+        return _SlotTypeCommon(type(self), self._id, 3)
+
+    @property
+    def slot4(self) -> _SlotTypeCommon:
+        return _SlotTypeCommon(type(self), self._id, 4)
+
+    @property
+    def slot5(self) -> _SlotTypeCommon:
+        return _SlotTypeCommon(type(self), self._id, 5)
+
 
 class _CornerLockers(_BaseStructures, _Locks, _Opens):
     _hash: int = -1968255729
 
     def __getitem__(self, name: str | int | float) -> "_CornerLockers":
         return _CornerLockers(name)
+
+    @property
+    def slot0(self) -> _SlotTypeCommons:
+        return _SlotTypeCommons(type(self), self._hash, 0, self._name)
+
+    @property
+    def slot1(self) -> _SlotTypeCommons:
+        return _SlotTypeCommons(type(self), self._hash, 1, self._name)
+
+    @property
+    def slot2(self) -> _SlotTypeCommons:
+        return _SlotTypeCommons(type(self), self._hash, 2, self._name)
+
+    @property
+    def slot3(self) -> _SlotTypeCommons:
+        return _SlotTypeCommons(type(self), self._hash, 3, self._name)
+
+    @property
+    def slot4(self) -> _SlotTypeCommons:
+        return _SlotTypeCommons(type(self), self._hash, 4, self._name)
+
+    @property
+    def slot5(self) -> _SlotTypeCommons:
+        return _SlotTypeCommons(type(self), self._hash, 5, self._name)
 
 
 CornerLockers: _CornerLockers = _CornerLockers()
@@ -3037,6 +6075,22 @@ class CryoTubeHorizontal(
     def EntityState(self) -> float:
         return _DeviceLogicType(self, self._id, "EntityState")
 
+    @property
+    def slot0(self) -> _SlotTypeCommon:
+        return _SlotTypeCommon(type(self), self._id, 0)
+
+    @property
+    def Player(self) -> _SlotTypeCommon:
+        return self.slot0
+
+    @property
+    def slot1(self) -> _SlotTypeMask:
+        return _SlotTypeMask(type(self), self._id, 1)
+
+    @property
+    def Mask(self) -> _SlotTypeMask:
+        return self.slot1
+
 
 class _CryoTubeHorizontals(
     _BaseStructures,
@@ -3059,6 +6113,22 @@ class _CryoTubeHorizontals(
     @property
     def EntityState(self) -> _DevicesLogicType:
         return _DevicesLogicType(self._hash, "EntityState", self._name)
+
+    @property
+    def slot0(self) -> _SlotTypeCommons:
+        return _SlotTypeCommons(type(self), self._hash, 0, self._name)
+
+    @property
+    def Player(self) -> _SlotTypeCommons:
+        return self.slot0
+
+    @property
+    def slot1(self) -> _SlotTypeMasks:
+        return _SlotTypeMasks(type(self), self._hash, 1, self._name)
+
+    @property
+    def Mask(self) -> _SlotTypeMasks:
+        return self.slot1
 
 
 CryoTubeHorizontals: _CryoTubeHorizontals = _CryoTubeHorizontals()
@@ -3083,6 +6153,22 @@ class CryoTubeVertical(
     def EntityState(self) -> float:
         return _DeviceLogicType(self, self._id, "EntityState")
 
+    @property
+    def slot0(self) -> _SlotTypeCommon:
+        return _SlotTypeCommon(type(self), self._id, 0)
+
+    @property
+    def Player(self) -> _SlotTypeCommon:
+        return self.slot0
+
+    @property
+    def slot1(self) -> _SlotTypeMask:
+        return _SlotTypeMask(type(self), self._id, 1)
+
+    @property
+    def Mask(self) -> _SlotTypeMask:
+        return self.slot1
+
 
 class _CryoTubeVerticals(
     _BaseStructures,
@@ -3105,6 +6191,22 @@ class _CryoTubeVerticals(
     @property
     def EntityState(self) -> _DevicesLogicType:
         return _DevicesLogicType(self._hash, "EntityState", self._name)
+
+    @property
+    def slot0(self) -> _SlotTypeCommons:
+        return _SlotTypeCommons(type(self), self._hash, 0, self._name)
+
+    @property
+    def Player(self) -> _SlotTypeCommons:
+        return self.slot0
+
+    @property
+    def slot1(self) -> _SlotTypeMasks:
+        return _SlotTypeMasks(type(self), self._hash, 1, self._name)
+
+    @property
+    def Mask(self) -> _SlotTypeMasks:
+        return self.slot1
 
 
 CryoTubeVerticals: _CryoTubeVerticals = _CryoTubeVerticals()
@@ -3153,6 +6255,14 @@ class DeepMiner(
 ):
     _hash: int = 265720906
 
+    @property
+    def slot0(self) -> _SlotTypeCommon:
+        return _SlotTypeCommon(type(self), self._id, 0)
+
+    @property
+    def Export(self) -> _SlotTypeCommon:
+        return self.slot0
+
 
 class _DeepMiners(
     _BaseStructures,
@@ -3169,6 +6279,14 @@ class _DeepMiners(
 
     def __getitem__(self, name: str | int | float) -> "_DeepMiners":
         return _DeepMiners(name)
+
+    @property
+    def slot0(self) -> _SlotTypeCommons:
+        return _SlotTypeCommons(type(self), self._hash, 0, self._name)
+
+    @property
+    def Export(self) -> _SlotTypeCommons:
+        return self.slot0
 
 
 DeepMiners: _DeepMiners = _DeepMiners()
@@ -3235,6 +6353,14 @@ DrinkingFountains: _DrinkingFountains = _DrinkingFountains()
 class SleeperVerticalDroid(_BaseStructure, _Activate, _Error, _Lock, _Open, _Power):
     _hash: int = 1382098999
 
+    @property
+    def slot0(self) -> _SlotTypeCommon:
+        return _SlotTypeCommon(type(self), self._id, 0)
+
+    @property
+    def Player(self) -> _SlotTypeCommon:
+        return self.slot0
+
 
 class _SleeperVerticalDroids(
     _BaseStructures, _Activates, _Errors, _Locks, _Opens, _Powers
@@ -3243,6 +6369,14 @@ class _SleeperVerticalDroids(
 
     def __getitem__(self, name: str | int | float) -> "_SleeperVerticalDroids":
         return _SleeperVerticalDroids(name)
+
+    @property
+    def slot0(self) -> _SlotTypeCommons:
+        return _SlotTypeCommons(type(self), self._hash, 0, self._name)
+
+    @property
+    def Player(self) -> _SlotTypeCommons:
+        return self.slot0
 
 
 SleeperVerticalDroids: _SleeperVerticalDroids = _SleeperVerticalDroids()
@@ -3301,6 +6435,14 @@ class Electrolyzer(
     def TotalMolesOutput(self) -> float:
         return _DeviceLogicType(self, self._id, "TotalMolesOutput")
 
+    @property
+    def slot0(self) -> _SlotTypeCommon:
+        return _SlotTypeCommon(type(self), self._id, 0)
+
+    @property
+    def ProgrammableChip(self) -> _SlotTypeCommon:
+        return self.slot0
+
 
 class _Electrolyzers(
     _BaseStructures,
@@ -3358,6 +6500,14 @@ class _Electrolyzers(
     def TotalMolesOutput(self) -> _DevicesLogicType:
         return _DevicesLogicType(self._hash, "TotalMolesOutput", self._name)
 
+    @property
+    def slot0(self) -> _SlotTypeCommons:
+        return _SlotTypeCommons(type(self), self._hash, 0, self._name)
+
+    @property
+    def ProgrammableChip(self) -> _SlotTypeCommons:
+        return self.slot0
+
 
 Electrolyzers: _Electrolyzers = _Electrolyzers()
 
@@ -3385,6 +6535,22 @@ class ElectronicsPrinter(
     def StackSize(self) -> float:
         return _DeviceLogicType(self, self._id, "StackSize")
 
+    @property
+    def slot0(self) -> _SlotTypeCommon:
+        return _SlotTypeCommon(type(self), self._id, 0)
+
+    @property
+    def Import(self) -> _SlotTypeCommon:
+        return self.slot0
+
+    @property
+    def slot1(self) -> _SlotTypeCommon:
+        return _SlotTypeCommon(type(self), self._id, 1)
+
+    @property
+    def Export(self) -> _SlotTypeCommon:
+        return self.slot1
+
 
 class _ElectronicsPrinters(
     _BaseStructures,
@@ -3411,6 +6577,22 @@ class _ElectronicsPrinters(
     @property
     def StackSize(self) -> _DevicesLogicType:
         return _DevicesLogicType(self._hash, "StackSize", self._name)
+
+    @property
+    def slot0(self) -> _SlotTypeCommons:
+        return _SlotTypeCommons(type(self), self._hash, 0, self._name)
+
+    @property
+    def Import(self) -> _SlotTypeCommons:
+        return self.slot0
+
+    @property
+    def slot1(self) -> _SlotTypeCommons:
+        return _SlotTypeCommons(type(self), self._hash, 1, self._name)
+
+    @property
+    def Export(self) -> _SlotTypeCommons:
+        return self.slot1
 
 
 ElectronicsPrinters: _ElectronicsPrinters = _ElectronicsPrinters()
@@ -3724,6 +6906,22 @@ class Filtration(
     def TotalMolesOutput2(self) -> float:
         return _DeviceLogicType(self, self._id, "TotalMolesOutput2")
 
+    @property
+    def slot0(self) -> _SlotTypeFilter:
+        return _SlotTypeFilter(type(self), self._id, 0)
+
+    @property
+    def slot1(self) -> _SlotTypeFilter:
+        return _SlotTypeFilter(type(self), self._id, 1)
+
+    @property
+    def slot2(self) -> _SlotTypeCommon:
+        return _SlotTypeCommon(type(self), self._id, 2)
+
+    @property
+    def ProgrammableChip(self) -> _SlotTypeCommon:
+        return self.slot2
+
 
 class _Filtrations(
     _BaseStructures,
@@ -3791,6 +6989,22 @@ class _Filtrations(
     @property
     def TotalMolesOutput2(self) -> _DevicesLogicType:
         return _DevicesLogicType(self._hash, "TotalMolesOutput2", self._name)
+
+    @property
+    def slot0(self) -> _SlotTypeFilters:
+        return _SlotTypeFilters(type(self), self._hash, 0, self._name)
+
+    @property
+    def slot1(self) -> _SlotTypeFilters:
+        return _SlotTypeFilters(type(self), self._hash, 1, self._name)
+
+    @property
+    def slot2(self) -> _SlotTypeCommons:
+        return _SlotTypeCommons(type(self), self._hash, 2, self._name)
+
+    @property
+    def ProgrammableChip(self) -> _SlotTypeCommons:
+        return self.slot2
 
 
 Filtrations: _Filtrations = _Filtrations()
@@ -3870,6 +7084,66 @@ class FridgeBig(
     def TotalMolesOutput(self) -> float:
         return _DeviceLogicType(self, self._id, "TotalMolesOutput")
 
+    @property
+    def slot0(self) -> _SlotTypeCommon:
+        return _SlotTypeCommon(type(self), self._id, 0)
+
+    @property
+    def slot1(self) -> _SlotTypeCommon:
+        return _SlotTypeCommon(type(self), self._id, 1)
+
+    @property
+    def slot10(self) -> _SlotTypeCommon:
+        return _SlotTypeCommon(type(self), self._id, 10)
+
+    @property
+    def slot11(self) -> _SlotTypeCommon:
+        return _SlotTypeCommon(type(self), self._id, 11)
+
+    @property
+    def slot12(self) -> _SlotTypeCommon:
+        return _SlotTypeCommon(type(self), self._id, 12)
+
+    @property
+    def slot13(self) -> _SlotTypeCommon:
+        return _SlotTypeCommon(type(self), self._id, 13)
+
+    @property
+    def slot14(self) -> _SlotTypeCommon:
+        return _SlotTypeCommon(type(self), self._id, 14)
+
+    @property
+    def slot2(self) -> _SlotTypeCommon:
+        return _SlotTypeCommon(type(self), self._id, 2)
+
+    @property
+    def slot3(self) -> _SlotTypeCommon:
+        return _SlotTypeCommon(type(self), self._id, 3)
+
+    @property
+    def slot4(self) -> _SlotTypeCommon:
+        return _SlotTypeCommon(type(self), self._id, 4)
+
+    @property
+    def slot5(self) -> _SlotTypeCommon:
+        return _SlotTypeCommon(type(self), self._id, 5)
+
+    @property
+    def slot6(self) -> _SlotTypeCommon:
+        return _SlotTypeCommon(type(self), self._id, 6)
+
+    @property
+    def slot7(self) -> _SlotTypeCommon:
+        return _SlotTypeCommon(type(self), self._id, 7)
+
+    @property
+    def slot8(self) -> _SlotTypeCommon:
+        return _SlotTypeCommon(type(self), self._id, 8)
+
+    @property
+    def slot9(self) -> _SlotTypeCommon:
+        return _SlotTypeCommon(type(self), self._id, 9)
+
 
 class _FridgeBigs(
     _BaseStructures,
@@ -3934,6 +7208,66 @@ class _FridgeBigs(
     def TotalMolesOutput(self) -> _DevicesLogicType:
         return _DevicesLogicType(self._hash, "TotalMolesOutput", self._name)
 
+    @property
+    def slot0(self) -> _SlotTypeCommons:
+        return _SlotTypeCommons(type(self), self._hash, 0, self._name)
+
+    @property
+    def slot1(self) -> _SlotTypeCommons:
+        return _SlotTypeCommons(type(self), self._hash, 1, self._name)
+
+    @property
+    def slot10(self) -> _SlotTypeCommons:
+        return _SlotTypeCommons(type(self), self._hash, 10, self._name)
+
+    @property
+    def slot11(self) -> _SlotTypeCommons:
+        return _SlotTypeCommons(type(self), self._hash, 11, self._name)
+
+    @property
+    def slot12(self) -> _SlotTypeCommons:
+        return _SlotTypeCommons(type(self), self._hash, 12, self._name)
+
+    @property
+    def slot13(self) -> _SlotTypeCommons:
+        return _SlotTypeCommons(type(self), self._hash, 13, self._name)
+
+    @property
+    def slot14(self) -> _SlotTypeCommons:
+        return _SlotTypeCommons(type(self), self._hash, 14, self._name)
+
+    @property
+    def slot2(self) -> _SlotTypeCommons:
+        return _SlotTypeCommons(type(self), self._hash, 2, self._name)
+
+    @property
+    def slot3(self) -> _SlotTypeCommons:
+        return _SlotTypeCommons(type(self), self._hash, 3, self._name)
+
+    @property
+    def slot4(self) -> _SlotTypeCommons:
+        return _SlotTypeCommons(type(self), self._hash, 4, self._name)
+
+    @property
+    def slot5(self) -> _SlotTypeCommons:
+        return _SlotTypeCommons(type(self), self._hash, 5, self._name)
+
+    @property
+    def slot6(self) -> _SlotTypeCommons:
+        return _SlotTypeCommons(type(self), self._hash, 6, self._name)
+
+    @property
+    def slot7(self) -> _SlotTypeCommons:
+        return _SlotTypeCommons(type(self), self._hash, 7, self._name)
+
+    @property
+    def slot8(self) -> _SlotTypeCommons:
+        return _SlotTypeCommons(type(self), self._hash, 8, self._name)
+
+    @property
+    def slot9(self) -> _SlotTypeCommons:
+        return _SlotTypeCommons(type(self), self._hash, 9, self._name)
+
 
 FridgeBigs: _FridgeBigs = _FridgeBigs()
 
@@ -3995,6 +7329,14 @@ class FridgeSmall(
     @property
     def TotalMolesOutput(self) -> float:
         return _DeviceLogicType(self, self._id, "TotalMolesOutput")
+
+    @property
+    def slot0(self) -> _SlotTypeCommon:
+        return _SlotTypeCommon(type(self), self._id, 0)
+
+    @property
+    def slot1(self) -> _SlotTypeCommon:
+        return _SlotTypeCommon(type(self), self._id, 1)
 
 
 class _FridgeSmalls(
@@ -4058,6 +7400,14 @@ class _FridgeSmalls(
     def TotalMolesOutput(self) -> _DevicesLogicType:
         return _DevicesLogicType(self._hash, "TotalMolesOutput", self._name)
 
+    @property
+    def slot0(self) -> _SlotTypeCommons:
+        return _SlotTypeCommons(type(self), self._hash, 0, self._name)
+
+    @property
+    def slot1(self) -> _SlotTypeCommons:
+        return _SlotTypeCommons(type(self), self._hash, 1, self._name)
+
 
 FridgeSmalls: _FridgeSmalls = _FridgeSmalls()
 
@@ -4087,6 +7437,22 @@ class Furnace(
     def RecipeHash(self) -> float:
         return _DeviceLogicType(self, self._id, "RecipeHash")
 
+    @property
+    def slot0(self) -> _SlotTypeCommon:
+        return _SlotTypeCommon(type(self), self._id, 0)
+
+    @property
+    def Import(self) -> _SlotTypeCommon:
+        return self.slot0
+
+    @property
+    def slot1(self) -> _SlotTypeCommon:
+        return _SlotTypeCommon(type(self), self._id, 1)
+
+    @property
+    def Export(self) -> _SlotTypeCommon:
+        return self.slot1
+
 
 class _Furnaces(
     _BaseStructures,
@@ -4115,6 +7481,22 @@ class _Furnaces(
     @property
     def RecipeHash(self) -> _DevicesLogicType:
         return _DevicesLogicType(self._hash, "RecipeHash", self._name)
+
+    @property
+    def slot0(self) -> _SlotTypeCommons:
+        return _SlotTypeCommons(type(self), self._hash, 0, self._name)
+
+    @property
+    def Import(self) -> _SlotTypeCommons:
+        return self.slot0
+
+    @property
+    def slot1(self) -> _SlotTypeCommons:
+        return _SlotTypeCommons(type(self), self._hash, 1, self._name)
+
+    @property
+    def Export(self) -> _SlotTypeCommons:
+        return self.slot1
 
 
 Furnaces: _Furnaces = _Furnaces()
@@ -4607,6 +7989,14 @@ class GasTankStorage(_BaseStructure, _Quantity, _Temperature):
     def RatioWater(self) -> float:
         return _DeviceLogicType(self, self._id, "RatioWater")
 
+    @property
+    def slot0(self) -> _SlotTypeGasCanister:
+        return _SlotTypeGasCanister(type(self), self._id, 0)
+
+    @property
+    def GasCanister(self) -> _SlotTypeGasCanister:
+        return self.slot0
+
 
 class _GasTankStorages(_BaseStructures, _Quantitys, _Temperatures):
     _hash: int = 1632165346
@@ -4642,6 +8032,14 @@ class _GasTankStorages(_BaseStructures, _Quantitys, _Temperatures):
     def RatioWater(self) -> _DevicesLogicType:
         return _DevicesLogicType(self._hash, "RatioWater", self._name)
 
+    @property
+    def slot0(self) -> _SlotTypeGasCanisters:
+        return _SlotTypeGasCanisters(type(self), self._hash, 0, self._name)
+
+    @property
+    def GasCanister(self) -> _SlotTypeGasCanisters:
+        return self.slot0
+
 
 GasTankStorages: _GasTankStorages = _GasTankStorages()
 
@@ -4653,6 +8051,14 @@ class SolidFuelGenerator(_BaseStructure, _ClearMemory, _ImportCount, _Lock, _On)
     def PowerGeneration(self) -> float:
         return _DeviceLogicType(self, self._id, "PowerGeneration")
 
+    @property
+    def slot0(self) -> _SlotTypeCommon:
+        return _SlotTypeCommon(type(self), self._id, 0)
+
+    @property
+    def Input(self) -> _SlotTypeCommon:
+        return self.slot0
+
 
 class _SolidFuelGenerators(_BaseStructures, _ClearMemorys, _ImportCounts, _Locks, _Ons):
     _hash: int = 813146305
@@ -4663,6 +8069,14 @@ class _SolidFuelGenerators(_BaseStructures, _ClearMemorys, _ImportCounts, _Locks
     @property
     def PowerGeneration(self) -> _DevicesLogicType:
         return _DevicesLogicType(self._hash, "PowerGeneration", self._name)
+
+    @property
+    def slot0(self) -> _SlotTypeCommons:
+        return _SlotTypeCommons(type(self), self._hash, 0, self._name)
+
+    @property
+    def Input(self) -> _SlotTypeCommons:
+        return self.slot0
 
 
 SolidFuelGenerators: _SolidFuelGenerators = _SolidFuelGenerators()
@@ -4725,6 +8139,30 @@ class Harvie(
     def Plant(self, value: int | float):
         pass
 
+    @property
+    def slot0(self) -> _SlotTypeCommon:
+        return _SlotTypeCommon(type(self), self._id, 0)
+
+    @property
+    def Import(self) -> _SlotTypeCommon:
+        return self.slot0
+
+    @property
+    def slot1(self) -> _SlotTypeCommon:
+        return _SlotTypeCommon(type(self), self._id, 1)
+
+    @property
+    def Export(self) -> _SlotTypeCommon:
+        return self.slot1
+
+    @property
+    def slot2(self) -> _SlotTypeCommon:
+        return _SlotTypeCommon(type(self), self._id, 2)
+
+    @property
+    def Hand(self) -> _SlotTypeCommon:
+        return self.slot2
+
 
 class _Harvies(
     _BaseStructures,
@@ -4758,6 +8196,30 @@ class _Harvies(
     def Plant(self, value: int | float):
         pass
 
+    @property
+    def slot0(self) -> _SlotTypeCommons:
+        return _SlotTypeCommons(type(self), self._hash, 0, self._name)
+
+    @property
+    def Import(self) -> _SlotTypeCommons:
+        return self.slot0
+
+    @property
+    def slot1(self) -> _SlotTypeCommons:
+        return _SlotTypeCommons(type(self), self._hash, 1, self._name)
+
+    @property
+    def Export(self) -> _SlotTypeCommons:
+        return self.slot1
+
+    @property
+    def slot2(self) -> _SlotTypeCommons:
+        return _SlotTypeCommons(type(self), self._hash, 2, self._name)
+
+    @property
+    def Hand(self) -> _SlotTypeCommons:
+        return self.slot2
+
 
 Harvies: _Harvies = _Harvies()
 
@@ -4784,6 +8246,22 @@ class HydraulicPipeBender(
     @property
     def StackSize(self) -> float:
         return _DeviceLogicType(self, self._id, "StackSize")
+
+    @property
+    def slot0(self) -> _SlotTypeCommon:
+        return _SlotTypeCommon(type(self), self._id, 0)
+
+    @property
+    def Import(self) -> _SlotTypeCommon:
+        return self.slot0
+
+    @property
+    def slot1(self) -> _SlotTypeCommon:
+        return _SlotTypeCommon(type(self), self._id, 1)
+
+    @property
+    def Export(self) -> _SlotTypeCommon:
+        return self.slot1
 
 
 class _HydraulicPipeBenders(
@@ -4812,6 +8290,22 @@ class _HydraulicPipeBenders(
     def StackSize(self) -> _DevicesLogicType:
         return _DevicesLogicType(self._hash, "StackSize", self._name)
 
+    @property
+    def slot0(self) -> _SlotTypeCommons:
+        return _SlotTypeCommons(type(self), self._hash, 0, self._name)
+
+    @property
+    def Import(self) -> _SlotTypeCommons:
+        return self.slot0
+
+    @property
+    def slot1(self) -> _SlotTypeCommons:
+        return _SlotTypeCommons(type(self), self._hash, 1, self._name)
+
+    @property
+    def Export(self) -> _SlotTypeCommons:
+        return self.slot1
+
 
 HydraulicPipeBenders: _HydraulicPipeBenders = _HydraulicPipeBenders()
 
@@ -4821,6 +8315,22 @@ class HydroponicsTrayData(
 ):
     _hash: int = -1841632400
 
+    @property
+    def slot0(self) -> _SlotTypePlant:
+        return _SlotTypePlant(type(self), self._id, 0)
+
+    @property
+    def Plant(self) -> _SlotTypePlant:
+        return self.slot0
+
+    @property
+    def slot1(self) -> _SlotTypeCommon:
+        return _SlotTypeCommon(type(self), self._id, 1)
+
+    @property
+    def Fertiliser(self) -> _SlotTypeCommon:
+        return self.slot1
+
 
 class _HydroponicsTrayDatas(
     _BaseStructures, _BaseGass, _Combustions, _Hydrogens, _PollWaters, _Temperatures
@@ -4829,6 +8339,22 @@ class _HydroponicsTrayDatas(
 
     def __getitem__(self, name: str | int | float) -> "_HydroponicsTrayDatas":
         return _HydroponicsTrayDatas(name)
+
+    @property
+    def slot0(self) -> _SlotTypePlants:
+        return _SlotTypePlants(type(self), self._hash, 0, self._name)
+
+    @property
+    def Plant(self) -> _SlotTypePlants:
+        return self.slot0
+
+    @property
+    def slot1(self) -> _SlotTypeCommons:
+        return _SlotTypeCommons(type(self), self._hash, 1, self._name)
+
+    @property
+    def Fertiliser(self) -> _SlotTypeCommons:
+        return self.slot1
 
 
 HydroponicsTrayDatas: _HydroponicsTrayDatas = _HydroponicsTrayDatas()
@@ -4893,6 +8419,38 @@ class HydroponicsStation(
     def TotalMolesOutput(self) -> float:
         return _DeviceLogicType(self, self._id, "TotalMolesOutput")
 
+    @property
+    def slot0(self) -> _SlotTypePlant:
+        return _SlotTypePlant(type(self), self._id, 0)
+
+    @property
+    def slot1(self) -> _SlotTypePlant:
+        return _SlotTypePlant(type(self), self._id, 1)
+
+    @property
+    def slot2(self) -> _SlotTypePlant:
+        return _SlotTypePlant(type(self), self._id, 2)
+
+    @property
+    def slot3(self) -> _SlotTypePlant:
+        return _SlotTypePlant(type(self), self._id, 3)
+
+    @property
+    def slot4(self) -> _SlotTypePlant:
+        return _SlotTypePlant(type(self), self._id, 4)
+
+    @property
+    def slot5(self) -> _SlotTypePlant:
+        return _SlotTypePlant(type(self), self._id, 5)
+
+    @property
+    def slot6(self) -> _SlotTypePlant:
+        return _SlotTypePlant(type(self), self._id, 6)
+
+    @property
+    def slot7(self) -> _SlotTypePlant:
+        return _SlotTypePlant(type(self), self._id, 7)
+
 
 class _HydroponicsStations(
     _BaseStructures,
@@ -4956,6 +8514,38 @@ class _HydroponicsStations(
     def TotalMolesOutput(self) -> _DevicesLogicType:
         return _DevicesLogicType(self._hash, "TotalMolesOutput", self._name)
 
+    @property
+    def slot0(self) -> _SlotTypePlants:
+        return _SlotTypePlants(type(self), self._hash, 0, self._name)
+
+    @property
+    def slot1(self) -> _SlotTypePlants:
+        return _SlotTypePlants(type(self), self._hash, 1, self._name)
+
+    @property
+    def slot2(self) -> _SlotTypePlants:
+        return _SlotTypePlants(type(self), self._hash, 2, self._name)
+
+    @property
+    def slot3(self) -> _SlotTypePlants:
+        return _SlotTypePlants(type(self), self._hash, 3, self._name)
+
+    @property
+    def slot4(self) -> _SlotTypePlants:
+        return _SlotTypePlants(type(self), self._hash, 4, self._name)
+
+    @property
+    def slot5(self) -> _SlotTypePlants:
+        return _SlotTypePlants(type(self), self._hash, 5, self._name)
+
+    @property
+    def slot6(self) -> _SlotTypePlants:
+        return _SlotTypePlants(type(self), self._hash, 6, self._name)
+
+    @property
+    def slot7(self) -> _SlotTypePlants:
+        return _SlotTypePlants(type(self), self._hash, 7, self._name)
+
 
 HydroponicsStations: _HydroponicsStations = _HydroponicsStations()
 
@@ -4974,6 +8564,14 @@ class CircuitHousing(_BaseStructure, _Error, _Mode, _Power, _SettingW):
     @property
     def StackSize(self) -> float:
         return _DeviceLogicType(self, self._id, "StackSize")
+
+    @property
+    def slot0(self) -> _SlotTypeProgrammableChip:
+        return _SlotTypeProgrammableChip(type(self), self._id, 0)
+
+    @property
+    def ProgrammableChip(self) -> _SlotTypeProgrammableChip:
+        return self.slot0
 
 
 class _CircuitHousings(_BaseStructures, _Errors, _Modes, _Powers, _SettingWs):
@@ -4994,6 +8592,14 @@ class _CircuitHousings(_BaseStructures, _Errors, _Modes, _Powers, _SettingWs):
     def StackSize(self) -> _DevicesLogicType:
         return _DevicesLogicType(self._hash, "StackSize", self._name)
 
+    @property
+    def slot0(self) -> _SlotTypeProgrammableChips:
+        return _SlotTypeProgrammableChips(type(self), self._hash, 0, self._name)
+
+    @property
+    def ProgrammableChip(self) -> _SlotTypeProgrammableChips:
+        return self.slot0
+
 
 CircuitHousings: _CircuitHousings = _CircuitHousings()
 
@@ -5012,6 +8618,14 @@ class CircuitHousingCompact(_BaseStructure, _Error, _Mode, _Power, _SettingW):
     @property
     def StackSize(self) -> float:
         return _DeviceLogicType(self, self._id, "StackSize")
+
+    @property
+    def slot0(self) -> _SlotTypeProgrammableChip:
+        return _SlotTypeProgrammableChip(type(self), self._id, 0)
+
+    @property
+    def ProgrammableChip(self) -> _SlotTypeProgrammableChip:
+        return self.slot0
 
 
 class _CircuitHousingCompacts(_BaseStructures, _Errors, _Modes, _Powers, _SettingWs):
@@ -5032,6 +8646,14 @@ class _CircuitHousingCompacts(_BaseStructures, _Errors, _Modes, _Powers, _Settin
     def StackSize(self) -> _DevicesLogicType:
         return _DevicesLogicType(self._hash, "StackSize", self._name)
 
+    @property
+    def slot0(self) -> _SlotTypeProgrammableChips:
+        return _SlotTypeProgrammableChips(type(self), self._hash, 0, self._name)
+
+    @property
+    def ProgrammableChip(self) -> _SlotTypeProgrammableChips:
+        return self.slot0
+
 
 CircuitHousingCompacts: _CircuitHousingCompacts = _CircuitHousingCompacts()
 
@@ -5050,6 +8672,14 @@ class IceCrusher(
 ):
     _hash: int = 443849486
 
+    @property
+    def slot0(self) -> _SlotTypeCommon:
+        return _SlotTypeCommon(type(self), self._id, 0)
+
+    @property
+    def Import(self) -> _SlotTypeCommon:
+        return self.slot0
+
 
 class _IceCrushers(
     _BaseStructures,
@@ -5067,6 +8697,14 @@ class _IceCrushers(
 
     def __getitem__(self, name: str | int | float) -> "_IceCrushers":
         return _IceCrushers(name)
+
+    @property
+    def slot0(self) -> _SlotTypeCommons:
+        return _SlotTypeCommons(type(self), self._hash, 0, self._name)
+
+    @property
+    def Import(self) -> _SlotTypeCommons:
+        return self.slot0
 
 
 IceCrushers: _IceCrushers = _IceCrushers()
@@ -5229,6 +8867,14 @@ class RoboticArmDock(_BaseStructure, _Activate, _Error, _Idle, _Power, _SettingW
     def PositionX(self) -> float:
         return _DeviceLogicType(self, self._id, "PositionX")
 
+    @property
+    def slot0(self) -> _SlotTypeCommon:
+        return _SlotTypeCommon(type(self), self._id, 0)
+
+    @property
+    def ArmSlot(self) -> _SlotTypeCommon:
+        return self.slot0
+
 
 class _RoboticArmDocks(
     _BaseStructures, _Activates, _Errors, _Idles, _Powers, _SettingWs
@@ -5245,6 +8891,14 @@ class _RoboticArmDocks(
     @property
     def PositionX(self) -> _DevicesLogicType:
         return _DevicesLogicType(self._hash, "PositionX", self._name)
+
+    @property
+    def slot0(self) -> _SlotTypeCommons:
+        return _SlotTypeCommons(type(self), self._hash, 0, self._name)
+
+    @property
+    def ArmSlot(self) -> _SlotTypeCommons:
+        return self.slot0
 
 
 RoboticArmDocks: _RoboticArmDocks = _RoboticArmDocks()
@@ -5308,6 +8962,14 @@ class LarreDockAtmos(
     def TotalMolesInput(self) -> float:
         return _DeviceLogicType(self, self._id, "TotalMolesInput")
 
+    @property
+    def slot0(self) -> _SlotTypeFilter:
+        return _SlotTypeFilter(type(self), self._id, 0)
+
+    @property
+    def Filter(self) -> _SlotTypeFilter:
+        return self.slot0
+
 
 class _LarreDockAtmoss(
     _BaseStructures,
@@ -5370,6 +9032,14 @@ class _LarreDockAtmoss(
     def TotalMolesInput(self) -> _DevicesLogicType:
         return _DevicesLogicType(self._hash, "TotalMolesInput", self._name)
 
+    @property
+    def slot0(self) -> _SlotTypeFilters:
+        return _SlotTypeFilters(type(self), self._hash, 0, self._name)
+
+    @property
+    def Filter(self) -> _SlotTypeFilters:
+        return self.slot0
+
 
 LarreDockAtmoss: _LarreDockAtmoss = _LarreDockAtmoss()
 
@@ -5413,6 +9083,22 @@ class LarreDockCargo(
     def TargetSlotIndex(self, value: int | float):
         pass
 
+    @property
+    def slot0(self) -> _SlotTypeCommon:
+        return _SlotTypeCommon(type(self), self._id, 0)
+
+    @property
+    def ArmSlot(self) -> _SlotTypeCommon:
+        return self.slot0
+
+    @property
+    def slot255(self) -> _SlotTypeCommon:
+        return _SlotTypeCommon(type(self), self._id, 255)
+
+    @property
+    def TargetSlot(self) -> _SlotTypeCommon:
+        return self.slot255
+
 
 class _LarreDockCargos(
     _BaseStructures, _Activates, _Errors, _Idles, _Opens, _Powers, _SettingWs
@@ -5442,6 +9128,22 @@ class _LarreDockCargos(
     def TargetSlotIndex(self, value: int | float):
         pass
 
+    @property
+    def slot0(self) -> _SlotTypeCommons:
+        return _SlotTypeCommons(type(self), self._hash, 0, self._name)
+
+    @property
+    def ArmSlot(self) -> _SlotTypeCommons:
+        return self.slot0
+
+    @property
+    def slot255(self) -> _SlotTypeCommons:
+        return _SlotTypeCommons(type(self), self._hash, 255, self._name)
+
+    @property
+    def TargetSlot(self) -> _SlotTypeCommons:
+        return self.slot255
+
 
 LarreDockCargos: _LarreDockCargos = _LarreDockCargos()
 
@@ -5467,6 +9169,86 @@ class LarreDockCollector(
     @property
     def PositionX(self) -> float:
         return _DeviceLogicType(self, self._id, "PositionX")
+
+    @property
+    def slot0(self) -> _SlotTypeCommon:
+        return _SlotTypeCommon(type(self), self._id, 0)
+
+    @property
+    def slot1(self) -> _SlotTypeCommon:
+        return _SlotTypeCommon(type(self), self._id, 1)
+
+    @property
+    def slot10(self) -> _SlotTypeCommon:
+        return _SlotTypeCommon(type(self), self._id, 10)
+
+    @property
+    def slot11(self) -> _SlotTypeCommon:
+        return _SlotTypeCommon(type(self), self._id, 11)
+
+    @property
+    def slot12(self) -> _SlotTypeCommon:
+        return _SlotTypeCommon(type(self), self._id, 12)
+
+    @property
+    def slot13(self) -> _SlotTypeCommon:
+        return _SlotTypeCommon(type(self), self._id, 13)
+
+    @property
+    def slot14(self) -> _SlotTypeCommon:
+        return _SlotTypeCommon(type(self), self._id, 14)
+
+    @property
+    def slot15(self) -> _SlotTypeCommon:
+        return _SlotTypeCommon(type(self), self._id, 15)
+
+    @property
+    def slot16(self) -> _SlotTypeCommon:
+        return _SlotTypeCommon(type(self), self._id, 16)
+
+    @property
+    def slot17(self) -> _SlotTypeCommon:
+        return _SlotTypeCommon(type(self), self._id, 17)
+
+    @property
+    def slot18(self) -> _SlotTypeCommon:
+        return _SlotTypeCommon(type(self), self._id, 18)
+
+    @property
+    def slot19(self) -> _SlotTypeCommon:
+        return _SlotTypeCommon(type(self), self._id, 19)
+
+    @property
+    def slot2(self) -> _SlotTypeCommon:
+        return _SlotTypeCommon(type(self), self._id, 2)
+
+    @property
+    def slot3(self) -> _SlotTypeCommon:
+        return _SlotTypeCommon(type(self), self._id, 3)
+
+    @property
+    def slot4(self) -> _SlotTypeCommon:
+        return _SlotTypeCommon(type(self), self._id, 4)
+
+    @property
+    def slot5(self) -> _SlotTypeCommon:
+        return _SlotTypeCommon(type(self), self._id, 5)
+
+    @property
+    def slot6(self) -> _SlotTypeCommon:
+        return _SlotTypeCommon(type(self), self._id, 6)
+
+    @property
+    def slot7(self) -> _SlotTypeCommon:
+        return _SlotTypeCommon(type(self), self._id, 7)
+
+    @property
+    def slot8(self) -> _SlotTypeCommon:
+        return _SlotTypeCommon(type(self), self._id, 8)
+
+    @property
+    def slot9(self) -> _SlotTypeCommon:
+        return _SlotTypeCommon(type(self), self._id, 9)
 
 
 class _LarreDockCollectors(
@@ -5494,6 +9276,86 @@ class _LarreDockCollectors(
     def PositionX(self) -> _DevicesLogicType:
         return _DevicesLogicType(self._hash, "PositionX", self._name)
 
+    @property
+    def slot0(self) -> _SlotTypeCommons:
+        return _SlotTypeCommons(type(self), self._hash, 0, self._name)
+
+    @property
+    def slot1(self) -> _SlotTypeCommons:
+        return _SlotTypeCommons(type(self), self._hash, 1, self._name)
+
+    @property
+    def slot10(self) -> _SlotTypeCommons:
+        return _SlotTypeCommons(type(self), self._hash, 10, self._name)
+
+    @property
+    def slot11(self) -> _SlotTypeCommons:
+        return _SlotTypeCommons(type(self), self._hash, 11, self._name)
+
+    @property
+    def slot12(self) -> _SlotTypeCommons:
+        return _SlotTypeCommons(type(self), self._hash, 12, self._name)
+
+    @property
+    def slot13(self) -> _SlotTypeCommons:
+        return _SlotTypeCommons(type(self), self._hash, 13, self._name)
+
+    @property
+    def slot14(self) -> _SlotTypeCommons:
+        return _SlotTypeCommons(type(self), self._hash, 14, self._name)
+
+    @property
+    def slot15(self) -> _SlotTypeCommons:
+        return _SlotTypeCommons(type(self), self._hash, 15, self._name)
+
+    @property
+    def slot16(self) -> _SlotTypeCommons:
+        return _SlotTypeCommons(type(self), self._hash, 16, self._name)
+
+    @property
+    def slot17(self) -> _SlotTypeCommons:
+        return _SlotTypeCommons(type(self), self._hash, 17, self._name)
+
+    @property
+    def slot18(self) -> _SlotTypeCommons:
+        return _SlotTypeCommons(type(self), self._hash, 18, self._name)
+
+    @property
+    def slot19(self) -> _SlotTypeCommons:
+        return _SlotTypeCommons(type(self), self._hash, 19, self._name)
+
+    @property
+    def slot2(self) -> _SlotTypeCommons:
+        return _SlotTypeCommons(type(self), self._hash, 2, self._name)
+
+    @property
+    def slot3(self) -> _SlotTypeCommons:
+        return _SlotTypeCommons(type(self), self._hash, 3, self._name)
+
+    @property
+    def slot4(self) -> _SlotTypeCommons:
+        return _SlotTypeCommons(type(self), self._hash, 4, self._name)
+
+    @property
+    def slot5(self) -> _SlotTypeCommons:
+        return _SlotTypeCommons(type(self), self._hash, 5, self._name)
+
+    @property
+    def slot6(self) -> _SlotTypeCommons:
+        return _SlotTypeCommons(type(self), self._hash, 6, self._name)
+
+    @property
+    def slot7(self) -> _SlotTypeCommons:
+        return _SlotTypeCommons(type(self), self._hash, 7, self._name)
+
+    @property
+    def slot8(self) -> _SlotTypeCommons:
+        return _SlotTypeCommons(type(self), self._hash, 8, self._name)
+
+    @property
+    def slot9(self) -> _SlotTypeCommons:
+        return _SlotTypeCommons(type(self), self._hash, 9, self._name)
+
 
 LarreDockCollectors: _LarreDockCollectors = _LarreDockCollectors()
 
@@ -5519,6 +9381,30 @@ class LarreDockHydroponics(
     def TargetSlotIndex(self) -> float:
         return _DeviceLogicType(self, self._id, "TargetSlotIndex")
 
+    @property
+    def slot0(self) -> _SlotTypeCommon:
+        return _SlotTypeCommon(type(self), self._id, 0)
+
+    @property
+    def ArmSlot(self) -> _SlotTypeCommon:
+        return self.slot0
+
+    @property
+    def slot1(self) -> _SlotTypeCommon:
+        return _SlotTypeCommon(type(self), self._id, 1)
+
+    @property
+    def HopperSlot(self) -> _SlotTypeCommon:
+        return self.slot1
+
+    @property
+    def slot255(self) -> _SlotTypeCommon:
+        return _SlotTypeCommon(type(self), self._id, 255)
+
+    @property
+    def TargetSlot(self) -> _SlotTypeCommon:
+        return self.slot255
+
 
 class _LarreDockHydroponicss(
     _BaseStructures, _Activates, _Errors, _Idles, _Opens, _Powers, _SettingWs
@@ -5543,6 +9429,30 @@ class _LarreDockHydroponicss(
     @property
     def TargetSlotIndex(self) -> _DevicesLogicType:
         return _DevicesLogicType(self._hash, "TargetSlotIndex", self._name)
+
+    @property
+    def slot0(self) -> _SlotTypeCommons:
+        return _SlotTypeCommons(type(self), self._hash, 0, self._name)
+
+    @property
+    def ArmSlot(self) -> _SlotTypeCommons:
+        return self.slot0
+
+    @property
+    def slot1(self) -> _SlotTypeCommons:
+        return _SlotTypeCommons(type(self), self._hash, 1, self._name)
+
+    @property
+    def HopperSlot(self) -> _SlotTypeCommons:
+        return self.slot1
+
+    @property
+    def slot255(self) -> _SlotTypeCommons:
+        return _SlotTypeCommons(type(self), self._hash, 255, self._name)
+
+    @property
+    def TargetSlot(self) -> _SlotTypeCommons:
+        return self.slot255
 
 
 LarreDockHydroponicss: _LarreDockHydroponicss = _LarreDockHydroponicss()
@@ -7089,6 +10999,14 @@ class LiquidTankStorage(_BaseStructure, _Quantity, _Temperature):
     def RatioWater(self) -> float:
         return _DeviceLogicType(self, self._id, "RatioWater")
 
+    @property
+    def slot0(self) -> _SlotTypeGasCanister:
+        return _SlotTypeGasCanister(type(self), self._id, 0)
+
+    @property
+    def LiquidCanister(self) -> _SlotTypeGasCanister:
+        return self.slot0
+
 
 class _LiquidTankStorages(_BaseStructures, _Quantitys, _Temperatures):
     _hash: int = 1691898022
@@ -7123,6 +11041,14 @@ class _LiquidTankStorages(_BaseStructures, _Quantitys, _Temperatures):
     @property
     def RatioWater(self) -> _DevicesLogicType:
         return _DevicesLogicType(self._hash, "RatioWater", self._name)
+
+    @property
+    def slot0(self) -> _SlotTypeGasCanisters:
+        return _SlotTypeGasCanisters(type(self), self._hash, 0, self._name)
+
+    @property
+    def LiquidCanister(self) -> _SlotTypeGasCanisters:
+        return self.slot0
 
 
 LiquidTankStorages: _LiquidTankStorages = _LiquidTankStorages()
@@ -7213,6 +11139,14 @@ class WaterWallCooler(
     def TotalMolesOutput(self) -> float:
         return _DeviceLogicType(self, self._id, "TotalMolesOutput")
 
+    @property
+    def slot0(self) -> _SlotTypeCommon:
+        return _SlotTypeCommon(type(self), self._id, 0)
+
+    @property
+    def DataDisk(self) -> _SlotTypeCommon:
+        return self.slot0
+
 
 class _WaterWallCoolers(
     _BaseStructures, _Errors, _Locks, _Maximums, _Powers, _Ratios, _SettingWs
@@ -7266,12 +11200,140 @@ class _WaterWallCoolers(
     def TotalMolesOutput(self) -> _DevicesLogicType:
         return _DevicesLogicType(self._hash, "TotalMolesOutput", self._name)
 
+    @property
+    def slot0(self) -> _SlotTypeCommons:
+        return _SlotTypeCommons(type(self), self._hash, 0, self._name)
+
+    @property
+    def DataDisk(self) -> _SlotTypeCommons:
+        return self.slot0
+
 
 WaterWallCoolers: _WaterWallCoolers = _WaterWallCoolers()
 
 
 class StorageLocker(_BaseStructure, _Lock, _Open):
     _hash: int = -793623899
+
+    @property
+    def slot0(self) -> _SlotTypeCommon:
+        return _SlotTypeCommon(type(self), self._id, 0)
+
+    @property
+    def slot1(self) -> _SlotTypeCommon:
+        return _SlotTypeCommon(type(self), self._id, 1)
+
+    @property
+    def slot10(self) -> _SlotTypeCommon:
+        return _SlotTypeCommon(type(self), self._id, 10)
+
+    @property
+    def slot11(self) -> _SlotTypeCommon:
+        return _SlotTypeCommon(type(self), self._id, 11)
+
+    @property
+    def slot12(self) -> _SlotTypeCommon:
+        return _SlotTypeCommon(type(self), self._id, 12)
+
+    @property
+    def slot13(self) -> _SlotTypeCommon:
+        return _SlotTypeCommon(type(self), self._id, 13)
+
+    @property
+    def slot14(self) -> _SlotTypeCommon:
+        return _SlotTypeCommon(type(self), self._id, 14)
+
+    @property
+    def slot15(self) -> _SlotTypeCommon:
+        return _SlotTypeCommon(type(self), self._id, 15)
+
+    @property
+    def slot16(self) -> _SlotTypeCommon:
+        return _SlotTypeCommon(type(self), self._id, 16)
+
+    @property
+    def slot17(self) -> _SlotTypeCommon:
+        return _SlotTypeCommon(type(self), self._id, 17)
+
+    @property
+    def slot18(self) -> _SlotTypeCommon:
+        return _SlotTypeCommon(type(self), self._id, 18)
+
+    @property
+    def slot19(self) -> _SlotTypeCommon:
+        return _SlotTypeCommon(type(self), self._id, 19)
+
+    @property
+    def slot2(self) -> _SlotTypeCommon:
+        return _SlotTypeCommon(type(self), self._id, 2)
+
+    @property
+    def slot20(self) -> _SlotTypeCommon:
+        return _SlotTypeCommon(type(self), self._id, 20)
+
+    @property
+    def slot21(self) -> _SlotTypeCommon:
+        return _SlotTypeCommon(type(self), self._id, 21)
+
+    @property
+    def slot22(self) -> _SlotTypeCommon:
+        return _SlotTypeCommon(type(self), self._id, 22)
+
+    @property
+    def slot23(self) -> _SlotTypeCommon:
+        return _SlotTypeCommon(type(self), self._id, 23)
+
+    @property
+    def slot24(self) -> _SlotTypeCommon:
+        return _SlotTypeCommon(type(self), self._id, 24)
+
+    @property
+    def slot25(self) -> _SlotTypeCommon:
+        return _SlotTypeCommon(type(self), self._id, 25)
+
+    @property
+    def slot26(self) -> _SlotTypeCommon:
+        return _SlotTypeCommon(type(self), self._id, 26)
+
+    @property
+    def slot27(self) -> _SlotTypeCommon:
+        return _SlotTypeCommon(type(self), self._id, 27)
+
+    @property
+    def slot28(self) -> _SlotTypeCommon:
+        return _SlotTypeCommon(type(self), self._id, 28)
+
+    @property
+    def slot29(self) -> _SlotTypeCommon:
+        return _SlotTypeCommon(type(self), self._id, 29)
+
+    @property
+    def slot3(self) -> _SlotTypeCommon:
+        return _SlotTypeCommon(type(self), self._id, 3)
+
+    @property
+    def slot4(self) -> _SlotTypeCommon:
+        return _SlotTypeCommon(type(self), self._id, 4)
+
+    @property
+    def slot5(self) -> _SlotTypeCommon:
+        return _SlotTypeCommon(type(self), self._id, 5)
+
+    @property
+    def slot6(self) -> _SlotTypeCommon:
+        return _SlotTypeCommon(type(self), self._id, 6)
+
+    @property
+    def slot7(self) -> _SlotTypeCommon:
+        return _SlotTypeCommon(type(self), self._id, 7)
+
+    @property
+    def slot8(self) -> _SlotTypeCommon:
+        return _SlotTypeCommon(type(self), self._id, 8)
+
+    @property
+    def slot9(self) -> _SlotTypeCommon:
+        return _SlotTypeCommon(type(self), self._id, 9)
 
 
 class _StorageLockers(_BaseStructures, _Locks, _Opens):
@@ -7280,6 +11342,126 @@ class _StorageLockers(_BaseStructures, _Locks, _Opens):
     def __getitem__(self, name: str | int | float) -> "_StorageLockers":
         return _StorageLockers(name)
 
+    @property
+    def slot0(self) -> _SlotTypeCommons:
+        return _SlotTypeCommons(type(self), self._hash, 0, self._name)
+
+    @property
+    def slot1(self) -> _SlotTypeCommons:
+        return _SlotTypeCommons(type(self), self._hash, 1, self._name)
+
+    @property
+    def slot10(self) -> _SlotTypeCommons:
+        return _SlotTypeCommons(type(self), self._hash, 10, self._name)
+
+    @property
+    def slot11(self) -> _SlotTypeCommons:
+        return _SlotTypeCommons(type(self), self._hash, 11, self._name)
+
+    @property
+    def slot12(self) -> _SlotTypeCommons:
+        return _SlotTypeCommons(type(self), self._hash, 12, self._name)
+
+    @property
+    def slot13(self) -> _SlotTypeCommons:
+        return _SlotTypeCommons(type(self), self._hash, 13, self._name)
+
+    @property
+    def slot14(self) -> _SlotTypeCommons:
+        return _SlotTypeCommons(type(self), self._hash, 14, self._name)
+
+    @property
+    def slot15(self) -> _SlotTypeCommons:
+        return _SlotTypeCommons(type(self), self._hash, 15, self._name)
+
+    @property
+    def slot16(self) -> _SlotTypeCommons:
+        return _SlotTypeCommons(type(self), self._hash, 16, self._name)
+
+    @property
+    def slot17(self) -> _SlotTypeCommons:
+        return _SlotTypeCommons(type(self), self._hash, 17, self._name)
+
+    @property
+    def slot18(self) -> _SlotTypeCommons:
+        return _SlotTypeCommons(type(self), self._hash, 18, self._name)
+
+    @property
+    def slot19(self) -> _SlotTypeCommons:
+        return _SlotTypeCommons(type(self), self._hash, 19, self._name)
+
+    @property
+    def slot2(self) -> _SlotTypeCommons:
+        return _SlotTypeCommons(type(self), self._hash, 2, self._name)
+
+    @property
+    def slot20(self) -> _SlotTypeCommons:
+        return _SlotTypeCommons(type(self), self._hash, 20, self._name)
+
+    @property
+    def slot21(self) -> _SlotTypeCommons:
+        return _SlotTypeCommons(type(self), self._hash, 21, self._name)
+
+    @property
+    def slot22(self) -> _SlotTypeCommons:
+        return _SlotTypeCommons(type(self), self._hash, 22, self._name)
+
+    @property
+    def slot23(self) -> _SlotTypeCommons:
+        return _SlotTypeCommons(type(self), self._hash, 23, self._name)
+
+    @property
+    def slot24(self) -> _SlotTypeCommons:
+        return _SlotTypeCommons(type(self), self._hash, 24, self._name)
+
+    @property
+    def slot25(self) -> _SlotTypeCommons:
+        return _SlotTypeCommons(type(self), self._hash, 25, self._name)
+
+    @property
+    def slot26(self) -> _SlotTypeCommons:
+        return _SlotTypeCommons(type(self), self._hash, 26, self._name)
+
+    @property
+    def slot27(self) -> _SlotTypeCommons:
+        return _SlotTypeCommons(type(self), self._hash, 27, self._name)
+
+    @property
+    def slot28(self) -> _SlotTypeCommons:
+        return _SlotTypeCommons(type(self), self._hash, 28, self._name)
+
+    @property
+    def slot29(self) -> _SlotTypeCommons:
+        return _SlotTypeCommons(type(self), self._hash, 29, self._name)
+
+    @property
+    def slot3(self) -> _SlotTypeCommons:
+        return _SlotTypeCommons(type(self), self._hash, 3, self._name)
+
+    @property
+    def slot4(self) -> _SlotTypeCommons:
+        return _SlotTypeCommons(type(self), self._hash, 4, self._name)
+
+    @property
+    def slot5(self) -> _SlotTypeCommons:
+        return _SlotTypeCommons(type(self), self._hash, 5, self._name)
+
+    @property
+    def slot6(self) -> _SlotTypeCommons:
+        return _SlotTypeCommons(type(self), self._hash, 6, self._name)
+
+    @property
+    def slot7(self) -> _SlotTypeCommons:
+        return _SlotTypeCommons(type(self), self._hash, 7, self._name)
+
+    @property
+    def slot8(self) -> _SlotTypeCommons:
+        return _SlotTypeCommons(type(self), self._hash, 8, self._name)
+
+    @property
+    def slot9(self) -> _SlotTypeCommons:
+        return _SlotTypeCommons(type(self), self._hash, 9, self._name)
+
 
 StorageLockers: _StorageLockers = _StorageLockers()
 
@@ -7287,12 +11469,44 @@ StorageLockers: _StorageLockers = _StorageLockers()
 class LockerSmall(_BaseStructure, _Lock, _Open):
     _hash: int = -647164662
 
+    @property
+    def slot0(self) -> _SlotTypeCommon:
+        return _SlotTypeCommon(type(self), self._id, 0)
+
+    @property
+    def slot1(self) -> _SlotTypeCommon:
+        return _SlotTypeCommon(type(self), self._id, 1)
+
+    @property
+    def slot2(self) -> _SlotTypeCommon:
+        return _SlotTypeCommon(type(self), self._id, 2)
+
+    @property
+    def slot3(self) -> _SlotTypeCommon:
+        return _SlotTypeCommon(type(self), self._id, 3)
+
 
 class _LockerSmalls(_BaseStructures, _Locks, _Opens):
     _hash: int = -647164662
 
     def __getitem__(self, name: str | int | float) -> "_LockerSmalls":
         return _LockerSmalls(name)
+
+    @property
+    def slot0(self) -> _SlotTypeCommons:
+        return _SlotTypeCommons(type(self), self._hash, 0, self._name)
+
+    @property
+    def slot1(self) -> _SlotTypeCommons:
+        return _SlotTypeCommons(type(self), self._hash, 1, self._name)
+
+    @property
+    def slot2(self) -> _SlotTypeCommons:
+        return _SlotTypeCommons(type(self), self._hash, 2, self._name)
+
+    @property
+    def slot3(self) -> _SlotTypeCommons:
+        return _SlotTypeCommons(type(self), self._hash, 3, self._name)
 
 
 LockerSmalls: _LockerSmalls = _LockerSmalls()
@@ -7456,6 +11670,38 @@ class LogicSorter(
     def StackSize(self) -> float:
         return _DeviceLogicType(self, self._id, "StackSize")
 
+    @property
+    def slot0(self) -> _SlotTypeCommon:
+        return _SlotTypeCommon(type(self), self._id, 0)
+
+    @property
+    def Import(self) -> _SlotTypeCommon:
+        return self.slot0
+
+    @property
+    def slot1(self) -> _SlotTypeCommon:
+        return _SlotTypeCommon(type(self), self._id, 1)
+
+    @property
+    def Export(self) -> _SlotTypeCommon:
+        return self.slot1
+
+    @property
+    def slot2(self) -> _SlotTypeCommon:
+        return _SlotTypeCommon(type(self), self._id, 2)
+
+    @property
+    def Export2(self) -> _SlotTypeCommon:
+        return self.slot2
+
+    @property
+    def slot3(self) -> _SlotTypeCommon:
+        return _SlotTypeCommon(type(self), self._id, 3)
+
+    @property
+    def DataDisk(self) -> _SlotTypeCommon:
+        return self.slot3
+
 
 class _LogicSorters(
     _BaseStructures,
@@ -7475,6 +11721,38 @@ class _LogicSorters(
     @property
     def StackSize(self) -> _DevicesLogicType:
         return _DevicesLogicType(self._hash, "StackSize", self._name)
+
+    @property
+    def slot0(self) -> _SlotTypeCommons:
+        return _SlotTypeCommons(type(self), self._hash, 0, self._name)
+
+    @property
+    def Import(self) -> _SlotTypeCommons:
+        return self.slot0
+
+    @property
+    def slot1(self) -> _SlotTypeCommons:
+        return _SlotTypeCommons(type(self), self._hash, 1, self._name)
+
+    @property
+    def Export(self) -> _SlotTypeCommons:
+        return self.slot1
+
+    @property
+    def slot2(self) -> _SlotTypeCommons:
+        return _SlotTypeCommons(type(self), self._hash, 2, self._name)
+
+    @property
+    def Export2(self) -> _SlotTypeCommons:
+        return self.slot2
+
+    @property
+    def slot3(self) -> _SlotTypeCommons:
+        return _SlotTypeCommons(type(self), self._hash, 3, self._name)
+
+    @property
+    def DataDisk(self) -> _SlotTypeCommons:
+        return self.slot3
 
 
 LogicSorters: _LogicSorters = _LogicSorters()
@@ -8078,6 +12356,14 @@ class Nitrolyzer(
     def TotalMolesOutput(self) -> float:
         return _DeviceLogicType(self, self._id, "TotalMolesOutput")
 
+    @property
+    def slot0(self) -> _SlotTypeCommon:
+        return _SlotTypeCommon(type(self), self._id, 0)
+
+    @property
+    def ProgrammableChip(self) -> _SlotTypeCommon:
+        return self.slot0
+
 
 class _Nitrolyzers(
     _BaseStructures,
@@ -8210,6 +12496,14 @@ class _Nitrolyzers(
     def TotalMolesOutput(self) -> _DevicesLogicType:
         return _DevicesLogicType(self._hash, "TotalMolesOutput", self._name)
 
+    @property
+    def slot0(self) -> _SlotTypeCommons:
+        return _SlotTypeCommons(type(self), self._hash, 0, self._name)
+
+    @property
+    def ProgrammableChip(self) -> _SlotTypeCommons:
+        return self.slot0
+
 
 Nitrolyzers: _Nitrolyzers = _Nitrolyzers()
 
@@ -8227,6 +12521,22 @@ class HorizontalAutoMiner(
 ):
     _hash: int = 1070427573
 
+    @property
+    def slot0(self) -> _SlotTypeCommon:
+        return _SlotTypeCommon(type(self), self._id, 0)
+
+    @property
+    def Import(self) -> _SlotTypeCommon:
+        return self.slot0
+
+    @property
+    def slot1(self) -> _SlotTypeCommon:
+        return _SlotTypeCommon(type(self), self._id, 1)
+
+    @property
+    def Export(self) -> _SlotTypeCommon:
+        return self.slot1
+
 
 class _HorizontalAutoMiners(
     _BaseStructures,
@@ -8243,6 +12553,22 @@ class _HorizontalAutoMiners(
 
     def __getitem__(self, name: str | int | float) -> "_HorizontalAutoMiners":
         return _HorizontalAutoMiners(name)
+
+    @property
+    def slot0(self) -> _SlotTypeCommons:
+        return _SlotTypeCommons(type(self), self._hash, 0, self._name)
+
+    @property
+    def Import(self) -> _SlotTypeCommons:
+        return self.slot0
+
+    @property
+    def slot1(self) -> _SlotTypeCommons:
+        return _SlotTypeCommons(type(self), self._hash, 1, self._name)
+
+    @property
+    def Export(self) -> _SlotTypeCommons:
+        return self.slot1
 
 
 HorizontalAutoMiners: _HorizontalAutoMiners = _HorizontalAutoMiners()
@@ -8305,12 +12631,28 @@ PipeLiquidOneWayValveLevers: _PipeLiquidOneWayValveLevers = (
 class OverheadShortCornerLocker(_BaseStructure, _Lock, _Open):
     _hash: int = -1794932560
 
+    @property
+    def slot0(self) -> _SlotTypeCommon:
+        return _SlotTypeCommon(type(self), self._id, 0)
+
+    @property
+    def slot1(self) -> _SlotTypeCommon:
+        return _SlotTypeCommon(type(self), self._id, 1)
+
 
 class _OverheadShortCornerLockers(_BaseStructures, _Locks, _Opens):
     _hash: int = -1794932560
 
     def __getitem__(self, name: str | int | float) -> "_OverheadShortCornerLockers":
         return _OverheadShortCornerLockers(name)
+
+    @property
+    def slot0(self) -> _SlotTypeCommons:
+        return _SlotTypeCommons(type(self), self._hash, 0, self._name)
+
+    @property
+    def slot1(self) -> _SlotTypeCommons:
+        return _SlotTypeCommons(type(self), self._hash, 1, self._name)
 
 
 OverheadShortCornerLockers: _OverheadShortCornerLockers = _OverheadShortCornerLockers()
@@ -8319,12 +12661,92 @@ OverheadShortCornerLockers: _OverheadShortCornerLockers = _OverheadShortCornerLo
 class OverheadShortLocker(_BaseStructure, _Lock, _Open):
     _hash: int = 1468249454
 
+    @property
+    def slot0(self) -> _SlotTypeCommon:
+        return _SlotTypeCommon(type(self), self._id, 0)
+
+    @property
+    def slot1(self) -> _SlotTypeCommon:
+        return _SlotTypeCommon(type(self), self._id, 1)
+
+    @property
+    def slot2(self) -> _SlotTypeCommon:
+        return _SlotTypeCommon(type(self), self._id, 2)
+
+    @property
+    def slot3(self) -> _SlotTypeCommon:
+        return _SlotTypeCommon(type(self), self._id, 3)
+
+    @property
+    def slot4(self) -> _SlotTypeCommon:
+        return _SlotTypeCommon(type(self), self._id, 4)
+
+    @property
+    def slot5(self) -> _SlotTypeCommon:
+        return _SlotTypeCommon(type(self), self._id, 5)
+
+    @property
+    def slot6(self) -> _SlotTypeCommon:
+        return _SlotTypeCommon(type(self), self._id, 6)
+
+    @property
+    def slot7(self) -> _SlotTypeCommon:
+        return _SlotTypeCommon(type(self), self._id, 7)
+
+    @property
+    def slot8(self) -> _SlotTypeCommon:
+        return _SlotTypeCommon(type(self), self._id, 8)
+
+    @property
+    def slot9(self) -> _SlotTypeCommon:
+        return _SlotTypeCommon(type(self), self._id, 9)
+
 
 class _OverheadShortLockers(_BaseStructures, _Locks, _Opens):
     _hash: int = 1468249454
 
     def __getitem__(self, name: str | int | float) -> "_OverheadShortLockers":
         return _OverheadShortLockers(name)
+
+    @property
+    def slot0(self) -> _SlotTypeCommons:
+        return _SlotTypeCommons(type(self), self._hash, 0, self._name)
+
+    @property
+    def slot1(self) -> _SlotTypeCommons:
+        return _SlotTypeCommons(type(self), self._hash, 1, self._name)
+
+    @property
+    def slot2(self) -> _SlotTypeCommons:
+        return _SlotTypeCommons(type(self), self._hash, 2, self._name)
+
+    @property
+    def slot3(self) -> _SlotTypeCommons:
+        return _SlotTypeCommons(type(self), self._hash, 3, self._name)
+
+    @property
+    def slot4(self) -> _SlotTypeCommons:
+        return _SlotTypeCommons(type(self), self._hash, 4, self._name)
+
+    @property
+    def slot5(self) -> _SlotTypeCommons:
+        return _SlotTypeCommons(type(self), self._hash, 5, self._name)
+
+    @property
+    def slot6(self) -> _SlotTypeCommons:
+        return _SlotTypeCommons(type(self), self._hash, 6, self._name)
+
+    @property
+    def slot7(self) -> _SlotTypeCommons:
+        return _SlotTypeCommons(type(self), self._hash, 7, self._name)
+
+    @property
+    def slot8(self) -> _SlotTypeCommons:
+        return _SlotTypeCommons(type(self), self._hash, 8, self._name)
+
+    @property
+    def slot9(self) -> _SlotTypeCommons:
+        return _SlotTypeCommons(type(self), self._hash, 9, self._name)
 
 
 OverheadShortLockers: _OverheadShortLockers = _OverheadShortLockers()
@@ -8561,12 +12983,28 @@ PipeIgniters: _PipeIgniters = _PipeIgniters()
 class PortablesConnector(_BaseStructure, _Maximum, _Open, _Ratio, _SettingW):
     _hash: int = -899013427
 
+    @property
+    def slot0(self) -> _SlotTypeCommon:
+        return _SlotTypeCommon(type(self), self._id, 0)
+
+    @property
+    def PortableSlot(self) -> _SlotTypeCommon:
+        return self.slot0
+
 
 class _PortablesConnectors(_BaseStructures, _Maximums, _Opens, _Ratios, _SettingWs):
     _hash: int = -899013427
 
     def __getitem__(self, name: str | int | float) -> "_PortablesConnectors":
         return _PortablesConnectors(name)
+
+    @property
+    def slot0(self) -> _SlotTypeCommons:
+        return _SlotTypeCommons(type(self), self._hash, 0, self._name)
+
+    @property
+    def PortableSlot(self) -> _SlotTypeCommons:
+        return self.slot0
 
 
 PortablesConnectors: _PortablesConnectors = _PortablesConnectors()
@@ -8575,12 +13013,28 @@ PortablesConnectors: _PortablesConnectors = _PortablesConnectors()
 class PowerConnector(_BaseStructure, _Open):
     _hash: int = -782951720
 
+    @property
+    def slot0(self) -> _SlotTypeCommon:
+        return _SlotTypeCommon(type(self), self._id, 0)
+
+    @property
+    def Portableslot(self) -> _SlotTypeCommon:
+        return self.slot0
+
 
 class _PowerConnectors(_BaseStructures, _Opens):
     _hash: int = -782951720
 
     def __getitem__(self, name: str | int | float) -> "_PowerConnectors":
         return _PowerConnectors(name)
+
+    @property
+    def slot0(self) -> _SlotTypeCommons:
+        return _SlotTypeCommons(type(self), self._hash, 0, self._name)
+
+    @property
+    def Portableslot(self) -> _SlotTypeCommons:
+        return self.slot0
 
 
 PowerConnectors: _PowerConnectors = _PowerConnectors()
@@ -8603,12 +13057,44 @@ PowerTransmitterOmnis: _PowerTransmitterOmnis = _PowerTransmitterOmnis()
 class Bench(_BaseStructure, _Error, _Power):
     _hash: int = -2042448192
 
+    @property
+    def slot0(self) -> _SlotTypeAppliance:
+        return _SlotTypeAppliance(type(self), self._id, 0)
+
+    @property
+    def Appliance1(self) -> _SlotTypeAppliance:
+        return self.slot0
+
+    @property
+    def slot1(self) -> _SlotTypeAppliance:
+        return _SlotTypeAppliance(type(self), self._id, 1)
+
+    @property
+    def Appliance2(self) -> _SlotTypeAppliance:
+        return self.slot1
+
 
 class _Benchs(_BaseStructures, _Errors, _Powers):
     _hash: int = -2042448192
 
     def __getitem__(self, name: str | int | float) -> "_Benchs":
         return _Benchs(name)
+
+    @property
+    def slot0(self) -> _SlotTypeAppliances:
+        return _SlotTypeAppliances(type(self), self._hash, 0, self._name)
+
+    @property
+    def Appliance1(self) -> _SlotTypeAppliances:
+        return self.slot0
+
+    @property
+    def slot1(self) -> _SlotTypeAppliances:
+        return _SlotTypeAppliances(type(self), self._hash, 1, self._name)
+
+    @property
+    def Appliance2(self) -> _SlotTypeAppliances:
+        return self.slot1
 
 
 Benchs: _Benchs = _Benchs()
@@ -9186,6 +13672,22 @@ class Recycler(
 ):
     _hash: int = -1633947337
 
+    @property
+    def slot0(self) -> _SlotTypeCommon:
+        return _SlotTypeCommon(type(self), self._id, 0)
+
+    @property
+    def Import(self) -> _SlotTypeCommon:
+        return self.slot0
+
+    @property
+    def slot1(self) -> _SlotTypeCommon:
+        return _SlotTypeCommon(type(self), self._id, 1)
+
+    @property
+    def Export(self) -> _SlotTypeCommon:
+        return self.slot1
+
 
 class _Recyclers(
     _BaseStructures,
@@ -9201,6 +13703,22 @@ class _Recyclers(
 
     def __getitem__(self, name: str | int | float) -> "_Recyclers":
         return _Recyclers(name)
+
+    @property
+    def slot0(self) -> _SlotTypeCommons:
+        return _SlotTypeCommons(type(self), self._hash, 0, self._name)
+
+    @property
+    def Import(self) -> _SlotTypeCommons:
+        return self.slot0
+
+    @property
+    def slot1(self) -> _SlotTypeCommons:
+        return _SlotTypeCommons(type(self), self._hash, 1, self._name)
+
+    @property
+    def Export(self) -> _SlotTypeCommons:
+        return self.slot1
 
 
 Recyclers: _Recyclers = _Recyclers()
@@ -9234,6 +13752,422 @@ class RefrigeratedVendingMachine(
     def RequestHash(self, value: int | float):
         pass
 
+    @property
+    def slot0(self) -> _SlotTypeCommon:
+        return _SlotTypeCommon(type(self), self._id, 0)
+
+    @property
+    def Import(self) -> _SlotTypeCommon:
+        return self.slot0
+
+    @property
+    def slot1(self) -> _SlotTypeCommon:
+        return _SlotTypeCommon(type(self), self._id, 1)
+
+    @property
+    def Export(self) -> _SlotTypeCommon:
+        return self.slot1
+
+    @property
+    def slot10(self) -> _SlotTypeCommon:
+        return _SlotTypeCommon(type(self), self._id, 10)
+
+    @property
+    def slot100(self) -> _SlotTypeCommon:
+        return _SlotTypeCommon(type(self), self._id, 100)
+
+    @property
+    def slot101(self) -> _SlotTypeCommon:
+        return _SlotTypeCommon(type(self), self._id, 101)
+
+    @property
+    def slot11(self) -> _SlotTypeCommon:
+        return _SlotTypeCommon(type(self), self._id, 11)
+
+    @property
+    def slot12(self) -> _SlotTypeCommon:
+        return _SlotTypeCommon(type(self), self._id, 12)
+
+    @property
+    def slot13(self) -> _SlotTypeCommon:
+        return _SlotTypeCommon(type(self), self._id, 13)
+
+    @property
+    def slot14(self) -> _SlotTypeCommon:
+        return _SlotTypeCommon(type(self), self._id, 14)
+
+    @property
+    def slot15(self) -> _SlotTypeCommon:
+        return _SlotTypeCommon(type(self), self._id, 15)
+
+    @property
+    def slot16(self) -> _SlotTypeCommon:
+        return _SlotTypeCommon(type(self), self._id, 16)
+
+    @property
+    def slot17(self) -> _SlotTypeCommon:
+        return _SlotTypeCommon(type(self), self._id, 17)
+
+    @property
+    def slot18(self) -> _SlotTypeCommon:
+        return _SlotTypeCommon(type(self), self._id, 18)
+
+    @property
+    def slot19(self) -> _SlotTypeCommon:
+        return _SlotTypeCommon(type(self), self._id, 19)
+
+    @property
+    def slot2(self) -> _SlotTypeCommon:
+        return _SlotTypeCommon(type(self), self._id, 2)
+
+    @property
+    def slot20(self) -> _SlotTypeCommon:
+        return _SlotTypeCommon(type(self), self._id, 20)
+
+    @property
+    def slot21(self) -> _SlotTypeCommon:
+        return _SlotTypeCommon(type(self), self._id, 21)
+
+    @property
+    def slot22(self) -> _SlotTypeCommon:
+        return _SlotTypeCommon(type(self), self._id, 22)
+
+    @property
+    def slot23(self) -> _SlotTypeCommon:
+        return _SlotTypeCommon(type(self), self._id, 23)
+
+    @property
+    def slot24(self) -> _SlotTypeCommon:
+        return _SlotTypeCommon(type(self), self._id, 24)
+
+    @property
+    def slot25(self) -> _SlotTypeCommon:
+        return _SlotTypeCommon(type(self), self._id, 25)
+
+    @property
+    def slot26(self) -> _SlotTypeCommon:
+        return _SlotTypeCommon(type(self), self._id, 26)
+
+    @property
+    def slot27(self) -> _SlotTypeCommon:
+        return _SlotTypeCommon(type(self), self._id, 27)
+
+    @property
+    def slot28(self) -> _SlotTypeCommon:
+        return _SlotTypeCommon(type(self), self._id, 28)
+
+    @property
+    def slot29(self) -> _SlotTypeCommon:
+        return _SlotTypeCommon(type(self), self._id, 29)
+
+    @property
+    def slot3(self) -> _SlotTypeCommon:
+        return _SlotTypeCommon(type(self), self._id, 3)
+
+    @property
+    def slot30(self) -> _SlotTypeCommon:
+        return _SlotTypeCommon(type(self), self._id, 30)
+
+    @property
+    def slot31(self) -> _SlotTypeCommon:
+        return _SlotTypeCommon(type(self), self._id, 31)
+
+    @property
+    def slot32(self) -> _SlotTypeCommon:
+        return _SlotTypeCommon(type(self), self._id, 32)
+
+    @property
+    def slot33(self) -> _SlotTypeCommon:
+        return _SlotTypeCommon(type(self), self._id, 33)
+
+    @property
+    def slot34(self) -> _SlotTypeCommon:
+        return _SlotTypeCommon(type(self), self._id, 34)
+
+    @property
+    def slot35(self) -> _SlotTypeCommon:
+        return _SlotTypeCommon(type(self), self._id, 35)
+
+    @property
+    def slot36(self) -> _SlotTypeCommon:
+        return _SlotTypeCommon(type(self), self._id, 36)
+
+    @property
+    def slot37(self) -> _SlotTypeCommon:
+        return _SlotTypeCommon(type(self), self._id, 37)
+
+    @property
+    def slot38(self) -> _SlotTypeCommon:
+        return _SlotTypeCommon(type(self), self._id, 38)
+
+    @property
+    def slot39(self) -> _SlotTypeCommon:
+        return _SlotTypeCommon(type(self), self._id, 39)
+
+    @property
+    def slot4(self) -> _SlotTypeCommon:
+        return _SlotTypeCommon(type(self), self._id, 4)
+
+    @property
+    def slot40(self) -> _SlotTypeCommon:
+        return _SlotTypeCommon(type(self), self._id, 40)
+
+    @property
+    def slot41(self) -> _SlotTypeCommon:
+        return _SlotTypeCommon(type(self), self._id, 41)
+
+    @property
+    def slot42(self) -> _SlotTypeCommon:
+        return _SlotTypeCommon(type(self), self._id, 42)
+
+    @property
+    def slot43(self) -> _SlotTypeCommon:
+        return _SlotTypeCommon(type(self), self._id, 43)
+
+    @property
+    def slot44(self) -> _SlotTypeCommon:
+        return _SlotTypeCommon(type(self), self._id, 44)
+
+    @property
+    def slot45(self) -> _SlotTypeCommon:
+        return _SlotTypeCommon(type(self), self._id, 45)
+
+    @property
+    def slot46(self) -> _SlotTypeCommon:
+        return _SlotTypeCommon(type(self), self._id, 46)
+
+    @property
+    def slot47(self) -> _SlotTypeCommon:
+        return _SlotTypeCommon(type(self), self._id, 47)
+
+    @property
+    def slot48(self) -> _SlotTypeCommon:
+        return _SlotTypeCommon(type(self), self._id, 48)
+
+    @property
+    def slot49(self) -> _SlotTypeCommon:
+        return _SlotTypeCommon(type(self), self._id, 49)
+
+    @property
+    def slot5(self) -> _SlotTypeCommon:
+        return _SlotTypeCommon(type(self), self._id, 5)
+
+    @property
+    def slot50(self) -> _SlotTypeCommon:
+        return _SlotTypeCommon(type(self), self._id, 50)
+
+    @property
+    def slot51(self) -> _SlotTypeCommon:
+        return _SlotTypeCommon(type(self), self._id, 51)
+
+    @property
+    def slot52(self) -> _SlotTypeCommon:
+        return _SlotTypeCommon(type(self), self._id, 52)
+
+    @property
+    def slot53(self) -> _SlotTypeCommon:
+        return _SlotTypeCommon(type(self), self._id, 53)
+
+    @property
+    def slot54(self) -> _SlotTypeCommon:
+        return _SlotTypeCommon(type(self), self._id, 54)
+
+    @property
+    def slot55(self) -> _SlotTypeCommon:
+        return _SlotTypeCommon(type(self), self._id, 55)
+
+    @property
+    def slot56(self) -> _SlotTypeCommon:
+        return _SlotTypeCommon(type(self), self._id, 56)
+
+    @property
+    def slot57(self) -> _SlotTypeCommon:
+        return _SlotTypeCommon(type(self), self._id, 57)
+
+    @property
+    def slot58(self) -> _SlotTypeCommon:
+        return _SlotTypeCommon(type(self), self._id, 58)
+
+    @property
+    def slot59(self) -> _SlotTypeCommon:
+        return _SlotTypeCommon(type(self), self._id, 59)
+
+    @property
+    def slot6(self) -> _SlotTypeCommon:
+        return _SlotTypeCommon(type(self), self._id, 6)
+
+    @property
+    def slot60(self) -> _SlotTypeCommon:
+        return _SlotTypeCommon(type(self), self._id, 60)
+
+    @property
+    def slot61(self) -> _SlotTypeCommon:
+        return _SlotTypeCommon(type(self), self._id, 61)
+
+    @property
+    def slot62(self) -> _SlotTypeCommon:
+        return _SlotTypeCommon(type(self), self._id, 62)
+
+    @property
+    def slot63(self) -> _SlotTypeCommon:
+        return _SlotTypeCommon(type(self), self._id, 63)
+
+    @property
+    def slot64(self) -> _SlotTypeCommon:
+        return _SlotTypeCommon(type(self), self._id, 64)
+
+    @property
+    def slot65(self) -> _SlotTypeCommon:
+        return _SlotTypeCommon(type(self), self._id, 65)
+
+    @property
+    def slot66(self) -> _SlotTypeCommon:
+        return _SlotTypeCommon(type(self), self._id, 66)
+
+    @property
+    def slot67(self) -> _SlotTypeCommon:
+        return _SlotTypeCommon(type(self), self._id, 67)
+
+    @property
+    def slot68(self) -> _SlotTypeCommon:
+        return _SlotTypeCommon(type(self), self._id, 68)
+
+    @property
+    def slot69(self) -> _SlotTypeCommon:
+        return _SlotTypeCommon(type(self), self._id, 69)
+
+    @property
+    def slot7(self) -> _SlotTypeCommon:
+        return _SlotTypeCommon(type(self), self._id, 7)
+
+    @property
+    def slot70(self) -> _SlotTypeCommon:
+        return _SlotTypeCommon(type(self), self._id, 70)
+
+    @property
+    def slot71(self) -> _SlotTypeCommon:
+        return _SlotTypeCommon(type(self), self._id, 71)
+
+    @property
+    def slot72(self) -> _SlotTypeCommon:
+        return _SlotTypeCommon(type(self), self._id, 72)
+
+    @property
+    def slot73(self) -> _SlotTypeCommon:
+        return _SlotTypeCommon(type(self), self._id, 73)
+
+    @property
+    def slot74(self) -> _SlotTypeCommon:
+        return _SlotTypeCommon(type(self), self._id, 74)
+
+    @property
+    def slot75(self) -> _SlotTypeCommon:
+        return _SlotTypeCommon(type(self), self._id, 75)
+
+    @property
+    def slot76(self) -> _SlotTypeCommon:
+        return _SlotTypeCommon(type(self), self._id, 76)
+
+    @property
+    def slot77(self) -> _SlotTypeCommon:
+        return _SlotTypeCommon(type(self), self._id, 77)
+
+    @property
+    def slot78(self) -> _SlotTypeCommon:
+        return _SlotTypeCommon(type(self), self._id, 78)
+
+    @property
+    def slot79(self) -> _SlotTypeCommon:
+        return _SlotTypeCommon(type(self), self._id, 79)
+
+    @property
+    def slot8(self) -> _SlotTypeCommon:
+        return _SlotTypeCommon(type(self), self._id, 8)
+
+    @property
+    def slot80(self) -> _SlotTypeCommon:
+        return _SlotTypeCommon(type(self), self._id, 80)
+
+    @property
+    def slot81(self) -> _SlotTypeCommon:
+        return _SlotTypeCommon(type(self), self._id, 81)
+
+    @property
+    def slot82(self) -> _SlotTypeCommon:
+        return _SlotTypeCommon(type(self), self._id, 82)
+
+    @property
+    def slot83(self) -> _SlotTypeCommon:
+        return _SlotTypeCommon(type(self), self._id, 83)
+
+    @property
+    def slot84(self) -> _SlotTypeCommon:
+        return _SlotTypeCommon(type(self), self._id, 84)
+
+    @property
+    def slot85(self) -> _SlotTypeCommon:
+        return _SlotTypeCommon(type(self), self._id, 85)
+
+    @property
+    def slot86(self) -> _SlotTypeCommon:
+        return _SlotTypeCommon(type(self), self._id, 86)
+
+    @property
+    def slot87(self) -> _SlotTypeCommon:
+        return _SlotTypeCommon(type(self), self._id, 87)
+
+    @property
+    def slot88(self) -> _SlotTypeCommon:
+        return _SlotTypeCommon(type(self), self._id, 88)
+
+    @property
+    def slot89(self) -> _SlotTypeCommon:
+        return _SlotTypeCommon(type(self), self._id, 89)
+
+    @property
+    def slot9(self) -> _SlotTypeCommon:
+        return _SlotTypeCommon(type(self), self._id, 9)
+
+    @property
+    def slot90(self) -> _SlotTypeCommon:
+        return _SlotTypeCommon(type(self), self._id, 90)
+
+    @property
+    def slot91(self) -> _SlotTypeCommon:
+        return _SlotTypeCommon(type(self), self._id, 91)
+
+    @property
+    def slot92(self) -> _SlotTypeCommon:
+        return _SlotTypeCommon(type(self), self._id, 92)
+
+    @property
+    def slot93(self) -> _SlotTypeCommon:
+        return _SlotTypeCommon(type(self), self._id, 93)
+
+    @property
+    def slot94(self) -> _SlotTypeCommon:
+        return _SlotTypeCommon(type(self), self._id, 94)
+
+    @property
+    def slot95(self) -> _SlotTypeCommon:
+        return _SlotTypeCommon(type(self), self._id, 95)
+
+    @property
+    def slot96(self) -> _SlotTypeCommon:
+        return _SlotTypeCommon(type(self), self._id, 96)
+
+    @property
+    def slot97(self) -> _SlotTypeCommon:
+        return _SlotTypeCommon(type(self), self._id, 97)
+
+    @property
+    def slot98(self) -> _SlotTypeCommon:
+        return _SlotTypeCommon(type(self), self._id, 98)
+
+    @property
+    def slot99(self) -> _SlotTypeCommon:
+        return _SlotTypeCommon(type(self), self._id, 99)
+
 
 class _RefrigeratedVendingMachines(
     _BaseStructures,
@@ -9265,6 +14199,422 @@ class _RefrigeratedVendingMachines(
     @RequestHash.setter
     def RequestHash(self, value: int | float):
         pass
+
+    @property
+    def slot0(self) -> _SlotTypeCommons:
+        return _SlotTypeCommons(type(self), self._hash, 0, self._name)
+
+    @property
+    def Import(self) -> _SlotTypeCommons:
+        return self.slot0
+
+    @property
+    def slot1(self) -> _SlotTypeCommons:
+        return _SlotTypeCommons(type(self), self._hash, 1, self._name)
+
+    @property
+    def Export(self) -> _SlotTypeCommons:
+        return self.slot1
+
+    @property
+    def slot10(self) -> _SlotTypeCommons:
+        return _SlotTypeCommons(type(self), self._hash, 10, self._name)
+
+    @property
+    def slot100(self) -> _SlotTypeCommons:
+        return _SlotTypeCommons(type(self), self._hash, 100, self._name)
+
+    @property
+    def slot101(self) -> _SlotTypeCommons:
+        return _SlotTypeCommons(type(self), self._hash, 101, self._name)
+
+    @property
+    def slot11(self) -> _SlotTypeCommons:
+        return _SlotTypeCommons(type(self), self._hash, 11, self._name)
+
+    @property
+    def slot12(self) -> _SlotTypeCommons:
+        return _SlotTypeCommons(type(self), self._hash, 12, self._name)
+
+    @property
+    def slot13(self) -> _SlotTypeCommons:
+        return _SlotTypeCommons(type(self), self._hash, 13, self._name)
+
+    @property
+    def slot14(self) -> _SlotTypeCommons:
+        return _SlotTypeCommons(type(self), self._hash, 14, self._name)
+
+    @property
+    def slot15(self) -> _SlotTypeCommons:
+        return _SlotTypeCommons(type(self), self._hash, 15, self._name)
+
+    @property
+    def slot16(self) -> _SlotTypeCommons:
+        return _SlotTypeCommons(type(self), self._hash, 16, self._name)
+
+    @property
+    def slot17(self) -> _SlotTypeCommons:
+        return _SlotTypeCommons(type(self), self._hash, 17, self._name)
+
+    @property
+    def slot18(self) -> _SlotTypeCommons:
+        return _SlotTypeCommons(type(self), self._hash, 18, self._name)
+
+    @property
+    def slot19(self) -> _SlotTypeCommons:
+        return _SlotTypeCommons(type(self), self._hash, 19, self._name)
+
+    @property
+    def slot2(self) -> _SlotTypeCommons:
+        return _SlotTypeCommons(type(self), self._hash, 2, self._name)
+
+    @property
+    def slot20(self) -> _SlotTypeCommons:
+        return _SlotTypeCommons(type(self), self._hash, 20, self._name)
+
+    @property
+    def slot21(self) -> _SlotTypeCommons:
+        return _SlotTypeCommons(type(self), self._hash, 21, self._name)
+
+    @property
+    def slot22(self) -> _SlotTypeCommons:
+        return _SlotTypeCommons(type(self), self._hash, 22, self._name)
+
+    @property
+    def slot23(self) -> _SlotTypeCommons:
+        return _SlotTypeCommons(type(self), self._hash, 23, self._name)
+
+    @property
+    def slot24(self) -> _SlotTypeCommons:
+        return _SlotTypeCommons(type(self), self._hash, 24, self._name)
+
+    @property
+    def slot25(self) -> _SlotTypeCommons:
+        return _SlotTypeCommons(type(self), self._hash, 25, self._name)
+
+    @property
+    def slot26(self) -> _SlotTypeCommons:
+        return _SlotTypeCommons(type(self), self._hash, 26, self._name)
+
+    @property
+    def slot27(self) -> _SlotTypeCommons:
+        return _SlotTypeCommons(type(self), self._hash, 27, self._name)
+
+    @property
+    def slot28(self) -> _SlotTypeCommons:
+        return _SlotTypeCommons(type(self), self._hash, 28, self._name)
+
+    @property
+    def slot29(self) -> _SlotTypeCommons:
+        return _SlotTypeCommons(type(self), self._hash, 29, self._name)
+
+    @property
+    def slot3(self) -> _SlotTypeCommons:
+        return _SlotTypeCommons(type(self), self._hash, 3, self._name)
+
+    @property
+    def slot30(self) -> _SlotTypeCommons:
+        return _SlotTypeCommons(type(self), self._hash, 30, self._name)
+
+    @property
+    def slot31(self) -> _SlotTypeCommons:
+        return _SlotTypeCommons(type(self), self._hash, 31, self._name)
+
+    @property
+    def slot32(self) -> _SlotTypeCommons:
+        return _SlotTypeCommons(type(self), self._hash, 32, self._name)
+
+    @property
+    def slot33(self) -> _SlotTypeCommons:
+        return _SlotTypeCommons(type(self), self._hash, 33, self._name)
+
+    @property
+    def slot34(self) -> _SlotTypeCommons:
+        return _SlotTypeCommons(type(self), self._hash, 34, self._name)
+
+    @property
+    def slot35(self) -> _SlotTypeCommons:
+        return _SlotTypeCommons(type(self), self._hash, 35, self._name)
+
+    @property
+    def slot36(self) -> _SlotTypeCommons:
+        return _SlotTypeCommons(type(self), self._hash, 36, self._name)
+
+    @property
+    def slot37(self) -> _SlotTypeCommons:
+        return _SlotTypeCommons(type(self), self._hash, 37, self._name)
+
+    @property
+    def slot38(self) -> _SlotTypeCommons:
+        return _SlotTypeCommons(type(self), self._hash, 38, self._name)
+
+    @property
+    def slot39(self) -> _SlotTypeCommons:
+        return _SlotTypeCommons(type(self), self._hash, 39, self._name)
+
+    @property
+    def slot4(self) -> _SlotTypeCommons:
+        return _SlotTypeCommons(type(self), self._hash, 4, self._name)
+
+    @property
+    def slot40(self) -> _SlotTypeCommons:
+        return _SlotTypeCommons(type(self), self._hash, 40, self._name)
+
+    @property
+    def slot41(self) -> _SlotTypeCommons:
+        return _SlotTypeCommons(type(self), self._hash, 41, self._name)
+
+    @property
+    def slot42(self) -> _SlotTypeCommons:
+        return _SlotTypeCommons(type(self), self._hash, 42, self._name)
+
+    @property
+    def slot43(self) -> _SlotTypeCommons:
+        return _SlotTypeCommons(type(self), self._hash, 43, self._name)
+
+    @property
+    def slot44(self) -> _SlotTypeCommons:
+        return _SlotTypeCommons(type(self), self._hash, 44, self._name)
+
+    @property
+    def slot45(self) -> _SlotTypeCommons:
+        return _SlotTypeCommons(type(self), self._hash, 45, self._name)
+
+    @property
+    def slot46(self) -> _SlotTypeCommons:
+        return _SlotTypeCommons(type(self), self._hash, 46, self._name)
+
+    @property
+    def slot47(self) -> _SlotTypeCommons:
+        return _SlotTypeCommons(type(self), self._hash, 47, self._name)
+
+    @property
+    def slot48(self) -> _SlotTypeCommons:
+        return _SlotTypeCommons(type(self), self._hash, 48, self._name)
+
+    @property
+    def slot49(self) -> _SlotTypeCommons:
+        return _SlotTypeCommons(type(self), self._hash, 49, self._name)
+
+    @property
+    def slot5(self) -> _SlotTypeCommons:
+        return _SlotTypeCommons(type(self), self._hash, 5, self._name)
+
+    @property
+    def slot50(self) -> _SlotTypeCommons:
+        return _SlotTypeCommons(type(self), self._hash, 50, self._name)
+
+    @property
+    def slot51(self) -> _SlotTypeCommons:
+        return _SlotTypeCommons(type(self), self._hash, 51, self._name)
+
+    @property
+    def slot52(self) -> _SlotTypeCommons:
+        return _SlotTypeCommons(type(self), self._hash, 52, self._name)
+
+    @property
+    def slot53(self) -> _SlotTypeCommons:
+        return _SlotTypeCommons(type(self), self._hash, 53, self._name)
+
+    @property
+    def slot54(self) -> _SlotTypeCommons:
+        return _SlotTypeCommons(type(self), self._hash, 54, self._name)
+
+    @property
+    def slot55(self) -> _SlotTypeCommons:
+        return _SlotTypeCommons(type(self), self._hash, 55, self._name)
+
+    @property
+    def slot56(self) -> _SlotTypeCommons:
+        return _SlotTypeCommons(type(self), self._hash, 56, self._name)
+
+    @property
+    def slot57(self) -> _SlotTypeCommons:
+        return _SlotTypeCommons(type(self), self._hash, 57, self._name)
+
+    @property
+    def slot58(self) -> _SlotTypeCommons:
+        return _SlotTypeCommons(type(self), self._hash, 58, self._name)
+
+    @property
+    def slot59(self) -> _SlotTypeCommons:
+        return _SlotTypeCommons(type(self), self._hash, 59, self._name)
+
+    @property
+    def slot6(self) -> _SlotTypeCommons:
+        return _SlotTypeCommons(type(self), self._hash, 6, self._name)
+
+    @property
+    def slot60(self) -> _SlotTypeCommons:
+        return _SlotTypeCommons(type(self), self._hash, 60, self._name)
+
+    @property
+    def slot61(self) -> _SlotTypeCommons:
+        return _SlotTypeCommons(type(self), self._hash, 61, self._name)
+
+    @property
+    def slot62(self) -> _SlotTypeCommons:
+        return _SlotTypeCommons(type(self), self._hash, 62, self._name)
+
+    @property
+    def slot63(self) -> _SlotTypeCommons:
+        return _SlotTypeCommons(type(self), self._hash, 63, self._name)
+
+    @property
+    def slot64(self) -> _SlotTypeCommons:
+        return _SlotTypeCommons(type(self), self._hash, 64, self._name)
+
+    @property
+    def slot65(self) -> _SlotTypeCommons:
+        return _SlotTypeCommons(type(self), self._hash, 65, self._name)
+
+    @property
+    def slot66(self) -> _SlotTypeCommons:
+        return _SlotTypeCommons(type(self), self._hash, 66, self._name)
+
+    @property
+    def slot67(self) -> _SlotTypeCommons:
+        return _SlotTypeCommons(type(self), self._hash, 67, self._name)
+
+    @property
+    def slot68(self) -> _SlotTypeCommons:
+        return _SlotTypeCommons(type(self), self._hash, 68, self._name)
+
+    @property
+    def slot69(self) -> _SlotTypeCommons:
+        return _SlotTypeCommons(type(self), self._hash, 69, self._name)
+
+    @property
+    def slot7(self) -> _SlotTypeCommons:
+        return _SlotTypeCommons(type(self), self._hash, 7, self._name)
+
+    @property
+    def slot70(self) -> _SlotTypeCommons:
+        return _SlotTypeCommons(type(self), self._hash, 70, self._name)
+
+    @property
+    def slot71(self) -> _SlotTypeCommons:
+        return _SlotTypeCommons(type(self), self._hash, 71, self._name)
+
+    @property
+    def slot72(self) -> _SlotTypeCommons:
+        return _SlotTypeCommons(type(self), self._hash, 72, self._name)
+
+    @property
+    def slot73(self) -> _SlotTypeCommons:
+        return _SlotTypeCommons(type(self), self._hash, 73, self._name)
+
+    @property
+    def slot74(self) -> _SlotTypeCommons:
+        return _SlotTypeCommons(type(self), self._hash, 74, self._name)
+
+    @property
+    def slot75(self) -> _SlotTypeCommons:
+        return _SlotTypeCommons(type(self), self._hash, 75, self._name)
+
+    @property
+    def slot76(self) -> _SlotTypeCommons:
+        return _SlotTypeCommons(type(self), self._hash, 76, self._name)
+
+    @property
+    def slot77(self) -> _SlotTypeCommons:
+        return _SlotTypeCommons(type(self), self._hash, 77, self._name)
+
+    @property
+    def slot78(self) -> _SlotTypeCommons:
+        return _SlotTypeCommons(type(self), self._hash, 78, self._name)
+
+    @property
+    def slot79(self) -> _SlotTypeCommons:
+        return _SlotTypeCommons(type(self), self._hash, 79, self._name)
+
+    @property
+    def slot8(self) -> _SlotTypeCommons:
+        return _SlotTypeCommons(type(self), self._hash, 8, self._name)
+
+    @property
+    def slot80(self) -> _SlotTypeCommons:
+        return _SlotTypeCommons(type(self), self._hash, 80, self._name)
+
+    @property
+    def slot81(self) -> _SlotTypeCommons:
+        return _SlotTypeCommons(type(self), self._hash, 81, self._name)
+
+    @property
+    def slot82(self) -> _SlotTypeCommons:
+        return _SlotTypeCommons(type(self), self._hash, 82, self._name)
+
+    @property
+    def slot83(self) -> _SlotTypeCommons:
+        return _SlotTypeCommons(type(self), self._hash, 83, self._name)
+
+    @property
+    def slot84(self) -> _SlotTypeCommons:
+        return _SlotTypeCommons(type(self), self._hash, 84, self._name)
+
+    @property
+    def slot85(self) -> _SlotTypeCommons:
+        return _SlotTypeCommons(type(self), self._hash, 85, self._name)
+
+    @property
+    def slot86(self) -> _SlotTypeCommons:
+        return _SlotTypeCommons(type(self), self._hash, 86, self._name)
+
+    @property
+    def slot87(self) -> _SlotTypeCommons:
+        return _SlotTypeCommons(type(self), self._hash, 87, self._name)
+
+    @property
+    def slot88(self) -> _SlotTypeCommons:
+        return _SlotTypeCommons(type(self), self._hash, 88, self._name)
+
+    @property
+    def slot89(self) -> _SlotTypeCommons:
+        return _SlotTypeCommons(type(self), self._hash, 89, self._name)
+
+    @property
+    def slot9(self) -> _SlotTypeCommons:
+        return _SlotTypeCommons(type(self), self._hash, 9, self._name)
+
+    @property
+    def slot90(self) -> _SlotTypeCommons:
+        return _SlotTypeCommons(type(self), self._hash, 90, self._name)
+
+    @property
+    def slot91(self) -> _SlotTypeCommons:
+        return _SlotTypeCommons(type(self), self._hash, 91, self._name)
+
+    @property
+    def slot92(self) -> _SlotTypeCommons:
+        return _SlotTypeCommons(type(self), self._hash, 92, self._name)
+
+    @property
+    def slot93(self) -> _SlotTypeCommons:
+        return _SlotTypeCommons(type(self), self._hash, 93, self._name)
+
+    @property
+    def slot94(self) -> _SlotTypeCommons:
+        return _SlotTypeCommons(type(self), self._hash, 94, self._name)
+
+    @property
+    def slot95(self) -> _SlotTypeCommons:
+        return _SlotTypeCommons(type(self), self._hash, 95, self._name)
+
+    @property
+    def slot96(self) -> _SlotTypeCommons:
+        return _SlotTypeCommons(type(self), self._hash, 96, self._name)
+
+    @property
+    def slot97(self) -> _SlotTypeCommons:
+        return _SlotTypeCommons(type(self), self._hash, 97, self._name)
+
+    @property
+    def slot98(self) -> _SlotTypeCommons:
+        return _SlotTypeCommons(type(self), self._hash, 98, self._name)
+
+    @property
+    def slot99(self) -> _SlotTypeCommons:
+        return _SlotTypeCommons(type(self), self._hash, 99, self._name)
 
 
 RefrigeratedVendingMachines: _RefrigeratedVendingMachines = (
@@ -9647,6 +14997,14 @@ class RocketCircuitHousing(_BaseStructure, _Error, _Mode, _Power, _SettingW):
     def StackSize(self) -> float:
         return _DeviceLogicType(self, self._id, "StackSize")
 
+    @property
+    def slot0(self) -> _SlotTypeProgrammableChip:
+        return _SlotTypeProgrammableChip(type(self), self._id, 0)
+
+    @property
+    def ProgrammableChip(self) -> _SlotTypeProgrammableChip:
+        return self.slot0
+
 
 class _RocketCircuitHousings(_BaseStructures, _Errors, _Modes, _Powers, _SettingWs):
     _hash: int = 150135861
@@ -9665,6 +15023,14 @@ class _RocketCircuitHousings(_BaseStructures, _Errors, _Modes, _Powers, _Setting
     @property
     def StackSize(self) -> _DevicesLogicType:
         return _DevicesLogicType(self._hash, "StackSize", self._name)
+
+    @property
+    def slot0(self) -> _SlotTypeProgrammableChips:
+        return _SlotTypeProgrammableChips(type(self), self._hash, 0, self._name)
+
+    @property
+    def ProgrammableChip(self) -> _SlotTypeProgrammableChips:
+        return self.slot0
 
 
 RocketCircuitHousings: _RocketCircuitHousings = _RocketCircuitHousings()
@@ -9871,6 +15237,14 @@ class RocketFiltrationGas(
     def TotalMolesOutput2(self) -> float:
         return _DeviceLogicType(self, self._id, "TotalMolesOutput2")
 
+    @property
+    def slot0(self) -> _SlotTypeFilter:
+        return _SlotTypeFilter(type(self), self._id, 0)
+
+    @property
+    def GasFilter(self) -> _SlotTypeFilter:
+        return self.slot0
+
 
 class _RocketFiltrationGass(
     _BaseStructures,
@@ -9938,6 +15312,14 @@ class _RocketFiltrationGass(
     def TotalMolesOutput2(self) -> _DevicesLogicType:
         return _DevicesLogicType(self._hash, "TotalMolesOutput2", self._name)
 
+    @property
+    def slot0(self) -> _SlotTypeFilters:
+        return _SlotTypeFilters(type(self), self._hash, 0, self._name)
+
+    @property
+    def GasFilter(self) -> _SlotTypeFilters:
+        return self.slot0
+
 
 RocketFiltrationGass: _RocketFiltrationGass = _RocketFiltrationGass()
 
@@ -9964,6 +15346,22 @@ class RocketManufactory(
     @property
     def StackSize(self) -> float:
         return _DeviceLogicType(self, self._id, "StackSize")
+
+    @property
+    def slot0(self) -> _SlotTypeCommon:
+        return _SlotTypeCommon(type(self), self._id, 0)
+
+    @property
+    def Import(self) -> _SlotTypeCommon:
+        return self.slot0
+
+    @property
+    def slot1(self) -> _SlotTypeCommon:
+        return _SlotTypeCommon(type(self), self._id, 1)
+
+    @property
+    def Export(self) -> _SlotTypeCommon:
+        return self.slot1
 
 
 class _RocketManufactorys(
@@ -9992,6 +15390,22 @@ class _RocketManufactorys(
     def StackSize(self) -> _DevicesLogicType:
         return _DevicesLogicType(self._hash, "StackSize", self._name)
 
+    @property
+    def slot0(self) -> _SlotTypeCommons:
+        return _SlotTypeCommons(type(self), self._hash, 0, self._name)
+
+    @property
+    def Import(self) -> _SlotTypeCommons:
+        return self.slot0
+
+    @property
+    def slot1(self) -> _SlotTypeCommons:
+        return _SlotTypeCommons(type(self), self._hash, 1, self._name)
+
+    @property
+    def Export(self) -> _SlotTypeCommons:
+        return self.slot1
+
 
 RocketManufactorys: _RocketManufactorys = _RocketManufactorys()
 
@@ -10011,6 +15425,22 @@ class RocketMiner(
     @property
     def DrillCondition(self) -> float:
         return _DeviceLogicType(self, self._id, "DrillCondition")
+
+    @property
+    def slot0(self) -> _SlotTypeCommon:
+        return _SlotTypeCommon(type(self), self._id, 0)
+
+    @property
+    def Export(self) -> _SlotTypeCommon:
+        return self.slot0
+
+    @property
+    def slot1(self) -> _SlotTypeCommon:
+        return _SlotTypeCommon(type(self), self._id, 1)
+
+    @property
+    def DrillHeadSlot(self) -> _SlotTypeCommon:
+        return self.slot1
 
 
 class _RocketMiners(
@@ -10032,12 +15462,36 @@ class _RocketMiners(
     def DrillCondition(self) -> _DevicesLogicType:
         return _DevicesLogicType(self._hash, "DrillCondition", self._name)
 
+    @property
+    def slot0(self) -> _SlotTypeCommons:
+        return _SlotTypeCommons(type(self), self._hash, 0, self._name)
+
+    @property
+    def Export(self) -> _SlotTypeCommons:
+        return self.slot0
+
+    @property
+    def slot1(self) -> _SlotTypeCommons:
+        return _SlotTypeCommons(type(self), self._hash, 1, self._name)
+
+    @property
+    def DrillHeadSlot(self) -> _SlotTypeCommons:
+        return self.slot1
+
 
 RocketMiners: _RocketMiners = _RocketMiners()
 
 
 class RocketScanner(_BaseStructure, _Error, _Lock, _Power):
     _hash: int = 2014252591
+
+    @property
+    def slot0(self) -> _SlotTypeCommon:
+        return _SlotTypeCommon(type(self), self._id, 0)
+
+    @property
+    def ScannerHeadSlot(self) -> _SlotTypeCommon:
+        return self.slot0
 
 
 class _RocketScanners(_BaseStructures, _Errors, _Locks, _Powers):
@@ -10046,12 +15500,28 @@ class _RocketScanners(_BaseStructures, _Errors, _Locks, _Powers):
     def __getitem__(self, name: str | int | float) -> "_RocketScanners":
         return _RocketScanners(name)
 
+    @property
+    def slot0(self) -> _SlotTypeCommons:
+        return _SlotTypeCommons(type(self), self._hash, 0, self._name)
+
+    @property
+    def ScannerHeadSlot(self) -> _SlotTypeCommons:
+        return self.slot0
+
 
 RocketScanners: _RocketScanners = _RocketScanners()
 
 
 class SDBHopper(_BaseStructure, _ClearMemory, _ImportCount, _Open):
     _hash: int = -1875856925
+
+    @property
+    def slot0(self) -> _SlotTypeCommon:
+        return _SlotTypeCommon(type(self), self._id, 0)
+
+    @property
+    def Import(self) -> _SlotTypeCommon:
+        return self.slot0
 
 
 class _SDBHoppers(_BaseStructures, _ClearMemorys, _ImportCounts, _Opens):
@@ -10060,12 +15530,28 @@ class _SDBHoppers(_BaseStructures, _ClearMemorys, _ImportCounts, _Opens):
     def __getitem__(self, name: str | int | float) -> "_SDBHoppers":
         return _SDBHoppers(name)
 
+    @property
+    def slot0(self) -> _SlotTypeCommons:
+        return _SlotTypeCommons(type(self), self._hash, 0, self._name)
+
+    @property
+    def Import(self) -> _SlotTypeCommons:
+        return self.slot0
+
 
 SDBHoppers: _SDBHoppers = _SDBHoppers()
 
 
 class SDBHopperAdvanced(_BaseStructure, _ClearMemory, _ImportCount, _Lock, _Open):
     _hash: int = 467225612
+
+    @property
+    def slot0(self) -> _SlotTypeCommon:
+        return _SlotTypeCommon(type(self), self._id, 0)
+
+    @property
+    def Import(self) -> _SlotTypeCommon:
+        return self.slot0
 
 
 class _SDBHopperAdvanceds(
@@ -10075,6 +15561,14 @@ class _SDBHopperAdvanceds(
 
     def __getitem__(self, name: str | int | float) -> "_SDBHopperAdvanceds":
         return _SDBHopperAdvanceds(name)
+
+    @property
+    def slot0(self) -> _SlotTypeCommons:
+        return _SlotTypeCommons(type(self), self._hash, 0, self._name)
+
+    @property
+    def Import(self) -> _SlotTypeCommons:
+        return self.slot0
 
 
 SDBHopperAdvanceds: _SDBHopperAdvanceds = _SDBHopperAdvanceds()
@@ -10095,6 +15589,22 @@ class SDBSilo(
 ):
     _hash: int = 1155865682
 
+    @property
+    def slot0(self) -> _SlotTypeCommon:
+        return _SlotTypeCommon(type(self), self._id, 0)
+
+    @property
+    def Import(self) -> _SlotTypeCommon:
+        return self.slot0
+
+    @property
+    def slot1(self) -> _SlotTypeCommon:
+        return _SlotTypeCommon(type(self), self._id, 1)
+
+    @property
+    def Export(self) -> _SlotTypeCommon:
+        return self.slot1
+
 
 class _SDBSilos(
     _BaseStructures,
@@ -10113,6 +15623,22 @@ class _SDBSilos(
 
     def __getitem__(self, name: str | int | float) -> "_SDBSilos":
         return _SDBSilos(name)
+
+    @property
+    def slot0(self) -> _SlotTypeCommons:
+        return _SlotTypeCommons(type(self), self._hash, 0, self._name)
+
+    @property
+    def Import(self) -> _SlotTypeCommons:
+        return self.slot0
+
+    @property
+    def slot1(self) -> _SlotTypeCommons:
+        return _SlotTypeCommons(type(self), self._hash, 1, self._name)
+
+    @property
+    def Export(self) -> _SlotTypeCommons:
+        return self.slot1
 
 
 SDBSilos: _SDBSilos = _SDBSilos()
@@ -10141,6 +15667,22 @@ class SecurityPrinter(
     def StackSize(self) -> float:
         return _DeviceLogicType(self, self._id, "StackSize")
 
+    @property
+    def slot0(self) -> _SlotTypeCommon:
+        return _SlotTypeCommon(type(self), self._id, 0)
+
+    @property
+    def Import(self) -> _SlotTypeCommon:
+        return self.slot0
+
+    @property
+    def slot1(self) -> _SlotTypeCommon:
+        return _SlotTypeCommon(type(self), self._id, 1)
+
+    @property
+    def Export(self) -> _SlotTypeCommon:
+        return self.slot1
+
 
 class _SecurityPrinters(
     _BaseStructures,
@@ -10168,12 +15710,88 @@ class _SecurityPrinters(
     def StackSize(self) -> _DevicesLogicType:
         return _DevicesLogicType(self._hash, "StackSize", self._name)
 
+    @property
+    def slot0(self) -> _SlotTypeCommons:
+        return _SlotTypeCommons(type(self), self._hash, 0, self._name)
+
+    @property
+    def Import(self) -> _SlotTypeCommons:
+        return self.slot0
+
+    @property
+    def slot1(self) -> _SlotTypeCommons:
+        return _SlotTypeCommons(type(self), self._hash, 1, self._name)
+
+    @property
+    def Export(self) -> _SlotTypeCommons:
+        return self.slot1
+
 
 SecurityPrinters: _SecurityPrinters = _SecurityPrinters()
 
 
 class ShelfMedium(_BaseStructure, _Open):
     _hash: int = 182006674
+
+    @property
+    def slot0(self) -> _SlotTypeCommon:
+        return _SlotTypeCommon(type(self), self._id, 0)
+
+    @property
+    def slot1(self) -> _SlotTypeCommon:
+        return _SlotTypeCommon(type(self), self._id, 1)
+
+    @property
+    def slot10(self) -> _SlotTypeCommon:
+        return _SlotTypeCommon(type(self), self._id, 10)
+
+    @property
+    def slot11(self) -> _SlotTypeCommon:
+        return _SlotTypeCommon(type(self), self._id, 11)
+
+    @property
+    def slot12(self) -> _SlotTypeCommon:
+        return _SlotTypeCommon(type(self), self._id, 12)
+
+    @property
+    def slot13(self) -> _SlotTypeCommon:
+        return _SlotTypeCommon(type(self), self._id, 13)
+
+    @property
+    def slot14(self) -> _SlotTypeCommon:
+        return _SlotTypeCommon(type(self), self._id, 14)
+
+    @property
+    def slot2(self) -> _SlotTypeCommon:
+        return _SlotTypeCommon(type(self), self._id, 2)
+
+    @property
+    def slot3(self) -> _SlotTypeCommon:
+        return _SlotTypeCommon(type(self), self._id, 3)
+
+    @property
+    def slot4(self) -> _SlotTypeCommon:
+        return _SlotTypeCommon(type(self), self._id, 4)
+
+    @property
+    def slot5(self) -> _SlotTypeCommon:
+        return _SlotTypeCommon(type(self), self._id, 5)
+
+    @property
+    def slot6(self) -> _SlotTypeCommon:
+        return _SlotTypeCommon(type(self), self._id, 6)
+
+    @property
+    def slot7(self) -> _SlotTypeCommon:
+        return _SlotTypeCommon(type(self), self._id, 7)
+
+    @property
+    def slot8(self) -> _SlotTypeCommon:
+        return _SlotTypeCommon(type(self), self._id, 8)
+
+    @property
+    def slot9(self) -> _SlotTypeCommon:
+        return _SlotTypeCommon(type(self), self._id, 9)
 
 
 class _ShelfMediums(_BaseStructures, _Opens):
@@ -10182,12 +15800,80 @@ class _ShelfMediums(_BaseStructures, _Opens):
     def __getitem__(self, name: str | int | float) -> "_ShelfMediums":
         return _ShelfMediums(name)
 
+    @property
+    def slot0(self) -> _SlotTypeCommons:
+        return _SlotTypeCommons(type(self), self._hash, 0, self._name)
+
+    @property
+    def slot1(self) -> _SlotTypeCommons:
+        return _SlotTypeCommons(type(self), self._hash, 1, self._name)
+
+    @property
+    def slot10(self) -> _SlotTypeCommons:
+        return _SlotTypeCommons(type(self), self._hash, 10, self._name)
+
+    @property
+    def slot11(self) -> _SlotTypeCommons:
+        return _SlotTypeCommons(type(self), self._hash, 11, self._name)
+
+    @property
+    def slot12(self) -> _SlotTypeCommons:
+        return _SlotTypeCommons(type(self), self._hash, 12, self._name)
+
+    @property
+    def slot13(self) -> _SlotTypeCommons:
+        return _SlotTypeCommons(type(self), self._hash, 13, self._name)
+
+    @property
+    def slot14(self) -> _SlotTypeCommons:
+        return _SlotTypeCommons(type(self), self._hash, 14, self._name)
+
+    @property
+    def slot2(self) -> _SlotTypeCommons:
+        return _SlotTypeCommons(type(self), self._hash, 2, self._name)
+
+    @property
+    def slot3(self) -> _SlotTypeCommons:
+        return _SlotTypeCommons(type(self), self._hash, 3, self._name)
+
+    @property
+    def slot4(self) -> _SlotTypeCommons:
+        return _SlotTypeCommons(type(self), self._hash, 4, self._name)
+
+    @property
+    def slot5(self) -> _SlotTypeCommons:
+        return _SlotTypeCommons(type(self), self._hash, 5, self._name)
+
+    @property
+    def slot6(self) -> _SlotTypeCommons:
+        return _SlotTypeCommons(type(self), self._hash, 6, self._name)
+
+    @property
+    def slot7(self) -> _SlotTypeCommons:
+        return _SlotTypeCommons(type(self), self._hash, 7, self._name)
+
+    @property
+    def slot8(self) -> _SlotTypeCommons:
+        return _SlotTypeCommons(type(self), self._hash, 8, self._name)
+
+    @property
+    def slot9(self) -> _SlotTypeCommons:
+        return _SlotTypeCommons(type(self), self._hash, 9, self._name)
+
 
 ShelfMediums: _ShelfMediums = _ShelfMediums()
 
 
 class ShortCornerLocker(_BaseStructure, _Lock, _Open):
     _hash: int = 1330754486
+
+    @property
+    def slot0(self) -> _SlotTypeCommon:
+        return _SlotTypeCommon(type(self), self._id, 0)
+
+    @property
+    def slot1(self) -> _SlotTypeCommon:
+        return _SlotTypeCommon(type(self), self._id, 1)
 
 
 class _ShortCornerLockers(_BaseStructures, _Locks, _Opens):
@@ -10196,6 +15882,14 @@ class _ShortCornerLockers(_BaseStructures, _Locks, _Opens):
     def __getitem__(self, name: str | int | float) -> "_ShortCornerLockers":
         return _ShortCornerLockers(name)
 
+    @property
+    def slot0(self) -> _SlotTypeCommons:
+        return _SlotTypeCommons(type(self), self._hash, 0, self._name)
+
+    @property
+    def slot1(self) -> _SlotTypeCommons:
+        return _SlotTypeCommons(type(self), self._hash, 1, self._name)
+
 
 ShortCornerLockers: _ShortCornerLockers = _ShortCornerLockers()
 
@@ -10203,12 +15897,92 @@ ShortCornerLockers: _ShortCornerLockers = _ShortCornerLockers()
 class ShortLocker(_BaseStructure, _Lock, _Open):
     _hash: int = -554553467
 
+    @property
+    def slot0(self) -> _SlotTypeCommon:
+        return _SlotTypeCommon(type(self), self._id, 0)
+
+    @property
+    def slot1(self) -> _SlotTypeCommon:
+        return _SlotTypeCommon(type(self), self._id, 1)
+
+    @property
+    def slot2(self) -> _SlotTypeCommon:
+        return _SlotTypeCommon(type(self), self._id, 2)
+
+    @property
+    def slot3(self) -> _SlotTypeCommon:
+        return _SlotTypeCommon(type(self), self._id, 3)
+
+    @property
+    def slot4(self) -> _SlotTypeCommon:
+        return _SlotTypeCommon(type(self), self._id, 4)
+
+    @property
+    def slot5(self) -> _SlotTypeCommon:
+        return _SlotTypeCommon(type(self), self._id, 5)
+
+    @property
+    def slot6(self) -> _SlotTypeCommon:
+        return _SlotTypeCommon(type(self), self._id, 6)
+
+    @property
+    def slot7(self) -> _SlotTypeCommon:
+        return _SlotTypeCommon(type(self), self._id, 7)
+
+    @property
+    def slot8(self) -> _SlotTypeCommon:
+        return _SlotTypeCommon(type(self), self._id, 8)
+
+    @property
+    def slot9(self) -> _SlotTypeCommon:
+        return _SlotTypeCommon(type(self), self._id, 9)
+
 
 class _ShortLockers(_BaseStructures, _Locks, _Opens):
     _hash: int = -554553467
 
     def __getitem__(self, name: str | int | float) -> "_ShortLockers":
         return _ShortLockers(name)
+
+    @property
+    def slot0(self) -> _SlotTypeCommons:
+        return _SlotTypeCommons(type(self), self._hash, 0, self._name)
+
+    @property
+    def slot1(self) -> _SlotTypeCommons:
+        return _SlotTypeCommons(type(self), self._hash, 1, self._name)
+
+    @property
+    def slot2(self) -> _SlotTypeCommons:
+        return _SlotTypeCommons(type(self), self._hash, 2, self._name)
+
+    @property
+    def slot3(self) -> _SlotTypeCommons:
+        return _SlotTypeCommons(type(self), self._hash, 3, self._name)
+
+    @property
+    def slot4(self) -> _SlotTypeCommons:
+        return _SlotTypeCommons(type(self), self._hash, 4, self._name)
+
+    @property
+    def slot5(self) -> _SlotTypeCommons:
+        return _SlotTypeCommons(type(self), self._hash, 5, self._name)
+
+    @property
+    def slot6(self) -> _SlotTypeCommons:
+        return _SlotTypeCommons(type(self), self._hash, 6, self._name)
+
+    @property
+    def slot7(self) -> _SlotTypeCommons:
+        return _SlotTypeCommons(type(self), self._hash, 7, self._name)
+
+    @property
+    def slot8(self) -> _SlotTypeCommons:
+        return _SlotTypeCommons(type(self), self._hash, 8, self._name)
+
+    @property
+    def slot9(self) -> _SlotTypeCommons:
+        return _SlotTypeCommons(type(self), self._hash, 9, self._name)
 
 
 ShortLockers: _ShortLockers = _ShortLockers()
@@ -10251,6 +16025,14 @@ class Sleeper(
     def EntityState(self) -> float:
         return _DeviceLogicType(self, self._id, "EntityState")
 
+    @property
+    def slot0(self) -> _SlotTypeCommon:
+        return _SlotTypeCommon(type(self), self._id, 0)
+
+    @property
+    def Bed(self) -> _SlotTypeCommon:
+        return self.slot0
+
 
 class _Sleepers(
     _BaseStructures,
@@ -10271,6 +16053,14 @@ class _Sleepers(
     @property
     def EntityState(self) -> _DevicesLogicType:
         return _DevicesLogicType(self._hash, "EntityState", self._name)
+
+    @property
+    def slot0(self) -> _SlotTypeCommons:
+        return _SlotTypeCommons(type(self), self._hash, 0, self._name)
+
+    @property
+    def Bed(self) -> _SlotTypeCommons:
+        return self.slot0
 
 
 Sleepers: _Sleepers = _Sleepers()
@@ -10294,6 +16084,14 @@ class SleeperLeft(
     def EntityState(self) -> float:
         return _DeviceLogicType(self, self._id, "EntityState")
 
+    @property
+    def slot0(self) -> _SlotTypeCommon:
+        return _SlotTypeCommon(type(self), self._id, 0)
+
+    @property
+    def Player(self) -> _SlotTypeCommon:
+        return self.slot0
+
 
 class _SleeperLefts(
     _BaseStructures,
@@ -10315,6 +16113,14 @@ class _SleeperLefts(
     @property
     def EntityState(self) -> _DevicesLogicType:
         return _DevicesLogicType(self._hash, "EntityState", self._name)
+
+    @property
+    def slot0(self) -> _SlotTypeCommons:
+        return _SlotTypeCommons(type(self), self._hash, 0, self._name)
+
+    @property
+    def Player(self) -> _SlotTypeCommons:
+        return self.slot0
 
 
 SleeperLefts: _SleeperLefts = _SleeperLefts()
@@ -10338,6 +16144,14 @@ class SleeperRight(
     def EntityState(self) -> float:
         return _DeviceLogicType(self, self._id, "EntityState")
 
+    @property
+    def slot0(self) -> _SlotTypeCommon:
+        return _SlotTypeCommon(type(self), self._id, 0)
+
+    @property
+    def Player(self) -> _SlotTypeCommon:
+        return self.slot0
+
 
 class _SleeperRights(
     _BaseStructures,
@@ -10359,6 +16173,14 @@ class _SleeperRights(
     @property
     def EntityState(self) -> _DevicesLogicType:
         return _DevicesLogicType(self._hash, "EntityState", self._name)
+
+    @property
+    def slot0(self) -> _SlotTypeCommons:
+        return _SlotTypeCommons(type(self), self._hash, 0, self._name)
+
+    @property
+    def Player(self) -> _SlotTypeCommons:
+        return self.slot0
 
 
 SleeperRights: _SleeperRights = _SleeperRights()
@@ -10382,6 +16204,14 @@ class SleeperVertical(
     def EntityState(self) -> float:
         return _DeviceLogicType(self, self._id, "EntityState")
 
+    @property
+    def slot0(self) -> _SlotTypeCommon:
+        return _SlotTypeCommon(type(self), self._id, 0)
+
+    @property
+    def Player(self) -> _SlotTypeCommon:
+        return self.slot0
+
 
 class _SleeperVerticals(
     _BaseStructures,
@@ -10403,6 +16233,14 @@ class _SleeperVerticals(
     @property
     def EntityState(self) -> _DevicesLogicType:
         return _DevicesLogicType(self._hash, "EntityState", self._name)
+
+    @property
+    def slot0(self) -> _SlotTypeCommons:
+        return _SlotTypeCommons(type(self), self._hash, 0, self._name)
+
+    @property
+    def Player(self) -> _SlotTypeCommons:
+        return self.slot0
 
 
 SleeperVerticals: _SleeperVerticals = _SleeperVerticals()
@@ -11132,6 +16970,38 @@ class Sorter(
     def Output(self, value: int | float):
         pass
 
+    @property
+    def slot0(self) -> _SlotTypeCommon:
+        return _SlotTypeCommon(type(self), self._id, 0)
+
+    @property
+    def Import(self) -> _SlotTypeCommon:
+        return self.slot0
+
+    @property
+    def slot1(self) -> _SlotTypeCommon:
+        return _SlotTypeCommon(type(self), self._id, 1)
+
+    @property
+    def Export(self) -> _SlotTypeCommon:
+        return self.slot1
+
+    @property
+    def slot2(self) -> _SlotTypeCommon:
+        return _SlotTypeCommon(type(self), self._id, 2)
+
+    @property
+    def Export2(self) -> _SlotTypeCommon:
+        return self.slot2
+
+    @property
+    def slot3(self) -> _SlotTypeCommon:
+        return _SlotTypeCommon(type(self), self._id, 3)
+
+    @property
+    def DataDisk(self) -> _SlotTypeCommon:
+        return self.slot3
+
 
 class _Sorters(
     _BaseStructures,
@@ -11155,6 +17025,38 @@ class _Sorters(
     @Output.setter
     def Output(self, value: int | float):
         pass
+
+    @property
+    def slot0(self) -> _SlotTypeCommons:
+        return _SlotTypeCommons(type(self), self._hash, 0, self._name)
+
+    @property
+    def Import(self) -> _SlotTypeCommons:
+        return self.slot0
+
+    @property
+    def slot1(self) -> _SlotTypeCommons:
+        return _SlotTypeCommons(type(self), self._hash, 1, self._name)
+
+    @property
+    def Export(self) -> _SlotTypeCommons:
+        return self.slot1
+
+    @property
+    def slot2(self) -> _SlotTypeCommons:
+        return _SlotTypeCommons(type(self), self._hash, 2, self._name)
+
+    @property
+    def Export2(self) -> _SlotTypeCommons:
+        return self.slot2
+
+    @property
+    def slot3(self) -> _SlotTypeCommons:
+        return _SlotTypeCommons(type(self), self._hash, 3, self._name)
+
+    @property
+    def DataDisk(self) -> _SlotTypeCommons:
+        return self.slot3
 
 
 Sorters: _Sorters = _Sorters()
@@ -11182,6 +17084,30 @@ class StackerReverse(
     def Output(self, value: int | float):
         pass
 
+    @property
+    def slot0(self) -> _SlotTypeCommon:
+        return _SlotTypeCommon(type(self), self._id, 0)
+
+    @property
+    def Import(self) -> _SlotTypeCommon:
+        return self.slot0
+
+    @property
+    def slot1(self) -> _SlotTypeCommon:
+        return _SlotTypeCommon(type(self), self._id, 1)
+
+    @property
+    def Export(self) -> _SlotTypeCommon:
+        return self.slot1
+
+    @property
+    def slot2(self) -> _SlotTypeCommon:
+        return _SlotTypeCommon(type(self), self._id, 2)
+
+    @property
+    def Processing(self) -> _SlotTypeCommon:
+        return self.slot2
+
 
 class _StackerReverses(
     _BaseStructures,
@@ -11207,6 +17133,30 @@ class _StackerReverses(
     @Output.setter
     def Output(self, value: int | float):
         pass
+
+    @property
+    def slot0(self) -> _SlotTypeCommons:
+        return _SlotTypeCommons(type(self), self._hash, 0, self._name)
+
+    @property
+    def Import(self) -> _SlotTypeCommons:
+        return self.slot0
+
+    @property
+    def slot1(self) -> _SlotTypeCommons:
+        return _SlotTypeCommons(type(self), self._hash, 1, self._name)
+
+    @property
+    def Export(self) -> _SlotTypeCommons:
+        return self.slot1
+
+    @property
+    def slot2(self) -> _SlotTypeCommons:
+        return _SlotTypeCommons(type(self), self._hash, 2, self._name)
+
+    @property
+    def Processing(self) -> _SlotTypeCommons:
+        return self.slot2
 
 
 StackerReverses: _StackerReverses = _StackerReverses()
@@ -11234,6 +17184,30 @@ class Stacker(
     def Output(self, value: int | float):
         pass
 
+    @property
+    def slot0(self) -> _SlotTypeCommon:
+        return _SlotTypeCommon(type(self), self._id, 0)
+
+    @property
+    def Import(self) -> _SlotTypeCommon:
+        return self.slot0
+
+    @property
+    def slot1(self) -> _SlotTypeCommon:
+        return _SlotTypeCommon(type(self), self._id, 1)
+
+    @property
+    def Export(self) -> _SlotTypeCommon:
+        return self.slot1
+
+    @property
+    def slot2(self) -> _SlotTypeCommon:
+        return _SlotTypeCommon(type(self), self._id, 2)
+
+    @property
+    def Processing(self) -> _SlotTypeCommon:
+        return self.slot2
+
 
 class _Stackers(
     _BaseStructures,
@@ -11259,6 +17233,30 @@ class _Stackers(
     @Output.setter
     def Output(self, value: int | float):
         pass
+
+    @property
+    def slot0(self) -> _SlotTypeCommons:
+        return _SlotTypeCommons(type(self), self._hash, 0, self._name)
+
+    @property
+    def Import(self) -> _SlotTypeCommons:
+        return self.slot0
+
+    @property
+    def slot1(self) -> _SlotTypeCommons:
+        return _SlotTypeCommons(type(self), self._hash, 1, self._name)
+
+    @property
+    def Export(self) -> _SlotTypeCommons:
+        return self.slot1
+
+    @property
+    def slot2(self) -> _SlotTypeCommons:
+        return _SlotTypeCommons(type(self), self._hash, 2, self._name)
+
+    @property
+    def Processing(self) -> _SlotTypeCommons:
+        return self.slot2
 
 
 Stackers: _Stackers = _Stackers()
@@ -11378,6 +17376,14 @@ class StirlingEngine(
     def WorkingGasEfficiency(self) -> float:
         return _DeviceLogicType(self, self._id, "WorkingGasEfficiency")
 
+    @property
+    def slot0(self) -> _SlotTypeGasCanister:
+        return _SlotTypeGasCanister(type(self), self._id, 0)
+
+    @property
+    def GasCanister(self) -> _SlotTypeGasCanister:
+        return self.slot0
+
 
 class _StirlingEngines(
     _BaseStructures,
@@ -11414,6 +17420,14 @@ class _StirlingEngines(
     def WorkingGasEfficiency(self) -> _DevicesLogicType:
         return _DevicesLogicType(self._hash, "WorkingGasEfficiency", self._name)
 
+    @property
+    def slot0(self) -> _SlotTypeGasCanisters:
+        return _SlotTypeGasCanisters(type(self), self._hash, 0, self._name)
+
+    @property
+    def GasCanister(self) -> _SlotTypeGasCanisters:
+        return self.slot0
+
 
 StirlingEngines: _StirlingEngines = _StirlingEngines()
 
@@ -11421,12 +17435,60 @@ StirlingEngines: _StirlingEngines = _StirlingEngines()
 class SuitStorage(_BaseStructure, _Error, _Maximum, _Power, _Ratio, _SettingW):
     _hash: int = 255034731
 
+    @property
+    def slot0(self) -> _SlotTypeHelmet:
+        return _SlotTypeHelmet(type(self), self._id, 0)
+
+    @property
+    def Helmet(self) -> _SlotTypeHelmet:
+        return self.slot0
+
+    @property
+    def slot1(self) -> _SlotTypeSuit:
+        return _SlotTypeSuit(type(self), self._id, 1)
+
+    @property
+    def Suit(self) -> _SlotTypeSuit:
+        return self.slot1
+
+    @property
+    def slot2(self) -> _SlotTypeBack:
+        return _SlotTypeBack(type(self), self._id, 2)
+
+    @property
+    def Back(self) -> _SlotTypeBack:
+        return self.slot2
+
 
 class _SuitStorages(_BaseStructures, _Errors, _Maximums, _Powers, _Ratios, _SettingWs):
     _hash: int = 255034731
 
     def __getitem__(self, name: str | int | float) -> "_SuitStorages":
         return _SuitStorages(name)
+
+    @property
+    def slot0(self) -> _SlotTypeHelmets:
+        return _SlotTypeHelmets(type(self), self._hash, 0, self._name)
+
+    @property
+    def Helmet(self) -> _SlotTypeHelmets:
+        return self.slot0
+
+    @property
+    def slot1(self) -> _SlotTypeSuits:
+        return _SlotTypeSuits(type(self), self._hash, 1, self._name)
+
+    @property
+    def Suit(self) -> _SlotTypeSuits:
+        return self.slot1
+
+    @property
+    def slot2(self) -> _SlotTypeBacks:
+        return _SlotTypeBacks(type(self), self._hash, 2, self._name)
+
+    @property
+    def Back(self) -> _SlotTypeBacks:
+        return self.slot2
 
 
 SuitStorages: _SuitStorages = _SuitStorages()
@@ -11851,6 +17913,22 @@ class ToolManufactory(
     def StackSize(self) -> float:
         return _DeviceLogicType(self, self._id, "StackSize")
 
+    @property
+    def slot0(self) -> _SlotTypeCommon:
+        return _SlotTypeCommon(type(self), self._id, 0)
+
+    @property
+    def Import(self) -> _SlotTypeCommon:
+        return self.slot0
+
+    @property
+    def slot1(self) -> _SlotTypeCommon:
+        return _SlotTypeCommon(type(self), self._id, 1)
+
+    @property
+    def Export(self) -> _SlotTypeCommon:
+        return self.slot1
+
 
 class _ToolManufactorys(
     _BaseStructures,
@@ -11877,6 +17955,22 @@ class _ToolManufactorys(
     @property
     def StackSize(self) -> _DevicesLogicType:
         return _DevicesLogicType(self._hash, "StackSize", self._name)
+
+    @property
+    def slot0(self) -> _SlotTypeCommons:
+        return _SlotTypeCommons(type(self), self._hash, 0, self._name)
+
+    @property
+    def Import(self) -> _SlotTypeCommons:
+        return self.slot0
+
+    @property
+    def slot1(self) -> _SlotTypeCommons:
+        return _SlotTypeCommons(type(self), self._hash, 1, self._name)
+
+    @property
+    def Export(self) -> _SlotTypeCommons:
+        return self.slot1
 
 
 ToolManufactorys: _ToolManufactorys = _ToolManufactorys()
@@ -12065,12 +18159,28 @@ LiquidTurboVolumePumps: _LiquidTurboVolumePumps = _LiquidTurboVolumePumps()
 class ChuteUmbilicalMale(_BaseStructure, _Error, _Lock, _ModeR, _Open, _Power):
     _hash: int = -958884053
 
+    @property
+    def slot0(self) -> _SlotTypeCommon:
+        return _SlotTypeCommon(type(self), self._id, 0)
+
+    @property
+    def TransportSlot(self) -> _SlotTypeCommon:
+        return self.slot0
+
 
 class _ChuteUmbilicalMales(_BaseStructures, _Errors, _Locks, _ModeRs, _Opens, _Powers):
     _hash: int = -958884053
 
     def __getitem__(self, name: str | int | float) -> "_ChuteUmbilicalMales":
         return _ChuteUmbilicalMales(name)
+
+    @property
+    def slot0(self) -> _SlotTypeCommons:
+        return _SlotTypeCommons(type(self), self._hash, 0, self._name)
+
+    @property
+    def TransportSlot(self) -> _SlotTypeCommons:
+        return self.slot0
 
 
 ChuteUmbilicalMales: _ChuteUmbilicalMales = _ChuteUmbilicalMales()
@@ -12218,6 +18328,22 @@ class Unloader(
     def Output(self, value: int | float):
         pass
 
+    @property
+    def slot0(self) -> _SlotTypeCommon:
+        return _SlotTypeCommon(type(self), self._id, 0)
+
+    @property
+    def Import(self) -> _SlotTypeCommon:
+        return self.slot0
+
+    @property
+    def slot1(self) -> _SlotTypeCommon:
+        return _SlotTypeCommon(type(self), self._id, 1)
+
+    @property
+    def Export(self) -> _SlotTypeCommon:
+        return self.slot1
+
 
 class _Unloaders(
     _BaseStructures,
@@ -12241,6 +18367,22 @@ class _Unloaders(
     @Output.setter
     def Output(self, value: int | float):
         pass
+
+    @property
+    def slot0(self) -> _SlotTypeCommons:
+        return _SlotTypeCommons(type(self), self._hash, 0, self._name)
+
+    @property
+    def Import(self) -> _SlotTypeCommons:
+        return self.slot0
+
+    @property
+    def slot1(self) -> _SlotTypeCommons:
+        return _SlotTypeCommons(type(self), self._hash, 1, self._name)
+
+    @property
+    def Export(self) -> _SlotTypeCommons:
+        return self.slot1
 
 
 Unloaders: _Unloaders = _Unloaders()
@@ -12318,6 +18460,422 @@ class VendingMachine(
     def RequestHash(self, value: int | float):
         pass
 
+    @property
+    def slot0(self) -> _SlotTypeCommon:
+        return _SlotTypeCommon(type(self), self._id, 0)
+
+    @property
+    def Import(self) -> _SlotTypeCommon:
+        return self.slot0
+
+    @property
+    def slot1(self) -> _SlotTypeCommon:
+        return _SlotTypeCommon(type(self), self._id, 1)
+
+    @property
+    def Export(self) -> _SlotTypeCommon:
+        return self.slot1
+
+    @property
+    def slot10(self) -> _SlotTypeCommon:
+        return _SlotTypeCommon(type(self), self._id, 10)
+
+    @property
+    def slot100(self) -> _SlotTypeCommon:
+        return _SlotTypeCommon(type(self), self._id, 100)
+
+    @property
+    def slot101(self) -> _SlotTypeCommon:
+        return _SlotTypeCommon(type(self), self._id, 101)
+
+    @property
+    def slot11(self) -> _SlotTypeCommon:
+        return _SlotTypeCommon(type(self), self._id, 11)
+
+    @property
+    def slot12(self) -> _SlotTypeCommon:
+        return _SlotTypeCommon(type(self), self._id, 12)
+
+    @property
+    def slot13(self) -> _SlotTypeCommon:
+        return _SlotTypeCommon(type(self), self._id, 13)
+
+    @property
+    def slot14(self) -> _SlotTypeCommon:
+        return _SlotTypeCommon(type(self), self._id, 14)
+
+    @property
+    def slot15(self) -> _SlotTypeCommon:
+        return _SlotTypeCommon(type(self), self._id, 15)
+
+    @property
+    def slot16(self) -> _SlotTypeCommon:
+        return _SlotTypeCommon(type(self), self._id, 16)
+
+    @property
+    def slot17(self) -> _SlotTypeCommon:
+        return _SlotTypeCommon(type(self), self._id, 17)
+
+    @property
+    def slot18(self) -> _SlotTypeCommon:
+        return _SlotTypeCommon(type(self), self._id, 18)
+
+    @property
+    def slot19(self) -> _SlotTypeCommon:
+        return _SlotTypeCommon(type(self), self._id, 19)
+
+    @property
+    def slot2(self) -> _SlotTypeCommon:
+        return _SlotTypeCommon(type(self), self._id, 2)
+
+    @property
+    def slot20(self) -> _SlotTypeCommon:
+        return _SlotTypeCommon(type(self), self._id, 20)
+
+    @property
+    def slot21(self) -> _SlotTypeCommon:
+        return _SlotTypeCommon(type(self), self._id, 21)
+
+    @property
+    def slot22(self) -> _SlotTypeCommon:
+        return _SlotTypeCommon(type(self), self._id, 22)
+
+    @property
+    def slot23(self) -> _SlotTypeCommon:
+        return _SlotTypeCommon(type(self), self._id, 23)
+
+    @property
+    def slot24(self) -> _SlotTypeCommon:
+        return _SlotTypeCommon(type(self), self._id, 24)
+
+    @property
+    def slot25(self) -> _SlotTypeCommon:
+        return _SlotTypeCommon(type(self), self._id, 25)
+
+    @property
+    def slot26(self) -> _SlotTypeCommon:
+        return _SlotTypeCommon(type(self), self._id, 26)
+
+    @property
+    def slot27(self) -> _SlotTypeCommon:
+        return _SlotTypeCommon(type(self), self._id, 27)
+
+    @property
+    def slot28(self) -> _SlotTypeCommon:
+        return _SlotTypeCommon(type(self), self._id, 28)
+
+    @property
+    def slot29(self) -> _SlotTypeCommon:
+        return _SlotTypeCommon(type(self), self._id, 29)
+
+    @property
+    def slot3(self) -> _SlotTypeCommon:
+        return _SlotTypeCommon(type(self), self._id, 3)
+
+    @property
+    def slot30(self) -> _SlotTypeCommon:
+        return _SlotTypeCommon(type(self), self._id, 30)
+
+    @property
+    def slot31(self) -> _SlotTypeCommon:
+        return _SlotTypeCommon(type(self), self._id, 31)
+
+    @property
+    def slot32(self) -> _SlotTypeCommon:
+        return _SlotTypeCommon(type(self), self._id, 32)
+
+    @property
+    def slot33(self) -> _SlotTypeCommon:
+        return _SlotTypeCommon(type(self), self._id, 33)
+
+    @property
+    def slot34(self) -> _SlotTypeCommon:
+        return _SlotTypeCommon(type(self), self._id, 34)
+
+    @property
+    def slot35(self) -> _SlotTypeCommon:
+        return _SlotTypeCommon(type(self), self._id, 35)
+
+    @property
+    def slot36(self) -> _SlotTypeCommon:
+        return _SlotTypeCommon(type(self), self._id, 36)
+
+    @property
+    def slot37(self) -> _SlotTypeCommon:
+        return _SlotTypeCommon(type(self), self._id, 37)
+
+    @property
+    def slot38(self) -> _SlotTypeCommon:
+        return _SlotTypeCommon(type(self), self._id, 38)
+
+    @property
+    def slot39(self) -> _SlotTypeCommon:
+        return _SlotTypeCommon(type(self), self._id, 39)
+
+    @property
+    def slot4(self) -> _SlotTypeCommon:
+        return _SlotTypeCommon(type(self), self._id, 4)
+
+    @property
+    def slot40(self) -> _SlotTypeCommon:
+        return _SlotTypeCommon(type(self), self._id, 40)
+
+    @property
+    def slot41(self) -> _SlotTypeCommon:
+        return _SlotTypeCommon(type(self), self._id, 41)
+
+    @property
+    def slot42(self) -> _SlotTypeCommon:
+        return _SlotTypeCommon(type(self), self._id, 42)
+
+    @property
+    def slot43(self) -> _SlotTypeCommon:
+        return _SlotTypeCommon(type(self), self._id, 43)
+
+    @property
+    def slot44(self) -> _SlotTypeCommon:
+        return _SlotTypeCommon(type(self), self._id, 44)
+
+    @property
+    def slot45(self) -> _SlotTypeCommon:
+        return _SlotTypeCommon(type(self), self._id, 45)
+
+    @property
+    def slot46(self) -> _SlotTypeCommon:
+        return _SlotTypeCommon(type(self), self._id, 46)
+
+    @property
+    def slot47(self) -> _SlotTypeCommon:
+        return _SlotTypeCommon(type(self), self._id, 47)
+
+    @property
+    def slot48(self) -> _SlotTypeCommon:
+        return _SlotTypeCommon(type(self), self._id, 48)
+
+    @property
+    def slot49(self) -> _SlotTypeCommon:
+        return _SlotTypeCommon(type(self), self._id, 49)
+
+    @property
+    def slot5(self) -> _SlotTypeCommon:
+        return _SlotTypeCommon(type(self), self._id, 5)
+
+    @property
+    def slot50(self) -> _SlotTypeCommon:
+        return _SlotTypeCommon(type(self), self._id, 50)
+
+    @property
+    def slot51(self) -> _SlotTypeCommon:
+        return _SlotTypeCommon(type(self), self._id, 51)
+
+    @property
+    def slot52(self) -> _SlotTypeCommon:
+        return _SlotTypeCommon(type(self), self._id, 52)
+
+    @property
+    def slot53(self) -> _SlotTypeCommon:
+        return _SlotTypeCommon(type(self), self._id, 53)
+
+    @property
+    def slot54(self) -> _SlotTypeCommon:
+        return _SlotTypeCommon(type(self), self._id, 54)
+
+    @property
+    def slot55(self) -> _SlotTypeCommon:
+        return _SlotTypeCommon(type(self), self._id, 55)
+
+    @property
+    def slot56(self) -> _SlotTypeCommon:
+        return _SlotTypeCommon(type(self), self._id, 56)
+
+    @property
+    def slot57(self) -> _SlotTypeCommon:
+        return _SlotTypeCommon(type(self), self._id, 57)
+
+    @property
+    def slot58(self) -> _SlotTypeCommon:
+        return _SlotTypeCommon(type(self), self._id, 58)
+
+    @property
+    def slot59(self) -> _SlotTypeCommon:
+        return _SlotTypeCommon(type(self), self._id, 59)
+
+    @property
+    def slot6(self) -> _SlotTypeCommon:
+        return _SlotTypeCommon(type(self), self._id, 6)
+
+    @property
+    def slot60(self) -> _SlotTypeCommon:
+        return _SlotTypeCommon(type(self), self._id, 60)
+
+    @property
+    def slot61(self) -> _SlotTypeCommon:
+        return _SlotTypeCommon(type(self), self._id, 61)
+
+    @property
+    def slot62(self) -> _SlotTypeCommon:
+        return _SlotTypeCommon(type(self), self._id, 62)
+
+    @property
+    def slot63(self) -> _SlotTypeCommon:
+        return _SlotTypeCommon(type(self), self._id, 63)
+
+    @property
+    def slot64(self) -> _SlotTypeCommon:
+        return _SlotTypeCommon(type(self), self._id, 64)
+
+    @property
+    def slot65(self) -> _SlotTypeCommon:
+        return _SlotTypeCommon(type(self), self._id, 65)
+
+    @property
+    def slot66(self) -> _SlotTypeCommon:
+        return _SlotTypeCommon(type(self), self._id, 66)
+
+    @property
+    def slot67(self) -> _SlotTypeCommon:
+        return _SlotTypeCommon(type(self), self._id, 67)
+
+    @property
+    def slot68(self) -> _SlotTypeCommon:
+        return _SlotTypeCommon(type(self), self._id, 68)
+
+    @property
+    def slot69(self) -> _SlotTypeCommon:
+        return _SlotTypeCommon(type(self), self._id, 69)
+
+    @property
+    def slot7(self) -> _SlotTypeCommon:
+        return _SlotTypeCommon(type(self), self._id, 7)
+
+    @property
+    def slot70(self) -> _SlotTypeCommon:
+        return _SlotTypeCommon(type(self), self._id, 70)
+
+    @property
+    def slot71(self) -> _SlotTypeCommon:
+        return _SlotTypeCommon(type(self), self._id, 71)
+
+    @property
+    def slot72(self) -> _SlotTypeCommon:
+        return _SlotTypeCommon(type(self), self._id, 72)
+
+    @property
+    def slot73(self) -> _SlotTypeCommon:
+        return _SlotTypeCommon(type(self), self._id, 73)
+
+    @property
+    def slot74(self) -> _SlotTypeCommon:
+        return _SlotTypeCommon(type(self), self._id, 74)
+
+    @property
+    def slot75(self) -> _SlotTypeCommon:
+        return _SlotTypeCommon(type(self), self._id, 75)
+
+    @property
+    def slot76(self) -> _SlotTypeCommon:
+        return _SlotTypeCommon(type(self), self._id, 76)
+
+    @property
+    def slot77(self) -> _SlotTypeCommon:
+        return _SlotTypeCommon(type(self), self._id, 77)
+
+    @property
+    def slot78(self) -> _SlotTypeCommon:
+        return _SlotTypeCommon(type(self), self._id, 78)
+
+    @property
+    def slot79(self) -> _SlotTypeCommon:
+        return _SlotTypeCommon(type(self), self._id, 79)
+
+    @property
+    def slot8(self) -> _SlotTypeCommon:
+        return _SlotTypeCommon(type(self), self._id, 8)
+
+    @property
+    def slot80(self) -> _SlotTypeCommon:
+        return _SlotTypeCommon(type(self), self._id, 80)
+
+    @property
+    def slot81(self) -> _SlotTypeCommon:
+        return _SlotTypeCommon(type(self), self._id, 81)
+
+    @property
+    def slot82(self) -> _SlotTypeCommon:
+        return _SlotTypeCommon(type(self), self._id, 82)
+
+    @property
+    def slot83(self) -> _SlotTypeCommon:
+        return _SlotTypeCommon(type(self), self._id, 83)
+
+    @property
+    def slot84(self) -> _SlotTypeCommon:
+        return _SlotTypeCommon(type(self), self._id, 84)
+
+    @property
+    def slot85(self) -> _SlotTypeCommon:
+        return _SlotTypeCommon(type(self), self._id, 85)
+
+    @property
+    def slot86(self) -> _SlotTypeCommon:
+        return _SlotTypeCommon(type(self), self._id, 86)
+
+    @property
+    def slot87(self) -> _SlotTypeCommon:
+        return _SlotTypeCommon(type(self), self._id, 87)
+
+    @property
+    def slot88(self) -> _SlotTypeCommon:
+        return _SlotTypeCommon(type(self), self._id, 88)
+
+    @property
+    def slot89(self) -> _SlotTypeCommon:
+        return _SlotTypeCommon(type(self), self._id, 89)
+
+    @property
+    def slot9(self) -> _SlotTypeCommon:
+        return _SlotTypeCommon(type(self), self._id, 9)
+
+    @property
+    def slot90(self) -> _SlotTypeCommon:
+        return _SlotTypeCommon(type(self), self._id, 90)
+
+    @property
+    def slot91(self) -> _SlotTypeCommon:
+        return _SlotTypeCommon(type(self), self._id, 91)
+
+    @property
+    def slot92(self) -> _SlotTypeCommon:
+        return _SlotTypeCommon(type(self), self._id, 92)
+
+    @property
+    def slot93(self) -> _SlotTypeCommon:
+        return _SlotTypeCommon(type(self), self._id, 93)
+
+    @property
+    def slot94(self) -> _SlotTypeCommon:
+        return _SlotTypeCommon(type(self), self._id, 94)
+
+    @property
+    def slot95(self) -> _SlotTypeCommon:
+        return _SlotTypeCommon(type(self), self._id, 95)
+
+    @property
+    def slot96(self) -> _SlotTypeCommon:
+        return _SlotTypeCommon(type(self), self._id, 96)
+
+    @property
+    def slot97(self) -> _SlotTypeCommon:
+        return _SlotTypeCommon(type(self), self._id, 97)
+
+    @property
+    def slot98(self) -> _SlotTypeCommon:
+        return _SlotTypeCommon(type(self), self._id, 98)
+
+    @property
+    def slot99(self) -> _SlotTypeCommon:
+        return _SlotTypeCommon(type(self), self._id, 99)
+
 
 class _VendingMachines(
     _BaseStructures,
@@ -12343,6 +18901,422 @@ class _VendingMachines(
     @RequestHash.setter
     def RequestHash(self, value: int | float):
         pass
+
+    @property
+    def slot0(self) -> _SlotTypeCommons:
+        return _SlotTypeCommons(type(self), self._hash, 0, self._name)
+
+    @property
+    def Import(self) -> _SlotTypeCommons:
+        return self.slot0
+
+    @property
+    def slot1(self) -> _SlotTypeCommons:
+        return _SlotTypeCommons(type(self), self._hash, 1, self._name)
+
+    @property
+    def Export(self) -> _SlotTypeCommons:
+        return self.slot1
+
+    @property
+    def slot10(self) -> _SlotTypeCommons:
+        return _SlotTypeCommons(type(self), self._hash, 10, self._name)
+
+    @property
+    def slot100(self) -> _SlotTypeCommons:
+        return _SlotTypeCommons(type(self), self._hash, 100, self._name)
+
+    @property
+    def slot101(self) -> _SlotTypeCommons:
+        return _SlotTypeCommons(type(self), self._hash, 101, self._name)
+
+    @property
+    def slot11(self) -> _SlotTypeCommons:
+        return _SlotTypeCommons(type(self), self._hash, 11, self._name)
+
+    @property
+    def slot12(self) -> _SlotTypeCommons:
+        return _SlotTypeCommons(type(self), self._hash, 12, self._name)
+
+    @property
+    def slot13(self) -> _SlotTypeCommons:
+        return _SlotTypeCommons(type(self), self._hash, 13, self._name)
+
+    @property
+    def slot14(self) -> _SlotTypeCommons:
+        return _SlotTypeCommons(type(self), self._hash, 14, self._name)
+
+    @property
+    def slot15(self) -> _SlotTypeCommons:
+        return _SlotTypeCommons(type(self), self._hash, 15, self._name)
+
+    @property
+    def slot16(self) -> _SlotTypeCommons:
+        return _SlotTypeCommons(type(self), self._hash, 16, self._name)
+
+    @property
+    def slot17(self) -> _SlotTypeCommons:
+        return _SlotTypeCommons(type(self), self._hash, 17, self._name)
+
+    @property
+    def slot18(self) -> _SlotTypeCommons:
+        return _SlotTypeCommons(type(self), self._hash, 18, self._name)
+
+    @property
+    def slot19(self) -> _SlotTypeCommons:
+        return _SlotTypeCommons(type(self), self._hash, 19, self._name)
+
+    @property
+    def slot2(self) -> _SlotTypeCommons:
+        return _SlotTypeCommons(type(self), self._hash, 2, self._name)
+
+    @property
+    def slot20(self) -> _SlotTypeCommons:
+        return _SlotTypeCommons(type(self), self._hash, 20, self._name)
+
+    @property
+    def slot21(self) -> _SlotTypeCommons:
+        return _SlotTypeCommons(type(self), self._hash, 21, self._name)
+
+    @property
+    def slot22(self) -> _SlotTypeCommons:
+        return _SlotTypeCommons(type(self), self._hash, 22, self._name)
+
+    @property
+    def slot23(self) -> _SlotTypeCommons:
+        return _SlotTypeCommons(type(self), self._hash, 23, self._name)
+
+    @property
+    def slot24(self) -> _SlotTypeCommons:
+        return _SlotTypeCommons(type(self), self._hash, 24, self._name)
+
+    @property
+    def slot25(self) -> _SlotTypeCommons:
+        return _SlotTypeCommons(type(self), self._hash, 25, self._name)
+
+    @property
+    def slot26(self) -> _SlotTypeCommons:
+        return _SlotTypeCommons(type(self), self._hash, 26, self._name)
+
+    @property
+    def slot27(self) -> _SlotTypeCommons:
+        return _SlotTypeCommons(type(self), self._hash, 27, self._name)
+
+    @property
+    def slot28(self) -> _SlotTypeCommons:
+        return _SlotTypeCommons(type(self), self._hash, 28, self._name)
+
+    @property
+    def slot29(self) -> _SlotTypeCommons:
+        return _SlotTypeCommons(type(self), self._hash, 29, self._name)
+
+    @property
+    def slot3(self) -> _SlotTypeCommons:
+        return _SlotTypeCommons(type(self), self._hash, 3, self._name)
+
+    @property
+    def slot30(self) -> _SlotTypeCommons:
+        return _SlotTypeCommons(type(self), self._hash, 30, self._name)
+
+    @property
+    def slot31(self) -> _SlotTypeCommons:
+        return _SlotTypeCommons(type(self), self._hash, 31, self._name)
+
+    @property
+    def slot32(self) -> _SlotTypeCommons:
+        return _SlotTypeCommons(type(self), self._hash, 32, self._name)
+
+    @property
+    def slot33(self) -> _SlotTypeCommons:
+        return _SlotTypeCommons(type(self), self._hash, 33, self._name)
+
+    @property
+    def slot34(self) -> _SlotTypeCommons:
+        return _SlotTypeCommons(type(self), self._hash, 34, self._name)
+
+    @property
+    def slot35(self) -> _SlotTypeCommons:
+        return _SlotTypeCommons(type(self), self._hash, 35, self._name)
+
+    @property
+    def slot36(self) -> _SlotTypeCommons:
+        return _SlotTypeCommons(type(self), self._hash, 36, self._name)
+
+    @property
+    def slot37(self) -> _SlotTypeCommons:
+        return _SlotTypeCommons(type(self), self._hash, 37, self._name)
+
+    @property
+    def slot38(self) -> _SlotTypeCommons:
+        return _SlotTypeCommons(type(self), self._hash, 38, self._name)
+
+    @property
+    def slot39(self) -> _SlotTypeCommons:
+        return _SlotTypeCommons(type(self), self._hash, 39, self._name)
+
+    @property
+    def slot4(self) -> _SlotTypeCommons:
+        return _SlotTypeCommons(type(self), self._hash, 4, self._name)
+
+    @property
+    def slot40(self) -> _SlotTypeCommons:
+        return _SlotTypeCommons(type(self), self._hash, 40, self._name)
+
+    @property
+    def slot41(self) -> _SlotTypeCommons:
+        return _SlotTypeCommons(type(self), self._hash, 41, self._name)
+
+    @property
+    def slot42(self) -> _SlotTypeCommons:
+        return _SlotTypeCommons(type(self), self._hash, 42, self._name)
+
+    @property
+    def slot43(self) -> _SlotTypeCommons:
+        return _SlotTypeCommons(type(self), self._hash, 43, self._name)
+
+    @property
+    def slot44(self) -> _SlotTypeCommons:
+        return _SlotTypeCommons(type(self), self._hash, 44, self._name)
+
+    @property
+    def slot45(self) -> _SlotTypeCommons:
+        return _SlotTypeCommons(type(self), self._hash, 45, self._name)
+
+    @property
+    def slot46(self) -> _SlotTypeCommons:
+        return _SlotTypeCommons(type(self), self._hash, 46, self._name)
+
+    @property
+    def slot47(self) -> _SlotTypeCommons:
+        return _SlotTypeCommons(type(self), self._hash, 47, self._name)
+
+    @property
+    def slot48(self) -> _SlotTypeCommons:
+        return _SlotTypeCommons(type(self), self._hash, 48, self._name)
+
+    @property
+    def slot49(self) -> _SlotTypeCommons:
+        return _SlotTypeCommons(type(self), self._hash, 49, self._name)
+
+    @property
+    def slot5(self) -> _SlotTypeCommons:
+        return _SlotTypeCommons(type(self), self._hash, 5, self._name)
+
+    @property
+    def slot50(self) -> _SlotTypeCommons:
+        return _SlotTypeCommons(type(self), self._hash, 50, self._name)
+
+    @property
+    def slot51(self) -> _SlotTypeCommons:
+        return _SlotTypeCommons(type(self), self._hash, 51, self._name)
+
+    @property
+    def slot52(self) -> _SlotTypeCommons:
+        return _SlotTypeCommons(type(self), self._hash, 52, self._name)
+
+    @property
+    def slot53(self) -> _SlotTypeCommons:
+        return _SlotTypeCommons(type(self), self._hash, 53, self._name)
+
+    @property
+    def slot54(self) -> _SlotTypeCommons:
+        return _SlotTypeCommons(type(self), self._hash, 54, self._name)
+
+    @property
+    def slot55(self) -> _SlotTypeCommons:
+        return _SlotTypeCommons(type(self), self._hash, 55, self._name)
+
+    @property
+    def slot56(self) -> _SlotTypeCommons:
+        return _SlotTypeCommons(type(self), self._hash, 56, self._name)
+
+    @property
+    def slot57(self) -> _SlotTypeCommons:
+        return _SlotTypeCommons(type(self), self._hash, 57, self._name)
+
+    @property
+    def slot58(self) -> _SlotTypeCommons:
+        return _SlotTypeCommons(type(self), self._hash, 58, self._name)
+
+    @property
+    def slot59(self) -> _SlotTypeCommons:
+        return _SlotTypeCommons(type(self), self._hash, 59, self._name)
+
+    @property
+    def slot6(self) -> _SlotTypeCommons:
+        return _SlotTypeCommons(type(self), self._hash, 6, self._name)
+
+    @property
+    def slot60(self) -> _SlotTypeCommons:
+        return _SlotTypeCommons(type(self), self._hash, 60, self._name)
+
+    @property
+    def slot61(self) -> _SlotTypeCommons:
+        return _SlotTypeCommons(type(self), self._hash, 61, self._name)
+
+    @property
+    def slot62(self) -> _SlotTypeCommons:
+        return _SlotTypeCommons(type(self), self._hash, 62, self._name)
+
+    @property
+    def slot63(self) -> _SlotTypeCommons:
+        return _SlotTypeCommons(type(self), self._hash, 63, self._name)
+
+    @property
+    def slot64(self) -> _SlotTypeCommons:
+        return _SlotTypeCommons(type(self), self._hash, 64, self._name)
+
+    @property
+    def slot65(self) -> _SlotTypeCommons:
+        return _SlotTypeCommons(type(self), self._hash, 65, self._name)
+
+    @property
+    def slot66(self) -> _SlotTypeCommons:
+        return _SlotTypeCommons(type(self), self._hash, 66, self._name)
+
+    @property
+    def slot67(self) -> _SlotTypeCommons:
+        return _SlotTypeCommons(type(self), self._hash, 67, self._name)
+
+    @property
+    def slot68(self) -> _SlotTypeCommons:
+        return _SlotTypeCommons(type(self), self._hash, 68, self._name)
+
+    @property
+    def slot69(self) -> _SlotTypeCommons:
+        return _SlotTypeCommons(type(self), self._hash, 69, self._name)
+
+    @property
+    def slot7(self) -> _SlotTypeCommons:
+        return _SlotTypeCommons(type(self), self._hash, 7, self._name)
+
+    @property
+    def slot70(self) -> _SlotTypeCommons:
+        return _SlotTypeCommons(type(self), self._hash, 70, self._name)
+
+    @property
+    def slot71(self) -> _SlotTypeCommons:
+        return _SlotTypeCommons(type(self), self._hash, 71, self._name)
+
+    @property
+    def slot72(self) -> _SlotTypeCommons:
+        return _SlotTypeCommons(type(self), self._hash, 72, self._name)
+
+    @property
+    def slot73(self) -> _SlotTypeCommons:
+        return _SlotTypeCommons(type(self), self._hash, 73, self._name)
+
+    @property
+    def slot74(self) -> _SlotTypeCommons:
+        return _SlotTypeCommons(type(self), self._hash, 74, self._name)
+
+    @property
+    def slot75(self) -> _SlotTypeCommons:
+        return _SlotTypeCommons(type(self), self._hash, 75, self._name)
+
+    @property
+    def slot76(self) -> _SlotTypeCommons:
+        return _SlotTypeCommons(type(self), self._hash, 76, self._name)
+
+    @property
+    def slot77(self) -> _SlotTypeCommons:
+        return _SlotTypeCommons(type(self), self._hash, 77, self._name)
+
+    @property
+    def slot78(self) -> _SlotTypeCommons:
+        return _SlotTypeCommons(type(self), self._hash, 78, self._name)
+
+    @property
+    def slot79(self) -> _SlotTypeCommons:
+        return _SlotTypeCommons(type(self), self._hash, 79, self._name)
+
+    @property
+    def slot8(self) -> _SlotTypeCommons:
+        return _SlotTypeCommons(type(self), self._hash, 8, self._name)
+
+    @property
+    def slot80(self) -> _SlotTypeCommons:
+        return _SlotTypeCommons(type(self), self._hash, 80, self._name)
+
+    @property
+    def slot81(self) -> _SlotTypeCommons:
+        return _SlotTypeCommons(type(self), self._hash, 81, self._name)
+
+    @property
+    def slot82(self) -> _SlotTypeCommons:
+        return _SlotTypeCommons(type(self), self._hash, 82, self._name)
+
+    @property
+    def slot83(self) -> _SlotTypeCommons:
+        return _SlotTypeCommons(type(self), self._hash, 83, self._name)
+
+    @property
+    def slot84(self) -> _SlotTypeCommons:
+        return _SlotTypeCommons(type(self), self._hash, 84, self._name)
+
+    @property
+    def slot85(self) -> _SlotTypeCommons:
+        return _SlotTypeCommons(type(self), self._hash, 85, self._name)
+
+    @property
+    def slot86(self) -> _SlotTypeCommons:
+        return _SlotTypeCommons(type(self), self._hash, 86, self._name)
+
+    @property
+    def slot87(self) -> _SlotTypeCommons:
+        return _SlotTypeCommons(type(self), self._hash, 87, self._name)
+
+    @property
+    def slot88(self) -> _SlotTypeCommons:
+        return _SlotTypeCommons(type(self), self._hash, 88, self._name)
+
+    @property
+    def slot89(self) -> _SlotTypeCommons:
+        return _SlotTypeCommons(type(self), self._hash, 89, self._name)
+
+    @property
+    def slot9(self) -> _SlotTypeCommons:
+        return _SlotTypeCommons(type(self), self._hash, 9, self._name)
+
+    @property
+    def slot90(self) -> _SlotTypeCommons:
+        return _SlotTypeCommons(type(self), self._hash, 90, self._name)
+
+    @property
+    def slot91(self) -> _SlotTypeCommons:
+        return _SlotTypeCommons(type(self), self._hash, 91, self._name)
+
+    @property
+    def slot92(self) -> _SlotTypeCommons:
+        return _SlotTypeCommons(type(self), self._hash, 92, self._name)
+
+    @property
+    def slot93(self) -> _SlotTypeCommons:
+        return _SlotTypeCommons(type(self), self._hash, 93, self._name)
+
+    @property
+    def slot94(self) -> _SlotTypeCommons:
+        return _SlotTypeCommons(type(self), self._hash, 94, self._name)
+
+    @property
+    def slot95(self) -> _SlotTypeCommons:
+        return _SlotTypeCommons(type(self), self._hash, 95, self._name)
+
+    @property
+    def slot96(self) -> _SlotTypeCommons:
+        return _SlotTypeCommons(type(self), self._hash, 96, self._name)
+
+    @property
+    def slot97(self) -> _SlotTypeCommons:
+        return _SlotTypeCommons(type(self), self._hash, 97, self._name)
+
+    @property
+    def slot98(self) -> _SlotTypeCommons:
+        return _SlotTypeCommons(type(self), self._hash, 98, self._name)
+
+    @property
+    def slot99(self) -> _SlotTypeCommons:
+        return _SlotTypeCommons(type(self), self._hash, 99, self._name)
 
 
 VendingMachines: _VendingMachines = _VendingMachines()
@@ -12411,6 +19385,14 @@ class WallCooler(_BaseStructure, _Error, _Lock, _Maximum, _Power, _Ratio, _Setti
     def TotalMolesOutput(self) -> float:
         return _DeviceLogicType(self, self._id, "TotalMolesOutput")
 
+    @property
+    def slot0(self) -> _SlotTypeCommon:
+        return _SlotTypeCommon(type(self), self._id, 0)
+
+    @property
+    def DataDisk(self) -> _SlotTypeCommon:
+        return self.slot0
+
 
 class _WallCoolers(
     _BaseStructures, _Errors, _Locks, _Maximums, _Powers, _Ratios, _SettingWs
@@ -12464,6 +19446,14 @@ class _WallCoolers(
     def TotalMolesOutput(self) -> _DevicesLogicType:
         return _DevicesLogicType(self._hash, "TotalMolesOutput", self._name)
 
+    @property
+    def slot0(self) -> _SlotTypeCommons:
+        return _SlotTypeCommons(type(self), self._hash, 0, self._name)
+
+    @property
+    def DataDisk(self) -> _SlotTypeCommons:
+        return self.slot0
+
 
 WallCoolers: _WallCoolers = _WallCoolers()
 
@@ -12471,12 +19461,28 @@ WallCoolers: _WallCoolers = _WallCoolers()
 class WallHeater(_BaseStructure, _Error, _Lock, _Power):
     _hash: int = 24258244
 
+    @property
+    def slot0(self) -> _SlotTypeCommon:
+        return _SlotTypeCommon(type(self), self._id, 0)
+
+    @property
+    def DataDisk(self) -> _SlotTypeCommon:
+        return self.slot0
+
 
 class _WallHeaters(_BaseStructures, _Errors, _Locks, _Powers):
     _hash: int = 24258244
 
     def __getitem__(self, name: str | int | float) -> "_WallHeaters":
         return _WallHeaters(name)
+
+    @property
+    def slot0(self) -> _SlotTypeCommons:
+        return _SlotTypeCommons(type(self), self._hash, 0, self._name)
+
+    @property
+    def DataDisk(self) -> _SlotTypeCommons:
+        return self.slot0
 
 
 WallHeaters: _WallHeaters = _WallHeaters()
@@ -12499,12 +19505,28 @@ WallLights: _WallLights = _WallLights()
 class WallLightBattery(_BaseStructure, _Lock, _Power):
     _hash: int = -1306415132
 
+    @property
+    def slot0(self) -> _SlotTypeBattery:
+        return _SlotTypeBattery(type(self), self._id, 0)
+
+    @property
+    def Battery(self) -> _SlotTypeBattery:
+        return self.slot0
+
 
 class _WallLightBatterys(_BaseStructures, _Locks, _Powers):
     _hash: int = -1306415132
 
     def __getitem__(self, name: str | int | float) -> "_WallLightBatterys":
         return _WallLightBatterys(name)
+
+    @property
+    def slot0(self) -> _SlotTypeBatterys:
+        return _SlotTypeBatterys(type(self), self._hash, 0, self._name)
+
+    @property
+    def Battery(self) -> _SlotTypeBatterys:
+        return self.slot0
 
 
 WallLightBatterys: _WallLightBatterys = _WallLightBatterys()
@@ -12555,6 +19577,14 @@ LightLongs: _LightLongs = _LightLongs()
 class WaterPurifier(_BaseStructure, _ClearMemory, _Error, _ImportCount, _Lock, _Power):
     _hash: int = 887383294
 
+    @property
+    def slot0(self) -> _SlotTypeCommon:
+        return _SlotTypeCommon(type(self), self._id, 0)
+
+    @property
+    def Import(self) -> _SlotTypeCommon:
+        return self.slot0
+
 
 class _WaterPurifiers(
     _BaseStructures, _ClearMemorys, _Errors, _ImportCounts, _Locks, _Powers
@@ -12564,12 +19594,28 @@ class _WaterPurifiers(
     def __getitem__(self, name: str | int | float) -> "_WaterPurifiers":
         return _WaterPurifiers(name)
 
+    @property
+    def slot0(self) -> _SlotTypeCommons:
+        return _SlotTypeCommons(type(self), self._hash, 0, self._name)
+
+    @property
+    def Import(self) -> _SlotTypeCommons:
+        return self.slot0
+
 
 WaterPurifiers: _WaterPurifiers = _WaterPurifiers()
 
 
 class WaterBottleFillerPowered(_BaseStructure, _Activate, _Error, _Power):
     _hash: int = -756587791
+
+    @property
+    def slot0(self) -> _SlotTypeGasCanister:
+        return _SlotTypeGasCanister(type(self), self._id, 0)
+
+    @property
+    def slot1(self) -> _SlotTypeGasCanister:
+        return _SlotTypeGasCanister(type(self), self._id, 1)
 
 
 class _WaterBottleFillerPowereds(_BaseStructures, _Activates, _Errors, _Powers):
@@ -12578,12 +19624,28 @@ class _WaterBottleFillerPowereds(_BaseStructures, _Activates, _Errors, _Powers):
     def __getitem__(self, name: str | int | float) -> "_WaterBottleFillerPowereds":
         return _WaterBottleFillerPowereds(name)
 
+    @property
+    def slot0(self) -> _SlotTypeGasCanisters:
+        return _SlotTypeGasCanisters(type(self), self._hash, 0, self._name)
+
+    @property
+    def slot1(self) -> _SlotTypeGasCanisters:
+        return _SlotTypeGasCanisters(type(self), self._hash, 1, self._name)
+
 
 WaterBottleFillerPowereds: _WaterBottleFillerPowereds = _WaterBottleFillerPowereds()
 
 
 class WaterBottleFillerPoweredBottom(_BaseStructure, _Activate, _Error, _Power):
     _hash: int = 1986658780
+
+    @property
+    def slot0(self) -> _SlotTypeGasCanister:
+        return _SlotTypeGasCanister(type(self), self._id, 0)
+
+    @property
+    def slot1(self) -> _SlotTypeGasCanister:
+        return _SlotTypeGasCanister(type(self), self._id, 1)
 
 
 class _WaterBottleFillerPoweredBottoms(_BaseStructures, _Activates, _Errors, _Powers):
@@ -12593,6 +19655,14 @@ class _WaterBottleFillerPoweredBottoms(_BaseStructures, _Activates, _Errors, _Po
         self, name: str | int | float
     ) -> "_WaterBottleFillerPoweredBottoms":
         return _WaterBottleFillerPoweredBottoms(name)
+
+    @property
+    def slot0(self) -> _SlotTypeGasCanisters:
+        return _SlotTypeGasCanisters(type(self), self._hash, 0, self._name)
+
+    @property
+    def slot1(self) -> _SlotTypeGasCanisters:
+        return _SlotTypeGasCanisters(type(self), self._hash, 1, self._name)
 
 
 WaterBottleFillerPoweredBottoms: _WaterBottleFillerPoweredBottoms = (

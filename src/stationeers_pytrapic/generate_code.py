@@ -20,6 +20,8 @@ from .utils import (
     get_binop_instruction,
     is_builtin_function,
     is_builtin_structure,
+    is_loadable_type,
+    is_storable_type,
 )
 
 # use stack addresses 511 for function return values
@@ -198,11 +200,11 @@ class CompilerPassGenerateCode(CompilerPass):
         attrname = node.attrname
         data = node._ndata
 
-        if not hasattr(expr, node.attrname):
-            expr = (
-                str(expr) if isinstance(expr, (str, int, float, bool)) else type(expr)
+        if not hasattr(expr, attrname):
+            raise CompilerError(
+                f"Invalid attribute {node.attrname} in expression {node.as_string()}",
+                node,
             )
-            raise CompilerError(f"Invalid attribute {node.attrname}", node)
         attr = getattr(expr, attrname)
         if isinstance(expr, type) and issubclass(expr, types._BaseStructure):
             name = expr.__name__
@@ -215,7 +217,9 @@ class CompilerPassGenerateCode(CompilerPass):
             symbol = self.get_intermediate_symbol(node)
             data.add(attr(symbol.code_expr), attrname)
             data.result = symbol
-        elif isinstance(attr, (symbols._DeviceLogicType, symbols._StackValue)):
+        elif is_loadable_type(
+            attr
+        ):  # , (symbols._DeviceLogicType, symbols._StackValue)):
             symbol = self.get_intermediate_symbol(node)
             data.add(attr._load(symbol.code_expr), attrname)
             data.result = symbol
@@ -489,14 +493,17 @@ class CompilerPassGenerateCode(CompilerPass):
         elif isinstance(target, astroid.AssignAttr):
             rhs = self.compile_node(list(node.get_children())[1])
             lhs = self.compile_node(target)
-            if isinstance(lhs, symbols._DeviceLogicType) and lhs._device_id._id is None:
+            if (
+                isinstance(lhs, (symbols._DeviceLogicType, symbols._DeviceSlotType))
+                and lhs._device_id._id is None
+            ):
                 name = lhs._cls.__name__
                 raise CompilerError(
                     f"""Cannot use "{name}"" directly, either use "{name}s" to set all devices of this type or create a specific device with "{name}(d0)".""",
                     target,
                 )
 
-            if isinstance(rhs, symbols._DevicesLogicType):
+            if isinstance(rhs, (symbols._DevicesLogicType, symbols._DevicesSlotType)):
                 raise CompilerError(
                     "You need to take either Minimum/Maximum/Average/Sum", target
                 )
@@ -519,7 +526,10 @@ class CompilerPassGenerateCode(CompilerPass):
             expr = (
                 str(expr) if isinstance(expr, (str, int, float, bool)) else type(expr)
             )
-            raise CompilerError(f"Invalid attribute {node.attrname}", node)
+            raise CompilerError(
+                f"Invalid attribute {node.attrname} in expression {node.as_string()}",
+                node,
+            )
         val = getattr(expr, node.attrname)
         if isinstance(val, property):
             val = val.fget(expr)
@@ -587,8 +597,6 @@ class CompilerPassGenerateCode(CompilerPass):
                 emit_else = False
             else:
                 emit_if = False
-        # elif isinstance(node.test, astroid.Attribute):
-        #     data.add(f"bne {test} {else_label}", "if with attribute")
         elif isinstance(node.test, astroid.BoolOp):
             test = self.compile_node(node.test)
             data.add(f"beqz {test} {else_label}", "if with bool op")
@@ -597,6 +605,8 @@ class CompilerPassGenerateCode(CompilerPass):
             if isinstance(test_name, SymbolData):
                 test_name = test_name.code_expr
             data.add(f"beqz {test_name} {else_label}", "if with name")
+        elif isinstance(node.test, astroid.Attribute):
+            data.add(f"bneqz {test} {else_label}", "if with attribute")
         else:
             raise NotImplementedError(f"Unsupported if test: {type(node.test)}")
 

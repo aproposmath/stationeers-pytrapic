@@ -9,6 +9,22 @@ def is_builtin_function(name: str) -> bool:
     return name in ["HASH", "STR"]
 
 
+def is_loadable_type(obj) -> bool:
+    from . import symbols as sym
+
+    return hasattr(obj, "_load") and isinstance(
+        obj, (sym._DeviceLogicType, sym._StackValue, sym._DeviceSlotType)
+    )
+
+
+def is_storable_type(obj) -> bool:
+    from . import symbols as sym
+
+    return hasattr(obj, "_load") and isinstance(
+        obj, (sym._DeviceLogicType, sym._StackValue, sym._DeviceSlotType)
+    )
+
+
 def get_unop_instruction(op: str):
     return {
         "-": ("sub", lambda x: -x),

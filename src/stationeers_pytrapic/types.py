@@ -120,8 +120,83 @@ class DeviceId:
 
 
 @dataclass
+class _DeviceSlotType:
+    _cls: type
+    _device_id: DeviceId
+    _slot_index: _slotIndex
+    _slot_type: _logicSlotType
+
+    def _load(self, output: _Register) -> float:
+        from .intrinsics import ls
+
+        id = self._device_id
+
+        return ls(output, id._id, self._slot_index, self._slot_type)
+
+    def _set(self, value: float | _Register):
+        from .intrinsics import ss
+
+        id = self._device_id
+
+        return ss(id._id, self._slot_index, self._slot_type, value)
+
+
+@dataclass
+class _DevicesSlotType:
+    _cls: type
+    _device_hash: _deviceHash
+    _slot_index: _slotIndex
+    _slot_type: _logicSlotType
+    _name: str | int | None = None
+
+    @property
+    def _name_hash(self) -> int | str | None:
+        if self._name is None:
+            raise ValueError("Name must be set to compute name hash")
+        return compute_hash(self._name)
+
+    def _load(self, batch_mode: _batchMode):
+        from .intrinsics import lbs, lbns
+
+        if self._name is None:
+            return lambda r: lbs(
+                r, self._device_hash, self._slot_index, self._slot_type, batch_mode
+            )
+        else:
+            return lambda r: lbns(
+                r,
+                self._device_hash,
+                self._name_hash,
+                self._slot_index,
+                self._slot_type,
+                batch_mode,
+            )
+
+    @property
+    def Minimum(self) -> float:
+        return self._load(_batchMode.Minimum)
+
+    @property
+    def Maximum(self) -> float:
+        return self._load(_batchMode.Maximum)
+
+    @property
+    def Average(self) -> float:
+        return self._load(_batchMode.Average)
+
+    @property
+    def Sum(self) -> float:
+        return self._load(_batchMode.Sum)
+
+    def _set(self, value: float | _Register):
+        from .intrinsics import sbs
+
+        return sbs(self._device_hash, self._slot_index, self._slot_type, value)
+
+
+@dataclass
 class _DeviceLogicType:
-    _cls: any
+    _cls: type
     _device_id: DeviceId
     _logic_type: str
 
@@ -196,6 +271,21 @@ class _DevicesLogicType:
 
 
 del enum
+
+
+@dataclass
+class _BaseSlotType:
+    _cls: type
+    _id: DeviceId
+    _slot_index: _slotIndex
+
+
+@dataclass
+class _BaseSlotTypes:
+    _cls: type
+    _hash: _deviceHash
+    _slot_index: _slotIndex
+    _name: str | int | None = None
 
 
 class _BaseStructure:
@@ -370,4 +460,6 @@ __all__ = [
     "Stack",
     "stack",
     "_StackValue",
+    "_DeviceSlotType",
+    "_DevicesSlotType",
 ]
