@@ -46,11 +46,12 @@ The output is written to stdout.
 - return statements ( no return values yet )
 - function arguments (only simple values (float), no structures like `DaylightSensor(d0)` )
 - function return values
+- Slot access, either by index (`furnace.Export.Occupied`) or by index (`furnace.slot0.Occupied`).
 
 **Planned Features**
 
+- Access slot by variable index (`furnace.slots[i].Occupied`)
 - push/pop `ra` automatically in nested function calls ([use manual `push ra/pop ra` for now)](https://aproposmath.github.io/stationeers-pytrapic?fileUrl=https://raw.githubusercontent.com/aproposmath/stationeers-pytrapic/refs/heads/main/examples/nested_function_calls.py))
-- slots (will be added soon)
 - better register allocation (respect not only function scope but also variable scope)
 - pass function arguments/return values in registers (currently only via stack)
 - allow structures as function arguments/return values (currently only simple values like `float` are allowed)
