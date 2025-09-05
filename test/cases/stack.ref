@@ -1,17 +1,17 @@
 poke 123 999.9
 get r1 db 12
 add r0 13 r1
-get r2 db 9
-poke r0 r2
-get r3 d4 r0
-add r0 13 r3
-get r4 d4 9
-put d4 r0 r4
-getd r5 255 r0
-add r0 13 r5
-getd r6 255 9
-putd 255 r0 r6
+get r1 db 9
+poke r0 r1
+get r1 d4 r0
+add r0 13 r1
+get r1 d4 9
+put d4 r0 r1
+getd r1 255 r0
+add r0 13 r1
+getd r1 255 9
+putd 255 r0 r1
 get r0 db 88
 poke r0 r0
-# registers: 7
+# registers: 2
 # lines: 15

@@ -1,29 +1,29 @@
-sbn -324331872 HASH("In") Lock 1
-sbn -324331872 HASH("Out") Lock 1
-sbn -1129453144 HASH("In") Mode 1
-sbn -1129453144 HASH("In") On 0
-sbn -1129453144 HASH("Out") Mode 1
-sbn -1129453144 HASH("Out") On 0
+sbn -324331872 r0 Lock 1
+sbn -324331872 r1 Lock 1
+sbn -1129453144 r0 Mode 1
+sbn -1129453144 r0 On 0
+sbn -1129453144 r1 Mode 1
+sbn -1129453144 r1 On 0
 lbwhile1:
-  lbn r3 576516101 HASH("Switch") On 3
-  ble r3 0 lbelse2
-    lbn r4 -324331872 HASH("In") Open 3
-    sgt r0 r4 0
-    select r1 r0 HASH("Out") HASH("In")
-    select r2 r0 HASH("In") HASH("Out")
-    sbn -324331872 r2 Open 0
-    sbn -1129453144 r2 On 1
+  lbn r6 576516101 r2 On 3
+  ble r6 0 lbelse2
+    lbn r6 -324331872 r0 Open 3
+    sgt r3 r6 0
+    select r4 r3 r1 r0
+    select r5 r3 r0 r1
+    sbn -324331872 r5 Open 0
+    sbn -1129453144 r5 On 1
 lbwhile9:
-    lb r5 -1252983604 Pressure 3
-    beq r5 0 lbwhile.end9
+    lb r6 -1252983604 Pressure 3
+    beq r6 0 lbwhile.end9
       j lbwhile9
 lbwhile.end9:
     sleep 0.2
-    sbn -1129453144 r2 On 0
-    sbn -324331872 r1 Open 1
-    sbn 576516101 HASH("Switch") On 0
+    sbn -1129453144 r5 On 0
+    sbn -324331872 r4 Open 1
+    sbn 576516101 r2 On 0
     sleep 1
 lbelse2:
   j lbwhile1
-# registers: 6
+# registers: 7
 # lines: 27

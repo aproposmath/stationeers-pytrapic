@@ -10,9 +10,9 @@ handle.growlight:
 handle.solar.panels:
   l r0 d0 Horizontal
   sb -539224550 Horizontal r0
-  l r1 d0 Vertical
-  add r2 r1 90
-  sb -539224550 Vertical r2
+  l r0 d0 Vertical
+  add r1 r0 90
+  sb -539224550 Vertical r1
   j ra
-# registers: 3
+# registers: 2
 # lines: 16

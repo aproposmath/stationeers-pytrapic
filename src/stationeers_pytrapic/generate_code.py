@@ -127,6 +127,7 @@ class CompilerPassGenerateCode(CompilerPass):
         sym = self.data.get_tmp_sym_data(node, reg)
         sym.code_expr = reg
         sym.nodes_writing.append(node)
+        sym._is_intermediate = True
         return sym
 
     def get_register_name(self) -> str:
@@ -872,6 +873,41 @@ class CompilerPassGatherCode(CompilerPass):
 
         self.get_code()
 
+    def assign_colors(self, symbols: list[SymbolData]):
+        # Sort by start time
+        symbols_sorted = sorted(symbols, key=lambda s: s.lifetime.start)
+
+        active = []  # list of (end, color) for currently active intervals
+        free_colors = []  # pool of reusable colors
+        next_color = 0
+        # print("symbols_sorted")
+        # for s in symbols_sorted:
+        #     print(f"\t{s.name} {s.lifetime} {s._is_intermediate}")
+
+        for sym in symbols_sorted:
+            start, end = sym.lifetime.start, sym.lifetime.stop
+
+            # Expire intervals that ended before this one starts
+            still_active = []
+            for e, c in active:
+                if e <= start:
+                    free_colors.append(c)
+                else:
+                    still_active.append((e, c))
+            active = still_active
+
+            # Assign a color (reuse if possible)
+            if free_colors:
+                sym.color = free_colors.pop()
+            else:
+                sym.color = next_color
+                next_color += 1
+
+            # Add to active set
+            active.append((end, sym.color))
+
+        return symbols
+
     def assign_registers(self):
         # topological sort of function scopes
         called_from = {}
@@ -912,24 +948,27 @@ class CompilerPassGatherCode(CompilerPass):
                 parent_registers = parent_registers.union(
                     registers_by_scope.get(calling_scope, set())
                 )
-            available_registers = list(
-                reversed(sorted(set(registers) - parent_registers))
-            )
+            available_registers = list(sorted(set(registers) - parent_registers))
             used_registers = set()
 
-            for name, symbol in self.data.symbols[scope].items():
+            symbols = []
+            for symbol in self.data.symbols[scope].values():
                 if not symbol.code_expr in tokens:
                     continue
+                symbols.append(symbol)
 
-                if symbol.is_register and symbol.code_expr not in mapping:
-                    if not available_registers:
-                        raise CompilerError(
-                            f"Running out of registers, try to simplify your code."
-                        )
-                    reg_num = available_registers.pop()
-                    used_registers.add(reg_num)
-                    mapping[symbol.code_expr] = f"r{reg_num}"
-                    # print("assign name", symbol.code_expr, "to", mapping[symbol.code_expr])
+            self.assign_colors(symbols)
+            for sym in symbols:
+                col = sym.color
+                if col == -1:
+                    raise RuntimeError("Internal error: symbol not colored")
+                if col >= len(available_registers):
+                    raise CompilerError(
+                        f"Running out of registers, try to simplify your code."
+                    )
+                reg_num = available_registers[col]
+                mapping[sym.code_expr] = f"r{reg_num}"
+                used_registers.add(reg_num)
 
             registers_by_scope[scope] = used_registers.union(parent_registers)
 
