@@ -14,6 +14,7 @@ from .utils import (
     get_function_parent,
     get_binop_instruction,
     get_unop_instruction,
+    get_loop_ancestor,
 )
 
 
@@ -30,6 +31,9 @@ class SymbolData:
     name: str
     scope: str = ""
     code_expr: str | types._BaseStructure | types._BaseStructures = ""
+    _lifetime: range | None = None
+    _color: int = -1
+    _is_intermediate: bool = False
 
     nodes_reading: list[astroid.NodeNG] = field(default_factory=list)
     nodes_writing: list[astroid.NodeNG] = field(default_factory=list)
@@ -57,6 +61,30 @@ class SymbolData:
         return isinstance(self.code_expr, str) and self.code_expr.startswith(
             "__register."
         )
+
+    @property
+    def lifetime(self):
+        if self._lifetime is None:
+            if self._is_intermediate:
+                n = self.nodes_writing[0].lineno
+                self._lifetime = range(n, n + 1)
+                return self._lifetime
+
+            for node in self.nodes_writing:
+                if node.scope().name == "":
+                    self._lifetime = range(0, sys.maxsize)
+                    break
+
+        if self._lifetime is None:
+            all_nodes = [
+                get_loop_ancestor(n) for n in self.nodes_reading + self.nodes_writing
+            ]
+            min_line = (
+                min(node.lineno for node in all_nodes) if all_nodes else sys.maxsize
+            )
+            max_line = max(node.lineno for node in all_nodes) if all_nodes else -1
+            self._lifetime = range(min_line, max_line + 1)
+        return self._lifetime
 
 
 @dataclass

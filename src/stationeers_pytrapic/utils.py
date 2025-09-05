@@ -84,6 +84,15 @@ def is_builtin_structure(val):
     )
 
 
+def get_loop_ancestor(node):
+    for par in node.node_ancestors():
+        if isinstance(par, astroid.FunctionDef):
+            return node
+        if isinstance(par, (astroid.For, astroid.While)):
+            return par
+    return node
+
+
 def is_constant(node):
     if isinstance(node, (int, float, str)):
         return True, node

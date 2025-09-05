@@ -37,29 +37,29 @@ calc.time:
   mul r6 r6 0.5
   add r7 r5 r6
   sub r8 r5 r6
-  move r9 r4
-  sub r9 r9 r7
-  div r9 r9 r8
-  max r9 r9 -1
-  min r9 r9 1
-  acos r9 r9
-  div r9 r9 6.283184
-  get r10 db 505
-  ble r10 0 lbelse30
-    sub r9 1 r9
+  move r6 r4
+  sub r6 r6 r7
+  div r6 r6 r8
+  max r6 r6 -1
+  min r6 r6 1
+  acos r6 r6
+  div r6 r6 6.283184
+  get r8 db 505
+  ble r8 0 lbelse30
+    sub r6 1 r6
 lbelse30:
-  add r9 r9 0.5
-  mod r9 r9 1
-  mul r9 r9 1200
-  put db 511 r9
+  add r6 r6 0.5
+  mod r6 r6 1
+  mul r6 r6 1200
+  put db 511 r6
   j ra
 get.vertical:
-  l r10 d0 Vertical
-  sub r10 90 r10
-  div r10 r10 180
-  mul r10 r10 3.141592
-  sin r10 r10
-  put db 511 r10
+  l r9 d0 Vertical
+  sub r9 90 r9
+  div r9 r9 180
+  mul r9 r9 3.141592
+  sin r9 r9
+  put db 511 r9
   j ra
 handle.minmax:
   get r4 db 510
@@ -67,15 +67,15 @@ handle.minmax:
   beq r5 0 lbelse12
     get r6 db 505
     bne r6 0 lbelse15
-      sub r10 r4 r5
-      poke 505 r10
+      sub r7 r4 r5
+      poke 505 r7
 lbelse15:
     sub r7 r4 r5
     mul r8 r7 r6
     bge r8 0 lbelse20
-      sgt r11 r6 0
-      select r9 r11 503 502
-      poke r9 r5
+      sgt r9 r6 0
+      select r8 r9 503 502
+      poke r8 r5
       poke 505 r7
 lbelse20:
 lbelse12:
@@ -112,13 +112,13 @@ init:
   sub r4 r4 r8
   mul r4 r4 r4
   mul r5 r5 r5
-  add r9 r4 r5
-  sqrt r9 r9
-  sub r7 r8 r9
+  add r6 r4 r5
+  sqrt r6 r6
+  sub r7 r8 r6
   poke 502 r7
-  add r7 r8 r9
+  add r7 r8 r6
   poke 503 r7
   pop ra
   j ra
-# registers: 12
+# registers: 10
 # lines: 122

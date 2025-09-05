@@ -1,9 +1,9 @@
 lbwhile1:
   l r0 d0 Horizontal
   sb -2045627372 Horizontal r0
-  l r1 d0 Vertical
-  sub r2 90 r1
-  sb -2045627372 Vertical r2
+  l r0 d0 Vertical
+  sub r1 90 r0
+  sb -2045627372 Vertical r1
   j lbwhile1
-# registers: 3
+# registers: 2
 # lines: 7

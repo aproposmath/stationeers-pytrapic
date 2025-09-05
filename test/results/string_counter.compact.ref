@@ -20,28 +20,28 @@ j 3
 get r3 db 510
 get r4 db 509
 bne r4 0 26
-mul r7 256 r3
-add r8 r7 48
-put db 511 r8
+mul r5 256 r3
+add r6 r5 48
+put db 511 r6
 j 44
-move r5 1
-div r9 r4 10
-bgt r5 r9 31
-mul r5 r5 10
+move r6 1
+div r5 r4 10
+bgt r6 r5 31
+mul r6 r6 10
 j 27
-s db Setting r5
-blt r5 1 43
-round r5 r5
-div r6 r4 r5
-trunc r6 r6
+s db Setting r6
+blt r6 1 43
+round r6 r6
+div r5 r4 r6
+trunc r5 r5
 mul r3 r3 256
-add r3 r3 r6
+add r3 r3 r5
 add r3 r3 48
-mul r10 r6 r5
-sub r4 r4 r10
-div r5 r5 10
+mul r5 r5 r6
+sub r4 r4 r5
+div r6 r6 10
 j 32
 put db 511 r3
 j ra
-# registers: 11
+# registers: 7
 # lines: 45
