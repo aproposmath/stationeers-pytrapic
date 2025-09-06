@@ -4,7 +4,7 @@ lbwhile1:
   j lbwhile1
 handle.furnace:
   ls r0 d0 0 Occupied
-  bneqz r0 lbelse2
+  beqz r0 lbelse2
     s d0 Activate 1
 lbelse2:
   ls r0 d0 0 PrefabHash
