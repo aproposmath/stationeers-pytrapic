@@ -7,8 +7,8 @@ sbn -1129453144 HASH("In") On 0
 sb -247344692 On 1
 lbn r0 555215790 1749372462 On 3
 ble r0 0 23
-lbn r1 -324331872 HASH("In") Open 3
-sgt r0 r1 0
+lbn r0 -324331872 HASH("In") Open 3
+sgt r0 r0 0
 select r1 r0 HASH("Out") HASH("In")
 select r2 r0 HASH("In") HASH("Out")
 sbn -324331872 r2 Open 0
@@ -25,25 +25,25 @@ lb r0 -400115994 Ratio 0
 lbn r1 -1252983604 -1825180981 Temperature 0
 sgt r2 r0 0.1
 slt r3 r1 293.15
-and r4 r2 r3
-sb 24258244 On r4
+and r1 r2 r3
+sb 24258244 On r1
 s db Setting r0
 sbn -1129453144 -2085733260 Mode 1
 lbn r0 -1252983604 -2085733260 Temperature 0
 lbn r1 -1252983604 -2085733260 Pressure 0
-lbn r3 -1252983604 -2085733260 RatioOxygen 0
-sgt r2 r3 0.95
-sgt r4 r1 0
-and r5 r2 r4
-beqz r5 41
+lbn r2 -1252983604 -2085733260 RatioOxygen 0
+sgt r3 r2 0.95
+sgt r2 r1 0
+and r2 r3 r2
+beqz r2 41
 sbn -1129453144 -2085733260 On 1
 sb -247344692 On 0
 j 44
 sbn -1129453144 -2085733260 On 0
 sb -247344692 On 1
 sb -247344692 Activate 1
-sgt r5 r0 150
-sbn -739292323 -2085733260 On r5
+sgt r2 r0 150
+sbn -739292323 -2085733260 On r2
 j 7
-# registers: 6
+# registers: 4
 # lines: 47

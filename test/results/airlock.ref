@@ -5,17 +5,17 @@ sbn -1129453144 r0 On 0
 sbn -1129453144 r1 Mode 1
 sbn -1129453144 r1 On 0
 lbwhile1:
-  lbn r6 576516101 r2 On 3
-  ble r6 0 lbelse2
-    lbn r6 -324331872 r0 Open 3
-    sgt r3 r6 0
+  lbn r3 576516101 r2 On 3
+  ble r3 0 lbelse2
+    lbn r3 -324331872 r0 Open 3
+    sgt r3 r3 0
     select r4 r3 r1 r0
     select r5 r3 r0 r1
     sbn -324331872 r5 Open 0
     sbn -1129453144 r5 On 1
 lbwhile9:
-    lb r6 -1252983604 Pressure 3
-    beq r6 0 lbwhile.end9
+    lb r3 -1252983604 Pressure 3
+    beq r3 0 lbwhile.end9
       j lbwhile9
 lbwhile.end9:
     sleep 0.2
@@ -25,5 +25,5 @@ lbwhile.end9:
     sleep 1
 lbelse2:
   j lbwhile1
-# registers: 7
+# registers: 6
 # lines: 27

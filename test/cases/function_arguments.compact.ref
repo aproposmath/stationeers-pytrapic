@@ -1,5 +1,5 @@
-lb r1 -400115994 Ratio 0
-slt r2 r1 0.2
+lb r0 -400115994 Ratio 0
+slt r2 r0 0.2
 sb 813146305 On r2
 j 0
 # registers: 2

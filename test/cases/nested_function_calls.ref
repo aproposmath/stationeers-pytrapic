@@ -5,34 +5,34 @@ lbwhile1:
   get r1 db 511
   add r2 r0 r1
   jal f.mid
-  get r3 db 511
-  add r4 r2 r3
-  s db Setting r4
+  get r0 db 511
+  add r1 r2 r0
+  s db Setting r1
   j lbwhile1
 f.inner:
-  l r13 db Setting
-  l r14 db Setting
-  add r15 r13 r14
-  put db 511 r15
+  l r9 db Setting
+  l r10 db Setting
+  add r11 r9 r10
+  put db 511 r11
   j ra
 f.mid:
   jal f.inner
-  get r10 db 511
+  get r6 db 511
   jal f.inner
-  get r11 db 511
-  mul r12 r10 r11
-  put db 511 r12
+  get r7 db 511
+  mul r8 r6 r7
+  put db 511 r8
   j ra
 f.outer:
   jal f.mid
-  get r5 db 511
+  get r3 db 511
   jal f.mid
-  get r6 db 511
-  add r7 r5 r6
+  get r4 db 511
+  add r5 r3 r4
   jal f.inner
-  get r8 db 511
-  add r9 r7 r8
-  put db 511 r9
+  get r3 db 511
+  add r4 r5 r3
+  put db 511 r4
   j ra
-# registers: 16
+# registers: 12
 # lines: 36

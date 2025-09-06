@@ -1,26 +1,26 @@
 jal main
 get r0 db 511
 main:
-  l r2 d0 RatioCarbonDioxide
-  mul r1 r2 28.2
-  l r2 d0 RatioNitrogen
-  mul r3 r2 28.2
-  add r1 r1 r3
-  l r3 d0 RatioNitrousOxide
-  mul r2 r3 28.2
-  add r1 r1 r2
-  l r2 d0 RatioPollutant
-  mul r3 r2 28.2
-  add r1 r1 r3
-  l r3 d0 RatioOxygen
-  mul r2 r3 28.2
-  add r1 r1 r2
-  l r2 d0 RatioVolatiles
-  mul r3 r2 28.2
-  add r1 r1 r3
-  l r3 d0 TotalMoles
-  mul r1 r1 r3
-  put db 511 r1
+  l r1 d0 RatioCarbonDioxide
+  mul r2 r1 28.2
+  l r1 d0 RatioNitrogen
+  mul r1 r1 28.2
+  add r2 r2 r1
+  l r1 d0 RatioNitrousOxide
+  mul r1 r1 28.2
+  add r2 r2 r1
+  l r1 d0 RatioPollutant
+  mul r1 r1 28.2
+  add r2 r2 r1
+  l r1 d0 RatioOxygen
+  mul r1 r1 28.2
+  add r2 r2 r1
+  l r1 d0 RatioVolatiles
+  mul r1 r1 28.2
+  add r2 r2 r1
+  l r1 d0 TotalMoles
+  mul r2 r2 r1
+  put db 511 r2
   j ra
-# registers: 4
+# registers: 3
 # lines: 24

@@ -1,8 +1,8 @@
 l r0 d0 Horizontal
 sb -2045627372 Horizontal r0
 l r0 d0 Vertical
-sub r1 90 r0
-sb -2045627372 Vertical r1
+sub r0 90 r0
+sb -2045627372 Vertical r0
 j 0
-# registers: 2
+# registers: 1
 # lines: 6
