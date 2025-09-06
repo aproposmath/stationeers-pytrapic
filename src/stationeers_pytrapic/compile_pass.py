@@ -169,9 +169,6 @@ class CodeData:
         per scope, applies replacements to emitted lines, and stores the mapping.
         """
         mapping: dict[str, str] = {}
-        if not code_lines:
-            # preserve original behaviour (register_map set even for empty input)
-            self.register_map = mapping
 
         # let symbols set their emitted lifetimes (if they appear in emitted code)
         for syms in self.symbols.values():
