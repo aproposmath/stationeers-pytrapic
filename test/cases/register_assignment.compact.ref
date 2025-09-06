@@ -1,23 +1,23 @@
-l r3 d0 RatioCarbonDioxide
-mul r2 r3 28.2
-l r3 d0 RatioNitrogen
-mul r4 r3 28.2
-add r2 r2 r4
-l r4 d0 RatioNitrousOxide
-mul r3 r4 28.2
-add r2 r2 r3
-l r3 d0 RatioPollutant
-mul r4 r3 28.2
-add r2 r2 r4
-l r4 d0 RatioOxygen
-mul r3 r4 28.2
-add r2 r2 r3
-l r3 d0 RatioVolatiles
-mul r4 r3 28.2
-add r2 r2 r4
-l r4 d0 TotalMoles
-mul r2 r2 r4
-move r1 r2
-move r0 r1
-# registers: 5
+l r2 d0 RatioCarbonDioxide
+mul r3 r2 28.2
+l r2 d0 RatioNitrogen
+mul r2 r2 28.2
+add r3 r3 r2
+l r2 d0 RatioNitrousOxide
+mul r2 r2 28.2
+add r3 r3 r2
+l r2 d0 RatioPollutant
+mul r2 r2 28.2
+add r3 r3 r2
+l r2 d0 RatioOxygen
+mul r2 r2 28.2
+add r3 r3 r2
+l r2 d0 RatioVolatiles
+mul r2 r2 28.2
+add r3 r3 r2
+l r2 d0 TotalMoles
+mul r3 r3 r2
+move r0 r3
+move r1 r0
+# registers: 4
 # lines: 21

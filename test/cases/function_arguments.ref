@@ -1,7 +1,7 @@
 lbwhile1:
-  lb r1 -400115994 Ratio 0
-  slt r0 r1 0.2
-  put db 510 r0
+  lb r0 -400115994 Ratio 0
+  slt r1 r0 0.2
+  put db 510 r1
   jal set.enable.fuel.generator
   j lbwhile1
 set.enable.fuel.generator:

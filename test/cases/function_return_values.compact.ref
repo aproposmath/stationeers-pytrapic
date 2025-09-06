@@ -1,7 +1,7 @@
-lb r1 -400115994 Ratio 0
-move r0 r1
-slt r0 r0 0.2
-sb 813146305 On r0
+lb r2 -400115994 Ratio 0
+move r0 r2
+slt r1 r0 0.2
+sb 813146305 On r1
 j 0
-# registers: 2
+# registers: 3
 # lines: 5
