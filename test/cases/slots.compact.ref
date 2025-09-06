@@ -1,5 +1,5 @@
 ls r0 d0 0 Occupied
-bneqz r0 3
+beqz r0 3
 s d0 Activate 1
 ls r0 d0 0 PrefabHash
 ss d0 1 Occupied r0
