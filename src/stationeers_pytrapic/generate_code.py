@@ -869,6 +869,7 @@ class CompilerPassGatherCode(CompilerPass):
                 for line in func.code:
                     self.code.append(line)
 
+        self.data.compute_register_coalescing(self.code)
         self.assign_registers()
 
         self.get_code()

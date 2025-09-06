@@ -1,5 +1,6 @@
 import logging
 from dataclasses import dataclass, field
+import re
 from typing import Literal
 import sys
 
@@ -61,6 +62,29 @@ class SymbolData:
         return isinstance(self.code_expr, str) and self.code_expr.startswith(
             "__register."
         )
+
+    def set_emitted_lifetime(self, tokens_per_line: list[list[str]]):
+        """If this symbol's string code_expr appears in emitted tokens, set _lifetime
+        to the inclusive span of lines where it appears. Returns True if set."""
+        tokens_set = {t for toks in tokens_per_line for t in toks}
+
+        if self._lifetime or not isinstance(self.code_expr, str) or self.code_expr not in tokens_set:
+            return
+
+        token = self.code_expr
+        first_idx = None
+        last_idx = None
+        for i, toks in enumerate(tokens_per_line):
+            if token in toks:
+                if first_idx is None:
+                    first_idx = i
+                last_idx = i
+
+        if first_idx is None or last_idx is None:
+            return
+
+        self._lifetime = range(first_idx, last_idx + 1)
+        return
 
     @property
     def lifetime(self):
@@ -138,6 +162,48 @@ class CodeData:
         self.register_map = None
         self.functions = {}
         self.result = {"code": "No code generated"}
+
+    def compute_register_coalescing(self, code_lines: list[CodeLine]):
+        """Greedy coalescing of '__register.' temporaries from emitted code.
+        Sets emitted lifetimes on symbols, coalesces non-overlapping temporaries
+        per scope, applies replacements to emitted lines, and stores the mapping.
+        """
+        mapping: dict[str, str] = {}
+        if not code_lines:
+            # preserve original behaviour (register_map set even for empty input)
+            self.register_map = mapping
+
+        # let symbols set their emitted lifetimes (if they appear in emitted code)
+        for syms in self.symbols.values():
+            for s in syms.values():
+                s.set_emitted_lifetime([ln.code.split("#", 1)[0].split() for ln in code_lines])
+
+        # collect candidates and greedily coalesce per scope
+        for syms in self.symbols.values():
+            candidates = sorted(
+                (s for s in syms.values() if s.is_register and s._is_intermediate and s._lifetime is not None),
+                key=lambda s: s.lifetime.start,
+            )
+
+            groups: list[tuple[str, int]] = []  # (rep_token, last_end)
+            for s in candidates:
+                start, end = s.lifetime.start, s.lifetime.stop
+                for i, (rep, last_end) in enumerate(groups):
+                    if last_end <= start:
+                        # reuse representative for this non-overlapping interval
+                        mapping[s.code_expr] = rep
+                        groups[i] = (rep, end)
+                        break
+                else:
+                    groups.append((s.code_expr, end))
+
+        # apply replacements (longest keys first)
+        if mapping:
+            pattern = re.compile("|".join(map(re.escape, sorted(mapping, key=len, reverse=True))))
+            for line in code_lines:
+                line.code = pattern.sub(lambda m: mapping[m.group(0)], line.code)
+
+        self.register_map = mapping
 
     def _scope_name(self, node: astroid.AssignName | astroid.Name) -> str:
         if isinstance(node, astroid.FunctionDef) or (
