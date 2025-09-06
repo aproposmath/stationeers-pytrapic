@@ -607,7 +607,7 @@ class CompilerPassGenerateCode(CompilerPass):
                 test_name = test_name.code_expr
             data.add(f"beqz {test_name} {else_label}", "if with name")
         elif isinstance(node.test, astroid.Attribute):
-            data.add(f"bneqz {test} {else_label}", "if with attribute")
+            data.add(f"beqz {test} {else_label}", "if with attribute")
         else:
             raise NotImplementedError(f"Unsupported if test: {type(node.test)}")
 
