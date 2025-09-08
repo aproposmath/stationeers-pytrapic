@@ -19,11 +19,11 @@ handle.airlock:
     select r2 r0 HASH("In") HASH("Out")
     sbn -324331872 r2 Open 0
     sbn -1129453144 r2 On 1
-lbwhile9:
+lbwhile8:
     lbn r0 -1252983604 HASH("Airlock") Pressure 3
-    beq r0 0 lbwhile.end9
-      j lbwhile9
-lbwhile.end9:
+    beq r0 0 lbwhile.end8
+      j lbwhile8
+lbwhile.end8:
     sleep 0.2
     sbn -1129453144 r2 On 0
     sbn -324331872 r1 Open 1
@@ -39,15 +39,15 @@ handle.furnace:
   sgt r2 r3 0.95
   sgt r4 r1 0
   and r5 r2 r4
-  beqz r5 lbelse18
+  beqz r5 lbelse17
     sbn -1129453144 HASH("Furnace") On 1
     sb -247344692 On 0
-    j lbend18
-lbelse18:
+    j lbend17
+lbelse17:
     sbn -1129453144 HASH("Furnace") On 0
     sb -247344692 On 1
     sb -247344692 Activate 1
-lbend18:
+lbend17:
   sgt r5 r0 150
   sbn -739292323 HASH("Furnace") On r5
   j ra

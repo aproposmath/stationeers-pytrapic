@@ -1,8 +1,151 @@
 import enum
-from dataclasses import dataclass
-from logging import warn
+import sys
+from dataclasses import dataclass, field
+
+import astroid
 
 from .types_generated import *
+from .utils import get_loop_ancestor
+
+
+@dataclass
+class IC10Register:
+    name: str
+    scope: str = ""
+    code_expr: "str | _BaseStructure | _BaseStructures" = ""
+    _lifetime: range | None = None
+    _color: int = -1
+    _is_intermediate: bool = False
+
+    nodes_reading: list[astroid.NodeNG] = field(default_factory=list)
+    nodes_writing: list[astroid.NodeNG] = field(default_factory=list)
+
+    def __hash__(self):
+        return hash((self.code_expr, self.scope))
+
+    @property
+    def is_overwritten(self) -> int:
+        return len(self.nodes_writing) > 1
+
+    @property
+    def is_written(self) -> int:
+        return len(self.nodes_writing)
+
+    @property
+    def is_read(self) -> int:
+        return len(self.nodes_reading)
+
+    @property
+    def is_builtin_object(self) -> bool:
+        return isinstance(self.code_expr, _BaseStructure) or isinstance(
+            self.code_expr, _BaseStructures
+        )
+
+    @property
+    def is_register(self) -> bool:
+        return isinstance(self.code_expr, str) and self.code_expr.startswith(
+            "__register."
+        )
+
+    @property
+    def lifetime(self):
+        if self._lifetime is None:
+            if self._is_intermediate:
+                n = self.nodes_writing[0].lineno
+                self._lifetime = range(n, n + 1)
+                return self._lifetime
+
+            for node in self.nodes_writing:
+                if node.scope().name == "":
+                    self._lifetime = range(0, sys.maxsize)
+                    break
+
+        if self._lifetime is None:
+            all_nodes = [
+                get_loop_ancestor(n) for n in self.nodes_reading + self.nodes_writing
+            ]
+            min_line = (
+                min(node.lineno for node in all_nodes) if all_nodes else sys.maxsize
+            )
+            max_line = max(node.lineno for node in all_nodes) if all_nodes else -1
+            self._lifetime = range(min_line, max_line + 1)
+        return self._lifetime
+
+
+@dataclass
+class IC10Operand:
+    """
+    An operand for an IC10 instruction, can be a register or an immediate value
+    """
+
+    value: str | float | int | IC10Register
+
+    @property
+    def is_register(self) -> bool:
+        return isinstance(self.value, IC10Register)
+
+    def to_string(self) -> str:
+        if isinstance(self.value, IC10Register):
+            return self.value.code_expr
+        return str(self.value)
+
+
+@dataclass
+class IC10Instruction:
+    op: str  # The ic10 instruction name
+    inputs: list[IC10Operand] = field(default_factory=list)
+    output: IC10Register | None = None  # output register (or None if no output)
+    comment: str = ""
+    indent: int = 0
+    lineno: int | None = (
+        None  # ic10 line number, this is set later and might change during compile passes
+    )
+    node: astroid.NodeNG = None
+
+    @property
+    def registers(self) -> list[IC10Register]:
+        regs = []
+        if self.output:
+            regs.append(self.output)
+        for inp in self.inputs:
+            if inp.is_register:
+                regs.append(inp.value)
+        return regs
+
+    def to_string(self, shift=2) -> str:
+        code = " " * self.indent * shift + self.op
+        if self.output:
+            if not isinstance(self.output, IC10Register):
+                from .compile_pass import CompilerError
+
+                raise CompilerError(
+                    f"Output must be a register, have '{self.output}' of type {type(self.output)}",
+                    self.node,
+                )
+            code += f" {self.output.code_expr}"
+        for inp in self.inputs:
+            code += f" {inp.to_string()}"
+        if self.comment:
+            code += f"  # {self.comment}"
+        return code
+
+    def __init__(self, op: str, inputs=None, output=None, comment="", indent=0):
+        inputs = inputs or []
+        for i in range(len(inputs)):
+            if not isinstance(inputs[i], IC10Operand):
+                inputs[i] = IC10Operand(inputs[i])
+        self.op = op
+        self.inputs = inputs if inputs is not None else []
+        self.output = output
+        self.comment = comment
+        self.indent = indent
+
+        if isinstance(output, str) and output.startswith("__register."):
+            raise ValueError("Output cannot be a string register name")
+
+
+IC10 = IC10Instruction
+_Register = IC10Register
 
 
 def encode_data(data: dict) -> str:
@@ -45,14 +188,6 @@ class HashMode(enum.Enum):
 hash_mode = HashMode.VERBOSE
 
 
-class _Register:
-    def __init__(self, name: str):
-        self.name = name
-
-    def __str__(self):
-        return self.name
-
-
 def compute_hash(name: int | str | _Register) -> int | str:
     if not isinstance(name, str):
         return name
@@ -77,6 +212,7 @@ def compute_hash(name: int | str | _Register) -> int | str:
     val = (val ^ 0x80000000) - 0x80000000
     eval_str = str(val)
     hash_str = f'HASH("{name}")'
+    # print(f'compute hash with mode {hash_mode}')
 
     if hash_mode == HashMode.VERBOSE:
         return hash_str
@@ -126,19 +262,15 @@ class _DeviceSlotType:
     _slot_index: _slotIndex
     _slot_type: _logicSlotType
 
-    def _load(self, output: _Register) -> float:
-        from .intrinsics import ls
-
+    def _load(self, output: _Register) -> IC10Instruction:
         id = self._device_id
+        return IC10Instruction(
+            "ls", [id._id, self._slot_index, self._slot_type], output
+        )
 
-        return ls(output, id._id, self._slot_index, self._slot_type)
-
-    def _set(self, value: float | _Register):
-        from .intrinsics import ss
-
+    def _set(self, value: float | _Register) -> IC10Instruction:
         id = self._device_id
-
-        return ss(id._id, self._slot_index, self._slot_type, value)
+        return IC10Instruction("ss", [id._id, self._slot_index, self._slot_type, value])
 
 
 @dataclass
@@ -156,20 +288,23 @@ class _DevicesSlotType:
         return compute_hash(self._name)
 
     def _load(self, batch_mode: _batchMode):
-        from .intrinsics import lbs, lbns
-
         if self._name is None:
-            return lambda r: lbs(
-                r, self._device_hash, self._slot_index, self._slot_type, batch_mode
+            return lambda r: IC10(
+                "lbs",
+                [self._device_hash, self._slot_index, self._slot_type, batch_mode],
+                r,
             )
         else:
-            return lambda r: lbns(
+            return lambda r: IC10(
+                "lbns",
+                [
+                    self._device_hash,
+                    self._name_hash,
+                    self._slot_index,
+                    self._slot_type,
+                    batch_mode,
+                ],
                 r,
-                self._device_hash,
-                self._name_hash,
-                self._slot_index,
-                self._slot_type,
-                batch_mode,
             )
 
     @property
@@ -189,9 +324,9 @@ class _DevicesSlotType:
         return self._load(_batchMode.Sum)
 
     def _set(self, value: float | _Register):
-        from .intrinsics import sbs
-
-        return sbs(self._device_hash, self._slot_index, self._slot_type, value)
+        return IC10Instruction(
+            "sbs", [self._device_hash, self._slot_index, self._slot_type, value]
+        )
 
 
 @dataclass
@@ -201,22 +336,14 @@ class _DeviceLogicType:
     _logic_type: str
 
     def _load(self, output: _Register) -> float:
-        from .intrinsics import l, ld
-
         id = self._device_id
-        if id._is_ref_id:
-            return ld(output, id._id, self._logic_type)
-        else:
-            return l(output, id._id, self._logic_type)
+        instr = "ld" if id._is_ref_id else "l"
+        return IC10Instruction(instr, [id._id, self._logic_type], output)
 
     def _set(self, value: float | _Register):
-        from .intrinsics import s, sd
-
         id = self._device_id
-        if id._is_ref_id:
-            return sd(id._id, self._logic_type, value)
-        else:
-            return s(id._id, self._logic_type, value)
+        instr = "sd" if id._is_ref_id else "s"
+        return IC10Instruction(instr, [id._id, self._logic_type, value])
 
 
 @dataclass
@@ -227,20 +354,23 @@ class _DevicesLogicType:
 
     @property
     def _name_hash(self) -> int | str | None:
-        if self._name is None:
+        if not self._name:
             raise ValueError("Name must be set to compute name hash")
+
         return compute_hash(self._name)
 
     def _load(self, batch_mode: _batchMode):
-        from .intrinsics import lb, lbn
-
         if self._name is None:
             # All devices of a specific type
-            return lambda r: lb(r, self._device_hash, self._logic_type, batch_mode)
+            return lambda r: IC10Instruction(
+                "lb", [self._device_hash, self._logic_type, batch_mode], r
+            )
         else:
             # All devices of a specific type, with a specific name
-            return lambda r: lbn(
-                r, self._device_hash, self._name_hash, self._logic_type, batch_mode
+            return lambda r: IC10Instruction(
+                "lbn",
+                [self._device_hash, self._name_hash, self._logic_type, batch_mode],
+                r,
             )
 
     @property
@@ -260,14 +390,12 @@ class _DevicesLogicType:
         return self._load(_batchMode.Sum)
 
     def _set(self, value: float | _Register):
-        from .intrinsics import sb, sbn
-
         if self._name is None:
-            # All devices of a specific type
-            return sb(self._device_hash, self._logic_type, value)
+            return IC10Instruction("sb", [self._device_hash, self._logic_type, value])
         else:
-            # All devices of a specific type, with a specific name
-            return sbn(self._device_hash, self._name_hash, self._logic_type, value)
+            return IC10Instruction(
+                "sbn", [self._device_hash, self._name_hash, self._logic_type, value]
+            )
 
 
 del enum
@@ -354,23 +482,19 @@ class _StackValue:
         self._addr = _addr
 
     def _set(self, value: float | _Register):
-        from .intrinsics import poke, put, putd
-
         if self._id is None:
-            return poke(self._addr, value)
+            return IC10Instruction("poke", [self._addr, value])
 
         if self._is_ref_id:
-            return putd(self._id, self._addr, value)
+            return IC10Instruction("putd", [self._id, self._addr, value])
 
-        return put(self._id, self._addr, value)
+        return IC10Instruction("put", [self._id, self._addr, value])
 
     def _load(self, output: _Register) -> float:
-        from .intrinsics import get, getd
-
         if self._is_ref_id:
-            return getd(output, self._id, self._addr)
+            return IC10Instruction("getd", [self._id, self._addr], output)
 
-        return get(output, self._id or "db", self._addr)
+        return IC10Instruction("get", [self._id or "db", self._addr], output)
 
 
 class Stack:
@@ -390,25 +514,27 @@ class Stack:
 
 stack = Stack()
 
-ra = _Register("ra")
-r0 = _Register("r0")
-r1 = _Register("r1")
-r2 = _Register("r2")
-r3 = _Register("r3")
-r4 = _Register("r4")
-r5 = _Register("r5")
-r6 = _Register("r6")
-r7 = _Register("r7")
-r8 = _Register("r8")
-r9 = _Register("r9")
-r10 = _Register("r10")
-r11 = _Register("r11")
-r12 = _Register("r12")
-r13 = _Register("r13")
-r14 = _Register("r14")
-r15 = _Register("r15")
-r16 = _Register("r16")
-sp = _Register("sp")
+_Reg = lambda name: _Register(name, code_expr=name)
+
+ra = _Reg("ra")
+r0 = _Reg("r0")
+r1 = _Reg("r1")
+r2 = _Reg("r2")
+r3 = _Reg("r3")
+r4 = _Reg("r4")
+r5 = _Reg("r5")
+r6 = _Reg("r6")
+r7 = _Reg("r7")
+r8 = _Reg("r8")
+r9 = _Reg("r9")
+r10 = _Reg("r10")
+r11 = _Reg("r11")
+r12 = _Reg("r12")
+r13 = _Reg("r13")
+r14 = _Reg("r14")
+r15 = _Reg("r15")
+r16 = _Reg("r16")
+sp = _Reg("sp")
 
 d0 = _Device("d0")
 d1 = _Device("d1")

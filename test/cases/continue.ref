@@ -3,9 +3,9 @@ lbwhile1:
   bge r0 0.2 lbelse3
   j lbwhile1
 lbelse3:
-  bge r0 0.1 lbelse5
+  bge r0 0.1 lbelse4
   j lbwhile.end1
-lbelse5:
+lbelse4:
   sb -247344692 Activate 1
   j lbwhile1
 lbwhile.end1:

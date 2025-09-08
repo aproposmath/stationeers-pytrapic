@@ -1,2 +1,2 @@
 Error: Compiler error at line 9:4:
-	Cannot reassign assign GrowLight(1) to light, already assigned to GrowLight(0) at line 4
+	Cannot reassign assign GrowLight(IC10Operand(value=1)) to light at line 9

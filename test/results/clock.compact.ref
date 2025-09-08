@@ -43,22 +43,22 @@ poke 503 r7
 pop ra
 yield
 jal 99
-get r4 db 511
+get r0 db 511
 get r5 db 504
 beq r5 0 59
 get r6 db 505
 bne r6 0 52
-sub r7 r4 r5
+sub r7 r0 r5
 poke 505 r7
-sub r7 r4 r5
+sub r7 r0 r5
 mul r8 r7 r6
 bge r8 0 59
 sgt r9 r6 0
 select r8 r9 503 502
 poke r8 r5
 poke 505 r7
-poke 504 r4
-put db 510 r4
+poke 504 r0
+put db 510 r0
 jal 77
 get r1 db 511
 sbn -815193061 -811190405 Setting r1
@@ -104,5 +104,5 @@ mul r9 r9 3.141592
 sin r9 r9
 put db 511 r9
 j ra
-# registers: 9
+# registers: 10
 # lines: 106
