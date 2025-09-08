@@ -9,6 +9,12 @@ def is_builtin_function(name: str) -> bool:
     return name in ["HASH", "STR"]
 
 
+def is_intrinsic_function(name: str) -> bool:
+    from . import intrinsics
+
+    return name in intrinsics.__dict__
+
+
 def is_loadable_type(obj) -> bool:
     from . import symbols as sym
 

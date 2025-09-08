@@ -2,7 +2,7 @@ sb -1949054743 Mode 10
 move r0 55
 move r1 999
 lbwhile3:
-  yield 
+  yield
   move r2 0
   put db 510 r2
   put db 509 r0
@@ -28,15 +28,15 @@ append.number:
   j append.numberend
 lbelse7:
   move r6 1
-lbwhile12:
+lbwhile11:
   div r5 r4 10
-  bgt r6 r5 lbwhile.end12
+  bgt r6 r5 lbwhile.end11
     mul r6 r6 10
-    j lbwhile12
-lbwhile.end12:
+    j lbwhile11
+lbwhile.end11:
   s db Setting r6
-lbwhile14:
-  blt r6 1 lbwhile.end14
+lbwhile13:
+  blt r6 1 lbwhile.end13
     round r6 r6
     div r5 r4 r6
     trunc r5 r5
@@ -46,8 +46,8 @@ lbwhile14:
     mul r5 r5 r6
     sub r4 r4 r5
     div r6 r6 10
-    j lbwhile14
-lbwhile.end14:
+    j lbwhile13
+lbwhile.end13:
   put db 511 r3
 append.numberend:
   j ra

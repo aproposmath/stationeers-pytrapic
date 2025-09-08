@@ -1,98 +1,36 @@
 import logging
 from dataclasses import dataclass, field
 from typing import Literal
-import sys
 
 import astroid
 
-from . import symbols, types
+from . import symbols
+from .types import IC10Instruction, IC10Register
 from .utils import (
+    CompilerError,
+    get_binop_instruction,
+    get_function_parent,
+    get_loop_ancestor,
+    get_unop_instruction,
     is_builtin_name,
     is_constant,
     logger,
-    CompilerError,
-    get_function_parent,
-    get_binop_instruction,
-    get_unop_instruction,
-    get_loop_ancestor,
 )
 
-
-@dataclass
-class CodeLine:
-    code: str = ""
-    comment: str = ""
-    indent: int = 0
-    node: astroid.NodeNG = None
-
-
-@dataclass
-class SymbolData:
-    name: str
-    scope: str = ""
-    code_expr: str | types._BaseStructure | types._BaseStructures = ""
-    _lifetime: range | None = None
-    _color: int = -1
-    _is_intermediate: bool = False
-
-    nodes_reading: list[astroid.NodeNG] = field(default_factory=list)
-    nodes_writing: list[astroid.NodeNG] = field(default_factory=list)
-
-    @property
-    def is_overwritten(self) -> int:
-        return len(self.nodes_writing) > 1
-
-    @property
-    def is_written(self) -> int:
-        return len(self.nodes_writing)
-
-    @property
-    def is_read(self) -> int:
-        return len(self.nodes_reading)
-
-    @property
-    def is_builtin_object(self) -> bool:
-        return isinstance(self.code_expr, types._BaseStructure) or isinstance(
-            self.code_expr, types._BaseStructures
-        )
-
-    @property
-    def is_register(self) -> bool:
-        return isinstance(self.code_expr, str) and self.code_expr.startswith(
-            "__register."
-        )
-
-    @property
-    def lifetime(self):
-        if self._lifetime is None:
-            if self._is_intermediate:
-                n = self.nodes_writing[0].lineno
-                self._lifetime = range(n, n + 1)
-                return self._lifetime
-
-            for node in self.nodes_writing:
-                if node.scope().name == "":
-                    self._lifetime = range(0, sys.maxsize)
-                    break
-
-        if self._lifetime is None:
-            all_nodes = [
-                get_loop_ancestor(n) for n in self.nodes_reading + self.nodes_writing
-            ]
-            min_line = (
-                min(node.lineno for node in all_nodes) if all_nodes else sys.maxsize
-            )
-            max_line = max(node.lineno for node in all_nodes) if all_nodes else -1
-            self._lifetime = range(min_line, max_line + 1)
-        return self._lifetime
+# @dataclass
+# class CodeLine:
+#     code: str = ""
+#     comment: str = ""
+#     indent: int = 0
+#     node: astroid.NodeNG = None
 
 
 @dataclass
 class FunctionData:
     node: astroid.FunctionDef
-    sym_data: SymbolData
-    code: list[CodeLine] = field(default_factory=list)
-    args: list[SymbolData] = field(default_factory=list)
+    sym_data: IC10Register
+    code: list[IC10Instruction] = field(default_factory=list)
+    args: list[IC10Register] = field(default_factory=list)
 
     @property
     def name(self) -> str:
@@ -125,10 +63,11 @@ class CodeData:
     original_code: list[str]
     tree: astroid.Module
     options: CompileOptions
-    symbols: dict[str, dict[str, SymbolData]]
+    symbols: dict[str, dict[str, IC10Register]]
     register_map: dict[str, str]
     functions: dict[str, FunctionData]
     result: dict[str, str | int]
+    structures: dict[str, dict[str, object]] = field(default_factory=dict)
 
     def __init__(self, code: str, tree: astroid.Module, options: CompileOptions):
         self.original_code = code.splitlines()
@@ -138,6 +77,7 @@ class CodeData:
         self.register_map = None
         self.functions = {}
         self.result = {"code": "No code generated"}
+        self.structures = {}
 
     def _scope_name(self, node: astroid.AssignName | astroid.Name) -> str:
         if isinstance(node, astroid.FunctionDef) or (
@@ -154,15 +94,15 @@ class CodeData:
             self.symbols[scope.name] = {}
         return scope.name
 
-    def get_tmp_sym_data(self, node: astroid.NodeNG, name: str) -> SymbolData:
+    def get_tmp_sym_data(self, node: astroid.NodeNG, name: str) -> IC10Register:
         scope = self._scope_name(node)
         local_symbols = self.symbols[scope]
-        local_symbols[name] = SymbolData(name)
+        local_symbols[name] = IC10Register(name)
         return local_symbols[name]
 
     def get_sym_data(
         self, node: astroid.AssignName | astroid.Name, new_if_not_existing: bool = False
-    ) -> SymbolData:
+    ) -> IC10Register:
 
         scope = self._scope_name(node)
         local_symbols = self.symbols[scope]
@@ -170,7 +110,7 @@ class CodeData:
         if name not in local_symbols:
             if new_if_not_existing:
                 # print("create new name data for", name, "in scope", scope)
-                local_symbols[name] = SymbolData(name)
+                local_symbols[name] = IC10Register(name)
             else:
                 raise CompilerError(
                     f"Name '{name}' not found in scope '{scope}'",
@@ -219,7 +159,7 @@ class NodeData:
     start_label: str = None
     end_label: str = None
 
-    code: dict[CodeType, list[CodeLine]] = None
+    code: dict[CodeType, list[IC10Instruction]] = None
     result = None
 
     scope: str = None
@@ -237,24 +177,26 @@ class NodeData:
 
         self.code = {"": [], "end": [], "else": []}
 
-    def _add(
-        self, code: str, comment: str = "", indent: int = 0, code_type: CodeType = ""
-    ):
-        code_line = CodeLine(code, comment, node=self.node, indent=self.indent + indent)
+    def _add(self, line: IC10Instruction, code_type: CodeType = ""):
+        if not isinstance(line, IC10Instruction):
+            raise ValueError("line must be an instance of IC10Instruction")
+
+        line.node = self.node
+        line.indent += self.indent
 
         if code_type not in self.code:
             self.code[code_type] = []
 
-        self.code[code_type].append(code_line)
+        self.code[code_type].append(line)
 
-    def add(self, code: str, comment: str = "", indent: int = 0):
-        self._add(code, comment, indent, code_type="")
+    def add(self, line: IC10Instruction):
+        self._add(line)
 
-    def add_end(self, code: str, comment: str = "", indent: int = 0):
-        self._add(code, comment, indent, code_type="end")
+    def add_end(self, line: IC10Instruction):
+        self._add(line, code_type="end")
 
-    def add_else(self, code: str, comment: str = "", indent: int = 0):
-        self._add(code, comment, indent, code_type="else")
+    def add_else(self, line: IC10Instruction):
+        self._add(line, code_type="else")
 
     def __str__(self):
         return f"NodeData(is_used={self.is_used}, is_reachable={self.is_reachable}, is_constant={self.is_constant}, is_constant_value={self.is_constant_value})"

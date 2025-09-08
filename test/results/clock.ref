@@ -6,7 +6,7 @@ sbn -815193061 HASH("Sunset") Setting 0
 sbn -815193061 HASH("Sunset") Mode 7
 jal init
 lbwhile8:
-  yield 
+  yield
   jal get.vertical
   get r0 db 511
   put db 510 r0
@@ -20,9 +20,9 @@ lbwhile8:
   put db 510 0
   jal calc.time
   get r2 db 511
-  bge r2 r1 lbelse35
+  bge r2 r1 lbelse31
     sub r2 1200 r2
-lbelse35:
+lbelse31:
   sub r3 r2 r1
   add r3 r3 1200
   mod r3 r3 1200
@@ -45,9 +45,9 @@ calc.time:
   acos r6 r6
   div r6 r6 6.283184
   get r8 db 505
-  ble r8 0 lbelse30
+  ble r8 0 lbelse27
     sub r6 1 r6
-lbelse30:
+lbelse27:
   add r6 r6 0.5
   mod r6 r6 1
   mul r6 r6 1200
@@ -66,18 +66,18 @@ handle.minmax:
   get r5 db 504
   beq r5 0 lbelse12
     get r6 db 505
-    bne r6 0 lbelse15
+    bne r6 0 lbelse14
       sub r7 r4 r5
       poke 505 r7
-lbelse15:
+lbelse14:
     sub r7 r4 r5
     mul r8 r7 r6
-    bge r8 0 lbelse20
+    bge r8 0 lbelse18
       sgt r9 r6 0
       select r8 r9 503 502
       poke r8 r5
       poke 505 r7
-lbelse20:
+lbelse18:
 lbelse12:
   poke 504 r4
   j ra
