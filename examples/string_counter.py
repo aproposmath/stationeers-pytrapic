@@ -12,9 +12,9 @@ def append_number(num_string, n):
         d *= 10
     db.Setting = d
     while d >= 1:
-        round(d, d)
+        d = round(d)
         digit = n / d
-        trunc(digit, digit)
+        digit = trunc(digit)
         num_string *= 256
         num_string += digit
         num_string += 48

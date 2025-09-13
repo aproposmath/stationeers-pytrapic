@@ -220,7 +220,7 @@ class _logicType(enum.StrEnum):
     WorkingGasEfficiency = "WorkingGasEfficiency"
 
 
-class _logicSlotType:
+class _logicSlotType(enum.StrEnum):
     None_ = "None"
     Occupied = "Occupied"
     OccupantHash = "OccupantHash"

@@ -104,9 +104,11 @@ class CodeData:
         self, node: astroid.AssignName | astroid.Name, new_if_not_existing: bool = False
     ) -> IC10Register:
 
+        name = node.name
+        if name in ("ra", "sp"):
+            return IC10Register(name, "", name)
         scope = self._scope_name(node)
         local_symbols = self.symbols[scope]
-        name = node.name
         if name not in local_symbols:
             if new_if_not_existing:
                 # print("create new name data for", name, "in scope", scope)
@@ -133,7 +135,7 @@ class CodeData:
         self.get_sym_data(node).nodes_reading.append(node)
 
     def set_name_written(self, node):
-        if is_builtin_name(node.name):
+        if is_builtin_name(node.name) and node.name not in ("ra", "sp"):
             raise CompilerError(
                 f"Cannot write to built-in name '{node.name}'",
                 node,

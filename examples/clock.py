@@ -61,9 +61,9 @@ def calc_time(vertical):
     time = vertical
     time -= a
     time /= b
-    max(time, time, -1)
-    min(time, time, 1)
-    acos(time, time)
+    time = max(time, -1)
+    time = min(time, 1)
+    time = acos(time)
     time = time / (2 * 3.141592)
     if stack[ISIGN] > 0:
         time = 1 - time
@@ -80,7 +80,7 @@ def get_vertical():
     vertical = 90 - vertical
     vertical /= 180
     vertical *= 3.141592
-    sin(vertical, vertical)
+    vertical = sin(vertical)
     return vertical
 
 
@@ -120,14 +120,14 @@ def init():
     deriv0 *= deriv0
     deriv1 *= deriv1
     a = deriv0 + deriv1
-    sqrt(a, a)
+    a = sqrt(a)
 
     v = b - a
     stack[IMIN] = v
 
     v = b + a
     stack[IMAX] = v
-    pop(ra)
+    ra = pop()
 
 
 init()

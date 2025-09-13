@@ -219,6 +219,7 @@ namespace StationeersPyTrapIC
             public CompileError error;
             public string highlighted;
             public string code;
+            public string tooltip;
             public int num_lines;
             public int num_registers;
             public int num_bytes;
@@ -396,6 +397,30 @@ namespace StationeersPyTrapIC
             Init();
         }
 
+        public static void GetPosition(out int lineno, out int column)
+        {
+            try
+            {
+                var sc = InputSourceCode.Instance;
+                var currentLine = AccessTools.Property(sc.GetType(), "CurrentLine").GetValue(sc);
+                var lineNumObj = AccessTools
+                    .Field(currentLine.GetType(), "LineNumber")
+                    .GetValue(currentLine);
+
+                string lineNrStr = (string)
+                    AccessTools.Property(lineNumObj.GetType(), "text").GetValue(lineNumObj);
+                L.Debug($"Current line number text: '{lineNrStr}'");
+                lineno = 1 + Int32.Parse(lineNrStr.TrimEnd('.'));
+                column = (int)AccessTools.Property(sc.GetType(), "CaretPosition").GetValue(sc);
+            }
+            catch (Exception ex)
+            {
+                L.Error($"Error getting caret position: {ex}");
+                lineno = -1;
+                column = -1;
+            }
+        }
+
         public CompileResponse Compile(string pythonCode, CompileOptions options = null)
         {
             if (!IsRunning())
@@ -406,6 +431,11 @@ namespace StationeersPyTrapIC
                     error = { description = "Python compiler is not running" },
                 };
             }
+            int lineno = -1;
+            int column = -1;
+            GetPosition(out lineno, out column);
+            L.Debug($"Compiling code at {lineno}:{column}");
+
             pythonCode = SourceData.ReplaceLibraryCode(pythonCode);
             options ??= new CompileOptions();
             return JsonConvert.DeserializeObject<CompileResponse>(
@@ -418,6 +448,8 @@ namespace StationeersPyTrapIC
                             comments = options.Comments,
                             compact = options.Compact,
                             append_version = options.AppendVersion,
+                            lineno = lineno,
+                            column = column,
                         }
                     )
                 )
@@ -558,6 +590,8 @@ namespace StationeersPyTrapIC
         private static string[] highlightedLines = null;
         private static PythonCompiler.CompileResponse compiledCode = null;
 
+        private static bool isPasting = false;
+
         public static void SetInputCode(string code)
         {
             string newInput = code ?? "";
@@ -598,8 +632,8 @@ namespace StationeersPyTrapIC
             SetInputCode(InputSourceCode.Copy());
             if (compiledCode == null)
             {
-                L.Debug($"No compiled code, skipping reformat");
-                return true; // run original method
+                // L.Debug($"No compiled code, skipping reformat");
+                return !isPasting; // run original method, but only if we are not pasting (performance fix)
             }
 
             for (int i = 0; i < __instance.Parent.LinesOfCode.Count; i++)
@@ -633,21 +667,64 @@ namespace StationeersPyTrapIC
             return false;
         }
 
+        [HarmonyPatch(typeof(InputSourceCode), "HandleInput"), HarmonyPrefix]
+        public static bool InputSourceCode_HandleInputPrefix(InputSourceCode __instance)
+        {
+            if (Input.GetKeyDown(KeyCode.F12) && compiledCode != null)
+            {
+                L.Debug("Set IC10 Code");
+                InputSourceCode.Paste(compiledCode.code);
+                return false;
+            }
+            return true;
+        }
+
         [HarmonyPatch(typeof(InputSourceCode), "HandleInput"), HarmonyPostfix]
         public static void InputSourceCode_HandleInput(InputSourceCode __instance)
         {
-            if (compiledCode != null && compiledCode.error != null)
+            string tooltip = null;
+            if (compiledCode != null)
             {
-                var error = compiledCode.error;
-                string pos = error.line != -1 ? $" at line {error.line - 1}:{error.column}" : "";
-                UITooltipManager.SetTooltip(
-                    $"<color=red>{compiledCode.error.description}{pos}</color>"
-                );
+                if (compiledCode.tooltip != null && compiledCode.tooltip.Length > 0)
+                {
+                    tooltip = compiledCode.tooltip;
+                }
+                else if (compiledCode.error != null)
+                {
+                    var error = compiledCode.error;
+                    string pos =
+                        error.line != -1 ? $" at line {error.line - 1}:{error.column}" : "";
+                    tooltip = $"<color=red>{error.description}{pos}</color>";
+                }
             }
+
+            if (tooltip != null)
+                UITooltipManager.SetTooltip(tooltip);
             else
-            {
                 UITooltipManager.ClearTooltip();
-            }
+        }
+
+        private static Stopwatch pasteSW = null;
+
+        [HarmonyPatch(typeof(InputSourceCode), nameof(InputSourceCode.Paste)), HarmonyPrefix]
+        public static void PatchInputSourceCodePastePrefix()
+        {
+            pasteSW = Stopwatch.StartNew();
+            isPasting = true;
+        }
+
+        [HarmonyPatch(typeof(InputSourceCode), nameof(InputSourceCode.Paste)), HarmonyPostfix]
+        public static void PatchInputSourceCodePastePostfix()
+        {
+            var instance = InputSourceCode.Instance;
+            if (instance == null)
+                return;
+            isPasting = false;
+            pasteSW.Stop();
+            L.Debug($"Pasting took {pasteSW.ElapsedMilliseconds}ms");
+            using (new Timer("Formatting code"))
+                for (int i = 0; i < instance.LinesOfCode.Count; i++)
+                    instance.LinesOfCode[i].ReformatText();
         }
 
         [HarmonyPatch(typeof(ProgrammableChip), "SerializeSave"), HarmonyPostfix]

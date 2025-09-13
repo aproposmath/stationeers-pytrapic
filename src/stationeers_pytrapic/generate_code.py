@@ -233,19 +233,15 @@ class CompilerPassGenerateCode(CompilerPass):
             args = [self.compile_node(arg) for arg in node.args]
 
             result = func(*args, **kwargs)
-            if is_builtin_structure(result):
+            if isinstance(result, IC10Instruction):
+                data.add(result)
+                data.result = result
+            elif is_builtin_structure(result):
                 data.result = result
             elif is_builtin_function(fname):
                 data.result = IC10Register(name="", code_expr=result)
-            elif is_intrinsic_function(fname):
-                if fname.endswith("_"):
-                    fname = fname[:-1]
-                data.add(IC10(fname, args))
             else:
                 data.result = result
-            # else:
-            #     # tokens = result.split()
-            #     # data.add(IC10Instruction(tokens[0], tokens[1:]))
             return
 
         if fname not in self.functions:
@@ -447,7 +443,13 @@ class CompilerPassGenerateCode(CompilerPass):
         elif isinstance(target, astroid.AssignName):
             value = self.compile_node(node.value)
             value_name = value.__name__ if isinstance(value, type) else value
-            if isinstance(value, (IC10Register, IC10Operand)):
+            if isinstance(value, IC10Instruction):
+                sym_data = self.data.get_sym_data(target)
+                if not sym_data.code_expr:
+                    sym_data.code_expr = self.get_register_name()
+                value.output = sym_data
+                data.result = sym_data
+            elif isinstance(value, (IC10Register, IC10Operand)):
                 sym_data = self.data.get_sym_data(target)
                 can_assign_directly = not sym_data.is_overwritten
                 if can_assign_directly:
@@ -520,6 +522,12 @@ class CompilerPassGenerateCode(CompilerPass):
                 raise CompilerError(
                     "You need to take either Minimum/Maximum/Average/Sum", target
                 )
+
+            if isinstance(rhs, IC10Instruction):
+                # need intermediate symbol to store the result before setting the attribute
+                sym = self.get_intermediate_symbol(node)
+                rhs.output = sym
+                rhs = sym
             expr = lhs._set(rhs)
             data.add(expr)
         elif isinstance(target, astroid.Subscript):

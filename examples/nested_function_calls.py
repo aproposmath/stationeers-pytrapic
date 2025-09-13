@@ -19,7 +19,7 @@ def outer_function():
     inner_function()
 
     # pop ra again before the function returns
-    pop(ra)
+    ra = pop()
 
 
 outer_function()

@@ -86,6 +86,8 @@ def parse_dl_entry(entry):
 
     description = description.replace("Register", "output")
 
+    description = description.replace("output =", "Returns").strip()
+
     for i, p in enumerate(parameters):
         if p["name"] == "":
             p["name"] = f"param{i+1}"
@@ -127,6 +129,12 @@ def generate_intrinsics_py(instructions):
     builtins_code = []
     for instr in instructions:
         name = instr["name"]
+
+        return_type = None
+        if len(instr["parameters"]) > 0 and instr["parameters"][0]["name"] == "output":
+            return_type = instr["parameters"][0]["type"]
+            instr["parameters"] = instr["parameters"][1:]
+
         params = ", ".join(f"{p['name']}: {p['type']}" for p in instr["parameters"])
         description = instr.get("description", "").replace('"', '\\"')
 
@@ -134,13 +142,15 @@ def generate_intrinsics_py(instructions):
             name += "_"
 
         expr = '""'
-
+        args = ', '.join(p["name"] for p in instr["parameters"])
+        opcode = instr["name"]
         if len(instr["parameters"]):
             expr = "} {".join(p["name"] for p in instr["parameters"])
             expr = 'f"{' + expr + '}"'
-        body = 'return "' + instr["name"] + ' " + ' + expr
+        output = "_IC10Register('invalid')" if return_type else "None"
+        body = f"return _IC10('{opcode}', [{args}], {output})"
         code = f"""
-def {name}({params}):
+def {name}({params}) -> {return_type}:
     \"\"\"{description}\"\"\"
     {body}
 """
@@ -149,12 +159,14 @@ def {name}({params}):
     code = f"""# This file is auto-generated from IC10 instructions_data
 from .types import *
 from .types_generated import *
+from .types import IC10 as _IC10, IC10Register as _IC10Register
 
 """
     code += "\n\n".join(builtins_code)
     code += """
 def HASH(name: str) -> float:
-    return f'HASH({name})'
+    from .types import compute_hash
+    return compute_hash(name)
 def STR(s: str) -> float:
     return f'STR({s})'
 """
