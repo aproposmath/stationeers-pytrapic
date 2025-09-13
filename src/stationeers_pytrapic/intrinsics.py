@@ -778,4 +778,4 @@ def HASH(name: str) -> float:
 
 
 def STR(s: str) -> float:
-    return f"STR({s})"
+    return f'STR("{s}")'
