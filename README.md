@@ -25,6 +25,11 @@ The output is written to stdout.
 
 **Python Features**
 
+- read/write acessing individual structures (`WallHeater(d0).Activate = True`)
+- read/write acessing structures by type (`AutoLathes.Activate = True`)
+- read/write acessing structures by name (`my_value = WallLights["Some Name"].On.Maximum`)
+- Slot access, either by name (`furnace.Export.Occupied`) or by index (`furnace.slot0.Occupied`).
+- intrinsics (all IC10 instructions can be called as functions, e.g. `a = pop()` or `x = lb(HASH("StructureWallHeater", "On", "Maximum")`)
 - variable assignments
 - arithmetic operations (`+`, `-`, `*`, `/`, `%`, `+=`, `-=`, `*=`, `/=`)
 - boolean operations (`and`, `or`, `not`)
@@ -32,11 +37,7 @@ The output is written to stdout.
 - if-else statements
 - while loops
 - type hints/autocomplete for all structure names and logic types (e.g. `WallLights["Some Name"].On.Maximum`)
-- intrinsics (all IC10 instructions can be called as functions with either variables / constants as arguments)
 - optimization for constant expressions (e.g. `1 + 2` becomes `3`)
-- read/write acessing individual structures (`WallHeater(d0).Activate = True`)
-- read/write acessing structures by type (`AutoLathes.Activate = True`)
-- read/write acessing structures by name (`my_value = WallLights["Some Name"].On.Maximum`)
 - functions
 - `global` statement (useful to mimic function return values or store state between function calls)
 - remove unused functions ([you can have one code file for all your ICs!](https://aproposmath.github.io/stationeers-pytrapic?fileUrl=https://raw.githubusercontent.com/aproposmath/stationeers-pytrapic/refs/heads/main/examples/one_file_to_rule_them_all.py))
@@ -46,13 +47,12 @@ The output is written to stdout.
 - return statements ( no return values yet )
 - function arguments (only simple values (float), no structures like `DaylightSensor(d0)` )
 - function return values
-- Slot access, either by index (`furnace.Export.Occupied`) or by index (`furnace.slot0.Occupied`).
 
 **Planned Features**
 
 - Access slot by variable index (`furnace.slots[i].Occupied`)
 - push/pop `ra` automatically in nested function calls ([use manual `push ra/pop ra` for now)](https://aproposmath.github.io/stationeers-pytrapic?fileUrl=https://raw.githubusercontent.com/aproposmath/stationeers-pytrapic/refs/heads/main/examples/nested_function_calls.py))
-- better register allocation (respect not only function scope but also variable scope)
+- better register allocation (check scope in ic10 code instead of python code for more granularity)
 - pass function arguments/return values in registers (currently only via stack)
 - allow structures as function arguments/return values (currently only simple values like `float` are allowed)
 - for loops
@@ -124,33 +124,30 @@ while True:
 <td>
 
 ```asm
-move r0 HASH("In")
-move r1 HASH("Out")
-move r2 HASH("Switch")
-sbn -324331872 r0 Lock 1
-sbn -324331872 r1 Lock 1
-sbn -1129453144 r0 Mode 1
-sbn -1129453144 r0 On 0
-sbn -1129453144 r1 Mode 1
-sbn -1129453144 r1 On 0
+sbn -324331872 HASH("In") Lock 1
+sbn -324331872 HASH("Out") Lock 1
+sbn -1129453144 HASH("In") Mode 1
+sbn -1129453144 HASH("In") On 0
+sbn -1129453144 HASH("Out") Mode 1
+sbn -1129453144 HASH("Out") On 0
 lbwhile1:
-  lbn r3 576516101 r2 On 3
+  lbn r3 576516101 HASH("Switch") On 3
   ble r3 0 lbelse2
-    lbn r5 -324331872 r0 Open 3
-    sgt r4 r5 0
-    select r6 r4 r1 r0
-    select r7 r4 r0 r1
-    sbn -324331872 r7 Open 0
-    sbn -1129453144 r7 On 1
-lbwhile9:
-    lb r8 -1252983604 Pressure 3
-    beq r8 0 lbwhile.end9
-      j lbwhile9
-lbwhile.end9:
+    lbn r3 -324331872 HASH("In") Open 3
+    sgt r0 r3 0
+    select r1 r0 HASH("Out") HASH("In")
+    select r2 r0 HASH("In") HASH("Out")
+    sbn -324331872 r2 Open 0
+    sbn -1129453144 r2 On 1
+lbwhile8:
+    lb r3 -1252983604 Pressure 3
+    beq r3 0 lbwhile.end8
+      j lbwhile8
+lbwhile.end8:
     sleep 0.2
-    sbn -1129453144 r7 On 0
-    sbn -324331872 r6 Open 1
-    sbn 576516101 r2 On 0
+    sbn -1129453144 r2 On 0
+    sbn -324331872 r1 Open 1
+    sbn 576516101 HASH("Switch") On 0
     sleep 1
 lbelse2:
   j lbwhile1
@@ -179,9 +176,9 @@ while True:
 lbwhile1:
   l r0 d0 Horizontal
   sb -2045627372 Horizontal r0
-  l r1 d0 Vertical
-  sub r2 90 r1
-  sb -2045627372 Vertical r2
+  l r0 d0 Vertical
+  sub r1 90 r0
+  sb -2045627372 Vertical r1
   j lbwhile1
 ```
 

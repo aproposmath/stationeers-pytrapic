@@ -357,7 +357,7 @@ class CompilerPassGenerateCode(CompilerPass):
         elif isinstance(node.value, (int, float)):
             data.result = IC10Operand(node.value)
         elif isinstance(node.value, str):
-            data.result = f'"{node.value}"'
+            data.result = node.value
         elif isinstance(node.value, type(None)):
             data.result = ""
         else:
