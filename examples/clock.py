@@ -12,10 +12,10 @@ IMAX = 503
 IVERT = 504
 ISIGN = 505
 
-TSLEEP = 5 # seconds between measurements, increase for more accuracy on first day
-MINUTES_PER_DAY = 20 # thats a hard-coded value in Stationeers
+TSLEEP = 5  # seconds between measurements, increase for more accuracy on first day
+MINUTES_PER_DAY = 20  # thats a hard-coded value in Stationeers
 SECONDS_PER_DAY = MINUTES_PER_DAY * 60
-DT = 2 * 3.14159261 / (SECONDS_PER_DAY) * TSLEEP
+DT = tau / (SECONDS_PER_DAY) * TSLEEP
 
 display_time = ConsoleLED5s["Time"]
 display_time.On = True
@@ -56,7 +56,7 @@ def calc_time(vertical):
     time = (vertical - a) / b
     time = max(time, -1)
     time = min(time, 1)
-    time = acos(time) / (2 * 3.141592)
+    time = acos(time) / tau
     if stack[ISIGN] > 0:
         time = 1 - time
 
@@ -67,7 +67,7 @@ def calc_time(vertical):
 
 def get_vertical():
     # return altitude of sun, 0 at horizont, in radians
-    vertical = (90 - sensor.Vertical) * (180 / 3.141592)
+    vertical = (90 - sensor.Vertical) * (180 / pi)
     return sin(vertical)
 
 

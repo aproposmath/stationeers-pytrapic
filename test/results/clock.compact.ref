@@ -23,8 +23,8 @@ jal 92
 get r6 db 511
 add r4 r4 r6
 add r5 r5 r6
-mul r4 r4 19.098593436021613
-div r5 r5 0.0006853891755004591
+mul r4 r4 19.098593171027442
+div r5 r5 0.0006853891945200943
 poke 505 r4
 add r8 r7 r5
 sub r7 r7 r8
@@ -81,7 +81,7 @@ div r6 r5 r8
 max r6 r6 -1
 min r6 r6 1
 acos r5 r6
-div r6 r5 6.283184
+div r6 r5 6.283185307179586
 get r5 db 505
 ble r5 0 87
 sub r6 1 r6
@@ -92,7 +92,7 @@ put db 511 r6
 j ra
 l r11 d0 Vertical
 sub r12 90 r11
-mul r10 r12 57.29579143313326
+mul r10 r12 57.29577951308232
 sin r12 r10
 put db 511 r12
 j ra

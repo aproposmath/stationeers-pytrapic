@@ -1,5 +1,6 @@
 import enum
 import sys
+import math
 from dataclasses import dataclass, field
 
 import astroid
@@ -543,7 +544,20 @@ d4 = _Device("d4")
 d5 = _Device("d5")
 db = _Device("db")
 
+pi: float = math.pi
+tau: float = 2 * math.pi
+rgas: float = 8.31446261815324
+
+constants = {
+    "pi": pi,
+    "tau": tau,
+    "rgas": rgas,
+}
+
 __all__ = [
+    "pi",
+    "rgas",
+    "tau",
     "ra",
     "r0",
     "r1",

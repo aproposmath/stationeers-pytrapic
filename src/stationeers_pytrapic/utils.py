@@ -100,6 +100,8 @@ def get_loop_ancestor(node):
 
 
 def is_constant(node):
+    from .types import constants
+
     if isinstance(node, (int, float, str)):
         return True, node
 
@@ -113,6 +115,9 @@ def is_constant(node):
             return True, getattr(symbols, node.func.name)(node.args[0].value)
         else:
             return False, None
+
+    if isinstance(node, astroid.Name) and node.name in constants:
+        return True, constants[node.name]
 
     try:
         inferred = node.inferred()
