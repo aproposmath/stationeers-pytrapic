@@ -234,8 +234,11 @@ class CompilerPassGenerateCode(CompilerPass):
 
             result = func(*args, **kwargs)
             if isinstance(result, IC10Instruction):
+                if result.output != None:
+                    # instruction returns a value, so we need to assign it to a symbol
+                    result.output = self.get_intermediate_symbol(node)
                 data.add(result)
-                data.result = result
+                data.result = result.output
             elif is_builtin_structure(result):
                 data.result = result
             elif is_builtin_function(fname):
@@ -523,11 +526,6 @@ class CompilerPassGenerateCode(CompilerPass):
                     "You need to take either Minimum/Maximum/Average/Sum", target
                 )
 
-            if isinstance(rhs, IC10Instruction):
-                # need intermediate symbol to store the result before setting the attribute
-                sym = self.get_intermediate_symbol(node)
-                rhs.output = sym
-                rhs = sym
             expr = lhs._set(rhs)
             data.add(expr)
         elif isinstance(target, astroid.Subscript):
@@ -692,7 +690,7 @@ class CompilerPassGenerateCode(CompilerPass):
             raise CompilerError(f"Unsupported binary operation: {op}", node)
 
         if isinstance(left, astroid.Const) and isinstance(right, astroid.Const):
-            data.result = ICOperand(func(left.value, right.value))
+            data.result = IC10Operand(func(left.value, right.value))
         else:
             sym = self.get_intermediate_symbol(node)
             data.result = sym

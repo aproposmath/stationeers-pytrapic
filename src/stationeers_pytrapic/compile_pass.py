@@ -395,27 +395,38 @@ class CompilerPassFindNames(CompilerPass):
 
 class CompilerPassCheckConstValue(CompilerPass):
     def handle_module(self, node: astroid.NodeNG):
-        pass
+        for child in node.get_children():
+            self._visit_node(child)
 
     def handle_binop(self, node: astroid.BinOp):
+        data = node._ndata
+
+        if data.is_constant_value:
+            return
+
         left, right = node.get_children()
-        self.handle_node(left)
-        self.handle_node(right)
+        self._visit_node(left)
+        self._visit_node(right)
 
         if left._ndata.is_constant_value and right._ndata.is_constant_value:
             _, func = get_binop_instruction(node.op)
             val = func(left._ndata.constant_value, right._ndata.constant_value)
-            node._ndata.is_constant_value = True
-            node._ndata.constant_value = val
-            self._visit_node(node.parent)
+            data.is_constant_value = True
+            data.constant_value = val
+            # self._visit_node(node.parent)
+        else:
+            data.is_constant_value = False
 
     def handle_unop(self, node: astroid.UnaryOp):
-        self.handle_node(node.operand)
+        data = node._ndata
+        if data.is_constant_value:
+            return
+        self._visit_node(node.operand)
         if node.operand._ndata.is_constant_value:
             node._ndata.is_constant_value = True
             _, func = get_unop_instruction(node.op)
             node._ndata.constant_value = func(node.operand._ndata.constant_value)
-            self._visit_node(node.parent)
+            # self._visit_node(node.parent)
 
     def handle_node(self, node: astroid.NodeNG):
         data = node._ndata
@@ -424,43 +435,40 @@ class CompilerPassCheckConstValue(CompilerPass):
             return
 
         if node.parent._ndata.is_constant_value:
-            # data.is_constant_value = True
             return
 
-        if data.is_constant_value:
-            return
+        for child in node.get_children():
+            self._visit_node(child)
 
         is_const, value = is_constant(node)
 
+        update_parent = data.is_constant_value == False and is_const
         data.is_constant_value = is_const
-
         if is_const:
-            node._ndata.constant_value = value
-            node._ndata.result = value
+            data.constant_value = value
+            data.result = value
+
+        if update_parent:
             self._visit_node(node.parent)
 
+    def handle_assign(self, node: astroid.Assign):
+        for child in node.get_children():
+            self._visit_node(child)
+        if node.value._ndata.is_constant_value:
+            value = node.value._ndata.constant_value
+            target = node.targets[0]
+            if isinstance(target, astroid.AssignName):
+                sym = self.data.get_sym_data(target)
+                if not sym.is_overwritten:
+                    for read_node in sym.nodes_reading:
+                        d = read_node._ndata
+                        d.is_constant_value = True
+                        d.constant_value = value
+                        d.result = value
+
     def run(self):
-        super().run()
-        for scope, symbols in self.data.symbols.items():
-            for name, symbol_data in symbols.items():
-                if (
-                    len(symbol_data.nodes_writing) == 1
-                    and symbol_data.nodes_writing[0]._ndata.is_constant_value
-                ):
-                    value = symbol_data.nodes_writing[0]._ndata.constant_value
-                    # print("constant name", name, "in scope", scope, "value", value)
-                    for node in symbol_data.nodes_reading:
-                        data = node._ndata
-                        data.is_constant_value = True
-                        data.constant_value = value
-                        data.result = value
-                else:
-                    for node in symbol_data.nodes_reading:
-                        # print("not constant name", name, "in scope", scope)
-                        data = node._ndata
-                        data.is_constant = False
-                        data.is_constant_value = None
-                        data.result = None
+        self._info("run")
+        self._visit_node(self.tree)
 
 
 class CompilerPassCheckUsed(CompilerPass):

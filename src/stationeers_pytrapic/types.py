@@ -212,12 +212,11 @@ def compute_hash(name: int | str | _Register) -> int | str:
     val = (val ^ 0x80000000) - 0x80000000
     eval_str = str(val)
     hash_str = f'HASH("{name}")'
-    # print(f'compute hash with mode {hash_mode}')
 
     if hash_mode == HashMode.VERBOSE:
         return hash_str
     elif hash_mode == HashMode.COMPACT:
-        return eval_str if len(eval_str) < len(hash_str) else hash_str
+        return val if len(eval_str) < len(hash_str) else hash_str
     elif hash_mode == HashMode.EVAL:
         return eval_str
 

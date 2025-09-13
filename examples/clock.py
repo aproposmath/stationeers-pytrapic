@@ -5,20 +5,17 @@ from stationeers_pytrapic.symbols import *
 # the time is stored in db.Setting
 sensor = DaylightSensor(d0)
 
-# min max values can be 0 at start,
-# wait for one in-game day to have them updated
-
 # stack offsets
-ITIME = 500
 ISUNSET = 501
 IMIN = 502
 IMAX = 503
 IVERT = 504
 ISIGN = 505
 
-SECONDS_PER_DAY = 20 * 60
-TSLEEP = 5
-DT = 2 * 3.14159261 / (20 * 60) * 5
+TSLEEP = 5 # seconds between measurements, increase for more accuracy on first day
+MINUTES_PER_DAY = 20 # thats a hard-coded value in Stationeers
+SECONDS_PER_DAY = MINUTES_PER_DAY * 60
+DT = 2 * 3.14159261 / (SECONDS_PER_DAY) * TSLEEP
 
 display_time = ConsoleLED5s["Time"]
 display_time.On = True
@@ -51,43 +48,31 @@ def handle_minmax(vertical):
 
 
 def calc_time(vertical):
-    smax = stack[IMAX]
-    smax *= 0.5
-    smin = stack[IMIN]
-    smin *= 0.5
+    smax = 0.5 * stack[IMAX]
+    smin = 0.5 * stack[IMIN]
     a = smax + smin
     b = smax - smin
 
-    time = vertical
-    time -= a
-    time /= b
+    time = (vertical - a) / b
     time = max(time, -1)
     time = min(time, 1)
-    time = acos(time)
-    time = time / (2 * 3.141592)
+    time = acos(time) / (2 * 3.141592)
     if stack[ISIGN] > 0:
         time = 1 - time
-    # time is now 0...1 but 0 at noon
-    time += 0.5
-    time %= 1  # time is now 0...1 but 0 at midnight
-    time *= SECONDS_PER_DAY  # seconds from midnight
+
+    # add half a day, then convert to seconds
+    time = ((time + 0.5) % 1) * SECONDS_PER_DAY
     return time
 
 
 def get_vertical():
     # return altitude of sun, 0 at horizont, in radians
-    vertical = sensor.Vertical
-    vertical = 90 - vertical
-    vertical /= 180
-    vertical *= 3.141592
-    vertical = sin(vertical)
-    return vertical
+    vertical = (90 - sensor.Vertical) * (180 / 3.141592)
+    return sin(vertical)
 
 
 def init():
     clr(db)
-    push(ra)
-    deriv0 = 0
     deriv1 = 0
     deriv2 = 0
 
@@ -99,39 +84,27 @@ def init():
     v = get_vertical()
     stack[IVERT] = v
     deriv0 = v
-    v *= 2
-    deriv2 -= v
+    deriv2 -= 2 * v
     sleep(TSLEEP)
 
     v = get_vertical()
     deriv1 += v
     deriv2 += v
 
-    deriv1 *= 0.5
-    deriv1 /= DT
-    deriv2 /= DT
-    deriv2 /= DT
+    deriv1 *= 0.5 / DT
+    deriv2 /= DT * DT
 
     stack[ISIGN] = deriv1
-
     b = deriv0 + deriv2
-
     deriv0 -= b
-    deriv0 *= deriv0
-    deriv1 *= deriv1
-    a = deriv0 + deriv1
+    a = deriv0 * deriv0 + deriv1 * deriv1
     a = sqrt(a)
 
-    v = b - a
-    stack[IMIN] = v
-
-    v = b + a
-    stack[IMAX] = v
-    ra = pop()
+    stack[IMIN] = b - a
+    stack[IMAX] = b + a
 
 
 init()
-
 while True:
     yield_()
     vertical = get_vertical()
@@ -139,7 +112,6 @@ while True:
     time = calc_time(vertical)
     display_time.Setting = time
     db.Setting = time
-    stack[ITIME] = time
 
     time_sunset = calc_time(0)
     if time_sunset < time:
