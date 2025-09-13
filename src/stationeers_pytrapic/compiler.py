@@ -1,8 +1,32 @@
+_last_time = None
+_DO_TIMING = False
+
+
+def time(s=""):
+    if not _DO_TIMING:
+        return
+    import time
+
+    global _last_time
+
+    if _last_time is None:
+        _last_time = time.time()
+        return
+
+    now = time.time()
+    d = now - _last_time
+    print(f"{s:30}: {1000*d:.0f} ms")
+    _last_time = now
+
+
+time()
 import astroid
 
 from . import types
 from .compile_pass import *
 from .generate_code import CompilerPassGatherCode, CompilerPassGenerateCode
+
+time("import")
 
 
 class Compiler:
@@ -27,6 +51,7 @@ class Compiler:
         self.options = options
 
     def compile(self, src: str):
+        time("start")
         try:
             src_stripped = src.lstrip()
             if src_stripped.startswith("require") or src_stripped.startswith("--"):
@@ -35,10 +60,13 @@ class Compiler:
                 self.tree = parse_lua(src)
             else:
                 self.tree = astroid.parse(src)
+            time("parse")
             self.data = CodeData(src, self.tree, self.options)
+            time("codedata")
             for pass_cls in self.passes:
                 compiler_pass = pass_cls(self.data)
                 compiler_pass.run()
+                time("pass " + pass_cls.__name__)
             return self.data.result
         except CompilerError as e:
             msg = {"description": str(e)}
