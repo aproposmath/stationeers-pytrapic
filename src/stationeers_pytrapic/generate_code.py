@@ -7,6 +7,7 @@ from . import _version, intrinsics, structures_generated, symbols, types
 from .compile_pass import CodeData, CompilerError, CompilerPass, FunctionData
 from .types import IC10, IC10Instruction, IC10Operand, IC10Register
 from .utils import (
+    get_unop_instruction,
     get_binop_instruction,
     get_function_parent,
     is_builtin_function,
@@ -650,17 +651,17 @@ class CompilerPassGenerateCode(CompilerPass):
             data.result = data.constant_value
             return
 
-        if node.op not in ["not", "-"]:
+        opcode, _ = get_unop_instruction(node.op)
+        if opcode is None:
             raise CompilerError(f"Unsupported unary operation: {node.op}", node)
 
         opname = self.compile_node(node.operand)
-
         sym = self.get_intermediate_symbol(node)
         data.result = sym
-        if node.op == "not":
-            data.add(IC10("seqz", [opname], sym))
+        if opcode == "sub":
+            data.add_end(IC10(opcode, [0, opname], sym))
         else:
-            data.add(IC10("sub", [0, opname], sym))
+            data.add_end(IC10(opcode, [opname], sym))
 
     def handle_immediate_op(self, node: astroid.AugAssign):
         if node.op[-1] != "=":

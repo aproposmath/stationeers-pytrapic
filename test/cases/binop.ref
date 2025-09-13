@@ -1,0 +1,43 @@
+get r0 db 0
+get r1 db 1
+add r2 r0 r1
+s db Setting r2
+get r2 db 2
+get r1 db 3
+sub r0 r2 r1
+s db Setting r0
+get r0 db 4
+get r1 db 5
+mul r2 r0 r1
+s db Setting r2
+get r2 db 6
+get r1 db 7
+div r0 r2 r1
+s db Setting r0
+get r0 db 8
+get r1 db 9
+mod r2 r0 r1
+s db Setting r2
+get r2 db 10
+get r1 db 11
+pow r0 r2 r1
+s db Setting r0
+get r0 db 12
+get r1 db 13
+and r2 r0 r1
+s db Setting r2
+get r2 db 14
+get r1 db 15
+or r0 r2 r1
+s db Setting r0
+get r0 db 16
+sub r1 0 r0
+s db Setting r1
+get r1 db 17
+neg r0 r1
+s db Setting r0
+get r0 db 18
+seqz r1 r0
+s db Setting r1
+# registers: 3
+# lines: 41

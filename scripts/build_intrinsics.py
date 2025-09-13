@@ -168,7 +168,7 @@ def HASH(name: str) -> float:
     from .types import compute_hash
     return compute_hash(name)
 def STR(s: str) -> float:
-    return f'STR({s})'
+    return f'STR("{s}")'
 """
     out_path = Path("../src/stationeers_pytrapic/intrinsics.py")
     out_path.write_text(code, encoding="utf-8")

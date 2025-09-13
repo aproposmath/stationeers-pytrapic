@@ -46,6 +46,7 @@ def get_binop_instruction(op: str):
         "*": ("mul", lambda x, y: x * y),
         "/": ("div", lambda x, y: x / y),
         "%": ("mod", lambda x, y: x % y),
+        "**": ("pow", lambda x, y: x**y),
         "and": ("and", lambda x, y: x and y),
         "or": ("or", lambda x, y: x and y),
     }.get(op, (None, None))
