@@ -2,6 +2,7 @@ from stationeers_pytrapic.symbols import *
 
 furnace = AdvancedFurnace(d0)
 
+
 def main():
     HeatCap = furnace.RatioCarbonDioxide * 28.2
     HeatCap += furnace.RatioNitrogen * 28.2
@@ -12,5 +13,6 @@ def main():
     HeatCap *= furnace.TotalMoles
 
     return HeatCap
+
 
 temp = main()
