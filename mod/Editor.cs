@@ -199,7 +199,6 @@ namespace StationeersPyTrapIC
                 return;
 
             L.Debug($"SetStatusText {InputSourceCode.Instance}");
-            L.Debug($"sizeText {InputSourceCode.Instance.SizeText}");
             var sizeText = InputSourceCode.Instance.SizeText;
             string statusText =
                 $"{FormatSize(compiledCode.num_registers, 16, "registers")}, {FormatSize(compiledCode.num_lines, 128, "lines")}, {FormatSize(compiledCode.num_bytes, 4096, "bytes")}";
@@ -212,6 +211,12 @@ namespace StationeersPyTrapIC
         public static void UpdateFormattedCode()
         {
             L.Debug($"UpdateFormattedCode in mode={mode}");
+            StackTrace stackTrace = new StackTrace();
+            StackFrame frame = stackTrace.GetFrame(1); // 0 is this method, 1 is the caller
+            var method = frame.GetMethod();
+
+            L.Debug($"Called by: {method.DeclaringType.FullName}.{method.Name}");
+
             var isc = InputSourceCode.Instance;
             if (isc == null)
                 return;
@@ -220,9 +225,10 @@ namespace StationeersPyTrapIC
             string[] lines = code.Split('\n');
             for (int i = 0; i < isc.LinesOfCode.Count; i++)
             {
-                EditorLineOfCode editorLineOfCode = isc.LinesOfCode[i];
-                string line = ((i >= lines.Length) ? string.Empty : lines[i].TrimEnd());
-                editorLineOfCode.InputField.text = line;
+                EditorLineOfCode line = isc.LinesOfCode[i];
+                string lineText = ((i >= lines.Length) ? string.Empty : lines[i].TrimEnd());
+                if (line.InputField.text != lineText)
+                    line.InputField.text = lineText;
             }
 
             if (mode == Mode.EditPython)

@@ -47,7 +47,7 @@ namespace StationeersPyTrapIC
     public class CompileOptions
     {
         public bool Comments { get; set; } = false;
-        public bool Compact { get; set; } = false;
+        public bool Compact { get; set; } = true;
         public bool AppendVersion { get; set; } = true;
     }
 
@@ -103,36 +103,56 @@ namespace StationeersPyTrapIC
             }
         }
 
-        public static string ReplaceLibraryCode(string code)
+        public static Dictionary<string, string> LoadImportedModules(string code)
         {
             var importRegex = new Regex(getImportRegex(code), RegexOptions.Multiline);
 
-            var matches = importRegex.Matches(code);
+            var firstMatches = importRegex.Matches(code);
 
-            if (matches.Count == 0)
+            Dictionary<string, string> result = new Dictionary<string, string>();
+            result[""] = code;
+
+            if (firstMatches.Count == 0)
             {
-                return code; // No library imports found
+                return result; // No library imports found
             }
 
             var libraries = loadLibraries();
 
-            foreach (Match match in matches)
+            List<string> codesToSearch = new List<string>();
+            codesToSearch.Add(code);
+
+            while (codesToSearch.Count > 0)
             {
-                string libName = match.Groups[1].Value.ToLowerInvariant();
-
-                if (!libraries.ContainsKey(libName))
+                string nextCode = codesToSearch[0];
+                codesToSearch.RemoveAt(0);
+                var matches = importRegex.Matches(nextCode);
+                foreach (Match match in matches)
                 {
-                    L.Error($"Library {libName} not found in library map, skipping import");
-                    continue; // Library not found, skip replacement
-                }
+                    string libName = match.Groups[1].Value.ToLowerInvariant();
 
-                var lib = libraries[libName];
-                L.Debug($"Found matching library {libName}: {lib.FilePathFullName}");
-                InstructionData instructionData = InstructionData.GetFromFile(lib.FilePathFullName);
-                code = code.Replace(match.Value, instructionData.Instructions);
+                    if (result.ContainsKey(libName))
+                        continue; // Already imported
+
+                    if (!libraries.ContainsKey(libName))
+                    {
+                        L.Error($"Library {libName} not found in library map, skipping import");
+                        continue; // Library not found, skip replacement
+                    }
+
+                    var lib = libraries[libName];
+                    L.Debug($"Found matching library {libName}: {lib.FilePathFullName}");
+                    InstructionData instructionData = InstructionData.GetFromFile(
+                        lib.FilePathFullName
+                    );
+
+                    result[libName] = instructionData.Instructions;
+                    codesToSearch.Add(instructionData.Instructions);
+                    // code = code.Replace(match.Value, instructionData.Instructions);
+                }
             }
 
-            return code;
+            return result;
         }
 
         public string PythonCode { get; set; }
@@ -438,7 +458,8 @@ namespace StationeersPyTrapIC
             GetPosition(out lineno, out column);
             L.Debug($"Compiling code at {lineno}:{column}");
 
-            pythonCode = SourceData.ReplaceLibraryCode(pythonCode);
+            var modules = SourceData.LoadImportedModules(pythonCode);
+            pythonCode = modules[""];
             options ??= new CompileOptions();
             var response = JsonConvert.DeserializeObject<CompileResponse>(
                 SendData(
@@ -446,7 +467,7 @@ namespace StationeersPyTrapIC
                         new
                         {
                             action = "compile",
-                            code = pythonCode,
+                            code = modules,
                             comments = options.Comments,
                             compact = options.Compact,
                             append_version = options.AppendVersion,
@@ -610,19 +631,21 @@ namespace StationeersPyTrapIC
         {
             L.Debug($"Reformatting line: {inputString}");
             string newCode = InputSourceCode.Copy();
-            L.Debug($"Have code");
+            // L.Debug($"Have code");
             if (SourceData.NeedsCompile(newCode))
             {
-                L.Debug($"Needs compile");
+                // L.Debug($"Needs compile");
                 // just set the current line to white color
                 int nr = Int32.Parse(__instance.LineNumber.text.TrimEnd('.'));
-                __instance.FormattedText.text = $"<color=white>{inputString}</color>";
+                // __instance.FormattedText.text = $"<color=white>{inputString}</color>";
+                InputSourceCode.Instance.LinesOfCode[nr].FormattedText.text =
+                    $"<color=white>{inputString}</color>";
 
                 // and trigger full reformat of the code asynchronously
                 Editor.mode = Editor.Mode.EditPython;
-                L.Debug($"Call SetPythonCode");
+                // L.Debug($"Call SetPythonCode");
                 Editor.SetPythonCode(newCode);
-                L.Debug($"done SetPythonCode");
+                // L.Debug($"done SetPythonCode");
 
                 return false;
             }
@@ -672,19 +695,19 @@ namespace StationeersPyTrapIC
                 return false;
             }
 
-            if (Editor.mode == Editor.Mode.EditPython)
-            {
-                Editor.SetPythonCode(InputSourceCode.Copy());
-                return false;
-            }
-
             UITooltipManager.ClearTooltip();
 
             return true;
         }
 
         [HarmonyPatch(typeof(InputSourceCode), "HandleInput"), HarmonyPostfix]
-        public static void InputSourceCode_HandleInput() => Editor.UpdateTooltip();
+        public static void InputSourceCode_HandleInput()
+        {
+            if (Editor.mode == Editor.Mode.EditPython)
+                Editor.SetPythonCode(InputSourceCode.Copy());
+
+            Editor.UpdateTooltip();
+        }
 
         [HarmonyPatch(typeof(InputSourceCode), nameof(InputSourceCode.Paste)), HarmonyPrefix]
         public static void PatchInputSourceCodePastePrefix()

@@ -17,6 +17,16 @@ from pygments.lexers import LuaLexer, PythonLexer
 
 from .compiler import compile_code
 
+def _get_ignore_symbol_names():
+    import jedi
+
+    s = jedi.Script("")
+    completions  = s.complete(1, 0)
+    names = set((c.name for c in completions))
+    for n in ['True', 'False', 'while', 'if', 'else', 'def', 'pow', 'abs']:
+        if n in names:
+            names.remove(n)
+    return names
 
 def _get_all_symbols_names():
     from . import intrinsics, structures_generated, types_generated
@@ -51,7 +61,8 @@ _log_file = None  # Global log file handle
 ENABLE_LOGGING = __name__ == "__main__"
 ENABLE_LOGGING = True
 
-_all_symbols = _get_all_symbols_names()
+# _all_symbols = _get_all_symbols_names()
+_ignore_symbol_names = _get_ignore_symbol_names()
 
 
 def format_completion(c):
@@ -78,7 +89,7 @@ def longest_common_prefix(strings):
 def format_completions(completions):
     t0 = time.time()
     completions = [c for c in completions if not c.name.startswith("_")]
-    completions = [c for c in completions if c.name in _all_symbols]
+    completions = [c for c in completions if c.name not in _ignore_symbol_names]
     if not completions:
         return {}  # "completion":"", "tooltip":""}
 
