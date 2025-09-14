@@ -9,12 +9,33 @@ import base64
 import datetime
 import json
 import sys
+import time
 
 from pygments import highlight as _highlight
 from pygments.formatters import BBCodeFormatter
 from pygments.lexers import LuaLexer, PythonLexer
 
 from .compiler import compile_code
+
+
+def _get_all_symbols_names():
+    from . import intrinsics, structures_generated, types_generated
+
+    symbols = set()
+    for mod in (intrinsics, types_generated, structures_generated):
+        for name in dir(mod):
+            if not name.startswith("_"):
+                symbols.add(name)
+
+    for enum in [types_generated._logicType, types_generated._logicSlotType]:
+        for e in enum:
+            symbols.add(e.name)
+    symbols.add("while")
+    symbols.add("if")
+    symbols.add("else")
+    symbols.add("def")
+    return symbols
+
 
 formatter = BBCodeFormatter(style="solarized-light")
 
@@ -28,6 +49,62 @@ for ttype in formatter.styles:
 
 _log_file = None  # Global log file handle
 ENABLE_LOGGING = __name__ == "__main__"
+ENABLE_LOGGING = True
+
+_all_symbols = _get_all_symbols_names()
+
+
+def format_completion(c):
+    name = f"<b>{c.name}</b>"
+    type_ = f"<color=#8888ff><i>{c.type}</i></color>"
+    return f"{name} - {type_}"
+
+
+def longest_common_prefix(strings):
+    if not strings:
+        return ""
+
+    prefix = strings[0]
+
+    for s in strings[1:]:
+        while not s.startswith(prefix):
+            prefix = prefix[:-1]
+            if not prefix:
+                return ""
+
+    return prefix
+
+
+def format_completions(completions):
+    t0 = time.time()
+    completions = [c for c in completions if not c.name.startswith("_")]
+    completions = [c for c in completions if c.name in _all_symbols]
+    if not completions:
+        return {}  # "completion":"", "tooltip":""}
+
+    common_prefix = longest_common_prefix([c.name for c in completions])
+    lengths = set([c.get_completion_prefix_length() for c in completions])
+    if len(lengths) != 1:
+        log(
+            f"Warning: Inconsistent completion prefix lengths: {lengths}, completions: {[c.name for c in completions]}"
+        )
+        completion = ""
+        prefix_len = 0
+    else:
+        prefix_len = lengths.pop()
+        completion = common_prefix
+
+    result = ""
+    if completions:
+        suffix = ""
+        if len(completions) > 20:
+            suffix = f"\n\n... and {len(completions) - 20} more"
+            completions = completions[:20]
+        comp_texts = [format_completion(c) for c in completions]
+        result = "\n".join(comp_texts) + suffix
+    t1 = time.time()
+    log(f"Formatted {len(completions)} completions in {1000*(t1 - t0):.1f} ms")
+    return {"tooltip": result, "completion_prefix_length": prefix_len, "completion": completion}
 
 
 def log(msg):
@@ -100,6 +177,19 @@ def process_input(line):
         highlighted = highlight(code, error_line=error_line)
         response["highlighted"] = highlighted
 
+        lineno = msg.get("lineno", -1)
+        column = msg.get("column", -1)
+        if lineno >= 0 and column > 0:
+            try:
+                import jedi
+
+                script = jedi.Script(code, path="script.py")
+                completions = script.complete(line=lineno, column=column)
+                if completions:
+                    response.update(format_completions(completions))
+            except Exception as e:
+                log(f"Jedi exception: {e}")
+
     except json.JSONDecodeError:
         response = {"error": {"message": "Invalid JSON format"}}
     except Exception as e:
@@ -123,6 +213,13 @@ def process_input(line):
 
 async def main():
     try:
+        log("Importing jedi")
+        import jedi
+
+        log("Imported jedi")
+
+        jedi.preload_module("stationeers_pytrapic.symbols")
+        log("Jedi preloaded successfully")
         while True:
             line = sys.stdin.readline()
 
@@ -137,6 +234,9 @@ async def main():
 
             process_input(line)
     except Exception as e:
+        import traceback
+
+        stack_trace = traceback.format_exc()
         log(f"Exception in main loop: {e}")
 
 

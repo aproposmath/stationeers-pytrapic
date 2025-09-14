@@ -7,6 +7,8 @@ using System.Reflection;
 using System.Runtime.CompilerServices;
 using System.Text;
 using System.Text.RegularExpressions;
+using System.Threading;
+using System.Threading.Tasks;
 using Assets.Scripts.Networking;
 using Assets.Scripts.Networking.Transports;
 using Assets.Scripts.Objects;
@@ -15,6 +17,7 @@ using Assets.Scripts.Objects.Motherboards;
 using Assets.Scripts.UI;
 using BepInEx;
 using BepInEx.Logging;
+using Cysharp.Threading.Tasks;
 using HarmonyLib;
 using Newtonsoft.Json;
 using UI.Tooltips;
@@ -157,6 +160,8 @@ namespace StationeersPyTrapIC
         private static bool _debugEnabled = false;
 #endif
 
+        public static string Timestamp => DateTime.Now.ToString("HH:mm:ss.fff - ");
+
         public static void Initialize(ManualLogSource logger)
         {
             _logger = logger;
@@ -170,24 +175,24 @@ namespace StationeersPyTrapIC
 
         public static void Log(string message)
         {
-            _logger?.LogMessage(message?.ToString());
+            _logger?.LogMessage(Timestamp + message?.ToString());
         }
 
         public static void Info(object msg)
         {
-            _logger?.LogInfo(msg?.ToString());
+            _logger?.LogInfo(Timestamp + msg?.ToString());
         }
 
         public static void Error(object msg)
         {
-            _logger?.LogError(msg?.ToString());
+            _logger?.LogError(Timestamp + msg?.ToString());
         }
 
         public static void Debug(object msg)
         {
             if (!_debugEnabled)
                 return;
-            _logger?.LogDebug(msg?.ToString());
+            _logger?.LogDebug(Timestamp + msg?.ToString());
         }
     }
 
@@ -219,7 +224,10 @@ namespace StationeersPyTrapIC
             public CompileError error;
             public string highlighted;
             public string code;
+            public string pyCode;
             public string tooltip;
+            public string completion;
+            public int completion_prefix_length;
             public int num_lines;
             public int num_registers;
             public int num_bytes;
@@ -402,16 +410,10 @@ namespace StationeersPyTrapIC
             try
             {
                 var sc = InputSourceCode.Instance;
-                var currentLine = AccessTools.Property(sc.GetType(), "CurrentLine").GetValue(sc);
-                var lineNumObj = AccessTools
-                    .Field(currentLine.GetType(), "LineNumber")
-                    .GetValue(currentLine);
-
-                string lineNrStr = (string)
-                    AccessTools.Property(lineNumObj.GetType(), "text").GetValue(lineNumObj);
-                L.Debug($"Current line number text: '{lineNrStr}'");
+                string lineNrStr = sc.CurrentLine.LineNumber.text;
                 lineno = 1 + Int32.Parse(lineNrStr.TrimEnd('.'));
-                column = (int)AccessTools.Property(sc.GetType(), "CaretPosition").GetValue(sc);
+                column = sc.CaretPosition;
+                L.Debug($"Caret position: {lineno}:{column}");
             }
             catch (Exception ex)
             {
@@ -438,7 +440,7 @@ namespace StationeersPyTrapIC
 
             pythonCode = SourceData.ReplaceLibraryCode(pythonCode);
             options ??= new CompileOptions();
-            return JsonConvert.DeserializeObject<CompileResponse>(
+            var response = JsonConvert.DeserializeObject<CompileResponse>(
                 SendData(
                     JsonConvert.SerializeObject(
                         new
@@ -454,6 +456,8 @@ namespace StationeersPyTrapIC
                     )
                 )
             );
+            response.pyCode = pythonCode;
+            return response;
         }
 
         public string Highlight(string pythonCode)
@@ -523,6 +527,8 @@ namespace StationeersPyTrapIC
     [HarmonyPatch]
     public static class PyTrapICPatches
     {
+        private static bool isPasting = false; // fix for faster pasting
+
         [
             HarmonyPatch(
                 typeof(ProgrammableChip),
@@ -578,41 +584,14 @@ namespace StationeersPyTrapIC
         {
             if (SourceData.NeedsCompile(sourceCode))
             {
+                // Editor.mode = Editor.Mode.EditPython;
+                // Editor.SetPythonCode(sourceCode);
+                // __instance.SourceCode.text = PythonCompiler.Instance.Highlight(sourceCode);
                 var sourceCodeObj = AccessTools
                     .Field(__instance.GetType(), "SourceCode")
                     .GetValue(__instance);
                 var textProp = AccessTools.Property(sourceCodeObj.GetType(), "text");
                 textProp.SetValue(sourceCodeObj, PythonCompiler.Instance.Highlight(sourceCode));
-            }
-        }
-
-        private static string inputCode = "";
-        private static string[] highlightedLines = null;
-        private static PythonCompiler.CompileResponse compiledCode = null;
-
-        private static bool isPasting = false;
-
-        public static void SetInputCode(string code)
-        {
-            string newInput = code ?? "";
-
-            if (newInput != inputCode)
-            {
-                inputCode = newInput;
-                if (SourceData.NeedsCompile(inputCode))
-                {
-                    compiledCode = PythonCompiler.Instance.Compile(inputCode);
-                    highlightedLines = compiledCode.highlighted.Split(
-                        new[] { '\n' },
-                        StringSplitOptions.None
-                    );
-                    L.Debug($"SetInputCode - got {highlightedLines.Length} highlighted lines");
-                }
-                else
-                {
-                    compiledCode = null;
-                    highlightedLines = null;
-                }
             }
         }
 
@@ -629,87 +608,85 @@ namespace StationeersPyTrapIC
             string inputString
         )
         {
-            SetInputCode(InputSourceCode.Copy());
-            if (compiledCode == null)
+            L.Debug($"Reformatting line: {inputString}");
+            string newCode = InputSourceCode.Copy();
+            L.Debug($"Have code");
+            if (SourceData.NeedsCompile(newCode))
             {
-                // L.Debug($"No compiled code, skipping reformat");
-                return !isPasting; // run original method, but only if we are not pasting (performance fix)
+                L.Debug($"Needs compile");
+                // just set the current line to white color
+                int nr = Int32.Parse(__instance.LineNumber.text.TrimEnd('.'));
+                __instance.FormattedText.text = $"<color=white>{inputString}</color>";
+
+                // and trigger full reformat of the code asynchronously
+                Editor.mode = Editor.Mode.EditPython;
+                L.Debug($"Call SetPythonCode");
+                Editor.SetPythonCode(newCode);
+                L.Debug($"done SetPythonCode");
+
+                return false;
             }
 
-            for (int i = 0; i < __instance.Parent.LinesOfCode.Count; i++)
-                __instance.Parent.LinesOfCode[i].FormattedText.text =
-                    i < highlightedLines.Length ? highlightedLines[i] : "";
-
-            return false;
-        }
-
-        public static string FormatSize(int num, int max, string label)
-        {
-            return (
-                    num > max ? $"<color=red>{num}</color>"
-                    : num > max * 0.9 ? $"<color=yellow>{num}</color>"
-                    : $"{num}"
-                ) + $"/{max} {label}";
+            // run original method, but only if we are not pasting (performance fix)
+            return !isPasting;
         }
 
         [
             HarmonyPatch(typeof(InputSourceCode), nameof(InputSourceCode.UpdateFileSize)),
             HarmonyPrefix
         ]
-        public static bool PatchInputSourceCodeUpdateFileSize(InputSourceCode __instance)
+        public static bool PatchInputSourceCodeUpdateFileSize()
         {
-            if (compiledCode == null)
+            if (Editor.mode == Editor.Mode.EditIC10 || Editor.mode == Editor.Mode.ViewIC10)
                 return true; // run original method
 
-            __instance.SizeText.text =
-                $"{FormatSize(compiledCode.num_registers, 16, "registers")}, {FormatSize(compiledCode.num_lines, 128, "lines")}, {FormatSize(compiledCode.num_bytes, 4096, "bytes")}";
-            __instance.SizeText.color = Color.white;
+            Editor.SetStatusText();
             return false;
         }
 
         [HarmonyPatch(typeof(InputSourceCode), "HandleInput"), HarmonyPrefix]
-        public static bool InputSourceCode_HandleInputPrefix(InputSourceCode __instance)
+        public static bool InputSourceCode_HandleInputPrefix()
         {
-            if (Input.GetKeyDown(KeyCode.F12) && compiledCode != null)
+            bool ctrlPressed =
+                Input.GetKey(KeyCode.LeftControl) || Input.GetKey(KeyCode.RightControl);
+
+            if (ctrlPressed && Input.GetKeyDown(KeyCode.I))
             {
-                L.Debug("Set IC10 Code");
-                InputSourceCode.Paste(compiledCode.code);
+                L.Debug("Toggling preview");
+                Editor.TogglePreview();
                 return false;
             }
+
+            if (Editor.IsReadOnly())
+            {
+                return false; // ignore all input in read-only mode
+            }
+
+            if (Input.GetKeyDown(KeyCode.Tab))
+            {
+                int lineno,
+                    column;
+                PythonCompiler.GetPosition(out lineno, out column);
+                // either insert 4 spaces, or trigger autocomplete
+                Editor.HandleTabKey(lineno - 1, column);
+                return false;
+            }
+
+            if (Editor.mode == Editor.Mode.EditPython)
+            {
+                Editor.SetPythonCode(InputSourceCode.Copy());
+                return false;
+            }
+
             return true;
         }
 
         [HarmonyPatch(typeof(InputSourceCode), "HandleInput"), HarmonyPostfix]
-        public static void InputSourceCode_HandleInput(InputSourceCode __instance)
-        {
-            string tooltip = null;
-            if (compiledCode != null)
-            {
-                if (compiledCode.tooltip != null && compiledCode.tooltip.Length > 0)
-                {
-                    tooltip = compiledCode.tooltip;
-                }
-                else if (compiledCode.error != null)
-                {
-                    var error = compiledCode.error;
-                    string pos =
-                        error.line != -1 ? $" at line {error.line - 1}:{error.column}" : "";
-                    tooltip = $"<color=red>{error.description}{pos}</color>";
-                }
-            }
-
-            if (tooltip != null)
-                UITooltipManager.SetTooltip(tooltip);
-            else
-                UITooltipManager.ClearTooltip();
-        }
-
-        private static Stopwatch pasteSW = null;
+        public static void InputSourceCode_HandleInput() => Editor.UpdateTooltip();
 
         [HarmonyPatch(typeof(InputSourceCode), nameof(InputSourceCode.Paste)), HarmonyPrefix]
         public static void PatchInputSourceCodePastePrefix()
         {
-            pasteSW = Stopwatch.StartNew();
             isPasting = true;
         }
 
@@ -720,11 +697,21 @@ namespace StationeersPyTrapIC
             if (instance == null)
                 return;
             isPasting = false;
-            pasteSW.Stop();
-            L.Debug($"Pasting took {pasteSW.ElapsedMilliseconds}ms");
-            using (new Timer("Formatting code"))
-                for (int i = 0; i < instance.LinesOfCode.Count; i++)
-                    instance.LinesOfCode[i].ReformatText();
+
+            string newCode = InputSourceCode.Copy();
+            if (SourceData.NeedsCompile(newCode))
+            {
+                Editor.mode = Editor.Mode.EditPython;
+                Editor.SetPythonCode(newCode);
+            }
+            else
+            {
+                Editor.mode = Editor.Mode.EditIC10;
+                Editor.SetIC10Code(newCode);
+                using (new Timer("Formatting code"))
+                    for (int i = 0; i < instance.LinesOfCode.Count; i++)
+                        instance.LinesOfCode[i].ReformatText();
+            }
         }
 
         [HarmonyPatch(typeof(ProgrammableChip), "SerializeSave"), HarmonyPostfix]
