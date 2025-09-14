@@ -88,6 +88,15 @@ class IC10Operand:
     def to_string(self) -> str:
         if isinstance(self.value, IC10Register):
             return self.value.code_expr
+        elif isinstance(self.value, float):
+            absval = abs(self.value)
+            if absval >= 0.1:
+                return f"{self.value:.16g}"
+            if absval == 0:
+                return "0"
+            ndigits = 16 + -int(math.log10(abs(self.value)))
+            format_str = f"{{value:.{ndigits}f}}"
+            return format_str.format(value=self.value).rstrip("0").rstrip(".")
         return str(self.value)
 
 

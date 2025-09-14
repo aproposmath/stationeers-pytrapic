@@ -29,8 +29,11 @@
     <Reference Include="netstandard">
       <HintPath>$(STATIONEERS_DLL_DIR)netstandard.dll</HintPath>
     </Reference>
+    <Reference Include="netstandard">
+      <HintPath>$(STATIONEERS_DLL_DIR)UnityEngine.UI.dll</HintPath>
+    </Reference>
     <Reference Include="Assembly-CSharp">
-      <HintPath>$(STATIONEERS_DLL_DIR)Assembly-CSharp.dll</HintPath>
+      <HintPath>$(STATIONEERS_DLL_DIR)/publicized_assemblies/Assembly-CSharp_publicized.dll</HintPath>
     </Reference>
     <Compile Remove="ori/*"/>
   </ItemGroup>

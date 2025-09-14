@@ -1,8 +1,8 @@
-move r0 0
-move r1 0
 move r2 0
 move r3 0
-jal init
+move r4 0
+move r5 0
+jal clock.init
 sbn -815193061 HASH("Time") On 1
 sbn -815193061 HASH("Time") Setting 0
 sbn -815193061 HASH("Time") Mode 7
@@ -11,19 +11,19 @@ sbn -815193061 HASH("Sunset") Setting 0
 sbn -815193061 HASH("Sunset") Mode 7
 lbwhile19:
   yield
-  jal update
-  get r4 db 511
-  sbn -815193061 HASH("Time") Setting r4
-  s db Setting r4
-  put db 510 r4
-  jal calc.time.to.sunset
-  get r5 db 511
-  sbn -815193061 HASH("Sunset") Setting r5
+  jal clock.update
+  get r0 db 511
+  sbn -815193061 HASH("Time") Setting r0
+  s db Setting r0
+  put db 510 r0
+  jal clock.calc.time.to.sunset
+  get r1 db 511
+  sbn -815193061 HASH("Sunset") Setting r1
   j lbwhile19
-calc.time:
+clock.calc.time:
   get r10 db 510
-  mul r11 0.5 r1
-  mul r12 0.5 r0
+  mul r11 0.5 r3
+  mul r12 0.5 r2
   add r13 r11 r12
   sub r14 r11 r12
   sub r11 r10 r13
@@ -32,7 +32,7 @@ calc.time:
   min r12 r12 1
   acos r11 r12
   div r12 r11 6.283185307179586
-  ble r3 0 lbelse37
+  ble r5 0 lbelse37
     sub r12 1 r12
 lbelse37:
   add r11 r12 0.5
@@ -40,10 +40,10 @@ lbelse37:
   mul r12 r14 1200
   put db 511 r12
   j ra
-calc.time.to.sunset:
+clock.calc.time.to.sunset:
   get r6 db 510
   put db 510 0
-  jal calc.time
+  jal clock.calc.time
   get r7 db 511
   bge r7 0 lbelse44
     sub r7 1200 r7
@@ -53,73 +53,73 @@ lbelse44:
   mod r7 r9 1200
   put db 511 r7
   j ra
-get.vertical:
+clock.get.vertical:
   l r14 d0 Vertical
   sub r15 90 r14
   mul r13 r15 0.0174532925199433
   sin r15 r13
   put db 511 r15
   j ra
-handle.minmax:
+clock.handle.minmax:
   get r8 db 510
-  move r9 r2
+  move r9 r4
   beq r9 0 lbelse23
-    bne r3 0 lbelse24
+    bne r5 0 lbelse24
       sub r10 r8 r9
 lbelse24:
     sub r10 r8 r9
-    mul r11 r10 r3
+    mul r11 r10 r5
     bge r11 0 lbelse27
-      ble r3 0 lbelse28
-        move r1 r9
+      ble r5 0 lbelse28
+        move r3 r9
         j lbend28
 lbelse28:
-        move r0 r9
+        move r2 r9
 lbend28:
-      move r3 r10
+      move r5 r10
 lbelse27:
 lbelse23:
   move r9 r8
   j ra
-init:
+clock.init:
   clr db
   move r6 0
   move r7 0
-  jal get.vertical
+  jal clock.get.vertical
   get r8 db 511
   sub r6 r6 r8
   add r7 r7 r8
   sleep 5
-  jal get.vertical
+  jal clock.get.vertical
   get r8 db 511
-  move r2 r8
+  move r4 r8
   move r9 r8
   mul r10 2 r8
   sub r7 r7 r10
   sleep 5
-  jal get.vertical
+  jal clock.get.vertical
   get r8 db 511
   add r6 r6 r8
   add r7 r7 r8
   mul r6 r6 19.09859317102744
   mul r7 r7 1459.025044449664
-  move r3 r6
+  move r5 r6
   add r10 r9 r7
   sub r9 r9 r10
   mul r8 r9 r9
   mul r11 r6 r6
   add r12 r8 r11
   sqrt r7 r12
-  sub r0 r10 r7
-  add r1 r10 r7
+  sub r2 r10 r7
+  add r3 r10 r7
   j ra
-update:
-  jal get.vertical
+clock.update:
+  jal clock.get.vertical
   get r6 db 511
   put db 510 r6
-  jal handle.minmax
+  jal clock.handle.minmax
   put db 510 r6
-  jal calc.time
+  jal clock.calc.time
   get r7 db 511
   put db 511 r7
   j ra

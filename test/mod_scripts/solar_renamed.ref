@@ -1,0 +1,16 @@
+jal some.alias.init
+lbwhile1:
+  yield
+  jal some.alias.update
+  j lbwhile1
+some.alias.init:
+  j ra
+some.alias.update:
+  l r0 d0 Horizontal
+  sb -2045627372 Horizontal r0
+  l r0 d0 Vertical
+  sub r1 90 r0
+  sb -2045627372 Vertical r1
+  j ra
+# registers: 2
+# lines: 14

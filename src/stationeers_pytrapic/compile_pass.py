@@ -12,9 +12,11 @@ from .utils import (
     get_function_parent,
     get_loop_ancestor,
     get_unop_instruction,
+    get_scope_name,
     is_builtin_name,
     is_constant,
     logger,
+    get_function_name,
 )
 
 # @dataclass
@@ -68,8 +70,11 @@ class CodeData:
     functions: dict[str, FunctionData]
     result: dict[str, str | int]
     structures: dict[str, dict[str, object]] = field(default_factory=dict)
+    modules: dict[str, astroid.Module] = field(default_factory=dict)
 
-    def __init__(self, code: str, tree: astroid.Module, options: CompileOptions):
+    def __init__(
+        self, code: str, tree: astroid.Module, options: CompileOptions, modules=None
+    ):
         self.original_code = code.splitlines()
         self.tree = tree
         self.options = options
@@ -78,24 +83,12 @@ class CodeData:
         self.functions = {}
         self.result = {"code": "No code generated"}
         self.structures = {}
-
-    def _scope_name(self, node: astroid.AssignName | astroid.Name) -> str:
-        if isinstance(node, astroid.FunctionDef) or (
-            isinstance(node, astroid.Name)
-            and isinstance(node.parent, astroid.Call)
-            and node == node.parent.func
-        ):
-            return ""
-
-        scope = node.scope()
-        if hasattr(node, "name") and node.name not in scope.locals:
-            return ""  # if the name is not in the local scope, it is a global name
-        if scope.name not in self.symbols:
-            self.symbols[scope.name] = {}
-        return scope.name
+        self.modules = modules if modules is not None else {}
 
     def get_tmp_sym_data(self, node: astroid.NodeNG, name: str) -> IC10Register:
-        scope = self._scope_name(node)
+        scope = get_scope_name(node)
+        if scope not in self.symbols:
+            self.symbols[scope] = {}
         local_symbols = self.symbols[scope]
         local_symbols[name] = IC10Register(name)
         return local_symbols[name]
@@ -107,12 +100,14 @@ class CodeData:
         name = node.name
         if name in ("ra", "sp"):
             return IC10Register(name, "", name)
-        scope = self._scope_name(node)
+        scope = get_scope_name(node)
+        if scope not in self.symbols:
+            self.symbols[scope] = {}
         local_symbols = self.symbols[scope]
         if name not in local_symbols:
             if new_if_not_existing:
-                # print("create new name data for", name, "in scope", scope)
-                local_symbols[name] = IC10Register(name)
+                # print(f"Creating new symbol '{name}' in scope '{scope}'")
+                local_symbols[name] = IC10Register(name, scope=scope)
             else:
                 raise CompilerError(
                     f"Name '{name}' not found in scope '{scope}'",
@@ -240,6 +235,7 @@ class CompilerPass:
             astroid.Continue: self.handle_continue,
             astroid.Break: self.handle_break,
             astroid.AugAssign: self.handle_immediate_op,
+            astroid.List: self.handle_node,
         }
 
     def _log(self, level, *args):
@@ -285,6 +281,8 @@ class CompilerPass:
 
     def run(self):
         self._info("run")
+        for module in self.data.modules.values():
+            self._visit_node_recursive(module)
         self._visit_node_recursive(self.tree)
 
     def handle_arguments(self, node: astroid.Arguments):
@@ -375,6 +373,28 @@ class CompilerPass:
 
     def handle_break(self, node: astroid.Break):
         self.handle_node(node)
+
+
+class CompilerPassSetModuleNames(CompilerPass):
+    def handle_node(self, node: astroid.NodeNG):
+        pass
+
+    def handle_import_from(self, node: astroid.ImportFrom):
+        if node.modname != "library":
+            return
+        for name, alias in node.names:
+            new_name = alias if alias else name
+            module = self.data.modules[name]
+            module.name = new_name
+            self._renamed_modules[new_name] = module
+
+    def run(self):
+        self._renamed_modules = {}
+        self._info("run")
+        for module in self.data.modules.values():
+            self._visit_node_recursive(module)
+        self._visit_node_recursive(self.tree)
+        self.data.modules = self._renamed_modules
 
 
 class CompilerPassSetNodeData(CompilerPass):
@@ -468,6 +488,8 @@ class CompilerPassCheckConstValue(CompilerPass):
 
     def run(self):
         self._info("run")
+        for module in self.data.modules.values():
+            self._visit_node(module)
         self._visit_node(self.tree)
 
 
@@ -483,7 +505,13 @@ class CompilerPassCheckUsed(CompilerPass):
         data = node._ndata
 
         if isinstance(node, astroid.FunctionDef):
-            self._functions[node.name] = node
+            fname = get_function_name(node)
+            if fname in self._functions and self._functions[fname] != node:
+                raise CompilerError(
+                    f"Function '{fname}' already defined",
+                    node,
+                )
+            self._functions[fname] = node
             data.is_used = data.is_used or False
             self._have_unset_nodes = True
 
@@ -497,12 +525,19 @@ class CompilerPassCheckUsed(CompilerPass):
             return
 
         if isinstance(node, astroid.Call):
-            if node.func.name in self._functions:
-                func = self._functions[node.func.name]
-                func._ndata.is_used = func._ndata.is_used or data.is_used
-            elif node.func.name not in symbols.__dict__:
+            fname = get_function_name(node.func)
+            if isinstance(node.func, (astroid.Attribute, astroid.Name)):
+                if fname in self._functions:
+                    func = self._functions[fname]
+                    func._ndata.is_used = func._ndata.is_used or data.is_used
+                elif fname not in symbols.__dict__:
+                    raise CompilerError(
+                        f"Calling undefined function {fname}",
+                        node,
+                    )
+            else:
                 raise CompilerError(
-                    f"Calling undefined function {node.func.name}",
+                    f"Unsupported function call type: {type(node.func)}",
                     node,
                 )
 
@@ -524,12 +559,16 @@ class CompilerPassCheckUsed(CompilerPass):
     def run(self):
         for _ in range(10):
             self._have_unset_nodes = False
+            for module in self.data.modules.values():
+                self._visit_node_recursive(module)
             self._visit_node_recursive(self.tree)
             if not self._have_unset_nodes:
                 break
 
         self._throw_on_unset = True
         self._have_unset_nodes = False
+        for module in self.data.modules.values():
+            self._visit_node_recursive(module)
         self._visit_node_recursive(self.tree)
 
 
@@ -550,6 +589,8 @@ class CompilerPassResetReadWritten(CompilerPass):
             sym_data.nodes_reading.clear()
 
     def run(self):
+        for module in self.data.modules.values():
+            self._visit_node_recursive(module)
         self._visit_node_recursive(self.tree)
 
 
@@ -562,6 +603,25 @@ class CompilerPassSetReadWritten(CompilerPassResetReadWritten):
 
     def handle_function_def(self, node: astroid.FunctionDef):
         self.data.set_name_written(node)
+
+    def handle_attribute(self, node: astroid.Attribute):
+        # scope = get_scope_name(node) #.expr.as_string()
+        scope = (
+            node.expr.name
+            if isinstance(node.expr, astroid.Name)
+            else get_scope_name(node.expr)
+        )
+        if scope in self.data.modules:
+            module_locals = self.data.modules[scope].locals
+            if node.attrname not in module_locals:
+                raise CompilerError(
+                    f"Module '{scope}' has no attribute '{node.attrname}'",
+                    node,
+                )
+            obj = module_locals[node.attrname][0]
+            obj._ndata.is_used = True
+            sym = self.data.get_sym_data(obj)
+            sym.nodes_reading.append(node)
 
 
 class CompilerPassCheckReadWritten(CompilerPassResetReadWritten):
@@ -601,7 +661,8 @@ class CompilerPassCreateFunctionData(CompilerPass):
 
     def handle_function_def(self, node: astroid.FunctionDef):
         sym_data = self.data.get_sym_data(node)
-        self.data.functions[node.name] = FunctionData(node, sym_data)
+        name = get_function_name(node)
+        self.data.functions[name] = FunctionData(node, sym_data)
 
     def handle_node(self, node: astroid.NodeNG):
         pass

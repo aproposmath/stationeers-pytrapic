@@ -30,8 +30,11 @@ time("import")
 
 
 class Compiler:
+    _raise_exceptions = False
+
     def __init__(self, options: CompileOptions):
         self.passes = [
+            CompilerPassSetModuleNames,
             CompilerPassSetNodeData,
             CompilerPassCheckUsed,
             CompilerPassFindNames,
@@ -50,18 +53,27 @@ class Compiler:
         ]
         self.options = options
 
-    def compile(self, src: str):
+    def _parse(self, src: str):
+        src_stripped = src.lstrip()
+        if src_stripped.startswith("require") or src_stripped.startswith("--"):
+            from .parse_lua import parse_lua
+
+            return parse_lua(src)
+        else:
+            return astroid.parse(src)
+
+    def compile(self, src: str | dict):
         time("start")
         try:
-            src_stripped = src.lstrip()
-            if src_stripped.startswith("require") or src_stripped.startswith("--"):
-                from .parse_lua import parse_lua
+            if isinstance(src, str):
+                src = {"": src}
 
-                self.tree = parse_lua(src)
-            else:
-                self.tree = astroid.parse(src)
+            code = src[""]
+            modules = {k: self._parse(v) for k, v in src.items()}
+            self.tree = modules.pop("")
+
             time("parse")
-            self.data = CodeData(src, self.tree, self.options)
+            self.data = CodeData(code, self.tree, self.options, modules=modules)
             time("codedata")
             for pass_cls in self.passes:
                 compiler_pass = pass_cls(self.data)
@@ -69,6 +81,8 @@ class Compiler:
                 time("pass " + pass_cls.__name__)
             return self.data.result
         except CompilerError as e:
+            if self._raise_exceptions:
+                raise e
             msg = {"description": str(e)}
             if e.node:
                 msg["line"] = e.node.lineno
@@ -79,6 +93,8 @@ class Compiler:
                 "error": msg,
             }
         except astroid.AstroidSyntaxError as e:
+            if self._raise_exceptions:
+                raise e
 
             d = {
                 "error": {
@@ -94,6 +110,8 @@ class Compiler:
                 )
             return d
         except Exception as e:
+            if self._raise_exceptions:
+                raise e
             import traceback
 
             stack_trace = traceback.format_exc()
@@ -106,7 +124,7 @@ class Compiler:
 
 
 def compile_code(
-    src: str,
+    src: str | dict,
     comments: bool = False,
     compact: bool = False,
     append_version: bool = False,

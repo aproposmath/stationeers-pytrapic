@@ -52,6 +52,50 @@ def get_binop_instruction(op: str):
     }.get(op, (None, None))
 
 
+def get_scope_name(node):
+    if hasattr(node, "name") and is_builtin_name(node.name):
+        return ""
+    sc = node.scope()
+    parents = []
+    while sc and not isinstance(sc, astroid.Module):
+        parents.append(sc.name)
+        sc = sc.parent.scope() if sc.parent else None
+
+    if isinstance(node, astroid.FunctionDef) or (
+        isinstance(node, astroid.Name)
+        and isinstance(node.parent, astroid.Call)
+        and node == node.parent.func
+    ):
+        parents = parents[1:]
+
+    if sc.name:
+        parents.append(sc.name)
+
+    scope_name = ".".join(reversed(parents))
+    scope = node.scope()
+
+    if hasattr(node, "name") and node.name not in scope.locals:
+        scope_name = (
+            sc.name
+        )  # if the name is not in the local scope, it is a global name
+    return scope_name
+
+
+def get_function_name(node):
+    scope = get_scope_name(node)
+    if scope:
+        scope += "."
+
+    if isinstance(node, astroid.FunctionDef):
+        return scope + node.name
+    elif isinstance(node, astroid.Attribute):
+        return scope + node.expr.name + "." + node.attrname
+    elif isinstance(node, astroid.Name):
+        return scope + node.name
+    else:
+        raise CompilerError("Cannot get function name", node)
+
+
 class CompilerError(Exception):
     def __init__(self, message, node=None):
         super().__init__(message)
@@ -110,7 +154,7 @@ def is_constant(node):
         return True, node.value
 
     if isinstance(node, astroid.Call):
-        if is_builtin_function(node.func.name):
+        if isinstance(node.func, astroid.Name) and is_builtin_function(node.func.name):
             from . import symbols
 
             return True, getattr(symbols, node.func.name)(node.args[0].value)
