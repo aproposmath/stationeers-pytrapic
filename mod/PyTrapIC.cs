@@ -678,6 +678,8 @@ namespace StationeersPyTrapIC
                 return false;
             }
 
+            UITooltipManager.ClearTooltip();
+
             return true;
         }
 

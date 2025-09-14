@@ -194,13 +194,18 @@ namespace StationeersPyTrapIC
         {
             if (compiledCode == null)
                 return;
+
             if (mode == Mode.EditIC10)
                 return;
+
             L.Debug($"SetStatusText {InputSourceCode.Instance}");
             L.Debug($"sizeText {InputSourceCode.Instance.SizeText}");
             var sizeText = InputSourceCode.Instance.SizeText;
-            sizeText.text =
+            string statusText =
                 $"{FormatSize(compiledCode.num_registers, 16, "registers")}, {FormatSize(compiledCode.num_lines, 128, "lines")}, {FormatSize(compiledCode.num_bytes, 4096, "bytes")}";
+            string modeText = mode == Mode.EditPython ? "Python" : "IC10 preview";
+            statusText += $"\n<color=\"yellow\">{modeText}</color>";
+            sizeText.text = statusText;
             sizeText.color = Color.white;
         }
 
