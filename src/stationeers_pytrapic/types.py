@@ -90,7 +90,7 @@ class IC10Operand:
             return self.value.code_expr
         elif isinstance(self.value, float):
             absval = abs(self.value)
-            if absval > 0.1:
+            if absval >= 0.1:
                 return f"{self.value:.16g}"
             if absval == 0:
                 return "0"

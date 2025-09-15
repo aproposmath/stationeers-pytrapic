@@ -25,6 +25,7 @@ import astroid
 from . import types
 from .compile_pass import *
 from .generate_code import CompilerPassGatherCode, CompilerPassGenerateCode
+from .utils import inject_modules_simple
 
 time("import")
 
@@ -50,18 +51,36 @@ class Compiler:
         ]
         self.options = options
 
-    def compile(self, src: str):
+    def _parse(self, src: str):
+        src_stripped = src.lstrip()
+        if src_stripped.startswith("require") or src_stripped.startswith("--"):
+            from .parse_lua import parse_lua
+
+            return parse_lua(src)
+        else:
+            return astroid.parse(src)
+
+    def compile(self, src: str | dict):
         time("start")
         try:
-            src_stripped = src.lstrip()
-            if src_stripped.startswith("require") or src_stripped.startswith("--"):
-                from .parse_lua import parse_lua
-
-                self.tree = parse_lua(src)
+            if isinstance(src, dict):
+                code = src[""]
+                modules = {}
+                for name in src:
+                    module_code = src[name]
+                    module = self._parse(module_code)
+                    print("module", name, module)
+                    module.name = name
+                    modules[name] = module
+                # modules = {k: self._parse(v) for k, v in src.items()}
             else:
-                self.tree = astroid.parse(src)
+                code = src
+                modules = {"": self._parse(src)}
+
+            self.tree = modules.pop("")
+
             time("parse")
-            self.data = CodeData(src, self.tree, self.options)
+            self.data = CodeData(code, self.tree, self.options, modules=modules)
             time("codedata")
             for pass_cls in self.passes:
                 compiler_pass = pass_cls(self.data)
@@ -106,7 +125,7 @@ class Compiler:
 
 
 def compile_code(
-    src: str,
+    src: str | dict,
     comments: bool = False,
     compact: bool = False,
     append_version: bool = False,

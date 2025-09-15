@@ -18,6 +18,7 @@ from .utils import (
     is_intrinsic_function,
     is_storable_type,
     logger,
+    get_function_name,
 )
 
 # use stack addresses 511 for function return values
@@ -194,12 +195,21 @@ class CompilerPassGenerateCode(CompilerPass):
         attrname = node.attrname
         data = node._ndata
 
-        if not hasattr(expr, attrname):
-            raise CompilerError(
-                f"Invalid attribute {node.attrname} in expression {node.as_string()}",
-                node,
-            )
-        attr = getattr(expr, attrname)
+        if isinstance(expr, astroid.ClassDef):
+            if attrname not in expr.locals:
+                raise CompilerError(
+                    f"Invalid attribute {attrname} in expression {node.as_string()}",
+                    node,
+                )
+            attr = expr.locals[attrname]
+            attr = self.compile_node(attr[0])
+        else:
+            if not hasattr(expr, attrname):
+                raise CompilerError(
+                    f"Invalid attribute {node.attrname} in expression {node.as_string()}",
+                    node,
+                )
+            attr = getattr(expr, attrname)
         if isinstance(expr, type) and issubclass(expr, types._BaseStructure):
             name = expr.__name__
             raise CompilerError(
@@ -223,7 +233,7 @@ class CompilerPassGenerateCode(CompilerPass):
     def handle_call(self, node: astroid.Call):
         data = node._ndata
 
-        fname = node.func.name
+        fname = get_function_name(node.func)
 
         if node.kwargs:
             raise CompilerError("**kwargs are not supported", node)
@@ -297,7 +307,8 @@ class CompilerPassGenerateCode(CompilerPass):
 
     def handle_return(self, node: astroid.Return):
         func_node = get_function_parent(node)
-        func_data = self.data.functions[func_node.name]
+        fname = get_function_name(func_node)
+        func_data = self.data.functions[fname]
 
         do_inline = self.data.options.inline_functions and func_data.can_inline
 
@@ -314,7 +325,7 @@ class CompilerPassGenerateCode(CompilerPass):
 
         if node != func_node.body[-1]:
             # only jump to end of function, if return is not the last statement
-            label = func_node.name.replace("_", ".") + "end"
+            label = fname.replace("_", ".") + "end"
             data.add(IC10("j", [label], indent=-1))
 
     def handle_continue(self, node: astroid.Continue):
@@ -335,6 +346,9 @@ class CompilerPassGenerateCode(CompilerPass):
         name = node.name
         scope_name = self.data._scope_name(node)
 
+        if name in self.data.modules:
+            node._ndata.result = self.data.modules[name]
+            return
         if node._ndata.result:
             return node._ndata.result
         if name in symbols.__dict__:
@@ -365,19 +379,21 @@ class CompilerPassGenerateCode(CompilerPass):
             raise CompilerError(f"Unsupported constant type: {type(node.value)}", node)
 
     def handle_function_def(self, node: astroid.FunctionDef):
-        self.functions[node.name] = node
+        fname = get_function_name(node)
+        self.functions[fname] = node
 
     def compile_function(self, node: astroid.FunctionDef):
         data = node._ndata
         if data.code[""]:
             # function already compiled
             return
+        fname = get_function_name(node)
         sym_data = self.data.get_sym_data(node)
-        label = node.name.replace("_", ".")
+        label = fname.replace("_", ".")
         data.add(IC10(f"{label}:"))
         data.add_end(IC10(f"{label}end:"))
 
-        func_data = self.data.functions[node.name]
+        func_data = self.data.functions[fname]
 
         if self.data.options.inline_functions and func_data.can_inline:
             ret_value = self.get_register_name() if func_data.has_return_value else ""
@@ -463,6 +479,7 @@ class CompilerPassGenerateCode(CompilerPass):
                         else value.value
                     )
                     data.result = sym_data
+                    target._ndata.result = sym_data
                     return
                 # raise CompilerError(
                 #     f"Cannot assign symbol {value.name} to name {target.name}", target
@@ -725,7 +742,14 @@ class CompilerPassGenerateCode(CompilerPass):
         data.add_end(IC10("j", [while_label], indent=1))
         data.add_end(IC10(f"{end_label}:"))
 
+    def handle_class(self, node: astroid.ClassDef):
+        node._ndata.result = node.locals
+        for stmt in node.get_children():
+            self._visit_node(stmt)
+
     def run(self):
+        for module in self.data.modules.values():
+            self._visit_node(module)
         self._visit_node(self.tree)
 
 
@@ -794,15 +818,14 @@ class CompilerPassGatherCode(CompilerPass):
         old_target = self._target
 
         if isinstance(node, astroid.FunctionDef):
-            self._target = self.data.functions[node.name]
+            fname = get_function_name(node)
+            self._target = self.data.functions[fname]
 
         if isinstance(node, astroid.Call):
-            fname = node.func.name
+            fname = get_function_name(node.func)
             if not is_builtin_name(fname):
                 if fname not in self.data.functions:
-                    raise CompilerError(
-                        f"Function {node.func.name} is not defined.", node
-                    )
+                    raise CompilerError(f"Function {fname} is not defined.", node)
 
                 func = self.data.functions[fname]
                 if self.data.options.inline_functions and func.can_inline:
@@ -869,6 +892,8 @@ class CompilerPassGatherCode(CompilerPass):
         functions = self.data.functions
         self._target = functions[""] = FunctionData(None, None)
 
+        for module in self.data.modules.values():
+            self._visit_node(module)
         self._visit_node(self.tree)
 
         for fname in sorted(self.data.functions.keys()):
@@ -928,12 +953,24 @@ class CompilerPassGatherCode(CompilerPass):
                 (node.scope().name for node in func.sym_data.nodes_reading)
             )
 
+        module_names = set(self.data.modules.keys())
+        for name in called_from:
+            if name == "":
+                continue
+            called_from[name].update(module_names)
+
+        added_modules = set([""])
+        for module in module_names:
+            called_from[module] = set(added_modules)
+            added_modules.add(module)
+
         all_scopes = set(self.data.functions.keys())
+        all_scopes.update(self.data.symbols.keys())
 
         sorted_scopes = []
         while len(sorted_scopes) < len(all_scopes):
             for scope in all_scopes - set(sorted_scopes):
-                if called_from[scope].issubset(set(sorted_scopes)):
+                if called_from.get(scope, set()).issubset(set(sorted_scopes)):
                     sorted_scopes.append(scope)
                     break
             else:
@@ -961,7 +998,7 @@ class CompilerPassGatherCode(CompilerPass):
                 continue
             available_registers = set(registers)
             parent_registers = set()
-            for calling_scope in called_from[scope]:
+            for calling_scope in called_from.get(scope, set()):
                 parent_registers = parent_registers.union(
                     registers_by_scope.get(calling_scope, set())
                 )
@@ -991,7 +1028,7 @@ class CompilerPassGatherCode(CompilerPass):
                 reg_num = available_registers[col]
                 mapping[sym.code_expr] = f"r{reg_num}"
                 sym.code_expr = mapping[sym.code_expr]
-                # print('use register', sym.code_expr, 'for', sym.name, 'in scope', scope, 'for sym', sym)
+                # print('use register', sym.code_expr, 'for', sym.name, 'in scope', scope)
                 used_registers.add(reg_num)
 
             registers_by_scope[scope] = used_registers.union(parent_registers)

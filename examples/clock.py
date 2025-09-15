@@ -70,13 +70,13 @@ def init():
     v = get_vertical()
     deriv1 -= v
     deriv2 += v
-    sleep(TSLEEP)
+    sleep(SECONDS_CALIBRATE)
 
     v = get_vertical()
     last_angle = v
     deriv0 = v
     deriv2 -= 2 * v
-    sleep(TSLEEP)
+    sleep(SECONDS_CALIBRATE)
 
     v = get_vertical()
     deriv1 += v

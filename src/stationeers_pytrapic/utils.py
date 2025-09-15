@@ -52,6 +52,20 @@ def get_binop_instruction(op: str):
     }.get(op, (None, None))
 
 
+def get_function_name(node):
+    if isinstance(node, astroid.FunctionDef):
+        scope = node.parent.scope()
+        if scope.name:
+            return scope.name + "." + node.name
+        return node.name
+    elif isinstance(node, astroid.Attribute):
+        return node.expr.name + "." + node.attrname
+    elif isinstance(node, astroid.Name):
+        return node.name
+    else:
+        raise CompilerError("Cannot get function name", node)
+
+
 class CompilerError(Exception):
     def __init__(self, message, node=None):
         super().__init__(message)
@@ -110,7 +124,7 @@ def is_constant(node):
         return True, node.value
 
     if isinstance(node, astroid.Call):
-        if is_builtin_function(node.func.name):
+        if isinstance(node.func, astroid.Name) and is_builtin_function(node.func.name):
             from . import symbols
 
             return True, getattr(symbols, node.func.name)(node.args[0].value)
@@ -162,3 +176,58 @@ def is_constant(node):
     elif res:
         print(res, "check const", node, inferred)
     return res
+
+
+import re
+
+
+def extract_library_imports(source: str) -> list[str]:
+    """
+    Find 'from library import xyz' statements using regex.
+    Returns a list of module names like 'library.xyz'.
+    """
+    pattern = re.compile(r"^\s*from\s+library\s+import\s+(\w+)", re.MULTILINE)
+    matches = pattern.findall(source)
+    return [f"library.{name}" for name in matches]
+
+
+def wrap_module(name: str, source: str) -> str:
+    """
+    Wrap the given module source code in a class named after the module.
+    """
+    class_name = name.split(".")[-1]
+    lines = source.strip().splitlines()
+    indented = "\n".join("    " + line if line.strip() else "" for line in lines)
+    return f"class {class_name}:\n{indented}\n"
+
+
+def inject_modules_simple(modules: dict[str, str]) -> str:
+    """
+    Injects imported library modules as class-wrapped code into the main module.
+    """
+    main_source = modules.get("", "")
+    imported_modules = extract_library_imports(main_source)
+
+    seen = set()
+    injected_parts = []
+
+    for mod in imported_modules:
+        if mod not in modules:
+            raise ValueError(f"Module '{mod}' not found in modules dictionary.")
+        if mod in seen:
+            continue
+        seen.add(mod)
+        injected_parts.append(wrap_module(mod, modules[mod]))
+
+    # Finally add the main source
+    src = "from stationeers_pytrapic.symbols import *\n"
+    for line in main_source.splitlines():
+        if line.strip().startswith("from library import"):
+            continue
+        if line.strip().startswith("from stationeers_pytrapic.symbols import *"):
+            continue
+        src += line + "\n"
+
+    injected_parts.append(src)
+
+    return "\n\n".join(injected_parts)

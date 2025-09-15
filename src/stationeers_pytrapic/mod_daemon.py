@@ -16,17 +16,20 @@ from pygments.formatters import BBCodeFormatter
 from pygments.lexers import LuaLexer, PythonLexer
 
 from .compiler import compile_code
+from .utils import inject_modules_simple
+
 
 def _get_ignore_symbol_names():
     import jedi
 
     s = jedi.Script("")
-    completions  = s.complete(1, 0)
+    completions = s.complete(1, 0)
     names = set((c.name for c in completions))
-    for n in ['True', 'False', 'while', 'if', 'else', 'def', 'pow', 'abs']:
+    for n in ["True", "False", "while", "if", "else", "def", "pow", "abs"]:
         if n in names:
             names.remove(n)
     return names
+
 
 def _get_all_symbols_names():
     from . import intrinsics, structures_generated, types_generated
@@ -115,7 +118,11 @@ def format_completions(completions):
         result = "\n".join(comp_texts) + suffix
     t1 = time.time()
     log(f"Formatted {len(completions)} completions in {1000*(t1 - t0):.1f} ms")
-    return {"tooltip": result, "completion_prefix_length": prefix_len, "completion": completion}
+    return {
+        "tooltip": result,
+        "completion_prefix_length": prefix_len,
+        "completion": completion,
+    }
 
 
 def log(msg):
@@ -168,16 +175,21 @@ def process_input(line):
             response = {"error": f"Invalid action '{action}'"}
             return
 
-        code = msg.get("code", None)
-        if code is None:
+        modules = msg.get("code", None)
+        if modules is None:
             response = {"error": "No code provided"}
             return
+
+        code = modules[""]
+        all_code = inject_modules_simple(modules)
+        log(f"got modules {list(modules.keys())}")
+        log(f"fixed code:\n{all_code}")
 
         compact = msg.get("compact", False)
         append_version = msg.get("append_version", True)
         comments = msg.get("comments", False)
         response = compile_code(
-            code,
+            modules,
             comments=comments,
             compact=compact,
             append_version=append_version,
@@ -194,8 +206,9 @@ def process_input(line):
             try:
                 import jedi
 
-                script = jedi.Script(code, path="script.py")
-                completions = script.complete(line=lineno, column=column)
+                line_shift = len(all_code.splitlines()) - len(code.splitlines())
+                script = jedi.Script(all_code, path="script.py")
+                completions = script.complete(line=lineno + line_shift, column=column)
                 if completions:
                     response.update(format_completions(completions))
             except Exception as e:

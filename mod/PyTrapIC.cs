@@ -72,7 +72,8 @@ namespace StationeersPyTrapIC
         {
             if (IsPythonCode(code))
             {
-                return @"^\s*import\s+library\.(\w+)\s*$";
+                // return @"^\s*import\s+library\.(\w+)\s*$";
+                return @"^\s*from\s+library\s+import\s+(\w+)\s*$";
             }
             if (IsLuaCode(code))
             {
@@ -146,7 +147,7 @@ namespace StationeersPyTrapIC
                         lib.FilePathFullName
                     );
 
-                    result[libName] = instructionData.Instructions;
+                    result["library." + libName] = instructionData.Instructions;
                     codesToSearch.Add(instructionData.Instructions);
                     // code = code.Replace(match.Value, instructionData.Instructions);
                 }
