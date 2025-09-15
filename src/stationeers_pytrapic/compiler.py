@@ -25,7 +25,6 @@ import astroid
 from . import types
 from .compile_pass import *
 from .generate_code import CompilerPassGatherCode, CompilerPassGenerateCode
-from .utils import inject_modules_simple
 
 time("import")
 
@@ -33,6 +32,7 @@ time("import")
 class Compiler:
     def __init__(self, options: CompileOptions):
         self.passes = [
+            CompilerPassSetModuleNames,
             CompilerPassSetNodeData,
             CompilerPassCheckUsed,
             CompilerPassFindNames,
@@ -63,20 +63,11 @@ class Compiler:
     def compile(self, src: str | dict):
         time("start")
         try:
-            if isinstance(src, dict):
-                code = src[""]
-                modules = {}
-                for name in src:
-                    module_code = src[name]
-                    module = self._parse(module_code)
-                    print("module", name, module)
-                    module.name = name
-                    modules[name] = module
-                # modules = {k: self._parse(v) for k, v in src.items()}
-            else:
-                code = src
-                modules = {"": self._parse(src)}
+            if isinstance(src, str):
+                src = {"": src}
 
+            code = src[""]
+            modules = {k: self._parse(v) for k, v in src.items()}
             self.tree = modules.pop("")
 
             time("parse")

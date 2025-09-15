@@ -256,7 +256,6 @@ class CompilerPass:
             astroid.Continue: self.handle_continue,
             astroid.Break: self.handle_break,
             astroid.AugAssign: self.handle_immediate_op,
-            astroid.ClassDef: self.handle_class,
         }
 
     def _log(self, level, *args):
@@ -395,8 +394,28 @@ class CompilerPass:
     def handle_break(self, node: astroid.Break):
         self.handle_node(node)
 
-    def handle_class(self, node: astroid.ClassDef):
-        self.handle_node(node)
+
+class CompilerPassSetModuleNames(CompilerPass):
+    def handle_node(self, node: astroid.NodeNG):
+        pass
+
+    def handle_import(self, node: astroid.Import):
+        for name, alias in node.names:
+            if not name.startswith("library."):
+                continue
+            name = name[8:]
+            new_name = alias if alias else name
+            module = self.data.modules[name]
+            module.name = new_name
+            self._renamed_modules[new_name] = module
+
+    def run(self):
+        self._renamed_modules = {}
+        self._info("run")
+        for module in self.data.modules.values():
+            self._visit_node_recursive(module)
+        self._visit_node_recursive(self.tree)
+        self.data.modules = self._renamed_modules
 
 
 class CompilerPassSetNodeData(CompilerPass):
@@ -505,12 +524,6 @@ class CompilerPassCheckUsed(CompilerPass):
 
     def handle_node(self, node: astroid.NodeNG):
         data = node._ndata
-
-        if isinstance(node, astroid.ClassDef):
-            data.is_used = True
-            self.data.modules[node.name] = node
-            self._have_unset_nodes = True
-            values = list(node.infer())
 
         if isinstance(node, astroid.FunctionDef):
             fname = get_function_name(node)

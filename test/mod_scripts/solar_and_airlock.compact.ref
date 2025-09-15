@@ -1,0 +1,34 @@
+sbn -324331872 HASH("In") Lock 1
+sbn -324331872 HASH("Out") Lock 1
+sbn -1129453144 HASH("In") Mode 1
+sbn -1129453144 HASH("In") On 0
+sbn -1129453144 HASH("Out") Mode 1
+sbn -1129453144 HASH("Out") On 0
+move r0 88
+yield
+lbn r1 576516101 1749372462 On 3
+ble r1 0 24
+lbn r2 -324331872 HASH("In") Open 3
+sgt r1 r2 0
+select r2 r1 HASH("Out") HASH("In")
+select r3 r1 HASH("In") HASH("Out")
+sbn -324331872 r3 Open 0
+sbn -1129453144 r3 On 1
+lb r1 -1252983604 Pressure 3
+beq r1 0 19
+j 16
+sleep 0.2
+sbn -1129453144 r3 On 0
+sbn -324331872 r2 Open 1
+sbn 576516101 1749372462 On 0
+sleep 1
+l r1 d0 Horizontal
+sb -2045627372 Horizontal r1
+l r1 d0 Vertical
+sub r2 90 r1
+sb -2045627372 Vertical r2
+sub r0 r0 1
+s db Setting r0
+j 7
+# registers: 4
+# lines: 32

@@ -195,21 +195,12 @@ class CompilerPassGenerateCode(CompilerPass):
         attrname = node.attrname
         data = node._ndata
 
-        if isinstance(expr, astroid.ClassDef):
-            if attrname not in expr.locals:
-                raise CompilerError(
-                    f"Invalid attribute {attrname} in expression {node.as_string()}",
-                    node,
-                )
-            attr = expr.locals[attrname]
-            attr = self.compile_node(attr[0])
-        else:
-            if not hasattr(expr, attrname):
-                raise CompilerError(
-                    f"Invalid attribute {node.attrname} in expression {node.as_string()}",
-                    node,
-                )
-            attr = getattr(expr, attrname)
+        if not hasattr(expr, attrname):
+            raise CompilerError(
+                f"Invalid attribute {node.attrname} in expression {node.as_string()}",
+                node,
+            )
+        attr = getattr(expr, attrname)
         if isinstance(expr, type) and issubclass(expr, types._BaseStructure):
             name = expr.__name__
             raise CompilerError(
@@ -741,11 +732,6 @@ class CompilerPassGenerateCode(CompilerPass):
 
         data.add_end(IC10("j", [while_label], indent=1))
         data.add_end(IC10(f"{end_label}:"))
-
-    def handle_class(self, node: astroid.ClassDef):
-        node._ndata.result = node.locals
-        for stmt in node.get_children():
-            self._visit_node(stmt)
 
     def run(self):
         for module in self.data.modules.values():

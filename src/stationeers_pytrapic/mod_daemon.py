@@ -31,25 +31,6 @@ def _get_ignore_symbol_names():
     return names
 
 
-def _get_all_symbols_names():
-    from . import intrinsics, structures_generated, types_generated
-
-    symbols = set()
-    for mod in (intrinsics, types_generated, structures_generated):
-        for name in dir(mod):
-            if not name.startswith("_"):
-                symbols.add(name)
-
-    for enum in [types_generated._logicType, types_generated._logicSlotType]:
-        for e in enum:
-            symbols.add(e.name)
-    symbols.add("while")
-    symbols.add("if")
-    symbols.add("else")
-    symbols.add("def")
-    return symbols
-
-
 formatter = BBCodeFormatter(style="solarized-light")
 
 replace = lambda s: s.replace("[", "<").replace("]", ">")
@@ -64,7 +45,6 @@ _log_file = None  # Global log file handle
 ENABLE_LOGGING = __name__ == "__main__"
 ENABLE_LOGGING = True
 
-# _all_symbols = _get_all_symbols_names()
 _ignore_symbol_names = _get_ignore_symbol_names()
 
 

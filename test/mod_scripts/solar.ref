@@ -1,0 +1,16 @@
+jal solar.init
+lbwhile1:
+  yield
+  jal solar.update
+  j lbwhile1
+solar.init:
+  j ra
+solar.update:
+  l r0 d0 Horizontal
+  sb -2045627372 Horizontal r0
+  l r0 d0 Vertical
+  sub r1 90 r0
+  sb -2045627372 Vertical r1
+  j ra
+# registers: 2
+# lines: 14

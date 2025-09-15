@@ -10,12 +10,30 @@ example_files = glob.glob(str(Path(__file__).parent.parent / "examples" / "*.py"
 
 
 def run_case(
-    code_file, result_file, reference_file, write_reference=False, compact=False
+    code_file,
+    result_file=None,
+    reference_file=None,
+    write_reference=False,
+    compact=False,
+    modules=None,
 ):
     code_file = Path(code_file)
+
+    suffix = ".compact" if compact else ""
+
+    if result_file is None:
+        result_file = Path(code_file).with_suffix(suffix + ".ic10")
+
+    if reference_file is None:
+        reference_file = Path(code_file).with_suffix(suffix + ".ref")
+
     code = code_file.read_text(encoding="utf-8")
 
     try:
+        if modules is not None:
+            modules = modules.copy()
+            modules[""] = code
+            code = modules
         result = compile_code(code, compact=compact)
 
         if "error" in result:
@@ -52,12 +70,7 @@ def run_case(
 @pytest.mark.parametrize("case_file", case_files, ids=lambda x: Path(x).stem)
 @pytest.mark.parametrize("compact", [False, True], ids=["full", "compact"])
 def test_cases(case_file, compact):
-    case_file = Path(case_file)
-    suffix = ".compact" if compact else ""
-    reference_file = case_file.with_suffix(suffix + ".ref")
-    result_file = case_file.with_suffix(suffix + ".ic10")
-
-    run_case(case_file, result_file, reference_file, compact=compact)
+    run_case(case_file, compact=compact)
 
 
 @pytest.mark.parametrize("example_file", example_files, ids=lambda x: Path(x).stem)
@@ -76,8 +89,6 @@ if __name__ == "__main__":
         for c in case_files:
             run_case(
                 c,
-                Path(c).with_suffix(suffix + ".ic10"),
-                Path(c).with_suffix(suffix + ".ref"),
                 write_reference=True,
                 compact=compact,
             )
