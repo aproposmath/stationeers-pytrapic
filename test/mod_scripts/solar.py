@@ -1,5 +1,5 @@
 from stationeers_pytrapic.symbols import *
-import library.solar as solar
+from library import solar
 
 solar.init()
 

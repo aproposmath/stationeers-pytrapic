@@ -63,7 +63,8 @@ namespace StationeersPyTrapIC
 
             mode = mode == Mode.ViewIC10 ? Mode.EditPython : Mode.ViewIC10;
             L.Debug($"New mode={mode}");
-            UpdateFormattedCode();
+            UpdateFormattedCode(true);
+            UpdateTooltip();
 
             // bool activateInput = mode == Mode.EditPython;
             //
@@ -133,14 +134,6 @@ namespace StationeersPyTrapIC
             isc._previousCaretPosition = isc.CaretPosition;
         }
 
-        public static void SetFormattedString(string src)
-        {
-            var lines = src.Split(new[] { '\n' }, StringSplitOptions.None);
-            for (int i = 0; i < InputSourceCode.Instance.LinesOfCode.Count; i++)
-                InputSourceCode.Instance.LinesOfCode[i].FormattedText.text =
-                    i < lines.Length ? $"<color=white>{lines[i]}</color>" : "";
-        }
-
         public static void SetPythonCode(string code)
         {
             if (code == pythonCode)
@@ -172,15 +165,6 @@ namespace StationeersPyTrapIC
             }
         }
 
-        public static void SetCode(string code)
-        {
-            string newCode = code ?? "";
-            if (SourceData.NeedsCompile(newCode))
-                SetPythonCode(newCode);
-            else
-                SetIC10Code(newCode);
-        }
-
         public static string FormatSize(int num, int max, string label)
         {
             return (
@@ -208,7 +192,7 @@ namespace StationeersPyTrapIC
             sizeText.color = Color.white;
         }
 
-        public static void UpdateFormattedCode()
+        public static void UpdateFormattedCode(bool resetInput = false)
         {
             L.Debug($"UpdateFormattedCode in mode={mode}");
             StackTrace stackTrace = new StackTrace();
@@ -228,7 +212,12 @@ namespace StationeersPyTrapIC
                 EditorLineOfCode line = isc.LinesOfCode[i];
                 string lineText = ((i >= lines.Length) ? string.Empty : lines[i].TrimEnd());
                 if (line.InputField.text != lineText)
-                    line.InputField.text = lineText;
+                {
+                    if (resetInput)
+                        line.InputField.text = lineText;
+                    else
+                        return; // don't update if user is editing
+                }
             }
 
             if (mode == Mode.EditPython)
@@ -311,8 +300,18 @@ namespace StationeersPyTrapIC
             UITooltipManager.ClearTooltip();
             if (compiledCode != null)
             {
-                if (compiledCode.tooltip != null && compiledCode.tooltip.Length > 0)
+                int lineno,
+                    column;
+                PythonCompiler.GetPosition(out lineno, out column);
+                if (
+                    compiledCode.tooltip != null
+                    && compiledCode.tooltip.Length > 0
+                    && lineno == compiledCode.input.lineno
+                    && column == compiledCode.input.column
+                )
+                {
                     UITooltipManager.SetTooltip(compiledCode.tooltip);
+                }
                 else if (compiledCode.error != null)
                     ShowErrorTooltip();
             }

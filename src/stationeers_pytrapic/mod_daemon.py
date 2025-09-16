@@ -10,13 +10,14 @@ import datetime
 import json
 import sys
 import time
+import tempfile
+from pathlib import Path
 
 from pygments import highlight as _highlight
 from pygments.formatters import BBCodeFormatter
 from pygments.lexers import LuaLexer, PythonLexer
 
 from .compiler import compile_code
-from .utils import inject_modules_simple
 
 
 def _get_ignore_symbol_names():
@@ -42,6 +43,7 @@ for ttype in formatter.styles:
         formatter.styles[ttype] = replace(start), replace(end)
 
 _log_file = None  # Global log file handle
+_err_file = None  # Global error file handle
 ENABLE_LOGGING = __name__ == "__main__"
 ENABLE_LOGGING = True
 
@@ -114,6 +116,15 @@ def log(msg):
         _log_file.flush()
 
 
+def error(msg):
+    global _err_file
+    if ENABLE_LOGGING:
+        if _err_file is None:
+            _err_file = open("mod_daemon.err", "w")
+        _err_file.write(f"{datetime.datetime.now().isoformat()} - {msg}\n")
+        _err_file.flush()
+
+
 log(f"Started")
 
 _lexer = {
@@ -161,9 +172,7 @@ def process_input(line):
             return
 
         code = modules[""]
-        all_code = inject_modules_simple(modules)
         log(f"got modules {list(modules.keys())}")
-        log(f"fixed code:\n{all_code}")
 
         compact = msg.get("compact", False)
         append_version = msg.get("append_version", True)
@@ -180,19 +189,52 @@ def process_input(line):
         highlighted = highlight(code, error_line=error_line)
         response["highlighted"] = highlighted
 
+        stack_trace = response.get("error", {}).get("stack_trace", None)
+        error("Error: " + response.get("error", {}).get("description", ""))
+        error("stack_trace: \n" + str(stack_trace))
+
         lineno = msg.get("lineno", -1)
         column = msg.get("column", -1)
         if lineno >= 0 and column > 0:
             try:
-                import jedi
+                tmpdir = Path("/tmp/jedi_test")
+                if tmpdir.exists():
+                    import shutil
 
-                line_shift = len(all_code.splitlines()) - len(code.splitlines())
-                script = jedi.Script(all_code, path="script.py")
-                completions = script.complete(line=lineno + line_shift, column=column)
-                if completions:
-                    response.update(format_completions(completions))
+                    shutil.rmtree(tmpdir)
+                tmpdir.mkdir()
+                if True:
+                    # with tempfile.TemporaryDirectory() as tmpdir:
+                    import jedi
+
+                    tmpdir = Path(tmpdir)
+                    (tmpdir / "__init__.py").write_text("", encoding="utf-8")
+                    lib_path = tmpdir / "library"
+                    lib_path.mkdir()
+                    (lib_path / "__init__.py").write_text("", encoding="utf-8")
+
+                    for mod_name, code in modules.items():
+                        if mod_name == "":
+                            path = tmpdir / "script.py"
+                        else:
+                            path = lib_path / (mod_name + ".py")
+                        log("write module " + str(path))
+                        log(code)
+                        path.write_text(code, encoding="utf-8")
+
+                    project = jedi.Project(path=tmpdir, added_sys_path=str(tmpdir))
+                    script = jedi.Script(modules[""], path="script.py", project=project)
+
+                    # line_shift = len(all_code.splitlines()) - len(code.splitlines())
+                    # script = jedi.Script(all_code, path="script.py")
+                    log(f"Getting completions at {lineno}:{column}")
+                    completions = script.complete(line=lineno, column=column)
+                    log(f"Got {len(completions)} completions")
+                    if completions:
+                        response.update(format_completions(completions))
             except Exception as e:
                 log(f"Jedi exception: {e}")
+                error(f"Jedi exception: {e}")
 
     except json.JSONDecodeError:
         response = {"error": {"message": "Invalid JSON format"}}
@@ -206,6 +248,7 @@ def process_input(line):
                 "stack_trace": stack_trace,
             }
         }
+        error(f"Exception: {e}\n{stack_trace}")
     finally:
         if response is not None:
             log(f"Response: {response}")

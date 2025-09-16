@@ -1,5 +1,5 @@
 from stationeers_pytrapic.symbols import *
-import library.airlock as airlock
+from library import airlock
 
 airlock.init()
 

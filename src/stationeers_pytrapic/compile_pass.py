@@ -12,6 +12,7 @@ from .utils import (
     get_function_parent,
     get_loop_ancestor,
     get_unop_instruction,
+    get_scope_name,
     is_builtin_name,
     is_constant,
     logger,
@@ -84,34 +85,10 @@ class CodeData:
         self.structures = {}
         self.modules = modules if modules is not None else {}
 
-    def _scope_name(self, node: astroid.AssignName | astroid.Name) -> str:
-        sc = node.scope()
-        parents = []
-        while sc and not isinstance(sc, astroid.Module):
-            parents.append(sc.name)
-            sc = sc.parent.scope() if sc.parent else None
-
-        if isinstance(node, astroid.FunctionDef) or (
-            isinstance(node, astroid.Name)
-            and isinstance(node.parent, astroid.Call)
-            and node == node.parent.func
-        ):
-            parents = parents[1:]
-
-        if sc.name:
-            parents.append(sc.name)
-
-        scope_name = ".".join(reversed(parents))
-        scope = node.scope()
-
-        if hasattr(node, "name") and node.name not in scope.locals:
-            return sc.name  # if the name is not in the local scope, it is a global name
-        if scope_name not in self.symbols:
-            self.symbols[scope_name] = {}
-        return scope_name
-
     def get_tmp_sym_data(self, node: astroid.NodeNG, name: str) -> IC10Register:
-        scope = self._scope_name(node)
+        scope = get_scope_name(node)
+        if scope not in self.symbols:
+            self.symbols[scope] = {}
         local_symbols = self.symbols[scope]
         local_symbols[name] = IC10Register(name)
         return local_symbols[name]
@@ -123,7 +100,9 @@ class CodeData:
         name = node.name
         if name in ("ra", "sp"):
             return IC10Register(name, "", name)
-        scope = self._scope_name(node)
+        scope = get_scope_name(node)
+        if scope not in self.symbols:
+            self.symbols[scope] = {}
         local_symbols = self.symbols[scope]
         if name not in local_symbols:
             if new_if_not_existing:
@@ -256,6 +235,7 @@ class CompilerPass:
             astroid.Continue: self.handle_continue,
             astroid.Break: self.handle_break,
             astroid.AugAssign: self.handle_immediate_op,
+            astroid.List: self.handle_node,
         }
 
     def _log(self, level, *args):
@@ -399,11 +379,10 @@ class CompilerPassSetModuleNames(CompilerPass):
     def handle_node(self, node: astroid.NodeNG):
         pass
 
-    def handle_import(self, node: astroid.Import):
+    def handle_import_from(self, node: astroid.ImportFrom):
+        if node.modname != "library":
+            return
         for name, alias in node.names:
-            if not name.startswith("library."):
-                continue
-            name = name[8:]
             new_name = alias if alias else name
             module = self.data.modules[name]
             module.name = new_name
@@ -626,10 +605,20 @@ class CompilerPassSetReadWritten(CompilerPassResetReadWritten):
         self.data.set_name_written(node)
 
     def handle_attribute(self, node: astroid.Attribute):
-        scope = node.expr.as_string()
+        # scope = get_scope_name(node) #.expr.as_string()
+        scope = (
+            node.expr.name
+            if isinstance(node.expr, astroid.Name)
+            else get_scope_name(node.expr)
+        )
         if scope in self.data.modules:
-            module = self.data.modules[scope]
-            obj = module.locals[node.attrname][0]
+            module_locals = self.data.modules[scope].locals
+            if node.attrname not in module_locals:
+                raise CompilerError(
+                    f"Module '{scope}' has no attribute '{node.attrname}'",
+                    node,
+                )
+            obj = module_locals[node.attrname][0]
             obj._ndata.is_used = True
             sym = self.data.get_sym_data(obj)
             sym.nodes_reading.append(node)

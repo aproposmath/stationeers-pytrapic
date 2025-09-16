@@ -8,15 +8,13 @@ from .compile_pass import CodeData, CompilerError, CompilerPass, FunctionData
 from .types import IC10, IC10Instruction, IC10Operand, IC10Register
 from .utils import (
     get_unop_instruction,
+    get_scope_name,
     get_binop_instruction,
     get_function_parent,
     is_builtin_function,
     is_builtin_name,
     is_builtin_structure,
-    is_constant,
     is_loadable_type,
-    is_intrinsic_function,
-    is_storable_type,
     logger,
     get_function_name,
 )
@@ -234,7 +232,10 @@ class CompilerPassGenerateCode(CompilerPass):
             kwargs = {kw.arg: self.compile_node(kw.value) for kw in node.keywords}
             args = [self.compile_node(arg) for arg in node.args]
 
-            result = func(*args, **kwargs)
+            try:
+                result = func(*args, **kwargs)
+            except TypeError as e:
+                raise CompilerError(f"Error calling function {fname}: {e}", node)
             if isinstance(result, IC10Instruction):
                 if result.output != None:
                     # instruction returns a value, so we need to assign it to a symbol
@@ -335,7 +336,7 @@ class CompilerPassGenerateCode(CompilerPass):
         # todo: detect if name is in locals/globals
         # throw proper error if not
         name = node.name
-        scope_name = self.data._scope_name(node)
+        scope_name = get_scope_name(node)
 
         if name in self.data.modules:
             node._ndata.result = self.data.modules[name]
@@ -390,6 +391,12 @@ class CompilerPassGenerateCode(CompilerPass):
             ret_value = self.get_register_name() if func_data.has_return_value else ""
             sym_data.code_expr = ret_value
             calling_node = sym_data.nodes_reading[0].parent
+
+            if len(node.args.args) != len(calling_node.args):
+                raise CompilerError(
+                    f"Function {fname} expects {len(node.args.args)} arguments, but {len(calling_node.args)} were given.",
+                    calling_node,
+                )
             for i, arg in enumerate(node.args.args):
                 arg_sym = self.data.get_sym_data(arg)
                 calling_arg = calling_node.args[i]._ndata.result
@@ -486,7 +493,7 @@ class CompilerPassGenerateCode(CompilerPass):
             elif value_name in symbols.__dict__ or is_builtin_structure(value):
                 data.result = value
                 structures = self.data.structures
-                scope_name = self.data._scope_name(target)
+                scope_name = get_scope_name(target)
                 if scope_name not in structures:
                     structures[scope_name] = {}
                 scope_vars = structures[scope_name]
@@ -932,12 +939,17 @@ class CompilerPassGatherCode(CompilerPass):
         called_from = {}
 
         for fname, func in self.data.functions.items():
+            called_from[fname] = set()
             if fname == "":
-                called_from[fname] = set()
                 continue
-            called_from[fname] = set(
-                (node.scope().name for node in func.sym_data.nodes_reading)
-            )
+            for node in func.sym_data.nodes_reading:
+                scope = get_scope_name(node)
+                function = node.scope().name
+                if scope and function:
+                    scope = scope + "." + function
+                else:
+                    scope = function or scope
+                called_from[fname].add(scope)
 
         module_names = set(self.data.modules.keys())
         for name in called_from:
@@ -952,6 +964,10 @@ class CompilerPassGatherCode(CompilerPass):
 
         all_scopes = set(self.data.functions.keys())
         all_scopes.update(self.data.symbols.keys())
+
+        # print("called_from")
+        # for k, v in called_from.items():
+        #     print(f"\t{k}: {v}")
 
         sorted_scopes = []
         while len(sorted_scopes) < len(all_scopes):

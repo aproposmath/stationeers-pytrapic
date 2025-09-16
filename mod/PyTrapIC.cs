@@ -147,7 +147,7 @@ namespace StationeersPyTrapIC
                         lib.FilePathFullName
                     );
 
-                    result["library." + libName] = instructionData.Instructions;
+                    result[libName] = instructionData.Instructions;
                     codesToSearch.Add(instructionData.Instructions);
                     // code = code.Replace(match.Value, instructionData.Instructions);
                 }
@@ -240,18 +240,29 @@ namespace StationeersPyTrapIC
             public int column_end = -1;
         }
 
+        public class CompileInput
+        {
+            public string action = "compile";
+            public Dictionary<string, string> code;
+            public bool comments = false;
+            public bool compact = true;
+            public bool append_version = true;
+            public int lineno = -1;
+            public int column = -1;
+        }
+
         public class CompileResponse
         {
             public CompileError error;
             public string highlighted;
             public string code;
-            public string pyCode;
             public string tooltip;
             public string completion;
             public int completion_prefix_length;
             public int num_lines;
             public int num_registers;
             public int num_bytes;
+            public CompileInput input;
         }
 
         private void StopProcess()
@@ -434,7 +445,7 @@ namespace StationeersPyTrapIC
                 string lineNrStr = sc.CurrentLine.LineNumber.text;
                 lineno = 1 + Int32.Parse(lineNrStr.TrimEnd('.'));
                 column = sc.CaretPosition;
-                L.Debug($"Caret position: {lineno}:{column}");
+                // L.Debug($"Caret position: {lineno}:{column}");
             }
             catch (Exception ex)
             {
@@ -460,25 +471,24 @@ namespace StationeersPyTrapIC
             L.Debug($"Compiling code at {lineno}:{column}");
 
             var modules = SourceData.LoadImportedModules(pythonCode);
-            pythonCode = modules[""];
             options ??= new CompileOptions();
+
+            CompileInput input = new CompileInput
+            {
+                action = "compile",
+                code = modules,
+                comments = options.Comments,
+                compact = options.Compact,
+                append_version = options.AppendVersion,
+                lineno = lineno,
+                column = column,
+            };
+
             var response = JsonConvert.DeserializeObject<CompileResponse>(
-                SendData(
-                    JsonConvert.SerializeObject(
-                        new
-                        {
-                            action = "compile",
-                            code = modules,
-                            comments = options.Comments,
-                            compact = options.Compact,
-                            append_version = options.AppendVersion,
-                            lineno = lineno,
-                            column = column,
-                        }
-                    )
-                )
+                SendData(JsonConvert.SerializeObject(input))
             );
-            response.pyCode = pythonCode;
+            response.input = input;
+
             return response;
         }
 
@@ -696,7 +706,7 @@ namespace StationeersPyTrapIC
                 return false;
             }
 
-            UITooltipManager.ClearTooltip();
+            // UITooltipManager.ClearTooltip();
 
             return true;
         }
@@ -704,8 +714,9 @@ namespace StationeersPyTrapIC
         [HarmonyPatch(typeof(InputSourceCode), "HandleInput"), HarmonyPostfix]
         public static void InputSourceCode_HandleInput()
         {
-            if (Editor.mode == Editor.Mode.EditPython)
-                Editor.SetPythonCode(InputSourceCode.Copy());
+            // L.Debug("Post HandleInput");
+            // if (Editor.mode == Editor.Mode.EditPython)
+            //     Editor.SetPythonCode(InputSourceCode.Copy());
 
             Editor.UpdateTooltip();
         }

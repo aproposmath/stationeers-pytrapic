@@ -1,6 +1,6 @@
 from stationeers_pytrapic.symbols import *
-import library.airlock as airlock
-import library.solar as solar
+from library import airlock
+from library import solar
 
 airlock.init()
 solar.init()

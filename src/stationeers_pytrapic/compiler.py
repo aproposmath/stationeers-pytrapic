@@ -30,6 +30,8 @@ time("import")
 
 
 class Compiler:
+    _raise_exceptions = False
+
     def __init__(self, options: CompileOptions):
         self.passes = [
             CompilerPassSetModuleNames,
@@ -79,6 +81,8 @@ class Compiler:
                 time("pass " + pass_cls.__name__)
             return self.data.result
         except CompilerError as e:
+            if self._raise_exceptions:
+                raise e
             msg = {"description": str(e)}
             if e.node:
                 msg["line"] = e.node.lineno
@@ -89,6 +93,8 @@ class Compiler:
                 "error": msg,
             }
         except astroid.AstroidSyntaxError as e:
+            if self._raise_exceptions:
+                raise e
 
             d = {
                 "error": {
@@ -104,6 +110,8 @@ class Compiler:
                 )
             return d
         except Exception as e:
+            if self._raise_exceptions:
+                raise e
             import traceback
 
             stack_trace = traceback.format_exc()
