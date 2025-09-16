@@ -1,8 +1,8 @@
 jal airlock.init
-lbwhile1:
+lbwhile2:
   yield
   jal airlock.update
-  j lbwhile1
+  j lbwhile2
 airlock.init:
   sbn -324331872 HASH("In") Lock 1
   sbn -324331872 HASH("Out") Lock 1
@@ -13,24 +13,24 @@ airlock.init:
   j ra
 airlock.update:
   lbn r0 576516101 HASH("Switch") On 3
-  ble r0 0 lbelse2
+  ble r0 0 lbelse3
     lbn r1 -324331872 HASH("In") Open 3
     sgt r0 r1 0
     select r1 r0 HASH("Out") HASH("In")
     select r2 r0 HASH("In") HASH("Out")
     sbn -324331872 r2 Open 0
     sbn -1129453144 r2 On 1
-lbwhile8:
+lbwhile9:
     lb r0 -1252983604 Pressure 3
-    beq r0 0 lbwhile.end8
-      j lbwhile8
-lbwhile.end8:
+    beq r0 0 lbwhile.end9
+      j lbwhile9
+lbwhile.end9:
     sleep 0.2
     sbn -1129453144 r2 On 0
     sbn -324331872 r1 Open 1
     sbn 576516101 HASH("Switch") On 0
     sleep 1
-lbelse2:
+lbelse3:
   j ra
 # registers: 3
 # lines: 34

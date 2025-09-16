@@ -9,22 +9,14 @@ from .types import IC10Instruction, IC10Register
 from .utils import (
     CompilerError,
     get_binop_instruction,
+    get_function_name,
     get_function_parent,
-    get_loop_ancestor,
-    get_unop_instruction,
     get_scope_name,
+    get_unop_instruction,
     is_builtin_name,
     is_constant,
     logger,
-    get_function_name,
 )
-
-# @dataclass
-# class CodeLine:
-#     code: str = ""
-#     comment: str = ""
-#     indent: int = 0
-#     node: astroid.NodeNG = None
 
 
 @dataclass
@@ -145,9 +137,7 @@ class CodeData:
 class NodeData:
     CodeType = Literal["", "end", "else"]
     is_used: bool = None
-    is_reachable: bool = None
     is_constant: bool = None
-    is_constant_value: bool = None
     constant_value: str | float | None = None
     node: astroid.NodeNG = None
     code_data: CodeData = None
@@ -167,12 +157,15 @@ class NodeData:
         self.code_data = code_data
         self.node = node
         self.is_used = None
-        self.is_reachable = None
         self.is_constant = None
-        self.is_constant_value = None
         self.constant_value = None
 
         self.code = {"": [], "end": [], "else": []}
+
+    def set_constant(self, value):
+        self.is_constant = True
+        self.constant_value = value
+        self.result = value
 
     def _add(self, line: IC10Instruction, code_type: CodeType = ""):
         if not isinstance(line, IC10Instruction):
@@ -196,7 +189,7 @@ class NodeData:
         self._add(line, code_type="else")
 
     def __str__(self):
-        return f"NodeData(is_used={self.is_used}, is_reachable={self.is_reachable}, is_constant={self.is_constant}, is_constant_value={self.is_constant_value})"
+        return f"NodeData(is_used={self.is_used}, is_constant={self.is_constant}, constant_value={self.constant_value})"
 
 
 class CompilerPass:
@@ -261,6 +254,10 @@ class CompilerPass:
 
     def _visit_node_recursive(self, node: astroid.NodeNG):
         self._debug("_visit_node_recursive", node)
+        if self.skip_unused_nodes and hasattr(node, "_ndata"):
+            if node._ndata.is_used is False:
+                self._debug("Skipping unused node", node)
+                return
         self._visit_node(node)
         for child in node.get_children():
             self._visit_node_recursive(child)
@@ -418,43 +415,63 @@ class CompilerPassCheckConstValue(CompilerPass):
         for child in node.get_children():
             self._visit_node(child)
 
+    def handle_compare(self, node: astroid.Compare):
+        left = node.left
+        right = node.ops[0][1]
+        self._visit_node(left)
+        self._visit_node(right)
+        op = node.ops[0][0]
+
+        if left._ndata.is_constant and right._ndata.is_constant:
+            _, func = get_binop_instruction(op)
+            val = func(left._ndata.constant_value, right._ndata.constant_value)
+            node._ndata.set_constant(val)
+
     def handle_binop(self, node: astroid.BinOp):
         data = node._ndata
 
-        if data.is_constant_value:
+        if data.is_constant:
             return
 
         left, right = node.get_children()
         self._visit_node(left)
         self._visit_node(right)
 
-        if left._ndata.is_constant_value and right._ndata.is_constant_value:
+        if left._ndata.is_constant and right._ndata.is_constant:
             _, func = get_binop_instruction(node.op)
             val = func(left._ndata.constant_value, right._ndata.constant_value)
-            data.is_constant_value = True
-            data.constant_value = val
+            data.set_constant(val)
             # self._visit_node(node.parent)
         else:
-            data.is_constant_value = False
+            data.is_constant = False
 
     def handle_unop(self, node: astroid.UnaryOp):
         data = node._ndata
-        if data.is_constant_value:
+        if data.is_constant:
             return
         self._visit_node(node.operand)
-        if node.operand._ndata.is_constant_value:
-            node._ndata.is_constant_value = True
+        if node.operand._ndata.is_constant:
             _, func = get_unop_instruction(node.op)
-            node._ndata.constant_value = func(node.operand._ndata.constant_value)
+            node._ndata.set_constant(func(node.operand._ndata.constant_value))
             # self._visit_node(node.parent)
+
+    def handle_name(self, node: astroid.Name):
+        if node.name == "__name__":
+            scope_name = get_scope_name(node)
+            mod_name = scope_name.split(".")[0]
+            if mod_name == "":
+                mod_name = "__main__"
+            node._ndata.set_constant(mod_name)
+        else:
+            self.handle_node(node)
 
     def handle_node(self, node: astroid.NodeNG):
         data = node._ndata
 
-        if data.is_constant_value:
+        if data.is_constant:
             return
 
-        if node.parent._ndata.is_constant_value:
+        if node.parent._ndata.is_constant:
             return
 
         for child in node.get_children():
@@ -462,35 +479,43 @@ class CompilerPassCheckConstValue(CompilerPass):
 
         is_const, value = is_constant(node)
 
-        update_parent = data.is_constant_value == False and is_const
-        data.is_constant_value = is_const
+        update_parent = data.is_constant == False and is_const
         if is_const:
-            data.constant_value = value
-            data.result = value
+            data.set_constant(value)
 
         if update_parent:
             self._visit_node(node.parent)
-
-    def handle_assign(self, node: astroid.Assign):
-        for child in node.get_children():
-            self._visit_node(child)
-        if node.value._ndata.is_constant_value:
-            value = node.value._ndata.constant_value
-            target = node.targets[0]
-            if isinstance(target, astroid.AssignName):
-                sym = self.data.get_sym_data(target)
-                if not sym.is_overwritten:
-                    for read_node in sym.nodes_reading:
-                        d = read_node._ndata
-                        d.is_constant_value = True
-                        d.constant_value = value
-                        d.result = value
 
     def run(self):
         self._info("run")
         for module in self.data.modules.values():
             self._visit_node(module)
         self._visit_node(self.tree)
+
+
+class CompilerPassCheckConstValueAssign(CompilerPass):
+    skip_unused_nodes = True
+
+    def handle_node(self, node: astroid.NodeNG):
+        pass
+
+    def handle_assign(self, node: astroid.Assign):
+        for child in node.get_children():
+            self._visit_node(child)
+        if node.value._ndata.is_constant:
+            value = node.value._ndata.constant_value
+            target = node.targets[0]
+            if isinstance(target, astroid.AssignName):
+                sym = self.data.get_sym_data(target)
+                if not sym.is_overwritten:
+                    for read_node in sym.nodes_reading:
+                        read_node._ndata.set_constant(value)
+
+    def run(self):
+        self._info("run")
+        for module in self.data.modules.values():
+            self._visit_node_recursive(module)
+        self._visit_node_recursive(self.tree)
 
 
 class CompilerPassCheckUsed(CompilerPass):
@@ -514,6 +539,19 @@ class CompilerPassCheckUsed(CompilerPass):
             self._functions[fname] = node
             data.is_used = data.is_used or False
             self._have_unset_nodes = True
+
+        if isinstance(node, (astroid.If, astroid.While)):
+            test_data = node.test._ndata
+            if data.is_used is None:
+                data.is_used = True
+            test_data.is_used = data.is_used
+            if test_data.is_constant and not test_data.constant_value:
+                use_if = bool(test_data.constant_value)
+                for child in node.body:
+                    child._ndata.is_used = use_if and data.is_used
+                for child in node.orelse:
+                    child._ndata.is_used = not use_if and data.is_used
+                return
 
         if data.is_used is None:
             if self._throw_on_unset:
@@ -544,16 +582,11 @@ class CompilerPassCheckUsed(CompilerPass):
         for child in node.get_children():
             child._ndata.is_used = data.is_used
 
-        if isinstance(node, (astroid.If, astroid.While)):
-            test_data = node.test._ndata
-            if test_data.is_constant_value:
-                test_data.is_used = False
-
     def handle_module(self, node: astroid.Module):
         node._ndata.is_used = True
 
         for child in node.get_children():
-            if not isinstance(child, astroid.FunctionDef):
+            if not isinstance(child, (astroid.FunctionDef, astroid.If)):
                 child._ndata.is_used = True
 
     def run(self):
@@ -573,6 +606,8 @@ class CompilerPassCheckUsed(CompilerPass):
 
 
 class CompilerPassResetReadWritten(CompilerPass):
+    skip_unused_nodes = True
+
     def handle_node(self, node: astroid.NodeNG):
         pass
 

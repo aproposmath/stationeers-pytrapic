@@ -7,6 +7,8 @@ from . import _version, intrinsics, structures_generated, symbols, types
 from .compile_pass import CodeData, CompilerError, CompilerPass, FunctionData
 from .types import IC10, IC10Instruction, IC10Operand, IC10Register
 from .utils import (
+    get_comparison_suffix,
+    get_negated_comparison_suffix,
     get_unop_instruction,
     get_scope_name,
     get_binop_instruction,
@@ -22,28 +24,6 @@ from .utils import (
 # use stack addresses 511 for function return values
 # and 510, 509, ... for function arguments
 _RETURN_VALUE_ADDRESS = 511
-
-
-def get_comparison_suffix(op: str):
-    return {
-        "==": "eq",
-        "!=": "ne",
-        "<": "lt",
-        "<=": "le",
-        ">": "gt",
-        ">=": "ge",
-    }[op]
-
-
-def get_negated_comparison_suffix(op: str):
-    return {
-        "==": "ne",
-        "!=": "eq",
-        "<": "ge",
-        "<=": "gt",
-        ">": "le",
-        ">=": "lt",
-    }[op]
 
 
 def remove_unused_labels(code: str) -> str:
@@ -618,7 +598,7 @@ class CompilerPassGenerateCode(CompilerPass):
         data = node._ndata
         test_data = node.test._ndata
 
-        if test_data.is_constant_value:
+        if test_data.is_constant:
             if test_data.constant_value:
                 emit_else = False
             else:
@@ -662,8 +642,8 @@ class CompilerPassGenerateCode(CompilerPass):
     def handle_unop(self, node: astroid.UnaryOp):
         data = node._ndata
 
-        if data.is_constant_value:
-            data.result = data.constant_value
+        if data.is_constant:
+            data.result = IC10Operand(data.constant_value)
             return
 
         opcode, _ = get_unop_instruction(node.op)
@@ -693,7 +673,7 @@ class CompilerPassGenerateCode(CompilerPass):
     def handle_binop(self, node: astroid.BinOp):
         data = node._ndata
 
-        if data.is_constant_value:
+        if data.is_constant:
             data.result = IC10Operand(data.constant_value)
             return
 
@@ -944,11 +924,11 @@ class CompilerPassGatherCode(CompilerPass):
                 continue
             for node in func.sym_data.nodes_reading:
                 scope = get_scope_name(node)
-                function = node.scope().name
-                if scope and function:
-                    scope = scope + "." + function
-                else:
-                    scope = function or scope
+                scopes = [scope] if scope else []
+                if isinstance(node.scope(), astroid.FunctionDef):
+                    scopes.append(node.scope().name)
+
+                scope = ".".join(scopes)
                 called_from[fname].add(scope)
 
         module_names = set(self.data.modules.keys())
@@ -959,7 +939,7 @@ class CompilerPassGatherCode(CompilerPass):
 
         added_modules = set([""])
         for module in module_names:
-            called_from[module] = set(added_modules)
+            called_from[module] = added_modules.copy()
             added_modules.add(module)
 
         all_scopes = set(self.data.functions.keys())
@@ -981,6 +961,7 @@ class CompilerPassGatherCode(CompilerPass):
         registers = list(range(16))
 
         registers_by_scope = {}
+        blocked_registers_by_scope = {}
 
         # tokens = set(" ".join([line.code.split("#")[0] for line in self.code]).split())
 
@@ -1002,10 +983,11 @@ class CompilerPassGatherCode(CompilerPass):
             parent_registers = set()
             for calling_scope in called_from.get(scope, set()):
                 parent_registers = parent_registers.union(
-                    registers_by_scope.get(calling_scope, set())
+                    blocked_registers_by_scope.get(calling_scope, set())
                 )
             available_registers = list(sorted(set(registers) - parent_registers))
             used_registers = set()
+            blocked_registers = set()
 
             symbols = []
             for symbol in self.data.symbols[scope].values():
@@ -1033,7 +1015,16 @@ class CompilerPassGatherCode(CompilerPass):
                 # print('use register', sym.code_expr, 'for', sym.name, 'in scope', scope)
                 used_registers.add(reg_num)
 
+                if (
+                    True or not sym._is_intermediate
+                ):  # block all registers for now, this needs more refinement (check if the register is used before and after function calls)
+                    blocked_registers.add(reg_num)
+
             registers_by_scope[scope] = used_registers.union(parent_registers)
+            blocked_registers_by_scope[scope] = blocked_registers.union(
+                parent_registers
+            )
+            # print(f"scope '{scope}' uses registers {registers_by_scope[scope]}")
 
         # print("mapping", mapping)
         # if mapping:

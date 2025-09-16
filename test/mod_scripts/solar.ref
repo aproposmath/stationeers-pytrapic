@@ -1,8 +1,8 @@
 jal solar.init
-lbwhile1:
+lbwhile2:
   yield
   jal solar.update
-  j lbwhile1
+  j lbwhile2
 solar.init:
   j ra
 solar.update:

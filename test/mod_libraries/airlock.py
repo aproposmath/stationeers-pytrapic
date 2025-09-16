@@ -32,3 +32,10 @@ def update():
         GlassDoors[dir_to].Open = True
         DiodeSlides[h_switch].On = False
         sleep(1)
+
+
+if __name__ == "__main__":
+    init()
+    while True:
+        update()
+        yield_()

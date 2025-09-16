@@ -1,8 +1,8 @@
 jal some.alias.init
-lbwhile1:
+lbwhile2:
   yield
   jal some.alias.update
-  j lbwhile1
+  j lbwhile2
 some.alias.init:
   j ra
 some.alias.update:

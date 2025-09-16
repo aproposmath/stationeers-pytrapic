@@ -3,6 +3,8 @@ from stationeers_pytrapic.symbols import *
 # Calculate Seconds from midnight using the sun angles
 # assumes a DaylightSensor at d0
 # the time is stored in db.Setting
+# stack[510] is 1 if sun is above horizon (day), otherwise 0 (night)
+# stack[511] is the time in seconds until sunset/sunrise
 sensor = DaylightSensor(d0)
 
 SECONDS_CALIBRATE = (
@@ -97,16 +99,40 @@ def init():
     angle_max = b + a
 
 
-def update():
-    vertical = get_vertical()
-    handle_minmax(vertical)
-    time = calc_time(vertical)
-    return time
-
-
 def calc_time_to_sunset(time):
     time_sunset = calc_time(0)
     if time_sunset < 0:
         time_sunset = SECONDS_PER_DAY - time_sunset
     time_sunset = (time_sunset - time + SECONDS_PER_DAY) % SECONDS_PER_DAY
     return time_sunset
+
+
+def update():
+    push(ra)
+    vertical = get_vertical()
+    handle_minmax(vertical)
+    time = calc_time(vertical)
+    db.Setting = time
+    stack[510] = vertical > 0
+    stack[511] = calc_time_to_sunset(time)
+    ra = pop()
+    return time
+
+
+def is_day():
+    return stack[510]
+
+
+def get_time():
+    return db.Setting
+
+
+def get_time_to_sunset():
+    return stack[511]
+
+
+if __name__ == "__main__":
+    init()
+    while True:
+        update()
+        yield_()

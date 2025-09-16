@@ -31,6 +31,28 @@ def is_storable_type(obj) -> bool:
     )
 
 
+def get_comparison_suffix(op: str):
+    return {
+        "==": "eq",
+        "!=": "ne",
+        "<": "lt",
+        "<=": "le",
+        ">": "gt",
+        ">=": "ge",
+    }[op]
+
+
+def get_negated_comparison_suffix(op: str):
+    return {
+        "==": "ne",
+        "!=": "eq",
+        "<": "ge",
+        "<=": "gt",
+        ">": "le",
+        ">=": "lt",
+    }[op]
+
+
 def get_unop_instruction(op: str):
     return {
         "-": ("sub", lambda x: -x),
@@ -40,6 +62,7 @@ def get_unop_instruction(op: str):
 
 
 def get_binop_instruction(op: str):
+    comp = lambda op: "s" + get_comparison_suffix(op)
     return {
         "+": ("add", lambda x, y: x + y),
         "-": ("sub", lambda x, y: x - y),
@@ -49,6 +72,12 @@ def get_binop_instruction(op: str):
         "**": ("pow", lambda x, y: x**y),
         "and": ("and", lambda x, y: x and y),
         "or": ("or", lambda x, y: x and y),
+        "==": (comp("=="), lambda x, y: x == y),
+        "!=": (comp("!="), lambda x, y: x != y),
+        "<": (comp("<"), lambda x, y: x < y),
+        ">": (comp(">"), lambda x, y: x > y),
+        "<=": (comp("<="), lambda x, y: x <= y),
+        ">=": (comp(">="), lambda x, y: x >= y),
     }.get(op, (None, None))
 
 
@@ -78,6 +107,8 @@ def get_scope_name(node):
         scope_name = (
             sc.name
         )  # if the name is not in the local scope, it is a global name
+
+    # print("scope name", scope_name, node)
     return scope_name
 
 
@@ -117,7 +148,7 @@ def get_function_parent(node):
 def is_builtin_name(name: str) -> bool:
     from . import symbols
 
-    return name in symbols.__dict__
+    return name != "__name__" and name in symbols.__dict__
 
 
 def is_builtin_structure(val):

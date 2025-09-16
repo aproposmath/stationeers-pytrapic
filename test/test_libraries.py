@@ -45,11 +45,13 @@ def test_scripts(script_file, compact):
 
 
 if __name__ == "__main__":
-    Compiler._raise_exceptions = True
+    # Compiler._raise_exceptions = True
+    import sys
+
+    if len(sys.argv) > 1:
+        script_files = sys.argv[1:]
     for compact in [False, True]:
         for file in script_files:
-            # if not "solar.py" in file:
-            #     continue
             modules = load_script(Path(file).name)
             run_case(
                 file,

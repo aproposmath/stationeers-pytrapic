@@ -11,3 +11,10 @@ def init():
 def update():
     panels.Horizontal = sensor.Horizontal
     panels.Vertical = 90 - sensor.Vertical
+
+
+if __name__ == "__main__":
+    init()
+    while True:
+        update()
+        yield_()

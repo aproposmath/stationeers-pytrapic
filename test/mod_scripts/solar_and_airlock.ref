@@ -1,13 +1,13 @@
 jal airlock.init
 jal solar.init
 move r0 88
-lbwhile2:
+lbwhile4:
   yield
   jal airlock.update
   jal solar.update
   sub r0 r0 1
   s db Setting r0
-  j lbwhile2
+  j lbwhile4
 airlock.init:
   sbn -324331872 HASH("In") Lock 1
   sbn -324331872 HASH("Out") Lock 1
@@ -18,24 +18,24 @@ airlock.init:
   j ra
 airlock.update:
   lbn r1 576516101 HASH("Switch") On 3
-  ble r1 0 lbelse3
+  ble r1 0 lbelse5
     lbn r2 -324331872 HASH("In") Open 3
     sgt r1 r2 0
     select r2 r1 HASH("Out") HASH("In")
     select r3 r1 HASH("In") HASH("Out")
     sbn -324331872 r3 Open 0
     sbn -1129453144 r3 On 1
-lbwhile9:
+lbwhile11:
     lb r1 -1252983604 Pressure 3
-    beq r1 0 lbwhile.end9
-      j lbwhile9
-lbwhile.end9:
+    beq r1 0 lbwhile.end11
+      j lbwhile11
+lbwhile.end11:
     sleep 0.2
     sbn -1129453144 r3 On 0
     sbn -324331872 r2 Open 1
     sbn 576516101 HASH("Switch") On 0
     sleep 1
-lbelse3:
+lbelse5:
   j ra
 solar.init:
   j ra
