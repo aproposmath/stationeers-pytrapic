@@ -446,7 +446,8 @@ namespace StationeersPyTrapIC
             {
                 L.Debug($"Pedia page: {page.key} - {page.title}");
                 var stationPediaPage = new StationpediaPage(page.key, page.title, page.text);
-                stationPediaPage.ParsePage();
+                stationPediaPage._parsed = page.text;
+                stationPediaPage.Description = page.text;
                 Stationpedia.Register(stationPediaPage);
             }
 

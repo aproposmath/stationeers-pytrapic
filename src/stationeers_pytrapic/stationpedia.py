@@ -19,7 +19,10 @@ def highlight(code: str) -> str:
     return f"<margin=3em>{_highlight(code)}</margin>"
 
 
-def get_example_page(name, code, description):
+def get_example_page(name, code_file, description):
+    code = (Path(__file__).parent / "examples" / f"{code_file}.py").read_text(
+        encoding="utf-8"
+    )
 
     header = f"""
 <align=right><size=110%><color=green><link=pytrapic>Back to PyTrapIC main page</link></color></size></align>
@@ -46,15 +49,29 @@ Click the code below to copy the code.
 
 def get_pages():
     main_text = readme
-    Path("/tmp/readme").write_text(main_text, encoding="utf-8")
-    return [
-        get_example_page("solar", _solar_code, "Solar Panel Alignment"),
+    examples = [
+        ("solar", "solar", "Solar Panel Alignment"),
+        ("airlock", "airlock", "Simple Airlock"),
+    ]
+
+    example_links = ""
+    pages = []
+
+    for name, code_file, description in examples:
+        pages.append(get_example_page(name, code_file, description))
+        example_links += f'• <color=green><link="pytrapic_example_{name}">{description}</link></color>\n'
+
+    main_text = readme.replace("__EXAMPLES_LIST__", example_links.strip())
+
+    pages.append(
         {
             "key": "pytrapic",
             "title": "PyTrapIC",
             "text": main_text,
         },
-    ]
+    )
+
+    return pages
 
 
 def get_pages_encoded() -> str:
@@ -93,7 +110,7 @@ Only then will the mod recognize it as Python code. Otherwise it will be treated
 
 <h1>Examples</h1>
 
-• <color=green><link="pytrapic_example_solar">Solar Panel Alignment</link></color>
+__EXAMPLES_LIST__
 
 <h1>Usage Notes</h1>
 • Non-invasive mod, you can remove it anytime, no parts added
