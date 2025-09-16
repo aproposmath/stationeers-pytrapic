@@ -44,6 +44,13 @@ namespace StationeersPyTrapIC
         }
     }
 
+    public class PediaPage
+    {
+        public string key;
+        public string title;
+        public string text;
+    }
+
     public class CompileOptions
     {
         public bool Comments { get; set; } = false;
@@ -383,11 +390,11 @@ namespace StationeersPyTrapIC
             }
         }
 
-        public void Init(bool forceRestart = false)
+        public async UniTaskVoid Init(bool forceRestart = false, bool forceInstall = false)
         {
             L.Debug("Initializing PythonCompiler");
             using (new Timer("Install Python"))
-                InstallPython();
+                InstallPython(forceInstall);
             using (new Timer("Update Python modules"))
                 UpdatePythonModules();
             L.Debug("Python installation checked");
@@ -429,12 +436,26 @@ namespace StationeersPyTrapIC
                 L.Error($"Failed to get standard input/output streams from Python compiler");
                 throw new Exception("Failed to get standard input/output streams");
             }
+
+            var pages = JsonConvert.DeserializeObject<List<PediaPage>>(
+                Encoding.UTF8.GetString((Convert.FromBase64String(await _stdout.ReadLineAsync())))
+            );
+
+            L.Info($"Loaded {pages.Count} pedia pages from Python compiler");
+            foreach (var page in pages)
+            {
+                L.Debug($"Pedia page: {page.key} - {page.title}");
+                var stationPediaPage = new StationpediaPage(page.key, page.title, page.text);
+                stationPediaPage.ParsePage();
+                Stationpedia.Register(stationPediaPage);
+            }
+
             L.Info($"PythonCompiler running");
         }
 
         public PythonCompiler()
         {
-            Init();
+            Init().Forget();
         }
 
         public static void GetPosition(out int lineno, out int column)
@@ -895,7 +916,7 @@ Available commands:
             switch (args[0].ToLowerInvariant())
             {
                 case "restart":
-                    PythonCompiler.Instance.Init(true);
+                    PythonCompiler.Instance.Init(true).Forget();
                     return "Python daemon restarted.";
                 case "status":
                     return PythonCompiler.Instance.IsRunning()
@@ -908,8 +929,7 @@ Available commands:
                 case "version":
                     return VersionInfo.VersionGit;
                 case "reinstall":
-                    PythonCompiler.Instance.InstallPython(true);
-                    PythonCompiler.Instance.Init(true);
+                    PythonCompiler.Instance.Init(true, true).Forget();
                     return "Python and dependencies reinstalled.";
                 default:
                     return HelpText;

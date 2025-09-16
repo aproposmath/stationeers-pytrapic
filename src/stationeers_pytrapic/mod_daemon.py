@@ -18,6 +18,7 @@ from pygments.formatters import BBCodeFormatter
 from pygments.lexers import LuaLexer, PythonLexer
 
 from .compiler import compile_code
+from .stationpedia import get_pages_encoded
 
 
 def _get_ignore_symbol_names():
@@ -259,6 +260,7 @@ def process_input(line):
 
 async def main():
     try:
+        print(get_pages_encoded(), flush=True, file=_stdout)
         log("Importing jedi")
         import jedi
 
