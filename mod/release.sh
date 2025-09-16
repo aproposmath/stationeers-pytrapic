@@ -24,7 +24,9 @@ source venv/bin/activate
 pip install $MOD_DIR/..
 
 cd venv/lib/python3*/site-packages
-zip -r $DIST_DIR/pytrapic/pytrapic_python_modules.zip antlr4 astroid luaparser multimethod stationeers_pytrapic pygments
+rm -r pip*
+rm -r *.dist-info
+zip -r $DIST_DIR/pytrapic/pytrapic_python_modules.zip *
                 
 cd $DIST_DIR
 zip -r PyTrapIC.zip pytrapic

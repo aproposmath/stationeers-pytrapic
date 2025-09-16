@@ -2,7 +2,7 @@
 description="PyTrapIC - Python Transpiler to IC10 for Stationeers"
 license = "MIT"
 name = "stationeers_pytrapic"
-dependencies = ['astroid', 'luaparser', 'pygments']
+dependencies = ['astroid', 'luaparser', 'pygments', 'jedi@git+https://github.com/davidhalter/jedi.git']
 requires-python = ">=3.10"
 dynamic = ["version"]
 
