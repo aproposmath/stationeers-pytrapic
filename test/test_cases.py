@@ -6,7 +6,19 @@ import pytest
 from stationeers_pytrapic.compiler import *
 
 case_files = glob.glob(str(Path(__file__).parent / "cases" / "*.py"))
-example_files = glob.glob(str(Path(__file__).parent.parent / "examples" / "*.py"))
+example_files = [
+    f
+    for f in glob.glob(
+        str(
+            Path(__file__).parent.parent
+            / "src"
+            / "stationeers_pytrapic"
+            / "examples"
+            / "*.py"
+        )
+    )
+    if "__init__" not in f
+]
 
 
 def run_case(

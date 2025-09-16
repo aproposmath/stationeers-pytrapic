@@ -40,7 +40,7 @@ The output is written to stdout.
 - optimization for constant expressions (e.g. `1 + 2` becomes `3`)
 - functions
 - `global` statement (useful to mimic function return values or store state between function calls)
-- remove unused functions ([you can have one code file for all your ICs!](https://aproposmath.github.io/stationeers-pytrapic?fileUrl=https://raw.githubusercontent.com/aproposmath/stationeers-pytrapic/refs/heads/main/examples/one_file_to_rule_them_all.py))
+- remove unused functions ([you can have one code file for all your ICs!](https://aproposmath.github.io/stationeers-pytrapic?fileUrl=https://raw.githubusercontent.com/aproposmath/stationeers-pytrapic/refs/heads/main/src/stationeers_pytrapic/examples/one_file_to_rule_them_all.py))
 - remove all labels
 - function inlining (if a function is only called once, it will be inlined into the caller)
 - break and continue statements
@@ -51,7 +51,7 @@ The output is written to stdout.
 **Planned Features**
 
 - Access slot by variable index (`furnace.slots[i].Occupied`)
-- push/pop `ra` automatically in nested function calls ([use manual `push ra/pop ra` for now)](https://aproposmath.github.io/stationeers-pytrapic?fileUrl=https://raw.githubusercontent.com/aproposmath/stationeers-pytrapic/refs/heads/main/examples/nested_function_calls.py))
+- push/pop `ra` automatically in nested function calls ([use manual `push ra/pop ra` for now)](https://aproposmath.github.io/stationeers-pytrapic?fileUrl=https://raw.githubusercontent.com/aproposmath/stationeers-pytrapic/refs/heads/main/src/stationeers_pytrapic/examples/nested_function_calls.py))
 - better register allocation (check scope in ic10 code instead of python code for more granularity)
 - pass function arguments/return values in registers (currently only via stack)
 - allow structures as function arguments/return values (currently only simple values like `float` are allowed)
@@ -73,10 +73,10 @@ The web application uses [Pyodide](https://pyodide.org/) to run the transpiler i
 
 ## Examples
 
-- [Airlock](https://aproposmath.github.io/stationeers-pytrapic?fileUrl=https://raw.githubusercontent.com/aproposmath/stationeers-pytrapic/refs/heads/main/examples/airlock.py)
-- [Solar tracking](https://aproposmath.github.io/stationeers-pytrapic?fileUrl=https://raw.githubusercontent.com/aproposmath/stationeers-pytrapic/refs/heads/main/examples/solar.py)
-- [Nested function calls](https://aproposmath.github.io/stationeers-pytrapic?fileUrl=https://raw.githubusercontent.com/aproposmath/stationeers-pytrapic/refs/heads/main/examples/nested_function_calls.py)
-- [Have code for multiple ICs in one File](https://aproposmath.github.io/stationeers-pytrapic?fileUrl=https://raw.githubusercontent.com/aproposmath/stationeers-pytrapic/refs/heads/main/examples/one_file_to_rule_them_all.py)
+- [Airlock](https://aproposmath.github.io/stationeers-pytrapic?fileUrl=https://raw.githubusercontent.com/aproposmath/stationeers-pytrapic/refs/heads/main/src/stationeers_pytrapic/examples/airlock.py)
+- [Solar tracking](https://aproposmath.github.io/stationeers-pytrapic?fileUrl=https://raw.githubusercontent.com/aproposmath/stationeers-pytrapic/refs/heads/main/src/stationeers_pytrapic/examples/solar.py)
+- [Nested function calls](https://aproposmath.github.io/stationeers-pytrapic?fileUrl=https://raw.githubusercontent.com/aproposmath/stationeers-pytrapic/refs/heads/main/src/stationeers_pytrapic/examples/nested_function_calls.py)
+- [Have code for multiple ICs in one File](https://aproposmath.github.io/stationeers-pytrapic?fileUrl=https://raw.githubusercontent.com/aproposmath/stationeers-pytrapic/refs/heads/main/src/stationeers_pytrapic/examples/one_file_to_rule_them_all.py)
 
 <table>
 <th>Python</th>
