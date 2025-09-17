@@ -326,14 +326,14 @@ namespace StationeersPyTrapIC
         public void UpdatePythonModules(bool force = false)
         {
             // Todo: check for verison number and build time, do this only when changed
-            System.IO.File.Copy(
-                Path.Combine(
-                    Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location),
-                    "pytrapic_python_modules.zip"
-                ),
-                Path.Combine(GetVenvDir(), "pytrapic_python_modules.zip"),
-                true
+            string modulesZipDir = Path.Combine(
+                Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location),
+                "pytrapic_python_modules.zip"
             );
+            string extractDir = Path.Combine(GetVenvDir(), "site-packages");
+            if (Directory.Exists(extractDir))
+                Directory.Delete(extractDir, recursive: true);
+            System.IO.Compression.ZipFile.ExtractToDirectory(modulesZipDir, extractDir);
         }
 
         public void InstallPython(bool force = false)
@@ -389,7 +389,7 @@ namespace StationeersPyTrapIC
 
                 File.AppendAllText(
                     Path.Combine(pythonDir, $"python{pythonVersion}._pth"),
-                    "\npytrapic_python_modules.zip\n.",
+                    "\nsite-packages\n",
                     Encoding.UTF8
                 );
 
