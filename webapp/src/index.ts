@@ -132,8 +132,8 @@ async function compileCode() {
     const compileFunction = pyodide.runPython(
       `from stationeers_pytrapic.compiler import compile_code; compile_code`,
     );
-    const result = compileFunction
-      .callKwargs(code, { comments, compact, append_version })
+    const options = pyodide.toPy({ original_code_as_comment: comments, compact, append_version, inline_functions: compact, remove_labels: compact });
+    const result = compileFunction(code, options)
       .toJs();
     if (result.error) {
       console.log("Compilation error:", result.error);
