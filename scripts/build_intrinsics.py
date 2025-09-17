@@ -57,7 +57,8 @@ def parse_dl_entry(entry):
         param_type = param_type.replace("r?", "Register")
         param_type = param_type.replace("d?", "Device")
         param_type = param_type.replace("num", "float")
-
+        param_type = param_type.replace("id", "float")
+        
         for t in [
             "Device",
             "Register",
@@ -158,7 +159,7 @@ def generate_intrinsics_py(instructions):
 
         if keyword.iskeyword(name):
             name += "_"
-
+        
         expr = '""'
         args = ", ".join(p["name"] for p in instr["parameters"])
         opcode = instr["name"]

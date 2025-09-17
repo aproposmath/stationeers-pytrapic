@@ -49,6 +49,11 @@ def div(a: _Register | float, b: _Register | float) -> _Register:
     return _IC10("div", [a, b], _Register("invalid"))
 
 
+def pow(a: _Register | float, b: _Register | float) -> _Register:
+    """Stores the result of raising a to the power of b in the register. Follows IEEE-754 standard for floating point arithmetic."""
+    return _IC10("pow", [a, b], _Register("invalid"))
+
+
 def exp(a: _Register | float) -> _Register:
     """exp(a) or e^a"""
     return _IC10("exp", [a], _Register("invalid"))
@@ -114,6 +119,11 @@ def trunc(a: _Register | float) -> _Register:
     return _IC10("trunc", [a], _Register("invalid"))
 
 
+def lerp(a: _Register | float, b: _Register | float, c: _Register | float) -> _Register:
+    """Linearly interpolates between a and b by the ratio c, and places the result in the register provided. The ratio c will be clamped between 0 and 1."""
+    return _IC10("lerp", [a, b, c], _Register("invalid"))
+
+
 def acos(a: _Register | float) -> _Register:
     """Returns the angle (radians) whos cos is the specified value"""
     return _IC10("acos", [a], _Register("invalid"))
@@ -159,9 +169,9 @@ def clrd(id: _Register | float) -> None:
     return _IC10("clrd", [id], None)
 
 
-def get(param1: _Device, address: _Register | float) -> _Register:
+def get(device: _Device | _Register | float, address: _Register | float) -> _Register:
     """Using the provided device, attempts to read the stack value at the provided address, and places it in the register."""
-    return _IC10("get", [param1, address], _Register("invalid"))
+    return _IC10("get", [device, address], _Register("invalid"))
 
 
 def getd(id: _Register | float, address: _Register | float) -> _Register:
@@ -189,9 +199,13 @@ def push(a: _Register | float) -> None:
     return _IC10("push", [a], None)
 
 
-def put(param1: _Device, address: _Register | float, value: _Register | float) -> None:
+def put(
+    device: _Device | _Register | float,
+    address: _Register | float,
+    value: _Register | float,
+) -> None:
     """Using the provided device, attempts to write the provided value to the stack at the provided address."""
-    return _IC10("put", [param1, address, value], None)
+    return _IC10("put", [device, address, value], None)
 
 
 def putd(
@@ -201,41 +215,40 @@ def putd(
     return _IC10("putd", [id, address, value], None)
 
 
-def l(param1: _Device, param2: LogicType) -> _Register:
+def l(device: _Device | _Register | float, param2: LogicType) -> _Register:
     """Loads device LogicType to register by housing index value."""
-    return _IC10("l", [param1, param2], _Register("invalid"))
+    return _IC10("l", [device, param2], _Register("invalid"))
 
 
-def ld(id: _Register | float, param2: LogicType) -> _Register:
-    """Loads device LogicType to register by direct ID reference."""
-    return _IC10("ld", [id, param2], _Register("invalid"))
-
-
-def lr(param1: _Device, param2: LogicReagentMode, param3: int) -> _Register:
+def lr(
+    device: _Device | _Register | float, param2: LogicReagentMode, param3: int
+) -> _Register:
     """Loads reagent of device's ReagentMode where a hash of the reagent type to check for. ReagentMode can be either Contents (0), Required (1), Recipe (2). Can use either the word, or the number."""
-    return _IC10("lr", [param1, param2, param3], _Register("invalid"))
+    return _IC10("lr", [device, param2, param3], _Register("invalid"))
 
 
-def ls(param1: _Device, param2: _slotIndex, param3: LogicSlotType) -> _Register:
+def ls(
+    device: _Device | _Register | float, param2: _slotIndex, param3: LogicSlotType
+) -> _Register:
     """Loads slot LogicSlotType on device to register."""
-    return _IC10("ls", [param1, param2, param3], _Register("invalid"))
+    return _IC10("ls", [device, param2, param3], _Register("invalid"))
 
 
-def s(param1: _Device, param2: LogicType, param3: _Register) -> None:
+def s(
+    device: _Device | _Register | float, param2: LogicType, param3: _Register
+) -> None:
     """Stores register value to LogicType on device by housing index value."""
-    return _IC10("s", [param1, param2, param3], None)
-
-
-def sd(id: _Register | float, param2: LogicType, param3: _Register) -> None:
-    """Stores register value to LogicType on device by direct ID reference."""
-    return _IC10("sd", [id, param2, param3], None)
+    return _IC10("s", [device, param2, param3], None)
 
 
 def ss(
-    param1: _Device, param2: _slotIndex, param3: LogicSlotType, param4: _Register
+    device: _Device | _Register | float,
+    param2: _slotIndex,
+    param3: LogicSlotType,
+    param4: _Register,
 ) -> None:
     """Stores register value to device stored in a slot LogicSlotType on device."""
-    return _IC10("ss", [param1, param2, param3, param4], None)
+    return _IC10("ss", [device, param2, param3, param4], None)
 
 
 def rmap(param1: _Register, param2: _Device, reagentHash: _Register | float) -> None:
@@ -340,6 +353,16 @@ def xor(a: _Register | float, b: _Register | float) -> _Register:
     return _IC10("xor", [a, b], _Register("invalid"))
 
 
+def ext(a: _Register | float, b: _Register | float, c: _Register | float) -> _Register:
+    """Extracts a bit field from a, beginning at b for c length and placed in the provided register. Payload cannot exceed 53 bits in final length."""
+    return _IC10("ext", [a, b, c], _Register("invalid"))
+
+
+def ins(a: _Register | float, b: _Register | float, c: _Register | float) -> _Register:
+    """Inserts a bit field of a into the provided register, beginning at b for c length. Payload cannot exceed 53 bits in final length."""
+    return _IC10("ins", [a, b, c], _Register("invalid"))
+
+
 def select(
     a: _Register | float, b: _Register | float, c: _Register | float
 ) -> _Register:
@@ -347,14 +370,14 @@ def select(
     return _IC10("select", [a, b, c], _Register("invalid"))
 
 
-def sdns(param1: _Device) -> _Register:
+def sdns(device: _Device | _Register | float) -> _Register:
     """Returns 1 if device is not set, otherwise 0"""
-    return _IC10("sdns", [param1], _Register("invalid"))
+    return _IC10("sdns", [device], _Register("invalid"))
 
 
-def sdse(param1: _Device) -> _Register:
+def sdse(device: _Device | _Register | float) -> _Register:
     """Returns 1 if device is set, otherwise 0."""
-    return _IC10("sdse", [param1], _Register("invalid"))
+    return _IC10("sdse", [device], _Register("invalid"))
 
 
 def sap(a: _Register | float, b: _Register | float, c: _Register | float) -> _Register:
@@ -460,6 +483,20 @@ def jal(param1: int) -> None:
 def jr(param1: int) -> None:
     """Relative jump to line a"""
     return _IC10("jr", [param1], None)
+
+
+def bdnvl(
+    device: _Device | _Register | float, param2: LogicType, a: _Register | float
+) -> None:
+    """Will branch to line a if the provided device not valid for a load instruction for the provided logic type."""
+    return _IC10("bdnvl", [device, param2, a], None)
+
+
+def bdnvs(
+    device: _Device | _Register | float, param2: LogicType, a: _Register | float
+) -> None:
+    """Will branch to line a if the provided device not valid for a store instruction for the provided logic type."""
+    return _IC10("bdnvs", [device, param2, a], None)
 
 
 def bdns(a: _Register | float) -> _Device:
