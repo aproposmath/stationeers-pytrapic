@@ -82,7 +82,7 @@ lbelse23:
   move r9 r8
   j ra
 init:
-  clr Device(DeviceId(_id='db', _is_ref_id=False))
+  clr db
   move r6 0
   move r7 0
   jal get.vertical

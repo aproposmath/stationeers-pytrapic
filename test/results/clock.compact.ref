@@ -2,7 +2,7 @@ move r0 0
 move r1 0
 move r2 0
 move r3 0
-clr Device(DeviceId(_id='db', _is_ref_id=False))
+clr db
 move r4 0
 move r5 0
 jal 91

@@ -82,16 +82,19 @@ class IC10Operand:
 
     value: str | float | int | IC10Register
 
+    def __init__(self, value: str | float | int | IC10Register):
+        if isinstance(value, _Device):
+            value = value._dev_id._id or "db"
+        elif isinstance(value, DeviceId):
+            value = value._id or "db"
+        self.value = value
+
     @property
     def is_register(self) -> bool:
         return isinstance(self.value, IC10Register)
 
     def to_string(self) -> str:
-        if isinstance(self.value, _Device):
-            return self.value._id or "db"
-        elif isinstance(self.value, DeviceId):
-            return self.value._id or "db"
-        elif isinstance(self.value, IC10Register):
+        if isinstance(self.value, IC10Register):
             return self.value.code_expr
         elif isinstance(self.value, float):
             absval = abs(self.value)
