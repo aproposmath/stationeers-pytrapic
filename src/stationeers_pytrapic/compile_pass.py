@@ -47,9 +47,10 @@ class FunctionData:
 class CompileOptions:
     original_code_as_comment: bool = False
     generated_comments: bool = False
-    inline_functions: bool = False
+    inline_functions: bool = True
     remove_labels: bool = False
-    append_version: bool = False
+    append_version: bool = True
+    compact: bool = False
 
 
 @dataclass

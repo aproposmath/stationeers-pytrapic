@@ -97,8 +97,9 @@ This mod lets you write code for Stationeers' ICs in Python instead of IC10 asse
 • Write code in Python (only subset of Python features supported)
 • Import code from <b>Libraries</b> (local or workshop) for easy code sharing/reuse
 • Syntax highlighting  
-• Auto-completion (Tab key)
-• IC10 preview (Ctrl+I)
+• Auto-completion (<color="yellow">Tab</color> key)
+• IC10 preview (toggle with <color="yellow">Ctrl+I</color>)
+• Generate compact / verbose code (toggle with <color="yellow">Ctrl+M</color>)
 • Compile errors shown as tooltips  
 • All IC10 commands available as Python functions (intrinsics)
 

@@ -1,8 +1,35 @@
 import logging
+from enum import IntEnum
 
 import astroid
 
 logger = logging.getLogger("stationeers_pytrapic")
+
+
+class OutputMode(IntEnum):
+    """Defines the output mode for enum formatting, either keep their names or use their numbers."""
+
+    VERBOSE = 0
+    COMPACT = 1
+
+
+_output_mode = OutputMode.VERBOSE
+
+
+def is_compact_output() -> bool:
+    return _output_mode == OutputMode.COMPACT
+
+
+def set_output_mode(mode: OutputMode):
+    global _output_mode
+    _output_mode = mode
+
+
+def format_enum(enum_val) -> str | int:
+    if _output_mode == OutputMode.VERBOSE:
+        return enum_val.name
+    else:
+        return enum_val.value
 
 
 def is_builtin_function(name: str) -> bool:
@@ -152,9 +179,14 @@ def is_builtin_name(name: str) -> bool:
 
 
 def is_builtin_structure(val):
-    from . import symbols, types
+    from . import symbols, types, types_generated
 
-    return isinstance(
+    type_ = type(val)
+    type_name = type_.__name__
+
+    is_enum = not type_name.startswith("_") and type_name in types_generated.__dict__
+
+    return is_enum or isinstance(
         val,
         (
             symbols._GenericStructures,

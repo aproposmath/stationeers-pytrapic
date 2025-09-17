@@ -11,19 +11,19 @@ f0:
 f1:
   j ra
 f2:
-  lb r0 -400115994 Ratio 0
+  lb r0 HASH("StructureBattery") Ratio Average
   ble r0 0.2 lbelse3
   j f2end
 lbelse3:
-  sb -247344692 Activate 1
+  sb HASH("StructureArcFurnace") Activate 1
 f2end:
   j ra
 f3:
-  lb r0 -400115994 Ratio 0
+  lb r0 HASH("StructureBattery") Ratio Average
   bge r0 0.2 lbelse5
   j f3end
 lbelse5:
-  sb -247344692 Activate 1
+  sb HASH("StructureArcFurnace") Activate 1
 f3end:
   j ra
 # registers: 1

@@ -20,7 +20,7 @@ gases = [
 ]
 
 __header = """
-from stationeers_pytrapic.types import _DevicesLogicType, _DeviceLogicType, _BaseStructure, _BaseStructures, _DeviceSlotType, _DevicesSlotType, _BaseSlotType, _BaseSlotTypes
+from stationeers_pytrapic.types import _DevicesLogicType, _DeviceLogicType, _BaseStructure, _BaseStructures, _DeviceSlotType, _DevicesSlotType, _BaseSlotType, _BaseSlotTypes, LogicType as _LT, LogicSlotType as _LST
 """
 
 
@@ -44,25 +44,17 @@ class Property:
         if is_slot:
             single_type = "_DeviceSlotType"
             multiple_type = "_DevicesSlotType"
+            prefix = "_LST"
         else:
             single_type = "_DeviceLogicType"
             multiple_type = "_DevicesLogicType"
+            prefix = "_LT"
         logic_type = multiple_type if multiple else single_type
         return_type = multiple_type if multiple else "float"
         name = self.name
         code = ""
-        args = []
-        if not multiple or is_slot:
-            args.append("self")
-        if multiple:
-            args.append("self._hash")
-        else:
-            args.append("self._id")
-        if is_slot:
-            args.append("self._slot_index")
-        args.append(f"'{name}'")
-        if multiple:
-            args.append("self._name")
+        args = ["self"]
+        args.append(f"{prefix}.{name}")
         args = ", ".join(args)
         if self.can_read or self.can_write:
             code += f"  @property\n"
@@ -88,6 +80,7 @@ class Slot:
 @dataclass
 class Structure:
     name: str
+    prefab_name: str | None
     id: int | None
     properties: set[Property]
     bases: set[str]
@@ -112,7 +105,10 @@ def generate_generic_structure(struct: Structure, multiple: bool = False) -> str
     classname = f"{prefix}{name}"
     code += f"class {classname}({bases}):\n"
     if not is_base:
-        code += f"  _hash: int = {struct.id}\n"
+        if struct.id is not None:
+            code += f"  _hash: int = {struct.id}\n"
+        if struct.prefab_name is not None:
+            code += f'  _prefab_name: int = "{struct.prefab_name}"\n'
     if multiple and not is_base:
         code += f"  def __getitem__(self, name: str | int | float) -> '{classname}':\n"
         code += f"      return {classname}(name)\n"
@@ -139,10 +135,10 @@ def generate_generic_structure(struct: Structure, multiple: bool = False) -> str
                 code += f"      return self.{names[0]}\n"
                 continue
             if multiple:
-                code += f"      return {ret_type}(type(self), self._hash, {slot.number}, self._name)\n"
+                code += f"      return {ret_type}(self, {slot.number})\n"
             else:
                 code += (
-                    f"      return {ret_type}(type(self), self._id, {slot.number})\n"
+                    f"      return {ret_type}(self, {slot.number})\n"
                 )
 
     if multiple and not is_base:
@@ -156,40 +152,41 @@ def parse_json_file(json_file: Path) -> dict:
     structure_types = set()
     P = Property
     S = Structure
+    S = lambda name, props: Structure(name, None, None, props, set(), set())
 
     base_classes = [
-        S("_BaseGas", None, set([P(name) for name in gases]), []),
-        S("_BaseGasInput", None, set([P(name + "Input") for name in gases]), []),
-        S("_BaseGasOutput", None, set([P(name + "Output") for name in gases]), []),
-        S("_BaseGasOutput2", None, set([P(name + "Output2") for name in gases]), []),
-        S("_Power", None, set([P("On", True), P("RequiredPower"), P("Power")]), []),
-        S("_On", None, set([P("On", True)]), []),
-        S("_Activate", None, set([P("Activate", True)]), []),
-        S("_Lock", None, set([P("Lock", True)]), []),
-        S("_Open", None, set([P("Open", True)]), []),
-        S("_Error", None, set([P("Error")]), []),
-        S("_Ratio", None, set([P("Ratio")]), []),
-        S("_Maximum", None, set([P("Maximum")]), []),
-        S("_SettingW", None, set([P("Setting", True)]), []),
-        S("_SettingR", None, set([P("Setting")]), []),
-        S("_Mode", None, set([P("Mode", True)]), []),
-        S("_ModeR", None, set([P("Mode")]), []),
-        S("_Temperature", None, set([P("Temperature"), P("Pressure")]), []),
-        S("_PollWater", None, set([P("RatioPollutedWater")]), []),
-        S("_Combustion", None, set([P("Combustion"), P("TotalMoles")]), []),
-        S("_Idle", None, set([P("Idle")]), []),
-        S("_ImportCount", None, set([P("ImportCount", True)]), []),
-        S("_ClearMemory", None, set([P("ClearMemory", True, False)]), []),
-        S("_Hydrogen", None, set([P("RatioHydrogen"), P("RatioLiquidHydrogen")]), []),
-        S("_ImportCount", None, set([P("ImportCount")]), []),
-        S("_ExportCount", None, set([P("ExportCount")]), []),
-        S("_Volume", None, set([P("Volume"), P("VolumeOfLiquid")]), []),
-        S("_Vertical", None, set([P("Vertical"), P("Horizontal")]), []),
-        S("_VerticalW", None, set([P("Vertical", True), P("Horizontal", True)]), []),
-        S("_RecipeHash", None, set([P("RecipeHash", True)]), []),
-        S("_Charge", None, set([P("Charge")]), []),
-        S("_Reagents", None, set([P("Reagents")]), []),
-        S("_Quantity", None, set([P("Quantity")]), []),
+        S("_BaseGas", set([P(name) for name in gases])),
+        S("_BaseGasInput", set([P(name + "Input") for name in gases])),
+        S("_BaseGasOutput", set([P(name + "Output") for name in gases])),
+        S("_BaseGasOutput2", set([P(name + "Output2") for name in gases])),
+        S("_Power", set([P("On", True), P("RequiredPower"), P("Power")])),
+        S("_On", set([P("On", True)])),
+        S("_Activate", set([P("Activate", True)])),
+        S("_Lock", set([P("Lock", True)])),
+        S("_Open", set([P("Open", True)])),
+        S("_Error", set([P("Error")])),
+        S("_Ratio", set([P("Ratio")])),
+        S("_Maximum", set([P("Maximum")])),
+        S("_SettingW", set([P("Setting", True)])),
+        S("_SettingR", set([P("Setting")])),
+        S("_Mode", set([P("Mode", True)])),
+        S("_ModeR", set([P("Mode")])),
+        S("_Temperature", set([P("Temperature"), P("Pressure")])),
+        S("_PollWater", set([P("RatioPollutedWater")])),
+        S("_Combustion", set([P("Combustion"), P("TotalMoles")])),
+        S("_Idle", set([P("Idle")])),
+        S("_ImportCount", set([P("ImportCount", True)])),
+        S("_ClearMemory", set([P("ClearMemory", True, False)])),
+        S("_Hydrogen", set([P("RatioHydrogen"), P("RatioLiquidHydrogen")])),
+        S("_ImportCount", set([P("ImportCount")])),
+        S("_ExportCount", set([P("ExportCount")])),
+        S("_Volume", set([P("Volume"), P("VolumeOfLiquid")])),
+        S("_Vertical", set([P("Vertical"), P("Horizontal")])),
+        S("_VerticalW", set([P("Vertical", True), P("Horizontal", True)])),
+        S("_RecipeHash", set([P("RecipeHash", True)])),
+        S("_Charge", set([P("Charge")])),
+        S("_Reagents", set([P("Reagents")])),
+        S("_Quantity", set([P("Quantity")])),
     ]
 
     data = json.loads(json_file.read_text(encoding="utf-8"))
@@ -219,6 +216,7 @@ def parse_json_file(json_file: Path) -> dict:
         var_name = name.replace("ThingStructure", "")
         # print("Generating", var_name)
         prefab_hash = page["PrefabHash"]
+        prefab_name = page["PrefabName"]
         # print(f"Processing page: {var_name}")
         properties = page["_properties"]
         slots = page.get("_slots", [])
@@ -232,7 +230,9 @@ def parse_json_file(json_file: Path) -> dict:
                 properties = properties - base_class.properties
                 bases.add(base_class.name)
 
-        structures.append(Structure(var_name, prefab_hash, properties, bases, slots))
+        structures.append(
+            Structure(var_name, prefab_name, prefab_hash, properties, bases, slots)
+        )
 
     prop_count = {}
 

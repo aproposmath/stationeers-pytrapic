@@ -1,63 +1,63 @@
-sbn -324331872 HASH("In") Lock 1
-sbn -324331872 HASH("In") Lock 1
-sbn -1129453144 HASH("In") Mode 1
-sbn -1129453144 HASH("In") On 0
-sbn -1129453144 HASH("In") Mode 1
-sbn -1129453144 HASH("In") On 0
-sb -247344692 On 1
+sbn HASH("StructureGlassDoor") HASH("In") Lock 1
+sbn HASH("StructureGlassDoor") HASH("In") Lock 1
+sbn HASH("StructureActiveVent") HASH("In") Mode 1
+sbn HASH("StructureActiveVent") HASH("In") On 0
+sbn HASH("StructureActiveVent") HASH("In") Mode 1
+sbn HASH("StructureActiveVent") HASH("In") On 0
+sb HASH("StructureArcFurnace") On 1
 lbwhile1:
   jal handle.airlock
   jal handle.heating
   jal handle.furnace
   j lbwhile1
 handle.airlock:
-  lbn r0 555215790 HASH("Switch") On 3
+  lbn r0 HASH("StructureLightLongWide") HASH("Switch") On Maximum
   ble r0 0 lbelse2
-    lbn r1 -324331872 HASH("In") Open 3
+    lbn r1 HASH("StructureGlassDoor") HASH("In") Open Maximum
     sgt r0 r1 0
     select r1 r0 HASH("Out") HASH("In")
     select r2 r0 HASH("In") HASH("Out")
-    sbn -324331872 r2 Open 0
-    sbn -1129453144 r2 On 1
+    sbn HASH("StructureGlassDoor") r2 Open 0
+    sbn HASH("StructureActiveVent") r2 On 1
 lbwhile8:
-    lbn r0 -1252983604 HASH("Airlock") Pressure 3
+    lbn r0 HASH("StructureGasSensor") HASH("Airlock") Pressure Maximum
     beq r0 0 lbwhile.end8
       j lbwhile8
 lbwhile.end8:
     sleep 0.2
-    sbn -1129453144 r2 On 0
-    sbn -324331872 r1 Open 1
-    sbn 555215790 HASH("Switch") On 0
+    sbn HASH("StructureActiveVent") r2 On 0
+    sbn HASH("StructureGlassDoor") r1 Open 1
+    sbn HASH("StructureLightLongWide") HASH("Switch") On 0
     sleep 1
 lbelse2:
   j ra
 handle.furnace:
-  sbn -1129453144 HASH("Furnace") Mode 1
-  lbn r0 -1252983604 HASH("Furnace") Temperature 0
-  lbn r1 -1252983604 HASH("Furnace") Pressure 0
-  lbn r3 -1252983604 HASH("Furnace") RatioOxygen 0
+  sbn HASH("StructureActiveVent") HASH("Furnace") Mode 1
+  lbn r0 HASH("StructureGasSensor") HASH("Furnace") Temperature Average
+  lbn r1 HASH("StructureGasSensor") HASH("Furnace") Pressure Average
+  lbn r3 HASH("StructureGasSensor") HASH("Furnace") RatioOxygen Average
   sgt r2 r3 0.95
   sgt r4 r1 0
   and r5 r2 r4
   beqz r5 lbelse17
-    sbn -1129453144 HASH("Furnace") On 1
-    sb -247344692 On 0
+    sbn HASH("StructureActiveVent") HASH("Furnace") On 1
+    sb HASH("StructureArcFurnace") On 0
     j lbend17
 lbelse17:
-    sbn -1129453144 HASH("Furnace") On 0
-    sb -247344692 On 1
-    sb -247344692 Activate 1
+    sbn HASH("StructureActiveVent") HASH("Furnace") On 0
+    sb HASH("StructureArcFurnace") On 1
+    sb HASH("StructureArcFurnace") Activate 1
 lbend17:
   sgt r5 r0 150
-  sbn -739292323 HASH("Furnace") On r5
+  sbn HASH("StructureWallCooler") HASH("Furnace") On r5
   j ra
 handle.heating:
-  lb r0 -400115994 Ratio 0
-  lbn r1 -1252983604 HASH("Greenhouse") Temperature 0
+  lb r0 HASH("StructureBattery") Ratio Average
+  lbn r1 HASH("StructureGasSensor") HASH("Greenhouse") Temperature Average
   sgt r2 r0 0.1
   slt r3 r1 293.15
   and r4 r2 r3
-  sb 24258244 On r4
+  sb HASH("StructureWallHeater") On r4
   s db Setting r0
   j ra
 # registers: 6

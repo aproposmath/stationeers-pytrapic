@@ -51,13 +51,6 @@ namespace StationeersPyTrapIC
         public string text;
     }
 
-    public class CompileOptions
-    {
-        public bool Comments { get; set; } = false;
-        public bool Compact { get; set; } = true;
-        public bool AppendVersion { get; set; } = true;
-    }
-
     public class SourceData
     {
         public static bool IsPythonCode(string code)
@@ -228,9 +221,12 @@ namespace StationeersPyTrapIC
     {
         public static readonly string PYTHON_VERSION = "3.13.7";
         public static PythonCompiler Instance = null;
+        public static List<PediaPage> pages = new List<PediaPage>();
 
         public static ConditionalWeakTable<ISourceCode, SourceData> Data =
             new ConditionalWeakTable<ISourceCode, SourceData>();
+
+        public static CompileOptions options = new CompileOptions();
 
         private Process _process;
         private StreamWriter _stdin;
@@ -247,6 +243,21 @@ namespace StationeersPyTrapIC
             public int column_end = -1;
         }
 
+        public class CompileOptions
+        {
+            public bool original_code_as_comment = false;
+            public bool generated_comments = false;
+            public bool inline_functions = true;
+            public bool remove_labels = true;
+            public bool append_version = true;
+            public bool compact = true;
+
+            public CompileOptions Copy()
+            {
+                return (CompileOptions)this.MemberwiseClone();
+            }
+        }
+
         public class CompileInput
         {
             public string action = "compile";
@@ -256,6 +267,7 @@ namespace StationeersPyTrapIC
             public bool append_version = true;
             public int lineno = -1;
             public int column = -1;
+            public CompileOptions options;
         }
 
         public class CompileResponse
@@ -437,21 +449,25 @@ namespace StationeersPyTrapIC
                 throw new Exception("Failed to get standard input/output streams");
             }
 
-            var pages = JsonConvert.DeserializeObject<List<PediaPage>>(
+            pages = JsonConvert.DeserializeObject<List<PediaPage>>(
                 Encoding.UTF8.GetString((Convert.FromBase64String(await _stdout.ReadLineAsync())))
             );
+            AddStationpediaPages();
 
-            L.Info($"Loaded {pages.Count} pedia pages from Python compiler");
+            L.Info($"PythonCompiler running");
+        }
+
+        public void AddStationpediaPages()
+        {
+            L.Info($"Add {pages.Count} PyTrapIC pages to Stationpedia");
             foreach (var page in pages)
             {
-                L.Debug($"Pedia page: {page.key} - {page.title}");
+                L.Debug($"Stationpedia page: {page.key} - {page.title}");
                 var stationPediaPage = new StationpediaPage(page.key, page.title, page.text);
                 stationPediaPage._parsed = page.text;
                 stationPediaPage.Description = page.text;
                 Stationpedia.Register(stationPediaPage);
             }
-
-            L.Info($"PythonCompiler running");
         }
 
         public PythonCompiler()
@@ -477,7 +493,7 @@ namespace StationeersPyTrapIC
             }
         }
 
-        public CompileResponse Compile(string pythonCode, CompileOptions options = null)
+        public CompileResponse Compile(string pythonCode)
         {
             if (!IsRunning())
             {
@@ -493,15 +509,13 @@ namespace StationeersPyTrapIC
             L.Debug($"Compiling code at {lineno}:{column}");
 
             var modules = SourceData.LoadImportedModules(pythonCode);
-            options ??= new CompileOptions();
+            var compileOptions = options.Copy();
 
             CompileInput input = new CompileInput
             {
                 action = "compile",
                 code = modules,
-                comments = options.Comments,
-                compact = options.Compact,
-                append_version = options.AppendVersion,
+                options = compileOptions,
                 lineno = lineno,
                 column = column,
             };
@@ -582,6 +596,13 @@ namespace StationeersPyTrapIC
     public static class PyTrapICPatches
     {
         private static bool isPasting = false; // fix for faster pasting
+
+        [HarmonyPatch(typeof(Stationpedia), nameof(Stationpedia.Regenerate)), HarmonyPostfix]
+        public static void Stationpedia_Regenerate()
+        {
+            if (PythonCompiler.Instance != null)
+                PythonCompiler.Instance.AddStationpediaPages();
+        }
 
         [
             HarmonyPatch(
@@ -713,9 +734,11 @@ namespace StationeersPyTrapIC
                 return false;
             }
 
-            if (Editor.IsReadOnly())
+            if (ctrlPressed && Input.GetKeyDown(KeyCode.M))
             {
-                return false; // ignore all input in read-only mode
+                L.Debug("Toggling preview");
+                Editor.ToggleCompileMode();
+                return false;
             }
 
             if (Input.GetKeyDown(KeyCode.Tab))

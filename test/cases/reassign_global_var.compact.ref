@@ -1,7 +1,7 @@
 move r0 HASH("foo")
-sbn -1758710260 r0 Lock 1
+sbn -1758710260 r0 10 1
 move r0 1996459178
-sbn -1758710260 r0 Lock 1
-sbn -1758710260 r0 Lock 1
+sbn -1758710260 r0 10 1
+sbn -1758710260 r0 10 1
 # registers: 1
 # lines: 5

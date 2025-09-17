@@ -5,14 +5,14 @@ lbwhile1:
 handle.growlight:
   l r1 d0 Vertical
   slt r0 r1 100
-  sb -1758710260 On r0
+  sb HASH("StructureGrowLight") On r0
   j ra
 handle.solar.panels:
   l r0 d0 Horizontal
-  sb -539224550 Horizontal r0
+  sb HASH("StructureSolarPanelDual") Horizontal r0
   l r0 d0 Vertical
   add r1 r0 90
-  sb -539224550 Vertical r1
+  sb HASH("StructureSolarPanelDual") Vertical r1
   j ra
 # registers: 2
 # lines: 16

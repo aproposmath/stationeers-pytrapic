@@ -1,9 +1,9 @@
 yield
-l r0 d0 Horizontal
-sb -2045627372 Horizontal r0
-l r0 d0 Vertical
+l r0 d0 20
+sb -2045627372 20 r0
+l r0 d0 21
 sub r1 90 r0
-sb -2045627372 Vertical r1
+sb -2045627372 21 r1
 j 0
 # registers: 2
 # lines: 7

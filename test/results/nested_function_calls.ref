@@ -1,12 +1,12 @@
 jal outer.function
-lb r0 -1758710260 On 3
+lb r0 HASH("StructureGrowLight") On Maximum
 s db Setting r0
 inner.function:
-  sb -1758710260 On 1
+  sb HASH("StructureGrowLight") On 1
   j ra
 outer.function:
   push ra
-  sb -1758710260 On 0
+  sb HASH("StructureGrowLight") On 0
   jal inner.function
   jal inner.function
   pop ra

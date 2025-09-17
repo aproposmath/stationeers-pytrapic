@@ -7,13 +7,15 @@ from stationeers_pytrapic.types import (
     _DevicesSlotType,
     _BaseSlotType,
     _BaseSlotTypes,
+    LogicType as _LT,
+    LogicSlotType as _LST,
 )
 
 
 class _SlotTypeCommon(_BaseSlotType):
     @property
     def Class(self) -> float:
-        return _DeviceSlotType(self, self._id, self._slot_index, "Class")
+        return _DeviceSlotType(self, _LST.Class)
 
     @Class.setter
     def Class(self, value: int | float):
@@ -21,7 +23,7 @@ class _SlotTypeCommon(_BaseSlotType):
 
     @property
     def Damage(self) -> float:
-        return _DeviceSlotType(self, self._id, self._slot_index, "Damage")
+        return _DeviceSlotType(self, _LST.Damage)
 
     @Damage.setter
     def Damage(self, value: int | float):
@@ -29,7 +31,7 @@ class _SlotTypeCommon(_BaseSlotType):
 
     @property
     def MaxQuantity(self) -> float:
-        return _DeviceSlotType(self, self._id, self._slot_index, "MaxQuantity")
+        return _DeviceSlotType(self, _LST.MaxQuantity)
 
     @MaxQuantity.setter
     def MaxQuantity(self, value: int | float):
@@ -37,7 +39,7 @@ class _SlotTypeCommon(_BaseSlotType):
 
     @property
     def OccupantHash(self) -> float:
-        return _DeviceSlotType(self, self._id, self._slot_index, "OccupantHash")
+        return _DeviceSlotType(self, _LST.OccupantHash)
 
     @OccupantHash.setter
     def OccupantHash(self, value: int | float):
@@ -45,7 +47,7 @@ class _SlotTypeCommon(_BaseSlotType):
 
     @property
     def Occupied(self) -> float:
-        return _DeviceSlotType(self, self._id, self._slot_index, "Occupied")
+        return _DeviceSlotType(self, _LST.Occupied)
 
     @Occupied.setter
     def Occupied(self, value: int | float):
@@ -53,7 +55,7 @@ class _SlotTypeCommon(_BaseSlotType):
 
     @property
     def PrefabHash(self) -> float:
-        return _DeviceSlotType(self, self._id, self._slot_index, "PrefabHash")
+        return _DeviceSlotType(self, _LST.PrefabHash)
 
     @PrefabHash.setter
     def PrefabHash(self, value: int | float):
@@ -61,7 +63,7 @@ class _SlotTypeCommon(_BaseSlotType):
 
     @property
     def Quantity(self) -> float:
-        return _DeviceSlotType(self, self._id, self._slot_index, "Quantity")
+        return _DeviceSlotType(self, _LST.Quantity)
 
     @Quantity.setter
     def Quantity(self, value: int | float):
@@ -69,7 +71,7 @@ class _SlotTypeCommon(_BaseSlotType):
 
     @property
     def ReferenceId(self) -> float:
-        return _DeviceSlotType(self, self._id, self._slot_index, "ReferenceId")
+        return _DeviceSlotType(self, _LST.ReferenceId)
 
     @ReferenceId.setter
     def ReferenceId(self, value: int | float):
@@ -77,7 +79,7 @@ class _SlotTypeCommon(_BaseSlotType):
 
     @property
     def SortingClass(self) -> float:
-        return _DeviceSlotType(self, self._id, self._slot_index, "SortingClass")
+        return _DeviceSlotType(self, _LST.SortingClass)
 
     @SortingClass.setter
     def SortingClass(self, value: int | float):
@@ -87,7 +89,7 @@ class _SlotTypeCommon(_BaseSlotType):
 class _SlotTypeCommons(_BaseSlotTypes):
     @property
     def Class(self) -> _DevicesSlotType:
-        return _DevicesSlotType(self, self._hash, self._slot_index, "Class", self._name)
+        return _DevicesSlotType(self, _LST.Class)
 
     @Class.setter
     def Class(self, value: int | float):
@@ -95,9 +97,7 @@ class _SlotTypeCommons(_BaseSlotTypes):
 
     @property
     def Damage(self) -> _DevicesSlotType:
-        return _DevicesSlotType(
-            self, self._hash, self._slot_index, "Damage", self._name
-        )
+        return _DevicesSlotType(self, _LST.Damage)
 
     @Damage.setter
     def Damage(self, value: int | float):
@@ -105,9 +105,7 @@ class _SlotTypeCommons(_BaseSlotTypes):
 
     @property
     def MaxQuantity(self) -> _DevicesSlotType:
-        return _DevicesSlotType(
-            self, self._hash, self._slot_index, "MaxQuantity", self._name
-        )
+        return _DevicesSlotType(self, _LST.MaxQuantity)
 
     @MaxQuantity.setter
     def MaxQuantity(self, value: int | float):
@@ -115,9 +113,7 @@ class _SlotTypeCommons(_BaseSlotTypes):
 
     @property
     def OccupantHash(self) -> _DevicesSlotType:
-        return _DevicesSlotType(
-            self, self._hash, self._slot_index, "OccupantHash", self._name
-        )
+        return _DevicesSlotType(self, _LST.OccupantHash)
 
     @OccupantHash.setter
     def OccupantHash(self, value: int | float):
@@ -125,9 +121,7 @@ class _SlotTypeCommons(_BaseSlotTypes):
 
     @property
     def Occupied(self) -> _DevicesSlotType:
-        return _DevicesSlotType(
-            self, self._hash, self._slot_index, "Occupied", self._name
-        )
+        return _DevicesSlotType(self, _LST.Occupied)
 
     @Occupied.setter
     def Occupied(self, value: int | float):
@@ -135,9 +129,7 @@ class _SlotTypeCommons(_BaseSlotTypes):
 
     @property
     def PrefabHash(self) -> _DevicesSlotType:
-        return _DevicesSlotType(
-            self, self._hash, self._slot_index, "PrefabHash", self._name
-        )
+        return _DevicesSlotType(self, _LST.PrefabHash)
 
     @PrefabHash.setter
     def PrefabHash(self, value: int | float):
@@ -145,9 +137,7 @@ class _SlotTypeCommons(_BaseSlotTypes):
 
     @property
     def Quantity(self) -> _DevicesSlotType:
-        return _DevicesSlotType(
-            self, self._hash, self._slot_index, "Quantity", self._name
-        )
+        return _DevicesSlotType(self, _LST.Quantity)
 
     @Quantity.setter
     def Quantity(self, value: int | float):
@@ -155,9 +145,7 @@ class _SlotTypeCommons(_BaseSlotTypes):
 
     @property
     def ReferenceId(self) -> _DevicesSlotType:
-        return _DevicesSlotType(
-            self, self._hash, self._slot_index, "ReferenceId", self._name
-        )
+        return _DevicesSlotType(self, _LST.ReferenceId)
 
     @ReferenceId.setter
     def ReferenceId(self, value: int | float):
@@ -165,9 +153,7 @@ class _SlotTypeCommons(_BaseSlotTypes):
 
     @property
     def SortingClass(self) -> _DevicesSlotType:
-        return _DevicesSlotType(
-            self, self._hash, self._slot_index, "SortingClass", self._name
-        )
+        return _DevicesSlotType(self, _LST.SortingClass)
 
     @SortingClass.setter
     def SortingClass(self, value: int | float):
@@ -177,7 +163,7 @@ class _SlotTypeCommons(_BaseSlotTypes):
 class _SlotTypeAppliance(_SlotTypeCommon):
     @property
     def On(self) -> float:
-        return _DeviceSlotType(self, self._id, self._slot_index, "On")
+        return _DeviceSlotType(self, _LST.On)
 
     @On.setter
     def On(self, value: int | float):
@@ -187,7 +173,7 @@ class _SlotTypeAppliance(_SlotTypeCommon):
 class _SlotTypeAppliances(_SlotTypeCommons):
     @property
     def On(self) -> _DevicesSlotType:
-        return _DevicesSlotType(self, self._hash, self._slot_index, "On", self._name)
+        return _DevicesSlotType(self, _LST.On)
 
     @On.setter
     def On(self, value: int | float):
@@ -197,7 +183,7 @@ class _SlotTypeAppliances(_SlotTypeCommons):
 class _SlotTypeBack(_SlotTypeCommon):
     @property
     def Charge(self) -> float:
-        return _DeviceSlotType(self, self._id, self._slot_index, "Charge")
+        return _DeviceSlotType(self, _LST.Charge)
 
     @Charge.setter
     def Charge(self, value: int | float):
@@ -205,7 +191,7 @@ class _SlotTypeBack(_SlotTypeCommon):
 
     @property
     def ChargeRatio(self) -> float:
-        return _DeviceSlotType(self, self._id, self._slot_index, "ChargeRatio")
+        return _DeviceSlotType(self, _LST.ChargeRatio)
 
     @ChargeRatio.setter
     def ChargeRatio(self, value: int | float):
@@ -213,7 +199,7 @@ class _SlotTypeBack(_SlotTypeCommon):
 
     @property
     def Pressure(self) -> float:
-        return _DeviceSlotType(self, self._id, self._slot_index, "Pressure")
+        return _DeviceSlotType(self, _LST.Pressure)
 
     @Pressure.setter
     def Pressure(self, value: int | float):
@@ -223,9 +209,7 @@ class _SlotTypeBack(_SlotTypeCommon):
 class _SlotTypeBacks(_SlotTypeCommons):
     @property
     def Charge(self) -> _DevicesSlotType:
-        return _DevicesSlotType(
-            self, self._hash, self._slot_index, "Charge", self._name
-        )
+        return _DevicesSlotType(self, _LST.Charge)
 
     @Charge.setter
     def Charge(self, value: int | float):
@@ -233,9 +217,7 @@ class _SlotTypeBacks(_SlotTypeCommons):
 
     @property
     def ChargeRatio(self) -> _DevicesSlotType:
-        return _DevicesSlotType(
-            self, self._hash, self._slot_index, "ChargeRatio", self._name
-        )
+        return _DevicesSlotType(self, _LST.ChargeRatio)
 
     @ChargeRatio.setter
     def ChargeRatio(self, value: int | float):
@@ -243,9 +225,7 @@ class _SlotTypeBacks(_SlotTypeCommons):
 
     @property
     def Pressure(self) -> _DevicesSlotType:
-        return _DevicesSlotType(
-            self, self._hash, self._slot_index, "Pressure", self._name
-        )
+        return _DevicesSlotType(self, _LST.Pressure)
 
     @Pressure.setter
     def Pressure(self, value: int | float):
@@ -255,7 +235,7 @@ class _SlotTypeBacks(_SlotTypeCommons):
 class _SlotTypeBattery(_SlotTypeCommon):
     @property
     def Charge(self) -> float:
-        return _DeviceSlotType(self, self._id, self._slot_index, "Charge")
+        return _DeviceSlotType(self, _LST.Charge)
 
     @Charge.setter
     def Charge(self, value: int | float):
@@ -263,7 +243,7 @@ class _SlotTypeBattery(_SlotTypeCommon):
 
     @property
     def ChargeRatio(self) -> float:
-        return _DeviceSlotType(self, self._id, self._slot_index, "ChargeRatio")
+        return _DeviceSlotType(self, _LST.ChargeRatio)
 
     @ChargeRatio.setter
     def ChargeRatio(self, value: int | float):
@@ -273,9 +253,7 @@ class _SlotTypeBattery(_SlotTypeCommon):
 class _SlotTypeBatterys(_SlotTypeCommons):
     @property
     def Charge(self) -> _DevicesSlotType:
-        return _DevicesSlotType(
-            self, self._hash, self._slot_index, "Charge", self._name
-        )
+        return _DevicesSlotType(self, _LST.Charge)
 
     @Charge.setter
     def Charge(self, value: int | float):
@@ -283,9 +261,7 @@ class _SlotTypeBatterys(_SlotTypeCommons):
 
     @property
     def ChargeRatio(self) -> _DevicesSlotType:
-        return _DevicesSlotType(
-            self, self._hash, self._slot_index, "ChargeRatio", self._name
-        )
+        return _DevicesSlotType(self, _LST.ChargeRatio)
 
     @ChargeRatio.setter
     def ChargeRatio(self, value: int | float):
@@ -295,7 +271,7 @@ class _SlotTypeBatterys(_SlotTypeCommons):
 class _SlotTypeCircuitboard(_SlotTypeCommon):
     @property
     def Mode(self) -> float:
-        return _DeviceSlotType(self, self._id, self._slot_index, "Mode")
+        return _DeviceSlotType(self, _LST.Mode)
 
     @Mode.setter
     def Mode(self, value: int | float):
@@ -305,7 +281,7 @@ class _SlotTypeCircuitboard(_SlotTypeCommon):
 class _SlotTypeCircuitboards(_SlotTypeCommons):
     @property
     def Mode(self) -> _DevicesSlotType:
-        return _DevicesSlotType(self, self._hash, self._slot_index, "Mode", self._name)
+        return _DevicesSlotType(self, _LST.Mode)
 
     @Mode.setter
     def Mode(self, value: int | float):
@@ -315,7 +291,7 @@ class _SlotTypeCircuitboards(_SlotTypeCommons):
 class _SlotTypeFilter(_SlotTypeCommon):
     @property
     def FilterType(self) -> float:
-        return _DeviceSlotType(self, self._id, self._slot_index, "FilterType")
+        return _DeviceSlotType(self, _LST.FilterType)
 
     @FilterType.setter
     def FilterType(self, value: int | float):
@@ -325,9 +301,7 @@ class _SlotTypeFilter(_SlotTypeCommon):
 class _SlotTypeFilters(_SlotTypeCommons):
     @property
     def FilterType(self) -> _DevicesSlotType:
-        return _DevicesSlotType(
-            self, self._hash, self._slot_index, "FilterType", self._name
-        )
+        return _DevicesSlotType(self, _LST.FilterType)
 
     @FilterType.setter
     def FilterType(self, value: int | float):
@@ -337,7 +311,7 @@ class _SlotTypeFilters(_SlotTypeCommons):
 class _SlotTypeGasCanister(_SlotTypeCommon):
     @property
     def Open(self) -> float:
-        return _DeviceSlotType(self, self._id, self._slot_index, "Open")
+        return _DeviceSlotType(self, _LST.Open)
 
     @Open.setter
     def Open(self, value: int | float):
@@ -345,7 +319,7 @@ class _SlotTypeGasCanister(_SlotTypeCommon):
 
     @property
     def Pressure(self) -> float:
-        return _DeviceSlotType(self, self._id, self._slot_index, "Pressure")
+        return _DeviceSlotType(self, _LST.Pressure)
 
     @Pressure.setter
     def Pressure(self, value: int | float):
@@ -353,7 +327,7 @@ class _SlotTypeGasCanister(_SlotTypeCommon):
 
     @property
     def Temperature(self) -> float:
-        return _DeviceSlotType(self, self._id, self._slot_index, "Temperature")
+        return _DeviceSlotType(self, _LST.Temperature)
 
     @Temperature.setter
     def Temperature(self, value: int | float):
@@ -361,7 +335,7 @@ class _SlotTypeGasCanister(_SlotTypeCommon):
 
     @property
     def Volume(self) -> float:
-        return _DeviceSlotType(self, self._id, self._slot_index, "Volume")
+        return _DeviceSlotType(self, _LST.Volume)
 
     @Volume.setter
     def Volume(self, value: int | float):
@@ -371,7 +345,7 @@ class _SlotTypeGasCanister(_SlotTypeCommon):
 class _SlotTypeGasCanisters(_SlotTypeCommons):
     @property
     def Open(self) -> _DevicesSlotType:
-        return _DevicesSlotType(self, self._hash, self._slot_index, "Open", self._name)
+        return _DevicesSlotType(self, _LST.Open)
 
     @Open.setter
     def Open(self, value: int | float):
@@ -379,9 +353,7 @@ class _SlotTypeGasCanisters(_SlotTypeCommons):
 
     @property
     def Pressure(self) -> _DevicesSlotType:
-        return _DevicesSlotType(
-            self, self._hash, self._slot_index, "Pressure", self._name
-        )
+        return _DevicesSlotType(self, _LST.Pressure)
 
     @Pressure.setter
     def Pressure(self, value: int | float):
@@ -389,9 +361,7 @@ class _SlotTypeGasCanisters(_SlotTypeCommons):
 
     @property
     def Temperature(self) -> _DevicesSlotType:
-        return _DevicesSlotType(
-            self, self._hash, self._slot_index, "Temperature", self._name
-        )
+        return _DevicesSlotType(self, _LST.Temperature)
 
     @Temperature.setter
     def Temperature(self, value: int | float):
@@ -399,9 +369,7 @@ class _SlotTypeGasCanisters(_SlotTypeCommons):
 
     @property
     def Volume(self) -> _DevicesSlotType:
-        return _DevicesSlotType(
-            self, self._hash, self._slot_index, "Volume", self._name
-        )
+        return _DevicesSlotType(self, _LST.Volume)
 
     @Volume.setter
     def Volume(self, value: int | float):
@@ -411,7 +379,7 @@ class _SlotTypeGasCanisters(_SlotTypeCommons):
 class _SlotTypeHelmet(_SlotTypeCommon):
     @property
     def Charge(self) -> float:
-        return _DeviceSlotType(self, self._id, self._slot_index, "Charge")
+        return _DeviceSlotType(self, _LST.Charge)
 
     @Charge.setter
     def Charge(self, value: int | float):
@@ -419,7 +387,7 @@ class _SlotTypeHelmet(_SlotTypeCommon):
 
     @property
     def ChargeRatio(self) -> float:
-        return _DeviceSlotType(self, self._id, self._slot_index, "ChargeRatio")
+        return _DeviceSlotType(self, _LST.ChargeRatio)
 
     @ChargeRatio.setter
     def ChargeRatio(self, value: int | float):
@@ -427,7 +395,7 @@ class _SlotTypeHelmet(_SlotTypeCommon):
 
     @property
     def Lock(self) -> float:
-        return _DeviceSlotType(self, self._id, self._slot_index, "Lock")
+        return _DeviceSlotType(self, _LST.Lock)
 
     @Lock.setter
     def Lock(self, value: int | float):
@@ -435,7 +403,7 @@ class _SlotTypeHelmet(_SlotTypeCommon):
 
     @property
     def On(self) -> float:
-        return _DeviceSlotType(self, self._id, self._slot_index, "On")
+        return _DeviceSlotType(self, _LST.On)
 
     @On.setter
     def On(self, value: int | float):
@@ -443,7 +411,7 @@ class _SlotTypeHelmet(_SlotTypeCommon):
 
     @property
     def Open(self) -> float:
-        return _DeviceSlotType(self, self._id, self._slot_index, "Open")
+        return _DeviceSlotType(self, _LST.Open)
 
     @Open.setter
     def Open(self, value: int | float):
@@ -451,7 +419,7 @@ class _SlotTypeHelmet(_SlotTypeCommon):
 
     @property
     def Pressure(self) -> float:
-        return _DeviceSlotType(self, self._id, self._slot_index, "Pressure")
+        return _DeviceSlotType(self, _LST.Pressure)
 
     @Pressure.setter
     def Pressure(self, value: int | float):
@@ -461,9 +429,7 @@ class _SlotTypeHelmet(_SlotTypeCommon):
 class _SlotTypeHelmets(_SlotTypeCommons):
     @property
     def Charge(self) -> _DevicesSlotType:
-        return _DevicesSlotType(
-            self, self._hash, self._slot_index, "Charge", self._name
-        )
+        return _DevicesSlotType(self, _LST.Charge)
 
     @Charge.setter
     def Charge(self, value: int | float):
@@ -471,9 +437,7 @@ class _SlotTypeHelmets(_SlotTypeCommons):
 
     @property
     def ChargeRatio(self) -> _DevicesSlotType:
-        return _DevicesSlotType(
-            self, self._hash, self._slot_index, "ChargeRatio", self._name
-        )
+        return _DevicesSlotType(self, _LST.ChargeRatio)
 
     @ChargeRatio.setter
     def ChargeRatio(self, value: int | float):
@@ -481,7 +445,7 @@ class _SlotTypeHelmets(_SlotTypeCommons):
 
     @property
     def Lock(self) -> _DevicesSlotType:
-        return _DevicesSlotType(self, self._hash, self._slot_index, "Lock", self._name)
+        return _DevicesSlotType(self, _LST.Lock)
 
     @Lock.setter
     def Lock(self, value: int | float):
@@ -489,7 +453,7 @@ class _SlotTypeHelmets(_SlotTypeCommons):
 
     @property
     def On(self) -> _DevicesSlotType:
-        return _DevicesSlotType(self, self._hash, self._slot_index, "On", self._name)
+        return _DevicesSlotType(self, _LST.On)
 
     @On.setter
     def On(self, value: int | float):
@@ -497,7 +461,7 @@ class _SlotTypeHelmets(_SlotTypeCommons):
 
     @property
     def Open(self) -> _DevicesSlotType:
-        return _DevicesSlotType(self, self._hash, self._slot_index, "Open", self._name)
+        return _DevicesSlotType(self, _LST.Open)
 
     @Open.setter
     def Open(self, value: int | float):
@@ -505,9 +469,7 @@ class _SlotTypeHelmets(_SlotTypeCommons):
 
     @property
     def Pressure(self) -> _DevicesSlotType:
-        return _DevicesSlotType(
-            self, self._hash, self._slot_index, "Pressure", self._name
-        )
+        return _DevicesSlotType(self, _LST.Pressure)
 
     @Pressure.setter
     def Pressure(self, value: int | float):
@@ -517,7 +479,7 @@ class _SlotTypeHelmets(_SlotTypeCommons):
 class _SlotTypeMask(_SlotTypeCommon):
     @property
     def Lock(self) -> float:
-        return _DeviceSlotType(self, self._id, self._slot_index, "Lock")
+        return _DeviceSlotType(self, _LST.Lock)
 
     @Lock.setter
     def Lock(self, value: int | float):
@@ -525,7 +487,7 @@ class _SlotTypeMask(_SlotTypeCommon):
 
     @property
     def On(self) -> float:
-        return _DeviceSlotType(self, self._id, self._slot_index, "On")
+        return _DeviceSlotType(self, _LST.On)
 
     @On.setter
     def On(self, value: int | float):
@@ -533,7 +495,7 @@ class _SlotTypeMask(_SlotTypeCommon):
 
     @property
     def Open(self) -> float:
-        return _DeviceSlotType(self, self._id, self._slot_index, "Open")
+        return _DeviceSlotType(self, _LST.Open)
 
     @Open.setter
     def Open(self, value: int | float):
@@ -543,7 +505,7 @@ class _SlotTypeMask(_SlotTypeCommon):
 class _SlotTypeMasks(_SlotTypeCommons):
     @property
     def Lock(self) -> _DevicesSlotType:
-        return _DevicesSlotType(self, self._hash, self._slot_index, "Lock", self._name)
+        return _DevicesSlotType(self, _LST.Lock)
 
     @Lock.setter
     def Lock(self, value: int | float):
@@ -551,7 +513,7 @@ class _SlotTypeMasks(_SlotTypeCommons):
 
     @property
     def On(self) -> _DevicesSlotType:
-        return _DevicesSlotType(self, self._hash, self._slot_index, "On", self._name)
+        return _DevicesSlotType(self, _LST.On)
 
     @On.setter
     def On(self, value: int | float):
@@ -559,7 +521,7 @@ class _SlotTypeMasks(_SlotTypeCommons):
 
     @property
     def Open(self) -> _DevicesSlotType:
-        return _DevicesSlotType(self, self._hash, self._slot_index, "Open", self._name)
+        return _DevicesSlotType(self, _LST.Open)
 
     @Open.setter
     def Open(self, value: int | float):
@@ -569,7 +531,7 @@ class _SlotTypeMasks(_SlotTypeCommons):
 class _SlotTypePlant(_SlotTypeCommon):
     @property
     def Efficiency(self) -> float:
-        return _DeviceSlotType(self, self._id, self._slot_index, "Efficiency")
+        return _DeviceSlotType(self, _LST.Efficiency)
 
     @Efficiency.setter
     def Efficiency(self, value: int | float):
@@ -577,7 +539,7 @@ class _SlotTypePlant(_SlotTypeCommon):
 
     @property
     def Growth(self) -> float:
-        return _DeviceSlotType(self, self._id, self._slot_index, "Growth")
+        return _DeviceSlotType(self, _LST.Growth)
 
     @Growth.setter
     def Growth(self, value: int | float):
@@ -585,7 +547,7 @@ class _SlotTypePlant(_SlotTypeCommon):
 
     @property
     def Health(self) -> float:
-        return _DeviceSlotType(self, self._id, self._slot_index, "Health")
+        return _DeviceSlotType(self, _LST.Health)
 
     @Health.setter
     def Health(self, value: int | float):
@@ -593,7 +555,7 @@ class _SlotTypePlant(_SlotTypeCommon):
 
     @property
     def Mature(self) -> float:
-        return _DeviceSlotType(self, self._id, self._slot_index, "Mature")
+        return _DeviceSlotType(self, _LST.Mature)
 
     @Mature.setter
     def Mature(self, value: int | float):
@@ -601,7 +563,7 @@ class _SlotTypePlant(_SlotTypeCommon):
 
     @property
     def MaturityRatio(self) -> float:
-        return _DeviceSlotType(self, self._id, self._slot_index, "MaturityRatio")
+        return _DeviceSlotType(self, _LST.MaturityRatio)
 
     @MaturityRatio.setter
     def MaturityRatio(self, value: int | float):
@@ -609,7 +571,7 @@ class _SlotTypePlant(_SlotTypeCommon):
 
     @property
     def Seeding(self) -> float:
-        return _DeviceSlotType(self, self._id, self._slot_index, "Seeding")
+        return _DeviceSlotType(self, _LST.Seeding)
 
     @Seeding.setter
     def Seeding(self, value: int | float):
@@ -617,7 +579,7 @@ class _SlotTypePlant(_SlotTypeCommon):
 
     @property
     def SeedingRatio(self) -> float:
-        return _DeviceSlotType(self, self._id, self._slot_index, "SeedingRatio")
+        return _DeviceSlotType(self, _LST.SeedingRatio)
 
     @SeedingRatio.setter
     def SeedingRatio(self, value: int | float):
@@ -627,9 +589,7 @@ class _SlotTypePlant(_SlotTypeCommon):
 class _SlotTypePlants(_SlotTypeCommons):
     @property
     def Efficiency(self) -> _DevicesSlotType:
-        return _DevicesSlotType(
-            self, self._hash, self._slot_index, "Efficiency", self._name
-        )
+        return _DevicesSlotType(self, _LST.Efficiency)
 
     @Efficiency.setter
     def Efficiency(self, value: int | float):
@@ -637,9 +597,7 @@ class _SlotTypePlants(_SlotTypeCommons):
 
     @property
     def Growth(self) -> _DevicesSlotType:
-        return _DevicesSlotType(
-            self, self._hash, self._slot_index, "Growth", self._name
-        )
+        return _DevicesSlotType(self, _LST.Growth)
 
     @Growth.setter
     def Growth(self, value: int | float):
@@ -647,9 +605,7 @@ class _SlotTypePlants(_SlotTypeCommons):
 
     @property
     def Health(self) -> _DevicesSlotType:
-        return _DevicesSlotType(
-            self, self._hash, self._slot_index, "Health", self._name
-        )
+        return _DevicesSlotType(self, _LST.Health)
 
     @Health.setter
     def Health(self, value: int | float):
@@ -657,9 +613,7 @@ class _SlotTypePlants(_SlotTypeCommons):
 
     @property
     def Mature(self) -> _DevicesSlotType:
-        return _DevicesSlotType(
-            self, self._hash, self._slot_index, "Mature", self._name
-        )
+        return _DevicesSlotType(self, _LST.Mature)
 
     @Mature.setter
     def Mature(self, value: int | float):
@@ -667,9 +621,7 @@ class _SlotTypePlants(_SlotTypeCommons):
 
     @property
     def MaturityRatio(self) -> _DevicesSlotType:
-        return _DevicesSlotType(
-            self, self._hash, self._slot_index, "MaturityRatio", self._name
-        )
+        return _DevicesSlotType(self, _LST.MaturityRatio)
 
     @MaturityRatio.setter
     def MaturityRatio(self, value: int | float):
@@ -677,9 +629,7 @@ class _SlotTypePlants(_SlotTypeCommons):
 
     @property
     def Seeding(self) -> _DevicesSlotType:
-        return _DevicesSlotType(
-            self, self._hash, self._slot_index, "Seeding", self._name
-        )
+        return _DevicesSlotType(self, _LST.Seeding)
 
     @Seeding.setter
     def Seeding(self, value: int | float):
@@ -687,9 +637,7 @@ class _SlotTypePlants(_SlotTypeCommons):
 
     @property
     def SeedingRatio(self) -> _DevicesSlotType:
-        return _DevicesSlotType(
-            self, self._hash, self._slot_index, "SeedingRatio", self._name
-        )
+        return _DevicesSlotType(self, _LST.SeedingRatio)
 
     @SeedingRatio.setter
     def SeedingRatio(self, value: int | float):
@@ -699,7 +647,7 @@ class _SlotTypePlants(_SlotTypeCommons):
 class _SlotTypeProgrammableChip(_SlotTypeCommon):
     @property
     def LineNumber(self) -> float:
-        return _DeviceSlotType(self, self._id, self._slot_index, "LineNumber")
+        return _DeviceSlotType(self, _LST.LineNumber)
 
     @LineNumber.setter
     def LineNumber(self, value: int | float):
@@ -709,9 +657,7 @@ class _SlotTypeProgrammableChip(_SlotTypeCommon):
 class _SlotTypeProgrammableChips(_SlotTypeCommons):
     @property
     def LineNumber(self) -> _DevicesSlotType:
-        return _DevicesSlotType(
-            self, self._hash, self._slot_index, "LineNumber", self._name
-        )
+        return _DevicesSlotType(self, _LST.LineNumber)
 
     @LineNumber.setter
     def LineNumber(self, value: int | float):
@@ -721,7 +667,7 @@ class _SlotTypeProgrammableChips(_SlotTypeCommons):
 class _SlotTypeSuit(_SlotTypeCommon):
     @property
     def Charge(self) -> float:
-        return _DeviceSlotType(self, self._id, self._slot_index, "Charge")
+        return _DeviceSlotType(self, _LST.Charge)
 
     @Charge.setter
     def Charge(self, value: int | float):
@@ -729,7 +675,7 @@ class _SlotTypeSuit(_SlotTypeCommon):
 
     @property
     def ChargeRatio(self) -> float:
-        return _DeviceSlotType(self, self._id, self._slot_index, "ChargeRatio")
+        return _DeviceSlotType(self, _LST.ChargeRatio)
 
     @ChargeRatio.setter
     def ChargeRatio(self, value: int | float):
@@ -737,7 +683,7 @@ class _SlotTypeSuit(_SlotTypeCommon):
 
     @property
     def Pressure(self) -> float:
-        return _DeviceSlotType(self, self._id, self._slot_index, "Pressure")
+        return _DeviceSlotType(self, _LST.Pressure)
 
     @Pressure.setter
     def Pressure(self, value: int | float):
@@ -745,7 +691,7 @@ class _SlotTypeSuit(_SlotTypeCommon):
 
     @property
     def PressureAir(self) -> float:
-        return _DeviceSlotType(self, self._id, self._slot_index, "PressureAir")
+        return _DeviceSlotType(self, _LST.PressureAir)
 
     @PressureAir.setter
     def PressureAir(self, value: int | float):
@@ -753,7 +699,7 @@ class _SlotTypeSuit(_SlotTypeCommon):
 
     @property
     def PressureWaste(self) -> float:
-        return _DeviceSlotType(self, self._id, self._slot_index, "PressureWaste")
+        return _DeviceSlotType(self, _LST.PressureWaste)
 
     @PressureWaste.setter
     def PressureWaste(self, value: int | float):
@@ -763,9 +709,7 @@ class _SlotTypeSuit(_SlotTypeCommon):
 class _SlotTypeSuits(_SlotTypeCommons):
     @property
     def Charge(self) -> _DevicesSlotType:
-        return _DevicesSlotType(
-            self, self._hash, self._slot_index, "Charge", self._name
-        )
+        return _DevicesSlotType(self, _LST.Charge)
 
     @Charge.setter
     def Charge(self, value: int | float):
@@ -773,9 +717,7 @@ class _SlotTypeSuits(_SlotTypeCommons):
 
     @property
     def ChargeRatio(self) -> _DevicesSlotType:
-        return _DevicesSlotType(
-            self, self._hash, self._slot_index, "ChargeRatio", self._name
-        )
+        return _DevicesSlotType(self, _LST.ChargeRatio)
 
     @ChargeRatio.setter
     def ChargeRatio(self, value: int | float):
@@ -783,9 +725,7 @@ class _SlotTypeSuits(_SlotTypeCommons):
 
     @property
     def Pressure(self) -> _DevicesSlotType:
-        return _DevicesSlotType(
-            self, self._hash, self._slot_index, "Pressure", self._name
-        )
+        return _DevicesSlotType(self, _LST.Pressure)
 
     @Pressure.setter
     def Pressure(self, value: int | float):
@@ -793,9 +733,7 @@ class _SlotTypeSuits(_SlotTypeCommons):
 
     @property
     def PressureAir(self) -> _DevicesSlotType:
-        return _DevicesSlotType(
-            self, self._hash, self._slot_index, "PressureAir", self._name
-        )
+        return _DevicesSlotType(self, _LST.PressureAir)
 
     @PressureAir.setter
     def PressureAir(self, value: int | float):
@@ -803,9 +741,7 @@ class _SlotTypeSuits(_SlotTypeCommons):
 
     @property
     def PressureWaste(self) -> _DevicesSlotType:
-        return _DevicesSlotType(
-            self, self._hash, self._slot_index, "PressureWaste", self._name
-        )
+        return _DevicesSlotType(self, _LST.PressureWaste)
 
     @PressureWaste.setter
     def PressureWaste(self, value: int | float):
@@ -815,481 +751,471 @@ class _SlotTypeSuits(_SlotTypeCommons):
 class _BaseGas:
     @property
     def RatioCarbonDioxide(self) -> float:
-        return _DeviceLogicType(self, self._id, "RatioCarbonDioxide")
+        return _DeviceLogicType(self, _LT.RatioCarbonDioxide)
 
     @property
     def RatioLiquidCarbonDioxide(self) -> float:
-        return _DeviceLogicType(self, self._id, "RatioLiquidCarbonDioxide")
+        return _DeviceLogicType(self, _LT.RatioLiquidCarbonDioxide)
 
     @property
     def RatioLiquidNitrogen(self) -> float:
-        return _DeviceLogicType(self, self._id, "RatioLiquidNitrogen")
+        return _DeviceLogicType(self, _LT.RatioLiquidNitrogen)
 
     @property
     def RatioLiquidNitrousOxide(self) -> float:
-        return _DeviceLogicType(self, self._id, "RatioLiquidNitrousOxide")
+        return _DeviceLogicType(self, _LT.RatioLiquidNitrousOxide)
 
     @property
     def RatioLiquidOxygen(self) -> float:
-        return _DeviceLogicType(self, self._id, "RatioLiquidOxygen")
+        return _DeviceLogicType(self, _LT.RatioLiquidOxygen)
 
     @property
     def RatioLiquidPollutant(self) -> float:
-        return _DeviceLogicType(self, self._id, "RatioLiquidPollutant")
+        return _DeviceLogicType(self, _LT.RatioLiquidPollutant)
 
     @property
     def RatioLiquidVolatiles(self) -> float:
-        return _DeviceLogicType(self, self._id, "RatioLiquidVolatiles")
+        return _DeviceLogicType(self, _LT.RatioLiquidVolatiles)
 
     @property
     def RatioNitrogen(self) -> float:
-        return _DeviceLogicType(self, self._id, "RatioNitrogen")
+        return _DeviceLogicType(self, _LT.RatioNitrogen)
 
     @property
     def RatioNitrousOxide(self) -> float:
-        return _DeviceLogicType(self, self._id, "RatioNitrousOxide")
+        return _DeviceLogicType(self, _LT.RatioNitrousOxide)
 
     @property
     def RatioOxygen(self) -> float:
-        return _DeviceLogicType(self, self._id, "RatioOxygen")
+        return _DeviceLogicType(self, _LT.RatioOxygen)
 
     @property
     def RatioPollutant(self) -> float:
-        return _DeviceLogicType(self, self._id, "RatioPollutant")
+        return _DeviceLogicType(self, _LT.RatioPollutant)
 
     @property
     def RatioSteam(self) -> float:
-        return _DeviceLogicType(self, self._id, "RatioSteam")
+        return _DeviceLogicType(self, _LT.RatioSteam)
 
     @property
     def RatioVolatiles(self) -> float:
-        return _DeviceLogicType(self, self._id, "RatioVolatiles")
+        return _DeviceLogicType(self, _LT.RatioVolatiles)
 
     @property
     def RatioWater(self) -> float:
-        return _DeviceLogicType(self, self._id, "RatioWater")
+        return _DeviceLogicType(self, _LT.RatioWater)
 
 
 class _BaseGass:
     @property
     def RatioCarbonDioxide(self) -> _DevicesLogicType:
-        return _DevicesLogicType(self._hash, "RatioCarbonDioxide", self._name)
+        return _DevicesLogicType(self, _LT.RatioCarbonDioxide)
 
     @property
     def RatioLiquidCarbonDioxide(self) -> _DevicesLogicType:
-        return _DevicesLogicType(self._hash, "RatioLiquidCarbonDioxide", self._name)
+        return _DevicesLogicType(self, _LT.RatioLiquidCarbonDioxide)
 
     @property
     def RatioLiquidNitrogen(self) -> _DevicesLogicType:
-        return _DevicesLogicType(self._hash, "RatioLiquidNitrogen", self._name)
+        return _DevicesLogicType(self, _LT.RatioLiquidNitrogen)
 
     @property
     def RatioLiquidNitrousOxide(self) -> _DevicesLogicType:
-        return _DevicesLogicType(self._hash, "RatioLiquidNitrousOxide", self._name)
+        return _DevicesLogicType(self, _LT.RatioLiquidNitrousOxide)
 
     @property
     def RatioLiquidOxygen(self) -> _DevicesLogicType:
-        return _DevicesLogicType(self._hash, "RatioLiquidOxygen", self._name)
+        return _DevicesLogicType(self, _LT.RatioLiquidOxygen)
 
     @property
     def RatioLiquidPollutant(self) -> _DevicesLogicType:
-        return _DevicesLogicType(self._hash, "RatioLiquidPollutant", self._name)
+        return _DevicesLogicType(self, _LT.RatioLiquidPollutant)
 
     @property
     def RatioLiquidVolatiles(self) -> _DevicesLogicType:
-        return _DevicesLogicType(self._hash, "RatioLiquidVolatiles", self._name)
+        return _DevicesLogicType(self, _LT.RatioLiquidVolatiles)
 
     @property
     def RatioNitrogen(self) -> _DevicesLogicType:
-        return _DevicesLogicType(self._hash, "RatioNitrogen", self._name)
+        return _DevicesLogicType(self, _LT.RatioNitrogen)
 
     @property
     def RatioNitrousOxide(self) -> _DevicesLogicType:
-        return _DevicesLogicType(self._hash, "RatioNitrousOxide", self._name)
+        return _DevicesLogicType(self, _LT.RatioNitrousOxide)
 
     @property
     def RatioOxygen(self) -> _DevicesLogicType:
-        return _DevicesLogicType(self._hash, "RatioOxygen", self._name)
+        return _DevicesLogicType(self, _LT.RatioOxygen)
 
     @property
     def RatioPollutant(self) -> _DevicesLogicType:
-        return _DevicesLogicType(self._hash, "RatioPollutant", self._name)
+        return _DevicesLogicType(self, _LT.RatioPollutant)
 
     @property
     def RatioSteam(self) -> _DevicesLogicType:
-        return _DevicesLogicType(self._hash, "RatioSteam", self._name)
+        return _DevicesLogicType(self, _LT.RatioSteam)
 
     @property
     def RatioVolatiles(self) -> _DevicesLogicType:
-        return _DevicesLogicType(self._hash, "RatioVolatiles", self._name)
+        return _DevicesLogicType(self, _LT.RatioVolatiles)
 
     @property
     def RatioWater(self) -> _DevicesLogicType:
-        return _DevicesLogicType(self._hash, "RatioWater", self._name)
+        return _DevicesLogicType(self, _LT.RatioWater)
 
 
 class _BaseGasInput:
     @property
     def RatioCarbonDioxideInput(self) -> float:
-        return _DeviceLogicType(self, self._id, "RatioCarbonDioxideInput")
+        return _DeviceLogicType(self, _LT.RatioCarbonDioxideInput)
 
     @property
     def RatioLiquidCarbonDioxideInput(self) -> float:
-        return _DeviceLogicType(self, self._id, "RatioLiquidCarbonDioxideInput")
+        return _DeviceLogicType(self, _LT.RatioLiquidCarbonDioxideInput)
 
     @property
     def RatioLiquidNitrogenInput(self) -> float:
-        return _DeviceLogicType(self, self._id, "RatioLiquidNitrogenInput")
+        return _DeviceLogicType(self, _LT.RatioLiquidNitrogenInput)
 
     @property
     def RatioLiquidNitrousOxideInput(self) -> float:
-        return _DeviceLogicType(self, self._id, "RatioLiquidNitrousOxideInput")
+        return _DeviceLogicType(self, _LT.RatioLiquidNitrousOxideInput)
 
     @property
     def RatioLiquidOxygenInput(self) -> float:
-        return _DeviceLogicType(self, self._id, "RatioLiquidOxygenInput")
+        return _DeviceLogicType(self, _LT.RatioLiquidOxygenInput)
 
     @property
     def RatioLiquidPollutantInput(self) -> float:
-        return _DeviceLogicType(self, self._id, "RatioLiquidPollutantInput")
+        return _DeviceLogicType(self, _LT.RatioLiquidPollutantInput)
 
     @property
     def RatioLiquidVolatilesInput(self) -> float:
-        return _DeviceLogicType(self, self._id, "RatioLiquidVolatilesInput")
+        return _DeviceLogicType(self, _LT.RatioLiquidVolatilesInput)
 
     @property
     def RatioNitrogenInput(self) -> float:
-        return _DeviceLogicType(self, self._id, "RatioNitrogenInput")
+        return _DeviceLogicType(self, _LT.RatioNitrogenInput)
 
     @property
     def RatioNitrousOxideInput(self) -> float:
-        return _DeviceLogicType(self, self._id, "RatioNitrousOxideInput")
+        return _DeviceLogicType(self, _LT.RatioNitrousOxideInput)
 
     @property
     def RatioOxygenInput(self) -> float:
-        return _DeviceLogicType(self, self._id, "RatioOxygenInput")
+        return _DeviceLogicType(self, _LT.RatioOxygenInput)
 
     @property
     def RatioPollutantInput(self) -> float:
-        return _DeviceLogicType(self, self._id, "RatioPollutantInput")
+        return _DeviceLogicType(self, _LT.RatioPollutantInput)
 
     @property
     def RatioSteamInput(self) -> float:
-        return _DeviceLogicType(self, self._id, "RatioSteamInput")
+        return _DeviceLogicType(self, _LT.RatioSteamInput)
 
     @property
     def RatioVolatilesInput(self) -> float:
-        return _DeviceLogicType(self, self._id, "RatioVolatilesInput")
+        return _DeviceLogicType(self, _LT.RatioVolatilesInput)
 
     @property
     def RatioWaterInput(self) -> float:
-        return _DeviceLogicType(self, self._id, "RatioWaterInput")
+        return _DeviceLogicType(self, _LT.RatioWaterInput)
 
 
 class _BaseGasInputs:
     @property
     def RatioCarbonDioxideInput(self) -> _DevicesLogicType:
-        return _DevicesLogicType(self._hash, "RatioCarbonDioxideInput", self._name)
+        return _DevicesLogicType(self, _LT.RatioCarbonDioxideInput)
 
     @property
     def RatioLiquidCarbonDioxideInput(self) -> _DevicesLogicType:
-        return _DevicesLogicType(
-            self._hash, "RatioLiquidCarbonDioxideInput", self._name
-        )
+        return _DevicesLogicType(self, _LT.RatioLiquidCarbonDioxideInput)
 
     @property
     def RatioLiquidNitrogenInput(self) -> _DevicesLogicType:
-        return _DevicesLogicType(self._hash, "RatioLiquidNitrogenInput", self._name)
+        return _DevicesLogicType(self, _LT.RatioLiquidNitrogenInput)
 
     @property
     def RatioLiquidNitrousOxideInput(self) -> _DevicesLogicType:
-        return _DevicesLogicType(self._hash, "RatioLiquidNitrousOxideInput", self._name)
+        return _DevicesLogicType(self, _LT.RatioLiquidNitrousOxideInput)
 
     @property
     def RatioLiquidOxygenInput(self) -> _DevicesLogicType:
-        return _DevicesLogicType(self._hash, "RatioLiquidOxygenInput", self._name)
+        return _DevicesLogicType(self, _LT.RatioLiquidOxygenInput)
 
     @property
     def RatioLiquidPollutantInput(self) -> _DevicesLogicType:
-        return _DevicesLogicType(self._hash, "RatioLiquidPollutantInput", self._name)
+        return _DevicesLogicType(self, _LT.RatioLiquidPollutantInput)
 
     @property
     def RatioLiquidVolatilesInput(self) -> _DevicesLogicType:
-        return _DevicesLogicType(self._hash, "RatioLiquidVolatilesInput", self._name)
+        return _DevicesLogicType(self, _LT.RatioLiquidVolatilesInput)
 
     @property
     def RatioNitrogenInput(self) -> _DevicesLogicType:
-        return _DevicesLogicType(self._hash, "RatioNitrogenInput", self._name)
+        return _DevicesLogicType(self, _LT.RatioNitrogenInput)
 
     @property
     def RatioNitrousOxideInput(self) -> _DevicesLogicType:
-        return _DevicesLogicType(self._hash, "RatioNitrousOxideInput", self._name)
+        return _DevicesLogicType(self, _LT.RatioNitrousOxideInput)
 
     @property
     def RatioOxygenInput(self) -> _DevicesLogicType:
-        return _DevicesLogicType(self._hash, "RatioOxygenInput", self._name)
+        return _DevicesLogicType(self, _LT.RatioOxygenInput)
 
     @property
     def RatioPollutantInput(self) -> _DevicesLogicType:
-        return _DevicesLogicType(self._hash, "RatioPollutantInput", self._name)
+        return _DevicesLogicType(self, _LT.RatioPollutantInput)
 
     @property
     def RatioSteamInput(self) -> _DevicesLogicType:
-        return _DevicesLogicType(self._hash, "RatioSteamInput", self._name)
+        return _DevicesLogicType(self, _LT.RatioSteamInput)
 
     @property
     def RatioVolatilesInput(self) -> _DevicesLogicType:
-        return _DevicesLogicType(self._hash, "RatioVolatilesInput", self._name)
+        return _DevicesLogicType(self, _LT.RatioVolatilesInput)
 
     @property
     def RatioWaterInput(self) -> _DevicesLogicType:
-        return _DevicesLogicType(self._hash, "RatioWaterInput", self._name)
+        return _DevicesLogicType(self, _LT.RatioWaterInput)
 
 
 class _BaseGasOutput:
     @property
     def RatioCarbonDioxideOutput(self) -> float:
-        return _DeviceLogicType(self, self._id, "RatioCarbonDioxideOutput")
+        return _DeviceLogicType(self, _LT.RatioCarbonDioxideOutput)
 
     @property
     def RatioLiquidCarbonDioxideOutput(self) -> float:
-        return _DeviceLogicType(self, self._id, "RatioLiquidCarbonDioxideOutput")
+        return _DeviceLogicType(self, _LT.RatioLiquidCarbonDioxideOutput)
 
     @property
     def RatioLiquidNitrogenOutput(self) -> float:
-        return _DeviceLogicType(self, self._id, "RatioLiquidNitrogenOutput")
+        return _DeviceLogicType(self, _LT.RatioLiquidNitrogenOutput)
 
     @property
     def RatioLiquidNitrousOxideOutput(self) -> float:
-        return _DeviceLogicType(self, self._id, "RatioLiquidNitrousOxideOutput")
+        return _DeviceLogicType(self, _LT.RatioLiquidNitrousOxideOutput)
 
     @property
     def RatioLiquidOxygenOutput(self) -> float:
-        return _DeviceLogicType(self, self._id, "RatioLiquidOxygenOutput")
+        return _DeviceLogicType(self, _LT.RatioLiquidOxygenOutput)
 
     @property
     def RatioLiquidPollutantOutput(self) -> float:
-        return _DeviceLogicType(self, self._id, "RatioLiquidPollutantOutput")
+        return _DeviceLogicType(self, _LT.RatioLiquidPollutantOutput)
 
     @property
     def RatioLiquidVolatilesOutput(self) -> float:
-        return _DeviceLogicType(self, self._id, "RatioLiquidVolatilesOutput")
+        return _DeviceLogicType(self, _LT.RatioLiquidVolatilesOutput)
 
     @property
     def RatioNitrogenOutput(self) -> float:
-        return _DeviceLogicType(self, self._id, "RatioNitrogenOutput")
+        return _DeviceLogicType(self, _LT.RatioNitrogenOutput)
 
     @property
     def RatioNitrousOxideOutput(self) -> float:
-        return _DeviceLogicType(self, self._id, "RatioNitrousOxideOutput")
+        return _DeviceLogicType(self, _LT.RatioNitrousOxideOutput)
 
     @property
     def RatioOxygenOutput(self) -> float:
-        return _DeviceLogicType(self, self._id, "RatioOxygenOutput")
+        return _DeviceLogicType(self, _LT.RatioOxygenOutput)
 
     @property
     def RatioPollutantOutput(self) -> float:
-        return _DeviceLogicType(self, self._id, "RatioPollutantOutput")
+        return _DeviceLogicType(self, _LT.RatioPollutantOutput)
 
     @property
     def RatioSteamOutput(self) -> float:
-        return _DeviceLogicType(self, self._id, "RatioSteamOutput")
+        return _DeviceLogicType(self, _LT.RatioSteamOutput)
 
     @property
     def RatioVolatilesOutput(self) -> float:
-        return _DeviceLogicType(self, self._id, "RatioVolatilesOutput")
+        return _DeviceLogicType(self, _LT.RatioVolatilesOutput)
 
     @property
     def RatioWaterOutput(self) -> float:
-        return _DeviceLogicType(self, self._id, "RatioWaterOutput")
+        return _DeviceLogicType(self, _LT.RatioWaterOutput)
 
 
 class _BaseGasOutputs:
     @property
     def RatioCarbonDioxideOutput(self) -> _DevicesLogicType:
-        return _DevicesLogicType(self._hash, "RatioCarbonDioxideOutput", self._name)
+        return _DevicesLogicType(self, _LT.RatioCarbonDioxideOutput)
 
     @property
     def RatioLiquidCarbonDioxideOutput(self) -> _DevicesLogicType:
-        return _DevicesLogicType(
-            self._hash, "RatioLiquidCarbonDioxideOutput", self._name
-        )
+        return _DevicesLogicType(self, _LT.RatioLiquidCarbonDioxideOutput)
 
     @property
     def RatioLiquidNitrogenOutput(self) -> _DevicesLogicType:
-        return _DevicesLogicType(self._hash, "RatioLiquidNitrogenOutput", self._name)
+        return _DevicesLogicType(self, _LT.RatioLiquidNitrogenOutput)
 
     @property
     def RatioLiquidNitrousOxideOutput(self) -> _DevicesLogicType:
-        return _DevicesLogicType(
-            self._hash, "RatioLiquidNitrousOxideOutput", self._name
-        )
+        return _DevicesLogicType(self, _LT.RatioLiquidNitrousOxideOutput)
 
     @property
     def RatioLiquidOxygenOutput(self) -> _DevicesLogicType:
-        return _DevicesLogicType(self._hash, "RatioLiquidOxygenOutput", self._name)
+        return _DevicesLogicType(self, _LT.RatioLiquidOxygenOutput)
 
     @property
     def RatioLiquidPollutantOutput(self) -> _DevicesLogicType:
-        return _DevicesLogicType(self._hash, "RatioLiquidPollutantOutput", self._name)
+        return _DevicesLogicType(self, _LT.RatioLiquidPollutantOutput)
 
     @property
     def RatioLiquidVolatilesOutput(self) -> _DevicesLogicType:
-        return _DevicesLogicType(self._hash, "RatioLiquidVolatilesOutput", self._name)
+        return _DevicesLogicType(self, _LT.RatioLiquidVolatilesOutput)
 
     @property
     def RatioNitrogenOutput(self) -> _DevicesLogicType:
-        return _DevicesLogicType(self._hash, "RatioNitrogenOutput", self._name)
+        return _DevicesLogicType(self, _LT.RatioNitrogenOutput)
 
     @property
     def RatioNitrousOxideOutput(self) -> _DevicesLogicType:
-        return _DevicesLogicType(self._hash, "RatioNitrousOxideOutput", self._name)
+        return _DevicesLogicType(self, _LT.RatioNitrousOxideOutput)
 
     @property
     def RatioOxygenOutput(self) -> _DevicesLogicType:
-        return _DevicesLogicType(self._hash, "RatioOxygenOutput", self._name)
+        return _DevicesLogicType(self, _LT.RatioOxygenOutput)
 
     @property
     def RatioPollutantOutput(self) -> _DevicesLogicType:
-        return _DevicesLogicType(self._hash, "RatioPollutantOutput", self._name)
+        return _DevicesLogicType(self, _LT.RatioPollutantOutput)
 
     @property
     def RatioSteamOutput(self) -> _DevicesLogicType:
-        return _DevicesLogicType(self._hash, "RatioSteamOutput", self._name)
+        return _DevicesLogicType(self, _LT.RatioSteamOutput)
 
     @property
     def RatioVolatilesOutput(self) -> _DevicesLogicType:
-        return _DevicesLogicType(self._hash, "RatioVolatilesOutput", self._name)
+        return _DevicesLogicType(self, _LT.RatioVolatilesOutput)
 
     @property
     def RatioWaterOutput(self) -> _DevicesLogicType:
-        return _DevicesLogicType(self._hash, "RatioWaterOutput", self._name)
+        return _DevicesLogicType(self, _LT.RatioWaterOutput)
 
 
 class _BaseGasOutput2:
     @property
     def RatioCarbonDioxideOutput2(self) -> float:
-        return _DeviceLogicType(self, self._id, "RatioCarbonDioxideOutput2")
+        return _DeviceLogicType(self, _LT.RatioCarbonDioxideOutput2)
 
     @property
     def RatioLiquidCarbonDioxideOutput2(self) -> float:
-        return _DeviceLogicType(self, self._id, "RatioLiquidCarbonDioxideOutput2")
+        return _DeviceLogicType(self, _LT.RatioLiquidCarbonDioxideOutput2)
 
     @property
     def RatioLiquidNitrogenOutput2(self) -> float:
-        return _DeviceLogicType(self, self._id, "RatioLiquidNitrogenOutput2")
+        return _DeviceLogicType(self, _LT.RatioLiquidNitrogenOutput2)
 
     @property
     def RatioLiquidNitrousOxideOutput2(self) -> float:
-        return _DeviceLogicType(self, self._id, "RatioLiquidNitrousOxideOutput2")
+        return _DeviceLogicType(self, _LT.RatioLiquidNitrousOxideOutput2)
 
     @property
     def RatioLiquidOxygenOutput2(self) -> float:
-        return _DeviceLogicType(self, self._id, "RatioLiquidOxygenOutput2")
+        return _DeviceLogicType(self, _LT.RatioLiquidOxygenOutput2)
 
     @property
     def RatioLiquidPollutantOutput2(self) -> float:
-        return _DeviceLogicType(self, self._id, "RatioLiquidPollutantOutput2")
+        return _DeviceLogicType(self, _LT.RatioLiquidPollutantOutput2)
 
     @property
     def RatioLiquidVolatilesOutput2(self) -> float:
-        return _DeviceLogicType(self, self._id, "RatioLiquidVolatilesOutput2")
+        return _DeviceLogicType(self, _LT.RatioLiquidVolatilesOutput2)
 
     @property
     def RatioNitrogenOutput2(self) -> float:
-        return _DeviceLogicType(self, self._id, "RatioNitrogenOutput2")
+        return _DeviceLogicType(self, _LT.RatioNitrogenOutput2)
 
     @property
     def RatioNitrousOxideOutput2(self) -> float:
-        return _DeviceLogicType(self, self._id, "RatioNitrousOxideOutput2")
+        return _DeviceLogicType(self, _LT.RatioNitrousOxideOutput2)
 
     @property
     def RatioOxygenOutput2(self) -> float:
-        return _DeviceLogicType(self, self._id, "RatioOxygenOutput2")
+        return _DeviceLogicType(self, _LT.RatioOxygenOutput2)
 
     @property
     def RatioPollutantOutput2(self) -> float:
-        return _DeviceLogicType(self, self._id, "RatioPollutantOutput2")
+        return _DeviceLogicType(self, _LT.RatioPollutantOutput2)
 
     @property
     def RatioSteamOutput2(self) -> float:
-        return _DeviceLogicType(self, self._id, "RatioSteamOutput2")
+        return _DeviceLogicType(self, _LT.RatioSteamOutput2)
 
     @property
     def RatioVolatilesOutput2(self) -> float:
-        return _DeviceLogicType(self, self._id, "RatioVolatilesOutput2")
+        return _DeviceLogicType(self, _LT.RatioVolatilesOutput2)
 
     @property
     def RatioWaterOutput2(self) -> float:
-        return _DeviceLogicType(self, self._id, "RatioWaterOutput2")
+        return _DeviceLogicType(self, _LT.RatioWaterOutput2)
 
 
 class _BaseGasOutput2s:
     @property
     def RatioCarbonDioxideOutput2(self) -> _DevicesLogicType:
-        return _DevicesLogicType(self._hash, "RatioCarbonDioxideOutput2", self._name)
+        return _DevicesLogicType(self, _LT.RatioCarbonDioxideOutput2)
 
     @property
     def RatioLiquidCarbonDioxideOutput2(self) -> _DevicesLogicType:
-        return _DevicesLogicType(
-            self._hash, "RatioLiquidCarbonDioxideOutput2", self._name
-        )
+        return _DevicesLogicType(self, _LT.RatioLiquidCarbonDioxideOutput2)
 
     @property
     def RatioLiquidNitrogenOutput2(self) -> _DevicesLogicType:
-        return _DevicesLogicType(self._hash, "RatioLiquidNitrogenOutput2", self._name)
+        return _DevicesLogicType(self, _LT.RatioLiquidNitrogenOutput2)
 
     @property
     def RatioLiquidNitrousOxideOutput2(self) -> _DevicesLogicType:
-        return _DevicesLogicType(
-            self._hash, "RatioLiquidNitrousOxideOutput2", self._name
-        )
+        return _DevicesLogicType(self, _LT.RatioLiquidNitrousOxideOutput2)
 
     @property
     def RatioLiquidOxygenOutput2(self) -> _DevicesLogicType:
-        return _DevicesLogicType(self._hash, "RatioLiquidOxygenOutput2", self._name)
+        return _DevicesLogicType(self, _LT.RatioLiquidOxygenOutput2)
 
     @property
     def RatioLiquidPollutantOutput2(self) -> _DevicesLogicType:
-        return _DevicesLogicType(self._hash, "RatioLiquidPollutantOutput2", self._name)
+        return _DevicesLogicType(self, _LT.RatioLiquidPollutantOutput2)
 
     @property
     def RatioLiquidVolatilesOutput2(self) -> _DevicesLogicType:
-        return _DevicesLogicType(self._hash, "RatioLiquidVolatilesOutput2", self._name)
+        return _DevicesLogicType(self, _LT.RatioLiquidVolatilesOutput2)
 
     @property
     def RatioNitrogenOutput2(self) -> _DevicesLogicType:
-        return _DevicesLogicType(self._hash, "RatioNitrogenOutput2", self._name)
+        return _DevicesLogicType(self, _LT.RatioNitrogenOutput2)
 
     @property
     def RatioNitrousOxideOutput2(self) -> _DevicesLogicType:
-        return _DevicesLogicType(self._hash, "RatioNitrousOxideOutput2", self._name)
+        return _DevicesLogicType(self, _LT.RatioNitrousOxideOutput2)
 
     @property
     def RatioOxygenOutput2(self) -> _DevicesLogicType:
-        return _DevicesLogicType(self._hash, "RatioOxygenOutput2", self._name)
+        return _DevicesLogicType(self, _LT.RatioOxygenOutput2)
 
     @property
     def RatioPollutantOutput2(self) -> _DevicesLogicType:
-        return _DevicesLogicType(self._hash, "RatioPollutantOutput2", self._name)
+        return _DevicesLogicType(self, _LT.RatioPollutantOutput2)
 
     @property
     def RatioSteamOutput2(self) -> _DevicesLogicType:
-        return _DevicesLogicType(self._hash, "RatioSteamOutput2", self._name)
+        return _DevicesLogicType(self, _LT.RatioSteamOutput2)
 
     @property
     def RatioVolatilesOutput2(self) -> _DevicesLogicType:
-        return _DevicesLogicType(self._hash, "RatioVolatilesOutput2", self._name)
+        return _DevicesLogicType(self, _LT.RatioVolatilesOutput2)
 
     @property
     def RatioWaterOutput2(self) -> _DevicesLogicType:
-        return _DevicesLogicType(self._hash, "RatioWaterOutput2", self._name)
+        return _DevicesLogicType(self, _LT.RatioWaterOutput2)
 
 
 class _Power:
     @property
     def On(self) -> float:
-        return _DeviceLogicType(self, self._id, "On")
+        return _DeviceLogicType(self, _LT.On)
 
     @On.setter
     def On(self, value: int | float):
@@ -1297,17 +1223,17 @@ class _Power:
 
     @property
     def Power(self) -> float:
-        return _DeviceLogicType(self, self._id, "Power")
+        return _DeviceLogicType(self, _LT.Power)
 
     @property
     def RequiredPower(self) -> float:
-        return _DeviceLogicType(self, self._id, "RequiredPower")
+        return _DeviceLogicType(self, _LT.RequiredPower)
 
 
 class _Powers:
     @property
     def On(self) -> _DevicesLogicType:
-        return _DevicesLogicType(self._hash, "On", self._name)
+        return _DevicesLogicType(self, _LT.On)
 
     @On.setter
     def On(self, value: int | float):
@@ -1315,17 +1241,17 @@ class _Powers:
 
     @property
     def Power(self) -> _DevicesLogicType:
-        return _DevicesLogicType(self._hash, "Power", self._name)
+        return _DevicesLogicType(self, _LT.Power)
 
     @property
     def RequiredPower(self) -> _DevicesLogicType:
-        return _DevicesLogicType(self._hash, "RequiredPower", self._name)
+        return _DevicesLogicType(self, _LT.RequiredPower)
 
 
 class _On:
     @property
     def On(self) -> float:
-        return _DeviceLogicType(self, self._id, "On")
+        return _DeviceLogicType(self, _LT.On)
 
     @On.setter
     def On(self, value: int | float):
@@ -1335,7 +1261,7 @@ class _On:
 class _Ons:
     @property
     def On(self) -> _DevicesLogicType:
-        return _DevicesLogicType(self._hash, "On", self._name)
+        return _DevicesLogicType(self, _LT.On)
 
     @On.setter
     def On(self, value: int | float):
@@ -1345,7 +1271,7 @@ class _Ons:
 class _Activate:
     @property
     def Activate(self) -> float:
-        return _DeviceLogicType(self, self._id, "Activate")
+        return _DeviceLogicType(self, _LT.Activate)
 
     @Activate.setter
     def Activate(self, value: int | float):
@@ -1355,7 +1281,7 @@ class _Activate:
 class _Activates:
     @property
     def Activate(self) -> _DevicesLogicType:
-        return _DevicesLogicType(self._hash, "Activate", self._name)
+        return _DevicesLogicType(self, _LT.Activate)
 
     @Activate.setter
     def Activate(self, value: int | float):
@@ -1365,7 +1291,7 @@ class _Activates:
 class _Lock:
     @property
     def Lock(self) -> float:
-        return _DeviceLogicType(self, self._id, "Lock")
+        return _DeviceLogicType(self, _LT.Lock)
 
     @Lock.setter
     def Lock(self, value: int | float):
@@ -1375,7 +1301,7 @@ class _Lock:
 class _Locks:
     @property
     def Lock(self) -> _DevicesLogicType:
-        return _DevicesLogicType(self._hash, "Lock", self._name)
+        return _DevicesLogicType(self, _LT.Lock)
 
     @Lock.setter
     def Lock(self, value: int | float):
@@ -1385,7 +1311,7 @@ class _Locks:
 class _Open:
     @property
     def Open(self) -> float:
-        return _DeviceLogicType(self, self._id, "Open")
+        return _DeviceLogicType(self, _LT.Open)
 
     @Open.setter
     def Open(self, value: int | float):
@@ -1395,7 +1321,7 @@ class _Open:
 class _Opens:
     @property
     def Open(self) -> _DevicesLogicType:
-        return _DevicesLogicType(self._hash, "Open", self._name)
+        return _DevicesLogicType(self, _LT.Open)
 
     @Open.setter
     def Open(self, value: int | float):
@@ -1405,43 +1331,43 @@ class _Opens:
 class _Error:
     @property
     def Error(self) -> float:
-        return _DeviceLogicType(self, self._id, "Error")
+        return _DeviceLogicType(self, _LT.Error)
 
 
 class _Errors:
     @property
     def Error(self) -> _DevicesLogicType:
-        return _DevicesLogicType(self._hash, "Error", self._name)
+        return _DevicesLogicType(self, _LT.Error)
 
 
 class _Ratio:
     @property
     def Ratio(self) -> float:
-        return _DeviceLogicType(self, self._id, "Ratio")
+        return _DeviceLogicType(self, _LT.Ratio)
 
 
 class _Ratios:
     @property
     def Ratio(self) -> _DevicesLogicType:
-        return _DevicesLogicType(self._hash, "Ratio", self._name)
+        return _DevicesLogicType(self, _LT.Ratio)
 
 
 class _Maximum:
     @property
     def Maximum(self) -> float:
-        return _DeviceLogicType(self, self._id, "Maximum")
+        return _DeviceLogicType(self, _LT.Maximum)
 
 
 class _Maximums:
     @property
     def Maximum(self) -> _DevicesLogicType:
-        return _DevicesLogicType(self._hash, "Maximum", self._name)
+        return _DevicesLogicType(self, _LT.Maximum)
 
 
 class _SettingW:
     @property
     def Setting(self) -> float:
-        return _DeviceLogicType(self, self._id, "Setting")
+        return _DeviceLogicType(self, _LT.Setting)
 
     @Setting.setter
     def Setting(self, value: int | float):
@@ -1451,7 +1377,7 @@ class _SettingW:
 class _SettingWs:
     @property
     def Setting(self) -> _DevicesLogicType:
-        return _DevicesLogicType(self._hash, "Setting", self._name)
+        return _DevicesLogicType(self, _LT.Setting)
 
     @Setting.setter
     def Setting(self, value: int | float):
@@ -1461,19 +1387,19 @@ class _SettingWs:
 class _SettingR:
     @property
     def Setting(self) -> float:
-        return _DeviceLogicType(self, self._id, "Setting")
+        return _DeviceLogicType(self, _LT.Setting)
 
 
 class _SettingRs:
     @property
     def Setting(self) -> _DevicesLogicType:
-        return _DevicesLogicType(self._hash, "Setting", self._name)
+        return _DevicesLogicType(self, _LT.Setting)
 
 
 class _Mode:
     @property
     def Mode(self) -> float:
-        return _DeviceLogicType(self, self._id, "Mode")
+        return _DeviceLogicType(self, _LT.Mode)
 
     @Mode.setter
     def Mode(self, value: int | float):
@@ -1483,7 +1409,7 @@ class _Mode:
 class _Modes:
     @property
     def Mode(self) -> _DevicesLogicType:
-        return _DevicesLogicType(self._hash, "Mode", self._name)
+        return _DevicesLogicType(self, _LT.Mode)
 
     @Mode.setter
     def Mode(self, value: int | float):
@@ -1493,83 +1419,83 @@ class _Modes:
 class _ModeR:
     @property
     def Mode(self) -> float:
-        return _DeviceLogicType(self, self._id, "Mode")
+        return _DeviceLogicType(self, _LT.Mode)
 
 
 class _ModeRs:
     @property
     def Mode(self) -> _DevicesLogicType:
-        return _DevicesLogicType(self._hash, "Mode", self._name)
+        return _DevicesLogicType(self, _LT.Mode)
 
 
 class _Temperature:
     @property
     def Pressure(self) -> float:
-        return _DeviceLogicType(self, self._id, "Pressure")
+        return _DeviceLogicType(self, _LT.Pressure)
 
     @property
     def Temperature(self) -> float:
-        return _DeviceLogicType(self, self._id, "Temperature")
+        return _DeviceLogicType(self, _LT.Temperature)
 
 
 class _Temperatures:
     @property
     def Pressure(self) -> _DevicesLogicType:
-        return _DevicesLogicType(self._hash, "Pressure", self._name)
+        return _DevicesLogicType(self, _LT.Pressure)
 
     @property
     def Temperature(self) -> _DevicesLogicType:
-        return _DevicesLogicType(self._hash, "Temperature", self._name)
+        return _DevicesLogicType(self, _LT.Temperature)
 
 
 class _PollWater:
     @property
     def RatioPollutedWater(self) -> float:
-        return _DeviceLogicType(self, self._id, "RatioPollutedWater")
+        return _DeviceLogicType(self, _LT.RatioPollutedWater)
 
 
 class _PollWaters:
     @property
     def RatioPollutedWater(self) -> _DevicesLogicType:
-        return _DevicesLogicType(self._hash, "RatioPollutedWater", self._name)
+        return _DevicesLogicType(self, _LT.RatioPollutedWater)
 
 
 class _Combustion:
     @property
     def Combustion(self) -> float:
-        return _DeviceLogicType(self, self._id, "Combustion")
+        return _DeviceLogicType(self, _LT.Combustion)
 
     @property
     def TotalMoles(self) -> float:
-        return _DeviceLogicType(self, self._id, "TotalMoles")
+        return _DeviceLogicType(self, _LT.TotalMoles)
 
 
 class _Combustions:
     @property
     def Combustion(self) -> _DevicesLogicType:
-        return _DevicesLogicType(self._hash, "Combustion", self._name)
+        return _DevicesLogicType(self, _LT.Combustion)
 
     @property
     def TotalMoles(self) -> _DevicesLogicType:
-        return _DevicesLogicType(self._hash, "TotalMoles", self._name)
+        return _DevicesLogicType(self, _LT.TotalMoles)
 
 
 class _Idle:
     @property
     def Idle(self) -> float:
-        return _DeviceLogicType(self, self._id, "Idle")
+        return _DeviceLogicType(self, _LT.Idle)
 
 
 class _Idles:
     @property
     def Idle(self) -> _DevicesLogicType:
-        return _DevicesLogicType(self._hash, "Idle", self._name)
+        return _DevicesLogicType(self, _LT.Idle)
 
 
 class _ImportCount:
     @property
     def ImportCount(self) -> float:
-        return _DeviceLogicType(self, self._id, "ImportCount")
+        return _DeviceLogicType(self, _LT.ImportCount)
 
     @ImportCount.setter
     def ImportCount(self, value: int | float):
@@ -1579,7 +1505,7 @@ class _ImportCount:
 class _ImportCounts:
     @property
     def ImportCount(self) -> _DevicesLogicType:
-        return _DevicesLogicType(self._hash, "ImportCount", self._name)
+        return _DevicesLogicType(self, _LT.ImportCount)
 
     @ImportCount.setter
     def ImportCount(self, value: int | float):
@@ -1589,7 +1515,7 @@ class _ImportCounts:
 class _ClearMemory:
     @property
     def ClearMemory(self) -> float:
-        return _DeviceLogicType(self, self._id, "ClearMemory")
+        return _DeviceLogicType(self, _LT.ClearMemory)
 
     @ClearMemory.setter
     def ClearMemory(self, value: int | float):
@@ -1599,7 +1525,7 @@ class _ClearMemory:
 class _ClearMemorys:
     @property
     def ClearMemory(self) -> _DevicesLogicType:
-        return _DevicesLogicType(self._hash, "ClearMemory", self._name)
+        return _DevicesLogicType(self, _LT.ClearMemory)
 
     @ClearMemory.setter
     def ClearMemory(self, value: int | float):
@@ -1609,91 +1535,91 @@ class _ClearMemorys:
 class _Hydrogen:
     @property
     def RatioHydrogen(self) -> float:
-        return _DeviceLogicType(self, self._id, "RatioHydrogen")
+        return _DeviceLogicType(self, _LT.RatioHydrogen)
 
     @property
     def RatioLiquidHydrogen(self) -> float:
-        return _DeviceLogicType(self, self._id, "RatioLiquidHydrogen")
+        return _DeviceLogicType(self, _LT.RatioLiquidHydrogen)
 
 
 class _Hydrogens:
     @property
     def RatioHydrogen(self) -> _DevicesLogicType:
-        return _DevicesLogicType(self._hash, "RatioHydrogen", self._name)
+        return _DevicesLogicType(self, _LT.RatioHydrogen)
 
     @property
     def RatioLiquidHydrogen(self) -> _DevicesLogicType:
-        return _DevicesLogicType(self._hash, "RatioLiquidHydrogen", self._name)
+        return _DevicesLogicType(self, _LT.RatioLiquidHydrogen)
 
 
 class _ImportCount:
     @property
     def ImportCount(self) -> float:
-        return _DeviceLogicType(self, self._id, "ImportCount")
+        return _DeviceLogicType(self, _LT.ImportCount)
 
 
 class _ImportCounts:
     @property
     def ImportCount(self) -> _DevicesLogicType:
-        return _DevicesLogicType(self._hash, "ImportCount", self._name)
+        return _DevicesLogicType(self, _LT.ImportCount)
 
 
 class _ExportCount:
     @property
     def ExportCount(self) -> float:
-        return _DeviceLogicType(self, self._id, "ExportCount")
+        return _DeviceLogicType(self, _LT.ExportCount)
 
 
 class _ExportCounts:
     @property
     def ExportCount(self) -> _DevicesLogicType:
-        return _DevicesLogicType(self._hash, "ExportCount", self._name)
+        return _DevicesLogicType(self, _LT.ExportCount)
 
 
 class _Volume:
     @property
     def Volume(self) -> float:
-        return _DeviceLogicType(self, self._id, "Volume")
+        return _DeviceLogicType(self, _LT.Volume)
 
     @property
     def VolumeOfLiquid(self) -> float:
-        return _DeviceLogicType(self, self._id, "VolumeOfLiquid")
+        return _DeviceLogicType(self, _LT.VolumeOfLiquid)
 
 
 class _Volumes:
     @property
     def Volume(self) -> _DevicesLogicType:
-        return _DevicesLogicType(self._hash, "Volume", self._name)
+        return _DevicesLogicType(self, _LT.Volume)
 
     @property
     def VolumeOfLiquid(self) -> _DevicesLogicType:
-        return _DevicesLogicType(self._hash, "VolumeOfLiquid", self._name)
+        return _DevicesLogicType(self, _LT.VolumeOfLiquid)
 
 
 class _Vertical:
     @property
     def Horizontal(self) -> float:
-        return _DeviceLogicType(self, self._id, "Horizontal")
+        return _DeviceLogicType(self, _LT.Horizontal)
 
     @property
     def Vertical(self) -> float:
-        return _DeviceLogicType(self, self._id, "Vertical")
+        return _DeviceLogicType(self, _LT.Vertical)
 
 
 class _Verticals:
     @property
     def Horizontal(self) -> _DevicesLogicType:
-        return _DevicesLogicType(self._hash, "Horizontal", self._name)
+        return _DevicesLogicType(self, _LT.Horizontal)
 
     @property
     def Vertical(self) -> _DevicesLogicType:
-        return _DevicesLogicType(self._hash, "Vertical", self._name)
+        return _DevicesLogicType(self, _LT.Vertical)
 
 
 class _VerticalW:
     @property
     def Horizontal(self) -> float:
-        return _DeviceLogicType(self, self._id, "Horizontal")
+        return _DeviceLogicType(self, _LT.Horizontal)
 
     @Horizontal.setter
     def Horizontal(self, value: int | float):
@@ -1701,7 +1627,7 @@ class _VerticalW:
 
     @property
     def Vertical(self) -> float:
-        return _DeviceLogicType(self, self._id, "Vertical")
+        return _DeviceLogicType(self, _LT.Vertical)
 
     @Vertical.setter
     def Vertical(self, value: int | float):
@@ -1711,7 +1637,7 @@ class _VerticalW:
 class _VerticalWs:
     @property
     def Horizontal(self) -> _DevicesLogicType:
-        return _DevicesLogicType(self._hash, "Horizontal", self._name)
+        return _DevicesLogicType(self, _LT.Horizontal)
 
     @Horizontal.setter
     def Horizontal(self, value: int | float):
@@ -1719,7 +1645,7 @@ class _VerticalWs:
 
     @property
     def Vertical(self) -> _DevicesLogicType:
-        return _DevicesLogicType(self._hash, "Vertical", self._name)
+        return _DevicesLogicType(self, _LT.Vertical)
 
     @Vertical.setter
     def Vertical(self, value: int | float):
@@ -1729,7 +1655,7 @@ class _VerticalWs:
 class _RecipeHash:
     @property
     def RecipeHash(self) -> float:
-        return _DeviceLogicType(self, self._id, "RecipeHash")
+        return _DeviceLogicType(self, _LT.RecipeHash)
 
     @RecipeHash.setter
     def RecipeHash(self, value: int | float):
@@ -1739,7 +1665,7 @@ class _RecipeHash:
 class _RecipeHashs:
     @property
     def RecipeHash(self) -> _DevicesLogicType:
-        return _DevicesLogicType(self._hash, "RecipeHash", self._name)
+        return _DevicesLogicType(self, _LT.RecipeHash)
 
     @RecipeHash.setter
     def RecipeHash(self, value: int | float):
@@ -1749,45 +1675,47 @@ class _RecipeHashs:
 class _Charge:
     @property
     def Charge(self) -> float:
-        return _DeviceLogicType(self, self._id, "Charge")
+        return _DeviceLogicType(self, _LT.Charge)
 
 
 class _Charges:
     @property
     def Charge(self) -> _DevicesLogicType:
-        return _DevicesLogicType(self._hash, "Charge", self._name)
+        return _DevicesLogicType(self, _LT.Charge)
 
 
 class _Reagents:
     @property
     def Reagents(self) -> float:
-        return _DeviceLogicType(self, self._id, "Reagents")
+        return _DeviceLogicType(self, _LT.Reagents)
 
 
 class _Reagentss:
     @property
     def Reagents(self) -> _DevicesLogicType:
-        return _DevicesLogicType(self._hash, "Reagents", self._name)
+        return _DevicesLogicType(self, _LT.Reagents)
 
 
 class _Quantity:
     @property
     def Quantity(self) -> float:
-        return _DeviceLogicType(self, self._id, "Quantity")
+        return _DeviceLogicType(self, _LT.Quantity)
 
 
 class _Quantitys:
     @property
     def Quantity(self) -> _DevicesLogicType:
-        return _DevicesLogicType(self._hash, "Quantity", self._name)
+        return _DevicesLogicType(self, _LT.Quantity)
 
 
 class AccessBridge(_BaseStructure, _Activate, _Lock, _Open, _Power):
     _hash: int = 1298920475
+    _prefab_name: int = "StructureAccessBridge"
 
 
 class _AccessBridges(_BaseStructures, _Activates, _Locks, _Opens, _Powers):
     _hash: int = 1298920475
+    _prefab_name: int = "StructureAccessBridge"
 
     def __getitem__(self, name: str | int | float) -> "_AccessBridges":
         return _AccessBridges(name)
@@ -1798,103 +1726,105 @@ AccessBridges: _AccessBridges = _AccessBridges()
 
 class LiquidDrain(_BaseStructure, _Error, _Lock, _Maximum, _Power, _Ratio, _SettingW):
     _hash: int = 1687692899
+    _prefab_name: int = "StructureLiquidDrain"
 
     @property
     def CombustionOutput(self) -> float:
-        return _DeviceLogicType(self, self._id, "CombustionOutput")
+        return _DeviceLogicType(self, _LT.CombustionOutput)
 
     @property
     def PressureOutput(self) -> float:
-        return _DeviceLogicType(self, self._id, "PressureOutput")
+        return _DeviceLogicType(self, _LT.PressureOutput)
 
     @property
     def RatioCarbonDioxideOutput(self) -> float:
-        return _DeviceLogicType(self, self._id, "RatioCarbonDioxideOutput")
+        return _DeviceLogicType(self, _LT.RatioCarbonDioxideOutput)
 
     @property
     def RatioNitrogenOutput(self) -> float:
-        return _DeviceLogicType(self, self._id, "RatioNitrogenOutput")
+        return _DeviceLogicType(self, _LT.RatioNitrogenOutput)
 
     @property
     def RatioNitrousOxideOutput(self) -> float:
-        return _DeviceLogicType(self, self._id, "RatioNitrousOxideOutput")
+        return _DeviceLogicType(self, _LT.RatioNitrousOxideOutput)
 
     @property
     def RatioOxygenOutput(self) -> float:
-        return _DeviceLogicType(self, self._id, "RatioOxygenOutput")
+        return _DeviceLogicType(self, _LT.RatioOxygenOutput)
 
     @property
     def RatioPollutantOutput(self) -> float:
-        return _DeviceLogicType(self, self._id, "RatioPollutantOutput")
+        return _DeviceLogicType(self, _LT.RatioPollutantOutput)
 
     @property
     def RatioVolatilesOutput(self) -> float:
-        return _DeviceLogicType(self, self._id, "RatioVolatilesOutput")
+        return _DeviceLogicType(self, _LT.RatioVolatilesOutput)
 
     @property
     def RatioWaterOutput(self) -> float:
-        return _DeviceLogicType(self, self._id, "RatioWaterOutput")
+        return _DeviceLogicType(self, _LT.RatioWaterOutput)
 
     @property
     def TemperatureOutput(self) -> float:
-        return _DeviceLogicType(self, self._id, "TemperatureOutput")
+        return _DeviceLogicType(self, _LT.TemperatureOutput)
 
     @property
     def TotalMolesOutput(self) -> float:
-        return _DeviceLogicType(self, self._id, "TotalMolesOutput")
+        return _DeviceLogicType(self, _LT.TotalMolesOutput)
 
 
 class _LiquidDrains(
     _BaseStructures, _Errors, _Locks, _Maximums, _Powers, _Ratios, _SettingWs
 ):
     _hash: int = 1687692899
+    _prefab_name: int = "StructureLiquidDrain"
 
     def __getitem__(self, name: str | int | float) -> "_LiquidDrains":
         return _LiquidDrains(name)
 
     @property
     def CombustionOutput(self) -> _DevicesLogicType:
-        return _DevicesLogicType(self._hash, "CombustionOutput", self._name)
+        return _DevicesLogicType(self, _LT.CombustionOutput)
 
     @property
     def PressureOutput(self) -> _DevicesLogicType:
-        return _DevicesLogicType(self._hash, "PressureOutput", self._name)
+        return _DevicesLogicType(self, _LT.PressureOutput)
 
     @property
     def RatioCarbonDioxideOutput(self) -> _DevicesLogicType:
-        return _DevicesLogicType(self._hash, "RatioCarbonDioxideOutput", self._name)
+        return _DevicesLogicType(self, _LT.RatioCarbonDioxideOutput)
 
     @property
     def RatioNitrogenOutput(self) -> _DevicesLogicType:
-        return _DevicesLogicType(self._hash, "RatioNitrogenOutput", self._name)
+        return _DevicesLogicType(self, _LT.RatioNitrogenOutput)
 
     @property
     def RatioNitrousOxideOutput(self) -> _DevicesLogicType:
-        return _DevicesLogicType(self._hash, "RatioNitrousOxideOutput", self._name)
+        return _DevicesLogicType(self, _LT.RatioNitrousOxideOutput)
 
     @property
     def RatioOxygenOutput(self) -> _DevicesLogicType:
-        return _DevicesLogicType(self._hash, "RatioOxygenOutput", self._name)
+        return _DevicesLogicType(self, _LT.RatioOxygenOutput)
 
     @property
     def RatioPollutantOutput(self) -> _DevicesLogicType:
-        return _DevicesLogicType(self._hash, "RatioPollutantOutput", self._name)
+        return _DevicesLogicType(self, _LT.RatioPollutantOutput)
 
     @property
     def RatioVolatilesOutput(self) -> _DevicesLogicType:
-        return _DevicesLogicType(self._hash, "RatioVolatilesOutput", self._name)
+        return _DevicesLogicType(self, _LT.RatioVolatilesOutput)
 
     @property
     def RatioWaterOutput(self) -> _DevicesLogicType:
-        return _DevicesLogicType(self._hash, "RatioWaterOutput", self._name)
+        return _DevicesLogicType(self, _LT.RatioWaterOutput)
 
     @property
     def TemperatureOutput(self) -> _DevicesLogicType:
-        return _DevicesLogicType(self._hash, "TemperatureOutput", self._name)
+        return _DevicesLogicType(self, _LT.TemperatureOutput)
 
     @property
     def TotalMolesOutput(self) -> _DevicesLogicType:
-        return _DevicesLogicType(self._hash, "TotalMolesOutput", self._name)
+        return _DevicesLogicType(self, _LT.TotalMolesOutput)
 
 
 LiquidDrains: _LiquidDrains = _LiquidDrains()
@@ -1904,14 +1834,15 @@ class ActiveVent(
     _BaseStructure, _Error, _Lock, _Maximum, _Mode, _Open, _Power, _Ratio, _SettingW
 ):
     _hash: int = -1129453144
+    _prefab_name: int = "StructureActiveVent"
 
     @property
     def CombustionOutput(self) -> float:
-        return _DeviceLogicType(self, self._id, "CombustionOutput")
+        return _DeviceLogicType(self, _LT.CombustionOutput)
 
     @property
     def PressureExternal(self) -> float:
-        return _DeviceLogicType(self, self._id, "PressureExternal")
+        return _DeviceLogicType(self, _LT.PressureExternal)
 
     @PressureExternal.setter
     def PressureExternal(self, value: int | float):
@@ -1919,7 +1850,7 @@ class ActiveVent(
 
     @property
     def PressureInternal(self) -> float:
-        return _DeviceLogicType(self, self._id, "PressureInternal")
+        return _DeviceLogicType(self, _LT.PressureInternal)
 
     @PressureInternal.setter
     def PressureInternal(self, value: int | float):
@@ -1927,47 +1858,47 @@ class ActiveVent(
 
     @property
     def PressureOutput(self) -> float:
-        return _DeviceLogicType(self, self._id, "PressureOutput")
+        return _DeviceLogicType(self, _LT.PressureOutput)
 
     @property
     def RatioCarbonDioxideOutput(self) -> float:
-        return _DeviceLogicType(self, self._id, "RatioCarbonDioxideOutput")
+        return _DeviceLogicType(self, _LT.RatioCarbonDioxideOutput)
 
     @property
     def RatioNitrogenOutput(self) -> float:
-        return _DeviceLogicType(self, self._id, "RatioNitrogenOutput")
+        return _DeviceLogicType(self, _LT.RatioNitrogenOutput)
 
     @property
     def RatioNitrousOxideOutput(self) -> float:
-        return _DeviceLogicType(self, self._id, "RatioNitrousOxideOutput")
+        return _DeviceLogicType(self, _LT.RatioNitrousOxideOutput)
 
     @property
     def RatioOxygenOutput(self) -> float:
-        return _DeviceLogicType(self, self._id, "RatioOxygenOutput")
+        return _DeviceLogicType(self, _LT.RatioOxygenOutput)
 
     @property
     def RatioPollutantOutput(self) -> float:
-        return _DeviceLogicType(self, self._id, "RatioPollutantOutput")
+        return _DeviceLogicType(self, _LT.RatioPollutantOutput)
 
     @property
     def RatioVolatilesOutput(self) -> float:
-        return _DeviceLogicType(self, self._id, "RatioVolatilesOutput")
+        return _DeviceLogicType(self, _LT.RatioVolatilesOutput)
 
     @property
     def RatioWaterOutput(self) -> float:
-        return _DeviceLogicType(self, self._id, "RatioWaterOutput")
+        return _DeviceLogicType(self, _LT.RatioWaterOutput)
 
     @property
     def TemperatureOutput(self) -> float:
-        return _DeviceLogicType(self, self._id, "TemperatureOutput")
+        return _DeviceLogicType(self, _LT.TemperatureOutput)
 
     @property
     def TotalMolesOutput(self) -> float:
-        return _DeviceLogicType(self, self._id, "TotalMolesOutput")
+        return _DeviceLogicType(self, _LT.TotalMolesOutput)
 
     @property
     def slot0(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(type(self), self._id, 0)
+        return _SlotTypeCommon(self, 0)
 
     @property
     def DataDisk(self) -> _SlotTypeCommon:
@@ -1986,17 +1917,18 @@ class _ActiveVents(
     _SettingWs,
 ):
     _hash: int = -1129453144
+    _prefab_name: int = "StructureActiveVent"
 
     def __getitem__(self, name: str | int | float) -> "_ActiveVents":
         return _ActiveVents(name)
 
     @property
     def CombustionOutput(self) -> _DevicesLogicType:
-        return _DevicesLogicType(self._hash, "CombustionOutput", self._name)
+        return _DevicesLogicType(self, _LT.CombustionOutput)
 
     @property
     def PressureExternal(self) -> _DevicesLogicType:
-        return _DevicesLogicType(self._hash, "PressureExternal", self._name)
+        return _DevicesLogicType(self, _LT.PressureExternal)
 
     @PressureExternal.setter
     def PressureExternal(self, value: int | float):
@@ -2004,7 +1936,7 @@ class _ActiveVents(
 
     @property
     def PressureInternal(self) -> _DevicesLogicType:
-        return _DevicesLogicType(self._hash, "PressureInternal", self._name)
+        return _DevicesLogicType(self, _LT.PressureInternal)
 
     @PressureInternal.setter
     def PressureInternal(self, value: int | float):
@@ -2012,47 +1944,47 @@ class _ActiveVents(
 
     @property
     def PressureOutput(self) -> _DevicesLogicType:
-        return _DevicesLogicType(self._hash, "PressureOutput", self._name)
+        return _DevicesLogicType(self, _LT.PressureOutput)
 
     @property
     def RatioCarbonDioxideOutput(self) -> _DevicesLogicType:
-        return _DevicesLogicType(self._hash, "RatioCarbonDioxideOutput", self._name)
+        return _DevicesLogicType(self, _LT.RatioCarbonDioxideOutput)
 
     @property
     def RatioNitrogenOutput(self) -> _DevicesLogicType:
-        return _DevicesLogicType(self._hash, "RatioNitrogenOutput", self._name)
+        return _DevicesLogicType(self, _LT.RatioNitrogenOutput)
 
     @property
     def RatioNitrousOxideOutput(self) -> _DevicesLogicType:
-        return _DevicesLogicType(self._hash, "RatioNitrousOxideOutput", self._name)
+        return _DevicesLogicType(self, _LT.RatioNitrousOxideOutput)
 
     @property
     def RatioOxygenOutput(self) -> _DevicesLogicType:
-        return _DevicesLogicType(self._hash, "RatioOxygenOutput", self._name)
+        return _DevicesLogicType(self, _LT.RatioOxygenOutput)
 
     @property
     def RatioPollutantOutput(self) -> _DevicesLogicType:
-        return _DevicesLogicType(self._hash, "RatioPollutantOutput", self._name)
+        return _DevicesLogicType(self, _LT.RatioPollutantOutput)
 
     @property
     def RatioVolatilesOutput(self) -> _DevicesLogicType:
-        return _DevicesLogicType(self._hash, "RatioVolatilesOutput", self._name)
+        return _DevicesLogicType(self, _LT.RatioVolatilesOutput)
 
     @property
     def RatioWaterOutput(self) -> _DevicesLogicType:
-        return _DevicesLogicType(self._hash, "RatioWaterOutput", self._name)
+        return _DevicesLogicType(self, _LT.RatioWaterOutput)
 
     @property
     def TemperatureOutput(self) -> _DevicesLogicType:
-        return _DevicesLogicType(self._hash, "TemperatureOutput", self._name)
+        return _DevicesLogicType(self, _LT.TemperatureOutput)
 
     @property
     def TotalMolesOutput(self) -> _DevicesLogicType:
-        return _DevicesLogicType(self._hash, "TotalMolesOutput", self._name)
+        return _DevicesLogicType(self, _LT.TotalMolesOutput)
 
     @property
     def slot0(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(type(self), self._hash, 0, self._name)
+        return _SlotTypeCommons(self, 0)
 
     @property
     def DataDisk(self) -> _SlotTypeCommons:
@@ -2079,10 +2011,11 @@ class AdvancedComposter(
     _SettingW,
 ):
     _hash: int = 446212963
+    _prefab_name: int = "StructureAdvancedComposter"
 
     @property
     def slot0(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(type(self), self._id, 0)
+        return _SlotTypeCommon(self, 0)
 
     @property
     def Import(self) -> _SlotTypeCommon:
@@ -2090,7 +2023,7 @@ class AdvancedComposter(
 
     @property
     def slot1(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(type(self), self._id, 1)
+        return _SlotTypeCommon(self, 1)
 
     @property
     def Export(self) -> _SlotTypeCommon:
@@ -2114,13 +2047,14 @@ class _AdvancedComposters(
     _SettingWs,
 ):
     _hash: int = 446212963
+    _prefab_name: int = "StructureAdvancedComposter"
 
     def __getitem__(self, name: str | int | float) -> "_AdvancedComposters":
         return _AdvancedComposters(name)
 
     @property
     def slot0(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(type(self), self._hash, 0, self._name)
+        return _SlotTypeCommons(self, 0)
 
     @property
     def Import(self) -> _SlotTypeCommons:
@@ -2128,7 +2062,7 @@ class _AdvancedComposters(
 
     @property
     def slot1(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(type(self), self._hash, 1, self._name)
+        return _SlotTypeCommons(self, 1)
 
     @property
     def Export(self) -> _SlotTypeCommons:
@@ -2160,14 +2094,15 @@ class AdvancedFurnace(
     _Temperature,
 ):
     _hash: int = 545937711
+    _prefab_name: int = "StructureAdvancedFurnace"
 
     @property
     def RecipeHash(self) -> float:
-        return _DeviceLogicType(self, self._id, "RecipeHash")
+        return _DeviceLogicType(self, _LT.RecipeHash)
 
     @property
     def SettingInput(self) -> float:
-        return _DeviceLogicType(self, self._id, "SettingInput")
+        return _DeviceLogicType(self, _LT.SettingInput)
 
     @SettingInput.setter
     def SettingInput(self, value: int | float):
@@ -2175,7 +2110,7 @@ class AdvancedFurnace(
 
     @property
     def SettingOutput(self) -> float:
-        return _DeviceLogicType(self, self._id, "SettingOutput")
+        return _DeviceLogicType(self, _LT.SettingOutput)
 
     @SettingOutput.setter
     def SettingOutput(self, value: int | float):
@@ -2183,7 +2118,7 @@ class AdvancedFurnace(
 
     @property
     def slot0(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(type(self), self._id, 0)
+        return _SlotTypeCommon(self, 0)
 
     @property
     def Import(self) -> _SlotTypeCommon:
@@ -2191,7 +2126,7 @@ class AdvancedFurnace(
 
     @property
     def slot1(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(type(self), self._id, 1)
+        return _SlotTypeCommon(self, 1)
 
     @property
     def Export(self) -> _SlotTypeCommon:
@@ -2220,17 +2155,18 @@ class _AdvancedFurnaces(
     _Temperatures,
 ):
     _hash: int = 545937711
+    _prefab_name: int = "StructureAdvancedFurnace"
 
     def __getitem__(self, name: str | int | float) -> "_AdvancedFurnaces":
         return _AdvancedFurnaces(name)
 
     @property
     def RecipeHash(self) -> _DevicesLogicType:
-        return _DevicesLogicType(self._hash, "RecipeHash", self._name)
+        return _DevicesLogicType(self, _LT.RecipeHash)
 
     @property
     def SettingInput(self) -> _DevicesLogicType:
-        return _DevicesLogicType(self._hash, "SettingInput", self._name)
+        return _DevicesLogicType(self, _LT.SettingInput)
 
     @SettingInput.setter
     def SettingInput(self, value: int | float):
@@ -2238,7 +2174,7 @@ class _AdvancedFurnaces(
 
     @property
     def SettingOutput(self) -> _DevicesLogicType:
-        return _DevicesLogicType(self._hash, "SettingOutput", self._name)
+        return _DevicesLogicType(self, _LT.SettingOutput)
 
     @SettingOutput.setter
     def SettingOutput(self, value: int | float):
@@ -2246,7 +2182,7 @@ class _AdvancedFurnaces(
 
     @property
     def slot0(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(type(self), self._hash, 0, self._name)
+        return _SlotTypeCommons(self, 0)
 
     @property
     def Import(self) -> _SlotTypeCommons:
@@ -2254,7 +2190,7 @@ class _AdvancedFurnaces(
 
     @property
     def slot1(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(type(self), self._hash, 1, self._name)
+        return _SlotTypeCommons(self, 1)
 
     @property
     def Export(self) -> _SlotTypeCommons:
@@ -2278,18 +2214,19 @@ class AdvancedPackagingMachine(
     _RecipeHash,
 ):
     _hash: int = -463037670
+    _prefab_name: int = "StructureAdvancedPackagingMachine"
 
     @property
     def CompletionRatio(self) -> float:
-        return _DeviceLogicType(self, self._id, "CompletionRatio")
+        return _DeviceLogicType(self, _LT.CompletionRatio)
 
     @property
     def StackSize(self) -> float:
-        return _DeviceLogicType(self, self._id, "StackSize")
+        return _DeviceLogicType(self, _LT.StackSize)
 
     @property
     def slot0(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(type(self), self._id, 0)
+        return _SlotTypeCommon(self, 0)
 
     @property
     def Import(self) -> _SlotTypeCommon:
@@ -2297,7 +2234,7 @@ class AdvancedPackagingMachine(
 
     @property
     def slot1(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(type(self), self._id, 1)
+        return _SlotTypeCommon(self, 1)
 
     @property
     def Export(self) -> _SlotTypeCommon:
@@ -2318,21 +2255,22 @@ class _AdvancedPackagingMachines(
     _RecipeHashs,
 ):
     _hash: int = -463037670
+    _prefab_name: int = "StructureAdvancedPackagingMachine"
 
     def __getitem__(self, name: str | int | float) -> "_AdvancedPackagingMachines":
         return _AdvancedPackagingMachines(name)
 
     @property
     def CompletionRatio(self) -> _DevicesLogicType:
-        return _DevicesLogicType(self._hash, "CompletionRatio", self._name)
+        return _DevicesLogicType(self, _LT.CompletionRatio)
 
     @property
     def StackSize(self) -> _DevicesLogicType:
-        return _DevicesLogicType(self._hash, "StackSize", self._name)
+        return _DevicesLogicType(self, _LT.StackSize)
 
     @property
     def slot0(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(type(self), self._hash, 0, self._name)
+        return _SlotTypeCommons(self, 0)
 
     @property
     def Import(self) -> _SlotTypeCommons:
@@ -2340,7 +2278,7 @@ class _AdvancedPackagingMachines(
 
     @property
     def slot1(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(type(self), self._hash, 1, self._name)
+        return _SlotTypeCommons(self, 1)
 
     @property
     def Export(self) -> _SlotTypeCommons:
@@ -2365,70 +2303,71 @@ class AirConditioner(
     _SettingW,
 ):
     _hash: int = -2087593337
+    _prefab_name: int = "StructureAirConditioner"
 
     @property
     def CombustionInput(self) -> float:
-        return _DeviceLogicType(self, self._id, "CombustionInput")
+        return _DeviceLogicType(self, _LT.CombustionInput)
 
     @property
     def CombustionOutput(self) -> float:
-        return _DeviceLogicType(self, self._id, "CombustionOutput")
+        return _DeviceLogicType(self, _LT.CombustionOutput)
 
     @property
     def CombustionOutput2(self) -> float:
-        return _DeviceLogicType(self, self._id, "CombustionOutput2")
+        return _DeviceLogicType(self, _LT.CombustionOutput2)
 
     @property
     def OperationalTemperatureEfficiency(self) -> float:
-        return _DeviceLogicType(self, self._id, "OperationalTemperatureEfficiency")
+        return _DeviceLogicType(self, _LT.OperationalTemperatureEfficiency)
 
     @property
     def PressureEfficiency(self) -> float:
-        return _DeviceLogicType(self, self._id, "PressureEfficiency")
+        return _DeviceLogicType(self, _LT.PressureEfficiency)
 
     @property
     def PressureInput(self) -> float:
-        return _DeviceLogicType(self, self._id, "PressureInput")
+        return _DeviceLogicType(self, _LT.PressureInput)
 
     @property
     def PressureOutput(self) -> float:
-        return _DeviceLogicType(self, self._id, "PressureOutput")
+        return _DeviceLogicType(self, _LT.PressureOutput)
 
     @property
     def PressureOutput2(self) -> float:
-        return _DeviceLogicType(self, self._id, "PressureOutput2")
+        return _DeviceLogicType(self, _LT.PressureOutput2)
 
     @property
     def TemperatureDifferentialEfficiency(self) -> float:
-        return _DeviceLogicType(self, self._id, "TemperatureDifferentialEfficiency")
+        return _DeviceLogicType(self, _LT.TemperatureDifferentialEfficiency)
 
     @property
     def TemperatureInput(self) -> float:
-        return _DeviceLogicType(self, self._id, "TemperatureInput")
+        return _DeviceLogicType(self, _LT.TemperatureInput)
 
     @property
     def TemperatureOutput(self) -> float:
-        return _DeviceLogicType(self, self._id, "TemperatureOutput")
+        return _DeviceLogicType(self, _LT.TemperatureOutput)
 
     @property
     def TemperatureOutput2(self) -> float:
-        return _DeviceLogicType(self, self._id, "TemperatureOutput2")
+        return _DeviceLogicType(self, _LT.TemperatureOutput2)
 
     @property
     def TotalMolesInput(self) -> float:
-        return _DeviceLogicType(self, self._id, "TotalMolesInput")
+        return _DeviceLogicType(self, _LT.TotalMolesInput)
 
     @property
     def TotalMolesOutput(self) -> float:
-        return _DeviceLogicType(self, self._id, "TotalMolesOutput")
+        return _DeviceLogicType(self, _LT.TotalMolesOutput)
 
     @property
     def TotalMolesOutput2(self) -> float:
-        return _DeviceLogicType(self, self._id, "TotalMolesOutput2")
+        return _DeviceLogicType(self, _LT.TotalMolesOutput2)
 
     @property
     def slot0(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(type(self), self._id, 0)
+        return _SlotTypeCommon(self, 0)
 
     @property
     def ProgrammableChip(self) -> _SlotTypeCommon:
@@ -2450,77 +2389,74 @@ class _AirConditioners(
     _SettingWs,
 ):
     _hash: int = -2087593337
+    _prefab_name: int = "StructureAirConditioner"
 
     def __getitem__(self, name: str | int | float) -> "_AirConditioners":
         return _AirConditioners(name)
 
     @property
     def CombustionInput(self) -> _DevicesLogicType:
-        return _DevicesLogicType(self._hash, "CombustionInput", self._name)
+        return _DevicesLogicType(self, _LT.CombustionInput)
 
     @property
     def CombustionOutput(self) -> _DevicesLogicType:
-        return _DevicesLogicType(self._hash, "CombustionOutput", self._name)
+        return _DevicesLogicType(self, _LT.CombustionOutput)
 
     @property
     def CombustionOutput2(self) -> _DevicesLogicType:
-        return _DevicesLogicType(self._hash, "CombustionOutput2", self._name)
+        return _DevicesLogicType(self, _LT.CombustionOutput2)
 
     @property
     def OperationalTemperatureEfficiency(self) -> _DevicesLogicType:
-        return _DevicesLogicType(
-            self._hash, "OperationalTemperatureEfficiency", self._name
-        )
+        return _DevicesLogicType(self, _LT.OperationalTemperatureEfficiency)
 
     @property
     def PressureEfficiency(self) -> _DevicesLogicType:
-        return _DevicesLogicType(self._hash, "PressureEfficiency", self._name)
+        return _DevicesLogicType(self, _LT.PressureEfficiency)
 
     @property
     def PressureInput(self) -> _DevicesLogicType:
-        return _DevicesLogicType(self._hash, "PressureInput", self._name)
+        return _DevicesLogicType(self, _LT.PressureInput)
 
     @property
     def PressureOutput(self) -> _DevicesLogicType:
-        return _DevicesLogicType(self._hash, "PressureOutput", self._name)
+        return _DevicesLogicType(self, _LT.PressureOutput)
 
     @property
     def PressureOutput2(self) -> _DevicesLogicType:
-        return _DevicesLogicType(self._hash, "PressureOutput2", self._name)
+        return _DevicesLogicType(self, _LT.PressureOutput2)
 
     @property
     def TemperatureDifferentialEfficiency(self) -> _DevicesLogicType:
-        return _DevicesLogicType(
-            self._hash, "TemperatureDifferentialEfficiency", self._name
-        )
+        return _DevicesLogicType(self, _LT.TemperatureDifferentialEfficiency)
 
     @property
     def TemperatureInput(self) -> _DevicesLogicType:
-        return _DevicesLogicType(self._hash, "TemperatureInput", self._name)
+        return _DevicesLogicType(self, _LT.TemperatureInput)
 
     @property
     def TemperatureOutput(self) -> _DevicesLogicType:
-        return _DevicesLogicType(self._hash, "TemperatureOutput", self._name)
+        return _DevicesLogicType(self, _LT.TemperatureOutput)
 
     @property
     def TemperatureOutput2(self) -> _DevicesLogicType:
-        return _DevicesLogicType(self._hash, "TemperatureOutput2", self._name)
+        return _DevicesLogicType(self, _LT.TemperatureOutput2)
 
     @property
     def TotalMolesInput(self) -> _DevicesLogicType:
-        return _DevicesLogicType(self._hash, "TotalMolesInput", self._name)
+        return _DevicesLogicType(self, _LT.TotalMolesInput)
 
     @property
     def TotalMolesOutput(self) -> _DevicesLogicType:
-        return _DevicesLogicType(self._hash, "TotalMolesOutput", self._name)
+        return _DevicesLogicType(self, _LT.TotalMolesOutput)
 
     @property
     def TotalMolesOutput2(self) -> _DevicesLogicType:
-        return _DevicesLogicType(self._hash, "TotalMolesOutput2", self._name)
+        return _DevicesLogicType(self, _LT.TotalMolesOutput2)
 
     @property
     def slot0(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(type(self), self._hash, 0, self._name)
+        return _SlotTypeCommons(self, 0)
 
     @property
     def ProgrammableChip(self) -> _SlotTypeCommons:
@@ -2532,10 +2468,12 @@ AirConditioners: _AirConditioners = _AirConditioners()
 
 class Airlock(_BaseStructure, _Idle, _Lock, _Mode, _Open, _Power, _SettingW):
     _hash: int = -2105052344
+    _prefab_name: int = "StructureAirlock"
 
 
 class _Airlocks(_BaseStructures, _Idles, _Locks, _Modes, _Opens, _Powers, _SettingWs):
     _hash: int = -2105052344
+    _prefab_name: int = "StructureAirlock"
 
     def __getitem__(self, name: str | int | float) -> "_Airlocks":
         return _Airlocks(name)
@@ -2546,12 +2484,14 @@ Airlocks: _Airlocks = _Airlocks()
 
 class AirlockWide(_BaseStructure, _Idle, _Lock, _Mode, _Open, _Power, _SettingW):
     _hash: int = 1941072263
+    _prefab_name: int = "StructureAirlockWide"
 
 
 class _AirlockWides(
     _BaseStructures, _Idles, _Locks, _Modes, _Opens, _Powers, _SettingWs
 ):
     _hash: int = 1941072263
+    _prefab_name: int = "StructureAirlockWide"
 
     def __getitem__(self, name: str | int | float) -> "_AirlockWides":
         return _AirlockWides(name)
@@ -2573,14 +2513,15 @@ class ArcFurnace(
     _Reagents,
 ):
     _hash: int = -247344692
+    _prefab_name: int = "StructureArcFurnace"
 
     @property
     def RecipeHash(self) -> float:
-        return _DeviceLogicType(self, self._id, "RecipeHash")
+        return _DeviceLogicType(self, _LT.RecipeHash)
 
     @property
     def slot0(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(type(self), self._id, 0)
+        return _SlotTypeCommon(self, 0)
 
     @property
     def Import(self) -> _SlotTypeCommon:
@@ -2588,7 +2529,7 @@ class ArcFurnace(
 
     @property
     def slot1(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(type(self), self._id, 1)
+        return _SlotTypeCommon(self, 1)
 
     @property
     def Export(self) -> _SlotTypeCommon:
@@ -2608,17 +2549,18 @@ class _ArcFurnaces(
     _Reagentss,
 ):
     _hash: int = -247344692
+    _prefab_name: int = "StructureArcFurnace"
 
     def __getitem__(self, name: str | int | float) -> "_ArcFurnaces":
         return _ArcFurnaces(name)
 
     @property
     def RecipeHash(self) -> _DevicesLogicType:
-        return _DevicesLogicType(self._hash, "RecipeHash", self._name)
+        return _DevicesLogicType(self, _LT.RecipeHash)
 
     @property
     def slot0(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(type(self), self._hash, 0, self._name)
+        return _SlotTypeCommons(self, 0)
 
     @property
     def Import(self) -> _SlotTypeCommons:
@@ -2626,7 +2568,7 @@ class _ArcFurnaces(
 
     @property
     def slot1(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(type(self), self._hash, 1, self._name)
+        return _SlotTypeCommons(self, 1)
 
     @property
     def Export(self) -> _SlotTypeCommons:
@@ -2640,18 +2582,19 @@ class AreaPowerControl(
     _BaseStructure, _Charge, _Error, _Lock, _Maximum, _Mode, _Open, _Power, _Ratio
 ):
     _hash: int = 1999523701
+    _prefab_name: int = "StructureAreaPowerControl"
 
     @property
     def PowerActual(self) -> float:
-        return _DeviceLogicType(self, self._id, "PowerActual")
+        return _DeviceLogicType(self, _LT.PowerActual)
 
     @property
     def PowerPotential(self) -> float:
-        return _DeviceLogicType(self, self._id, "PowerPotential")
+        return _DeviceLogicType(self, _LT.PowerPotential)
 
     @property
     def slot0(self) -> _SlotTypeBattery:
-        return _SlotTypeBattery(type(self), self._id, 0)
+        return _SlotTypeBattery(self, 0)
 
     @property
     def Battery(self) -> _SlotTypeBattery:
@@ -2659,7 +2602,7 @@ class AreaPowerControl(
 
     @property
     def slot1(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(type(self), self._id, 1)
+        return _SlotTypeCommon(self, 1)
 
     @property
     def DataDisk(self) -> _SlotTypeCommon:
@@ -2678,21 +2621,22 @@ class _AreaPowerControls(
     _Ratios,
 ):
     _hash: int = 1999523701
+    _prefab_name: int = "StructureAreaPowerControl"
 
     def __getitem__(self, name: str | int | float) -> "_AreaPowerControls":
         return _AreaPowerControls(name)
 
     @property
     def PowerActual(self) -> _DevicesLogicType:
-        return _DevicesLogicType(self._hash, "PowerActual", self._name)
+        return _DevicesLogicType(self, _LT.PowerActual)
 
     @property
     def PowerPotential(self) -> _DevicesLogicType:
-        return _DevicesLogicType(self._hash, "PowerPotential", self._name)
+        return _DevicesLogicType(self, _LT.PowerPotential)
 
     @property
     def slot0(self) -> _SlotTypeBatterys:
-        return _SlotTypeBatterys(type(self), self._hash, 0, self._name)
+        return _SlotTypeBatterys(self, 0)
 
     @property
     def Battery(self) -> _SlotTypeBatterys:
@@ -2700,7 +2644,7 @@ class _AreaPowerControls(
 
     @property
     def slot1(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(type(self), self._hash, 1, self._name)
+        return _SlotTypeCommons(self, 1)
 
     @property
     def DataDisk(self) -> _SlotTypeCommons:
@@ -2714,18 +2658,19 @@ class AreaPowerControlReversed(
     _BaseStructure, _Charge, _Error, _Lock, _Maximum, _Mode, _Open, _Power, _Ratio
 ):
     _hash: int = -1032513487
+    _prefab_name: int = "StructureAreaPowerControlReversed"
 
     @property
     def PowerActual(self) -> float:
-        return _DeviceLogicType(self, self._id, "PowerActual")
+        return _DeviceLogicType(self, _LT.PowerActual)
 
     @property
     def PowerPotential(self) -> float:
-        return _DeviceLogicType(self, self._id, "PowerPotential")
+        return _DeviceLogicType(self, _LT.PowerPotential)
 
     @property
     def slot0(self) -> _SlotTypeBattery:
-        return _SlotTypeBattery(type(self), self._id, 0)
+        return _SlotTypeBattery(self, 0)
 
     @property
     def Battery(self) -> _SlotTypeBattery:
@@ -2733,7 +2678,7 @@ class AreaPowerControlReversed(
 
     @property
     def slot1(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(type(self), self._id, 1)
+        return _SlotTypeCommon(self, 1)
 
     @property
     def DataDisk(self) -> _SlotTypeCommon:
@@ -2752,21 +2697,22 @@ class _AreaPowerControlReverseds(
     _Ratios,
 ):
     _hash: int = -1032513487
+    _prefab_name: int = "StructureAreaPowerControlReversed"
 
     def __getitem__(self, name: str | int | float) -> "_AreaPowerControlReverseds":
         return _AreaPowerControlReverseds(name)
 
     @property
     def PowerActual(self) -> _DevicesLogicType:
-        return _DevicesLogicType(self._hash, "PowerActual", self._name)
+        return _DevicesLogicType(self, _LT.PowerActual)
 
     @property
     def PowerPotential(self) -> _DevicesLogicType:
-        return _DevicesLogicType(self._hash, "PowerPotential", self._name)
+        return _DevicesLogicType(self, _LT.PowerPotential)
 
     @property
     def slot0(self) -> _SlotTypeBatterys:
-        return _SlotTypeBatterys(type(self), self._hash, 0, self._name)
+        return _SlotTypeBatterys(self, 0)
 
     @property
     def Battery(self) -> _SlotTypeBatterys:
@@ -2774,7 +2720,7 @@ class _AreaPowerControlReverseds(
 
     @property
     def slot1(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(type(self), self._hash, 1, self._name)
+        return _SlotTypeCommons(self, 1)
 
     @property
     def DataDisk(self) -> _SlotTypeCommons:
@@ -2798,18 +2744,19 @@ class Autolathe(
     _RecipeHash,
 ):
     _hash: int = 336213101
+    _prefab_name: int = "StructureAutolathe"
 
     @property
     def CompletionRatio(self) -> float:
-        return _DeviceLogicType(self, self._id, "CompletionRatio")
+        return _DeviceLogicType(self, _LT.CompletionRatio)
 
     @property
     def StackSize(self) -> float:
-        return _DeviceLogicType(self, self._id, "StackSize")
+        return _DeviceLogicType(self, _LT.StackSize)
 
     @property
     def slot0(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(type(self), self._id, 0)
+        return _SlotTypeCommon(self, 0)
 
     @property
     def Import(self) -> _SlotTypeCommon:
@@ -2817,7 +2764,7 @@ class Autolathe(
 
     @property
     def slot1(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(type(self), self._id, 1)
+        return _SlotTypeCommon(self, 1)
 
     @property
     def Export(self) -> _SlotTypeCommon:
@@ -2838,21 +2785,22 @@ class _Autolathes(
     _RecipeHashs,
 ):
     _hash: int = 336213101
+    _prefab_name: int = "StructureAutolathe"
 
     def __getitem__(self, name: str | int | float) -> "_Autolathes":
         return _Autolathes(name)
 
     @property
     def CompletionRatio(self) -> _DevicesLogicType:
-        return _DevicesLogicType(self._hash, "CompletionRatio", self._name)
+        return _DevicesLogicType(self, _LT.CompletionRatio)
 
     @property
     def StackSize(self) -> _DevicesLogicType:
-        return _DevicesLogicType(self._hash, "StackSize", self._name)
+        return _DevicesLogicType(self, _LT.StackSize)
 
     @property
     def slot0(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(type(self), self._hash, 0, self._name)
+        return _SlotTypeCommons(self, 0)
 
     @property
     def Import(self) -> _SlotTypeCommons:
@@ -2860,7 +2808,7 @@ class _Autolathes(
 
     @property
     def slot1(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(type(self), self._hash, 1, self._name)
+        return _SlotTypeCommons(self, 1)
 
     @property
     def Export(self) -> _SlotTypeCommons:
@@ -2884,18 +2832,19 @@ class AutomatedOven(
     _RecipeHash,
 ):
     _hash: int = -1672404896
+    _prefab_name: int = "StructureAutomatedOven"
 
     @property
     def CompletionRatio(self) -> float:
-        return _DeviceLogicType(self, self._id, "CompletionRatio")
+        return _DeviceLogicType(self, _LT.CompletionRatio)
 
     @property
     def StackSize(self) -> float:
-        return _DeviceLogicType(self, self._id, "StackSize")
+        return _DeviceLogicType(self, _LT.StackSize)
 
     @property
     def slot0(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(type(self), self._id, 0)
+        return _SlotTypeCommon(self, 0)
 
     @property
     def Import(self) -> _SlotTypeCommon:
@@ -2903,7 +2852,7 @@ class AutomatedOven(
 
     @property
     def slot1(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(type(self), self._id, 1)
+        return _SlotTypeCommon(self, 1)
 
     @property
     def Export(self) -> _SlotTypeCommon:
@@ -2924,21 +2873,22 @@ class _AutomatedOvens(
     _RecipeHashs,
 ):
     _hash: int = -1672404896
+    _prefab_name: int = "StructureAutomatedOven"
 
     def __getitem__(self, name: str | int | float) -> "_AutomatedOvens":
         return _AutomatedOvens(name)
 
     @property
     def CompletionRatio(self) -> _DevicesLogicType:
-        return _DevicesLogicType(self._hash, "CompletionRatio", self._name)
+        return _DevicesLogicType(self, _LT.CompletionRatio)
 
     @property
     def StackSize(self) -> _DevicesLogicType:
-        return _DevicesLogicType(self._hash, "StackSize", self._name)
+        return _DevicesLogicType(self, _LT.StackSize)
 
     @property
     def slot0(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(type(self), self._hash, 0, self._name)
+        return _SlotTypeCommons(self, 0)
 
     @property
     def Import(self) -> _SlotTypeCommons:
@@ -2946,7 +2896,7 @@ class _AutomatedOvens(
 
     @property
     def slot1(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(type(self), self._hash, 1, self._name)
+        return _SlotTypeCommons(self, 1)
 
     @property
     def Export(self) -> _SlotTypeCommons:
@@ -2967,10 +2917,11 @@ class AutoMinerSmall(
     _Power,
 ):
     _hash: int = 7274344
+    _prefab_name: int = "StructureAutoMinerSmall"
 
     @property
     def slot0(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(type(self), self._id, 0)
+        return _SlotTypeCommon(self, 0)
 
     @property
     def Import(self) -> _SlotTypeCommon:
@@ -2978,7 +2929,7 @@ class AutoMinerSmall(
 
     @property
     def slot1(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(type(self), self._id, 1)
+        return _SlotTypeCommon(self, 1)
 
     @property
     def Export(self) -> _SlotTypeCommon:
@@ -2996,13 +2947,14 @@ class _AutoMinerSmalls(
     _Powers,
 ):
     _hash: int = 7274344
+    _prefab_name: int = "StructureAutoMinerSmall"
 
     def __getitem__(self, name: str | int | float) -> "_AutoMinerSmalls":
         return _AutoMinerSmalls(name)
 
     @property
     def slot0(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(type(self), self._hash, 0, self._name)
+        return _SlotTypeCommons(self, 0)
 
     @property
     def Import(self) -> _SlotTypeCommons:
@@ -3010,7 +2962,7 @@ class _AutoMinerSmalls(
 
     @property
     def slot1(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(type(self), self._hash, 1, self._name)
+        return _SlotTypeCommons(self, 1)
 
     @property
     def Export(self) -> _SlotTypeCommons:
@@ -3022,37 +2974,39 @@ AutoMinerSmalls: _AutoMinerSmalls = _AutoMinerSmalls()
 
 class BatterySmall(_BaseStructure, _Charge, _Maximum, _ModeR, _On, _Ratio):
     _hash: int = -2123455080
+    _prefab_name: int = "StructureBatterySmall"
 
     @property
     def Power(self) -> float:
-        return _DeviceLogicType(self, self._id, "Power")
+        return _DeviceLogicType(self, _LT.Power)
 
     @property
     def PowerActual(self) -> float:
-        return _DeviceLogicType(self, self._id, "PowerActual")
+        return _DeviceLogicType(self, _LT.PowerActual)
 
     @property
     def PowerPotential(self) -> float:
-        return _DeviceLogicType(self, self._id, "PowerPotential")
+        return _DeviceLogicType(self, _LT.PowerPotential)
 
 
 class _BatterySmalls(_BaseStructures, _Charges, _Maximums, _ModeRs, _Ons, _Ratios):
     _hash: int = -2123455080
+    _prefab_name: int = "StructureBatterySmall"
 
     def __getitem__(self, name: str | int | float) -> "_BatterySmalls":
         return _BatterySmalls(name)
 
     @property
     def Power(self) -> _DevicesLogicType:
-        return _DevicesLogicType(self._hash, "Power", self._name)
+        return _DevicesLogicType(self, _LT.Power)
 
     @property
     def PowerActual(self) -> _DevicesLogicType:
-        return _DevicesLogicType(self._hash, "PowerActual", self._name)
+        return _DevicesLogicType(self, _LT.PowerActual)
 
     @property
     def PowerPotential(self) -> _DevicesLogicType:
-        return _DevicesLogicType(self._hash, "PowerPotential", self._name)
+        return _DevicesLogicType(self, _LT.PowerPotential)
 
 
 BatterySmalls: _BatterySmalls = _BatterySmalls()
@@ -3062,12 +3016,14 @@ class BackPressureRegulator(
     _BaseStructure, _Error, _Lock, _Maximum, _Power, _Ratio, _SettingW
 ):
     _hash: int = -1149857558
+    _prefab_name: int = "StructureBackPressureRegulator"
 
 
 class _BackPressureRegulators(
     _BaseStructures, _Errors, _Locks, _Maximums, _Powers, _Ratios, _SettingWs
 ):
     _hash: int = -1149857558
+    _prefab_name: int = "StructureBackPressureRegulator"
 
     def __getitem__(self, name: str | int | float) -> "_BackPressureRegulators":
         return _BackPressureRegulators(name)
@@ -3078,10 +3034,12 @@ BackPressureRegulators: _BackPressureRegulators = _BackPressureRegulators()
 
 class BasketHoop(_BaseStructure, _Lock, _Power, _SettingW):
     _hash: int = -1613497288
+    _prefab_name: int = "StructureBasketHoop"
 
 
 class _BasketHoops(_BaseStructures, _Locks, _Powers, _SettingWs):
     _hash: int = -1613497288
+    _prefab_name: int = "StructureBasketHoop"
 
     def __getitem__(self, name: str | int | float) -> "_BasketHoops":
         return _BasketHoops(name)
@@ -3092,10 +3050,12 @@ BasketHoops: _BasketHoops = _BasketHoops()
 
 class LogicBatchReader(_BaseStructure, _Error, _Power, _SettingR):
     _hash: int = 264413729
+    _prefab_name: int = "StructureLogicBatchReader"
 
 
 class _LogicBatchReaders(_BaseStructures, _Errors, _Powers, _SettingRs):
     _hash: int = 264413729
+    _prefab_name: int = "StructureLogicBatchReader"
 
     def __getitem__(self, name: str | int | float) -> "_LogicBatchReaders":
         return _LogicBatchReaders(name)
@@ -3106,10 +3066,12 @@ LogicBatchReaders: _LogicBatchReaders = _LogicBatchReaders()
 
 class LogicBatchSlotReader(_BaseStructure, _Error, _Power, _SettingR):
     _hash: int = 436888930
+    _prefab_name: int = "StructureLogicBatchSlotReader"
 
 
 class _LogicBatchSlotReaders(_BaseStructures, _Errors, _Powers, _SettingRs):
     _hash: int = 436888930
+    _prefab_name: int = "StructureLogicBatchSlotReader"
 
     def __getitem__(self, name: str | int | float) -> "_LogicBatchSlotReaders":
         return _LogicBatchSlotReaders(name)
@@ -3120,10 +3082,11 @@ LogicBatchSlotReaders: _LogicBatchSlotReaders = _LogicBatchSlotReaders()
 
 class LogicBatchWriter(_BaseStructure, _Error, _Power):
     _hash: int = 1415443359
+    _prefab_name: int = "StructureLogicBatchWriter"
 
     @property
     def ForceWrite(self) -> float:
-        return _DeviceLogicType(self, self._id, "ForceWrite")
+        return _DeviceLogicType(self, _LT.ForceWrite)
 
     @ForceWrite.setter
     def ForceWrite(self, value: int | float):
@@ -3132,13 +3095,14 @@ class LogicBatchWriter(_BaseStructure, _Error, _Power):
 
 class _LogicBatchWriters(_BaseStructures, _Errors, _Powers):
     _hash: int = 1415443359
+    _prefab_name: int = "StructureLogicBatchWriter"
 
     def __getitem__(self, name: str | int | float) -> "_LogicBatchWriters":
         return _LogicBatchWriters(name)
 
     @property
     def ForceWrite(self) -> _DevicesLogicType:
-        return _DevicesLogicType(self._hash, "ForceWrite", self._name)
+        return _DevicesLogicType(self, _LT.ForceWrite)
 
     @ForceWrite.setter
     def ForceWrite(self, value: int | float):
@@ -3150,37 +3114,39 @@ LogicBatchWriters: _LogicBatchWriters = _LogicBatchWriters()
 
 class BatteryMedium(_BaseStructure, _Charge, _Maximum, _ModeR, _On, _Ratio):
     _hash: int = -1125305264
+    _prefab_name: int = "StructureBatteryMedium"
 
     @property
     def Power(self) -> float:
-        return _DeviceLogicType(self, self._id, "Power")
+        return _DeviceLogicType(self, _LT.Power)
 
     @property
     def PowerActual(self) -> float:
-        return _DeviceLogicType(self, self._id, "PowerActual")
+        return _DeviceLogicType(self, _LT.PowerActual)
 
     @property
     def PowerPotential(self) -> float:
-        return _DeviceLogicType(self, self._id, "PowerPotential")
+        return _DeviceLogicType(self, _LT.PowerPotential)
 
 
 class _BatteryMediums(_BaseStructures, _Charges, _Maximums, _ModeRs, _Ons, _Ratios):
     _hash: int = -1125305264
+    _prefab_name: int = "StructureBatteryMedium"
 
     def __getitem__(self, name: str | int | float) -> "_BatteryMediums":
         return _BatteryMediums(name)
 
     @property
     def Power(self) -> _DevicesLogicType:
-        return _DevicesLogicType(self._hash, "Power", self._name)
+        return _DevicesLogicType(self, _LT.Power)
 
     @property
     def PowerActual(self) -> _DevicesLogicType:
-        return _DevicesLogicType(self._hash, "PowerActual", self._name)
+        return _DevicesLogicType(self, _LT.PowerActual)
 
     @property
     def PowerPotential(self) -> _DevicesLogicType:
-        return _DevicesLogicType(self._hash, "PowerPotential", self._name)
+        return _DevicesLogicType(self, _LT.PowerPotential)
 
 
 BatteryMediums: _BatteryMediums = _BatteryMediums()
@@ -3188,53 +3154,55 @@ BatteryMediums: _BatteryMediums = _BatteryMediums()
 
 class BatteryCharger(_BaseStructure, _Activate, _Error, _Power):
     _hash: int = 1945930022
+    _prefab_name: int = "StructureBatteryCharger"
 
     @property
     def slot0(self) -> _SlotTypeBattery:
-        return _SlotTypeBattery(type(self), self._id, 0)
+        return _SlotTypeBattery(self, 0)
 
     @property
     def slot1(self) -> _SlotTypeBattery:
-        return _SlotTypeBattery(type(self), self._id, 1)
+        return _SlotTypeBattery(self, 1)
 
     @property
     def slot2(self) -> _SlotTypeBattery:
-        return _SlotTypeBattery(type(self), self._id, 2)
+        return _SlotTypeBattery(self, 2)
 
     @property
     def slot3(self) -> _SlotTypeBattery:
-        return _SlotTypeBattery(type(self), self._id, 3)
+        return _SlotTypeBattery(self, 3)
 
     @property
     def slot4(self) -> _SlotTypeBattery:
-        return _SlotTypeBattery(type(self), self._id, 4)
+        return _SlotTypeBattery(self, 4)
 
 
 class _BatteryChargers(_BaseStructures, _Activates, _Errors, _Powers):
     _hash: int = 1945930022
+    _prefab_name: int = "StructureBatteryCharger"
 
     def __getitem__(self, name: str | int | float) -> "_BatteryChargers":
         return _BatteryChargers(name)
 
     @property
     def slot0(self) -> _SlotTypeBatterys:
-        return _SlotTypeBatterys(type(self), self._hash, 0, self._name)
+        return _SlotTypeBatterys(self, 0)
 
     @property
     def slot1(self) -> _SlotTypeBatterys:
-        return _SlotTypeBatterys(type(self), self._hash, 1, self._name)
+        return _SlotTypeBatterys(self, 1)
 
     @property
     def slot2(self) -> _SlotTypeBatterys:
-        return _SlotTypeBatterys(type(self), self._hash, 2, self._name)
+        return _SlotTypeBatterys(self, 2)
 
     @property
     def slot3(self) -> _SlotTypeBatterys:
-        return _SlotTypeBatterys(type(self), self._hash, 3, self._name)
+        return _SlotTypeBatterys(self, 3)
 
     @property
     def slot4(self) -> _SlotTypeBatterys:
-        return _SlotTypeBatterys(type(self), self._hash, 4, self._name)
+        return _SlotTypeBatterys(self, 4)
 
 
 BatteryChargers: _BatteryChargers = _BatteryChargers()
@@ -3242,29 +3210,31 @@ BatteryChargers: _BatteryChargers = _BatteryChargers()
 
 class BatteryChargerSmall(_BaseStructure, _Activate, _Error, _Power):
     _hash: int = -761772413
+    _prefab_name: int = "StructureBatteryChargerSmall"
 
     @property
     def slot0(self) -> _SlotTypeBattery:
-        return _SlotTypeBattery(type(self), self._id, 0)
+        return _SlotTypeBattery(self, 0)
 
     @property
     def slot1(self) -> _SlotTypeBattery:
-        return _SlotTypeBattery(type(self), self._id, 1)
+        return _SlotTypeBattery(self, 1)
 
 
 class _BatteryChargerSmalls(_BaseStructures, _Activates, _Errors, _Powers):
     _hash: int = -761772413
+    _prefab_name: int = "StructureBatteryChargerSmall"
 
     def __getitem__(self, name: str | int | float) -> "_BatteryChargerSmalls":
         return _BatteryChargerSmalls(name)
 
     @property
     def slot0(self) -> _SlotTypeBatterys:
-        return _SlotTypeBatterys(type(self), self._hash, 0, self._name)
+        return _SlotTypeBatterys(self, 0)
 
     @property
     def slot1(self) -> _SlotTypeBatterys:
-        return _SlotTypeBatterys(type(self), self._hash, 1, self._name)
+        return _SlotTypeBatterys(self, 1)
 
 
 BatteryChargerSmalls: _BatteryChargerSmalls = _BatteryChargerSmalls()
@@ -3272,10 +3242,11 @@ BatteryChargerSmalls: _BatteryChargerSmalls = _BatteryChargerSmalls()
 
 class Beacon(_BaseStructure, _Error, _Lock, _Power):
     _hash: int = -188177083
+    _prefab_name: int = "StructureBeacon"
 
     @property
     def Color(self) -> float:
-        return _DeviceLogicType(self, self._id, "Color")
+        return _DeviceLogicType(self, _LT.Color)
 
     @Color.setter
     def Color(self, value: int | float):
@@ -3284,13 +3255,14 @@ class Beacon(_BaseStructure, _Error, _Lock, _Power):
 
 class _Beacons(_BaseStructures, _Errors, _Locks, _Powers):
     _hash: int = -188177083
+    _prefab_name: int = "StructureBeacon"
 
     def __getitem__(self, name: str | int | float) -> "_Beacons":
         return _Beacons(name)
 
     @property
     def Color(self) -> _DevicesLogicType:
-        return _DevicesLogicType(self._hash, "Color", self._name)
+        return _DevicesLogicType(self, _LT.Color)
 
     @Color.setter
     def Color(self, value: int | float):
@@ -3302,10 +3274,11 @@ Beacons: _Beacons = _Beacons()
 
 class Bench1(_BaseStructure, _Error, _Power):
     _hash: int = 406745009
+    _prefab_name: int = "StructureBench1"
 
     @property
     def slot0(self) -> _SlotTypeAppliance:
-        return _SlotTypeAppliance(type(self), self._id, 0)
+        return _SlotTypeAppliance(self, 0)
 
     @property
     def Appliance1(self) -> _SlotTypeAppliance:
@@ -3313,7 +3286,7 @@ class Bench1(_BaseStructure, _Error, _Power):
 
     @property
     def slot1(self) -> _SlotTypeAppliance:
-        return _SlotTypeAppliance(type(self), self._id, 1)
+        return _SlotTypeAppliance(self, 1)
 
     @property
     def Appliance2(self) -> _SlotTypeAppliance:
@@ -3322,13 +3295,14 @@ class Bench1(_BaseStructure, _Error, _Power):
 
 class _Bench1s(_BaseStructures, _Errors, _Powers):
     _hash: int = 406745009
+    _prefab_name: int = "StructureBench1"
 
     def __getitem__(self, name: str | int | float) -> "_Bench1s":
         return _Bench1s(name)
 
     @property
     def slot0(self) -> _SlotTypeAppliances:
-        return _SlotTypeAppliances(type(self), self._hash, 0, self._name)
+        return _SlotTypeAppliances(self, 0)
 
     @property
     def Appliance1(self) -> _SlotTypeAppliances:
@@ -3336,7 +3310,7 @@ class _Bench1s(_BaseStructures, _Errors, _Powers):
 
     @property
     def slot1(self) -> _SlotTypeAppliances:
-        return _SlotTypeAppliances(type(self), self._hash, 1, self._name)
+        return _SlotTypeAppliances(self, 1)
 
     @property
     def Appliance2(self) -> _SlotTypeAppliances:
@@ -3348,10 +3322,11 @@ Bench1s: _Bench1s = _Bench1s()
 
 class Bench3(_BaseStructure, _Error, _Power):
     _hash: int = -164622691
+    _prefab_name: int = "StructureBench3"
 
     @property
     def slot0(self) -> _SlotTypeAppliance:
-        return _SlotTypeAppliance(type(self), self._id, 0)
+        return _SlotTypeAppliance(self, 0)
 
     @property
     def Appliance1(self) -> _SlotTypeAppliance:
@@ -3359,7 +3334,7 @@ class Bench3(_BaseStructure, _Error, _Power):
 
     @property
     def slot1(self) -> _SlotTypeAppliance:
-        return _SlotTypeAppliance(type(self), self._id, 1)
+        return _SlotTypeAppliance(self, 1)
 
     @property
     def Appliance2(self) -> _SlotTypeAppliance:
@@ -3368,13 +3343,14 @@ class Bench3(_BaseStructure, _Error, _Power):
 
 class _Bench3s(_BaseStructures, _Errors, _Powers):
     _hash: int = -164622691
+    _prefab_name: int = "StructureBench3"
 
     def __getitem__(self, name: str | int | float) -> "_Bench3s":
         return _Bench3s(name)
 
     @property
     def slot0(self) -> _SlotTypeAppliances:
-        return _SlotTypeAppliances(type(self), self._hash, 0, self._name)
+        return _SlotTypeAppliances(self, 0)
 
     @property
     def Appliance1(self) -> _SlotTypeAppliances:
@@ -3382,7 +3358,7 @@ class _Bench3s(_BaseStructures, _Errors, _Powers):
 
     @property
     def slot1(self) -> _SlotTypeAppliances:
-        return _SlotTypeAppliances(type(self), self._hash, 1, self._name)
+        return _SlotTypeAppliances(self, 1)
 
     @property
     def Appliance2(self) -> _SlotTypeAppliances:
@@ -3394,10 +3370,11 @@ Bench3s: _Bench3s = _Bench3s()
 
 class Bench2(_BaseStructure, _Error, _Power):
     _hash: int = -2127086069
+    _prefab_name: int = "StructureBench2"
 
     @property
     def slot0(self) -> _SlotTypeAppliance:
-        return _SlotTypeAppliance(type(self), self._id, 0)
+        return _SlotTypeAppliance(self, 0)
 
     @property
     def Appliance1(self) -> _SlotTypeAppliance:
@@ -3405,7 +3382,7 @@ class Bench2(_BaseStructure, _Error, _Power):
 
     @property
     def slot1(self) -> _SlotTypeAppliance:
-        return _SlotTypeAppliance(type(self), self._id, 1)
+        return _SlotTypeAppliance(self, 1)
 
     @property
     def Appliance2(self) -> _SlotTypeAppliance:
@@ -3414,13 +3391,14 @@ class Bench2(_BaseStructure, _Error, _Power):
 
 class _Bench2s(_BaseStructures, _Errors, _Powers):
     _hash: int = -2127086069
+    _prefab_name: int = "StructureBench2"
 
     def __getitem__(self, name: str | int | float) -> "_Bench2s":
         return _Bench2s(name)
 
     @property
     def slot0(self) -> _SlotTypeAppliances:
-        return _SlotTypeAppliances(type(self), self._hash, 0, self._name)
+        return _SlotTypeAppliances(self, 0)
 
     @property
     def Appliance1(self) -> _SlotTypeAppliances:
@@ -3428,7 +3406,7 @@ class _Bench2s(_BaseStructures, _Errors, _Powers):
 
     @property
     def slot1(self) -> _SlotTypeAppliances:
-        return _SlotTypeAppliances(type(self), self._hash, 1, self._name)
+        return _SlotTypeAppliances(self, 1)
 
     @property
     def Appliance2(self) -> _SlotTypeAppliances:
@@ -3440,10 +3418,11 @@ Bench2s: _Bench2s = _Bench2s()
 
 class Bench4(_BaseStructure, _Error, _Power):
     _hash: int = 1750375230
+    _prefab_name: int = "StructureBench4"
 
     @property
     def slot0(self) -> _SlotTypeAppliance:
-        return _SlotTypeAppliance(type(self), self._id, 0)
+        return _SlotTypeAppliance(self, 0)
 
     @property
     def Appliance1(self) -> _SlotTypeAppliance:
@@ -3451,7 +3430,7 @@ class Bench4(_BaseStructure, _Error, _Power):
 
     @property
     def slot1(self) -> _SlotTypeAppliance:
-        return _SlotTypeAppliance(type(self), self._id, 1)
+        return _SlotTypeAppliance(self, 1)
 
     @property
     def Appliance2(self) -> _SlotTypeAppliance:
@@ -3460,13 +3439,14 @@ class Bench4(_BaseStructure, _Error, _Power):
 
 class _Bench4s(_BaseStructures, _Errors, _Powers):
     _hash: int = 1750375230
+    _prefab_name: int = "StructureBench4"
 
     def __getitem__(self, name: str | int | float) -> "_Bench4s":
         return _Bench4s(name)
 
     @property
     def slot0(self) -> _SlotTypeAppliances:
-        return _SlotTypeAppliances(type(self), self._hash, 0, self._name)
+        return _SlotTypeAppliances(self, 0)
 
     @property
     def Appliance1(self) -> _SlotTypeAppliances:
@@ -3474,7 +3454,7 @@ class _Bench4s(_BaseStructures, _Errors, _Powers):
 
     @property
     def slot1(self) -> _SlotTypeAppliances:
-        return _SlotTypeAppliances(type(self), self._hash, 1, self._name)
+        return _SlotTypeAppliances(self, 1)
 
     @property
     def Appliance2(self) -> _SlotTypeAppliances:
@@ -3486,10 +3466,12 @@ Bench4s: _Bench4s = _Bench4s()
 
 class BlastDoor(_BaseStructure, _Idle, _Lock, _Mode, _Open, _Power, _SettingW):
     _hash: int = 337416191
+    _prefab_name: int = "StructureBlastDoor"
 
 
 class _BlastDoors(_BaseStructures, _Idles, _Locks, _Modes, _Opens, _Powers, _SettingWs):
     _hash: int = 337416191
+    _prefab_name: int = "StructureBlastDoor"
 
     def __getitem__(self, name: str | int | float) -> "_BlastDoors":
         return _BlastDoors(name)
@@ -3500,10 +3482,11 @@ BlastDoors: _BlastDoors = _BlastDoors()
 
 class BlockBed(_BaseStructure, _Activate, _Error, _Power):
     _hash: int = 697908419
+    _prefab_name: int = "StructureBlockBed"
 
     @property
     def slot0(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(type(self), self._id, 0)
+        return _SlotTypeCommon(self, 0)
 
     @property
     def Bed(self) -> _SlotTypeCommon:
@@ -3512,13 +3495,14 @@ class BlockBed(_BaseStructure, _Activate, _Error, _Power):
 
 class _BlockBeds(_BaseStructures, _Activates, _Errors, _Powers):
     _hash: int = 697908419
+    _prefab_name: int = "StructureBlockBed"
 
     def __getitem__(self, name: str | int | float) -> "_BlockBeds":
         return _BlockBeds(name)
 
     @property
     def slot0(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(type(self), self._hash, 0, self._name)
+        return _SlotTypeCommons(self, 0)
 
     @property
     def Bed(self) -> _SlotTypeCommons:
@@ -3530,10 +3514,12 @@ BlockBeds: _BlockBeds = _BlockBeds()
 
 class LogicButton(_BaseStructure, _Activate, _Lock, _SettingR):
     _hash: int = 491845673
+    _prefab_name: int = "StructureLogicButton"
 
 
 class _LogicButtons(_BaseStructures, _Activates, _Locks, _SettingRs):
     _hash: int = 491845673
+    _prefab_name: int = "StructureLogicButton"
 
     def __getitem__(self, name: str | int | float) -> "_LogicButtons":
         return _LogicButtons(name)
@@ -3544,37 +3530,39 @@ LogicButtons: _LogicButtons = _LogicButtons()
 
 class CableAnalysizer(_BaseStructure):
     _hash: int = 1036015121
+    _prefab_name: int = "StructureCableAnalysizer"
 
     @property
     def PowerActual(self) -> float:
-        return _DeviceLogicType(self, self._id, "PowerActual")
+        return _DeviceLogicType(self, _LT.PowerActual)
 
     @property
     def PowerPotential(self) -> float:
-        return _DeviceLogicType(self, self._id, "PowerPotential")
+        return _DeviceLogicType(self, _LT.PowerPotential)
 
     @property
     def PowerRequired(self) -> float:
-        return _DeviceLogicType(self, self._id, "PowerRequired")
+        return _DeviceLogicType(self, _LT.PowerRequired)
 
 
 class _CableAnalysizers(_BaseStructures):
     _hash: int = 1036015121
+    _prefab_name: int = "StructureCableAnalysizer"
 
     def __getitem__(self, name: str | int | float) -> "_CableAnalysizers":
         return _CableAnalysizers(name)
 
     @property
     def PowerActual(self) -> _DevicesLogicType:
-        return _DevicesLogicType(self._hash, "PowerActual", self._name)
+        return _DevicesLogicType(self, _LT.PowerActual)
 
     @property
     def PowerPotential(self) -> _DevicesLogicType:
-        return _DevicesLogicType(self._hash, "PowerPotential", self._name)
+        return _DevicesLogicType(self, _LT.PowerPotential)
 
     @property
     def PowerRequired(self) -> _DevicesLogicType:
-        return _DevicesLogicType(self._hash, "PowerRequired", self._name)
+        return _DevicesLogicType(self, _LT.PowerRequired)
 
 
 CableAnalysizers: _CableAnalysizers = _CableAnalysizers()
@@ -3582,10 +3570,12 @@ CableAnalysizers: _CableAnalysizers = _CableAnalysizers()
 
 class Camera(_BaseStructure, _Mode, _On):
     _hash: int = -342072665
+    _prefab_name: int = "StructureCamera"
 
 
 class _Cameras(_BaseStructures, _Modes, _Ons):
     _hash: int = -342072665
+    _prefab_name: int = "StructureCamera"
 
     def __getitem__(self, name: str | int | float) -> "_Cameras":
         return _Cameras(name)
@@ -3607,10 +3597,11 @@ class CargoStorageMedium(
     _Ratio,
 ):
     _hash: int = 1151864003
+    _prefab_name: int = "StructureCargoStorageMedium"
 
     @property
     def slot0(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(type(self), self._id, 0)
+        return _SlotTypeCommon(self, 0)
 
     @property
     def Import(self) -> _SlotTypeCommon:
@@ -3618,7 +3609,7 @@ class CargoStorageMedium(
 
     @property
     def slot1(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(type(self), self._id, 1)
+        return _SlotTypeCommon(self, 1)
 
     @property
     def Export(self) -> _SlotTypeCommon:
@@ -3626,403 +3617,403 @@ class CargoStorageMedium(
 
     @property
     def slot10(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(type(self), self._id, 10)
+        return _SlotTypeCommon(self, 10)
 
     @property
     def slot100(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(type(self), self._id, 100)
+        return _SlotTypeCommon(self, 100)
 
     @property
     def slot101(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(type(self), self._id, 101)
+        return _SlotTypeCommon(self, 101)
 
     @property
     def slot11(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(type(self), self._id, 11)
+        return _SlotTypeCommon(self, 11)
 
     @property
     def slot12(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(type(self), self._id, 12)
+        return _SlotTypeCommon(self, 12)
 
     @property
     def slot13(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(type(self), self._id, 13)
+        return _SlotTypeCommon(self, 13)
 
     @property
     def slot14(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(type(self), self._id, 14)
+        return _SlotTypeCommon(self, 14)
 
     @property
     def slot15(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(type(self), self._id, 15)
+        return _SlotTypeCommon(self, 15)
 
     @property
     def slot16(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(type(self), self._id, 16)
+        return _SlotTypeCommon(self, 16)
 
     @property
     def slot17(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(type(self), self._id, 17)
+        return _SlotTypeCommon(self, 17)
 
     @property
     def slot18(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(type(self), self._id, 18)
+        return _SlotTypeCommon(self, 18)
 
     @property
     def slot19(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(type(self), self._id, 19)
+        return _SlotTypeCommon(self, 19)
 
     @property
     def slot2(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(type(self), self._id, 2)
+        return _SlotTypeCommon(self, 2)
 
     @property
     def slot20(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(type(self), self._id, 20)
+        return _SlotTypeCommon(self, 20)
 
     @property
     def slot21(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(type(self), self._id, 21)
+        return _SlotTypeCommon(self, 21)
 
     @property
     def slot22(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(type(self), self._id, 22)
+        return _SlotTypeCommon(self, 22)
 
     @property
     def slot23(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(type(self), self._id, 23)
+        return _SlotTypeCommon(self, 23)
 
     @property
     def slot24(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(type(self), self._id, 24)
+        return _SlotTypeCommon(self, 24)
 
     @property
     def slot25(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(type(self), self._id, 25)
+        return _SlotTypeCommon(self, 25)
 
     @property
     def slot26(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(type(self), self._id, 26)
+        return _SlotTypeCommon(self, 26)
 
     @property
     def slot27(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(type(self), self._id, 27)
+        return _SlotTypeCommon(self, 27)
 
     @property
     def slot28(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(type(self), self._id, 28)
+        return _SlotTypeCommon(self, 28)
 
     @property
     def slot29(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(type(self), self._id, 29)
+        return _SlotTypeCommon(self, 29)
 
     @property
     def slot3(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(type(self), self._id, 3)
+        return _SlotTypeCommon(self, 3)
 
     @property
     def slot30(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(type(self), self._id, 30)
+        return _SlotTypeCommon(self, 30)
 
     @property
     def slot31(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(type(self), self._id, 31)
+        return _SlotTypeCommon(self, 31)
 
     @property
     def slot32(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(type(self), self._id, 32)
+        return _SlotTypeCommon(self, 32)
 
     @property
     def slot33(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(type(self), self._id, 33)
+        return _SlotTypeCommon(self, 33)
 
     @property
     def slot34(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(type(self), self._id, 34)
+        return _SlotTypeCommon(self, 34)
 
     @property
     def slot35(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(type(self), self._id, 35)
+        return _SlotTypeCommon(self, 35)
 
     @property
     def slot36(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(type(self), self._id, 36)
+        return _SlotTypeCommon(self, 36)
 
     @property
     def slot37(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(type(self), self._id, 37)
+        return _SlotTypeCommon(self, 37)
 
     @property
     def slot38(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(type(self), self._id, 38)
+        return _SlotTypeCommon(self, 38)
 
     @property
     def slot39(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(type(self), self._id, 39)
+        return _SlotTypeCommon(self, 39)
 
     @property
     def slot4(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(type(self), self._id, 4)
+        return _SlotTypeCommon(self, 4)
 
     @property
     def slot40(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(type(self), self._id, 40)
+        return _SlotTypeCommon(self, 40)
 
     @property
     def slot41(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(type(self), self._id, 41)
+        return _SlotTypeCommon(self, 41)
 
     @property
     def slot42(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(type(self), self._id, 42)
+        return _SlotTypeCommon(self, 42)
 
     @property
     def slot43(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(type(self), self._id, 43)
+        return _SlotTypeCommon(self, 43)
 
     @property
     def slot44(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(type(self), self._id, 44)
+        return _SlotTypeCommon(self, 44)
 
     @property
     def slot45(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(type(self), self._id, 45)
+        return _SlotTypeCommon(self, 45)
 
     @property
     def slot46(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(type(self), self._id, 46)
+        return _SlotTypeCommon(self, 46)
 
     @property
     def slot47(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(type(self), self._id, 47)
+        return _SlotTypeCommon(self, 47)
 
     @property
     def slot48(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(type(self), self._id, 48)
+        return _SlotTypeCommon(self, 48)
 
     @property
     def slot49(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(type(self), self._id, 49)
+        return _SlotTypeCommon(self, 49)
 
     @property
     def slot5(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(type(self), self._id, 5)
+        return _SlotTypeCommon(self, 5)
 
     @property
     def slot50(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(type(self), self._id, 50)
+        return _SlotTypeCommon(self, 50)
 
     @property
     def slot51(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(type(self), self._id, 51)
+        return _SlotTypeCommon(self, 51)
 
     @property
     def slot52(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(type(self), self._id, 52)
+        return _SlotTypeCommon(self, 52)
 
     @property
     def slot53(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(type(self), self._id, 53)
+        return _SlotTypeCommon(self, 53)
 
     @property
     def slot54(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(type(self), self._id, 54)
+        return _SlotTypeCommon(self, 54)
 
     @property
     def slot55(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(type(self), self._id, 55)
+        return _SlotTypeCommon(self, 55)
 
     @property
     def slot56(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(type(self), self._id, 56)
+        return _SlotTypeCommon(self, 56)
 
     @property
     def slot57(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(type(self), self._id, 57)
+        return _SlotTypeCommon(self, 57)
 
     @property
     def slot58(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(type(self), self._id, 58)
+        return _SlotTypeCommon(self, 58)
 
     @property
     def slot59(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(type(self), self._id, 59)
+        return _SlotTypeCommon(self, 59)
 
     @property
     def slot6(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(type(self), self._id, 6)
+        return _SlotTypeCommon(self, 6)
 
     @property
     def slot60(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(type(self), self._id, 60)
+        return _SlotTypeCommon(self, 60)
 
     @property
     def slot61(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(type(self), self._id, 61)
+        return _SlotTypeCommon(self, 61)
 
     @property
     def slot62(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(type(self), self._id, 62)
+        return _SlotTypeCommon(self, 62)
 
     @property
     def slot63(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(type(self), self._id, 63)
+        return _SlotTypeCommon(self, 63)
 
     @property
     def slot64(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(type(self), self._id, 64)
+        return _SlotTypeCommon(self, 64)
 
     @property
     def slot65(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(type(self), self._id, 65)
+        return _SlotTypeCommon(self, 65)
 
     @property
     def slot66(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(type(self), self._id, 66)
+        return _SlotTypeCommon(self, 66)
 
     @property
     def slot67(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(type(self), self._id, 67)
+        return _SlotTypeCommon(self, 67)
 
     @property
     def slot68(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(type(self), self._id, 68)
+        return _SlotTypeCommon(self, 68)
 
     @property
     def slot69(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(type(self), self._id, 69)
+        return _SlotTypeCommon(self, 69)
 
     @property
     def slot7(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(type(self), self._id, 7)
+        return _SlotTypeCommon(self, 7)
 
     @property
     def slot70(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(type(self), self._id, 70)
+        return _SlotTypeCommon(self, 70)
 
     @property
     def slot71(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(type(self), self._id, 71)
+        return _SlotTypeCommon(self, 71)
 
     @property
     def slot72(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(type(self), self._id, 72)
+        return _SlotTypeCommon(self, 72)
 
     @property
     def slot73(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(type(self), self._id, 73)
+        return _SlotTypeCommon(self, 73)
 
     @property
     def slot74(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(type(self), self._id, 74)
+        return _SlotTypeCommon(self, 74)
 
     @property
     def slot75(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(type(self), self._id, 75)
+        return _SlotTypeCommon(self, 75)
 
     @property
     def slot76(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(type(self), self._id, 76)
+        return _SlotTypeCommon(self, 76)
 
     @property
     def slot77(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(type(self), self._id, 77)
+        return _SlotTypeCommon(self, 77)
 
     @property
     def slot78(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(type(self), self._id, 78)
+        return _SlotTypeCommon(self, 78)
 
     @property
     def slot79(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(type(self), self._id, 79)
+        return _SlotTypeCommon(self, 79)
 
     @property
     def slot8(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(type(self), self._id, 8)
+        return _SlotTypeCommon(self, 8)
 
     @property
     def slot80(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(type(self), self._id, 80)
+        return _SlotTypeCommon(self, 80)
 
     @property
     def slot81(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(type(self), self._id, 81)
+        return _SlotTypeCommon(self, 81)
 
     @property
     def slot82(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(type(self), self._id, 82)
+        return _SlotTypeCommon(self, 82)
 
     @property
     def slot83(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(type(self), self._id, 83)
+        return _SlotTypeCommon(self, 83)
 
     @property
     def slot84(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(type(self), self._id, 84)
+        return _SlotTypeCommon(self, 84)
 
     @property
     def slot85(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(type(self), self._id, 85)
+        return _SlotTypeCommon(self, 85)
 
     @property
     def slot86(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(type(self), self._id, 86)
+        return _SlotTypeCommon(self, 86)
 
     @property
     def slot87(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(type(self), self._id, 87)
+        return _SlotTypeCommon(self, 87)
 
     @property
     def slot88(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(type(self), self._id, 88)
+        return _SlotTypeCommon(self, 88)
 
     @property
     def slot89(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(type(self), self._id, 89)
+        return _SlotTypeCommon(self, 89)
 
     @property
     def slot9(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(type(self), self._id, 9)
+        return _SlotTypeCommon(self, 9)
 
     @property
     def slot90(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(type(self), self._id, 90)
+        return _SlotTypeCommon(self, 90)
 
     @property
     def slot91(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(type(self), self._id, 91)
+        return _SlotTypeCommon(self, 91)
 
     @property
     def slot92(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(type(self), self._id, 92)
+        return _SlotTypeCommon(self, 92)
 
     @property
     def slot93(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(type(self), self._id, 93)
+        return _SlotTypeCommon(self, 93)
 
     @property
     def slot94(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(type(self), self._id, 94)
+        return _SlotTypeCommon(self, 94)
 
     @property
     def slot95(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(type(self), self._id, 95)
+        return _SlotTypeCommon(self, 95)
 
     @property
     def slot96(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(type(self), self._id, 96)
+        return _SlotTypeCommon(self, 96)
 
     @property
     def slot97(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(type(self), self._id, 97)
+        return _SlotTypeCommon(self, 97)
 
     @property
     def slot98(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(type(self), self._id, 98)
+        return _SlotTypeCommon(self, 98)
 
     @property
     def slot99(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(type(self), self._id, 99)
+        return _SlotTypeCommon(self, 99)
 
 
 class _CargoStorageMediums(
@@ -4038,13 +4029,14 @@ class _CargoStorageMediums(
     _Ratios,
 ):
     _hash: int = 1151864003
+    _prefab_name: int = "StructureCargoStorageMedium"
 
     def __getitem__(self, name: str | int | float) -> "_CargoStorageMediums":
         return _CargoStorageMediums(name)
 
     @property
     def slot0(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(type(self), self._hash, 0, self._name)
+        return _SlotTypeCommons(self, 0)
 
     @property
     def Import(self) -> _SlotTypeCommons:
@@ -4052,7 +4044,7 @@ class _CargoStorageMediums(
 
     @property
     def slot1(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(type(self), self._hash, 1, self._name)
+        return _SlotTypeCommons(self, 1)
 
     @property
     def Export(self) -> _SlotTypeCommons:
@@ -4060,403 +4052,403 @@ class _CargoStorageMediums(
 
     @property
     def slot10(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(type(self), self._hash, 10, self._name)
+        return _SlotTypeCommons(self, 10)
 
     @property
     def slot100(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(type(self), self._hash, 100, self._name)
+        return _SlotTypeCommons(self, 100)
 
     @property
     def slot101(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(type(self), self._hash, 101, self._name)
+        return _SlotTypeCommons(self, 101)
 
     @property
     def slot11(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(type(self), self._hash, 11, self._name)
+        return _SlotTypeCommons(self, 11)
 
     @property
     def slot12(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(type(self), self._hash, 12, self._name)
+        return _SlotTypeCommons(self, 12)
 
     @property
     def slot13(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(type(self), self._hash, 13, self._name)
+        return _SlotTypeCommons(self, 13)
 
     @property
     def slot14(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(type(self), self._hash, 14, self._name)
+        return _SlotTypeCommons(self, 14)
 
     @property
     def slot15(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(type(self), self._hash, 15, self._name)
+        return _SlotTypeCommons(self, 15)
 
     @property
     def slot16(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(type(self), self._hash, 16, self._name)
+        return _SlotTypeCommons(self, 16)
 
     @property
     def slot17(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(type(self), self._hash, 17, self._name)
+        return _SlotTypeCommons(self, 17)
 
     @property
     def slot18(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(type(self), self._hash, 18, self._name)
+        return _SlotTypeCommons(self, 18)
 
     @property
     def slot19(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(type(self), self._hash, 19, self._name)
+        return _SlotTypeCommons(self, 19)
 
     @property
     def slot2(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(type(self), self._hash, 2, self._name)
+        return _SlotTypeCommons(self, 2)
 
     @property
     def slot20(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(type(self), self._hash, 20, self._name)
+        return _SlotTypeCommons(self, 20)
 
     @property
     def slot21(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(type(self), self._hash, 21, self._name)
+        return _SlotTypeCommons(self, 21)
 
     @property
     def slot22(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(type(self), self._hash, 22, self._name)
+        return _SlotTypeCommons(self, 22)
 
     @property
     def slot23(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(type(self), self._hash, 23, self._name)
+        return _SlotTypeCommons(self, 23)
 
     @property
     def slot24(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(type(self), self._hash, 24, self._name)
+        return _SlotTypeCommons(self, 24)
 
     @property
     def slot25(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(type(self), self._hash, 25, self._name)
+        return _SlotTypeCommons(self, 25)
 
     @property
     def slot26(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(type(self), self._hash, 26, self._name)
+        return _SlotTypeCommons(self, 26)
 
     @property
     def slot27(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(type(self), self._hash, 27, self._name)
+        return _SlotTypeCommons(self, 27)
 
     @property
     def slot28(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(type(self), self._hash, 28, self._name)
+        return _SlotTypeCommons(self, 28)
 
     @property
     def slot29(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(type(self), self._hash, 29, self._name)
+        return _SlotTypeCommons(self, 29)
 
     @property
     def slot3(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(type(self), self._hash, 3, self._name)
+        return _SlotTypeCommons(self, 3)
 
     @property
     def slot30(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(type(self), self._hash, 30, self._name)
+        return _SlotTypeCommons(self, 30)
 
     @property
     def slot31(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(type(self), self._hash, 31, self._name)
+        return _SlotTypeCommons(self, 31)
 
     @property
     def slot32(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(type(self), self._hash, 32, self._name)
+        return _SlotTypeCommons(self, 32)
 
     @property
     def slot33(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(type(self), self._hash, 33, self._name)
+        return _SlotTypeCommons(self, 33)
 
     @property
     def slot34(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(type(self), self._hash, 34, self._name)
+        return _SlotTypeCommons(self, 34)
 
     @property
     def slot35(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(type(self), self._hash, 35, self._name)
+        return _SlotTypeCommons(self, 35)
 
     @property
     def slot36(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(type(self), self._hash, 36, self._name)
+        return _SlotTypeCommons(self, 36)
 
     @property
     def slot37(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(type(self), self._hash, 37, self._name)
+        return _SlotTypeCommons(self, 37)
 
     @property
     def slot38(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(type(self), self._hash, 38, self._name)
+        return _SlotTypeCommons(self, 38)
 
     @property
     def slot39(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(type(self), self._hash, 39, self._name)
+        return _SlotTypeCommons(self, 39)
 
     @property
     def slot4(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(type(self), self._hash, 4, self._name)
+        return _SlotTypeCommons(self, 4)
 
     @property
     def slot40(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(type(self), self._hash, 40, self._name)
+        return _SlotTypeCommons(self, 40)
 
     @property
     def slot41(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(type(self), self._hash, 41, self._name)
+        return _SlotTypeCommons(self, 41)
 
     @property
     def slot42(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(type(self), self._hash, 42, self._name)
+        return _SlotTypeCommons(self, 42)
 
     @property
     def slot43(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(type(self), self._hash, 43, self._name)
+        return _SlotTypeCommons(self, 43)
 
     @property
     def slot44(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(type(self), self._hash, 44, self._name)
+        return _SlotTypeCommons(self, 44)
 
     @property
     def slot45(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(type(self), self._hash, 45, self._name)
+        return _SlotTypeCommons(self, 45)
 
     @property
     def slot46(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(type(self), self._hash, 46, self._name)
+        return _SlotTypeCommons(self, 46)
 
     @property
     def slot47(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(type(self), self._hash, 47, self._name)
+        return _SlotTypeCommons(self, 47)
 
     @property
     def slot48(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(type(self), self._hash, 48, self._name)
+        return _SlotTypeCommons(self, 48)
 
     @property
     def slot49(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(type(self), self._hash, 49, self._name)
+        return _SlotTypeCommons(self, 49)
 
     @property
     def slot5(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(type(self), self._hash, 5, self._name)
+        return _SlotTypeCommons(self, 5)
 
     @property
     def slot50(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(type(self), self._hash, 50, self._name)
+        return _SlotTypeCommons(self, 50)
 
     @property
     def slot51(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(type(self), self._hash, 51, self._name)
+        return _SlotTypeCommons(self, 51)
 
     @property
     def slot52(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(type(self), self._hash, 52, self._name)
+        return _SlotTypeCommons(self, 52)
 
     @property
     def slot53(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(type(self), self._hash, 53, self._name)
+        return _SlotTypeCommons(self, 53)
 
     @property
     def slot54(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(type(self), self._hash, 54, self._name)
+        return _SlotTypeCommons(self, 54)
 
     @property
     def slot55(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(type(self), self._hash, 55, self._name)
+        return _SlotTypeCommons(self, 55)
 
     @property
     def slot56(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(type(self), self._hash, 56, self._name)
+        return _SlotTypeCommons(self, 56)
 
     @property
     def slot57(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(type(self), self._hash, 57, self._name)
+        return _SlotTypeCommons(self, 57)
 
     @property
     def slot58(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(type(self), self._hash, 58, self._name)
+        return _SlotTypeCommons(self, 58)
 
     @property
     def slot59(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(type(self), self._hash, 59, self._name)
+        return _SlotTypeCommons(self, 59)
 
     @property
     def slot6(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(type(self), self._hash, 6, self._name)
+        return _SlotTypeCommons(self, 6)
 
     @property
     def slot60(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(type(self), self._hash, 60, self._name)
+        return _SlotTypeCommons(self, 60)
 
     @property
     def slot61(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(type(self), self._hash, 61, self._name)
+        return _SlotTypeCommons(self, 61)
 
     @property
     def slot62(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(type(self), self._hash, 62, self._name)
+        return _SlotTypeCommons(self, 62)
 
     @property
     def slot63(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(type(self), self._hash, 63, self._name)
+        return _SlotTypeCommons(self, 63)
 
     @property
     def slot64(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(type(self), self._hash, 64, self._name)
+        return _SlotTypeCommons(self, 64)
 
     @property
     def slot65(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(type(self), self._hash, 65, self._name)
+        return _SlotTypeCommons(self, 65)
 
     @property
     def slot66(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(type(self), self._hash, 66, self._name)
+        return _SlotTypeCommons(self, 66)
 
     @property
     def slot67(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(type(self), self._hash, 67, self._name)
+        return _SlotTypeCommons(self, 67)
 
     @property
     def slot68(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(type(self), self._hash, 68, self._name)
+        return _SlotTypeCommons(self, 68)
 
     @property
     def slot69(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(type(self), self._hash, 69, self._name)
+        return _SlotTypeCommons(self, 69)
 
     @property
     def slot7(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(type(self), self._hash, 7, self._name)
+        return _SlotTypeCommons(self, 7)
 
     @property
     def slot70(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(type(self), self._hash, 70, self._name)
+        return _SlotTypeCommons(self, 70)
 
     @property
     def slot71(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(type(self), self._hash, 71, self._name)
+        return _SlotTypeCommons(self, 71)
 
     @property
     def slot72(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(type(self), self._hash, 72, self._name)
+        return _SlotTypeCommons(self, 72)
 
     @property
     def slot73(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(type(self), self._hash, 73, self._name)
+        return _SlotTypeCommons(self, 73)
 
     @property
     def slot74(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(type(self), self._hash, 74, self._name)
+        return _SlotTypeCommons(self, 74)
 
     @property
     def slot75(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(type(self), self._hash, 75, self._name)
+        return _SlotTypeCommons(self, 75)
 
     @property
     def slot76(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(type(self), self._hash, 76, self._name)
+        return _SlotTypeCommons(self, 76)
 
     @property
     def slot77(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(type(self), self._hash, 77, self._name)
+        return _SlotTypeCommons(self, 77)
 
     @property
     def slot78(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(type(self), self._hash, 78, self._name)
+        return _SlotTypeCommons(self, 78)
 
     @property
     def slot79(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(type(self), self._hash, 79, self._name)
+        return _SlotTypeCommons(self, 79)
 
     @property
     def slot8(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(type(self), self._hash, 8, self._name)
+        return _SlotTypeCommons(self, 8)
 
     @property
     def slot80(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(type(self), self._hash, 80, self._name)
+        return _SlotTypeCommons(self, 80)
 
     @property
     def slot81(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(type(self), self._hash, 81, self._name)
+        return _SlotTypeCommons(self, 81)
 
     @property
     def slot82(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(type(self), self._hash, 82, self._name)
+        return _SlotTypeCommons(self, 82)
 
     @property
     def slot83(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(type(self), self._hash, 83, self._name)
+        return _SlotTypeCommons(self, 83)
 
     @property
     def slot84(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(type(self), self._hash, 84, self._name)
+        return _SlotTypeCommons(self, 84)
 
     @property
     def slot85(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(type(self), self._hash, 85, self._name)
+        return _SlotTypeCommons(self, 85)
 
     @property
     def slot86(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(type(self), self._hash, 86, self._name)
+        return _SlotTypeCommons(self, 86)
 
     @property
     def slot87(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(type(self), self._hash, 87, self._name)
+        return _SlotTypeCommons(self, 87)
 
     @property
     def slot88(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(type(self), self._hash, 88, self._name)
+        return _SlotTypeCommons(self, 88)
 
     @property
     def slot89(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(type(self), self._hash, 89, self._name)
+        return _SlotTypeCommons(self, 89)
 
     @property
     def slot9(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(type(self), self._hash, 9, self._name)
+        return _SlotTypeCommons(self, 9)
 
     @property
     def slot90(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(type(self), self._hash, 90, self._name)
+        return _SlotTypeCommons(self, 90)
 
     @property
     def slot91(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(type(self), self._hash, 91, self._name)
+        return _SlotTypeCommons(self, 91)
 
     @property
     def slot92(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(type(self), self._hash, 92, self._name)
+        return _SlotTypeCommons(self, 92)
 
     @property
     def slot93(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(type(self), self._hash, 93, self._name)
+        return _SlotTypeCommons(self, 93)
 
     @property
     def slot94(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(type(self), self._hash, 94, self._name)
+        return _SlotTypeCommons(self, 94)
 
     @property
     def slot95(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(type(self), self._hash, 95, self._name)
+        return _SlotTypeCommons(self, 95)
 
     @property
     def slot96(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(type(self), self._hash, 96, self._name)
+        return _SlotTypeCommons(self, 96)
 
     @property
     def slot97(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(type(self), self._hash, 97, self._name)
+        return _SlotTypeCommons(self, 97)
 
     @property
     def slot98(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(type(self), self._hash, 98, self._name)
+        return _SlotTypeCommons(self, 98)
 
     @property
     def slot99(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(type(self), self._hash, 99, self._name)
+        return _SlotTypeCommons(self, 99)
 
 
 CargoStorageMediums: _CargoStorageMediums = _CargoStorageMediums()
@@ -4475,10 +4467,11 @@ class CargoStorageSmall(
     _Ratio,
 ):
     _hash: int = -1493672123
+    _prefab_name: int = "StructureCargoStorageSmall"
 
     @property
     def slot0(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(type(self), self._id, 0)
+        return _SlotTypeCommon(self, 0)
 
     @property
     def Import(self) -> _SlotTypeCommon:
@@ -4486,7 +4479,7 @@ class CargoStorageSmall(
 
     @property
     def slot1(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(type(self), self._id, 1)
+        return _SlotTypeCommon(self, 1)
 
     @property
     def Export(self) -> _SlotTypeCommon:
@@ -4494,203 +4487,203 @@ class CargoStorageSmall(
 
     @property
     def slot10(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(type(self), self._id, 10)
+        return _SlotTypeCommon(self, 10)
 
     @property
     def slot11(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(type(self), self._id, 11)
+        return _SlotTypeCommon(self, 11)
 
     @property
     def slot12(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(type(self), self._id, 12)
+        return _SlotTypeCommon(self, 12)
 
     @property
     def slot13(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(type(self), self._id, 13)
+        return _SlotTypeCommon(self, 13)
 
     @property
     def slot14(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(type(self), self._id, 14)
+        return _SlotTypeCommon(self, 14)
 
     @property
     def slot15(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(type(self), self._id, 15)
+        return _SlotTypeCommon(self, 15)
 
     @property
     def slot16(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(type(self), self._id, 16)
+        return _SlotTypeCommon(self, 16)
 
     @property
     def slot17(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(type(self), self._id, 17)
+        return _SlotTypeCommon(self, 17)
 
     @property
     def slot18(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(type(self), self._id, 18)
+        return _SlotTypeCommon(self, 18)
 
     @property
     def slot19(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(type(self), self._id, 19)
+        return _SlotTypeCommon(self, 19)
 
     @property
     def slot2(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(type(self), self._id, 2)
+        return _SlotTypeCommon(self, 2)
 
     @property
     def slot20(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(type(self), self._id, 20)
+        return _SlotTypeCommon(self, 20)
 
     @property
     def slot21(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(type(self), self._id, 21)
+        return _SlotTypeCommon(self, 21)
 
     @property
     def slot22(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(type(self), self._id, 22)
+        return _SlotTypeCommon(self, 22)
 
     @property
     def slot23(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(type(self), self._id, 23)
+        return _SlotTypeCommon(self, 23)
 
     @property
     def slot24(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(type(self), self._id, 24)
+        return _SlotTypeCommon(self, 24)
 
     @property
     def slot25(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(type(self), self._id, 25)
+        return _SlotTypeCommon(self, 25)
 
     @property
     def slot26(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(type(self), self._id, 26)
+        return _SlotTypeCommon(self, 26)
 
     @property
     def slot27(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(type(self), self._id, 27)
+        return _SlotTypeCommon(self, 27)
 
     @property
     def slot28(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(type(self), self._id, 28)
+        return _SlotTypeCommon(self, 28)
 
     @property
     def slot29(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(type(self), self._id, 29)
+        return _SlotTypeCommon(self, 29)
 
     @property
     def slot3(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(type(self), self._id, 3)
+        return _SlotTypeCommon(self, 3)
 
     @property
     def slot30(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(type(self), self._id, 30)
+        return _SlotTypeCommon(self, 30)
 
     @property
     def slot31(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(type(self), self._id, 31)
+        return _SlotTypeCommon(self, 31)
 
     @property
     def slot32(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(type(self), self._id, 32)
+        return _SlotTypeCommon(self, 32)
 
     @property
     def slot33(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(type(self), self._id, 33)
+        return _SlotTypeCommon(self, 33)
 
     @property
     def slot34(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(type(self), self._id, 34)
+        return _SlotTypeCommon(self, 34)
 
     @property
     def slot35(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(type(self), self._id, 35)
+        return _SlotTypeCommon(self, 35)
 
     @property
     def slot36(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(type(self), self._id, 36)
+        return _SlotTypeCommon(self, 36)
 
     @property
     def slot37(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(type(self), self._id, 37)
+        return _SlotTypeCommon(self, 37)
 
     @property
     def slot38(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(type(self), self._id, 38)
+        return _SlotTypeCommon(self, 38)
 
     @property
     def slot39(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(type(self), self._id, 39)
+        return _SlotTypeCommon(self, 39)
 
     @property
     def slot4(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(type(self), self._id, 4)
+        return _SlotTypeCommon(self, 4)
 
     @property
     def slot40(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(type(self), self._id, 40)
+        return _SlotTypeCommon(self, 40)
 
     @property
     def slot41(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(type(self), self._id, 41)
+        return _SlotTypeCommon(self, 41)
 
     @property
     def slot42(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(type(self), self._id, 42)
+        return _SlotTypeCommon(self, 42)
 
     @property
     def slot43(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(type(self), self._id, 43)
+        return _SlotTypeCommon(self, 43)
 
     @property
     def slot44(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(type(self), self._id, 44)
+        return _SlotTypeCommon(self, 44)
 
     @property
     def slot45(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(type(self), self._id, 45)
+        return _SlotTypeCommon(self, 45)
 
     @property
     def slot46(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(type(self), self._id, 46)
+        return _SlotTypeCommon(self, 46)
 
     @property
     def slot47(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(type(self), self._id, 47)
+        return _SlotTypeCommon(self, 47)
 
     @property
     def slot48(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(type(self), self._id, 48)
+        return _SlotTypeCommon(self, 48)
 
     @property
     def slot49(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(type(self), self._id, 49)
+        return _SlotTypeCommon(self, 49)
 
     @property
     def slot5(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(type(self), self._id, 5)
+        return _SlotTypeCommon(self, 5)
 
     @property
     def slot50(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(type(self), self._id, 50)
+        return _SlotTypeCommon(self, 50)
 
     @property
     def slot51(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(type(self), self._id, 51)
+        return _SlotTypeCommon(self, 51)
 
     @property
     def slot6(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(type(self), self._id, 6)
+        return _SlotTypeCommon(self, 6)
 
     @property
     def slot7(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(type(self), self._id, 7)
+        return _SlotTypeCommon(self, 7)
 
     @property
     def slot8(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(type(self), self._id, 8)
+        return _SlotTypeCommon(self, 8)
 
     @property
     def slot9(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(type(self), self._id, 9)
+        return _SlotTypeCommon(self, 9)
 
 
 class _CargoStorageSmalls(
@@ -4706,13 +4699,14 @@ class _CargoStorageSmalls(
     _Ratios,
 ):
     _hash: int = -1493672123
+    _prefab_name: int = "StructureCargoStorageSmall"
 
     def __getitem__(self, name: str | int | float) -> "_CargoStorageSmalls":
         return _CargoStorageSmalls(name)
 
     @property
     def slot0(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(type(self), self._hash, 0, self._name)
+        return _SlotTypeCommons(self, 0)
 
     @property
     def Import(self) -> _SlotTypeCommons:
@@ -4720,7 +4714,7 @@ class _CargoStorageSmalls(
 
     @property
     def slot1(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(type(self), self._hash, 1, self._name)
+        return _SlotTypeCommons(self, 1)
 
     @property
     def Export(self) -> _SlotTypeCommons:
@@ -4728,203 +4722,203 @@ class _CargoStorageSmalls(
 
     @property
     def slot10(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(type(self), self._hash, 10, self._name)
+        return _SlotTypeCommons(self, 10)
 
     @property
     def slot11(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(type(self), self._hash, 11, self._name)
+        return _SlotTypeCommons(self, 11)
 
     @property
     def slot12(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(type(self), self._hash, 12, self._name)
+        return _SlotTypeCommons(self, 12)
 
     @property
     def slot13(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(type(self), self._hash, 13, self._name)
+        return _SlotTypeCommons(self, 13)
 
     @property
     def slot14(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(type(self), self._hash, 14, self._name)
+        return _SlotTypeCommons(self, 14)
 
     @property
     def slot15(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(type(self), self._hash, 15, self._name)
+        return _SlotTypeCommons(self, 15)
 
     @property
     def slot16(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(type(self), self._hash, 16, self._name)
+        return _SlotTypeCommons(self, 16)
 
     @property
     def slot17(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(type(self), self._hash, 17, self._name)
+        return _SlotTypeCommons(self, 17)
 
     @property
     def slot18(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(type(self), self._hash, 18, self._name)
+        return _SlotTypeCommons(self, 18)
 
     @property
     def slot19(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(type(self), self._hash, 19, self._name)
+        return _SlotTypeCommons(self, 19)
 
     @property
     def slot2(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(type(self), self._hash, 2, self._name)
+        return _SlotTypeCommons(self, 2)
 
     @property
     def slot20(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(type(self), self._hash, 20, self._name)
+        return _SlotTypeCommons(self, 20)
 
     @property
     def slot21(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(type(self), self._hash, 21, self._name)
+        return _SlotTypeCommons(self, 21)
 
     @property
     def slot22(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(type(self), self._hash, 22, self._name)
+        return _SlotTypeCommons(self, 22)
 
     @property
     def slot23(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(type(self), self._hash, 23, self._name)
+        return _SlotTypeCommons(self, 23)
 
     @property
     def slot24(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(type(self), self._hash, 24, self._name)
+        return _SlotTypeCommons(self, 24)
 
     @property
     def slot25(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(type(self), self._hash, 25, self._name)
+        return _SlotTypeCommons(self, 25)
 
     @property
     def slot26(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(type(self), self._hash, 26, self._name)
+        return _SlotTypeCommons(self, 26)
 
     @property
     def slot27(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(type(self), self._hash, 27, self._name)
+        return _SlotTypeCommons(self, 27)
 
     @property
     def slot28(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(type(self), self._hash, 28, self._name)
+        return _SlotTypeCommons(self, 28)
 
     @property
     def slot29(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(type(self), self._hash, 29, self._name)
+        return _SlotTypeCommons(self, 29)
 
     @property
     def slot3(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(type(self), self._hash, 3, self._name)
+        return _SlotTypeCommons(self, 3)
 
     @property
     def slot30(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(type(self), self._hash, 30, self._name)
+        return _SlotTypeCommons(self, 30)
 
     @property
     def slot31(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(type(self), self._hash, 31, self._name)
+        return _SlotTypeCommons(self, 31)
 
     @property
     def slot32(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(type(self), self._hash, 32, self._name)
+        return _SlotTypeCommons(self, 32)
 
     @property
     def slot33(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(type(self), self._hash, 33, self._name)
+        return _SlotTypeCommons(self, 33)
 
     @property
     def slot34(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(type(self), self._hash, 34, self._name)
+        return _SlotTypeCommons(self, 34)
 
     @property
     def slot35(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(type(self), self._hash, 35, self._name)
+        return _SlotTypeCommons(self, 35)
 
     @property
     def slot36(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(type(self), self._hash, 36, self._name)
+        return _SlotTypeCommons(self, 36)
 
     @property
     def slot37(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(type(self), self._hash, 37, self._name)
+        return _SlotTypeCommons(self, 37)
 
     @property
     def slot38(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(type(self), self._hash, 38, self._name)
+        return _SlotTypeCommons(self, 38)
 
     @property
     def slot39(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(type(self), self._hash, 39, self._name)
+        return _SlotTypeCommons(self, 39)
 
     @property
     def slot4(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(type(self), self._hash, 4, self._name)
+        return _SlotTypeCommons(self, 4)
 
     @property
     def slot40(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(type(self), self._hash, 40, self._name)
+        return _SlotTypeCommons(self, 40)
 
     @property
     def slot41(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(type(self), self._hash, 41, self._name)
+        return _SlotTypeCommons(self, 41)
 
     @property
     def slot42(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(type(self), self._hash, 42, self._name)
+        return _SlotTypeCommons(self, 42)
 
     @property
     def slot43(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(type(self), self._hash, 43, self._name)
+        return _SlotTypeCommons(self, 43)
 
     @property
     def slot44(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(type(self), self._hash, 44, self._name)
+        return _SlotTypeCommons(self, 44)
 
     @property
     def slot45(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(type(self), self._hash, 45, self._name)
+        return _SlotTypeCommons(self, 45)
 
     @property
     def slot46(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(type(self), self._hash, 46, self._name)
+        return _SlotTypeCommons(self, 46)
 
     @property
     def slot47(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(type(self), self._hash, 47, self._name)
+        return _SlotTypeCommons(self, 47)
 
     @property
     def slot48(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(type(self), self._hash, 48, self._name)
+        return _SlotTypeCommons(self, 48)
 
     @property
     def slot49(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(type(self), self._hash, 49, self._name)
+        return _SlotTypeCommons(self, 49)
 
     @property
     def slot5(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(type(self), self._hash, 5, self._name)
+        return _SlotTypeCommons(self, 5)
 
     @property
     def slot50(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(type(self), self._hash, 50, self._name)
+        return _SlotTypeCommons(self, 50)
 
     @property
     def slot51(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(type(self), self._hash, 51, self._name)
+        return _SlotTypeCommons(self, 51)
 
     @property
     def slot6(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(type(self), self._hash, 6, self._name)
+        return _SlotTypeCommons(self, 6)
 
     @property
     def slot7(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(type(self), self._hash, 7, self._name)
+        return _SlotTypeCommons(self, 7)
 
     @property
     def slot8(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(type(self), self._hash, 8, self._name)
+        return _SlotTypeCommons(self, 8)
 
     @property
     def slot9(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(type(self), self._hash, 9, self._name)
+        return _SlotTypeCommons(self, 9)
 
 
 CargoStorageSmalls: _CargoStorageSmalls = _CargoStorageSmalls()
@@ -4941,10 +4935,11 @@ class Centrifuge(
     _Reagents,
 ):
     _hash: int = 690945935
+    _prefab_name: int = "StructureCentrifuge"
 
     @property
     def slot0(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(type(self), self._id, 0)
+        return _SlotTypeCommon(self, 0)
 
     @property
     def Import(self) -> _SlotTypeCommon:
@@ -4952,7 +4947,7 @@ class Centrifuge(
 
     @property
     def slot1(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(type(self), self._id, 1)
+        return _SlotTypeCommon(self, 1)
 
     @property
     def Export(self) -> _SlotTypeCommon:
@@ -4970,13 +4965,14 @@ class _Centrifuges(
     _Reagentss,
 ):
     _hash: int = 690945935
+    _prefab_name: int = "StructureCentrifuge"
 
     def __getitem__(self, name: str | int | float) -> "_Centrifuges":
         return _Centrifuges(name)
 
     @property
     def slot0(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(type(self), self._hash, 0, self._name)
+        return _SlotTypeCommons(self, 0)
 
     @property
     def Import(self) -> _SlotTypeCommons:
@@ -4984,7 +4980,7 @@ class _Centrifuges(
 
     @property
     def slot1(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(type(self), self._hash, 1, self._name)
+        return _SlotTypeCommons(self, 1)
 
     @property
     def Export(self) -> _SlotTypeCommons:
@@ -4996,10 +4992,11 @@ Centrifuges: _Centrifuges = _Centrifuges()
 
 class ChuteDigitalFlipFlopSplitterLeft(_BaseStructure, _Mode, _Power, _SettingW):
     _hash: int = -810874728
+    _prefab_name: int = "StructureChuteDigitalFlipFlopSplitterLeft"
 
     @property
     def Quantity(self) -> float:
-        return _DeviceLogicType(self, self._id, "Quantity")
+        return _DeviceLogicType(self, _LT.Quantity)
 
     @Quantity.setter
     def Quantity(self, value: int | float):
@@ -5007,7 +5004,7 @@ class ChuteDigitalFlipFlopSplitterLeft(_BaseStructure, _Mode, _Power, _SettingW)
 
     @property
     def SettingOutput(self) -> float:
-        return _DeviceLogicType(self, self._id, "SettingOutput")
+        return _DeviceLogicType(self, _LT.SettingOutput)
 
     @SettingOutput.setter
     def SettingOutput(self, value: int | float):
@@ -5015,7 +5012,7 @@ class ChuteDigitalFlipFlopSplitterLeft(_BaseStructure, _Mode, _Power, _SettingW)
 
     @property
     def slot0(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(type(self), self._id, 0)
+        return _SlotTypeCommon(self, 0)
 
     @property
     def TransportSlot(self) -> _SlotTypeCommon:
@@ -5024,6 +5021,7 @@ class ChuteDigitalFlipFlopSplitterLeft(_BaseStructure, _Mode, _Power, _SettingW)
 
 class _ChuteDigitalFlipFlopSplitterLefts(_BaseStructures, _Modes, _Powers, _SettingWs):
     _hash: int = -810874728
+    _prefab_name: int = "StructureChuteDigitalFlipFlopSplitterLeft"
 
     def __getitem__(
         self, name: str | int | float
@@ -5032,7 +5030,7 @@ class _ChuteDigitalFlipFlopSplitterLefts(_BaseStructures, _Modes, _Powers, _Sett
 
     @property
     def Quantity(self) -> _DevicesLogicType:
-        return _DevicesLogicType(self._hash, "Quantity", self._name)
+        return _DevicesLogicType(self, _LT.Quantity)
 
     @Quantity.setter
     def Quantity(self, value: int | float):
@@ -5040,7 +5038,7 @@ class _ChuteDigitalFlipFlopSplitterLefts(_BaseStructures, _Modes, _Powers, _Sett
 
     @property
     def SettingOutput(self) -> _DevicesLogicType:
-        return _DevicesLogicType(self._hash, "SettingOutput", self._name)
+        return _DevicesLogicType(self, _LT.SettingOutput)
 
     @SettingOutput.setter
     def SettingOutput(self, value: int | float):
@@ -5048,7 +5046,7 @@ class _ChuteDigitalFlipFlopSplitterLefts(_BaseStructures, _Modes, _Powers, _Sett
 
     @property
     def slot0(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(type(self), self._hash, 0, self._name)
+        return _SlotTypeCommons(self, 0)
 
     @property
     def TransportSlot(self) -> _SlotTypeCommons:
@@ -5062,10 +5060,11 @@ ChuteDigitalFlipFlopSplitterLefts: _ChuteDigitalFlipFlopSplitterLefts = (
 
 class ChuteDigitalFlipFlopSplitterRight(_BaseStructure, _Mode, _Power, _SettingW):
     _hash: int = 163728359
+    _prefab_name: int = "StructureChuteDigitalFlipFlopSplitterRight"
 
     @property
     def Quantity(self) -> float:
-        return _DeviceLogicType(self, self._id, "Quantity")
+        return _DeviceLogicType(self, _LT.Quantity)
 
     @Quantity.setter
     def Quantity(self, value: int | float):
@@ -5073,7 +5072,7 @@ class ChuteDigitalFlipFlopSplitterRight(_BaseStructure, _Mode, _Power, _SettingW
 
     @property
     def SettingOutput(self) -> float:
-        return _DeviceLogicType(self, self._id, "SettingOutput")
+        return _DeviceLogicType(self, _LT.SettingOutput)
 
     @SettingOutput.setter
     def SettingOutput(self, value: int | float):
@@ -5081,7 +5080,7 @@ class ChuteDigitalFlipFlopSplitterRight(_BaseStructure, _Mode, _Power, _SettingW
 
     @property
     def slot0(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(type(self), self._id, 0)
+        return _SlotTypeCommon(self, 0)
 
     @property
     def TransportSlot(self) -> _SlotTypeCommon:
@@ -5090,6 +5089,7 @@ class ChuteDigitalFlipFlopSplitterRight(_BaseStructure, _Mode, _Power, _SettingW
 
 class _ChuteDigitalFlipFlopSplitterRights(_BaseStructures, _Modes, _Powers, _SettingWs):
     _hash: int = 163728359
+    _prefab_name: int = "StructureChuteDigitalFlipFlopSplitterRight"
 
     def __getitem__(
         self, name: str | int | float
@@ -5098,7 +5098,7 @@ class _ChuteDigitalFlipFlopSplitterRights(_BaseStructures, _Modes, _Powers, _Set
 
     @property
     def Quantity(self) -> _DevicesLogicType:
-        return _DevicesLogicType(self._hash, "Quantity", self._name)
+        return _DevicesLogicType(self, _LT.Quantity)
 
     @Quantity.setter
     def Quantity(self, value: int | float):
@@ -5106,7 +5106,7 @@ class _ChuteDigitalFlipFlopSplitterRights(_BaseStructures, _Modes, _Powers, _Set
 
     @property
     def SettingOutput(self) -> _DevicesLogicType:
-        return _DevicesLogicType(self._hash, "SettingOutput", self._name)
+        return _DevicesLogicType(self, _LT.SettingOutput)
 
     @SettingOutput.setter
     def SettingOutput(self, value: int | float):
@@ -5114,7 +5114,7 @@ class _ChuteDigitalFlipFlopSplitterRights(_BaseStructures, _Modes, _Powers, _Set
 
     @property
     def slot0(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(type(self), self._hash, 0, self._name)
+        return _SlotTypeCommons(self, 0)
 
     @property
     def TransportSlot(self) -> _SlotTypeCommons:
@@ -5128,10 +5128,11 @@ ChuteDigitalFlipFlopSplitterRights: _ChuteDigitalFlipFlopSplitterRights = (
 
 class ChuteDigitalValveLeft(_BaseStructure, _Lock, _Open, _Power, _SettingW):
     _hash: int = 648608238
+    _prefab_name: int = "StructureChuteDigitalValveLeft"
 
     @property
     def Quantity(self) -> float:
-        return _DeviceLogicType(self, self._id, "Quantity")
+        return _DeviceLogicType(self, _LT.Quantity)
 
     @Quantity.setter
     def Quantity(self, value: int | float):
@@ -5139,7 +5140,7 @@ class ChuteDigitalValveLeft(_BaseStructure, _Lock, _Open, _Power, _SettingW):
 
     @property
     def slot0(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(type(self), self._id, 0)
+        return _SlotTypeCommon(self, 0)
 
     @property
     def TransportSlot(self) -> _SlotTypeCommon:
@@ -5148,13 +5149,14 @@ class ChuteDigitalValveLeft(_BaseStructure, _Lock, _Open, _Power, _SettingW):
 
 class _ChuteDigitalValveLefts(_BaseStructures, _Locks, _Opens, _Powers, _SettingWs):
     _hash: int = 648608238
+    _prefab_name: int = "StructureChuteDigitalValveLeft"
 
     def __getitem__(self, name: str | int | float) -> "_ChuteDigitalValveLefts":
         return _ChuteDigitalValveLefts(name)
 
     @property
     def Quantity(self) -> _DevicesLogicType:
-        return _DevicesLogicType(self._hash, "Quantity", self._name)
+        return _DevicesLogicType(self, _LT.Quantity)
 
     @Quantity.setter
     def Quantity(self, value: int | float):
@@ -5162,7 +5164,7 @@ class _ChuteDigitalValveLefts(_BaseStructures, _Locks, _Opens, _Powers, _Setting
 
     @property
     def slot0(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(type(self), self._hash, 0, self._name)
+        return _SlotTypeCommons(self, 0)
 
     @property
     def TransportSlot(self) -> _SlotTypeCommons:
@@ -5174,10 +5176,11 @@ ChuteDigitalValveLefts: _ChuteDigitalValveLefts = _ChuteDigitalValveLefts()
 
 class ChuteDigitalValveRight(_BaseStructure, _Lock, _Open, _Power, _SettingW):
     _hash: int = -1337091041
+    _prefab_name: int = "StructureChuteDigitalValveRight"
 
     @property
     def Quantity(self) -> float:
-        return _DeviceLogicType(self, self._id, "Quantity")
+        return _DeviceLogicType(self, _LT.Quantity)
 
     @Quantity.setter
     def Quantity(self, value: int | float):
@@ -5185,7 +5188,7 @@ class ChuteDigitalValveRight(_BaseStructure, _Lock, _Open, _Power, _SettingW):
 
     @property
     def slot0(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(type(self), self._id, 0)
+        return _SlotTypeCommon(self, 0)
 
     @property
     def TransportSlot(self) -> _SlotTypeCommon:
@@ -5194,13 +5197,14 @@ class ChuteDigitalValveRight(_BaseStructure, _Lock, _Open, _Power, _SettingW):
 
 class _ChuteDigitalValveRights(_BaseStructures, _Locks, _Opens, _Powers, _SettingWs):
     _hash: int = -1337091041
+    _prefab_name: int = "StructureChuteDigitalValveRight"
 
     def __getitem__(self, name: str | int | float) -> "_ChuteDigitalValveRights":
         return _ChuteDigitalValveRights(name)
 
     @property
     def Quantity(self) -> _DevicesLogicType:
-        return _DevicesLogicType(self._hash, "Quantity", self._name)
+        return _DevicesLogicType(self, _LT.Quantity)
 
     @Quantity.setter
     def Quantity(self, value: int | float):
@@ -5208,7 +5212,7 @@ class _ChuteDigitalValveRights(_BaseStructures, _Locks, _Opens, _Powers, _Settin
 
     @property
     def slot0(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(type(self), self._hash, 0, self._name)
+        return _SlotTypeCommons(self, 0)
 
     @property
     def TransportSlot(self) -> _SlotTypeCommons:
@@ -5220,10 +5224,11 @@ ChuteDigitalValveRights: _ChuteDigitalValveRights = _ChuteDigitalValveRights()
 
 class ChuteExportBin(_BaseStructure, _Error, _Lock, _Open, _Power):
     _hash: int = 1957571043
+    _prefab_name: int = "StructureChuteExportBin"
 
     @property
     def slot0(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(type(self), self._id, 0)
+        return _SlotTypeCommon(self, 0)
 
     @property
     def Input(self) -> _SlotTypeCommon:
@@ -5232,13 +5237,14 @@ class ChuteExportBin(_BaseStructure, _Error, _Lock, _Open, _Power):
 
 class _ChuteExportBins(_BaseStructures, _Errors, _Locks, _Opens, _Powers):
     _hash: int = 1957571043
+    _prefab_name: int = "StructureChuteExportBin"
 
     def __getitem__(self, name: str | int | float) -> "_ChuteExportBins":
         return _ChuteExportBins(name)
 
     @property
     def slot0(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(type(self), self._hash, 0, self._name)
+        return _SlotTypeCommons(self, 0)
 
     @property
     def Input(self) -> _SlotTypeCommons:
@@ -5250,10 +5256,11 @@ ChuteExportBins: _ChuteExportBins = _ChuteExportBins()
 
 class ChuteBin(_BaseStructure, _Error, _Lock, _Open, _Power):
     _hash: int = -850484480
+    _prefab_name: int = "StructureChuteBin"
 
     @property
     def slot0(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(type(self), self._id, 0)
+        return _SlotTypeCommon(self, 0)
 
     @property
     def Input(self) -> _SlotTypeCommon:
@@ -5262,13 +5269,14 @@ class ChuteBin(_BaseStructure, _Error, _Lock, _Open, _Power):
 
 class _ChuteBins(_BaseStructures, _Errors, _Locks, _Opens, _Powers):
     _hash: int = -850484480
+    _prefab_name: int = "StructureChuteBin"
 
     def __getitem__(self, name: str | int | float) -> "_ChuteBins":
         return _ChuteBins(name)
 
     @property
     def slot0(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(type(self), self._hash, 0, self._name)
+        return _SlotTypeCommons(self, 0)
 
     @property
     def Input(self) -> _SlotTypeCommons:
@@ -5280,10 +5288,11 @@ ChuteBins: _ChuteBins = _ChuteBins()
 
 class ChuteInlet(_BaseStructure, _ClearMemory, _ImportCount, _Lock):
     _hash: int = -1469588766
+    _prefab_name: int = "StructureChuteInlet"
 
     @property
     def slot0(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(type(self), self._id, 0)
+        return _SlotTypeCommon(self, 0)
 
     @property
     def Import(self) -> _SlotTypeCommon:
@@ -5292,13 +5301,14 @@ class ChuteInlet(_BaseStructure, _ClearMemory, _ImportCount, _Lock):
 
 class _ChuteInlets(_BaseStructures, _ClearMemorys, _ImportCounts, _Locks):
     _hash: int = -1469588766
+    _prefab_name: int = "StructureChuteInlet"
 
     def __getitem__(self, name: str | int | float) -> "_ChuteInlets":
         return _ChuteInlets(name)
 
     @property
     def slot0(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(type(self), self._hash, 0, self._name)
+        return _SlotTypeCommons(self, 0)
 
     @property
     def Import(self) -> _SlotTypeCommons:
@@ -5310,10 +5320,11 @@ ChuteInlets: _ChuteInlets = _ChuteInlets()
 
 class ChuteOutlet(_BaseStructure, _ClearMemory, _ExportCount, _ImportCount, _Lock):
     _hash: int = -1022714809
+    _prefab_name: int = "StructureChuteOutlet"
 
     @property
     def slot0(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(type(self), self._id, 0)
+        return _SlotTypeCommon(self, 0)
 
     @property
     def Export(self) -> _SlotTypeCommon:
@@ -5324,13 +5335,14 @@ class _ChuteOutlets(
     _BaseStructures, _ClearMemorys, _ExportCounts, _ImportCounts, _Locks
 ):
     _hash: int = -1022714809
+    _prefab_name: int = "StructureChuteOutlet"
 
     def __getitem__(self, name: str | int | float) -> "_ChuteOutlets":
         return _ChuteOutlets(name)
 
     @property
     def slot0(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(type(self), self._hash, 0, self._name)
+        return _SlotTypeCommons(self, 0)
 
     @property
     def Export(self) -> _SlotTypeCommons:
@@ -5359,14 +5371,15 @@ class CombustionCentrifuge(
     _Temperature,
 ):
     _hash: int = 1238905683
+    _prefab_name: int = "StructureCombustionCentrifuge"
 
     @property
     def CombustionInput(self) -> float:
-        return _DeviceLogicType(self, self._id, "CombustionInput")
+        return _DeviceLogicType(self, _LT.CombustionInput)
 
     @property
     def CombustionLimiter(self) -> float:
-        return _DeviceLogicType(self, self._id, "CombustionLimiter")
+        return _DeviceLogicType(self, _LT.CombustionLimiter)
 
     @CombustionLimiter.setter
     def CombustionLimiter(self, value: int | float):
@@ -5374,35 +5387,35 @@ class CombustionCentrifuge(
 
     @property
     def CombustionOutput(self) -> float:
-        return _DeviceLogicType(self, self._id, "CombustionOutput")
+        return _DeviceLogicType(self, _LT.CombustionOutput)
 
     @property
     def PressureInput(self) -> float:
-        return _DeviceLogicType(self, self._id, "PressureInput")
+        return _DeviceLogicType(self, _LT.PressureInput)
 
     @property
     def PressureOutput(self) -> float:
-        return _DeviceLogicType(self, self._id, "PressureOutput")
+        return _DeviceLogicType(self, _LT.PressureOutput)
 
     @property
     def Rpm(self) -> float:
-        return _DeviceLogicType(self, self._id, "Rpm")
+        return _DeviceLogicType(self, _LT.Rpm)
 
     @property
     def Stress(self) -> float:
-        return _DeviceLogicType(self, self._id, "Stress")
+        return _DeviceLogicType(self, _LT.Stress)
 
     @property
     def TemperatureInput(self) -> float:
-        return _DeviceLogicType(self, self._id, "TemperatureInput")
+        return _DeviceLogicType(self, _LT.TemperatureInput)
 
     @property
     def TemperatureOutput(self) -> float:
-        return _DeviceLogicType(self, self._id, "TemperatureOutput")
+        return _DeviceLogicType(self, _LT.TemperatureOutput)
 
     @property
     def Throttle(self) -> float:
-        return _DeviceLogicType(self, self._id, "Throttle")
+        return _DeviceLogicType(self, _LT.Throttle)
 
     @Throttle.setter
     def Throttle(self, value: int | float):
@@ -5410,15 +5423,15 @@ class CombustionCentrifuge(
 
     @property
     def TotalMolesInput(self) -> float:
-        return _DeviceLogicType(self, self._id, "TotalMolesInput")
+        return _DeviceLogicType(self, _LT.TotalMolesInput)
 
     @property
     def TotalMolesOutput(self) -> float:
-        return _DeviceLogicType(self, self._id, "TotalMolesOutput")
+        return _DeviceLogicType(self, _LT.TotalMolesOutput)
 
     @property
     def slot0(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(type(self), self._id, 0)
+        return _SlotTypeCommon(self, 0)
 
     @property
     def Import(self) -> _SlotTypeCommon:
@@ -5426,7 +5439,7 @@ class CombustionCentrifuge(
 
     @property
     def slot1(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(type(self), self._id, 1)
+        return _SlotTypeCommon(self, 1)
 
     @property
     def Export(self) -> _SlotTypeCommon:
@@ -5434,7 +5447,7 @@ class CombustionCentrifuge(
 
     @property
     def slot2(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(type(self), self._id, 2)
+        return _SlotTypeCommon(self, 2)
 
     @property
     def ProgrammableChip(self) -> _SlotTypeCommon:
@@ -5460,17 +5473,18 @@ class _CombustionCentrifuges(
     _Temperatures,
 ):
     _hash: int = 1238905683
+    _prefab_name: int = "StructureCombustionCentrifuge"
 
     def __getitem__(self, name: str | int | float) -> "_CombustionCentrifuges":
         return _CombustionCentrifuges(name)
 
     @property
     def CombustionInput(self) -> _DevicesLogicType:
-        return _DevicesLogicType(self._hash, "CombustionInput", self._name)
+        return _DevicesLogicType(self, _LT.CombustionInput)
 
     @property
     def CombustionLimiter(self) -> _DevicesLogicType:
-        return _DevicesLogicType(self._hash, "CombustionLimiter", self._name)
+        return _DevicesLogicType(self, _LT.CombustionLimiter)
 
     @CombustionLimiter.setter
     def CombustionLimiter(self, value: int | float):
@@ -5478,35 +5492,35 @@ class _CombustionCentrifuges(
 
     @property
     def CombustionOutput(self) -> _DevicesLogicType:
-        return _DevicesLogicType(self._hash, "CombustionOutput", self._name)
+        return _DevicesLogicType(self, _LT.CombustionOutput)
 
     @property
     def PressureInput(self) -> _DevicesLogicType:
-        return _DevicesLogicType(self._hash, "PressureInput", self._name)
+        return _DevicesLogicType(self, _LT.PressureInput)
 
     @property
     def PressureOutput(self) -> _DevicesLogicType:
-        return _DevicesLogicType(self._hash, "PressureOutput", self._name)
+        return _DevicesLogicType(self, _LT.PressureOutput)
 
     @property
     def Rpm(self) -> _DevicesLogicType:
-        return _DevicesLogicType(self._hash, "Rpm", self._name)
+        return _DevicesLogicType(self, _LT.Rpm)
 
     @property
     def Stress(self) -> _DevicesLogicType:
-        return _DevicesLogicType(self._hash, "Stress", self._name)
+        return _DevicesLogicType(self, _LT.Stress)
 
     @property
     def TemperatureInput(self) -> _DevicesLogicType:
-        return _DevicesLogicType(self._hash, "TemperatureInput", self._name)
+        return _DevicesLogicType(self, _LT.TemperatureInput)
 
     @property
     def TemperatureOutput(self) -> _DevicesLogicType:
-        return _DevicesLogicType(self._hash, "TemperatureOutput", self._name)
+        return _DevicesLogicType(self, _LT.TemperatureOutput)
 
     @property
     def Throttle(self) -> _DevicesLogicType:
-        return _DevicesLogicType(self._hash, "Throttle", self._name)
+        return _DevicesLogicType(self, _LT.Throttle)
 
     @Throttle.setter
     def Throttle(self, value: int | float):
@@ -5514,15 +5528,15 @@ class _CombustionCentrifuges(
 
     @property
     def TotalMolesInput(self) -> _DevicesLogicType:
-        return _DevicesLogicType(self._hash, "TotalMolesInput", self._name)
+        return _DevicesLogicType(self, _LT.TotalMolesInput)
 
     @property
     def TotalMolesOutput(self) -> _DevicesLogicType:
-        return _DevicesLogicType(self._hash, "TotalMolesOutput", self._name)
+        return _DevicesLogicType(self, _LT.TotalMolesOutput)
 
     @property
     def slot0(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(type(self), self._hash, 0, self._name)
+        return _SlotTypeCommons(self, 0)
 
     @property
     def Import(self) -> _SlotTypeCommons:
@@ -5530,7 +5544,7 @@ class _CombustionCentrifuges(
 
     @property
     def slot1(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(type(self), self._hash, 1, self._name)
+        return _SlotTypeCommons(self, 1)
 
     @property
     def Export(self) -> _SlotTypeCommons:
@@ -5538,7 +5552,7 @@ class _CombustionCentrifuges(
 
     @property
     def slot2(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(type(self), self._hash, 2, self._name)
+        return _SlotTypeCommons(self, 2)
 
     @property
     def ProgrammableChip(self) -> _SlotTypeCommons:
@@ -5550,12 +5564,14 @@ CombustionCentrifuges: _CombustionCentrifuges = _CombustionCentrifuges()
 
 class CompositeDoor(_BaseStructure, _Idle, _Lock, _Mode, _Open, _Power, _SettingW):
     _hash: int = -793837322
+    _prefab_name: int = "StructureCompositeDoor"
 
 
 class _CompositeDoors(
     _BaseStructures, _Idles, _Locks, _Modes, _Opens, _Powers, _SettingWs
 ):
     _hash: int = -793837322
+    _prefab_name: int = "StructureCompositeDoor"
 
     def __getitem__(self, name: str | int | float) -> "_CompositeDoors":
         return _CompositeDoors(name)
@@ -5566,12 +5582,14 @@ CompositeDoors: _CompositeDoors = _CompositeDoors()
 
 class CompositeWindowShutterController(_BaseStructure, _Error, _Lock, _Open, _Power):
     _hash: int = -2078371660
+    _prefab_name: int = "StructureCompositeWindowShutterController"
 
 
 class _CompositeWindowShutterControllers(
     _BaseStructures, _Errors, _Locks, _Opens, _Powers
 ):
     _hash: int = -2078371660
+    _prefab_name: int = "StructureCompositeWindowShutterController"
 
     def __getitem__(
         self, name: str | int | float
@@ -5586,10 +5604,11 @@ CompositeWindowShutterControllers: _CompositeWindowShutterControllers = (
 
 class ComputerBigScreenWallMounted(_BaseStructure, _Error, _Lock, _Open, _Power):
     _hash: int = -868055390
+    _prefab_name: int = "StructureComputerBigScreenWallMounted"
 
     @property
     def slot0(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(type(self), self._id, 0)
+        return _SlotTypeCommon(self, 0)
 
     @property
     def Motherboard(self) -> _SlotTypeCommon:
@@ -5598,13 +5617,14 @@ class ComputerBigScreenWallMounted(_BaseStructure, _Error, _Lock, _Open, _Power)
 
 class _ComputerBigScreenWallMounteds(_BaseStructures, _Errors, _Locks, _Opens, _Powers):
     _hash: int = -868055390
+    _prefab_name: int = "StructureComputerBigScreenWallMounted"
 
     def __getitem__(self, name: str | int | float) -> "_ComputerBigScreenWallMounteds":
         return _ComputerBigScreenWallMounteds(name)
 
     @property
     def slot0(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(type(self), self._hash, 0, self._name)
+        return _SlotTypeCommons(self, 0)
 
     @property
     def Motherboard(self) -> _SlotTypeCommons:
@@ -5618,10 +5638,11 @@ ComputerBigScreenWallMounteds: _ComputerBigScreenWallMounteds = (
 
 class ComputerBigScreen(_BaseStructure, _Error, _Lock, _Open, _Power):
     _hash: int = 1952395881
+    _prefab_name: int = "StructureComputerBigScreen"
 
     @property
     def slot0(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(type(self), self._id, 0)
+        return _SlotTypeCommon(self, 0)
 
     @property
     def Motherboard(self) -> _SlotTypeCommon:
@@ -5630,13 +5651,14 @@ class ComputerBigScreen(_BaseStructure, _Error, _Lock, _Open, _Power):
 
 class _ComputerBigScreens(_BaseStructures, _Errors, _Locks, _Opens, _Powers):
     _hash: int = 1952395881
+    _prefab_name: int = "StructureComputerBigScreen"
 
     def __getitem__(self, name: str | int | float) -> "_ComputerBigScreens":
         return _ComputerBigScreens(name)
 
     @property
     def slot0(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(type(self), self._hash, 0, self._name)
+        return _SlotTypeCommons(self, 0)
 
     @property
     def Motherboard(self) -> _SlotTypeCommons:
@@ -5648,18 +5670,19 @@ ComputerBigScreens: _ComputerBigScreens = _ComputerBigScreens()
 
 class Computer(_BaseStructure, _Error, _Lock, _Open, _Power):
     _hash: int = -626563514
+    _prefab_name: int = "StructureComputer"
 
     @property
     def slot0(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(type(self), self._id, 0)
+        return _SlotTypeCommon(self, 0)
 
     @property
     def slot1(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(type(self), self._id, 1)
+        return _SlotTypeCommon(self, 1)
 
     @property
     def slot2(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(type(self), self._id, 2)
+        return _SlotTypeCommon(self, 2)
 
     @property
     def Motherboard(self) -> _SlotTypeCommon:
@@ -5668,21 +5691,22 @@ class Computer(_BaseStructure, _Error, _Lock, _Open, _Power):
 
 class _Computers(_BaseStructures, _Errors, _Locks, _Opens, _Powers):
     _hash: int = -626563514
+    _prefab_name: int = "StructureComputer"
 
     def __getitem__(self, name: str | int | float) -> "_Computers":
         return _Computers(name)
 
     @property
     def slot0(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(type(self), self._hash, 0, self._name)
+        return _SlotTypeCommons(self, 0)
 
     @property
     def slot1(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(type(self), self._hash, 1, self._name)
+        return _SlotTypeCommons(self, 1)
 
     @property
     def slot2(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(type(self), self._hash, 2, self._name)
+        return _SlotTypeCommons(self, 2)
 
     @property
     def Motherboard(self) -> _SlotTypeCommons:
@@ -5694,18 +5718,19 @@ Computers: _Computers = _Computers()
 
 class ComputerUpright(_BaseStructure, _Error, _Lock, _Open, _Power):
     _hash: int = -405593895
+    _prefab_name: int = "StructureComputerUpright"
 
     @property
     def slot0(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(type(self), self._id, 0)
+        return _SlotTypeCommon(self, 0)
 
     @property
     def slot1(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(type(self), self._id, 1)
+        return _SlotTypeCommon(self, 1)
 
     @property
     def slot2(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(type(self), self._id, 2)
+        return _SlotTypeCommon(self, 2)
 
     @property
     def Motherboard(self) -> _SlotTypeCommon:
@@ -5714,21 +5739,22 @@ class ComputerUpright(_BaseStructure, _Error, _Lock, _Open, _Power):
 
 class _ComputerUprights(_BaseStructures, _Errors, _Locks, _Opens, _Powers):
     _hash: int = -405593895
+    _prefab_name: int = "StructureComputerUpright"
 
     def __getitem__(self, name: str | int | float) -> "_ComputerUprights":
         return _ComputerUprights(name)
 
     @property
     def slot0(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(type(self), self._hash, 0, self._name)
+        return _SlotTypeCommons(self, 0)
 
     @property
     def slot1(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(type(self), self._hash, 1, self._name)
+        return _SlotTypeCommons(self, 1)
 
     @property
     def slot2(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(type(self), self._hash, 2, self._name)
+        return _SlotTypeCommons(self, 2)
 
     @property
     def Motherboard(self) -> _SlotTypeCommons:
@@ -5754,6 +5780,7 @@ class CondensationChamber(
     _Temperature,
 ):
     _hash: int = 1420719315
+    _prefab_name: int = "StructureCondensationChamber"
 
 
 class _CondensationChambers(
@@ -5772,6 +5799,7 @@ class _CondensationChambers(
     _Temperatures,
 ):
     _hash: int = 1420719315
+    _prefab_name: int = "StructureCondensationChamber"
 
     def __getitem__(self, name: str | int | float) -> "_CondensationChambers":
         return _CondensationChambers(name)
@@ -5782,10 +5810,12 @@ CondensationChambers: _CondensationChambers = _CondensationChambers()
 
 class CondensationValve(_BaseStructure, _Maximum, _On, _Ratio, _SettingW):
     _hash: int = -965741795
+    _prefab_name: int = "StructureCondensationValve"
 
 
 class _CondensationValves(_BaseStructures, _Maximums, _Ons, _Ratios, _SettingWs):
     _hash: int = -965741795
+    _prefab_name: int = "StructureCondensationValve"
 
     def __getitem__(self, name: str | int | float) -> "_CondensationValves":
         return _CondensationValves(name)
@@ -5796,10 +5826,11 @@ CondensationValves: _CondensationValves = _CondensationValves()
 
 class Console(_BaseStructure, _Error, _Open, _Power, _SettingR):
     _hash: int = 235638270
+    _prefab_name: int = "StructureConsole"
 
     @property
     def slot0(self) -> _SlotTypeCircuitboard:
-        return _SlotTypeCircuitboard(type(self), self._id, 0)
+        return _SlotTypeCircuitboard(self, 0)
 
     @property
     def Circuitboard(self) -> _SlotTypeCircuitboard:
@@ -5807,7 +5838,7 @@ class Console(_BaseStructure, _Error, _Open, _Power, _SettingR):
 
     @property
     def slot1(self) -> _SlotTypeCircuitboard:
-        return _SlotTypeCircuitboard(type(self), self._id, 1)
+        return _SlotTypeCircuitboard(self, 1)
 
     @property
     def DataDisk(self) -> _SlotTypeCircuitboard:
@@ -5816,13 +5847,14 @@ class Console(_BaseStructure, _Error, _Open, _Power, _SettingR):
 
 class _Consoles(_BaseStructures, _Errors, _Opens, _Powers, _SettingRs):
     _hash: int = 235638270
+    _prefab_name: int = "StructureConsole"
 
     def __getitem__(self, name: str | int | float) -> "_Consoles":
         return _Consoles(name)
 
     @property
     def slot0(self) -> _SlotTypeCircuitboards:
-        return _SlotTypeCircuitboards(type(self), self._hash, 0, self._name)
+        return _SlotTypeCircuitboards(self, 0)
 
     @property
     def Circuitboard(self) -> _SlotTypeCircuitboards:
@@ -5830,7 +5862,7 @@ class _Consoles(_BaseStructures, _Errors, _Opens, _Powers, _SettingRs):
 
     @property
     def slot1(self) -> _SlotTypeCircuitboards:
-        return _SlotTypeCircuitboards(type(self), self._hash, 1, self._name)
+        return _SlotTypeCircuitboards(self, 1)
 
     @property
     def DataDisk(self) -> _SlotTypeCircuitboards:
@@ -5842,10 +5874,11 @@ Consoles: _Consoles = _Consoles()
 
 class ConsoleDual(_BaseStructure, _Error, _Open, _Power, _SettingR):
     _hash: int = -722284333
+    _prefab_name: int = "StructureConsoleDual"
 
     @property
     def slot0(self) -> _SlotTypeCircuitboard:
-        return _SlotTypeCircuitboard(type(self), self._id, 0)
+        return _SlotTypeCircuitboard(self, 0)
 
     @property
     def Circuitboard(self) -> _SlotTypeCircuitboard:
@@ -5853,7 +5886,7 @@ class ConsoleDual(_BaseStructure, _Error, _Open, _Power, _SettingR):
 
     @property
     def slot1(self) -> _SlotTypeCircuitboard:
-        return _SlotTypeCircuitboard(type(self), self._id, 1)
+        return _SlotTypeCircuitboard(self, 1)
 
     @property
     def DataDisk(self) -> _SlotTypeCircuitboard:
@@ -5862,13 +5895,14 @@ class ConsoleDual(_BaseStructure, _Error, _Open, _Power, _SettingR):
 
 class _ConsoleDuals(_BaseStructures, _Errors, _Opens, _Powers, _SettingRs):
     _hash: int = -722284333
+    _prefab_name: int = "StructureConsoleDual"
 
     def __getitem__(self, name: str | int | float) -> "_ConsoleDuals":
         return _ConsoleDuals(name)
 
     @property
     def slot0(self) -> _SlotTypeCircuitboards:
-        return _SlotTypeCircuitboards(type(self), self._hash, 0, self._name)
+        return _SlotTypeCircuitboards(self, 0)
 
     @property
     def Circuitboard(self) -> _SlotTypeCircuitboards:
@@ -5876,7 +5910,7 @@ class _ConsoleDuals(_BaseStructures, _Errors, _Opens, _Powers, _SettingRs):
 
     @property
     def slot1(self) -> _SlotTypeCircuitboards:
-        return _SlotTypeCircuitboards(type(self), self._hash, 1, self._name)
+        return _SlotTypeCircuitboards(self, 1)
 
     @property
     def DataDisk(self) -> _SlotTypeCircuitboards:
@@ -5888,10 +5922,11 @@ ConsoleDuals: _ConsoleDuals = _ConsoleDuals()
 
 class ConsoleMonitor(_BaseStructure, _Error, _Open, _Power, _SettingR):
     _hash: int = 801677497
+    _prefab_name: int = "StructureConsoleMonitor"
 
     @property
     def slot0(self) -> _SlotTypeCircuitboard:
-        return _SlotTypeCircuitboard(type(self), self._id, 0)
+        return _SlotTypeCircuitboard(self, 0)
 
     @property
     def Circuitboard(self) -> _SlotTypeCircuitboard:
@@ -5899,7 +5934,7 @@ class ConsoleMonitor(_BaseStructure, _Error, _Open, _Power, _SettingR):
 
     @property
     def slot1(self) -> _SlotTypeCircuitboard:
-        return _SlotTypeCircuitboard(type(self), self._id, 1)
+        return _SlotTypeCircuitboard(self, 1)
 
     @property
     def DataDisk(self) -> _SlotTypeCircuitboard:
@@ -5908,13 +5943,14 @@ class ConsoleMonitor(_BaseStructure, _Error, _Open, _Power, _SettingR):
 
 class _ConsoleMonitors(_BaseStructures, _Errors, _Opens, _Powers, _SettingRs):
     _hash: int = 801677497
+    _prefab_name: int = "StructureConsoleMonitor"
 
     def __getitem__(self, name: str | int | float) -> "_ConsoleMonitors":
         return _ConsoleMonitors(name)
 
     @property
     def slot0(self) -> _SlotTypeCircuitboards:
-        return _SlotTypeCircuitboards(type(self), self._hash, 0, self._name)
+        return _SlotTypeCircuitboards(self, 0)
 
     @property
     def Circuitboard(self) -> _SlotTypeCircuitboards:
@@ -5922,7 +5958,7 @@ class _ConsoleMonitors(_BaseStructures, _Errors, _Opens, _Powers, _SettingRs):
 
     @property
     def slot1(self) -> _SlotTypeCircuitboards:
-        return _SlotTypeCircuitboards(type(self), self._hash, 1, self._name)
+        return _SlotTypeCircuitboards(self, 1)
 
     @property
     def DataDisk(self) -> _SlotTypeCircuitboards:
@@ -5934,61 +5970,63 @@ ConsoleMonitors: _ConsoleMonitors = _ConsoleMonitors()
 
 class CornerLocker(_BaseStructure, _Lock, _Open):
     _hash: int = -1968255729
+    _prefab_name: int = "StructureCornerLocker"
 
     @property
     def slot0(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(type(self), self._id, 0)
+        return _SlotTypeCommon(self, 0)
 
     @property
     def slot1(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(type(self), self._id, 1)
+        return _SlotTypeCommon(self, 1)
 
     @property
     def slot2(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(type(self), self._id, 2)
+        return _SlotTypeCommon(self, 2)
 
     @property
     def slot3(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(type(self), self._id, 3)
+        return _SlotTypeCommon(self, 3)
 
     @property
     def slot4(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(type(self), self._id, 4)
+        return _SlotTypeCommon(self, 4)
 
     @property
     def slot5(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(type(self), self._id, 5)
+        return _SlotTypeCommon(self, 5)
 
 
 class _CornerLockers(_BaseStructures, _Locks, _Opens):
     _hash: int = -1968255729
+    _prefab_name: int = "StructureCornerLocker"
 
     def __getitem__(self, name: str | int | float) -> "_CornerLockers":
         return _CornerLockers(name)
 
     @property
     def slot0(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(type(self), self._hash, 0, self._name)
+        return _SlotTypeCommons(self, 0)
 
     @property
     def slot1(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(type(self), self._hash, 1, self._name)
+        return _SlotTypeCommons(self, 1)
 
     @property
     def slot2(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(type(self), self._hash, 2, self._name)
+        return _SlotTypeCommons(self, 2)
 
     @property
     def slot3(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(type(self), self._hash, 3, self._name)
+        return _SlotTypeCommons(self, 3)
 
     @property
     def slot4(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(type(self), self._hash, 4, self._name)
+        return _SlotTypeCommons(self, 4)
 
     @property
     def slot5(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(type(self), self._hash, 5, self._name)
+        return _SlotTypeCommons(self, 5)
 
 
 CornerLockers: _CornerLockers = _CornerLockers()
@@ -5996,12 +6034,14 @@ CornerLockers: _CornerLockers = _CornerLockers()
 
 class PassthroughHeatExchangerGasToGas(_BaseStructure, _Maximum, _Ratio, _SettingW):
     _hash: int = -1674187440
+    _prefab_name: int = "StructurePassthroughHeatExchangerGasToGas"
 
 
 class _PassthroughHeatExchangerGasToGass(
     _BaseStructures, _Maximums, _Ratios, _SettingWs
 ):
     _hash: int = -1674187440
+    _prefab_name: int = "StructurePassthroughHeatExchangerGasToGas"
 
     def __getitem__(
         self, name: str | int | float
@@ -6016,12 +6056,14 @@ PassthroughHeatExchangerGasToGass: _PassthroughHeatExchangerGasToGass = (
 
 class PassthroughHeatExchangerGasToLiquid(_BaseStructure, _Maximum, _Ratio, _SettingW):
     _hash: int = 1928991265
+    _prefab_name: int = "StructurePassthroughHeatExchangerGasToLiquid"
 
 
 class _PassthroughHeatExchangerGasToLiquids(
     _BaseStructures, _Maximums, _Ratios, _SettingWs
 ):
     _hash: int = 1928991265
+    _prefab_name: int = "StructurePassthroughHeatExchangerGasToLiquid"
 
     def __getitem__(
         self, name: str | int | float
@@ -6038,12 +6080,14 @@ class PassthroughHeatExchangerLiquidToLiquid(
     _BaseStructure, _Maximum, _Ratio, _SettingW
 ):
     _hash: int = -1472829583
+    _prefab_name: int = "StructurePassthroughHeatExchangerLiquidToLiquid"
 
 
 class _PassthroughHeatExchangerLiquidToLiquids(
     _BaseStructures, _Maximums, _Ratios, _SettingWs
 ):
     _hash: int = -1472829583
+    _prefab_name: int = "StructurePassthroughHeatExchangerLiquidToLiquid"
 
     def __getitem__(
         self, name: str | int | float
@@ -6070,14 +6114,15 @@ class CryoTubeHorizontal(
     _Temperature,
 ):
     _hash: int = 1443059329
+    _prefab_name: int = "StructureCryoTubeHorizontal"
 
     @property
     def EntityState(self) -> float:
-        return _DeviceLogicType(self, self._id, "EntityState")
+        return _DeviceLogicType(self, _LT.EntityState)
 
     @property
     def slot0(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(type(self), self._id, 0)
+        return _SlotTypeCommon(self, 0)
 
     @property
     def Player(self) -> _SlotTypeCommon:
@@ -6085,7 +6130,7 @@ class CryoTubeHorizontal(
 
     @property
     def slot1(self) -> _SlotTypeMask:
-        return _SlotTypeMask(type(self), self._id, 1)
+        return _SlotTypeMask(self, 1)
 
     @property
     def Mask(self) -> _SlotTypeMask:
@@ -6106,17 +6151,18 @@ class _CryoTubeHorizontals(
     _Temperatures,
 ):
     _hash: int = 1443059329
+    _prefab_name: int = "StructureCryoTubeHorizontal"
 
     def __getitem__(self, name: str | int | float) -> "_CryoTubeHorizontals":
         return _CryoTubeHorizontals(name)
 
     @property
     def EntityState(self) -> _DevicesLogicType:
-        return _DevicesLogicType(self._hash, "EntityState", self._name)
+        return _DevicesLogicType(self, _LT.EntityState)
 
     @property
     def slot0(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(type(self), self._hash, 0, self._name)
+        return _SlotTypeCommons(self, 0)
 
     @property
     def Player(self) -> _SlotTypeCommons:
@@ -6124,7 +6170,7 @@ class _CryoTubeHorizontals(
 
     @property
     def slot1(self) -> _SlotTypeMasks:
-        return _SlotTypeMasks(type(self), self._hash, 1, self._name)
+        return _SlotTypeMasks(self, 1)
 
     @property
     def Mask(self) -> _SlotTypeMasks:
@@ -6148,14 +6194,15 @@ class CryoTubeVertical(
     _Temperature,
 ):
     _hash: int = -1381321828
+    _prefab_name: int = "StructureCryoTubeVertical"
 
     @property
     def EntityState(self) -> float:
-        return _DeviceLogicType(self, self._id, "EntityState")
+        return _DeviceLogicType(self, _LT.EntityState)
 
     @property
     def slot0(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(type(self), self._id, 0)
+        return _SlotTypeCommon(self, 0)
 
     @property
     def Player(self) -> _SlotTypeCommon:
@@ -6163,7 +6210,7 @@ class CryoTubeVertical(
 
     @property
     def slot1(self) -> _SlotTypeMask:
-        return _SlotTypeMask(type(self), self._id, 1)
+        return _SlotTypeMask(self, 1)
 
     @property
     def Mask(self) -> _SlotTypeMask:
@@ -6184,17 +6231,18 @@ class _CryoTubeVerticals(
     _Temperatures,
 ):
     _hash: int = -1381321828
+    _prefab_name: int = "StructureCryoTubeVertical"
 
     def __getitem__(self, name: str | int | float) -> "_CryoTubeVerticals":
         return _CryoTubeVerticals(name)
 
     @property
     def EntityState(self) -> _DevicesLogicType:
-        return _DevicesLogicType(self._hash, "EntityState", self._name)
+        return _DevicesLogicType(self, _LT.EntityState)
 
     @property
     def slot0(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(type(self), self._hash, 0, self._name)
+        return _SlotTypeCommons(self, 0)
 
     @property
     def Player(self) -> _SlotTypeCommons:
@@ -6202,7 +6250,7 @@ class _CryoTubeVerticals(
 
     @property
     def slot1(self) -> _SlotTypeMasks:
-        return _SlotTypeMasks(type(self), self._hash, 1, self._name)
+        return _SlotTypeMasks(self, 1)
 
     @property
     def Mask(self) -> _SlotTypeMasks:
@@ -6214,29 +6262,31 @@ CryoTubeVerticals: _CryoTubeVerticals = _CryoTubeVerticals()
 
 class DaylightSensor(_BaseStructure, _Activate, _Mode, _On, _Vertical):
     _hash: int = 1076425094
+    _prefab_name: int = "StructureDaylightSensor"
 
     @property
     def SolarAngle(self) -> float:
-        return _DeviceLogicType(self, self._id, "SolarAngle")
+        return _DeviceLogicType(self, _LT.SolarAngle)
 
     @property
     def SolarIrradiance(self) -> float:
-        return _DeviceLogicType(self, self._id, "SolarIrradiance")
+        return _DeviceLogicType(self, _LT.SolarIrradiance)
 
 
 class _DaylightSensors(_BaseStructures, _Activates, _Modes, _Ons, _Verticals):
     _hash: int = 1076425094
+    _prefab_name: int = "StructureDaylightSensor"
 
     def __getitem__(self, name: str | int | float) -> "_DaylightSensors":
         return _DaylightSensors(name)
 
     @property
     def SolarAngle(self) -> _DevicesLogicType:
-        return _DevicesLogicType(self._hash, "SolarAngle", self._name)
+        return _DevicesLogicType(self, _LT.SolarAngle)
 
     @property
     def SolarIrradiance(self) -> _DevicesLogicType:
-        return _DevicesLogicType(self._hash, "SolarIrradiance", self._name)
+        return _DevicesLogicType(self, _LT.SolarIrradiance)
 
 
 DaylightSensors: _DaylightSensors = _DaylightSensors()
@@ -6254,10 +6304,11 @@ class DeepMiner(
     _SettingW,
 ):
     _hash: int = 265720906
+    _prefab_name: int = "StructureDeepMiner"
 
     @property
     def slot0(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(type(self), self._id, 0)
+        return _SlotTypeCommon(self, 0)
 
     @property
     def Export(self) -> _SlotTypeCommon:
@@ -6276,13 +6327,14 @@ class _DeepMiners(
     _SettingWs,
 ):
     _hash: int = 265720906
+    _prefab_name: int = "StructureDeepMiner"
 
     def __getitem__(self, name: str | int | float) -> "_DeepMiners":
         return _DeepMiners(name)
 
     @property
     def slot0(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(type(self), self._hash, 0, self._name)
+        return _SlotTypeCommons(self, 0)
 
     @property
     def Export(self) -> _SlotTypeCommons:
@@ -6294,10 +6346,12 @@ DeepMiners: _DeepMiners = _DeepMiners()
 
 class LogicDial(_BaseStructure, _Mode, _Ratio, _SettingW):
     _hash: int = 554524804
+    _prefab_name: int = "StructureLogicDial"
 
 
 class _LogicDials(_BaseStructures, _Modes, _Ratios, _SettingWs):
     _hash: int = 554524804
+    _prefab_name: int = "StructureLogicDial"
 
     def __getitem__(self, name: str | int | float) -> "_LogicDials":
         return _LogicDials(name)
@@ -6308,12 +6362,14 @@ LogicDials: _LogicDials = _LogicDials()
 
 class DigitalValve(_BaseStructure, _Error, _Lock, _Maximum, _Power, _Ratio, _SettingW):
     _hash: int = -1280984102
+    _prefab_name: int = "StructureDigitalValve"
 
 
 class _DigitalValves(
     _BaseStructures, _Errors, _Locks, _Maximums, _Powers, _Ratios, _SettingWs
 ):
     _hash: int = -1280984102
+    _prefab_name: int = "StructureDigitalValve"
 
     def __getitem__(self, name: str | int | float) -> "_DigitalValves":
         return _DigitalValves(name)
@@ -6324,10 +6380,12 @@ DigitalValves: _DigitalValves = _DigitalValves()
 
 class DiodeSlide(_BaseStructure, _Lock, _Power, _SettingW):
     _hash: int = 576516101
+    _prefab_name: int = "StructureDiodeSlide"
 
 
 class _DiodeSlides(_BaseStructures, _Locks, _Powers, _SettingWs):
     _hash: int = 576516101
+    _prefab_name: int = "StructureDiodeSlide"
 
     def __getitem__(self, name: str | int | float) -> "_DiodeSlides":
         return _DiodeSlides(name)
@@ -6338,10 +6396,12 @@ DiodeSlides: _DiodeSlides = _DiodeSlides()
 
 class DrinkingFountain(_BaseStructure, _Error, _Power):
     _hash: int = 1968371847
+    _prefab_name: int = "StructureDrinkingFountain"
 
 
 class _DrinkingFountains(_BaseStructures, _Errors, _Powers):
     _hash: int = 1968371847
+    _prefab_name: int = "StructureDrinkingFountain"
 
     def __getitem__(self, name: str | int | float) -> "_DrinkingFountains":
         return _DrinkingFountains(name)
@@ -6352,10 +6412,11 @@ DrinkingFountains: _DrinkingFountains = _DrinkingFountains()
 
 class SleeperVerticalDroid(_BaseStructure, _Activate, _Error, _Lock, _Open, _Power):
     _hash: int = 1382098999
+    _prefab_name: int = "StructureSleeperVerticalDroid"
 
     @property
     def slot0(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(type(self), self._id, 0)
+        return _SlotTypeCommon(self, 0)
 
     @property
     def Player(self) -> _SlotTypeCommon:
@@ -6366,13 +6427,14 @@ class _SleeperVerticalDroids(
     _BaseStructures, _Activates, _Errors, _Locks, _Opens, _Powers
 ):
     _hash: int = 1382098999
+    _prefab_name: int = "StructureSleeperVerticalDroid"
 
     def __getitem__(self, name: str | int | float) -> "_SleeperVerticalDroids":
         return _SleeperVerticalDroids(name)
 
     @property
     def slot0(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(type(self), self._hash, 0, self._name)
+        return _SlotTypeCommons(self, 0)
 
     @property
     def Player(self) -> _SlotTypeCommons:
@@ -6402,42 +6464,43 @@ class Electrolyzer(
     _Temperature,
 ):
     _hash: int = -1668992663
+    _prefab_name: int = "StructureElectrolyzer"
 
     @property
     def CombustionInput(self) -> float:
-        return _DeviceLogicType(self, self._id, "CombustionInput")
+        return _DeviceLogicType(self, _LT.CombustionInput)
 
     @property
     def CombustionOutput(self) -> float:
-        return _DeviceLogicType(self, self._id, "CombustionOutput")
+        return _DeviceLogicType(self, _LT.CombustionOutput)
 
     @property
     def PressureInput(self) -> float:
-        return _DeviceLogicType(self, self._id, "PressureInput")
+        return _DeviceLogicType(self, _LT.PressureInput)
 
     @property
     def PressureOutput(self) -> float:
-        return _DeviceLogicType(self, self._id, "PressureOutput")
+        return _DeviceLogicType(self, _LT.PressureOutput)
 
     @property
     def TemperatureInput(self) -> float:
-        return _DeviceLogicType(self, self._id, "TemperatureInput")
+        return _DeviceLogicType(self, _LT.TemperatureInput)
 
     @property
     def TemperatureOutput(self) -> float:
-        return _DeviceLogicType(self, self._id, "TemperatureOutput")
+        return _DeviceLogicType(self, _LT.TemperatureOutput)
 
     @property
     def TotalMolesInput(self) -> float:
-        return _DeviceLogicType(self, self._id, "TotalMolesInput")
+        return _DeviceLogicType(self, _LT.TotalMolesInput)
 
     @property
     def TotalMolesOutput(self) -> float:
-        return _DeviceLogicType(self, self._id, "TotalMolesOutput")
+        return _DeviceLogicType(self, _LT.TotalMolesOutput)
 
     @property
     def slot0(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(type(self), self._id, 0)
+        return _SlotTypeCommon(self, 0)
 
     @property
     def ProgrammableChip(self) -> _SlotTypeCommon:
@@ -6464,45 +6527,46 @@ class _Electrolyzers(
     _Temperatures,
 ):
     _hash: int = -1668992663
+    _prefab_name: int = "StructureElectrolyzer"
 
     def __getitem__(self, name: str | int | float) -> "_Electrolyzers":
         return _Electrolyzers(name)
 
     @property
     def CombustionInput(self) -> _DevicesLogicType:
-        return _DevicesLogicType(self._hash, "CombustionInput", self._name)
+        return _DevicesLogicType(self, _LT.CombustionInput)
 
     @property
     def CombustionOutput(self) -> _DevicesLogicType:
-        return _DevicesLogicType(self._hash, "CombustionOutput", self._name)
+        return _DevicesLogicType(self, _LT.CombustionOutput)
 
     @property
     def PressureInput(self) -> _DevicesLogicType:
-        return _DevicesLogicType(self._hash, "PressureInput", self._name)
+        return _DevicesLogicType(self, _LT.PressureInput)
 
     @property
     def PressureOutput(self) -> _DevicesLogicType:
-        return _DevicesLogicType(self._hash, "PressureOutput", self._name)
+        return _DevicesLogicType(self, _LT.PressureOutput)
 
     @property
     def TemperatureInput(self) -> _DevicesLogicType:
-        return _DevicesLogicType(self._hash, "TemperatureInput", self._name)
+        return _DevicesLogicType(self, _LT.TemperatureInput)
 
     @property
     def TemperatureOutput(self) -> _DevicesLogicType:
-        return _DevicesLogicType(self._hash, "TemperatureOutput", self._name)
+        return _DevicesLogicType(self, _LT.TemperatureOutput)
 
     @property
     def TotalMolesInput(self) -> _DevicesLogicType:
-        return _DevicesLogicType(self._hash, "TotalMolesInput", self._name)
+        return _DevicesLogicType(self, _LT.TotalMolesInput)
 
     @property
     def TotalMolesOutput(self) -> _DevicesLogicType:
-        return _DevicesLogicType(self._hash, "TotalMolesOutput", self._name)
+        return _DevicesLogicType(self, _LT.TotalMolesOutput)
 
     @property
     def slot0(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(type(self), self._hash, 0, self._name)
+        return _SlotTypeCommons(self, 0)
 
     @property
     def ProgrammableChip(self) -> _SlotTypeCommons:
@@ -6526,18 +6590,19 @@ class ElectronicsPrinter(
     _RecipeHash,
 ):
     _hash: int = 1307165496
+    _prefab_name: int = "StructureElectronicsPrinter"
 
     @property
     def CompletionRatio(self) -> float:
-        return _DeviceLogicType(self, self._id, "CompletionRatio")
+        return _DeviceLogicType(self, _LT.CompletionRatio)
 
     @property
     def StackSize(self) -> float:
-        return _DeviceLogicType(self, self._id, "StackSize")
+        return _DeviceLogicType(self, _LT.StackSize)
 
     @property
     def slot0(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(type(self), self._id, 0)
+        return _SlotTypeCommon(self, 0)
 
     @property
     def Import(self) -> _SlotTypeCommon:
@@ -6545,7 +6610,7 @@ class ElectronicsPrinter(
 
     @property
     def slot1(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(type(self), self._id, 1)
+        return _SlotTypeCommon(self, 1)
 
     @property
     def Export(self) -> _SlotTypeCommon:
@@ -6566,21 +6631,22 @@ class _ElectronicsPrinters(
     _RecipeHashs,
 ):
     _hash: int = 1307165496
+    _prefab_name: int = "StructureElectronicsPrinter"
 
     def __getitem__(self, name: str | int | float) -> "_ElectronicsPrinters":
         return _ElectronicsPrinters(name)
 
     @property
     def CompletionRatio(self) -> _DevicesLogicType:
-        return _DevicesLogicType(self._hash, "CompletionRatio", self._name)
+        return _DevicesLogicType(self, _LT.CompletionRatio)
 
     @property
     def StackSize(self) -> _DevicesLogicType:
-        return _DevicesLogicType(self._hash, "StackSize", self._name)
+        return _DevicesLogicType(self, _LT.StackSize)
 
     @property
     def slot0(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(type(self), self._hash, 0, self._name)
+        return _SlotTypeCommons(self, 0)
 
     @property
     def Import(self) -> _SlotTypeCommons:
@@ -6588,7 +6654,7 @@ class _ElectronicsPrinters(
 
     @property
     def slot1(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(type(self), self._hash, 1, self._name)
+        return _SlotTypeCommons(self, 1)
 
     @property
     def Export(self) -> _SlotTypeCommons:
@@ -6600,10 +6666,11 @@ ElectronicsPrinters: _ElectronicsPrinters = _ElectronicsPrinters()
 
 class ElevatorLevelIndustrial(_BaseStructure, _Activate, _Error, _Lock, _Open, _Power):
     _hash: int = 2060648791
+    _prefab_name: int = "StructureElevatorLevelIndustrial"
 
     @property
     def ElevatorLevel(self) -> float:
-        return _DeviceLogicType(self, self._id, "ElevatorLevel")
+        return _DeviceLogicType(self, _LT.ElevatorLevel)
 
     @ElevatorLevel.setter
     def ElevatorLevel(self, value: int | float):
@@ -6611,7 +6678,7 @@ class ElevatorLevelIndustrial(_BaseStructure, _Activate, _Error, _Lock, _Open, _
 
     @property
     def ElevatorSpeed(self) -> float:
-        return _DeviceLogicType(self, self._id, "ElevatorSpeed")
+        return _DeviceLogicType(self, _LT.ElevatorSpeed)
 
     @ElevatorSpeed.setter
     def ElevatorSpeed(self, value: int | float):
@@ -6622,13 +6689,14 @@ class _ElevatorLevelIndustrials(
     _BaseStructures, _Activates, _Errors, _Locks, _Opens, _Powers
 ):
     _hash: int = 2060648791
+    _prefab_name: int = "StructureElevatorLevelIndustrial"
 
     def __getitem__(self, name: str | int | float) -> "_ElevatorLevelIndustrials":
         return _ElevatorLevelIndustrials(name)
 
     @property
     def ElevatorLevel(self) -> _DevicesLogicType:
-        return _DevicesLogicType(self._hash, "ElevatorLevel", self._name)
+        return _DevicesLogicType(self, _LT.ElevatorLevel)
 
     @ElevatorLevel.setter
     def ElevatorLevel(self, value: int | float):
@@ -6636,7 +6704,7 @@ class _ElevatorLevelIndustrials(
 
     @property
     def ElevatorSpeed(self) -> _DevicesLogicType:
-        return _DevicesLogicType(self._hash, "ElevatorSpeed", self._name)
+        return _DevicesLogicType(self, _LT.ElevatorSpeed)
 
     @ElevatorSpeed.setter
     def ElevatorSpeed(self, value: int | float):
@@ -6648,10 +6716,11 @@ ElevatorLevelIndustrials: _ElevatorLevelIndustrials = _ElevatorLevelIndustrials(
 
 class ElevatorLevelFront(_BaseStructure, _Activate, _Error, _Lock, _Open, _Power):
     _hash: int = -827912235
+    _prefab_name: int = "StructureElevatorLevelFront"
 
     @property
     def ElevatorLevel(self) -> float:
-        return _DeviceLogicType(self, self._id, "ElevatorLevel")
+        return _DeviceLogicType(self, _LT.ElevatorLevel)
 
     @ElevatorLevel.setter
     def ElevatorLevel(self, value: int | float):
@@ -6659,7 +6728,7 @@ class ElevatorLevelFront(_BaseStructure, _Activate, _Error, _Lock, _Open, _Power
 
     @property
     def ElevatorSpeed(self) -> float:
-        return _DeviceLogicType(self, self._id, "ElevatorSpeed")
+        return _DeviceLogicType(self, _LT.ElevatorSpeed)
 
     @ElevatorSpeed.setter
     def ElevatorSpeed(self, value: int | float):
@@ -6670,13 +6739,14 @@ class _ElevatorLevelFronts(
     _BaseStructures, _Activates, _Errors, _Locks, _Opens, _Powers
 ):
     _hash: int = -827912235
+    _prefab_name: int = "StructureElevatorLevelFront"
 
     def __getitem__(self, name: str | int | float) -> "_ElevatorLevelFronts":
         return _ElevatorLevelFronts(name)
 
     @property
     def ElevatorLevel(self) -> _DevicesLogicType:
-        return _DevicesLogicType(self._hash, "ElevatorLevel", self._name)
+        return _DevicesLogicType(self, _LT.ElevatorLevel)
 
     @ElevatorLevel.setter
     def ElevatorLevel(self, value: int | float):
@@ -6684,7 +6754,7 @@ class _ElevatorLevelFronts(
 
     @property
     def ElevatorSpeed(self) -> _DevicesLogicType:
-        return _DevicesLogicType(self._hash, "ElevatorSpeed", self._name)
+        return _DevicesLogicType(self, _LT.ElevatorSpeed)
 
     @ElevatorSpeed.setter
     def ElevatorSpeed(self, value: int | float):
@@ -6696,10 +6766,11 @@ ElevatorLevelFronts: _ElevatorLevelFronts = _ElevatorLevelFronts()
 
 class ElevatorShaftIndustrial(_BaseStructure):
     _hash: int = 1998354978
+    _prefab_name: int = "StructureElevatorShaftIndustrial"
 
     @property
     def ElevatorLevel(self) -> float:
-        return _DeviceLogicType(self, self._id, "ElevatorLevel")
+        return _DeviceLogicType(self, _LT.ElevatorLevel)
 
     @ElevatorLevel.setter
     def ElevatorLevel(self, value: int | float):
@@ -6707,7 +6778,7 @@ class ElevatorShaftIndustrial(_BaseStructure):
 
     @property
     def ElevatorSpeed(self) -> float:
-        return _DeviceLogicType(self, self._id, "ElevatorSpeed")
+        return _DeviceLogicType(self, _LT.ElevatorSpeed)
 
     @ElevatorSpeed.setter
     def ElevatorSpeed(self, value: int | float):
@@ -6716,13 +6787,14 @@ class ElevatorShaftIndustrial(_BaseStructure):
 
 class _ElevatorShaftIndustrials(_BaseStructures):
     _hash: int = 1998354978
+    _prefab_name: int = "StructureElevatorShaftIndustrial"
 
     def __getitem__(self, name: str | int | float) -> "_ElevatorShaftIndustrials":
         return _ElevatorShaftIndustrials(name)
 
     @property
     def ElevatorLevel(self) -> _DevicesLogicType:
-        return _DevicesLogicType(self._hash, "ElevatorLevel", self._name)
+        return _DevicesLogicType(self, _LT.ElevatorLevel)
 
     @ElevatorLevel.setter
     def ElevatorLevel(self, value: int | float):
@@ -6730,7 +6802,7 @@ class _ElevatorShaftIndustrials(_BaseStructures):
 
     @property
     def ElevatorSpeed(self) -> _DevicesLogicType:
-        return _DevicesLogicType(self._hash, "ElevatorSpeed", self._name)
+        return _DevicesLogicType(self, _LT.ElevatorSpeed)
 
     @ElevatorSpeed.setter
     def ElevatorSpeed(self, value: int | float):
@@ -6742,10 +6814,11 @@ ElevatorShaftIndustrials: _ElevatorShaftIndustrials = _ElevatorShaftIndustrials(
 
 class ElevatorShaft(_BaseStructure, _Power):
     _hash: int = 826144419
+    _prefab_name: int = "StructureElevatorShaft"
 
     @property
     def ElevatorLevel(self) -> float:
-        return _DeviceLogicType(self, self._id, "ElevatorLevel")
+        return _DeviceLogicType(self, _LT.ElevatorLevel)
 
     @ElevatorLevel.setter
     def ElevatorLevel(self, value: int | float):
@@ -6753,7 +6826,7 @@ class ElevatorShaft(_BaseStructure, _Power):
 
     @property
     def ElevatorSpeed(self) -> float:
-        return _DeviceLogicType(self, self._id, "ElevatorSpeed")
+        return _DeviceLogicType(self, _LT.ElevatorSpeed)
 
     @ElevatorSpeed.setter
     def ElevatorSpeed(self, value: int | float):
@@ -6762,13 +6835,14 @@ class ElevatorShaft(_BaseStructure, _Power):
 
 class _ElevatorShafts(_BaseStructures, _Powers):
     _hash: int = 826144419
+    _prefab_name: int = "StructureElevatorShaft"
 
     def __getitem__(self, name: str | int | float) -> "_ElevatorShafts":
         return _ElevatorShafts(name)
 
     @property
     def ElevatorLevel(self) -> _DevicesLogicType:
-        return _DevicesLogicType(self._hash, "ElevatorLevel", self._name)
+        return _DevicesLogicType(self, _LT.ElevatorLevel)
 
     @ElevatorLevel.setter
     def ElevatorLevel(self, value: int | float):
@@ -6776,7 +6850,7 @@ class _ElevatorShafts(_BaseStructures, _Powers):
 
     @property
     def ElevatorSpeed(self) -> _DevicesLogicType:
-        return _DevicesLogicType(self._hash, "ElevatorSpeed", self._name)
+        return _DevicesLogicType(self, _LT.ElevatorSpeed)
 
     @ElevatorSpeed.setter
     def ElevatorSpeed(self, value: int | float):
@@ -6802,6 +6876,7 @@ class EvaporationChamber(
     _Temperature,
 ):
     _hash: int = -1429782576
+    _prefab_name: int = "StructureEvaporationChamber"
 
 
 class _EvaporationChambers(
@@ -6820,6 +6895,7 @@ class _EvaporationChambers(
     _Temperatures,
 ):
     _hash: int = -1429782576
+    _prefab_name: int = "StructureEvaporationChamber"
 
     def __getitem__(self, name: str | int | float) -> "_EvaporationChambers":
         return _EvaporationChambers(name)
@@ -6830,10 +6906,12 @@ EvaporationChambers: _EvaporationChambers = _EvaporationChambers()
 
 class ExpansionValve(_BaseStructure, _Maximum, _On, _Ratio, _SettingW):
     _hash: int = 195298587
+    _prefab_name: int = "StructureExpansionValve"
 
 
 class _ExpansionValves(_BaseStructures, _Maximums, _Ons, _Ratios, _SettingWs):
     _hash: int = 195298587
+    _prefab_name: int = "StructureExpansionValve"
 
     def __getitem__(self, name: str | int | float) -> "_ExpansionValves":
         return _ExpansionValves(name)
@@ -6857,66 +6935,67 @@ class Filtration(
     _SettingW,
 ):
     _hash: int = -348054045
+    _prefab_name: int = "StructureFiltration"
 
     @property
     def CombustionInput(self) -> float:
-        return _DeviceLogicType(self, self._id, "CombustionInput")
+        return _DeviceLogicType(self, _LT.CombustionInput)
 
     @property
     def CombustionOutput(self) -> float:
-        return _DeviceLogicType(self, self._id, "CombustionOutput")
+        return _DeviceLogicType(self, _LT.CombustionOutput)
 
     @property
     def CombustionOutput2(self) -> float:
-        return _DeviceLogicType(self, self._id, "CombustionOutput2")
+        return _DeviceLogicType(self, _LT.CombustionOutput2)
 
     @property
     def PressureInput(self) -> float:
-        return _DeviceLogicType(self, self._id, "PressureInput")
+        return _DeviceLogicType(self, _LT.PressureInput)
 
     @property
     def PressureOutput(self) -> float:
-        return _DeviceLogicType(self, self._id, "PressureOutput")
+        return _DeviceLogicType(self, _LT.PressureOutput)
 
     @property
     def PressureOutput2(self) -> float:
-        return _DeviceLogicType(self, self._id, "PressureOutput2")
+        return _DeviceLogicType(self, _LT.PressureOutput2)
 
     @property
     def TemperatureInput(self) -> float:
-        return _DeviceLogicType(self, self._id, "TemperatureInput")
+        return _DeviceLogicType(self, _LT.TemperatureInput)
 
     @property
     def TemperatureOutput(self) -> float:
-        return _DeviceLogicType(self, self._id, "TemperatureOutput")
+        return _DeviceLogicType(self, _LT.TemperatureOutput)
 
     @property
     def TemperatureOutput2(self) -> float:
-        return _DeviceLogicType(self, self._id, "TemperatureOutput2")
+        return _DeviceLogicType(self, _LT.TemperatureOutput2)
 
     @property
     def TotalMolesInput(self) -> float:
-        return _DeviceLogicType(self, self._id, "TotalMolesInput")
+        return _DeviceLogicType(self, _LT.TotalMolesInput)
 
     @property
     def TotalMolesOutput(self) -> float:
-        return _DeviceLogicType(self, self._id, "TotalMolesOutput")
+        return _DeviceLogicType(self, _LT.TotalMolesOutput)
 
     @property
     def TotalMolesOutput2(self) -> float:
-        return _DeviceLogicType(self, self._id, "TotalMolesOutput2")
+        return _DeviceLogicType(self, _LT.TotalMolesOutput2)
 
     @property
     def slot0(self) -> _SlotTypeFilter:
-        return _SlotTypeFilter(type(self), self._id, 0)
+        return _SlotTypeFilter(self, 0)
 
     @property
     def slot1(self) -> _SlotTypeFilter:
-        return _SlotTypeFilter(type(self), self._id, 1)
+        return _SlotTypeFilter(self, 1)
 
     @property
     def slot2(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(type(self), self._id, 2)
+        return _SlotTypeCommon(self, 2)
 
     @property
     def ProgrammableChip(self) -> _SlotTypeCommon:
@@ -6938,69 +7017,70 @@ class _Filtrations(
     _SettingWs,
 ):
     _hash: int = -348054045
+    _prefab_name: int = "StructureFiltration"
 
     def __getitem__(self, name: str | int | float) -> "_Filtrations":
         return _Filtrations(name)
 
     @property
     def CombustionInput(self) -> _DevicesLogicType:
-        return _DevicesLogicType(self._hash, "CombustionInput", self._name)
+        return _DevicesLogicType(self, _LT.CombustionInput)
 
     @property
     def CombustionOutput(self) -> _DevicesLogicType:
-        return _DevicesLogicType(self._hash, "CombustionOutput", self._name)
+        return _DevicesLogicType(self, _LT.CombustionOutput)
 
     @property
     def CombustionOutput2(self) -> _DevicesLogicType:
-        return _DevicesLogicType(self._hash, "CombustionOutput2", self._name)
+        return _DevicesLogicType(self, _LT.CombustionOutput2)
 
     @property
     def PressureInput(self) -> _DevicesLogicType:
-        return _DevicesLogicType(self._hash, "PressureInput", self._name)
+        return _DevicesLogicType(self, _LT.PressureInput)
 
     @property
     def PressureOutput(self) -> _DevicesLogicType:
-        return _DevicesLogicType(self._hash, "PressureOutput", self._name)
+        return _DevicesLogicType(self, _LT.PressureOutput)
 
     @property
     def PressureOutput2(self) -> _DevicesLogicType:
-        return _DevicesLogicType(self._hash, "PressureOutput2", self._name)
+        return _DevicesLogicType(self, _LT.PressureOutput2)
 
     @property
     def TemperatureInput(self) -> _DevicesLogicType:
-        return _DevicesLogicType(self._hash, "TemperatureInput", self._name)
+        return _DevicesLogicType(self, _LT.TemperatureInput)
 
     @property
     def TemperatureOutput(self) -> _DevicesLogicType:
-        return _DevicesLogicType(self._hash, "TemperatureOutput", self._name)
+        return _DevicesLogicType(self, _LT.TemperatureOutput)
 
     @property
     def TemperatureOutput2(self) -> _DevicesLogicType:
-        return _DevicesLogicType(self._hash, "TemperatureOutput2", self._name)
+        return _DevicesLogicType(self, _LT.TemperatureOutput2)
 
     @property
     def TotalMolesInput(self) -> _DevicesLogicType:
-        return _DevicesLogicType(self._hash, "TotalMolesInput", self._name)
+        return _DevicesLogicType(self, _LT.TotalMolesInput)
 
     @property
     def TotalMolesOutput(self) -> _DevicesLogicType:
-        return _DevicesLogicType(self._hash, "TotalMolesOutput", self._name)
+        return _DevicesLogicType(self, _LT.TotalMolesOutput)
 
     @property
     def TotalMolesOutput2(self) -> _DevicesLogicType:
-        return _DevicesLogicType(self._hash, "TotalMolesOutput2", self._name)
+        return _DevicesLogicType(self, _LT.TotalMolesOutput2)
 
     @property
     def slot0(self) -> _SlotTypeFilters:
-        return _SlotTypeFilters(type(self), self._hash, 0, self._name)
+        return _SlotTypeFilters(self, 0)
 
     @property
     def slot1(self) -> _SlotTypeFilters:
-        return _SlotTypeFilters(type(self), self._hash, 1, self._name)
+        return _SlotTypeFilters(self, 1)
 
     @property
     def slot2(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(type(self), self._hash, 2, self._name)
+        return _SlotTypeCommons(self, 2)
 
     @property
     def ProgrammableChip(self) -> _SlotTypeCommons:
@@ -7012,10 +7092,12 @@ Filtrations: _Filtrations = _Filtrations()
 
 class FlashingLight(_BaseStructure, _Lock, _Power):
     _hash: int = -1535893860
+    _prefab_name: int = "StructureFlashingLight"
 
 
 class _FlashingLights(_BaseStructures, _Locks, _Powers):
     _hash: int = -1535893860
+    _prefab_name: int = "StructureFlashingLight"
 
     def __getitem__(self, name: str | int | float) -> "_FlashingLights":
         return _FlashingLights(name)
@@ -7039,110 +7121,111 @@ class FridgeBig(
     _Temperature,
 ):
     _hash: int = 958476921
+    _prefab_name: int = "StructureFridgeBig"
 
     @property
     def CombustionOutput(self) -> float:
-        return _DeviceLogicType(self, self._id, "CombustionOutput")
+        return _DeviceLogicType(self, _LT.CombustionOutput)
 
     @property
     def PressureOutput(self) -> float:
-        return _DeviceLogicType(self, self._id, "PressureOutput")
+        return _DeviceLogicType(self, _LT.PressureOutput)
 
     @property
     def RatioCarbonDioxideOutput(self) -> float:
-        return _DeviceLogicType(self, self._id, "RatioCarbonDioxideOutput")
+        return _DeviceLogicType(self, _LT.RatioCarbonDioxideOutput)
 
     @property
     def RatioNitrogenOutput(self) -> float:
-        return _DeviceLogicType(self, self._id, "RatioNitrogenOutput")
+        return _DeviceLogicType(self, _LT.RatioNitrogenOutput)
 
     @property
     def RatioNitrousOxideOutput(self) -> float:
-        return _DeviceLogicType(self, self._id, "RatioNitrousOxideOutput")
+        return _DeviceLogicType(self, _LT.RatioNitrousOxideOutput)
 
     @property
     def RatioOxygenOutput(self) -> float:
-        return _DeviceLogicType(self, self._id, "RatioOxygenOutput")
+        return _DeviceLogicType(self, _LT.RatioOxygenOutput)
 
     @property
     def RatioPollutantOutput(self) -> float:
-        return _DeviceLogicType(self, self._id, "RatioPollutantOutput")
+        return _DeviceLogicType(self, _LT.RatioPollutantOutput)
 
     @property
     def RatioVolatilesOutput(self) -> float:
-        return _DeviceLogicType(self, self._id, "RatioVolatilesOutput")
+        return _DeviceLogicType(self, _LT.RatioVolatilesOutput)
 
     @property
     def RatioWaterOutput(self) -> float:
-        return _DeviceLogicType(self, self._id, "RatioWaterOutput")
+        return _DeviceLogicType(self, _LT.RatioWaterOutput)
 
     @property
     def TemperatureOutput(self) -> float:
-        return _DeviceLogicType(self, self._id, "TemperatureOutput")
+        return _DeviceLogicType(self, _LT.TemperatureOutput)
 
     @property
     def TotalMolesOutput(self) -> float:
-        return _DeviceLogicType(self, self._id, "TotalMolesOutput")
+        return _DeviceLogicType(self, _LT.TotalMolesOutput)
 
     @property
     def slot0(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(type(self), self._id, 0)
+        return _SlotTypeCommon(self, 0)
 
     @property
     def slot1(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(type(self), self._id, 1)
+        return _SlotTypeCommon(self, 1)
 
     @property
     def slot10(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(type(self), self._id, 10)
+        return _SlotTypeCommon(self, 10)
 
     @property
     def slot11(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(type(self), self._id, 11)
+        return _SlotTypeCommon(self, 11)
 
     @property
     def slot12(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(type(self), self._id, 12)
+        return _SlotTypeCommon(self, 12)
 
     @property
     def slot13(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(type(self), self._id, 13)
+        return _SlotTypeCommon(self, 13)
 
     @property
     def slot14(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(type(self), self._id, 14)
+        return _SlotTypeCommon(self, 14)
 
     @property
     def slot2(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(type(self), self._id, 2)
+        return _SlotTypeCommon(self, 2)
 
     @property
     def slot3(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(type(self), self._id, 3)
+        return _SlotTypeCommon(self, 3)
 
     @property
     def slot4(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(type(self), self._id, 4)
+        return _SlotTypeCommon(self, 4)
 
     @property
     def slot5(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(type(self), self._id, 5)
+        return _SlotTypeCommon(self, 5)
 
     @property
     def slot6(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(type(self), self._id, 6)
+        return _SlotTypeCommon(self, 6)
 
     @property
     def slot7(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(type(self), self._id, 7)
+        return _SlotTypeCommon(self, 7)
 
     @property
     def slot8(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(type(self), self._id, 8)
+        return _SlotTypeCommon(self, 8)
 
     @property
     def slot9(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(type(self), self._id, 9)
+        return _SlotTypeCommon(self, 9)
 
 
 class _FridgeBigs(
@@ -7160,113 +7243,114 @@ class _FridgeBigs(
     _Temperatures,
 ):
     _hash: int = 958476921
+    _prefab_name: int = "StructureFridgeBig"
 
     def __getitem__(self, name: str | int | float) -> "_FridgeBigs":
         return _FridgeBigs(name)
 
     @property
     def CombustionOutput(self) -> _DevicesLogicType:
-        return _DevicesLogicType(self._hash, "CombustionOutput", self._name)
+        return _DevicesLogicType(self, _LT.CombustionOutput)
 
     @property
     def PressureOutput(self) -> _DevicesLogicType:
-        return _DevicesLogicType(self._hash, "PressureOutput", self._name)
+        return _DevicesLogicType(self, _LT.PressureOutput)
 
     @property
     def RatioCarbonDioxideOutput(self) -> _DevicesLogicType:
-        return _DevicesLogicType(self._hash, "RatioCarbonDioxideOutput", self._name)
+        return _DevicesLogicType(self, _LT.RatioCarbonDioxideOutput)
 
     @property
     def RatioNitrogenOutput(self) -> _DevicesLogicType:
-        return _DevicesLogicType(self._hash, "RatioNitrogenOutput", self._name)
+        return _DevicesLogicType(self, _LT.RatioNitrogenOutput)
 
     @property
     def RatioNitrousOxideOutput(self) -> _DevicesLogicType:
-        return _DevicesLogicType(self._hash, "RatioNitrousOxideOutput", self._name)
+        return _DevicesLogicType(self, _LT.RatioNitrousOxideOutput)
 
     @property
     def RatioOxygenOutput(self) -> _DevicesLogicType:
-        return _DevicesLogicType(self._hash, "RatioOxygenOutput", self._name)
+        return _DevicesLogicType(self, _LT.RatioOxygenOutput)
 
     @property
     def RatioPollutantOutput(self) -> _DevicesLogicType:
-        return _DevicesLogicType(self._hash, "RatioPollutantOutput", self._name)
+        return _DevicesLogicType(self, _LT.RatioPollutantOutput)
 
     @property
     def RatioVolatilesOutput(self) -> _DevicesLogicType:
-        return _DevicesLogicType(self._hash, "RatioVolatilesOutput", self._name)
+        return _DevicesLogicType(self, _LT.RatioVolatilesOutput)
 
     @property
     def RatioWaterOutput(self) -> _DevicesLogicType:
-        return _DevicesLogicType(self._hash, "RatioWaterOutput", self._name)
+        return _DevicesLogicType(self, _LT.RatioWaterOutput)
 
     @property
     def TemperatureOutput(self) -> _DevicesLogicType:
-        return _DevicesLogicType(self._hash, "TemperatureOutput", self._name)
+        return _DevicesLogicType(self, _LT.TemperatureOutput)
 
     @property
     def TotalMolesOutput(self) -> _DevicesLogicType:
-        return _DevicesLogicType(self._hash, "TotalMolesOutput", self._name)
+        return _DevicesLogicType(self, _LT.TotalMolesOutput)
 
     @property
     def slot0(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(type(self), self._hash, 0, self._name)
+        return _SlotTypeCommons(self, 0)
 
     @property
     def slot1(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(type(self), self._hash, 1, self._name)
+        return _SlotTypeCommons(self, 1)
 
     @property
     def slot10(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(type(self), self._hash, 10, self._name)
+        return _SlotTypeCommons(self, 10)
 
     @property
     def slot11(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(type(self), self._hash, 11, self._name)
+        return _SlotTypeCommons(self, 11)
 
     @property
     def slot12(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(type(self), self._hash, 12, self._name)
+        return _SlotTypeCommons(self, 12)
 
     @property
     def slot13(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(type(self), self._hash, 13, self._name)
+        return _SlotTypeCommons(self, 13)
 
     @property
     def slot14(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(type(self), self._hash, 14, self._name)
+        return _SlotTypeCommons(self, 14)
 
     @property
     def slot2(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(type(self), self._hash, 2, self._name)
+        return _SlotTypeCommons(self, 2)
 
     @property
     def slot3(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(type(self), self._hash, 3, self._name)
+        return _SlotTypeCommons(self, 3)
 
     @property
     def slot4(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(type(self), self._hash, 4, self._name)
+        return _SlotTypeCommons(self, 4)
 
     @property
     def slot5(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(type(self), self._hash, 5, self._name)
+        return _SlotTypeCommons(self, 5)
 
     @property
     def slot6(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(type(self), self._hash, 6, self._name)
+        return _SlotTypeCommons(self, 6)
 
     @property
     def slot7(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(type(self), self._hash, 7, self._name)
+        return _SlotTypeCommons(self, 7)
 
     @property
     def slot8(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(type(self), self._hash, 8, self._name)
+        return _SlotTypeCommons(self, 8)
 
     @property
     def slot9(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(type(self), self._hash, 9, self._name)
+        return _SlotTypeCommons(self, 9)
 
 
 FridgeBigs: _FridgeBigs = _FridgeBigs()
@@ -7285,58 +7369,59 @@ class FridgeSmall(
     _Temperature,
 ):
     _hash: int = 751887598
+    _prefab_name: int = "StructureFridgeSmall"
 
     @property
     def CombustionOutput(self) -> float:
-        return _DeviceLogicType(self, self._id, "CombustionOutput")
+        return _DeviceLogicType(self, _LT.CombustionOutput)
 
     @property
     def PressureOutput(self) -> float:
-        return _DeviceLogicType(self, self._id, "PressureOutput")
+        return _DeviceLogicType(self, _LT.PressureOutput)
 
     @property
     def RatioCarbonDioxideOutput(self) -> float:
-        return _DeviceLogicType(self, self._id, "RatioCarbonDioxideOutput")
+        return _DeviceLogicType(self, _LT.RatioCarbonDioxideOutput)
 
     @property
     def RatioNitrogenOutput(self) -> float:
-        return _DeviceLogicType(self, self._id, "RatioNitrogenOutput")
+        return _DeviceLogicType(self, _LT.RatioNitrogenOutput)
 
     @property
     def RatioNitrousOxideOutput(self) -> float:
-        return _DeviceLogicType(self, self._id, "RatioNitrousOxideOutput")
+        return _DeviceLogicType(self, _LT.RatioNitrousOxideOutput)
 
     @property
     def RatioOxygenOutput(self) -> float:
-        return _DeviceLogicType(self, self._id, "RatioOxygenOutput")
+        return _DeviceLogicType(self, _LT.RatioOxygenOutput)
 
     @property
     def RatioPollutantOutput(self) -> float:
-        return _DeviceLogicType(self, self._id, "RatioPollutantOutput")
+        return _DeviceLogicType(self, _LT.RatioPollutantOutput)
 
     @property
     def RatioVolatilesOutput(self) -> float:
-        return _DeviceLogicType(self, self._id, "RatioVolatilesOutput")
+        return _DeviceLogicType(self, _LT.RatioVolatilesOutput)
 
     @property
     def RatioWaterOutput(self) -> float:
-        return _DeviceLogicType(self, self._id, "RatioWaterOutput")
+        return _DeviceLogicType(self, _LT.RatioWaterOutput)
 
     @property
     def TemperatureOutput(self) -> float:
-        return _DeviceLogicType(self, self._id, "TemperatureOutput")
+        return _DeviceLogicType(self, _LT.TemperatureOutput)
 
     @property
     def TotalMolesOutput(self) -> float:
-        return _DeviceLogicType(self, self._id, "TotalMolesOutput")
+        return _DeviceLogicType(self, _LT.TotalMolesOutput)
 
     @property
     def slot0(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(type(self), self._id, 0)
+        return _SlotTypeCommon(self, 0)
 
     @property
     def slot1(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(type(self), self._id, 1)
+        return _SlotTypeCommon(self, 1)
 
 
 class _FridgeSmalls(
@@ -7352,61 +7437,62 @@ class _FridgeSmalls(
     _Temperatures,
 ):
     _hash: int = 751887598
+    _prefab_name: int = "StructureFridgeSmall"
 
     def __getitem__(self, name: str | int | float) -> "_FridgeSmalls":
         return _FridgeSmalls(name)
 
     @property
     def CombustionOutput(self) -> _DevicesLogicType:
-        return _DevicesLogicType(self._hash, "CombustionOutput", self._name)
+        return _DevicesLogicType(self, _LT.CombustionOutput)
 
     @property
     def PressureOutput(self) -> _DevicesLogicType:
-        return _DevicesLogicType(self._hash, "PressureOutput", self._name)
+        return _DevicesLogicType(self, _LT.PressureOutput)
 
     @property
     def RatioCarbonDioxideOutput(self) -> _DevicesLogicType:
-        return _DevicesLogicType(self._hash, "RatioCarbonDioxideOutput", self._name)
+        return _DevicesLogicType(self, _LT.RatioCarbonDioxideOutput)
 
     @property
     def RatioNitrogenOutput(self) -> _DevicesLogicType:
-        return _DevicesLogicType(self._hash, "RatioNitrogenOutput", self._name)
+        return _DevicesLogicType(self, _LT.RatioNitrogenOutput)
 
     @property
     def RatioNitrousOxideOutput(self) -> _DevicesLogicType:
-        return _DevicesLogicType(self._hash, "RatioNitrousOxideOutput", self._name)
+        return _DevicesLogicType(self, _LT.RatioNitrousOxideOutput)
 
     @property
     def RatioOxygenOutput(self) -> _DevicesLogicType:
-        return _DevicesLogicType(self._hash, "RatioOxygenOutput", self._name)
+        return _DevicesLogicType(self, _LT.RatioOxygenOutput)
 
     @property
     def RatioPollutantOutput(self) -> _DevicesLogicType:
-        return _DevicesLogicType(self._hash, "RatioPollutantOutput", self._name)
+        return _DevicesLogicType(self, _LT.RatioPollutantOutput)
 
     @property
     def RatioVolatilesOutput(self) -> _DevicesLogicType:
-        return _DevicesLogicType(self._hash, "RatioVolatilesOutput", self._name)
+        return _DevicesLogicType(self, _LT.RatioVolatilesOutput)
 
     @property
     def RatioWaterOutput(self) -> _DevicesLogicType:
-        return _DevicesLogicType(self._hash, "RatioWaterOutput", self._name)
+        return _DevicesLogicType(self, _LT.RatioWaterOutput)
 
     @property
     def TemperatureOutput(self) -> _DevicesLogicType:
-        return _DevicesLogicType(self._hash, "TemperatureOutput", self._name)
+        return _DevicesLogicType(self, _LT.TemperatureOutput)
 
     @property
     def TotalMolesOutput(self) -> _DevicesLogicType:
-        return _DevicesLogicType(self._hash, "TotalMolesOutput", self._name)
+        return _DevicesLogicType(self, _LT.TotalMolesOutput)
 
     @property
     def slot0(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(type(self), self._hash, 0, self._name)
+        return _SlotTypeCommons(self, 0)
 
     @property
     def slot1(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(type(self), self._hash, 1, self._name)
+        return _SlotTypeCommons(self, 1)
 
 
 FridgeSmalls: _FridgeSmalls = _FridgeSmalls()
@@ -7432,14 +7518,15 @@ class Furnace(
     _Temperature,
 ):
     _hash: int = 1947944864
+    _prefab_name: int = "StructureFurnace"
 
     @property
     def RecipeHash(self) -> float:
-        return _DeviceLogicType(self, self._id, "RecipeHash")
+        return _DeviceLogicType(self, _LT.RecipeHash)
 
     @property
     def slot0(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(type(self), self._id, 0)
+        return _SlotTypeCommon(self, 0)
 
     @property
     def Import(self) -> _SlotTypeCommon:
@@ -7447,7 +7534,7 @@ class Furnace(
 
     @property
     def slot1(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(type(self), self._id, 1)
+        return _SlotTypeCommon(self, 1)
 
     @property
     def Export(self) -> _SlotTypeCommon:
@@ -7474,17 +7561,18 @@ class _Furnaces(
     _Temperatures,
 ):
     _hash: int = 1947944864
+    _prefab_name: int = "StructureFurnace"
 
     def __getitem__(self, name: str | int | float) -> "_Furnaces":
         return _Furnaces(name)
 
     @property
     def RecipeHash(self) -> _DevicesLogicType:
-        return _DevicesLogicType(self._hash, "RecipeHash", self._name)
+        return _DevicesLogicType(self, _LT.RecipeHash)
 
     @property
     def slot0(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(type(self), self._hash, 0, self._name)
+        return _SlotTypeCommons(self, 0)
 
     @property
     def Import(self) -> _SlotTypeCommons:
@@ -7492,7 +7580,7 @@ class _Furnaces(
 
     @property
     def slot1(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(type(self), self._hash, 1, self._name)
+        return _SlotTypeCommons(self, 1)
 
     @property
     def Export(self) -> _SlotTypeCommons:
@@ -7515,50 +7603,51 @@ class LargeRocketGasFuelTank(
     _Volume,
 ):
     _hash: int = -988382953
+    _prefab_name: int = "StructureLargeRocketGasFuelTank"
 
     @property
     def CombustionOutput(self) -> float:
-        return _DeviceLogicType(self, self._id, "CombustionOutput")
+        return _DeviceLogicType(self, _LT.CombustionOutput)
 
     @property
     def PressureOutput(self) -> float:
-        return _DeviceLogicType(self, self._id, "PressureOutput")
+        return _DeviceLogicType(self, _LT.PressureOutput)
 
     @property
     def RatioCarbonDioxideOutput(self) -> float:
-        return _DeviceLogicType(self, self._id, "RatioCarbonDioxideOutput")
+        return _DeviceLogicType(self, _LT.RatioCarbonDioxideOutput)
 
     @property
     def RatioNitrogenOutput(self) -> float:
-        return _DeviceLogicType(self, self._id, "RatioNitrogenOutput")
+        return _DeviceLogicType(self, _LT.RatioNitrogenOutput)
 
     @property
     def RatioNitrousOxideOutput(self) -> float:
-        return _DeviceLogicType(self, self._id, "RatioNitrousOxideOutput")
+        return _DeviceLogicType(self, _LT.RatioNitrousOxideOutput)
 
     @property
     def RatioOxygenOutput(self) -> float:
-        return _DeviceLogicType(self, self._id, "RatioOxygenOutput")
+        return _DeviceLogicType(self, _LT.RatioOxygenOutput)
 
     @property
     def RatioPollutantOutput(self) -> float:
-        return _DeviceLogicType(self, self._id, "RatioPollutantOutput")
+        return _DeviceLogicType(self, _LT.RatioPollutantOutput)
 
     @property
     def RatioVolatilesOutput(self) -> float:
-        return _DeviceLogicType(self, self._id, "RatioVolatilesOutput")
+        return _DeviceLogicType(self, _LT.RatioVolatilesOutput)
 
     @property
     def RatioWaterOutput(self) -> float:
-        return _DeviceLogicType(self, self._id, "RatioWaterOutput")
+        return _DeviceLogicType(self, _LT.RatioWaterOutput)
 
     @property
     def TemperatureOutput(self) -> float:
-        return _DeviceLogicType(self, self._id, "TemperatureOutput")
+        return _DeviceLogicType(self, _LT.TemperatureOutput)
 
     @property
     def TotalMolesOutput(self) -> float:
-        return _DeviceLogicType(self, self._id, "TotalMolesOutput")
+        return _DeviceLogicType(self, _LT.TotalMolesOutput)
 
 
 class _LargeRocketGasFuelTanks(
@@ -7574,53 +7663,54 @@ class _LargeRocketGasFuelTanks(
     _Volumes,
 ):
     _hash: int = -988382953
+    _prefab_name: int = "StructureLargeRocketGasFuelTank"
 
     def __getitem__(self, name: str | int | float) -> "_LargeRocketGasFuelTanks":
         return _LargeRocketGasFuelTanks(name)
 
     @property
     def CombustionOutput(self) -> _DevicesLogicType:
-        return _DevicesLogicType(self._hash, "CombustionOutput", self._name)
+        return _DevicesLogicType(self, _LT.CombustionOutput)
 
     @property
     def PressureOutput(self) -> _DevicesLogicType:
-        return _DevicesLogicType(self._hash, "PressureOutput", self._name)
+        return _DevicesLogicType(self, _LT.PressureOutput)
 
     @property
     def RatioCarbonDioxideOutput(self) -> _DevicesLogicType:
-        return _DevicesLogicType(self._hash, "RatioCarbonDioxideOutput", self._name)
+        return _DevicesLogicType(self, _LT.RatioCarbonDioxideOutput)
 
     @property
     def RatioNitrogenOutput(self) -> _DevicesLogicType:
-        return _DevicesLogicType(self._hash, "RatioNitrogenOutput", self._name)
+        return _DevicesLogicType(self, _LT.RatioNitrogenOutput)
 
     @property
     def RatioNitrousOxideOutput(self) -> _DevicesLogicType:
-        return _DevicesLogicType(self._hash, "RatioNitrousOxideOutput", self._name)
+        return _DevicesLogicType(self, _LT.RatioNitrousOxideOutput)
 
     @property
     def RatioOxygenOutput(self) -> _DevicesLogicType:
-        return _DevicesLogicType(self._hash, "RatioOxygenOutput", self._name)
+        return _DevicesLogicType(self, _LT.RatioOxygenOutput)
 
     @property
     def RatioPollutantOutput(self) -> _DevicesLogicType:
-        return _DevicesLogicType(self._hash, "RatioPollutantOutput", self._name)
+        return _DevicesLogicType(self, _LT.RatioPollutantOutput)
 
     @property
     def RatioVolatilesOutput(self) -> _DevicesLogicType:
-        return _DevicesLogicType(self._hash, "RatioVolatilesOutput", self._name)
+        return _DevicesLogicType(self, _LT.RatioVolatilesOutput)
 
     @property
     def RatioWaterOutput(self) -> _DevicesLogicType:
-        return _DevicesLogicType(self._hash, "RatioWaterOutput", self._name)
+        return _DevicesLogicType(self, _LT.RatioWaterOutput)
 
     @property
     def TemperatureOutput(self) -> _DevicesLogicType:
-        return _DevicesLogicType(self._hash, "TemperatureOutput", self._name)
+        return _DevicesLogicType(self, _LT.TemperatureOutput)
 
     @property
     def TotalMolesOutput(self) -> _DevicesLogicType:
-        return _DevicesLogicType(self._hash, "TotalMolesOutput", self._name)
+        return _DevicesLogicType(self, _LT.TotalMolesOutput)
 
 
 LargeRocketGasFuelTanks: _LargeRocketGasFuelTanks = _LargeRocketGasFuelTanks()
@@ -7639,50 +7729,51 @@ class MediumRocketGasFuelTank(
     _Volume,
 ):
     _hash: int = -1093860567
+    _prefab_name: int = "StructureMediumRocketGasFuelTank"
 
     @property
     def CombustionOutput(self) -> float:
-        return _DeviceLogicType(self, self._id, "CombustionOutput")
+        return _DeviceLogicType(self, _LT.CombustionOutput)
 
     @property
     def PressureOutput(self) -> float:
-        return _DeviceLogicType(self, self._id, "PressureOutput")
+        return _DeviceLogicType(self, _LT.PressureOutput)
 
     @property
     def RatioCarbonDioxideOutput(self) -> float:
-        return _DeviceLogicType(self, self._id, "RatioCarbonDioxideOutput")
+        return _DeviceLogicType(self, _LT.RatioCarbonDioxideOutput)
 
     @property
     def RatioNitrogenOutput(self) -> float:
-        return _DeviceLogicType(self, self._id, "RatioNitrogenOutput")
+        return _DeviceLogicType(self, _LT.RatioNitrogenOutput)
 
     @property
     def RatioNitrousOxideOutput(self) -> float:
-        return _DeviceLogicType(self, self._id, "RatioNitrousOxideOutput")
+        return _DeviceLogicType(self, _LT.RatioNitrousOxideOutput)
 
     @property
     def RatioOxygenOutput(self) -> float:
-        return _DeviceLogicType(self, self._id, "RatioOxygenOutput")
+        return _DeviceLogicType(self, _LT.RatioOxygenOutput)
 
     @property
     def RatioPollutantOutput(self) -> float:
-        return _DeviceLogicType(self, self._id, "RatioPollutantOutput")
+        return _DeviceLogicType(self, _LT.RatioPollutantOutput)
 
     @property
     def RatioVolatilesOutput(self) -> float:
-        return _DeviceLogicType(self, self._id, "RatioVolatilesOutput")
+        return _DeviceLogicType(self, _LT.RatioVolatilesOutput)
 
     @property
     def RatioWaterOutput(self) -> float:
-        return _DeviceLogicType(self, self._id, "RatioWaterOutput")
+        return _DeviceLogicType(self, _LT.RatioWaterOutput)
 
     @property
     def TemperatureOutput(self) -> float:
-        return _DeviceLogicType(self, self._id, "TemperatureOutput")
+        return _DeviceLogicType(self, _LT.TemperatureOutput)
 
     @property
     def TotalMolesOutput(self) -> float:
-        return _DeviceLogicType(self, self._id, "TotalMolesOutput")
+        return _DeviceLogicType(self, _LT.TotalMolesOutput)
 
 
 class _MediumRocketGasFuelTanks(
@@ -7698,53 +7789,54 @@ class _MediumRocketGasFuelTanks(
     _Volumes,
 ):
     _hash: int = -1093860567
+    _prefab_name: int = "StructureMediumRocketGasFuelTank"
 
     def __getitem__(self, name: str | int | float) -> "_MediumRocketGasFuelTanks":
         return _MediumRocketGasFuelTanks(name)
 
     @property
     def CombustionOutput(self) -> _DevicesLogicType:
-        return _DevicesLogicType(self._hash, "CombustionOutput", self._name)
+        return _DevicesLogicType(self, _LT.CombustionOutput)
 
     @property
     def PressureOutput(self) -> _DevicesLogicType:
-        return _DevicesLogicType(self._hash, "PressureOutput", self._name)
+        return _DevicesLogicType(self, _LT.PressureOutput)
 
     @property
     def RatioCarbonDioxideOutput(self) -> _DevicesLogicType:
-        return _DevicesLogicType(self._hash, "RatioCarbonDioxideOutput", self._name)
+        return _DevicesLogicType(self, _LT.RatioCarbonDioxideOutput)
 
     @property
     def RatioNitrogenOutput(self) -> _DevicesLogicType:
-        return _DevicesLogicType(self._hash, "RatioNitrogenOutput", self._name)
+        return _DevicesLogicType(self, _LT.RatioNitrogenOutput)
 
     @property
     def RatioNitrousOxideOutput(self) -> _DevicesLogicType:
-        return _DevicesLogicType(self._hash, "RatioNitrousOxideOutput", self._name)
+        return _DevicesLogicType(self, _LT.RatioNitrousOxideOutput)
 
     @property
     def RatioOxygenOutput(self) -> _DevicesLogicType:
-        return _DevicesLogicType(self._hash, "RatioOxygenOutput", self._name)
+        return _DevicesLogicType(self, _LT.RatioOxygenOutput)
 
     @property
     def RatioPollutantOutput(self) -> _DevicesLogicType:
-        return _DevicesLogicType(self._hash, "RatioPollutantOutput", self._name)
+        return _DevicesLogicType(self, _LT.RatioPollutantOutput)
 
     @property
     def RatioVolatilesOutput(self) -> _DevicesLogicType:
-        return _DevicesLogicType(self._hash, "RatioVolatilesOutput", self._name)
+        return _DevicesLogicType(self, _LT.RatioVolatilesOutput)
 
     @property
     def RatioWaterOutput(self) -> _DevicesLogicType:
-        return _DevicesLogicType(self._hash, "RatioWaterOutput", self._name)
+        return _DevicesLogicType(self, _LT.RatioWaterOutput)
 
     @property
     def TemperatureOutput(self) -> _DevicesLogicType:
-        return _DevicesLogicType(self._hash, "TemperatureOutput", self._name)
+        return _DevicesLogicType(self, _LT.TemperatureOutput)
 
     @property
     def TotalMolesOutput(self) -> _DevicesLogicType:
-        return _DevicesLogicType(self._hash, "TotalMolesOutput", self._name)
+        return _DevicesLogicType(self, _LT.TotalMolesOutput)
 
 
 MediumRocketGasFuelTanks: _MediumRocketGasFuelTanks = _MediumRocketGasFuelTanks()
@@ -7763,50 +7855,51 @@ class CapsuleTankGas(
     _Volume,
 ):
     _hash: int = -1385712131
+    _prefab_name: int = "StructureCapsuleTankGas"
 
     @property
     def CombustionOutput(self) -> float:
-        return _DeviceLogicType(self, self._id, "CombustionOutput")
+        return _DeviceLogicType(self, _LT.CombustionOutput)
 
     @property
     def PressureOutput(self) -> float:
-        return _DeviceLogicType(self, self._id, "PressureOutput")
+        return _DeviceLogicType(self, _LT.PressureOutput)
 
     @property
     def RatioCarbonDioxideOutput(self) -> float:
-        return _DeviceLogicType(self, self._id, "RatioCarbonDioxideOutput")
+        return _DeviceLogicType(self, _LT.RatioCarbonDioxideOutput)
 
     @property
     def RatioNitrogenOutput(self) -> float:
-        return _DeviceLogicType(self, self._id, "RatioNitrogenOutput")
+        return _DeviceLogicType(self, _LT.RatioNitrogenOutput)
 
     @property
     def RatioNitrousOxideOutput(self) -> float:
-        return _DeviceLogicType(self, self._id, "RatioNitrousOxideOutput")
+        return _DeviceLogicType(self, _LT.RatioNitrousOxideOutput)
 
     @property
     def RatioOxygenOutput(self) -> float:
-        return _DeviceLogicType(self, self._id, "RatioOxygenOutput")
+        return _DeviceLogicType(self, _LT.RatioOxygenOutput)
 
     @property
     def RatioPollutantOutput(self) -> float:
-        return _DeviceLogicType(self, self._id, "RatioPollutantOutput")
+        return _DeviceLogicType(self, _LT.RatioPollutantOutput)
 
     @property
     def RatioVolatilesOutput(self) -> float:
-        return _DeviceLogicType(self, self._id, "RatioVolatilesOutput")
+        return _DeviceLogicType(self, _LT.RatioVolatilesOutput)
 
     @property
     def RatioWaterOutput(self) -> float:
-        return _DeviceLogicType(self, self._id, "RatioWaterOutput")
+        return _DeviceLogicType(self, _LT.RatioWaterOutput)
 
     @property
     def TemperatureOutput(self) -> float:
-        return _DeviceLogicType(self, self._id, "TemperatureOutput")
+        return _DeviceLogicType(self, _LT.TemperatureOutput)
 
     @property
     def TotalMolesOutput(self) -> float:
-        return _DeviceLogicType(self, self._id, "TotalMolesOutput")
+        return _DeviceLogicType(self, _LT.TotalMolesOutput)
 
 
 class _CapsuleTankGass(
@@ -7822,53 +7915,54 @@ class _CapsuleTankGass(
     _Volumes,
 ):
     _hash: int = -1385712131
+    _prefab_name: int = "StructureCapsuleTankGas"
 
     def __getitem__(self, name: str | int | float) -> "_CapsuleTankGass":
         return _CapsuleTankGass(name)
 
     @property
     def CombustionOutput(self) -> _DevicesLogicType:
-        return _DevicesLogicType(self._hash, "CombustionOutput", self._name)
+        return _DevicesLogicType(self, _LT.CombustionOutput)
 
     @property
     def PressureOutput(self) -> _DevicesLogicType:
-        return _DevicesLogicType(self._hash, "PressureOutput", self._name)
+        return _DevicesLogicType(self, _LT.PressureOutput)
 
     @property
     def RatioCarbonDioxideOutput(self) -> _DevicesLogicType:
-        return _DevicesLogicType(self._hash, "RatioCarbonDioxideOutput", self._name)
+        return _DevicesLogicType(self, _LT.RatioCarbonDioxideOutput)
 
     @property
     def RatioNitrogenOutput(self) -> _DevicesLogicType:
-        return _DevicesLogicType(self._hash, "RatioNitrogenOutput", self._name)
+        return _DevicesLogicType(self, _LT.RatioNitrogenOutput)
 
     @property
     def RatioNitrousOxideOutput(self) -> _DevicesLogicType:
-        return _DevicesLogicType(self._hash, "RatioNitrousOxideOutput", self._name)
+        return _DevicesLogicType(self, _LT.RatioNitrousOxideOutput)
 
     @property
     def RatioOxygenOutput(self) -> _DevicesLogicType:
-        return _DevicesLogicType(self._hash, "RatioOxygenOutput", self._name)
+        return _DevicesLogicType(self, _LT.RatioOxygenOutput)
 
     @property
     def RatioPollutantOutput(self) -> _DevicesLogicType:
-        return _DevicesLogicType(self._hash, "RatioPollutantOutput", self._name)
+        return _DevicesLogicType(self, _LT.RatioPollutantOutput)
 
     @property
     def RatioVolatilesOutput(self) -> _DevicesLogicType:
-        return _DevicesLogicType(self._hash, "RatioVolatilesOutput", self._name)
+        return _DevicesLogicType(self, _LT.RatioVolatilesOutput)
 
     @property
     def RatioWaterOutput(self) -> _DevicesLogicType:
-        return _DevicesLogicType(self._hash, "RatioWaterOutput", self._name)
+        return _DevicesLogicType(self, _LT.RatioWaterOutput)
 
     @property
     def TemperatureOutput(self) -> _DevicesLogicType:
-        return _DevicesLogicType(self._hash, "TemperatureOutput", self._name)
+        return _DevicesLogicType(self, _LT.TemperatureOutput)
 
     @property
     def TotalMolesOutput(self) -> _DevicesLogicType:
-        return _DevicesLogicType(self._hash, "TotalMolesOutput", self._name)
+        return _DevicesLogicType(self, _LT.TotalMolesOutput)
 
 
 CapsuleTankGass: _CapsuleTankGass = _CapsuleTankGass()
@@ -7888,10 +7982,11 @@ class GasGenerator(
     _Temperature,
 ):
     _hash: int = 1165997963
+    _prefab_name: int = "StructureGasGenerator"
 
     @property
     def PowerGeneration(self) -> float:
-        return _DeviceLogicType(self, self._id, "PowerGeneration")
+        return _DeviceLogicType(self, _LT.PowerGeneration)
 
 
 class _GasGenerators(
@@ -7908,13 +8003,14 @@ class _GasGenerators(
     _Temperatures,
 ):
     _hash: int = 1165997963
+    _prefab_name: int = "StructureGasGenerator"
 
     def __getitem__(self, name: str | int | float) -> "_GasGenerators":
         return _GasGenerators(name)
 
     @property
     def PowerGeneration(self) -> _DevicesLogicType:
-        return _DevicesLogicType(self._hash, "PowerGeneration", self._name)
+        return _DevicesLogicType(self, _LT.PowerGeneration)
 
 
 GasGenerators: _GasGenerators = _GasGenerators()
@@ -7922,12 +8018,14 @@ GasGenerators: _GasGenerators = _GasGenerators()
 
 class GasMixer(_BaseStructure, _Error, _Lock, _Maximum, _Power, _Ratio, _SettingW):
     _hash: int = 2104106366
+    _prefab_name: int = "StructureGasMixer"
 
 
 class _GasMixers(
     _BaseStructures, _Errors, _Locks, _Maximums, _Powers, _Ratios, _SettingWs
 ):
     _hash: int = 2104106366
+    _prefab_name: int = "StructureGasMixer"
 
     def __getitem__(self, name: str | int | float) -> "_GasMixers":
         return _GasMixers(name)
@@ -7938,21 +8036,23 @@ GasMixers: _GasMixers = _GasMixers()
 
 class GasSensor(_BaseStructure, _BaseGas, _Hydrogen, _PollWater, _Temperature):
     _hash: int = -1252983604
+    _prefab_name: int = "StructureGasSensor"
 
     @property
     def Combustion(self) -> float:
-        return _DeviceLogicType(self, self._id, "Combustion")
+        return _DeviceLogicType(self, _LT.Combustion)
 
 
 class _GasSensors(_BaseStructures, _BaseGass, _Hydrogens, _PollWaters, _Temperatures):
     _hash: int = -1252983604
+    _prefab_name: int = "StructureGasSensor"
 
     def __getitem__(self, name: str | int | float) -> "_GasSensors":
         return _GasSensors(name)
 
     @property
     def Combustion(self) -> _DevicesLogicType:
-        return _DevicesLogicType(self._hash, "Combustion", self._name)
+        return _DevicesLogicType(self, _LT.Combustion)
 
 
 GasSensors: _GasSensors = _GasSensors()
@@ -7960,38 +8060,39 @@ GasSensors: _GasSensors = _GasSensors()
 
 class GasTankStorage(_BaseStructure, _Quantity, _Temperature):
     _hash: int = 1632165346
+    _prefab_name: int = "StructureGasTankStorage"
 
     @property
     def RatioCarbonDioxide(self) -> float:
-        return _DeviceLogicType(self, self._id, "RatioCarbonDioxide")
+        return _DeviceLogicType(self, _LT.RatioCarbonDioxide)
 
     @property
     def RatioNitrogen(self) -> float:
-        return _DeviceLogicType(self, self._id, "RatioNitrogen")
+        return _DeviceLogicType(self, _LT.RatioNitrogen)
 
     @property
     def RatioNitrousOxide(self) -> float:
-        return _DeviceLogicType(self, self._id, "RatioNitrousOxide")
+        return _DeviceLogicType(self, _LT.RatioNitrousOxide)
 
     @property
     def RatioOxygen(self) -> float:
-        return _DeviceLogicType(self, self._id, "RatioOxygen")
+        return _DeviceLogicType(self, _LT.RatioOxygen)
 
     @property
     def RatioPollutant(self) -> float:
-        return _DeviceLogicType(self, self._id, "RatioPollutant")
+        return _DeviceLogicType(self, _LT.RatioPollutant)
 
     @property
     def RatioVolatiles(self) -> float:
-        return _DeviceLogicType(self, self._id, "RatioVolatiles")
+        return _DeviceLogicType(self, _LT.RatioVolatiles)
 
     @property
     def RatioWater(self) -> float:
-        return _DeviceLogicType(self, self._id, "RatioWater")
+        return _DeviceLogicType(self, _LT.RatioWater)
 
     @property
     def slot0(self) -> _SlotTypeGasCanister:
-        return _SlotTypeGasCanister(type(self), self._id, 0)
+        return _SlotTypeGasCanister(self, 0)
 
     @property
     def GasCanister(self) -> _SlotTypeGasCanister:
@@ -8000,41 +8101,42 @@ class GasTankStorage(_BaseStructure, _Quantity, _Temperature):
 
 class _GasTankStorages(_BaseStructures, _Quantitys, _Temperatures):
     _hash: int = 1632165346
+    _prefab_name: int = "StructureGasTankStorage"
 
     def __getitem__(self, name: str | int | float) -> "_GasTankStorages":
         return _GasTankStorages(name)
 
     @property
     def RatioCarbonDioxide(self) -> _DevicesLogicType:
-        return _DevicesLogicType(self._hash, "RatioCarbonDioxide", self._name)
+        return _DevicesLogicType(self, _LT.RatioCarbonDioxide)
 
     @property
     def RatioNitrogen(self) -> _DevicesLogicType:
-        return _DevicesLogicType(self._hash, "RatioNitrogen", self._name)
+        return _DevicesLogicType(self, _LT.RatioNitrogen)
 
     @property
     def RatioNitrousOxide(self) -> _DevicesLogicType:
-        return _DevicesLogicType(self._hash, "RatioNitrousOxide", self._name)
+        return _DevicesLogicType(self, _LT.RatioNitrousOxide)
 
     @property
     def RatioOxygen(self) -> _DevicesLogicType:
-        return _DevicesLogicType(self._hash, "RatioOxygen", self._name)
+        return _DevicesLogicType(self, _LT.RatioOxygen)
 
     @property
     def RatioPollutant(self) -> _DevicesLogicType:
-        return _DevicesLogicType(self._hash, "RatioPollutant", self._name)
+        return _DevicesLogicType(self, _LT.RatioPollutant)
 
     @property
     def RatioVolatiles(self) -> _DevicesLogicType:
-        return _DevicesLogicType(self._hash, "RatioVolatiles", self._name)
+        return _DevicesLogicType(self, _LT.RatioVolatiles)
 
     @property
     def RatioWater(self) -> _DevicesLogicType:
-        return _DevicesLogicType(self._hash, "RatioWater", self._name)
+        return _DevicesLogicType(self, _LT.RatioWater)
 
     @property
     def slot0(self) -> _SlotTypeGasCanisters:
-        return _SlotTypeGasCanisters(type(self), self._hash, 0, self._name)
+        return _SlotTypeGasCanisters(self, 0)
 
     @property
     def GasCanister(self) -> _SlotTypeGasCanisters:
@@ -8046,14 +8148,15 @@ GasTankStorages: _GasTankStorages = _GasTankStorages()
 
 class SolidFuelGenerator(_BaseStructure, _ClearMemory, _ImportCount, _Lock, _On):
     _hash: int = 813146305
+    _prefab_name: int = "StructureSolidFuelGenerator"
 
     @property
     def PowerGeneration(self) -> float:
-        return _DeviceLogicType(self, self._id, "PowerGeneration")
+        return _DeviceLogicType(self, _LT.PowerGeneration)
 
     @property
     def slot0(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(type(self), self._id, 0)
+        return _SlotTypeCommon(self, 0)
 
     @property
     def Input(self) -> _SlotTypeCommon:
@@ -8062,17 +8165,18 @@ class SolidFuelGenerator(_BaseStructure, _ClearMemory, _ImportCount, _Lock, _On)
 
 class _SolidFuelGenerators(_BaseStructures, _ClearMemorys, _ImportCounts, _Locks, _Ons):
     _hash: int = 813146305
+    _prefab_name: int = "StructureSolidFuelGenerator"
 
     def __getitem__(self, name: str | int | float) -> "_SolidFuelGenerators":
         return _SolidFuelGenerators(name)
 
     @property
     def PowerGeneration(self) -> _DevicesLogicType:
-        return _DevicesLogicType(self._hash, "PowerGeneration", self._name)
+        return _DevicesLogicType(self, _LT.PowerGeneration)
 
     @property
     def slot0(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(type(self), self._hash, 0, self._name)
+        return _SlotTypeCommons(self, 0)
 
     @property
     def Input(self) -> _SlotTypeCommons:
@@ -8084,10 +8188,12 @@ SolidFuelGenerators: _SolidFuelGenerators = _SolidFuelGenerators()
 
 class GlassDoor(_BaseStructure, _Idle, _Lock, _Mode, _Open, _Power, _SettingW):
     _hash: int = -324331872
+    _prefab_name: int = "StructureGlassDoor"
 
 
 class _GlassDoors(_BaseStructures, _Idles, _Locks, _Modes, _Opens, _Powers, _SettingWs):
     _hash: int = -324331872
+    _prefab_name: int = "StructureGlassDoor"
 
     def __getitem__(self, name: str | int | float) -> "_GlassDoors":
         return _GlassDoors(name)
@@ -8098,10 +8204,12 @@ GlassDoors: _GlassDoors = _GlassDoors()
 
 class GrowLight(_BaseStructure, _Lock, _Power):
     _hash: int = -1758710260
+    _prefab_name: int = "StructureGrowLight"
 
 
 class _GrowLights(_BaseStructures, _Locks, _Powers):
     _hash: int = -1758710260
+    _prefab_name: int = "StructureGrowLight"
 
     def __getitem__(self, name: str | int | float) -> "_GrowLights":
         return _GrowLights(name)
@@ -8122,10 +8230,11 @@ class Harvie(
     _Power,
 ):
     _hash: int = 958056199
+    _prefab_name: int = "StructureHarvie"
 
     @property
     def Harvest(self) -> float:
-        return _DeviceLogicType(self, self._id, "Harvest")
+        return _DeviceLogicType(self, _LT.Harvest)
 
     @Harvest.setter
     def Harvest(self, value: int | float):
@@ -8133,7 +8242,7 @@ class Harvie(
 
     @property
     def Plant(self) -> float:
-        return _DeviceLogicType(self, self._id, "Plant")
+        return _DeviceLogicType(self, _LT.Plant)
 
     @Plant.setter
     def Plant(self, value: int | float):
@@ -8141,7 +8250,7 @@ class Harvie(
 
     @property
     def slot0(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(type(self), self._id, 0)
+        return _SlotTypeCommon(self, 0)
 
     @property
     def Import(self) -> _SlotTypeCommon:
@@ -8149,7 +8258,7 @@ class Harvie(
 
     @property
     def slot1(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(type(self), self._id, 1)
+        return _SlotTypeCommon(self, 1)
 
     @property
     def Export(self) -> _SlotTypeCommon:
@@ -8157,7 +8266,7 @@ class Harvie(
 
     @property
     def slot2(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(type(self), self._id, 2)
+        return _SlotTypeCommon(self, 2)
 
     @property
     def Hand(self) -> _SlotTypeCommon:
@@ -8176,13 +8285,14 @@ class _Harvies(
     _Powers,
 ):
     _hash: int = 958056199
+    _prefab_name: int = "StructureHarvie"
 
     def __getitem__(self, name: str | int | float) -> "_Harvies":
         return _Harvies(name)
 
     @property
     def Harvest(self) -> _DevicesLogicType:
-        return _DevicesLogicType(self._hash, "Harvest", self._name)
+        return _DevicesLogicType(self, _LT.Harvest)
 
     @Harvest.setter
     def Harvest(self, value: int | float):
@@ -8190,7 +8300,7 @@ class _Harvies(
 
     @property
     def Plant(self) -> _DevicesLogicType:
-        return _DevicesLogicType(self._hash, "Plant", self._name)
+        return _DevicesLogicType(self, _LT.Plant)
 
     @Plant.setter
     def Plant(self, value: int | float):
@@ -8198,7 +8308,7 @@ class _Harvies(
 
     @property
     def slot0(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(type(self), self._hash, 0, self._name)
+        return _SlotTypeCommons(self, 0)
 
     @property
     def Import(self) -> _SlotTypeCommons:
@@ -8206,7 +8316,7 @@ class _Harvies(
 
     @property
     def slot1(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(type(self), self._hash, 1, self._name)
+        return _SlotTypeCommons(self, 1)
 
     @property
     def Export(self) -> _SlotTypeCommons:
@@ -8214,7 +8324,7 @@ class _Harvies(
 
     @property
     def slot2(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(type(self), self._hash, 2, self._name)
+        return _SlotTypeCommons(self, 2)
 
     @property
     def Hand(self) -> _SlotTypeCommons:
@@ -8238,18 +8348,19 @@ class HydraulicPipeBender(
     _RecipeHash,
 ):
     _hash: int = -1888248335
+    _prefab_name: int = "StructureHydraulicPipeBender"
 
     @property
     def CompletionRatio(self) -> float:
-        return _DeviceLogicType(self, self._id, "CompletionRatio")
+        return _DeviceLogicType(self, _LT.CompletionRatio)
 
     @property
     def StackSize(self) -> float:
-        return _DeviceLogicType(self, self._id, "StackSize")
+        return _DeviceLogicType(self, _LT.StackSize)
 
     @property
     def slot0(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(type(self), self._id, 0)
+        return _SlotTypeCommon(self, 0)
 
     @property
     def Import(self) -> _SlotTypeCommon:
@@ -8257,7 +8368,7 @@ class HydraulicPipeBender(
 
     @property
     def slot1(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(type(self), self._id, 1)
+        return _SlotTypeCommon(self, 1)
 
     @property
     def Export(self) -> _SlotTypeCommon:
@@ -8278,21 +8389,22 @@ class _HydraulicPipeBenders(
     _RecipeHashs,
 ):
     _hash: int = -1888248335
+    _prefab_name: int = "StructureHydraulicPipeBender"
 
     def __getitem__(self, name: str | int | float) -> "_HydraulicPipeBenders":
         return _HydraulicPipeBenders(name)
 
     @property
     def CompletionRatio(self) -> _DevicesLogicType:
-        return _DevicesLogicType(self._hash, "CompletionRatio", self._name)
+        return _DevicesLogicType(self, _LT.CompletionRatio)
 
     @property
     def StackSize(self) -> _DevicesLogicType:
-        return _DevicesLogicType(self._hash, "StackSize", self._name)
+        return _DevicesLogicType(self, _LT.StackSize)
 
     @property
     def slot0(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(type(self), self._hash, 0, self._name)
+        return _SlotTypeCommons(self, 0)
 
     @property
     def Import(self) -> _SlotTypeCommons:
@@ -8300,7 +8412,7 @@ class _HydraulicPipeBenders(
 
     @property
     def slot1(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(type(self), self._hash, 1, self._name)
+        return _SlotTypeCommons(self, 1)
 
     @property
     def Export(self) -> _SlotTypeCommons:
@@ -8314,10 +8426,11 @@ class HydroponicsTrayData(
     _BaseStructure, _BaseGas, _Combustion, _Hydrogen, _PollWater, _Temperature
 ):
     _hash: int = -1841632400
+    _prefab_name: int = "StructureHydroponicsTrayData"
 
     @property
     def slot0(self) -> _SlotTypePlant:
-        return _SlotTypePlant(type(self), self._id, 0)
+        return _SlotTypePlant(self, 0)
 
     @property
     def Plant(self) -> _SlotTypePlant:
@@ -8325,7 +8438,7 @@ class HydroponicsTrayData(
 
     @property
     def slot1(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(type(self), self._id, 1)
+        return _SlotTypeCommon(self, 1)
 
     @property
     def Fertiliser(self) -> _SlotTypeCommon:
@@ -8336,13 +8449,14 @@ class _HydroponicsTrayDatas(
     _BaseStructures, _BaseGass, _Combustions, _Hydrogens, _PollWaters, _Temperatures
 ):
     _hash: int = -1841632400
+    _prefab_name: int = "StructureHydroponicsTrayData"
 
     def __getitem__(self, name: str | int | float) -> "_HydroponicsTrayDatas":
         return _HydroponicsTrayDatas(name)
 
     @property
     def slot0(self) -> _SlotTypePlants:
-        return _SlotTypePlants(type(self), self._hash, 0, self._name)
+        return _SlotTypePlants(self, 0)
 
     @property
     def Plant(self) -> _SlotTypePlants:
@@ -8350,7 +8464,7 @@ class _HydroponicsTrayDatas(
 
     @property
     def slot1(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(type(self), self._hash, 1, self._name)
+        return _SlotTypeCommons(self, 1)
 
     @property
     def Fertiliser(self) -> _SlotTypeCommons:
@@ -8374,82 +8488,83 @@ class HydroponicsStation(
     _Temperature,
 ):
     _hash: int = 1441767298
+    _prefab_name: int = "StructureHydroponicsStation"
 
     @property
     def CombustionOutput(self) -> float:
-        return _DeviceLogicType(self, self._id, "CombustionOutput")
+        return _DeviceLogicType(self, _LT.CombustionOutput)
 
     @property
     def PressureOutput(self) -> float:
-        return _DeviceLogicType(self, self._id, "PressureOutput")
+        return _DeviceLogicType(self, _LT.PressureOutput)
 
     @property
     def RatioCarbonDioxideOutput(self) -> float:
-        return _DeviceLogicType(self, self._id, "RatioCarbonDioxideOutput")
+        return _DeviceLogicType(self, _LT.RatioCarbonDioxideOutput)
 
     @property
     def RatioNitrogenOutput(self) -> float:
-        return _DeviceLogicType(self, self._id, "RatioNitrogenOutput")
+        return _DeviceLogicType(self, _LT.RatioNitrogenOutput)
 
     @property
     def RatioNitrousOxideOutput(self) -> float:
-        return _DeviceLogicType(self, self._id, "RatioNitrousOxideOutput")
+        return _DeviceLogicType(self, _LT.RatioNitrousOxideOutput)
 
     @property
     def RatioOxygenOutput(self) -> float:
-        return _DeviceLogicType(self, self._id, "RatioOxygenOutput")
+        return _DeviceLogicType(self, _LT.RatioOxygenOutput)
 
     @property
     def RatioPollutantOutput(self) -> float:
-        return _DeviceLogicType(self, self._id, "RatioPollutantOutput")
+        return _DeviceLogicType(self, _LT.RatioPollutantOutput)
 
     @property
     def RatioVolatilesOutput(self) -> float:
-        return _DeviceLogicType(self, self._id, "RatioVolatilesOutput")
+        return _DeviceLogicType(self, _LT.RatioVolatilesOutput)
 
     @property
     def RatioWaterOutput(self) -> float:
-        return _DeviceLogicType(self, self._id, "RatioWaterOutput")
+        return _DeviceLogicType(self, _LT.RatioWaterOutput)
 
     @property
     def TemperatureOutput(self) -> float:
-        return _DeviceLogicType(self, self._id, "TemperatureOutput")
+        return _DeviceLogicType(self, _LT.TemperatureOutput)
 
     @property
     def TotalMolesOutput(self) -> float:
-        return _DeviceLogicType(self, self._id, "TotalMolesOutput")
+        return _DeviceLogicType(self, _LT.TotalMolesOutput)
 
     @property
     def slot0(self) -> _SlotTypePlant:
-        return _SlotTypePlant(type(self), self._id, 0)
+        return _SlotTypePlant(self, 0)
 
     @property
     def slot1(self) -> _SlotTypePlant:
-        return _SlotTypePlant(type(self), self._id, 1)
+        return _SlotTypePlant(self, 1)
 
     @property
     def slot2(self) -> _SlotTypePlant:
-        return _SlotTypePlant(type(self), self._id, 2)
+        return _SlotTypePlant(self, 2)
 
     @property
     def slot3(self) -> _SlotTypePlant:
-        return _SlotTypePlant(type(self), self._id, 3)
+        return _SlotTypePlant(self, 3)
 
     @property
     def slot4(self) -> _SlotTypePlant:
-        return _SlotTypePlant(type(self), self._id, 4)
+        return _SlotTypePlant(self, 4)
 
     @property
     def slot5(self) -> _SlotTypePlant:
-        return _SlotTypePlant(type(self), self._id, 5)
+        return _SlotTypePlant(self, 5)
 
     @property
     def slot6(self) -> _SlotTypePlant:
-        return _SlotTypePlant(type(self), self._id, 6)
+        return _SlotTypePlant(self, 6)
 
     @property
     def slot7(self) -> _SlotTypePlant:
-        return _SlotTypePlant(type(self), self._id, 7)
+        return _SlotTypePlant(self, 7)
 
 
 class _HydroponicsStations(
@@ -8466,85 +8581,86 @@ class _HydroponicsStations(
     _Temperatures,
 ):
     _hash: int = 1441767298
+    _prefab_name: int = "StructureHydroponicsStation"
 
     def __getitem__(self, name: str | int | float) -> "_HydroponicsStations":
         return _HydroponicsStations(name)
 
     @property
     def CombustionOutput(self) -> _DevicesLogicType:
-        return _DevicesLogicType(self._hash, "CombustionOutput", self._name)
+        return _DevicesLogicType(self, _LT.CombustionOutput)
 
     @property
     def PressureOutput(self) -> _DevicesLogicType:
-        return _DevicesLogicType(self._hash, "PressureOutput", self._name)
+        return _DevicesLogicType(self, _LT.PressureOutput)
 
     @property
     def RatioCarbonDioxideOutput(self) -> _DevicesLogicType:
-        return _DevicesLogicType(self._hash, "RatioCarbonDioxideOutput", self._name)
+        return _DevicesLogicType(self, _LT.RatioCarbonDioxideOutput)
 
     @property
     def RatioNitrogenOutput(self) -> _DevicesLogicType:
-        return _DevicesLogicType(self._hash, "RatioNitrogenOutput", self._name)
+        return _DevicesLogicType(self, _LT.RatioNitrogenOutput)
 
     @property
     def RatioNitrousOxideOutput(self) -> _DevicesLogicType:
-        return _DevicesLogicType(self._hash, "RatioNitrousOxideOutput", self._name)
+        return _DevicesLogicType(self, _LT.RatioNitrousOxideOutput)
 
     @property
     def RatioOxygenOutput(self) -> _DevicesLogicType:
-        return _DevicesLogicType(self._hash, "RatioOxygenOutput", self._name)
+        return _DevicesLogicType(self, _LT.RatioOxygenOutput)
 
     @property
     def RatioPollutantOutput(self) -> _DevicesLogicType:
-        return _DevicesLogicType(self._hash, "RatioPollutantOutput", self._name)
+        return _DevicesLogicType(self, _LT.RatioPollutantOutput)
 
     @property
     def RatioVolatilesOutput(self) -> _DevicesLogicType:
-        return _DevicesLogicType(self._hash, "RatioVolatilesOutput", self._name)
+        return _DevicesLogicType(self, _LT.RatioVolatilesOutput)
 
     @property
     def RatioWaterOutput(self) -> _DevicesLogicType:
-        return _DevicesLogicType(self._hash, "RatioWaterOutput", self._name)
+        return _DevicesLogicType(self, _LT.RatioWaterOutput)
 
     @property
     def TemperatureOutput(self) -> _DevicesLogicType:
-        return _DevicesLogicType(self._hash, "TemperatureOutput", self._name)
+        return _DevicesLogicType(self, _LT.TemperatureOutput)
 
     @property
     def TotalMolesOutput(self) -> _DevicesLogicType:
-        return _DevicesLogicType(self._hash, "TotalMolesOutput", self._name)
+        return _DevicesLogicType(self, _LT.TotalMolesOutput)
 
     @property
     def slot0(self) -> _SlotTypePlants:
-        return _SlotTypePlants(type(self), self._hash, 0, self._name)
+        return _SlotTypePlants(self, 0)
 
     @property
     def slot1(self) -> _SlotTypePlants:
-        return _SlotTypePlants(type(self), self._hash, 1, self._name)
+        return _SlotTypePlants(self, 1)
 
     @property
     def slot2(self) -> _SlotTypePlants:
-        return _SlotTypePlants(type(self), self._hash, 2, self._name)
+        return _SlotTypePlants(self, 2)
 
     @property
     def slot3(self) -> _SlotTypePlants:
-        return _SlotTypePlants(type(self), self._hash, 3, self._name)
+        return _SlotTypePlants(self, 3)
 
     @property
     def slot4(self) -> _SlotTypePlants:
-        return _SlotTypePlants(type(self), self._hash, 4, self._name)
+        return _SlotTypePlants(self, 4)
 
     @property
     def slot5(self) -> _SlotTypePlants:
-        return _SlotTypePlants(type(self), self._hash, 5, self._name)
+        return _SlotTypePlants(self, 5)
 
     @property
     def slot6(self) -> _SlotTypePlants:
-        return _SlotTypePlants(type(self), self._hash, 6, self._name)
+        return _SlotTypePlants(self, 6)
 
     @property
     def slot7(self) -> _SlotTypePlants:
-        return _SlotTypePlants(type(self), self._hash, 7, self._name)
+        return _SlotTypePlants(self, 7)
 
 
 HydroponicsStations: _HydroponicsStations = _HydroponicsStations()
@@ -8552,10 +8668,11 @@ HydroponicsStations: _HydroponicsStations = _HydroponicsStations()
 
 class CircuitHousing(_BaseStructure, _Error, _Mode, _Power, _SettingW):
     _hash: int = -128473777
+    _prefab_name: int = "StructureCircuitHousing"
 
     @property
     def LineNumber(self) -> float:
-        return _DeviceLogicType(self, self._id, "LineNumber")
+        return _DeviceLogicType(self, _LT.LineNumber)
 
     @LineNumber.setter
     def LineNumber(self, value: int | float):
@@ -8563,11 +8680,11 @@ class CircuitHousing(_BaseStructure, _Error, _Mode, _Power, _SettingW):
 
     @property
     def StackSize(self) -> float:
-        return _DeviceLogicType(self, self._id, "StackSize")
+        return _DeviceLogicType(self, _LT.StackSize)
 
     @property
     def slot0(self) -> _SlotTypeProgrammableChip:
-        return _SlotTypeProgrammableChip(type(self), self._id, 0)
+        return _SlotTypeProgrammableChip(self, 0)
 
     @property
     def ProgrammableChip(self) -> _SlotTypeProgrammableChip:
@@ -8576,13 +8693,14 @@ class CircuitHousing(_BaseStructure, _Error, _Mode, _Power, _SettingW):
 
 class _CircuitHousings(_BaseStructures, _Errors, _Modes, _Powers, _SettingWs):
     _hash: int = -128473777
+    _prefab_name: int = "StructureCircuitHousing"
 
     def __getitem__(self, name: str | int | float) -> "_CircuitHousings":
         return _CircuitHousings(name)
 
     @property
     def LineNumber(self) -> _DevicesLogicType:
-        return _DevicesLogicType(self._hash, "LineNumber", self._name)
+        return _DevicesLogicType(self, _LT.LineNumber)
 
     @LineNumber.setter
     def LineNumber(self, value: int | float):
@@ -8590,11 +8708,11 @@ class _CircuitHousings(_BaseStructures, _Errors, _Modes, _Powers, _SettingWs):
 
     @property
     def StackSize(self) -> _DevicesLogicType:
-        return _DevicesLogicType(self._hash, "StackSize", self._name)
+        return _DevicesLogicType(self, _LT.StackSize)
 
     @property
     def slot0(self) -> _SlotTypeProgrammableChips:
-        return _SlotTypeProgrammableChips(type(self), self._hash, 0, self._name)
+        return _SlotTypeProgrammableChips(self, 0)
 
     @property
     def ProgrammableChip(self) -> _SlotTypeProgrammableChips:
@@ -8606,10 +8724,11 @@ CircuitHousings: _CircuitHousings = _CircuitHousings()
 
 class CircuitHousingCompact(_BaseStructure, _Error, _Mode, _Power, _SettingW):
     _hash: int = 2037291645
+    _prefab_name: int = "StructureCircuitHousingCompact"
 
     @property
     def LineNumber(self) -> float:
-        return _DeviceLogicType(self, self._id, "LineNumber")
+        return _DeviceLogicType(self, _LT.LineNumber)
 
     @LineNumber.setter
     def LineNumber(self, value: int | float):
@@ -8617,11 +8736,11 @@ class CircuitHousingCompact(_BaseStructure, _Error, _Mode, _Power, _SettingW):
 
     @property
     def StackSize(self) -> float:
-        return _DeviceLogicType(self, self._id, "StackSize")
+        return _DeviceLogicType(self, _LT.StackSize)
 
     @property
     def slot0(self) -> _SlotTypeProgrammableChip:
-        return _SlotTypeProgrammableChip(type(self), self._id, 0)
+        return _SlotTypeProgrammableChip(self, 0)
 
     @property
     def ProgrammableChip(self) -> _SlotTypeProgrammableChip:
@@ -8630,13 +8749,14 @@ class CircuitHousingCompact(_BaseStructure, _Error, _Mode, _Power, _SettingW):
 
 class _CircuitHousingCompacts(_BaseStructures, _Errors, _Modes, _Powers, _SettingWs):
     _hash: int = 2037291645
+    _prefab_name: int = "StructureCircuitHousingCompact"
 
     def __getitem__(self, name: str | int | float) -> "_CircuitHousingCompacts":
         return _CircuitHousingCompacts(name)
 
     @property
     def LineNumber(self) -> _DevicesLogicType:
-        return _DevicesLogicType(self._hash, "LineNumber", self._name)
+        return _DevicesLogicType(self, _LT.LineNumber)
 
     @LineNumber.setter
     def LineNumber(self, value: int | float):
@@ -8644,11 +8764,11 @@ class _CircuitHousingCompacts(_BaseStructures, _Errors, _Modes, _Powers, _Settin
 
     @property
     def StackSize(self) -> _DevicesLogicType:
-        return _DevicesLogicType(self._hash, "StackSize", self._name)
+        return _DevicesLogicType(self, _LT.StackSize)
 
     @property
     def slot0(self) -> _SlotTypeProgrammableChips:
-        return _SlotTypeProgrammableChips(type(self), self._hash, 0, self._name)
+        return _SlotTypeProgrammableChips(self, 0)
 
     @property
     def ProgrammableChip(self) -> _SlotTypeProgrammableChips:
@@ -8671,10 +8791,11 @@ class IceCrusher(
     _SettingW,
 ):
     _hash: int = 443849486
+    _prefab_name: int = "StructureIceCrusher"
 
     @property
     def slot0(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(type(self), self._id, 0)
+        return _SlotTypeCommon(self, 0)
 
     @property
     def Import(self) -> _SlotTypeCommon:
@@ -8694,13 +8815,14 @@ class _IceCrushers(
     _SettingWs,
 ):
     _hash: int = 443849486
+    _prefab_name: int = "StructureIceCrusher"
 
     def __getitem__(self, name: str | int | float) -> "_IceCrushers":
         return _IceCrushers(name)
 
     @property
     def slot0(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(type(self), self._hash, 0, self._name)
+        return _SlotTypeCommons(self, 0)
 
     @property
     def Import(self) -> _SlotTypeCommons:
@@ -8712,10 +8834,12 @@ IceCrushers: _IceCrushers = _IceCrushers()
 
 class Igniter(_BaseStructure, _On):
     _hash: int = 1005491513
+    _prefab_name: int = "StructureIgniter"
 
 
 class _Igniters(_BaseStructures, _Ons):
     _hash: int = 1005491513
+    _prefab_name: int = "StructureIgniter"
 
     def __getitem__(self, name: str | int | float) -> "_Igniters":
         return _Igniters(name)
@@ -8728,12 +8852,14 @@ class EmergencyButton(
     _BaseStructure, _Activate, _Error, _Lock, _Open, _Power, _SettingR
 ):
     _hash: int = 1668452680
+    _prefab_name: int = "StructureEmergencyButton"
 
 
 class _EmergencyButtons(
     _BaseStructures, _Activates, _Errors, _Locks, _Opens, _Powers, _SettingRs
 ):
     _hash: int = 1668452680
+    _prefab_name: int = "StructureEmergencyButton"
 
     def __getitem__(self, name: str | int | float) -> "_EmergencyButtons":
         return _EmergencyButtons(name)
@@ -8744,12 +8870,14 @@ EmergencyButtons: _EmergencyButtons = _EmergencyButtons()
 
 class InteriorDoorGlass(_BaseStructure, _Idle, _Lock, _Mode, _Open, _Power, _SettingW):
     _hash: int = -2096421875
+    _prefab_name: int = "StructureInteriorDoorGlass"
 
 
 class _InteriorDoorGlasss(
     _BaseStructures, _Idles, _Locks, _Modes, _Opens, _Powers, _SettingWs
 ):
     _hash: int = -2096421875
+    _prefab_name: int = "StructureInteriorDoorGlass"
 
     def __getitem__(self, name: str | int | float) -> "_InteriorDoorGlasss":
         return _InteriorDoorGlasss(name)
@@ -8760,12 +8888,14 @@ InteriorDoorGlasss: _InteriorDoorGlasss = _InteriorDoorGlasss()
 
 class InteriorDoorPadded(_BaseStructure, _Idle, _Lock, _Mode, _Open, _Power, _SettingW):
     _hash: int = 847461335
+    _prefab_name: int = "StructureInteriorDoorPadded"
 
 
 class _InteriorDoorPaddeds(
     _BaseStructures, _Idles, _Locks, _Modes, _Opens, _Powers, _SettingWs
 ):
     _hash: int = 847461335
+    _prefab_name: int = "StructureInteriorDoorPadded"
 
     def __getitem__(self, name: str | int | float) -> "_InteriorDoorPaddeds":
         return _InteriorDoorPaddeds(name)
@@ -8778,12 +8908,14 @@ class InteriorDoorPaddedThin(
     _BaseStructure, _Idle, _Lock, _Mode, _Open, _Power, _SettingW
 ):
     _hash: int = 1981698201
+    _prefab_name: int = "StructureInteriorDoorPaddedThin"
 
 
 class _InteriorDoorPaddedThins(
     _BaseStructures, _Idles, _Locks, _Modes, _Opens, _Powers, _SettingWs
 ):
     _hash: int = 1981698201
+    _prefab_name: int = "StructureInteriorDoorPaddedThin"
 
     def __getitem__(self, name: str | int | float) -> "_InteriorDoorPaddedThins":
         return _InteriorDoorPaddedThins(name)
@@ -8796,12 +8928,14 @@ class InteriorDoorTriangle(
     _BaseStructure, _Idle, _Lock, _Mode, _Open, _Power, _SettingW
 ):
     _hash: int = -1182923101
+    _prefab_name: int = "StructureInteriorDoorTriangle"
 
 
 class _InteriorDoorTriangles(
     _BaseStructures, _Idles, _Locks, _Modes, _Opens, _Powers, _SettingWs
 ):
     _hash: int = -1182923101
+    _prefab_name: int = "StructureInteriorDoorTriangle"
 
     def __getitem__(self, name: str | int | float) -> "_InteriorDoorTriangles":
         return _InteriorDoorTriangles(name)
@@ -8812,10 +8946,11 @@ InteriorDoorTriangles: _InteriorDoorTriangles = _InteriorDoorTriangles()
 
 class Klaxon(_BaseStructure, _Mode, _Power):
     _hash: int = -828056979
+    _prefab_name: int = "StructureKlaxon"
 
     @property
     def SoundAlert(self) -> float:
-        return _DeviceLogicType(self, self._id, "SoundAlert")
+        return _DeviceLogicType(self, _LT.SoundAlert)
 
     @SoundAlert.setter
     def SoundAlert(self, value: int | float):
@@ -8823,7 +8958,7 @@ class Klaxon(_BaseStructure, _Mode, _Power):
 
     @property
     def Volume(self) -> float:
-        return _DeviceLogicType(self, self._id, "Volume")
+        return _DeviceLogicType(self, _LT.Volume)
 
     @Volume.setter
     def Volume(self, value: int | float):
@@ -8832,13 +8967,14 @@ class Klaxon(_BaseStructure, _Mode, _Power):
 
 class _Klaxons(_BaseStructures, _Modes, _Powers):
     _hash: int = -828056979
+    _prefab_name: int = "StructureKlaxon"
 
     def __getitem__(self, name: str | int | float) -> "_Klaxons":
         return _Klaxons(name)
 
     @property
     def SoundAlert(self) -> _DevicesLogicType:
-        return _DevicesLogicType(self._hash, "SoundAlert", self._name)
+        return _DevicesLogicType(self, _LT.SoundAlert)
 
     @SoundAlert.setter
     def SoundAlert(self, value: int | float):
@@ -8846,7 +8982,7 @@ class _Klaxons(_BaseStructures, _Modes, _Powers):
 
     @property
     def Volume(self) -> _DevicesLogicType:
-        return _DevicesLogicType(self._hash, "Volume", self._name)
+        return _DevicesLogicType(self, _LT.Volume)
 
     @Volume.setter
     def Volume(self, value: int | float):
@@ -8858,18 +8994,19 @@ Klaxons: _Klaxons = _Klaxons()
 
 class RoboticArmDock(_BaseStructure, _Activate, _Error, _Idle, _Power, _SettingW):
     _hash: int = -1818718810
+    _prefab_name: int = "StructureRoboticArmDock"
 
     @property
     def Extended(self) -> float:
-        return _DeviceLogicType(self, self._id, "Extended")
+        return _DeviceLogicType(self, _LT.Extended)
 
     @property
     def PositionX(self) -> float:
-        return _DeviceLogicType(self, self._id, "PositionX")
+        return _DeviceLogicType(self, _LT.PositionX)
 
     @property
     def slot0(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(type(self), self._id, 0)
+        return _SlotTypeCommon(self, 0)
 
     @property
     def ArmSlot(self) -> _SlotTypeCommon:
@@ -8880,21 +9017,22 @@ class _RoboticArmDocks(
     _BaseStructures, _Activates, _Errors, _Idles, _Powers, _SettingWs
 ):
     _hash: int = -1818718810
+    _prefab_name: int = "StructureRoboticArmDock"
 
     def __getitem__(self, name: str | int | float) -> "_RoboticArmDocks":
         return _RoboticArmDocks(name)
 
     @property
     def Extended(self) -> _DevicesLogicType:
-        return _DevicesLogicType(self._hash, "Extended", self._name)
+        return _DevicesLogicType(self, _LT.Extended)
 
     @property
     def PositionX(self) -> _DevicesLogicType:
-        return _DevicesLogicType(self._hash, "PositionX", self._name)
+        return _DevicesLogicType(self, _LT.PositionX)
 
     @property
     def slot0(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(type(self), self._hash, 0, self._name)
+        return _SlotTypeCommons(self, 0)
 
     @property
     def ArmSlot(self) -> _SlotTypeCommons:
@@ -8921,22 +9059,23 @@ class LarreDockAtmos(
     _Temperature,
 ):
     _hash: int = 1978422481
+    _prefab_name: int = "StructureLarreDockAtmos"
 
     @property
     def CombustionInput(self) -> float:
-        return _DeviceLogicType(self, self._id, "CombustionInput")
+        return _DeviceLogicType(self, _LT.CombustionInput)
 
     @property
     def Extended(self) -> float:
-        return _DeviceLogicType(self, self._id, "Extended")
+        return _DeviceLogicType(self, _LT.Extended)
 
     @property
     def PositionX(self) -> float:
-        return _DeviceLogicType(self, self._id, "PositionX")
+        return _DeviceLogicType(self, _LT.PositionX)
 
     @property
     def PressureExternal(self) -> float:
-        return _DeviceLogicType(self, self._id, "PressureExternal")
+        return _DeviceLogicType(self, _LT.PressureExternal)
 
     @PressureExternal.setter
     def PressureExternal(self, value: int | float):
@@ -8944,11 +9083,11 @@ class LarreDockAtmos(
 
     @property
     def PressureInput(self) -> float:
-        return _DeviceLogicType(self, self._id, "PressureInput")
+        return _DeviceLogicType(self, _LT.PressureInput)
 
     @property
     def PressureInternal(self) -> float:
-        return _DeviceLogicType(self, self._id, "PressureInternal")
+        return _DeviceLogicType(self, _LT.PressureInternal)
 
     @PressureInternal.setter
     def PressureInternal(self, value: int | float):
@@ -8956,15 +9095,15 @@ class LarreDockAtmos(
 
     @property
     def TemperatureInput(self) -> float:
-        return _DeviceLogicType(self, self._id, "TemperatureInput")
+        return _DeviceLogicType(self, _LT.TemperatureInput)
 
     @property
     def TotalMolesInput(self) -> float:
-        return _DeviceLogicType(self, self._id, "TotalMolesInput")
+        return _DeviceLogicType(self, _LT.TotalMolesInput)
 
     @property
     def slot0(self) -> _SlotTypeFilter:
-        return _SlotTypeFilter(type(self), self._id, 0)
+        return _SlotTypeFilter(self, 0)
 
     @property
     def Filter(self) -> _SlotTypeFilter:
@@ -8988,25 +9127,26 @@ class _LarreDockAtmoss(
     _Temperatures,
 ):
     _hash: int = 1978422481
+    _prefab_name: int = "StructureLarreDockAtmos"
 
     def __getitem__(self, name: str | int | float) -> "_LarreDockAtmoss":
         return _LarreDockAtmoss(name)
 
     @property
     def CombustionInput(self) -> _DevicesLogicType:
-        return _DevicesLogicType(self._hash, "CombustionInput", self._name)
+        return _DevicesLogicType(self, _LT.CombustionInput)
 
     @property
     def Extended(self) -> _DevicesLogicType:
-        return _DevicesLogicType(self._hash, "Extended", self._name)
+        return _DevicesLogicType(self, _LT.Extended)
 
     @property
     def PositionX(self) -> _DevicesLogicType:
-        return _DevicesLogicType(self._hash, "PositionX", self._name)
+        return _DevicesLogicType(self, _LT.PositionX)
 
     @property
     def PressureExternal(self) -> _DevicesLogicType:
-        return _DevicesLogicType(self._hash, "PressureExternal", self._name)
+        return _DevicesLogicType(self, _LT.PressureExternal)
 
     @PressureExternal.setter
     def PressureExternal(self, value: int | float):
@@ -9014,11 +9154,11 @@ class _LarreDockAtmoss(
 
     @property
     def PressureInput(self) -> _DevicesLogicType:
-        return _DevicesLogicType(self._hash, "PressureInput", self._name)
+        return _DevicesLogicType(self, _LT.PressureInput)
 
     @property
     def PressureInternal(self) -> _DevicesLogicType:
-        return _DevicesLogicType(self._hash, "PressureInternal", self._name)
+        return _DevicesLogicType(self, _LT.PressureInternal)
 
     @PressureInternal.setter
     def PressureInternal(self, value: int | float):
@@ -9026,15 +9166,15 @@ class _LarreDockAtmoss(
 
     @property
     def TemperatureInput(self) -> _DevicesLogicType:
-        return _DevicesLogicType(self._hash, "TemperatureInput", self._name)
+        return _DevicesLogicType(self, _LT.TemperatureInput)
 
     @property
     def TotalMolesInput(self) -> _DevicesLogicType:
-        return _DevicesLogicType(self._hash, "TotalMolesInput", self._name)
+        return _DevicesLogicType(self, _LT.TotalMolesInput)
 
     @property
     def slot0(self) -> _SlotTypeFilters:
-        return _SlotTypeFilters(type(self), self._hash, 0, self._name)
+        return _SlotTypeFilters(self, 0)
 
     @property
     def Filter(self) -> _SlotTypeFilters:
@@ -9046,10 +9186,12 @@ LarreDockAtmoss: _LarreDockAtmoss = _LarreDockAtmoss()
 
 class LarreDockBypass(_BaseStructure, _Open, _Power):
     _hash: int = 1011275082
+    _prefab_name: int = "StructureLarreDockBypass"
 
 
 class _LarreDockBypasss(_BaseStructures, _Opens, _Powers):
     _hash: int = 1011275082
+    _prefab_name: int = "StructureLarreDockBypass"
 
     def __getitem__(self, name: str | int | float) -> "_LarreDockBypasss":
         return _LarreDockBypasss(name)
@@ -9062,22 +9204,23 @@ class LarreDockCargo(
     _BaseStructure, _Activate, _Error, _Idle, _Open, _Power, _SettingW
 ):
     _hash: int = -1555459562
+    _prefab_name: int = "StructureLarreDockCargo"
 
     @property
     def Extended(self) -> float:
-        return _DeviceLogicType(self, self._id, "Extended")
+        return _DeviceLogicType(self, _LT.Extended)
 
     @property
     def PositionX(self) -> float:
-        return _DeviceLogicType(self, self._id, "PositionX")
+        return _DeviceLogicType(self, _LT.PositionX)
 
     @property
     def TargetPrefabHash(self) -> float:
-        return _DeviceLogicType(self, self._id, "TargetPrefabHash")
+        return _DeviceLogicType(self, _LT.TargetPrefabHash)
 
     @property
     def TargetSlotIndex(self) -> float:
-        return _DeviceLogicType(self, self._id, "TargetSlotIndex")
+        return _DeviceLogicType(self, _LT.TargetSlotIndex)
 
     @TargetSlotIndex.setter
     def TargetSlotIndex(self, value: int | float):
@@ -9085,7 +9228,7 @@ class LarreDockCargo(
 
     @property
     def slot0(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(type(self), self._id, 0)
+        return _SlotTypeCommon(self, 0)
 
     @property
     def ArmSlot(self) -> _SlotTypeCommon:
@@ -9093,7 +9236,7 @@ class LarreDockCargo(
 
     @property
     def slot255(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(type(self), self._id, 255)
+        return _SlotTypeCommon(self, 255)
 
     @property
     def TargetSlot(self) -> _SlotTypeCommon:
@@ -9104,25 +9247,26 @@ class _LarreDockCargos(
     _BaseStructures, _Activates, _Errors, _Idles, _Opens, _Powers, _SettingWs
 ):
     _hash: int = -1555459562
+    _prefab_name: int = "StructureLarreDockCargo"
 
     def __getitem__(self, name: str | int | float) -> "_LarreDockCargos":
         return _LarreDockCargos(name)
 
     @property
     def Extended(self) -> _DevicesLogicType:
-        return _DevicesLogicType(self._hash, "Extended", self._name)
+        return _DevicesLogicType(self, _LT.Extended)
 
     @property
     def PositionX(self) -> _DevicesLogicType:
-        return _DevicesLogicType(self._hash, "PositionX", self._name)
+        return _DevicesLogicType(self, _LT.PositionX)
 
     @property
     def TargetPrefabHash(self) -> _DevicesLogicType:
-        return _DevicesLogicType(self._hash, "TargetPrefabHash", self._name)
+        return _DevicesLogicType(self, _LT.TargetPrefabHash)
 
     @property
     def TargetSlotIndex(self) -> _DevicesLogicType:
-        return _DevicesLogicType(self._hash, "TargetSlotIndex", self._name)
+        return _DevicesLogicType(self, _LT.TargetSlotIndex)
 
     @TargetSlotIndex.setter
     def TargetSlotIndex(self, value: int | float):
@@ -9130,7 +9274,7 @@ class _LarreDockCargos(
 
     @property
     def slot0(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(type(self), self._hash, 0, self._name)
+        return _SlotTypeCommons(self, 0)
 
     @property
     def ArmSlot(self) -> _SlotTypeCommons:
@@ -9138,7 +9282,7 @@ class _LarreDockCargos(
 
     @property
     def slot255(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(type(self), self._hash, 255, self._name)
+        return _SlotTypeCommons(self, 255)
 
     @property
     def TargetSlot(self) -> _SlotTypeCommons:
@@ -9161,94 +9305,95 @@ class LarreDockCollector(
     _SettingW,
 ):
     _hash: int = -522428667
+    _prefab_name: int = "StructureLarreDockCollector"
 
     @property
     def Extended(self) -> float:
-        return _DeviceLogicType(self, self._id, "Extended")
+        return _DeviceLogicType(self, _LT.Extended)
 
     @property
     def PositionX(self) -> float:
-        return _DeviceLogicType(self, self._id, "PositionX")
+        return _DeviceLogicType(self, _LT.PositionX)
 
     @property
     def slot0(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(type(self), self._id, 0)
+        return _SlotTypeCommon(self, 0)
 
     @property
     def slot1(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(type(self), self._id, 1)
+        return _SlotTypeCommon(self, 1)
 
     @property
     def slot10(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(type(self), self._id, 10)
+        return _SlotTypeCommon(self, 10)
 
     @property
     def slot11(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(type(self), self._id, 11)
+        return _SlotTypeCommon(self, 11)
 
     @property
     def slot12(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(type(self), self._id, 12)
+        return _SlotTypeCommon(self, 12)
 
     @property
     def slot13(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(type(self), self._id, 13)
+        return _SlotTypeCommon(self, 13)
 
     @property
     def slot14(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(type(self), self._id, 14)
+        return _SlotTypeCommon(self, 14)
 
     @property
     def slot15(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(type(self), self._id, 15)
+        return _SlotTypeCommon(self, 15)
 
     @property
     def slot16(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(type(self), self._id, 16)
+        return _SlotTypeCommon(self, 16)
 
     @property
     def slot17(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(type(self), self._id, 17)
+        return _SlotTypeCommon(self, 17)
 
     @property
     def slot18(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(type(self), self._id, 18)
+        return _SlotTypeCommon(self, 18)
 
     @property
     def slot19(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(type(self), self._id, 19)
+        return _SlotTypeCommon(self, 19)
 
     @property
     def slot2(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(type(self), self._id, 2)
+        return _SlotTypeCommon(self, 2)
 
     @property
     def slot3(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(type(self), self._id, 3)
+        return _SlotTypeCommon(self, 3)
 
     @property
     def slot4(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(type(self), self._id, 4)
+        return _SlotTypeCommon(self, 4)
 
     @property
     def slot5(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(type(self), self._id, 5)
+        return _SlotTypeCommon(self, 5)
 
     @property
     def slot6(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(type(self), self._id, 6)
+        return _SlotTypeCommon(self, 6)
 
     @property
     def slot7(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(type(self), self._id, 7)
+        return _SlotTypeCommon(self, 7)
 
     @property
     def slot8(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(type(self), self._id, 8)
+        return _SlotTypeCommon(self, 8)
 
     @property
     def slot9(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(type(self), self._id, 9)
+        return _SlotTypeCommon(self, 9)
 
 
 class _LarreDockCollectors(
@@ -9264,97 +9409,98 @@ class _LarreDockCollectors(
     _SettingWs,
 ):
     _hash: int = -522428667
+    _prefab_name: int = "StructureLarreDockCollector"
 
     def __getitem__(self, name: str | int | float) -> "_LarreDockCollectors":
         return _LarreDockCollectors(name)
 
     @property
     def Extended(self) -> _DevicesLogicType:
-        return _DevicesLogicType(self._hash, "Extended", self._name)
+        return _DevicesLogicType(self, _LT.Extended)
 
     @property
     def PositionX(self) -> _DevicesLogicType:
-        return _DevicesLogicType(self._hash, "PositionX", self._name)
+        return _DevicesLogicType(self, _LT.PositionX)
 
     @property
     def slot0(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(type(self), self._hash, 0, self._name)
+        return _SlotTypeCommons(self, 0)
 
     @property
     def slot1(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(type(self), self._hash, 1, self._name)
+        return _SlotTypeCommons(self, 1)
 
     @property
     def slot10(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(type(self), self._hash, 10, self._name)
+        return _SlotTypeCommons(self, 10)
 
     @property
     def slot11(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(type(self), self._hash, 11, self._name)
+        return _SlotTypeCommons(self, 11)
 
     @property
     def slot12(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(type(self), self._hash, 12, self._name)
+        return _SlotTypeCommons(self, 12)
 
     @property
     def slot13(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(type(self), self._hash, 13, self._name)
+        return _SlotTypeCommons(self, 13)
 
     @property
     def slot14(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(type(self), self._hash, 14, self._name)
+        return _SlotTypeCommons(self, 14)
 
     @property
     def slot15(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(type(self), self._hash, 15, self._name)
+        return _SlotTypeCommons(self, 15)
 
     @property
     def slot16(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(type(self), self._hash, 16, self._name)
+        return _SlotTypeCommons(self, 16)
 
     @property
     def slot17(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(type(self), self._hash, 17, self._name)
+        return _SlotTypeCommons(self, 17)
 
     @property
     def slot18(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(type(self), self._hash, 18, self._name)
+        return _SlotTypeCommons(self, 18)
 
     @property
     def slot19(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(type(self), self._hash, 19, self._name)
+        return _SlotTypeCommons(self, 19)
 
     @property
     def slot2(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(type(self), self._hash, 2, self._name)
+        return _SlotTypeCommons(self, 2)
 
     @property
     def slot3(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(type(self), self._hash, 3, self._name)
+        return _SlotTypeCommons(self, 3)
 
     @property
     def slot4(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(type(self), self._hash, 4, self._name)
+        return _SlotTypeCommons(self, 4)
 
     @property
     def slot5(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(type(self), self._hash, 5, self._name)
+        return _SlotTypeCommons(self, 5)
 
     @property
     def slot6(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(type(self), self._hash, 6, self._name)
+        return _SlotTypeCommons(self, 6)
 
     @property
     def slot7(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(type(self), self._hash, 7, self._name)
+        return _SlotTypeCommons(self, 7)
 
     @property
     def slot8(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(type(self), self._hash, 8, self._name)
+        return _SlotTypeCommons(self, 8)
 
     @property
     def slot9(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(type(self), self._hash, 9, self._name)
+        return _SlotTypeCommons(self, 9)
 
 
 LarreDockCollectors: _LarreDockCollectors = _LarreDockCollectors()
@@ -9364,26 +9510,27 @@ class LarreDockHydroponics(
     _BaseStructure, _Activate, _Error, _Idle, _Open, _Power, _SettingW
 ):
     _hash: int = 85133079
+    _prefab_name: int = "StructureLarreDockHydroponics"
 
     @property
     def Extended(self) -> float:
-        return _DeviceLogicType(self, self._id, "Extended")
+        return _DeviceLogicType(self, _LT.Extended)
 
     @property
     def PositionX(self) -> float:
-        return _DeviceLogicType(self, self._id, "PositionX")
+        return _DeviceLogicType(self, _LT.PositionX)
 
     @property
     def TargetPrefabHash(self) -> float:
-        return _DeviceLogicType(self, self._id, "TargetPrefabHash")
+        return _DeviceLogicType(self, _LT.TargetPrefabHash)
 
     @property
     def TargetSlotIndex(self) -> float:
-        return _DeviceLogicType(self, self._id, "TargetSlotIndex")
+        return _DeviceLogicType(self, _LT.TargetSlotIndex)
 
     @property
     def slot0(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(type(self), self._id, 0)
+        return _SlotTypeCommon(self, 0)
 
     @property
     def ArmSlot(self) -> _SlotTypeCommon:
@@ -9391,7 +9538,7 @@ class LarreDockHydroponics(
 
     @property
     def slot1(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(type(self), self._id, 1)
+        return _SlotTypeCommon(self, 1)
 
     @property
     def HopperSlot(self) -> _SlotTypeCommon:
@@ -9399,7 +9546,7 @@ class LarreDockHydroponics(
 
     @property
     def slot255(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(type(self), self._id, 255)
+        return _SlotTypeCommon(self, 255)
 
     @property
     def TargetSlot(self) -> _SlotTypeCommon:
@@ -9410,29 +9557,30 @@ class _LarreDockHydroponicss(
     _BaseStructures, _Activates, _Errors, _Idles, _Opens, _Powers, _SettingWs
 ):
     _hash: int = 85133079
+    _prefab_name: int = "StructureLarreDockHydroponics"
 
     def __getitem__(self, name: str | int | float) -> "_LarreDockHydroponicss":
         return _LarreDockHydroponicss(name)
 
     @property
     def Extended(self) -> _DevicesLogicType:
-        return _DevicesLogicType(self._hash, "Extended", self._name)
+        return _DevicesLogicType(self, _LT.Extended)
 
     @property
     def PositionX(self) -> _DevicesLogicType:
-        return _DevicesLogicType(self._hash, "PositionX", self._name)
+        return _DevicesLogicType(self, _LT.PositionX)
 
     @property
     def TargetPrefabHash(self) -> _DevicesLogicType:
-        return _DevicesLogicType(self._hash, "TargetPrefabHash", self._name)
+        return _DevicesLogicType(self, _LT.TargetPrefabHash)
 
     @property
     def TargetSlotIndex(self) -> _DevicesLogicType:
-        return _DevicesLogicType(self._hash, "TargetSlotIndex", self._name)
+        return _DevicesLogicType(self, _LT.TargetSlotIndex)
 
     @property
     def slot0(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(type(self), self._hash, 0, self._name)
+        return _SlotTypeCommons(self, 0)
 
     @property
     def ArmSlot(self) -> _SlotTypeCommons:
@@ -9440,7 +9588,7 @@ class _LarreDockHydroponicss(
 
     @property
     def slot1(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(type(self), self._hash, 1, self._name)
+        return _SlotTypeCommons(self, 1)
 
     @property
     def HopperSlot(self) -> _SlotTypeCommons:
@@ -9448,7 +9596,7 @@ class _LarreDockHydroponicss(
 
     @property
     def slot255(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(type(self), self._hash, 255, self._name)
+        return _SlotTypeCommons(self, 255)
 
     @property
     def TargetSlot(self) -> _SlotTypeCommons:
@@ -9460,10 +9608,11 @@ LarreDockHydroponicss: _LarreDockHydroponicss = _LarreDockHydroponicss()
 
 class Diode(_BaseStructure, _Lock, _Power):
     _hash: int = 1944485013
+    _prefab_name: int = "StructureDiode"
 
     @property
     def Color(self) -> float:
-        return _DeviceLogicType(self, self._id, "Color")
+        return _DeviceLogicType(self, _LT.Color)
 
     @Color.setter
     def Color(self, value: int | float):
@@ -9472,13 +9621,14 @@ class Diode(_BaseStructure, _Lock, _Power):
 
 class _Diodes(_BaseStructures, _Locks, _Powers):
     _hash: int = 1944485013
+    _prefab_name: int = "StructureDiode"
 
     def __getitem__(self, name: str | int | float) -> "_Diodes":
         return _Diodes(name)
 
     @property
     def Color(self) -> _DevicesLogicType:
-        return _DevicesLogicType(self._hash, "Color", self._name)
+        return _DevicesLogicType(self, _LT.Color)
 
     @Color.setter
     def Color(self, value: int | float):
@@ -9490,10 +9640,11 @@ Diodes: _Diodes = _Diodes()
 
 class ConsoleLED1x3(_BaseStructure, _Error, _Mode, _Power, _SettingW):
     _hash: int = -1949054743
+    _prefab_name: int = "StructureConsoleLED1x3"
 
     @property
     def Color(self) -> float:
-        return _DeviceLogicType(self, self._id, "Color")
+        return _DeviceLogicType(self, _LT.Color)
 
     @Color.setter
     def Color(self, value: int | float):
@@ -9502,13 +9653,14 @@ class ConsoleLED1x3(_BaseStructure, _Error, _Mode, _Power, _SettingW):
 
 class _ConsoleLED1x3s(_BaseStructures, _Errors, _Modes, _Powers, _SettingWs):
     _hash: int = -1949054743
+    _prefab_name: int = "StructureConsoleLED1x3"
 
     def __getitem__(self, name: str | int | float) -> "_ConsoleLED1x3s":
         return _ConsoleLED1x3s(name)
 
     @property
     def Color(self) -> _DevicesLogicType:
-        return _DevicesLogicType(self._hash, "Color", self._name)
+        return _DevicesLogicType(self, _LT.Color)
 
     @Color.setter
     def Color(self, value: int | float):
@@ -9520,10 +9672,11 @@ ConsoleLED1x3s: _ConsoleLED1x3s = _ConsoleLED1x3s()
 
 class ConsoleLED1x2(_BaseStructure, _Error, _Mode, _Power, _SettingW):
     _hash: int = -53151617
+    _prefab_name: int = "StructureConsoleLED1x2"
 
     @property
     def Color(self) -> float:
-        return _DeviceLogicType(self, self._id, "Color")
+        return _DeviceLogicType(self, _LT.Color)
 
     @Color.setter
     def Color(self, value: int | float):
@@ -9532,13 +9685,14 @@ class ConsoleLED1x2(_BaseStructure, _Error, _Mode, _Power, _SettingW):
 
 class _ConsoleLED1x2s(_BaseStructures, _Errors, _Modes, _Powers, _SettingWs):
     _hash: int = -53151617
+    _prefab_name: int = "StructureConsoleLED1x2"
 
     def __getitem__(self, name: str | int | float) -> "_ConsoleLED1x2s":
         return _ConsoleLED1x2s(name)
 
     @property
     def Color(self) -> _DevicesLogicType:
-        return _DevicesLogicType(self._hash, "Color", self._name)
+        return _DevicesLogicType(self, _LT.Color)
 
     @Color.setter
     def Color(self, value: int | float):
@@ -9550,10 +9704,11 @@ ConsoleLED1x2s: _ConsoleLED1x2s = _ConsoleLED1x2s()
 
 class ConsoleLED5(_BaseStructure, _Error, _Mode, _Power, _SettingW):
     _hash: int = -815193061
+    _prefab_name: int = "StructureConsoleLED5"
 
     @property
     def Color(self) -> float:
-        return _DeviceLogicType(self, self._id, "Color")
+        return _DeviceLogicType(self, _LT.Color)
 
     @Color.setter
     def Color(self, value: int | float):
@@ -9562,13 +9717,14 @@ class ConsoleLED5(_BaseStructure, _Error, _Mode, _Power, _SettingW):
 
 class _ConsoleLED5s(_BaseStructures, _Errors, _Modes, _Powers, _SettingWs):
     _hash: int = -815193061
+    _prefab_name: int = "StructureConsoleLED5"
 
     def __getitem__(self, name: str | int | float) -> "_ConsoleLED5s":
         return _ConsoleLED5s(name)
 
     @property
     def Color(self) -> _DevicesLogicType:
-        return _DevicesLogicType(self._hash, "Color", self._name)
+        return _DevicesLogicType(self, _LT.Color)
 
     @Color.setter
     def Color(self, value: int | float):
@@ -9582,12 +9738,14 @@ class LargeDirectHeatExchangeLiquidtoLiquid(
     _BaseStructure, _Maximum, _Ratio, _SettingW
 ):
     _hash: int = 792686502
+    _prefab_name: int = "StructureLargeDirectHeatExchangeLiquidtoLiquid"
 
 
 class _LargeDirectHeatExchangeLiquidtoLiquids(
     _BaseStructures, _Maximums, _Ratios, _SettingWs
 ):
     _hash: int = 792686502
+    _prefab_name: int = "StructureLargeDirectHeatExchangeLiquidtoLiquid"
 
     def __getitem__(
         self, name: str | int | float
@@ -9602,12 +9760,14 @@ LargeDirectHeatExchangeLiquidtoLiquids: _LargeDirectHeatExchangeLiquidtoLiquids 
 
 class LargeDirectHeatExchangeGastoGas(_BaseStructure, _Maximum, _Ratio, _SettingW):
     _hash: int = -1230658883
+    _prefab_name: int = "StructureLargeDirectHeatExchangeGastoGas"
 
 
 class _LargeDirectHeatExchangeGastoGass(
     _BaseStructures, _Maximums, _Ratios, _SettingWs
 ):
     _hash: int = -1230658883
+    _prefab_name: int = "StructureLargeDirectHeatExchangeGastoGas"
 
     def __getitem__(
         self, name: str | int | float
@@ -9622,12 +9782,14 @@ LargeDirectHeatExchangeGastoGass: _LargeDirectHeatExchangeGastoGass = (
 
 class LargeDirectHeatExchangeGastoLiquid(_BaseStructure, _Maximum, _Ratio, _SettingW):
     _hash: int = 1412338038
+    _prefab_name: int = "StructureLargeDirectHeatExchangeGastoLiquid"
 
 
 class _LargeDirectHeatExchangeGastoLiquids(
     _BaseStructures, _Maximums, _Ratios, _SettingWs
 ):
     _hash: int = 1412338038
+    _prefab_name: int = "StructureLargeDirectHeatExchangeGastoLiquid"
 
     def __getitem__(
         self, name: str | int | float
@@ -9644,10 +9806,11 @@ class LargeExtendableRadiator(
     _BaseStructure, _Lock, _Maximum, _Open, _Ratio, _SettingW
 ):
     _hash: int = -566775170
+    _prefab_name: int = "StructureLargeExtendableRadiator"
 
     @property
     def Horizontal(self) -> float:
-        return _DeviceLogicType(self, self._id, "Horizontal")
+        return _DeviceLogicType(self, _LT.Horizontal)
 
     @Horizontal.setter
     def Horizontal(self, value: int | float):
@@ -9658,13 +9821,14 @@ class _LargeExtendableRadiators(
     _BaseStructures, _Locks, _Maximums, _Opens, _Ratios, _SettingWs
 ):
     _hash: int = -566775170
+    _prefab_name: int = "StructureLargeExtendableRadiator"
 
     def __getitem__(self, name: str | int | float) -> "_LargeExtendableRadiators":
         return _LargeExtendableRadiators(name)
 
     @property
     def Horizontal(self) -> _DevicesLogicType:
-        return _DevicesLogicType(self._hash, "Horizontal", self._name)
+        return _DevicesLogicType(self, _LT.Horizontal)
 
     @Horizontal.setter
     def Horizontal(self, value: int | float):
@@ -9676,12 +9840,14 @@ LargeExtendableRadiators: _LargeExtendableRadiators = _LargeExtendableRadiators(
 
 class LargeHangerDoor(_BaseStructure, _Idle, _Lock, _Mode, _Open, _Power, _SettingW):
     _hash: int = -1351081801
+    _prefab_name: int = "StructureLargeHangerDoor"
 
 
 class _LargeHangerDoors(
     _BaseStructures, _Idles, _Locks, _Modes, _Opens, _Powers, _SettingWs
 ):
     _hash: int = -1351081801
+    _prefab_name: int = "StructureLargeHangerDoor"
 
     def __getitem__(self, name: str | int | float) -> "_LargeHangerDoors":
         return _LargeHangerDoors(name)
@@ -9694,10 +9860,11 @@ class LargeSatelliteDish(
     _BaseStructure, _Activate, _Error, _Idle, _Power, _SettingW, _VerticalW
 ):
     _hash: int = 1913391845
+    _prefab_name: int = "StructureLargeSatelliteDish"
 
     @property
     def BestContactFilter(self) -> float:
-        return _DeviceLogicType(self, self._id, "BestContactFilter")
+        return _DeviceLogicType(self, _LT.BestContactFilter)
 
     @BestContactFilter.setter
     def BestContactFilter(self, value: int | float):
@@ -9705,35 +9872,35 @@ class LargeSatelliteDish(
 
     @property
     def ContactTypeId(self) -> float:
-        return _DeviceLogicType(self, self._id, "ContactTypeId")
+        return _DeviceLogicType(self, _LT.ContactTypeId)
 
     @property
     def InterrogationProgress(self) -> float:
-        return _DeviceLogicType(self, self._id, "InterrogationProgress")
+        return _DeviceLogicType(self, _LT.InterrogationProgress)
 
     @property
     def MinimumWattsToContact(self) -> float:
-        return _DeviceLogicType(self, self._id, "MinimumWattsToContact")
+        return _DeviceLogicType(self, _LT.MinimumWattsToContact)
 
     @property
     def SignalID(self) -> float:
-        return _DeviceLogicType(self, self._id, "SignalID")
+        return _DeviceLogicType(self, _LT.SignalID)
 
     @property
     def SignalStrength(self) -> float:
-        return _DeviceLogicType(self, self._id, "SignalStrength")
+        return _DeviceLogicType(self, _LT.SignalStrength)
 
     @property
     def SizeX(self) -> float:
-        return _DeviceLogicType(self, self._id, "SizeX")
+        return _DeviceLogicType(self, _LT.SizeX)
 
     @property
     def SizeZ(self) -> float:
-        return _DeviceLogicType(self, self._id, "SizeZ")
+        return _DeviceLogicType(self, _LT.SizeZ)
 
     @property
     def TargetPadIndex(self) -> float:
-        return _DeviceLogicType(self, self._id, "TargetPadIndex")
+        return _DeviceLogicType(self, _LT.TargetPadIndex)
 
     @TargetPadIndex.setter
     def TargetPadIndex(self, value: int | float):
@@ -9741,20 +9908,21 @@ class LargeSatelliteDish(
 
     @property
     def WattsReachingContact(self) -> float:
-        return _DeviceLogicType(self, self._id, "WattsReachingContact")
+        return _DeviceLogicType(self, _LT.WattsReachingContact)
 
 
 class _LargeSatelliteDishs(
     _BaseStructures, _Activates, _Errors, _Idles, _Powers, _SettingWs, _VerticalWs
 ):
     _hash: int = 1913391845
+    _prefab_name: int = "StructureLargeSatelliteDish"
 
     def __getitem__(self, name: str | int | float) -> "_LargeSatelliteDishs":
         return _LargeSatelliteDishs(name)
 
     @property
     def BestContactFilter(self) -> _DevicesLogicType:
-        return _DevicesLogicType(self._hash, "BestContactFilter", self._name)
+        return _DevicesLogicType(self, _LT.BestContactFilter)
 
     @BestContactFilter.setter
     def BestContactFilter(self, value: int | float):
@@ -9762,35 +9930,35 @@ class _LargeSatelliteDishs(
 
     @property
     def ContactTypeId(self) -> _DevicesLogicType:
-        return _DevicesLogicType(self._hash, "ContactTypeId", self._name)
+        return _DevicesLogicType(self, _LT.ContactTypeId)
 
     @property
     def InterrogationProgress(self) -> _DevicesLogicType:
-        return _DevicesLogicType(self._hash, "InterrogationProgress", self._name)
+        return _DevicesLogicType(self, _LT.InterrogationProgress)
 
     @property
     def MinimumWattsToContact(self) -> _DevicesLogicType:
-        return _DevicesLogicType(self._hash, "MinimumWattsToContact", self._name)
+        return _DevicesLogicType(self, _LT.MinimumWattsToContact)
 
     @property
     def SignalID(self) -> _DevicesLogicType:
-        return _DevicesLogicType(self._hash, "SignalID", self._name)
+        return _DevicesLogicType(self, _LT.SignalID)
 
     @property
     def SignalStrength(self) -> _DevicesLogicType:
-        return _DevicesLogicType(self._hash, "SignalStrength", self._name)
+        return _DevicesLogicType(self, _LT.SignalStrength)
 
     @property
     def SizeX(self) -> _DevicesLogicType:
-        return _DevicesLogicType(self._hash, "SizeX", self._name)
+        return _DevicesLogicType(self, _LT.SizeX)
 
     @property
     def SizeZ(self) -> _DevicesLogicType:
-        return _DevicesLogicType(self._hash, "SizeZ", self._name)
+        return _DevicesLogicType(self, _LT.SizeZ)
 
     @property
     def TargetPadIndex(self) -> _DevicesLogicType:
-        return _DevicesLogicType(self._hash, "TargetPadIndex", self._name)
+        return _DevicesLogicType(self, _LT.TargetPadIndex)
 
     @TargetPadIndex.setter
     def TargetPadIndex(self, value: int | float):
@@ -9798,7 +9966,7 @@ class _LargeSatelliteDishs(
 
     @property
     def WattsReachingContact(self) -> _DevicesLogicType:
-        return _DevicesLogicType(self._hash, "WattsReachingContact", self._name)
+        return _DevicesLogicType(self, _LT.WattsReachingContact)
 
 
 LargeSatelliteDishs: _LargeSatelliteDishs = _LargeSatelliteDishs()
@@ -9818,50 +9986,51 @@ class TankBig(
     _Volume,
 ):
     _hash: int = -1606848156
+    _prefab_name: int = "StructureTankBig"
 
     @property
     def CombustionOutput(self) -> float:
-        return _DeviceLogicType(self, self._id, "CombustionOutput")
+        return _DeviceLogicType(self, _LT.CombustionOutput)
 
     @property
     def PressureOutput(self) -> float:
-        return _DeviceLogicType(self, self._id, "PressureOutput")
+        return _DeviceLogicType(self, _LT.PressureOutput)
 
     @property
     def RatioCarbonDioxideOutput(self) -> float:
-        return _DeviceLogicType(self, self._id, "RatioCarbonDioxideOutput")
+        return _DeviceLogicType(self, _LT.RatioCarbonDioxideOutput)
 
     @property
     def RatioNitrogenOutput(self) -> float:
-        return _DeviceLogicType(self, self._id, "RatioNitrogenOutput")
+        return _DeviceLogicType(self, _LT.RatioNitrogenOutput)
 
     @property
     def RatioNitrousOxideOutput(self) -> float:
-        return _DeviceLogicType(self, self._id, "RatioNitrousOxideOutput")
+        return _DeviceLogicType(self, _LT.RatioNitrousOxideOutput)
 
     @property
     def RatioOxygenOutput(self) -> float:
-        return _DeviceLogicType(self, self._id, "RatioOxygenOutput")
+        return _DeviceLogicType(self, _LT.RatioOxygenOutput)
 
     @property
     def RatioPollutantOutput(self) -> float:
-        return _DeviceLogicType(self, self._id, "RatioPollutantOutput")
+        return _DeviceLogicType(self, _LT.RatioPollutantOutput)
 
     @property
     def RatioVolatilesOutput(self) -> float:
-        return _DeviceLogicType(self, self._id, "RatioVolatilesOutput")
+        return _DeviceLogicType(self, _LT.RatioVolatilesOutput)
 
     @property
     def RatioWaterOutput(self) -> float:
-        return _DeviceLogicType(self, self._id, "RatioWaterOutput")
+        return _DeviceLogicType(self, _LT.RatioWaterOutput)
 
     @property
     def TemperatureOutput(self) -> float:
-        return _DeviceLogicType(self, self._id, "TemperatureOutput")
+        return _DeviceLogicType(self, _LT.TemperatureOutput)
 
     @property
     def TotalMolesOutput(self) -> float:
-        return _DeviceLogicType(self, self._id, "TotalMolesOutput")
+        return _DeviceLogicType(self, _LT.TotalMolesOutput)
 
 
 class _TankBigs(
@@ -9878,53 +10047,54 @@ class _TankBigs(
     _Volumes,
 ):
     _hash: int = -1606848156
+    _prefab_name: int = "StructureTankBig"
 
     def __getitem__(self, name: str | int | float) -> "_TankBigs":
         return _TankBigs(name)
 
     @property
     def CombustionOutput(self) -> _DevicesLogicType:
-        return _DevicesLogicType(self._hash, "CombustionOutput", self._name)
+        return _DevicesLogicType(self, _LT.CombustionOutput)
 
     @property
     def PressureOutput(self) -> _DevicesLogicType:
-        return _DevicesLogicType(self._hash, "PressureOutput", self._name)
+        return _DevicesLogicType(self, _LT.PressureOutput)
 
     @property
     def RatioCarbonDioxideOutput(self) -> _DevicesLogicType:
-        return _DevicesLogicType(self._hash, "RatioCarbonDioxideOutput", self._name)
+        return _DevicesLogicType(self, _LT.RatioCarbonDioxideOutput)
 
     @property
     def RatioNitrogenOutput(self) -> _DevicesLogicType:
-        return _DevicesLogicType(self._hash, "RatioNitrogenOutput", self._name)
+        return _DevicesLogicType(self, _LT.RatioNitrogenOutput)
 
     @property
     def RatioNitrousOxideOutput(self) -> _DevicesLogicType:
-        return _DevicesLogicType(self._hash, "RatioNitrousOxideOutput", self._name)
+        return _DevicesLogicType(self, _LT.RatioNitrousOxideOutput)
 
     @property
     def RatioOxygenOutput(self) -> _DevicesLogicType:
-        return _DevicesLogicType(self._hash, "RatioOxygenOutput", self._name)
+        return _DevicesLogicType(self, _LT.RatioOxygenOutput)
 
     @property
     def RatioPollutantOutput(self) -> _DevicesLogicType:
-        return _DevicesLogicType(self._hash, "RatioPollutantOutput", self._name)
+        return _DevicesLogicType(self, _LT.RatioPollutantOutput)
 
     @property
     def RatioVolatilesOutput(self) -> _DevicesLogicType:
-        return _DevicesLogicType(self._hash, "RatioVolatilesOutput", self._name)
+        return _DevicesLogicType(self, _LT.RatioVolatilesOutput)
 
     @property
     def RatioWaterOutput(self) -> _DevicesLogicType:
-        return _DevicesLogicType(self._hash, "RatioWaterOutput", self._name)
+        return _DevicesLogicType(self, _LT.RatioWaterOutput)
 
     @property
     def TemperatureOutput(self) -> _DevicesLogicType:
-        return _DevicesLogicType(self._hash, "TemperatureOutput", self._name)
+        return _DevicesLogicType(self, _LT.TemperatureOutput)
 
     @property
     def TotalMolesOutput(self) -> _DevicesLogicType:
-        return _DevicesLogicType(self._hash, "TotalMolesOutput", self._name)
+        return _DevicesLogicType(self, _LT.TotalMolesOutput)
 
 
 TankBigs: _TankBigs = _TankBigs()
@@ -9932,10 +10102,12 @@ TankBigs: _TankBigs = _TankBigs()
 
 class LogicSwitch(_BaseStructure, _Lock, _Open, _SettingR):
     _hash: int = 1220484876
+    _prefab_name: int = "StructureLogicSwitch"
 
 
 class _LogicSwitchs(_BaseStructures, _Locks, _Opens, _SettingRs):
     _hash: int = 1220484876
+    _prefab_name: int = "StructureLogicSwitch"
 
     def __getitem__(self, name: str | int | float) -> "_LogicSwitchs":
         return _LogicSwitchs(name)
@@ -9946,10 +10118,12 @@ LogicSwitchs: _LogicSwitchs = _LogicSwitchs()
 
 class LightRound(_BaseStructure, _Lock, _Power):
     _hash: int = 1514476632
+    _prefab_name: int = "StructureLightRound"
 
 
 class _LightRounds(_BaseStructures, _Locks, _Powers):
     _hash: int = 1514476632
+    _prefab_name: int = "StructureLightRound"
 
     def __getitem__(self, name: str | int | float) -> "_LightRounds":
         return _LightRounds(name)
@@ -9960,10 +10134,12 @@ LightRounds: _LightRounds = _LightRounds()
 
 class LightRoundAngled(_BaseStructure, _Lock, _Power):
     _hash: int = 1592905386
+    _prefab_name: int = "StructureLightRoundAngled"
 
 
 class _LightRoundAngleds(_BaseStructures, _Locks, _Powers):
     _hash: int = 1592905386
+    _prefab_name: int = "StructureLightRoundAngled"
 
     def __getitem__(self, name: str | int | float) -> "_LightRoundAngleds":
         return _LightRoundAngleds(name)
@@ -9974,10 +10150,12 @@ LightRoundAngleds: _LightRoundAngleds = _LightRoundAngleds()
 
 class LightRoundSmall(_BaseStructure, _Lock, _Power):
     _hash: int = 1436121888
+    _prefab_name: int = "StructureLightRoundSmall"
 
 
 class _LightRoundSmalls(_BaseStructures, _Locks, _Powers):
     _hash: int = 1436121888
+    _prefab_name: int = "StructureLightRoundSmall"
 
     def __getitem__(self, name: str | int | float) -> "_LightRoundSmalls":
         return _LightRoundSmalls(name)
@@ -9988,29 +10166,31 @@ LightRoundSmalls: _LightRoundSmalls = _LightRoundSmalls()
 
 class RobotArmDoor(_BaseStructure, _Open):
     _hash: int = -2131782367
+    _prefab_name: int = "StructureRobotArmDoor"
 
     @property
     def Power(self) -> float:
-        return _DeviceLogicType(self, self._id, "Power")
+        return _DeviceLogicType(self, _LT.Power)
 
     @property
     def RequiredPower(self) -> float:
-        return _DeviceLogicType(self, self._id, "RequiredPower")
+        return _DeviceLogicType(self, _LT.RequiredPower)
 
 
 class _RobotArmDoors(_BaseStructures, _Opens):
     _hash: int = -2131782367
+    _prefab_name: int = "StructureRobotArmDoor"
 
     def __getitem__(self, name: str | int | float) -> "_RobotArmDoors":
         return _RobotArmDoors(name)
 
     @property
     def Power(self) -> _DevicesLogicType:
-        return _DevicesLogicType(self._hash, "Power", self._name)
+        return _DevicesLogicType(self, _LT.Power)
 
     @property
     def RequiredPower(self) -> _DevicesLogicType:
-        return _DevicesLogicType(self._hash, "RequiredPower", self._name)
+        return _DevicesLogicType(self, _LT.RequiredPower)
 
 
 RobotArmDoors: _RobotArmDoors = _RobotArmDoors()
@@ -10020,12 +10200,14 @@ class BackLiquidPressureRegulator(
     _BaseStructure, _Error, _Lock, _Maximum, _Power, _Ratio, _SettingW
 ):
     _hash: int = 2099900163
+    _prefab_name: int = "StructureBackLiquidPressureRegulator"
 
 
 class _BackLiquidPressureRegulators(
     _BaseStructures, _Errors, _Locks, _Maximums, _Powers, _Ratios, _SettingWs
 ):
     _hash: int = 2099900163
+    _prefab_name: int = "StructureBackLiquidPressureRegulator"
 
     def __getitem__(self, name: str | int | float) -> "_BackLiquidPressureRegulators":
         return _BackLiquidPressureRegulators(name)
@@ -10049,50 +10231,51 @@ class LargeRocketLiquidFuelTank(
     _Volume,
 ):
     _hash: int = -1374757070
+    _prefab_name: int = "StructureLargeRocketLiquidFuelTank"
 
     @property
     def CombustionOutput(self) -> float:
-        return _DeviceLogicType(self, self._id, "CombustionOutput")
+        return _DeviceLogicType(self, _LT.CombustionOutput)
 
     @property
     def PressureOutput(self) -> float:
-        return _DeviceLogicType(self, self._id, "PressureOutput")
+        return _DeviceLogicType(self, _LT.PressureOutput)
 
     @property
     def RatioCarbonDioxideOutput(self) -> float:
-        return _DeviceLogicType(self, self._id, "RatioCarbonDioxideOutput")
+        return _DeviceLogicType(self, _LT.RatioCarbonDioxideOutput)
 
     @property
     def RatioNitrogenOutput(self) -> float:
-        return _DeviceLogicType(self, self._id, "RatioNitrogenOutput")
+        return _DeviceLogicType(self, _LT.RatioNitrogenOutput)
 
     @property
     def RatioNitrousOxideOutput(self) -> float:
-        return _DeviceLogicType(self, self._id, "RatioNitrousOxideOutput")
+        return _DeviceLogicType(self, _LT.RatioNitrousOxideOutput)
 
     @property
     def RatioOxygenOutput(self) -> float:
-        return _DeviceLogicType(self, self._id, "RatioOxygenOutput")
+        return _DeviceLogicType(self, _LT.RatioOxygenOutput)
 
     @property
     def RatioPollutantOutput(self) -> float:
-        return _DeviceLogicType(self, self._id, "RatioPollutantOutput")
+        return _DeviceLogicType(self, _LT.RatioPollutantOutput)
 
     @property
     def RatioVolatilesOutput(self) -> float:
-        return _DeviceLogicType(self, self._id, "RatioVolatilesOutput")
+        return _DeviceLogicType(self, _LT.RatioVolatilesOutput)
 
     @property
     def RatioWaterOutput(self) -> float:
-        return _DeviceLogicType(self, self._id, "RatioWaterOutput")
+        return _DeviceLogicType(self, _LT.RatioWaterOutput)
 
     @property
     def TemperatureOutput(self) -> float:
-        return _DeviceLogicType(self, self._id, "TemperatureOutput")
+        return _DeviceLogicType(self, _LT.TemperatureOutput)
 
     @property
     def TotalMolesOutput(self) -> float:
-        return _DeviceLogicType(self, self._id, "TotalMolesOutput")
+        return _DeviceLogicType(self, _LT.TotalMolesOutput)
 
 
 class _LargeRocketLiquidFuelTanks(
@@ -10108,53 +10291,54 @@ class _LargeRocketLiquidFuelTanks(
     _Volumes,
 ):
     _hash: int = -1374757070
+    _prefab_name: int = "StructureLargeRocketLiquidFuelTank"
 
     def __getitem__(self, name: str | int | float) -> "_LargeRocketLiquidFuelTanks":
         return _LargeRocketLiquidFuelTanks(name)
 
     @property
     def CombustionOutput(self) -> _DevicesLogicType:
-        return _DevicesLogicType(self._hash, "CombustionOutput", self._name)
+        return _DevicesLogicType(self, _LT.CombustionOutput)
 
     @property
     def PressureOutput(self) -> _DevicesLogicType:
-        return _DevicesLogicType(self._hash, "PressureOutput", self._name)
+        return _DevicesLogicType(self, _LT.PressureOutput)
 
     @property
     def RatioCarbonDioxideOutput(self) -> _DevicesLogicType:
-        return _DevicesLogicType(self._hash, "RatioCarbonDioxideOutput", self._name)
+        return _DevicesLogicType(self, _LT.RatioCarbonDioxideOutput)
 
     @property
     def RatioNitrogenOutput(self) -> _DevicesLogicType:
-        return _DevicesLogicType(self._hash, "RatioNitrogenOutput", self._name)
+        return _DevicesLogicType(self, _LT.RatioNitrogenOutput)
 
     @property
     def RatioNitrousOxideOutput(self) -> _DevicesLogicType:
-        return _DevicesLogicType(self._hash, "RatioNitrousOxideOutput", self._name)
+        return _DevicesLogicType(self, _LT.RatioNitrousOxideOutput)
 
     @property
     def RatioOxygenOutput(self) -> _DevicesLogicType:
-        return _DevicesLogicType(self._hash, "RatioOxygenOutput", self._name)
+        return _DevicesLogicType(self, _LT.RatioOxygenOutput)
 
     @property
     def RatioPollutantOutput(self) -> _DevicesLogicType:
-        return _DevicesLogicType(self._hash, "RatioPollutantOutput", self._name)
+        return _DevicesLogicType(self, _LT.RatioPollutantOutput)
 
     @property
     def RatioVolatilesOutput(self) -> _DevicesLogicType:
-        return _DevicesLogicType(self._hash, "RatioVolatilesOutput", self._name)
+        return _DevicesLogicType(self, _LT.RatioVolatilesOutput)
 
     @property
     def RatioWaterOutput(self) -> _DevicesLogicType:
-        return _DevicesLogicType(self._hash, "RatioWaterOutput", self._name)
+        return _DevicesLogicType(self, _LT.RatioWaterOutput)
 
     @property
     def TemperatureOutput(self) -> _DevicesLogicType:
-        return _DevicesLogicType(self._hash, "TemperatureOutput", self._name)
+        return _DevicesLogicType(self, _LT.TemperatureOutput)
 
     @property
     def TotalMolesOutput(self) -> _DevicesLogicType:
-        return _DevicesLogicType(self._hash, "TotalMolesOutput", self._name)
+        return _DevicesLogicType(self, _LT.TotalMolesOutput)
 
 
 LargeRocketLiquidFuelTanks: _LargeRocketLiquidFuelTanks = _LargeRocketLiquidFuelTanks()
@@ -10173,50 +10357,51 @@ class MediumRocketLiquidFuelTank(
     _Volume,
 ):
     _hash: int = 1143639539
+    _prefab_name: int = "StructureMediumRocketLiquidFuelTank"
 
     @property
     def CombustionOutput(self) -> float:
-        return _DeviceLogicType(self, self._id, "CombustionOutput")
+        return _DeviceLogicType(self, _LT.CombustionOutput)
 
     @property
     def PressureOutput(self) -> float:
-        return _DeviceLogicType(self, self._id, "PressureOutput")
+        return _DeviceLogicType(self, _LT.PressureOutput)
 
     @property
     def RatioCarbonDioxideOutput(self) -> float:
-        return _DeviceLogicType(self, self._id, "RatioCarbonDioxideOutput")
+        return _DeviceLogicType(self, _LT.RatioCarbonDioxideOutput)
 
     @property
     def RatioNitrogenOutput(self) -> float:
-        return _DeviceLogicType(self, self._id, "RatioNitrogenOutput")
+        return _DeviceLogicType(self, _LT.RatioNitrogenOutput)
 
     @property
     def RatioNitrousOxideOutput(self) -> float:
-        return _DeviceLogicType(self, self._id, "RatioNitrousOxideOutput")
+        return _DeviceLogicType(self, _LT.RatioNitrousOxideOutput)
 
     @property
     def RatioOxygenOutput(self) -> float:
-        return _DeviceLogicType(self, self._id, "RatioOxygenOutput")
+        return _DeviceLogicType(self, _LT.RatioOxygenOutput)
 
     @property
     def RatioPollutantOutput(self) -> float:
-        return _DeviceLogicType(self, self._id, "RatioPollutantOutput")
+        return _DeviceLogicType(self, _LT.RatioPollutantOutput)
 
     @property
     def RatioVolatilesOutput(self) -> float:
-        return _DeviceLogicType(self, self._id, "RatioVolatilesOutput")
+        return _DeviceLogicType(self, _LT.RatioVolatilesOutput)
 
     @property
     def RatioWaterOutput(self) -> float:
-        return _DeviceLogicType(self, self._id, "RatioWaterOutput")
+        return _DeviceLogicType(self, _LT.RatioWaterOutput)
 
     @property
     def TemperatureOutput(self) -> float:
-        return _DeviceLogicType(self, self._id, "TemperatureOutput")
+        return _DeviceLogicType(self, _LT.TemperatureOutput)
 
     @property
     def TotalMolesOutput(self) -> float:
-        return _DeviceLogicType(self, self._id, "TotalMolesOutput")
+        return _DeviceLogicType(self, _LT.TotalMolesOutput)
 
 
 class _MediumRocketLiquidFuelTanks(
@@ -10232,53 +10417,54 @@ class _MediumRocketLiquidFuelTanks(
     _Volumes,
 ):
     _hash: int = 1143639539
+    _prefab_name: int = "StructureMediumRocketLiquidFuelTank"
 
     def __getitem__(self, name: str | int | float) -> "_MediumRocketLiquidFuelTanks":
         return _MediumRocketLiquidFuelTanks(name)
 
     @property
     def CombustionOutput(self) -> _DevicesLogicType:
-        return _DevicesLogicType(self._hash, "CombustionOutput", self._name)
+        return _DevicesLogicType(self, _LT.CombustionOutput)
 
     @property
     def PressureOutput(self) -> _DevicesLogicType:
-        return _DevicesLogicType(self._hash, "PressureOutput", self._name)
+        return _DevicesLogicType(self, _LT.PressureOutput)
 
     @property
     def RatioCarbonDioxideOutput(self) -> _DevicesLogicType:
-        return _DevicesLogicType(self._hash, "RatioCarbonDioxideOutput", self._name)
+        return _DevicesLogicType(self, _LT.RatioCarbonDioxideOutput)
 
     @property
     def RatioNitrogenOutput(self) -> _DevicesLogicType:
-        return _DevicesLogicType(self._hash, "RatioNitrogenOutput", self._name)
+        return _DevicesLogicType(self, _LT.RatioNitrogenOutput)
 
     @property
     def RatioNitrousOxideOutput(self) -> _DevicesLogicType:
-        return _DevicesLogicType(self._hash, "RatioNitrousOxideOutput", self._name)
+        return _DevicesLogicType(self, _LT.RatioNitrousOxideOutput)
 
     @property
     def RatioOxygenOutput(self) -> _DevicesLogicType:
-        return _DevicesLogicType(self._hash, "RatioOxygenOutput", self._name)
+        return _DevicesLogicType(self, _LT.RatioOxygenOutput)
 
     @property
     def RatioPollutantOutput(self) -> _DevicesLogicType:
-        return _DevicesLogicType(self._hash, "RatioPollutantOutput", self._name)
+        return _DevicesLogicType(self, _LT.RatioPollutantOutput)
 
     @property
     def RatioVolatilesOutput(self) -> _DevicesLogicType:
-        return _DevicesLogicType(self._hash, "RatioVolatilesOutput", self._name)
+        return _DevicesLogicType(self, _LT.RatioVolatilesOutput)
 
     @property
     def RatioWaterOutput(self) -> _DevicesLogicType:
-        return _DevicesLogicType(self._hash, "RatioWaterOutput", self._name)
+        return _DevicesLogicType(self, _LT.RatioWaterOutput)
 
     @property
     def TemperatureOutput(self) -> _DevicesLogicType:
-        return _DevicesLogicType(self._hash, "TemperatureOutput", self._name)
+        return _DevicesLogicType(self, _LT.TemperatureOutput)
 
     @property
     def TotalMolesOutput(self) -> _DevicesLogicType:
-        return _DevicesLogicType(self._hash, "TotalMolesOutput", self._name)
+        return _DevicesLogicType(self, _LT.TotalMolesOutput)
 
 
 MediumRocketLiquidFuelTanks: _MediumRocketLiquidFuelTanks = (
@@ -10299,50 +10485,51 @@ class CapsuleTankLiquid(
     _Volume,
 ):
     _hash: int = 1415396263
+    _prefab_name: int = "StructureCapsuleTankLiquid"
 
     @property
     def CombustionOutput(self) -> float:
-        return _DeviceLogicType(self, self._id, "CombustionOutput")
+        return _DeviceLogicType(self, _LT.CombustionOutput)
 
     @property
     def PressureOutput(self) -> float:
-        return _DeviceLogicType(self, self._id, "PressureOutput")
+        return _DeviceLogicType(self, _LT.PressureOutput)
 
     @property
     def RatioCarbonDioxideOutput(self) -> float:
-        return _DeviceLogicType(self, self._id, "RatioCarbonDioxideOutput")
+        return _DeviceLogicType(self, _LT.RatioCarbonDioxideOutput)
 
     @property
     def RatioNitrogenOutput(self) -> float:
-        return _DeviceLogicType(self, self._id, "RatioNitrogenOutput")
+        return _DeviceLogicType(self, _LT.RatioNitrogenOutput)
 
     @property
     def RatioNitrousOxideOutput(self) -> float:
-        return _DeviceLogicType(self, self._id, "RatioNitrousOxideOutput")
+        return _DeviceLogicType(self, _LT.RatioNitrousOxideOutput)
 
     @property
     def RatioOxygenOutput(self) -> float:
-        return _DeviceLogicType(self, self._id, "RatioOxygenOutput")
+        return _DeviceLogicType(self, _LT.RatioOxygenOutput)
 
     @property
     def RatioPollutantOutput(self) -> float:
-        return _DeviceLogicType(self, self._id, "RatioPollutantOutput")
+        return _DeviceLogicType(self, _LT.RatioPollutantOutput)
 
     @property
     def RatioVolatilesOutput(self) -> float:
-        return _DeviceLogicType(self, self._id, "RatioVolatilesOutput")
+        return _DeviceLogicType(self, _LT.RatioVolatilesOutput)
 
     @property
     def RatioWaterOutput(self) -> float:
-        return _DeviceLogicType(self, self._id, "RatioWaterOutput")
+        return _DeviceLogicType(self, _LT.RatioWaterOutput)
 
     @property
     def TemperatureOutput(self) -> float:
-        return _DeviceLogicType(self, self._id, "TemperatureOutput")
+        return _DeviceLogicType(self, _LT.TemperatureOutput)
 
     @property
     def TotalMolesOutput(self) -> float:
-        return _DeviceLogicType(self, self._id, "TotalMolesOutput")
+        return _DeviceLogicType(self, _LT.TotalMolesOutput)
 
 
 class _CapsuleTankLiquids(
@@ -10358,53 +10545,54 @@ class _CapsuleTankLiquids(
     _Volumes,
 ):
     _hash: int = 1415396263
+    _prefab_name: int = "StructureCapsuleTankLiquid"
 
     def __getitem__(self, name: str | int | float) -> "_CapsuleTankLiquids":
         return _CapsuleTankLiquids(name)
 
     @property
     def CombustionOutput(self) -> _DevicesLogicType:
-        return _DevicesLogicType(self._hash, "CombustionOutput", self._name)
+        return _DevicesLogicType(self, _LT.CombustionOutput)
 
     @property
     def PressureOutput(self) -> _DevicesLogicType:
-        return _DevicesLogicType(self._hash, "PressureOutput", self._name)
+        return _DevicesLogicType(self, _LT.PressureOutput)
 
     @property
     def RatioCarbonDioxideOutput(self) -> _DevicesLogicType:
-        return _DevicesLogicType(self._hash, "RatioCarbonDioxideOutput", self._name)
+        return _DevicesLogicType(self, _LT.RatioCarbonDioxideOutput)
 
     @property
     def RatioNitrogenOutput(self) -> _DevicesLogicType:
-        return _DevicesLogicType(self._hash, "RatioNitrogenOutput", self._name)
+        return _DevicesLogicType(self, _LT.RatioNitrogenOutput)
 
     @property
     def RatioNitrousOxideOutput(self) -> _DevicesLogicType:
-        return _DevicesLogicType(self._hash, "RatioNitrousOxideOutput", self._name)
+        return _DevicesLogicType(self, _LT.RatioNitrousOxideOutput)
 
     @property
     def RatioOxygenOutput(self) -> _DevicesLogicType:
-        return _DevicesLogicType(self._hash, "RatioOxygenOutput", self._name)
+        return _DevicesLogicType(self, _LT.RatioOxygenOutput)
 
     @property
     def RatioPollutantOutput(self) -> _DevicesLogicType:
-        return _DevicesLogicType(self._hash, "RatioPollutantOutput", self._name)
+        return _DevicesLogicType(self, _LT.RatioPollutantOutput)
 
     @property
     def RatioVolatilesOutput(self) -> _DevicesLogicType:
-        return _DevicesLogicType(self._hash, "RatioVolatilesOutput", self._name)
+        return _DevicesLogicType(self, _LT.RatioVolatilesOutput)
 
     @property
     def RatioWaterOutput(self) -> _DevicesLogicType:
-        return _DevicesLogicType(self._hash, "RatioWaterOutput", self._name)
+        return _DevicesLogicType(self, _LT.RatioWaterOutput)
 
     @property
     def TemperatureOutput(self) -> _DevicesLogicType:
-        return _DevicesLogicType(self._hash, "TemperatureOutput", self._name)
+        return _DevicesLogicType(self, _LT.TemperatureOutput)
 
     @property
     def TotalMolesOutput(self) -> _DevicesLogicType:
-        return _DevicesLogicType(self._hash, "TotalMolesOutput", self._name)
+        return _DevicesLogicType(self, _LT.TotalMolesOutput)
 
 
 CapsuleTankLiquids: _CapsuleTankLiquids = _CapsuleTankLiquids()
@@ -10414,12 +10602,14 @@ class WaterDigitalValve(
     _BaseStructure, _Error, _Lock, _Maximum, _Power, _Ratio, _SettingW
 ):
     _hash: int = -517628750
+    _prefab_name: int = "StructureWaterDigitalValve"
 
 
 class _WaterDigitalValves(
     _BaseStructures, _Errors, _Locks, _Maximums, _Powers, _Ratios, _SettingWs
 ):
     _hash: int = -517628750
+    _prefab_name: int = "StructureWaterDigitalValve"
 
     def __getitem__(self, name: str | int | float) -> "_WaterDigitalValves":
         return _WaterDigitalValves(name)
@@ -10441,10 +10631,11 @@ class LiquidPipeAnalyzer(
     _Volume,
 ):
     _hash: int = -2113838091
+    _prefab_name: int = "StructureLiquidPipeAnalyzer"
 
     @property
     def NetworkFault(self) -> float:
-        return _DeviceLogicType(self, self._id, "NetworkFault")
+        return _DeviceLogicType(self, _LT.NetworkFault)
 
 
 class _LiquidPipeAnalyzers(
@@ -10460,13 +10651,14 @@ class _LiquidPipeAnalyzers(
     _Volumes,
 ):
     _hash: int = -2113838091
+    _prefab_name: int = "StructureLiquidPipeAnalyzer"
 
     def __getitem__(self, name: str | int | float) -> "_LiquidPipeAnalyzers":
         return _LiquidPipeAnalyzers(name)
 
     @property
     def NetworkFault(self) -> _DevicesLogicType:
-        return _DevicesLogicType(self._hash, "NetworkFault", self._name)
+        return _DevicesLogicType(self, _LT.NetworkFault)
 
 
 LiquidPipeAnalyzers: _LiquidPipeAnalyzers = _LiquidPipeAnalyzers()
@@ -10485,50 +10677,51 @@ class LiquidTankBig(
     _Volume,
 ):
     _hash: int = 1098900430
+    _prefab_name: int = "StructureLiquidTankBig"
 
     @property
     def CombustionOutput(self) -> float:
-        return _DeviceLogicType(self, self._id, "CombustionOutput")
+        return _DeviceLogicType(self, _LT.CombustionOutput)
 
     @property
     def PressureOutput(self) -> float:
-        return _DeviceLogicType(self, self._id, "PressureOutput")
+        return _DeviceLogicType(self, _LT.PressureOutput)
 
     @property
     def RatioCarbonDioxideOutput(self) -> float:
-        return _DeviceLogicType(self, self._id, "RatioCarbonDioxideOutput")
+        return _DeviceLogicType(self, _LT.RatioCarbonDioxideOutput)
 
     @property
     def RatioNitrogenOutput(self) -> float:
-        return _DeviceLogicType(self, self._id, "RatioNitrogenOutput")
+        return _DeviceLogicType(self, _LT.RatioNitrogenOutput)
 
     @property
     def RatioNitrousOxideOutput(self) -> float:
-        return _DeviceLogicType(self, self._id, "RatioNitrousOxideOutput")
+        return _DeviceLogicType(self, _LT.RatioNitrousOxideOutput)
 
     @property
     def RatioOxygenOutput(self) -> float:
-        return _DeviceLogicType(self, self._id, "RatioOxygenOutput")
+        return _DeviceLogicType(self, _LT.RatioOxygenOutput)
 
     @property
     def RatioPollutantOutput(self) -> float:
-        return _DeviceLogicType(self, self._id, "RatioPollutantOutput")
+        return _DeviceLogicType(self, _LT.RatioPollutantOutput)
 
     @property
     def RatioVolatilesOutput(self) -> float:
-        return _DeviceLogicType(self, self._id, "RatioVolatilesOutput")
+        return _DeviceLogicType(self, _LT.RatioVolatilesOutput)
 
     @property
     def RatioWaterOutput(self) -> float:
-        return _DeviceLogicType(self, self._id, "RatioWaterOutput")
+        return _DeviceLogicType(self, _LT.RatioWaterOutput)
 
     @property
     def TemperatureOutput(self) -> float:
-        return _DeviceLogicType(self, self._id, "TemperatureOutput")
+        return _DeviceLogicType(self, _LT.TemperatureOutput)
 
     @property
     def TotalMolesOutput(self) -> float:
-        return _DeviceLogicType(self, self._id, "TotalMolesOutput")
+        return _DeviceLogicType(self, _LT.TotalMolesOutput)
 
 
 class _LiquidTankBigs(
@@ -10544,53 +10737,54 @@ class _LiquidTankBigs(
     _Volumes,
 ):
     _hash: int = 1098900430
+    _prefab_name: int = "StructureLiquidTankBig"
 
     def __getitem__(self, name: str | int | float) -> "_LiquidTankBigs":
         return _LiquidTankBigs(name)
 
     @property
     def CombustionOutput(self) -> _DevicesLogicType:
-        return _DevicesLogicType(self._hash, "CombustionOutput", self._name)
+        return _DevicesLogicType(self, _LT.CombustionOutput)
 
     @property
     def PressureOutput(self) -> _DevicesLogicType:
-        return _DevicesLogicType(self._hash, "PressureOutput", self._name)
+        return _DevicesLogicType(self, _LT.PressureOutput)
 
     @property
     def RatioCarbonDioxideOutput(self) -> _DevicesLogicType:
-        return _DevicesLogicType(self._hash, "RatioCarbonDioxideOutput", self._name)
+        return _DevicesLogicType(self, _LT.RatioCarbonDioxideOutput)
 
     @property
     def RatioNitrogenOutput(self) -> _DevicesLogicType:
-        return _DevicesLogicType(self._hash, "RatioNitrogenOutput", self._name)
+        return _DevicesLogicType(self, _LT.RatioNitrogenOutput)
 
     @property
     def RatioNitrousOxideOutput(self) -> _DevicesLogicType:
-        return _DevicesLogicType(self._hash, "RatioNitrousOxideOutput", self._name)
+        return _DevicesLogicType(self, _LT.RatioNitrousOxideOutput)
 
     @property
     def RatioOxygenOutput(self) -> _DevicesLogicType:
-        return _DevicesLogicType(self._hash, "RatioOxygenOutput", self._name)
+        return _DevicesLogicType(self, _LT.RatioOxygenOutput)
 
     @property
     def RatioPollutantOutput(self) -> _DevicesLogicType:
-        return _DevicesLogicType(self._hash, "RatioPollutantOutput", self._name)
+        return _DevicesLogicType(self, _LT.RatioPollutantOutput)
 
     @property
     def RatioVolatilesOutput(self) -> _DevicesLogicType:
-        return _DevicesLogicType(self._hash, "RatioVolatilesOutput", self._name)
+        return _DevicesLogicType(self, _LT.RatioVolatilesOutput)
 
     @property
     def RatioWaterOutput(self) -> _DevicesLogicType:
-        return _DevicesLogicType(self._hash, "RatioWaterOutput", self._name)
+        return _DevicesLogicType(self, _LT.RatioWaterOutput)
 
     @property
     def TemperatureOutput(self) -> _DevicesLogicType:
-        return _DevicesLogicType(self._hash, "TemperatureOutput", self._name)
+        return _DevicesLogicType(self, _LT.TemperatureOutput)
 
     @property
     def TotalMolesOutput(self) -> _DevicesLogicType:
-        return _DevicesLogicType(self._hash, "TotalMolesOutput", self._name)
+        return _DevicesLogicType(self, _LT.TotalMolesOutput)
 
 
 LiquidTankBigs: _LiquidTankBigs = _LiquidTankBigs()
@@ -10609,50 +10803,51 @@ class LiquidTankBigInsulated(
     _Volume,
 ):
     _hash: int = -1430440215
+    _prefab_name: int = "StructureLiquidTankBigInsulated"
 
     @property
     def CombustionOutput(self) -> float:
-        return _DeviceLogicType(self, self._id, "CombustionOutput")
+        return _DeviceLogicType(self, _LT.CombustionOutput)
 
     @property
     def PressureOutput(self) -> float:
-        return _DeviceLogicType(self, self._id, "PressureOutput")
+        return _DeviceLogicType(self, _LT.PressureOutput)
 
     @property
     def RatioCarbonDioxideOutput(self) -> float:
-        return _DeviceLogicType(self, self._id, "RatioCarbonDioxideOutput")
+        return _DeviceLogicType(self, _LT.RatioCarbonDioxideOutput)
 
     @property
     def RatioNitrogenOutput(self) -> float:
-        return _DeviceLogicType(self, self._id, "RatioNitrogenOutput")
+        return _DeviceLogicType(self, _LT.RatioNitrogenOutput)
 
     @property
     def RatioNitrousOxideOutput(self) -> float:
-        return _DeviceLogicType(self, self._id, "RatioNitrousOxideOutput")
+        return _DeviceLogicType(self, _LT.RatioNitrousOxideOutput)
 
     @property
     def RatioOxygenOutput(self) -> float:
-        return _DeviceLogicType(self, self._id, "RatioOxygenOutput")
+        return _DeviceLogicType(self, _LT.RatioOxygenOutput)
 
     @property
     def RatioPollutantOutput(self) -> float:
-        return _DeviceLogicType(self, self._id, "RatioPollutantOutput")
+        return _DeviceLogicType(self, _LT.RatioPollutantOutput)
 
     @property
     def RatioVolatilesOutput(self) -> float:
-        return _DeviceLogicType(self, self._id, "RatioVolatilesOutput")
+        return _DeviceLogicType(self, _LT.RatioVolatilesOutput)
 
     @property
     def RatioWaterOutput(self) -> float:
-        return _DeviceLogicType(self, self._id, "RatioWaterOutput")
+        return _DeviceLogicType(self, _LT.RatioWaterOutput)
 
     @property
     def TemperatureOutput(self) -> float:
-        return _DeviceLogicType(self, self._id, "TemperatureOutput")
+        return _DeviceLogicType(self, _LT.TemperatureOutput)
 
     @property
     def TotalMolesOutput(self) -> float:
-        return _DeviceLogicType(self, self._id, "TotalMolesOutput")
+        return _DeviceLogicType(self, _LT.TotalMolesOutput)
 
 
 class _LiquidTankBigInsulateds(
@@ -10668,53 +10863,54 @@ class _LiquidTankBigInsulateds(
     _Volumes,
 ):
     _hash: int = -1430440215
+    _prefab_name: int = "StructureLiquidTankBigInsulated"
 
     def __getitem__(self, name: str | int | float) -> "_LiquidTankBigInsulateds":
         return _LiquidTankBigInsulateds(name)
 
     @property
     def CombustionOutput(self) -> _DevicesLogicType:
-        return _DevicesLogicType(self._hash, "CombustionOutput", self._name)
+        return _DevicesLogicType(self, _LT.CombustionOutput)
 
     @property
     def PressureOutput(self) -> _DevicesLogicType:
-        return _DevicesLogicType(self._hash, "PressureOutput", self._name)
+        return _DevicesLogicType(self, _LT.PressureOutput)
 
     @property
     def RatioCarbonDioxideOutput(self) -> _DevicesLogicType:
-        return _DevicesLogicType(self._hash, "RatioCarbonDioxideOutput", self._name)
+        return _DevicesLogicType(self, _LT.RatioCarbonDioxideOutput)
 
     @property
     def RatioNitrogenOutput(self) -> _DevicesLogicType:
-        return _DevicesLogicType(self._hash, "RatioNitrogenOutput", self._name)
+        return _DevicesLogicType(self, _LT.RatioNitrogenOutput)
 
     @property
     def RatioNitrousOxideOutput(self) -> _DevicesLogicType:
-        return _DevicesLogicType(self._hash, "RatioNitrousOxideOutput", self._name)
+        return _DevicesLogicType(self, _LT.RatioNitrousOxideOutput)
 
     @property
     def RatioOxygenOutput(self) -> _DevicesLogicType:
-        return _DevicesLogicType(self._hash, "RatioOxygenOutput", self._name)
+        return _DevicesLogicType(self, _LT.RatioOxygenOutput)
 
     @property
     def RatioPollutantOutput(self) -> _DevicesLogicType:
-        return _DevicesLogicType(self._hash, "RatioPollutantOutput", self._name)
+        return _DevicesLogicType(self, _LT.RatioPollutantOutput)
 
     @property
     def RatioVolatilesOutput(self) -> _DevicesLogicType:
-        return _DevicesLogicType(self._hash, "RatioVolatilesOutput", self._name)
+        return _DevicesLogicType(self, _LT.RatioVolatilesOutput)
 
     @property
     def RatioWaterOutput(self) -> _DevicesLogicType:
-        return _DevicesLogicType(self._hash, "RatioWaterOutput", self._name)
+        return _DevicesLogicType(self, _LT.RatioWaterOutput)
 
     @property
     def TemperatureOutput(self) -> _DevicesLogicType:
-        return _DevicesLogicType(self._hash, "TemperatureOutput", self._name)
+        return _DevicesLogicType(self, _LT.TemperatureOutput)
 
     @property
     def TotalMolesOutput(self) -> _DevicesLogicType:
-        return _DevicesLogicType(self._hash, "TotalMolesOutput", self._name)
+        return _DevicesLogicType(self, _LT.TotalMolesOutput)
 
 
 LiquidTankBigInsulateds: _LiquidTankBigInsulateds = _LiquidTankBigInsulateds()
@@ -10733,50 +10929,51 @@ class LiquidTankSmall(
     _Volume,
 ):
     _hash: int = 1988118157
+    _prefab_name: int = "StructureLiquidTankSmall"
 
     @property
     def CombustionOutput(self) -> float:
-        return _DeviceLogicType(self, self._id, "CombustionOutput")
+        return _DeviceLogicType(self, _LT.CombustionOutput)
 
     @property
     def PressureOutput(self) -> float:
-        return _DeviceLogicType(self, self._id, "PressureOutput")
+        return _DeviceLogicType(self, _LT.PressureOutput)
 
     @property
     def RatioCarbonDioxideOutput(self) -> float:
-        return _DeviceLogicType(self, self._id, "RatioCarbonDioxideOutput")
+        return _DeviceLogicType(self, _LT.RatioCarbonDioxideOutput)
 
     @property
     def RatioNitrogenOutput(self) -> float:
-        return _DeviceLogicType(self, self._id, "RatioNitrogenOutput")
+        return _DeviceLogicType(self, _LT.RatioNitrogenOutput)
 
     @property
     def RatioNitrousOxideOutput(self) -> float:
-        return _DeviceLogicType(self, self._id, "RatioNitrousOxideOutput")
+        return _DeviceLogicType(self, _LT.RatioNitrousOxideOutput)
 
     @property
     def RatioOxygenOutput(self) -> float:
-        return _DeviceLogicType(self, self._id, "RatioOxygenOutput")
+        return _DeviceLogicType(self, _LT.RatioOxygenOutput)
 
     @property
     def RatioPollutantOutput(self) -> float:
-        return _DeviceLogicType(self, self._id, "RatioPollutantOutput")
+        return _DeviceLogicType(self, _LT.RatioPollutantOutput)
 
     @property
     def RatioVolatilesOutput(self) -> float:
-        return _DeviceLogicType(self, self._id, "RatioVolatilesOutput")
+        return _DeviceLogicType(self, _LT.RatioVolatilesOutput)
 
     @property
     def RatioWaterOutput(self) -> float:
-        return _DeviceLogicType(self, self._id, "RatioWaterOutput")
+        return _DeviceLogicType(self, _LT.RatioWaterOutput)
 
     @property
     def TemperatureOutput(self) -> float:
-        return _DeviceLogicType(self, self._id, "TemperatureOutput")
+        return _DeviceLogicType(self, _LT.TemperatureOutput)
 
     @property
     def TotalMolesOutput(self) -> float:
-        return _DeviceLogicType(self, self._id, "TotalMolesOutput")
+        return _DeviceLogicType(self, _LT.TotalMolesOutput)
 
 
 class _LiquidTankSmalls(
@@ -10792,53 +10989,54 @@ class _LiquidTankSmalls(
     _Volumes,
 ):
     _hash: int = 1988118157
+    _prefab_name: int = "StructureLiquidTankSmall"
 
     def __getitem__(self, name: str | int | float) -> "_LiquidTankSmalls":
         return _LiquidTankSmalls(name)
 
     @property
     def CombustionOutput(self) -> _DevicesLogicType:
-        return _DevicesLogicType(self._hash, "CombustionOutput", self._name)
+        return _DevicesLogicType(self, _LT.CombustionOutput)
 
     @property
     def PressureOutput(self) -> _DevicesLogicType:
-        return _DevicesLogicType(self._hash, "PressureOutput", self._name)
+        return _DevicesLogicType(self, _LT.PressureOutput)
 
     @property
     def RatioCarbonDioxideOutput(self) -> _DevicesLogicType:
-        return _DevicesLogicType(self._hash, "RatioCarbonDioxideOutput", self._name)
+        return _DevicesLogicType(self, _LT.RatioCarbonDioxideOutput)
 
     @property
     def RatioNitrogenOutput(self) -> _DevicesLogicType:
-        return _DevicesLogicType(self._hash, "RatioNitrogenOutput", self._name)
+        return _DevicesLogicType(self, _LT.RatioNitrogenOutput)
 
     @property
     def RatioNitrousOxideOutput(self) -> _DevicesLogicType:
-        return _DevicesLogicType(self._hash, "RatioNitrousOxideOutput", self._name)
+        return _DevicesLogicType(self, _LT.RatioNitrousOxideOutput)
 
     @property
     def RatioOxygenOutput(self) -> _DevicesLogicType:
-        return _DevicesLogicType(self._hash, "RatioOxygenOutput", self._name)
+        return _DevicesLogicType(self, _LT.RatioOxygenOutput)
 
     @property
     def RatioPollutantOutput(self) -> _DevicesLogicType:
-        return _DevicesLogicType(self._hash, "RatioPollutantOutput", self._name)
+        return _DevicesLogicType(self, _LT.RatioPollutantOutput)
 
     @property
     def RatioVolatilesOutput(self) -> _DevicesLogicType:
-        return _DevicesLogicType(self._hash, "RatioVolatilesOutput", self._name)
+        return _DevicesLogicType(self, _LT.RatioVolatilesOutput)
 
     @property
     def RatioWaterOutput(self) -> _DevicesLogicType:
-        return _DevicesLogicType(self._hash, "RatioWaterOutput", self._name)
+        return _DevicesLogicType(self, _LT.RatioWaterOutput)
 
     @property
     def TemperatureOutput(self) -> _DevicesLogicType:
-        return _DevicesLogicType(self._hash, "TemperatureOutput", self._name)
+        return _DevicesLogicType(self, _LT.TemperatureOutput)
 
     @property
     def TotalMolesOutput(self) -> _DevicesLogicType:
-        return _DevicesLogicType(self._hash, "TotalMolesOutput", self._name)
+        return _DevicesLogicType(self, _LT.TotalMolesOutput)
 
 
 LiquidTankSmalls: _LiquidTankSmalls = _LiquidTankSmalls()
@@ -10857,50 +11055,51 @@ class LiquidTankSmallInsulated(
     _Volume,
 ):
     _hash: int = 608607718
+    _prefab_name: int = "StructureLiquidTankSmallInsulated"
 
     @property
     def CombustionOutput(self) -> float:
-        return _DeviceLogicType(self, self._id, "CombustionOutput")
+        return _DeviceLogicType(self, _LT.CombustionOutput)
 
     @property
     def PressureOutput(self) -> float:
-        return _DeviceLogicType(self, self._id, "PressureOutput")
+        return _DeviceLogicType(self, _LT.PressureOutput)
 
     @property
     def RatioCarbonDioxideOutput(self) -> float:
-        return _DeviceLogicType(self, self._id, "RatioCarbonDioxideOutput")
+        return _DeviceLogicType(self, _LT.RatioCarbonDioxideOutput)
 
     @property
     def RatioNitrogenOutput(self) -> float:
-        return _DeviceLogicType(self, self._id, "RatioNitrogenOutput")
+        return _DeviceLogicType(self, _LT.RatioNitrogenOutput)
 
     @property
     def RatioNitrousOxideOutput(self) -> float:
-        return _DeviceLogicType(self, self._id, "RatioNitrousOxideOutput")
+        return _DeviceLogicType(self, _LT.RatioNitrousOxideOutput)
 
     @property
     def RatioOxygenOutput(self) -> float:
-        return _DeviceLogicType(self, self._id, "RatioOxygenOutput")
+        return _DeviceLogicType(self, _LT.RatioOxygenOutput)
 
     @property
     def RatioPollutantOutput(self) -> float:
-        return _DeviceLogicType(self, self._id, "RatioPollutantOutput")
+        return _DeviceLogicType(self, _LT.RatioPollutantOutput)
 
     @property
     def RatioVolatilesOutput(self) -> float:
-        return _DeviceLogicType(self, self._id, "RatioVolatilesOutput")
+        return _DeviceLogicType(self, _LT.RatioVolatilesOutput)
 
     @property
     def RatioWaterOutput(self) -> float:
-        return _DeviceLogicType(self, self._id, "RatioWaterOutput")
+        return _DeviceLogicType(self, _LT.RatioWaterOutput)
 
     @property
     def TemperatureOutput(self) -> float:
-        return _DeviceLogicType(self, self._id, "TemperatureOutput")
+        return _DeviceLogicType(self, _LT.TemperatureOutput)
 
     @property
     def TotalMolesOutput(self) -> float:
-        return _DeviceLogicType(self, self._id, "TotalMolesOutput")
+        return _DeviceLogicType(self, _LT.TotalMolesOutput)
 
 
 class _LiquidTankSmallInsulateds(
@@ -10916,53 +11115,54 @@ class _LiquidTankSmallInsulateds(
     _Volumes,
 ):
     _hash: int = 608607718
+    _prefab_name: int = "StructureLiquidTankSmallInsulated"
 
     def __getitem__(self, name: str | int | float) -> "_LiquidTankSmallInsulateds":
         return _LiquidTankSmallInsulateds(name)
 
     @property
     def CombustionOutput(self) -> _DevicesLogicType:
-        return _DevicesLogicType(self._hash, "CombustionOutput", self._name)
+        return _DevicesLogicType(self, _LT.CombustionOutput)
 
     @property
     def PressureOutput(self) -> _DevicesLogicType:
-        return _DevicesLogicType(self._hash, "PressureOutput", self._name)
+        return _DevicesLogicType(self, _LT.PressureOutput)
 
     @property
     def RatioCarbonDioxideOutput(self) -> _DevicesLogicType:
-        return _DevicesLogicType(self._hash, "RatioCarbonDioxideOutput", self._name)
+        return _DevicesLogicType(self, _LT.RatioCarbonDioxideOutput)
 
     @property
     def RatioNitrogenOutput(self) -> _DevicesLogicType:
-        return _DevicesLogicType(self._hash, "RatioNitrogenOutput", self._name)
+        return _DevicesLogicType(self, _LT.RatioNitrogenOutput)
 
     @property
     def RatioNitrousOxideOutput(self) -> _DevicesLogicType:
-        return _DevicesLogicType(self._hash, "RatioNitrousOxideOutput", self._name)
+        return _DevicesLogicType(self, _LT.RatioNitrousOxideOutput)
 
     @property
     def RatioOxygenOutput(self) -> _DevicesLogicType:
-        return _DevicesLogicType(self._hash, "RatioOxygenOutput", self._name)
+        return _DevicesLogicType(self, _LT.RatioOxygenOutput)
 
     @property
     def RatioPollutantOutput(self) -> _DevicesLogicType:
-        return _DevicesLogicType(self._hash, "RatioPollutantOutput", self._name)
+        return _DevicesLogicType(self, _LT.RatioPollutantOutput)
 
     @property
     def RatioVolatilesOutput(self) -> _DevicesLogicType:
-        return _DevicesLogicType(self._hash, "RatioVolatilesOutput", self._name)
+        return _DevicesLogicType(self, _LT.RatioVolatilesOutput)
 
     @property
     def RatioWaterOutput(self) -> _DevicesLogicType:
-        return _DevicesLogicType(self._hash, "RatioWaterOutput", self._name)
+        return _DevicesLogicType(self, _LT.RatioWaterOutput)
 
     @property
     def TemperatureOutput(self) -> _DevicesLogicType:
-        return _DevicesLogicType(self._hash, "TemperatureOutput", self._name)
+        return _DevicesLogicType(self, _LT.TemperatureOutput)
 
     @property
     def TotalMolesOutput(self) -> _DevicesLogicType:
-        return _DevicesLogicType(self._hash, "TotalMolesOutput", self._name)
+        return _DevicesLogicType(self, _LT.TotalMolesOutput)
 
 
 LiquidTankSmallInsulateds: _LiquidTankSmallInsulateds = _LiquidTankSmallInsulateds()
@@ -10970,38 +11170,39 @@ LiquidTankSmallInsulateds: _LiquidTankSmallInsulateds = _LiquidTankSmallInsulate
 
 class LiquidTankStorage(_BaseStructure, _Quantity, _Temperature):
     _hash: int = 1691898022
+    _prefab_name: int = "StructureLiquidTankStorage"
 
     @property
     def RatioCarbonDioxide(self) -> float:
-        return _DeviceLogicType(self, self._id, "RatioCarbonDioxide")
+        return _DeviceLogicType(self, _LT.RatioCarbonDioxide)
 
     @property
     def RatioNitrogen(self) -> float:
-        return _DeviceLogicType(self, self._id, "RatioNitrogen")
+        return _DeviceLogicType(self, _LT.RatioNitrogen)
 
     @property
     def RatioNitrousOxide(self) -> float:
-        return _DeviceLogicType(self, self._id, "RatioNitrousOxide")
+        return _DeviceLogicType(self, _LT.RatioNitrousOxide)
 
     @property
     def RatioOxygen(self) -> float:
-        return _DeviceLogicType(self, self._id, "RatioOxygen")
+        return _DeviceLogicType(self, _LT.RatioOxygen)
 
     @property
     def RatioPollutant(self) -> float:
-        return _DeviceLogicType(self, self._id, "RatioPollutant")
+        return _DeviceLogicType(self, _LT.RatioPollutant)
 
     @property
     def RatioVolatiles(self) -> float:
-        return _DeviceLogicType(self, self._id, "RatioVolatiles")
+        return _DeviceLogicType(self, _LT.RatioVolatiles)
 
     @property
     def RatioWater(self) -> float:
-        return _DeviceLogicType(self, self._id, "RatioWater")
+        return _DeviceLogicType(self, _LT.RatioWater)
 
     @property
     def slot0(self) -> _SlotTypeGasCanister:
-        return _SlotTypeGasCanister(type(self), self._id, 0)
+        return _SlotTypeGasCanister(self, 0)
 
     @property
     def LiquidCanister(self) -> _SlotTypeGasCanister:
@@ -11010,41 +11211,42 @@ class LiquidTankStorage(_BaseStructure, _Quantity, _Temperature):
 
 class _LiquidTankStorages(_BaseStructures, _Quantitys, _Temperatures):
     _hash: int = 1691898022
+    _prefab_name: int = "StructureLiquidTankStorage"
 
     def __getitem__(self, name: str | int | float) -> "_LiquidTankStorages":
         return _LiquidTankStorages(name)
 
     @property
     def RatioCarbonDioxide(self) -> _DevicesLogicType:
-        return _DevicesLogicType(self._hash, "RatioCarbonDioxide", self._name)
+        return _DevicesLogicType(self, _LT.RatioCarbonDioxide)
 
     @property
     def RatioNitrogen(self) -> _DevicesLogicType:
-        return _DevicesLogicType(self._hash, "RatioNitrogen", self._name)
+        return _DevicesLogicType(self, _LT.RatioNitrogen)
 
     @property
     def RatioNitrousOxide(self) -> _DevicesLogicType:
-        return _DevicesLogicType(self._hash, "RatioNitrousOxide", self._name)
+        return _DevicesLogicType(self, _LT.RatioNitrousOxide)
 
     @property
     def RatioOxygen(self) -> _DevicesLogicType:
-        return _DevicesLogicType(self._hash, "RatioOxygen", self._name)
+        return _DevicesLogicType(self, _LT.RatioOxygen)
 
     @property
     def RatioPollutant(self) -> _DevicesLogicType:
-        return _DevicesLogicType(self._hash, "RatioPollutant", self._name)
+        return _DevicesLogicType(self, _LT.RatioPollutant)
 
     @property
     def RatioVolatiles(self) -> _DevicesLogicType:
-        return _DevicesLogicType(self._hash, "RatioVolatiles", self._name)
+        return _DevicesLogicType(self, _LT.RatioVolatiles)
 
     @property
     def RatioWater(self) -> _DevicesLogicType:
-        return _DevicesLogicType(self._hash, "RatioWater", self._name)
+        return _DevicesLogicType(self, _LT.RatioWater)
 
     @property
     def slot0(self) -> _SlotTypeGasCanisters:
-        return _SlotTypeGasCanisters(type(self), self._hash, 0, self._name)
+        return _SlotTypeGasCanisters(self, 0)
 
     @property
     def LiquidCanister(self) -> _SlotTypeGasCanisters:
@@ -11058,12 +11260,14 @@ class LiquidVolumePump(
     _BaseStructure, _Error, _Lock, _Maximum, _Power, _Ratio, _SettingW
 ):
     _hash: int = -454028979
+    _prefab_name: int = "StructureLiquidVolumePump"
 
 
 class _LiquidVolumePumps(
     _BaseStructures, _Errors, _Locks, _Maximums, _Powers, _Ratios, _SettingWs
 ):
     _hash: int = -454028979
+    _prefab_name: int = "StructureLiquidVolumePump"
 
     def __getitem__(self, name: str | int | float) -> "_LiquidVolumePumps":
         return _LiquidVolumePumps(name)
@@ -11076,12 +11280,14 @@ class LiquidPressureRegulator(
     _BaseStructure, _Error, _Lock, _Maximum, _Power, _Ratio, _SettingW
 ):
     _hash: int = 482248766
+    _prefab_name: int = "StructureLiquidPressureRegulator"
 
 
 class _LiquidPressureRegulators(
     _BaseStructures, _Errors, _Locks, _Maximums, _Powers, _Ratios, _SettingWs
 ):
     _hash: int = 482248766
+    _prefab_name: int = "StructureLiquidPressureRegulator"
 
     def __getitem__(self, name: str | int | float) -> "_LiquidPressureRegulators":
         return _LiquidPressureRegulators(name)
@@ -11094,54 +11300,55 @@ class WaterWallCooler(
     _BaseStructure, _Error, _Lock, _Maximum, _Power, _Ratio, _SettingW
 ):
     _hash: int = -1369060582
+    _prefab_name: int = "StructureWaterWallCooler"
 
     @property
     def CombustionOutput(self) -> float:
-        return _DeviceLogicType(self, self._id, "CombustionOutput")
+        return _DeviceLogicType(self, _LT.CombustionOutput)
 
     @property
     def PressureOutput(self) -> float:
-        return _DeviceLogicType(self, self._id, "PressureOutput")
+        return _DeviceLogicType(self, _LT.PressureOutput)
 
     @property
     def RatioCarbonDioxideOutput(self) -> float:
-        return _DeviceLogicType(self, self._id, "RatioCarbonDioxideOutput")
+        return _DeviceLogicType(self, _LT.RatioCarbonDioxideOutput)
 
     @property
     def RatioNitrogenOutput(self) -> float:
-        return _DeviceLogicType(self, self._id, "RatioNitrogenOutput")
+        return _DeviceLogicType(self, _LT.RatioNitrogenOutput)
 
     @property
     def RatioNitrousOxideOutput(self) -> float:
-        return _DeviceLogicType(self, self._id, "RatioNitrousOxideOutput")
+        return _DeviceLogicType(self, _LT.RatioNitrousOxideOutput)
 
     @property
     def RatioOxygenOutput(self) -> float:
-        return _DeviceLogicType(self, self._id, "RatioOxygenOutput")
+        return _DeviceLogicType(self, _LT.RatioOxygenOutput)
 
     @property
     def RatioPollutantOutput(self) -> float:
-        return _DeviceLogicType(self, self._id, "RatioPollutantOutput")
+        return _DeviceLogicType(self, _LT.RatioPollutantOutput)
 
     @property
     def RatioVolatilesOutput(self) -> float:
-        return _DeviceLogicType(self, self._id, "RatioVolatilesOutput")
+        return _DeviceLogicType(self, _LT.RatioVolatilesOutput)
 
     @property
     def RatioWaterOutput(self) -> float:
-        return _DeviceLogicType(self, self._id, "RatioWaterOutput")
+        return _DeviceLogicType(self, _LT.RatioWaterOutput)
 
     @property
     def TemperatureOutput(self) -> float:
-        return _DeviceLogicType(self, self._id, "TemperatureOutput")
+        return _DeviceLogicType(self, _LT.TemperatureOutput)
 
     @property
     def TotalMolesOutput(self) -> float:
-        return _DeviceLogicType(self, self._id, "TotalMolesOutput")
+        return _DeviceLogicType(self, _LT.TotalMolesOutput)
 
     @property
     def slot0(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(type(self), self._id, 0)
+        return _SlotTypeCommon(self, 0)
 
     @property
     def DataDisk(self) -> _SlotTypeCommon:
@@ -11152,57 +11359,58 @@ class _WaterWallCoolers(
     _BaseStructures, _Errors, _Locks, _Maximums, _Powers, _Ratios, _SettingWs
 ):
     _hash: int = -1369060582
+    _prefab_name: int = "StructureWaterWallCooler"
 
     def __getitem__(self, name: str | int | float) -> "_WaterWallCoolers":
         return _WaterWallCoolers(name)
 
     @property
     def CombustionOutput(self) -> _DevicesLogicType:
-        return _DevicesLogicType(self._hash, "CombustionOutput", self._name)
+        return _DevicesLogicType(self, _LT.CombustionOutput)
 
     @property
     def PressureOutput(self) -> _DevicesLogicType:
-        return _DevicesLogicType(self._hash, "PressureOutput", self._name)
+        return _DevicesLogicType(self, _LT.PressureOutput)
 
     @property
     def RatioCarbonDioxideOutput(self) -> _DevicesLogicType:
-        return _DevicesLogicType(self._hash, "RatioCarbonDioxideOutput", self._name)
+        return _DevicesLogicType(self, _LT.RatioCarbonDioxideOutput)
 
     @property
     def RatioNitrogenOutput(self) -> _DevicesLogicType:
-        return _DevicesLogicType(self._hash, "RatioNitrogenOutput", self._name)
+        return _DevicesLogicType(self, _LT.RatioNitrogenOutput)
 
     @property
     def RatioNitrousOxideOutput(self) -> _DevicesLogicType:
-        return _DevicesLogicType(self._hash, "RatioNitrousOxideOutput", self._name)
+        return _DevicesLogicType(self, _LT.RatioNitrousOxideOutput)
 
     @property
     def RatioOxygenOutput(self) -> _DevicesLogicType:
-        return _DevicesLogicType(self._hash, "RatioOxygenOutput", self._name)
+        return _DevicesLogicType(self, _LT.RatioOxygenOutput)
 
     @property
     def RatioPollutantOutput(self) -> _DevicesLogicType:
-        return _DevicesLogicType(self._hash, "RatioPollutantOutput", self._name)
+        return _DevicesLogicType(self, _LT.RatioPollutantOutput)
 
     @property
     def RatioVolatilesOutput(self) -> _DevicesLogicType:
-        return _DevicesLogicType(self._hash, "RatioVolatilesOutput", self._name)
+        return _DevicesLogicType(self, _LT.RatioVolatilesOutput)
 
     @property
     def RatioWaterOutput(self) -> _DevicesLogicType:
-        return _DevicesLogicType(self._hash, "RatioWaterOutput", self._name)
+        return _DevicesLogicType(self, _LT.RatioWaterOutput)
 
     @property
     def TemperatureOutput(self) -> _DevicesLogicType:
-        return _DevicesLogicType(self._hash, "TemperatureOutput", self._name)
+        return _DevicesLogicType(self, _LT.TemperatureOutput)
 
     @property
     def TotalMolesOutput(self) -> _DevicesLogicType:
-        return _DevicesLogicType(self._hash, "TotalMolesOutput", self._name)
+        return _DevicesLogicType(self, _LT.TotalMolesOutput)
 
     @property
     def slot0(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(type(self), self._hash, 0, self._name)
+        return _SlotTypeCommons(self, 0)
 
     @property
     def DataDisk(self) -> _SlotTypeCommons:
@@ -11214,253 +11422,255 @@ WaterWallCoolers: _WaterWallCoolers = _WaterWallCoolers()
 
 class StorageLocker(_BaseStructure, _Lock, _Open):
     _hash: int = -793623899
+    _prefab_name: int = "StructureStorageLocker"
 
     @property
     def slot0(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(type(self), self._id, 0)
+        return _SlotTypeCommon(self, 0)
 
     @property
     def slot1(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(type(self), self._id, 1)
+        return _SlotTypeCommon(self, 1)
 
     @property
     def slot10(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(type(self), self._id, 10)
+        return _SlotTypeCommon(self, 10)
 
     @property
     def slot11(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(type(self), self._id, 11)
+        return _SlotTypeCommon(self, 11)
 
     @property
     def slot12(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(type(self), self._id, 12)
+        return _SlotTypeCommon(self, 12)
 
     @property
     def slot13(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(type(self), self._id, 13)
+        return _SlotTypeCommon(self, 13)
 
     @property
     def slot14(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(type(self), self._id, 14)
+        return _SlotTypeCommon(self, 14)
 
     @property
     def slot15(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(type(self), self._id, 15)
+        return _SlotTypeCommon(self, 15)
 
     @property
     def slot16(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(type(self), self._id, 16)
+        return _SlotTypeCommon(self, 16)
 
     @property
     def slot17(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(type(self), self._id, 17)
+        return _SlotTypeCommon(self, 17)
 
     @property
     def slot18(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(type(self), self._id, 18)
+        return _SlotTypeCommon(self, 18)
 
     @property
     def slot19(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(type(self), self._id, 19)
+        return _SlotTypeCommon(self, 19)
 
     @property
     def slot2(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(type(self), self._id, 2)
+        return _SlotTypeCommon(self, 2)
 
     @property
     def slot20(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(type(self), self._id, 20)
+        return _SlotTypeCommon(self, 20)
 
     @property
     def slot21(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(type(self), self._id, 21)
+        return _SlotTypeCommon(self, 21)
 
     @property
     def slot22(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(type(self), self._id, 22)
+        return _SlotTypeCommon(self, 22)
 
     @property
     def slot23(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(type(self), self._id, 23)
+        return _SlotTypeCommon(self, 23)
 
     @property
     def slot24(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(type(self), self._id, 24)
+        return _SlotTypeCommon(self, 24)
 
     @property
     def slot25(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(type(self), self._id, 25)
+        return _SlotTypeCommon(self, 25)
 
     @property
     def slot26(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(type(self), self._id, 26)
+        return _SlotTypeCommon(self, 26)
 
     @property
     def slot27(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(type(self), self._id, 27)
+        return _SlotTypeCommon(self, 27)
 
     @property
     def slot28(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(type(self), self._id, 28)
+        return _SlotTypeCommon(self, 28)
 
     @property
     def slot29(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(type(self), self._id, 29)
+        return _SlotTypeCommon(self, 29)
 
     @property
     def slot3(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(type(self), self._id, 3)
+        return _SlotTypeCommon(self, 3)
 
     @property
     def slot4(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(type(self), self._id, 4)
+        return _SlotTypeCommon(self, 4)
 
     @property
     def slot5(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(type(self), self._id, 5)
+        return _SlotTypeCommon(self, 5)
 
     @property
     def slot6(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(type(self), self._id, 6)
+        return _SlotTypeCommon(self, 6)
 
     @property
     def slot7(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(type(self), self._id, 7)
+        return _SlotTypeCommon(self, 7)
 
     @property
     def slot8(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(type(self), self._id, 8)
+        return _SlotTypeCommon(self, 8)
 
     @property
     def slot9(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(type(self), self._id, 9)
+        return _SlotTypeCommon(self, 9)
 
 
 class _StorageLockers(_BaseStructures, _Locks, _Opens):
     _hash: int = -793623899
+    _prefab_name: int = "StructureStorageLocker"
 
     def __getitem__(self, name: str | int | float) -> "_StorageLockers":
         return _StorageLockers(name)
 
     @property
     def slot0(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(type(self), self._hash, 0, self._name)
+        return _SlotTypeCommons(self, 0)
 
     @property
     def slot1(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(type(self), self._hash, 1, self._name)
+        return _SlotTypeCommons(self, 1)
 
     @property
     def slot10(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(type(self), self._hash, 10, self._name)
+        return _SlotTypeCommons(self, 10)
 
     @property
     def slot11(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(type(self), self._hash, 11, self._name)
+        return _SlotTypeCommons(self, 11)
 
     @property
     def slot12(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(type(self), self._hash, 12, self._name)
+        return _SlotTypeCommons(self, 12)
 
     @property
     def slot13(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(type(self), self._hash, 13, self._name)
+        return _SlotTypeCommons(self, 13)
 
     @property
     def slot14(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(type(self), self._hash, 14, self._name)
+        return _SlotTypeCommons(self, 14)
 
     @property
     def slot15(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(type(self), self._hash, 15, self._name)
+        return _SlotTypeCommons(self, 15)
 
     @property
     def slot16(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(type(self), self._hash, 16, self._name)
+        return _SlotTypeCommons(self, 16)
 
     @property
     def slot17(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(type(self), self._hash, 17, self._name)
+        return _SlotTypeCommons(self, 17)
 
     @property
     def slot18(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(type(self), self._hash, 18, self._name)
+        return _SlotTypeCommons(self, 18)
 
     @property
     def slot19(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(type(self), self._hash, 19, self._name)
+        return _SlotTypeCommons(self, 19)
 
     @property
     def slot2(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(type(self), self._hash, 2, self._name)
+        return _SlotTypeCommons(self, 2)
 
     @property
     def slot20(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(type(self), self._hash, 20, self._name)
+        return _SlotTypeCommons(self, 20)
 
     @property
     def slot21(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(type(self), self._hash, 21, self._name)
+        return _SlotTypeCommons(self, 21)
 
     @property
     def slot22(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(type(self), self._hash, 22, self._name)
+        return _SlotTypeCommons(self, 22)
 
     @property
     def slot23(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(type(self), self._hash, 23, self._name)
+        return _SlotTypeCommons(self, 23)
 
     @property
     def slot24(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(type(self), self._hash, 24, self._name)
+        return _SlotTypeCommons(self, 24)
 
     @property
     def slot25(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(type(self), self._hash, 25, self._name)
+        return _SlotTypeCommons(self, 25)
 
     @property
     def slot26(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(type(self), self._hash, 26, self._name)
+        return _SlotTypeCommons(self, 26)
 
     @property
     def slot27(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(type(self), self._hash, 27, self._name)
+        return _SlotTypeCommons(self, 27)
 
     @property
     def slot28(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(type(self), self._hash, 28, self._name)
+        return _SlotTypeCommons(self, 28)
 
     @property
     def slot29(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(type(self), self._hash, 29, self._name)
+        return _SlotTypeCommons(self, 29)
 
     @property
     def slot3(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(type(self), self._hash, 3, self._name)
+        return _SlotTypeCommons(self, 3)
 
     @property
     def slot4(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(type(self), self._hash, 4, self._name)
+        return _SlotTypeCommons(self, 4)
 
     @property
     def slot5(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(type(self), self._hash, 5, self._name)
+        return _SlotTypeCommons(self, 5)
 
     @property
     def slot6(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(type(self), self._hash, 6, self._name)
+        return _SlotTypeCommons(self, 6)
 
     @property
     def slot7(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(type(self), self._hash, 7, self._name)
+        return _SlotTypeCommons(self, 7)
 
     @property
     def slot8(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(type(self), self._hash, 8, self._name)
+        return _SlotTypeCommons(self, 8)
 
     @property
     def slot9(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(type(self), self._hash, 9, self._name)
+        return _SlotTypeCommons(self, 9)
 
 
 StorageLockers: _StorageLockers = _StorageLockers()
@@ -11468,45 +11678,47 @@ StorageLockers: _StorageLockers = _StorageLockers()
 
 class LockerSmall(_BaseStructure, _Lock, _Open):
     _hash: int = -647164662
+    _prefab_name: int = "StructureLockerSmall"
 
     @property
     def slot0(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(type(self), self._id, 0)
+        return _SlotTypeCommon(self, 0)
 
     @property
     def slot1(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(type(self), self._id, 1)
+        return _SlotTypeCommon(self, 1)
 
     @property
     def slot2(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(type(self), self._id, 2)
+        return _SlotTypeCommon(self, 2)
 
     @property
     def slot3(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(type(self), self._id, 3)
+        return _SlotTypeCommon(self, 3)
 
 
 class _LockerSmalls(_BaseStructures, _Locks, _Opens):
     _hash: int = -647164662
+    _prefab_name: int = "StructureLockerSmall"
 
     def __getitem__(self, name: str | int | float) -> "_LockerSmalls":
         return _LockerSmalls(name)
 
     @property
     def slot0(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(type(self), self._hash, 0, self._name)
+        return _SlotTypeCommons(self, 0)
 
     @property
     def slot1(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(type(self), self._hash, 1, self._name)
+        return _SlotTypeCommons(self, 1)
 
     @property
     def slot2(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(type(self), self._hash, 2, self._name)
+        return _SlotTypeCommons(self, 2)
 
     @property
     def slot3(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(type(self), self._hash, 3, self._name)
+        return _SlotTypeCommons(self, 3)
 
 
 LockerSmalls: _LockerSmalls = _LockerSmalls()
@@ -11514,10 +11726,12 @@ LockerSmalls: _LockerSmalls = _LockerSmalls()
 
 class LogicCompare(_BaseStructure, _Error, _Mode, _Power, _SettingR):
     _hash: int = -1489728908
+    _prefab_name: int = "StructureLogicCompare"
 
 
 class _LogicCompares(_BaseStructures, _Errors, _Modes, _Powers, _SettingRs):
     _hash: int = -1489728908
+    _prefab_name: int = "StructureLogicCompare"
 
     def __getitem__(self, name: str | int | float) -> "_LogicCompares":
         return _LogicCompares(name)
@@ -11528,10 +11742,12 @@ LogicCompares: _LogicCompares = _LogicCompares()
 
 class LogicGate(_BaseStructure, _Error, _Mode, _Power, _SettingR):
     _hash: int = 1942143074
+    _prefab_name: int = "StructureLogicGate"
 
 
 class _LogicGates(_BaseStructures, _Errors, _Modes, _Powers, _SettingRs):
     _hash: int = 1942143074
+    _prefab_name: int = "StructureLogicGate"
 
     def __getitem__(self, name: str | int | float) -> "_LogicGates":
         return _LogicGates(name)
@@ -11542,10 +11758,12 @@ LogicGates: _LogicGates = _LogicGates()
 
 class LogicHashGen(_BaseStructure, _SettingR):
     _hash: int = 2077593121
+    _prefab_name: int = "StructureLogicHashGen"
 
 
 class _LogicHashGens(_BaseStructures, _SettingRs):
     _hash: int = 2077593121
+    _prefab_name: int = "StructureLogicHashGen"
 
     def __getitem__(self, name: str | int | float) -> "_LogicHashGens":
         return _LogicHashGens(name)
@@ -11556,10 +11774,12 @@ LogicHashGens: _LogicHashGens = _LogicHashGens()
 
 class LogicMath(_BaseStructure, _Error, _Mode, _Power, _SettingR):
     _hash: int = 1657691323
+    _prefab_name: int = "StructureLogicMath"
 
 
 class _LogicMaths(_BaseStructures, _Errors, _Modes, _Powers, _SettingRs):
     _hash: int = 1657691323
+    _prefab_name: int = "StructureLogicMath"
 
     def __getitem__(self, name: str | int | float) -> "_LogicMaths":
         return _LogicMaths(name)
@@ -11570,10 +11790,12 @@ LogicMaths: _LogicMaths = _LogicMaths()
 
 class LogicMemory(_BaseStructure, _SettingW):
     _hash: int = -851746783
+    _prefab_name: int = "StructureLogicMemory"
 
 
 class _LogicMemorys(_BaseStructures, _SettingWs):
     _hash: int = -851746783
+    _prefab_name: int = "StructureLogicMemory"
 
     def __getitem__(self, name: str | int | float) -> "_LogicMemorys":
         return _LogicMemorys(name)
@@ -11584,10 +11806,12 @@ LogicMemorys: _LogicMemorys = _LogicMemorys()
 
 class LogicMinMax(_BaseStructure, _Error, _Mode, _Power, _SettingR):
     _hash: int = 929022276
+    _prefab_name: int = "StructureLogicMinMax"
 
 
 class _LogicMinMaxs(_BaseStructures, _Errors, _Modes, _Powers, _SettingRs):
     _hash: int = 929022276
+    _prefab_name: int = "StructureLogicMinMax"
 
     def __getitem__(self, name: str | int | float) -> "_LogicMinMaxs":
         return _LogicMinMaxs(name)
@@ -11598,10 +11822,12 @@ LogicMinMaxs: _LogicMinMaxs = _LogicMinMaxs()
 
 class LogicReader(_BaseStructure, _Error, _Power, _SettingR):
     _hash: int = -345383640
+    _prefab_name: int = "StructureLogicReader"
 
 
 class _LogicReaders(_BaseStructures, _Errors, _Powers, _SettingRs):
     _hash: int = -345383640
+    _prefab_name: int = "StructureLogicReader"
 
     def __getitem__(self, name: str | int | float) -> "_LogicReaders":
         return _LogicReaders(name)
@@ -11612,29 +11838,31 @@ LogicReaders: _LogicReaders = _LogicReaders()
 
 class LogicRocketDownlink(_BaseStructure):
     _hash: int = 876108549
+    _prefab_name: int = "StructureLogicRocketDownlink"
 
     @property
     def Power(self) -> float:
-        return _DeviceLogicType(self, self._id, "Power")
+        return _DeviceLogicType(self, _LT.Power)
 
     @property
     def RequiredPower(self) -> float:
-        return _DeviceLogicType(self, self._id, "RequiredPower")
+        return _DeviceLogicType(self, _LT.RequiredPower)
 
 
 class _LogicRocketDownlinks(_BaseStructures):
     _hash: int = 876108549
+    _prefab_name: int = "StructureLogicRocketDownlink"
 
     def __getitem__(self, name: str | int | float) -> "_LogicRocketDownlinks":
         return _LogicRocketDownlinks(name)
 
     @property
     def Power(self) -> _DevicesLogicType:
-        return _DevicesLogicType(self._hash, "Power", self._name)
+        return _DevicesLogicType(self, _LT.Power)
 
     @property
     def RequiredPower(self) -> _DevicesLogicType:
-        return _DevicesLogicType(self._hash, "RequiredPower", self._name)
+        return _DevicesLogicType(self, _LT.RequiredPower)
 
 
 LogicRocketDownlinks: _LogicRocketDownlinks = _LogicRocketDownlinks()
@@ -11642,10 +11870,12 @@ LogicRocketDownlinks: _LogicRocketDownlinks = _LogicRocketDownlinks()
 
 class LogicSelect(_BaseStructure, _Error, _Mode, _Power, _SettingR):
     _hash: int = 1822736084
+    _prefab_name: int = "StructureLogicSelect"
 
 
 class _LogicSelects(_BaseStructures, _Errors, _Modes, _Powers, _SettingRs):
     _hash: int = 1822736084
+    _prefab_name: int = "StructureLogicSelect"
 
     def __getitem__(self, name: str | int | float) -> "_LogicSelects":
         return _LogicSelects(name)
@@ -11665,14 +11895,15 @@ class LogicSorter(
     _Power,
 ):
     _hash: int = 873418029
+    _prefab_name: int = "StructureLogicSorter"
 
     @property
     def StackSize(self) -> float:
-        return _DeviceLogicType(self, self._id, "StackSize")
+        return _DeviceLogicType(self, _LT.StackSize)
 
     @property
     def slot0(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(type(self), self._id, 0)
+        return _SlotTypeCommon(self, 0)
 
     @property
     def Import(self) -> _SlotTypeCommon:
@@ -11680,7 +11911,7 @@ class LogicSorter(
 
     @property
     def slot1(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(type(self), self._id, 1)
+        return _SlotTypeCommon(self, 1)
 
     @property
     def Export(self) -> _SlotTypeCommon:
@@ -11688,7 +11919,7 @@ class LogicSorter(
 
     @property
     def slot2(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(type(self), self._id, 2)
+        return _SlotTypeCommon(self, 2)
 
     @property
     def Export2(self) -> _SlotTypeCommon:
@@ -11696,7 +11927,7 @@ class LogicSorter(
 
     @property
     def slot3(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(type(self), self._id, 3)
+        return _SlotTypeCommon(self, 3)
 
     @property
     def DataDisk(self) -> _SlotTypeCommon:
@@ -11714,17 +11945,18 @@ class _LogicSorters(
     _Powers,
 ):
     _hash: int = 873418029
+    _prefab_name: int = "StructureLogicSorter"
 
     def __getitem__(self, name: str | int | float) -> "_LogicSorters":
         return _LogicSorters(name)
 
     @property
     def StackSize(self) -> _DevicesLogicType:
-        return _DevicesLogicType(self._hash, "StackSize", self._name)
+        return _DevicesLogicType(self, _LT.StackSize)
 
     @property
     def slot0(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(type(self), self._hash, 0, self._name)
+        return _SlotTypeCommons(self, 0)
 
     @property
     def Import(self) -> _SlotTypeCommons:
@@ -11732,7 +11964,7 @@ class _LogicSorters(
 
     @property
     def slot1(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(type(self), self._hash, 1, self._name)
+        return _SlotTypeCommons(self, 1)
 
     @property
     def Export(self) -> _SlotTypeCommons:
@@ -11740,7 +11972,7 @@ class _LogicSorters(
 
     @property
     def slot2(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(type(self), self._hash, 2, self._name)
+        return _SlotTypeCommons(self, 2)
 
     @property
     def Export2(self) -> _SlotTypeCommons:
@@ -11748,7 +11980,7 @@ class _LogicSorters(
 
     @property
     def slot3(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(type(self), self._hash, 3, self._name)
+        return _SlotTypeCommons(self, 3)
 
     @property
     def DataDisk(self) -> _SlotTypeCommons:
@@ -11760,10 +11992,12 @@ LogicSorters: _LogicSorters = _LogicSorters()
 
 class LogicRocketUplink(_BaseStructure, _Error, _Power):
     _hash: int = 546002924
+    _prefab_name: int = "StructureLogicRocketUplink"
 
 
 class _LogicRocketUplinks(_BaseStructures, _Errors, _Powers):
     _hash: int = 546002924
+    _prefab_name: int = "StructureLogicRocketUplink"
 
     def __getitem__(self, name: str | int | float) -> "_LogicRocketUplinks":
         return _LogicRocketUplinks(name)
@@ -11774,10 +12008,11 @@ LogicRocketUplinks: _LogicRocketUplinks = _LogicRocketUplinks()
 
 class LogicWriter(_BaseStructure, _Error, _Power):
     _hash: int = -1326019434
+    _prefab_name: int = "StructureLogicWriter"
 
     @property
     def ForceWrite(self) -> float:
-        return _DeviceLogicType(self, self._id, "ForceWrite")
+        return _DeviceLogicType(self, _LT.ForceWrite)
 
     @ForceWrite.setter
     def ForceWrite(self, value: int | float):
@@ -11786,13 +12021,14 @@ class LogicWriter(_BaseStructure, _Error, _Power):
 
 class _LogicWriters(_BaseStructures, _Errors, _Powers):
     _hash: int = -1326019434
+    _prefab_name: int = "StructureLogicWriter"
 
     def __getitem__(self, name: str | int | float) -> "_LogicWriters":
         return _LogicWriters(name)
 
     @property
     def ForceWrite(self) -> _DevicesLogicType:
-        return _DevicesLogicType(self._hash, "ForceWrite", self._name)
+        return _DevicesLogicType(self, _LT.ForceWrite)
 
     @ForceWrite.setter
     def ForceWrite(self, value: int | float):
@@ -11804,10 +12040,11 @@ LogicWriters: _LogicWriters = _LogicWriters()
 
 class LogicWriterSwitch(_BaseStructure, _Activate, _Error, _Power):
     _hash: int = -1321250424
+    _prefab_name: int = "StructureLogicWriterSwitch"
 
     @property
     def ForceWrite(self) -> float:
-        return _DeviceLogicType(self, self._id, "ForceWrite")
+        return _DeviceLogicType(self, _LT.ForceWrite)
 
     @ForceWrite.setter
     def ForceWrite(self, value: int | float):
@@ -11816,13 +12053,14 @@ class LogicWriterSwitch(_BaseStructure, _Activate, _Error, _Power):
 
 class _LogicWriterSwitchs(_BaseStructures, _Activates, _Errors, _Powers):
     _hash: int = -1321250424
+    _prefab_name: int = "StructureLogicWriterSwitch"
 
     def __getitem__(self, name: str | int | float) -> "_LogicWriterSwitchs":
         return _LogicWriterSwitchs(name)
 
     @property
     def ForceWrite(self) -> _DevicesLogicType:
-        return _DevicesLogicType(self._hash, "ForceWrite", self._name)
+        return _DevicesLogicType(self, _LT.ForceWrite)
 
     @ForceWrite.setter
     def ForceWrite(self, value: int | float):
@@ -11834,10 +12072,12 @@ LogicWriterSwitchs: _LogicWriterSwitchs = _LogicWriterSwitchs()
 
 class ManualFloorHatch(_BaseStructure, _Idle, _Lock, _Open, _SettingW):
     _hash: int = 1435578852
+    _prefab_name: int = "StructureManualFloorHatch"
 
 
 class _ManualFloorHatchs(_BaseStructures, _Idles, _Locks, _Opens, _SettingWs):
     _hash: int = 1435578852
+    _prefab_name: int = "StructureManualFloorHatch"
 
     def __getitem__(self, name: str | int | float) -> "_ManualFloorHatchs":
         return _ManualFloorHatchs(name)
@@ -11848,12 +12088,14 @@ ManualFloorHatchs: _ManualFloorHatchs = _ManualFloorHatchs()
 
 class ManualHatch(_BaseStructure, _Idle, _Lock, _Mode, _Open, _Power, _SettingW):
     _hash: int = -1808154199
+    _prefab_name: int = "StructureManualHatch"
 
 
 class _ManualHatchs(
     _BaseStructures, _Idles, _Locks, _Modes, _Opens, _Powers, _SettingWs
 ):
     _hash: int = -1808154199
+    _prefab_name: int = "StructureManualHatch"
 
     def __getitem__(self, name: str | int | float) -> "_ManualHatchs":
         return _ManualHatchs(name)
@@ -11864,10 +12106,12 @@ ManualHatchs: _ManualHatchs = _ManualHatchs()
 
 class LogicMathUnary(_BaseStructure, _Error, _Mode, _Power, _SettingR):
     _hash: int = -1160020195
+    _prefab_name: int = "StructureLogicMathUnary"
 
 
 class _LogicMathUnarys(_BaseStructures, _Errors, _Modes, _Powers, _SettingRs):
     _hash: int = -1160020195
+    _prefab_name: int = "StructureLogicMathUnary"
 
     def __getitem__(self, name: str | int | float) -> "_LogicMathUnarys":
         return _LogicMathUnarys(name)
@@ -11878,10 +12122,12 @@ LogicMathUnarys: _LogicMathUnarys = _LogicMathUnarys()
 
 class PassiveLargeRadiatorGas(_BaseStructure, _Maximum, _Ratio, _SettingW):
     _hash: int = 2066977095
+    _prefab_name: int = "StructurePassiveLargeRadiatorGas"
 
 
 class _PassiveLargeRadiatorGass(_BaseStructures, _Maximums, _Ratios, _SettingWs):
     _hash: int = 2066977095
+    _prefab_name: int = "StructurePassiveLargeRadiatorGas"
 
     def __getitem__(self, name: str | int | float) -> "_PassiveLargeRadiatorGass":
         return _PassiveLargeRadiatorGass(name)
@@ -11892,10 +12138,12 @@ PassiveLargeRadiatorGass: _PassiveLargeRadiatorGass = _PassiveLargeRadiatorGass(
 
 class MediumConvectionRadiator(_BaseStructure, _Maximum, _Ratio, _SettingW):
     _hash: int = -1918215845
+    _prefab_name: int = "StructureMediumConvectionRadiator"
 
 
 class _MediumConvectionRadiators(_BaseStructures, _Maximums, _Ratios, _SettingWs):
     _hash: int = -1918215845
+    _prefab_name: int = "StructureMediumConvectionRadiator"
 
     def __getitem__(self, name: str | int | float) -> "_MediumConvectionRadiators":
         return _MediumConvectionRadiators(name)
@@ -11906,10 +12154,12 @@ MediumConvectionRadiators: _MediumConvectionRadiators = _MediumConvectionRadiato
 
 class MediumConvectionRadiatorLiquid(_BaseStructure, _Maximum, _Ratio, _SettingW):
     _hash: int = -1169014183
+    _prefab_name: int = "StructureMediumConvectionRadiatorLiquid"
 
 
 class _MediumConvectionRadiatorLiquids(_BaseStructures, _Maximums, _Ratios, _SettingWs):
     _hash: int = -1169014183
+    _prefab_name: int = "StructureMediumConvectionRadiatorLiquid"
 
     def __getitem__(
         self, name: str | int | float
@@ -11924,10 +12174,12 @@ MediumConvectionRadiatorLiquids: _MediumConvectionRadiatorLiquids = (
 
 class PassiveLargeRadiatorLiquid(_BaseStructure, _Maximum, _Ratio, _SettingW):
     _hash: int = 24786172
+    _prefab_name: int = "StructurePassiveLargeRadiatorLiquid"
 
 
 class _PassiveLargeRadiatorLiquids(_BaseStructures, _Maximums, _Ratios, _SettingWs):
     _hash: int = 24786172
+    _prefab_name: int = "StructurePassiveLargeRadiatorLiquid"
 
     def __getitem__(self, name: str | int | float) -> "_PassiveLargeRadiatorLiquids":
         return _PassiveLargeRadiatorLiquids(name)
@@ -11940,12 +12192,14 @@ PassiveLargeRadiatorLiquids: _PassiveLargeRadiatorLiquids = (
 
 class MediumHangerDoor(_BaseStructure, _Idle, _Lock, _Mode, _Open, _Power, _SettingW):
     _hash: int = -566348148
+    _prefab_name: int = "StructureMediumHangerDoor"
 
 
 class _MediumHangerDoors(
     _BaseStructures, _Idles, _Locks, _Modes, _Opens, _Powers, _SettingWs
 ):
     _hash: int = -566348148
+    _prefab_name: int = "StructureMediumHangerDoor"
 
     def __getitem__(self, name: str | int | float) -> "_MediumHangerDoors":
         return _MediumHangerDoors(name)
@@ -11956,10 +12210,12 @@ MediumHangerDoors: _MediumHangerDoors = _MediumHangerDoors()
 
 class MediumRadiator(_BaseStructure, _Maximum, _Ratio, _SettingW):
     _hash: int = -975966237
+    _prefab_name: int = "StructureMediumRadiator"
 
 
 class _MediumRadiators(_BaseStructures, _Maximums, _Ratios, _SettingWs):
     _hash: int = -975966237
+    _prefab_name: int = "StructureMediumRadiator"
 
     def __getitem__(self, name: str | int | float) -> "_MediumRadiators":
         return _MediumRadiators(name)
@@ -11970,10 +12226,12 @@ MediumRadiators: _MediumRadiators = _MediumRadiators()
 
 class MediumRadiatorLiquid(_BaseStructure, _Maximum, _Ratio, _SettingW):
     _hash: int = -1141760613
+    _prefab_name: int = "StructureMediumRadiatorLiquid"
 
 
 class _MediumRadiatorLiquids(_BaseStructures, _Maximums, _Ratios, _SettingWs):
     _hash: int = -1141760613
+    _prefab_name: int = "StructureMediumRadiatorLiquid"
 
     def __getitem__(self, name: str | int | float) -> "_MediumRadiatorLiquids":
         return _MediumRadiatorLiquids(name)
@@ -11986,10 +12244,11 @@ class SatelliteDish(
     _BaseStructure, _Activate, _Error, _Idle, _Power, _SettingW, _VerticalW
 ):
     _hash: int = 439026183
+    _prefab_name: int = "StructureSatelliteDish"
 
     @property
     def BestContactFilter(self) -> float:
-        return _DeviceLogicType(self, self._id, "BestContactFilter")
+        return _DeviceLogicType(self, _LT.BestContactFilter)
 
     @BestContactFilter.setter
     def BestContactFilter(self, value: int | float):
@@ -11997,39 +12256,39 @@ class SatelliteDish(
 
     @property
     def ContactTypeId(self) -> float:
-        return _DeviceLogicType(self, self._id, "ContactTypeId")
+        return _DeviceLogicType(self, _LT.ContactTypeId)
 
     @property
     def InterrogationProgress(self) -> float:
-        return _DeviceLogicType(self, self._id, "InterrogationProgress")
+        return _DeviceLogicType(self, _LT.InterrogationProgress)
 
     @property
     def MinimumWattsToContact(self) -> float:
-        return _DeviceLogicType(self, self._id, "MinimumWattsToContact")
+        return _DeviceLogicType(self, _LT.MinimumWattsToContact)
 
     @property
     def SignalID(self) -> float:
-        return _DeviceLogicType(self, self._id, "SignalID")
+        return _DeviceLogicType(self, _LT.SignalID)
 
     @property
     def SignalStrength(self) -> float:
-        return _DeviceLogicType(self, self._id, "SignalStrength")
+        return _DeviceLogicType(self, _LT.SignalStrength)
 
     @property
     def SizeX(self) -> float:
-        return _DeviceLogicType(self, self._id, "SizeX")
+        return _DeviceLogicType(self, _LT.SizeX)
 
     @property
     def SizeZ(self) -> float:
-        return _DeviceLogicType(self, self._id, "SizeZ")
+        return _DeviceLogicType(self, _LT.SizeZ)
 
     @property
     def StackSize(self) -> float:
-        return _DeviceLogicType(self, self._id, "StackSize")
+        return _DeviceLogicType(self, _LT.StackSize)
 
     @property
     def TargetPadIndex(self) -> float:
-        return _DeviceLogicType(self, self._id, "TargetPadIndex")
+        return _DeviceLogicType(self, _LT.TargetPadIndex)
 
     @TargetPadIndex.setter
     def TargetPadIndex(self, value: int | float):
@@ -12037,20 +12296,21 @@ class SatelliteDish(
 
     @property
     def WattsReachingContact(self) -> float:
-        return _DeviceLogicType(self, self._id, "WattsReachingContact")
+        return _DeviceLogicType(self, _LT.WattsReachingContact)
 
 
 class _SatelliteDishs(
     _BaseStructures, _Activates, _Errors, _Idles, _Powers, _SettingWs, _VerticalWs
 ):
     _hash: int = 439026183
+    _prefab_name: int = "StructureSatelliteDish"
 
     def __getitem__(self, name: str | int | float) -> "_SatelliteDishs":
         return _SatelliteDishs(name)
 
     @property
     def BestContactFilter(self) -> _DevicesLogicType:
-        return _DevicesLogicType(self._hash, "BestContactFilter", self._name)
+        return _DevicesLogicType(self, _LT.BestContactFilter)
 
     @BestContactFilter.setter
     def BestContactFilter(self, value: int | float):
@@ -12058,39 +12318,39 @@ class _SatelliteDishs(
 
     @property
     def ContactTypeId(self) -> _DevicesLogicType:
-        return _DevicesLogicType(self._hash, "ContactTypeId", self._name)
+        return _DevicesLogicType(self, _LT.ContactTypeId)
 
     @property
     def InterrogationProgress(self) -> _DevicesLogicType:
-        return _DevicesLogicType(self._hash, "InterrogationProgress", self._name)
+        return _DevicesLogicType(self, _LT.InterrogationProgress)
 
     @property
     def MinimumWattsToContact(self) -> _DevicesLogicType:
-        return _DevicesLogicType(self._hash, "MinimumWattsToContact", self._name)
+        return _DevicesLogicType(self, _LT.MinimumWattsToContact)
 
     @property
     def SignalID(self) -> _DevicesLogicType:
-        return _DevicesLogicType(self._hash, "SignalID", self._name)
+        return _DevicesLogicType(self, _LT.SignalID)
 
     @property
     def SignalStrength(self) -> _DevicesLogicType:
-        return _DevicesLogicType(self._hash, "SignalStrength", self._name)
+        return _DevicesLogicType(self, _LT.SignalStrength)
 
     @property
     def SizeX(self) -> _DevicesLogicType:
-        return _DevicesLogicType(self._hash, "SizeX", self._name)
+        return _DevicesLogicType(self, _LT.SizeX)
 
     @property
     def SizeZ(self) -> _DevicesLogicType:
-        return _DevicesLogicType(self._hash, "SizeZ", self._name)
+        return _DevicesLogicType(self, _LT.SizeZ)
 
     @property
     def StackSize(self) -> _DevicesLogicType:
-        return _DevicesLogicType(self._hash, "StackSize", self._name)
+        return _DevicesLogicType(self, _LT.StackSize)
 
     @property
     def TargetPadIndex(self) -> _DevicesLogicType:
-        return _DevicesLogicType(self._hash, "TargetPadIndex", self._name)
+        return _DevicesLogicType(self, _LT.TargetPadIndex)
 
     @TargetPadIndex.setter
     def TargetPadIndex(self, value: int | float):
@@ -12098,7 +12358,7 @@ class _SatelliteDishs(
 
     @property
     def WattsReachingContact(self) -> _DevicesLogicType:
-        return _DevicesLogicType(self._hash, "WattsReachingContact", self._name)
+        return _DevicesLogicType(self, _LT.WattsReachingContact)
 
 
 SatelliteDishs: _SatelliteDishs = _SatelliteDishs()
@@ -12108,55 +12368,57 @@ class PowerTransmitterReceiver(
     _BaseStructure, _Charge, _Error, _ModeR, _Power, _VerticalW
 ):
     _hash: int = 1195820278
+    _prefab_name: int = "StructurePowerTransmitterReceiver"
 
     @property
     def PositionX(self) -> float:
-        return _DeviceLogicType(self, self._id, "PositionX")
+        return _DeviceLogicType(self, _LT.PositionX)
 
     @property
     def PositionY(self) -> float:
-        return _DeviceLogicType(self, self._id, "PositionY")
+        return _DeviceLogicType(self, _LT.PositionY)
 
     @property
     def PositionZ(self) -> float:
-        return _DeviceLogicType(self, self._id, "PositionZ")
+        return _DeviceLogicType(self, _LT.PositionZ)
 
     @property
     def PowerActual(self) -> float:
-        return _DeviceLogicType(self, self._id, "PowerActual")
+        return _DeviceLogicType(self, _LT.PowerActual)
 
     @property
     def PowerPotential(self) -> float:
-        return _DeviceLogicType(self, self._id, "PowerPotential")
+        return _DeviceLogicType(self, _LT.PowerPotential)
 
 
 class _PowerTransmitterReceivers(
     _BaseStructures, _Charges, _Errors, _ModeRs, _Powers, _VerticalWs
 ):
     _hash: int = 1195820278
+    _prefab_name: int = "StructurePowerTransmitterReceiver"
 
     def __getitem__(self, name: str | int | float) -> "_PowerTransmitterReceivers":
         return _PowerTransmitterReceivers(name)
 
     @property
     def PositionX(self) -> _DevicesLogicType:
-        return _DevicesLogicType(self._hash, "PositionX", self._name)
+        return _DevicesLogicType(self, _LT.PositionX)
 
     @property
     def PositionY(self) -> _DevicesLogicType:
-        return _DevicesLogicType(self._hash, "PositionY", self._name)
+        return _DevicesLogicType(self, _LT.PositionY)
 
     @property
     def PositionZ(self) -> _DevicesLogicType:
-        return _DevicesLogicType(self._hash, "PositionZ", self._name)
+        return _DevicesLogicType(self, _LT.PositionZ)
 
     @property
     def PowerActual(self) -> _DevicesLogicType:
-        return _DevicesLogicType(self._hash, "PowerActual", self._name)
+        return _DevicesLogicType(self, _LT.PowerActual)
 
     @property
     def PowerPotential(self) -> _DevicesLogicType:
-        return _DevicesLogicType(self._hash, "PowerPotential", self._name)
+        return _DevicesLogicType(self, _LT.PowerPotential)
 
 
 PowerTransmitterReceivers: _PowerTransmitterReceivers = _PowerTransmitterReceivers()
@@ -12164,55 +12426,57 @@ PowerTransmitterReceivers: _PowerTransmitterReceivers = _PowerTransmitterReceive
 
 class PowerTransmitter(_BaseStructure, _Charge, _Error, _ModeR, _Power, _VerticalW):
     _hash: int = -65087121
+    _prefab_name: int = "StructurePowerTransmitter"
 
     @property
     def PositionX(self) -> float:
-        return _DeviceLogicType(self, self._id, "PositionX")
+        return _DeviceLogicType(self, _LT.PositionX)
 
     @property
     def PositionY(self) -> float:
-        return _DeviceLogicType(self, self._id, "PositionY")
+        return _DeviceLogicType(self, _LT.PositionY)
 
     @property
     def PositionZ(self) -> float:
-        return _DeviceLogicType(self, self._id, "PositionZ")
+        return _DeviceLogicType(self, _LT.PositionZ)
 
     @property
     def PowerActual(self) -> float:
-        return _DeviceLogicType(self, self._id, "PowerActual")
+        return _DeviceLogicType(self, _LT.PowerActual)
 
     @property
     def PowerPotential(self) -> float:
-        return _DeviceLogicType(self, self._id, "PowerPotential")
+        return _DeviceLogicType(self, _LT.PowerPotential)
 
 
 class _PowerTransmitters(
     _BaseStructures, _Charges, _Errors, _ModeRs, _Powers, _VerticalWs
 ):
     _hash: int = -65087121
+    _prefab_name: int = "StructurePowerTransmitter"
 
     def __getitem__(self, name: str | int | float) -> "_PowerTransmitters":
         return _PowerTransmitters(name)
 
     @property
     def PositionX(self) -> _DevicesLogicType:
-        return _DevicesLogicType(self._hash, "PositionX", self._name)
+        return _DevicesLogicType(self, _LT.PositionX)
 
     @property
     def PositionY(self) -> _DevicesLogicType:
-        return _DevicesLogicType(self._hash, "PositionY", self._name)
+        return _DevicesLogicType(self, _LT.PositionY)
 
     @property
     def PositionZ(self) -> _DevicesLogicType:
-        return _DevicesLogicType(self._hash, "PositionZ", self._name)
+        return _DevicesLogicType(self, _LT.PositionZ)
 
     @property
     def PowerActual(self) -> _DevicesLogicType:
-        return _DevicesLogicType(self._hash, "PowerActual", self._name)
+        return _DevicesLogicType(self, _LT.PowerActual)
 
     @property
     def PowerPotential(self) -> _DevicesLogicType:
-        return _DevicesLogicType(self._hash, "PowerPotential", self._name)
+        return _DevicesLogicType(self, _LT.PowerPotential)
 
 
 PowerTransmitters: _PowerTransmitters = _PowerTransmitters()
@@ -12220,10 +12484,12 @@ PowerTransmitters: _PowerTransmitters = _PowerTransmitters()
 
 class MotionSensor(_BaseStructure, _Activate, _On, _Quantity):
     _hash: int = -1713470563
+    _prefab_name: int = "StructureMotionSensor"
 
 
 class _MotionSensors(_BaseStructures, _Activates, _Ons, _Quantitys):
     _hash: int = -1713470563
+    _prefab_name: int = "StructureMotionSensor"
 
     def __getitem__(self, name: str | int | float) -> "_MotionSensors":
         return _MotionSensors(name)
@@ -12251,114 +12517,115 @@ class Nitrolyzer(
     _Temperature,
 ):
     _hash: int = 1898243702
+    _prefab_name: int = "StructureNitrolyzer"
 
     @property
     def CombustionInput(self) -> float:
-        return _DeviceLogicType(self, self._id, "CombustionInput")
+        return _DeviceLogicType(self, _LT.CombustionInput)
 
     @property
     def CombustionInput2(self) -> float:
-        return _DeviceLogicType(self, self._id, "CombustionInput2")
+        return _DeviceLogicType(self, _LT.CombustionInput2)
 
     @property
     def CombustionOutput(self) -> float:
-        return _DeviceLogicType(self, self._id, "CombustionOutput")
+        return _DeviceLogicType(self, _LT.CombustionOutput)
 
     @property
     def PressureInput(self) -> float:
-        return _DeviceLogicType(self, self._id, "PressureInput")
+        return _DeviceLogicType(self, _LT.PressureInput)
 
     @property
     def PressureInput2(self) -> float:
-        return _DeviceLogicType(self, self._id, "PressureInput2")
+        return _DeviceLogicType(self, _LT.PressureInput2)
 
     @property
     def PressureOutput(self) -> float:
-        return _DeviceLogicType(self, self._id, "PressureOutput")
+        return _DeviceLogicType(self, _LT.PressureOutput)
 
     @property
     def RatioCarbonDioxideInput2(self) -> float:
-        return _DeviceLogicType(self, self._id, "RatioCarbonDioxideInput2")
+        return _DeviceLogicType(self, _LT.RatioCarbonDioxideInput2)
 
     @property
     def RatioLiquidCarbonDioxideInput2(self) -> float:
-        return _DeviceLogicType(self, self._id, "RatioLiquidCarbonDioxideInput2")
+        return _DeviceLogicType(self, _LT.RatioLiquidCarbonDioxideInput2)
 
     @property
     def RatioLiquidNitrogenInput2(self) -> float:
-        return _DeviceLogicType(self, self._id, "RatioLiquidNitrogenInput2")
+        return _DeviceLogicType(self, _LT.RatioLiquidNitrogenInput2)
 
     @property
     def RatioLiquidNitrousOxideInput2(self) -> float:
-        return _DeviceLogicType(self, self._id, "RatioLiquidNitrousOxideInput2")
+        return _DeviceLogicType(self, _LT.RatioLiquidNitrousOxideInput2)
 
     @property
     def RatioLiquidOxygenInput2(self) -> float:
-        return _DeviceLogicType(self, self._id, "RatioLiquidOxygenInput2")
+        return _DeviceLogicType(self, _LT.RatioLiquidOxygenInput2)
 
     @property
     def RatioLiquidPollutantInput2(self) -> float:
-        return _DeviceLogicType(self, self._id, "RatioLiquidPollutantInput2")
+        return _DeviceLogicType(self, _LT.RatioLiquidPollutantInput2)
 
     @property
     def RatioLiquidVolatilesInput2(self) -> float:
-        return _DeviceLogicType(self, self._id, "RatioLiquidVolatilesInput2")
+        return _DeviceLogicType(self, _LT.RatioLiquidVolatilesInput2)
 
     @property
     def RatioNitrogenInput2(self) -> float:
-        return _DeviceLogicType(self, self._id, "RatioNitrogenInput2")
+        return _DeviceLogicType(self, _LT.RatioNitrogenInput2)
 
     @property
     def RatioNitrousOxideInput2(self) -> float:
-        return _DeviceLogicType(self, self._id, "RatioNitrousOxideInput2")
+        return _DeviceLogicType(self, _LT.RatioNitrousOxideInput2)
 
     @property
     def RatioOxygenInput2(self) -> float:
-        return _DeviceLogicType(self, self._id, "RatioOxygenInput2")
+        return _DeviceLogicType(self, _LT.RatioOxygenInput2)
 
     @property
     def RatioPollutantInput2(self) -> float:
-        return _DeviceLogicType(self, self._id, "RatioPollutantInput2")
+        return _DeviceLogicType(self, _LT.RatioPollutantInput2)
 
     @property
     def RatioSteamInput2(self) -> float:
-        return _DeviceLogicType(self, self._id, "RatioSteamInput2")
+        return _DeviceLogicType(self, _LT.RatioSteamInput2)
 
     @property
     def RatioVolatilesInput2(self) -> float:
-        return _DeviceLogicType(self, self._id, "RatioVolatilesInput2")
+        return _DeviceLogicType(self, _LT.RatioVolatilesInput2)
 
     @property
     def RatioWaterInput2(self) -> float:
-        return _DeviceLogicType(self, self._id, "RatioWaterInput2")
+        return _DeviceLogicType(self, _LT.RatioWaterInput2)
 
     @property
     def TemperatureInput(self) -> float:
-        return _DeviceLogicType(self, self._id, "TemperatureInput")
+        return _DeviceLogicType(self, _LT.TemperatureInput)
 
     @property
     def TemperatureInput2(self) -> float:
-        return _DeviceLogicType(self, self._id, "TemperatureInput2")
+        return _DeviceLogicType(self, _LT.TemperatureInput2)
 
     @property
     def TemperatureOutput(self) -> float:
-        return _DeviceLogicType(self, self._id, "TemperatureOutput")
+        return _DeviceLogicType(self, _LT.TemperatureOutput)
 
     @property
     def TotalMolesInput(self) -> float:
-        return _DeviceLogicType(self, self._id, "TotalMolesInput")
+        return _DeviceLogicType(self, _LT.TotalMolesInput)
 
     @property
     def TotalMolesInput2(self) -> float:
-        return _DeviceLogicType(self, self._id, "TotalMolesInput2")
+        return _DeviceLogicType(self, _LT.TotalMolesInput2)
 
     @property
     def TotalMolesOutput(self) -> float:
-        return _DeviceLogicType(self, self._id, "TotalMolesOutput")
+        return _DeviceLogicType(self, _LT.TotalMolesOutput)
 
     @property
     def slot0(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(type(self), self._id, 0)
+        return _SlotTypeCommon(self, 0)
 
     @property
     def ProgrammableChip(self) -> _SlotTypeCommon:
@@ -12384,121 +12651,118 @@ class _Nitrolyzers(
     _Temperatures,
 ):
     _hash: int = 1898243702
+    _prefab_name: int = "StructureNitrolyzer"
 
     def __getitem__(self, name: str | int | float) -> "_Nitrolyzers":
         return _Nitrolyzers(name)
 
     @property
     def CombustionInput(self) -> _DevicesLogicType:
-        return _DevicesLogicType(self._hash, "CombustionInput", self._name)
+        return _DevicesLogicType(self, _LT.CombustionInput)
 
     @property
     def CombustionInput2(self) -> _DevicesLogicType:
-        return _DevicesLogicType(self._hash, "CombustionInput2", self._name)
+        return _DevicesLogicType(self, _LT.CombustionInput2)
 
     @property
     def CombustionOutput(self) -> _DevicesLogicType:
-        return _DevicesLogicType(self._hash, "CombustionOutput", self._name)
+        return _DevicesLogicType(self, _LT.CombustionOutput)
 
     @property
     def PressureInput(self) -> _DevicesLogicType:
-        return _DevicesLogicType(self._hash, "PressureInput", self._name)
+        return _DevicesLogicType(self, _LT.PressureInput)
 
     @property
     def PressureInput2(self) -> _DevicesLogicType:
-        return _DevicesLogicType(self._hash, "PressureInput2", self._name)
+        return _DevicesLogicType(self, _LT.PressureInput2)
 
     @property
     def PressureOutput(self) -> _DevicesLogicType:
-        return _DevicesLogicType(self._hash, "PressureOutput", self._name)
+        return _DevicesLogicType(self, _LT.PressureOutput)
 
     @property
     def RatioCarbonDioxideInput2(self) -> _DevicesLogicType:
-        return _DevicesLogicType(self._hash, "RatioCarbonDioxideInput2", self._name)
+        return _DevicesLogicType(self, _LT.RatioCarbonDioxideInput2)
 
     @property
     def RatioLiquidCarbonDioxideInput2(self) -> _DevicesLogicType:
-        return _DevicesLogicType(
-            self._hash, "RatioLiquidCarbonDioxideInput2", self._name
-        )
+        return _DevicesLogicType(self, _LT.RatioLiquidCarbonDioxideInput2)
 
     @property
     def RatioLiquidNitrogenInput2(self) -> _DevicesLogicType:
-        return _DevicesLogicType(self._hash, "RatioLiquidNitrogenInput2", self._name)
+        return _DevicesLogicType(self, _LT.RatioLiquidNitrogenInput2)
 
     @property
     def RatioLiquidNitrousOxideInput2(self) -> _DevicesLogicType:
-        return _DevicesLogicType(
-            self._hash, "RatioLiquidNitrousOxideInput2", self._name
-        )
+        return _DevicesLogicType(self, _LT.RatioLiquidNitrousOxideInput2)
 
     @property
     def RatioLiquidOxygenInput2(self) -> _DevicesLogicType:
-        return _DevicesLogicType(self._hash, "RatioLiquidOxygenInput2", self._name)
+        return _DevicesLogicType(self, _LT.RatioLiquidOxygenInput2)
 
     @property
     def RatioLiquidPollutantInput2(self) -> _DevicesLogicType:
-        return _DevicesLogicType(self._hash, "RatioLiquidPollutantInput2", self._name)
+        return _DevicesLogicType(self, _LT.RatioLiquidPollutantInput2)
 
     @property
     def RatioLiquidVolatilesInput2(self) -> _DevicesLogicType:
-        return _DevicesLogicType(self._hash, "RatioLiquidVolatilesInput2", self._name)
+        return _DevicesLogicType(self, _LT.RatioLiquidVolatilesInput2)
 
     @property
     def RatioNitrogenInput2(self) -> _DevicesLogicType:
-        return _DevicesLogicType(self._hash, "RatioNitrogenInput2", self._name)
+        return _DevicesLogicType(self, _LT.RatioNitrogenInput2)
 
     @property
     def RatioNitrousOxideInput2(self) -> _DevicesLogicType:
-        return _DevicesLogicType(self._hash, "RatioNitrousOxideInput2", self._name)
+        return _DevicesLogicType(self, _LT.RatioNitrousOxideInput2)
 
     @property
     def RatioOxygenInput2(self) -> _DevicesLogicType:
-        return _DevicesLogicType(self._hash, "RatioOxygenInput2", self._name)
+        return _DevicesLogicType(self, _LT.RatioOxygenInput2)
 
     @property
     def RatioPollutantInput2(self) -> _DevicesLogicType:
-        return _DevicesLogicType(self._hash, "RatioPollutantInput2", self._name)
+        return _DevicesLogicType(self, _LT.RatioPollutantInput2)
 
     @property
     def RatioSteamInput2(self) -> _DevicesLogicType:
-        return _DevicesLogicType(self._hash, "RatioSteamInput2", self._name)
+        return _DevicesLogicType(self, _LT.RatioSteamInput2)
 
     @property
     def RatioVolatilesInput2(self) -> _DevicesLogicType:
-        return _DevicesLogicType(self._hash, "RatioVolatilesInput2", self._name)
+        return _DevicesLogicType(self, _LT.RatioVolatilesInput2)
 
     @property
     def RatioWaterInput2(self) -> _DevicesLogicType:
-        return _DevicesLogicType(self._hash, "RatioWaterInput2", self._name)
+        return _DevicesLogicType(self, _LT.RatioWaterInput2)
 
     @property
     def TemperatureInput(self) -> _DevicesLogicType:
-        return _DevicesLogicType(self._hash, "TemperatureInput", self._name)
+        return _DevicesLogicType(self, _LT.TemperatureInput)
 
     @property
     def TemperatureInput2(self) -> _DevicesLogicType:
-        return _DevicesLogicType(self._hash, "TemperatureInput2", self._name)
+        return _DevicesLogicType(self, _LT.TemperatureInput2)
 
     @property
     def TemperatureOutput(self) -> _DevicesLogicType:
-        return _DevicesLogicType(self._hash, "TemperatureOutput", self._name)
+        return _DevicesLogicType(self, _LT.TemperatureOutput)
 
     @property
     def TotalMolesInput(self) -> _DevicesLogicType:
-        return _DevicesLogicType(self._hash, "TotalMolesInput", self._name)
+        return _DevicesLogicType(self, _LT.TotalMolesInput)
 
     @property
     def TotalMolesInput2(self) -> _DevicesLogicType:
-        return _DevicesLogicType(self._hash, "TotalMolesInput2", self._name)
+        return _DevicesLogicType(self, _LT.TotalMolesInput2)
 
     @property
     def TotalMolesOutput(self) -> _DevicesLogicType:
-        return _DevicesLogicType(self._hash, "TotalMolesOutput", self._name)
+        return _DevicesLogicType(self, _LT.TotalMolesOutput)
 
     @property
     def slot0(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(type(self), self._hash, 0, self._name)
+        return _SlotTypeCommons(self, 0)
 
     @property
     def ProgrammableChip(self) -> _SlotTypeCommons:
@@ -12520,10 +12784,11 @@ class HorizontalAutoMiner(
     _Power,
 ):
     _hash: int = 1070427573
+    _prefab_name: int = "StructureHorizontalAutoMiner"
 
     @property
     def slot0(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(type(self), self._id, 0)
+        return _SlotTypeCommon(self, 0)
 
     @property
     def Import(self) -> _SlotTypeCommon:
@@ -12531,7 +12796,7 @@ class HorizontalAutoMiner(
 
     @property
     def slot1(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(type(self), self._id, 1)
+        return _SlotTypeCommon(self, 1)
 
     @property
     def Export(self) -> _SlotTypeCommon:
@@ -12550,13 +12815,14 @@ class _HorizontalAutoMiners(
     _Powers,
 ):
     _hash: int = 1070427573
+    _prefab_name: int = "StructureHorizontalAutoMiner"
 
     def __getitem__(self, name: str | int | float) -> "_HorizontalAutoMiners":
         return _HorizontalAutoMiners(name)
 
     @property
     def slot0(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(type(self), self._hash, 0, self._name)
+        return _SlotTypeCommons(self, 0)
 
     @property
     def Import(self) -> _SlotTypeCommons:
@@ -12564,7 +12830,7 @@ class _HorizontalAutoMiners(
 
     @property
     def slot1(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(type(self), self._hash, 1, self._name)
+        return _SlotTypeCommons(self, 1)
 
     @property
     def Export(self) -> _SlotTypeCommons:
@@ -12576,21 +12842,23 @@ HorizontalAutoMiners: _HorizontalAutoMiners = _HorizontalAutoMiners()
 
 class OccupancySensor(_BaseStructure, _Quantity):
     _hash: int = 322782515
+    _prefab_name: int = "StructureOccupancySensor"
 
     @property
     def Activate(self) -> float:
-        return _DeviceLogicType(self, self._id, "Activate")
+        return _DeviceLogicType(self, _LT.Activate)
 
 
 class _OccupancySensors(_BaseStructures, _Quantitys):
     _hash: int = 322782515
+    _prefab_name: int = "StructureOccupancySensor"
 
     def __getitem__(self, name: str | int | float) -> "_OccupancySensors":
         return _OccupancySensors(name)
 
     @property
     def Activate(self) -> _DevicesLogicType:
-        return _DevicesLogicType(self._hash, "Activate", self._name)
+        return _DevicesLogicType(self, _LT.Activate)
 
 
 OccupancySensors: _OccupancySensors = _OccupancySensors()
@@ -12598,10 +12866,12 @@ OccupancySensors: _OccupancySensors = _OccupancySensors()
 
 class PipeOneWayValveLever(_BaseStructure, _Maximum, _On, _Ratio, _SettingW):
     _hash: int = 1289581593
+    _prefab_name: int = "StructurePipeOneWayValveLever"
 
 
 class _PipeOneWayValveLevers(_BaseStructures, _Maximums, _Ons, _Ratios, _SettingWs):
     _hash: int = 1289581593
+    _prefab_name: int = "StructurePipeOneWayValveLever"
 
     def __getitem__(self, name: str | int | float) -> "_PipeOneWayValveLevers":
         return _PipeOneWayValveLevers(name)
@@ -12612,12 +12882,14 @@ PipeOneWayValveLevers: _PipeOneWayValveLevers = _PipeOneWayValveLevers()
 
 class PipeLiquidOneWayValveLever(_BaseStructure, _Maximum, _On, _Ratio, _SettingW):
     _hash: int = -523832822
+    _prefab_name: int = "StructurePipeLiquidOneWayValveLever"
 
 
 class _PipeLiquidOneWayValveLevers(
     _BaseStructures, _Maximums, _Ons, _Ratios, _SettingWs
 ):
     _hash: int = -523832822
+    _prefab_name: int = "StructurePipeLiquidOneWayValveLever"
 
     def __getitem__(self, name: str | int | float) -> "_PipeLiquidOneWayValveLevers":
         return _PipeLiquidOneWayValveLevers(name)
@@ -12630,29 +12902,31 @@ PipeLiquidOneWayValveLevers: _PipeLiquidOneWayValveLevers = (
 
 class OverheadShortCornerLocker(_BaseStructure, _Lock, _Open):
     _hash: int = -1794932560
+    _prefab_name: int = "StructureOverheadShortCornerLocker"
 
     @property
     def slot0(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(type(self), self._id, 0)
+        return _SlotTypeCommon(self, 0)
 
     @property
     def slot1(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(type(self), self._id, 1)
+        return _SlotTypeCommon(self, 1)
 
 
 class _OverheadShortCornerLockers(_BaseStructures, _Locks, _Opens):
     _hash: int = -1794932560
+    _prefab_name: int = "StructureOverheadShortCornerLocker"
 
     def __getitem__(self, name: str | int | float) -> "_OverheadShortCornerLockers":
         return _OverheadShortCornerLockers(name)
 
     @property
     def slot0(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(type(self), self._hash, 0, self._name)
+        return _SlotTypeCommons(self, 0)
 
     @property
     def slot1(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(type(self), self._hash, 1, self._name)
+        return _SlotTypeCommons(self, 1)
 
 
 OverheadShortCornerLockers: _OverheadShortCornerLockers = _OverheadShortCornerLockers()
@@ -12660,93 +12934,95 @@ OverheadShortCornerLockers: _OverheadShortCornerLockers = _OverheadShortCornerLo
 
 class OverheadShortLocker(_BaseStructure, _Lock, _Open):
     _hash: int = 1468249454
+    _prefab_name: int = "StructureOverheadShortLocker"
 
     @property
     def slot0(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(type(self), self._id, 0)
+        return _SlotTypeCommon(self, 0)
 
     @property
     def slot1(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(type(self), self._id, 1)
+        return _SlotTypeCommon(self, 1)
 
     @property
     def slot2(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(type(self), self._id, 2)
+        return _SlotTypeCommon(self, 2)
 
     @property
     def slot3(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(type(self), self._id, 3)
+        return _SlotTypeCommon(self, 3)
 
     @property
     def slot4(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(type(self), self._id, 4)
+        return _SlotTypeCommon(self, 4)
 
     @property
     def slot5(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(type(self), self._id, 5)
+        return _SlotTypeCommon(self, 5)
 
     @property
     def slot6(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(type(self), self._id, 6)
+        return _SlotTypeCommon(self, 6)
 
     @property
     def slot7(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(type(self), self._id, 7)
+        return _SlotTypeCommon(self, 7)
 
     @property
     def slot8(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(type(self), self._id, 8)
+        return _SlotTypeCommon(self, 8)
 
     @property
     def slot9(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(type(self), self._id, 9)
+        return _SlotTypeCommon(self, 9)
 
 
 class _OverheadShortLockers(_BaseStructures, _Locks, _Opens):
     _hash: int = 1468249454
+    _prefab_name: int = "StructureOverheadShortLocker"
 
     def __getitem__(self, name: str | int | float) -> "_OverheadShortLockers":
         return _OverheadShortLockers(name)
 
     @property
     def slot0(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(type(self), self._hash, 0, self._name)
+        return _SlotTypeCommons(self, 0)
 
     @property
     def slot1(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(type(self), self._hash, 1, self._name)
+        return _SlotTypeCommons(self, 1)
 
     @property
     def slot2(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(type(self), self._hash, 2, self._name)
+        return _SlotTypeCommons(self, 2)
 
     @property
     def slot3(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(type(self), self._hash, 3, self._name)
+        return _SlotTypeCommons(self, 3)
 
     @property
     def slot4(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(type(self), self._hash, 4, self._name)
+        return _SlotTypeCommons(self, 4)
 
     @property
     def slot5(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(type(self), self._hash, 5, self._name)
+        return _SlotTypeCommons(self, 5)
 
     @property
     def slot6(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(type(self), self._hash, 6, self._name)
+        return _SlotTypeCommons(self, 6)
 
     @property
     def slot7(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(type(self), self._hash, 7, self._name)
+        return _SlotTypeCommons(self, 7)
 
     @property
     def slot8(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(type(self), self._hash, 8, self._name)
+        return _SlotTypeCommons(self, 8)
 
     @property
     def slot9(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(type(self), self._hash, 9, self._name)
+        return _SlotTypeCommons(self, 9)
 
 
 OverheadShortLockers: _OverheadShortLockers = _OverheadShortLockers()
@@ -12754,10 +13030,11 @@ OverheadShortLockers: _OverheadShortLockers = _OverheadShortLockers()
 
 class LogicPidController(_BaseStructure, _Error, _Power, _SettingR):
     _hash: int = -1905534007
+    _prefab_name: int = "StructureLogicPidController"
 
     @property
     def DerivativeGain(self) -> float:
-        return _DeviceLogicType(self, self._id, "DerivativeGain")
+        return _DeviceLogicType(self, _LT.DerivativeGain)
 
     @DerivativeGain.setter
     def DerivativeGain(self, value: int | float):
@@ -12765,7 +13042,7 @@ class LogicPidController(_BaseStructure, _Error, _Power, _SettingR):
 
     @property
     def IntegralGain(self) -> float:
-        return _DeviceLogicType(self, self._id, "IntegralGain")
+        return _DeviceLogicType(self, _LT.IntegralGain)
 
     @IntegralGain.setter
     def IntegralGain(self, value: int | float):
@@ -12773,7 +13050,7 @@ class LogicPidController(_BaseStructure, _Error, _Power, _SettingR):
 
     @property
     def Maximum(self) -> float:
-        return _DeviceLogicType(self, self._id, "Maximum")
+        return _DeviceLogicType(self, _LT.Maximum)
 
     @Maximum.setter
     def Maximum(self, value: int | float):
@@ -12781,7 +13058,7 @@ class LogicPidController(_BaseStructure, _Error, _Power, _SettingR):
 
     @property
     def Minimum(self) -> float:
-        return _DeviceLogicType(self, self._id, "Minimum")
+        return _DeviceLogicType(self, _LT.Minimum)
 
     @Minimum.setter
     def Minimum(self, value: int | float):
@@ -12789,7 +13066,7 @@ class LogicPidController(_BaseStructure, _Error, _Power, _SettingR):
 
     @property
     def ProportionalGain(self) -> float:
-        return _DeviceLogicType(self, self._id, "ProportionalGain")
+        return _DeviceLogicType(self, _LT.ProportionalGain)
 
     @ProportionalGain.setter
     def ProportionalGain(self, value: int | float):
@@ -12797,7 +13074,7 @@ class LogicPidController(_BaseStructure, _Error, _Power, _SettingR):
 
     @property
     def Reset(self) -> float:
-        return _DeviceLogicType(self, self._id, "Reset")
+        return _DeviceLogicType(self, _LT.Reset)
 
     @Reset.setter
     def Reset(self, value: int | float):
@@ -12805,7 +13082,7 @@ class LogicPidController(_BaseStructure, _Error, _Power, _SettingR):
 
     @property
     def Setpoint(self) -> float:
-        return _DeviceLogicType(self, self._id, "Setpoint")
+        return _DeviceLogicType(self, _LT.Setpoint)
 
     @Setpoint.setter
     def Setpoint(self, value: int | float):
@@ -12814,13 +13091,14 @@ class LogicPidController(_BaseStructure, _Error, _Power, _SettingR):
 
 class _LogicPidControllers(_BaseStructures, _Errors, _Powers, _SettingRs):
     _hash: int = -1905534007
+    _prefab_name: int = "StructureLogicPidController"
 
     def __getitem__(self, name: str | int | float) -> "_LogicPidControllers":
         return _LogicPidControllers(name)
 
     @property
     def DerivativeGain(self) -> _DevicesLogicType:
-        return _DevicesLogicType(self._hash, "DerivativeGain", self._name)
+        return _DevicesLogicType(self, _LT.DerivativeGain)
 
     @DerivativeGain.setter
     def DerivativeGain(self, value: int | float):
@@ -12828,7 +13106,7 @@ class _LogicPidControllers(_BaseStructures, _Errors, _Powers, _SettingRs):
 
     @property
     def IntegralGain(self) -> _DevicesLogicType:
-        return _DevicesLogicType(self._hash, "IntegralGain", self._name)
+        return _DevicesLogicType(self, _LT.IntegralGain)
 
     @IntegralGain.setter
     def IntegralGain(self, value: int | float):
@@ -12836,7 +13114,7 @@ class _LogicPidControllers(_BaseStructures, _Errors, _Powers, _SettingRs):
 
     @property
     def Maximum(self) -> _DevicesLogicType:
-        return _DevicesLogicType(self._hash, "Maximum", self._name)
+        return _DevicesLogicType(self, _LT.Maximum)
 
     @Maximum.setter
     def Maximum(self, value: int | float):
@@ -12844,7 +13122,7 @@ class _LogicPidControllers(_BaseStructures, _Errors, _Powers, _SettingRs):
 
     @property
     def Minimum(self) -> _DevicesLogicType:
-        return _DevicesLogicType(self._hash, "Minimum", self._name)
+        return _DevicesLogicType(self, _LT.Minimum)
 
     @Minimum.setter
     def Minimum(self, value: int | float):
@@ -12852,7 +13130,7 @@ class _LogicPidControllers(_BaseStructures, _Errors, _Powers, _SettingRs):
 
     @property
     def ProportionalGain(self) -> _DevicesLogicType:
-        return _DevicesLogicType(self._hash, "ProportionalGain", self._name)
+        return _DevicesLogicType(self, _LT.ProportionalGain)
 
     @ProportionalGain.setter
     def ProportionalGain(self, value: int | float):
@@ -12860,7 +13138,7 @@ class _LogicPidControllers(_BaseStructures, _Errors, _Powers, _SettingRs):
 
     @property
     def Reset(self) -> _DevicesLogicType:
-        return _DevicesLogicType(self._hash, "Reset", self._name)
+        return _DevicesLogicType(self, _LT.Reset)
 
     @Reset.setter
     def Reset(self, value: int | float):
@@ -12868,7 +13146,7 @@ class _LogicPidControllers(_BaseStructures, _Errors, _Powers, _SettingRs):
 
     @property
     def Setpoint(self) -> _DevicesLogicType:
-        return _DevicesLogicType(self._hash, "Setpoint", self._name)
+        return _DevicesLogicType(self, _LT.Setpoint)
 
     @Setpoint.setter
     def Setpoint(self, value: int | float):
@@ -12891,10 +13169,11 @@ class PipeAnalysizer(
     _Volume,
 ):
     _hash: int = 435685051
+    _prefab_name: int = "StructurePipeAnalysizer"
 
     @property
     def NetworkFault(self) -> float:
-        return _DeviceLogicType(self, self._id, "NetworkFault")
+        return _DeviceLogicType(self, _LT.NetworkFault)
 
 
 class _PipeAnalysizers(
@@ -12910,13 +13189,14 @@ class _PipeAnalysizers(
     _Volumes,
 ):
     _hash: int = 435685051
+    _prefab_name: int = "StructurePipeAnalysizer"
 
     def __getitem__(self, name: str | int | float) -> "_PipeAnalysizers":
         return _PipeAnalysizers(name)
 
     @property
     def NetworkFault(self) -> _DevicesLogicType:
-        return _DevicesLogicType(self._hash, "NetworkFault", self._name)
+        return _DevicesLogicType(self, _LT.NetworkFault)
 
 
 PipeAnalysizers: _PipeAnalysizers = _PipeAnalysizers()
@@ -12924,10 +13204,12 @@ PipeAnalysizers: _PipeAnalysizers = _PipeAnalysizers()
 
 class PipeHeater(_BaseStructure, _Error, _Lock, _Power):
     _hash: int = -419758574
+    _prefab_name: int = "StructurePipeHeater"
 
 
 class _PipeHeaters(_BaseStructures, _Errors, _Locks, _Powers):
     _hash: int = -419758574
+    _prefab_name: int = "StructurePipeHeater"
 
     def __getitem__(self, name: str | int | float) -> "_PipeHeaters":
         return _PipeHeaters(name)
@@ -12938,10 +13220,12 @@ PipeHeaters: _PipeHeaters = _PipeHeaters()
 
 class LiquidPipeHeater(_BaseStructure, _Error, _Lock, _Power):
     _hash: int = -287495560
+    _prefab_name: int = "StructureLiquidPipeHeater"
 
 
 class _LiquidPipeHeaters(_BaseStructures, _Errors, _Locks, _Powers):
     _hash: int = -287495560
+    _prefab_name: int = "StructureLiquidPipeHeater"
 
     def __getitem__(self, name: str | int | float) -> "_LiquidPipeHeaters":
         return _LiquidPipeHeaters(name)
@@ -12952,29 +13236,31 @@ LiquidPipeHeaters: _LiquidPipeHeaters = _LiquidPipeHeaters()
 
 class PipeIgniter(_BaseStructure, _Activate, _Error):
     _hash: int = 1286441942
+    _prefab_name: int = "StructurePipeIgniter"
 
     @property
     def Power(self) -> float:
-        return _DeviceLogicType(self, self._id, "Power")
+        return _DeviceLogicType(self, _LT.Power)
 
     @property
     def RequiredPower(self) -> float:
-        return _DeviceLogicType(self, self._id, "RequiredPower")
+        return _DeviceLogicType(self, _LT.RequiredPower)
 
 
 class _PipeIgniters(_BaseStructures, _Activates, _Errors):
     _hash: int = 1286441942
+    _prefab_name: int = "StructurePipeIgniter"
 
     def __getitem__(self, name: str | int | float) -> "_PipeIgniters":
         return _PipeIgniters(name)
 
     @property
     def Power(self) -> _DevicesLogicType:
-        return _DevicesLogicType(self._hash, "Power", self._name)
+        return _DevicesLogicType(self, _LT.Power)
 
     @property
     def RequiredPower(self) -> _DevicesLogicType:
-        return _DevicesLogicType(self._hash, "RequiredPower", self._name)
+        return _DevicesLogicType(self, _LT.RequiredPower)
 
 
 PipeIgniters: _PipeIgniters = _PipeIgniters()
@@ -12982,10 +13268,11 @@ PipeIgniters: _PipeIgniters = _PipeIgniters()
 
 class PortablesConnector(_BaseStructure, _Maximum, _Open, _Ratio, _SettingW):
     _hash: int = -899013427
+    _prefab_name: int = "StructurePortablesConnector"
 
     @property
     def slot0(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(type(self), self._id, 0)
+        return _SlotTypeCommon(self, 0)
 
     @property
     def PortableSlot(self) -> _SlotTypeCommon:
@@ -12994,13 +13281,14 @@ class PortablesConnector(_BaseStructure, _Maximum, _Open, _Ratio, _SettingW):
 
 class _PortablesConnectors(_BaseStructures, _Maximums, _Opens, _Ratios, _SettingWs):
     _hash: int = -899013427
+    _prefab_name: int = "StructurePortablesConnector"
 
     def __getitem__(self, name: str | int | float) -> "_PortablesConnectors":
         return _PortablesConnectors(name)
 
     @property
     def slot0(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(type(self), self._hash, 0, self._name)
+        return _SlotTypeCommons(self, 0)
 
     @property
     def PortableSlot(self) -> _SlotTypeCommons:
@@ -13012,10 +13300,11 @@ PortablesConnectors: _PortablesConnectors = _PortablesConnectors()
 
 class PowerConnector(_BaseStructure, _Open):
     _hash: int = -782951720
+    _prefab_name: int = "StructurePowerConnector"
 
     @property
     def slot0(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(type(self), self._id, 0)
+        return _SlotTypeCommon(self, 0)
 
     @property
     def Portableslot(self) -> _SlotTypeCommon:
@@ -13024,13 +13313,14 @@ class PowerConnector(_BaseStructure, _Open):
 
 class _PowerConnectors(_BaseStructures, _Opens):
     _hash: int = -782951720
+    _prefab_name: int = "StructurePowerConnector"
 
     def __getitem__(self, name: str | int | float) -> "_PowerConnectors":
         return _PowerConnectors(name)
 
     @property
     def slot0(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(type(self), self._hash, 0, self._name)
+        return _SlotTypeCommons(self, 0)
 
     @property
     def Portableslot(self) -> _SlotTypeCommons:
@@ -13042,10 +13332,12 @@ PowerConnectors: _PowerConnectors = _PowerConnectors()
 
 class PowerTransmitterOmni(_BaseStructure, _Error, _Power):
     _hash: int = -327468845
+    _prefab_name: int = "StructurePowerTransmitterOmni"
 
 
 class _PowerTransmitterOmnis(_BaseStructures, _Errors, _Powers):
     _hash: int = -327468845
+    _prefab_name: int = "StructurePowerTransmitterOmni"
 
     def __getitem__(self, name: str | int | float) -> "_PowerTransmitterOmnis":
         return _PowerTransmitterOmnis(name)
@@ -13056,10 +13348,11 @@ PowerTransmitterOmnis: _PowerTransmitterOmnis = _PowerTransmitterOmnis()
 
 class Bench(_BaseStructure, _Error, _Power):
     _hash: int = -2042448192
+    _prefab_name: int = "StructureBench"
 
     @property
     def slot0(self) -> _SlotTypeAppliance:
-        return _SlotTypeAppliance(type(self), self._id, 0)
+        return _SlotTypeAppliance(self, 0)
 
     @property
     def Appliance1(self) -> _SlotTypeAppliance:
@@ -13067,7 +13360,7 @@ class Bench(_BaseStructure, _Error, _Power):
 
     @property
     def slot1(self) -> _SlotTypeAppliance:
-        return _SlotTypeAppliance(type(self), self._id, 1)
+        return _SlotTypeAppliance(self, 1)
 
     @property
     def Appliance2(self) -> _SlotTypeAppliance:
@@ -13076,13 +13369,14 @@ class Bench(_BaseStructure, _Error, _Power):
 
 class _Benchs(_BaseStructures, _Errors, _Powers):
     _hash: int = -2042448192
+    _prefab_name: int = "StructureBench"
 
     def __getitem__(self, name: str | int | float) -> "_Benchs":
         return _Benchs(name)
 
     @property
     def slot0(self) -> _SlotTypeAppliances:
-        return _SlotTypeAppliances(type(self), self._hash, 0, self._name)
+        return _SlotTypeAppliances(self, 0)
 
     @property
     def Appliance1(self) -> _SlotTypeAppliances:
@@ -13090,7 +13384,7 @@ class _Benchs(_BaseStructures, _Errors, _Powers):
 
     @property
     def slot1(self) -> _SlotTypeAppliances:
-        return _SlotTypeAppliances(type(self), self._hash, 1, self._name)
+        return _SlotTypeAppliances(self, 1)
 
     @property
     def Appliance2(self) -> _SlotTypeAppliances:
@@ -13102,14 +13396,15 @@ Benchs: _Benchs = _Benchs()
 
 class PoweredVent(_BaseStructure, _Error, _Lock, _Mode, _Power):
     _hash: int = 938836756
+    _prefab_name: int = "StructurePoweredVent"
 
     @property
     def CombustionOutput(self) -> float:
-        return _DeviceLogicType(self, self._id, "CombustionOutput")
+        return _DeviceLogicType(self, _LT.CombustionOutput)
 
     @property
     def PressureExternal(self) -> float:
-        return _DeviceLogicType(self, self._id, "PressureExternal")
+        return _DeviceLogicType(self, _LT.PressureExternal)
 
     @PressureExternal.setter
     def PressureExternal(self, value: int | float):
@@ -13117,58 +13412,59 @@ class PoweredVent(_BaseStructure, _Error, _Lock, _Mode, _Power):
 
     @property
     def PressureOutput(self) -> float:
-        return _DeviceLogicType(self, self._id, "PressureOutput")
+        return _DeviceLogicType(self, _LT.PressureOutput)
 
     @property
     def RatioCarbonDioxideOutput(self) -> float:
-        return _DeviceLogicType(self, self._id, "RatioCarbonDioxideOutput")
+        return _DeviceLogicType(self, _LT.RatioCarbonDioxideOutput)
 
     @property
     def RatioNitrogenOutput(self) -> float:
-        return _DeviceLogicType(self, self._id, "RatioNitrogenOutput")
+        return _DeviceLogicType(self, _LT.RatioNitrogenOutput)
 
     @property
     def RatioNitrousOxideOutput(self) -> float:
-        return _DeviceLogicType(self, self._id, "RatioNitrousOxideOutput")
+        return _DeviceLogicType(self, _LT.RatioNitrousOxideOutput)
 
     @property
     def RatioOxygenOutput(self) -> float:
-        return _DeviceLogicType(self, self._id, "RatioOxygenOutput")
+        return _DeviceLogicType(self, _LT.RatioOxygenOutput)
 
     @property
     def RatioPollutantOutput(self) -> float:
-        return _DeviceLogicType(self, self._id, "RatioPollutantOutput")
+        return _DeviceLogicType(self, _LT.RatioPollutantOutput)
 
     @property
     def RatioVolatilesOutput(self) -> float:
-        return _DeviceLogicType(self, self._id, "RatioVolatilesOutput")
+        return _DeviceLogicType(self, _LT.RatioVolatilesOutput)
 
     @property
     def RatioWaterOutput(self) -> float:
-        return _DeviceLogicType(self, self._id, "RatioWaterOutput")
+        return _DeviceLogicType(self, _LT.RatioWaterOutput)
 
     @property
     def TemperatureOutput(self) -> float:
-        return _DeviceLogicType(self, self._id, "TemperatureOutput")
+        return _DeviceLogicType(self, _LT.TemperatureOutput)
 
     @property
     def TotalMolesOutput(self) -> float:
-        return _DeviceLogicType(self, self._id, "TotalMolesOutput")
+        return _DeviceLogicType(self, _LT.TotalMolesOutput)
 
 
 class _PoweredVents(_BaseStructures, _Errors, _Locks, _Modes, _Powers):
     _hash: int = 938836756
+    _prefab_name: int = "StructurePoweredVent"
 
     def __getitem__(self, name: str | int | float) -> "_PoweredVents":
         return _PoweredVents(name)
 
     @property
     def CombustionOutput(self) -> _DevicesLogicType:
-        return _DevicesLogicType(self._hash, "CombustionOutput", self._name)
+        return _DevicesLogicType(self, _LT.CombustionOutput)
 
     @property
     def PressureExternal(self) -> _DevicesLogicType:
-        return _DevicesLogicType(self._hash, "PressureExternal", self._name)
+        return _DevicesLogicType(self, _LT.PressureExternal)
 
     @PressureExternal.setter
     def PressureExternal(self, value: int | float):
@@ -13176,43 +13472,43 @@ class _PoweredVents(_BaseStructures, _Errors, _Locks, _Modes, _Powers):
 
     @property
     def PressureOutput(self) -> _DevicesLogicType:
-        return _DevicesLogicType(self._hash, "PressureOutput", self._name)
+        return _DevicesLogicType(self, _LT.PressureOutput)
 
     @property
     def RatioCarbonDioxideOutput(self) -> _DevicesLogicType:
-        return _DevicesLogicType(self._hash, "RatioCarbonDioxideOutput", self._name)
+        return _DevicesLogicType(self, _LT.RatioCarbonDioxideOutput)
 
     @property
     def RatioNitrogenOutput(self) -> _DevicesLogicType:
-        return _DevicesLogicType(self._hash, "RatioNitrogenOutput", self._name)
+        return _DevicesLogicType(self, _LT.RatioNitrogenOutput)
 
     @property
     def RatioNitrousOxideOutput(self) -> _DevicesLogicType:
-        return _DevicesLogicType(self._hash, "RatioNitrousOxideOutput", self._name)
+        return _DevicesLogicType(self, _LT.RatioNitrousOxideOutput)
 
     @property
     def RatioOxygenOutput(self) -> _DevicesLogicType:
-        return _DevicesLogicType(self._hash, "RatioOxygenOutput", self._name)
+        return _DevicesLogicType(self, _LT.RatioOxygenOutput)
 
     @property
     def RatioPollutantOutput(self) -> _DevicesLogicType:
-        return _DevicesLogicType(self._hash, "RatioPollutantOutput", self._name)
+        return _DevicesLogicType(self, _LT.RatioPollutantOutput)
 
     @property
     def RatioVolatilesOutput(self) -> _DevicesLogicType:
-        return _DevicesLogicType(self._hash, "RatioVolatilesOutput", self._name)
+        return _DevicesLogicType(self, _LT.RatioVolatilesOutput)
 
     @property
     def RatioWaterOutput(self) -> _DevicesLogicType:
-        return _DevicesLogicType(self._hash, "RatioWaterOutput", self._name)
+        return _DevicesLogicType(self, _LT.RatioWaterOutput)
 
     @property
     def TemperatureOutput(self) -> _DevicesLogicType:
-        return _DevicesLogicType(self._hash, "TemperatureOutput", self._name)
+        return _DevicesLogicType(self, _LT.TemperatureOutput)
 
     @property
     def TotalMolesOutput(self) -> _DevicesLogicType:
-        return _DevicesLogicType(self._hash, "TotalMolesOutput", self._name)
+        return _DevicesLogicType(self, _LT.TotalMolesOutput)
 
 
 PoweredVents: _PoweredVents = _PoweredVents()
@@ -13220,14 +13516,15 @@ PoweredVents: _PoweredVents = _PoweredVents()
 
 class PoweredVentLarge(_BaseStructure, _Error, _Lock, _Mode, _Power):
     _hash: int = -785498334
+    _prefab_name: int = "StructurePoweredVentLarge"
 
     @property
     def CombustionOutput(self) -> float:
-        return _DeviceLogicType(self, self._id, "CombustionOutput")
+        return _DeviceLogicType(self, _LT.CombustionOutput)
 
     @property
     def PressureExternal(self) -> float:
-        return _DeviceLogicType(self, self._id, "PressureExternal")
+        return _DeviceLogicType(self, _LT.PressureExternal)
 
     @PressureExternal.setter
     def PressureExternal(self, value: int | float):
@@ -13235,58 +13532,59 @@ class PoweredVentLarge(_BaseStructure, _Error, _Lock, _Mode, _Power):
 
     @property
     def PressureOutput(self) -> float:
-        return _DeviceLogicType(self, self._id, "PressureOutput")
+        return _DeviceLogicType(self, _LT.PressureOutput)
 
     @property
     def RatioCarbonDioxideOutput(self) -> float:
-        return _DeviceLogicType(self, self._id, "RatioCarbonDioxideOutput")
+        return _DeviceLogicType(self, _LT.RatioCarbonDioxideOutput)
 
     @property
     def RatioNitrogenOutput(self) -> float:
-        return _DeviceLogicType(self, self._id, "RatioNitrogenOutput")
+        return _DeviceLogicType(self, _LT.RatioNitrogenOutput)
 
     @property
     def RatioNitrousOxideOutput(self) -> float:
-        return _DeviceLogicType(self, self._id, "RatioNitrousOxideOutput")
+        return _DeviceLogicType(self, _LT.RatioNitrousOxideOutput)
 
     @property
     def RatioOxygenOutput(self) -> float:
-        return _DeviceLogicType(self, self._id, "RatioOxygenOutput")
+        return _DeviceLogicType(self, _LT.RatioOxygenOutput)
 
     @property
     def RatioPollutantOutput(self) -> float:
-        return _DeviceLogicType(self, self._id, "RatioPollutantOutput")
+        return _DeviceLogicType(self, _LT.RatioPollutantOutput)
 
     @property
     def RatioVolatilesOutput(self) -> float:
-        return _DeviceLogicType(self, self._id, "RatioVolatilesOutput")
+        return _DeviceLogicType(self, _LT.RatioVolatilesOutput)
 
     @property
     def RatioWaterOutput(self) -> float:
-        return _DeviceLogicType(self, self._id, "RatioWaterOutput")
+        return _DeviceLogicType(self, _LT.RatioWaterOutput)
 
     @property
     def TemperatureOutput(self) -> float:
-        return _DeviceLogicType(self, self._id, "TemperatureOutput")
+        return _DeviceLogicType(self, _LT.TemperatureOutput)
 
     @property
     def TotalMolesOutput(self) -> float:
-        return _DeviceLogicType(self, self._id, "TotalMolesOutput")
+        return _DeviceLogicType(self, _LT.TotalMolesOutput)
 
 
 class _PoweredVentLarges(_BaseStructures, _Errors, _Locks, _Modes, _Powers):
     _hash: int = -785498334
+    _prefab_name: int = "StructurePoweredVentLarge"
 
     def __getitem__(self, name: str | int | float) -> "_PoweredVentLarges":
         return _PoweredVentLarges(name)
 
     @property
     def CombustionOutput(self) -> _DevicesLogicType:
-        return _DevicesLogicType(self._hash, "CombustionOutput", self._name)
+        return _DevicesLogicType(self, _LT.CombustionOutput)
 
     @property
     def PressureExternal(self) -> _DevicesLogicType:
-        return _DevicesLogicType(self._hash, "PressureExternal", self._name)
+        return _DevicesLogicType(self, _LT.PressureExternal)
 
     @PressureExternal.setter
     def PressureExternal(self, value: int | float):
@@ -13294,43 +13592,43 @@ class _PoweredVentLarges(_BaseStructures, _Errors, _Locks, _Modes, _Powers):
 
     @property
     def PressureOutput(self) -> _DevicesLogicType:
-        return _DevicesLogicType(self._hash, "PressureOutput", self._name)
+        return _DevicesLogicType(self, _LT.PressureOutput)
 
     @property
     def RatioCarbonDioxideOutput(self) -> _DevicesLogicType:
-        return _DevicesLogicType(self._hash, "RatioCarbonDioxideOutput", self._name)
+        return _DevicesLogicType(self, _LT.RatioCarbonDioxideOutput)
 
     @property
     def RatioNitrogenOutput(self) -> _DevicesLogicType:
-        return _DevicesLogicType(self._hash, "RatioNitrogenOutput", self._name)
+        return _DevicesLogicType(self, _LT.RatioNitrogenOutput)
 
     @property
     def RatioNitrousOxideOutput(self) -> _DevicesLogicType:
-        return _DevicesLogicType(self._hash, "RatioNitrousOxideOutput", self._name)
+        return _DevicesLogicType(self, _LT.RatioNitrousOxideOutput)
 
     @property
     def RatioOxygenOutput(self) -> _DevicesLogicType:
-        return _DevicesLogicType(self._hash, "RatioOxygenOutput", self._name)
+        return _DevicesLogicType(self, _LT.RatioOxygenOutput)
 
     @property
     def RatioPollutantOutput(self) -> _DevicesLogicType:
-        return _DevicesLogicType(self._hash, "RatioPollutantOutput", self._name)
+        return _DevicesLogicType(self, _LT.RatioPollutantOutput)
 
     @property
     def RatioVolatilesOutput(self) -> _DevicesLogicType:
-        return _DevicesLogicType(self._hash, "RatioVolatilesOutput", self._name)
+        return _DevicesLogicType(self, _LT.RatioVolatilesOutput)
 
     @property
     def RatioWaterOutput(self) -> _DevicesLogicType:
-        return _DevicesLogicType(self._hash, "RatioWaterOutput", self._name)
+        return _DevicesLogicType(self, _LT.RatioWaterOutput)
 
     @property
     def TemperatureOutput(self) -> _DevicesLogicType:
-        return _DevicesLogicType(self._hash, "TemperatureOutput", self._name)
+        return _DevicesLogicType(self, _LT.TemperatureOutput)
 
     @property
     def TotalMolesOutput(self) -> _DevicesLogicType:
-        return _DevicesLogicType(self._hash, "TotalMolesOutput", self._name)
+        return _DevicesLogicType(self, _LT.TotalMolesOutput)
 
 
 PoweredVentLarges: _PoweredVentLarges = _PoweredVentLarges()
@@ -13340,12 +13638,14 @@ class PressurantValve(
     _BaseStructure, _Error, _Lock, _Maximum, _Power, _Ratio, _SettingW
 ):
     _hash: int = 23052817
+    _prefab_name: int = "StructurePressurantValve"
 
 
 class _PressurantValves(
     _BaseStructures, _Errors, _Locks, _Maximums, _Powers, _Ratios, _SettingWs
 ):
     _hash: int = 23052817
+    _prefab_name: int = "StructurePressurantValve"
 
     def __getitem__(self, name: str | int | float) -> "_PressurantValves":
         return _PressurantValves(name)
@@ -13365,14 +13665,15 @@ class PressureFedGasEngine(
     _Temperature,
 ):
     _hash: int = -624011170
+    _prefab_name: int = "StructurePressureFedGasEngine"
 
     @property
     def PassedMoles(self) -> float:
-        return _DeviceLogicType(self, self._id, "PassedMoles")
+        return _DeviceLogicType(self, _LT.PassedMoles)
 
     @property
     def Throttle(self) -> float:
-        return _DeviceLogicType(self, self._id, "Throttle")
+        return _DeviceLogicType(self, _LT.Throttle)
 
     @Throttle.setter
     def Throttle(self, value: int | float):
@@ -13390,17 +13691,18 @@ class _PressureFedGasEngines(
     _Temperatures,
 ):
     _hash: int = -624011170
+    _prefab_name: int = "StructurePressureFedGasEngine"
 
     def __getitem__(self, name: str | int | float) -> "_PressureFedGasEngines":
         return _PressureFedGasEngines(name)
 
     @property
     def PassedMoles(self) -> _DevicesLogicType:
-        return _DevicesLogicType(self._hash, "PassedMoles", self._name)
+        return _DevicesLogicType(self, _LT.PassedMoles)
 
     @property
     def Throttle(self) -> _DevicesLogicType:
-        return _DevicesLogicType(self._hash, "Throttle", self._name)
+        return _DevicesLogicType(self, _LT.Throttle)
 
     @Throttle.setter
     def Throttle(self, value: int | float):
@@ -13424,14 +13726,15 @@ class PressureFedLiquidEngine(
     _Temperature,
 ):
     _hash: int = 379750958
+    _prefab_name: int = "StructurePressureFedLiquidEngine"
 
     @property
     def PassedMoles(self) -> float:
-        return _DeviceLogicType(self, self._id, "PassedMoles")
+        return _DeviceLogicType(self, _LT.PassedMoles)
 
     @property
     def Throttle(self) -> float:
-        return _DeviceLogicType(self, self._id, "Throttle")
+        return _DeviceLogicType(self, _LT.Throttle)
 
     @Throttle.setter
     def Throttle(self, value: int | float):
@@ -13452,17 +13755,18 @@ class _PressureFedLiquidEngines(
     _Temperatures,
 ):
     _hash: int = 379750958
+    _prefab_name: int = "StructurePressureFedLiquidEngine"
 
     def __getitem__(self, name: str | int | float) -> "_PressureFedLiquidEngines":
         return _PressureFedLiquidEngines(name)
 
     @property
     def PassedMoles(self) -> _DevicesLogicType:
-        return _DevicesLogicType(self._hash, "PassedMoles", self._name)
+        return _DevicesLogicType(self, _LT.PassedMoles)
 
     @property
     def Throttle(self) -> _DevicesLogicType:
-        return _DevicesLogicType(self._hash, "Throttle", self._name)
+        return _DevicesLogicType(self, _LT.Throttle)
 
     @Throttle.setter
     def Throttle(self, value: int | float):
@@ -13476,12 +13780,14 @@ class PressureRegulator(
     _BaseStructure, _Error, _Lock, _Maximum, _Power, _Ratio, _SettingW
 ):
     _hash: int = 209854039
+    _prefab_name: int = "StructurePressureRegulator"
 
 
 class _PressureRegulators(
     _BaseStructures, _Errors, _Locks, _Maximums, _Powers, _Ratios, _SettingWs
 ):
     _hash: int = 209854039
+    _prefab_name: int = "StructurePressureRegulator"
 
     def __getitem__(self, name: str | int | float) -> "_PressureRegulators":
         return _PressureRegulators(name)
@@ -13492,21 +13798,23 @@ PressureRegulators: _PressureRegulators = _PressureRegulators()
 
 class ProximitySensor(_BaseStructure, _Quantity, _SettingW):
     _hash: int = 568800213
+    _prefab_name: int = "StructureProximitySensor"
 
     @property
     def Activate(self) -> float:
-        return _DeviceLogicType(self, self._id, "Activate")
+        return _DeviceLogicType(self, _LT.Activate)
 
 
 class _ProximitySensors(_BaseStructures, _Quantitys, _SettingWs):
     _hash: int = 568800213
+    _prefab_name: int = "StructureProximitySensor"
 
     def __getitem__(self, name: str | int | float) -> "_ProximitySensors":
         return _ProximitySensors(name)
 
     @property
     def Activate(self) -> _DevicesLogicType:
-        return _DevicesLogicType(self._hash, "Activate", self._name)
+        return _DevicesLogicType(self, _LT.Activate)
 
 
 ProximitySensors: _ProximitySensors = _ProximitySensors()
@@ -13523,14 +13831,15 @@ class GovernedGasEngine(
     _Temperature,
 ):
     _hash: int = -214232602
+    _prefab_name: int = "StructureGovernedGasEngine"
 
     @property
     def PassedMoles(self) -> float:
-        return _DeviceLogicType(self, self._id, "PassedMoles")
+        return _DeviceLogicType(self, _LT.PassedMoles)
 
     @property
     def Throttle(self) -> float:
-        return _DeviceLogicType(self, self._id, "Throttle")
+        return _DeviceLogicType(self, _LT.Throttle)
 
     @Throttle.setter
     def Throttle(self, value: int | float):
@@ -13548,17 +13857,18 @@ class _GovernedGasEngines(
     _Temperatures,
 ):
     _hash: int = -214232602
+    _prefab_name: int = "StructureGovernedGasEngine"
 
     def __getitem__(self, name: str | int | float) -> "_GovernedGasEngines":
         return _GovernedGasEngines(name)
 
     @property
     def PassedMoles(self) -> _DevicesLogicType:
-        return _DevicesLogicType(self._hash, "PassedMoles", self._name)
+        return _DevicesLogicType(self, _LT.PassedMoles)
 
     @property
     def Throttle(self) -> _DevicesLogicType:
-        return _DevicesLogicType(self._hash, "Throttle", self._name)
+        return _DevicesLogicType(self, _LT.Throttle)
 
     @Throttle.setter
     def Throttle(self, value: int | float):
@@ -13582,14 +13892,15 @@ class PumpedLiquidEngine(
     _Temperature,
 ):
     _hash: int = -2031440019
+    _prefab_name: int = "StructurePumpedLiquidEngine"
 
     @property
     def PassedMoles(self) -> float:
-        return _DeviceLogicType(self, self._id, "PassedMoles")
+        return _DeviceLogicType(self, _LT.PassedMoles)
 
     @property
     def Throttle(self) -> float:
-        return _DeviceLogicType(self, self._id, "Throttle")
+        return _DeviceLogicType(self, _LT.Throttle)
 
     @Throttle.setter
     def Throttle(self, value: int | float):
@@ -13610,17 +13921,18 @@ class _PumpedLiquidEngines(
     _Temperatures,
 ):
     _hash: int = -2031440019
+    _prefab_name: int = "StructurePumpedLiquidEngine"
 
     def __getitem__(self, name: str | int | float) -> "_PumpedLiquidEngines":
         return _PumpedLiquidEngines(name)
 
     @property
     def PassedMoles(self) -> _DevicesLogicType:
-        return _DevicesLogicType(self._hash, "PassedMoles", self._name)
+        return _DevicesLogicType(self, _LT.PassedMoles)
 
     @property
     def Throttle(self) -> _DevicesLogicType:
-        return _DevicesLogicType(self._hash, "Throttle", self._name)
+        return _DevicesLogicType(self, _LT.Throttle)
 
     @Throttle.setter
     def Throttle(self, value: int | float):
@@ -13632,12 +13944,14 @@ PumpedLiquidEngines: _PumpedLiquidEngines = _PumpedLiquidEngines()
 
 class PurgeValve(_BaseStructure, _Error, _Lock, _Maximum, _Power, _Ratio, _SettingW):
     _hash: int = -737232128
+    _prefab_name: int = "StructurePurgeValve"
 
 
 class _PurgeValves(
     _BaseStructures, _Errors, _Locks, _Maximums, _Powers, _Ratios, _SettingWs
 ):
     _hash: int = -737232128
+    _prefab_name: int = "StructurePurgeValve"
 
     def __getitem__(self, name: str | int | float) -> "_PurgeValves":
         return _PurgeValves(name)
@@ -13648,10 +13962,12 @@ PurgeValves: _PurgeValves = _PurgeValves()
 
 class LogicReagentReader(_BaseStructure, _Error, _Power, _SettingR):
     _hash: int = -124308857
+    _prefab_name: int = "StructureLogicReagentReader"
 
 
 class _LogicReagentReaders(_BaseStructures, _Errors, _Powers, _SettingRs):
     _hash: int = -124308857
+    _prefab_name: int = "StructureLogicReagentReader"
 
     def __getitem__(self, name: str | int | float) -> "_LogicReagentReaders":
         return _LogicReagentReaders(name)
@@ -13671,10 +13987,11 @@ class Recycler(
     _Reagents,
 ):
     _hash: int = -1633947337
+    _prefab_name: int = "StructureRecycler"
 
     @property
     def slot0(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(type(self), self._id, 0)
+        return _SlotTypeCommon(self, 0)
 
     @property
     def Import(self) -> _SlotTypeCommon:
@@ -13682,7 +13999,7 @@ class Recycler(
 
     @property
     def slot1(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(type(self), self._id, 1)
+        return _SlotTypeCommon(self, 1)
 
     @property
     def Export(self) -> _SlotTypeCommon:
@@ -13700,13 +14017,14 @@ class _Recyclers(
     _Reagentss,
 ):
     _hash: int = -1633947337
+    _prefab_name: int = "StructureRecycler"
 
     def __getitem__(self, name: str | int | float) -> "_Recyclers":
         return _Recyclers(name)
 
     @property
     def slot0(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(type(self), self._hash, 0, self._name)
+        return _SlotTypeCommons(self, 0)
 
     @property
     def Import(self) -> _SlotTypeCommons:
@@ -13714,7 +14032,7 @@ class _Recyclers(
 
     @property
     def slot1(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(type(self), self._hash, 1, self._name)
+        return _SlotTypeCommons(self, 1)
 
     @property
     def Export(self) -> _SlotTypeCommons:
@@ -13743,10 +14061,11 @@ class RefrigeratedVendingMachine(
     _Temperature,
 ):
     _hash: int = -1577831321
+    _prefab_name: int = "StructureRefrigeratedVendingMachine"
 
     @property
     def RequestHash(self) -> float:
-        return _DeviceLogicType(self, self._id, "RequestHash")
+        return _DeviceLogicType(self, _LT.RequestHash)
 
     @RequestHash.setter
     def RequestHash(self, value: int | float):
@@ -13754,7 +14073,7 @@ class RefrigeratedVendingMachine(
 
     @property
     def slot0(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(type(self), self._id, 0)
+        return _SlotTypeCommon(self, 0)
 
     @property
     def Import(self) -> _SlotTypeCommon:
@@ -13762,7 +14081,7 @@ class RefrigeratedVendingMachine(
 
     @property
     def slot1(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(type(self), self._id, 1)
+        return _SlotTypeCommon(self, 1)
 
     @property
     def Export(self) -> _SlotTypeCommon:
@@ -13770,403 +14089,403 @@ class RefrigeratedVendingMachine(
 
     @property
     def slot10(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(type(self), self._id, 10)
+        return _SlotTypeCommon(self, 10)
 
     @property
     def slot100(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(type(self), self._id, 100)
+        return _SlotTypeCommon(self, 100)
 
     @property
     def slot101(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(type(self), self._id, 101)
+        return _SlotTypeCommon(self, 101)
 
     @property
     def slot11(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(type(self), self._id, 11)
+        return _SlotTypeCommon(self, 11)
 
     @property
     def slot12(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(type(self), self._id, 12)
+        return _SlotTypeCommon(self, 12)
 
     @property
     def slot13(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(type(self), self._id, 13)
+        return _SlotTypeCommon(self, 13)
 
     @property
     def slot14(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(type(self), self._id, 14)
+        return _SlotTypeCommon(self, 14)
 
     @property
     def slot15(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(type(self), self._id, 15)
+        return _SlotTypeCommon(self, 15)
 
     @property
     def slot16(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(type(self), self._id, 16)
+        return _SlotTypeCommon(self, 16)
 
     @property
     def slot17(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(type(self), self._id, 17)
+        return _SlotTypeCommon(self, 17)
 
     @property
     def slot18(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(type(self), self._id, 18)
+        return _SlotTypeCommon(self, 18)
 
     @property
     def slot19(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(type(self), self._id, 19)
+        return _SlotTypeCommon(self, 19)
 
     @property
     def slot2(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(type(self), self._id, 2)
+        return _SlotTypeCommon(self, 2)
 
     @property
     def slot20(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(type(self), self._id, 20)
+        return _SlotTypeCommon(self, 20)
 
     @property
     def slot21(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(type(self), self._id, 21)
+        return _SlotTypeCommon(self, 21)
 
     @property
     def slot22(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(type(self), self._id, 22)
+        return _SlotTypeCommon(self, 22)
 
     @property
     def slot23(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(type(self), self._id, 23)
+        return _SlotTypeCommon(self, 23)
 
     @property
     def slot24(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(type(self), self._id, 24)
+        return _SlotTypeCommon(self, 24)
 
     @property
     def slot25(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(type(self), self._id, 25)
+        return _SlotTypeCommon(self, 25)
 
     @property
     def slot26(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(type(self), self._id, 26)
+        return _SlotTypeCommon(self, 26)
 
     @property
     def slot27(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(type(self), self._id, 27)
+        return _SlotTypeCommon(self, 27)
 
     @property
     def slot28(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(type(self), self._id, 28)
+        return _SlotTypeCommon(self, 28)
 
     @property
     def slot29(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(type(self), self._id, 29)
+        return _SlotTypeCommon(self, 29)
 
     @property
     def slot3(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(type(self), self._id, 3)
+        return _SlotTypeCommon(self, 3)
 
     @property
     def slot30(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(type(self), self._id, 30)
+        return _SlotTypeCommon(self, 30)
 
     @property
     def slot31(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(type(self), self._id, 31)
+        return _SlotTypeCommon(self, 31)
 
     @property
     def slot32(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(type(self), self._id, 32)
+        return _SlotTypeCommon(self, 32)
 
     @property
     def slot33(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(type(self), self._id, 33)
+        return _SlotTypeCommon(self, 33)
 
     @property
     def slot34(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(type(self), self._id, 34)
+        return _SlotTypeCommon(self, 34)
 
     @property
     def slot35(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(type(self), self._id, 35)
+        return _SlotTypeCommon(self, 35)
 
     @property
     def slot36(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(type(self), self._id, 36)
+        return _SlotTypeCommon(self, 36)
 
     @property
     def slot37(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(type(self), self._id, 37)
+        return _SlotTypeCommon(self, 37)
 
     @property
     def slot38(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(type(self), self._id, 38)
+        return _SlotTypeCommon(self, 38)
 
     @property
     def slot39(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(type(self), self._id, 39)
+        return _SlotTypeCommon(self, 39)
 
     @property
     def slot4(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(type(self), self._id, 4)
+        return _SlotTypeCommon(self, 4)
 
     @property
     def slot40(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(type(self), self._id, 40)
+        return _SlotTypeCommon(self, 40)
 
     @property
     def slot41(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(type(self), self._id, 41)
+        return _SlotTypeCommon(self, 41)
 
     @property
     def slot42(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(type(self), self._id, 42)
+        return _SlotTypeCommon(self, 42)
 
     @property
     def slot43(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(type(self), self._id, 43)
+        return _SlotTypeCommon(self, 43)
 
     @property
     def slot44(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(type(self), self._id, 44)
+        return _SlotTypeCommon(self, 44)
 
     @property
     def slot45(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(type(self), self._id, 45)
+        return _SlotTypeCommon(self, 45)
 
     @property
     def slot46(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(type(self), self._id, 46)
+        return _SlotTypeCommon(self, 46)
 
     @property
     def slot47(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(type(self), self._id, 47)
+        return _SlotTypeCommon(self, 47)
 
     @property
     def slot48(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(type(self), self._id, 48)
+        return _SlotTypeCommon(self, 48)
 
     @property
     def slot49(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(type(self), self._id, 49)
+        return _SlotTypeCommon(self, 49)
 
     @property
     def slot5(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(type(self), self._id, 5)
+        return _SlotTypeCommon(self, 5)
 
     @property
     def slot50(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(type(self), self._id, 50)
+        return _SlotTypeCommon(self, 50)
 
     @property
     def slot51(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(type(self), self._id, 51)
+        return _SlotTypeCommon(self, 51)
 
     @property
     def slot52(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(type(self), self._id, 52)
+        return _SlotTypeCommon(self, 52)
 
     @property
     def slot53(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(type(self), self._id, 53)
+        return _SlotTypeCommon(self, 53)
 
     @property
     def slot54(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(type(self), self._id, 54)
+        return _SlotTypeCommon(self, 54)
 
     @property
     def slot55(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(type(self), self._id, 55)
+        return _SlotTypeCommon(self, 55)
 
     @property
     def slot56(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(type(self), self._id, 56)
+        return _SlotTypeCommon(self, 56)
 
     @property
     def slot57(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(type(self), self._id, 57)
+        return _SlotTypeCommon(self, 57)
 
     @property
     def slot58(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(type(self), self._id, 58)
+        return _SlotTypeCommon(self, 58)
 
     @property
     def slot59(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(type(self), self._id, 59)
+        return _SlotTypeCommon(self, 59)
 
     @property
     def slot6(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(type(self), self._id, 6)
+        return _SlotTypeCommon(self, 6)
 
     @property
     def slot60(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(type(self), self._id, 60)
+        return _SlotTypeCommon(self, 60)
 
     @property
     def slot61(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(type(self), self._id, 61)
+        return _SlotTypeCommon(self, 61)
 
     @property
     def slot62(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(type(self), self._id, 62)
+        return _SlotTypeCommon(self, 62)
 
     @property
     def slot63(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(type(self), self._id, 63)
+        return _SlotTypeCommon(self, 63)
 
     @property
     def slot64(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(type(self), self._id, 64)
+        return _SlotTypeCommon(self, 64)
 
     @property
     def slot65(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(type(self), self._id, 65)
+        return _SlotTypeCommon(self, 65)
 
     @property
     def slot66(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(type(self), self._id, 66)
+        return _SlotTypeCommon(self, 66)
 
     @property
     def slot67(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(type(self), self._id, 67)
+        return _SlotTypeCommon(self, 67)
 
     @property
     def slot68(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(type(self), self._id, 68)
+        return _SlotTypeCommon(self, 68)
 
     @property
     def slot69(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(type(self), self._id, 69)
+        return _SlotTypeCommon(self, 69)
 
     @property
     def slot7(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(type(self), self._id, 7)
+        return _SlotTypeCommon(self, 7)
 
     @property
     def slot70(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(type(self), self._id, 70)
+        return _SlotTypeCommon(self, 70)
 
     @property
     def slot71(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(type(self), self._id, 71)
+        return _SlotTypeCommon(self, 71)
 
     @property
     def slot72(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(type(self), self._id, 72)
+        return _SlotTypeCommon(self, 72)
 
     @property
     def slot73(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(type(self), self._id, 73)
+        return _SlotTypeCommon(self, 73)
 
     @property
     def slot74(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(type(self), self._id, 74)
+        return _SlotTypeCommon(self, 74)
 
     @property
     def slot75(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(type(self), self._id, 75)
+        return _SlotTypeCommon(self, 75)
 
     @property
     def slot76(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(type(self), self._id, 76)
+        return _SlotTypeCommon(self, 76)
 
     @property
     def slot77(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(type(self), self._id, 77)
+        return _SlotTypeCommon(self, 77)
 
     @property
     def slot78(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(type(self), self._id, 78)
+        return _SlotTypeCommon(self, 78)
 
     @property
     def slot79(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(type(self), self._id, 79)
+        return _SlotTypeCommon(self, 79)
 
     @property
     def slot8(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(type(self), self._id, 8)
+        return _SlotTypeCommon(self, 8)
 
     @property
     def slot80(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(type(self), self._id, 80)
+        return _SlotTypeCommon(self, 80)
 
     @property
     def slot81(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(type(self), self._id, 81)
+        return _SlotTypeCommon(self, 81)
 
     @property
     def slot82(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(type(self), self._id, 82)
+        return _SlotTypeCommon(self, 82)
 
     @property
     def slot83(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(type(self), self._id, 83)
+        return _SlotTypeCommon(self, 83)
 
     @property
     def slot84(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(type(self), self._id, 84)
+        return _SlotTypeCommon(self, 84)
 
     @property
     def slot85(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(type(self), self._id, 85)
+        return _SlotTypeCommon(self, 85)
 
     @property
     def slot86(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(type(self), self._id, 86)
+        return _SlotTypeCommon(self, 86)
 
     @property
     def slot87(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(type(self), self._id, 87)
+        return _SlotTypeCommon(self, 87)
 
     @property
     def slot88(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(type(self), self._id, 88)
+        return _SlotTypeCommon(self, 88)
 
     @property
     def slot89(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(type(self), self._id, 89)
+        return _SlotTypeCommon(self, 89)
 
     @property
     def slot9(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(type(self), self._id, 9)
+        return _SlotTypeCommon(self, 9)
 
     @property
     def slot90(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(type(self), self._id, 90)
+        return _SlotTypeCommon(self, 90)
 
     @property
     def slot91(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(type(self), self._id, 91)
+        return _SlotTypeCommon(self, 91)
 
     @property
     def slot92(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(type(self), self._id, 92)
+        return _SlotTypeCommon(self, 92)
 
     @property
     def slot93(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(type(self), self._id, 93)
+        return _SlotTypeCommon(self, 93)
 
     @property
     def slot94(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(type(self), self._id, 94)
+        return _SlotTypeCommon(self, 94)
 
     @property
     def slot95(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(type(self), self._id, 95)
+        return _SlotTypeCommon(self, 95)
 
     @property
     def slot96(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(type(self), self._id, 96)
+        return _SlotTypeCommon(self, 96)
 
     @property
     def slot97(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(type(self), self._id, 97)
+        return _SlotTypeCommon(self, 97)
 
     @property
     def slot98(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(type(self), self._id, 98)
+        return _SlotTypeCommon(self, 98)
 
     @property
     def slot99(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(type(self), self._id, 99)
+        return _SlotTypeCommon(self, 99)
 
 
 class _RefrigeratedVendingMachines(
@@ -14188,13 +14507,14 @@ class _RefrigeratedVendingMachines(
     _Temperatures,
 ):
     _hash: int = -1577831321
+    _prefab_name: int = "StructureRefrigeratedVendingMachine"
 
     def __getitem__(self, name: str | int | float) -> "_RefrigeratedVendingMachines":
         return _RefrigeratedVendingMachines(name)
 
     @property
     def RequestHash(self) -> _DevicesLogicType:
-        return _DevicesLogicType(self._hash, "RequestHash", self._name)
+        return _DevicesLogicType(self, _LT.RequestHash)
 
     @RequestHash.setter
     def RequestHash(self, value: int | float):
@@ -14202,7 +14522,7 @@ class _RefrigeratedVendingMachines(
 
     @property
     def slot0(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(type(self), self._hash, 0, self._name)
+        return _SlotTypeCommons(self, 0)
 
     @property
     def Import(self) -> _SlotTypeCommons:
@@ -14210,7 +14530,7 @@ class _RefrigeratedVendingMachines(
 
     @property
     def slot1(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(type(self), self._hash, 1, self._name)
+        return _SlotTypeCommons(self, 1)
 
     @property
     def Export(self) -> _SlotTypeCommons:
@@ -14218,403 +14538,403 @@ class _RefrigeratedVendingMachines(
 
     @property
     def slot10(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(type(self), self._hash, 10, self._name)
+        return _SlotTypeCommons(self, 10)
 
     @property
     def slot100(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(type(self), self._hash, 100, self._name)
+        return _SlotTypeCommons(self, 100)
 
     @property
     def slot101(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(type(self), self._hash, 101, self._name)
+        return _SlotTypeCommons(self, 101)
 
     @property
     def slot11(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(type(self), self._hash, 11, self._name)
+        return _SlotTypeCommons(self, 11)
 
     @property
     def slot12(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(type(self), self._hash, 12, self._name)
+        return _SlotTypeCommons(self, 12)
 
     @property
     def slot13(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(type(self), self._hash, 13, self._name)
+        return _SlotTypeCommons(self, 13)
 
     @property
     def slot14(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(type(self), self._hash, 14, self._name)
+        return _SlotTypeCommons(self, 14)
 
     @property
     def slot15(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(type(self), self._hash, 15, self._name)
+        return _SlotTypeCommons(self, 15)
 
     @property
     def slot16(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(type(self), self._hash, 16, self._name)
+        return _SlotTypeCommons(self, 16)
 
     @property
     def slot17(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(type(self), self._hash, 17, self._name)
+        return _SlotTypeCommons(self, 17)
 
     @property
     def slot18(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(type(self), self._hash, 18, self._name)
+        return _SlotTypeCommons(self, 18)
 
     @property
     def slot19(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(type(self), self._hash, 19, self._name)
+        return _SlotTypeCommons(self, 19)
 
     @property
     def slot2(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(type(self), self._hash, 2, self._name)
+        return _SlotTypeCommons(self, 2)
 
     @property
     def slot20(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(type(self), self._hash, 20, self._name)
+        return _SlotTypeCommons(self, 20)
 
     @property
     def slot21(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(type(self), self._hash, 21, self._name)
+        return _SlotTypeCommons(self, 21)
 
     @property
     def slot22(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(type(self), self._hash, 22, self._name)
+        return _SlotTypeCommons(self, 22)
 
     @property
     def slot23(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(type(self), self._hash, 23, self._name)
+        return _SlotTypeCommons(self, 23)
 
     @property
     def slot24(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(type(self), self._hash, 24, self._name)
+        return _SlotTypeCommons(self, 24)
 
     @property
     def slot25(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(type(self), self._hash, 25, self._name)
+        return _SlotTypeCommons(self, 25)
 
     @property
     def slot26(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(type(self), self._hash, 26, self._name)
+        return _SlotTypeCommons(self, 26)
 
     @property
     def slot27(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(type(self), self._hash, 27, self._name)
+        return _SlotTypeCommons(self, 27)
 
     @property
     def slot28(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(type(self), self._hash, 28, self._name)
+        return _SlotTypeCommons(self, 28)
 
     @property
     def slot29(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(type(self), self._hash, 29, self._name)
+        return _SlotTypeCommons(self, 29)
 
     @property
     def slot3(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(type(self), self._hash, 3, self._name)
+        return _SlotTypeCommons(self, 3)
 
     @property
     def slot30(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(type(self), self._hash, 30, self._name)
+        return _SlotTypeCommons(self, 30)
 
     @property
     def slot31(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(type(self), self._hash, 31, self._name)
+        return _SlotTypeCommons(self, 31)
 
     @property
     def slot32(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(type(self), self._hash, 32, self._name)
+        return _SlotTypeCommons(self, 32)
 
     @property
     def slot33(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(type(self), self._hash, 33, self._name)
+        return _SlotTypeCommons(self, 33)
 
     @property
     def slot34(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(type(self), self._hash, 34, self._name)
+        return _SlotTypeCommons(self, 34)
 
     @property
     def slot35(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(type(self), self._hash, 35, self._name)
+        return _SlotTypeCommons(self, 35)
 
     @property
     def slot36(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(type(self), self._hash, 36, self._name)
+        return _SlotTypeCommons(self, 36)
 
     @property
     def slot37(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(type(self), self._hash, 37, self._name)
+        return _SlotTypeCommons(self, 37)
 
     @property
     def slot38(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(type(self), self._hash, 38, self._name)
+        return _SlotTypeCommons(self, 38)
 
     @property
     def slot39(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(type(self), self._hash, 39, self._name)
+        return _SlotTypeCommons(self, 39)
 
     @property
     def slot4(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(type(self), self._hash, 4, self._name)
+        return _SlotTypeCommons(self, 4)
 
     @property
     def slot40(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(type(self), self._hash, 40, self._name)
+        return _SlotTypeCommons(self, 40)
 
     @property
     def slot41(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(type(self), self._hash, 41, self._name)
+        return _SlotTypeCommons(self, 41)
 
     @property
     def slot42(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(type(self), self._hash, 42, self._name)
+        return _SlotTypeCommons(self, 42)
 
     @property
     def slot43(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(type(self), self._hash, 43, self._name)
+        return _SlotTypeCommons(self, 43)
 
     @property
     def slot44(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(type(self), self._hash, 44, self._name)
+        return _SlotTypeCommons(self, 44)
 
     @property
     def slot45(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(type(self), self._hash, 45, self._name)
+        return _SlotTypeCommons(self, 45)
 
     @property
     def slot46(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(type(self), self._hash, 46, self._name)
+        return _SlotTypeCommons(self, 46)
 
     @property
     def slot47(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(type(self), self._hash, 47, self._name)
+        return _SlotTypeCommons(self, 47)
 
     @property
     def slot48(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(type(self), self._hash, 48, self._name)
+        return _SlotTypeCommons(self, 48)
 
     @property
     def slot49(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(type(self), self._hash, 49, self._name)
+        return _SlotTypeCommons(self, 49)
 
     @property
     def slot5(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(type(self), self._hash, 5, self._name)
+        return _SlotTypeCommons(self, 5)
 
     @property
     def slot50(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(type(self), self._hash, 50, self._name)
+        return _SlotTypeCommons(self, 50)
 
     @property
     def slot51(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(type(self), self._hash, 51, self._name)
+        return _SlotTypeCommons(self, 51)
 
     @property
     def slot52(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(type(self), self._hash, 52, self._name)
+        return _SlotTypeCommons(self, 52)
 
     @property
     def slot53(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(type(self), self._hash, 53, self._name)
+        return _SlotTypeCommons(self, 53)
 
     @property
     def slot54(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(type(self), self._hash, 54, self._name)
+        return _SlotTypeCommons(self, 54)
 
     @property
     def slot55(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(type(self), self._hash, 55, self._name)
+        return _SlotTypeCommons(self, 55)
 
     @property
     def slot56(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(type(self), self._hash, 56, self._name)
+        return _SlotTypeCommons(self, 56)
 
     @property
     def slot57(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(type(self), self._hash, 57, self._name)
+        return _SlotTypeCommons(self, 57)
 
     @property
     def slot58(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(type(self), self._hash, 58, self._name)
+        return _SlotTypeCommons(self, 58)
 
     @property
     def slot59(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(type(self), self._hash, 59, self._name)
+        return _SlotTypeCommons(self, 59)
 
     @property
     def slot6(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(type(self), self._hash, 6, self._name)
+        return _SlotTypeCommons(self, 6)
 
     @property
     def slot60(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(type(self), self._hash, 60, self._name)
+        return _SlotTypeCommons(self, 60)
 
     @property
     def slot61(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(type(self), self._hash, 61, self._name)
+        return _SlotTypeCommons(self, 61)
 
     @property
     def slot62(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(type(self), self._hash, 62, self._name)
+        return _SlotTypeCommons(self, 62)
 
     @property
     def slot63(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(type(self), self._hash, 63, self._name)
+        return _SlotTypeCommons(self, 63)
 
     @property
     def slot64(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(type(self), self._hash, 64, self._name)
+        return _SlotTypeCommons(self, 64)
 
     @property
     def slot65(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(type(self), self._hash, 65, self._name)
+        return _SlotTypeCommons(self, 65)
 
     @property
     def slot66(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(type(self), self._hash, 66, self._name)
+        return _SlotTypeCommons(self, 66)
 
     @property
     def slot67(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(type(self), self._hash, 67, self._name)
+        return _SlotTypeCommons(self, 67)
 
     @property
     def slot68(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(type(self), self._hash, 68, self._name)
+        return _SlotTypeCommons(self, 68)
 
     @property
     def slot69(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(type(self), self._hash, 69, self._name)
+        return _SlotTypeCommons(self, 69)
 
     @property
     def slot7(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(type(self), self._hash, 7, self._name)
+        return _SlotTypeCommons(self, 7)
 
     @property
     def slot70(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(type(self), self._hash, 70, self._name)
+        return _SlotTypeCommons(self, 70)
 
     @property
     def slot71(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(type(self), self._hash, 71, self._name)
+        return _SlotTypeCommons(self, 71)
 
     @property
     def slot72(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(type(self), self._hash, 72, self._name)
+        return _SlotTypeCommons(self, 72)
 
     @property
     def slot73(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(type(self), self._hash, 73, self._name)
+        return _SlotTypeCommons(self, 73)
 
     @property
     def slot74(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(type(self), self._hash, 74, self._name)
+        return _SlotTypeCommons(self, 74)
 
     @property
     def slot75(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(type(self), self._hash, 75, self._name)
+        return _SlotTypeCommons(self, 75)
 
     @property
     def slot76(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(type(self), self._hash, 76, self._name)
+        return _SlotTypeCommons(self, 76)
 
     @property
     def slot77(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(type(self), self._hash, 77, self._name)
+        return _SlotTypeCommons(self, 77)
 
     @property
     def slot78(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(type(self), self._hash, 78, self._name)
+        return _SlotTypeCommons(self, 78)
 
     @property
     def slot79(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(type(self), self._hash, 79, self._name)
+        return _SlotTypeCommons(self, 79)
 
     @property
     def slot8(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(type(self), self._hash, 8, self._name)
+        return _SlotTypeCommons(self, 8)
 
     @property
     def slot80(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(type(self), self._hash, 80, self._name)
+        return _SlotTypeCommons(self, 80)
 
     @property
     def slot81(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(type(self), self._hash, 81, self._name)
+        return _SlotTypeCommons(self, 81)
 
     @property
     def slot82(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(type(self), self._hash, 82, self._name)
+        return _SlotTypeCommons(self, 82)
 
     @property
     def slot83(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(type(self), self._hash, 83, self._name)
+        return _SlotTypeCommons(self, 83)
 
     @property
     def slot84(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(type(self), self._hash, 84, self._name)
+        return _SlotTypeCommons(self, 84)
 
     @property
     def slot85(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(type(self), self._hash, 85, self._name)
+        return _SlotTypeCommons(self, 85)
 
     @property
     def slot86(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(type(self), self._hash, 86, self._name)
+        return _SlotTypeCommons(self, 86)
 
     @property
     def slot87(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(type(self), self._hash, 87, self._name)
+        return _SlotTypeCommons(self, 87)
 
     @property
     def slot88(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(type(self), self._hash, 88, self._name)
+        return _SlotTypeCommons(self, 88)
 
     @property
     def slot89(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(type(self), self._hash, 89, self._name)
+        return _SlotTypeCommons(self, 89)
 
     @property
     def slot9(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(type(self), self._hash, 9, self._name)
+        return _SlotTypeCommons(self, 9)
 
     @property
     def slot90(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(type(self), self._hash, 90, self._name)
+        return _SlotTypeCommons(self, 90)
 
     @property
     def slot91(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(type(self), self._hash, 91, self._name)
+        return _SlotTypeCommons(self, 91)
 
     @property
     def slot92(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(type(self), self._hash, 92, self._name)
+        return _SlotTypeCommons(self, 92)
 
     @property
     def slot93(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(type(self), self._hash, 93, self._name)
+        return _SlotTypeCommons(self, 93)
 
     @property
     def slot94(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(type(self), self._hash, 94, self._name)
+        return _SlotTypeCommons(self, 94)
 
     @property
     def slot95(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(type(self), self._hash, 95, self._name)
+        return _SlotTypeCommons(self, 95)
 
     @property
     def slot96(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(type(self), self._hash, 96, self._name)
+        return _SlotTypeCommons(self, 96)
 
     @property
     def slot97(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(type(self), self._hash, 97, self._name)
+        return _SlotTypeCommons(self, 97)
 
     @property
     def slot98(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(type(self), self._hash, 98, self._name)
+        return _SlotTypeCommons(self, 98)
 
     @property
     def slot99(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(type(self), self._hash, 99, self._name)
+        return _SlotTypeCommons(self, 99)
 
 
 RefrigeratedVendingMachines: _RefrigeratedVendingMachines = (
@@ -14634,22 +14954,23 @@ class RocketAvionics(
     _Reagents,
 ):
     _hash: int = 808389066
+    _prefab_name: int = "StructureRocketAvionics"
 
     @property
     def Acceleration(self) -> float:
-        return _DeviceLogicType(self, self._id, "Acceleration")
+        return _DeviceLogicType(self, _LT.Acceleration)
 
     @property
     def Altitude(self) -> float:
-        return _DeviceLogicType(self, self._id, "Altitude")
+        return _DeviceLogicType(self, _LT.Altitude)
 
     @property
     def Apex(self) -> float:
-        return _DeviceLogicType(self, self._id, "Apex")
+        return _DeviceLogicType(self, _LT.Apex)
 
     @property
     def AutoLand(self) -> float:
-        return _DeviceLogicType(self, self._id, "AutoLand")
+        return _DeviceLogicType(self, _LT.AutoLand)
 
     @AutoLand.setter
     def AutoLand(self, value: int | float):
@@ -14657,7 +14978,7 @@ class RocketAvionics(
 
     @property
     def AutoShutOff(self) -> float:
-        return _DeviceLogicType(self, self._id, "AutoShutOff")
+        return _DeviceLogicType(self, _LT.AutoShutOff)
 
     @AutoShutOff.setter
     def AutoShutOff(self, value: int | float):
@@ -14665,27 +14986,27 @@ class RocketAvionics(
 
     @property
     def BurnTimeRemaining(self) -> float:
-        return _DeviceLogicType(self, self._id, "BurnTimeRemaining")
+        return _DeviceLogicType(self, _LT.BurnTimeRemaining)
 
     @property
     def Chart(self) -> float:
-        return _DeviceLogicType(self, self._id, "Chart")
+        return _DeviceLogicType(self, _LT.Chart)
 
     @property
     def ChartedNavPoints(self) -> float:
-        return _DeviceLogicType(self, self._id, "ChartedNavPoints")
+        return _DeviceLogicType(self, _LT.ChartedNavPoints)
 
     @property
     def CurrentCode(self) -> float:
-        return _DeviceLogicType(self, self._id, "CurrentCode")
+        return _DeviceLogicType(self, _LT.CurrentCode)
 
     @property
     def Density(self) -> float:
-        return _DeviceLogicType(self, self._id, "Density")
+        return _DeviceLogicType(self, _LT.Density)
 
     @property
     def DestinationCode(self) -> float:
-        return _DeviceLogicType(self, self._id, "DestinationCode")
+        return _DeviceLogicType(self, _LT.DestinationCode)
 
     @DestinationCode.setter
     def DestinationCode(self, value: int | float):
@@ -14693,87 +15014,87 @@ class RocketAvionics(
 
     @property
     def Discover(self) -> float:
-        return _DeviceLogicType(self, self._id, "Discover")
+        return _DeviceLogicType(self, _LT.Discover)
 
     @property
     def DryMass(self) -> float:
-        return _DeviceLogicType(self, self._id, "DryMass")
+        return _DeviceLogicType(self, _LT.DryMass)
 
     @property
     def FlightControlRule(self) -> float:
-        return _DeviceLogicType(self, self._id, "FlightControlRule")
+        return _DeviceLogicType(self, _LT.FlightControlRule)
 
     @property
     def Mass(self) -> float:
-        return _DeviceLogicType(self, self._id, "Mass")
+        return _DeviceLogicType(self, _LT.Mass)
 
     @property
     def MinedQuantity(self) -> float:
-        return _DeviceLogicType(self, self._id, "MinedQuantity")
+        return _DeviceLogicType(self, _LT.MinedQuantity)
 
     @property
     def NavPoints(self) -> float:
-        return _DeviceLogicType(self, self._id, "NavPoints")
+        return _DeviceLogicType(self, _LT.NavPoints)
 
     @property
     def Progress(self) -> float:
-        return _DeviceLogicType(self, self._id, "Progress")
+        return _DeviceLogicType(self, _LT.Progress)
 
     @property
     def ReEntryAltitude(self) -> float:
-        return _DeviceLogicType(self, self._id, "ReEntryAltitude")
+        return _DeviceLogicType(self, _LT.ReEntryAltitude)
 
     @property
     def Richness(self) -> float:
-        return _DeviceLogicType(self, self._id, "Richness")
+        return _DeviceLogicType(self, _LT.Richness)
 
     @property
     def Sites(self) -> float:
-        return _DeviceLogicType(self, self._id, "Sites")
+        return _DeviceLogicType(self, _LT.Sites)
 
     @property
     def Size(self) -> float:
-        return _DeviceLogicType(self, self._id, "Size")
+        return _DeviceLogicType(self, _LT.Size)
 
     @property
     def StackSize(self) -> float:
-        return _DeviceLogicType(self, self._id, "StackSize")
+        return _DeviceLogicType(self, _LT.StackSize)
 
     @property
     def Survey(self) -> float:
-        return _DeviceLogicType(self, self._id, "Survey")
+        return _DeviceLogicType(self, _LT.Survey)
 
     @property
     def Temperature(self) -> float:
-        return _DeviceLogicType(self, self._id, "Temperature")
+        return _DeviceLogicType(self, _LT.Temperature)
 
     @property
     def Thrust(self) -> float:
-        return _DeviceLogicType(self, self._id, "Thrust")
+        return _DeviceLogicType(self, _LT.Thrust)
 
     @property
     def ThrustToWeight(self) -> float:
-        return _DeviceLogicType(self, self._id, "ThrustToWeight")
+        return _DeviceLogicType(self, _LT.ThrustToWeight)
 
     @property
     def TimeToDestination(self) -> float:
-        return _DeviceLogicType(self, self._id, "TimeToDestination")
+        return _DeviceLogicType(self, _LT.TimeToDestination)
 
     @property
     def TotalMoles(self) -> float:
-        return _DeviceLogicType(self, self._id, "TotalMoles")
+        return _DeviceLogicType(self, _LT.TotalMoles)
 
     @property
     def TotalQuantity(self) -> float:
-        return _DeviceLogicType(self, self._id, "TotalQuantity")
+        return _DeviceLogicType(self, _LT.TotalQuantity)
 
     @property
     def VelocityRelativeY(self) -> float:
-        return _DeviceLogicType(self, self._id, "VelocityRelativeY")
+        return _DeviceLogicType(self, _LT.VelocityRelativeY)
 
     @property
     def Weight(self) -> float:
-        return _DeviceLogicType(self, self._id, "Weight")
+        return _DeviceLogicType(self, _LT.Weight)
 
 
 class _RocketAvionicss(
@@ -14788,25 +15109,26 @@ class _RocketAvionicss(
     _Reagentss,
 ):
     _hash: int = 808389066
+    _prefab_name: int = "StructureRocketAvionics"
 
     def __getitem__(self, name: str | int | float) -> "_RocketAvionicss":
         return _RocketAvionicss(name)
 
     @property
     def Acceleration(self) -> _DevicesLogicType:
-        return _DevicesLogicType(self._hash, "Acceleration", self._name)
+        return _DevicesLogicType(self, _LT.Acceleration)
 
     @property
     def Altitude(self) -> _DevicesLogicType:
-        return _DevicesLogicType(self._hash, "Altitude", self._name)
+        return _DevicesLogicType(self, _LT.Altitude)
 
     @property
     def Apex(self) -> _DevicesLogicType:
-        return _DevicesLogicType(self._hash, "Apex", self._name)
+        return _DevicesLogicType(self, _LT.Apex)
 
     @property
     def AutoLand(self) -> _DevicesLogicType:
-        return _DevicesLogicType(self._hash, "AutoLand", self._name)
+        return _DevicesLogicType(self, _LT.AutoLand)
 
     @AutoLand.setter
     def AutoLand(self, value: int | float):
@@ -14814,7 +15136,7 @@ class _RocketAvionicss(
 
     @property
     def AutoShutOff(self) -> _DevicesLogicType:
-        return _DevicesLogicType(self._hash, "AutoShutOff", self._name)
+        return _DevicesLogicType(self, _LT.AutoShutOff)
 
     @AutoShutOff.setter
     def AutoShutOff(self, value: int | float):
@@ -14822,27 +15144,27 @@ class _RocketAvionicss(
 
     @property
     def BurnTimeRemaining(self) -> _DevicesLogicType:
-        return _DevicesLogicType(self._hash, "BurnTimeRemaining", self._name)
+        return _DevicesLogicType(self, _LT.BurnTimeRemaining)
 
     @property
     def Chart(self) -> _DevicesLogicType:
-        return _DevicesLogicType(self._hash, "Chart", self._name)
+        return _DevicesLogicType(self, _LT.Chart)
 
     @property
     def ChartedNavPoints(self) -> _DevicesLogicType:
-        return _DevicesLogicType(self._hash, "ChartedNavPoints", self._name)
+        return _DevicesLogicType(self, _LT.ChartedNavPoints)
 
     @property
     def CurrentCode(self) -> _DevicesLogicType:
-        return _DevicesLogicType(self._hash, "CurrentCode", self._name)
+        return _DevicesLogicType(self, _LT.CurrentCode)
 
     @property
     def Density(self) -> _DevicesLogicType:
-        return _DevicesLogicType(self._hash, "Density", self._name)
+        return _DevicesLogicType(self, _LT.Density)
 
     @property
     def DestinationCode(self) -> _DevicesLogicType:
-        return _DevicesLogicType(self._hash, "DestinationCode", self._name)
+        return _DevicesLogicType(self, _LT.DestinationCode)
 
     @DestinationCode.setter
     def DestinationCode(self, value: int | float):
@@ -14850,87 +15172,87 @@ class _RocketAvionicss(
 
     @property
     def Discover(self) -> _DevicesLogicType:
-        return _DevicesLogicType(self._hash, "Discover", self._name)
+        return _DevicesLogicType(self, _LT.Discover)
 
     @property
     def DryMass(self) -> _DevicesLogicType:
-        return _DevicesLogicType(self._hash, "DryMass", self._name)
+        return _DevicesLogicType(self, _LT.DryMass)
 
     @property
     def FlightControlRule(self) -> _DevicesLogicType:
-        return _DevicesLogicType(self._hash, "FlightControlRule", self._name)
+        return _DevicesLogicType(self, _LT.FlightControlRule)
 
     @property
     def Mass(self) -> _DevicesLogicType:
-        return _DevicesLogicType(self._hash, "Mass", self._name)
+        return _DevicesLogicType(self, _LT.Mass)
 
     @property
     def MinedQuantity(self) -> _DevicesLogicType:
-        return _DevicesLogicType(self._hash, "MinedQuantity", self._name)
+        return _DevicesLogicType(self, _LT.MinedQuantity)
 
     @property
     def NavPoints(self) -> _DevicesLogicType:
-        return _DevicesLogicType(self._hash, "NavPoints", self._name)
+        return _DevicesLogicType(self, _LT.NavPoints)
 
     @property
     def Progress(self) -> _DevicesLogicType:
-        return _DevicesLogicType(self._hash, "Progress", self._name)
+        return _DevicesLogicType(self, _LT.Progress)
 
     @property
     def ReEntryAltitude(self) -> _DevicesLogicType:
-        return _DevicesLogicType(self._hash, "ReEntryAltitude", self._name)
+        return _DevicesLogicType(self, _LT.ReEntryAltitude)
 
     @property
     def Richness(self) -> _DevicesLogicType:
-        return _DevicesLogicType(self._hash, "Richness", self._name)
+        return _DevicesLogicType(self, _LT.Richness)
 
     @property
     def Sites(self) -> _DevicesLogicType:
-        return _DevicesLogicType(self._hash, "Sites", self._name)
+        return _DevicesLogicType(self, _LT.Sites)
 
     @property
     def Size(self) -> _DevicesLogicType:
-        return _DevicesLogicType(self._hash, "Size", self._name)
+        return _DevicesLogicType(self, _LT.Size)
 
     @property
     def StackSize(self) -> _DevicesLogicType:
-        return _DevicesLogicType(self._hash, "StackSize", self._name)
+        return _DevicesLogicType(self, _LT.StackSize)
 
     @property
     def Survey(self) -> _DevicesLogicType:
-        return _DevicesLogicType(self._hash, "Survey", self._name)
+        return _DevicesLogicType(self, _LT.Survey)
 
     @property
     def Temperature(self) -> _DevicesLogicType:
-        return _DevicesLogicType(self._hash, "Temperature", self._name)
+        return _DevicesLogicType(self, _LT.Temperature)
 
     @property
     def Thrust(self) -> _DevicesLogicType:
-        return _DevicesLogicType(self._hash, "Thrust", self._name)
+        return _DevicesLogicType(self, _LT.Thrust)
 
     @property
     def ThrustToWeight(self) -> _DevicesLogicType:
-        return _DevicesLogicType(self._hash, "ThrustToWeight", self._name)
+        return _DevicesLogicType(self, _LT.ThrustToWeight)
 
     @property
     def TimeToDestination(self) -> _DevicesLogicType:
-        return _DevicesLogicType(self._hash, "TimeToDestination", self._name)
+        return _DevicesLogicType(self, _LT.TimeToDestination)
 
     @property
     def TotalMoles(self) -> _DevicesLogicType:
-        return _DevicesLogicType(self._hash, "TotalMoles", self._name)
+        return _DevicesLogicType(self, _LT.TotalMoles)
 
     @property
     def TotalQuantity(self) -> _DevicesLogicType:
-        return _DevicesLogicType(self._hash, "TotalQuantity", self._name)
+        return _DevicesLogicType(self, _LT.TotalQuantity)
 
     @property
     def VelocityRelativeY(self) -> _DevicesLogicType:
-        return _DevicesLogicType(self._hash, "VelocityRelativeY", self._name)
+        return _DevicesLogicType(self, _LT.VelocityRelativeY)
 
     @property
     def Weight(self) -> _DevicesLogicType:
-        return _DevicesLogicType(self._hash, "Weight", self._name)
+        return _DevicesLogicType(self, _LT.Weight)
 
 
 RocketAvionicss: _RocketAvionicss = _RocketAvionicss()
@@ -14938,14 +15260,15 @@ RocketAvionicss: _RocketAvionicss = _RocketAvionicss()
 
 class RocketCelestialTracker(_BaseStructure, _Error, _Power, _Vertical):
     _hash: int = 997453927
+    _prefab_name: int = "StructureRocketCelestialTracker"
 
     @property
     def CelestialHash(self) -> float:
-        return _DeviceLogicType(self, self._id, "CelestialHash")
+        return _DeviceLogicType(self, _LT.CelestialHash)
 
     @property
     def Index(self) -> float:
-        return _DeviceLogicType(self, self._id, "Index")
+        return _DeviceLogicType(self, _LT.Index)
 
     @Index.setter
     def Index(self, value: int | float):
@@ -14953,22 +15276,23 @@ class RocketCelestialTracker(_BaseStructure, _Error, _Power, _Vertical):
 
     @property
     def StackSize(self) -> float:
-        return _DeviceLogicType(self, self._id, "StackSize")
+        return _DeviceLogicType(self, _LT.StackSize)
 
 
 class _RocketCelestialTrackers(_BaseStructures, _Errors, _Powers, _Verticals):
     _hash: int = 997453927
+    _prefab_name: int = "StructureRocketCelestialTracker"
 
     def __getitem__(self, name: str | int | float) -> "_RocketCelestialTrackers":
         return _RocketCelestialTrackers(name)
 
     @property
     def CelestialHash(self) -> _DevicesLogicType:
-        return _DevicesLogicType(self._hash, "CelestialHash", self._name)
+        return _DevicesLogicType(self, _LT.CelestialHash)
 
     @property
     def Index(self) -> _DevicesLogicType:
-        return _DevicesLogicType(self._hash, "Index", self._name)
+        return _DevicesLogicType(self, _LT.Index)
 
     @Index.setter
     def Index(self, value: int | float):
@@ -14976,7 +15300,7 @@ class _RocketCelestialTrackers(_BaseStructures, _Errors, _Powers, _Verticals):
 
     @property
     def StackSize(self) -> _DevicesLogicType:
-        return _DevicesLogicType(self._hash, "StackSize", self._name)
+        return _DevicesLogicType(self, _LT.StackSize)
 
 
 RocketCelestialTrackers: _RocketCelestialTrackers = _RocketCelestialTrackers()
@@ -14984,10 +15308,11 @@ RocketCelestialTrackers: _RocketCelestialTrackers = _RocketCelestialTrackers()
 
 class RocketCircuitHousing(_BaseStructure, _Error, _Mode, _Power, _SettingW):
     _hash: int = 150135861
+    _prefab_name: int = "StructureRocketCircuitHousing"
 
     @property
     def LineNumber(self) -> float:
-        return _DeviceLogicType(self, self._id, "LineNumber")
+        return _DeviceLogicType(self, _LT.LineNumber)
 
     @LineNumber.setter
     def LineNumber(self, value: int | float):
@@ -14995,11 +15320,11 @@ class RocketCircuitHousing(_BaseStructure, _Error, _Mode, _Power, _SettingW):
 
     @property
     def StackSize(self) -> float:
-        return _DeviceLogicType(self, self._id, "StackSize")
+        return _DeviceLogicType(self, _LT.StackSize)
 
     @property
     def slot0(self) -> _SlotTypeProgrammableChip:
-        return _SlotTypeProgrammableChip(type(self), self._id, 0)
+        return _SlotTypeProgrammableChip(self, 0)
 
     @property
     def ProgrammableChip(self) -> _SlotTypeProgrammableChip:
@@ -15008,13 +15333,14 @@ class RocketCircuitHousing(_BaseStructure, _Error, _Mode, _Power, _SettingW):
 
 class _RocketCircuitHousings(_BaseStructures, _Errors, _Modes, _Powers, _SettingWs):
     _hash: int = 150135861
+    _prefab_name: int = "StructureRocketCircuitHousing"
 
     def __getitem__(self, name: str | int | float) -> "_RocketCircuitHousings":
         return _RocketCircuitHousings(name)
 
     @property
     def LineNumber(self) -> _DevicesLogicType:
-        return _DevicesLogicType(self._hash, "LineNumber", self._name)
+        return _DevicesLogicType(self, _LT.LineNumber)
 
     @LineNumber.setter
     def LineNumber(self, value: int | float):
@@ -15022,11 +15348,11 @@ class _RocketCircuitHousings(_BaseStructures, _Errors, _Modes, _Powers, _Setting
 
     @property
     def StackSize(self) -> _DevicesLogicType:
-        return _DevicesLogicType(self._hash, "StackSize", self._name)
+        return _DevicesLogicType(self, _LT.StackSize)
 
     @property
     def slot0(self) -> _SlotTypeProgrammableChips:
-        return _SlotTypeProgrammableChips(type(self), self._hash, 0, self._name)
+        return _SlotTypeProgrammableChips(self, 0)
 
     @property
     def ProgrammableChip(self) -> _SlotTypeProgrammableChips:
@@ -15040,103 +15366,105 @@ class RocketEngineTiny(
     _BaseStructure, _Error, _Lock, _Maximum, _Power, _Ratio, _SettingW
 ):
     _hash: int = 178472613
+    _prefab_name: int = "StructureRocketEngineTiny"
 
     @property
     def CombustionOutput(self) -> float:
-        return _DeviceLogicType(self, self._id, "CombustionOutput")
+        return _DeviceLogicType(self, _LT.CombustionOutput)
 
     @property
     def PressureOutput(self) -> float:
-        return _DeviceLogicType(self, self._id, "PressureOutput")
+        return _DeviceLogicType(self, _LT.PressureOutput)
 
     @property
     def RatioCarbonDioxideOutput(self) -> float:
-        return _DeviceLogicType(self, self._id, "RatioCarbonDioxideOutput")
+        return _DeviceLogicType(self, _LT.RatioCarbonDioxideOutput)
 
     @property
     def RatioNitrogenOutput(self) -> float:
-        return _DeviceLogicType(self, self._id, "RatioNitrogenOutput")
+        return _DeviceLogicType(self, _LT.RatioNitrogenOutput)
 
     @property
     def RatioNitrousOxideOutput(self) -> float:
-        return _DeviceLogicType(self, self._id, "RatioNitrousOxideOutput")
+        return _DeviceLogicType(self, _LT.RatioNitrousOxideOutput)
 
     @property
     def RatioOxygenOutput(self) -> float:
-        return _DeviceLogicType(self, self._id, "RatioOxygenOutput")
+        return _DeviceLogicType(self, _LT.RatioOxygenOutput)
 
     @property
     def RatioPollutantOutput(self) -> float:
-        return _DeviceLogicType(self, self._id, "RatioPollutantOutput")
+        return _DeviceLogicType(self, _LT.RatioPollutantOutput)
 
     @property
     def RatioVolatilesOutput(self) -> float:
-        return _DeviceLogicType(self, self._id, "RatioVolatilesOutput")
+        return _DeviceLogicType(self, _LT.RatioVolatilesOutput)
 
     @property
     def RatioWaterOutput(self) -> float:
-        return _DeviceLogicType(self, self._id, "RatioWaterOutput")
+        return _DeviceLogicType(self, _LT.RatioWaterOutput)
 
     @property
     def TemperatureOutput(self) -> float:
-        return _DeviceLogicType(self, self._id, "TemperatureOutput")
+        return _DeviceLogicType(self, _LT.TemperatureOutput)
 
     @property
     def TotalMolesOutput(self) -> float:
-        return _DeviceLogicType(self, self._id, "TotalMolesOutput")
+        return _DeviceLogicType(self, _LT.TotalMolesOutput)
 
 
 class _RocketEngineTinys(
     _BaseStructures, _Errors, _Locks, _Maximums, _Powers, _Ratios, _SettingWs
 ):
     _hash: int = 178472613
+    _prefab_name: int = "StructureRocketEngineTiny"
 
     def __getitem__(self, name: str | int | float) -> "_RocketEngineTinys":
         return _RocketEngineTinys(name)
 
     @property
     def CombustionOutput(self) -> _DevicesLogicType:
-        return _DevicesLogicType(self._hash, "CombustionOutput", self._name)
+        return _DevicesLogicType(self, _LT.CombustionOutput)
 
     @property
     def PressureOutput(self) -> _DevicesLogicType:
-        return _DevicesLogicType(self._hash, "PressureOutput", self._name)
+        return _DevicesLogicType(self, _LT.PressureOutput)
 
     @property
     def RatioCarbonDioxideOutput(self) -> _DevicesLogicType:
-        return _DevicesLogicType(self._hash, "RatioCarbonDioxideOutput", self._name)
+        return _DevicesLogicType(self, _LT.RatioCarbonDioxideOutput)
 
     @property
     def RatioNitrogenOutput(self) -> _DevicesLogicType:
-        return _DevicesLogicType(self._hash, "RatioNitrogenOutput", self._name)
+        return _DevicesLogicType(self, _LT.RatioNitrogenOutput)
 
     @property
     def RatioNitrousOxideOutput(self) -> _DevicesLogicType:
-        return _DevicesLogicType(self._hash, "RatioNitrousOxideOutput", self._name)
+        return _DevicesLogicType(self, _LT.RatioNitrousOxideOutput)
 
     @property
     def RatioOxygenOutput(self) -> _DevicesLogicType:
-        return _DevicesLogicType(self._hash, "RatioOxygenOutput", self._name)
+        return _DevicesLogicType(self, _LT.RatioOxygenOutput)
 
     @property
     def RatioPollutantOutput(self) -> _DevicesLogicType:
-        return _DevicesLogicType(self._hash, "RatioPollutantOutput", self._name)
+        return _DevicesLogicType(self, _LT.RatioPollutantOutput)
 
     @property
     def RatioVolatilesOutput(self) -> _DevicesLogicType:
-        return _DevicesLogicType(self._hash, "RatioVolatilesOutput", self._name)
+        return _DevicesLogicType(self, _LT.RatioVolatilesOutput)
 
     @property
     def RatioWaterOutput(self) -> _DevicesLogicType:
-        return _DevicesLogicType(self._hash, "RatioWaterOutput", self._name)
+        return _DevicesLogicType(self, _LT.RatioWaterOutput)
 
     @property
     def TemperatureOutput(self) -> _DevicesLogicType:
-        return _DevicesLogicType(self._hash, "TemperatureOutput", self._name)
+        return _DevicesLogicType(self, _LT.TemperatureOutput)
 
     @property
     def TotalMolesOutput(self) -> _DevicesLogicType:
-        return _DevicesLogicType(self._hash, "TotalMolesOutput", self._name)
+        return _DevicesLogicType(self, _LT.TotalMolesOutput)
 
 
 RocketEngineTinys: _RocketEngineTinys = _RocketEngineTinys()
@@ -15153,6 +15481,7 @@ class RocketGasCollector(
     _Temperature,
 ):
     _hash: int = -1720125735
+    _prefab_name: int = "StructureRocketGasCollector"
 
 
 class _RocketGasCollectors(
@@ -15166,6 +15495,7 @@ class _RocketGasCollectors(
     _Temperatures,
 ):
     _hash: int = -1720125735
+    _prefab_name: int = "StructureRocketGasCollector"
 
     def __getitem__(self, name: str | int | float) -> "_RocketGasCollectors":
         return _RocketGasCollectors(name)
@@ -15188,58 +15518,59 @@ class RocketFiltrationGas(
     _SettingW,
 ):
     _hash: int = -1061194321
+    _prefab_name: int = "StructureRocketFiltrationGas"
 
     @property
     def CombustionInput(self) -> float:
-        return _DeviceLogicType(self, self._id, "CombustionInput")
+        return _DeviceLogicType(self, _LT.CombustionInput)
 
     @property
     def CombustionOutput(self) -> float:
-        return _DeviceLogicType(self, self._id, "CombustionOutput")
+        return _DeviceLogicType(self, _LT.CombustionOutput)
 
     @property
     def CombustionOutput2(self) -> float:
-        return _DeviceLogicType(self, self._id, "CombustionOutput2")
+        return _DeviceLogicType(self, _LT.CombustionOutput2)
 
     @property
     def PressureInput(self) -> float:
-        return _DeviceLogicType(self, self._id, "PressureInput")
+        return _DeviceLogicType(self, _LT.PressureInput)
 
     @property
     def PressureOutput(self) -> float:
-        return _DeviceLogicType(self, self._id, "PressureOutput")
+        return _DeviceLogicType(self, _LT.PressureOutput)
 
     @property
     def PressureOutput2(self) -> float:
-        return _DeviceLogicType(self, self._id, "PressureOutput2")
+        return _DeviceLogicType(self, _LT.PressureOutput2)
 
     @property
     def TemperatureInput(self) -> float:
-        return _DeviceLogicType(self, self._id, "TemperatureInput")
+        return _DeviceLogicType(self, _LT.TemperatureInput)
 
     @property
     def TemperatureOutput(self) -> float:
-        return _DeviceLogicType(self, self._id, "TemperatureOutput")
+        return _DeviceLogicType(self, _LT.TemperatureOutput)
 
     @property
     def TemperatureOutput2(self) -> float:
-        return _DeviceLogicType(self, self._id, "TemperatureOutput2")
+        return _DeviceLogicType(self, _LT.TemperatureOutput2)
 
     @property
     def TotalMolesInput(self) -> float:
-        return _DeviceLogicType(self, self._id, "TotalMolesInput")
+        return _DeviceLogicType(self, _LT.TotalMolesInput)
 
     @property
     def TotalMolesOutput(self) -> float:
-        return _DeviceLogicType(self, self._id, "TotalMolesOutput")
+        return _DeviceLogicType(self, _LT.TotalMolesOutput)
 
     @property
     def TotalMolesOutput2(self) -> float:
-        return _DeviceLogicType(self, self._id, "TotalMolesOutput2")
+        return _DeviceLogicType(self, _LT.TotalMolesOutput2)
 
     @property
     def slot0(self) -> _SlotTypeFilter:
-        return _SlotTypeFilter(type(self), self._id, 0)
+        return _SlotTypeFilter(self, 0)
 
     @property
     def GasFilter(self) -> _SlotTypeFilter:
@@ -15260,61 +15591,62 @@ class _RocketFiltrationGass(
     _SettingWs,
 ):
     _hash: int = -1061194321
+    _prefab_name: int = "StructureRocketFiltrationGas"
 
     def __getitem__(self, name: str | int | float) -> "_RocketFiltrationGass":
         return _RocketFiltrationGass(name)
 
     @property
     def CombustionInput(self) -> _DevicesLogicType:
-        return _DevicesLogicType(self._hash, "CombustionInput", self._name)
+        return _DevicesLogicType(self, _LT.CombustionInput)
 
     @property
     def CombustionOutput(self) -> _DevicesLogicType:
-        return _DevicesLogicType(self._hash, "CombustionOutput", self._name)
+        return _DevicesLogicType(self, _LT.CombustionOutput)
 
     @property
     def CombustionOutput2(self) -> _DevicesLogicType:
-        return _DevicesLogicType(self._hash, "CombustionOutput2", self._name)
+        return _DevicesLogicType(self, _LT.CombustionOutput2)
 
     @property
     def PressureInput(self) -> _DevicesLogicType:
-        return _DevicesLogicType(self._hash, "PressureInput", self._name)
+        return _DevicesLogicType(self, _LT.PressureInput)
 
     @property
     def PressureOutput(self) -> _DevicesLogicType:
-        return _DevicesLogicType(self._hash, "PressureOutput", self._name)
+        return _DevicesLogicType(self, _LT.PressureOutput)
 
     @property
     def PressureOutput2(self) -> _DevicesLogicType:
-        return _DevicesLogicType(self._hash, "PressureOutput2", self._name)
+        return _DevicesLogicType(self, _LT.PressureOutput2)
 
     @property
     def TemperatureInput(self) -> _DevicesLogicType:
-        return _DevicesLogicType(self._hash, "TemperatureInput", self._name)
+        return _DevicesLogicType(self, _LT.TemperatureInput)
 
     @property
     def TemperatureOutput(self) -> _DevicesLogicType:
-        return _DevicesLogicType(self._hash, "TemperatureOutput", self._name)
+        return _DevicesLogicType(self, _LT.TemperatureOutput)
 
     @property
     def TemperatureOutput2(self) -> _DevicesLogicType:
-        return _DevicesLogicType(self._hash, "TemperatureOutput2", self._name)
+        return _DevicesLogicType(self, _LT.TemperatureOutput2)
 
     @property
     def TotalMolesInput(self) -> _DevicesLogicType:
-        return _DevicesLogicType(self._hash, "TotalMolesInput", self._name)
+        return _DevicesLogicType(self, _LT.TotalMolesInput)
 
     @property
     def TotalMolesOutput(self) -> _DevicesLogicType:
-        return _DevicesLogicType(self._hash, "TotalMolesOutput", self._name)
+        return _DevicesLogicType(self, _LT.TotalMolesOutput)
 
     @property
     def TotalMolesOutput2(self) -> _DevicesLogicType:
-        return _DevicesLogicType(self._hash, "TotalMolesOutput2", self._name)
+        return _DevicesLogicType(self, _LT.TotalMolesOutput2)
 
     @property
     def slot0(self) -> _SlotTypeFilters:
-        return _SlotTypeFilters(type(self), self._hash, 0, self._name)
+        return _SlotTypeFilters(self, 0)
 
     @property
     def GasFilter(self) -> _SlotTypeFilters:
@@ -15338,18 +15670,19 @@ class RocketManufactory(
     _RecipeHash,
 ):
     _hash: int = 1781051034
+    _prefab_name: int = "StructureRocketManufactory"
 
     @property
     def CompletionRatio(self) -> float:
-        return _DeviceLogicType(self, self._id, "CompletionRatio")
+        return _DeviceLogicType(self, _LT.CompletionRatio)
 
     @property
     def StackSize(self) -> float:
-        return _DeviceLogicType(self, self._id, "StackSize")
+        return _DeviceLogicType(self, _LT.StackSize)
 
     @property
     def slot0(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(type(self), self._id, 0)
+        return _SlotTypeCommon(self, 0)
 
     @property
     def Import(self) -> _SlotTypeCommon:
@@ -15357,7 +15690,7 @@ class RocketManufactory(
 
     @property
     def slot1(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(type(self), self._id, 1)
+        return _SlotTypeCommon(self, 1)
 
     @property
     def Export(self) -> _SlotTypeCommon:
@@ -15378,21 +15711,22 @@ class _RocketManufactorys(
     _RecipeHashs,
 ):
     _hash: int = 1781051034
+    _prefab_name: int = "StructureRocketManufactory"
 
     def __getitem__(self, name: str | int | float) -> "_RocketManufactorys":
         return _RocketManufactorys(name)
 
     @property
     def CompletionRatio(self) -> _DevicesLogicType:
-        return _DevicesLogicType(self._hash, "CompletionRatio", self._name)
+        return _DevicesLogicType(self, _LT.CompletionRatio)
 
     @property
     def StackSize(self) -> _DevicesLogicType:
-        return _DevicesLogicType(self._hash, "StackSize", self._name)
+        return _DevicesLogicType(self, _LT.StackSize)
 
     @property
     def slot0(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(type(self), self._hash, 0, self._name)
+        return _SlotTypeCommons(self, 0)
 
     @property
     def Import(self) -> _SlotTypeCommons:
@@ -15400,7 +15734,7 @@ class _RocketManufactorys(
 
     @property
     def slot1(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(type(self), self._hash, 1, self._name)
+        return _SlotTypeCommons(self, 1)
 
     @property
     def Export(self) -> _SlotTypeCommons:
@@ -15421,14 +15755,15 @@ class RocketMiner(
     _Quantity,
 ):
     _hash: int = -2087223687
+    _prefab_name: int = "StructureRocketMiner"
 
     @property
     def DrillCondition(self) -> float:
-        return _DeviceLogicType(self, self._id, "DrillCondition")
+        return _DeviceLogicType(self, _LT.DrillCondition)
 
     @property
     def slot0(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(type(self), self._id, 0)
+        return _SlotTypeCommon(self, 0)
 
     @property
     def Export(self) -> _SlotTypeCommon:
@@ -15436,7 +15771,7 @@ class RocketMiner(
 
     @property
     def slot1(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(type(self), self._id, 1)
+        return _SlotTypeCommon(self, 1)
 
     @property
     def DrillHeadSlot(self) -> _SlotTypeCommon:
@@ -15454,17 +15789,18 @@ class _RocketMiners(
     _Quantitys,
 ):
     _hash: int = -2087223687
+    _prefab_name: int = "StructureRocketMiner"
 
     def __getitem__(self, name: str | int | float) -> "_RocketMiners":
         return _RocketMiners(name)
 
     @property
     def DrillCondition(self) -> _DevicesLogicType:
-        return _DevicesLogicType(self._hash, "DrillCondition", self._name)
+        return _DevicesLogicType(self, _LT.DrillCondition)
 
     @property
     def slot0(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(type(self), self._hash, 0, self._name)
+        return _SlotTypeCommons(self, 0)
 
     @property
     def Export(self) -> _SlotTypeCommons:
@@ -15472,7 +15808,7 @@ class _RocketMiners(
 
     @property
     def slot1(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(type(self), self._hash, 1, self._name)
+        return _SlotTypeCommons(self, 1)
 
     @property
     def DrillHeadSlot(self) -> _SlotTypeCommons:
@@ -15484,10 +15820,11 @@ RocketMiners: _RocketMiners = _RocketMiners()
 
 class RocketScanner(_BaseStructure, _Error, _Lock, _Power):
     _hash: int = 2014252591
+    _prefab_name: int = "StructureRocketScanner"
 
     @property
     def slot0(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(type(self), self._id, 0)
+        return _SlotTypeCommon(self, 0)
 
     @property
     def ScannerHeadSlot(self) -> _SlotTypeCommon:
@@ -15496,13 +15833,14 @@ class RocketScanner(_BaseStructure, _Error, _Lock, _Power):
 
 class _RocketScanners(_BaseStructures, _Errors, _Locks, _Powers):
     _hash: int = 2014252591
+    _prefab_name: int = "StructureRocketScanner"
 
     def __getitem__(self, name: str | int | float) -> "_RocketScanners":
         return _RocketScanners(name)
 
     @property
     def slot0(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(type(self), self._hash, 0, self._name)
+        return _SlotTypeCommons(self, 0)
 
     @property
     def ScannerHeadSlot(self) -> _SlotTypeCommons:
@@ -15514,10 +15852,11 @@ RocketScanners: _RocketScanners = _RocketScanners()
 
 class SDBHopper(_BaseStructure, _ClearMemory, _ImportCount, _Open):
     _hash: int = -1875856925
+    _prefab_name: int = "StructureSDBHopper"
 
     @property
     def slot0(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(type(self), self._id, 0)
+        return _SlotTypeCommon(self, 0)
 
     @property
     def Import(self) -> _SlotTypeCommon:
@@ -15526,13 +15865,14 @@ class SDBHopper(_BaseStructure, _ClearMemory, _ImportCount, _Open):
 
 class _SDBHoppers(_BaseStructures, _ClearMemorys, _ImportCounts, _Opens):
     _hash: int = -1875856925
+    _prefab_name: int = "StructureSDBHopper"
 
     def __getitem__(self, name: str | int | float) -> "_SDBHoppers":
         return _SDBHoppers(name)
 
     @property
     def slot0(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(type(self), self._hash, 0, self._name)
+        return _SlotTypeCommons(self, 0)
 
     @property
     def Import(self) -> _SlotTypeCommons:
@@ -15544,10 +15884,11 @@ SDBHoppers: _SDBHoppers = _SDBHoppers()
 
 class SDBHopperAdvanced(_BaseStructure, _ClearMemory, _ImportCount, _Lock, _Open):
     _hash: int = 467225612
+    _prefab_name: int = "StructureSDBHopperAdvanced"
 
     @property
     def slot0(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(type(self), self._id, 0)
+        return _SlotTypeCommon(self, 0)
 
     @property
     def Import(self) -> _SlotTypeCommon:
@@ -15558,13 +15899,14 @@ class _SDBHopperAdvanceds(
     _BaseStructures, _ClearMemorys, _ImportCounts, _Locks, _Opens
 ):
     _hash: int = 467225612
+    _prefab_name: int = "StructureSDBHopperAdvanced"
 
     def __getitem__(self, name: str | int | float) -> "_SDBHopperAdvanceds":
         return _SDBHopperAdvanceds(name)
 
     @property
     def slot0(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(type(self), self._hash, 0, self._name)
+        return _SlotTypeCommons(self, 0)
 
     @property
     def Import(self) -> _SlotTypeCommons:
@@ -15588,10 +15930,11 @@ class SDBSilo(
     _Quantity,
 ):
     _hash: int = 1155865682
+    _prefab_name: int = "StructureSDBSilo"
 
     @property
     def slot0(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(type(self), self._id, 0)
+        return _SlotTypeCommon(self, 0)
 
     @property
     def Import(self) -> _SlotTypeCommon:
@@ -15599,7 +15942,7 @@ class SDBSilo(
 
     @property
     def slot1(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(type(self), self._id, 1)
+        return _SlotTypeCommon(self, 1)
 
     @property
     def Export(self) -> _SlotTypeCommon:
@@ -15620,13 +15963,14 @@ class _SDBSilos(
     _Quantitys,
 ):
     _hash: int = 1155865682
+    _prefab_name: int = "StructureSDBSilo"
 
     def __getitem__(self, name: str | int | float) -> "_SDBSilos":
         return _SDBSilos(name)
 
     @property
     def slot0(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(type(self), self._hash, 0, self._name)
+        return _SlotTypeCommons(self, 0)
 
     @property
     def Import(self) -> _SlotTypeCommons:
@@ -15634,7 +15978,7 @@ class _SDBSilos(
 
     @property
     def slot1(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(type(self), self._hash, 1, self._name)
+        return _SlotTypeCommons(self, 1)
 
     @property
     def Export(self) -> _SlotTypeCommons:
@@ -15658,18 +16002,19 @@ class SecurityPrinter(
     _RecipeHash,
 ):
     _hash: int = -641491515
+    _prefab_name: int = "StructureSecurityPrinter"
 
     @property
     def CompletionRatio(self) -> float:
-        return _DeviceLogicType(self, self._id, "CompletionRatio")
+        return _DeviceLogicType(self, _LT.CompletionRatio)
 
     @property
     def StackSize(self) -> float:
-        return _DeviceLogicType(self, self._id, "StackSize")
+        return _DeviceLogicType(self, _LT.StackSize)
 
     @property
     def slot0(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(type(self), self._id, 0)
+        return _SlotTypeCommon(self, 0)
 
     @property
     def Import(self) -> _SlotTypeCommon:
@@ -15677,7 +16022,7 @@ class SecurityPrinter(
 
     @property
     def slot1(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(type(self), self._id, 1)
+        return _SlotTypeCommon(self, 1)
 
     @property
     def Export(self) -> _SlotTypeCommon:
@@ -15698,21 +16043,22 @@ class _SecurityPrinters(
     _RecipeHashs,
 ):
     _hash: int = -641491515
+    _prefab_name: int = "StructureSecurityPrinter"
 
     def __getitem__(self, name: str | int | float) -> "_SecurityPrinters":
         return _SecurityPrinters(name)
 
     @property
     def CompletionRatio(self) -> _DevicesLogicType:
-        return _DevicesLogicType(self._hash, "CompletionRatio", self._name)
+        return _DevicesLogicType(self, _LT.CompletionRatio)
 
     @property
     def StackSize(self) -> _DevicesLogicType:
-        return _DevicesLogicType(self._hash, "StackSize", self._name)
+        return _DevicesLogicType(self, _LT.StackSize)
 
     @property
     def slot0(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(type(self), self._hash, 0, self._name)
+        return _SlotTypeCommons(self, 0)
 
     @property
     def Import(self) -> _SlotTypeCommons:
@@ -15720,7 +16066,7 @@ class _SecurityPrinters(
 
     @property
     def slot1(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(type(self), self._hash, 1, self._name)
+        return _SlotTypeCommons(self, 1)
 
     @property
     def Export(self) -> _SlotTypeCommons:
@@ -15732,133 +16078,135 @@ SecurityPrinters: _SecurityPrinters = _SecurityPrinters()
 
 class ShelfMedium(_BaseStructure, _Open):
     _hash: int = 182006674
+    _prefab_name: int = "StructureShelfMedium"
 
     @property
     def slot0(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(type(self), self._id, 0)
+        return _SlotTypeCommon(self, 0)
 
     @property
     def slot1(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(type(self), self._id, 1)
+        return _SlotTypeCommon(self, 1)
 
     @property
     def slot10(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(type(self), self._id, 10)
+        return _SlotTypeCommon(self, 10)
 
     @property
     def slot11(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(type(self), self._id, 11)
+        return _SlotTypeCommon(self, 11)
 
     @property
     def slot12(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(type(self), self._id, 12)
+        return _SlotTypeCommon(self, 12)
 
     @property
     def slot13(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(type(self), self._id, 13)
+        return _SlotTypeCommon(self, 13)
 
     @property
     def slot14(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(type(self), self._id, 14)
+        return _SlotTypeCommon(self, 14)
 
     @property
     def slot2(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(type(self), self._id, 2)
+        return _SlotTypeCommon(self, 2)
 
     @property
     def slot3(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(type(self), self._id, 3)
+        return _SlotTypeCommon(self, 3)
 
     @property
     def slot4(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(type(self), self._id, 4)
+        return _SlotTypeCommon(self, 4)
 
     @property
     def slot5(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(type(self), self._id, 5)
+        return _SlotTypeCommon(self, 5)
 
     @property
     def slot6(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(type(self), self._id, 6)
+        return _SlotTypeCommon(self, 6)
 
     @property
     def slot7(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(type(self), self._id, 7)
+        return _SlotTypeCommon(self, 7)
 
     @property
     def slot8(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(type(self), self._id, 8)
+        return _SlotTypeCommon(self, 8)
 
     @property
     def slot9(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(type(self), self._id, 9)
+        return _SlotTypeCommon(self, 9)
 
 
 class _ShelfMediums(_BaseStructures, _Opens):
     _hash: int = 182006674
+    _prefab_name: int = "StructureShelfMedium"
 
     def __getitem__(self, name: str | int | float) -> "_ShelfMediums":
         return _ShelfMediums(name)
 
     @property
     def slot0(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(type(self), self._hash, 0, self._name)
+        return _SlotTypeCommons(self, 0)
 
     @property
     def slot1(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(type(self), self._hash, 1, self._name)
+        return _SlotTypeCommons(self, 1)
 
     @property
     def slot10(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(type(self), self._hash, 10, self._name)
+        return _SlotTypeCommons(self, 10)
 
     @property
     def slot11(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(type(self), self._hash, 11, self._name)
+        return _SlotTypeCommons(self, 11)
 
     @property
     def slot12(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(type(self), self._hash, 12, self._name)
+        return _SlotTypeCommons(self, 12)
 
     @property
     def slot13(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(type(self), self._hash, 13, self._name)
+        return _SlotTypeCommons(self, 13)
 
     @property
     def slot14(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(type(self), self._hash, 14, self._name)
+        return _SlotTypeCommons(self, 14)
 
     @property
     def slot2(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(type(self), self._hash, 2, self._name)
+        return _SlotTypeCommons(self, 2)
 
     @property
     def slot3(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(type(self), self._hash, 3, self._name)
+        return _SlotTypeCommons(self, 3)
 
     @property
     def slot4(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(type(self), self._hash, 4, self._name)
+        return _SlotTypeCommons(self, 4)
 
     @property
     def slot5(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(type(self), self._hash, 5, self._name)
+        return _SlotTypeCommons(self, 5)
 
     @property
     def slot6(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(type(self), self._hash, 6, self._name)
+        return _SlotTypeCommons(self, 6)
 
     @property
     def slot7(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(type(self), self._hash, 7, self._name)
+        return _SlotTypeCommons(self, 7)
 
     @property
     def slot8(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(type(self), self._hash, 8, self._name)
+        return _SlotTypeCommons(self, 8)
 
     @property
     def slot9(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(type(self), self._hash, 9, self._name)
+        return _SlotTypeCommons(self, 9)
 
 
 ShelfMediums: _ShelfMediums = _ShelfMediums()
@@ -15866,29 +16214,31 @@ ShelfMediums: _ShelfMediums = _ShelfMediums()
 
 class ShortCornerLocker(_BaseStructure, _Lock, _Open):
     _hash: int = 1330754486
+    _prefab_name: int = "StructureShortCornerLocker"
 
     @property
     def slot0(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(type(self), self._id, 0)
+        return _SlotTypeCommon(self, 0)
 
     @property
     def slot1(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(type(self), self._id, 1)
+        return _SlotTypeCommon(self, 1)
 
 
 class _ShortCornerLockers(_BaseStructures, _Locks, _Opens):
     _hash: int = 1330754486
+    _prefab_name: int = "StructureShortCornerLocker"
 
     def __getitem__(self, name: str | int | float) -> "_ShortCornerLockers":
         return _ShortCornerLockers(name)
 
     @property
     def slot0(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(type(self), self._hash, 0, self._name)
+        return _SlotTypeCommons(self, 0)
 
     @property
     def slot1(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(type(self), self._hash, 1, self._name)
+        return _SlotTypeCommons(self, 1)
 
 
 ShortCornerLockers: _ShortCornerLockers = _ShortCornerLockers()
@@ -15896,93 +16246,95 @@ ShortCornerLockers: _ShortCornerLockers = _ShortCornerLockers()
 
 class ShortLocker(_BaseStructure, _Lock, _Open):
     _hash: int = -554553467
+    _prefab_name: int = "StructureShortLocker"
 
     @property
     def slot0(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(type(self), self._id, 0)
+        return _SlotTypeCommon(self, 0)
 
     @property
     def slot1(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(type(self), self._id, 1)
+        return _SlotTypeCommon(self, 1)
 
     @property
     def slot2(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(type(self), self._id, 2)
+        return _SlotTypeCommon(self, 2)
 
     @property
     def slot3(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(type(self), self._id, 3)
+        return _SlotTypeCommon(self, 3)
 
     @property
     def slot4(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(type(self), self._id, 4)
+        return _SlotTypeCommon(self, 4)
 
     @property
     def slot5(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(type(self), self._id, 5)
+        return _SlotTypeCommon(self, 5)
 
     @property
     def slot6(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(type(self), self._id, 6)
+        return _SlotTypeCommon(self, 6)
 
     @property
     def slot7(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(type(self), self._id, 7)
+        return _SlotTypeCommon(self, 7)
 
     @property
     def slot8(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(type(self), self._id, 8)
+        return _SlotTypeCommon(self, 8)
 
     @property
     def slot9(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(type(self), self._id, 9)
+        return _SlotTypeCommon(self, 9)
 
 
 class _ShortLockers(_BaseStructures, _Locks, _Opens):
     _hash: int = -554553467
+    _prefab_name: int = "StructureShortLocker"
 
     def __getitem__(self, name: str | int | float) -> "_ShortLockers":
         return _ShortLockers(name)
 
     @property
     def slot0(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(type(self), self._hash, 0, self._name)
+        return _SlotTypeCommons(self, 0)
 
     @property
     def slot1(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(type(self), self._hash, 1, self._name)
+        return _SlotTypeCommons(self, 1)
 
     @property
     def slot2(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(type(self), self._hash, 2, self._name)
+        return _SlotTypeCommons(self, 2)
 
     @property
     def slot3(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(type(self), self._hash, 3, self._name)
+        return _SlotTypeCommons(self, 3)
 
     @property
     def slot4(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(type(self), self._hash, 4, self._name)
+        return _SlotTypeCommons(self, 4)
 
     @property
     def slot5(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(type(self), self._hash, 5, self._name)
+        return _SlotTypeCommons(self, 5)
 
     @property
     def slot6(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(type(self), self._hash, 6, self._name)
+        return _SlotTypeCommons(self, 6)
 
     @property
     def slot7(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(type(self), self._hash, 7, self._name)
+        return _SlotTypeCommons(self, 7)
 
     @property
     def slot8(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(type(self), self._hash, 8, self._name)
+        return _SlotTypeCommons(self, 8)
 
     @property
     def slot9(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(type(self), self._hash, 9, self._name)
+        return _SlotTypeCommons(self, 9)
 
 
 ShortLockers: _ShortLockers = _ShortLockers()
@@ -15990,10 +16342,12 @@ ShortLockers: _ShortLockers = _ShortLockers()
 
 class Shower(_BaseStructure, _Activate, _Maximum, _Open, _Ratio, _SettingW):
     _hash: int = -775128944
+    _prefab_name: int = "StructureShower"
 
 
 class _Showers(_BaseStructures, _Activates, _Maximums, _Opens, _Ratios, _SettingWs):
     _hash: int = -775128944
+    _prefab_name: int = "StructureShower"
 
     def __getitem__(self, name: str | int | float) -> "_Showers":
         return _Showers(name)
@@ -16004,10 +16358,12 @@ Showers: _Showers = _Showers()
 
 class ShowerPowered(_BaseStructure, _Error, _Open, _Power):
     _hash: int = -1081797501
+    _prefab_name: int = "StructureShowerPowered"
 
 
 class _ShowerPowereds(_BaseStructures, _Errors, _Opens, _Powers):
     _hash: int = -1081797501
+    _prefab_name: int = "StructureShowerPowered"
 
     def __getitem__(self, name: str | int | float) -> "_ShowerPowereds":
         return _ShowerPowereds(name)
@@ -16020,14 +16376,15 @@ class Sleeper(
     _BaseStructure, _Activate, _Error, _Lock, _Maximum, _Open, _Power, _Ratio, _SettingW
 ):
     _hash: int = -1467449329
+    _prefab_name: int = "StructureSleeper"
 
     @property
     def EntityState(self) -> float:
-        return _DeviceLogicType(self, self._id, "EntityState")
+        return _DeviceLogicType(self, _LT.EntityState)
 
     @property
     def slot0(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(type(self), self._id, 0)
+        return _SlotTypeCommon(self, 0)
 
     @property
     def Bed(self) -> _SlotTypeCommon:
@@ -16046,17 +16403,18 @@ class _Sleepers(
     _SettingWs,
 ):
     _hash: int = -1467449329
+    _prefab_name: int = "StructureSleeper"
 
     def __getitem__(self, name: str | int | float) -> "_Sleepers":
         return _Sleepers(name)
 
     @property
     def EntityState(self) -> _DevicesLogicType:
-        return _DevicesLogicType(self._hash, "EntityState", self._name)
+        return _DevicesLogicType(self, _LT.EntityState)
 
     @property
     def slot0(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(type(self), self._hash, 0, self._name)
+        return _SlotTypeCommons(self, 0)
 
     @property
     def Bed(self) -> _SlotTypeCommons:
@@ -16079,14 +16437,15 @@ class SleeperLeft(
     _SettingW,
 ):
     _hash: int = 1213495833
+    _prefab_name: int = "StructureSleeperLeft"
 
     @property
     def EntityState(self) -> float:
-        return _DeviceLogicType(self, self._id, "EntityState")
+        return _DeviceLogicType(self, _LT.EntityState)
 
     @property
     def slot0(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(type(self), self._id, 0)
+        return _SlotTypeCommon(self, 0)
 
     @property
     def Player(self) -> _SlotTypeCommon:
@@ -16106,17 +16465,18 @@ class _SleeperLefts(
     _SettingWs,
 ):
     _hash: int = 1213495833
+    _prefab_name: int = "StructureSleeperLeft"
 
     def __getitem__(self, name: str | int | float) -> "_SleeperLefts":
         return _SleeperLefts(name)
 
     @property
     def EntityState(self) -> _DevicesLogicType:
-        return _DevicesLogicType(self._hash, "EntityState", self._name)
+        return _DevicesLogicType(self, _LT.EntityState)
 
     @property
     def slot0(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(type(self), self._hash, 0, self._name)
+        return _SlotTypeCommons(self, 0)
 
     @property
     def Player(self) -> _SlotTypeCommons:
@@ -16139,14 +16499,15 @@ class SleeperRight(
     _SettingW,
 ):
     _hash: int = -1812330717
+    _prefab_name: int = "StructureSleeperRight"
 
     @property
     def EntityState(self) -> float:
-        return _DeviceLogicType(self, self._id, "EntityState")
+        return _DeviceLogicType(self, _LT.EntityState)
 
     @property
     def slot0(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(type(self), self._id, 0)
+        return _SlotTypeCommon(self, 0)
 
     @property
     def Player(self) -> _SlotTypeCommon:
@@ -16166,17 +16527,18 @@ class _SleeperRights(
     _SettingWs,
 ):
     _hash: int = -1812330717
+    _prefab_name: int = "StructureSleeperRight"
 
     def __getitem__(self, name: str | int | float) -> "_SleeperRights":
         return _SleeperRights(name)
 
     @property
     def EntityState(self) -> _DevicesLogicType:
-        return _DevicesLogicType(self._hash, "EntityState", self._name)
+        return _DevicesLogicType(self, _LT.EntityState)
 
     @property
     def slot0(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(type(self), self._hash, 0, self._name)
+        return _SlotTypeCommons(self, 0)
 
     @property
     def Player(self) -> _SlotTypeCommons:
@@ -16199,14 +16561,15 @@ class SleeperVertical(
     _SettingW,
 ):
     _hash: int = -1300059018
+    _prefab_name: int = "StructureSleeperVertical"
 
     @property
     def EntityState(self) -> float:
-        return _DeviceLogicType(self, self._id, "EntityState")
+        return _DeviceLogicType(self, _LT.EntityState)
 
     @property
     def slot0(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(type(self), self._id, 0)
+        return _SlotTypeCommon(self, 0)
 
     @property
     def Player(self) -> _SlotTypeCommon:
@@ -16226,17 +16589,18 @@ class _SleeperVerticals(
     _SettingWs,
 ):
     _hash: int = -1300059018
+    _prefab_name: int = "StructureSleeperVertical"
 
     def __getitem__(self, name: str | int | float) -> "_SleeperVerticals":
         return _SleeperVerticals(name)
 
     @property
     def EntityState(self) -> _DevicesLogicType:
-        return _DevicesLogicType(self._hash, "EntityState", self._name)
+        return _DevicesLogicType(self, _LT.EntityState)
 
     @property
     def slot0(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(type(self), self._hash, 0, self._name)
+        return _SlotTypeCommons(self, 0)
 
     @property
     def Player(self) -> _SlotTypeCommons:
@@ -16248,10 +16612,12 @@ SleeperVerticals: _SleeperVerticals = _SleeperVerticals()
 
 class LogicSlotReader(_BaseStructure, _Error, _Power, _SettingR):
     _hash: int = -767867194
+    _prefab_name: int = "StructureLogicSlotReader"
 
 
 class _LogicSlotReaders(_BaseStructures, _Errors, _Powers, _SettingRs):
     _hash: int = -767867194
+    _prefab_name: int = "StructureLogicSlotReader"
 
     def __getitem__(self, name: str | int | float) -> "_LogicSlotReaders":
         return _LogicSlotReaders(name)
@@ -16262,12 +16628,14 @@ LogicSlotReaders: _LogicSlotReaders = _LogicSlotReaders()
 
 class SmallDirectHeatExchangeGastoGas(_BaseStructure, _Maximum, _Ratio, _SettingW):
     _hash: int = 1310303582
+    _prefab_name: int = "StructureSmallDirectHeatExchangeGastoGas"
 
 
 class _SmallDirectHeatExchangeGastoGass(
     _BaseStructures, _Maximums, _Ratios, _SettingWs
 ):
     _hash: int = 1310303582
+    _prefab_name: int = "StructureSmallDirectHeatExchangeGastoGas"
 
     def __getitem__(
         self, name: str | int | float
@@ -16282,12 +16650,14 @@ SmallDirectHeatExchangeGastoGass: _SmallDirectHeatExchangeGastoGass = (
 
 class SmallDirectHeatExchangeLiquidtoGas(_BaseStructure, _Maximum, _Ratio, _SettingW):
     _hash: int = 1825212016
+    _prefab_name: int = "StructureSmallDirectHeatExchangeLiquidtoGas"
 
 
 class _SmallDirectHeatExchangeLiquidtoGass(
     _BaseStructures, _Maximums, _Ratios, _SettingWs
 ):
     _hash: int = 1825212016
+    _prefab_name: int = "StructureSmallDirectHeatExchangeLiquidtoGas"
 
     def __getitem__(
         self, name: str | int | float
@@ -16304,12 +16674,14 @@ class SmallDirectHeatExchangeLiquidtoLiquid(
     _BaseStructure, _Maximum, _Ratio, _SettingW
 ):
     _hash: int = -507770416
+    _prefab_name: int = "StructureSmallDirectHeatExchangeLiquidtoLiquid"
 
 
 class _SmallDirectHeatExchangeLiquidtoLiquids(
     _BaseStructures, _Maximums, _Ratios, _SettingWs
 ):
     _hash: int = -507770416
+    _prefab_name: int = "StructureSmallDirectHeatExchangeLiquidtoLiquid"
 
     def __getitem__(
         self, name: str | int | float
@@ -16324,12 +16696,14 @@ SmallDirectHeatExchangeLiquidtoLiquids: _SmallDirectHeatExchangeLiquidtoLiquids 
 
 class AirlockGate(_BaseStructure, _Idle, _Lock, _Mode, _Open, _Power, _SettingW):
     _hash: int = 1736080881
+    _prefab_name: int = "StructureAirlockGate"
 
 
 class _AirlockGates(
     _BaseStructures, _Idles, _Locks, _Modes, _Opens, _Powers, _SettingWs
 ):
     _hash: int = 1736080881
+    _prefab_name: int = "StructureAirlockGate"
 
     def __getitem__(self, name: str | int | float) -> "_AirlockGates":
         return _AirlockGates(name)
@@ -16342,10 +16716,11 @@ class SmallSatelliteDish(
     _BaseStructure, _Activate, _Error, _Idle, _Power, _SettingW, _VerticalW
 ):
     _hash: int = -2138748650
+    _prefab_name: int = "StructureSmallSatelliteDish"
 
     @property
     def BestContactFilter(self) -> float:
-        return _DeviceLogicType(self, self._id, "BestContactFilter")
+        return _DeviceLogicType(self, _LT.BestContactFilter)
 
     @BestContactFilter.setter
     def BestContactFilter(self, value: int | float):
@@ -16353,35 +16728,35 @@ class SmallSatelliteDish(
 
     @property
     def ContactTypeId(self) -> float:
-        return _DeviceLogicType(self, self._id, "ContactTypeId")
+        return _DeviceLogicType(self, _LT.ContactTypeId)
 
     @property
     def InterrogationProgress(self) -> float:
-        return _DeviceLogicType(self, self._id, "InterrogationProgress")
+        return _DeviceLogicType(self, _LT.InterrogationProgress)
 
     @property
     def MinimumWattsToContact(self) -> float:
-        return _DeviceLogicType(self, self._id, "MinimumWattsToContact")
+        return _DeviceLogicType(self, _LT.MinimumWattsToContact)
 
     @property
     def SignalID(self) -> float:
-        return _DeviceLogicType(self, self._id, "SignalID")
+        return _DeviceLogicType(self, _LT.SignalID)
 
     @property
     def SignalStrength(self) -> float:
-        return _DeviceLogicType(self, self._id, "SignalStrength")
+        return _DeviceLogicType(self, _LT.SignalStrength)
 
     @property
     def SizeX(self) -> float:
-        return _DeviceLogicType(self, self._id, "SizeX")
+        return _DeviceLogicType(self, _LT.SizeX)
 
     @property
     def SizeZ(self) -> float:
-        return _DeviceLogicType(self, self._id, "SizeZ")
+        return _DeviceLogicType(self, _LT.SizeZ)
 
     @property
     def TargetPadIndex(self) -> float:
-        return _DeviceLogicType(self, self._id, "TargetPadIndex")
+        return _DeviceLogicType(self, _LT.TargetPadIndex)
 
     @TargetPadIndex.setter
     def TargetPadIndex(self, value: int | float):
@@ -16389,20 +16764,21 @@ class SmallSatelliteDish(
 
     @property
     def WattsReachingContact(self) -> float:
-        return _DeviceLogicType(self, self._id, "WattsReachingContact")
+        return _DeviceLogicType(self, _LT.WattsReachingContact)
 
 
 class _SmallSatelliteDishs(
     _BaseStructures, _Activates, _Errors, _Idles, _Powers, _SettingWs, _VerticalWs
 ):
     _hash: int = -2138748650
+    _prefab_name: int = "StructureSmallSatelliteDish"
 
     def __getitem__(self, name: str | int | float) -> "_SmallSatelliteDishs":
         return _SmallSatelliteDishs(name)
 
     @property
     def BestContactFilter(self) -> _DevicesLogicType:
-        return _DevicesLogicType(self._hash, "BestContactFilter", self._name)
+        return _DevicesLogicType(self, _LT.BestContactFilter)
 
     @BestContactFilter.setter
     def BestContactFilter(self, value: int | float):
@@ -16410,35 +16786,35 @@ class _SmallSatelliteDishs(
 
     @property
     def ContactTypeId(self) -> _DevicesLogicType:
-        return _DevicesLogicType(self._hash, "ContactTypeId", self._name)
+        return _DevicesLogicType(self, _LT.ContactTypeId)
 
     @property
     def InterrogationProgress(self) -> _DevicesLogicType:
-        return _DevicesLogicType(self._hash, "InterrogationProgress", self._name)
+        return _DevicesLogicType(self, _LT.InterrogationProgress)
 
     @property
     def MinimumWattsToContact(self) -> _DevicesLogicType:
-        return _DevicesLogicType(self._hash, "MinimumWattsToContact", self._name)
+        return _DevicesLogicType(self, _LT.MinimumWattsToContact)
 
     @property
     def SignalID(self) -> _DevicesLogicType:
-        return _DevicesLogicType(self._hash, "SignalID", self._name)
+        return _DevicesLogicType(self, _LT.SignalID)
 
     @property
     def SignalStrength(self) -> _DevicesLogicType:
-        return _DevicesLogicType(self._hash, "SignalStrength", self._name)
+        return _DevicesLogicType(self, _LT.SignalStrength)
 
     @property
     def SizeX(self) -> _DevicesLogicType:
-        return _DevicesLogicType(self._hash, "SizeX", self._name)
+        return _DevicesLogicType(self, _LT.SizeX)
 
     @property
     def SizeZ(self) -> _DevicesLogicType:
-        return _DevicesLogicType(self._hash, "SizeZ", self._name)
+        return _DevicesLogicType(self, _LT.SizeZ)
 
     @property
     def TargetPadIndex(self) -> _DevicesLogicType:
-        return _DevicesLogicType(self._hash, "TargetPadIndex", self._name)
+        return _DevicesLogicType(self, _LT.TargetPadIndex)
 
     @TargetPadIndex.setter
     def TargetPadIndex(self, value: int | float):
@@ -16446,7 +16822,7 @@ class _SmallSatelliteDishs(
 
     @property
     def WattsReachingContact(self) -> _DevicesLogicType:
-        return _DevicesLogicType(self._hash, "WattsReachingContact", self._name)
+        return _DevicesLogicType(self, _LT.WattsReachingContact)
 
 
 SmallSatelliteDishs: _SmallSatelliteDishs = _SmallSatelliteDishs()
@@ -16466,50 +16842,51 @@ class TankSmall(
     _Volume,
 ):
     _hash: int = 1013514688
+    _prefab_name: int = "StructureTankSmall"
 
     @property
     def CombustionOutput(self) -> float:
-        return _DeviceLogicType(self, self._id, "CombustionOutput")
+        return _DeviceLogicType(self, _LT.CombustionOutput)
 
     @property
     def PressureOutput(self) -> float:
-        return _DeviceLogicType(self, self._id, "PressureOutput")
+        return _DeviceLogicType(self, _LT.PressureOutput)
 
     @property
     def RatioCarbonDioxideOutput(self) -> float:
-        return _DeviceLogicType(self, self._id, "RatioCarbonDioxideOutput")
+        return _DeviceLogicType(self, _LT.RatioCarbonDioxideOutput)
 
     @property
     def RatioNitrogenOutput(self) -> float:
-        return _DeviceLogicType(self, self._id, "RatioNitrogenOutput")
+        return _DeviceLogicType(self, _LT.RatioNitrogenOutput)
 
     @property
     def RatioNitrousOxideOutput(self) -> float:
-        return _DeviceLogicType(self, self._id, "RatioNitrousOxideOutput")
+        return _DeviceLogicType(self, _LT.RatioNitrousOxideOutput)
 
     @property
     def RatioOxygenOutput(self) -> float:
-        return _DeviceLogicType(self, self._id, "RatioOxygenOutput")
+        return _DeviceLogicType(self, _LT.RatioOxygenOutput)
 
     @property
     def RatioPollutantOutput(self) -> float:
-        return _DeviceLogicType(self, self._id, "RatioPollutantOutput")
+        return _DeviceLogicType(self, _LT.RatioPollutantOutput)
 
     @property
     def RatioVolatilesOutput(self) -> float:
-        return _DeviceLogicType(self, self._id, "RatioVolatilesOutput")
+        return _DeviceLogicType(self, _LT.RatioVolatilesOutput)
 
     @property
     def RatioWaterOutput(self) -> float:
-        return _DeviceLogicType(self, self._id, "RatioWaterOutput")
+        return _DeviceLogicType(self, _LT.RatioWaterOutput)
 
     @property
     def TemperatureOutput(self) -> float:
-        return _DeviceLogicType(self, self._id, "TemperatureOutput")
+        return _DeviceLogicType(self, _LT.TemperatureOutput)
 
     @property
     def TotalMolesOutput(self) -> float:
-        return _DeviceLogicType(self, self._id, "TotalMolesOutput")
+        return _DeviceLogicType(self, _LT.TotalMolesOutput)
 
 
 class _TankSmalls(
@@ -16526,53 +16903,54 @@ class _TankSmalls(
     _Volumes,
 ):
     _hash: int = 1013514688
+    _prefab_name: int = "StructureTankSmall"
 
     def __getitem__(self, name: str | int | float) -> "_TankSmalls":
         return _TankSmalls(name)
 
     @property
     def CombustionOutput(self) -> _DevicesLogicType:
-        return _DevicesLogicType(self._hash, "CombustionOutput", self._name)
+        return _DevicesLogicType(self, _LT.CombustionOutput)
 
     @property
     def PressureOutput(self) -> _DevicesLogicType:
-        return _DevicesLogicType(self._hash, "PressureOutput", self._name)
+        return _DevicesLogicType(self, _LT.PressureOutput)
 
     @property
     def RatioCarbonDioxideOutput(self) -> _DevicesLogicType:
-        return _DevicesLogicType(self._hash, "RatioCarbonDioxideOutput", self._name)
+        return _DevicesLogicType(self, _LT.RatioCarbonDioxideOutput)
 
     @property
     def RatioNitrogenOutput(self) -> _DevicesLogicType:
-        return _DevicesLogicType(self._hash, "RatioNitrogenOutput", self._name)
+        return _DevicesLogicType(self, _LT.RatioNitrogenOutput)
 
     @property
     def RatioNitrousOxideOutput(self) -> _DevicesLogicType:
-        return _DevicesLogicType(self._hash, "RatioNitrousOxideOutput", self._name)
+        return _DevicesLogicType(self, _LT.RatioNitrousOxideOutput)
 
     @property
     def RatioOxygenOutput(self) -> _DevicesLogicType:
-        return _DevicesLogicType(self._hash, "RatioOxygenOutput", self._name)
+        return _DevicesLogicType(self, _LT.RatioOxygenOutput)
 
     @property
     def RatioPollutantOutput(self) -> _DevicesLogicType:
-        return _DevicesLogicType(self._hash, "RatioPollutantOutput", self._name)
+        return _DevicesLogicType(self, _LT.RatioPollutantOutput)
 
     @property
     def RatioVolatilesOutput(self) -> _DevicesLogicType:
-        return _DevicesLogicType(self._hash, "RatioVolatilesOutput", self._name)
+        return _DevicesLogicType(self, _LT.RatioVolatilesOutput)
 
     @property
     def RatioWaterOutput(self) -> _DevicesLogicType:
-        return _DevicesLogicType(self._hash, "RatioWaterOutput", self._name)
+        return _DevicesLogicType(self, _LT.RatioWaterOutput)
 
     @property
     def TemperatureOutput(self) -> _DevicesLogicType:
-        return _DevicesLogicType(self._hash, "TemperatureOutput", self._name)
+        return _DevicesLogicType(self, _LT.TemperatureOutput)
 
     @property
     def TotalMolesOutput(self) -> _DevicesLogicType:
-        return _DevicesLogicType(self._hash, "TotalMolesOutput", self._name)
+        return _DevicesLogicType(self, _LT.TotalMolesOutput)
 
 
 TankSmalls: _TankSmalls = _TankSmalls()
@@ -16592,50 +16970,51 @@ class TankSmallAir(
     _Volume,
 ):
     _hash: int = 955744474
+    _prefab_name: int = "StructureTankSmallAir"
 
     @property
     def CombustionOutput(self) -> float:
-        return _DeviceLogicType(self, self._id, "CombustionOutput")
+        return _DeviceLogicType(self, _LT.CombustionOutput)
 
     @property
     def PressureOutput(self) -> float:
-        return _DeviceLogicType(self, self._id, "PressureOutput")
+        return _DeviceLogicType(self, _LT.PressureOutput)
 
     @property
     def RatioCarbonDioxideOutput(self) -> float:
-        return _DeviceLogicType(self, self._id, "RatioCarbonDioxideOutput")
+        return _DeviceLogicType(self, _LT.RatioCarbonDioxideOutput)
 
     @property
     def RatioNitrogenOutput(self) -> float:
-        return _DeviceLogicType(self, self._id, "RatioNitrogenOutput")
+        return _DeviceLogicType(self, _LT.RatioNitrogenOutput)
 
     @property
     def RatioNitrousOxideOutput(self) -> float:
-        return _DeviceLogicType(self, self._id, "RatioNitrousOxideOutput")
+        return _DeviceLogicType(self, _LT.RatioNitrousOxideOutput)
 
     @property
     def RatioOxygenOutput(self) -> float:
-        return _DeviceLogicType(self, self._id, "RatioOxygenOutput")
+        return _DeviceLogicType(self, _LT.RatioOxygenOutput)
 
     @property
     def RatioPollutantOutput(self) -> float:
-        return _DeviceLogicType(self, self._id, "RatioPollutantOutput")
+        return _DeviceLogicType(self, _LT.RatioPollutantOutput)
 
     @property
     def RatioVolatilesOutput(self) -> float:
-        return _DeviceLogicType(self, self._id, "RatioVolatilesOutput")
+        return _DeviceLogicType(self, _LT.RatioVolatilesOutput)
 
     @property
     def RatioWaterOutput(self) -> float:
-        return _DeviceLogicType(self, self._id, "RatioWaterOutput")
+        return _DeviceLogicType(self, _LT.RatioWaterOutput)
 
     @property
     def TemperatureOutput(self) -> float:
-        return _DeviceLogicType(self, self._id, "TemperatureOutput")
+        return _DeviceLogicType(self, _LT.TemperatureOutput)
 
     @property
     def TotalMolesOutput(self) -> float:
-        return _DeviceLogicType(self, self._id, "TotalMolesOutput")
+        return _DeviceLogicType(self, _LT.TotalMolesOutput)
 
 
 class _TankSmallAirs(
@@ -16652,53 +17031,54 @@ class _TankSmallAirs(
     _Volumes,
 ):
     _hash: int = 955744474
+    _prefab_name: int = "StructureTankSmallAir"
 
     def __getitem__(self, name: str | int | float) -> "_TankSmallAirs":
         return _TankSmallAirs(name)
 
     @property
     def CombustionOutput(self) -> _DevicesLogicType:
-        return _DevicesLogicType(self._hash, "CombustionOutput", self._name)
+        return _DevicesLogicType(self, _LT.CombustionOutput)
 
     @property
     def PressureOutput(self) -> _DevicesLogicType:
-        return _DevicesLogicType(self._hash, "PressureOutput", self._name)
+        return _DevicesLogicType(self, _LT.PressureOutput)
 
     @property
     def RatioCarbonDioxideOutput(self) -> _DevicesLogicType:
-        return _DevicesLogicType(self._hash, "RatioCarbonDioxideOutput", self._name)
+        return _DevicesLogicType(self, _LT.RatioCarbonDioxideOutput)
 
     @property
     def RatioNitrogenOutput(self) -> _DevicesLogicType:
-        return _DevicesLogicType(self._hash, "RatioNitrogenOutput", self._name)
+        return _DevicesLogicType(self, _LT.RatioNitrogenOutput)
 
     @property
     def RatioNitrousOxideOutput(self) -> _DevicesLogicType:
-        return _DevicesLogicType(self._hash, "RatioNitrousOxideOutput", self._name)
+        return _DevicesLogicType(self, _LT.RatioNitrousOxideOutput)
 
     @property
     def RatioOxygenOutput(self) -> _DevicesLogicType:
-        return _DevicesLogicType(self._hash, "RatioOxygenOutput", self._name)
+        return _DevicesLogicType(self, _LT.RatioOxygenOutput)
 
     @property
     def RatioPollutantOutput(self) -> _DevicesLogicType:
-        return _DevicesLogicType(self._hash, "RatioPollutantOutput", self._name)
+        return _DevicesLogicType(self, _LT.RatioPollutantOutput)
 
     @property
     def RatioVolatilesOutput(self) -> _DevicesLogicType:
-        return _DevicesLogicType(self._hash, "RatioVolatilesOutput", self._name)
+        return _DevicesLogicType(self, _LT.RatioVolatilesOutput)
 
     @property
     def RatioWaterOutput(self) -> _DevicesLogicType:
-        return _DevicesLogicType(self._hash, "RatioWaterOutput", self._name)
+        return _DevicesLogicType(self, _LT.RatioWaterOutput)
 
     @property
     def TemperatureOutput(self) -> _DevicesLogicType:
-        return _DevicesLogicType(self._hash, "TemperatureOutput", self._name)
+        return _DevicesLogicType(self, _LT.TemperatureOutput)
 
     @property
     def TotalMolesOutput(self) -> _DevicesLogicType:
-        return _DevicesLogicType(self._hash, "TotalMolesOutput", self._name)
+        return _DevicesLogicType(self, _LT.TotalMolesOutput)
 
 
 TankSmallAirs: _TankSmallAirs = _TankSmallAirs()
@@ -16718,50 +17098,51 @@ class TankSmallFuel(
     _Volume,
 ):
     _hash: int = 2102454415
+    _prefab_name: int = "StructureTankSmallFuel"
 
     @property
     def CombustionOutput(self) -> float:
-        return _DeviceLogicType(self, self._id, "CombustionOutput")
+        return _DeviceLogicType(self, _LT.CombustionOutput)
 
     @property
     def PressureOutput(self) -> float:
-        return _DeviceLogicType(self, self._id, "PressureOutput")
+        return _DeviceLogicType(self, _LT.PressureOutput)
 
     @property
     def RatioCarbonDioxideOutput(self) -> float:
-        return _DeviceLogicType(self, self._id, "RatioCarbonDioxideOutput")
+        return _DeviceLogicType(self, _LT.RatioCarbonDioxideOutput)
 
     @property
     def RatioNitrogenOutput(self) -> float:
-        return _DeviceLogicType(self, self._id, "RatioNitrogenOutput")
+        return _DeviceLogicType(self, _LT.RatioNitrogenOutput)
 
     @property
     def RatioNitrousOxideOutput(self) -> float:
-        return _DeviceLogicType(self, self._id, "RatioNitrousOxideOutput")
+        return _DeviceLogicType(self, _LT.RatioNitrousOxideOutput)
 
     @property
     def RatioOxygenOutput(self) -> float:
-        return _DeviceLogicType(self, self._id, "RatioOxygenOutput")
+        return _DeviceLogicType(self, _LT.RatioOxygenOutput)
 
     @property
     def RatioPollutantOutput(self) -> float:
-        return _DeviceLogicType(self, self._id, "RatioPollutantOutput")
+        return _DeviceLogicType(self, _LT.RatioPollutantOutput)
 
     @property
     def RatioVolatilesOutput(self) -> float:
-        return _DeviceLogicType(self, self._id, "RatioVolatilesOutput")
+        return _DeviceLogicType(self, _LT.RatioVolatilesOutput)
 
     @property
     def RatioWaterOutput(self) -> float:
-        return _DeviceLogicType(self, self._id, "RatioWaterOutput")
+        return _DeviceLogicType(self, _LT.RatioWaterOutput)
 
     @property
     def TemperatureOutput(self) -> float:
-        return _DeviceLogicType(self, self._id, "TemperatureOutput")
+        return _DeviceLogicType(self, _LT.TemperatureOutput)
 
     @property
     def TotalMolesOutput(self) -> float:
-        return _DeviceLogicType(self, self._id, "TotalMolesOutput")
+        return _DeviceLogicType(self, _LT.TotalMolesOutput)
 
 
 class _TankSmallFuels(
@@ -16778,53 +17159,54 @@ class _TankSmallFuels(
     _Volumes,
 ):
     _hash: int = 2102454415
+    _prefab_name: int = "StructureTankSmallFuel"
 
     def __getitem__(self, name: str | int | float) -> "_TankSmallFuels":
         return _TankSmallFuels(name)
 
     @property
     def CombustionOutput(self) -> _DevicesLogicType:
-        return _DevicesLogicType(self._hash, "CombustionOutput", self._name)
+        return _DevicesLogicType(self, _LT.CombustionOutput)
 
     @property
     def PressureOutput(self) -> _DevicesLogicType:
-        return _DevicesLogicType(self._hash, "PressureOutput", self._name)
+        return _DevicesLogicType(self, _LT.PressureOutput)
 
     @property
     def RatioCarbonDioxideOutput(self) -> _DevicesLogicType:
-        return _DevicesLogicType(self._hash, "RatioCarbonDioxideOutput", self._name)
+        return _DevicesLogicType(self, _LT.RatioCarbonDioxideOutput)
 
     @property
     def RatioNitrogenOutput(self) -> _DevicesLogicType:
-        return _DevicesLogicType(self._hash, "RatioNitrogenOutput", self._name)
+        return _DevicesLogicType(self, _LT.RatioNitrogenOutput)
 
     @property
     def RatioNitrousOxideOutput(self) -> _DevicesLogicType:
-        return _DevicesLogicType(self._hash, "RatioNitrousOxideOutput", self._name)
+        return _DevicesLogicType(self, _LT.RatioNitrousOxideOutput)
 
     @property
     def RatioOxygenOutput(self) -> _DevicesLogicType:
-        return _DevicesLogicType(self._hash, "RatioOxygenOutput", self._name)
+        return _DevicesLogicType(self, _LT.RatioOxygenOutput)
 
     @property
     def RatioPollutantOutput(self) -> _DevicesLogicType:
-        return _DevicesLogicType(self._hash, "RatioPollutantOutput", self._name)
+        return _DevicesLogicType(self, _LT.RatioPollutantOutput)
 
     @property
     def RatioVolatilesOutput(self) -> _DevicesLogicType:
-        return _DevicesLogicType(self._hash, "RatioVolatilesOutput", self._name)
+        return _DevicesLogicType(self, _LT.RatioVolatilesOutput)
 
     @property
     def RatioWaterOutput(self) -> _DevicesLogicType:
-        return _DevicesLogicType(self._hash, "RatioWaterOutput", self._name)
+        return _DevicesLogicType(self, _LT.RatioWaterOutput)
 
     @property
     def TemperatureOutput(self) -> _DevicesLogicType:
-        return _DevicesLogicType(self._hash, "TemperatureOutput", self._name)
+        return _DevicesLogicType(self, _LT.TemperatureOutput)
 
     @property
     def TotalMolesOutput(self) -> _DevicesLogicType:
-        return _DevicesLogicType(self._hash, "TotalMolesOutput", self._name)
+        return _DevicesLogicType(self, _LT.TotalMolesOutput)
 
 
 TankSmallFuels: _TankSmallFuels = _TankSmallFuels()
@@ -16832,10 +17214,12 @@ TankSmallFuels: _TankSmallFuels = _TankSmallFuels()
 
 class SolarPanel(_BaseStructure, _Charge, _Maximum, _Ratio, _VerticalW):
     _hash: int = -2045627372
+    _prefab_name: int = "StructureSolarPanel"
 
 
 class _SolarPanels(_BaseStructures, _Charges, _Maximums, _Ratios, _VerticalWs):
     _hash: int = -2045627372
+    _prefab_name: int = "StructureSolarPanel"
 
     def __getitem__(self, name: str | int | float) -> "_SolarPanels":
         return _SolarPanels(name)
@@ -16846,10 +17230,12 @@ SolarPanels: _SolarPanels = _SolarPanels()
 
 class SolarPanel45(_BaseStructure, _Charge, _Maximum, _Ratio, _VerticalW):
     _hash: int = -1554349863
+    _prefab_name: int = "StructureSolarPanel45"
 
 
 class _SolarPanel45s(_BaseStructures, _Charges, _Maximums, _Ratios, _VerticalWs):
     _hash: int = -1554349863
+    _prefab_name: int = "StructureSolarPanel45"
 
     def __getitem__(self, name: str | int | float) -> "_SolarPanel45s":
         return _SolarPanel45s(name)
@@ -16860,10 +17246,12 @@ SolarPanel45s: _SolarPanel45s = _SolarPanel45s()
 
 class SolarPanelDual(_BaseStructure, _Charge, _Maximum, _Ratio, _VerticalW):
     _hash: int = -539224550
+    _prefab_name: int = "StructureSolarPanelDual"
 
 
 class _SolarPanelDuals(_BaseStructures, _Charges, _Maximums, _Ratios, _VerticalWs):
     _hash: int = -539224550
+    _prefab_name: int = "StructureSolarPanelDual"
 
     def __getitem__(self, name: str | int | float) -> "_SolarPanelDuals":
         return _SolarPanelDuals(name)
@@ -16874,10 +17262,12 @@ SolarPanelDuals: _SolarPanelDuals = _SolarPanelDuals()
 
 class SolarPanelFlat(_BaseStructure, _Charge, _Maximum, _Ratio, _VerticalW):
     _hash: int = 1968102968
+    _prefab_name: int = "StructureSolarPanelFlat"
 
 
 class _SolarPanelFlats(_BaseStructures, _Charges, _Maximums, _Ratios, _VerticalWs):
     _hash: int = 1968102968
+    _prefab_name: int = "StructureSolarPanelFlat"
 
     def __getitem__(self, name: str | int | float) -> "_SolarPanelFlats":
         return _SolarPanelFlats(name)
@@ -16888,12 +17278,14 @@ SolarPanelFlats: _SolarPanelFlats = _SolarPanelFlats()
 
 class SolarPanel45Reinforced(_BaseStructure, _Charge, _Maximum, _Ratio, _VerticalW):
     _hash: int = 930865127
+    _prefab_name: int = "StructureSolarPanel45Reinforced"
 
 
 class _SolarPanel45Reinforceds(
     _BaseStructures, _Charges, _Maximums, _Ratios, _VerticalWs
 ):
     _hash: int = 930865127
+    _prefab_name: int = "StructureSolarPanel45Reinforced"
 
     def __getitem__(self, name: str | int | float) -> "_SolarPanel45Reinforceds":
         return _SolarPanel45Reinforceds(name)
@@ -16904,12 +17296,14 @@ SolarPanel45Reinforceds: _SolarPanel45Reinforceds = _SolarPanel45Reinforceds()
 
 class SolarPanelDualReinforced(_BaseStructure, _Charge, _Maximum, _Ratio, _VerticalW):
     _hash: int = -1545574413
+    _prefab_name: int = "StructureSolarPanelDualReinforced"
 
 
 class _SolarPanelDualReinforceds(
     _BaseStructures, _Charges, _Maximums, _Ratios, _VerticalWs
 ):
     _hash: int = -1545574413
+    _prefab_name: int = "StructureSolarPanelDualReinforced"
 
     def __getitem__(self, name: str | int | float) -> "_SolarPanelDualReinforceds":
         return _SolarPanelDualReinforceds(name)
@@ -16920,12 +17314,14 @@ SolarPanelDualReinforceds: _SolarPanelDualReinforceds = _SolarPanelDualReinforce
 
 class SolarPanelFlatReinforced(_BaseStructure, _Charge, _Maximum, _Ratio, _VerticalW):
     _hash: int = 1697196770
+    _prefab_name: int = "StructureSolarPanelFlatReinforced"
 
 
 class _SolarPanelFlatReinforceds(
     _BaseStructures, _Charges, _Maximums, _Ratios, _VerticalWs
 ):
     _hash: int = 1697196770
+    _prefab_name: int = "StructureSolarPanelFlatReinforced"
 
     def __getitem__(self, name: str | int | float) -> "_SolarPanelFlatReinforceds":
         return _SolarPanelFlatReinforceds(name)
@@ -16936,12 +17332,14 @@ SolarPanelFlatReinforceds: _SolarPanelFlatReinforceds = _SolarPanelFlatReinforce
 
 class SolarPanelReinforced(_BaseStructure, _Charge, _Maximum, _Ratio, _VerticalW):
     _hash: int = -934345724
+    _prefab_name: int = "StructureSolarPanelReinforced"
 
 
 class _SolarPanelReinforceds(
     _BaseStructures, _Charges, _Maximums, _Ratios, _VerticalWs
 ):
     _hash: int = -934345724
+    _prefab_name: int = "StructureSolarPanelReinforced"
 
     def __getitem__(self, name: str | int | float) -> "_SolarPanelReinforceds":
         return _SolarPanelReinforceds(name)
@@ -16961,10 +17359,11 @@ class Sorter(
     _Power,
 ):
     _hash: int = -1009150565
+    _prefab_name: int = "StructureSorter"
 
     @property
     def Output(self) -> float:
-        return _DeviceLogicType(self, self._id, "Output")
+        return _DeviceLogicType(self, _LT.Output)
 
     @Output.setter
     def Output(self, value: int | float):
@@ -16972,7 +17371,7 @@ class Sorter(
 
     @property
     def slot0(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(type(self), self._id, 0)
+        return _SlotTypeCommon(self, 0)
 
     @property
     def Import(self) -> _SlotTypeCommon:
@@ -16980,7 +17379,7 @@ class Sorter(
 
     @property
     def slot1(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(type(self), self._id, 1)
+        return _SlotTypeCommon(self, 1)
 
     @property
     def Export(self) -> _SlotTypeCommon:
@@ -16988,7 +17387,7 @@ class Sorter(
 
     @property
     def slot2(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(type(self), self._id, 2)
+        return _SlotTypeCommon(self, 2)
 
     @property
     def Export2(self) -> _SlotTypeCommon:
@@ -16996,7 +17395,7 @@ class Sorter(
 
     @property
     def slot3(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(type(self), self._id, 3)
+        return _SlotTypeCommon(self, 3)
 
     @property
     def DataDisk(self) -> _SlotTypeCommon:
@@ -17014,13 +17413,14 @@ class _Sorters(
     _Powers,
 ):
     _hash: int = -1009150565
+    _prefab_name: int = "StructureSorter"
 
     def __getitem__(self, name: str | int | float) -> "_Sorters":
         return _Sorters(name)
 
     @property
     def Output(self) -> _DevicesLogicType:
-        return _DevicesLogicType(self._hash, "Output", self._name)
+        return _DevicesLogicType(self, _LT.Output)
 
     @Output.setter
     def Output(self, value: int | float):
@@ -17028,7 +17428,7 @@ class _Sorters(
 
     @property
     def slot0(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(type(self), self._hash, 0, self._name)
+        return _SlotTypeCommons(self, 0)
 
     @property
     def Import(self) -> _SlotTypeCommons:
@@ -17036,7 +17436,7 @@ class _Sorters(
 
     @property
     def slot1(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(type(self), self._hash, 1, self._name)
+        return _SlotTypeCommons(self, 1)
 
     @property
     def Export(self) -> _SlotTypeCommons:
@@ -17044,7 +17444,7 @@ class _Sorters(
 
     @property
     def slot2(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(type(self), self._hash, 2, self._name)
+        return _SlotTypeCommons(self, 2)
 
     @property
     def Export2(self) -> _SlotTypeCommons:
@@ -17052,7 +17452,7 @@ class _Sorters(
 
     @property
     def slot3(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(type(self), self._hash, 3, self._name)
+        return _SlotTypeCommons(self, 3)
 
     @property
     def DataDisk(self) -> _SlotTypeCommons:
@@ -17075,10 +17475,11 @@ class StackerReverse(
     _SettingW,
 ):
     _hash: int = 1585641623
+    _prefab_name: int = "StructureStackerReverse"
 
     @property
     def Output(self) -> float:
-        return _DeviceLogicType(self, self._id, "Output")
+        return _DeviceLogicType(self, _LT.Output)
 
     @Output.setter
     def Output(self, value: int | float):
@@ -17086,7 +17487,7 @@ class StackerReverse(
 
     @property
     def slot0(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(type(self), self._id, 0)
+        return _SlotTypeCommon(self, 0)
 
     @property
     def Import(self) -> _SlotTypeCommon:
@@ -17094,7 +17495,7 @@ class StackerReverse(
 
     @property
     def slot1(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(type(self), self._id, 1)
+        return _SlotTypeCommon(self, 1)
 
     @property
     def Export(self) -> _SlotTypeCommon:
@@ -17102,7 +17503,7 @@ class StackerReverse(
 
     @property
     def slot2(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(type(self), self._id, 2)
+        return _SlotTypeCommon(self, 2)
 
     @property
     def Processing(self) -> _SlotTypeCommon:
@@ -17122,13 +17523,14 @@ class _StackerReverses(
     _SettingWs,
 ):
     _hash: int = 1585641623
+    _prefab_name: int = "StructureStackerReverse"
 
     def __getitem__(self, name: str | int | float) -> "_StackerReverses":
         return _StackerReverses(name)
 
     @property
     def Output(self) -> _DevicesLogicType:
-        return _DevicesLogicType(self._hash, "Output", self._name)
+        return _DevicesLogicType(self, _LT.Output)
 
     @Output.setter
     def Output(self, value: int | float):
@@ -17136,7 +17538,7 @@ class _StackerReverses(
 
     @property
     def slot0(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(type(self), self._hash, 0, self._name)
+        return _SlotTypeCommons(self, 0)
 
     @property
     def Import(self) -> _SlotTypeCommons:
@@ -17144,7 +17546,7 @@ class _StackerReverses(
 
     @property
     def slot1(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(type(self), self._hash, 1, self._name)
+        return _SlotTypeCommons(self, 1)
 
     @property
     def Export(self) -> _SlotTypeCommons:
@@ -17152,7 +17554,7 @@ class _StackerReverses(
 
     @property
     def slot2(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(type(self), self._hash, 2, self._name)
+        return _SlotTypeCommons(self, 2)
 
     @property
     def Processing(self) -> _SlotTypeCommons:
@@ -17175,10 +17577,11 @@ class Stacker(
     _SettingW,
 ):
     _hash: int = -2020231820
+    _prefab_name: int = "StructureStacker"
 
     @property
     def Output(self) -> float:
-        return _DeviceLogicType(self, self._id, "Output")
+        return _DeviceLogicType(self, _LT.Output)
 
     @Output.setter
     def Output(self, value: int | float):
@@ -17186,7 +17589,7 @@ class Stacker(
 
     @property
     def slot0(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(type(self), self._id, 0)
+        return _SlotTypeCommon(self, 0)
 
     @property
     def Import(self) -> _SlotTypeCommon:
@@ -17194,7 +17597,7 @@ class Stacker(
 
     @property
     def slot1(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(type(self), self._id, 1)
+        return _SlotTypeCommon(self, 1)
 
     @property
     def Export(self) -> _SlotTypeCommon:
@@ -17202,7 +17605,7 @@ class Stacker(
 
     @property
     def slot2(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(type(self), self._id, 2)
+        return _SlotTypeCommon(self, 2)
 
     @property
     def Processing(self) -> _SlotTypeCommon:
@@ -17222,13 +17625,14 @@ class _Stackers(
     _SettingWs,
 ):
     _hash: int = -2020231820
+    _prefab_name: int = "StructureStacker"
 
     def __getitem__(self, name: str | int | float) -> "_Stackers":
         return _Stackers(name)
 
     @property
     def Output(self) -> _DevicesLogicType:
-        return _DevicesLogicType(self._hash, "Output", self._name)
+        return _DevicesLogicType(self, _LT.Output)
 
     @Output.setter
     def Output(self, value: int | float):
@@ -17236,7 +17640,7 @@ class _Stackers(
 
     @property
     def slot0(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(type(self), self._hash, 0, self._name)
+        return _SlotTypeCommons(self, 0)
 
     @property
     def Import(self) -> _SlotTypeCommons:
@@ -17244,7 +17648,7 @@ class _Stackers(
 
     @property
     def slot1(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(type(self), self._hash, 1, self._name)
+        return _SlotTypeCommons(self, 1)
 
     @property
     def Export(self) -> _SlotTypeCommons:
@@ -17252,7 +17656,7 @@ class _Stackers(
 
     @property
     def slot2(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(type(self), self._hash, 2, self._name)
+        return _SlotTypeCommons(self, 2)
 
     @property
     def Processing(self) -> _SlotTypeCommons:
@@ -17264,39 +17668,41 @@ Stackers: _Stackers = _Stackers()
 
 class Battery(_BaseStructure, _Charge, _Error, _Lock, _Maximum, _ModeR, _On, _Ratio):
     _hash: int = -400115994
+    _prefab_name: int = "StructureBattery"
 
     @property
     def Power(self) -> float:
-        return _DeviceLogicType(self, self._id, "Power")
+        return _DeviceLogicType(self, _LT.Power)
 
     @property
     def PowerActual(self) -> float:
-        return _DeviceLogicType(self, self._id, "PowerActual")
+        return _DeviceLogicType(self, _LT.PowerActual)
 
     @property
     def PowerPotential(self) -> float:
-        return _DeviceLogicType(self, self._id, "PowerPotential")
+        return _DeviceLogicType(self, _LT.PowerPotential)
 
 
 class _Batterys(
     _BaseStructures, _Charges, _Errors, _Locks, _Maximums, _ModeRs, _Ons, _Ratios
 ):
     _hash: int = -400115994
+    _prefab_name: int = "StructureBattery"
 
     def __getitem__(self, name: str | int | float) -> "_Batterys":
         return _Batterys(name)
 
     @property
     def Power(self) -> _DevicesLogicType:
-        return _DevicesLogicType(self._hash, "Power", self._name)
+        return _DevicesLogicType(self, _LT.Power)
 
     @property
     def PowerActual(self) -> _DevicesLogicType:
-        return _DevicesLogicType(self._hash, "PowerActual", self._name)
+        return _DevicesLogicType(self, _LT.PowerActual)
 
     @property
     def PowerPotential(self) -> _DevicesLogicType:
-        return _DevicesLogicType(self._hash, "PowerPotential", self._name)
+        return _DevicesLogicType(self, _LT.PowerPotential)
 
 
 Batterys: _Batterys = _Batterys()
@@ -17306,39 +17712,41 @@ class BatteryLarge(
     _BaseStructure, _Charge, _Error, _Lock, _Maximum, _ModeR, _On, _Ratio
 ):
     _hash: int = -1388288459
+    _prefab_name: int = "StructureBatteryLarge"
 
     @property
     def Power(self) -> float:
-        return _DeviceLogicType(self, self._id, "Power")
+        return _DeviceLogicType(self, _LT.Power)
 
     @property
     def PowerActual(self) -> float:
-        return _DeviceLogicType(self, self._id, "PowerActual")
+        return _DeviceLogicType(self, _LT.PowerActual)
 
     @property
     def PowerPotential(self) -> float:
-        return _DeviceLogicType(self, self._id, "PowerPotential")
+        return _DeviceLogicType(self, _LT.PowerPotential)
 
 
 class _BatteryLarges(
     _BaseStructures, _Charges, _Errors, _Locks, _Maximums, _ModeRs, _Ons, _Ratios
 ):
     _hash: int = -1388288459
+    _prefab_name: int = "StructureBatteryLarge"
 
     def __getitem__(self, name: str | int | float) -> "_BatteryLarges":
         return _BatteryLarges(name)
 
     @property
     def Power(self) -> _DevicesLogicType:
-        return _DevicesLogicType(self._hash, "Power", self._name)
+        return _DevicesLogicType(self, _LT.Power)
 
     @property
     def PowerActual(self) -> _DevicesLogicType:
-        return _DevicesLogicType(self._hash, "PowerActual", self._name)
+        return _DevicesLogicType(self, _LT.PowerActual)
 
     @property
     def PowerPotential(self) -> _DevicesLogicType:
-        return _DevicesLogicType(self._hash, "PowerPotential", self._name)
+        return _DevicesLogicType(self, _LT.PowerPotential)
 
 
 BatteryLarges: _BatteryLarges = _BatteryLarges()
@@ -17359,26 +17767,27 @@ class StirlingEngine(
     _Temperature,
 ):
     _hash: int = -260316435
+    _prefab_name: int = "StructureStirlingEngine"
 
     @property
     def EnvironmentEfficiency(self) -> float:
-        return _DeviceLogicType(self, self._id, "EnvironmentEfficiency")
+        return _DeviceLogicType(self, _LT.EnvironmentEfficiency)
 
     @property
     def PowerGeneration(self) -> float:
-        return _DeviceLogicType(self, self._id, "PowerGeneration")
+        return _DeviceLogicType(self, _LT.PowerGeneration)
 
     @property
     def Volume(self) -> float:
-        return _DeviceLogicType(self, self._id, "Volume")
+        return _DeviceLogicType(self, _LT.Volume)
 
     @property
     def WorkingGasEfficiency(self) -> float:
-        return _DeviceLogicType(self, self._id, "WorkingGasEfficiency")
+        return _DeviceLogicType(self, _LT.WorkingGasEfficiency)
 
     @property
     def slot0(self) -> _SlotTypeGasCanister:
-        return _SlotTypeGasCanister(type(self), self._id, 0)
+        return _SlotTypeGasCanister(self, 0)
 
     @property
     def GasCanister(self) -> _SlotTypeGasCanister:
@@ -17400,29 +17809,30 @@ class _StirlingEngines(
     _Temperatures,
 ):
     _hash: int = -260316435
+    _prefab_name: int = "StructureStirlingEngine"
 
     def __getitem__(self, name: str | int | float) -> "_StirlingEngines":
         return _StirlingEngines(name)
 
     @property
     def EnvironmentEfficiency(self) -> _DevicesLogicType:
-        return _DevicesLogicType(self._hash, "EnvironmentEfficiency", self._name)
+        return _DevicesLogicType(self, _LT.EnvironmentEfficiency)
 
     @property
     def PowerGeneration(self) -> _DevicesLogicType:
-        return _DevicesLogicType(self._hash, "PowerGeneration", self._name)
+        return _DevicesLogicType(self, _LT.PowerGeneration)
 
     @property
     def Volume(self) -> _DevicesLogicType:
-        return _DevicesLogicType(self._hash, "Volume", self._name)
+        return _DevicesLogicType(self, _LT.Volume)
 
     @property
     def WorkingGasEfficiency(self) -> _DevicesLogicType:
-        return _DevicesLogicType(self._hash, "WorkingGasEfficiency", self._name)
+        return _DevicesLogicType(self, _LT.WorkingGasEfficiency)
 
     @property
     def slot0(self) -> _SlotTypeGasCanisters:
-        return _SlotTypeGasCanisters(type(self), self._hash, 0, self._name)
+        return _SlotTypeGasCanisters(self, 0)
 
     @property
     def GasCanister(self) -> _SlotTypeGasCanisters:
@@ -17434,10 +17844,11 @@ StirlingEngines: _StirlingEngines = _StirlingEngines()
 
 class SuitStorage(_BaseStructure, _Error, _Maximum, _Power, _Ratio, _SettingW):
     _hash: int = 255034731
+    _prefab_name: int = "StructureSuitStorage"
 
     @property
     def slot0(self) -> _SlotTypeHelmet:
-        return _SlotTypeHelmet(type(self), self._id, 0)
+        return _SlotTypeHelmet(self, 0)
 
     @property
     def Helmet(self) -> _SlotTypeHelmet:
@@ -17445,7 +17856,7 @@ class SuitStorage(_BaseStructure, _Error, _Maximum, _Power, _Ratio, _SettingW):
 
     @property
     def slot1(self) -> _SlotTypeSuit:
-        return _SlotTypeSuit(type(self), self._id, 1)
+        return _SlotTypeSuit(self, 1)
 
     @property
     def Suit(self) -> _SlotTypeSuit:
@@ -17453,7 +17864,7 @@ class SuitStorage(_BaseStructure, _Error, _Maximum, _Power, _Ratio, _SettingW):
 
     @property
     def slot2(self) -> _SlotTypeBack:
-        return _SlotTypeBack(type(self), self._id, 2)
+        return _SlotTypeBack(self, 2)
 
     @property
     def Back(self) -> _SlotTypeBack:
@@ -17462,13 +17873,14 @@ class SuitStorage(_BaseStructure, _Error, _Maximum, _Power, _Ratio, _SettingW):
 
 class _SuitStorages(_BaseStructures, _Errors, _Maximums, _Powers, _Ratios, _SettingWs):
     _hash: int = 255034731
+    _prefab_name: int = "StructureSuitStorage"
 
     def __getitem__(self, name: str | int | float) -> "_SuitStorages":
         return _SuitStorages(name)
 
     @property
     def slot0(self) -> _SlotTypeHelmets:
-        return _SlotTypeHelmets(type(self), self._hash, 0, self._name)
+        return _SlotTypeHelmets(self, 0)
 
     @property
     def Helmet(self) -> _SlotTypeHelmets:
@@ -17476,7 +17888,7 @@ class _SuitStorages(_BaseStructures, _Errors, _Maximums, _Powers, _Ratios, _Sett
 
     @property
     def slot1(self) -> _SlotTypeSuits:
-        return _SlotTypeSuits(type(self), self._hash, 1, self._name)
+        return _SlotTypeSuits(self, 1)
 
     @property
     def Suit(self) -> _SlotTypeSuits:
@@ -17484,7 +17896,7 @@ class _SuitStorages(_BaseStructures, _Errors, _Maximums, _Powers, _Ratios, _Sett
 
     @property
     def slot2(self) -> _SlotTypeBacks:
-        return _SlotTypeBacks(type(self), self._hash, 2, self._name)
+        return _SlotTypeBacks(self, 2)
 
     @property
     def Back(self) -> _SlotTypeBacks:
@@ -17496,10 +17908,12 @@ SuitStorages: _SuitStorages = _SuitStorages()
 
 class LogicSwitch2(_BaseStructure, _Lock, _Open, _SettingR):
     _hash: int = 321604921
+    _prefab_name: int = "StructureLogicSwitch2"
 
 
 class _LogicSwitch2s(_BaseStructures, _Locks, _Opens, _SettingRs):
     _hash: int = 321604921
+    _prefab_name: int = "StructureLogicSwitch2"
 
     def __getitem__(self, name: str | int | float) -> "_LogicSwitch2s":
         return _LogicSwitch2s(name)
@@ -17522,50 +17936,51 @@ class TankBigInsulated(
     _Volume,
 ):
     _hash: int = 1280378227
+    _prefab_name: int = "StructureTankBigInsulated"
 
     @property
     def CombustionOutput(self) -> float:
-        return _DeviceLogicType(self, self._id, "CombustionOutput")
+        return _DeviceLogicType(self, _LT.CombustionOutput)
 
     @property
     def PressureOutput(self) -> float:
-        return _DeviceLogicType(self, self._id, "PressureOutput")
+        return _DeviceLogicType(self, _LT.PressureOutput)
 
     @property
     def RatioCarbonDioxideOutput(self) -> float:
-        return _DeviceLogicType(self, self._id, "RatioCarbonDioxideOutput")
+        return _DeviceLogicType(self, _LT.RatioCarbonDioxideOutput)
 
     @property
     def RatioNitrogenOutput(self) -> float:
-        return _DeviceLogicType(self, self._id, "RatioNitrogenOutput")
+        return _DeviceLogicType(self, _LT.RatioNitrogenOutput)
 
     @property
     def RatioNitrousOxideOutput(self) -> float:
-        return _DeviceLogicType(self, self._id, "RatioNitrousOxideOutput")
+        return _DeviceLogicType(self, _LT.RatioNitrousOxideOutput)
 
     @property
     def RatioOxygenOutput(self) -> float:
-        return _DeviceLogicType(self, self._id, "RatioOxygenOutput")
+        return _DeviceLogicType(self, _LT.RatioOxygenOutput)
 
     @property
     def RatioPollutantOutput(self) -> float:
-        return _DeviceLogicType(self, self._id, "RatioPollutantOutput")
+        return _DeviceLogicType(self, _LT.RatioPollutantOutput)
 
     @property
     def RatioVolatilesOutput(self) -> float:
-        return _DeviceLogicType(self, self._id, "RatioVolatilesOutput")
+        return _DeviceLogicType(self, _LT.RatioVolatilesOutput)
 
     @property
     def RatioWaterOutput(self) -> float:
-        return _DeviceLogicType(self, self._id, "RatioWaterOutput")
+        return _DeviceLogicType(self, _LT.RatioWaterOutput)
 
     @property
     def TemperatureOutput(self) -> float:
-        return _DeviceLogicType(self, self._id, "TemperatureOutput")
+        return _DeviceLogicType(self, _LT.TemperatureOutput)
 
     @property
     def TotalMolesOutput(self) -> float:
-        return _DeviceLogicType(self, self._id, "TotalMolesOutput")
+        return _DeviceLogicType(self, _LT.TotalMolesOutput)
 
 
 class _TankBigInsulateds(
@@ -17582,53 +17997,54 @@ class _TankBigInsulateds(
     _Volumes,
 ):
     _hash: int = 1280378227
+    _prefab_name: int = "StructureTankBigInsulated"
 
     def __getitem__(self, name: str | int | float) -> "_TankBigInsulateds":
         return _TankBigInsulateds(name)
 
     @property
     def CombustionOutput(self) -> _DevicesLogicType:
-        return _DevicesLogicType(self._hash, "CombustionOutput", self._name)
+        return _DevicesLogicType(self, _LT.CombustionOutput)
 
     @property
     def PressureOutput(self) -> _DevicesLogicType:
-        return _DevicesLogicType(self._hash, "PressureOutput", self._name)
+        return _DevicesLogicType(self, _LT.PressureOutput)
 
     @property
     def RatioCarbonDioxideOutput(self) -> _DevicesLogicType:
-        return _DevicesLogicType(self._hash, "RatioCarbonDioxideOutput", self._name)
+        return _DevicesLogicType(self, _LT.RatioCarbonDioxideOutput)
 
     @property
     def RatioNitrogenOutput(self) -> _DevicesLogicType:
-        return _DevicesLogicType(self._hash, "RatioNitrogenOutput", self._name)
+        return _DevicesLogicType(self, _LT.RatioNitrogenOutput)
 
     @property
     def RatioNitrousOxideOutput(self) -> _DevicesLogicType:
-        return _DevicesLogicType(self._hash, "RatioNitrousOxideOutput", self._name)
+        return _DevicesLogicType(self, _LT.RatioNitrousOxideOutput)
 
     @property
     def RatioOxygenOutput(self) -> _DevicesLogicType:
-        return _DevicesLogicType(self._hash, "RatioOxygenOutput", self._name)
+        return _DevicesLogicType(self, _LT.RatioOxygenOutput)
 
     @property
     def RatioPollutantOutput(self) -> _DevicesLogicType:
-        return _DevicesLogicType(self._hash, "RatioPollutantOutput", self._name)
+        return _DevicesLogicType(self, _LT.RatioPollutantOutput)
 
     @property
     def RatioVolatilesOutput(self) -> _DevicesLogicType:
-        return _DevicesLogicType(self._hash, "RatioVolatilesOutput", self._name)
+        return _DevicesLogicType(self, _LT.RatioVolatilesOutput)
 
     @property
     def RatioWaterOutput(self) -> _DevicesLogicType:
-        return _DevicesLogicType(self._hash, "RatioWaterOutput", self._name)
+        return _DevicesLogicType(self, _LT.RatioWaterOutput)
 
     @property
     def TemperatureOutput(self) -> _DevicesLogicType:
-        return _DevicesLogicType(self._hash, "TemperatureOutput", self._name)
+        return _DevicesLogicType(self, _LT.TemperatureOutput)
 
     @property
     def TotalMolesOutput(self) -> _DevicesLogicType:
-        return _DevicesLogicType(self._hash, "TotalMolesOutput", self._name)
+        return _DevicesLogicType(self, _LT.TotalMolesOutput)
 
 
 TankBigInsulateds: _TankBigInsulateds = _TankBigInsulateds()
@@ -17648,50 +18064,51 @@ class TankSmallInsulated(
     _Volume,
 ):
     _hash: int = 272136332
+    _prefab_name: int = "StructureTankSmallInsulated"
 
     @property
     def CombustionOutput(self) -> float:
-        return _DeviceLogicType(self, self._id, "CombustionOutput")
+        return _DeviceLogicType(self, _LT.CombustionOutput)
 
     @property
     def PressureOutput(self) -> float:
-        return _DeviceLogicType(self, self._id, "PressureOutput")
+        return _DeviceLogicType(self, _LT.PressureOutput)
 
     @property
     def RatioCarbonDioxideOutput(self) -> float:
-        return _DeviceLogicType(self, self._id, "RatioCarbonDioxideOutput")
+        return _DeviceLogicType(self, _LT.RatioCarbonDioxideOutput)
 
     @property
     def RatioNitrogenOutput(self) -> float:
-        return _DeviceLogicType(self, self._id, "RatioNitrogenOutput")
+        return _DeviceLogicType(self, _LT.RatioNitrogenOutput)
 
     @property
     def RatioNitrousOxideOutput(self) -> float:
-        return _DeviceLogicType(self, self._id, "RatioNitrousOxideOutput")
+        return _DeviceLogicType(self, _LT.RatioNitrousOxideOutput)
 
     @property
     def RatioOxygenOutput(self) -> float:
-        return _DeviceLogicType(self, self._id, "RatioOxygenOutput")
+        return _DeviceLogicType(self, _LT.RatioOxygenOutput)
 
     @property
     def RatioPollutantOutput(self) -> float:
-        return _DeviceLogicType(self, self._id, "RatioPollutantOutput")
+        return _DeviceLogicType(self, _LT.RatioPollutantOutput)
 
     @property
     def RatioVolatilesOutput(self) -> float:
-        return _DeviceLogicType(self, self._id, "RatioVolatilesOutput")
+        return _DeviceLogicType(self, _LT.RatioVolatilesOutput)
 
     @property
     def RatioWaterOutput(self) -> float:
-        return _DeviceLogicType(self, self._id, "RatioWaterOutput")
+        return _DeviceLogicType(self, _LT.RatioWaterOutput)
 
     @property
     def TemperatureOutput(self) -> float:
-        return _DeviceLogicType(self, self._id, "TemperatureOutput")
+        return _DeviceLogicType(self, _LT.TemperatureOutput)
 
     @property
     def TotalMolesOutput(self) -> float:
-        return _DeviceLogicType(self, self._id, "TotalMolesOutput")
+        return _DeviceLogicType(self, _LT.TotalMolesOutput)
 
 
 class _TankSmallInsulateds(
@@ -17708,53 +18125,54 @@ class _TankSmallInsulateds(
     _Volumes,
 ):
     _hash: int = 272136332
+    _prefab_name: int = "StructureTankSmallInsulated"
 
     def __getitem__(self, name: str | int | float) -> "_TankSmallInsulateds":
         return _TankSmallInsulateds(name)
 
     @property
     def CombustionOutput(self) -> _DevicesLogicType:
-        return _DevicesLogicType(self._hash, "CombustionOutput", self._name)
+        return _DevicesLogicType(self, _LT.CombustionOutput)
 
     @property
     def PressureOutput(self) -> _DevicesLogicType:
-        return _DevicesLogicType(self._hash, "PressureOutput", self._name)
+        return _DevicesLogicType(self, _LT.PressureOutput)
 
     @property
     def RatioCarbonDioxideOutput(self) -> _DevicesLogicType:
-        return _DevicesLogicType(self._hash, "RatioCarbonDioxideOutput", self._name)
+        return _DevicesLogicType(self, _LT.RatioCarbonDioxideOutput)
 
     @property
     def RatioNitrogenOutput(self) -> _DevicesLogicType:
-        return _DevicesLogicType(self._hash, "RatioNitrogenOutput", self._name)
+        return _DevicesLogicType(self, _LT.RatioNitrogenOutput)
 
     @property
     def RatioNitrousOxideOutput(self) -> _DevicesLogicType:
-        return _DevicesLogicType(self._hash, "RatioNitrousOxideOutput", self._name)
+        return _DevicesLogicType(self, _LT.RatioNitrousOxideOutput)
 
     @property
     def RatioOxygenOutput(self) -> _DevicesLogicType:
-        return _DevicesLogicType(self._hash, "RatioOxygenOutput", self._name)
+        return _DevicesLogicType(self, _LT.RatioOxygenOutput)
 
     @property
     def RatioPollutantOutput(self) -> _DevicesLogicType:
-        return _DevicesLogicType(self._hash, "RatioPollutantOutput", self._name)
+        return _DevicesLogicType(self, _LT.RatioPollutantOutput)
 
     @property
     def RatioVolatilesOutput(self) -> _DevicesLogicType:
-        return _DevicesLogicType(self._hash, "RatioVolatilesOutput", self._name)
+        return _DevicesLogicType(self, _LT.RatioVolatilesOutput)
 
     @property
     def RatioWaterOutput(self) -> _DevicesLogicType:
-        return _DevicesLogicType(self._hash, "RatioWaterOutput", self._name)
+        return _DevicesLogicType(self, _LT.RatioWaterOutput)
 
     @property
     def TemperatureOutput(self) -> _DevicesLogicType:
-        return _DevicesLogicType(self._hash, "TemperatureOutput", self._name)
+        return _DevicesLogicType(self, _LT.TemperatureOutput)
 
     @property
     def TotalMolesOutput(self) -> _DevicesLogicType:
-        return _DevicesLogicType(self._hash, "TotalMolesOutput", self._name)
+        return _DevicesLogicType(self, _LT.TotalMolesOutput)
 
 
 TankSmallInsulateds: _TankSmallInsulateds = _TankSmallInsulateds()
@@ -17764,34 +18182,35 @@ class GroundBasedTelescope(
     _BaseStructure, _Activate, _Error, _Lock, _Open, _Power, _VerticalW
 ):
     _hash: int = -619745681
+    _prefab_name: int = "StructureGroundBasedTelescope"
 
     @property
     def AlignmentError(self) -> float:
-        return _DeviceLogicType(self, self._id, "AlignmentError")
+        return _DeviceLogicType(self, _LT.AlignmentError)
 
     @property
     def CelestialHash(self) -> float:
-        return _DeviceLogicType(self, self._id, "CelestialHash")
+        return _DeviceLogicType(self, _LT.CelestialHash)
 
     @property
     def CelestialParentHash(self) -> float:
-        return _DeviceLogicType(self, self._id, "CelestialParentHash")
+        return _DeviceLogicType(self, _LT.CelestialParentHash)
 
     @property
     def DistanceAu(self) -> float:
-        return _DeviceLogicType(self, self._id, "DistanceAu")
+        return _DeviceLogicType(self, _LT.DistanceAu)
 
     @property
     def DistanceKm(self) -> float:
-        return _DeviceLogicType(self, self._id, "DistanceKm")
+        return _DeviceLogicType(self, _LT.DistanceKm)
 
     @property
     def Eccentricity(self) -> float:
-        return _DeviceLogicType(self, self._id, "Eccentricity")
+        return _DeviceLogicType(self, _LT.Eccentricity)
 
     @property
     def HorizontalRatio(self) -> float:
-        return _DeviceLogicType(self, self._id, "HorizontalRatio")
+        return _DeviceLogicType(self, _LT.HorizontalRatio)
 
     @HorizontalRatio.setter
     def HorizontalRatio(self, value: int | float):
@@ -17799,23 +18218,23 @@ class GroundBasedTelescope(
 
     @property
     def Inclination(self) -> float:
-        return _DeviceLogicType(self, self._id, "Inclination")
+        return _DeviceLogicType(self, _LT.Inclination)
 
     @property
     def OrbitPeriod(self) -> float:
-        return _DeviceLogicType(self, self._id, "OrbitPeriod")
+        return _DeviceLogicType(self, _LT.OrbitPeriod)
 
     @property
     def SemiMajorAxis(self) -> float:
-        return _DeviceLogicType(self, self._id, "SemiMajorAxis")
+        return _DeviceLogicType(self, _LT.SemiMajorAxis)
 
     @property
     def TrueAnomaly(self) -> float:
-        return _DeviceLogicType(self, self._id, "TrueAnomaly")
+        return _DeviceLogicType(self, _LT.TrueAnomaly)
 
     @property
     def VerticalRatio(self) -> float:
-        return _DeviceLogicType(self, self._id, "VerticalRatio")
+        return _DeviceLogicType(self, _LT.VerticalRatio)
 
     @VerticalRatio.setter
     def VerticalRatio(self, value: int | float):
@@ -17826,37 +18245,38 @@ class _GroundBasedTelescopes(
     _BaseStructures, _Activates, _Errors, _Locks, _Opens, _Powers, _VerticalWs
 ):
     _hash: int = -619745681
+    _prefab_name: int = "StructureGroundBasedTelescope"
 
     def __getitem__(self, name: str | int | float) -> "_GroundBasedTelescopes":
         return _GroundBasedTelescopes(name)
 
     @property
     def AlignmentError(self) -> _DevicesLogicType:
-        return _DevicesLogicType(self._hash, "AlignmentError", self._name)
+        return _DevicesLogicType(self, _LT.AlignmentError)
 
     @property
     def CelestialHash(self) -> _DevicesLogicType:
-        return _DevicesLogicType(self._hash, "CelestialHash", self._name)
+        return _DevicesLogicType(self, _LT.CelestialHash)
 
     @property
     def CelestialParentHash(self) -> _DevicesLogicType:
-        return _DevicesLogicType(self._hash, "CelestialParentHash", self._name)
+        return _DevicesLogicType(self, _LT.CelestialParentHash)
 
     @property
     def DistanceAu(self) -> _DevicesLogicType:
-        return _DevicesLogicType(self._hash, "DistanceAu", self._name)
+        return _DevicesLogicType(self, _LT.DistanceAu)
 
     @property
     def DistanceKm(self) -> _DevicesLogicType:
-        return _DevicesLogicType(self._hash, "DistanceKm", self._name)
+        return _DevicesLogicType(self, _LT.DistanceKm)
 
     @property
     def Eccentricity(self) -> _DevicesLogicType:
-        return _DevicesLogicType(self._hash, "Eccentricity", self._name)
+        return _DevicesLogicType(self, _LT.Eccentricity)
 
     @property
     def HorizontalRatio(self) -> _DevicesLogicType:
-        return _DevicesLogicType(self._hash, "HorizontalRatio", self._name)
+        return _DevicesLogicType(self, _LT.HorizontalRatio)
 
     @HorizontalRatio.setter
     def HorizontalRatio(self, value: int | float):
@@ -17864,23 +18284,23 @@ class _GroundBasedTelescopes(
 
     @property
     def Inclination(self) -> _DevicesLogicType:
-        return _DevicesLogicType(self._hash, "Inclination", self._name)
+        return _DevicesLogicType(self, _LT.Inclination)
 
     @property
     def OrbitPeriod(self) -> _DevicesLogicType:
-        return _DevicesLogicType(self._hash, "OrbitPeriod", self._name)
+        return _DevicesLogicType(self, _LT.OrbitPeriod)
 
     @property
     def SemiMajorAxis(self) -> _DevicesLogicType:
-        return _DevicesLogicType(self._hash, "SemiMajorAxis", self._name)
+        return _DevicesLogicType(self, _LT.SemiMajorAxis)
 
     @property
     def TrueAnomaly(self) -> _DevicesLogicType:
-        return _DevicesLogicType(self._hash, "TrueAnomaly", self._name)
+        return _DevicesLogicType(self, _LT.TrueAnomaly)
 
     @property
     def VerticalRatio(self) -> _DevicesLogicType:
-        return _DevicesLogicType(self._hash, "VerticalRatio", self._name)
+        return _DevicesLogicType(self, _LT.VerticalRatio)
 
     @VerticalRatio.setter
     def VerticalRatio(self, value: int | float):
@@ -17904,18 +18324,19 @@ class ToolManufactory(
     _RecipeHash,
 ):
     _hash: int = -465741100
+    _prefab_name: int = "StructureToolManufactory"
 
     @property
     def CompletionRatio(self) -> float:
-        return _DeviceLogicType(self, self._id, "CompletionRatio")
+        return _DeviceLogicType(self, _LT.CompletionRatio)
 
     @property
     def StackSize(self) -> float:
-        return _DeviceLogicType(self, self._id, "StackSize")
+        return _DeviceLogicType(self, _LT.StackSize)
 
     @property
     def slot0(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(type(self), self._id, 0)
+        return _SlotTypeCommon(self, 0)
 
     @property
     def Import(self) -> _SlotTypeCommon:
@@ -17923,7 +18344,7 @@ class ToolManufactory(
 
     @property
     def slot1(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(type(self), self._id, 1)
+        return _SlotTypeCommon(self, 1)
 
     @property
     def Export(self) -> _SlotTypeCommon:
@@ -17944,21 +18365,22 @@ class _ToolManufactorys(
     _RecipeHashs,
 ):
     _hash: int = -465741100
+    _prefab_name: int = "StructureToolManufactory"
 
     def __getitem__(self, name: str | int | float) -> "_ToolManufactorys":
         return _ToolManufactorys(name)
 
     @property
     def CompletionRatio(self) -> _DevicesLogicType:
-        return _DevicesLogicType(self._hash, "CompletionRatio", self._name)
+        return _DevicesLogicType(self, _LT.CompletionRatio)
 
     @property
     def StackSize(self) -> _DevicesLogicType:
-        return _DevicesLogicType(self._hash, "StackSize", self._name)
+        return _DevicesLogicType(self, _LT.StackSize)
 
     @property
     def slot0(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(type(self), self._hash, 0, self._name)
+        return _SlotTypeCommons(self, 0)
 
     @property
     def Import(self) -> _SlotTypeCommons:
@@ -17966,7 +18388,7 @@ class _ToolManufactorys(
 
     @property
     def slot1(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(type(self), self._hash, 1, self._name)
+        return _SlotTypeCommons(self, 1)
 
     @property
     def Export(self) -> _SlotTypeCommons:
@@ -17978,10 +18400,12 @@ ToolManufactorys: _ToolManufactorys = _ToolManufactorys()
 
 class TraderWaypoint(_BaseStructure, _Error, _Power):
     _hash: int = 1570931620
+    _prefab_name: int = "StructureTraderWaypoint"
 
 
 class _TraderWaypoints(_BaseStructures, _Errors, _Powers):
     _hash: int = 1570931620
+    _prefab_name: int = "StructureTraderWaypoint"
 
     def __getitem__(self, name: str | int | float) -> "_TraderWaypoints":
         return _TraderWaypoints(name)
@@ -17992,12 +18416,14 @@ TraderWaypoints: _TraderWaypoints = _TraderWaypoints()
 
 class Transformer(_BaseStructure, _Error, _Lock, _Maximum, _Power, _Ratio, _SettingW):
     _hash: int = -1423212473
+    _prefab_name: int = "StructureTransformer"
 
 
 class _Transformers(
     _BaseStructures, _Errors, _Locks, _Maximums, _Powers, _Ratios, _SettingWs
 ):
     _hash: int = -1423212473
+    _prefab_name: int = "StructureTransformer"
 
     def __getitem__(self, name: str | int | float) -> "_Transformers":
         return _Transformers(name)
@@ -18010,12 +18436,14 @@ class TransformerMedium(
     _BaseStructure, _Error, _Lock, _Maximum, _Power, _Ratio, _SettingW
 ):
     _hash: int = -1065725831
+    _prefab_name: int = "StructureTransformerMedium"
 
 
 class _TransformerMediums(
     _BaseStructures, _Errors, _Locks, _Maximums, _Powers, _Ratios, _SettingWs
 ):
     _hash: int = -1065725831
+    _prefab_name: int = "StructureTransformerMedium"
 
     def __getitem__(self, name: str | int | float) -> "_TransformerMediums":
         return _TransformerMediums(name)
@@ -18028,12 +18456,14 @@ class TransformerSmall(
     _BaseStructure, _Error, _Lock, _Maximum, _Power, _Ratio, _SettingW
 ):
     _hash: int = -890946730
+    _prefab_name: int = "StructureTransformerSmall"
 
 
 class _TransformerSmalls(
     _BaseStructures, _Errors, _Locks, _Maximums, _Powers, _Ratios, _SettingWs
 ):
     _hash: int = -890946730
+    _prefab_name: int = "StructureTransformerSmall"
 
     def __getitem__(self, name: str | int | float) -> "_TransformerSmalls":
         return _TransformerSmalls(name)
@@ -18046,12 +18476,14 @@ class TransformerSmallReversed(
     _BaseStructure, _Error, _Lock, _Maximum, _Power, _Ratio, _SettingW
 ):
     _hash: int = 1054059374
+    _prefab_name: int = "StructureTransformerSmallReversed"
 
 
 class _TransformerSmallReverseds(
     _BaseStructures, _Errors, _Locks, _Maximums, _Powers, _Ratios, _SettingWs
 ):
     _hash: int = 1054059374
+    _prefab_name: int = "StructureTransformerSmallReversed"
 
     def __getitem__(self, name: str | int | float) -> "_TransformerSmallReverseds":
         return _TransformerSmallReverseds(name)
@@ -18064,12 +18496,14 @@ class RocketTransformerSmall(
     _BaseStructure, _Error, _Lock, _Maximum, _Power, _Ratio, _SettingW
 ):
     _hash: int = 518925193
+    _prefab_name: int = "StructureRocketTransformerSmall"
 
 
 class _RocketTransformerSmalls(
     _BaseStructures, _Errors, _Locks, _Maximums, _Powers, _Ratios, _SettingWs
 ):
     _hash: int = 518925193
+    _prefab_name: int = "StructureRocketTransformerSmall"
 
     def __getitem__(self, name: str | int | float) -> "_RocketTransformerSmalls":
         return _RocketTransformerSmalls(name)
@@ -18080,10 +18514,12 @@ RocketTransformerSmalls: _RocketTransformerSmalls = _RocketTransformerSmalls()
 
 class PressurePlateLarge(_BaseStructure, _SettingR):
     _hash: int = -2008706143
+    _prefab_name: int = "StructurePressurePlateLarge"
 
 
 class _PressurePlateLarges(_BaseStructures, _SettingRs):
     _hash: int = -2008706143
+    _prefab_name: int = "StructurePressurePlateLarge"
 
     def __getitem__(self, name: str | int | float) -> "_PressurePlateLarges":
         return _PressurePlateLarges(name)
@@ -18094,10 +18530,12 @@ PressurePlateLarges: _PressurePlateLarges = _PressurePlateLarges()
 
 class PressurePlateMedium(_BaseStructure, _SettingR):
     _hash: int = 1269458680
+    _prefab_name: int = "StructurePressurePlateMedium"
 
 
 class _PressurePlateMediums(_BaseStructures, _SettingRs):
     _hash: int = 1269458680
+    _prefab_name: int = "StructurePressurePlateMedium"
 
     def __getitem__(self, name: str | int | float) -> "_PressurePlateMediums":
         return _PressurePlateMediums(name)
@@ -18108,10 +18546,12 @@ PressurePlateMediums: _PressurePlateMediums = _PressurePlateMediums()
 
 class PressurePlateSmall(_BaseStructure, _SettingR):
     _hash: int = -1536471028
+    _prefab_name: int = "StructurePressurePlateSmall"
 
 
 class _PressurePlateSmalls(_BaseStructures, _SettingRs):
     _hash: int = -1536471028
+    _prefab_name: int = "StructurePressurePlateSmall"
 
     def __getitem__(self, name: str | int | float) -> "_PressurePlateSmalls":
         return _PressurePlateSmalls(name)
@@ -18124,12 +18564,14 @@ class TurboVolumePump(
     _BaseStructure, _Error, _Lock, _Maximum, _Mode, _Power, _Ratio, _SettingW
 ):
     _hash: int = 1310794736
+    _prefab_name: int = "StructureTurboVolumePump"
 
 
 class _TurboVolumePumps(
     _BaseStructures, _Errors, _Locks, _Maximums, _Modes, _Powers, _Ratios, _SettingWs
 ):
     _hash: int = 1310794736
+    _prefab_name: int = "StructureTurboVolumePump"
 
     def __getitem__(self, name: str | int | float) -> "_TurboVolumePumps":
         return _TurboVolumePumps(name)
@@ -18142,12 +18584,14 @@ class LiquidTurboVolumePump(
     _BaseStructure, _Error, _Lock, _Maximum, _Mode, _Power, _Ratio, _SettingW
 ):
     _hash: int = -1051805505
+    _prefab_name: int = "StructureLiquidTurboVolumePump"
 
 
 class _LiquidTurboVolumePumps(
     _BaseStructures, _Errors, _Locks, _Maximums, _Modes, _Powers, _Ratios, _SettingWs
 ):
     _hash: int = -1051805505
+    _prefab_name: int = "StructureLiquidTurboVolumePump"
 
     def __getitem__(self, name: str | int | float) -> "_LiquidTurboVolumePumps":
         return _LiquidTurboVolumePumps(name)
@@ -18158,10 +18602,11 @@ LiquidTurboVolumePumps: _LiquidTurboVolumePumps = _LiquidTurboVolumePumps()
 
 class ChuteUmbilicalMale(_BaseStructure, _Error, _Lock, _ModeR, _Open, _Power):
     _hash: int = -958884053
+    _prefab_name: int = "StructureChuteUmbilicalMale"
 
     @property
     def slot0(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(type(self), self._id, 0)
+        return _SlotTypeCommon(self, 0)
 
     @property
     def TransportSlot(self) -> _SlotTypeCommon:
@@ -18170,13 +18615,14 @@ class ChuteUmbilicalMale(_BaseStructure, _Error, _Lock, _ModeR, _Open, _Power):
 
 class _ChuteUmbilicalMales(_BaseStructures, _Errors, _Locks, _ModeRs, _Opens, _Powers):
     _hash: int = -958884053
+    _prefab_name: int = "StructureChuteUmbilicalMale"
 
     def __getitem__(self, name: str | int | float) -> "_ChuteUmbilicalMales":
         return _ChuteUmbilicalMales(name)
 
     @property
     def slot0(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(type(self), self._hash, 0, self._name)
+        return _SlotTypeCommons(self, 0)
 
     @property
     def TransportSlot(self) -> _SlotTypeCommons:
@@ -18190,6 +18636,7 @@ class GasUmbilicalMale(
     _BaseStructure, _Error, _Lock, _Maximum, _ModeR, _Open, _Power, _Ratio, _SettingW
 ):
     _hash: int = -1814939203
+    _prefab_name: int = "StructureGasUmbilicalMale"
 
 
 class _GasUmbilicalMales(
@@ -18204,6 +18651,7 @@ class _GasUmbilicalMales(
     _SettingWs,
 ):
     _hash: int = -1814939203
+    _prefab_name: int = "StructureGasUmbilicalMale"
 
     def __getitem__(self, name: str | int | float) -> "_GasUmbilicalMales":
         return _GasUmbilicalMales(name)
@@ -18216,6 +18664,7 @@ class LiquidUmbilicalMale(
     _BaseStructure, _Error, _Lock, _Maximum, _ModeR, _Open, _Power, _Ratio, _SettingW
 ):
     _hash: int = -1798420047
+    _prefab_name: int = "StructureLiquidUmbilicalMale"
 
 
 class _LiquidUmbilicalMales(
@@ -18230,6 +18679,7 @@ class _LiquidUmbilicalMales(
     _SettingWs,
 ):
     _hash: int = -1798420047
+    _prefab_name: int = "StructureLiquidUmbilicalMale"
 
     def __getitem__(self, name: str | int | float) -> "_LiquidUmbilicalMales":
         return _LiquidUmbilicalMales(name)
@@ -18240,10 +18690,12 @@ LiquidUmbilicalMales: _LiquidUmbilicalMales = _LiquidUmbilicalMales()
 
 class PowerUmbilicalMale(_BaseStructure, _Error, _Lock, _ModeR, _Open, _Power):
     _hash: int = 1529453938
+    _prefab_name: int = "StructurePowerUmbilicalMale"
 
 
 class _PowerUmbilicalMales(_BaseStructures, _Errors, _Locks, _ModeRs, _Opens, _Powers):
     _hash: int = 1529453938
+    _prefab_name: int = "StructurePowerUmbilicalMale"
 
     def __getitem__(self, name: str | int | float) -> "_PowerUmbilicalMales":
         return _PowerUmbilicalMales(name)
@@ -18254,10 +18706,12 @@ PowerUmbilicalMales: _PowerUmbilicalMales = _PowerUmbilicalMales()
 
 class GasUmbilicalFemale(_BaseStructure, _Maximum, _Ratio, _SettingW):
     _hash: int = -1680477930
+    _prefab_name: int = "StructureGasUmbilicalFemale"
 
 
 class _GasUmbilicalFemales(_BaseStructures, _Maximums, _Ratios, _SettingWs):
     _hash: int = -1680477930
+    _prefab_name: int = "StructureGasUmbilicalFemale"
 
     def __getitem__(self, name: str | int | float) -> "_GasUmbilicalFemales":
         return _GasUmbilicalFemales(name)
@@ -18268,10 +18722,12 @@ GasUmbilicalFemales: _GasUmbilicalFemales = _GasUmbilicalFemales()
 
 class LiquidUmbilicalFemale(_BaseStructure, _Maximum, _Ratio, _SettingW):
     _hash: int = 1734723642
+    _prefab_name: int = "StructureLiquidUmbilicalFemale"
 
 
 class _LiquidUmbilicalFemales(_BaseStructures, _Maximums, _Ratios, _SettingWs):
     _hash: int = 1734723642
+    _prefab_name: int = "StructureLiquidUmbilicalFemale"
 
     def __getitem__(self, name: str | int | float) -> "_LiquidUmbilicalFemales":
         return _LiquidUmbilicalFemales(name)
@@ -18282,10 +18738,12 @@ LiquidUmbilicalFemales: _LiquidUmbilicalFemales = _LiquidUmbilicalFemales()
 
 class GasUmbilicalFemaleSide(_BaseStructure, _Maximum, _Ratio, _SettingW):
     _hash: int = -648683847
+    _prefab_name: int = "StructureGasUmbilicalFemaleSide"
 
 
 class _GasUmbilicalFemaleSides(_BaseStructures, _Maximums, _Ratios, _SettingWs):
     _hash: int = -648683847
+    _prefab_name: int = "StructureGasUmbilicalFemaleSide"
 
     def __getitem__(self, name: str | int | float) -> "_GasUmbilicalFemaleSides":
         return _GasUmbilicalFemaleSides(name)
@@ -18296,10 +18754,12 @@ GasUmbilicalFemaleSides: _GasUmbilicalFemaleSides = _GasUmbilicalFemaleSides()
 
 class LiquidUmbilicalFemaleSide(_BaseStructure, _Maximum, _Ratio, _SettingW):
     _hash: int = 1220870319
+    _prefab_name: int = "StructureLiquidUmbilicalFemaleSide"
 
 
 class _LiquidUmbilicalFemaleSides(_BaseStructures, _Maximums, _Ratios, _SettingWs):
     _hash: int = 1220870319
+    _prefab_name: int = "StructureLiquidUmbilicalFemaleSide"
 
     def __getitem__(self, name: str | int | float) -> "_LiquidUmbilicalFemaleSides":
         return _LiquidUmbilicalFemaleSides(name)
@@ -18319,10 +18779,11 @@ class Unloader(
     _Power,
 ):
     _hash: int = 750118160
+    _prefab_name: int = "StructureUnloader"
 
     @property
     def Output(self) -> float:
-        return _DeviceLogicType(self, self._id, "Output")
+        return _DeviceLogicType(self, _LT.Output)
 
     @Output.setter
     def Output(self, value: int | float):
@@ -18330,7 +18791,7 @@ class Unloader(
 
     @property
     def slot0(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(type(self), self._id, 0)
+        return _SlotTypeCommon(self, 0)
 
     @property
     def Import(self) -> _SlotTypeCommon:
@@ -18338,7 +18799,7 @@ class Unloader(
 
     @property
     def slot1(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(type(self), self._id, 1)
+        return _SlotTypeCommon(self, 1)
 
     @property
     def Export(self) -> _SlotTypeCommon:
@@ -18356,13 +18817,14 @@ class _Unloaders(
     _Powers,
 ):
     _hash: int = 750118160
+    _prefab_name: int = "StructureUnloader"
 
     def __getitem__(self, name: str | int | float) -> "_Unloaders":
         return _Unloaders(name)
 
     @property
     def Output(self) -> _DevicesLogicType:
-        return _DevicesLogicType(self._hash, "Output", self._name)
+        return _DevicesLogicType(self, _LT.Output)
 
     @Output.setter
     def Output(self, value: int | float):
@@ -18370,7 +18832,7 @@ class _Unloaders(
 
     @property
     def slot0(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(type(self), self._hash, 0, self._name)
+        return _SlotTypeCommons(self, 0)
 
     @property
     def Import(self) -> _SlotTypeCommons:
@@ -18378,7 +18840,7 @@ class _Unloaders(
 
     @property
     def slot1(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(type(self), self._hash, 1, self._name)
+        return _SlotTypeCommons(self, 1)
 
     @property
     def Export(self) -> _SlotTypeCommons:
@@ -18390,21 +18852,23 @@ Unloaders: _Unloaders = _Unloaders()
 
 class UprightWindTurbine(_BaseStructure):
     _hash: int = 1622183451
+    _prefab_name: int = "StructureUprightWindTurbine"
 
     @property
     def PowerGeneration(self) -> float:
-        return _DeviceLogicType(self, self._id, "PowerGeneration")
+        return _DeviceLogicType(self, _LT.PowerGeneration)
 
 
 class _UprightWindTurbines(_BaseStructures):
     _hash: int = 1622183451
+    _prefab_name: int = "StructureUprightWindTurbine"
 
     def __getitem__(self, name: str | int | float) -> "_UprightWindTurbines":
         return _UprightWindTurbines(name)
 
     @property
     def PowerGeneration(self) -> _DevicesLogicType:
-        return _DevicesLogicType(self._hash, "PowerGeneration", self._name)
+        return _DevicesLogicType(self, _LT.PowerGeneration)
 
 
 UprightWindTurbines: _UprightWindTurbines = _UprightWindTurbines()
@@ -18412,10 +18876,12 @@ UprightWindTurbines: _UprightWindTurbines = _UprightWindTurbines()
 
 class Valve(_BaseStructure, _Maximum, _On, _Ratio, _SettingW):
     _hash: int = -692036078
+    _prefab_name: int = "StructureValve"
 
 
 class _Valves(_BaseStructures, _Maximums, _Ons, _Ratios, _SettingWs):
     _hash: int = -692036078
+    _prefab_name: int = "StructureValve"
 
     def __getitem__(self, name: str | int | float) -> "_Valves":
         return _Valves(name)
@@ -18426,10 +18892,12 @@ Valves: _Valves = _Valves()
 
 class LiquidValve(_BaseStructure, _Maximum, _On, _Ratio, _SettingW):
     _hash: int = 1849974453
+    _prefab_name: int = "StructureLiquidValve"
 
 
 class _LiquidValves(_BaseStructures, _Maximums, _Ons, _Ratios, _SettingWs):
     _hash: int = 1849974453
+    _prefab_name: int = "StructureLiquidValve"
 
     def __getitem__(self, name: str | int | float) -> "_LiquidValves":
         return _LiquidValves(name)
@@ -18451,10 +18919,11 @@ class VendingMachine(
     _Ratio,
 ):
     _hash: int = -443130773
+    _prefab_name: int = "StructureVendingMachine"
 
     @property
     def RequestHash(self) -> float:
-        return _DeviceLogicType(self, self._id, "RequestHash")
+        return _DeviceLogicType(self, _LT.RequestHash)
 
     @RequestHash.setter
     def RequestHash(self, value: int | float):
@@ -18462,7 +18931,7 @@ class VendingMachine(
 
     @property
     def slot0(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(type(self), self._id, 0)
+        return _SlotTypeCommon(self, 0)
 
     @property
     def Import(self) -> _SlotTypeCommon:
@@ -18470,7 +18939,7 @@ class VendingMachine(
 
     @property
     def slot1(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(type(self), self._id, 1)
+        return _SlotTypeCommon(self, 1)
 
     @property
     def Export(self) -> _SlotTypeCommon:
@@ -18478,403 +18947,403 @@ class VendingMachine(
 
     @property
     def slot10(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(type(self), self._id, 10)
+        return _SlotTypeCommon(self, 10)
 
     @property
     def slot100(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(type(self), self._id, 100)
+        return _SlotTypeCommon(self, 100)
 
     @property
     def slot101(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(type(self), self._id, 101)
+        return _SlotTypeCommon(self, 101)
 
     @property
     def slot11(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(type(self), self._id, 11)
+        return _SlotTypeCommon(self, 11)
 
     @property
     def slot12(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(type(self), self._id, 12)
+        return _SlotTypeCommon(self, 12)
 
     @property
     def slot13(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(type(self), self._id, 13)
+        return _SlotTypeCommon(self, 13)
 
     @property
     def slot14(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(type(self), self._id, 14)
+        return _SlotTypeCommon(self, 14)
 
     @property
     def slot15(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(type(self), self._id, 15)
+        return _SlotTypeCommon(self, 15)
 
     @property
     def slot16(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(type(self), self._id, 16)
+        return _SlotTypeCommon(self, 16)
 
     @property
     def slot17(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(type(self), self._id, 17)
+        return _SlotTypeCommon(self, 17)
 
     @property
     def slot18(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(type(self), self._id, 18)
+        return _SlotTypeCommon(self, 18)
 
     @property
     def slot19(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(type(self), self._id, 19)
+        return _SlotTypeCommon(self, 19)
 
     @property
     def slot2(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(type(self), self._id, 2)
+        return _SlotTypeCommon(self, 2)
 
     @property
     def slot20(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(type(self), self._id, 20)
+        return _SlotTypeCommon(self, 20)
 
     @property
     def slot21(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(type(self), self._id, 21)
+        return _SlotTypeCommon(self, 21)
 
     @property
     def slot22(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(type(self), self._id, 22)
+        return _SlotTypeCommon(self, 22)
 
     @property
     def slot23(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(type(self), self._id, 23)
+        return _SlotTypeCommon(self, 23)
 
     @property
     def slot24(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(type(self), self._id, 24)
+        return _SlotTypeCommon(self, 24)
 
     @property
     def slot25(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(type(self), self._id, 25)
+        return _SlotTypeCommon(self, 25)
 
     @property
     def slot26(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(type(self), self._id, 26)
+        return _SlotTypeCommon(self, 26)
 
     @property
     def slot27(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(type(self), self._id, 27)
+        return _SlotTypeCommon(self, 27)
 
     @property
     def slot28(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(type(self), self._id, 28)
+        return _SlotTypeCommon(self, 28)
 
     @property
     def slot29(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(type(self), self._id, 29)
+        return _SlotTypeCommon(self, 29)
 
     @property
     def slot3(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(type(self), self._id, 3)
+        return _SlotTypeCommon(self, 3)
 
     @property
     def slot30(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(type(self), self._id, 30)
+        return _SlotTypeCommon(self, 30)
 
     @property
     def slot31(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(type(self), self._id, 31)
+        return _SlotTypeCommon(self, 31)
 
     @property
     def slot32(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(type(self), self._id, 32)
+        return _SlotTypeCommon(self, 32)
 
     @property
     def slot33(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(type(self), self._id, 33)
+        return _SlotTypeCommon(self, 33)
 
     @property
     def slot34(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(type(self), self._id, 34)
+        return _SlotTypeCommon(self, 34)
 
     @property
     def slot35(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(type(self), self._id, 35)
+        return _SlotTypeCommon(self, 35)
 
     @property
     def slot36(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(type(self), self._id, 36)
+        return _SlotTypeCommon(self, 36)
 
     @property
     def slot37(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(type(self), self._id, 37)
+        return _SlotTypeCommon(self, 37)
 
     @property
     def slot38(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(type(self), self._id, 38)
+        return _SlotTypeCommon(self, 38)
 
     @property
     def slot39(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(type(self), self._id, 39)
+        return _SlotTypeCommon(self, 39)
 
     @property
     def slot4(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(type(self), self._id, 4)
+        return _SlotTypeCommon(self, 4)
 
     @property
     def slot40(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(type(self), self._id, 40)
+        return _SlotTypeCommon(self, 40)
 
     @property
     def slot41(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(type(self), self._id, 41)
+        return _SlotTypeCommon(self, 41)
 
     @property
     def slot42(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(type(self), self._id, 42)
+        return _SlotTypeCommon(self, 42)
 
     @property
     def slot43(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(type(self), self._id, 43)
+        return _SlotTypeCommon(self, 43)
 
     @property
     def slot44(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(type(self), self._id, 44)
+        return _SlotTypeCommon(self, 44)
 
     @property
     def slot45(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(type(self), self._id, 45)
+        return _SlotTypeCommon(self, 45)
 
     @property
     def slot46(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(type(self), self._id, 46)
+        return _SlotTypeCommon(self, 46)
 
     @property
     def slot47(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(type(self), self._id, 47)
+        return _SlotTypeCommon(self, 47)
 
     @property
     def slot48(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(type(self), self._id, 48)
+        return _SlotTypeCommon(self, 48)
 
     @property
     def slot49(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(type(self), self._id, 49)
+        return _SlotTypeCommon(self, 49)
 
     @property
     def slot5(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(type(self), self._id, 5)
+        return _SlotTypeCommon(self, 5)
 
     @property
     def slot50(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(type(self), self._id, 50)
+        return _SlotTypeCommon(self, 50)
 
     @property
     def slot51(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(type(self), self._id, 51)
+        return _SlotTypeCommon(self, 51)
 
     @property
     def slot52(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(type(self), self._id, 52)
+        return _SlotTypeCommon(self, 52)
 
     @property
     def slot53(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(type(self), self._id, 53)
+        return _SlotTypeCommon(self, 53)
 
     @property
     def slot54(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(type(self), self._id, 54)
+        return _SlotTypeCommon(self, 54)
 
     @property
     def slot55(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(type(self), self._id, 55)
+        return _SlotTypeCommon(self, 55)
 
     @property
     def slot56(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(type(self), self._id, 56)
+        return _SlotTypeCommon(self, 56)
 
     @property
     def slot57(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(type(self), self._id, 57)
+        return _SlotTypeCommon(self, 57)
 
     @property
     def slot58(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(type(self), self._id, 58)
+        return _SlotTypeCommon(self, 58)
 
     @property
     def slot59(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(type(self), self._id, 59)
+        return _SlotTypeCommon(self, 59)
 
     @property
     def slot6(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(type(self), self._id, 6)
+        return _SlotTypeCommon(self, 6)
 
     @property
     def slot60(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(type(self), self._id, 60)
+        return _SlotTypeCommon(self, 60)
 
     @property
     def slot61(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(type(self), self._id, 61)
+        return _SlotTypeCommon(self, 61)
 
     @property
     def slot62(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(type(self), self._id, 62)
+        return _SlotTypeCommon(self, 62)
 
     @property
     def slot63(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(type(self), self._id, 63)
+        return _SlotTypeCommon(self, 63)
 
     @property
     def slot64(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(type(self), self._id, 64)
+        return _SlotTypeCommon(self, 64)
 
     @property
     def slot65(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(type(self), self._id, 65)
+        return _SlotTypeCommon(self, 65)
 
     @property
     def slot66(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(type(self), self._id, 66)
+        return _SlotTypeCommon(self, 66)
 
     @property
     def slot67(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(type(self), self._id, 67)
+        return _SlotTypeCommon(self, 67)
 
     @property
     def slot68(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(type(self), self._id, 68)
+        return _SlotTypeCommon(self, 68)
 
     @property
     def slot69(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(type(self), self._id, 69)
+        return _SlotTypeCommon(self, 69)
 
     @property
     def slot7(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(type(self), self._id, 7)
+        return _SlotTypeCommon(self, 7)
 
     @property
     def slot70(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(type(self), self._id, 70)
+        return _SlotTypeCommon(self, 70)
 
     @property
     def slot71(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(type(self), self._id, 71)
+        return _SlotTypeCommon(self, 71)
 
     @property
     def slot72(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(type(self), self._id, 72)
+        return _SlotTypeCommon(self, 72)
 
     @property
     def slot73(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(type(self), self._id, 73)
+        return _SlotTypeCommon(self, 73)
 
     @property
     def slot74(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(type(self), self._id, 74)
+        return _SlotTypeCommon(self, 74)
 
     @property
     def slot75(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(type(self), self._id, 75)
+        return _SlotTypeCommon(self, 75)
 
     @property
     def slot76(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(type(self), self._id, 76)
+        return _SlotTypeCommon(self, 76)
 
     @property
     def slot77(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(type(self), self._id, 77)
+        return _SlotTypeCommon(self, 77)
 
     @property
     def slot78(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(type(self), self._id, 78)
+        return _SlotTypeCommon(self, 78)
 
     @property
     def slot79(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(type(self), self._id, 79)
+        return _SlotTypeCommon(self, 79)
 
     @property
     def slot8(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(type(self), self._id, 8)
+        return _SlotTypeCommon(self, 8)
 
     @property
     def slot80(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(type(self), self._id, 80)
+        return _SlotTypeCommon(self, 80)
 
     @property
     def slot81(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(type(self), self._id, 81)
+        return _SlotTypeCommon(self, 81)
 
     @property
     def slot82(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(type(self), self._id, 82)
+        return _SlotTypeCommon(self, 82)
 
     @property
     def slot83(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(type(self), self._id, 83)
+        return _SlotTypeCommon(self, 83)
 
     @property
     def slot84(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(type(self), self._id, 84)
+        return _SlotTypeCommon(self, 84)
 
     @property
     def slot85(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(type(self), self._id, 85)
+        return _SlotTypeCommon(self, 85)
 
     @property
     def slot86(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(type(self), self._id, 86)
+        return _SlotTypeCommon(self, 86)
 
     @property
     def slot87(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(type(self), self._id, 87)
+        return _SlotTypeCommon(self, 87)
 
     @property
     def slot88(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(type(self), self._id, 88)
+        return _SlotTypeCommon(self, 88)
 
     @property
     def slot89(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(type(self), self._id, 89)
+        return _SlotTypeCommon(self, 89)
 
     @property
     def slot9(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(type(self), self._id, 9)
+        return _SlotTypeCommon(self, 9)
 
     @property
     def slot90(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(type(self), self._id, 90)
+        return _SlotTypeCommon(self, 90)
 
     @property
     def slot91(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(type(self), self._id, 91)
+        return _SlotTypeCommon(self, 91)
 
     @property
     def slot92(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(type(self), self._id, 92)
+        return _SlotTypeCommon(self, 92)
 
     @property
     def slot93(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(type(self), self._id, 93)
+        return _SlotTypeCommon(self, 93)
 
     @property
     def slot94(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(type(self), self._id, 94)
+        return _SlotTypeCommon(self, 94)
 
     @property
     def slot95(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(type(self), self._id, 95)
+        return _SlotTypeCommon(self, 95)
 
     @property
     def slot96(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(type(self), self._id, 96)
+        return _SlotTypeCommon(self, 96)
 
     @property
     def slot97(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(type(self), self._id, 97)
+        return _SlotTypeCommon(self, 97)
 
     @property
     def slot98(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(type(self), self._id, 98)
+        return _SlotTypeCommon(self, 98)
 
     @property
     def slot99(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(type(self), self._id, 99)
+        return _SlotTypeCommon(self, 99)
 
 
 class _VendingMachines(
@@ -18890,13 +19359,14 @@ class _VendingMachines(
     _Ratios,
 ):
     _hash: int = -443130773
+    _prefab_name: int = "StructureVendingMachine"
 
     def __getitem__(self, name: str | int | float) -> "_VendingMachines":
         return _VendingMachines(name)
 
     @property
     def RequestHash(self) -> _DevicesLogicType:
-        return _DevicesLogicType(self._hash, "RequestHash", self._name)
+        return _DevicesLogicType(self, _LT.RequestHash)
 
     @RequestHash.setter
     def RequestHash(self, value: int | float):
@@ -18904,7 +19374,7 @@ class _VendingMachines(
 
     @property
     def slot0(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(type(self), self._hash, 0, self._name)
+        return _SlotTypeCommons(self, 0)
 
     @property
     def Import(self) -> _SlotTypeCommons:
@@ -18912,7 +19382,7 @@ class _VendingMachines(
 
     @property
     def slot1(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(type(self), self._hash, 1, self._name)
+        return _SlotTypeCommons(self, 1)
 
     @property
     def Export(self) -> _SlotTypeCommons:
@@ -18920,403 +19390,403 @@ class _VendingMachines(
 
     @property
     def slot10(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(type(self), self._hash, 10, self._name)
+        return _SlotTypeCommons(self, 10)
 
     @property
     def slot100(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(type(self), self._hash, 100, self._name)
+        return _SlotTypeCommons(self, 100)
 
     @property
     def slot101(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(type(self), self._hash, 101, self._name)
+        return _SlotTypeCommons(self, 101)
 
     @property
     def slot11(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(type(self), self._hash, 11, self._name)
+        return _SlotTypeCommons(self, 11)
 
     @property
     def slot12(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(type(self), self._hash, 12, self._name)
+        return _SlotTypeCommons(self, 12)
 
     @property
     def slot13(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(type(self), self._hash, 13, self._name)
+        return _SlotTypeCommons(self, 13)
 
     @property
     def slot14(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(type(self), self._hash, 14, self._name)
+        return _SlotTypeCommons(self, 14)
 
     @property
     def slot15(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(type(self), self._hash, 15, self._name)
+        return _SlotTypeCommons(self, 15)
 
     @property
     def slot16(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(type(self), self._hash, 16, self._name)
+        return _SlotTypeCommons(self, 16)
 
     @property
     def slot17(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(type(self), self._hash, 17, self._name)
+        return _SlotTypeCommons(self, 17)
 
     @property
     def slot18(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(type(self), self._hash, 18, self._name)
+        return _SlotTypeCommons(self, 18)
 
     @property
     def slot19(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(type(self), self._hash, 19, self._name)
+        return _SlotTypeCommons(self, 19)
 
     @property
     def slot2(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(type(self), self._hash, 2, self._name)
+        return _SlotTypeCommons(self, 2)
 
     @property
     def slot20(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(type(self), self._hash, 20, self._name)
+        return _SlotTypeCommons(self, 20)
 
     @property
     def slot21(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(type(self), self._hash, 21, self._name)
+        return _SlotTypeCommons(self, 21)
 
     @property
     def slot22(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(type(self), self._hash, 22, self._name)
+        return _SlotTypeCommons(self, 22)
 
     @property
     def slot23(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(type(self), self._hash, 23, self._name)
+        return _SlotTypeCommons(self, 23)
 
     @property
     def slot24(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(type(self), self._hash, 24, self._name)
+        return _SlotTypeCommons(self, 24)
 
     @property
     def slot25(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(type(self), self._hash, 25, self._name)
+        return _SlotTypeCommons(self, 25)
 
     @property
     def slot26(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(type(self), self._hash, 26, self._name)
+        return _SlotTypeCommons(self, 26)
 
     @property
     def slot27(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(type(self), self._hash, 27, self._name)
+        return _SlotTypeCommons(self, 27)
 
     @property
     def slot28(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(type(self), self._hash, 28, self._name)
+        return _SlotTypeCommons(self, 28)
 
     @property
     def slot29(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(type(self), self._hash, 29, self._name)
+        return _SlotTypeCommons(self, 29)
 
     @property
     def slot3(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(type(self), self._hash, 3, self._name)
+        return _SlotTypeCommons(self, 3)
 
     @property
     def slot30(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(type(self), self._hash, 30, self._name)
+        return _SlotTypeCommons(self, 30)
 
     @property
     def slot31(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(type(self), self._hash, 31, self._name)
+        return _SlotTypeCommons(self, 31)
 
     @property
     def slot32(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(type(self), self._hash, 32, self._name)
+        return _SlotTypeCommons(self, 32)
 
     @property
     def slot33(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(type(self), self._hash, 33, self._name)
+        return _SlotTypeCommons(self, 33)
 
     @property
     def slot34(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(type(self), self._hash, 34, self._name)
+        return _SlotTypeCommons(self, 34)
 
     @property
     def slot35(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(type(self), self._hash, 35, self._name)
+        return _SlotTypeCommons(self, 35)
 
     @property
     def slot36(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(type(self), self._hash, 36, self._name)
+        return _SlotTypeCommons(self, 36)
 
     @property
     def slot37(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(type(self), self._hash, 37, self._name)
+        return _SlotTypeCommons(self, 37)
 
     @property
     def slot38(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(type(self), self._hash, 38, self._name)
+        return _SlotTypeCommons(self, 38)
 
     @property
     def slot39(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(type(self), self._hash, 39, self._name)
+        return _SlotTypeCommons(self, 39)
 
     @property
     def slot4(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(type(self), self._hash, 4, self._name)
+        return _SlotTypeCommons(self, 4)
 
     @property
     def slot40(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(type(self), self._hash, 40, self._name)
+        return _SlotTypeCommons(self, 40)
 
     @property
     def slot41(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(type(self), self._hash, 41, self._name)
+        return _SlotTypeCommons(self, 41)
 
     @property
     def slot42(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(type(self), self._hash, 42, self._name)
+        return _SlotTypeCommons(self, 42)
 
     @property
     def slot43(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(type(self), self._hash, 43, self._name)
+        return _SlotTypeCommons(self, 43)
 
     @property
     def slot44(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(type(self), self._hash, 44, self._name)
+        return _SlotTypeCommons(self, 44)
 
     @property
     def slot45(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(type(self), self._hash, 45, self._name)
+        return _SlotTypeCommons(self, 45)
 
     @property
     def slot46(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(type(self), self._hash, 46, self._name)
+        return _SlotTypeCommons(self, 46)
 
     @property
     def slot47(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(type(self), self._hash, 47, self._name)
+        return _SlotTypeCommons(self, 47)
 
     @property
     def slot48(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(type(self), self._hash, 48, self._name)
+        return _SlotTypeCommons(self, 48)
 
     @property
     def slot49(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(type(self), self._hash, 49, self._name)
+        return _SlotTypeCommons(self, 49)
 
     @property
     def slot5(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(type(self), self._hash, 5, self._name)
+        return _SlotTypeCommons(self, 5)
 
     @property
     def slot50(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(type(self), self._hash, 50, self._name)
+        return _SlotTypeCommons(self, 50)
 
     @property
     def slot51(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(type(self), self._hash, 51, self._name)
+        return _SlotTypeCommons(self, 51)
 
     @property
     def slot52(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(type(self), self._hash, 52, self._name)
+        return _SlotTypeCommons(self, 52)
 
     @property
     def slot53(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(type(self), self._hash, 53, self._name)
+        return _SlotTypeCommons(self, 53)
 
     @property
     def slot54(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(type(self), self._hash, 54, self._name)
+        return _SlotTypeCommons(self, 54)
 
     @property
     def slot55(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(type(self), self._hash, 55, self._name)
+        return _SlotTypeCommons(self, 55)
 
     @property
     def slot56(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(type(self), self._hash, 56, self._name)
+        return _SlotTypeCommons(self, 56)
 
     @property
     def slot57(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(type(self), self._hash, 57, self._name)
+        return _SlotTypeCommons(self, 57)
 
     @property
     def slot58(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(type(self), self._hash, 58, self._name)
+        return _SlotTypeCommons(self, 58)
 
     @property
     def slot59(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(type(self), self._hash, 59, self._name)
+        return _SlotTypeCommons(self, 59)
 
     @property
     def slot6(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(type(self), self._hash, 6, self._name)
+        return _SlotTypeCommons(self, 6)
 
     @property
     def slot60(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(type(self), self._hash, 60, self._name)
+        return _SlotTypeCommons(self, 60)
 
     @property
     def slot61(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(type(self), self._hash, 61, self._name)
+        return _SlotTypeCommons(self, 61)
 
     @property
     def slot62(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(type(self), self._hash, 62, self._name)
+        return _SlotTypeCommons(self, 62)
 
     @property
     def slot63(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(type(self), self._hash, 63, self._name)
+        return _SlotTypeCommons(self, 63)
 
     @property
     def slot64(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(type(self), self._hash, 64, self._name)
+        return _SlotTypeCommons(self, 64)
 
     @property
     def slot65(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(type(self), self._hash, 65, self._name)
+        return _SlotTypeCommons(self, 65)
 
     @property
     def slot66(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(type(self), self._hash, 66, self._name)
+        return _SlotTypeCommons(self, 66)
 
     @property
     def slot67(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(type(self), self._hash, 67, self._name)
+        return _SlotTypeCommons(self, 67)
 
     @property
     def slot68(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(type(self), self._hash, 68, self._name)
+        return _SlotTypeCommons(self, 68)
 
     @property
     def slot69(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(type(self), self._hash, 69, self._name)
+        return _SlotTypeCommons(self, 69)
 
     @property
     def slot7(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(type(self), self._hash, 7, self._name)
+        return _SlotTypeCommons(self, 7)
 
     @property
     def slot70(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(type(self), self._hash, 70, self._name)
+        return _SlotTypeCommons(self, 70)
 
     @property
     def slot71(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(type(self), self._hash, 71, self._name)
+        return _SlotTypeCommons(self, 71)
 
     @property
     def slot72(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(type(self), self._hash, 72, self._name)
+        return _SlotTypeCommons(self, 72)
 
     @property
     def slot73(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(type(self), self._hash, 73, self._name)
+        return _SlotTypeCommons(self, 73)
 
     @property
     def slot74(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(type(self), self._hash, 74, self._name)
+        return _SlotTypeCommons(self, 74)
 
     @property
     def slot75(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(type(self), self._hash, 75, self._name)
+        return _SlotTypeCommons(self, 75)
 
     @property
     def slot76(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(type(self), self._hash, 76, self._name)
+        return _SlotTypeCommons(self, 76)
 
     @property
     def slot77(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(type(self), self._hash, 77, self._name)
+        return _SlotTypeCommons(self, 77)
 
     @property
     def slot78(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(type(self), self._hash, 78, self._name)
+        return _SlotTypeCommons(self, 78)
 
     @property
     def slot79(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(type(self), self._hash, 79, self._name)
+        return _SlotTypeCommons(self, 79)
 
     @property
     def slot8(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(type(self), self._hash, 8, self._name)
+        return _SlotTypeCommons(self, 8)
 
     @property
     def slot80(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(type(self), self._hash, 80, self._name)
+        return _SlotTypeCommons(self, 80)
 
     @property
     def slot81(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(type(self), self._hash, 81, self._name)
+        return _SlotTypeCommons(self, 81)
 
     @property
     def slot82(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(type(self), self._hash, 82, self._name)
+        return _SlotTypeCommons(self, 82)
 
     @property
     def slot83(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(type(self), self._hash, 83, self._name)
+        return _SlotTypeCommons(self, 83)
 
     @property
     def slot84(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(type(self), self._hash, 84, self._name)
+        return _SlotTypeCommons(self, 84)
 
     @property
     def slot85(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(type(self), self._hash, 85, self._name)
+        return _SlotTypeCommons(self, 85)
 
     @property
     def slot86(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(type(self), self._hash, 86, self._name)
+        return _SlotTypeCommons(self, 86)
 
     @property
     def slot87(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(type(self), self._hash, 87, self._name)
+        return _SlotTypeCommons(self, 87)
 
     @property
     def slot88(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(type(self), self._hash, 88, self._name)
+        return _SlotTypeCommons(self, 88)
 
     @property
     def slot89(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(type(self), self._hash, 89, self._name)
+        return _SlotTypeCommons(self, 89)
 
     @property
     def slot9(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(type(self), self._hash, 9, self._name)
+        return _SlotTypeCommons(self, 9)
 
     @property
     def slot90(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(type(self), self._hash, 90, self._name)
+        return _SlotTypeCommons(self, 90)
 
     @property
     def slot91(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(type(self), self._hash, 91, self._name)
+        return _SlotTypeCommons(self, 91)
 
     @property
     def slot92(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(type(self), self._hash, 92, self._name)
+        return _SlotTypeCommons(self, 92)
 
     @property
     def slot93(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(type(self), self._hash, 93, self._name)
+        return _SlotTypeCommons(self, 93)
 
     @property
     def slot94(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(type(self), self._hash, 94, self._name)
+        return _SlotTypeCommons(self, 94)
 
     @property
     def slot95(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(type(self), self._hash, 95, self._name)
+        return _SlotTypeCommons(self, 95)
 
     @property
     def slot96(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(type(self), self._hash, 96, self._name)
+        return _SlotTypeCommons(self, 96)
 
     @property
     def slot97(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(type(self), self._hash, 97, self._name)
+        return _SlotTypeCommons(self, 97)
 
     @property
     def slot98(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(type(self), self._hash, 98, self._name)
+        return _SlotTypeCommons(self, 98)
 
     @property
     def slot99(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(type(self), self._hash, 99, self._name)
+        return _SlotTypeCommons(self, 99)
 
 
 VendingMachines: _VendingMachines = _VendingMachines()
@@ -19324,12 +19794,14 @@ VendingMachines: _VendingMachines = _VendingMachines()
 
 class VolumePump(_BaseStructure, _Error, _Lock, _Maximum, _Power, _Ratio, _SettingW):
     _hash: int = -321403609
+    _prefab_name: int = "StructureVolumePump"
 
 
 class _VolumePumps(
     _BaseStructures, _Errors, _Locks, _Maximums, _Powers, _Ratios, _SettingWs
 ):
     _hash: int = -321403609
+    _prefab_name: int = "StructureVolumePump"
 
     def __getitem__(self, name: str | int | float) -> "_VolumePumps":
         return _VolumePumps(name)
@@ -19340,54 +19812,55 @@ VolumePumps: _VolumePumps = _VolumePumps()
 
 class WallCooler(_BaseStructure, _Error, _Lock, _Maximum, _Power, _Ratio, _SettingW):
     _hash: int = -739292323
+    _prefab_name: int = "StructureWallCooler"
 
     @property
     def CombustionOutput(self) -> float:
-        return _DeviceLogicType(self, self._id, "CombustionOutput")
+        return _DeviceLogicType(self, _LT.CombustionOutput)
 
     @property
     def PressureOutput(self) -> float:
-        return _DeviceLogicType(self, self._id, "PressureOutput")
+        return _DeviceLogicType(self, _LT.PressureOutput)
 
     @property
     def RatioCarbonDioxideOutput(self) -> float:
-        return _DeviceLogicType(self, self._id, "RatioCarbonDioxideOutput")
+        return _DeviceLogicType(self, _LT.RatioCarbonDioxideOutput)
 
     @property
     def RatioNitrogenOutput(self) -> float:
-        return _DeviceLogicType(self, self._id, "RatioNitrogenOutput")
+        return _DeviceLogicType(self, _LT.RatioNitrogenOutput)
 
     @property
     def RatioNitrousOxideOutput(self) -> float:
-        return _DeviceLogicType(self, self._id, "RatioNitrousOxideOutput")
+        return _DeviceLogicType(self, _LT.RatioNitrousOxideOutput)
 
     @property
     def RatioOxygenOutput(self) -> float:
-        return _DeviceLogicType(self, self._id, "RatioOxygenOutput")
+        return _DeviceLogicType(self, _LT.RatioOxygenOutput)
 
     @property
     def RatioPollutantOutput(self) -> float:
-        return _DeviceLogicType(self, self._id, "RatioPollutantOutput")
+        return _DeviceLogicType(self, _LT.RatioPollutantOutput)
 
     @property
     def RatioVolatilesOutput(self) -> float:
-        return _DeviceLogicType(self, self._id, "RatioVolatilesOutput")
+        return _DeviceLogicType(self, _LT.RatioVolatilesOutput)
 
     @property
     def RatioWaterOutput(self) -> float:
-        return _DeviceLogicType(self, self._id, "RatioWaterOutput")
+        return _DeviceLogicType(self, _LT.RatioWaterOutput)
 
     @property
     def TemperatureOutput(self) -> float:
-        return _DeviceLogicType(self, self._id, "TemperatureOutput")
+        return _DeviceLogicType(self, _LT.TemperatureOutput)
 
     @property
     def TotalMolesOutput(self) -> float:
-        return _DeviceLogicType(self, self._id, "TotalMolesOutput")
+        return _DeviceLogicType(self, _LT.TotalMolesOutput)
 
     @property
     def slot0(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(type(self), self._id, 0)
+        return _SlotTypeCommon(self, 0)
 
     @property
     def DataDisk(self) -> _SlotTypeCommon:
@@ -19398,57 +19871,58 @@ class _WallCoolers(
     _BaseStructures, _Errors, _Locks, _Maximums, _Powers, _Ratios, _SettingWs
 ):
     _hash: int = -739292323
+    _prefab_name: int = "StructureWallCooler"
 
     def __getitem__(self, name: str | int | float) -> "_WallCoolers":
         return _WallCoolers(name)
 
     @property
     def CombustionOutput(self) -> _DevicesLogicType:
-        return _DevicesLogicType(self._hash, "CombustionOutput", self._name)
+        return _DevicesLogicType(self, _LT.CombustionOutput)
 
     @property
     def PressureOutput(self) -> _DevicesLogicType:
-        return _DevicesLogicType(self._hash, "PressureOutput", self._name)
+        return _DevicesLogicType(self, _LT.PressureOutput)
 
     @property
     def RatioCarbonDioxideOutput(self) -> _DevicesLogicType:
-        return _DevicesLogicType(self._hash, "RatioCarbonDioxideOutput", self._name)
+        return _DevicesLogicType(self, _LT.RatioCarbonDioxideOutput)
 
     @property
     def RatioNitrogenOutput(self) -> _DevicesLogicType:
-        return _DevicesLogicType(self._hash, "RatioNitrogenOutput", self._name)
+        return _DevicesLogicType(self, _LT.RatioNitrogenOutput)
 
     @property
     def RatioNitrousOxideOutput(self) -> _DevicesLogicType:
-        return _DevicesLogicType(self._hash, "RatioNitrousOxideOutput", self._name)
+        return _DevicesLogicType(self, _LT.RatioNitrousOxideOutput)
 
     @property
     def RatioOxygenOutput(self) -> _DevicesLogicType:
-        return _DevicesLogicType(self._hash, "RatioOxygenOutput", self._name)
+        return _DevicesLogicType(self, _LT.RatioOxygenOutput)
 
     @property
     def RatioPollutantOutput(self) -> _DevicesLogicType:
-        return _DevicesLogicType(self._hash, "RatioPollutantOutput", self._name)
+        return _DevicesLogicType(self, _LT.RatioPollutantOutput)
 
     @property
     def RatioVolatilesOutput(self) -> _DevicesLogicType:
-        return _DevicesLogicType(self._hash, "RatioVolatilesOutput", self._name)
+        return _DevicesLogicType(self, _LT.RatioVolatilesOutput)
 
     @property
     def RatioWaterOutput(self) -> _DevicesLogicType:
-        return _DevicesLogicType(self._hash, "RatioWaterOutput", self._name)
+        return _DevicesLogicType(self, _LT.RatioWaterOutput)
 
     @property
     def TemperatureOutput(self) -> _DevicesLogicType:
-        return _DevicesLogicType(self._hash, "TemperatureOutput", self._name)
+        return _DevicesLogicType(self, _LT.TemperatureOutput)
 
     @property
     def TotalMolesOutput(self) -> _DevicesLogicType:
-        return _DevicesLogicType(self._hash, "TotalMolesOutput", self._name)
+        return _DevicesLogicType(self, _LT.TotalMolesOutput)
 
     @property
     def slot0(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(type(self), self._hash, 0, self._name)
+        return _SlotTypeCommons(self, 0)
 
     @property
     def DataDisk(self) -> _SlotTypeCommons:
@@ -19460,10 +19934,11 @@ WallCoolers: _WallCoolers = _WallCoolers()
 
 class WallHeater(_BaseStructure, _Error, _Lock, _Power):
     _hash: int = 24258244
+    _prefab_name: int = "StructureWallHeater"
 
     @property
     def slot0(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(type(self), self._id, 0)
+        return _SlotTypeCommon(self, 0)
 
     @property
     def DataDisk(self) -> _SlotTypeCommon:
@@ -19472,13 +19947,14 @@ class WallHeater(_BaseStructure, _Error, _Lock, _Power):
 
 class _WallHeaters(_BaseStructures, _Errors, _Locks, _Powers):
     _hash: int = 24258244
+    _prefab_name: int = "StructureWallHeater"
 
     def __getitem__(self, name: str | int | float) -> "_WallHeaters":
         return _WallHeaters(name)
 
     @property
     def slot0(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(type(self), self._hash, 0, self._name)
+        return _SlotTypeCommons(self, 0)
 
     @property
     def DataDisk(self) -> _SlotTypeCommons:
@@ -19490,10 +19966,12 @@ WallHeaters: _WallHeaters = _WallHeaters()
 
 class WallLight(_BaseStructure, _Lock, _Power):
     _hash: int = -1860064656
+    _prefab_name: int = "StructureWallLight"
 
 
 class _WallLights(_BaseStructures, _Locks, _Powers):
     _hash: int = -1860064656
+    _prefab_name: int = "StructureWallLight"
 
     def __getitem__(self, name: str | int | float) -> "_WallLights":
         return _WallLights(name)
@@ -19504,10 +19982,11 @@ WallLights: _WallLights = _WallLights()
 
 class WallLightBattery(_BaseStructure, _Lock, _Power):
     _hash: int = -1306415132
+    _prefab_name: int = "StructureWallLightBattery"
 
     @property
     def slot0(self) -> _SlotTypeBattery:
-        return _SlotTypeBattery(type(self), self._id, 0)
+        return _SlotTypeBattery(self, 0)
 
     @property
     def Battery(self) -> _SlotTypeBattery:
@@ -19516,13 +19995,14 @@ class WallLightBattery(_BaseStructure, _Lock, _Power):
 
 class _WallLightBatterys(_BaseStructures, _Locks, _Powers):
     _hash: int = -1306415132
+    _prefab_name: int = "StructureWallLightBattery"
 
     def __getitem__(self, name: str | int | float) -> "_WallLightBatterys":
         return _WallLightBatterys(name)
 
     @property
     def slot0(self) -> _SlotTypeBatterys:
-        return _SlotTypeBatterys(type(self), self._hash, 0, self._name)
+        return _SlotTypeBatterys(self, 0)
 
     @property
     def Battery(self) -> _SlotTypeBatterys:
@@ -19534,10 +20014,12 @@ WallLightBatterys: _WallLightBatterys = _WallLightBatterys()
 
 class LightLongAngled(_BaseStructure, _Lock, _Power):
     _hash: int = 1847265835
+    _prefab_name: int = "StructureLightLongAngled"
 
 
 class _LightLongAngleds(_BaseStructures, _Locks, _Powers):
     _hash: int = 1847265835
+    _prefab_name: int = "StructureLightLongAngled"
 
     def __getitem__(self, name: str | int | float) -> "_LightLongAngleds":
         return _LightLongAngleds(name)
@@ -19548,10 +20030,12 @@ LightLongAngleds: _LightLongAngleds = _LightLongAngleds()
 
 class LightLongWide(_BaseStructure, _Lock, _Power):
     _hash: int = 555215790
+    _prefab_name: int = "StructureLightLongWide"
 
 
 class _LightLongWides(_BaseStructures, _Locks, _Powers):
     _hash: int = 555215790
+    _prefab_name: int = "StructureLightLongWide"
 
     def __getitem__(self, name: str | int | float) -> "_LightLongWides":
         return _LightLongWides(name)
@@ -19562,10 +20046,12 @@ LightLongWides: _LightLongWides = _LightLongWides()
 
 class LightLong(_BaseStructure, _Lock, _Power):
     _hash: int = 797794350
+    _prefab_name: int = "StructureLightLong"
 
 
 class _LightLongs(_BaseStructures, _Locks, _Powers):
     _hash: int = 797794350
+    _prefab_name: int = "StructureLightLong"
 
     def __getitem__(self, name: str | int | float) -> "_LightLongs":
         return _LightLongs(name)
@@ -19576,10 +20062,11 @@ LightLongs: _LightLongs = _LightLongs()
 
 class WaterPurifier(_BaseStructure, _ClearMemory, _Error, _ImportCount, _Lock, _Power):
     _hash: int = 887383294
+    _prefab_name: int = "StructureWaterPurifier"
 
     @property
     def slot0(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(type(self), self._id, 0)
+        return _SlotTypeCommon(self, 0)
 
     @property
     def Import(self) -> _SlotTypeCommon:
@@ -19590,13 +20077,14 @@ class _WaterPurifiers(
     _BaseStructures, _ClearMemorys, _Errors, _ImportCounts, _Locks, _Powers
 ):
     _hash: int = 887383294
+    _prefab_name: int = "StructureWaterPurifier"
 
     def __getitem__(self, name: str | int | float) -> "_WaterPurifiers":
         return _WaterPurifiers(name)
 
     @property
     def slot0(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(type(self), self._hash, 0, self._name)
+        return _SlotTypeCommons(self, 0)
 
     @property
     def Import(self) -> _SlotTypeCommons:
@@ -19608,29 +20096,31 @@ WaterPurifiers: _WaterPurifiers = _WaterPurifiers()
 
 class WaterBottleFillerPowered(_BaseStructure, _Activate, _Error, _Power):
     _hash: int = -756587791
+    _prefab_name: int = "StructureWaterBottleFillerPowered"
 
     @property
     def slot0(self) -> _SlotTypeGasCanister:
-        return _SlotTypeGasCanister(type(self), self._id, 0)
+        return _SlotTypeGasCanister(self, 0)
 
     @property
     def slot1(self) -> _SlotTypeGasCanister:
-        return _SlotTypeGasCanister(type(self), self._id, 1)
+        return _SlotTypeGasCanister(self, 1)
 
 
 class _WaterBottleFillerPowereds(_BaseStructures, _Activates, _Errors, _Powers):
     _hash: int = -756587791
+    _prefab_name: int = "StructureWaterBottleFillerPowered"
 
     def __getitem__(self, name: str | int | float) -> "_WaterBottleFillerPowereds":
         return _WaterBottleFillerPowereds(name)
 
     @property
     def slot0(self) -> _SlotTypeGasCanisters:
-        return _SlotTypeGasCanisters(type(self), self._hash, 0, self._name)
+        return _SlotTypeGasCanisters(self, 0)
 
     @property
     def slot1(self) -> _SlotTypeGasCanisters:
-        return _SlotTypeGasCanisters(type(self), self._hash, 1, self._name)
+        return _SlotTypeGasCanisters(self, 1)
 
 
 WaterBottleFillerPowereds: _WaterBottleFillerPowereds = _WaterBottleFillerPowereds()
@@ -19638,18 +20128,20 @@ WaterBottleFillerPowereds: _WaterBottleFillerPowereds = _WaterBottleFillerPowere
 
 class WaterBottleFillerPoweredBottom(_BaseStructure, _Activate, _Error, _Power):
     _hash: int = 1986658780
+    _prefab_name: int = "StructureWaterBottleFillerPoweredBottom"
 
     @property
     def slot0(self) -> _SlotTypeGasCanister:
-        return _SlotTypeGasCanister(type(self), self._id, 0)
+        return _SlotTypeGasCanister(self, 0)
 
     @property
     def slot1(self) -> _SlotTypeGasCanister:
-        return _SlotTypeGasCanister(type(self), self._id, 1)
+        return _SlotTypeGasCanister(self, 1)
 
 
 class _WaterBottleFillerPoweredBottoms(_BaseStructures, _Activates, _Errors, _Powers):
     _hash: int = 1986658780
+    _prefab_name: int = "StructureWaterBottleFillerPoweredBottom"
 
     def __getitem__(
         self, name: str | int | float
@@ -19658,11 +20150,11 @@ class _WaterBottleFillerPoweredBottoms(_BaseStructures, _Activates, _Errors, _Po
 
     @property
     def slot0(self) -> _SlotTypeGasCanisters:
-        return _SlotTypeGasCanisters(type(self), self._hash, 0, self._name)
+        return _SlotTypeGasCanisters(self, 0)
 
     @property
     def slot1(self) -> _SlotTypeGasCanisters:
-        return _SlotTypeGasCanisters(type(self), self._hash, 1, self._name)
+        return _SlotTypeGasCanisters(self, 1)
 
 
 WaterBottleFillerPoweredBottoms: _WaterBottleFillerPoweredBottoms = (
@@ -19672,21 +20164,23 @@ WaterBottleFillerPoweredBottoms: _WaterBottleFillerPoweredBottoms = (
 
 class WeatherStation(_BaseStructure, _Activate, _Error, _Lock, _ModeR, _Power):
     _hash: int = 1997212478
+    _prefab_name: int = "StructureWeatherStation"
 
     @property
     def NextWeatherEventTime(self) -> float:
-        return _DeviceLogicType(self, self._id, "NextWeatherEventTime")
+        return _DeviceLogicType(self, _LT.NextWeatherEventTime)
 
 
 class _WeatherStations(_BaseStructures, _Activates, _Errors, _Locks, _ModeRs, _Powers):
     _hash: int = 1997212478
+    _prefab_name: int = "StructureWeatherStation"
 
     def __getitem__(self, name: str | int | float) -> "_WeatherStations":
         return _WeatherStations(name)
 
     @property
     def NextWeatherEventTime(self) -> _DevicesLogicType:
-        return _DevicesLogicType(self._hash, "NextWeatherEventTime", self._name)
+        return _DevicesLogicType(self, _LT.NextWeatherEventTime)
 
 
 WeatherStations: _WeatherStations = _WeatherStations()
@@ -19694,21 +20188,23 @@ WeatherStations: _WeatherStations = _WeatherStations()
 
 class WindTurbine(_BaseStructure):
     _hash: int = -2082355173
+    _prefab_name: int = "StructureWindTurbine"
 
     @property
     def PowerGeneration(self) -> float:
-        return _DeviceLogicType(self, self._id, "PowerGeneration")
+        return _DeviceLogicType(self, _LT.PowerGeneration)
 
 
 class _WindTurbines(_BaseStructures):
     _hash: int = -2082355173
+    _prefab_name: int = "StructureWindTurbine"
 
     def __getitem__(self, name: str | int | float) -> "_WindTurbines":
         return _WindTurbines(name)
 
     @property
     def PowerGeneration(self) -> _DevicesLogicType:
-        return _DevicesLogicType(self._hash, "PowerGeneration", self._name)
+        return _DevicesLogicType(self, _LT.PowerGeneration)
 
 
 WindTurbines: _WindTurbines = _WindTurbines()

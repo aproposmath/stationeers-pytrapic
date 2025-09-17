@@ -5,6 +5,19 @@ import pytest
 
 from stationeers_pytrapic.compiler import *
 
+
+def compile_code_testing(code, compact=False):
+    return compile_code(
+        code,
+        CompileOptions(
+            compact=compact,
+            inline_functions=compact,
+            append_version=False,
+            remove_labels=compact,
+        ),
+    )
+
+
 case_files = glob.glob(str(Path(__file__).parent / "cases" / "*.py"))
 example_files = [
     f
@@ -46,7 +59,7 @@ def run_case(
             modules = modules.copy()
             modules[""] = code
             code = modules
-        result = compile_code(code, compact=compact)
+        result = compile_code_testing(code, compact)
 
         if "error" in result:
             result_str = "Error: " + result["error"]["description"] + "\n"

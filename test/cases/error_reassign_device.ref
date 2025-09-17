@@ -1,2 +1,1 @@
-Error: Compiler error at line 9:4:
-	Cannot reassign assign GrowLight(IC10Operand(value=1)) to light at line 9
+Error: Internal compiler error: 'GrowLight' object has no attribute '_id'

@@ -25,6 +25,7 @@ import astroid
 from . import types
 from .compile_pass import *
 from .generate_code import CompilerPassGatherCode, CompilerPassGenerateCode
+from .utils import set_output_mode, OutputMode
 
 time("import")
 
@@ -126,20 +127,9 @@ class Compiler:
 
 def compile_code(
     src: str | dict,
-    comments: bool = False,
-    compact: bool = False,
-    append_version: bool = False,
+    options: CompileOptions | dict,
 ):
-    original_code_as_comment = comments and not compact
-    inline_functions = compact
-    remove_labels = compact
-    options = CompileOptions(
-        original_code_as_comment=original_code_as_comment,
-        inline_functions=inline_functions,
-        remove_labels=remove_labels,
-        append_version=append_version,
-    )
-
-    types.hash_mode = types.HashMode.COMPACT if compact else types.HashMode.VERBOSE
-
+    if isinstance(options, dict):
+        options = CompileOptions(**options)
+    set_output_mode(OutputMode.COMPACT if options.compact else OutputMode.VERBOSE)
     return Compiler(options).compile(src)

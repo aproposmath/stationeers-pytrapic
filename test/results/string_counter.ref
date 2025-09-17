@@ -1,4 +1,4 @@
-sb -1949054743 Mode 10
+sb HASH("StructureConsoleLED1x3") Mode 10
 move r0 55
 move r1 999
 lbwhile3:
@@ -14,7 +14,7 @@ lbwhile3:
   put db 509 r1
   jal append.number
   get r2 db 511
-  sb -1949054743 Setting r2
+  sb HASH("StructureConsoleLED1x3") Setting r2
   add r0 r0 1
   sub r1 r1 1
   j lbwhile3

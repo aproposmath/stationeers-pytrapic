@@ -1,7 +1,7 @@
 # This file is auto-generated from IC10 instructions_data
 from .types import *
 from .types_generated import *
-from .types import IC10 as _IC10, IC10Register as _IC10Register
+from .types import IC10 as _IC10, IC10Register as _Register
 
 
 def alias(param1: str, param2: _Register | _Device) -> None:
@@ -31,122 +31,122 @@ def yield_() -> None:
 
 def abs(a: _Register | float) -> _Register:
     """Returns the absolute value of a"""
-    return _IC10("abs", [a], _IC10Register("invalid"))
+    return _IC10("abs", [a], _Register("invalid"))
 
 
 def add(a: _Register | float, b: _Register | float) -> _Register:
     """Returns a + b."""
-    return _IC10("add", [a, b], _IC10Register("invalid"))
+    return _IC10("add", [a, b], _Register("invalid"))
 
 
 def ceil(a: _Register | float) -> _Register:
     """Returns smallest integer greater than a"""
-    return _IC10("ceil", [a], _IC10Register("invalid"))
+    return _IC10("ceil", [a], _Register("invalid"))
 
 
 def div(a: _Register | float, b: _Register | float) -> _Register:
     """Returns a / b"""
-    return _IC10("div", [a, b], _IC10Register("invalid"))
+    return _IC10("div", [a, b], _Register("invalid"))
 
 
 def exp(a: _Register | float) -> _Register:
     """exp(a) or e^a"""
-    return _IC10("exp", [a], _IC10Register("invalid"))
+    return _IC10("exp", [a], _Register("invalid"))
 
 
 def floor(a: _Register | float) -> _Register:
     """Returns largest integer less than a"""
-    return _IC10("floor", [a], _IC10Register("invalid"))
+    return _IC10("floor", [a], _Register("invalid"))
 
 
 def log(a: _Register | float) -> _Register:
     """base e log(a) or ln(a)"""
-    return _IC10("log", [a], _IC10Register("invalid"))
+    return _IC10("log", [a], _Register("invalid"))
 
 
 def max(a: _Register | float, b: _Register | float) -> _Register:
     """Returns max of a or b"""
-    return _IC10("max", [a, b], _IC10Register("invalid"))
+    return _IC10("max", [a, b], _Register("invalid"))
 
 
 def min(a: _Register | float, b: _Register | float) -> _Register:
     """Returns min of a or b"""
-    return _IC10("min", [a, b], _IC10Register("invalid"))
+    return _IC10("min", [a, b], _Register("invalid"))
 
 
 def mod(a: _Register | float, b: _Register | float) -> _Register:
     """Returns a mod b (note: NOT a % b)"""
-    return _IC10("mod", [a, b], _IC10Register("invalid"))
+    return _IC10("mod", [a, b], _Register("invalid"))
 
 
 def move(a: _Register | float) -> _Register:
     """Returns provided num or register value."""
-    return _IC10("move", [a], _IC10Register("invalid"))
+    return _IC10("move", [a], _Register("invalid"))
 
 
 def mul(a: _Register | float, b: _Register | float) -> _Register:
     """Returns a * b"""
-    return _IC10("mul", [a, b], _IC10Register("invalid"))
+    return _IC10("mul", [a, b], _Register("invalid"))
 
 
 def rand() -> _Register:
     """Returns a random value x with 0 <= x < 1"""
-    return _IC10("rand", [], _IC10Register("invalid"))
+    return _IC10("rand", [], _Register("invalid"))
 
 
 def round(a: _Register | float) -> _Register:
     """Returns a rounded to nearest integer"""
-    return _IC10("round", [a], _IC10Register("invalid"))
+    return _IC10("round", [a], _Register("invalid"))
 
 
 def sqrt(a: _Register | float) -> _Register:
     """Returns square root of a"""
-    return _IC10("sqrt", [a], _IC10Register("invalid"))
+    return _IC10("sqrt", [a], _Register("invalid"))
 
 
 def sub(a: _Register | float, b: _Register | float) -> _Register:
     """Returns a - b."""
-    return _IC10("sub", [a, b], _IC10Register("invalid"))
+    return _IC10("sub", [a, b], _Register("invalid"))
 
 
 def trunc(a: _Register | float) -> _Register:
     """Returns a with fractional part removed"""
-    return _IC10("trunc", [a], _IC10Register("invalid"))
+    return _IC10("trunc", [a], _Register("invalid"))
 
 
 def acos(a: _Register | float) -> _Register:
     """Returns the angle (radians) whos cos is the specified value"""
-    return _IC10("acos", [a], _IC10Register("invalid"))
+    return _IC10("acos", [a], _Register("invalid"))
 
 
 def asin(a: _Register | float) -> _Register:
     """Returns the angle (radians) whos sine is the specified value"""
-    return _IC10("asin", [a], _IC10Register("invalid"))
+    return _IC10("asin", [a], _Register("invalid"))
 
 
 def atan(a: _Register | float) -> _Register:
     """Returns the angle (radians) whos tan is the specified value"""
-    return _IC10("atan", [a], _IC10Register("invalid"))
+    return _IC10("atan", [a], _Register("invalid"))
 
 
 def atan2(a: _Register | float, b: _Register | float) -> _Register:
     """Returns the angle (radians) whose tangent is the quotient of two specified values: a (y) and b (x)"""
-    return _IC10("atan2", [a, b], _IC10Register("invalid"))
+    return _IC10("atan2", [a, b], _Register("invalid"))
 
 
 def cos(a: _Register | float) -> _Register:
     """Returns the cosine of the specified angle (radians)"""
-    return _IC10("cos", [a], _IC10Register("invalid"))
+    return _IC10("cos", [a], _Register("invalid"))
 
 
 def sin(a: _Register | float) -> _Register:
     """Returns the sine of the specified angle (radians)"""
-    return _IC10("sin", [a], _IC10Register("invalid"))
+    return _IC10("sin", [a], _Register("invalid"))
 
 
 def tan(a: _Register | float) -> _Register:
     """Returns the tan of the specified angle (radians)"""
-    return _IC10("tan", [a], _IC10Register("invalid"))
+    return _IC10("tan", [a], _Register("invalid"))
 
 
 def clr(param1: _Device) -> None:
@@ -159,19 +159,19 @@ def clrd(id: _Register | float) -> None:
     return _IC10("clrd", [id], None)
 
 
-def get(param2: _Device, address: _Register | float) -> _Register:
+def get(param1: _Device, address: _Register | float) -> _Register:
     """Using the provided device, attempts to read the stack value at the provided address, and places it in the register."""
-    return _IC10("get", [param2, address], _IC10Register("invalid"))
+    return _IC10("get", [param1, address], _Register("invalid"))
 
 
 def getd(id: _Register | float, address: _Register | float) -> _Register:
     """Seeks directly for the provided device id, attempts to read the stack value at the provided address, and places it in the register."""
-    return _IC10("getd", [id, address], _IC10Register("invalid"))
+    return _IC10("getd", [id, address], _Register("invalid"))
 
 
 def peek() -> _Register:
     """Returns the value at the top of the stack"""
-    return _IC10("peek", [], _IC10Register("invalid"))
+    return _IC10("peek", [], _Register("invalid"))
 
 
 def poke(address: _Register | float, value: _Register | float) -> None:
@@ -181,7 +181,7 @@ def poke(address: _Register | float, value: _Register | float) -> None:
 
 def pop() -> _Register:
     """Returns the value at the top of the stack and decrements sp"""
-    return _IC10("pop", [], _IC10Register("invalid"))
+    return _IC10("pop", [], _Register("invalid"))
 
 
 def push(a: _Register | float) -> None:
@@ -201,38 +201,38 @@ def putd(
     return _IC10("putd", [id, address, value], None)
 
 
-def l(param2: _Device, param3: _logicType) -> _Register:
+def l(param1: _Device, param2: LogicType) -> _Register:
     """Loads device LogicType to register by housing index value."""
-    return _IC10("l", [param2, param3], _IC10Register("invalid"))
+    return _IC10("l", [param1, param2], _Register("invalid"))
 
 
-def ld(id: _Register | float, param3: _logicType) -> _Register:
+def ld(id: _Register | float, param2: LogicType) -> _Register:
     """Loads device LogicType to register by direct ID reference."""
-    return _IC10("ld", [id, param3], _IC10Register("invalid"))
+    return _IC10("ld", [id, param2], _Register("invalid"))
 
 
-def lr(param2: _Device, param3: _reagentMode, param4: int) -> _Register:
+def lr(param1: _Device, param2: LogicReagentMode, param3: int) -> _Register:
     """Loads reagent of device's ReagentMode where a hash of the reagent type to check for. ReagentMode can be either Contents (0), Required (1), Recipe (2). Can use either the word, or the number."""
-    return _IC10("lr", [param2, param3, param4], _IC10Register("invalid"))
+    return _IC10("lr", [param1, param2, param3], _Register("invalid"))
 
 
-def ls(param2: _Device, param3: _slotIndex, param4: _logicSlotType) -> _Register:
+def ls(param1: _Device, param2: _slotIndex, param3: LogicSlotType) -> _Register:
     """Loads slot LogicSlotType on device to register."""
-    return _IC10("ls", [param2, param3, param4], _IC10Register("invalid"))
+    return _IC10("ls", [param1, param2, param3], _Register("invalid"))
 
 
-def s(param1: _Device, param2: _logicType, param3: _Register) -> None:
+def s(param1: _Device, param2: LogicType, param3: _Register) -> None:
     """Stores register value to LogicType on device by housing index value."""
     return _IC10("s", [param1, param2, param3], None)
 
 
-def sd(id: _Register | float, param2: _logicType, param3: _Register) -> None:
+def sd(id: _Register | float, param2: LogicType, param3: _Register) -> None:
     """Stores register value to LogicType on device by direct ID reference."""
     return _IC10("sd", [id, param2, param3], None)
 
 
 def ss(
-    param1: _Device, param2: _slotIndex, param3: _logicSlotType, param4: _Register
+    param1: _Device, param2: _slotIndex, param3: LogicSlotType, param4: _Register
 ) -> None:
     """Stores register value to device stored in a slot LogicSlotType on device."""
     return _IC10("ss", [param1, param2, param3, param4], None)
@@ -243,52 +243,53 @@ def rmap(param1: _Register, param2: _Device, reagentHash: _Register | float) -> 
     return _IC10("rmap", [param1, param2, reagentHash], None)
 
 
-def lb(param2: _deviceHash, param3: _logicType, param4: _batchMode) -> _Register:
+def lb(param1: _deviceHash, param2: LogicType, param3: LogicBatchMethod) -> _Register:
     """Loads LogicType from all output network devices with provided type hash using the provide batch mode. Average (0), Sum (1), Minimum (2), Maximum (3). Can use either the word, or the number."""
-    return _IC10("lb", [param2, param3, param4], _IC10Register("invalid"))
+    return _IC10("lb", [param1, param2, param3], _Register("invalid"))
 
 
 def lbn(
-    param2: _deviceHash, param3: _nameHash, param4: _logicType, param5: _batchMode
+    param1: _deviceHash, param2: _nameHash, param3: LogicType, param4: LogicBatchMethod
 ) -> _Register:
     """Loads LogicType from all output network devices with provided type and name hashes using the provide batch mode. Average (0), Sum (1), Minimum (2), Maximum (3). Can use either the word, or the number."""
-    return _IC10("lbn", [param2, param3, param4, param5], _IC10Register("invalid"))
+    return _IC10("lbn", [param1, param2, param3, param4], _Register("invalid"))
 
 
 def lbns(
-    param2: _deviceHash,
-    param3: _nameHash,
-    param4: _slotIndex,
-    param5: _logicSlotType,
-    param6: _batchMode,
+    param1: _deviceHash,
+    param2: _nameHash,
+    param3: _slotIndex,
+    param4: LogicSlotType,
+    param5: LogicBatchMethod,
 ) -> _Register:
     """Loads LogicSlotType from slotIndex from all output network devices with provided type and name hashes using the provide batch mode. Average (0), Sum (1), Minimum (2), Maximum (3). Can use either the word, or the number."""
-    return _IC10(
-        "lbns", [param2, param3, param4, param5, param6], _IC10Register("invalid")
-    )
+    return _IC10("lbns", [param1, param2, param3, param4, param5], _Register("invalid"))
 
 
 def lbs(
-    param2: _deviceHash, param3: _slotIndex, param4: _logicSlotType, param5: _batchMode
+    param1: _deviceHash,
+    param2: _slotIndex,
+    param3: LogicSlotType,
+    param4: LogicBatchMethod,
 ) -> _Register:
     """Loads LogicSlotType from slotIndex from all output network devices with provided type hash using the provide batch mode. Average (0), Sum (1), Minimum (2), Maximum (3). Can use either the word, or the number."""
-    return _IC10("lbs", [param2, param3, param4, param5], _IC10Register("invalid"))
+    return _IC10("lbs", [param1, param2, param3, param4], _Register("invalid"))
 
 
-def sb(param1: _deviceHash, param2: _logicType, param3: _Register) -> None:
+def sb(param1: _deviceHash, param2: LogicType, param3: _Register) -> None:
     """Stores register value to LogicType on all output network devices with provided type hash."""
     return _IC10("sb", [param1, param2, param3], None)
 
 
 def sbn(
-    param1: _deviceHash, param2: _nameHash, param3: _logicType, param4: _Register
+    param1: _deviceHash, param2: _nameHash, param3: LogicType, param4: _Register
 ) -> None:
     """Stores register value to LogicType on all output network devices with provided type hash and name."""
     return _IC10("sbn", [param1, param2, param3, param4], None)
 
 
 def sbs(
-    param1: _deviceHash, param2: _slotIndex, param3: _logicSlotType, param4: _Register
+    param1: _deviceHash, param2: _slotIndex, param3: LogicSlotType, param4: _Register
 ) -> None:
     """Stores register value to LogicSlotType on all output network devices with provided type hash in the provided slot."""
     return _IC10("sbs", [param1, param2, param3, param4], None)
@@ -296,154 +297,154 @@ def sbs(
 
 def and_(a: _Register | float, b: _Register | float) -> _Register:
     """Performs a bitwise logical AND operation on the binary representation of two values. Each bit of the result is determined by evaluating the corresponding bits of the input values. If both bits are 1, the resulting bit is set to 1. Otherwise the resulting bit is set to 0."""
-    return _IC10("and", [a, b], _IC10Register("invalid"))
+    return _IC10("and", [a, b], _Register("invalid"))
 
 
 def nor(a: _Register | float, b: _Register | float) -> _Register:
     """Performs a bitwise logical NOR (NOT OR) operation on the binary representation of two values. Each bit of the result is determined by evaluating the corresponding bits of the input values. If both bits are 0, the resulting bit is set to 1. Otherwise, if at least one bit is 1, the resulting bit is set to 0."""
-    return _IC10("nor", [a, b], _IC10Register("invalid"))
+    return _IC10("nor", [a, b], _Register("invalid"))
 
 
 def not_(a: _Register | float) -> _Register:
     """Performs a bitwise logical NOT operation flipping each bit of the input value, resulting in a binary complement. If a bit is 1, it becomes 0, and if a bit is 0, it becomes 1."""
-    return _IC10("not", [a], _IC10Register("invalid"))
+    return _IC10("not", [a], _Register("invalid"))
 
 
 def or_(a: _Register | float, b: _Register | float) -> _Register:
     """Performs a bitwise logical OR operation on the binary representation of two values. Each bit of the result is determined by evaluating the corresponding bits of the input values. If either bit is 1, the resulting bit is set to 1. If both bits are 0, the resulting bit is set to 0."""
-    return _IC10("or", [a, b], _IC10Register("invalid"))
+    return _IC10("or", [a, b], _Register("invalid"))
 
 
 def sla(a: _Register | float, b: _Register | float) -> _Register:
     """Performs a bitwise arithmetic left shift operation on the binary representation of a value. It shifts the bits to the left and fills the vacated rightmost bits with zeros (note that this is indistinguishable from 'sll')."""
-    return _IC10("sla", [a, b], _IC10Register("invalid"))
+    return _IC10("sla", [a, b], _Register("invalid"))
 
 
 def sll(a: _Register | float, b: _Register | float) -> _Register:
     """Performs a bitwise logical left shift operation on the binary representation of a value. It shifts the bits to the left and fills the vacated rightmost bits with zeros."""
-    return _IC10("sll", [a, b], _IC10Register("invalid"))
+    return _IC10("sll", [a, b], _Register("invalid"))
 
 
 def sra(a: _Register | float, b: _Register | float) -> _Register:
     """Performs a bitwise arithmetic right shift operation on the binary representation of a value. It shifts the bits to the right and fills the vacated leftmost bits with a copy of the sign bit (the most significant bit)."""
-    return _IC10("sra", [a, b], _IC10Register("invalid"))
+    return _IC10("sra", [a, b], _Register("invalid"))
 
 
 def srl(a: _Register | float, b: _Register | float) -> _Register:
     """Performs a bitwise logical right shift operation on the binary representation of a value. It shifts the bits to the right and fills the vacated leftmost bits with zeros"""
-    return _IC10("srl", [a, b], _IC10Register("invalid"))
+    return _IC10("srl", [a, b], _Register("invalid"))
 
 
 def xor(a: _Register | float, b: _Register | float) -> _Register:
     """Performs a bitwise logical XOR (exclusive OR) operation on the binary representation of two values. Each bit of the result is determined by evaluating the corresponding bits of the input values. If the bits are different (one bit is 0 and the other is 1), the resulting bit is set to 1. If the bits are the same (both 0 or both 1), the resulting bit is set to 0."""
-    return _IC10("xor", [a, b], _IC10Register("invalid"))
+    return _IC10("xor", [a, b], _Register("invalid"))
 
 
 def select(
     a: _Register | float, b: _Register | float, c: _Register | float
 ) -> _Register:
     """Returns b if a is non-zero, otherwise c"""
-    return _IC10("select", [a, b, c], _IC10Register("invalid"))
+    return _IC10("select", [a, b, c], _Register("invalid"))
 
 
-def sdns(param2: _Device) -> _Register:
+def sdns(param1: _Device) -> _Register:
     """Returns 1 if device is not set, otherwise 0"""
-    return _IC10("sdns", [param2], _IC10Register("invalid"))
+    return _IC10("sdns", [param1], _Register("invalid"))
 
 
-def sdse(param2: _Device) -> _Register:
+def sdse(param1: _Device) -> _Register:
     """Returns 1 if device is set, otherwise 0."""
-    return _IC10("sdse", [param2], _IC10Register("invalid"))
+    return _IC10("sdse", [param1], _Register("invalid"))
 
 
 def sap(a: _Register | float, b: _Register | float, c: _Register | float) -> _Register:
     """Returns 1 if abs(a - b) <= max(c * max(abs(a), abs(b)), float.epsilon * 8), otherwise 0"""
-    return _IC10("sap", [a, b, c], _IC10Register("invalid"))
+    return _IC10("sap", [a, b, c], _Register("invalid"))
 
 
 def sapz(a: _Register | float, b: _Register | float) -> _Register:
     """Returns 1 if abs(a) <= max(b * abs(a), float.epsilon * 8), otherwise 0"""
-    return _IC10("sapz", [a, b], _IC10Register("invalid"))
+    return _IC10("sapz", [a, b], _Register("invalid"))
 
 
 def seq(a: _Register | float, b: _Register | float) -> _Register:
     """Returns 1 if a == b, otherwise 0"""
-    return _IC10("seq", [a, b], _IC10Register("invalid"))
+    return _IC10("seq", [a, b], _Register("invalid"))
 
 
 def seqz(a: _Register | float) -> _Register:
     """Returns 1 if a == 0, otherwise 0"""
-    return _IC10("seqz", [a], _IC10Register("invalid"))
+    return _IC10("seqz", [a], _Register("invalid"))
 
 
 def sge(a: _Register | float, b: _Register | float) -> _Register:
     """Returns 1 if a >= b, otherwise 0"""
-    return _IC10("sge", [a, b], _IC10Register("invalid"))
+    return _IC10("sge", [a, b], _Register("invalid"))
 
 
 def sgez(a: _Register | float) -> _Register:
     """Returns 1 if a >= 0, otherwise 0"""
-    return _IC10("sgez", [a], _IC10Register("invalid"))
+    return _IC10("sgez", [a], _Register("invalid"))
 
 
 def sgt(a: _Register | float, b: _Register | float) -> _Register:
     """Returns 1 if a > b, otherwise 0"""
-    return _IC10("sgt", [a, b], _IC10Register("invalid"))
+    return _IC10("sgt", [a, b], _Register("invalid"))
 
 
 def sgtz(a: _Register | float) -> _Register:
     """Returns 1 if a > 0, otherwise 0"""
-    return _IC10("sgtz", [a], _IC10Register("invalid"))
+    return _IC10("sgtz", [a], _Register("invalid"))
 
 
 def sle(a: _Register | float, b: _Register | float) -> _Register:
     """Returns 1 if a <= b, otherwise 0"""
-    return _IC10("sle", [a, b], _IC10Register("invalid"))
+    return _IC10("sle", [a, b], _Register("invalid"))
 
 
 def slez(a: _Register | float) -> _Register:
     """Returns 1 if a <= 0, otherwise 0"""
-    return _IC10("slez", [a], _IC10Register("invalid"))
+    return _IC10("slez", [a], _Register("invalid"))
 
 
 def slt(a: _Register | float, b: _Register | float) -> _Register:
     """Returns 1 if a < b, otherwise 0"""
-    return _IC10("slt", [a, b], _IC10Register("invalid"))
+    return _IC10("slt", [a, b], _Register("invalid"))
 
 
 def sltz(a: _Register | float) -> _Register:
     """Returns 1 if a < 0, otherwise 0"""
-    return _IC10("sltz", [a], _IC10Register("invalid"))
+    return _IC10("sltz", [a], _Register("invalid"))
 
 
 def sna(a: _Register | float, b: _Register | float, c: _Register | float) -> _Register:
     """Returns 1 if abs(a - b) > max(c * max(abs(a), abs(b)), float.epsilon * 8), otherwise 0"""
-    return _IC10("sna", [a, b, c], _IC10Register("invalid"))
+    return _IC10("sna", [a, b, c], _Register("invalid"))
 
 
 def snan(a: _Register | float) -> _Register:
     """Returns 1 if a is NaN, otherwise 0"""
-    return _IC10("snan", [a], _IC10Register("invalid"))
+    return _IC10("snan", [a], _Register("invalid"))
 
 
 def snanz(a: _Register | float) -> _Register:
     """Returns 0 if a is NaN, otherwise 1"""
-    return _IC10("snanz", [a], _IC10Register("invalid"))
+    return _IC10("snanz", [a], _Register("invalid"))
 
 
 def snaz(a: _Register | float, b: _Register | float) -> _Register:
     """Returns 1 if abs(a) > max(b * abs(a), float.epsilon), otherwise 0"""
-    return _IC10("snaz", [a, b], _IC10Register("invalid"))
+    return _IC10("snaz", [a, b], _Register("invalid"))
 
 
 def sne(a: _Register | float, b: _Register | float) -> _Register:
     """Returns 1 if a != b, otherwise 0"""
-    return _IC10("sne", [a, b], _IC10Register("invalid"))
+    return _IC10("sne", [a, b], _Register("invalid"))
 
 
 def snez(a: _Register | float) -> _Register:
     """Returns 1 if a != 0, otherwise 0"""
-    return _IC10("snez", [a], _IC10Register("invalid"))
+    return _IC10("snez", [a], _Register("invalid"))
 
 
 def j(param1: int) -> None:
@@ -463,32 +464,32 @@ def jr(param1: int) -> None:
 
 def bdns(a: _Register | float) -> _Device:
     """Branch to line a if device d isn't set"""
-    return _IC10("bdns", [a], _IC10Register("invalid"))
+    return _IC10("bdns", [a], _Register("invalid"))
 
 
 def bdnsal(a: _Register | float) -> _Device:
     """Jump execution to line a and store next line number if device is not set"""
-    return _IC10("bdnsal", [a], _IC10Register("invalid"))
+    return _IC10("bdnsal", [a], _Register("invalid"))
 
 
 def bdse(a: _Register | float) -> _Device:
     """Branch to line a if device d is set"""
-    return _IC10("bdse", [a], _IC10Register("invalid"))
+    return _IC10("bdse", [a], _Register("invalid"))
 
 
 def bdseal(a: _Register | float) -> _Device:
     """Jump execution to line a and store next line number if device is set"""
-    return _IC10("bdseal", [a], _IC10Register("invalid"))
+    return _IC10("bdseal", [a], _Register("invalid"))
 
 
 def brdns(a: _Register | float) -> _Device:
     """Relative branch to line a if device is not set"""
-    return _IC10("brdns", [a], _IC10Register("invalid"))
+    return _IC10("brdns", [a], _Register("invalid"))
 
 
 def brdse(a: _Register | float) -> _Device:
     """Relative branch to line a if device is set"""
-    return _IC10("brdse", [a], _IC10Register("invalid"))
+    return _IC10("brdse", [a], _Register("invalid"))
 
 
 def bap(

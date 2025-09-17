@@ -7,10 +7,10 @@ solar.init:
   j ra
 solar.update:
   l r0 d0 Horizontal
-  sb -2045627372 Horizontal r0
+  sb HASH("StructureSolarPanel") Horizontal r0
   l r0 d0 Vertical
   sub r1 90 r0
-  sb -2045627372 Vertical r1
+  sb HASH("StructureSolarPanel") Vertical r1
   j ra
 # registers: 2
 # lines: 14

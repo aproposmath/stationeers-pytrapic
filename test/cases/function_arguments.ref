@@ -1,12 +1,12 @@
 lbwhile1:
-  lb r1 -400115994 Ratio 0
+  lb r1 HASH("StructureBattery") Ratio Average
   slt r0 r1 0.2
   put db 510 r0
   jal set.enable.fuel.generator
   j lbwhile1
 set.enable.fuel.generator:
   get r2 db 510
-  sb 813146305 On r2
+  sb HASH("StructureSolidFuelGenerator") On r2
   j ra
 # registers: 3
 # lines: 10

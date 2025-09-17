@@ -7,6 +7,23 @@ from pathlib import Path
 import requests
 from bs4 import BeautifulSoup
 
+type_mapping = {
+    "r?": "_Register",
+    "d?": "Device",
+    "num": "float",
+    "r": "Reister",
+    "d": "_Device",
+    "Device": "_Device",
+    "Register": "_Register",
+    "logicType": "LogicType",
+    "reagentMode": "LogicReagentMode",
+    "slotIndex": "_slotIndex",
+    "logicSlotType": "LogicSlotType",
+    "deviceHash": "_deviceHash",
+    "batchMode": "LogicBatchMethod",
+    "nameHash": "_nameHash",
+}
+
 
 def parse_dl_entry(entry):
     # Extract the instruction + param string
@@ -52,7 +69,7 @@ def parse_dl_entry(entry):
             "batchMode",
             "nameHash",
         ]:
-            param_type = param_type.replace(t, f"_{t}")
+            param_type = param_type.replace(t, type_mapping[t])
 
         parameters.append({"name": param_name, "type": param_type})
 
@@ -90,7 +107,8 @@ def parse_dl_entry(entry):
 
     for i, p in enumerate(parameters):
         if p["name"] == "":
-            p["name"] = f"param{i+1}"
+            param_index = i if parameters[0]["name"] == "output" else i + 1
+            p["name"] = f"param{param_index}"
 
     return {
         "name": name,
@@ -142,12 +160,12 @@ def generate_intrinsics_py(instructions):
             name += "_"
 
         expr = '""'
-        args = ', '.join(p["name"] for p in instr["parameters"])
+        args = ", ".join(p["name"] for p in instr["parameters"])
         opcode = instr["name"]
         if len(instr["parameters"]):
             expr = "} {".join(p["name"] for p in instr["parameters"])
             expr = 'f"{' + expr + '}"'
-        output = "_IC10Register('invalid')" if return_type else "None"
+        output = "_Register('invalid')" if return_type else "None"
         body = f"return _IC10('{opcode}', [{args}], {output})"
         code = f"""
 def {name}({params}) -> {return_type}:
@@ -159,7 +177,7 @@ def {name}({params}) -> {return_type}:
     code = f"""# This file is auto-generated from IC10 instructions_data
 from .types import *
 from .types_generated import *
-from .types import IC10 as _IC10, IC10Register as _IC10Register
+from .types import IC10 as _IC10, IC10Register as _Register
 
 """
     code += "\n\n".join(builtins_code)

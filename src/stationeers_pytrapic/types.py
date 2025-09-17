@@ -1,12 +1,13 @@
 import enum
-import sys
 import math
+import sys
 from dataclasses import dataclass, field
 
 import astroid
 
 from .types_generated import *
-from .utils import get_loop_ancestor
+from .types_generated import _GenericStructure, _GenericStructures
+from .utils import format_enum, get_loop_ancestor, is_compact_output
 
 
 @dataclass
@@ -142,8 +143,11 @@ class IC10Instruction:
     def __init__(self, op: str, inputs=None, output=None, comment="", indent=0):
         inputs = inputs or []
         for i in range(len(inputs)):
-            if not isinstance(inputs[i], IC10Operand):
-                inputs[i] = IC10Operand(inputs[i])
+            value = inputs[i]
+            if isinstance(value, enum.IntEnum):
+                value = format_enum(value)
+            if not isinstance(value, IC10Operand):
+                inputs[i] = IC10Operand(value)
         self.op = op
         self.inputs = inputs if inputs is not None else []
         self.output = output
@@ -164,14 +168,13 @@ def encode_data(data: dict) -> str:
     import json
     import zlib
 
-    res = (
+    return (
         base64.b64encode(zlib.compress(json.dumps(data).encode()))
         .decode()
         .replace("+", "-")
         .replace("/", "_")
         .replace("=", "")
     )
-    return res
 
 
 def decode_data(encoded: str) -> dict:
@@ -185,17 +188,6 @@ def decode_data(encoded: str) -> dict:
 
     encoded = encoded.replace("-", "+").replace("_", "/")
     return json.loads(zlib.decompress(base64.b64decode(encoded)).decode())
-
-
-class HashMode(enum.Enum):
-    """Hashing mode for names."""
-
-    VERBOSE = 0  # keep HASH("name") in the code
-    COMPACT = 1  # keep HASH("name") in the code only if it's shorter
-    EVAL = 0  # always evaluate the hash
-
-
-hash_mode = HashMode.VERBOSE
 
 
 def compute_hash(name: int | str | _Register) -> int | str:
@@ -214,44 +206,30 @@ def compute_hash(name: int | str | _Register) -> int | str:
     if name.startswith('HASH("') and name.endswith('")'):
         name = name[6:-2]
 
-    # return f'HASH("{name}")'
+    hash_str = f'HASH("{name}")'
+
+    if not is_compact_output():
+        return hash_str
 
     import zlib
 
     val = zlib.crc32(name.encode())
     val = (val ^ 0x80000000) - 0x80000000
     eval_str = str(val)
-    hash_str = f'HASH("{name}")'
 
-    if hash_mode == HashMode.VERBOSE:
-        return hash_str
-    elif hash_mode == HashMode.COMPACT:
-        return val if len(eval_str) < len(hash_str) else hash_str
-    elif hash_mode == HashMode.EVAL:
-        return eval_str
-
-    raise ValueError(f"Invalid hash mode: {hash_mode}")
+    return val if len(eval_str) < len(hash_str) else hash_str
 
 
-class _deviceHash(int):
+class _deviceHash(float):
     pass
 
 
-class _nameHash(int):
+def device_hash(cls: type) -> _deviceHash:
+    return compute_hash(cls._prefab_name)
+
+
+class _nameHash(float):
     pass
-
-
-class _batchMode(enum.IntEnum):
-    Average = 0
-    Sum = 1
-    Minimum = 2
-    Maximum = 3
-
-
-class _reagentMode(enum.IntEnum):
-    Contents = 0
-    Required = 1
-    Recipe = 2
 
 
 class _slotIndex(int):
@@ -265,38 +243,85 @@ class DeviceId:
 
 
 @dataclass
-class _DeviceSlotType:
-    _cls: type
-    _device_id: DeviceId
-    _slot_index: _slotIndex
-    _slot_type: _logicSlotType
+class _BaseAccess:
+    _obj: "_BaseStructure"
 
-    def _load(self, output: _Register) -> IC10Instruction:
-        id = self._device_id
-        return IC10Instruction(
-            "ls", [id._id, self._slot_index, self._slot_type], output
-        )
+    @property
+    def _dev_id(self) -> DeviceId:
+        return self._obj._dev_id
 
-    def _set(self, value: float | _Register) -> IC10Instruction:
-        id = self._device_id
-        return IC10Instruction("ss", [id._id, self._slot_index, self._slot_type, value])
+    @property
+    def _id(self) -> str:
+        return self._dev_id._id
+
+    @property
+    def _is_ref_id(self) -> str:
+        return self._dev_id._is_ref_id
+
+    @property
+    def _prefab_name(self) -> str | int | None:
+        return self._obj._prefab_name
+
+    @property
+    def _prefab_hash(self) -> str | int | None:
+        return self._obj._prefab_name
 
 
 @dataclass
-class _DevicesSlotType:
-    _cls: type
-    _device_hash: _deviceHash
-    _slot_index: _slotIndex
-    _slot_type: _logicSlotType
-    _name: str | int | None = None
+class _BaseBatchAccess:
+    _obj: "_BaseStructures"
+
+    @property
+    def _name(self) -> str | int | None:
+        return self._obj._name
+
+    @property
+    def _prefab_name(self) -> str | int | None:
+        return self._obj._prefab_name
 
     @property
     def _name_hash(self) -> int | str | None:
         if self._name is None:
-            raise ValueError("Name must be set to compute name hash")
+            raise ValueError(f"Name must be set in class {type(self._obj).__name__}")
+
         return compute_hash(self._name)
 
-    def _load(self, batch_mode: _batchMode):
+    @property
+    def _device_hash(self) -> int | str | None:
+        if not self._prefab_name:
+            raise ValueError("Name must be set to compute name hash")
+
+        return compute_hash(self._prefab_name)
+
+
+@dataclass
+class _DeviceSlotType(_BaseAccess):
+    _slot_type: LogicSlotType
+
+    @property
+    def _slot_index(self) -> _slotIndex:
+        return self._obj._slot_index
+
+    def _load(self, output: _Register) -> IC10Instruction:
+        return IC10Instruction(
+            "ls", [self._id, self._slot_index, self._slot_type], output
+        )
+
+    def _set(self, value: float | _Register) -> IC10Instruction:
+        return IC10Instruction(
+            "ss", [self._id, self._slot_index, self._slot_type, value]
+        )
+
+
+@dataclass
+class _DevicesSlotType(_BaseBatchAccess):
+    _slot_type: LogicSlotType
+
+    @property
+    def _slot_index(self) -> _slotIndex:
+        return self._obj._slot_index
+
+    def _load(self, batch_mode: LogicBatchMethod):
         if self._name is None:
             return lambda r: IC10(
                 "lbs",
@@ -318,19 +343,19 @@ class _DevicesSlotType:
 
     @property
     def Minimum(self) -> float:
-        return self._load(_batchMode.Minimum)
+        return self._load(LogicBatchMethod.Minimum)
 
     @property
     def Maximum(self) -> float:
-        return self._load(_batchMode.Maximum)
+        return self._load(LogicBatchMethod.Maximum)
 
     @property
     def Average(self) -> float:
-        return self._load(_batchMode.Average)
+        return self._load(LogicBatchMethod.Average)
 
     @property
     def Sum(self) -> float:
-        return self._load(_batchMode.Sum)
+        return self._load(LogicBatchMethod.Sum)
 
     def _set(self, value: float | _Register):
         return IC10Instruction(
@@ -339,36 +364,23 @@ class _DevicesSlotType:
 
 
 @dataclass
-class _DeviceLogicType:
-    _cls: type
-    _device_id: DeviceId
+class _DeviceLogicType(_BaseAccess):
     _logic_type: str
 
     def _load(self, output: _Register) -> float:
-        id = self._device_id
-        instr = "ld" if id._is_ref_id else "l"
-        return IC10Instruction(instr, [id._id, self._logic_type], output)
+        instr = "ld" if self._is_ref_id else "l"
+        return IC10Instruction(instr, [self._id, self._logic_type], output)
 
     def _set(self, value: float | _Register):
-        id = self._device_id
-        instr = "sd" if id._is_ref_id else "s"
-        return IC10Instruction(instr, [id._id, self._logic_type, value])
+        instr = "sd" if self._is_ref_id else "s"
+        return IC10Instruction(instr, [self._id, self._logic_type, value])
 
 
 @dataclass
-class _DevicesLogicType:
-    _device_hash: _deviceHash
+class _DevicesLogicType(_BaseBatchAccess):
     _logic_type: str
-    _name: str | int | None = None
 
-    @property
-    def _name_hash(self) -> int | str | None:
-        if not self._name:
-            raise ValueError("Name must be set to compute name hash")
-
-        return compute_hash(self._name)
-
-    def _load(self, batch_mode: _batchMode):
+    def _load(self, batch_mode: LogicBatchMethod):
         if self._name is None:
             # All devices of a specific type
             return lambda r: IC10Instruction(
@@ -384,19 +396,19 @@ class _DevicesLogicType:
 
     @property
     def Minimum(self) -> float:
-        return self._load(_batchMode.Minimum)
+        return self._load(LogicBatchMethod.Minimum)
 
     @property
     def Maximum(self) -> float:
-        return self._load(_batchMode.Maximum)
+        return self._load(LogicBatchMethod.Maximum)
 
     @property
     def Average(self) -> float:
-        return self._load(_batchMode.Average)
+        return self._load(LogicBatchMethod.Average)
 
     @property
     def Sum(self) -> float:
-        return self._load(_batchMode.Sum)
+        return self._load(LogicBatchMethod.Sum)
 
     def _set(self, value: float | _Register):
         if self._name is None:
@@ -407,64 +419,65 @@ class _DevicesLogicType:
             )
 
 
-del enum
-
-
 @dataclass
-class _BaseSlotType:
-    _cls: type
-    _id: DeviceId
+class _BaseSlotType(_BaseAccess):
     _slot_index: _slotIndex
 
 
 @dataclass
-class _BaseSlotTypes:
-    _cls: type
-    _hash: _deviceHash
+class _BaseSlotTypes(_BaseBatchAccess):
     _slot_index: _slotIndex
-    _name: str | int | None = None
 
 
 class _BaseStructure:
-    _id: DeviceId
+    _dev_id: DeviceId
+    _prefab_name: str | None = None
 
-    def __init__(self, device_id: str | None = None, ref_id: str | None = None):
-        self._id = DeviceId(device_id or ref_id, ref_id is not None)
+    def __init__(
+        self, device_id: "_BaseStructure | str | None" = None, ref_id: str | None = None
+    ):
+        if isinstance(device_id, _BaseStructure):
+            self._dev_id = device_id._dev_id
+        elif isinstance(device_id, DeviceId):
+            self._dev_id = device_id
+        else:
+            self._dev_id = DeviceId(device_id or ref_id, ref_id is not None)
 
     @property
     def PrefabHash(self) -> float:
-        return _DeviceLogicType(type(self), self._id, "PrefabHash")
+        return _DeviceLogicType(self, "PrefabHash")
 
     @property
     def ReferenceId(self) -> float:
-        return _DeviceLogicType(type(self), self._id, "ReferenceId")
+        return _DeviceLogicType(self, "ReferenceId")
 
     @property
     def NameHash(self) -> float:
-        return _DeviceLogicType(type(self), self._id, "NameHash")
+        return _DeviceLogicType(self, "NameHash")
 
     def __str__(self):
-        return type(self).__name__ + f"({self._id._id})"
+        return type(self).__name__ + f"({self._id})"
 
 
 class _BaseStructures:
     _hash: int = None
     _name: str | int | None = None
+    _prefab_name: str | None = None
 
     def __init__(self, name: str | int | None = None):
         self._name = name
 
     @property
     def PrefabHash(self) -> _DevicesLogicType:
-        return _DevicesLogicType(self._hash, "PrefabHash", self._name)
+        return _DevicesLogicType(self, "PrefabHash")
 
     @property
     def ReferenceId(self) -> _DevicesLogicType:
-        return _DevicesLogicType(self._hash, "ReferenceId", self._name)
+        return _DevicesLogicType(type(self), self._hash, "ReferenceId", self._name)
 
     @property
     def NameHash(self) -> _DevicesLogicType:
-        return _DevicesLogicType(self._hash, "NameHash", self._name)
+        return _DevicesLogicType(type(self), self._hash, "NameHash", self._name)
 
     def __str__(self):
         return type(self).__name__[1:] + f"(name={self._name})"
@@ -472,30 +485,29 @@ class _BaseStructures:
 
 class _Device(_BaseStructure, _GenericStructure):
     def __getattr__(self, attr_name: str) -> _DeviceLogicType:
-        if attr_name in ["_id", "_hash"] or attr_name.startswith("__"):
+        if attr_name in [
+            "_dev_id",
+            "_id",
+            "_hash",
+            "_is_ref_id",
+        ] or attr_name.startswith("__"):
             return super().__getattr__(attr_name)
-        return _DeviceLogicType(type(self), self._id, attr_name)
+        return _DeviceLogicType(self, attr_name)
 
     def __str__(self):
-        return f"{self._id._id}"
+        return f"Device({self._id})"
 
 
-class _StackValue:
-    _id: str | None = None
-    _is_ref_id: bool = False
-    _addr: str | None = None
-
-    def __init__(self, _id, is_ref_id, _addr):
-        self._id = _id
-        self._is_ref_id = is_ref_id
-        self._addr = _addr
+@dataclass
+class _StackValue(_BaseAccess):
+    _addr: str | int
 
     def _set(self, value: float | _Register):
-        if self._id is None:
-            return IC10Instruction("poke", [self._addr, value])
-
         if self._is_ref_id:
             return IC10Instruction("putd", [self._id, self._addr, value])
+
+        if self._id is None or self._id == "db":
+            return IC10Instruction("poke", [self._addr, value])
 
         return IC10Instruction("put", [self._id, self._addr, value])
 
@@ -506,22 +518,19 @@ class _StackValue:
         return IC10Instruction("get", [self._id or "db", self._addr], output)
 
 
-class Stack:
-    _id: str | None = None
-    _is_ref_id: bool = False
-
-    def __init__(self, device_id: str | None = None, ref_id: str | None = None):
-        self._id = device_id or ref_id
-        self._is_ref_id = ref_id is not None
+@dataclass
+class Stack(_BaseAccess):
+    def __init__(self, device_id=None, ref_id: str | None = None):
+        if device_id is None and ref_id is None:
+            device_id = "db"
+        self._obj = _BaseStructure(device_id, ref_id)
 
     def __getitem__(self, index: int | _Register) -> _Register:
-        return _StackValue(self._id, self._is_ref_id, index)
+        return _StackValue(self._obj, index)
 
     def __setitem__(self, index: int | _Register, value: float | _Register) -> None:
-        return _StackValue(self._id, self._is_ref_id, index)
+        return _StackValue(self._obj, index)
 
-
-stack = Stack()
 
 _Reg = lambda name: _Register(name, code_expr=name)
 
@@ -552,6 +561,9 @@ d3 = _Device("d3")
 d4 = _Device("d4")
 d5 = _Device("d5")
 db = _Device("db")
+
+stack = Stack()
+
 
 pi: float = math.pi
 tau: float = 2 * math.pi
@@ -595,11 +607,8 @@ __all__ = [
     "db",
     "_Register",
     "_Device",
-    "_logicType",
-    "_reagentMode",
     "_slotIndex",
     "_deviceHash",
-    "_batchMode",
     "_nameHash",
     "_GenericStructure",
     "_GenericStructures",

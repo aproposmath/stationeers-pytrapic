@@ -7,7 +7,10 @@ rm -rf dist typings
 cd scripts
 python build_intrinsics.py
 python build_types.py
+python build_enums.py
 cd ..
+
+black src
 
 python -m build -wn .
 pyright --createstub stationeers_pytrapic

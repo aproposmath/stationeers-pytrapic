@@ -17,7 +17,7 @@ from pygments import highlight as _highlight
 from pygments.formatters import BBCodeFormatter
 from pygments.lexers import LuaLexer, PythonLexer
 
-from .compiler import compile_code
+from .compiler import CompileOptions, compile_code
 from .stationpedia import get_pages_encoded
 
 
@@ -46,7 +46,7 @@ for ttype in formatter.styles:
 _log_file = None  # Global log file handle
 _err_file = None  # Global error file handle
 ENABLE_LOGGING = __name__ == "__main__"
-ENABLE_LOGGING = True
+ENABLE_LOGGING = False
 
 _ignore_symbol_names = _get_ignore_symbol_names()
 
@@ -177,14 +177,10 @@ def process_input(line):
         code = modules[""]
         log(f"got modules {list(modules.keys())}")
 
-        compact = msg.get("compact", False)
-        append_version = msg.get("append_version", True)
-        comments = msg.get("comments", False)
+        options = CompileOptions(**(msg.get("options", {})))
         response = compile_code(
             modules,
-            comments=comments,
-            compact=compact,
-            append_version=append_version,
+            options,
         )
         error_line = None
         if response and "error" in response and "line" in response["error"]:

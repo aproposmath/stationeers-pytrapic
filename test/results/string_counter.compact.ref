@@ -1,4 +1,4 @@
-sb -1949054743 Mode 10
+sb -1949054743 3 10
 move r0 55
 move r1 999
 yield
@@ -13,7 +13,7 @@ put db 510 r2
 put db 509 r1
 jal 19
 get r2 db 511
-sb -1949054743 Setting r2
+sb -1949054743 12 r2
 add r0 r0 1
 sub r1 r1 1
 j 3

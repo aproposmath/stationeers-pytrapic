@@ -6,6 +6,7 @@ import astroid
 from . import _version, intrinsics, structures_generated, symbols, types
 from .compile_pass import CodeData, CompilerError, CompilerPass, FunctionData
 from .types import IC10, IC10Instruction, IC10Operand, IC10Register
+from .types_generated import LogicBatchMethod
 from .utils import (
     get_comparison_suffix,
     get_negated_comparison_suffix,
@@ -186,7 +187,9 @@ class CompilerPassGenerateCode(CompilerPass):
                 node,
             )
 
-        if attrname in ["Minimum", "Maximum", "Sum", "Average"]:
+        if isinstance(attr, LogicBatchMethod):
+            data.result = attr
+        elif attrname in ["Minimum", "Maximum", "Sum", "Average"]:
             symbol = self.get_intermediate_symbol(node)
             data.add(attr(symbol))
             data.result = symbol
@@ -470,7 +473,7 @@ class CompilerPassGenerateCode(CompilerPass):
                 # # assign new name to symbol instead of extra move instruction
                 # value.name = target.name
                 # self.set_name(target, value, target.name)
-            elif value_name in symbols.__dict__ or is_builtin_structure(value):
+            elif is_builtin_structure(value) or value_name in symbols.__dict__:
                 data.result = value
                 structures = self.data.structures
                 scope_name = get_scope_name(target)
@@ -509,7 +512,7 @@ class CompilerPassGenerateCode(CompilerPass):
 
             if (
                 isinstance(lhs, (symbols._DeviceLogicType, symbols._DeviceSlotType))
-                and lhs._device_id._id is None
+                and lhs._id is None
             ):
                 name = lhs._cls.__name__
                 raise CompilerError(

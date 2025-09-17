@@ -35,6 +35,8 @@ namespace StationeersPyTrapIC
             ViewIC10,
         }
 
+        public static string compileMode = "compact"; // "compact" or "verbose"
+
         public static Mode mode = Mode.EditIC10;
         public static PythonCompiler.CompileResponse compiledCode = null;
 
@@ -43,12 +45,32 @@ namespace StationeersPyTrapIC
         private static string[] highlightedLines = null;
         private static CancellationTokenSource debounceCts;
 
+        public static void ToggleCompileMode()
+        {
+            if (mode == Mode.EditIC10)
+                return;
+
+            if (compileMode == "compact")
+                compileMode = "verbose";
+            else
+                compileMode = "compact";
+            bool isCompact = compileMode == "compact";
+            PythonCompiler.options.remove_labels = isCompact;
+            PythonCompiler.options.compact = isCompact;
+            PythonCompiler.options.generated_comments = !isCompact;
+
+            var pyCode = mode == Mode.EditPython ? InputSourceCode.Copy() : pythonCode;
+            TriggerCompile(pyCode, 0);
+        }
+
         public static void TogglePreview()
         {
             L.Debug($"TogglePreview from mode={mode}");
 
             if (mode == Mode.EditIC10)
                 return;
+
+            UITooltipManager.ClearTooltip();
 
             if (mode == Mode.EditPython)
             {
@@ -134,15 +156,20 @@ namespace StationeersPyTrapIC
             isc._previousCaretPosition = isc.CaretPosition;
         }
 
+        public static void TriggerCompile(string code, int delayMs = 300)
+        {
+            // trigger compile in thread
+            debounceCts?.Cancel();
+            debounceCts = new CancellationTokenSource();
+            CompileInThread(code, delayMs, (debounceCts.Token)).Forget();
+        }
+
         public static void SetPythonCode(string code)
         {
             if (code == pythonCode)
                 return;
 
-            // trigger compile in thread
-            debounceCts?.Cancel();
-            debounceCts = new CancellationTokenSource();
-            CompileInThread(code, (debounceCts.Token)).Forget();
+            TriggerCompile(code);
         }
 
         public static void SetIC10Code(string code)
@@ -187,6 +214,7 @@ namespace StationeersPyTrapIC
             string statusText =
                 $"{FormatSize(compiledCode.num_registers, 16, "registers")}, {FormatSize(compiledCode.num_lines, 128, "lines")}, {FormatSize(compiledCode.num_bytes, 4096, "bytes")}";
             string modeText = mode == Mode.EditPython ? "Python" : "IC10 preview";
+            modeText += $", <color=\"yellow\">{compileMode}</color> mode";
             statusText += $"\n<color=\"yellow\">{modeText}</color>";
             sizeText.text = statusText;
             sizeText.color = Color.white;
@@ -241,14 +269,18 @@ namespace StationeersPyTrapIC
             SetStatusText();
         }
 
-        private static async UniTaskVoid CompileInThread(string sourceCode, CancellationToken token)
+        private static async UniTaskVoid CompileInThread(
+            string sourceCode,
+            int delayMs,
+            CancellationToken token
+        )
         {
             try
             {
                 string newCode = String.Copy(sourceCode);
                 pythonCode = newCode;
                 L.Debug($"Debounced compile of {newCode.Length} chars");
-                await UniTask.Delay(300, cancellationToken: token);
+                await UniTask.Delay(delayMs, cancellationToken: token);
                 token.ThrowIfCancellationRequested();
 
                 var compileResponse = await UniTask.Run(() =>
@@ -274,7 +306,7 @@ namespace StationeersPyTrapIC
                 }
 
                 if (mode == Mode.EditPython || mode == Mode.ViewIC10)
-                    UpdateFormattedCode();
+                    UpdateFormattedCode(mode == Mode.ViewIC10);
             }
             catch (OperationCanceledException)
             {
@@ -297,6 +329,8 @@ namespace StationeersPyTrapIC
 
         public static void UpdateTooltip()
         {
+            if (mode != Mode.EditPython)
+                return;
             UITooltipManager.ClearTooltip();
             if (compiledCode != null)
             {
