@@ -87,7 +87,11 @@ class IC10Operand:
         return isinstance(self.value, IC10Register)
 
     def to_string(self) -> str:
-        if isinstance(self.value, IC10Register):
+        if isinstance(self.value, _Device):
+            return self.value._id or "db"
+        elif isinstance(self.value, DeviceId):
+            return self.value._id or "db"
+        elif isinstance(self.value, IC10Register):
             return self.value.code_expr
         elif isinstance(self.value, float):
             absval = abs(self.value)
@@ -495,7 +499,7 @@ class _Device(_BaseStructure, _GenericStructure):
         return _DeviceLogicType(self, attr_name)
 
     def __str__(self):
-        return f"Device({self._id})"
+        return f"Device({self._dev_id})"
 
 
 @dataclass

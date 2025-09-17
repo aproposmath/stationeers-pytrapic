@@ -210,6 +210,9 @@ def get_loop_ancestor(node):
 def is_constant(node):
     from .types import constants
 
+    if hasattr(node, "_ndata") and node._ndata.is_constant:
+        return True, node._ndata.constant_value
+
     if isinstance(node, (int, float, str)):
         return True, node
 
@@ -226,6 +229,28 @@ def is_constant(node):
 
     if isinstance(node, astroid.Name) and node.name in constants:
         return True, constants[node.name]
+
+    if isinstance(node, astroid.BinOp):
+        left_const, left_value = is_constant(node.left)
+        right_const, right_value = is_constant(node.right)
+        print("binop", node.op, left_const, left_value, right_const, right_value)
+        if left_const and right_const:
+            _, func = get_binop_instruction(node.op)
+            if func:
+                try:
+                    return True, func(left_value, right_value)
+                except Exception:
+                    return False, None
+
+    if isinstance(node, astroid.UnaryOp):
+        operand_const, operand_value = is_constant(node.operand)
+        if operand_const:
+            _, func = get_unop_instruction(node.op)
+            if func:
+                try:
+                    return True, func(operand_value)
+                except Exception:
+                    return False, None
 
     try:
         inferred = node.inferred()

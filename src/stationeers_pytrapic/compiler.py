@@ -45,12 +45,9 @@ class Compiler:
             CompilerPassCheckReadWritten,
             CompilerPassCheckConstValueAssign,
             # CompilerPassListSymbols,
-            # CompilerPassCheckConstValue,
-            # CompilerPassCheckRead,
             CompilerPassCheckReturnValues,
             CompilerPassCreateFunctionData,
             CompilerPassGenerateCode,
-            # CompilerPassAssignRegisters,
             CompilerPassGatherCode,
         ]
         self.options = options

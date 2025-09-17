@@ -494,11 +494,8 @@ class CompilerPassCheckConstValue(CompilerPass):
         self._visit_node(self.tree)
 
 
-class CompilerPassCheckConstValueAssign(CompilerPass):
+class CompilerPassCheckConstValueAssign(CompilerPassCheckConstValue):
     skip_unused_nodes = True
-
-    def handle_node(self, node: astroid.NodeNG):
-        pass
 
     def handle_assign(self, node: astroid.Assign):
         for child in node.get_children():

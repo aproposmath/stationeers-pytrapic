@@ -3,5 +3,8 @@ s db Setting 3
 s db Setting 5
 s db Setting 1
 s db Setting 0.125
+s db Setting 1000
+s db Setting 1
+s db Setting 0.01973920880217872
 # registers: 0
-# lines: 5
+# lines: 8
