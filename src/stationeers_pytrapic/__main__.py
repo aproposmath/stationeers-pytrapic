@@ -3,7 +3,7 @@ import logging
 import sys
 from pathlib import Path
 
-from .compiler import compile_code
+from .compiler import compile_code, CompileOptions
 
 
 def main():
@@ -26,7 +26,12 @@ def main():
     # )
 
     code = Path(args.input_file).read_text()
-    data = compile_code(code, compact=args.compact, comments=args.comments)
+    options = CompileOptions(
+        compact=args.compact,
+        original_code_as_comment=args.comments,
+        remove_labels=args.compact,
+    )
+    data = compile_code(code, options)
     code = data.get("code", "")
     error = data.get("error", {})
     stack_trace = error.get("stack_trace", "")
