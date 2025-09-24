@@ -100,7 +100,11 @@ def generate_generic_structure(struct: Structure, multiple: bool = False) -> str
         if not is_base
         else ""
     )
-    name = struct.name + suffix
+    name = struct.name
+    if multiple and name[-1] == 'y':
+        name = name[:-1] + "ie"
+    name = name + suffix
+
     prefix = ""
     if multiple and not is_base:
         prefix = "_"

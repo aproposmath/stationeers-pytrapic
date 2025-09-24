@@ -1525,7 +1525,7 @@ class _ClearMemory:
         pass
 
 
-class _ClearMemorys:
+class _ClearMemories:
     @property
     def ClearMemory(self) -> _DevicesLogicType:
         return _DevicesLogicType(self, _LT.ClearMemory)
@@ -1705,7 +1705,7 @@ class _Quantity:
         return _DeviceLogicType(self, _LT.Quantity)
 
 
-class _Quantitys:
+class _Quantities:
     @property
     def Quantity(self) -> _DevicesLogicType:
         return _DevicesLogicType(self, _LT.Quantity)
@@ -14410,12 +14410,12 @@ class LogicMemory(_BaseStructure, _SettingW):
     _prefab_name: int = "StructureLogicMemory"
 
 
-class _LogicMemorys(_BaseStructures, _SettingWs):
+class _LogicMemories(_BaseStructures, _SettingWs):
     _hash: int = -851746783
     _prefab_name: int = "StructureLogicMemory"
 
-    def __getitem__(self, name: str | int | float) -> "_LogicMemorys":
-        return _LogicMemorys(name)
+    def __getitem__(self, name: str | int | float) -> "_LogicMemories":
+        return _LogicMemories(name)
 
     @property
     def Average(self) -> LogicMemory:
@@ -14434,7 +14434,7 @@ class _LogicMemorys(_BaseStructures, _SettingWs):
         return LogicMemory(name=self._name, batch_mode=LogicBatchMethod.Sum)
 
 
-LogicMemorys: _LogicMemorys = _LogicMemorys()
+LogicMemories: _LogicMemories = _LogicMemories()
 
 
 class LogicMinMax(_BaseStructure, _Error, _Mode, _Power, _SettingR):
@@ -14902,12 +14902,12 @@ class LogicMathUnary(_BaseStructure, _Error, _Mode, _Power, _SettingR):
     _prefab_name: int = "StructureLogicMathUnary"
 
 
-class _LogicMathUnarys(_BaseStructures, _Errors, _Modes, _Powers, _SettingRs):
+class _LogicMathUnaries(_BaseStructures, _Errors, _Modes, _Powers, _SettingRs):
     _hash: int = -1160020195
     _prefab_name: int = "StructureLogicMathUnary"
 
-    def __getitem__(self, name: str | int | float) -> "_LogicMathUnarys":
-        return _LogicMathUnarys(name)
+    def __getitem__(self, name: str | int | float) -> "_LogicMathUnaries":
+        return _LogicMathUnaries(name)
 
     @property
     def Average(self) -> LogicMathUnary:
@@ -14926,7 +14926,7 @@ class _LogicMathUnarys(_BaseStructures, _Errors, _Modes, _Powers, _SettingRs):
         return LogicMathUnary(name=self._name, batch_mode=LogicBatchMethod.Sum)
 
 
-LogicMathUnarys: _LogicMathUnarys = _LogicMathUnarys()
+LogicMathUnaries: _LogicMathUnaries = _LogicMathUnaries()
 
 
 class PassiveLargeRadiatorGas(_BaseStructure, _Maximum, _Ratio, _SettingW):
@@ -19014,14 +19014,14 @@ class RocketEngineTiny(
         return _DeviceLogicType(self, _LT.TotalMolesOutput)
 
 
-class _RocketEngineTinys(
+class _RocketEngineTinies(
     _BaseStructures, _Errors, _Locks, _Maximums, _Powers, _Ratios, _SettingWs
 ):
     _hash: int = 178472613
     _prefab_name: int = "StructureRocketEngineTiny"
 
-    def __getitem__(self, name: str | int | float) -> "_RocketEngineTinys":
-        return _RocketEngineTinys(name)
+    def __getitem__(self, name: str | int | float) -> "_RocketEngineTinies":
+        return _RocketEngineTinies(name)
 
     @property
     def Average(self) -> RocketEngineTiny:
@@ -19084,7 +19084,7 @@ class _RocketEngineTinys(
         return _DevicesLogicType(self, _LT.TotalMolesOutput)
 
 
-RocketEngineTinys: _RocketEngineTinys = _RocketEngineTinys()
+RocketEngineTinies: _RocketEngineTinies = _RocketEngineTinies()
 
 
 class RocketGasCollector(
@@ -19346,7 +19346,7 @@ class RocketManufactory(
         return self.slot1
 
 
-class _RocketManufactorys(
+class _RocketManufactories(
     _BaseStructures,
     _Activates,
     _ClearMemorys,
@@ -19362,8 +19362,8 @@ class _RocketManufactorys(
     _hash: int = 1781051034
     _prefab_name: int = "StructureRocketManufactory"
 
-    def __getitem__(self, name: str | int | float) -> "_RocketManufactorys":
-        return _RocketManufactorys(name)
+    def __getitem__(self, name: str | int | float) -> "_RocketManufactories":
+        return _RocketManufactories(name)
 
     @property
     def Average(self) -> RocketManufactory:
@@ -19406,7 +19406,7 @@ class _RocketManufactorys(
         return self.slot1
 
 
-RocketManufactorys: _RocketManufactorys = _RocketManufactorys()
+RocketManufactories: _RocketManufactories = _RocketManufactories()
 
 
 class RocketMiner(
@@ -21960,14 +21960,14 @@ class Battery(_BaseStructure, _Charge, _Error, _Lock, _Maximum, _ModeR, _On, _Ra
         return _DeviceLogicType(self, _LT.PowerPotential)
 
 
-class _Batterys(
+class _Batteries(
     _BaseStructures, _Charges, _Errors, _Locks, _Maximums, _ModeRs, _Ons, _Ratios
 ):
     _hash: int = -400115994
     _prefab_name: int = "StructureBattery"
 
-    def __getitem__(self, name: str | int | float) -> "_Batterys":
-        return _Batterys(name)
+    def __getitem__(self, name: str | int | float) -> "_Batteries":
+        return _Batteries(name)
 
     @property
     def Average(self) -> Battery:
@@ -21998,7 +21998,7 @@ class _Batterys(
         return _DevicesLogicType(self, _LT.PowerPotential)
 
 
-Batterys: _Batterys = _Batterys()
+Batteries: _Batteries = _Batteries()
 
 
 class BatteryLarge(
@@ -22762,7 +22762,7 @@ class ToolManufactory(
         return self.slot1
 
 
-class _ToolManufactorys(
+class _ToolManufactories(
     _BaseStructures,
     _Activates,
     _ClearMemorys,
@@ -22778,8 +22778,8 @@ class _ToolManufactorys(
     _hash: int = -465741100
     _prefab_name: int = "StructureToolManufactory"
 
-    def __getitem__(self, name: str | int | float) -> "_ToolManufactorys":
-        return _ToolManufactorys(name)
+    def __getitem__(self, name: str | int | float) -> "_ToolManufactories":
+        return _ToolManufactories(name)
 
     @property
     def Average(self) -> ToolManufactory:
@@ -22822,7 +22822,7 @@ class _ToolManufactorys(
         return self.slot1
 
 
-ToolManufactorys: _ToolManufactorys = _ToolManufactorys()
+ToolManufactories: _ToolManufactories = _ToolManufactories()
 
 
 class TraderWaypoint(_BaseStructure, _Error, _Power):
@@ -24908,12 +24908,12 @@ class WallLightBattery(_BaseStructure, _Lock, _Power):
         return self.slot0
 
 
-class _WallLightBatterys(_BaseStructures, _Locks, _Powers):
+class _WallLightBatteries(_BaseStructures, _Locks, _Powers):
     _hash: int = -1306415132
     _prefab_name: int = "StructureWallLightBattery"
 
-    def __getitem__(self, name: str | int | float) -> "_WallLightBatterys":
-        return _WallLightBatterys(name)
+    def __getitem__(self, name: str | int | float) -> "_WallLightBatteries":
+        return _WallLightBatteries(name)
 
     @property
     def Average(self) -> WallLightBattery:
@@ -24940,7 +24940,7 @@ class _WallLightBatterys(_BaseStructures, _Locks, _Powers):
         return self.slot0
 
 
-WallLightBatterys: _WallLightBatterys = _WallLightBatterys()
+WallLightBatteries: _WallLightBatteries = _WallLightBatteries()
 
 
 class LightLongAngled(_BaseStructure, _Lock, _Power):
