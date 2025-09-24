@@ -1,28 +1,10 @@
 using System;
-using System.Collections.Generic;
 using System.Diagnostics;
-using System.IO;
-using System.Linq;
-using System.Reflection;
-using System.Runtime.CompilerServices;
-using System.Text;
-using System.Text.RegularExpressions;
 using System.Threading;
-using System.Threading.Tasks;
-using Assets.Scripts.Networking;
-using Assets.Scripts.Networking.Transports;
-using Assets.Scripts.Objects;
-using Assets.Scripts.Objects.Electrical;
-using Assets.Scripts.Objects.Motherboards;
 using Assets.Scripts.UI;
-using BepInEx;
-using BepInEx.Logging;
 using Cysharp.Threading.Tasks;
-using HarmonyLib;
-using Newtonsoft.Json;
 using UI.Tooltips;
 using UnityEngine;
-using Util.Commands;
 
 namespace StationeersPyTrapIC
 {

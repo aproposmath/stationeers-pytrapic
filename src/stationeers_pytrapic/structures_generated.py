@@ -9,7 +9,10 @@ from stationeers_pytrapic.types import (
     _BaseSlotTypes,
     LogicType as _LT,
     LogicSlotType as _LST,
+    _Register,
 )
+
+from stationeers_pytrapic.types_generated import LogicBatchMethod
 
 
 class _SlotTypeCommon(_BaseSlotType):
@@ -1720,6 +1723,22 @@ class _AccessBridges(_BaseStructures, _Activates, _Locks, _Opens, _Powers):
     def __getitem__(self, name: str | int | float) -> "_AccessBridges":
         return _AccessBridges(name)
 
+    @property
+    def Average(self) -> AccessBridge:
+        return AccessBridge(name=self._name, batch_mode=LogicBatchMethod.Average)
+
+    @property
+    def Minimum(self) -> AccessBridge:
+        return AccessBridge(name=self._name, batch_mode=LogicBatchMethod.Minimum)
+
+    @property
+    def Maximum(self) -> AccessBridge:
+        return AccessBridge(name=self._name, batch_mode=LogicBatchMethod.Maximum)
+
+    @property
+    def Sum(self) -> AccessBridge:
+        return AccessBridge(name=self._name, batch_mode=LogicBatchMethod.Sum)
+
 
 AccessBridges: _AccessBridges = _AccessBridges()
 
@@ -1781,6 +1800,22 @@ class _LiquidDrains(
 
     def __getitem__(self, name: str | int | float) -> "_LiquidDrains":
         return _LiquidDrains(name)
+
+    @property
+    def Average(self) -> LiquidDrain:
+        return LiquidDrain(name=self._name, batch_mode=LogicBatchMethod.Average)
+
+    @property
+    def Minimum(self) -> LiquidDrain:
+        return LiquidDrain(name=self._name, batch_mode=LogicBatchMethod.Minimum)
+
+    @property
+    def Maximum(self) -> LiquidDrain:
+        return LiquidDrain(name=self._name, batch_mode=LogicBatchMethod.Maximum)
+
+    @property
+    def Sum(self) -> LiquidDrain:
+        return LiquidDrain(name=self._name, batch_mode=LogicBatchMethod.Sum)
 
     @property
     def CombustionOutput(self) -> _DevicesLogicType:
@@ -1923,6 +1958,22 @@ class _ActiveVents(
         return _ActiveVents(name)
 
     @property
+    def Average(self) -> ActiveVent:
+        return ActiveVent(name=self._name, batch_mode=LogicBatchMethod.Average)
+
+    @property
+    def Minimum(self) -> ActiveVent:
+        return ActiveVent(name=self._name, batch_mode=LogicBatchMethod.Minimum)
+
+    @property
+    def Maximum(self) -> ActiveVent:
+        return ActiveVent(name=self._name, batch_mode=LogicBatchMethod.Maximum)
+
+    @property
+    def Sum(self) -> ActiveVent:
+        return ActiveVent(name=self._name, batch_mode=LogicBatchMethod.Sum)
+
+    @property
     def CombustionOutput(self) -> _DevicesLogicType:
         return _DevicesLogicType(self, _LT.CombustionOutput)
 
@@ -2053,6 +2104,22 @@ class _AdvancedComposters(
         return _AdvancedComposters(name)
 
     @property
+    def Average(self) -> AdvancedComposter:
+        return AdvancedComposter(name=self._name, batch_mode=LogicBatchMethod.Average)
+
+    @property
+    def Minimum(self) -> AdvancedComposter:
+        return AdvancedComposter(name=self._name, batch_mode=LogicBatchMethod.Minimum)
+
+    @property
+    def Maximum(self) -> AdvancedComposter:
+        return AdvancedComposter(name=self._name, batch_mode=LogicBatchMethod.Maximum)
+
+    @property
+    def Sum(self) -> AdvancedComposter:
+        return AdvancedComposter(name=self._name, batch_mode=LogicBatchMethod.Sum)
+
+    @property
     def slot0(self) -> _SlotTypeCommons:
         return _SlotTypeCommons(self, 0)
 
@@ -2161,6 +2228,22 @@ class _AdvancedFurnaces(
         return _AdvancedFurnaces(name)
 
     @property
+    def Average(self) -> AdvancedFurnace:
+        return AdvancedFurnace(name=self._name, batch_mode=LogicBatchMethod.Average)
+
+    @property
+    def Minimum(self) -> AdvancedFurnace:
+        return AdvancedFurnace(name=self._name, batch_mode=LogicBatchMethod.Minimum)
+
+    @property
+    def Maximum(self) -> AdvancedFurnace:
+        return AdvancedFurnace(name=self._name, batch_mode=LogicBatchMethod.Maximum)
+
+    @property
+    def Sum(self) -> AdvancedFurnace:
+        return AdvancedFurnace(name=self._name, batch_mode=LogicBatchMethod.Sum)
+
+    @property
     def RecipeHash(self) -> _DevicesLogicType:
         return _DevicesLogicType(self, _LT.RecipeHash)
 
@@ -2259,6 +2342,30 @@ class _AdvancedPackagingMachines(
 
     def __getitem__(self, name: str | int | float) -> "_AdvancedPackagingMachines":
         return _AdvancedPackagingMachines(name)
+
+    @property
+    def Average(self) -> AdvancedPackagingMachine:
+        return AdvancedPackagingMachine(
+            name=self._name, batch_mode=LogicBatchMethod.Average
+        )
+
+    @property
+    def Minimum(self) -> AdvancedPackagingMachine:
+        return AdvancedPackagingMachine(
+            name=self._name, batch_mode=LogicBatchMethod.Minimum
+        )
+
+    @property
+    def Maximum(self) -> AdvancedPackagingMachine:
+        return AdvancedPackagingMachine(
+            name=self._name, batch_mode=LogicBatchMethod.Maximum
+        )
+
+    @property
+    def Sum(self) -> AdvancedPackagingMachine:
+        return AdvancedPackagingMachine(
+            name=self._name, batch_mode=LogicBatchMethod.Sum
+        )
 
     @property
     def CompletionRatio(self) -> _DevicesLogicType:
@@ -2395,6 +2502,22 @@ class _AirConditioners(
         return _AirConditioners(name)
 
     @property
+    def Average(self) -> AirConditioner:
+        return AirConditioner(name=self._name, batch_mode=LogicBatchMethod.Average)
+
+    @property
+    def Minimum(self) -> AirConditioner:
+        return AirConditioner(name=self._name, batch_mode=LogicBatchMethod.Minimum)
+
+    @property
+    def Maximum(self) -> AirConditioner:
+        return AirConditioner(name=self._name, batch_mode=LogicBatchMethod.Maximum)
+
+    @property
+    def Sum(self) -> AirConditioner:
+        return AirConditioner(name=self._name, batch_mode=LogicBatchMethod.Sum)
+
+    @property
     def CombustionInput(self) -> _DevicesLogicType:
         return _DevicesLogicType(self, _LT.CombustionInput)
 
@@ -2478,6 +2601,22 @@ class _Airlocks(_BaseStructures, _Idles, _Locks, _Modes, _Opens, _Powers, _Setti
     def __getitem__(self, name: str | int | float) -> "_Airlocks":
         return _Airlocks(name)
 
+    @property
+    def Average(self) -> Airlock:
+        return Airlock(name=self._name, batch_mode=LogicBatchMethod.Average)
+
+    @property
+    def Minimum(self) -> Airlock:
+        return Airlock(name=self._name, batch_mode=LogicBatchMethod.Minimum)
+
+    @property
+    def Maximum(self) -> Airlock:
+        return Airlock(name=self._name, batch_mode=LogicBatchMethod.Maximum)
+
+    @property
+    def Sum(self) -> Airlock:
+        return Airlock(name=self._name, batch_mode=LogicBatchMethod.Sum)
+
 
 Airlocks: _Airlocks = _Airlocks()
 
@@ -2495,6 +2634,22 @@ class _AirlockWides(
 
     def __getitem__(self, name: str | int | float) -> "_AirlockWides":
         return _AirlockWides(name)
+
+    @property
+    def Average(self) -> AirlockWide:
+        return AirlockWide(name=self._name, batch_mode=LogicBatchMethod.Average)
+
+    @property
+    def Minimum(self) -> AirlockWide:
+        return AirlockWide(name=self._name, batch_mode=LogicBatchMethod.Minimum)
+
+    @property
+    def Maximum(self) -> AirlockWide:
+        return AirlockWide(name=self._name, batch_mode=LogicBatchMethod.Maximum)
+
+    @property
+    def Sum(self) -> AirlockWide:
+        return AirlockWide(name=self._name, batch_mode=LogicBatchMethod.Sum)
 
 
 AirlockWides: _AirlockWides = _AirlockWides()
@@ -2553,6 +2708,22 @@ class _ArcFurnaces(
 
     def __getitem__(self, name: str | int | float) -> "_ArcFurnaces":
         return _ArcFurnaces(name)
+
+    @property
+    def Average(self) -> ArcFurnace:
+        return ArcFurnace(name=self._name, batch_mode=LogicBatchMethod.Average)
+
+    @property
+    def Minimum(self) -> ArcFurnace:
+        return ArcFurnace(name=self._name, batch_mode=LogicBatchMethod.Minimum)
+
+    @property
+    def Maximum(self) -> ArcFurnace:
+        return ArcFurnace(name=self._name, batch_mode=LogicBatchMethod.Maximum)
+
+    @property
+    def Sum(self) -> ArcFurnace:
+        return ArcFurnace(name=self._name, batch_mode=LogicBatchMethod.Sum)
 
     @property
     def RecipeHash(self) -> _DevicesLogicType:
@@ -2625,6 +2796,22 @@ class _AreaPowerControls(
 
     def __getitem__(self, name: str | int | float) -> "_AreaPowerControls":
         return _AreaPowerControls(name)
+
+    @property
+    def Average(self) -> AreaPowerControl:
+        return AreaPowerControl(name=self._name, batch_mode=LogicBatchMethod.Average)
+
+    @property
+    def Minimum(self) -> AreaPowerControl:
+        return AreaPowerControl(name=self._name, batch_mode=LogicBatchMethod.Minimum)
+
+    @property
+    def Maximum(self) -> AreaPowerControl:
+        return AreaPowerControl(name=self._name, batch_mode=LogicBatchMethod.Maximum)
+
+    @property
+    def Sum(self) -> AreaPowerControl:
+        return AreaPowerControl(name=self._name, batch_mode=LogicBatchMethod.Sum)
 
     @property
     def PowerActual(self) -> _DevicesLogicType:
@@ -2701,6 +2888,30 @@ class _AreaPowerControlReverseds(
 
     def __getitem__(self, name: str | int | float) -> "_AreaPowerControlReverseds":
         return _AreaPowerControlReverseds(name)
+
+    @property
+    def Average(self) -> AreaPowerControlReversed:
+        return AreaPowerControlReversed(
+            name=self._name, batch_mode=LogicBatchMethod.Average
+        )
+
+    @property
+    def Minimum(self) -> AreaPowerControlReversed:
+        return AreaPowerControlReversed(
+            name=self._name, batch_mode=LogicBatchMethod.Minimum
+        )
+
+    @property
+    def Maximum(self) -> AreaPowerControlReversed:
+        return AreaPowerControlReversed(
+            name=self._name, batch_mode=LogicBatchMethod.Maximum
+        )
+
+    @property
+    def Sum(self) -> AreaPowerControlReversed:
+        return AreaPowerControlReversed(
+            name=self._name, batch_mode=LogicBatchMethod.Sum
+        )
 
     @property
     def PowerActual(self) -> _DevicesLogicType:
@@ -2791,6 +3002,22 @@ class _Autolathes(
         return _Autolathes(name)
 
     @property
+    def Average(self) -> Autolathe:
+        return Autolathe(name=self._name, batch_mode=LogicBatchMethod.Average)
+
+    @property
+    def Minimum(self) -> Autolathe:
+        return Autolathe(name=self._name, batch_mode=LogicBatchMethod.Minimum)
+
+    @property
+    def Maximum(self) -> Autolathe:
+        return Autolathe(name=self._name, batch_mode=LogicBatchMethod.Maximum)
+
+    @property
+    def Sum(self) -> Autolathe:
+        return Autolathe(name=self._name, batch_mode=LogicBatchMethod.Sum)
+
+    @property
     def CompletionRatio(self) -> _DevicesLogicType:
         return _DevicesLogicType(self, _LT.CompletionRatio)
 
@@ -2879,6 +3106,22 @@ class _AutomatedOvens(
         return _AutomatedOvens(name)
 
     @property
+    def Average(self) -> AutomatedOven:
+        return AutomatedOven(name=self._name, batch_mode=LogicBatchMethod.Average)
+
+    @property
+    def Minimum(self) -> AutomatedOven:
+        return AutomatedOven(name=self._name, batch_mode=LogicBatchMethod.Minimum)
+
+    @property
+    def Maximum(self) -> AutomatedOven:
+        return AutomatedOven(name=self._name, batch_mode=LogicBatchMethod.Maximum)
+
+    @property
+    def Sum(self) -> AutomatedOven:
+        return AutomatedOven(name=self._name, batch_mode=LogicBatchMethod.Sum)
+
+    @property
     def CompletionRatio(self) -> _DevicesLogicType:
         return _DevicesLogicType(self, _LT.CompletionRatio)
 
@@ -2953,6 +3196,22 @@ class _AutoMinerSmalls(
         return _AutoMinerSmalls(name)
 
     @property
+    def Average(self) -> AutoMinerSmall:
+        return AutoMinerSmall(name=self._name, batch_mode=LogicBatchMethod.Average)
+
+    @property
+    def Minimum(self) -> AutoMinerSmall:
+        return AutoMinerSmall(name=self._name, batch_mode=LogicBatchMethod.Minimum)
+
+    @property
+    def Maximum(self) -> AutoMinerSmall:
+        return AutoMinerSmall(name=self._name, batch_mode=LogicBatchMethod.Maximum)
+
+    @property
+    def Sum(self) -> AutoMinerSmall:
+        return AutoMinerSmall(name=self._name, batch_mode=LogicBatchMethod.Sum)
+
+    @property
     def slot0(self) -> _SlotTypeCommons:
         return _SlotTypeCommons(self, 0)
 
@@ -2997,6 +3256,22 @@ class _BatterySmalls(_BaseStructures, _Charges, _Maximums, _ModeRs, _Ons, _Ratio
         return _BatterySmalls(name)
 
     @property
+    def Average(self) -> BatterySmall:
+        return BatterySmall(name=self._name, batch_mode=LogicBatchMethod.Average)
+
+    @property
+    def Minimum(self) -> BatterySmall:
+        return BatterySmall(name=self._name, batch_mode=LogicBatchMethod.Minimum)
+
+    @property
+    def Maximum(self) -> BatterySmall:
+        return BatterySmall(name=self._name, batch_mode=LogicBatchMethod.Maximum)
+
+    @property
+    def Sum(self) -> BatterySmall:
+        return BatterySmall(name=self._name, batch_mode=LogicBatchMethod.Sum)
+
+    @property
     def Power(self) -> _DevicesLogicType:
         return _DevicesLogicType(self, _LT.Power)
 
@@ -3028,6 +3303,28 @@ class _BackPressureRegulators(
     def __getitem__(self, name: str | int | float) -> "_BackPressureRegulators":
         return _BackPressureRegulators(name)
 
+    @property
+    def Average(self) -> BackPressureRegulator:
+        return BackPressureRegulator(
+            name=self._name, batch_mode=LogicBatchMethod.Average
+        )
+
+    @property
+    def Minimum(self) -> BackPressureRegulator:
+        return BackPressureRegulator(
+            name=self._name, batch_mode=LogicBatchMethod.Minimum
+        )
+
+    @property
+    def Maximum(self) -> BackPressureRegulator:
+        return BackPressureRegulator(
+            name=self._name, batch_mode=LogicBatchMethod.Maximum
+        )
+
+    @property
+    def Sum(self) -> BackPressureRegulator:
+        return BackPressureRegulator(name=self._name, batch_mode=LogicBatchMethod.Sum)
+
 
 BackPressureRegulators: _BackPressureRegulators = _BackPressureRegulators()
 
@@ -3043,6 +3340,22 @@ class _BasketHoops(_BaseStructures, _Locks, _Powers, _SettingWs):
 
     def __getitem__(self, name: str | int | float) -> "_BasketHoops":
         return _BasketHoops(name)
+
+    @property
+    def Average(self) -> BasketHoop:
+        return BasketHoop(name=self._name, batch_mode=LogicBatchMethod.Average)
+
+    @property
+    def Minimum(self) -> BasketHoop:
+        return BasketHoop(name=self._name, batch_mode=LogicBatchMethod.Minimum)
+
+    @property
+    def Maximum(self) -> BasketHoop:
+        return BasketHoop(name=self._name, batch_mode=LogicBatchMethod.Maximum)
+
+    @property
+    def Sum(self) -> BasketHoop:
+        return BasketHoop(name=self._name, batch_mode=LogicBatchMethod.Sum)
 
 
 BasketHoops: _BasketHoops = _BasketHoops()
@@ -3060,6 +3373,22 @@ class _LogicBatchReaders(_BaseStructures, _Errors, _Powers, _SettingRs):
     def __getitem__(self, name: str | int | float) -> "_LogicBatchReaders":
         return _LogicBatchReaders(name)
 
+    @property
+    def Average(self) -> LogicBatchReader:
+        return LogicBatchReader(name=self._name, batch_mode=LogicBatchMethod.Average)
+
+    @property
+    def Minimum(self) -> LogicBatchReader:
+        return LogicBatchReader(name=self._name, batch_mode=LogicBatchMethod.Minimum)
+
+    @property
+    def Maximum(self) -> LogicBatchReader:
+        return LogicBatchReader(name=self._name, batch_mode=LogicBatchMethod.Maximum)
+
+    @property
+    def Sum(self) -> LogicBatchReader:
+        return LogicBatchReader(name=self._name, batch_mode=LogicBatchMethod.Sum)
+
 
 LogicBatchReaders: _LogicBatchReaders = _LogicBatchReaders()
 
@@ -3075,6 +3404,28 @@ class _LogicBatchSlotReaders(_BaseStructures, _Errors, _Powers, _SettingRs):
 
     def __getitem__(self, name: str | int | float) -> "_LogicBatchSlotReaders":
         return _LogicBatchSlotReaders(name)
+
+    @property
+    def Average(self) -> LogicBatchSlotReader:
+        return LogicBatchSlotReader(
+            name=self._name, batch_mode=LogicBatchMethod.Average
+        )
+
+    @property
+    def Minimum(self) -> LogicBatchSlotReader:
+        return LogicBatchSlotReader(
+            name=self._name, batch_mode=LogicBatchMethod.Minimum
+        )
+
+    @property
+    def Maximum(self) -> LogicBatchSlotReader:
+        return LogicBatchSlotReader(
+            name=self._name, batch_mode=LogicBatchMethod.Maximum
+        )
+
+    @property
+    def Sum(self) -> LogicBatchSlotReader:
+        return LogicBatchSlotReader(name=self._name, batch_mode=LogicBatchMethod.Sum)
 
 
 LogicBatchSlotReaders: _LogicBatchSlotReaders = _LogicBatchSlotReaders()
@@ -3099,6 +3450,22 @@ class _LogicBatchWriters(_BaseStructures, _Errors, _Powers):
 
     def __getitem__(self, name: str | int | float) -> "_LogicBatchWriters":
         return _LogicBatchWriters(name)
+
+    @property
+    def Average(self) -> LogicBatchWriter:
+        return LogicBatchWriter(name=self._name, batch_mode=LogicBatchMethod.Average)
+
+    @property
+    def Minimum(self) -> LogicBatchWriter:
+        return LogicBatchWriter(name=self._name, batch_mode=LogicBatchMethod.Minimum)
+
+    @property
+    def Maximum(self) -> LogicBatchWriter:
+        return LogicBatchWriter(name=self._name, batch_mode=LogicBatchMethod.Maximum)
+
+    @property
+    def Sum(self) -> LogicBatchWriter:
+        return LogicBatchWriter(name=self._name, batch_mode=LogicBatchMethod.Sum)
 
     @property
     def ForceWrite(self) -> _DevicesLogicType:
@@ -3135,6 +3502,22 @@ class _BatteryMediums(_BaseStructures, _Charges, _Maximums, _ModeRs, _Ons, _Rati
 
     def __getitem__(self, name: str | int | float) -> "_BatteryMediums":
         return _BatteryMediums(name)
+
+    @property
+    def Average(self) -> BatteryMedium:
+        return BatteryMedium(name=self._name, batch_mode=LogicBatchMethod.Average)
+
+    @property
+    def Minimum(self) -> BatteryMedium:
+        return BatteryMedium(name=self._name, batch_mode=LogicBatchMethod.Minimum)
+
+    @property
+    def Maximum(self) -> BatteryMedium:
+        return BatteryMedium(name=self._name, batch_mode=LogicBatchMethod.Maximum)
+
+    @property
+    def Sum(self) -> BatteryMedium:
+        return BatteryMedium(name=self._name, batch_mode=LogicBatchMethod.Sum)
 
     @property
     def Power(self) -> _DevicesLogicType:
@@ -3185,6 +3568,22 @@ class _BatteryChargers(_BaseStructures, _Activates, _Errors, _Powers):
         return _BatteryChargers(name)
 
     @property
+    def Average(self) -> BatteryCharger:
+        return BatteryCharger(name=self._name, batch_mode=LogicBatchMethod.Average)
+
+    @property
+    def Minimum(self) -> BatteryCharger:
+        return BatteryCharger(name=self._name, batch_mode=LogicBatchMethod.Minimum)
+
+    @property
+    def Maximum(self) -> BatteryCharger:
+        return BatteryCharger(name=self._name, batch_mode=LogicBatchMethod.Maximum)
+
+    @property
+    def Sum(self) -> BatteryCharger:
+        return BatteryCharger(name=self._name, batch_mode=LogicBatchMethod.Sum)
+
+    @property
     def slot0(self) -> _SlotTypeBatterys:
         return _SlotTypeBatterys(self, 0)
 
@@ -3229,6 +3628,22 @@ class _BatteryChargerSmalls(_BaseStructures, _Activates, _Errors, _Powers):
         return _BatteryChargerSmalls(name)
 
     @property
+    def Average(self) -> BatteryChargerSmall:
+        return BatteryChargerSmall(name=self._name, batch_mode=LogicBatchMethod.Average)
+
+    @property
+    def Minimum(self) -> BatteryChargerSmall:
+        return BatteryChargerSmall(name=self._name, batch_mode=LogicBatchMethod.Minimum)
+
+    @property
+    def Maximum(self) -> BatteryChargerSmall:
+        return BatteryChargerSmall(name=self._name, batch_mode=LogicBatchMethod.Maximum)
+
+    @property
+    def Sum(self) -> BatteryChargerSmall:
+        return BatteryChargerSmall(name=self._name, batch_mode=LogicBatchMethod.Sum)
+
+    @property
     def slot0(self) -> _SlotTypeBatterys:
         return _SlotTypeBatterys(self, 0)
 
@@ -3259,6 +3674,22 @@ class _Beacons(_BaseStructures, _Errors, _Locks, _Powers):
 
     def __getitem__(self, name: str | int | float) -> "_Beacons":
         return _Beacons(name)
+
+    @property
+    def Average(self) -> Beacon:
+        return Beacon(name=self._name, batch_mode=LogicBatchMethod.Average)
+
+    @property
+    def Minimum(self) -> Beacon:
+        return Beacon(name=self._name, batch_mode=LogicBatchMethod.Minimum)
+
+    @property
+    def Maximum(self) -> Beacon:
+        return Beacon(name=self._name, batch_mode=LogicBatchMethod.Maximum)
+
+    @property
+    def Sum(self) -> Beacon:
+        return Beacon(name=self._name, batch_mode=LogicBatchMethod.Sum)
 
     @property
     def Color(self) -> _DevicesLogicType:
@@ -3299,6 +3730,22 @@ class _Bench1s(_BaseStructures, _Errors, _Powers):
 
     def __getitem__(self, name: str | int | float) -> "_Bench1s":
         return _Bench1s(name)
+
+    @property
+    def Average(self) -> Bench1:
+        return Bench1(name=self._name, batch_mode=LogicBatchMethod.Average)
+
+    @property
+    def Minimum(self) -> Bench1:
+        return Bench1(name=self._name, batch_mode=LogicBatchMethod.Minimum)
+
+    @property
+    def Maximum(self) -> Bench1:
+        return Bench1(name=self._name, batch_mode=LogicBatchMethod.Maximum)
+
+    @property
+    def Sum(self) -> Bench1:
+        return Bench1(name=self._name, batch_mode=LogicBatchMethod.Sum)
 
     @property
     def slot0(self) -> _SlotTypeAppliances:
@@ -3349,6 +3796,22 @@ class _Bench3s(_BaseStructures, _Errors, _Powers):
         return _Bench3s(name)
 
     @property
+    def Average(self) -> Bench3:
+        return Bench3(name=self._name, batch_mode=LogicBatchMethod.Average)
+
+    @property
+    def Minimum(self) -> Bench3:
+        return Bench3(name=self._name, batch_mode=LogicBatchMethod.Minimum)
+
+    @property
+    def Maximum(self) -> Bench3:
+        return Bench3(name=self._name, batch_mode=LogicBatchMethod.Maximum)
+
+    @property
+    def Sum(self) -> Bench3:
+        return Bench3(name=self._name, batch_mode=LogicBatchMethod.Sum)
+
+    @property
     def slot0(self) -> _SlotTypeAppliances:
         return _SlotTypeAppliances(self, 0)
 
@@ -3395,6 +3858,22 @@ class _Bench2s(_BaseStructures, _Errors, _Powers):
 
     def __getitem__(self, name: str | int | float) -> "_Bench2s":
         return _Bench2s(name)
+
+    @property
+    def Average(self) -> Bench2:
+        return Bench2(name=self._name, batch_mode=LogicBatchMethod.Average)
+
+    @property
+    def Minimum(self) -> Bench2:
+        return Bench2(name=self._name, batch_mode=LogicBatchMethod.Minimum)
+
+    @property
+    def Maximum(self) -> Bench2:
+        return Bench2(name=self._name, batch_mode=LogicBatchMethod.Maximum)
+
+    @property
+    def Sum(self) -> Bench2:
+        return Bench2(name=self._name, batch_mode=LogicBatchMethod.Sum)
 
     @property
     def slot0(self) -> _SlotTypeAppliances:
@@ -3445,6 +3924,22 @@ class _Bench4s(_BaseStructures, _Errors, _Powers):
         return _Bench4s(name)
 
     @property
+    def Average(self) -> Bench4:
+        return Bench4(name=self._name, batch_mode=LogicBatchMethod.Average)
+
+    @property
+    def Minimum(self) -> Bench4:
+        return Bench4(name=self._name, batch_mode=LogicBatchMethod.Minimum)
+
+    @property
+    def Maximum(self) -> Bench4:
+        return Bench4(name=self._name, batch_mode=LogicBatchMethod.Maximum)
+
+    @property
+    def Sum(self) -> Bench4:
+        return Bench4(name=self._name, batch_mode=LogicBatchMethod.Sum)
+
+    @property
     def slot0(self) -> _SlotTypeAppliances:
         return _SlotTypeAppliances(self, 0)
 
@@ -3476,6 +3971,22 @@ class _BlastDoors(_BaseStructures, _Idles, _Locks, _Modes, _Opens, _Powers, _Set
     def __getitem__(self, name: str | int | float) -> "_BlastDoors":
         return _BlastDoors(name)
 
+    @property
+    def Average(self) -> BlastDoor:
+        return BlastDoor(name=self._name, batch_mode=LogicBatchMethod.Average)
+
+    @property
+    def Minimum(self) -> BlastDoor:
+        return BlastDoor(name=self._name, batch_mode=LogicBatchMethod.Minimum)
+
+    @property
+    def Maximum(self) -> BlastDoor:
+        return BlastDoor(name=self._name, batch_mode=LogicBatchMethod.Maximum)
+
+    @property
+    def Sum(self) -> BlastDoor:
+        return BlastDoor(name=self._name, batch_mode=LogicBatchMethod.Sum)
+
 
 BlastDoors: _BlastDoors = _BlastDoors()
 
@@ -3501,6 +4012,22 @@ class _BlockBeds(_BaseStructures, _Activates, _Errors, _Powers):
         return _BlockBeds(name)
 
     @property
+    def Average(self) -> BlockBed:
+        return BlockBed(name=self._name, batch_mode=LogicBatchMethod.Average)
+
+    @property
+    def Minimum(self) -> BlockBed:
+        return BlockBed(name=self._name, batch_mode=LogicBatchMethod.Minimum)
+
+    @property
+    def Maximum(self) -> BlockBed:
+        return BlockBed(name=self._name, batch_mode=LogicBatchMethod.Maximum)
+
+    @property
+    def Sum(self) -> BlockBed:
+        return BlockBed(name=self._name, batch_mode=LogicBatchMethod.Sum)
+
+    @property
     def slot0(self) -> _SlotTypeCommons:
         return _SlotTypeCommons(self, 0)
 
@@ -3523,6 +4050,22 @@ class _LogicButtons(_BaseStructures, _Activates, _Locks, _SettingRs):
 
     def __getitem__(self, name: str | int | float) -> "_LogicButtons":
         return _LogicButtons(name)
+
+    @property
+    def Average(self) -> LogicButton:
+        return LogicButton(name=self._name, batch_mode=LogicBatchMethod.Average)
+
+    @property
+    def Minimum(self) -> LogicButton:
+        return LogicButton(name=self._name, batch_mode=LogicBatchMethod.Minimum)
+
+    @property
+    def Maximum(self) -> LogicButton:
+        return LogicButton(name=self._name, batch_mode=LogicBatchMethod.Maximum)
+
+    @property
+    def Sum(self) -> LogicButton:
+        return LogicButton(name=self._name, batch_mode=LogicBatchMethod.Sum)
 
 
 LogicButtons: _LogicButtons = _LogicButtons()
@@ -3553,6 +4096,22 @@ class _CableAnalysizers(_BaseStructures):
         return _CableAnalysizers(name)
 
     @property
+    def Average(self) -> CableAnalysizer:
+        return CableAnalysizer(name=self._name, batch_mode=LogicBatchMethod.Average)
+
+    @property
+    def Minimum(self) -> CableAnalysizer:
+        return CableAnalysizer(name=self._name, batch_mode=LogicBatchMethod.Minimum)
+
+    @property
+    def Maximum(self) -> CableAnalysizer:
+        return CableAnalysizer(name=self._name, batch_mode=LogicBatchMethod.Maximum)
+
+    @property
+    def Sum(self) -> CableAnalysizer:
+        return CableAnalysizer(name=self._name, batch_mode=LogicBatchMethod.Sum)
+
+    @property
     def PowerActual(self) -> _DevicesLogicType:
         return _DevicesLogicType(self, _LT.PowerActual)
 
@@ -3579,6 +4138,22 @@ class _Cameras(_BaseStructures, _Modes, _Ons):
 
     def __getitem__(self, name: str | int | float) -> "_Cameras":
         return _Cameras(name)
+
+    @property
+    def Average(self) -> Camera:
+        return Camera(name=self._name, batch_mode=LogicBatchMethod.Average)
+
+    @property
+    def Minimum(self) -> Camera:
+        return Camera(name=self._name, batch_mode=LogicBatchMethod.Minimum)
+
+    @property
+    def Maximum(self) -> Camera:
+        return Camera(name=self._name, batch_mode=LogicBatchMethod.Maximum)
+
+    @property
+    def Sum(self) -> Camera:
+        return Camera(name=self._name, batch_mode=LogicBatchMethod.Sum)
 
 
 Cameras: _Cameras = _Cameras()
@@ -4033,6 +4608,22 @@ class _CargoStorageMediums(
 
     def __getitem__(self, name: str | int | float) -> "_CargoStorageMediums":
         return _CargoStorageMediums(name)
+
+    @property
+    def Average(self) -> CargoStorageMedium:
+        return CargoStorageMedium(name=self._name, batch_mode=LogicBatchMethod.Average)
+
+    @property
+    def Minimum(self) -> CargoStorageMedium:
+        return CargoStorageMedium(name=self._name, batch_mode=LogicBatchMethod.Minimum)
+
+    @property
+    def Maximum(self) -> CargoStorageMedium:
+        return CargoStorageMedium(name=self._name, batch_mode=LogicBatchMethod.Maximum)
+
+    @property
+    def Sum(self) -> CargoStorageMedium:
+        return CargoStorageMedium(name=self._name, batch_mode=LogicBatchMethod.Sum)
 
     @property
     def slot0(self) -> _SlotTypeCommons:
@@ -4705,6 +5296,22 @@ class _CargoStorageSmalls(
         return _CargoStorageSmalls(name)
 
     @property
+    def Average(self) -> CargoStorageSmall:
+        return CargoStorageSmall(name=self._name, batch_mode=LogicBatchMethod.Average)
+
+    @property
+    def Minimum(self) -> CargoStorageSmall:
+        return CargoStorageSmall(name=self._name, batch_mode=LogicBatchMethod.Minimum)
+
+    @property
+    def Maximum(self) -> CargoStorageSmall:
+        return CargoStorageSmall(name=self._name, batch_mode=LogicBatchMethod.Maximum)
+
+    @property
+    def Sum(self) -> CargoStorageSmall:
+        return CargoStorageSmall(name=self._name, batch_mode=LogicBatchMethod.Sum)
+
+    @property
     def slot0(self) -> _SlotTypeCommons:
         return _SlotTypeCommons(self, 0)
 
@@ -4971,6 +5578,22 @@ class _Centrifuges(
         return _Centrifuges(name)
 
     @property
+    def Average(self) -> Centrifuge:
+        return Centrifuge(name=self._name, batch_mode=LogicBatchMethod.Average)
+
+    @property
+    def Minimum(self) -> Centrifuge:
+        return Centrifuge(name=self._name, batch_mode=LogicBatchMethod.Minimum)
+
+    @property
+    def Maximum(self) -> Centrifuge:
+        return Centrifuge(name=self._name, batch_mode=LogicBatchMethod.Maximum)
+
+    @property
+    def Sum(self) -> Centrifuge:
+        return Centrifuge(name=self._name, batch_mode=LogicBatchMethod.Sum)
+
+    @property
     def slot0(self) -> _SlotTypeCommons:
         return _SlotTypeCommons(self, 0)
 
@@ -5027,6 +5650,30 @@ class _ChuteDigitalFlipFlopSplitterLefts(_BaseStructures, _Modes, _Powers, _Sett
         self, name: str | int | float
     ) -> "_ChuteDigitalFlipFlopSplitterLefts":
         return _ChuteDigitalFlipFlopSplitterLefts(name)
+
+    @property
+    def Average(self) -> ChuteDigitalFlipFlopSplitterLeft:
+        return ChuteDigitalFlipFlopSplitterLeft(
+            name=self._name, batch_mode=LogicBatchMethod.Average
+        )
+
+    @property
+    def Minimum(self) -> ChuteDigitalFlipFlopSplitterLeft:
+        return ChuteDigitalFlipFlopSplitterLeft(
+            name=self._name, batch_mode=LogicBatchMethod.Minimum
+        )
+
+    @property
+    def Maximum(self) -> ChuteDigitalFlipFlopSplitterLeft:
+        return ChuteDigitalFlipFlopSplitterLeft(
+            name=self._name, batch_mode=LogicBatchMethod.Maximum
+        )
+
+    @property
+    def Sum(self) -> ChuteDigitalFlipFlopSplitterLeft:
+        return ChuteDigitalFlipFlopSplitterLeft(
+            name=self._name, batch_mode=LogicBatchMethod.Sum
+        )
 
     @property
     def Quantity(self) -> _DevicesLogicType:
@@ -5097,6 +5744,30 @@ class _ChuteDigitalFlipFlopSplitterRights(_BaseStructures, _Modes, _Powers, _Set
         return _ChuteDigitalFlipFlopSplitterRights(name)
 
     @property
+    def Average(self) -> ChuteDigitalFlipFlopSplitterRight:
+        return ChuteDigitalFlipFlopSplitterRight(
+            name=self._name, batch_mode=LogicBatchMethod.Average
+        )
+
+    @property
+    def Minimum(self) -> ChuteDigitalFlipFlopSplitterRight:
+        return ChuteDigitalFlipFlopSplitterRight(
+            name=self._name, batch_mode=LogicBatchMethod.Minimum
+        )
+
+    @property
+    def Maximum(self) -> ChuteDigitalFlipFlopSplitterRight:
+        return ChuteDigitalFlipFlopSplitterRight(
+            name=self._name, batch_mode=LogicBatchMethod.Maximum
+        )
+
+    @property
+    def Sum(self) -> ChuteDigitalFlipFlopSplitterRight:
+        return ChuteDigitalFlipFlopSplitterRight(
+            name=self._name, batch_mode=LogicBatchMethod.Sum
+        )
+
+    @property
     def Quantity(self) -> _DevicesLogicType:
         return _DevicesLogicType(self, _LT.Quantity)
 
@@ -5155,6 +5826,28 @@ class _ChuteDigitalValveLefts(_BaseStructures, _Locks, _Opens, _Powers, _Setting
         return _ChuteDigitalValveLefts(name)
 
     @property
+    def Average(self) -> ChuteDigitalValveLeft:
+        return ChuteDigitalValveLeft(
+            name=self._name, batch_mode=LogicBatchMethod.Average
+        )
+
+    @property
+    def Minimum(self) -> ChuteDigitalValveLeft:
+        return ChuteDigitalValveLeft(
+            name=self._name, batch_mode=LogicBatchMethod.Minimum
+        )
+
+    @property
+    def Maximum(self) -> ChuteDigitalValveLeft:
+        return ChuteDigitalValveLeft(
+            name=self._name, batch_mode=LogicBatchMethod.Maximum
+        )
+
+    @property
+    def Sum(self) -> ChuteDigitalValveLeft:
+        return ChuteDigitalValveLeft(name=self._name, batch_mode=LogicBatchMethod.Sum)
+
+    @property
     def Quantity(self) -> _DevicesLogicType:
         return _DevicesLogicType(self, _LT.Quantity)
 
@@ -5203,6 +5896,28 @@ class _ChuteDigitalValveRights(_BaseStructures, _Locks, _Opens, _Powers, _Settin
         return _ChuteDigitalValveRights(name)
 
     @property
+    def Average(self) -> ChuteDigitalValveRight:
+        return ChuteDigitalValveRight(
+            name=self._name, batch_mode=LogicBatchMethod.Average
+        )
+
+    @property
+    def Minimum(self) -> ChuteDigitalValveRight:
+        return ChuteDigitalValveRight(
+            name=self._name, batch_mode=LogicBatchMethod.Minimum
+        )
+
+    @property
+    def Maximum(self) -> ChuteDigitalValveRight:
+        return ChuteDigitalValveRight(
+            name=self._name, batch_mode=LogicBatchMethod.Maximum
+        )
+
+    @property
+    def Sum(self) -> ChuteDigitalValveRight:
+        return ChuteDigitalValveRight(name=self._name, batch_mode=LogicBatchMethod.Sum)
+
+    @property
     def Quantity(self) -> _DevicesLogicType:
         return _DevicesLogicType(self, _LT.Quantity)
 
@@ -5243,6 +5958,22 @@ class _ChuteExportBins(_BaseStructures, _Errors, _Locks, _Opens, _Powers):
         return _ChuteExportBins(name)
 
     @property
+    def Average(self) -> ChuteExportBin:
+        return ChuteExportBin(name=self._name, batch_mode=LogicBatchMethod.Average)
+
+    @property
+    def Minimum(self) -> ChuteExportBin:
+        return ChuteExportBin(name=self._name, batch_mode=LogicBatchMethod.Minimum)
+
+    @property
+    def Maximum(self) -> ChuteExportBin:
+        return ChuteExportBin(name=self._name, batch_mode=LogicBatchMethod.Maximum)
+
+    @property
+    def Sum(self) -> ChuteExportBin:
+        return ChuteExportBin(name=self._name, batch_mode=LogicBatchMethod.Sum)
+
+    @property
     def slot0(self) -> _SlotTypeCommons:
         return _SlotTypeCommons(self, 0)
 
@@ -5273,6 +6004,22 @@ class _ChuteBins(_BaseStructures, _Errors, _Locks, _Opens, _Powers):
 
     def __getitem__(self, name: str | int | float) -> "_ChuteBins":
         return _ChuteBins(name)
+
+    @property
+    def Average(self) -> ChuteBin:
+        return ChuteBin(name=self._name, batch_mode=LogicBatchMethod.Average)
+
+    @property
+    def Minimum(self) -> ChuteBin:
+        return ChuteBin(name=self._name, batch_mode=LogicBatchMethod.Minimum)
+
+    @property
+    def Maximum(self) -> ChuteBin:
+        return ChuteBin(name=self._name, batch_mode=LogicBatchMethod.Maximum)
+
+    @property
+    def Sum(self) -> ChuteBin:
+        return ChuteBin(name=self._name, batch_mode=LogicBatchMethod.Sum)
 
     @property
     def slot0(self) -> _SlotTypeCommons:
@@ -5307,6 +6054,22 @@ class _ChuteInlets(_BaseStructures, _ClearMemorys, _ImportCounts, _Locks):
         return _ChuteInlets(name)
 
     @property
+    def Average(self) -> ChuteInlet:
+        return ChuteInlet(name=self._name, batch_mode=LogicBatchMethod.Average)
+
+    @property
+    def Minimum(self) -> ChuteInlet:
+        return ChuteInlet(name=self._name, batch_mode=LogicBatchMethod.Minimum)
+
+    @property
+    def Maximum(self) -> ChuteInlet:
+        return ChuteInlet(name=self._name, batch_mode=LogicBatchMethod.Maximum)
+
+    @property
+    def Sum(self) -> ChuteInlet:
+        return ChuteInlet(name=self._name, batch_mode=LogicBatchMethod.Sum)
+
+    @property
     def slot0(self) -> _SlotTypeCommons:
         return _SlotTypeCommons(self, 0)
 
@@ -5339,6 +6102,22 @@ class _ChuteOutlets(
 
     def __getitem__(self, name: str | int | float) -> "_ChuteOutlets":
         return _ChuteOutlets(name)
+
+    @property
+    def Average(self) -> ChuteOutlet:
+        return ChuteOutlet(name=self._name, batch_mode=LogicBatchMethod.Average)
+
+    @property
+    def Minimum(self) -> ChuteOutlet:
+        return ChuteOutlet(name=self._name, batch_mode=LogicBatchMethod.Minimum)
+
+    @property
+    def Maximum(self) -> ChuteOutlet:
+        return ChuteOutlet(name=self._name, batch_mode=LogicBatchMethod.Maximum)
+
+    @property
+    def Sum(self) -> ChuteOutlet:
+        return ChuteOutlet(name=self._name, batch_mode=LogicBatchMethod.Sum)
 
     @property
     def slot0(self) -> _SlotTypeCommons:
@@ -5479,6 +6258,28 @@ class _CombustionCentrifuges(
         return _CombustionCentrifuges(name)
 
     @property
+    def Average(self) -> CombustionCentrifuge:
+        return CombustionCentrifuge(
+            name=self._name, batch_mode=LogicBatchMethod.Average
+        )
+
+    @property
+    def Minimum(self) -> CombustionCentrifuge:
+        return CombustionCentrifuge(
+            name=self._name, batch_mode=LogicBatchMethod.Minimum
+        )
+
+    @property
+    def Maximum(self) -> CombustionCentrifuge:
+        return CombustionCentrifuge(
+            name=self._name, batch_mode=LogicBatchMethod.Maximum
+        )
+
+    @property
+    def Sum(self) -> CombustionCentrifuge:
+        return CombustionCentrifuge(name=self._name, batch_mode=LogicBatchMethod.Sum)
+
+    @property
     def CombustionInput(self) -> _DevicesLogicType:
         return _DevicesLogicType(self, _LT.CombustionInput)
 
@@ -5576,6 +6377,22 @@ class _CompositeDoors(
     def __getitem__(self, name: str | int | float) -> "_CompositeDoors":
         return _CompositeDoors(name)
 
+    @property
+    def Average(self) -> CompositeDoor:
+        return CompositeDoor(name=self._name, batch_mode=LogicBatchMethod.Average)
+
+    @property
+    def Minimum(self) -> CompositeDoor:
+        return CompositeDoor(name=self._name, batch_mode=LogicBatchMethod.Minimum)
+
+    @property
+    def Maximum(self) -> CompositeDoor:
+        return CompositeDoor(name=self._name, batch_mode=LogicBatchMethod.Maximum)
+
+    @property
+    def Sum(self) -> CompositeDoor:
+        return CompositeDoor(name=self._name, batch_mode=LogicBatchMethod.Sum)
+
 
 CompositeDoors: _CompositeDoors = _CompositeDoors()
 
@@ -5595,6 +6412,30 @@ class _CompositeWindowShutterControllers(
         self, name: str | int | float
     ) -> "_CompositeWindowShutterControllers":
         return _CompositeWindowShutterControllers(name)
+
+    @property
+    def Average(self) -> CompositeWindowShutterController:
+        return CompositeWindowShutterController(
+            name=self._name, batch_mode=LogicBatchMethod.Average
+        )
+
+    @property
+    def Minimum(self) -> CompositeWindowShutterController:
+        return CompositeWindowShutterController(
+            name=self._name, batch_mode=LogicBatchMethod.Minimum
+        )
+
+    @property
+    def Maximum(self) -> CompositeWindowShutterController:
+        return CompositeWindowShutterController(
+            name=self._name, batch_mode=LogicBatchMethod.Maximum
+        )
+
+    @property
+    def Sum(self) -> CompositeWindowShutterController:
+        return CompositeWindowShutterController(
+            name=self._name, batch_mode=LogicBatchMethod.Sum
+        )
 
 
 CompositeWindowShutterControllers: _CompositeWindowShutterControllers = (
@@ -5621,6 +6462,30 @@ class _ComputerBigScreenWallMounteds(_BaseStructures, _Errors, _Locks, _Opens, _
 
     def __getitem__(self, name: str | int | float) -> "_ComputerBigScreenWallMounteds":
         return _ComputerBigScreenWallMounteds(name)
+
+    @property
+    def Average(self) -> ComputerBigScreenWallMounted:
+        return ComputerBigScreenWallMounted(
+            name=self._name, batch_mode=LogicBatchMethod.Average
+        )
+
+    @property
+    def Minimum(self) -> ComputerBigScreenWallMounted:
+        return ComputerBigScreenWallMounted(
+            name=self._name, batch_mode=LogicBatchMethod.Minimum
+        )
+
+    @property
+    def Maximum(self) -> ComputerBigScreenWallMounted:
+        return ComputerBigScreenWallMounted(
+            name=self._name, batch_mode=LogicBatchMethod.Maximum
+        )
+
+    @property
+    def Sum(self) -> ComputerBigScreenWallMounted:
+        return ComputerBigScreenWallMounted(
+            name=self._name, batch_mode=LogicBatchMethod.Sum
+        )
 
     @property
     def slot0(self) -> _SlotTypeCommons:
@@ -5655,6 +6520,22 @@ class _ComputerBigScreens(_BaseStructures, _Errors, _Locks, _Opens, _Powers):
 
     def __getitem__(self, name: str | int | float) -> "_ComputerBigScreens":
         return _ComputerBigScreens(name)
+
+    @property
+    def Average(self) -> ComputerBigScreen:
+        return ComputerBigScreen(name=self._name, batch_mode=LogicBatchMethod.Average)
+
+    @property
+    def Minimum(self) -> ComputerBigScreen:
+        return ComputerBigScreen(name=self._name, batch_mode=LogicBatchMethod.Minimum)
+
+    @property
+    def Maximum(self) -> ComputerBigScreen:
+        return ComputerBigScreen(name=self._name, batch_mode=LogicBatchMethod.Maximum)
+
+    @property
+    def Sum(self) -> ComputerBigScreen:
+        return ComputerBigScreen(name=self._name, batch_mode=LogicBatchMethod.Sum)
 
     @property
     def slot0(self) -> _SlotTypeCommons:
@@ -5695,6 +6576,22 @@ class _Computers(_BaseStructures, _Errors, _Locks, _Opens, _Powers):
 
     def __getitem__(self, name: str | int | float) -> "_Computers":
         return _Computers(name)
+
+    @property
+    def Average(self) -> Computer:
+        return Computer(name=self._name, batch_mode=LogicBatchMethod.Average)
+
+    @property
+    def Minimum(self) -> Computer:
+        return Computer(name=self._name, batch_mode=LogicBatchMethod.Minimum)
+
+    @property
+    def Maximum(self) -> Computer:
+        return Computer(name=self._name, batch_mode=LogicBatchMethod.Maximum)
+
+    @property
+    def Sum(self) -> Computer:
+        return Computer(name=self._name, batch_mode=LogicBatchMethod.Sum)
 
     @property
     def slot0(self) -> _SlotTypeCommons:
@@ -5743,6 +6640,22 @@ class _ComputerUprights(_BaseStructures, _Errors, _Locks, _Opens, _Powers):
 
     def __getitem__(self, name: str | int | float) -> "_ComputerUprights":
         return _ComputerUprights(name)
+
+    @property
+    def Average(self) -> ComputerUpright:
+        return ComputerUpright(name=self._name, batch_mode=LogicBatchMethod.Average)
+
+    @property
+    def Minimum(self) -> ComputerUpright:
+        return ComputerUpright(name=self._name, batch_mode=LogicBatchMethod.Minimum)
+
+    @property
+    def Maximum(self) -> ComputerUpright:
+        return ComputerUpright(name=self._name, batch_mode=LogicBatchMethod.Maximum)
+
+    @property
+    def Sum(self) -> ComputerUpright:
+        return ComputerUpright(name=self._name, batch_mode=LogicBatchMethod.Sum)
 
     @property
     def slot0(self) -> _SlotTypeCommons:
@@ -5804,6 +6717,22 @@ class _CondensationChambers(
     def __getitem__(self, name: str | int | float) -> "_CondensationChambers":
         return _CondensationChambers(name)
 
+    @property
+    def Average(self) -> CondensationChamber:
+        return CondensationChamber(name=self._name, batch_mode=LogicBatchMethod.Average)
+
+    @property
+    def Minimum(self) -> CondensationChamber:
+        return CondensationChamber(name=self._name, batch_mode=LogicBatchMethod.Minimum)
+
+    @property
+    def Maximum(self) -> CondensationChamber:
+        return CondensationChamber(name=self._name, batch_mode=LogicBatchMethod.Maximum)
+
+    @property
+    def Sum(self) -> CondensationChamber:
+        return CondensationChamber(name=self._name, batch_mode=LogicBatchMethod.Sum)
+
 
 CondensationChambers: _CondensationChambers = _CondensationChambers()
 
@@ -5819,6 +6748,22 @@ class _CondensationValves(_BaseStructures, _Maximums, _Ons, _Ratios, _SettingWs)
 
     def __getitem__(self, name: str | int | float) -> "_CondensationValves":
         return _CondensationValves(name)
+
+    @property
+    def Average(self) -> CondensationValve:
+        return CondensationValve(name=self._name, batch_mode=LogicBatchMethod.Average)
+
+    @property
+    def Minimum(self) -> CondensationValve:
+        return CondensationValve(name=self._name, batch_mode=LogicBatchMethod.Minimum)
+
+    @property
+    def Maximum(self) -> CondensationValve:
+        return CondensationValve(name=self._name, batch_mode=LogicBatchMethod.Maximum)
+
+    @property
+    def Sum(self) -> CondensationValve:
+        return CondensationValve(name=self._name, batch_mode=LogicBatchMethod.Sum)
 
 
 CondensationValves: _CondensationValves = _CondensationValves()
@@ -5851,6 +6796,22 @@ class _Consoles(_BaseStructures, _Errors, _Opens, _Powers, _SettingRs):
 
     def __getitem__(self, name: str | int | float) -> "_Consoles":
         return _Consoles(name)
+
+    @property
+    def Average(self) -> Console:
+        return Console(name=self._name, batch_mode=LogicBatchMethod.Average)
+
+    @property
+    def Minimum(self) -> Console:
+        return Console(name=self._name, batch_mode=LogicBatchMethod.Minimum)
+
+    @property
+    def Maximum(self) -> Console:
+        return Console(name=self._name, batch_mode=LogicBatchMethod.Maximum)
+
+    @property
+    def Sum(self) -> Console:
+        return Console(name=self._name, batch_mode=LogicBatchMethod.Sum)
 
     @property
     def slot0(self) -> _SlotTypeCircuitboards:
@@ -5901,6 +6862,22 @@ class _ConsoleDuals(_BaseStructures, _Errors, _Opens, _Powers, _SettingRs):
         return _ConsoleDuals(name)
 
     @property
+    def Average(self) -> ConsoleDual:
+        return ConsoleDual(name=self._name, batch_mode=LogicBatchMethod.Average)
+
+    @property
+    def Minimum(self) -> ConsoleDual:
+        return ConsoleDual(name=self._name, batch_mode=LogicBatchMethod.Minimum)
+
+    @property
+    def Maximum(self) -> ConsoleDual:
+        return ConsoleDual(name=self._name, batch_mode=LogicBatchMethod.Maximum)
+
+    @property
+    def Sum(self) -> ConsoleDual:
+        return ConsoleDual(name=self._name, batch_mode=LogicBatchMethod.Sum)
+
+    @property
     def slot0(self) -> _SlotTypeCircuitboards:
         return _SlotTypeCircuitboards(self, 0)
 
@@ -5947,6 +6924,22 @@ class _ConsoleMonitors(_BaseStructures, _Errors, _Opens, _Powers, _SettingRs):
 
     def __getitem__(self, name: str | int | float) -> "_ConsoleMonitors":
         return _ConsoleMonitors(name)
+
+    @property
+    def Average(self) -> ConsoleMonitor:
+        return ConsoleMonitor(name=self._name, batch_mode=LogicBatchMethod.Average)
+
+    @property
+    def Minimum(self) -> ConsoleMonitor:
+        return ConsoleMonitor(name=self._name, batch_mode=LogicBatchMethod.Minimum)
+
+    @property
+    def Maximum(self) -> ConsoleMonitor:
+        return ConsoleMonitor(name=self._name, batch_mode=LogicBatchMethod.Maximum)
+
+    @property
+    def Sum(self) -> ConsoleMonitor:
+        return ConsoleMonitor(name=self._name, batch_mode=LogicBatchMethod.Sum)
 
     @property
     def slot0(self) -> _SlotTypeCircuitboards:
@@ -6005,6 +6998,22 @@ class _CornerLockers(_BaseStructures, _Locks, _Opens):
         return _CornerLockers(name)
 
     @property
+    def Average(self) -> CornerLocker:
+        return CornerLocker(name=self._name, batch_mode=LogicBatchMethod.Average)
+
+    @property
+    def Minimum(self) -> CornerLocker:
+        return CornerLocker(name=self._name, batch_mode=LogicBatchMethod.Minimum)
+
+    @property
+    def Maximum(self) -> CornerLocker:
+        return CornerLocker(name=self._name, batch_mode=LogicBatchMethod.Maximum)
+
+    @property
+    def Sum(self) -> CornerLocker:
+        return CornerLocker(name=self._name, batch_mode=LogicBatchMethod.Sum)
+
+    @property
     def slot0(self) -> _SlotTypeCommons:
         return _SlotTypeCommons(self, 0)
 
@@ -6048,6 +7057,30 @@ class _PassthroughHeatExchangerGasToGass(
     ) -> "_PassthroughHeatExchangerGasToGass":
         return _PassthroughHeatExchangerGasToGass(name)
 
+    @property
+    def Average(self) -> PassthroughHeatExchangerGasToGas:
+        return PassthroughHeatExchangerGasToGas(
+            name=self._name, batch_mode=LogicBatchMethod.Average
+        )
+
+    @property
+    def Minimum(self) -> PassthroughHeatExchangerGasToGas:
+        return PassthroughHeatExchangerGasToGas(
+            name=self._name, batch_mode=LogicBatchMethod.Minimum
+        )
+
+    @property
+    def Maximum(self) -> PassthroughHeatExchangerGasToGas:
+        return PassthroughHeatExchangerGasToGas(
+            name=self._name, batch_mode=LogicBatchMethod.Maximum
+        )
+
+    @property
+    def Sum(self) -> PassthroughHeatExchangerGasToGas:
+        return PassthroughHeatExchangerGasToGas(
+            name=self._name, batch_mode=LogicBatchMethod.Sum
+        )
+
 
 PassthroughHeatExchangerGasToGass: _PassthroughHeatExchangerGasToGass = (
     _PassthroughHeatExchangerGasToGass()
@@ -6069,6 +7102,30 @@ class _PassthroughHeatExchangerGasToLiquids(
         self, name: str | int | float
     ) -> "_PassthroughHeatExchangerGasToLiquids":
         return _PassthroughHeatExchangerGasToLiquids(name)
+
+    @property
+    def Average(self) -> PassthroughHeatExchangerGasToLiquid:
+        return PassthroughHeatExchangerGasToLiquid(
+            name=self._name, batch_mode=LogicBatchMethod.Average
+        )
+
+    @property
+    def Minimum(self) -> PassthroughHeatExchangerGasToLiquid:
+        return PassthroughHeatExchangerGasToLiquid(
+            name=self._name, batch_mode=LogicBatchMethod.Minimum
+        )
+
+    @property
+    def Maximum(self) -> PassthroughHeatExchangerGasToLiquid:
+        return PassthroughHeatExchangerGasToLiquid(
+            name=self._name, batch_mode=LogicBatchMethod.Maximum
+        )
+
+    @property
+    def Sum(self) -> PassthroughHeatExchangerGasToLiquid:
+        return PassthroughHeatExchangerGasToLiquid(
+            name=self._name, batch_mode=LogicBatchMethod.Sum
+        )
 
 
 PassthroughHeatExchangerGasToLiquids: _PassthroughHeatExchangerGasToLiquids = (
@@ -6093,6 +7150,30 @@ class _PassthroughHeatExchangerLiquidToLiquids(
         self, name: str | int | float
     ) -> "_PassthroughHeatExchangerLiquidToLiquids":
         return _PassthroughHeatExchangerLiquidToLiquids(name)
+
+    @property
+    def Average(self) -> PassthroughHeatExchangerLiquidToLiquid:
+        return PassthroughHeatExchangerLiquidToLiquid(
+            name=self._name, batch_mode=LogicBatchMethod.Average
+        )
+
+    @property
+    def Minimum(self) -> PassthroughHeatExchangerLiquidToLiquid:
+        return PassthroughHeatExchangerLiquidToLiquid(
+            name=self._name, batch_mode=LogicBatchMethod.Minimum
+        )
+
+    @property
+    def Maximum(self) -> PassthroughHeatExchangerLiquidToLiquid:
+        return PassthroughHeatExchangerLiquidToLiquid(
+            name=self._name, batch_mode=LogicBatchMethod.Maximum
+        )
+
+    @property
+    def Sum(self) -> PassthroughHeatExchangerLiquidToLiquid:
+        return PassthroughHeatExchangerLiquidToLiquid(
+            name=self._name, batch_mode=LogicBatchMethod.Sum
+        )
 
 
 PassthroughHeatExchangerLiquidToLiquids: _PassthroughHeatExchangerLiquidToLiquids = (
@@ -6155,6 +7236,22 @@ class _CryoTubeHorizontals(
 
     def __getitem__(self, name: str | int | float) -> "_CryoTubeHorizontals":
         return _CryoTubeHorizontals(name)
+
+    @property
+    def Average(self) -> CryoTubeHorizontal:
+        return CryoTubeHorizontal(name=self._name, batch_mode=LogicBatchMethod.Average)
+
+    @property
+    def Minimum(self) -> CryoTubeHorizontal:
+        return CryoTubeHorizontal(name=self._name, batch_mode=LogicBatchMethod.Minimum)
+
+    @property
+    def Maximum(self) -> CryoTubeHorizontal:
+        return CryoTubeHorizontal(name=self._name, batch_mode=LogicBatchMethod.Maximum)
+
+    @property
+    def Sum(self) -> CryoTubeHorizontal:
+        return CryoTubeHorizontal(name=self._name, batch_mode=LogicBatchMethod.Sum)
 
     @property
     def EntityState(self) -> _DevicesLogicType:
@@ -6237,6 +7334,22 @@ class _CryoTubeVerticals(
         return _CryoTubeVerticals(name)
 
     @property
+    def Average(self) -> CryoTubeVertical:
+        return CryoTubeVertical(name=self._name, batch_mode=LogicBatchMethod.Average)
+
+    @property
+    def Minimum(self) -> CryoTubeVertical:
+        return CryoTubeVertical(name=self._name, batch_mode=LogicBatchMethod.Minimum)
+
+    @property
+    def Maximum(self) -> CryoTubeVertical:
+        return CryoTubeVertical(name=self._name, batch_mode=LogicBatchMethod.Maximum)
+
+    @property
+    def Sum(self) -> CryoTubeVertical:
+        return CryoTubeVertical(name=self._name, batch_mode=LogicBatchMethod.Sum)
+
+    @property
     def EntityState(self) -> _DevicesLogicType:
         return _DevicesLogicType(self, _LT.EntityState)
 
@@ -6279,6 +7392,22 @@ class _DaylightSensors(_BaseStructures, _Activates, _Modes, _Ons, _Verticals):
 
     def __getitem__(self, name: str | int | float) -> "_DaylightSensors":
         return _DaylightSensors(name)
+
+    @property
+    def Average(self) -> DaylightSensor:
+        return DaylightSensor(name=self._name, batch_mode=LogicBatchMethod.Average)
+
+    @property
+    def Minimum(self) -> DaylightSensor:
+        return DaylightSensor(name=self._name, batch_mode=LogicBatchMethod.Minimum)
+
+    @property
+    def Maximum(self) -> DaylightSensor:
+        return DaylightSensor(name=self._name, batch_mode=LogicBatchMethod.Maximum)
+
+    @property
+    def Sum(self) -> DaylightSensor:
+        return DaylightSensor(name=self._name, batch_mode=LogicBatchMethod.Sum)
 
     @property
     def SolarAngle(self) -> _DevicesLogicType:
@@ -6333,6 +7462,22 @@ class _DeepMiners(
         return _DeepMiners(name)
 
     @property
+    def Average(self) -> DeepMiner:
+        return DeepMiner(name=self._name, batch_mode=LogicBatchMethod.Average)
+
+    @property
+    def Minimum(self) -> DeepMiner:
+        return DeepMiner(name=self._name, batch_mode=LogicBatchMethod.Minimum)
+
+    @property
+    def Maximum(self) -> DeepMiner:
+        return DeepMiner(name=self._name, batch_mode=LogicBatchMethod.Maximum)
+
+    @property
+    def Sum(self) -> DeepMiner:
+        return DeepMiner(name=self._name, batch_mode=LogicBatchMethod.Sum)
+
+    @property
     def slot0(self) -> _SlotTypeCommons:
         return _SlotTypeCommons(self, 0)
 
@@ -6356,6 +7501,22 @@ class _LogicDials(_BaseStructures, _Modes, _Ratios, _SettingWs):
     def __getitem__(self, name: str | int | float) -> "_LogicDials":
         return _LogicDials(name)
 
+    @property
+    def Average(self) -> LogicDial:
+        return LogicDial(name=self._name, batch_mode=LogicBatchMethod.Average)
+
+    @property
+    def Minimum(self) -> LogicDial:
+        return LogicDial(name=self._name, batch_mode=LogicBatchMethod.Minimum)
+
+    @property
+    def Maximum(self) -> LogicDial:
+        return LogicDial(name=self._name, batch_mode=LogicBatchMethod.Maximum)
+
+    @property
+    def Sum(self) -> LogicDial:
+        return LogicDial(name=self._name, batch_mode=LogicBatchMethod.Sum)
+
 
 LogicDials: _LogicDials = _LogicDials()
 
@@ -6374,6 +7535,22 @@ class _DigitalValves(
     def __getitem__(self, name: str | int | float) -> "_DigitalValves":
         return _DigitalValves(name)
 
+    @property
+    def Average(self) -> DigitalValve:
+        return DigitalValve(name=self._name, batch_mode=LogicBatchMethod.Average)
+
+    @property
+    def Minimum(self) -> DigitalValve:
+        return DigitalValve(name=self._name, batch_mode=LogicBatchMethod.Minimum)
+
+    @property
+    def Maximum(self) -> DigitalValve:
+        return DigitalValve(name=self._name, batch_mode=LogicBatchMethod.Maximum)
+
+    @property
+    def Sum(self) -> DigitalValve:
+        return DigitalValve(name=self._name, batch_mode=LogicBatchMethod.Sum)
+
 
 DigitalValves: _DigitalValves = _DigitalValves()
 
@@ -6390,6 +7567,22 @@ class _DiodeSlides(_BaseStructures, _Locks, _Powers, _SettingWs):
     def __getitem__(self, name: str | int | float) -> "_DiodeSlides":
         return _DiodeSlides(name)
 
+    @property
+    def Average(self) -> DiodeSlide:
+        return DiodeSlide(name=self._name, batch_mode=LogicBatchMethod.Average)
+
+    @property
+    def Minimum(self) -> DiodeSlide:
+        return DiodeSlide(name=self._name, batch_mode=LogicBatchMethod.Minimum)
+
+    @property
+    def Maximum(self) -> DiodeSlide:
+        return DiodeSlide(name=self._name, batch_mode=LogicBatchMethod.Maximum)
+
+    @property
+    def Sum(self) -> DiodeSlide:
+        return DiodeSlide(name=self._name, batch_mode=LogicBatchMethod.Sum)
+
 
 DiodeSlides: _DiodeSlides = _DiodeSlides()
 
@@ -6405,6 +7598,22 @@ class _DrinkingFountains(_BaseStructures, _Errors, _Powers):
 
     def __getitem__(self, name: str | int | float) -> "_DrinkingFountains":
         return _DrinkingFountains(name)
+
+    @property
+    def Average(self) -> DrinkingFountain:
+        return DrinkingFountain(name=self._name, batch_mode=LogicBatchMethod.Average)
+
+    @property
+    def Minimum(self) -> DrinkingFountain:
+        return DrinkingFountain(name=self._name, batch_mode=LogicBatchMethod.Minimum)
+
+    @property
+    def Maximum(self) -> DrinkingFountain:
+        return DrinkingFountain(name=self._name, batch_mode=LogicBatchMethod.Maximum)
+
+    @property
+    def Sum(self) -> DrinkingFountain:
+        return DrinkingFountain(name=self._name, batch_mode=LogicBatchMethod.Sum)
 
 
 DrinkingFountains: _DrinkingFountains = _DrinkingFountains()
@@ -6431,6 +7640,28 @@ class _SleeperVerticalDroids(
 
     def __getitem__(self, name: str | int | float) -> "_SleeperVerticalDroids":
         return _SleeperVerticalDroids(name)
+
+    @property
+    def Average(self) -> SleeperVerticalDroid:
+        return SleeperVerticalDroid(
+            name=self._name, batch_mode=LogicBatchMethod.Average
+        )
+
+    @property
+    def Minimum(self) -> SleeperVerticalDroid:
+        return SleeperVerticalDroid(
+            name=self._name, batch_mode=LogicBatchMethod.Minimum
+        )
+
+    @property
+    def Maximum(self) -> SleeperVerticalDroid:
+        return SleeperVerticalDroid(
+            name=self._name, batch_mode=LogicBatchMethod.Maximum
+        )
+
+    @property
+    def Sum(self) -> SleeperVerticalDroid:
+        return SleeperVerticalDroid(name=self._name, batch_mode=LogicBatchMethod.Sum)
 
     @property
     def slot0(self) -> _SlotTypeCommons:
@@ -6531,6 +7762,22 @@ class _Electrolyzers(
 
     def __getitem__(self, name: str | int | float) -> "_Electrolyzers":
         return _Electrolyzers(name)
+
+    @property
+    def Average(self) -> Electrolyzer:
+        return Electrolyzer(name=self._name, batch_mode=LogicBatchMethod.Average)
+
+    @property
+    def Minimum(self) -> Electrolyzer:
+        return Electrolyzer(name=self._name, batch_mode=LogicBatchMethod.Minimum)
+
+    @property
+    def Maximum(self) -> Electrolyzer:
+        return Electrolyzer(name=self._name, batch_mode=LogicBatchMethod.Maximum)
+
+    @property
+    def Sum(self) -> Electrolyzer:
+        return Electrolyzer(name=self._name, batch_mode=LogicBatchMethod.Sum)
 
     @property
     def CombustionInput(self) -> _DevicesLogicType:
@@ -6637,6 +7884,22 @@ class _ElectronicsPrinters(
         return _ElectronicsPrinters(name)
 
     @property
+    def Average(self) -> ElectronicsPrinter:
+        return ElectronicsPrinter(name=self._name, batch_mode=LogicBatchMethod.Average)
+
+    @property
+    def Minimum(self) -> ElectronicsPrinter:
+        return ElectronicsPrinter(name=self._name, batch_mode=LogicBatchMethod.Minimum)
+
+    @property
+    def Maximum(self) -> ElectronicsPrinter:
+        return ElectronicsPrinter(name=self._name, batch_mode=LogicBatchMethod.Maximum)
+
+    @property
+    def Sum(self) -> ElectronicsPrinter:
+        return ElectronicsPrinter(name=self._name, batch_mode=LogicBatchMethod.Sum)
+
+    @property
     def CompletionRatio(self) -> _DevicesLogicType:
         return _DevicesLogicType(self, _LT.CompletionRatio)
 
@@ -6695,6 +7958,28 @@ class _ElevatorLevelIndustrials(
         return _ElevatorLevelIndustrials(name)
 
     @property
+    def Average(self) -> ElevatorLevelIndustrial:
+        return ElevatorLevelIndustrial(
+            name=self._name, batch_mode=LogicBatchMethod.Average
+        )
+
+    @property
+    def Minimum(self) -> ElevatorLevelIndustrial:
+        return ElevatorLevelIndustrial(
+            name=self._name, batch_mode=LogicBatchMethod.Minimum
+        )
+
+    @property
+    def Maximum(self) -> ElevatorLevelIndustrial:
+        return ElevatorLevelIndustrial(
+            name=self._name, batch_mode=LogicBatchMethod.Maximum
+        )
+
+    @property
+    def Sum(self) -> ElevatorLevelIndustrial:
+        return ElevatorLevelIndustrial(name=self._name, batch_mode=LogicBatchMethod.Sum)
+
+    @property
     def ElevatorLevel(self) -> _DevicesLogicType:
         return _DevicesLogicType(self, _LT.ElevatorLevel)
 
@@ -6745,6 +8030,22 @@ class _ElevatorLevelFronts(
         return _ElevatorLevelFronts(name)
 
     @property
+    def Average(self) -> ElevatorLevelFront:
+        return ElevatorLevelFront(name=self._name, batch_mode=LogicBatchMethod.Average)
+
+    @property
+    def Minimum(self) -> ElevatorLevelFront:
+        return ElevatorLevelFront(name=self._name, batch_mode=LogicBatchMethod.Minimum)
+
+    @property
+    def Maximum(self) -> ElevatorLevelFront:
+        return ElevatorLevelFront(name=self._name, batch_mode=LogicBatchMethod.Maximum)
+
+    @property
+    def Sum(self) -> ElevatorLevelFront:
+        return ElevatorLevelFront(name=self._name, batch_mode=LogicBatchMethod.Sum)
+
+    @property
     def ElevatorLevel(self) -> _DevicesLogicType:
         return _DevicesLogicType(self, _LT.ElevatorLevel)
 
@@ -6793,6 +8094,28 @@ class _ElevatorShaftIndustrials(_BaseStructures):
         return _ElevatorShaftIndustrials(name)
 
     @property
+    def Average(self) -> ElevatorShaftIndustrial:
+        return ElevatorShaftIndustrial(
+            name=self._name, batch_mode=LogicBatchMethod.Average
+        )
+
+    @property
+    def Minimum(self) -> ElevatorShaftIndustrial:
+        return ElevatorShaftIndustrial(
+            name=self._name, batch_mode=LogicBatchMethod.Minimum
+        )
+
+    @property
+    def Maximum(self) -> ElevatorShaftIndustrial:
+        return ElevatorShaftIndustrial(
+            name=self._name, batch_mode=LogicBatchMethod.Maximum
+        )
+
+    @property
+    def Sum(self) -> ElevatorShaftIndustrial:
+        return ElevatorShaftIndustrial(name=self._name, batch_mode=LogicBatchMethod.Sum)
+
+    @property
     def ElevatorLevel(self) -> _DevicesLogicType:
         return _DevicesLogicType(self, _LT.ElevatorLevel)
 
@@ -6839,6 +8162,22 @@ class _ElevatorShafts(_BaseStructures, _Powers):
 
     def __getitem__(self, name: str | int | float) -> "_ElevatorShafts":
         return _ElevatorShafts(name)
+
+    @property
+    def Average(self) -> ElevatorShaft:
+        return ElevatorShaft(name=self._name, batch_mode=LogicBatchMethod.Average)
+
+    @property
+    def Minimum(self) -> ElevatorShaft:
+        return ElevatorShaft(name=self._name, batch_mode=LogicBatchMethod.Minimum)
+
+    @property
+    def Maximum(self) -> ElevatorShaft:
+        return ElevatorShaft(name=self._name, batch_mode=LogicBatchMethod.Maximum)
+
+    @property
+    def Sum(self) -> ElevatorShaft:
+        return ElevatorShaft(name=self._name, batch_mode=LogicBatchMethod.Sum)
 
     @property
     def ElevatorLevel(self) -> _DevicesLogicType:
@@ -6900,6 +8239,22 @@ class _EvaporationChambers(
     def __getitem__(self, name: str | int | float) -> "_EvaporationChambers":
         return _EvaporationChambers(name)
 
+    @property
+    def Average(self) -> EvaporationChamber:
+        return EvaporationChamber(name=self._name, batch_mode=LogicBatchMethod.Average)
+
+    @property
+    def Minimum(self) -> EvaporationChamber:
+        return EvaporationChamber(name=self._name, batch_mode=LogicBatchMethod.Minimum)
+
+    @property
+    def Maximum(self) -> EvaporationChamber:
+        return EvaporationChamber(name=self._name, batch_mode=LogicBatchMethod.Maximum)
+
+    @property
+    def Sum(self) -> EvaporationChamber:
+        return EvaporationChamber(name=self._name, batch_mode=LogicBatchMethod.Sum)
+
 
 EvaporationChambers: _EvaporationChambers = _EvaporationChambers()
 
@@ -6915,6 +8270,22 @@ class _ExpansionValves(_BaseStructures, _Maximums, _Ons, _Ratios, _SettingWs):
 
     def __getitem__(self, name: str | int | float) -> "_ExpansionValves":
         return _ExpansionValves(name)
+
+    @property
+    def Average(self) -> ExpansionValve:
+        return ExpansionValve(name=self._name, batch_mode=LogicBatchMethod.Average)
+
+    @property
+    def Minimum(self) -> ExpansionValve:
+        return ExpansionValve(name=self._name, batch_mode=LogicBatchMethod.Minimum)
+
+    @property
+    def Maximum(self) -> ExpansionValve:
+        return ExpansionValve(name=self._name, batch_mode=LogicBatchMethod.Maximum)
+
+    @property
+    def Sum(self) -> ExpansionValve:
+        return ExpansionValve(name=self._name, batch_mode=LogicBatchMethod.Sum)
 
 
 ExpansionValves: _ExpansionValves = _ExpansionValves()
@@ -7023,6 +8394,22 @@ class _Filtrations(
         return _Filtrations(name)
 
     @property
+    def Average(self) -> Filtration:
+        return Filtration(name=self._name, batch_mode=LogicBatchMethod.Average)
+
+    @property
+    def Minimum(self) -> Filtration:
+        return Filtration(name=self._name, batch_mode=LogicBatchMethod.Minimum)
+
+    @property
+    def Maximum(self) -> Filtration:
+        return Filtration(name=self._name, batch_mode=LogicBatchMethod.Maximum)
+
+    @property
+    def Sum(self) -> Filtration:
+        return Filtration(name=self._name, batch_mode=LogicBatchMethod.Sum)
+
+    @property
     def CombustionInput(self) -> _DevicesLogicType:
         return _DevicesLogicType(self, _LT.CombustionInput)
 
@@ -7101,6 +8488,22 @@ class _FlashingLights(_BaseStructures, _Locks, _Powers):
 
     def __getitem__(self, name: str | int | float) -> "_FlashingLights":
         return _FlashingLights(name)
+
+    @property
+    def Average(self) -> FlashingLight:
+        return FlashingLight(name=self._name, batch_mode=LogicBatchMethod.Average)
+
+    @property
+    def Minimum(self) -> FlashingLight:
+        return FlashingLight(name=self._name, batch_mode=LogicBatchMethod.Minimum)
+
+    @property
+    def Maximum(self) -> FlashingLight:
+        return FlashingLight(name=self._name, batch_mode=LogicBatchMethod.Maximum)
+
+    @property
+    def Sum(self) -> FlashingLight:
+        return FlashingLight(name=self._name, batch_mode=LogicBatchMethod.Sum)
 
 
 FlashingLights: _FlashingLights = _FlashingLights()
@@ -7247,6 +8650,22 @@ class _FridgeBigs(
 
     def __getitem__(self, name: str | int | float) -> "_FridgeBigs":
         return _FridgeBigs(name)
+
+    @property
+    def Average(self) -> FridgeBig:
+        return FridgeBig(name=self._name, batch_mode=LogicBatchMethod.Average)
+
+    @property
+    def Minimum(self) -> FridgeBig:
+        return FridgeBig(name=self._name, batch_mode=LogicBatchMethod.Minimum)
+
+    @property
+    def Maximum(self) -> FridgeBig:
+        return FridgeBig(name=self._name, batch_mode=LogicBatchMethod.Maximum)
+
+    @property
+    def Sum(self) -> FridgeBig:
+        return FridgeBig(name=self._name, batch_mode=LogicBatchMethod.Sum)
 
     @property
     def CombustionOutput(self) -> _DevicesLogicType:
@@ -7443,6 +8862,22 @@ class _FridgeSmalls(
         return _FridgeSmalls(name)
 
     @property
+    def Average(self) -> FridgeSmall:
+        return FridgeSmall(name=self._name, batch_mode=LogicBatchMethod.Average)
+
+    @property
+    def Minimum(self) -> FridgeSmall:
+        return FridgeSmall(name=self._name, batch_mode=LogicBatchMethod.Minimum)
+
+    @property
+    def Maximum(self) -> FridgeSmall:
+        return FridgeSmall(name=self._name, batch_mode=LogicBatchMethod.Maximum)
+
+    @property
+    def Sum(self) -> FridgeSmall:
+        return FridgeSmall(name=self._name, batch_mode=LogicBatchMethod.Sum)
+
+    @property
     def CombustionOutput(self) -> _DevicesLogicType:
         return _DevicesLogicType(self, _LT.CombustionOutput)
 
@@ -7567,6 +9002,22 @@ class _Furnaces(
         return _Furnaces(name)
 
     @property
+    def Average(self) -> Furnace:
+        return Furnace(name=self._name, batch_mode=LogicBatchMethod.Average)
+
+    @property
+    def Minimum(self) -> Furnace:
+        return Furnace(name=self._name, batch_mode=LogicBatchMethod.Minimum)
+
+    @property
+    def Maximum(self) -> Furnace:
+        return Furnace(name=self._name, batch_mode=LogicBatchMethod.Maximum)
+
+    @property
+    def Sum(self) -> Furnace:
+        return Furnace(name=self._name, batch_mode=LogicBatchMethod.Sum)
+
+    @property
     def RecipeHash(self) -> _DevicesLogicType:
         return _DevicesLogicType(self, _LT.RecipeHash)
 
@@ -7667,6 +9118,28 @@ class _LargeRocketGasFuelTanks(
 
     def __getitem__(self, name: str | int | float) -> "_LargeRocketGasFuelTanks":
         return _LargeRocketGasFuelTanks(name)
+
+    @property
+    def Average(self) -> LargeRocketGasFuelTank:
+        return LargeRocketGasFuelTank(
+            name=self._name, batch_mode=LogicBatchMethod.Average
+        )
+
+    @property
+    def Minimum(self) -> LargeRocketGasFuelTank:
+        return LargeRocketGasFuelTank(
+            name=self._name, batch_mode=LogicBatchMethod.Minimum
+        )
+
+    @property
+    def Maximum(self) -> LargeRocketGasFuelTank:
+        return LargeRocketGasFuelTank(
+            name=self._name, batch_mode=LogicBatchMethod.Maximum
+        )
+
+    @property
+    def Sum(self) -> LargeRocketGasFuelTank:
+        return LargeRocketGasFuelTank(name=self._name, batch_mode=LogicBatchMethod.Sum)
 
     @property
     def CombustionOutput(self) -> _DevicesLogicType:
@@ -7795,6 +9268,28 @@ class _MediumRocketGasFuelTanks(
         return _MediumRocketGasFuelTanks(name)
 
     @property
+    def Average(self) -> MediumRocketGasFuelTank:
+        return MediumRocketGasFuelTank(
+            name=self._name, batch_mode=LogicBatchMethod.Average
+        )
+
+    @property
+    def Minimum(self) -> MediumRocketGasFuelTank:
+        return MediumRocketGasFuelTank(
+            name=self._name, batch_mode=LogicBatchMethod.Minimum
+        )
+
+    @property
+    def Maximum(self) -> MediumRocketGasFuelTank:
+        return MediumRocketGasFuelTank(
+            name=self._name, batch_mode=LogicBatchMethod.Maximum
+        )
+
+    @property
+    def Sum(self) -> MediumRocketGasFuelTank:
+        return MediumRocketGasFuelTank(name=self._name, batch_mode=LogicBatchMethod.Sum)
+
+    @property
     def CombustionOutput(self) -> _DevicesLogicType:
         return _DevicesLogicType(self, _LT.CombustionOutput)
 
@@ -7921,6 +9416,22 @@ class _CapsuleTankGass(
         return _CapsuleTankGass(name)
 
     @property
+    def Average(self) -> CapsuleTankGas:
+        return CapsuleTankGas(name=self._name, batch_mode=LogicBatchMethod.Average)
+
+    @property
+    def Minimum(self) -> CapsuleTankGas:
+        return CapsuleTankGas(name=self._name, batch_mode=LogicBatchMethod.Minimum)
+
+    @property
+    def Maximum(self) -> CapsuleTankGas:
+        return CapsuleTankGas(name=self._name, batch_mode=LogicBatchMethod.Maximum)
+
+    @property
+    def Sum(self) -> CapsuleTankGas:
+        return CapsuleTankGas(name=self._name, batch_mode=LogicBatchMethod.Sum)
+
+    @property
     def CombustionOutput(self) -> _DevicesLogicType:
         return _DevicesLogicType(self, _LT.CombustionOutput)
 
@@ -8009,6 +9520,22 @@ class _GasGenerators(
         return _GasGenerators(name)
 
     @property
+    def Average(self) -> GasGenerator:
+        return GasGenerator(name=self._name, batch_mode=LogicBatchMethod.Average)
+
+    @property
+    def Minimum(self) -> GasGenerator:
+        return GasGenerator(name=self._name, batch_mode=LogicBatchMethod.Minimum)
+
+    @property
+    def Maximum(self) -> GasGenerator:
+        return GasGenerator(name=self._name, batch_mode=LogicBatchMethod.Maximum)
+
+    @property
+    def Sum(self) -> GasGenerator:
+        return GasGenerator(name=self._name, batch_mode=LogicBatchMethod.Sum)
+
+    @property
     def PowerGeneration(self) -> _DevicesLogicType:
         return _DevicesLogicType(self, _LT.PowerGeneration)
 
@@ -8030,6 +9557,22 @@ class _GasMixers(
     def __getitem__(self, name: str | int | float) -> "_GasMixers":
         return _GasMixers(name)
 
+    @property
+    def Average(self) -> GasMixer:
+        return GasMixer(name=self._name, batch_mode=LogicBatchMethod.Average)
+
+    @property
+    def Minimum(self) -> GasMixer:
+        return GasMixer(name=self._name, batch_mode=LogicBatchMethod.Minimum)
+
+    @property
+    def Maximum(self) -> GasMixer:
+        return GasMixer(name=self._name, batch_mode=LogicBatchMethod.Maximum)
+
+    @property
+    def Sum(self) -> GasMixer:
+        return GasMixer(name=self._name, batch_mode=LogicBatchMethod.Sum)
+
 
 GasMixers: _GasMixers = _GasMixers()
 
@@ -8049,6 +9592,22 @@ class _GasSensors(_BaseStructures, _BaseGass, _Hydrogens, _PollWaters, _Temperat
 
     def __getitem__(self, name: str | int | float) -> "_GasSensors":
         return _GasSensors(name)
+
+    @property
+    def Average(self) -> GasSensor:
+        return GasSensor(name=self._name, batch_mode=LogicBatchMethod.Average)
+
+    @property
+    def Minimum(self) -> GasSensor:
+        return GasSensor(name=self._name, batch_mode=LogicBatchMethod.Minimum)
+
+    @property
+    def Maximum(self) -> GasSensor:
+        return GasSensor(name=self._name, batch_mode=LogicBatchMethod.Maximum)
+
+    @property
+    def Sum(self) -> GasSensor:
+        return GasSensor(name=self._name, batch_mode=LogicBatchMethod.Sum)
 
     @property
     def Combustion(self) -> _DevicesLogicType:
@@ -8105,6 +9664,22 @@ class _GasTankStorages(_BaseStructures, _Quantitys, _Temperatures):
 
     def __getitem__(self, name: str | int | float) -> "_GasTankStorages":
         return _GasTankStorages(name)
+
+    @property
+    def Average(self) -> GasTankStorage:
+        return GasTankStorage(name=self._name, batch_mode=LogicBatchMethod.Average)
+
+    @property
+    def Minimum(self) -> GasTankStorage:
+        return GasTankStorage(name=self._name, batch_mode=LogicBatchMethod.Minimum)
+
+    @property
+    def Maximum(self) -> GasTankStorage:
+        return GasTankStorage(name=self._name, batch_mode=LogicBatchMethod.Maximum)
+
+    @property
+    def Sum(self) -> GasTankStorage:
+        return GasTankStorage(name=self._name, batch_mode=LogicBatchMethod.Sum)
 
     @property
     def RatioCarbonDioxide(self) -> _DevicesLogicType:
@@ -8171,6 +9746,22 @@ class _SolidFuelGenerators(_BaseStructures, _ClearMemorys, _ImportCounts, _Locks
         return _SolidFuelGenerators(name)
 
     @property
+    def Average(self) -> SolidFuelGenerator:
+        return SolidFuelGenerator(name=self._name, batch_mode=LogicBatchMethod.Average)
+
+    @property
+    def Minimum(self) -> SolidFuelGenerator:
+        return SolidFuelGenerator(name=self._name, batch_mode=LogicBatchMethod.Minimum)
+
+    @property
+    def Maximum(self) -> SolidFuelGenerator:
+        return SolidFuelGenerator(name=self._name, batch_mode=LogicBatchMethod.Maximum)
+
+    @property
+    def Sum(self) -> SolidFuelGenerator:
+        return SolidFuelGenerator(name=self._name, batch_mode=LogicBatchMethod.Sum)
+
+    @property
     def PowerGeneration(self) -> _DevicesLogicType:
         return _DevicesLogicType(self, _LT.PowerGeneration)
 
@@ -8198,6 +9789,22 @@ class _GlassDoors(_BaseStructures, _Idles, _Locks, _Modes, _Opens, _Powers, _Set
     def __getitem__(self, name: str | int | float) -> "_GlassDoors":
         return _GlassDoors(name)
 
+    @property
+    def Average(self) -> GlassDoor:
+        return GlassDoor(name=self._name, batch_mode=LogicBatchMethod.Average)
+
+    @property
+    def Minimum(self) -> GlassDoor:
+        return GlassDoor(name=self._name, batch_mode=LogicBatchMethod.Minimum)
+
+    @property
+    def Maximum(self) -> GlassDoor:
+        return GlassDoor(name=self._name, batch_mode=LogicBatchMethod.Maximum)
+
+    @property
+    def Sum(self) -> GlassDoor:
+        return GlassDoor(name=self._name, batch_mode=LogicBatchMethod.Sum)
+
 
 GlassDoors: _GlassDoors = _GlassDoors()
 
@@ -8213,6 +9820,22 @@ class _GrowLights(_BaseStructures, _Locks, _Powers):
 
     def __getitem__(self, name: str | int | float) -> "_GrowLights":
         return _GrowLights(name)
+
+    @property
+    def Average(self) -> GrowLight:
+        return GrowLight(name=self._name, batch_mode=LogicBatchMethod.Average)
+
+    @property
+    def Minimum(self) -> GrowLight:
+        return GrowLight(name=self._name, batch_mode=LogicBatchMethod.Minimum)
+
+    @property
+    def Maximum(self) -> GrowLight:
+        return GrowLight(name=self._name, batch_mode=LogicBatchMethod.Maximum)
+
+    @property
+    def Sum(self) -> GrowLight:
+        return GrowLight(name=self._name, batch_mode=LogicBatchMethod.Sum)
 
 
 GrowLights: _GrowLights = _GrowLights()
@@ -8289,6 +9912,22 @@ class _Harvies(
 
     def __getitem__(self, name: str | int | float) -> "_Harvies":
         return _Harvies(name)
+
+    @property
+    def Average(self) -> Harvie:
+        return Harvie(name=self._name, batch_mode=LogicBatchMethod.Average)
+
+    @property
+    def Minimum(self) -> Harvie:
+        return Harvie(name=self._name, batch_mode=LogicBatchMethod.Minimum)
+
+    @property
+    def Maximum(self) -> Harvie:
+        return Harvie(name=self._name, batch_mode=LogicBatchMethod.Maximum)
+
+    @property
+    def Sum(self) -> Harvie:
+        return Harvie(name=self._name, batch_mode=LogicBatchMethod.Sum)
 
     @property
     def Harvest(self) -> _DevicesLogicType:
@@ -8395,6 +10034,22 @@ class _HydraulicPipeBenders(
         return _HydraulicPipeBenders(name)
 
     @property
+    def Average(self) -> HydraulicPipeBender:
+        return HydraulicPipeBender(name=self._name, batch_mode=LogicBatchMethod.Average)
+
+    @property
+    def Minimum(self) -> HydraulicPipeBender:
+        return HydraulicPipeBender(name=self._name, batch_mode=LogicBatchMethod.Minimum)
+
+    @property
+    def Maximum(self) -> HydraulicPipeBender:
+        return HydraulicPipeBender(name=self._name, batch_mode=LogicBatchMethod.Maximum)
+
+    @property
+    def Sum(self) -> HydraulicPipeBender:
+        return HydraulicPipeBender(name=self._name, batch_mode=LogicBatchMethod.Sum)
+
+    @property
     def CompletionRatio(self) -> _DevicesLogicType:
         return _DevicesLogicType(self, _LT.CompletionRatio)
 
@@ -8453,6 +10108,22 @@ class _HydroponicsTrayDatas(
 
     def __getitem__(self, name: str | int | float) -> "_HydroponicsTrayDatas":
         return _HydroponicsTrayDatas(name)
+
+    @property
+    def Average(self) -> HydroponicsTrayData:
+        return HydroponicsTrayData(name=self._name, batch_mode=LogicBatchMethod.Average)
+
+    @property
+    def Minimum(self) -> HydroponicsTrayData:
+        return HydroponicsTrayData(name=self._name, batch_mode=LogicBatchMethod.Minimum)
+
+    @property
+    def Maximum(self) -> HydroponicsTrayData:
+        return HydroponicsTrayData(name=self._name, batch_mode=LogicBatchMethod.Maximum)
+
+    @property
+    def Sum(self) -> HydroponicsTrayData:
+        return HydroponicsTrayData(name=self._name, batch_mode=LogicBatchMethod.Sum)
 
     @property
     def slot0(self) -> _SlotTypePlants:
@@ -8587,6 +10258,22 @@ class _HydroponicsStations(
         return _HydroponicsStations(name)
 
     @property
+    def Average(self) -> HydroponicsStation:
+        return HydroponicsStation(name=self._name, batch_mode=LogicBatchMethod.Average)
+
+    @property
+    def Minimum(self) -> HydroponicsStation:
+        return HydroponicsStation(name=self._name, batch_mode=LogicBatchMethod.Minimum)
+
+    @property
+    def Maximum(self) -> HydroponicsStation:
+        return HydroponicsStation(name=self._name, batch_mode=LogicBatchMethod.Maximum)
+
+    @property
+    def Sum(self) -> HydroponicsStation:
+        return HydroponicsStation(name=self._name, batch_mode=LogicBatchMethod.Sum)
+
+    @property
     def CombustionOutput(self) -> _DevicesLogicType:
         return _DevicesLogicType(self, _LT.CombustionOutput)
 
@@ -8699,6 +10386,22 @@ class _CircuitHousings(_BaseStructures, _Errors, _Modes, _Powers, _SettingWs):
         return _CircuitHousings(name)
 
     @property
+    def Average(self) -> CircuitHousing:
+        return CircuitHousing(name=self._name, batch_mode=LogicBatchMethod.Average)
+
+    @property
+    def Minimum(self) -> CircuitHousing:
+        return CircuitHousing(name=self._name, batch_mode=LogicBatchMethod.Minimum)
+
+    @property
+    def Maximum(self) -> CircuitHousing:
+        return CircuitHousing(name=self._name, batch_mode=LogicBatchMethod.Maximum)
+
+    @property
+    def Sum(self) -> CircuitHousing:
+        return CircuitHousing(name=self._name, batch_mode=LogicBatchMethod.Sum)
+
+    @property
     def LineNumber(self) -> _DevicesLogicType:
         return _DevicesLogicType(self, _LT.LineNumber)
 
@@ -8753,6 +10456,28 @@ class _CircuitHousingCompacts(_BaseStructures, _Errors, _Modes, _Powers, _Settin
 
     def __getitem__(self, name: str | int | float) -> "_CircuitHousingCompacts":
         return _CircuitHousingCompacts(name)
+
+    @property
+    def Average(self) -> CircuitHousingCompact:
+        return CircuitHousingCompact(
+            name=self._name, batch_mode=LogicBatchMethod.Average
+        )
+
+    @property
+    def Minimum(self) -> CircuitHousingCompact:
+        return CircuitHousingCompact(
+            name=self._name, batch_mode=LogicBatchMethod.Minimum
+        )
+
+    @property
+    def Maximum(self) -> CircuitHousingCompact:
+        return CircuitHousingCompact(
+            name=self._name, batch_mode=LogicBatchMethod.Maximum
+        )
+
+    @property
+    def Sum(self) -> CircuitHousingCompact:
+        return CircuitHousingCompact(name=self._name, batch_mode=LogicBatchMethod.Sum)
 
     @property
     def LineNumber(self) -> _DevicesLogicType:
@@ -8821,6 +10546,22 @@ class _IceCrushers(
         return _IceCrushers(name)
 
     @property
+    def Average(self) -> IceCrusher:
+        return IceCrusher(name=self._name, batch_mode=LogicBatchMethod.Average)
+
+    @property
+    def Minimum(self) -> IceCrusher:
+        return IceCrusher(name=self._name, batch_mode=LogicBatchMethod.Minimum)
+
+    @property
+    def Maximum(self) -> IceCrusher:
+        return IceCrusher(name=self._name, batch_mode=LogicBatchMethod.Maximum)
+
+    @property
+    def Sum(self) -> IceCrusher:
+        return IceCrusher(name=self._name, batch_mode=LogicBatchMethod.Sum)
+
+    @property
     def slot0(self) -> _SlotTypeCommons:
         return _SlotTypeCommons(self, 0)
 
@@ -8844,6 +10585,22 @@ class _Igniters(_BaseStructures, _Ons):
     def __getitem__(self, name: str | int | float) -> "_Igniters":
         return _Igniters(name)
 
+    @property
+    def Average(self) -> Igniter:
+        return Igniter(name=self._name, batch_mode=LogicBatchMethod.Average)
+
+    @property
+    def Minimum(self) -> Igniter:
+        return Igniter(name=self._name, batch_mode=LogicBatchMethod.Minimum)
+
+    @property
+    def Maximum(self) -> Igniter:
+        return Igniter(name=self._name, batch_mode=LogicBatchMethod.Maximum)
+
+    @property
+    def Sum(self) -> Igniter:
+        return Igniter(name=self._name, batch_mode=LogicBatchMethod.Sum)
+
 
 Igniters: _Igniters = _Igniters()
 
@@ -8864,6 +10621,22 @@ class _EmergencyButtons(
     def __getitem__(self, name: str | int | float) -> "_EmergencyButtons":
         return _EmergencyButtons(name)
 
+    @property
+    def Average(self) -> EmergencyButton:
+        return EmergencyButton(name=self._name, batch_mode=LogicBatchMethod.Average)
+
+    @property
+    def Minimum(self) -> EmergencyButton:
+        return EmergencyButton(name=self._name, batch_mode=LogicBatchMethod.Minimum)
+
+    @property
+    def Maximum(self) -> EmergencyButton:
+        return EmergencyButton(name=self._name, batch_mode=LogicBatchMethod.Maximum)
+
+    @property
+    def Sum(self) -> EmergencyButton:
+        return EmergencyButton(name=self._name, batch_mode=LogicBatchMethod.Sum)
+
 
 EmergencyButtons: _EmergencyButtons = _EmergencyButtons()
 
@@ -8882,6 +10655,22 @@ class _InteriorDoorGlasss(
     def __getitem__(self, name: str | int | float) -> "_InteriorDoorGlasss":
         return _InteriorDoorGlasss(name)
 
+    @property
+    def Average(self) -> InteriorDoorGlass:
+        return InteriorDoorGlass(name=self._name, batch_mode=LogicBatchMethod.Average)
+
+    @property
+    def Minimum(self) -> InteriorDoorGlass:
+        return InteriorDoorGlass(name=self._name, batch_mode=LogicBatchMethod.Minimum)
+
+    @property
+    def Maximum(self) -> InteriorDoorGlass:
+        return InteriorDoorGlass(name=self._name, batch_mode=LogicBatchMethod.Maximum)
+
+    @property
+    def Sum(self) -> InteriorDoorGlass:
+        return InteriorDoorGlass(name=self._name, batch_mode=LogicBatchMethod.Sum)
+
 
 InteriorDoorGlasss: _InteriorDoorGlasss = _InteriorDoorGlasss()
 
@@ -8899,6 +10688,22 @@ class _InteriorDoorPaddeds(
 
     def __getitem__(self, name: str | int | float) -> "_InteriorDoorPaddeds":
         return _InteriorDoorPaddeds(name)
+
+    @property
+    def Average(self) -> InteriorDoorPadded:
+        return InteriorDoorPadded(name=self._name, batch_mode=LogicBatchMethod.Average)
+
+    @property
+    def Minimum(self) -> InteriorDoorPadded:
+        return InteriorDoorPadded(name=self._name, batch_mode=LogicBatchMethod.Minimum)
+
+    @property
+    def Maximum(self) -> InteriorDoorPadded:
+        return InteriorDoorPadded(name=self._name, batch_mode=LogicBatchMethod.Maximum)
+
+    @property
+    def Sum(self) -> InteriorDoorPadded:
+        return InteriorDoorPadded(name=self._name, batch_mode=LogicBatchMethod.Sum)
 
 
 InteriorDoorPaddeds: _InteriorDoorPaddeds = _InteriorDoorPaddeds()
@@ -8920,6 +10725,28 @@ class _InteriorDoorPaddedThins(
     def __getitem__(self, name: str | int | float) -> "_InteriorDoorPaddedThins":
         return _InteriorDoorPaddedThins(name)
 
+    @property
+    def Average(self) -> InteriorDoorPaddedThin:
+        return InteriorDoorPaddedThin(
+            name=self._name, batch_mode=LogicBatchMethod.Average
+        )
+
+    @property
+    def Minimum(self) -> InteriorDoorPaddedThin:
+        return InteriorDoorPaddedThin(
+            name=self._name, batch_mode=LogicBatchMethod.Minimum
+        )
+
+    @property
+    def Maximum(self) -> InteriorDoorPaddedThin:
+        return InteriorDoorPaddedThin(
+            name=self._name, batch_mode=LogicBatchMethod.Maximum
+        )
+
+    @property
+    def Sum(self) -> InteriorDoorPaddedThin:
+        return InteriorDoorPaddedThin(name=self._name, batch_mode=LogicBatchMethod.Sum)
+
 
 InteriorDoorPaddedThins: _InteriorDoorPaddedThins = _InteriorDoorPaddedThins()
 
@@ -8939,6 +10766,28 @@ class _InteriorDoorTriangles(
 
     def __getitem__(self, name: str | int | float) -> "_InteriorDoorTriangles":
         return _InteriorDoorTriangles(name)
+
+    @property
+    def Average(self) -> InteriorDoorTriangle:
+        return InteriorDoorTriangle(
+            name=self._name, batch_mode=LogicBatchMethod.Average
+        )
+
+    @property
+    def Minimum(self) -> InteriorDoorTriangle:
+        return InteriorDoorTriangle(
+            name=self._name, batch_mode=LogicBatchMethod.Minimum
+        )
+
+    @property
+    def Maximum(self) -> InteriorDoorTriangle:
+        return InteriorDoorTriangle(
+            name=self._name, batch_mode=LogicBatchMethod.Maximum
+        )
+
+    @property
+    def Sum(self) -> InteriorDoorTriangle:
+        return InteriorDoorTriangle(name=self._name, batch_mode=LogicBatchMethod.Sum)
 
 
 InteriorDoorTriangles: _InteriorDoorTriangles = _InteriorDoorTriangles()
@@ -8971,6 +10820,22 @@ class _Klaxons(_BaseStructures, _Modes, _Powers):
 
     def __getitem__(self, name: str | int | float) -> "_Klaxons":
         return _Klaxons(name)
+
+    @property
+    def Average(self) -> Klaxon:
+        return Klaxon(name=self._name, batch_mode=LogicBatchMethod.Average)
+
+    @property
+    def Minimum(self) -> Klaxon:
+        return Klaxon(name=self._name, batch_mode=LogicBatchMethod.Minimum)
+
+    @property
+    def Maximum(self) -> Klaxon:
+        return Klaxon(name=self._name, batch_mode=LogicBatchMethod.Maximum)
+
+    @property
+    def Sum(self) -> Klaxon:
+        return Klaxon(name=self._name, batch_mode=LogicBatchMethod.Sum)
 
     @property
     def SoundAlert(self) -> _DevicesLogicType:
@@ -9021,6 +10886,22 @@ class _RoboticArmDocks(
 
     def __getitem__(self, name: str | int | float) -> "_RoboticArmDocks":
         return _RoboticArmDocks(name)
+
+    @property
+    def Average(self) -> RoboticArmDock:
+        return RoboticArmDock(name=self._name, batch_mode=LogicBatchMethod.Average)
+
+    @property
+    def Minimum(self) -> RoboticArmDock:
+        return RoboticArmDock(name=self._name, batch_mode=LogicBatchMethod.Minimum)
+
+    @property
+    def Maximum(self) -> RoboticArmDock:
+        return RoboticArmDock(name=self._name, batch_mode=LogicBatchMethod.Maximum)
+
+    @property
+    def Sum(self) -> RoboticArmDock:
+        return RoboticArmDock(name=self._name, batch_mode=LogicBatchMethod.Sum)
 
     @property
     def Extended(self) -> _DevicesLogicType:
@@ -9133,6 +11014,22 @@ class _LarreDockAtmoss(
         return _LarreDockAtmoss(name)
 
     @property
+    def Average(self) -> LarreDockAtmos:
+        return LarreDockAtmos(name=self._name, batch_mode=LogicBatchMethod.Average)
+
+    @property
+    def Minimum(self) -> LarreDockAtmos:
+        return LarreDockAtmos(name=self._name, batch_mode=LogicBatchMethod.Minimum)
+
+    @property
+    def Maximum(self) -> LarreDockAtmos:
+        return LarreDockAtmos(name=self._name, batch_mode=LogicBatchMethod.Maximum)
+
+    @property
+    def Sum(self) -> LarreDockAtmos:
+        return LarreDockAtmos(name=self._name, batch_mode=LogicBatchMethod.Sum)
+
+    @property
     def CombustionInput(self) -> _DevicesLogicType:
         return _DevicesLogicType(self, _LT.CombustionInput)
 
@@ -9196,6 +11093,22 @@ class _LarreDockBypasss(_BaseStructures, _Opens, _Powers):
     def __getitem__(self, name: str | int | float) -> "_LarreDockBypasss":
         return _LarreDockBypasss(name)
 
+    @property
+    def Average(self) -> LarreDockBypass:
+        return LarreDockBypass(name=self._name, batch_mode=LogicBatchMethod.Average)
+
+    @property
+    def Minimum(self) -> LarreDockBypass:
+        return LarreDockBypass(name=self._name, batch_mode=LogicBatchMethod.Minimum)
+
+    @property
+    def Maximum(self) -> LarreDockBypass:
+        return LarreDockBypass(name=self._name, batch_mode=LogicBatchMethod.Maximum)
+
+    @property
+    def Sum(self) -> LarreDockBypass:
+        return LarreDockBypass(name=self._name, batch_mode=LogicBatchMethod.Sum)
+
 
 LarreDockBypasss: _LarreDockBypasss = _LarreDockBypasss()
 
@@ -9251,6 +11164,22 @@ class _LarreDockCargos(
 
     def __getitem__(self, name: str | int | float) -> "_LarreDockCargos":
         return _LarreDockCargos(name)
+
+    @property
+    def Average(self) -> LarreDockCargo:
+        return LarreDockCargo(name=self._name, batch_mode=LogicBatchMethod.Average)
+
+    @property
+    def Minimum(self) -> LarreDockCargo:
+        return LarreDockCargo(name=self._name, batch_mode=LogicBatchMethod.Minimum)
+
+    @property
+    def Maximum(self) -> LarreDockCargo:
+        return LarreDockCargo(name=self._name, batch_mode=LogicBatchMethod.Maximum)
+
+    @property
+    def Sum(self) -> LarreDockCargo:
+        return LarreDockCargo(name=self._name, batch_mode=LogicBatchMethod.Sum)
 
     @property
     def Extended(self) -> _DevicesLogicType:
@@ -9415,6 +11344,22 @@ class _LarreDockCollectors(
         return _LarreDockCollectors(name)
 
     @property
+    def Average(self) -> LarreDockCollector:
+        return LarreDockCollector(name=self._name, batch_mode=LogicBatchMethod.Average)
+
+    @property
+    def Minimum(self) -> LarreDockCollector:
+        return LarreDockCollector(name=self._name, batch_mode=LogicBatchMethod.Minimum)
+
+    @property
+    def Maximum(self) -> LarreDockCollector:
+        return LarreDockCollector(name=self._name, batch_mode=LogicBatchMethod.Maximum)
+
+    @property
+    def Sum(self) -> LarreDockCollector:
+        return LarreDockCollector(name=self._name, batch_mode=LogicBatchMethod.Sum)
+
+    @property
     def Extended(self) -> _DevicesLogicType:
         return _DevicesLogicType(self, _LT.Extended)
 
@@ -9563,6 +11508,28 @@ class _LarreDockHydroponicss(
         return _LarreDockHydroponicss(name)
 
     @property
+    def Average(self) -> LarreDockHydroponics:
+        return LarreDockHydroponics(
+            name=self._name, batch_mode=LogicBatchMethod.Average
+        )
+
+    @property
+    def Minimum(self) -> LarreDockHydroponics:
+        return LarreDockHydroponics(
+            name=self._name, batch_mode=LogicBatchMethod.Minimum
+        )
+
+    @property
+    def Maximum(self) -> LarreDockHydroponics:
+        return LarreDockHydroponics(
+            name=self._name, batch_mode=LogicBatchMethod.Maximum
+        )
+
+    @property
+    def Sum(self) -> LarreDockHydroponics:
+        return LarreDockHydroponics(name=self._name, batch_mode=LogicBatchMethod.Sum)
+
+    @property
     def Extended(self) -> _DevicesLogicType:
         return _DevicesLogicType(self, _LT.Extended)
 
@@ -9627,6 +11594,22 @@ class _Diodes(_BaseStructures, _Locks, _Powers):
         return _Diodes(name)
 
     @property
+    def Average(self) -> Diode:
+        return Diode(name=self._name, batch_mode=LogicBatchMethod.Average)
+
+    @property
+    def Minimum(self) -> Diode:
+        return Diode(name=self._name, batch_mode=LogicBatchMethod.Minimum)
+
+    @property
+    def Maximum(self) -> Diode:
+        return Diode(name=self._name, batch_mode=LogicBatchMethod.Maximum)
+
+    @property
+    def Sum(self) -> Diode:
+        return Diode(name=self._name, batch_mode=LogicBatchMethod.Sum)
+
+    @property
     def Color(self) -> _DevicesLogicType:
         return _DevicesLogicType(self, _LT.Color)
 
@@ -9657,6 +11640,22 @@ class _ConsoleLED1x3s(_BaseStructures, _Errors, _Modes, _Powers, _SettingWs):
 
     def __getitem__(self, name: str | int | float) -> "_ConsoleLED1x3s":
         return _ConsoleLED1x3s(name)
+
+    @property
+    def Average(self) -> ConsoleLED1x3:
+        return ConsoleLED1x3(name=self._name, batch_mode=LogicBatchMethod.Average)
+
+    @property
+    def Minimum(self) -> ConsoleLED1x3:
+        return ConsoleLED1x3(name=self._name, batch_mode=LogicBatchMethod.Minimum)
+
+    @property
+    def Maximum(self) -> ConsoleLED1x3:
+        return ConsoleLED1x3(name=self._name, batch_mode=LogicBatchMethod.Maximum)
+
+    @property
+    def Sum(self) -> ConsoleLED1x3:
+        return ConsoleLED1x3(name=self._name, batch_mode=LogicBatchMethod.Sum)
 
     @property
     def Color(self) -> _DevicesLogicType:
@@ -9691,6 +11690,22 @@ class _ConsoleLED1x2s(_BaseStructures, _Errors, _Modes, _Powers, _SettingWs):
         return _ConsoleLED1x2s(name)
 
     @property
+    def Average(self) -> ConsoleLED1x2:
+        return ConsoleLED1x2(name=self._name, batch_mode=LogicBatchMethod.Average)
+
+    @property
+    def Minimum(self) -> ConsoleLED1x2:
+        return ConsoleLED1x2(name=self._name, batch_mode=LogicBatchMethod.Minimum)
+
+    @property
+    def Maximum(self) -> ConsoleLED1x2:
+        return ConsoleLED1x2(name=self._name, batch_mode=LogicBatchMethod.Maximum)
+
+    @property
+    def Sum(self) -> ConsoleLED1x2:
+        return ConsoleLED1x2(name=self._name, batch_mode=LogicBatchMethod.Sum)
+
+    @property
     def Color(self) -> _DevicesLogicType:
         return _DevicesLogicType(self, _LT.Color)
 
@@ -9723,6 +11738,22 @@ class _ConsoleLED5s(_BaseStructures, _Errors, _Modes, _Powers, _SettingWs):
         return _ConsoleLED5s(name)
 
     @property
+    def Average(self) -> ConsoleLED5:
+        return ConsoleLED5(name=self._name, batch_mode=LogicBatchMethod.Average)
+
+    @property
+    def Minimum(self) -> ConsoleLED5:
+        return ConsoleLED5(name=self._name, batch_mode=LogicBatchMethod.Minimum)
+
+    @property
+    def Maximum(self) -> ConsoleLED5:
+        return ConsoleLED5(name=self._name, batch_mode=LogicBatchMethod.Maximum)
+
+    @property
+    def Sum(self) -> ConsoleLED5:
+        return ConsoleLED5(name=self._name, batch_mode=LogicBatchMethod.Sum)
+
+    @property
     def Color(self) -> _DevicesLogicType:
         return _DevicesLogicType(self, _LT.Color)
 
@@ -9752,6 +11783,30 @@ class _LargeDirectHeatExchangeLiquidtoLiquids(
     ) -> "_LargeDirectHeatExchangeLiquidtoLiquids":
         return _LargeDirectHeatExchangeLiquidtoLiquids(name)
 
+    @property
+    def Average(self) -> LargeDirectHeatExchangeLiquidtoLiquid:
+        return LargeDirectHeatExchangeLiquidtoLiquid(
+            name=self._name, batch_mode=LogicBatchMethod.Average
+        )
+
+    @property
+    def Minimum(self) -> LargeDirectHeatExchangeLiquidtoLiquid:
+        return LargeDirectHeatExchangeLiquidtoLiquid(
+            name=self._name, batch_mode=LogicBatchMethod.Minimum
+        )
+
+    @property
+    def Maximum(self) -> LargeDirectHeatExchangeLiquidtoLiquid:
+        return LargeDirectHeatExchangeLiquidtoLiquid(
+            name=self._name, batch_mode=LogicBatchMethod.Maximum
+        )
+
+    @property
+    def Sum(self) -> LargeDirectHeatExchangeLiquidtoLiquid:
+        return LargeDirectHeatExchangeLiquidtoLiquid(
+            name=self._name, batch_mode=LogicBatchMethod.Sum
+        )
+
 
 LargeDirectHeatExchangeLiquidtoLiquids: _LargeDirectHeatExchangeLiquidtoLiquids = (
     _LargeDirectHeatExchangeLiquidtoLiquids()
@@ -9774,6 +11829,30 @@ class _LargeDirectHeatExchangeGastoGass(
     ) -> "_LargeDirectHeatExchangeGastoGass":
         return _LargeDirectHeatExchangeGastoGass(name)
 
+    @property
+    def Average(self) -> LargeDirectHeatExchangeGastoGas:
+        return LargeDirectHeatExchangeGastoGas(
+            name=self._name, batch_mode=LogicBatchMethod.Average
+        )
+
+    @property
+    def Minimum(self) -> LargeDirectHeatExchangeGastoGas:
+        return LargeDirectHeatExchangeGastoGas(
+            name=self._name, batch_mode=LogicBatchMethod.Minimum
+        )
+
+    @property
+    def Maximum(self) -> LargeDirectHeatExchangeGastoGas:
+        return LargeDirectHeatExchangeGastoGas(
+            name=self._name, batch_mode=LogicBatchMethod.Maximum
+        )
+
+    @property
+    def Sum(self) -> LargeDirectHeatExchangeGastoGas:
+        return LargeDirectHeatExchangeGastoGas(
+            name=self._name, batch_mode=LogicBatchMethod.Sum
+        )
+
 
 LargeDirectHeatExchangeGastoGass: _LargeDirectHeatExchangeGastoGass = (
     _LargeDirectHeatExchangeGastoGass()
@@ -9795,6 +11874,30 @@ class _LargeDirectHeatExchangeGastoLiquids(
         self, name: str | int | float
     ) -> "_LargeDirectHeatExchangeGastoLiquids":
         return _LargeDirectHeatExchangeGastoLiquids(name)
+
+    @property
+    def Average(self) -> LargeDirectHeatExchangeGastoLiquid:
+        return LargeDirectHeatExchangeGastoLiquid(
+            name=self._name, batch_mode=LogicBatchMethod.Average
+        )
+
+    @property
+    def Minimum(self) -> LargeDirectHeatExchangeGastoLiquid:
+        return LargeDirectHeatExchangeGastoLiquid(
+            name=self._name, batch_mode=LogicBatchMethod.Minimum
+        )
+
+    @property
+    def Maximum(self) -> LargeDirectHeatExchangeGastoLiquid:
+        return LargeDirectHeatExchangeGastoLiquid(
+            name=self._name, batch_mode=LogicBatchMethod.Maximum
+        )
+
+    @property
+    def Sum(self) -> LargeDirectHeatExchangeGastoLiquid:
+        return LargeDirectHeatExchangeGastoLiquid(
+            name=self._name, batch_mode=LogicBatchMethod.Sum
+        )
 
 
 LargeDirectHeatExchangeGastoLiquids: _LargeDirectHeatExchangeGastoLiquids = (
@@ -9827,6 +11930,28 @@ class _LargeExtendableRadiators(
         return _LargeExtendableRadiators(name)
 
     @property
+    def Average(self) -> LargeExtendableRadiator:
+        return LargeExtendableRadiator(
+            name=self._name, batch_mode=LogicBatchMethod.Average
+        )
+
+    @property
+    def Minimum(self) -> LargeExtendableRadiator:
+        return LargeExtendableRadiator(
+            name=self._name, batch_mode=LogicBatchMethod.Minimum
+        )
+
+    @property
+    def Maximum(self) -> LargeExtendableRadiator:
+        return LargeExtendableRadiator(
+            name=self._name, batch_mode=LogicBatchMethod.Maximum
+        )
+
+    @property
+    def Sum(self) -> LargeExtendableRadiator:
+        return LargeExtendableRadiator(name=self._name, batch_mode=LogicBatchMethod.Sum)
+
+    @property
     def Horizontal(self) -> _DevicesLogicType:
         return _DevicesLogicType(self, _LT.Horizontal)
 
@@ -9851,6 +11976,22 @@ class _LargeHangerDoors(
 
     def __getitem__(self, name: str | int | float) -> "_LargeHangerDoors":
         return _LargeHangerDoors(name)
+
+    @property
+    def Average(self) -> LargeHangerDoor:
+        return LargeHangerDoor(name=self._name, batch_mode=LogicBatchMethod.Average)
+
+    @property
+    def Minimum(self) -> LargeHangerDoor:
+        return LargeHangerDoor(name=self._name, batch_mode=LogicBatchMethod.Minimum)
+
+    @property
+    def Maximum(self) -> LargeHangerDoor:
+        return LargeHangerDoor(name=self._name, batch_mode=LogicBatchMethod.Maximum)
+
+    @property
+    def Sum(self) -> LargeHangerDoor:
+        return LargeHangerDoor(name=self._name, batch_mode=LogicBatchMethod.Sum)
 
 
 LargeHangerDoors: _LargeHangerDoors = _LargeHangerDoors()
@@ -9919,6 +12060,22 @@ class _LargeSatelliteDishs(
 
     def __getitem__(self, name: str | int | float) -> "_LargeSatelliteDishs":
         return _LargeSatelliteDishs(name)
+
+    @property
+    def Average(self) -> LargeSatelliteDish:
+        return LargeSatelliteDish(name=self._name, batch_mode=LogicBatchMethod.Average)
+
+    @property
+    def Minimum(self) -> LargeSatelliteDish:
+        return LargeSatelliteDish(name=self._name, batch_mode=LogicBatchMethod.Minimum)
+
+    @property
+    def Maximum(self) -> LargeSatelliteDish:
+        return LargeSatelliteDish(name=self._name, batch_mode=LogicBatchMethod.Maximum)
+
+    @property
+    def Sum(self) -> LargeSatelliteDish:
+        return LargeSatelliteDish(name=self._name, batch_mode=LogicBatchMethod.Sum)
 
     @property
     def BestContactFilter(self) -> _DevicesLogicType:
@@ -10053,6 +12210,22 @@ class _TankBigs(
         return _TankBigs(name)
 
     @property
+    def Average(self) -> TankBig:
+        return TankBig(name=self._name, batch_mode=LogicBatchMethod.Average)
+
+    @property
+    def Minimum(self) -> TankBig:
+        return TankBig(name=self._name, batch_mode=LogicBatchMethod.Minimum)
+
+    @property
+    def Maximum(self) -> TankBig:
+        return TankBig(name=self._name, batch_mode=LogicBatchMethod.Maximum)
+
+    @property
+    def Sum(self) -> TankBig:
+        return TankBig(name=self._name, batch_mode=LogicBatchMethod.Sum)
+
+    @property
     def CombustionOutput(self) -> _DevicesLogicType:
         return _DevicesLogicType(self, _LT.CombustionOutput)
 
@@ -10112,6 +12285,22 @@ class _LogicSwitchs(_BaseStructures, _Locks, _Opens, _SettingRs):
     def __getitem__(self, name: str | int | float) -> "_LogicSwitchs":
         return _LogicSwitchs(name)
 
+    @property
+    def Average(self) -> LogicSwitch:
+        return LogicSwitch(name=self._name, batch_mode=LogicBatchMethod.Average)
+
+    @property
+    def Minimum(self) -> LogicSwitch:
+        return LogicSwitch(name=self._name, batch_mode=LogicBatchMethod.Minimum)
+
+    @property
+    def Maximum(self) -> LogicSwitch:
+        return LogicSwitch(name=self._name, batch_mode=LogicBatchMethod.Maximum)
+
+    @property
+    def Sum(self) -> LogicSwitch:
+        return LogicSwitch(name=self._name, batch_mode=LogicBatchMethod.Sum)
+
 
 LogicSwitchs: _LogicSwitchs = _LogicSwitchs()
 
@@ -10127,6 +12316,22 @@ class _LightRounds(_BaseStructures, _Locks, _Powers):
 
     def __getitem__(self, name: str | int | float) -> "_LightRounds":
         return _LightRounds(name)
+
+    @property
+    def Average(self) -> LightRound:
+        return LightRound(name=self._name, batch_mode=LogicBatchMethod.Average)
+
+    @property
+    def Minimum(self) -> LightRound:
+        return LightRound(name=self._name, batch_mode=LogicBatchMethod.Minimum)
+
+    @property
+    def Maximum(self) -> LightRound:
+        return LightRound(name=self._name, batch_mode=LogicBatchMethod.Maximum)
+
+    @property
+    def Sum(self) -> LightRound:
+        return LightRound(name=self._name, batch_mode=LogicBatchMethod.Sum)
 
 
 LightRounds: _LightRounds = _LightRounds()
@@ -10144,6 +12349,22 @@ class _LightRoundAngleds(_BaseStructures, _Locks, _Powers):
     def __getitem__(self, name: str | int | float) -> "_LightRoundAngleds":
         return _LightRoundAngleds(name)
 
+    @property
+    def Average(self) -> LightRoundAngled:
+        return LightRoundAngled(name=self._name, batch_mode=LogicBatchMethod.Average)
+
+    @property
+    def Minimum(self) -> LightRoundAngled:
+        return LightRoundAngled(name=self._name, batch_mode=LogicBatchMethod.Minimum)
+
+    @property
+    def Maximum(self) -> LightRoundAngled:
+        return LightRoundAngled(name=self._name, batch_mode=LogicBatchMethod.Maximum)
+
+    @property
+    def Sum(self) -> LightRoundAngled:
+        return LightRoundAngled(name=self._name, batch_mode=LogicBatchMethod.Sum)
+
 
 LightRoundAngleds: _LightRoundAngleds = _LightRoundAngleds()
 
@@ -10159,6 +12380,22 @@ class _LightRoundSmalls(_BaseStructures, _Locks, _Powers):
 
     def __getitem__(self, name: str | int | float) -> "_LightRoundSmalls":
         return _LightRoundSmalls(name)
+
+    @property
+    def Average(self) -> LightRoundSmall:
+        return LightRoundSmall(name=self._name, batch_mode=LogicBatchMethod.Average)
+
+    @property
+    def Minimum(self) -> LightRoundSmall:
+        return LightRoundSmall(name=self._name, batch_mode=LogicBatchMethod.Minimum)
+
+    @property
+    def Maximum(self) -> LightRoundSmall:
+        return LightRoundSmall(name=self._name, batch_mode=LogicBatchMethod.Maximum)
+
+    @property
+    def Sum(self) -> LightRoundSmall:
+        return LightRoundSmall(name=self._name, batch_mode=LogicBatchMethod.Sum)
 
 
 LightRoundSmalls: _LightRoundSmalls = _LightRoundSmalls()
@@ -10183,6 +12420,22 @@ class _RobotArmDoors(_BaseStructures, _Opens):
 
     def __getitem__(self, name: str | int | float) -> "_RobotArmDoors":
         return _RobotArmDoors(name)
+
+    @property
+    def Average(self) -> RobotArmDoor:
+        return RobotArmDoor(name=self._name, batch_mode=LogicBatchMethod.Average)
+
+    @property
+    def Minimum(self) -> RobotArmDoor:
+        return RobotArmDoor(name=self._name, batch_mode=LogicBatchMethod.Minimum)
+
+    @property
+    def Maximum(self) -> RobotArmDoor:
+        return RobotArmDoor(name=self._name, batch_mode=LogicBatchMethod.Maximum)
+
+    @property
+    def Sum(self) -> RobotArmDoor:
+        return RobotArmDoor(name=self._name, batch_mode=LogicBatchMethod.Sum)
 
     @property
     def Power(self) -> _DevicesLogicType:
@@ -10211,6 +12464,30 @@ class _BackLiquidPressureRegulators(
 
     def __getitem__(self, name: str | int | float) -> "_BackLiquidPressureRegulators":
         return _BackLiquidPressureRegulators(name)
+
+    @property
+    def Average(self) -> BackLiquidPressureRegulator:
+        return BackLiquidPressureRegulator(
+            name=self._name, batch_mode=LogicBatchMethod.Average
+        )
+
+    @property
+    def Minimum(self) -> BackLiquidPressureRegulator:
+        return BackLiquidPressureRegulator(
+            name=self._name, batch_mode=LogicBatchMethod.Minimum
+        )
+
+    @property
+    def Maximum(self) -> BackLiquidPressureRegulator:
+        return BackLiquidPressureRegulator(
+            name=self._name, batch_mode=LogicBatchMethod.Maximum
+        )
+
+    @property
+    def Sum(self) -> BackLiquidPressureRegulator:
+        return BackLiquidPressureRegulator(
+            name=self._name, batch_mode=LogicBatchMethod.Sum
+        )
 
 
 BackLiquidPressureRegulators: _BackLiquidPressureRegulators = (
@@ -10295,6 +12572,30 @@ class _LargeRocketLiquidFuelTanks(
 
     def __getitem__(self, name: str | int | float) -> "_LargeRocketLiquidFuelTanks":
         return _LargeRocketLiquidFuelTanks(name)
+
+    @property
+    def Average(self) -> LargeRocketLiquidFuelTank:
+        return LargeRocketLiquidFuelTank(
+            name=self._name, batch_mode=LogicBatchMethod.Average
+        )
+
+    @property
+    def Minimum(self) -> LargeRocketLiquidFuelTank:
+        return LargeRocketLiquidFuelTank(
+            name=self._name, batch_mode=LogicBatchMethod.Minimum
+        )
+
+    @property
+    def Maximum(self) -> LargeRocketLiquidFuelTank:
+        return LargeRocketLiquidFuelTank(
+            name=self._name, batch_mode=LogicBatchMethod.Maximum
+        )
+
+    @property
+    def Sum(self) -> LargeRocketLiquidFuelTank:
+        return LargeRocketLiquidFuelTank(
+            name=self._name, batch_mode=LogicBatchMethod.Sum
+        )
 
     @property
     def CombustionOutput(self) -> _DevicesLogicType:
@@ -10421,6 +12722,30 @@ class _MediumRocketLiquidFuelTanks(
 
     def __getitem__(self, name: str | int | float) -> "_MediumRocketLiquidFuelTanks":
         return _MediumRocketLiquidFuelTanks(name)
+
+    @property
+    def Average(self) -> MediumRocketLiquidFuelTank:
+        return MediumRocketLiquidFuelTank(
+            name=self._name, batch_mode=LogicBatchMethod.Average
+        )
+
+    @property
+    def Minimum(self) -> MediumRocketLiquidFuelTank:
+        return MediumRocketLiquidFuelTank(
+            name=self._name, batch_mode=LogicBatchMethod.Minimum
+        )
+
+    @property
+    def Maximum(self) -> MediumRocketLiquidFuelTank:
+        return MediumRocketLiquidFuelTank(
+            name=self._name, batch_mode=LogicBatchMethod.Maximum
+        )
+
+    @property
+    def Sum(self) -> MediumRocketLiquidFuelTank:
+        return MediumRocketLiquidFuelTank(
+            name=self._name, batch_mode=LogicBatchMethod.Sum
+        )
 
     @property
     def CombustionOutput(self) -> _DevicesLogicType:
@@ -10551,6 +12876,22 @@ class _CapsuleTankLiquids(
         return _CapsuleTankLiquids(name)
 
     @property
+    def Average(self) -> CapsuleTankLiquid:
+        return CapsuleTankLiquid(name=self._name, batch_mode=LogicBatchMethod.Average)
+
+    @property
+    def Minimum(self) -> CapsuleTankLiquid:
+        return CapsuleTankLiquid(name=self._name, batch_mode=LogicBatchMethod.Minimum)
+
+    @property
+    def Maximum(self) -> CapsuleTankLiquid:
+        return CapsuleTankLiquid(name=self._name, batch_mode=LogicBatchMethod.Maximum)
+
+    @property
+    def Sum(self) -> CapsuleTankLiquid:
+        return CapsuleTankLiquid(name=self._name, batch_mode=LogicBatchMethod.Sum)
+
+    @property
     def CombustionOutput(self) -> _DevicesLogicType:
         return _DevicesLogicType(self, _LT.CombustionOutput)
 
@@ -10614,6 +12955,22 @@ class _WaterDigitalValves(
     def __getitem__(self, name: str | int | float) -> "_WaterDigitalValves":
         return _WaterDigitalValves(name)
 
+    @property
+    def Average(self) -> WaterDigitalValve:
+        return WaterDigitalValve(name=self._name, batch_mode=LogicBatchMethod.Average)
+
+    @property
+    def Minimum(self) -> WaterDigitalValve:
+        return WaterDigitalValve(name=self._name, batch_mode=LogicBatchMethod.Minimum)
+
+    @property
+    def Maximum(self) -> WaterDigitalValve:
+        return WaterDigitalValve(name=self._name, batch_mode=LogicBatchMethod.Maximum)
+
+    @property
+    def Sum(self) -> WaterDigitalValve:
+        return WaterDigitalValve(name=self._name, batch_mode=LogicBatchMethod.Sum)
+
 
 WaterDigitalValves: _WaterDigitalValves = _WaterDigitalValves()
 
@@ -10655,6 +13012,22 @@ class _LiquidPipeAnalyzers(
 
     def __getitem__(self, name: str | int | float) -> "_LiquidPipeAnalyzers":
         return _LiquidPipeAnalyzers(name)
+
+    @property
+    def Average(self) -> LiquidPipeAnalyzer:
+        return LiquidPipeAnalyzer(name=self._name, batch_mode=LogicBatchMethod.Average)
+
+    @property
+    def Minimum(self) -> LiquidPipeAnalyzer:
+        return LiquidPipeAnalyzer(name=self._name, batch_mode=LogicBatchMethod.Minimum)
+
+    @property
+    def Maximum(self) -> LiquidPipeAnalyzer:
+        return LiquidPipeAnalyzer(name=self._name, batch_mode=LogicBatchMethod.Maximum)
+
+    @property
+    def Sum(self) -> LiquidPipeAnalyzer:
+        return LiquidPipeAnalyzer(name=self._name, batch_mode=LogicBatchMethod.Sum)
 
     @property
     def NetworkFault(self) -> _DevicesLogicType:
@@ -10741,6 +13114,22 @@ class _LiquidTankBigs(
 
     def __getitem__(self, name: str | int | float) -> "_LiquidTankBigs":
         return _LiquidTankBigs(name)
+
+    @property
+    def Average(self) -> LiquidTankBig:
+        return LiquidTankBig(name=self._name, batch_mode=LogicBatchMethod.Average)
+
+    @property
+    def Minimum(self) -> LiquidTankBig:
+        return LiquidTankBig(name=self._name, batch_mode=LogicBatchMethod.Minimum)
+
+    @property
+    def Maximum(self) -> LiquidTankBig:
+        return LiquidTankBig(name=self._name, batch_mode=LogicBatchMethod.Maximum)
+
+    @property
+    def Sum(self) -> LiquidTankBig:
+        return LiquidTankBig(name=self._name, batch_mode=LogicBatchMethod.Sum)
 
     @property
     def CombustionOutput(self) -> _DevicesLogicType:
@@ -10869,6 +13258,28 @@ class _LiquidTankBigInsulateds(
         return _LiquidTankBigInsulateds(name)
 
     @property
+    def Average(self) -> LiquidTankBigInsulated:
+        return LiquidTankBigInsulated(
+            name=self._name, batch_mode=LogicBatchMethod.Average
+        )
+
+    @property
+    def Minimum(self) -> LiquidTankBigInsulated:
+        return LiquidTankBigInsulated(
+            name=self._name, batch_mode=LogicBatchMethod.Minimum
+        )
+
+    @property
+    def Maximum(self) -> LiquidTankBigInsulated:
+        return LiquidTankBigInsulated(
+            name=self._name, batch_mode=LogicBatchMethod.Maximum
+        )
+
+    @property
+    def Sum(self) -> LiquidTankBigInsulated:
+        return LiquidTankBigInsulated(name=self._name, batch_mode=LogicBatchMethod.Sum)
+
+    @property
     def CombustionOutput(self) -> _DevicesLogicType:
         return _DevicesLogicType(self, _LT.CombustionOutput)
 
@@ -10993,6 +13404,22 @@ class _LiquidTankSmalls(
 
     def __getitem__(self, name: str | int | float) -> "_LiquidTankSmalls":
         return _LiquidTankSmalls(name)
+
+    @property
+    def Average(self) -> LiquidTankSmall:
+        return LiquidTankSmall(name=self._name, batch_mode=LogicBatchMethod.Average)
+
+    @property
+    def Minimum(self) -> LiquidTankSmall:
+        return LiquidTankSmall(name=self._name, batch_mode=LogicBatchMethod.Minimum)
+
+    @property
+    def Maximum(self) -> LiquidTankSmall:
+        return LiquidTankSmall(name=self._name, batch_mode=LogicBatchMethod.Maximum)
+
+    @property
+    def Sum(self) -> LiquidTankSmall:
+        return LiquidTankSmall(name=self._name, batch_mode=LogicBatchMethod.Sum)
 
     @property
     def CombustionOutput(self) -> _DevicesLogicType:
@@ -11121,6 +13548,30 @@ class _LiquidTankSmallInsulateds(
         return _LiquidTankSmallInsulateds(name)
 
     @property
+    def Average(self) -> LiquidTankSmallInsulated:
+        return LiquidTankSmallInsulated(
+            name=self._name, batch_mode=LogicBatchMethod.Average
+        )
+
+    @property
+    def Minimum(self) -> LiquidTankSmallInsulated:
+        return LiquidTankSmallInsulated(
+            name=self._name, batch_mode=LogicBatchMethod.Minimum
+        )
+
+    @property
+    def Maximum(self) -> LiquidTankSmallInsulated:
+        return LiquidTankSmallInsulated(
+            name=self._name, batch_mode=LogicBatchMethod.Maximum
+        )
+
+    @property
+    def Sum(self) -> LiquidTankSmallInsulated:
+        return LiquidTankSmallInsulated(
+            name=self._name, batch_mode=LogicBatchMethod.Sum
+        )
+
+    @property
     def CombustionOutput(self) -> _DevicesLogicType:
         return _DevicesLogicType(self, _LT.CombustionOutput)
 
@@ -11217,6 +13668,22 @@ class _LiquidTankStorages(_BaseStructures, _Quantitys, _Temperatures):
         return _LiquidTankStorages(name)
 
     @property
+    def Average(self) -> LiquidTankStorage:
+        return LiquidTankStorage(name=self._name, batch_mode=LogicBatchMethod.Average)
+
+    @property
+    def Minimum(self) -> LiquidTankStorage:
+        return LiquidTankStorage(name=self._name, batch_mode=LogicBatchMethod.Minimum)
+
+    @property
+    def Maximum(self) -> LiquidTankStorage:
+        return LiquidTankStorage(name=self._name, batch_mode=LogicBatchMethod.Maximum)
+
+    @property
+    def Sum(self) -> LiquidTankStorage:
+        return LiquidTankStorage(name=self._name, batch_mode=LogicBatchMethod.Sum)
+
+    @property
     def RatioCarbonDioxide(self) -> _DevicesLogicType:
         return _DevicesLogicType(self, _LT.RatioCarbonDioxide)
 
@@ -11272,6 +13739,22 @@ class _LiquidVolumePumps(
     def __getitem__(self, name: str | int | float) -> "_LiquidVolumePumps":
         return _LiquidVolumePumps(name)
 
+    @property
+    def Average(self) -> LiquidVolumePump:
+        return LiquidVolumePump(name=self._name, batch_mode=LogicBatchMethod.Average)
+
+    @property
+    def Minimum(self) -> LiquidVolumePump:
+        return LiquidVolumePump(name=self._name, batch_mode=LogicBatchMethod.Minimum)
+
+    @property
+    def Maximum(self) -> LiquidVolumePump:
+        return LiquidVolumePump(name=self._name, batch_mode=LogicBatchMethod.Maximum)
+
+    @property
+    def Sum(self) -> LiquidVolumePump:
+        return LiquidVolumePump(name=self._name, batch_mode=LogicBatchMethod.Sum)
+
 
 LiquidVolumePumps: _LiquidVolumePumps = _LiquidVolumePumps()
 
@@ -11291,6 +13774,28 @@ class _LiquidPressureRegulators(
 
     def __getitem__(self, name: str | int | float) -> "_LiquidPressureRegulators":
         return _LiquidPressureRegulators(name)
+
+    @property
+    def Average(self) -> LiquidPressureRegulator:
+        return LiquidPressureRegulator(
+            name=self._name, batch_mode=LogicBatchMethod.Average
+        )
+
+    @property
+    def Minimum(self) -> LiquidPressureRegulator:
+        return LiquidPressureRegulator(
+            name=self._name, batch_mode=LogicBatchMethod.Minimum
+        )
+
+    @property
+    def Maximum(self) -> LiquidPressureRegulator:
+        return LiquidPressureRegulator(
+            name=self._name, batch_mode=LogicBatchMethod.Maximum
+        )
+
+    @property
+    def Sum(self) -> LiquidPressureRegulator:
+        return LiquidPressureRegulator(name=self._name, batch_mode=LogicBatchMethod.Sum)
 
 
 LiquidPressureRegulators: _LiquidPressureRegulators = _LiquidPressureRegulators()
@@ -11363,6 +13868,22 @@ class _WaterWallCoolers(
 
     def __getitem__(self, name: str | int | float) -> "_WaterWallCoolers":
         return _WaterWallCoolers(name)
+
+    @property
+    def Average(self) -> WaterWallCooler:
+        return WaterWallCooler(name=self._name, batch_mode=LogicBatchMethod.Average)
+
+    @property
+    def Minimum(self) -> WaterWallCooler:
+        return WaterWallCooler(name=self._name, batch_mode=LogicBatchMethod.Minimum)
+
+    @property
+    def Maximum(self) -> WaterWallCooler:
+        return WaterWallCooler(name=self._name, batch_mode=LogicBatchMethod.Maximum)
+
+    @property
+    def Sum(self) -> WaterWallCooler:
+        return WaterWallCooler(name=self._name, batch_mode=LogicBatchMethod.Sum)
 
     @property
     def CombustionOutput(self) -> _DevicesLogicType:
@@ -11553,6 +14074,22 @@ class _StorageLockers(_BaseStructures, _Locks, _Opens):
         return _StorageLockers(name)
 
     @property
+    def Average(self) -> StorageLocker:
+        return StorageLocker(name=self._name, batch_mode=LogicBatchMethod.Average)
+
+    @property
+    def Minimum(self) -> StorageLocker:
+        return StorageLocker(name=self._name, batch_mode=LogicBatchMethod.Minimum)
+
+    @property
+    def Maximum(self) -> StorageLocker:
+        return StorageLocker(name=self._name, batch_mode=LogicBatchMethod.Maximum)
+
+    @property
+    def Sum(self) -> StorageLocker:
+        return StorageLocker(name=self._name, batch_mode=LogicBatchMethod.Sum)
+
+    @property
     def slot0(self) -> _SlotTypeCommons:
         return _SlotTypeCommons(self, 0)
 
@@ -11705,6 +14242,22 @@ class _LockerSmalls(_BaseStructures, _Locks, _Opens):
         return _LockerSmalls(name)
 
     @property
+    def Average(self) -> LockerSmall:
+        return LockerSmall(name=self._name, batch_mode=LogicBatchMethod.Average)
+
+    @property
+    def Minimum(self) -> LockerSmall:
+        return LockerSmall(name=self._name, batch_mode=LogicBatchMethod.Minimum)
+
+    @property
+    def Maximum(self) -> LockerSmall:
+        return LockerSmall(name=self._name, batch_mode=LogicBatchMethod.Maximum)
+
+    @property
+    def Sum(self) -> LockerSmall:
+        return LockerSmall(name=self._name, batch_mode=LogicBatchMethod.Sum)
+
+    @property
     def slot0(self) -> _SlotTypeCommons:
         return _SlotTypeCommons(self, 0)
 
@@ -11736,6 +14289,22 @@ class _LogicCompares(_BaseStructures, _Errors, _Modes, _Powers, _SettingRs):
     def __getitem__(self, name: str | int | float) -> "_LogicCompares":
         return _LogicCompares(name)
 
+    @property
+    def Average(self) -> LogicCompare:
+        return LogicCompare(name=self._name, batch_mode=LogicBatchMethod.Average)
+
+    @property
+    def Minimum(self) -> LogicCompare:
+        return LogicCompare(name=self._name, batch_mode=LogicBatchMethod.Minimum)
+
+    @property
+    def Maximum(self) -> LogicCompare:
+        return LogicCompare(name=self._name, batch_mode=LogicBatchMethod.Maximum)
+
+    @property
+    def Sum(self) -> LogicCompare:
+        return LogicCompare(name=self._name, batch_mode=LogicBatchMethod.Sum)
+
 
 LogicCompares: _LogicCompares = _LogicCompares()
 
@@ -11751,6 +14320,22 @@ class _LogicGates(_BaseStructures, _Errors, _Modes, _Powers, _SettingRs):
 
     def __getitem__(self, name: str | int | float) -> "_LogicGates":
         return _LogicGates(name)
+
+    @property
+    def Average(self) -> LogicGate:
+        return LogicGate(name=self._name, batch_mode=LogicBatchMethod.Average)
+
+    @property
+    def Minimum(self) -> LogicGate:
+        return LogicGate(name=self._name, batch_mode=LogicBatchMethod.Minimum)
+
+    @property
+    def Maximum(self) -> LogicGate:
+        return LogicGate(name=self._name, batch_mode=LogicBatchMethod.Maximum)
+
+    @property
+    def Sum(self) -> LogicGate:
+        return LogicGate(name=self._name, batch_mode=LogicBatchMethod.Sum)
 
 
 LogicGates: _LogicGates = _LogicGates()
@@ -11768,6 +14353,22 @@ class _LogicHashGens(_BaseStructures, _SettingRs):
     def __getitem__(self, name: str | int | float) -> "_LogicHashGens":
         return _LogicHashGens(name)
 
+    @property
+    def Average(self) -> LogicHashGen:
+        return LogicHashGen(name=self._name, batch_mode=LogicBatchMethod.Average)
+
+    @property
+    def Minimum(self) -> LogicHashGen:
+        return LogicHashGen(name=self._name, batch_mode=LogicBatchMethod.Minimum)
+
+    @property
+    def Maximum(self) -> LogicHashGen:
+        return LogicHashGen(name=self._name, batch_mode=LogicBatchMethod.Maximum)
+
+    @property
+    def Sum(self) -> LogicHashGen:
+        return LogicHashGen(name=self._name, batch_mode=LogicBatchMethod.Sum)
+
 
 LogicHashGens: _LogicHashGens = _LogicHashGens()
 
@@ -11783,6 +14384,22 @@ class _LogicMaths(_BaseStructures, _Errors, _Modes, _Powers, _SettingRs):
 
     def __getitem__(self, name: str | int | float) -> "_LogicMaths":
         return _LogicMaths(name)
+
+    @property
+    def Average(self) -> LogicMath:
+        return LogicMath(name=self._name, batch_mode=LogicBatchMethod.Average)
+
+    @property
+    def Minimum(self) -> LogicMath:
+        return LogicMath(name=self._name, batch_mode=LogicBatchMethod.Minimum)
+
+    @property
+    def Maximum(self) -> LogicMath:
+        return LogicMath(name=self._name, batch_mode=LogicBatchMethod.Maximum)
+
+    @property
+    def Sum(self) -> LogicMath:
+        return LogicMath(name=self._name, batch_mode=LogicBatchMethod.Sum)
 
 
 LogicMaths: _LogicMaths = _LogicMaths()
@@ -11800,6 +14417,22 @@ class _LogicMemorys(_BaseStructures, _SettingWs):
     def __getitem__(self, name: str | int | float) -> "_LogicMemorys":
         return _LogicMemorys(name)
 
+    @property
+    def Average(self) -> LogicMemory:
+        return LogicMemory(name=self._name, batch_mode=LogicBatchMethod.Average)
+
+    @property
+    def Minimum(self) -> LogicMemory:
+        return LogicMemory(name=self._name, batch_mode=LogicBatchMethod.Minimum)
+
+    @property
+    def Maximum(self) -> LogicMemory:
+        return LogicMemory(name=self._name, batch_mode=LogicBatchMethod.Maximum)
+
+    @property
+    def Sum(self) -> LogicMemory:
+        return LogicMemory(name=self._name, batch_mode=LogicBatchMethod.Sum)
+
 
 LogicMemorys: _LogicMemorys = _LogicMemorys()
 
@@ -11816,6 +14449,22 @@ class _LogicMinMaxs(_BaseStructures, _Errors, _Modes, _Powers, _SettingRs):
     def __getitem__(self, name: str | int | float) -> "_LogicMinMaxs":
         return _LogicMinMaxs(name)
 
+    @property
+    def Average(self) -> LogicMinMax:
+        return LogicMinMax(name=self._name, batch_mode=LogicBatchMethod.Average)
+
+    @property
+    def Minimum(self) -> LogicMinMax:
+        return LogicMinMax(name=self._name, batch_mode=LogicBatchMethod.Minimum)
+
+    @property
+    def Maximum(self) -> LogicMinMax:
+        return LogicMinMax(name=self._name, batch_mode=LogicBatchMethod.Maximum)
+
+    @property
+    def Sum(self) -> LogicMinMax:
+        return LogicMinMax(name=self._name, batch_mode=LogicBatchMethod.Sum)
+
 
 LogicMinMaxs: _LogicMinMaxs = _LogicMinMaxs()
 
@@ -11831,6 +14480,22 @@ class _LogicReaders(_BaseStructures, _Errors, _Powers, _SettingRs):
 
     def __getitem__(self, name: str | int | float) -> "_LogicReaders":
         return _LogicReaders(name)
+
+    @property
+    def Average(self) -> LogicReader:
+        return LogicReader(name=self._name, batch_mode=LogicBatchMethod.Average)
+
+    @property
+    def Minimum(self) -> LogicReader:
+        return LogicReader(name=self._name, batch_mode=LogicBatchMethod.Minimum)
+
+    @property
+    def Maximum(self) -> LogicReader:
+        return LogicReader(name=self._name, batch_mode=LogicBatchMethod.Maximum)
+
+    @property
+    def Sum(self) -> LogicReader:
+        return LogicReader(name=self._name, batch_mode=LogicBatchMethod.Sum)
 
 
 LogicReaders: _LogicReaders = _LogicReaders()
@@ -11857,6 +14522,22 @@ class _LogicRocketDownlinks(_BaseStructures):
         return _LogicRocketDownlinks(name)
 
     @property
+    def Average(self) -> LogicRocketDownlink:
+        return LogicRocketDownlink(name=self._name, batch_mode=LogicBatchMethod.Average)
+
+    @property
+    def Minimum(self) -> LogicRocketDownlink:
+        return LogicRocketDownlink(name=self._name, batch_mode=LogicBatchMethod.Minimum)
+
+    @property
+    def Maximum(self) -> LogicRocketDownlink:
+        return LogicRocketDownlink(name=self._name, batch_mode=LogicBatchMethod.Maximum)
+
+    @property
+    def Sum(self) -> LogicRocketDownlink:
+        return LogicRocketDownlink(name=self._name, batch_mode=LogicBatchMethod.Sum)
+
+    @property
     def Power(self) -> _DevicesLogicType:
         return _DevicesLogicType(self, _LT.Power)
 
@@ -11879,6 +14560,22 @@ class _LogicSelects(_BaseStructures, _Errors, _Modes, _Powers, _SettingRs):
 
     def __getitem__(self, name: str | int | float) -> "_LogicSelects":
         return _LogicSelects(name)
+
+    @property
+    def Average(self) -> LogicSelect:
+        return LogicSelect(name=self._name, batch_mode=LogicBatchMethod.Average)
+
+    @property
+    def Minimum(self) -> LogicSelect:
+        return LogicSelect(name=self._name, batch_mode=LogicBatchMethod.Minimum)
+
+    @property
+    def Maximum(self) -> LogicSelect:
+        return LogicSelect(name=self._name, batch_mode=LogicBatchMethod.Maximum)
+
+    @property
+    def Sum(self) -> LogicSelect:
+        return LogicSelect(name=self._name, batch_mode=LogicBatchMethod.Sum)
 
 
 LogicSelects: _LogicSelects = _LogicSelects()
@@ -11951,6 +14648,22 @@ class _LogicSorters(
         return _LogicSorters(name)
 
     @property
+    def Average(self) -> LogicSorter:
+        return LogicSorter(name=self._name, batch_mode=LogicBatchMethod.Average)
+
+    @property
+    def Minimum(self) -> LogicSorter:
+        return LogicSorter(name=self._name, batch_mode=LogicBatchMethod.Minimum)
+
+    @property
+    def Maximum(self) -> LogicSorter:
+        return LogicSorter(name=self._name, batch_mode=LogicBatchMethod.Maximum)
+
+    @property
+    def Sum(self) -> LogicSorter:
+        return LogicSorter(name=self._name, batch_mode=LogicBatchMethod.Sum)
+
+    @property
     def StackSize(self) -> _DevicesLogicType:
         return _DevicesLogicType(self, _LT.StackSize)
 
@@ -12002,6 +14715,22 @@ class _LogicRocketUplinks(_BaseStructures, _Errors, _Powers):
     def __getitem__(self, name: str | int | float) -> "_LogicRocketUplinks":
         return _LogicRocketUplinks(name)
 
+    @property
+    def Average(self) -> LogicRocketUplink:
+        return LogicRocketUplink(name=self._name, batch_mode=LogicBatchMethod.Average)
+
+    @property
+    def Minimum(self) -> LogicRocketUplink:
+        return LogicRocketUplink(name=self._name, batch_mode=LogicBatchMethod.Minimum)
+
+    @property
+    def Maximum(self) -> LogicRocketUplink:
+        return LogicRocketUplink(name=self._name, batch_mode=LogicBatchMethod.Maximum)
+
+    @property
+    def Sum(self) -> LogicRocketUplink:
+        return LogicRocketUplink(name=self._name, batch_mode=LogicBatchMethod.Sum)
+
 
 LogicRocketUplinks: _LogicRocketUplinks = _LogicRocketUplinks()
 
@@ -12025,6 +14754,22 @@ class _LogicWriters(_BaseStructures, _Errors, _Powers):
 
     def __getitem__(self, name: str | int | float) -> "_LogicWriters":
         return _LogicWriters(name)
+
+    @property
+    def Average(self) -> LogicWriter:
+        return LogicWriter(name=self._name, batch_mode=LogicBatchMethod.Average)
+
+    @property
+    def Minimum(self) -> LogicWriter:
+        return LogicWriter(name=self._name, batch_mode=LogicBatchMethod.Minimum)
+
+    @property
+    def Maximum(self) -> LogicWriter:
+        return LogicWriter(name=self._name, batch_mode=LogicBatchMethod.Maximum)
+
+    @property
+    def Sum(self) -> LogicWriter:
+        return LogicWriter(name=self._name, batch_mode=LogicBatchMethod.Sum)
 
     @property
     def ForceWrite(self) -> _DevicesLogicType:
@@ -12059,6 +14804,22 @@ class _LogicWriterSwitchs(_BaseStructures, _Activates, _Errors, _Powers):
         return _LogicWriterSwitchs(name)
 
     @property
+    def Average(self) -> LogicWriterSwitch:
+        return LogicWriterSwitch(name=self._name, batch_mode=LogicBatchMethod.Average)
+
+    @property
+    def Minimum(self) -> LogicWriterSwitch:
+        return LogicWriterSwitch(name=self._name, batch_mode=LogicBatchMethod.Minimum)
+
+    @property
+    def Maximum(self) -> LogicWriterSwitch:
+        return LogicWriterSwitch(name=self._name, batch_mode=LogicBatchMethod.Maximum)
+
+    @property
+    def Sum(self) -> LogicWriterSwitch:
+        return LogicWriterSwitch(name=self._name, batch_mode=LogicBatchMethod.Sum)
+
+    @property
     def ForceWrite(self) -> _DevicesLogicType:
         return _DevicesLogicType(self, _LT.ForceWrite)
 
@@ -12082,6 +14843,22 @@ class _ManualFloorHatchs(_BaseStructures, _Idles, _Locks, _Opens, _SettingWs):
     def __getitem__(self, name: str | int | float) -> "_ManualFloorHatchs":
         return _ManualFloorHatchs(name)
 
+    @property
+    def Average(self) -> ManualFloorHatch:
+        return ManualFloorHatch(name=self._name, batch_mode=LogicBatchMethod.Average)
+
+    @property
+    def Minimum(self) -> ManualFloorHatch:
+        return ManualFloorHatch(name=self._name, batch_mode=LogicBatchMethod.Minimum)
+
+    @property
+    def Maximum(self) -> ManualFloorHatch:
+        return ManualFloorHatch(name=self._name, batch_mode=LogicBatchMethod.Maximum)
+
+    @property
+    def Sum(self) -> ManualFloorHatch:
+        return ManualFloorHatch(name=self._name, batch_mode=LogicBatchMethod.Sum)
+
 
 ManualFloorHatchs: _ManualFloorHatchs = _ManualFloorHatchs()
 
@@ -12100,6 +14877,22 @@ class _ManualHatchs(
     def __getitem__(self, name: str | int | float) -> "_ManualHatchs":
         return _ManualHatchs(name)
 
+    @property
+    def Average(self) -> ManualHatch:
+        return ManualHatch(name=self._name, batch_mode=LogicBatchMethod.Average)
+
+    @property
+    def Minimum(self) -> ManualHatch:
+        return ManualHatch(name=self._name, batch_mode=LogicBatchMethod.Minimum)
+
+    @property
+    def Maximum(self) -> ManualHatch:
+        return ManualHatch(name=self._name, batch_mode=LogicBatchMethod.Maximum)
+
+    @property
+    def Sum(self) -> ManualHatch:
+        return ManualHatch(name=self._name, batch_mode=LogicBatchMethod.Sum)
+
 
 ManualHatchs: _ManualHatchs = _ManualHatchs()
 
@@ -12115,6 +14908,22 @@ class _LogicMathUnarys(_BaseStructures, _Errors, _Modes, _Powers, _SettingRs):
 
     def __getitem__(self, name: str | int | float) -> "_LogicMathUnarys":
         return _LogicMathUnarys(name)
+
+    @property
+    def Average(self) -> LogicMathUnary:
+        return LogicMathUnary(name=self._name, batch_mode=LogicBatchMethod.Average)
+
+    @property
+    def Minimum(self) -> LogicMathUnary:
+        return LogicMathUnary(name=self._name, batch_mode=LogicBatchMethod.Minimum)
+
+    @property
+    def Maximum(self) -> LogicMathUnary:
+        return LogicMathUnary(name=self._name, batch_mode=LogicBatchMethod.Maximum)
+
+    @property
+    def Sum(self) -> LogicMathUnary:
+        return LogicMathUnary(name=self._name, batch_mode=LogicBatchMethod.Sum)
 
 
 LogicMathUnarys: _LogicMathUnarys = _LogicMathUnarys()
@@ -12132,6 +14941,28 @@ class _PassiveLargeRadiatorGass(_BaseStructures, _Maximums, _Ratios, _SettingWs)
     def __getitem__(self, name: str | int | float) -> "_PassiveLargeRadiatorGass":
         return _PassiveLargeRadiatorGass(name)
 
+    @property
+    def Average(self) -> PassiveLargeRadiatorGas:
+        return PassiveLargeRadiatorGas(
+            name=self._name, batch_mode=LogicBatchMethod.Average
+        )
+
+    @property
+    def Minimum(self) -> PassiveLargeRadiatorGas:
+        return PassiveLargeRadiatorGas(
+            name=self._name, batch_mode=LogicBatchMethod.Minimum
+        )
+
+    @property
+    def Maximum(self) -> PassiveLargeRadiatorGas:
+        return PassiveLargeRadiatorGas(
+            name=self._name, batch_mode=LogicBatchMethod.Maximum
+        )
+
+    @property
+    def Sum(self) -> PassiveLargeRadiatorGas:
+        return PassiveLargeRadiatorGas(name=self._name, batch_mode=LogicBatchMethod.Sum)
+
 
 PassiveLargeRadiatorGass: _PassiveLargeRadiatorGass = _PassiveLargeRadiatorGass()
 
@@ -12147,6 +14978,30 @@ class _MediumConvectionRadiators(_BaseStructures, _Maximums, _Ratios, _SettingWs
 
     def __getitem__(self, name: str | int | float) -> "_MediumConvectionRadiators":
         return _MediumConvectionRadiators(name)
+
+    @property
+    def Average(self) -> MediumConvectionRadiator:
+        return MediumConvectionRadiator(
+            name=self._name, batch_mode=LogicBatchMethod.Average
+        )
+
+    @property
+    def Minimum(self) -> MediumConvectionRadiator:
+        return MediumConvectionRadiator(
+            name=self._name, batch_mode=LogicBatchMethod.Minimum
+        )
+
+    @property
+    def Maximum(self) -> MediumConvectionRadiator:
+        return MediumConvectionRadiator(
+            name=self._name, batch_mode=LogicBatchMethod.Maximum
+        )
+
+    @property
+    def Sum(self) -> MediumConvectionRadiator:
+        return MediumConvectionRadiator(
+            name=self._name, batch_mode=LogicBatchMethod.Sum
+        )
 
 
 MediumConvectionRadiators: _MediumConvectionRadiators = _MediumConvectionRadiators()
@@ -12166,6 +15021,30 @@ class _MediumConvectionRadiatorLiquids(_BaseStructures, _Maximums, _Ratios, _Set
     ) -> "_MediumConvectionRadiatorLiquids":
         return _MediumConvectionRadiatorLiquids(name)
 
+    @property
+    def Average(self) -> MediumConvectionRadiatorLiquid:
+        return MediumConvectionRadiatorLiquid(
+            name=self._name, batch_mode=LogicBatchMethod.Average
+        )
+
+    @property
+    def Minimum(self) -> MediumConvectionRadiatorLiquid:
+        return MediumConvectionRadiatorLiquid(
+            name=self._name, batch_mode=LogicBatchMethod.Minimum
+        )
+
+    @property
+    def Maximum(self) -> MediumConvectionRadiatorLiquid:
+        return MediumConvectionRadiatorLiquid(
+            name=self._name, batch_mode=LogicBatchMethod.Maximum
+        )
+
+    @property
+    def Sum(self) -> MediumConvectionRadiatorLiquid:
+        return MediumConvectionRadiatorLiquid(
+            name=self._name, batch_mode=LogicBatchMethod.Sum
+        )
+
 
 MediumConvectionRadiatorLiquids: _MediumConvectionRadiatorLiquids = (
     _MediumConvectionRadiatorLiquids()
@@ -12183,6 +15062,30 @@ class _PassiveLargeRadiatorLiquids(_BaseStructures, _Maximums, _Ratios, _Setting
 
     def __getitem__(self, name: str | int | float) -> "_PassiveLargeRadiatorLiquids":
         return _PassiveLargeRadiatorLiquids(name)
+
+    @property
+    def Average(self) -> PassiveLargeRadiatorLiquid:
+        return PassiveLargeRadiatorLiquid(
+            name=self._name, batch_mode=LogicBatchMethod.Average
+        )
+
+    @property
+    def Minimum(self) -> PassiveLargeRadiatorLiquid:
+        return PassiveLargeRadiatorLiquid(
+            name=self._name, batch_mode=LogicBatchMethod.Minimum
+        )
+
+    @property
+    def Maximum(self) -> PassiveLargeRadiatorLiquid:
+        return PassiveLargeRadiatorLiquid(
+            name=self._name, batch_mode=LogicBatchMethod.Maximum
+        )
+
+    @property
+    def Sum(self) -> PassiveLargeRadiatorLiquid:
+        return PassiveLargeRadiatorLiquid(
+            name=self._name, batch_mode=LogicBatchMethod.Sum
+        )
 
 
 PassiveLargeRadiatorLiquids: _PassiveLargeRadiatorLiquids = (
@@ -12204,6 +15107,22 @@ class _MediumHangerDoors(
     def __getitem__(self, name: str | int | float) -> "_MediumHangerDoors":
         return _MediumHangerDoors(name)
 
+    @property
+    def Average(self) -> MediumHangerDoor:
+        return MediumHangerDoor(name=self._name, batch_mode=LogicBatchMethod.Average)
+
+    @property
+    def Minimum(self) -> MediumHangerDoor:
+        return MediumHangerDoor(name=self._name, batch_mode=LogicBatchMethod.Minimum)
+
+    @property
+    def Maximum(self) -> MediumHangerDoor:
+        return MediumHangerDoor(name=self._name, batch_mode=LogicBatchMethod.Maximum)
+
+    @property
+    def Sum(self) -> MediumHangerDoor:
+        return MediumHangerDoor(name=self._name, batch_mode=LogicBatchMethod.Sum)
+
 
 MediumHangerDoors: _MediumHangerDoors = _MediumHangerDoors()
 
@@ -12220,6 +15139,22 @@ class _MediumRadiators(_BaseStructures, _Maximums, _Ratios, _SettingWs):
     def __getitem__(self, name: str | int | float) -> "_MediumRadiators":
         return _MediumRadiators(name)
 
+    @property
+    def Average(self) -> MediumRadiator:
+        return MediumRadiator(name=self._name, batch_mode=LogicBatchMethod.Average)
+
+    @property
+    def Minimum(self) -> MediumRadiator:
+        return MediumRadiator(name=self._name, batch_mode=LogicBatchMethod.Minimum)
+
+    @property
+    def Maximum(self) -> MediumRadiator:
+        return MediumRadiator(name=self._name, batch_mode=LogicBatchMethod.Maximum)
+
+    @property
+    def Sum(self) -> MediumRadiator:
+        return MediumRadiator(name=self._name, batch_mode=LogicBatchMethod.Sum)
+
 
 MediumRadiators: _MediumRadiators = _MediumRadiators()
 
@@ -12235,6 +15170,28 @@ class _MediumRadiatorLiquids(_BaseStructures, _Maximums, _Ratios, _SettingWs):
 
     def __getitem__(self, name: str | int | float) -> "_MediumRadiatorLiquids":
         return _MediumRadiatorLiquids(name)
+
+    @property
+    def Average(self) -> MediumRadiatorLiquid:
+        return MediumRadiatorLiquid(
+            name=self._name, batch_mode=LogicBatchMethod.Average
+        )
+
+    @property
+    def Minimum(self) -> MediumRadiatorLiquid:
+        return MediumRadiatorLiquid(
+            name=self._name, batch_mode=LogicBatchMethod.Minimum
+        )
+
+    @property
+    def Maximum(self) -> MediumRadiatorLiquid:
+        return MediumRadiatorLiquid(
+            name=self._name, batch_mode=LogicBatchMethod.Maximum
+        )
+
+    @property
+    def Sum(self) -> MediumRadiatorLiquid:
+        return MediumRadiatorLiquid(name=self._name, batch_mode=LogicBatchMethod.Sum)
 
 
 MediumRadiatorLiquids: _MediumRadiatorLiquids = _MediumRadiatorLiquids()
@@ -12307,6 +15264,22 @@ class _SatelliteDishs(
 
     def __getitem__(self, name: str | int | float) -> "_SatelliteDishs":
         return _SatelliteDishs(name)
+
+    @property
+    def Average(self) -> SatelliteDish:
+        return SatelliteDish(name=self._name, batch_mode=LogicBatchMethod.Average)
+
+    @property
+    def Minimum(self) -> SatelliteDish:
+        return SatelliteDish(name=self._name, batch_mode=LogicBatchMethod.Minimum)
+
+    @property
+    def Maximum(self) -> SatelliteDish:
+        return SatelliteDish(name=self._name, batch_mode=LogicBatchMethod.Maximum)
+
+    @property
+    def Sum(self) -> SatelliteDish:
+        return SatelliteDish(name=self._name, batch_mode=LogicBatchMethod.Sum)
 
     @property
     def BestContactFilter(self) -> _DevicesLogicType:
@@ -12401,6 +15374,30 @@ class _PowerTransmitterReceivers(
         return _PowerTransmitterReceivers(name)
 
     @property
+    def Average(self) -> PowerTransmitterReceiver:
+        return PowerTransmitterReceiver(
+            name=self._name, batch_mode=LogicBatchMethod.Average
+        )
+
+    @property
+    def Minimum(self) -> PowerTransmitterReceiver:
+        return PowerTransmitterReceiver(
+            name=self._name, batch_mode=LogicBatchMethod.Minimum
+        )
+
+    @property
+    def Maximum(self) -> PowerTransmitterReceiver:
+        return PowerTransmitterReceiver(
+            name=self._name, batch_mode=LogicBatchMethod.Maximum
+        )
+
+    @property
+    def Sum(self) -> PowerTransmitterReceiver:
+        return PowerTransmitterReceiver(
+            name=self._name, batch_mode=LogicBatchMethod.Sum
+        )
+
+    @property
     def PositionX(self) -> _DevicesLogicType:
         return _DevicesLogicType(self, _LT.PositionX)
 
@@ -12459,6 +15456,22 @@ class _PowerTransmitters(
         return _PowerTransmitters(name)
 
     @property
+    def Average(self) -> PowerTransmitter:
+        return PowerTransmitter(name=self._name, batch_mode=LogicBatchMethod.Average)
+
+    @property
+    def Minimum(self) -> PowerTransmitter:
+        return PowerTransmitter(name=self._name, batch_mode=LogicBatchMethod.Minimum)
+
+    @property
+    def Maximum(self) -> PowerTransmitter:
+        return PowerTransmitter(name=self._name, batch_mode=LogicBatchMethod.Maximum)
+
+    @property
+    def Sum(self) -> PowerTransmitter:
+        return PowerTransmitter(name=self._name, batch_mode=LogicBatchMethod.Sum)
+
+    @property
     def PositionX(self) -> _DevicesLogicType:
         return _DevicesLogicType(self, _LT.PositionX)
 
@@ -12493,6 +15506,22 @@ class _MotionSensors(_BaseStructures, _Activates, _Ons, _Quantitys):
 
     def __getitem__(self, name: str | int | float) -> "_MotionSensors":
         return _MotionSensors(name)
+
+    @property
+    def Average(self) -> MotionSensor:
+        return MotionSensor(name=self._name, batch_mode=LogicBatchMethod.Average)
+
+    @property
+    def Minimum(self) -> MotionSensor:
+        return MotionSensor(name=self._name, batch_mode=LogicBatchMethod.Minimum)
+
+    @property
+    def Maximum(self) -> MotionSensor:
+        return MotionSensor(name=self._name, batch_mode=LogicBatchMethod.Maximum)
+
+    @property
+    def Sum(self) -> MotionSensor:
+        return MotionSensor(name=self._name, batch_mode=LogicBatchMethod.Sum)
 
 
 MotionSensors: _MotionSensors = _MotionSensors()
@@ -12655,6 +15684,22 @@ class _Nitrolyzers(
 
     def __getitem__(self, name: str | int | float) -> "_Nitrolyzers":
         return _Nitrolyzers(name)
+
+    @property
+    def Average(self) -> Nitrolyzer:
+        return Nitrolyzer(name=self._name, batch_mode=LogicBatchMethod.Average)
+
+    @property
+    def Minimum(self) -> Nitrolyzer:
+        return Nitrolyzer(name=self._name, batch_mode=LogicBatchMethod.Minimum)
+
+    @property
+    def Maximum(self) -> Nitrolyzer:
+        return Nitrolyzer(name=self._name, batch_mode=LogicBatchMethod.Maximum)
+
+    @property
+    def Sum(self) -> Nitrolyzer:
+        return Nitrolyzer(name=self._name, batch_mode=LogicBatchMethod.Sum)
 
     @property
     def CombustionInput(self) -> _DevicesLogicType:
@@ -12821,6 +15866,22 @@ class _HorizontalAutoMiners(
         return _HorizontalAutoMiners(name)
 
     @property
+    def Average(self) -> HorizontalAutoMiner:
+        return HorizontalAutoMiner(name=self._name, batch_mode=LogicBatchMethod.Average)
+
+    @property
+    def Minimum(self) -> HorizontalAutoMiner:
+        return HorizontalAutoMiner(name=self._name, batch_mode=LogicBatchMethod.Minimum)
+
+    @property
+    def Maximum(self) -> HorizontalAutoMiner:
+        return HorizontalAutoMiner(name=self._name, batch_mode=LogicBatchMethod.Maximum)
+
+    @property
+    def Sum(self) -> HorizontalAutoMiner:
+        return HorizontalAutoMiner(name=self._name, batch_mode=LogicBatchMethod.Sum)
+
+    @property
     def slot0(self) -> _SlotTypeCommons:
         return _SlotTypeCommons(self, 0)
 
@@ -12857,6 +15918,22 @@ class _OccupancySensors(_BaseStructures, _Quantitys):
         return _OccupancySensors(name)
 
     @property
+    def Average(self) -> OccupancySensor:
+        return OccupancySensor(name=self._name, batch_mode=LogicBatchMethod.Average)
+
+    @property
+    def Minimum(self) -> OccupancySensor:
+        return OccupancySensor(name=self._name, batch_mode=LogicBatchMethod.Minimum)
+
+    @property
+    def Maximum(self) -> OccupancySensor:
+        return OccupancySensor(name=self._name, batch_mode=LogicBatchMethod.Maximum)
+
+    @property
+    def Sum(self) -> OccupancySensor:
+        return OccupancySensor(name=self._name, batch_mode=LogicBatchMethod.Sum)
+
+    @property
     def Activate(self) -> _DevicesLogicType:
         return _DevicesLogicType(self, _LT.Activate)
 
@@ -12876,6 +15953,28 @@ class _PipeOneWayValveLevers(_BaseStructures, _Maximums, _Ons, _Ratios, _Setting
     def __getitem__(self, name: str | int | float) -> "_PipeOneWayValveLevers":
         return _PipeOneWayValveLevers(name)
 
+    @property
+    def Average(self) -> PipeOneWayValveLever:
+        return PipeOneWayValveLever(
+            name=self._name, batch_mode=LogicBatchMethod.Average
+        )
+
+    @property
+    def Minimum(self) -> PipeOneWayValveLever:
+        return PipeOneWayValveLever(
+            name=self._name, batch_mode=LogicBatchMethod.Minimum
+        )
+
+    @property
+    def Maximum(self) -> PipeOneWayValveLever:
+        return PipeOneWayValveLever(
+            name=self._name, batch_mode=LogicBatchMethod.Maximum
+        )
+
+    @property
+    def Sum(self) -> PipeOneWayValveLever:
+        return PipeOneWayValveLever(name=self._name, batch_mode=LogicBatchMethod.Sum)
+
 
 PipeOneWayValveLevers: _PipeOneWayValveLevers = _PipeOneWayValveLevers()
 
@@ -12893,6 +15992,30 @@ class _PipeLiquidOneWayValveLevers(
 
     def __getitem__(self, name: str | int | float) -> "_PipeLiquidOneWayValveLevers":
         return _PipeLiquidOneWayValveLevers(name)
+
+    @property
+    def Average(self) -> PipeLiquidOneWayValveLever:
+        return PipeLiquidOneWayValveLever(
+            name=self._name, batch_mode=LogicBatchMethod.Average
+        )
+
+    @property
+    def Minimum(self) -> PipeLiquidOneWayValveLever:
+        return PipeLiquidOneWayValveLever(
+            name=self._name, batch_mode=LogicBatchMethod.Minimum
+        )
+
+    @property
+    def Maximum(self) -> PipeLiquidOneWayValveLever:
+        return PipeLiquidOneWayValveLever(
+            name=self._name, batch_mode=LogicBatchMethod.Maximum
+        )
+
+    @property
+    def Sum(self) -> PipeLiquidOneWayValveLever:
+        return PipeLiquidOneWayValveLever(
+            name=self._name, batch_mode=LogicBatchMethod.Sum
+        )
 
 
 PipeLiquidOneWayValveLevers: _PipeLiquidOneWayValveLevers = (
@@ -12919,6 +16042,30 @@ class _OverheadShortCornerLockers(_BaseStructures, _Locks, _Opens):
 
     def __getitem__(self, name: str | int | float) -> "_OverheadShortCornerLockers":
         return _OverheadShortCornerLockers(name)
+
+    @property
+    def Average(self) -> OverheadShortCornerLocker:
+        return OverheadShortCornerLocker(
+            name=self._name, batch_mode=LogicBatchMethod.Average
+        )
+
+    @property
+    def Minimum(self) -> OverheadShortCornerLocker:
+        return OverheadShortCornerLocker(
+            name=self._name, batch_mode=LogicBatchMethod.Minimum
+        )
+
+    @property
+    def Maximum(self) -> OverheadShortCornerLocker:
+        return OverheadShortCornerLocker(
+            name=self._name, batch_mode=LogicBatchMethod.Maximum
+        )
+
+    @property
+    def Sum(self) -> OverheadShortCornerLocker:
+        return OverheadShortCornerLocker(
+            name=self._name, batch_mode=LogicBatchMethod.Sum
+        )
 
     @property
     def slot0(self) -> _SlotTypeCommons:
@@ -12983,6 +16130,22 @@ class _OverheadShortLockers(_BaseStructures, _Locks, _Opens):
 
     def __getitem__(self, name: str | int | float) -> "_OverheadShortLockers":
         return _OverheadShortLockers(name)
+
+    @property
+    def Average(self) -> OverheadShortLocker:
+        return OverheadShortLocker(name=self._name, batch_mode=LogicBatchMethod.Average)
+
+    @property
+    def Minimum(self) -> OverheadShortLocker:
+        return OverheadShortLocker(name=self._name, batch_mode=LogicBatchMethod.Minimum)
+
+    @property
+    def Maximum(self) -> OverheadShortLocker:
+        return OverheadShortLocker(name=self._name, batch_mode=LogicBatchMethod.Maximum)
+
+    @property
+    def Sum(self) -> OverheadShortLocker:
+        return OverheadShortLocker(name=self._name, batch_mode=LogicBatchMethod.Sum)
 
     @property
     def slot0(self) -> _SlotTypeCommons:
@@ -13097,6 +16260,22 @@ class _LogicPidControllers(_BaseStructures, _Errors, _Powers, _SettingRs):
         return _LogicPidControllers(name)
 
     @property
+    def Average(self) -> LogicPidController:
+        return LogicPidController(name=self._name, batch_mode=LogicBatchMethod.Average)
+
+    @property
+    def Minimum(self) -> LogicPidController:
+        return LogicPidController(name=self._name, batch_mode=LogicBatchMethod.Minimum)
+
+    @property
+    def Maximum(self) -> LogicPidController:
+        return LogicPidController(name=self._name, batch_mode=LogicBatchMethod.Maximum)
+
+    @property
+    def Sum(self) -> LogicPidController:
+        return LogicPidController(name=self._name, batch_mode=LogicBatchMethod.Sum)
+
+    @property
     def DerivativeGain(self) -> _DevicesLogicType:
         return _DevicesLogicType(self, _LT.DerivativeGain)
 
@@ -13195,6 +16374,22 @@ class _PipeAnalysizers(
         return _PipeAnalysizers(name)
 
     @property
+    def Average(self) -> PipeAnalysizer:
+        return PipeAnalysizer(name=self._name, batch_mode=LogicBatchMethod.Average)
+
+    @property
+    def Minimum(self) -> PipeAnalysizer:
+        return PipeAnalysizer(name=self._name, batch_mode=LogicBatchMethod.Minimum)
+
+    @property
+    def Maximum(self) -> PipeAnalysizer:
+        return PipeAnalysizer(name=self._name, batch_mode=LogicBatchMethod.Maximum)
+
+    @property
+    def Sum(self) -> PipeAnalysizer:
+        return PipeAnalysizer(name=self._name, batch_mode=LogicBatchMethod.Sum)
+
+    @property
     def NetworkFault(self) -> _DevicesLogicType:
         return _DevicesLogicType(self, _LT.NetworkFault)
 
@@ -13214,6 +16409,22 @@ class _PipeHeaters(_BaseStructures, _Errors, _Locks, _Powers):
     def __getitem__(self, name: str | int | float) -> "_PipeHeaters":
         return _PipeHeaters(name)
 
+    @property
+    def Average(self) -> PipeHeater:
+        return PipeHeater(name=self._name, batch_mode=LogicBatchMethod.Average)
+
+    @property
+    def Minimum(self) -> PipeHeater:
+        return PipeHeater(name=self._name, batch_mode=LogicBatchMethod.Minimum)
+
+    @property
+    def Maximum(self) -> PipeHeater:
+        return PipeHeater(name=self._name, batch_mode=LogicBatchMethod.Maximum)
+
+    @property
+    def Sum(self) -> PipeHeater:
+        return PipeHeater(name=self._name, batch_mode=LogicBatchMethod.Sum)
+
 
 PipeHeaters: _PipeHeaters = _PipeHeaters()
 
@@ -13229,6 +16440,22 @@ class _LiquidPipeHeaters(_BaseStructures, _Errors, _Locks, _Powers):
 
     def __getitem__(self, name: str | int | float) -> "_LiquidPipeHeaters":
         return _LiquidPipeHeaters(name)
+
+    @property
+    def Average(self) -> LiquidPipeHeater:
+        return LiquidPipeHeater(name=self._name, batch_mode=LogicBatchMethod.Average)
+
+    @property
+    def Minimum(self) -> LiquidPipeHeater:
+        return LiquidPipeHeater(name=self._name, batch_mode=LogicBatchMethod.Minimum)
+
+    @property
+    def Maximum(self) -> LiquidPipeHeater:
+        return LiquidPipeHeater(name=self._name, batch_mode=LogicBatchMethod.Maximum)
+
+    @property
+    def Sum(self) -> LiquidPipeHeater:
+        return LiquidPipeHeater(name=self._name, batch_mode=LogicBatchMethod.Sum)
 
 
 LiquidPipeHeaters: _LiquidPipeHeaters = _LiquidPipeHeaters()
@@ -13253,6 +16480,22 @@ class _PipeIgniters(_BaseStructures, _Activates, _Errors):
 
     def __getitem__(self, name: str | int | float) -> "_PipeIgniters":
         return _PipeIgniters(name)
+
+    @property
+    def Average(self) -> PipeIgniter:
+        return PipeIgniter(name=self._name, batch_mode=LogicBatchMethod.Average)
+
+    @property
+    def Minimum(self) -> PipeIgniter:
+        return PipeIgniter(name=self._name, batch_mode=LogicBatchMethod.Minimum)
+
+    @property
+    def Maximum(self) -> PipeIgniter:
+        return PipeIgniter(name=self._name, batch_mode=LogicBatchMethod.Maximum)
+
+    @property
+    def Sum(self) -> PipeIgniter:
+        return PipeIgniter(name=self._name, batch_mode=LogicBatchMethod.Sum)
 
     @property
     def Power(self) -> _DevicesLogicType:
@@ -13287,6 +16530,22 @@ class _PortablesConnectors(_BaseStructures, _Maximums, _Opens, _Ratios, _Setting
         return _PortablesConnectors(name)
 
     @property
+    def Average(self) -> PortablesConnector:
+        return PortablesConnector(name=self._name, batch_mode=LogicBatchMethod.Average)
+
+    @property
+    def Minimum(self) -> PortablesConnector:
+        return PortablesConnector(name=self._name, batch_mode=LogicBatchMethod.Minimum)
+
+    @property
+    def Maximum(self) -> PortablesConnector:
+        return PortablesConnector(name=self._name, batch_mode=LogicBatchMethod.Maximum)
+
+    @property
+    def Sum(self) -> PortablesConnector:
+        return PortablesConnector(name=self._name, batch_mode=LogicBatchMethod.Sum)
+
+    @property
     def slot0(self) -> _SlotTypeCommons:
         return _SlotTypeCommons(self, 0)
 
@@ -13319,6 +16578,22 @@ class _PowerConnectors(_BaseStructures, _Opens):
         return _PowerConnectors(name)
 
     @property
+    def Average(self) -> PowerConnector:
+        return PowerConnector(name=self._name, batch_mode=LogicBatchMethod.Average)
+
+    @property
+    def Minimum(self) -> PowerConnector:
+        return PowerConnector(name=self._name, batch_mode=LogicBatchMethod.Minimum)
+
+    @property
+    def Maximum(self) -> PowerConnector:
+        return PowerConnector(name=self._name, batch_mode=LogicBatchMethod.Maximum)
+
+    @property
+    def Sum(self) -> PowerConnector:
+        return PowerConnector(name=self._name, batch_mode=LogicBatchMethod.Sum)
+
+    @property
     def slot0(self) -> _SlotTypeCommons:
         return _SlotTypeCommons(self, 0)
 
@@ -13341,6 +16616,28 @@ class _PowerTransmitterOmnis(_BaseStructures, _Errors, _Powers):
 
     def __getitem__(self, name: str | int | float) -> "_PowerTransmitterOmnis":
         return _PowerTransmitterOmnis(name)
+
+    @property
+    def Average(self) -> PowerTransmitterOmni:
+        return PowerTransmitterOmni(
+            name=self._name, batch_mode=LogicBatchMethod.Average
+        )
+
+    @property
+    def Minimum(self) -> PowerTransmitterOmni:
+        return PowerTransmitterOmni(
+            name=self._name, batch_mode=LogicBatchMethod.Minimum
+        )
+
+    @property
+    def Maximum(self) -> PowerTransmitterOmni:
+        return PowerTransmitterOmni(
+            name=self._name, batch_mode=LogicBatchMethod.Maximum
+        )
+
+    @property
+    def Sum(self) -> PowerTransmitterOmni:
+        return PowerTransmitterOmni(name=self._name, batch_mode=LogicBatchMethod.Sum)
 
 
 PowerTransmitterOmnis: _PowerTransmitterOmnis = _PowerTransmitterOmnis()
@@ -13373,6 +16670,22 @@ class _Benchs(_BaseStructures, _Errors, _Powers):
 
     def __getitem__(self, name: str | int | float) -> "_Benchs":
         return _Benchs(name)
+
+    @property
+    def Average(self) -> Bench:
+        return Bench(name=self._name, batch_mode=LogicBatchMethod.Average)
+
+    @property
+    def Minimum(self) -> Bench:
+        return Bench(name=self._name, batch_mode=LogicBatchMethod.Minimum)
+
+    @property
+    def Maximum(self) -> Bench:
+        return Bench(name=self._name, batch_mode=LogicBatchMethod.Maximum)
+
+    @property
+    def Sum(self) -> Bench:
+        return Bench(name=self._name, batch_mode=LogicBatchMethod.Sum)
 
     @property
     def slot0(self) -> _SlotTypeAppliances:
@@ -13457,6 +16770,22 @@ class _PoweredVents(_BaseStructures, _Errors, _Locks, _Modes, _Powers):
 
     def __getitem__(self, name: str | int | float) -> "_PoweredVents":
         return _PoweredVents(name)
+
+    @property
+    def Average(self) -> PoweredVent:
+        return PoweredVent(name=self._name, batch_mode=LogicBatchMethod.Average)
+
+    @property
+    def Minimum(self) -> PoweredVent:
+        return PoweredVent(name=self._name, batch_mode=LogicBatchMethod.Minimum)
+
+    @property
+    def Maximum(self) -> PoweredVent:
+        return PoweredVent(name=self._name, batch_mode=LogicBatchMethod.Maximum)
+
+    @property
+    def Sum(self) -> PoweredVent:
+        return PoweredVent(name=self._name, batch_mode=LogicBatchMethod.Sum)
 
     @property
     def CombustionOutput(self) -> _DevicesLogicType:
@@ -13579,6 +16908,22 @@ class _PoweredVentLarges(_BaseStructures, _Errors, _Locks, _Modes, _Powers):
         return _PoweredVentLarges(name)
 
     @property
+    def Average(self) -> PoweredVentLarge:
+        return PoweredVentLarge(name=self._name, batch_mode=LogicBatchMethod.Average)
+
+    @property
+    def Minimum(self) -> PoweredVentLarge:
+        return PoweredVentLarge(name=self._name, batch_mode=LogicBatchMethod.Minimum)
+
+    @property
+    def Maximum(self) -> PoweredVentLarge:
+        return PoweredVentLarge(name=self._name, batch_mode=LogicBatchMethod.Maximum)
+
+    @property
+    def Sum(self) -> PoweredVentLarge:
+        return PoweredVentLarge(name=self._name, batch_mode=LogicBatchMethod.Sum)
+
+    @property
     def CombustionOutput(self) -> _DevicesLogicType:
         return _DevicesLogicType(self, _LT.CombustionOutput)
 
@@ -13650,6 +16995,22 @@ class _PressurantValves(
     def __getitem__(self, name: str | int | float) -> "_PressurantValves":
         return _PressurantValves(name)
 
+    @property
+    def Average(self) -> PressurantValve:
+        return PressurantValve(name=self._name, batch_mode=LogicBatchMethod.Average)
+
+    @property
+    def Minimum(self) -> PressurantValve:
+        return PressurantValve(name=self._name, batch_mode=LogicBatchMethod.Minimum)
+
+    @property
+    def Maximum(self) -> PressurantValve:
+        return PressurantValve(name=self._name, batch_mode=LogicBatchMethod.Maximum)
+
+    @property
+    def Sum(self) -> PressurantValve:
+        return PressurantValve(name=self._name, batch_mode=LogicBatchMethod.Sum)
+
 
 PressurantValves: _PressurantValves = _PressurantValves()
 
@@ -13695,6 +17056,28 @@ class _PressureFedGasEngines(
 
     def __getitem__(self, name: str | int | float) -> "_PressureFedGasEngines":
         return _PressureFedGasEngines(name)
+
+    @property
+    def Average(self) -> PressureFedGasEngine:
+        return PressureFedGasEngine(
+            name=self._name, batch_mode=LogicBatchMethod.Average
+        )
+
+    @property
+    def Minimum(self) -> PressureFedGasEngine:
+        return PressureFedGasEngine(
+            name=self._name, batch_mode=LogicBatchMethod.Minimum
+        )
+
+    @property
+    def Maximum(self) -> PressureFedGasEngine:
+        return PressureFedGasEngine(
+            name=self._name, batch_mode=LogicBatchMethod.Maximum
+        )
+
+    @property
+    def Sum(self) -> PressureFedGasEngine:
+        return PressureFedGasEngine(name=self._name, batch_mode=LogicBatchMethod.Sum)
 
     @property
     def PassedMoles(self) -> _DevicesLogicType:
@@ -13761,6 +17144,28 @@ class _PressureFedLiquidEngines(
         return _PressureFedLiquidEngines(name)
 
     @property
+    def Average(self) -> PressureFedLiquidEngine:
+        return PressureFedLiquidEngine(
+            name=self._name, batch_mode=LogicBatchMethod.Average
+        )
+
+    @property
+    def Minimum(self) -> PressureFedLiquidEngine:
+        return PressureFedLiquidEngine(
+            name=self._name, batch_mode=LogicBatchMethod.Minimum
+        )
+
+    @property
+    def Maximum(self) -> PressureFedLiquidEngine:
+        return PressureFedLiquidEngine(
+            name=self._name, batch_mode=LogicBatchMethod.Maximum
+        )
+
+    @property
+    def Sum(self) -> PressureFedLiquidEngine:
+        return PressureFedLiquidEngine(name=self._name, batch_mode=LogicBatchMethod.Sum)
+
+    @property
     def PassedMoles(self) -> _DevicesLogicType:
         return _DevicesLogicType(self, _LT.PassedMoles)
 
@@ -13792,6 +17197,22 @@ class _PressureRegulators(
     def __getitem__(self, name: str | int | float) -> "_PressureRegulators":
         return _PressureRegulators(name)
 
+    @property
+    def Average(self) -> PressureRegulator:
+        return PressureRegulator(name=self._name, batch_mode=LogicBatchMethod.Average)
+
+    @property
+    def Minimum(self) -> PressureRegulator:
+        return PressureRegulator(name=self._name, batch_mode=LogicBatchMethod.Minimum)
+
+    @property
+    def Maximum(self) -> PressureRegulator:
+        return PressureRegulator(name=self._name, batch_mode=LogicBatchMethod.Maximum)
+
+    @property
+    def Sum(self) -> PressureRegulator:
+        return PressureRegulator(name=self._name, batch_mode=LogicBatchMethod.Sum)
+
 
 PressureRegulators: _PressureRegulators = _PressureRegulators()
 
@@ -13811,6 +17232,22 @@ class _ProximitySensors(_BaseStructures, _Quantitys, _SettingWs):
 
     def __getitem__(self, name: str | int | float) -> "_ProximitySensors":
         return _ProximitySensors(name)
+
+    @property
+    def Average(self) -> ProximitySensor:
+        return ProximitySensor(name=self._name, batch_mode=LogicBatchMethod.Average)
+
+    @property
+    def Minimum(self) -> ProximitySensor:
+        return ProximitySensor(name=self._name, batch_mode=LogicBatchMethod.Minimum)
+
+    @property
+    def Maximum(self) -> ProximitySensor:
+        return ProximitySensor(name=self._name, batch_mode=LogicBatchMethod.Maximum)
+
+    @property
+    def Sum(self) -> ProximitySensor:
+        return ProximitySensor(name=self._name, batch_mode=LogicBatchMethod.Sum)
 
     @property
     def Activate(self) -> _DevicesLogicType:
@@ -13861,6 +17298,22 @@ class _GovernedGasEngines(
 
     def __getitem__(self, name: str | int | float) -> "_GovernedGasEngines":
         return _GovernedGasEngines(name)
+
+    @property
+    def Average(self) -> GovernedGasEngine:
+        return GovernedGasEngine(name=self._name, batch_mode=LogicBatchMethod.Average)
+
+    @property
+    def Minimum(self) -> GovernedGasEngine:
+        return GovernedGasEngine(name=self._name, batch_mode=LogicBatchMethod.Minimum)
+
+    @property
+    def Maximum(self) -> GovernedGasEngine:
+        return GovernedGasEngine(name=self._name, batch_mode=LogicBatchMethod.Maximum)
+
+    @property
+    def Sum(self) -> GovernedGasEngine:
+        return GovernedGasEngine(name=self._name, batch_mode=LogicBatchMethod.Sum)
 
     @property
     def PassedMoles(self) -> _DevicesLogicType:
@@ -13927,6 +17380,22 @@ class _PumpedLiquidEngines(
         return _PumpedLiquidEngines(name)
 
     @property
+    def Average(self) -> PumpedLiquidEngine:
+        return PumpedLiquidEngine(name=self._name, batch_mode=LogicBatchMethod.Average)
+
+    @property
+    def Minimum(self) -> PumpedLiquidEngine:
+        return PumpedLiquidEngine(name=self._name, batch_mode=LogicBatchMethod.Minimum)
+
+    @property
+    def Maximum(self) -> PumpedLiquidEngine:
+        return PumpedLiquidEngine(name=self._name, batch_mode=LogicBatchMethod.Maximum)
+
+    @property
+    def Sum(self) -> PumpedLiquidEngine:
+        return PumpedLiquidEngine(name=self._name, batch_mode=LogicBatchMethod.Sum)
+
+    @property
     def PassedMoles(self) -> _DevicesLogicType:
         return _DevicesLogicType(self, _LT.PassedMoles)
 
@@ -13956,6 +17425,22 @@ class _PurgeValves(
     def __getitem__(self, name: str | int | float) -> "_PurgeValves":
         return _PurgeValves(name)
 
+    @property
+    def Average(self) -> PurgeValve:
+        return PurgeValve(name=self._name, batch_mode=LogicBatchMethod.Average)
+
+    @property
+    def Minimum(self) -> PurgeValve:
+        return PurgeValve(name=self._name, batch_mode=LogicBatchMethod.Minimum)
+
+    @property
+    def Maximum(self) -> PurgeValve:
+        return PurgeValve(name=self._name, batch_mode=LogicBatchMethod.Maximum)
+
+    @property
+    def Sum(self) -> PurgeValve:
+        return PurgeValve(name=self._name, batch_mode=LogicBatchMethod.Sum)
+
 
 PurgeValves: _PurgeValves = _PurgeValves()
 
@@ -13971,6 +17456,22 @@ class _LogicReagentReaders(_BaseStructures, _Errors, _Powers, _SettingRs):
 
     def __getitem__(self, name: str | int | float) -> "_LogicReagentReaders":
         return _LogicReagentReaders(name)
+
+    @property
+    def Average(self) -> LogicReagentReader:
+        return LogicReagentReader(name=self._name, batch_mode=LogicBatchMethod.Average)
+
+    @property
+    def Minimum(self) -> LogicReagentReader:
+        return LogicReagentReader(name=self._name, batch_mode=LogicBatchMethod.Minimum)
+
+    @property
+    def Maximum(self) -> LogicReagentReader:
+        return LogicReagentReader(name=self._name, batch_mode=LogicBatchMethod.Maximum)
+
+    @property
+    def Sum(self) -> LogicReagentReader:
+        return LogicReagentReader(name=self._name, batch_mode=LogicBatchMethod.Sum)
 
 
 LogicReagentReaders: _LogicReagentReaders = _LogicReagentReaders()
@@ -14021,6 +17522,22 @@ class _Recyclers(
 
     def __getitem__(self, name: str | int | float) -> "_Recyclers":
         return _Recyclers(name)
+
+    @property
+    def Average(self) -> Recycler:
+        return Recycler(name=self._name, batch_mode=LogicBatchMethod.Average)
+
+    @property
+    def Minimum(self) -> Recycler:
+        return Recycler(name=self._name, batch_mode=LogicBatchMethod.Minimum)
+
+    @property
+    def Maximum(self) -> Recycler:
+        return Recycler(name=self._name, batch_mode=LogicBatchMethod.Maximum)
+
+    @property
+    def Sum(self) -> Recycler:
+        return Recycler(name=self._name, batch_mode=LogicBatchMethod.Sum)
 
     @property
     def slot0(self) -> _SlotTypeCommons:
@@ -14511,6 +18028,30 @@ class _RefrigeratedVendingMachines(
 
     def __getitem__(self, name: str | int | float) -> "_RefrigeratedVendingMachines":
         return _RefrigeratedVendingMachines(name)
+
+    @property
+    def Average(self) -> RefrigeratedVendingMachine:
+        return RefrigeratedVendingMachine(
+            name=self._name, batch_mode=LogicBatchMethod.Average
+        )
+
+    @property
+    def Minimum(self) -> RefrigeratedVendingMachine:
+        return RefrigeratedVendingMachine(
+            name=self._name, batch_mode=LogicBatchMethod.Minimum
+        )
+
+    @property
+    def Maximum(self) -> RefrigeratedVendingMachine:
+        return RefrigeratedVendingMachine(
+            name=self._name, batch_mode=LogicBatchMethod.Maximum
+        )
+
+    @property
+    def Sum(self) -> RefrigeratedVendingMachine:
+        return RefrigeratedVendingMachine(
+            name=self._name, batch_mode=LogicBatchMethod.Sum
+        )
 
     @property
     def RequestHash(self) -> _DevicesLogicType:
@@ -15115,6 +18656,22 @@ class _RocketAvionicss(
         return _RocketAvionicss(name)
 
     @property
+    def Average(self) -> RocketAvionics:
+        return RocketAvionics(name=self._name, batch_mode=LogicBatchMethod.Average)
+
+    @property
+    def Minimum(self) -> RocketAvionics:
+        return RocketAvionics(name=self._name, batch_mode=LogicBatchMethod.Minimum)
+
+    @property
+    def Maximum(self) -> RocketAvionics:
+        return RocketAvionics(name=self._name, batch_mode=LogicBatchMethod.Maximum)
+
+    @property
+    def Sum(self) -> RocketAvionics:
+        return RocketAvionics(name=self._name, batch_mode=LogicBatchMethod.Sum)
+
+    @property
     def Acceleration(self) -> _DevicesLogicType:
         return _DevicesLogicType(self, _LT.Acceleration)
 
@@ -15287,6 +18844,28 @@ class _RocketCelestialTrackers(_BaseStructures, _Errors, _Powers, _Verticals):
         return _RocketCelestialTrackers(name)
 
     @property
+    def Average(self) -> RocketCelestialTracker:
+        return RocketCelestialTracker(
+            name=self._name, batch_mode=LogicBatchMethod.Average
+        )
+
+    @property
+    def Minimum(self) -> RocketCelestialTracker:
+        return RocketCelestialTracker(
+            name=self._name, batch_mode=LogicBatchMethod.Minimum
+        )
+
+    @property
+    def Maximum(self) -> RocketCelestialTracker:
+        return RocketCelestialTracker(
+            name=self._name, batch_mode=LogicBatchMethod.Maximum
+        )
+
+    @property
+    def Sum(self) -> RocketCelestialTracker:
+        return RocketCelestialTracker(name=self._name, batch_mode=LogicBatchMethod.Sum)
+
+    @property
     def CelestialHash(self) -> _DevicesLogicType:
         return _DevicesLogicType(self, _LT.CelestialHash)
 
@@ -15337,6 +18916,28 @@ class _RocketCircuitHousings(_BaseStructures, _Errors, _Modes, _Powers, _Setting
 
     def __getitem__(self, name: str | int | float) -> "_RocketCircuitHousings":
         return _RocketCircuitHousings(name)
+
+    @property
+    def Average(self) -> RocketCircuitHousing:
+        return RocketCircuitHousing(
+            name=self._name, batch_mode=LogicBatchMethod.Average
+        )
+
+    @property
+    def Minimum(self) -> RocketCircuitHousing:
+        return RocketCircuitHousing(
+            name=self._name, batch_mode=LogicBatchMethod.Minimum
+        )
+
+    @property
+    def Maximum(self) -> RocketCircuitHousing:
+        return RocketCircuitHousing(
+            name=self._name, batch_mode=LogicBatchMethod.Maximum
+        )
+
+    @property
+    def Sum(self) -> RocketCircuitHousing:
+        return RocketCircuitHousing(name=self._name, batch_mode=LogicBatchMethod.Sum)
 
     @property
     def LineNumber(self) -> _DevicesLogicType:
@@ -15423,6 +19024,22 @@ class _RocketEngineTinys(
         return _RocketEngineTinys(name)
 
     @property
+    def Average(self) -> RocketEngineTiny:
+        return RocketEngineTiny(name=self._name, batch_mode=LogicBatchMethod.Average)
+
+    @property
+    def Minimum(self) -> RocketEngineTiny:
+        return RocketEngineTiny(name=self._name, batch_mode=LogicBatchMethod.Minimum)
+
+    @property
+    def Maximum(self) -> RocketEngineTiny:
+        return RocketEngineTiny(name=self._name, batch_mode=LogicBatchMethod.Maximum)
+
+    @property
+    def Sum(self) -> RocketEngineTiny:
+        return RocketEngineTiny(name=self._name, batch_mode=LogicBatchMethod.Sum)
+
+    @property
     def CombustionOutput(self) -> _DevicesLogicType:
         return _DevicesLogicType(self, _LT.CombustionOutput)
 
@@ -15499,6 +19116,22 @@ class _RocketGasCollectors(
 
     def __getitem__(self, name: str | int | float) -> "_RocketGasCollectors":
         return _RocketGasCollectors(name)
+
+    @property
+    def Average(self) -> RocketGasCollector:
+        return RocketGasCollector(name=self._name, batch_mode=LogicBatchMethod.Average)
+
+    @property
+    def Minimum(self) -> RocketGasCollector:
+        return RocketGasCollector(name=self._name, batch_mode=LogicBatchMethod.Minimum)
+
+    @property
+    def Maximum(self) -> RocketGasCollector:
+        return RocketGasCollector(name=self._name, batch_mode=LogicBatchMethod.Maximum)
+
+    @property
+    def Sum(self) -> RocketGasCollector:
+        return RocketGasCollector(name=self._name, batch_mode=LogicBatchMethod.Sum)
 
 
 RocketGasCollectors: _RocketGasCollectors = _RocketGasCollectors()
@@ -15595,6 +19228,22 @@ class _RocketFiltrationGass(
 
     def __getitem__(self, name: str | int | float) -> "_RocketFiltrationGass":
         return _RocketFiltrationGass(name)
+
+    @property
+    def Average(self) -> RocketFiltrationGas:
+        return RocketFiltrationGas(name=self._name, batch_mode=LogicBatchMethod.Average)
+
+    @property
+    def Minimum(self) -> RocketFiltrationGas:
+        return RocketFiltrationGas(name=self._name, batch_mode=LogicBatchMethod.Minimum)
+
+    @property
+    def Maximum(self) -> RocketFiltrationGas:
+        return RocketFiltrationGas(name=self._name, batch_mode=LogicBatchMethod.Maximum)
+
+    @property
+    def Sum(self) -> RocketFiltrationGas:
+        return RocketFiltrationGas(name=self._name, batch_mode=LogicBatchMethod.Sum)
 
     @property
     def CombustionInput(self) -> _DevicesLogicType:
@@ -15717,6 +19366,22 @@ class _RocketManufactorys(
         return _RocketManufactorys(name)
 
     @property
+    def Average(self) -> RocketManufactory:
+        return RocketManufactory(name=self._name, batch_mode=LogicBatchMethod.Average)
+
+    @property
+    def Minimum(self) -> RocketManufactory:
+        return RocketManufactory(name=self._name, batch_mode=LogicBatchMethod.Minimum)
+
+    @property
+    def Maximum(self) -> RocketManufactory:
+        return RocketManufactory(name=self._name, batch_mode=LogicBatchMethod.Maximum)
+
+    @property
+    def Sum(self) -> RocketManufactory:
+        return RocketManufactory(name=self._name, batch_mode=LogicBatchMethod.Sum)
+
+    @property
     def CompletionRatio(self) -> _DevicesLogicType:
         return _DevicesLogicType(self, _LT.CompletionRatio)
 
@@ -15795,6 +19460,22 @@ class _RocketMiners(
         return _RocketMiners(name)
 
     @property
+    def Average(self) -> RocketMiner:
+        return RocketMiner(name=self._name, batch_mode=LogicBatchMethod.Average)
+
+    @property
+    def Minimum(self) -> RocketMiner:
+        return RocketMiner(name=self._name, batch_mode=LogicBatchMethod.Minimum)
+
+    @property
+    def Maximum(self) -> RocketMiner:
+        return RocketMiner(name=self._name, batch_mode=LogicBatchMethod.Maximum)
+
+    @property
+    def Sum(self) -> RocketMiner:
+        return RocketMiner(name=self._name, batch_mode=LogicBatchMethod.Sum)
+
+    @property
     def DrillCondition(self) -> _DevicesLogicType:
         return _DevicesLogicType(self, _LT.DrillCondition)
 
@@ -15839,6 +19520,22 @@ class _RocketScanners(_BaseStructures, _Errors, _Locks, _Powers):
         return _RocketScanners(name)
 
     @property
+    def Average(self) -> RocketScanner:
+        return RocketScanner(name=self._name, batch_mode=LogicBatchMethod.Average)
+
+    @property
+    def Minimum(self) -> RocketScanner:
+        return RocketScanner(name=self._name, batch_mode=LogicBatchMethod.Minimum)
+
+    @property
+    def Maximum(self) -> RocketScanner:
+        return RocketScanner(name=self._name, batch_mode=LogicBatchMethod.Maximum)
+
+    @property
+    def Sum(self) -> RocketScanner:
+        return RocketScanner(name=self._name, batch_mode=LogicBatchMethod.Sum)
+
+    @property
     def slot0(self) -> _SlotTypeCommons:
         return _SlotTypeCommons(self, 0)
 
@@ -15869,6 +19566,22 @@ class _SDBHoppers(_BaseStructures, _ClearMemorys, _ImportCounts, _Opens):
 
     def __getitem__(self, name: str | int | float) -> "_SDBHoppers":
         return _SDBHoppers(name)
+
+    @property
+    def Average(self) -> SDBHopper:
+        return SDBHopper(name=self._name, batch_mode=LogicBatchMethod.Average)
+
+    @property
+    def Minimum(self) -> SDBHopper:
+        return SDBHopper(name=self._name, batch_mode=LogicBatchMethod.Minimum)
+
+    @property
+    def Maximum(self) -> SDBHopper:
+        return SDBHopper(name=self._name, batch_mode=LogicBatchMethod.Maximum)
+
+    @property
+    def Sum(self) -> SDBHopper:
+        return SDBHopper(name=self._name, batch_mode=LogicBatchMethod.Sum)
 
     @property
     def slot0(self) -> _SlotTypeCommons:
@@ -15903,6 +19616,22 @@ class _SDBHopperAdvanceds(
 
     def __getitem__(self, name: str | int | float) -> "_SDBHopperAdvanceds":
         return _SDBHopperAdvanceds(name)
+
+    @property
+    def Average(self) -> SDBHopperAdvanced:
+        return SDBHopperAdvanced(name=self._name, batch_mode=LogicBatchMethod.Average)
+
+    @property
+    def Minimum(self) -> SDBHopperAdvanced:
+        return SDBHopperAdvanced(name=self._name, batch_mode=LogicBatchMethod.Minimum)
+
+    @property
+    def Maximum(self) -> SDBHopperAdvanced:
+        return SDBHopperAdvanced(name=self._name, batch_mode=LogicBatchMethod.Maximum)
+
+    @property
+    def Sum(self) -> SDBHopperAdvanced:
+        return SDBHopperAdvanced(name=self._name, batch_mode=LogicBatchMethod.Sum)
 
     @property
     def slot0(self) -> _SlotTypeCommons:
@@ -15967,6 +19696,22 @@ class _SDBSilos(
 
     def __getitem__(self, name: str | int | float) -> "_SDBSilos":
         return _SDBSilos(name)
+
+    @property
+    def Average(self) -> SDBSilo:
+        return SDBSilo(name=self._name, batch_mode=LogicBatchMethod.Average)
+
+    @property
+    def Minimum(self) -> SDBSilo:
+        return SDBSilo(name=self._name, batch_mode=LogicBatchMethod.Minimum)
+
+    @property
+    def Maximum(self) -> SDBSilo:
+        return SDBSilo(name=self._name, batch_mode=LogicBatchMethod.Maximum)
+
+    @property
+    def Sum(self) -> SDBSilo:
+        return SDBSilo(name=self._name, batch_mode=LogicBatchMethod.Sum)
 
     @property
     def slot0(self) -> _SlotTypeCommons:
@@ -16047,6 +19792,22 @@ class _SecurityPrinters(
 
     def __getitem__(self, name: str | int | float) -> "_SecurityPrinters":
         return _SecurityPrinters(name)
+
+    @property
+    def Average(self) -> SecurityPrinter:
+        return SecurityPrinter(name=self._name, batch_mode=LogicBatchMethod.Average)
+
+    @property
+    def Minimum(self) -> SecurityPrinter:
+        return SecurityPrinter(name=self._name, batch_mode=LogicBatchMethod.Minimum)
+
+    @property
+    def Maximum(self) -> SecurityPrinter:
+        return SecurityPrinter(name=self._name, batch_mode=LogicBatchMethod.Maximum)
+
+    @property
+    def Sum(self) -> SecurityPrinter:
+        return SecurityPrinter(name=self._name, batch_mode=LogicBatchMethod.Sum)
 
     @property
     def CompletionRatio(self) -> _DevicesLogicType:
@@ -16149,6 +19910,22 @@ class _ShelfMediums(_BaseStructures, _Opens):
         return _ShelfMediums(name)
 
     @property
+    def Average(self) -> ShelfMedium:
+        return ShelfMedium(name=self._name, batch_mode=LogicBatchMethod.Average)
+
+    @property
+    def Minimum(self) -> ShelfMedium:
+        return ShelfMedium(name=self._name, batch_mode=LogicBatchMethod.Minimum)
+
+    @property
+    def Maximum(self) -> ShelfMedium:
+        return ShelfMedium(name=self._name, batch_mode=LogicBatchMethod.Maximum)
+
+    @property
+    def Sum(self) -> ShelfMedium:
+        return ShelfMedium(name=self._name, batch_mode=LogicBatchMethod.Sum)
+
+    @property
     def slot0(self) -> _SlotTypeCommons:
         return _SlotTypeCommons(self, 0)
 
@@ -16233,6 +20010,22 @@ class _ShortCornerLockers(_BaseStructures, _Locks, _Opens):
         return _ShortCornerLockers(name)
 
     @property
+    def Average(self) -> ShortCornerLocker:
+        return ShortCornerLocker(name=self._name, batch_mode=LogicBatchMethod.Average)
+
+    @property
+    def Minimum(self) -> ShortCornerLocker:
+        return ShortCornerLocker(name=self._name, batch_mode=LogicBatchMethod.Minimum)
+
+    @property
+    def Maximum(self) -> ShortCornerLocker:
+        return ShortCornerLocker(name=self._name, batch_mode=LogicBatchMethod.Maximum)
+
+    @property
+    def Sum(self) -> ShortCornerLocker:
+        return ShortCornerLocker(name=self._name, batch_mode=LogicBatchMethod.Sum)
+
+    @property
     def slot0(self) -> _SlotTypeCommons:
         return _SlotTypeCommons(self, 0)
 
@@ -16297,6 +20090,22 @@ class _ShortLockers(_BaseStructures, _Locks, _Opens):
         return _ShortLockers(name)
 
     @property
+    def Average(self) -> ShortLocker:
+        return ShortLocker(name=self._name, batch_mode=LogicBatchMethod.Average)
+
+    @property
+    def Minimum(self) -> ShortLocker:
+        return ShortLocker(name=self._name, batch_mode=LogicBatchMethod.Minimum)
+
+    @property
+    def Maximum(self) -> ShortLocker:
+        return ShortLocker(name=self._name, batch_mode=LogicBatchMethod.Maximum)
+
+    @property
+    def Sum(self) -> ShortLocker:
+        return ShortLocker(name=self._name, batch_mode=LogicBatchMethod.Sum)
+
+    @property
     def slot0(self) -> _SlotTypeCommons:
         return _SlotTypeCommons(self, 0)
 
@@ -16352,6 +20161,22 @@ class _Showers(_BaseStructures, _Activates, _Maximums, _Opens, _Ratios, _Setting
     def __getitem__(self, name: str | int | float) -> "_Showers":
         return _Showers(name)
 
+    @property
+    def Average(self) -> Shower:
+        return Shower(name=self._name, batch_mode=LogicBatchMethod.Average)
+
+    @property
+    def Minimum(self) -> Shower:
+        return Shower(name=self._name, batch_mode=LogicBatchMethod.Minimum)
+
+    @property
+    def Maximum(self) -> Shower:
+        return Shower(name=self._name, batch_mode=LogicBatchMethod.Maximum)
+
+    @property
+    def Sum(self) -> Shower:
+        return Shower(name=self._name, batch_mode=LogicBatchMethod.Sum)
+
 
 Showers: _Showers = _Showers()
 
@@ -16367,6 +20192,22 @@ class _ShowerPowereds(_BaseStructures, _Errors, _Opens, _Powers):
 
     def __getitem__(self, name: str | int | float) -> "_ShowerPowereds":
         return _ShowerPowereds(name)
+
+    @property
+    def Average(self) -> ShowerPowered:
+        return ShowerPowered(name=self._name, batch_mode=LogicBatchMethod.Average)
+
+    @property
+    def Minimum(self) -> ShowerPowered:
+        return ShowerPowered(name=self._name, batch_mode=LogicBatchMethod.Minimum)
+
+    @property
+    def Maximum(self) -> ShowerPowered:
+        return ShowerPowered(name=self._name, batch_mode=LogicBatchMethod.Maximum)
+
+    @property
+    def Sum(self) -> ShowerPowered:
+        return ShowerPowered(name=self._name, batch_mode=LogicBatchMethod.Sum)
 
 
 ShowerPowereds: _ShowerPowereds = _ShowerPowereds()
@@ -16407,6 +20248,22 @@ class _Sleepers(
 
     def __getitem__(self, name: str | int | float) -> "_Sleepers":
         return _Sleepers(name)
+
+    @property
+    def Average(self) -> Sleeper:
+        return Sleeper(name=self._name, batch_mode=LogicBatchMethod.Average)
+
+    @property
+    def Minimum(self) -> Sleeper:
+        return Sleeper(name=self._name, batch_mode=LogicBatchMethod.Minimum)
+
+    @property
+    def Maximum(self) -> Sleeper:
+        return Sleeper(name=self._name, batch_mode=LogicBatchMethod.Maximum)
+
+    @property
+    def Sum(self) -> Sleeper:
+        return Sleeper(name=self._name, batch_mode=LogicBatchMethod.Sum)
 
     @property
     def EntityState(self) -> _DevicesLogicType:
@@ -16471,6 +20328,22 @@ class _SleeperLefts(
         return _SleeperLefts(name)
 
     @property
+    def Average(self) -> SleeperLeft:
+        return SleeperLeft(name=self._name, batch_mode=LogicBatchMethod.Average)
+
+    @property
+    def Minimum(self) -> SleeperLeft:
+        return SleeperLeft(name=self._name, batch_mode=LogicBatchMethod.Minimum)
+
+    @property
+    def Maximum(self) -> SleeperLeft:
+        return SleeperLeft(name=self._name, batch_mode=LogicBatchMethod.Maximum)
+
+    @property
+    def Sum(self) -> SleeperLeft:
+        return SleeperLeft(name=self._name, batch_mode=LogicBatchMethod.Sum)
+
+    @property
     def EntityState(self) -> _DevicesLogicType:
         return _DevicesLogicType(self, _LT.EntityState)
 
@@ -16531,6 +20404,22 @@ class _SleeperRights(
 
     def __getitem__(self, name: str | int | float) -> "_SleeperRights":
         return _SleeperRights(name)
+
+    @property
+    def Average(self) -> SleeperRight:
+        return SleeperRight(name=self._name, batch_mode=LogicBatchMethod.Average)
+
+    @property
+    def Minimum(self) -> SleeperRight:
+        return SleeperRight(name=self._name, batch_mode=LogicBatchMethod.Minimum)
+
+    @property
+    def Maximum(self) -> SleeperRight:
+        return SleeperRight(name=self._name, batch_mode=LogicBatchMethod.Maximum)
+
+    @property
+    def Sum(self) -> SleeperRight:
+        return SleeperRight(name=self._name, batch_mode=LogicBatchMethod.Sum)
 
     @property
     def EntityState(self) -> _DevicesLogicType:
@@ -16595,6 +20484,22 @@ class _SleeperVerticals(
         return _SleeperVerticals(name)
 
     @property
+    def Average(self) -> SleeperVertical:
+        return SleeperVertical(name=self._name, batch_mode=LogicBatchMethod.Average)
+
+    @property
+    def Minimum(self) -> SleeperVertical:
+        return SleeperVertical(name=self._name, batch_mode=LogicBatchMethod.Minimum)
+
+    @property
+    def Maximum(self) -> SleeperVertical:
+        return SleeperVertical(name=self._name, batch_mode=LogicBatchMethod.Maximum)
+
+    @property
+    def Sum(self) -> SleeperVertical:
+        return SleeperVertical(name=self._name, batch_mode=LogicBatchMethod.Sum)
+
+    @property
     def EntityState(self) -> _DevicesLogicType:
         return _DevicesLogicType(self, _LT.EntityState)
 
@@ -16622,6 +20527,22 @@ class _LogicSlotReaders(_BaseStructures, _Errors, _Powers, _SettingRs):
     def __getitem__(self, name: str | int | float) -> "_LogicSlotReaders":
         return _LogicSlotReaders(name)
 
+    @property
+    def Average(self) -> LogicSlotReader:
+        return LogicSlotReader(name=self._name, batch_mode=LogicBatchMethod.Average)
+
+    @property
+    def Minimum(self) -> LogicSlotReader:
+        return LogicSlotReader(name=self._name, batch_mode=LogicBatchMethod.Minimum)
+
+    @property
+    def Maximum(self) -> LogicSlotReader:
+        return LogicSlotReader(name=self._name, batch_mode=LogicBatchMethod.Maximum)
+
+    @property
+    def Sum(self) -> LogicSlotReader:
+        return LogicSlotReader(name=self._name, batch_mode=LogicBatchMethod.Sum)
+
 
 LogicSlotReaders: _LogicSlotReaders = _LogicSlotReaders()
 
@@ -16641,6 +20562,30 @@ class _SmallDirectHeatExchangeGastoGass(
         self, name: str | int | float
     ) -> "_SmallDirectHeatExchangeGastoGass":
         return _SmallDirectHeatExchangeGastoGass(name)
+
+    @property
+    def Average(self) -> SmallDirectHeatExchangeGastoGas:
+        return SmallDirectHeatExchangeGastoGas(
+            name=self._name, batch_mode=LogicBatchMethod.Average
+        )
+
+    @property
+    def Minimum(self) -> SmallDirectHeatExchangeGastoGas:
+        return SmallDirectHeatExchangeGastoGas(
+            name=self._name, batch_mode=LogicBatchMethod.Minimum
+        )
+
+    @property
+    def Maximum(self) -> SmallDirectHeatExchangeGastoGas:
+        return SmallDirectHeatExchangeGastoGas(
+            name=self._name, batch_mode=LogicBatchMethod.Maximum
+        )
+
+    @property
+    def Sum(self) -> SmallDirectHeatExchangeGastoGas:
+        return SmallDirectHeatExchangeGastoGas(
+            name=self._name, batch_mode=LogicBatchMethod.Sum
+        )
 
 
 SmallDirectHeatExchangeGastoGass: _SmallDirectHeatExchangeGastoGass = (
@@ -16663,6 +20608,30 @@ class _SmallDirectHeatExchangeLiquidtoGass(
         self, name: str | int | float
     ) -> "_SmallDirectHeatExchangeLiquidtoGass":
         return _SmallDirectHeatExchangeLiquidtoGass(name)
+
+    @property
+    def Average(self) -> SmallDirectHeatExchangeLiquidtoGas:
+        return SmallDirectHeatExchangeLiquidtoGas(
+            name=self._name, batch_mode=LogicBatchMethod.Average
+        )
+
+    @property
+    def Minimum(self) -> SmallDirectHeatExchangeLiquidtoGas:
+        return SmallDirectHeatExchangeLiquidtoGas(
+            name=self._name, batch_mode=LogicBatchMethod.Minimum
+        )
+
+    @property
+    def Maximum(self) -> SmallDirectHeatExchangeLiquidtoGas:
+        return SmallDirectHeatExchangeLiquidtoGas(
+            name=self._name, batch_mode=LogicBatchMethod.Maximum
+        )
+
+    @property
+    def Sum(self) -> SmallDirectHeatExchangeLiquidtoGas:
+        return SmallDirectHeatExchangeLiquidtoGas(
+            name=self._name, batch_mode=LogicBatchMethod.Sum
+        )
 
 
 SmallDirectHeatExchangeLiquidtoGass: _SmallDirectHeatExchangeLiquidtoGass = (
@@ -16688,6 +20657,30 @@ class _SmallDirectHeatExchangeLiquidtoLiquids(
     ) -> "_SmallDirectHeatExchangeLiquidtoLiquids":
         return _SmallDirectHeatExchangeLiquidtoLiquids(name)
 
+    @property
+    def Average(self) -> SmallDirectHeatExchangeLiquidtoLiquid:
+        return SmallDirectHeatExchangeLiquidtoLiquid(
+            name=self._name, batch_mode=LogicBatchMethod.Average
+        )
+
+    @property
+    def Minimum(self) -> SmallDirectHeatExchangeLiquidtoLiquid:
+        return SmallDirectHeatExchangeLiquidtoLiquid(
+            name=self._name, batch_mode=LogicBatchMethod.Minimum
+        )
+
+    @property
+    def Maximum(self) -> SmallDirectHeatExchangeLiquidtoLiquid:
+        return SmallDirectHeatExchangeLiquidtoLiquid(
+            name=self._name, batch_mode=LogicBatchMethod.Maximum
+        )
+
+    @property
+    def Sum(self) -> SmallDirectHeatExchangeLiquidtoLiquid:
+        return SmallDirectHeatExchangeLiquidtoLiquid(
+            name=self._name, batch_mode=LogicBatchMethod.Sum
+        )
+
 
 SmallDirectHeatExchangeLiquidtoLiquids: _SmallDirectHeatExchangeLiquidtoLiquids = (
     _SmallDirectHeatExchangeLiquidtoLiquids()
@@ -16707,6 +20700,22 @@ class _AirlockGates(
 
     def __getitem__(self, name: str | int | float) -> "_AirlockGates":
         return _AirlockGates(name)
+
+    @property
+    def Average(self) -> AirlockGate:
+        return AirlockGate(name=self._name, batch_mode=LogicBatchMethod.Average)
+
+    @property
+    def Minimum(self) -> AirlockGate:
+        return AirlockGate(name=self._name, batch_mode=LogicBatchMethod.Minimum)
+
+    @property
+    def Maximum(self) -> AirlockGate:
+        return AirlockGate(name=self._name, batch_mode=LogicBatchMethod.Maximum)
+
+    @property
+    def Sum(self) -> AirlockGate:
+        return AirlockGate(name=self._name, batch_mode=LogicBatchMethod.Sum)
 
 
 AirlockGates: _AirlockGates = _AirlockGates()
@@ -16775,6 +20784,22 @@ class _SmallSatelliteDishs(
 
     def __getitem__(self, name: str | int | float) -> "_SmallSatelliteDishs":
         return _SmallSatelliteDishs(name)
+
+    @property
+    def Average(self) -> SmallSatelliteDish:
+        return SmallSatelliteDish(name=self._name, batch_mode=LogicBatchMethod.Average)
+
+    @property
+    def Minimum(self) -> SmallSatelliteDish:
+        return SmallSatelliteDish(name=self._name, batch_mode=LogicBatchMethod.Minimum)
+
+    @property
+    def Maximum(self) -> SmallSatelliteDish:
+        return SmallSatelliteDish(name=self._name, batch_mode=LogicBatchMethod.Maximum)
+
+    @property
+    def Sum(self) -> SmallSatelliteDish:
+        return SmallSatelliteDish(name=self._name, batch_mode=LogicBatchMethod.Sum)
 
     @property
     def BestContactFilter(self) -> _DevicesLogicType:
@@ -16909,6 +20934,22 @@ class _TankSmalls(
         return _TankSmalls(name)
 
     @property
+    def Average(self) -> TankSmall:
+        return TankSmall(name=self._name, batch_mode=LogicBatchMethod.Average)
+
+    @property
+    def Minimum(self) -> TankSmall:
+        return TankSmall(name=self._name, batch_mode=LogicBatchMethod.Minimum)
+
+    @property
+    def Maximum(self) -> TankSmall:
+        return TankSmall(name=self._name, batch_mode=LogicBatchMethod.Maximum)
+
+    @property
+    def Sum(self) -> TankSmall:
+        return TankSmall(name=self._name, batch_mode=LogicBatchMethod.Sum)
+
+    @property
     def CombustionOutput(self) -> _DevicesLogicType:
         return _DevicesLogicType(self, _LT.CombustionOutput)
 
@@ -17035,6 +21076,22 @@ class _TankSmallAirs(
 
     def __getitem__(self, name: str | int | float) -> "_TankSmallAirs":
         return _TankSmallAirs(name)
+
+    @property
+    def Average(self) -> TankSmallAir:
+        return TankSmallAir(name=self._name, batch_mode=LogicBatchMethod.Average)
+
+    @property
+    def Minimum(self) -> TankSmallAir:
+        return TankSmallAir(name=self._name, batch_mode=LogicBatchMethod.Minimum)
+
+    @property
+    def Maximum(self) -> TankSmallAir:
+        return TankSmallAir(name=self._name, batch_mode=LogicBatchMethod.Maximum)
+
+    @property
+    def Sum(self) -> TankSmallAir:
+        return TankSmallAir(name=self._name, batch_mode=LogicBatchMethod.Sum)
 
     @property
     def CombustionOutput(self) -> _DevicesLogicType:
@@ -17165,6 +21222,22 @@ class _TankSmallFuels(
         return _TankSmallFuels(name)
 
     @property
+    def Average(self) -> TankSmallFuel:
+        return TankSmallFuel(name=self._name, batch_mode=LogicBatchMethod.Average)
+
+    @property
+    def Minimum(self) -> TankSmallFuel:
+        return TankSmallFuel(name=self._name, batch_mode=LogicBatchMethod.Minimum)
+
+    @property
+    def Maximum(self) -> TankSmallFuel:
+        return TankSmallFuel(name=self._name, batch_mode=LogicBatchMethod.Maximum)
+
+    @property
+    def Sum(self) -> TankSmallFuel:
+        return TankSmallFuel(name=self._name, batch_mode=LogicBatchMethod.Sum)
+
+    @property
     def CombustionOutput(self) -> _DevicesLogicType:
         return _DevicesLogicType(self, _LT.CombustionOutput)
 
@@ -17224,6 +21297,22 @@ class _SolarPanels(_BaseStructures, _Charges, _Maximums, _Ratios, _VerticalWs):
     def __getitem__(self, name: str | int | float) -> "_SolarPanels":
         return _SolarPanels(name)
 
+    @property
+    def Average(self) -> SolarPanel:
+        return SolarPanel(name=self._name, batch_mode=LogicBatchMethod.Average)
+
+    @property
+    def Minimum(self) -> SolarPanel:
+        return SolarPanel(name=self._name, batch_mode=LogicBatchMethod.Minimum)
+
+    @property
+    def Maximum(self) -> SolarPanel:
+        return SolarPanel(name=self._name, batch_mode=LogicBatchMethod.Maximum)
+
+    @property
+    def Sum(self) -> SolarPanel:
+        return SolarPanel(name=self._name, batch_mode=LogicBatchMethod.Sum)
+
 
 SolarPanels: _SolarPanels = _SolarPanels()
 
@@ -17239,6 +21328,22 @@ class _SolarPanel45s(_BaseStructures, _Charges, _Maximums, _Ratios, _VerticalWs)
 
     def __getitem__(self, name: str | int | float) -> "_SolarPanel45s":
         return _SolarPanel45s(name)
+
+    @property
+    def Average(self) -> SolarPanel45:
+        return SolarPanel45(name=self._name, batch_mode=LogicBatchMethod.Average)
+
+    @property
+    def Minimum(self) -> SolarPanel45:
+        return SolarPanel45(name=self._name, batch_mode=LogicBatchMethod.Minimum)
+
+    @property
+    def Maximum(self) -> SolarPanel45:
+        return SolarPanel45(name=self._name, batch_mode=LogicBatchMethod.Maximum)
+
+    @property
+    def Sum(self) -> SolarPanel45:
+        return SolarPanel45(name=self._name, batch_mode=LogicBatchMethod.Sum)
 
 
 SolarPanel45s: _SolarPanel45s = _SolarPanel45s()
@@ -17256,6 +21361,22 @@ class _SolarPanelDuals(_BaseStructures, _Charges, _Maximums, _Ratios, _VerticalW
     def __getitem__(self, name: str | int | float) -> "_SolarPanelDuals":
         return _SolarPanelDuals(name)
 
+    @property
+    def Average(self) -> SolarPanelDual:
+        return SolarPanelDual(name=self._name, batch_mode=LogicBatchMethod.Average)
+
+    @property
+    def Minimum(self) -> SolarPanelDual:
+        return SolarPanelDual(name=self._name, batch_mode=LogicBatchMethod.Minimum)
+
+    @property
+    def Maximum(self) -> SolarPanelDual:
+        return SolarPanelDual(name=self._name, batch_mode=LogicBatchMethod.Maximum)
+
+    @property
+    def Sum(self) -> SolarPanelDual:
+        return SolarPanelDual(name=self._name, batch_mode=LogicBatchMethod.Sum)
+
 
 SolarPanelDuals: _SolarPanelDuals = _SolarPanelDuals()
 
@@ -17271,6 +21392,22 @@ class _SolarPanelFlats(_BaseStructures, _Charges, _Maximums, _Ratios, _VerticalW
 
     def __getitem__(self, name: str | int | float) -> "_SolarPanelFlats":
         return _SolarPanelFlats(name)
+
+    @property
+    def Average(self) -> SolarPanelFlat:
+        return SolarPanelFlat(name=self._name, batch_mode=LogicBatchMethod.Average)
+
+    @property
+    def Minimum(self) -> SolarPanelFlat:
+        return SolarPanelFlat(name=self._name, batch_mode=LogicBatchMethod.Minimum)
+
+    @property
+    def Maximum(self) -> SolarPanelFlat:
+        return SolarPanelFlat(name=self._name, batch_mode=LogicBatchMethod.Maximum)
+
+    @property
+    def Sum(self) -> SolarPanelFlat:
+        return SolarPanelFlat(name=self._name, batch_mode=LogicBatchMethod.Sum)
 
 
 SolarPanelFlats: _SolarPanelFlats = _SolarPanelFlats()
@@ -17290,6 +21427,28 @@ class _SolarPanel45Reinforceds(
     def __getitem__(self, name: str | int | float) -> "_SolarPanel45Reinforceds":
         return _SolarPanel45Reinforceds(name)
 
+    @property
+    def Average(self) -> SolarPanel45Reinforced:
+        return SolarPanel45Reinforced(
+            name=self._name, batch_mode=LogicBatchMethod.Average
+        )
+
+    @property
+    def Minimum(self) -> SolarPanel45Reinforced:
+        return SolarPanel45Reinforced(
+            name=self._name, batch_mode=LogicBatchMethod.Minimum
+        )
+
+    @property
+    def Maximum(self) -> SolarPanel45Reinforced:
+        return SolarPanel45Reinforced(
+            name=self._name, batch_mode=LogicBatchMethod.Maximum
+        )
+
+    @property
+    def Sum(self) -> SolarPanel45Reinforced:
+        return SolarPanel45Reinforced(name=self._name, batch_mode=LogicBatchMethod.Sum)
+
 
 SolarPanel45Reinforceds: _SolarPanel45Reinforceds = _SolarPanel45Reinforceds()
 
@@ -17307,6 +21466,30 @@ class _SolarPanelDualReinforceds(
 
     def __getitem__(self, name: str | int | float) -> "_SolarPanelDualReinforceds":
         return _SolarPanelDualReinforceds(name)
+
+    @property
+    def Average(self) -> SolarPanelDualReinforced:
+        return SolarPanelDualReinforced(
+            name=self._name, batch_mode=LogicBatchMethod.Average
+        )
+
+    @property
+    def Minimum(self) -> SolarPanelDualReinforced:
+        return SolarPanelDualReinforced(
+            name=self._name, batch_mode=LogicBatchMethod.Minimum
+        )
+
+    @property
+    def Maximum(self) -> SolarPanelDualReinforced:
+        return SolarPanelDualReinforced(
+            name=self._name, batch_mode=LogicBatchMethod.Maximum
+        )
+
+    @property
+    def Sum(self) -> SolarPanelDualReinforced:
+        return SolarPanelDualReinforced(
+            name=self._name, batch_mode=LogicBatchMethod.Sum
+        )
 
 
 SolarPanelDualReinforceds: _SolarPanelDualReinforceds = _SolarPanelDualReinforceds()
@@ -17326,6 +21509,30 @@ class _SolarPanelFlatReinforceds(
     def __getitem__(self, name: str | int | float) -> "_SolarPanelFlatReinforceds":
         return _SolarPanelFlatReinforceds(name)
 
+    @property
+    def Average(self) -> SolarPanelFlatReinforced:
+        return SolarPanelFlatReinforced(
+            name=self._name, batch_mode=LogicBatchMethod.Average
+        )
+
+    @property
+    def Minimum(self) -> SolarPanelFlatReinforced:
+        return SolarPanelFlatReinforced(
+            name=self._name, batch_mode=LogicBatchMethod.Minimum
+        )
+
+    @property
+    def Maximum(self) -> SolarPanelFlatReinforced:
+        return SolarPanelFlatReinforced(
+            name=self._name, batch_mode=LogicBatchMethod.Maximum
+        )
+
+    @property
+    def Sum(self) -> SolarPanelFlatReinforced:
+        return SolarPanelFlatReinforced(
+            name=self._name, batch_mode=LogicBatchMethod.Sum
+        )
+
 
 SolarPanelFlatReinforceds: _SolarPanelFlatReinforceds = _SolarPanelFlatReinforceds()
 
@@ -17343,6 +21550,28 @@ class _SolarPanelReinforceds(
 
     def __getitem__(self, name: str | int | float) -> "_SolarPanelReinforceds":
         return _SolarPanelReinforceds(name)
+
+    @property
+    def Average(self) -> SolarPanelReinforced:
+        return SolarPanelReinforced(
+            name=self._name, batch_mode=LogicBatchMethod.Average
+        )
+
+    @property
+    def Minimum(self) -> SolarPanelReinforced:
+        return SolarPanelReinforced(
+            name=self._name, batch_mode=LogicBatchMethod.Minimum
+        )
+
+    @property
+    def Maximum(self) -> SolarPanelReinforced:
+        return SolarPanelReinforced(
+            name=self._name, batch_mode=LogicBatchMethod.Maximum
+        )
+
+    @property
+    def Sum(self) -> SolarPanelReinforced:
+        return SolarPanelReinforced(name=self._name, batch_mode=LogicBatchMethod.Sum)
 
 
 SolarPanelReinforceds: _SolarPanelReinforceds = _SolarPanelReinforceds()
@@ -17417,6 +21646,22 @@ class _Sorters(
 
     def __getitem__(self, name: str | int | float) -> "_Sorters":
         return _Sorters(name)
+
+    @property
+    def Average(self) -> Sorter:
+        return Sorter(name=self._name, batch_mode=LogicBatchMethod.Average)
+
+    @property
+    def Minimum(self) -> Sorter:
+        return Sorter(name=self._name, batch_mode=LogicBatchMethod.Minimum)
+
+    @property
+    def Maximum(self) -> Sorter:
+        return Sorter(name=self._name, batch_mode=LogicBatchMethod.Maximum)
+
+    @property
+    def Sum(self) -> Sorter:
+        return Sorter(name=self._name, batch_mode=LogicBatchMethod.Sum)
 
     @property
     def Output(self) -> _DevicesLogicType:
@@ -17529,6 +21774,22 @@ class _StackerReverses(
         return _StackerReverses(name)
 
     @property
+    def Average(self) -> StackerReverse:
+        return StackerReverse(name=self._name, batch_mode=LogicBatchMethod.Average)
+
+    @property
+    def Minimum(self) -> StackerReverse:
+        return StackerReverse(name=self._name, batch_mode=LogicBatchMethod.Minimum)
+
+    @property
+    def Maximum(self) -> StackerReverse:
+        return StackerReverse(name=self._name, batch_mode=LogicBatchMethod.Maximum)
+
+    @property
+    def Sum(self) -> StackerReverse:
+        return StackerReverse(name=self._name, batch_mode=LogicBatchMethod.Sum)
+
+    @property
     def Output(self) -> _DevicesLogicType:
         return _DevicesLogicType(self, _LT.Output)
 
@@ -17631,6 +21892,22 @@ class _Stackers(
         return _Stackers(name)
 
     @property
+    def Average(self) -> Stacker:
+        return Stacker(name=self._name, batch_mode=LogicBatchMethod.Average)
+
+    @property
+    def Minimum(self) -> Stacker:
+        return Stacker(name=self._name, batch_mode=LogicBatchMethod.Minimum)
+
+    @property
+    def Maximum(self) -> Stacker:
+        return Stacker(name=self._name, batch_mode=LogicBatchMethod.Maximum)
+
+    @property
+    def Sum(self) -> Stacker:
+        return Stacker(name=self._name, batch_mode=LogicBatchMethod.Sum)
+
+    @property
     def Output(self) -> _DevicesLogicType:
         return _DevicesLogicType(self, _LT.Output)
 
@@ -17693,6 +21970,22 @@ class _Batterys(
         return _Batterys(name)
 
     @property
+    def Average(self) -> Battery:
+        return Battery(name=self._name, batch_mode=LogicBatchMethod.Average)
+
+    @property
+    def Minimum(self) -> Battery:
+        return Battery(name=self._name, batch_mode=LogicBatchMethod.Minimum)
+
+    @property
+    def Maximum(self) -> Battery:
+        return Battery(name=self._name, batch_mode=LogicBatchMethod.Maximum)
+
+    @property
+    def Sum(self) -> Battery:
+        return Battery(name=self._name, batch_mode=LogicBatchMethod.Sum)
+
+    @property
     def Power(self) -> _DevicesLogicType:
         return _DevicesLogicType(self, _LT.Power)
 
@@ -17735,6 +22028,22 @@ class _BatteryLarges(
 
     def __getitem__(self, name: str | int | float) -> "_BatteryLarges":
         return _BatteryLarges(name)
+
+    @property
+    def Average(self) -> BatteryLarge:
+        return BatteryLarge(name=self._name, batch_mode=LogicBatchMethod.Average)
+
+    @property
+    def Minimum(self) -> BatteryLarge:
+        return BatteryLarge(name=self._name, batch_mode=LogicBatchMethod.Minimum)
+
+    @property
+    def Maximum(self) -> BatteryLarge:
+        return BatteryLarge(name=self._name, batch_mode=LogicBatchMethod.Maximum)
+
+    @property
+    def Sum(self) -> BatteryLarge:
+        return BatteryLarge(name=self._name, batch_mode=LogicBatchMethod.Sum)
 
     @property
     def Power(self) -> _DevicesLogicType:
@@ -17815,6 +22124,22 @@ class _StirlingEngines(
         return _StirlingEngines(name)
 
     @property
+    def Average(self) -> StirlingEngine:
+        return StirlingEngine(name=self._name, batch_mode=LogicBatchMethod.Average)
+
+    @property
+    def Minimum(self) -> StirlingEngine:
+        return StirlingEngine(name=self._name, batch_mode=LogicBatchMethod.Minimum)
+
+    @property
+    def Maximum(self) -> StirlingEngine:
+        return StirlingEngine(name=self._name, batch_mode=LogicBatchMethod.Maximum)
+
+    @property
+    def Sum(self) -> StirlingEngine:
+        return StirlingEngine(name=self._name, batch_mode=LogicBatchMethod.Sum)
+
+    @property
     def EnvironmentEfficiency(self) -> _DevicesLogicType:
         return _DevicesLogicType(self, _LT.EnvironmentEfficiency)
 
@@ -17879,6 +22204,22 @@ class _SuitStorages(_BaseStructures, _Errors, _Maximums, _Powers, _Ratios, _Sett
         return _SuitStorages(name)
 
     @property
+    def Average(self) -> SuitStorage:
+        return SuitStorage(name=self._name, batch_mode=LogicBatchMethod.Average)
+
+    @property
+    def Minimum(self) -> SuitStorage:
+        return SuitStorage(name=self._name, batch_mode=LogicBatchMethod.Minimum)
+
+    @property
+    def Maximum(self) -> SuitStorage:
+        return SuitStorage(name=self._name, batch_mode=LogicBatchMethod.Maximum)
+
+    @property
+    def Sum(self) -> SuitStorage:
+        return SuitStorage(name=self._name, batch_mode=LogicBatchMethod.Sum)
+
+    @property
     def slot0(self) -> _SlotTypeHelmets:
         return _SlotTypeHelmets(self, 0)
 
@@ -17917,6 +22258,22 @@ class _LogicSwitch2s(_BaseStructures, _Locks, _Opens, _SettingRs):
 
     def __getitem__(self, name: str | int | float) -> "_LogicSwitch2s":
         return _LogicSwitch2s(name)
+
+    @property
+    def Average(self) -> LogicSwitch2:
+        return LogicSwitch2(name=self._name, batch_mode=LogicBatchMethod.Average)
+
+    @property
+    def Minimum(self) -> LogicSwitch2:
+        return LogicSwitch2(name=self._name, batch_mode=LogicBatchMethod.Minimum)
+
+    @property
+    def Maximum(self) -> LogicSwitch2:
+        return LogicSwitch2(name=self._name, batch_mode=LogicBatchMethod.Maximum)
+
+    @property
+    def Sum(self) -> LogicSwitch2:
+        return LogicSwitch2(name=self._name, batch_mode=LogicBatchMethod.Sum)
 
 
 LogicSwitch2s: _LogicSwitch2s = _LogicSwitch2s()
@@ -18001,6 +22358,22 @@ class _TankBigInsulateds(
 
     def __getitem__(self, name: str | int | float) -> "_TankBigInsulateds":
         return _TankBigInsulateds(name)
+
+    @property
+    def Average(self) -> TankBigInsulated:
+        return TankBigInsulated(name=self._name, batch_mode=LogicBatchMethod.Average)
+
+    @property
+    def Minimum(self) -> TankBigInsulated:
+        return TankBigInsulated(name=self._name, batch_mode=LogicBatchMethod.Minimum)
+
+    @property
+    def Maximum(self) -> TankBigInsulated:
+        return TankBigInsulated(name=self._name, batch_mode=LogicBatchMethod.Maximum)
+
+    @property
+    def Sum(self) -> TankBigInsulated:
+        return TankBigInsulated(name=self._name, batch_mode=LogicBatchMethod.Sum)
 
     @property
     def CombustionOutput(self) -> _DevicesLogicType:
@@ -18131,6 +22504,22 @@ class _TankSmallInsulateds(
         return _TankSmallInsulateds(name)
 
     @property
+    def Average(self) -> TankSmallInsulated:
+        return TankSmallInsulated(name=self._name, batch_mode=LogicBatchMethod.Average)
+
+    @property
+    def Minimum(self) -> TankSmallInsulated:
+        return TankSmallInsulated(name=self._name, batch_mode=LogicBatchMethod.Minimum)
+
+    @property
+    def Maximum(self) -> TankSmallInsulated:
+        return TankSmallInsulated(name=self._name, batch_mode=LogicBatchMethod.Maximum)
+
+    @property
+    def Sum(self) -> TankSmallInsulated:
+        return TankSmallInsulated(name=self._name, batch_mode=LogicBatchMethod.Sum)
+
+    @property
     def CombustionOutput(self) -> _DevicesLogicType:
         return _DevicesLogicType(self, _LT.CombustionOutput)
 
@@ -18249,6 +22638,28 @@ class _GroundBasedTelescopes(
 
     def __getitem__(self, name: str | int | float) -> "_GroundBasedTelescopes":
         return _GroundBasedTelescopes(name)
+
+    @property
+    def Average(self) -> GroundBasedTelescope:
+        return GroundBasedTelescope(
+            name=self._name, batch_mode=LogicBatchMethod.Average
+        )
+
+    @property
+    def Minimum(self) -> GroundBasedTelescope:
+        return GroundBasedTelescope(
+            name=self._name, batch_mode=LogicBatchMethod.Minimum
+        )
+
+    @property
+    def Maximum(self) -> GroundBasedTelescope:
+        return GroundBasedTelescope(
+            name=self._name, batch_mode=LogicBatchMethod.Maximum
+        )
+
+    @property
+    def Sum(self) -> GroundBasedTelescope:
+        return GroundBasedTelescope(name=self._name, batch_mode=LogicBatchMethod.Sum)
 
     @property
     def AlignmentError(self) -> _DevicesLogicType:
@@ -18371,6 +22782,22 @@ class _ToolManufactorys(
         return _ToolManufactorys(name)
 
     @property
+    def Average(self) -> ToolManufactory:
+        return ToolManufactory(name=self._name, batch_mode=LogicBatchMethod.Average)
+
+    @property
+    def Minimum(self) -> ToolManufactory:
+        return ToolManufactory(name=self._name, batch_mode=LogicBatchMethod.Minimum)
+
+    @property
+    def Maximum(self) -> ToolManufactory:
+        return ToolManufactory(name=self._name, batch_mode=LogicBatchMethod.Maximum)
+
+    @property
+    def Sum(self) -> ToolManufactory:
+        return ToolManufactory(name=self._name, batch_mode=LogicBatchMethod.Sum)
+
+    @property
     def CompletionRatio(self) -> _DevicesLogicType:
         return _DevicesLogicType(self, _LT.CompletionRatio)
 
@@ -18410,6 +22837,22 @@ class _TraderWaypoints(_BaseStructures, _Errors, _Powers):
     def __getitem__(self, name: str | int | float) -> "_TraderWaypoints":
         return _TraderWaypoints(name)
 
+    @property
+    def Average(self) -> TraderWaypoint:
+        return TraderWaypoint(name=self._name, batch_mode=LogicBatchMethod.Average)
+
+    @property
+    def Minimum(self) -> TraderWaypoint:
+        return TraderWaypoint(name=self._name, batch_mode=LogicBatchMethod.Minimum)
+
+    @property
+    def Maximum(self) -> TraderWaypoint:
+        return TraderWaypoint(name=self._name, batch_mode=LogicBatchMethod.Maximum)
+
+    @property
+    def Sum(self) -> TraderWaypoint:
+        return TraderWaypoint(name=self._name, batch_mode=LogicBatchMethod.Sum)
+
 
 TraderWaypoints: _TraderWaypoints = _TraderWaypoints()
 
@@ -18427,6 +22870,22 @@ class _Transformers(
 
     def __getitem__(self, name: str | int | float) -> "_Transformers":
         return _Transformers(name)
+
+    @property
+    def Average(self) -> Transformer:
+        return Transformer(name=self._name, batch_mode=LogicBatchMethod.Average)
+
+    @property
+    def Minimum(self) -> Transformer:
+        return Transformer(name=self._name, batch_mode=LogicBatchMethod.Minimum)
+
+    @property
+    def Maximum(self) -> Transformer:
+        return Transformer(name=self._name, batch_mode=LogicBatchMethod.Maximum)
+
+    @property
+    def Sum(self) -> Transformer:
+        return Transformer(name=self._name, batch_mode=LogicBatchMethod.Sum)
 
 
 Transformers: _Transformers = _Transformers()
@@ -18448,6 +22907,22 @@ class _TransformerMediums(
     def __getitem__(self, name: str | int | float) -> "_TransformerMediums":
         return _TransformerMediums(name)
 
+    @property
+    def Average(self) -> TransformerMedium:
+        return TransformerMedium(name=self._name, batch_mode=LogicBatchMethod.Average)
+
+    @property
+    def Minimum(self) -> TransformerMedium:
+        return TransformerMedium(name=self._name, batch_mode=LogicBatchMethod.Minimum)
+
+    @property
+    def Maximum(self) -> TransformerMedium:
+        return TransformerMedium(name=self._name, batch_mode=LogicBatchMethod.Maximum)
+
+    @property
+    def Sum(self) -> TransformerMedium:
+        return TransformerMedium(name=self._name, batch_mode=LogicBatchMethod.Sum)
+
 
 TransformerMediums: _TransformerMediums = _TransformerMediums()
 
@@ -18467,6 +22942,22 @@ class _TransformerSmalls(
 
     def __getitem__(self, name: str | int | float) -> "_TransformerSmalls":
         return _TransformerSmalls(name)
+
+    @property
+    def Average(self) -> TransformerSmall:
+        return TransformerSmall(name=self._name, batch_mode=LogicBatchMethod.Average)
+
+    @property
+    def Minimum(self) -> TransformerSmall:
+        return TransformerSmall(name=self._name, batch_mode=LogicBatchMethod.Minimum)
+
+    @property
+    def Maximum(self) -> TransformerSmall:
+        return TransformerSmall(name=self._name, batch_mode=LogicBatchMethod.Maximum)
+
+    @property
+    def Sum(self) -> TransformerSmall:
+        return TransformerSmall(name=self._name, batch_mode=LogicBatchMethod.Sum)
 
 
 TransformerSmalls: _TransformerSmalls = _TransformerSmalls()
@@ -18488,6 +22979,30 @@ class _TransformerSmallReverseds(
     def __getitem__(self, name: str | int | float) -> "_TransformerSmallReverseds":
         return _TransformerSmallReverseds(name)
 
+    @property
+    def Average(self) -> TransformerSmallReversed:
+        return TransformerSmallReversed(
+            name=self._name, batch_mode=LogicBatchMethod.Average
+        )
+
+    @property
+    def Minimum(self) -> TransformerSmallReversed:
+        return TransformerSmallReversed(
+            name=self._name, batch_mode=LogicBatchMethod.Minimum
+        )
+
+    @property
+    def Maximum(self) -> TransformerSmallReversed:
+        return TransformerSmallReversed(
+            name=self._name, batch_mode=LogicBatchMethod.Maximum
+        )
+
+    @property
+    def Sum(self) -> TransformerSmallReversed:
+        return TransformerSmallReversed(
+            name=self._name, batch_mode=LogicBatchMethod.Sum
+        )
+
 
 TransformerSmallReverseds: _TransformerSmallReverseds = _TransformerSmallReverseds()
 
@@ -18508,6 +23023,28 @@ class _RocketTransformerSmalls(
     def __getitem__(self, name: str | int | float) -> "_RocketTransformerSmalls":
         return _RocketTransformerSmalls(name)
 
+    @property
+    def Average(self) -> RocketTransformerSmall:
+        return RocketTransformerSmall(
+            name=self._name, batch_mode=LogicBatchMethod.Average
+        )
+
+    @property
+    def Minimum(self) -> RocketTransformerSmall:
+        return RocketTransformerSmall(
+            name=self._name, batch_mode=LogicBatchMethod.Minimum
+        )
+
+    @property
+    def Maximum(self) -> RocketTransformerSmall:
+        return RocketTransformerSmall(
+            name=self._name, batch_mode=LogicBatchMethod.Maximum
+        )
+
+    @property
+    def Sum(self) -> RocketTransformerSmall:
+        return RocketTransformerSmall(name=self._name, batch_mode=LogicBatchMethod.Sum)
+
 
 RocketTransformerSmalls: _RocketTransformerSmalls = _RocketTransformerSmalls()
 
@@ -18523,6 +23060,22 @@ class _PressurePlateLarges(_BaseStructures, _SettingRs):
 
     def __getitem__(self, name: str | int | float) -> "_PressurePlateLarges":
         return _PressurePlateLarges(name)
+
+    @property
+    def Average(self) -> PressurePlateLarge:
+        return PressurePlateLarge(name=self._name, batch_mode=LogicBatchMethod.Average)
+
+    @property
+    def Minimum(self) -> PressurePlateLarge:
+        return PressurePlateLarge(name=self._name, batch_mode=LogicBatchMethod.Minimum)
+
+    @property
+    def Maximum(self) -> PressurePlateLarge:
+        return PressurePlateLarge(name=self._name, batch_mode=LogicBatchMethod.Maximum)
+
+    @property
+    def Sum(self) -> PressurePlateLarge:
+        return PressurePlateLarge(name=self._name, batch_mode=LogicBatchMethod.Sum)
 
 
 PressurePlateLarges: _PressurePlateLarges = _PressurePlateLarges()
@@ -18540,6 +23093,22 @@ class _PressurePlateMediums(_BaseStructures, _SettingRs):
     def __getitem__(self, name: str | int | float) -> "_PressurePlateMediums":
         return _PressurePlateMediums(name)
 
+    @property
+    def Average(self) -> PressurePlateMedium:
+        return PressurePlateMedium(name=self._name, batch_mode=LogicBatchMethod.Average)
+
+    @property
+    def Minimum(self) -> PressurePlateMedium:
+        return PressurePlateMedium(name=self._name, batch_mode=LogicBatchMethod.Minimum)
+
+    @property
+    def Maximum(self) -> PressurePlateMedium:
+        return PressurePlateMedium(name=self._name, batch_mode=LogicBatchMethod.Maximum)
+
+    @property
+    def Sum(self) -> PressurePlateMedium:
+        return PressurePlateMedium(name=self._name, batch_mode=LogicBatchMethod.Sum)
+
 
 PressurePlateMediums: _PressurePlateMediums = _PressurePlateMediums()
 
@@ -18555,6 +23124,22 @@ class _PressurePlateSmalls(_BaseStructures, _SettingRs):
 
     def __getitem__(self, name: str | int | float) -> "_PressurePlateSmalls":
         return _PressurePlateSmalls(name)
+
+    @property
+    def Average(self) -> PressurePlateSmall:
+        return PressurePlateSmall(name=self._name, batch_mode=LogicBatchMethod.Average)
+
+    @property
+    def Minimum(self) -> PressurePlateSmall:
+        return PressurePlateSmall(name=self._name, batch_mode=LogicBatchMethod.Minimum)
+
+    @property
+    def Maximum(self) -> PressurePlateSmall:
+        return PressurePlateSmall(name=self._name, batch_mode=LogicBatchMethod.Maximum)
+
+    @property
+    def Sum(self) -> PressurePlateSmall:
+        return PressurePlateSmall(name=self._name, batch_mode=LogicBatchMethod.Sum)
 
 
 PressurePlateSmalls: _PressurePlateSmalls = _PressurePlateSmalls()
@@ -18576,6 +23161,22 @@ class _TurboVolumePumps(
     def __getitem__(self, name: str | int | float) -> "_TurboVolumePumps":
         return _TurboVolumePumps(name)
 
+    @property
+    def Average(self) -> TurboVolumePump:
+        return TurboVolumePump(name=self._name, batch_mode=LogicBatchMethod.Average)
+
+    @property
+    def Minimum(self) -> TurboVolumePump:
+        return TurboVolumePump(name=self._name, batch_mode=LogicBatchMethod.Minimum)
+
+    @property
+    def Maximum(self) -> TurboVolumePump:
+        return TurboVolumePump(name=self._name, batch_mode=LogicBatchMethod.Maximum)
+
+    @property
+    def Sum(self) -> TurboVolumePump:
+        return TurboVolumePump(name=self._name, batch_mode=LogicBatchMethod.Sum)
+
 
 TurboVolumePumps: _TurboVolumePumps = _TurboVolumePumps()
 
@@ -18595,6 +23196,28 @@ class _LiquidTurboVolumePumps(
 
     def __getitem__(self, name: str | int | float) -> "_LiquidTurboVolumePumps":
         return _LiquidTurboVolumePumps(name)
+
+    @property
+    def Average(self) -> LiquidTurboVolumePump:
+        return LiquidTurboVolumePump(
+            name=self._name, batch_mode=LogicBatchMethod.Average
+        )
+
+    @property
+    def Minimum(self) -> LiquidTurboVolumePump:
+        return LiquidTurboVolumePump(
+            name=self._name, batch_mode=LogicBatchMethod.Minimum
+        )
+
+    @property
+    def Maximum(self) -> LiquidTurboVolumePump:
+        return LiquidTurboVolumePump(
+            name=self._name, batch_mode=LogicBatchMethod.Maximum
+        )
+
+    @property
+    def Sum(self) -> LiquidTurboVolumePump:
+        return LiquidTurboVolumePump(name=self._name, batch_mode=LogicBatchMethod.Sum)
 
 
 LiquidTurboVolumePumps: _LiquidTurboVolumePumps = _LiquidTurboVolumePumps()
@@ -18619,6 +23242,22 @@ class _ChuteUmbilicalMales(_BaseStructures, _Errors, _Locks, _ModeRs, _Opens, _P
 
     def __getitem__(self, name: str | int | float) -> "_ChuteUmbilicalMales":
         return _ChuteUmbilicalMales(name)
+
+    @property
+    def Average(self) -> ChuteUmbilicalMale:
+        return ChuteUmbilicalMale(name=self._name, batch_mode=LogicBatchMethod.Average)
+
+    @property
+    def Minimum(self) -> ChuteUmbilicalMale:
+        return ChuteUmbilicalMale(name=self._name, batch_mode=LogicBatchMethod.Minimum)
+
+    @property
+    def Maximum(self) -> ChuteUmbilicalMale:
+        return ChuteUmbilicalMale(name=self._name, batch_mode=LogicBatchMethod.Maximum)
+
+    @property
+    def Sum(self) -> ChuteUmbilicalMale:
+        return ChuteUmbilicalMale(name=self._name, batch_mode=LogicBatchMethod.Sum)
 
     @property
     def slot0(self) -> _SlotTypeCommons:
@@ -18656,6 +23295,22 @@ class _GasUmbilicalMales(
     def __getitem__(self, name: str | int | float) -> "_GasUmbilicalMales":
         return _GasUmbilicalMales(name)
 
+    @property
+    def Average(self) -> GasUmbilicalMale:
+        return GasUmbilicalMale(name=self._name, batch_mode=LogicBatchMethod.Average)
+
+    @property
+    def Minimum(self) -> GasUmbilicalMale:
+        return GasUmbilicalMale(name=self._name, batch_mode=LogicBatchMethod.Minimum)
+
+    @property
+    def Maximum(self) -> GasUmbilicalMale:
+        return GasUmbilicalMale(name=self._name, batch_mode=LogicBatchMethod.Maximum)
+
+    @property
+    def Sum(self) -> GasUmbilicalMale:
+        return GasUmbilicalMale(name=self._name, batch_mode=LogicBatchMethod.Sum)
+
 
 GasUmbilicalMales: _GasUmbilicalMales = _GasUmbilicalMales()
 
@@ -18684,6 +23339,22 @@ class _LiquidUmbilicalMales(
     def __getitem__(self, name: str | int | float) -> "_LiquidUmbilicalMales":
         return _LiquidUmbilicalMales(name)
 
+    @property
+    def Average(self) -> LiquidUmbilicalMale:
+        return LiquidUmbilicalMale(name=self._name, batch_mode=LogicBatchMethod.Average)
+
+    @property
+    def Minimum(self) -> LiquidUmbilicalMale:
+        return LiquidUmbilicalMale(name=self._name, batch_mode=LogicBatchMethod.Minimum)
+
+    @property
+    def Maximum(self) -> LiquidUmbilicalMale:
+        return LiquidUmbilicalMale(name=self._name, batch_mode=LogicBatchMethod.Maximum)
+
+    @property
+    def Sum(self) -> LiquidUmbilicalMale:
+        return LiquidUmbilicalMale(name=self._name, batch_mode=LogicBatchMethod.Sum)
+
 
 LiquidUmbilicalMales: _LiquidUmbilicalMales = _LiquidUmbilicalMales()
 
@@ -18699,6 +23370,22 @@ class _PowerUmbilicalMales(_BaseStructures, _Errors, _Locks, _ModeRs, _Opens, _P
 
     def __getitem__(self, name: str | int | float) -> "_PowerUmbilicalMales":
         return _PowerUmbilicalMales(name)
+
+    @property
+    def Average(self) -> PowerUmbilicalMale:
+        return PowerUmbilicalMale(name=self._name, batch_mode=LogicBatchMethod.Average)
+
+    @property
+    def Minimum(self) -> PowerUmbilicalMale:
+        return PowerUmbilicalMale(name=self._name, batch_mode=LogicBatchMethod.Minimum)
+
+    @property
+    def Maximum(self) -> PowerUmbilicalMale:
+        return PowerUmbilicalMale(name=self._name, batch_mode=LogicBatchMethod.Maximum)
+
+    @property
+    def Sum(self) -> PowerUmbilicalMale:
+        return PowerUmbilicalMale(name=self._name, batch_mode=LogicBatchMethod.Sum)
 
 
 PowerUmbilicalMales: _PowerUmbilicalMales = _PowerUmbilicalMales()
@@ -18716,6 +23403,22 @@ class _GasUmbilicalFemales(_BaseStructures, _Maximums, _Ratios, _SettingWs):
     def __getitem__(self, name: str | int | float) -> "_GasUmbilicalFemales":
         return _GasUmbilicalFemales(name)
 
+    @property
+    def Average(self) -> GasUmbilicalFemale:
+        return GasUmbilicalFemale(name=self._name, batch_mode=LogicBatchMethod.Average)
+
+    @property
+    def Minimum(self) -> GasUmbilicalFemale:
+        return GasUmbilicalFemale(name=self._name, batch_mode=LogicBatchMethod.Minimum)
+
+    @property
+    def Maximum(self) -> GasUmbilicalFemale:
+        return GasUmbilicalFemale(name=self._name, batch_mode=LogicBatchMethod.Maximum)
+
+    @property
+    def Sum(self) -> GasUmbilicalFemale:
+        return GasUmbilicalFemale(name=self._name, batch_mode=LogicBatchMethod.Sum)
+
 
 GasUmbilicalFemales: _GasUmbilicalFemales = _GasUmbilicalFemales()
 
@@ -18731,6 +23434,28 @@ class _LiquidUmbilicalFemales(_BaseStructures, _Maximums, _Ratios, _SettingWs):
 
     def __getitem__(self, name: str | int | float) -> "_LiquidUmbilicalFemales":
         return _LiquidUmbilicalFemales(name)
+
+    @property
+    def Average(self) -> LiquidUmbilicalFemale:
+        return LiquidUmbilicalFemale(
+            name=self._name, batch_mode=LogicBatchMethod.Average
+        )
+
+    @property
+    def Minimum(self) -> LiquidUmbilicalFemale:
+        return LiquidUmbilicalFemale(
+            name=self._name, batch_mode=LogicBatchMethod.Minimum
+        )
+
+    @property
+    def Maximum(self) -> LiquidUmbilicalFemale:
+        return LiquidUmbilicalFemale(
+            name=self._name, batch_mode=LogicBatchMethod.Maximum
+        )
+
+    @property
+    def Sum(self) -> LiquidUmbilicalFemale:
+        return LiquidUmbilicalFemale(name=self._name, batch_mode=LogicBatchMethod.Sum)
 
 
 LiquidUmbilicalFemales: _LiquidUmbilicalFemales = _LiquidUmbilicalFemales()
@@ -18748,6 +23473,28 @@ class _GasUmbilicalFemaleSides(_BaseStructures, _Maximums, _Ratios, _SettingWs):
     def __getitem__(self, name: str | int | float) -> "_GasUmbilicalFemaleSides":
         return _GasUmbilicalFemaleSides(name)
 
+    @property
+    def Average(self) -> GasUmbilicalFemaleSide:
+        return GasUmbilicalFemaleSide(
+            name=self._name, batch_mode=LogicBatchMethod.Average
+        )
+
+    @property
+    def Minimum(self) -> GasUmbilicalFemaleSide:
+        return GasUmbilicalFemaleSide(
+            name=self._name, batch_mode=LogicBatchMethod.Minimum
+        )
+
+    @property
+    def Maximum(self) -> GasUmbilicalFemaleSide:
+        return GasUmbilicalFemaleSide(
+            name=self._name, batch_mode=LogicBatchMethod.Maximum
+        )
+
+    @property
+    def Sum(self) -> GasUmbilicalFemaleSide:
+        return GasUmbilicalFemaleSide(name=self._name, batch_mode=LogicBatchMethod.Sum)
+
 
 GasUmbilicalFemaleSides: _GasUmbilicalFemaleSides = _GasUmbilicalFemaleSides()
 
@@ -18763,6 +23510,30 @@ class _LiquidUmbilicalFemaleSides(_BaseStructures, _Maximums, _Ratios, _SettingW
 
     def __getitem__(self, name: str | int | float) -> "_LiquidUmbilicalFemaleSides":
         return _LiquidUmbilicalFemaleSides(name)
+
+    @property
+    def Average(self) -> LiquidUmbilicalFemaleSide:
+        return LiquidUmbilicalFemaleSide(
+            name=self._name, batch_mode=LogicBatchMethod.Average
+        )
+
+    @property
+    def Minimum(self) -> LiquidUmbilicalFemaleSide:
+        return LiquidUmbilicalFemaleSide(
+            name=self._name, batch_mode=LogicBatchMethod.Minimum
+        )
+
+    @property
+    def Maximum(self) -> LiquidUmbilicalFemaleSide:
+        return LiquidUmbilicalFemaleSide(
+            name=self._name, batch_mode=LogicBatchMethod.Maximum
+        )
+
+    @property
+    def Sum(self) -> LiquidUmbilicalFemaleSide:
+        return LiquidUmbilicalFemaleSide(
+            name=self._name, batch_mode=LogicBatchMethod.Sum
+        )
 
 
 LiquidUmbilicalFemaleSides: _LiquidUmbilicalFemaleSides = _LiquidUmbilicalFemaleSides()
@@ -18823,6 +23594,22 @@ class _Unloaders(
         return _Unloaders(name)
 
     @property
+    def Average(self) -> Unloader:
+        return Unloader(name=self._name, batch_mode=LogicBatchMethod.Average)
+
+    @property
+    def Minimum(self) -> Unloader:
+        return Unloader(name=self._name, batch_mode=LogicBatchMethod.Minimum)
+
+    @property
+    def Maximum(self) -> Unloader:
+        return Unloader(name=self._name, batch_mode=LogicBatchMethod.Maximum)
+
+    @property
+    def Sum(self) -> Unloader:
+        return Unloader(name=self._name, batch_mode=LogicBatchMethod.Sum)
+
+    @property
     def Output(self) -> _DevicesLogicType:
         return _DevicesLogicType(self, _LT.Output)
 
@@ -18867,6 +23654,22 @@ class _UprightWindTurbines(_BaseStructures):
         return _UprightWindTurbines(name)
 
     @property
+    def Average(self) -> UprightWindTurbine:
+        return UprightWindTurbine(name=self._name, batch_mode=LogicBatchMethod.Average)
+
+    @property
+    def Minimum(self) -> UprightWindTurbine:
+        return UprightWindTurbine(name=self._name, batch_mode=LogicBatchMethod.Minimum)
+
+    @property
+    def Maximum(self) -> UprightWindTurbine:
+        return UprightWindTurbine(name=self._name, batch_mode=LogicBatchMethod.Maximum)
+
+    @property
+    def Sum(self) -> UprightWindTurbine:
+        return UprightWindTurbine(name=self._name, batch_mode=LogicBatchMethod.Sum)
+
+    @property
     def PowerGeneration(self) -> _DevicesLogicType:
         return _DevicesLogicType(self, _LT.PowerGeneration)
 
@@ -18886,6 +23689,22 @@ class _Valves(_BaseStructures, _Maximums, _Ons, _Ratios, _SettingWs):
     def __getitem__(self, name: str | int | float) -> "_Valves":
         return _Valves(name)
 
+    @property
+    def Average(self) -> Valve:
+        return Valve(name=self._name, batch_mode=LogicBatchMethod.Average)
+
+    @property
+    def Minimum(self) -> Valve:
+        return Valve(name=self._name, batch_mode=LogicBatchMethod.Minimum)
+
+    @property
+    def Maximum(self) -> Valve:
+        return Valve(name=self._name, batch_mode=LogicBatchMethod.Maximum)
+
+    @property
+    def Sum(self) -> Valve:
+        return Valve(name=self._name, batch_mode=LogicBatchMethod.Sum)
+
 
 Valves: _Valves = _Valves()
 
@@ -18901,6 +23720,22 @@ class _LiquidValves(_BaseStructures, _Maximums, _Ons, _Ratios, _SettingWs):
 
     def __getitem__(self, name: str | int | float) -> "_LiquidValves":
         return _LiquidValves(name)
+
+    @property
+    def Average(self) -> LiquidValve:
+        return LiquidValve(name=self._name, batch_mode=LogicBatchMethod.Average)
+
+    @property
+    def Minimum(self) -> LiquidValve:
+        return LiquidValve(name=self._name, batch_mode=LogicBatchMethod.Minimum)
+
+    @property
+    def Maximum(self) -> LiquidValve:
+        return LiquidValve(name=self._name, batch_mode=LogicBatchMethod.Maximum)
+
+    @property
+    def Sum(self) -> LiquidValve:
+        return LiquidValve(name=self._name, batch_mode=LogicBatchMethod.Sum)
 
 
 LiquidValves: _LiquidValves = _LiquidValves()
@@ -19365,6 +24200,22 @@ class _VendingMachines(
         return _VendingMachines(name)
 
     @property
+    def Average(self) -> VendingMachine:
+        return VendingMachine(name=self._name, batch_mode=LogicBatchMethod.Average)
+
+    @property
+    def Minimum(self) -> VendingMachine:
+        return VendingMachine(name=self._name, batch_mode=LogicBatchMethod.Minimum)
+
+    @property
+    def Maximum(self) -> VendingMachine:
+        return VendingMachine(name=self._name, batch_mode=LogicBatchMethod.Maximum)
+
+    @property
+    def Sum(self) -> VendingMachine:
+        return VendingMachine(name=self._name, batch_mode=LogicBatchMethod.Sum)
+
+    @property
     def RequestHash(self) -> _DevicesLogicType:
         return _DevicesLogicType(self, _LT.RequestHash)
 
@@ -19806,6 +24657,22 @@ class _VolumePumps(
     def __getitem__(self, name: str | int | float) -> "_VolumePumps":
         return _VolumePumps(name)
 
+    @property
+    def Average(self) -> VolumePump:
+        return VolumePump(name=self._name, batch_mode=LogicBatchMethod.Average)
+
+    @property
+    def Minimum(self) -> VolumePump:
+        return VolumePump(name=self._name, batch_mode=LogicBatchMethod.Minimum)
+
+    @property
+    def Maximum(self) -> VolumePump:
+        return VolumePump(name=self._name, batch_mode=LogicBatchMethod.Maximum)
+
+    @property
+    def Sum(self) -> VolumePump:
+        return VolumePump(name=self._name, batch_mode=LogicBatchMethod.Sum)
+
 
 VolumePumps: _VolumePumps = _VolumePumps()
 
@@ -19875,6 +24742,22 @@ class _WallCoolers(
 
     def __getitem__(self, name: str | int | float) -> "_WallCoolers":
         return _WallCoolers(name)
+
+    @property
+    def Average(self) -> WallCooler:
+        return WallCooler(name=self._name, batch_mode=LogicBatchMethod.Average)
+
+    @property
+    def Minimum(self) -> WallCooler:
+        return WallCooler(name=self._name, batch_mode=LogicBatchMethod.Minimum)
+
+    @property
+    def Maximum(self) -> WallCooler:
+        return WallCooler(name=self._name, batch_mode=LogicBatchMethod.Maximum)
+
+    @property
+    def Sum(self) -> WallCooler:
+        return WallCooler(name=self._name, batch_mode=LogicBatchMethod.Sum)
 
     @property
     def CombustionOutput(self) -> _DevicesLogicType:
@@ -19953,6 +24836,22 @@ class _WallHeaters(_BaseStructures, _Errors, _Locks, _Powers):
         return _WallHeaters(name)
 
     @property
+    def Average(self) -> WallHeater:
+        return WallHeater(name=self._name, batch_mode=LogicBatchMethod.Average)
+
+    @property
+    def Minimum(self) -> WallHeater:
+        return WallHeater(name=self._name, batch_mode=LogicBatchMethod.Minimum)
+
+    @property
+    def Maximum(self) -> WallHeater:
+        return WallHeater(name=self._name, batch_mode=LogicBatchMethod.Maximum)
+
+    @property
+    def Sum(self) -> WallHeater:
+        return WallHeater(name=self._name, batch_mode=LogicBatchMethod.Sum)
+
+    @property
     def slot0(self) -> _SlotTypeCommons:
         return _SlotTypeCommons(self, 0)
 
@@ -19975,6 +24874,22 @@ class _WallLights(_BaseStructures, _Locks, _Powers):
 
     def __getitem__(self, name: str | int | float) -> "_WallLights":
         return _WallLights(name)
+
+    @property
+    def Average(self) -> WallLight:
+        return WallLight(name=self._name, batch_mode=LogicBatchMethod.Average)
+
+    @property
+    def Minimum(self) -> WallLight:
+        return WallLight(name=self._name, batch_mode=LogicBatchMethod.Minimum)
+
+    @property
+    def Maximum(self) -> WallLight:
+        return WallLight(name=self._name, batch_mode=LogicBatchMethod.Maximum)
+
+    @property
+    def Sum(self) -> WallLight:
+        return WallLight(name=self._name, batch_mode=LogicBatchMethod.Sum)
 
 
 WallLights: _WallLights = _WallLights()
@@ -20001,6 +24916,22 @@ class _WallLightBatterys(_BaseStructures, _Locks, _Powers):
         return _WallLightBatterys(name)
 
     @property
+    def Average(self) -> WallLightBattery:
+        return WallLightBattery(name=self._name, batch_mode=LogicBatchMethod.Average)
+
+    @property
+    def Minimum(self) -> WallLightBattery:
+        return WallLightBattery(name=self._name, batch_mode=LogicBatchMethod.Minimum)
+
+    @property
+    def Maximum(self) -> WallLightBattery:
+        return WallLightBattery(name=self._name, batch_mode=LogicBatchMethod.Maximum)
+
+    @property
+    def Sum(self) -> WallLightBattery:
+        return WallLightBattery(name=self._name, batch_mode=LogicBatchMethod.Sum)
+
+    @property
     def slot0(self) -> _SlotTypeBatterys:
         return _SlotTypeBatterys(self, 0)
 
@@ -20024,6 +24955,22 @@ class _LightLongAngleds(_BaseStructures, _Locks, _Powers):
     def __getitem__(self, name: str | int | float) -> "_LightLongAngleds":
         return _LightLongAngleds(name)
 
+    @property
+    def Average(self) -> LightLongAngled:
+        return LightLongAngled(name=self._name, batch_mode=LogicBatchMethod.Average)
+
+    @property
+    def Minimum(self) -> LightLongAngled:
+        return LightLongAngled(name=self._name, batch_mode=LogicBatchMethod.Minimum)
+
+    @property
+    def Maximum(self) -> LightLongAngled:
+        return LightLongAngled(name=self._name, batch_mode=LogicBatchMethod.Maximum)
+
+    @property
+    def Sum(self) -> LightLongAngled:
+        return LightLongAngled(name=self._name, batch_mode=LogicBatchMethod.Sum)
+
 
 LightLongAngleds: _LightLongAngleds = _LightLongAngleds()
 
@@ -20040,6 +24987,22 @@ class _LightLongWides(_BaseStructures, _Locks, _Powers):
     def __getitem__(self, name: str | int | float) -> "_LightLongWides":
         return _LightLongWides(name)
 
+    @property
+    def Average(self) -> LightLongWide:
+        return LightLongWide(name=self._name, batch_mode=LogicBatchMethod.Average)
+
+    @property
+    def Minimum(self) -> LightLongWide:
+        return LightLongWide(name=self._name, batch_mode=LogicBatchMethod.Minimum)
+
+    @property
+    def Maximum(self) -> LightLongWide:
+        return LightLongWide(name=self._name, batch_mode=LogicBatchMethod.Maximum)
+
+    @property
+    def Sum(self) -> LightLongWide:
+        return LightLongWide(name=self._name, batch_mode=LogicBatchMethod.Sum)
+
 
 LightLongWides: _LightLongWides = _LightLongWides()
 
@@ -20055,6 +25018,22 @@ class _LightLongs(_BaseStructures, _Locks, _Powers):
 
     def __getitem__(self, name: str | int | float) -> "_LightLongs":
         return _LightLongs(name)
+
+    @property
+    def Average(self) -> LightLong:
+        return LightLong(name=self._name, batch_mode=LogicBatchMethod.Average)
+
+    @property
+    def Minimum(self) -> LightLong:
+        return LightLong(name=self._name, batch_mode=LogicBatchMethod.Minimum)
+
+    @property
+    def Maximum(self) -> LightLong:
+        return LightLong(name=self._name, batch_mode=LogicBatchMethod.Maximum)
+
+    @property
+    def Sum(self) -> LightLong:
+        return LightLong(name=self._name, batch_mode=LogicBatchMethod.Sum)
 
 
 LightLongs: _LightLongs = _LightLongs()
@@ -20081,6 +25060,22 @@ class _WaterPurifiers(
 
     def __getitem__(self, name: str | int | float) -> "_WaterPurifiers":
         return _WaterPurifiers(name)
+
+    @property
+    def Average(self) -> WaterPurifier:
+        return WaterPurifier(name=self._name, batch_mode=LogicBatchMethod.Average)
+
+    @property
+    def Minimum(self) -> WaterPurifier:
+        return WaterPurifier(name=self._name, batch_mode=LogicBatchMethod.Minimum)
+
+    @property
+    def Maximum(self) -> WaterPurifier:
+        return WaterPurifier(name=self._name, batch_mode=LogicBatchMethod.Maximum)
+
+    @property
+    def Sum(self) -> WaterPurifier:
+        return WaterPurifier(name=self._name, batch_mode=LogicBatchMethod.Sum)
 
     @property
     def slot0(self) -> _SlotTypeCommons:
@@ -20113,6 +25108,30 @@ class _WaterBottleFillerPowereds(_BaseStructures, _Activates, _Errors, _Powers):
 
     def __getitem__(self, name: str | int | float) -> "_WaterBottleFillerPowereds":
         return _WaterBottleFillerPowereds(name)
+
+    @property
+    def Average(self) -> WaterBottleFillerPowered:
+        return WaterBottleFillerPowered(
+            name=self._name, batch_mode=LogicBatchMethod.Average
+        )
+
+    @property
+    def Minimum(self) -> WaterBottleFillerPowered:
+        return WaterBottleFillerPowered(
+            name=self._name, batch_mode=LogicBatchMethod.Minimum
+        )
+
+    @property
+    def Maximum(self) -> WaterBottleFillerPowered:
+        return WaterBottleFillerPowered(
+            name=self._name, batch_mode=LogicBatchMethod.Maximum
+        )
+
+    @property
+    def Sum(self) -> WaterBottleFillerPowered:
+        return WaterBottleFillerPowered(
+            name=self._name, batch_mode=LogicBatchMethod.Sum
+        )
 
     @property
     def slot0(self) -> _SlotTypeGasCanisters:
@@ -20149,6 +25168,30 @@ class _WaterBottleFillerPoweredBottoms(_BaseStructures, _Activates, _Errors, _Po
         return _WaterBottleFillerPoweredBottoms(name)
 
     @property
+    def Average(self) -> WaterBottleFillerPoweredBottom:
+        return WaterBottleFillerPoweredBottom(
+            name=self._name, batch_mode=LogicBatchMethod.Average
+        )
+
+    @property
+    def Minimum(self) -> WaterBottleFillerPoweredBottom:
+        return WaterBottleFillerPoweredBottom(
+            name=self._name, batch_mode=LogicBatchMethod.Minimum
+        )
+
+    @property
+    def Maximum(self) -> WaterBottleFillerPoweredBottom:
+        return WaterBottleFillerPoweredBottom(
+            name=self._name, batch_mode=LogicBatchMethod.Maximum
+        )
+
+    @property
+    def Sum(self) -> WaterBottleFillerPoweredBottom:
+        return WaterBottleFillerPoweredBottom(
+            name=self._name, batch_mode=LogicBatchMethod.Sum
+        )
+
+    @property
     def slot0(self) -> _SlotTypeGasCanisters:
         return _SlotTypeGasCanisters(self, 0)
 
@@ -20179,6 +25222,22 @@ class _WeatherStations(_BaseStructures, _Activates, _Errors, _Locks, _ModeRs, _P
         return _WeatherStations(name)
 
     @property
+    def Average(self) -> WeatherStation:
+        return WeatherStation(name=self._name, batch_mode=LogicBatchMethod.Average)
+
+    @property
+    def Minimum(self) -> WeatherStation:
+        return WeatherStation(name=self._name, batch_mode=LogicBatchMethod.Minimum)
+
+    @property
+    def Maximum(self) -> WeatherStation:
+        return WeatherStation(name=self._name, batch_mode=LogicBatchMethod.Maximum)
+
+    @property
+    def Sum(self) -> WeatherStation:
+        return WeatherStation(name=self._name, batch_mode=LogicBatchMethod.Sum)
+
+    @property
     def NextWeatherEventTime(self) -> _DevicesLogicType:
         return _DevicesLogicType(self, _LT.NextWeatherEventTime)
 
@@ -20201,6 +25260,22 @@ class _WindTurbines(_BaseStructures):
 
     def __getitem__(self, name: str | int | float) -> "_WindTurbines":
         return _WindTurbines(name)
+
+    @property
+    def Average(self) -> WindTurbine:
+        return WindTurbine(name=self._name, batch_mode=LogicBatchMethod.Average)
+
+    @property
+    def Minimum(self) -> WindTurbine:
+        return WindTurbine(name=self._name, batch_mode=LogicBatchMethod.Minimum)
+
+    @property
+    def Maximum(self) -> WindTurbine:
+        return WindTurbine(name=self._name, batch_mode=LogicBatchMethod.Maximum)
+
+    @property
+    def Sum(self) -> WindTurbine:
+        return WindTurbine(name=self._name, batch_mode=LogicBatchMethod.Sum)
 
     @property
     def PowerGeneration(self) -> _DevicesLogicType:

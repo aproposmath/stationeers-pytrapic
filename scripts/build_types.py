@@ -20,7 +20,9 @@ gases = [
 ]
 
 __header = """
-from stationeers_pytrapic.types import _DevicesLogicType, _DeviceLogicType, _BaseStructure, _BaseStructures, _DeviceSlotType, _DevicesSlotType, _BaseSlotType, _BaseSlotTypes, LogicType as _LT, LogicSlotType as _LST
+from stationeers_pytrapic.types import _DevicesLogicType, _DeviceLogicType, _BaseStructure, _BaseStructures, _DeviceSlotType, _DevicesSlotType, _BaseSlotType, _BaseSlotTypes, LogicType as _LT, LogicSlotType as _LST, _Register
+
+from stationeers_pytrapic.types_generated import LogicBatchMethod
 """
 
 
@@ -112,6 +114,11 @@ def generate_generic_structure(struct: Structure, multiple: bool = False) -> str
     if multiple and not is_base:
         code += f"  def __getitem__(self, name: str | int | float) -> '{classname}':\n"
         code += f"      return {classname}(name)\n"
+
+        for mode in ["Average", "Minimum", "Maximum", "Sum"]:
+            code += f"  @property\n"
+            code += f"  def {mode}(self) -> {struct.name}:\n"
+            code += f"      return {struct.name}(name=self._name, batch_mode=LogicBatchMethod.{mode})\n"
 
     struct_name = name
 

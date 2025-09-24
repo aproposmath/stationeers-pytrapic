@@ -2,6 +2,7 @@ import enum
 import math
 import sys
 from dataclasses import dataclass, field
+import copy
 
 import astroid
 
@@ -375,12 +376,15 @@ class _DeviceLogicType(_BaseAccess):
     _logic_type: str
 
     def _load(self, output: _Register) -> float:
-        instr = "ld" if self._is_ref_id else "l"
-        return IC10Instruction(instr, [self._id, self._logic_type], output)
+        if self._obj._batch_mode is not None:
+            return _DevicesLogicType(self._obj, self._logic_type)._load(
+                self._obj._batch_mode
+            )(output)
+        else:
+            return IC10Instruction("l", [self._id, self._logic_type], output)
 
     def _set(self, value: float | _Register):
-        instr = "sd" if self._is_ref_id else "s"
-        return IC10Instruction(instr, [self._id, self._logic_type, value])
+        return IC10Instruction("s", [self._id, self._logic_type, value])
 
 
 @dataclass
@@ -403,19 +407,27 @@ class _DevicesLogicType(_BaseBatchAccess):
 
     @property
     def Minimum(self) -> float:
-        return self._load(LogicBatchMethod.Minimum)
+        obj = copy.deepcopy(self._obj)
+        obj._batch_mode = LogicBatchMethod.Minimum
+        return _DeviceLogicType(obj, self._logic_type)
 
     @property
     def Maximum(self) -> float:
-        return self._load(LogicBatchMethod.Maximum)
+        obj = copy.deepcopy(self._obj)
+        obj._batch_mode = LogicBatchMethod.Maximum
+        return _DeviceLogicType(obj, self._logic_type)
 
     @property
     def Average(self) -> float:
-        return self._load(LogicBatchMethod.Average)
+        obj = copy.deepcopy(self._obj)
+        obj._batch_mode = LogicBatchMethod.Average
+        return _DeviceLogicType(obj, self._logic_type)
 
     @property
     def Sum(self) -> float:
-        return self._load(LogicBatchMethod.Sum)
+        obj = copy.deepcopy(self._obj)
+        obj._batch_mode = LogicBatchMethod.Sum
+        return _DeviceLogicType(obj, self._logic_type)
 
     def _set(self, value: float | _Register):
         if self._name is None:
@@ -439,9 +451,16 @@ class _BaseSlotTypes(_BaseBatchAccess):
 class _BaseStructure:
     _dev_id: DeviceId
     _prefab_name: str | None = None
+    _hash: int = -1
+    _name: str | int | None = None
+    _batch_mode: LogicBatchMethod = None
 
     def __init__(
-        self, device_id: "_BaseStructure | str | None" = None, ref_id: str | None = None
+        self,
+        device_id: "_BaseStructure | str | None" = None,
+        ref_id: str | None = None,
+        name: str | int | None = None,
+        batch_mode: LogicBatchMethod = None,
     ):
         if isinstance(device_id, _BaseStructure):
             self._dev_id = device_id._dev_id
@@ -450,20 +469,23 @@ class _BaseStructure:
         else:
             self._dev_id = DeviceId(device_id or ref_id, ref_id is not None)
 
+        self._name = name
+        self._batch_mode = batch_mode
+
     @property
     def PrefabHash(self) -> float:
-        return _DeviceLogicType(self, "PrefabHash")
+        return _DeviceLogicType(self, LogicType.PrefabHash)
 
     @property
     def ReferenceId(self) -> float:
-        return _DeviceLogicType(self, "ReferenceId")
+        return _DeviceLogicType(self, LogicType.ReferenceId)
 
     @property
     def NameHash(self) -> float:
-        return _DeviceLogicType(self, "NameHash")
+        return _DeviceLogicType(self, LogicType.NameHash)
 
     def __str__(self):
-        return type(self).__name__ + f"({self._id})"
+        return type(self).__name__ + f"({self._dev_id})"
 
 
 class _BaseStructures:
@@ -476,15 +498,15 @@ class _BaseStructures:
 
     @property
     def PrefabHash(self) -> _DevicesLogicType:
-        return _DevicesLogicType(self, "PrefabHash")
+        return _DevicesLogicType(self, LogicType.PrefabHash)
 
     @property
     def ReferenceId(self) -> _DevicesLogicType:
-        return _DevicesLogicType(type(self), self._hash, "ReferenceId", self._name)
+        return _DevicesLogicType(self, LogicType.ReferenceId)
 
     @property
     def NameHash(self) -> _DevicesLogicType:
-        return _DevicesLogicType(type(self), self._hash, "NameHash", self._name)
+        return _DevicesLogicType(self, LogicType.NameHash)
 
     def __str__(self):
         return type(self).__name__[1:] + f"(name={self._name})"

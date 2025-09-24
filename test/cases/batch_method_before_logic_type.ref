@@ -1,0 +1,10 @@
+lbwhile1:
+  lbn r1 HASH("StructureTankSmallInsulated") HASH("NightAir") Pressure Average
+  slt r0 r1 5000
+  lbn r3 HASH("StructureGasSensor") HASH("Outside") Temperature Minimum
+  slt r2 r3 413.15
+  and r4 r0 r2
+  sb HASH("StructureActiveVent") On r4
+  j lbwhile1
+# registers: 5
+# lines: 8

@@ -187,15 +187,16 @@ class CompilerPassGenerateCode(CompilerPass):
                 node,
             )
 
-        if isinstance(attr, LogicBatchMethod):
-            data.result = attr
-        elif attrname in ["Minimum", "Maximum", "Sum", "Average"]:
+        if hasattr(attr, "__call__") and attrname in [
+            "Minimum",
+            "Maximum",
+            "Sum",
+            "Average",
+        ]:
             symbol = self.get_intermediate_symbol(node)
             data.add(attr(symbol))
             data.result = symbol
-        elif is_loadable_type(
-            attr
-        ):  # , (symbols._DeviceLogicType, symbols._StackValue)):
+        elif is_loadable_type(attr):
             symbol = self.get_intermediate_symbol(node)
             data.add(attr._load(symbol))
             data.result = symbol

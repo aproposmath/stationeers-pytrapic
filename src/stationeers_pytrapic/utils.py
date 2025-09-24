@@ -45,9 +45,10 @@ def is_intrinsic_function(name: str) -> bool:
 def is_loadable_type(obj) -> bool:
     from . import symbols as sym
 
-    return hasattr(obj, "_load") and isinstance(
-        obj, (sym._DeviceLogicType, sym._StackValue, sym._DeviceSlotType)
-    )
+    if not hasattr(obj, "_load"):
+        return False
+
+    return isinstance(obj, (sym._DeviceLogicType, sym._StackValue, sym._DeviceSlotType))
 
 
 def is_storable_type(obj) -> bool:

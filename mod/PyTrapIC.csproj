@@ -19,21 +19,27 @@
     <PackageReference Include="BepInEx.PluginInfoProps" Version="1.*"/>
     <Reference Include="Unity.TextMeshPro">
       <HintPath>$(STATIONEERS_DLL_DIR)Unity.TextMeshPro.dll</HintPath>
+      <Private>false</Private>
     </Reference>
     <Reference Include="UniTask">
       <HintPath>$(STATIONEERS_DLL_DIR)UniTask.dll</HintPath>
+      <Private>false</Private>
     </Reference>
     <Reference Include="Newtonsoft.Json">
       <HintPath>$(STATIONEERS_DLL_DIR)Newtonsoft.Json.dll</HintPath>
+      <Private>false</Private>
     </Reference>
     <Reference Include="netstandard">
       <HintPath>$(STATIONEERS_DLL_DIR)netstandard.dll</HintPath>
+      <Private>false</Private>
     </Reference>
     <Reference Include="netstandard">
       <HintPath>$(STATIONEERS_DLL_DIR)UnityEngine.UI.dll</HintPath>
+      <Private>false</Private>
     </Reference>
     <Reference Include="Assembly-CSharp">
       <HintPath>$(STATIONEERS_DLL_DIR)/publicized_assemblies/Assembly-CSharp_publicized.dll</HintPath>
+      <Private>false</Private>
     </Reference>
     <Compile Remove="ori/*"/>
   </ItemGroup>
