@@ -89,21 +89,24 @@ class Structure:
     slots: set[Slot] = field(default_factory=set)
 
 
+def get_name(name: str, multiple: bool) -> str:
+    if multiple and name[-1] == 'y':
+        name = name[:-1] + "ie"
+    if multiple:
+        name = name + "s"
+    return name
+
 def generate_generic_structure(struct: Structure, multiple: bool = False) -> str:
     code = ""
     is_base = struct.id is None
-    suffix = "s" if multiple else ""
     bases = (
         ", ".join(
-            [f"_BaseStructure" + suffix] + sorted([b + suffix for b in struct.bases])
+            [get_name("_BaseStructure", multiple)] + sorted([get_name(b, multiple) for b in struct.bases])
         )
         if not is_base
         else ""
     )
-    name = struct.name
-    if multiple and name[-1] == 'y':
-        name = name[:-1] + "ie"
-    name = name + suffix
+    name = get_name(struct.name, multiple)
 
     prefix = ""
     if multiple and not is_base:

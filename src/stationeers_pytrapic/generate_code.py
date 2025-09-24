@@ -511,20 +511,20 @@ class CompilerPassGenerateCode(CompilerPass):
             rhs = self.compile_node(list(node.get_children())[1])
             lhs = self.compile_node(target)
 
-            if (
-                isinstance(lhs, (symbols._DeviceLogicType, symbols._DeviceSlotType))
-                and lhs._id is None
-            ):
-                name = lhs._cls.__name__
-                raise CompilerError(
-                    f"""Cannot use "{name}"" directly, either use "{name}s" to set all devices of this type or create a specific device with "{name}(d0)".""",
-                    target,
-                )
-
-            if isinstance(rhs, (symbols._DevicesLogicType, symbols._DevicesSlotType)):
-                raise CompilerError(
-                    "You need to take either Minimum/Maximum/Average/Sum", target
-                )
+            # if (
+            #     isinstance(lhs, (symbols._DeviceLogicType, symbols._DeviceSlotType))
+            #     and lhs._id is None
+            # ):
+            #     name = lhs._cls.__name__
+            #     raise CompilerError(
+            #         f"""Cannot use "{name}"" directly, either use "{name}s" to set all devices of this type or create a specific device with "{name}(d0)".""",
+            #         target,
+            #     )
+            #
+            # if isinstance(rhs, (symbols._DevicesLogicType, symbols._DevicesSlotType)):
+            #     raise CompilerError(
+            #         "You need to take either Minimum/Maximum/Average/Sum", target
+            #     )
 
             expr = lhs._set(rhs)
             data.add(expr)

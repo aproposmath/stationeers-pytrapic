@@ -2084,7 +2084,7 @@ class AdvancedComposter(
 class _AdvancedComposters(
     _BaseStructures,
     _Activates,
-    _ClearMemorys,
+    _ClearMemories,
     _Errors,
     _ExportCounts,
     _ImportCounts,
@@ -2093,7 +2093,7 @@ class _AdvancedComposters(
     _Modes,
     _Opens,
     _Powers,
-    _Quantitys,
+    _Quantities,
     _Ratios,
     _SettingWs,
 ):
@@ -2204,7 +2204,7 @@ class _AdvancedFurnaces(
     _BaseStructures,
     _Activates,
     _BaseGass,
-    _ClearMemorys,
+    _ClearMemories,
     _Combustions,
     _Errors,
     _ExportCounts,
@@ -2327,7 +2327,7 @@ class AdvancedPackagingMachine(
 class _AdvancedPackagingMachines(
     _BaseStructures,
     _Activates,
-    _ClearMemorys,
+    _ClearMemories,
     _Errors,
     _ExportCounts,
     _ImportCounts,
@@ -2694,7 +2694,7 @@ class ArcFurnace(
 class _ArcFurnaces(
     _BaseStructures,
     _Activates,
-    _ClearMemorys,
+    _ClearMemories,
     _Errors,
     _ExportCounts,
     _Idles,
@@ -2985,7 +2985,7 @@ class Autolathe(
 class _Autolathes(
     _BaseStructures,
     _Activates,
-    _ClearMemorys,
+    _ClearMemories,
     _Errors,
     _ExportCounts,
     _ImportCounts,
@@ -3089,7 +3089,7 @@ class AutomatedOven(
 class _AutomatedOvens(
     _BaseStructures,
     _Activates,
-    _ClearMemorys,
+    _ClearMemories,
     _Errors,
     _ExportCounts,
     _ImportCounts,
@@ -3182,7 +3182,7 @@ class AutoMinerSmall(
 class _AutoMinerSmalls(
     _BaseStructures,
     _Activates,
-    _ClearMemorys,
+    _ClearMemories,
     _Errors,
     _ExportCounts,
     _ImportCounts,
@@ -4593,14 +4593,14 @@ class CargoStorageMedium(
 
 class _CargoStorageMediums(
     _BaseStructures,
-    _ClearMemorys,
+    _ClearMemories,
     _Errors,
     _ExportCounts,
     _ImportCounts,
     _Locks,
     _Opens,
     _Powers,
-    _Quantitys,
+    _Quantities,
     _Ratios,
 ):
     _hash: int = 1151864003
@@ -5279,14 +5279,14 @@ class CargoStorageSmall(
 
 class _CargoStorageSmalls(
     _BaseStructures,
-    _ClearMemorys,
+    _ClearMemories,
     _Errors,
     _ExportCounts,
     _ImportCounts,
     _Locks,
     _Opens,
     _Powers,
-    _Quantitys,
+    _Quantities,
     _Ratios,
 ):
     _hash: int = -1493672123
@@ -5563,7 +5563,7 @@ class Centrifuge(
 
 class _Centrifuges(
     _BaseStructures,
-    _ClearMemorys,
+    _ClearMemories,
     _Errors,
     _ExportCounts,
     _ImportCounts,
@@ -6046,7 +6046,7 @@ class ChuteInlet(_BaseStructure, _ClearMemory, _ImportCount, _Lock):
         return self.slot0
 
 
-class _ChuteInlets(_BaseStructures, _ClearMemorys, _ImportCounts, _Locks):
+class _ChuteInlets(_BaseStructures, _ClearMemories, _ImportCounts, _Locks):
     _hash: int = -1469588766
     _prefab_name: int = "StructureChuteInlet"
 
@@ -6095,7 +6095,7 @@ class ChuteOutlet(_BaseStructure, _ClearMemory, _ExportCount, _ImportCount, _Loc
 
 
 class _ChuteOutlets(
-    _BaseStructures, _ClearMemorys, _ExportCounts, _ImportCounts, _Locks
+    _BaseStructures, _ClearMemories, _ExportCounts, _ImportCounts, _Locks
 ):
     _hash: int = -1022714809
     _prefab_name: int = "StructureChuteOutlet"
@@ -6238,7 +6238,7 @@ class _CombustionCentrifuges(
     _BaseGasInputs,
     _BaseGasOutputs,
     _BaseGass,
-    _ClearMemorys,
+    _ClearMemories,
     _Combustions,
     _Errors,
     _ExportCounts,
@@ -7446,7 +7446,7 @@ class DeepMiner(
 
 class _DeepMiners(
     _BaseStructures,
-    _ClearMemorys,
+    _ClearMemories,
     _Errors,
     _ExportCounts,
     _ImportCounts,
@@ -7867,7 +7867,7 @@ class ElectronicsPrinter(
 class _ElectronicsPrinters(
     _BaseStructures,
     _Activates,
-    _ClearMemorys,
+    _ClearMemories,
     _Errors,
     _ExportCounts,
     _ImportCounts,
@@ -8980,7 +8980,7 @@ class _Furnaces(
     _BaseStructures,
     _Activates,
     _BaseGass,
-    _ClearMemorys,
+    _ClearMemories,
     _Combustions,
     _ExportCounts,
     _Hydrogens,
@@ -9658,7 +9658,7 @@ class GasTankStorage(_BaseStructure, _Quantity, _Temperature):
         return self.slot0
 
 
-class _GasTankStorages(_BaseStructures, _Quantitys, _Temperatures):
+class _GasTankStorages(_BaseStructures, _Quantities, _Temperatures):
     _hash: int = 1632165346
     _prefab_name: int = "StructureGasTankStorage"
 
@@ -9738,7 +9738,9 @@ class SolidFuelGenerator(_BaseStructure, _ClearMemory, _ImportCount, _Lock, _On)
         return self.slot0
 
 
-class _SolidFuelGenerators(_BaseStructures, _ClearMemorys, _ImportCounts, _Locks, _Ons):
+class _SolidFuelGenerators(
+    _BaseStructures, _ClearMemories, _ImportCounts, _Locks, _Ons
+):
     _hash: int = 813146305
     _prefab_name: int = "StructureSolidFuelGenerator"
 
@@ -9899,7 +9901,7 @@ class Harvie(
 class _Harvies(
     _BaseStructures,
     _Activates,
-    _ClearMemorys,
+    _ClearMemories,
     _Errors,
     _ExportCounts,
     _ImportCounts,
@@ -10017,7 +10019,7 @@ class HydraulicPipeBender(
 class _HydraulicPipeBenders(
     _BaseStructures,
     _Activates,
-    _ClearMemorys,
+    _ClearMemories,
     _Errors,
     _ExportCounts,
     _ImportCounts,
@@ -10530,7 +10532,7 @@ class IceCrusher(
 class _IceCrushers(
     _BaseStructures,
     _Activates,
-    _ClearMemorys,
+    _ClearMemories,
     _Errors,
     _ImportCounts,
     _Locks,
@@ -11333,7 +11335,7 @@ class _LarreDockCollectors(
     _Modes,
     _Opens,
     _Powers,
-    _Quantitys,
+    _Quantities,
     _Ratios,
     _SettingWs,
 ):
@@ -13660,7 +13662,7 @@ class LiquidTankStorage(_BaseStructure, _Quantity, _Temperature):
         return self.slot0
 
 
-class _LiquidTankStorages(_BaseStructures, _Quantitys, _Temperatures):
+class _LiquidTankStorages(_BaseStructures, _Quantities, _Temperatures):
     _hash: int = 1691898022
     _prefab_name: int = "StructureLiquidTankStorage"
 
@@ -14633,7 +14635,7 @@ class LogicSorter(
 
 class _LogicSorters(
     _BaseStructures,
-    _ClearMemorys,
+    _ClearMemories,
     _Errors,
     _ExportCounts,
     _ImportCounts,
@@ -15500,7 +15502,7 @@ class MotionSensor(_BaseStructure, _Activate, _On, _Quantity):
     _prefab_name: int = "StructureMotionSensor"
 
 
-class _MotionSensors(_BaseStructures, _Activates, _Ons, _Quantitys):
+class _MotionSensors(_BaseStructures, _Activates, _Ons, _Quantities):
     _hash: int = -1713470563
     _prefab_name: int = "StructureMotionSensor"
 
@@ -15851,7 +15853,7 @@ class HorizontalAutoMiner(
 class _HorizontalAutoMiners(
     _BaseStructures,
     _Activates,
-    _ClearMemorys,
+    _ClearMemories,
     _Errors,
     _ExportCounts,
     _ImportCounts,
@@ -15910,7 +15912,7 @@ class OccupancySensor(_BaseStructure, _Quantity):
         return _DeviceLogicType(self, _LT.Activate)
 
 
-class _OccupancySensors(_BaseStructures, _Quantitys):
+class _OccupancySensors(_BaseStructures, _Quantities):
     _hash: int = 322782515
     _prefab_name: int = "StructureOccupancySensor"
 
@@ -17226,7 +17228,7 @@ class ProximitySensor(_BaseStructure, _Quantity, _SettingW):
         return _DeviceLogicType(self, _LT.Activate)
 
 
-class _ProximitySensors(_BaseStructures, _Quantitys, _SettingWs):
+class _ProximitySensors(_BaseStructures, _Quantities, _SettingWs):
     _hash: int = 568800213
     _prefab_name: int = "StructureProximitySensor"
 
@@ -17510,7 +17512,7 @@ class Recycler(
 class _Recyclers(
     _BaseStructures,
     _Activates,
-    _ClearMemorys,
+    _ClearMemories,
     _Errors,
     _ExportCounts,
     _ImportCounts,
@@ -18009,7 +18011,7 @@ class _RefrigeratedVendingMachines(
     _BaseStructures,
     _Activates,
     _BaseGass,
-    _ClearMemorys,
+    _ClearMemories,
     _Combustions,
     _Errors,
     _ExportCounts,
@@ -18018,7 +18020,7 @@ class _RefrigeratedVendingMachines(
     _Locks,
     _PollWaters,
     _Powers,
-    _Quantitys,
+    _Quantities,
     _Ratios,
     _SettingWs,
     _Temperatures,
@@ -18646,7 +18648,7 @@ class _RocketAvionicss(
     _Modes,
     _PollWaters,
     _Powers,
-    _Quantitys,
+    _Quantities,
     _Reagentss,
 ):
     _hash: int = 808389066
@@ -19349,7 +19351,7 @@ class RocketManufactory(
 class _RocketManufactories(
     _BaseStructures,
     _Activates,
-    _ClearMemorys,
+    _ClearMemories,
     _Errors,
     _ExportCounts,
     _ImportCounts,
@@ -19445,13 +19447,13 @@ class RocketMiner(
 
 class _RocketMiners(
     _BaseStructures,
-    _ClearMemorys,
+    _ClearMemories,
     _Errors,
     _ExportCounts,
     _ImportCounts,
     _Locks,
     _Powers,
-    _Quantitys,
+    _Quantities,
 ):
     _hash: int = -2087223687
     _prefab_name: int = "StructureRocketMiner"
@@ -19560,7 +19562,7 @@ class SDBHopper(_BaseStructure, _ClearMemory, _ImportCount, _Open):
         return self.slot0
 
 
-class _SDBHoppers(_BaseStructures, _ClearMemorys, _ImportCounts, _Opens):
+class _SDBHoppers(_BaseStructures, _ClearMemories, _ImportCounts, _Opens):
     _hash: int = -1875856925
     _prefab_name: int = "StructureSDBHopper"
 
@@ -19609,7 +19611,7 @@ class SDBHopperAdvanced(_BaseStructure, _ClearMemory, _ImportCount, _Lock, _Open
 
 
 class _SDBHopperAdvanceds(
-    _BaseStructures, _ClearMemorys, _ImportCounts, _Locks, _Opens
+    _BaseStructures, _ClearMemories, _ImportCounts, _Locks, _Opens
 ):
     _hash: int = 467225612
     _prefab_name: int = "StructureSDBHopperAdvanced"
@@ -19681,7 +19683,7 @@ class SDBSilo(
 class _SDBSilos(
     _BaseStructures,
     _Activates,
-    _ClearMemorys,
+    _ClearMemories,
     _Errors,
     _ExportCounts,
     _ImportCounts,
@@ -19689,7 +19691,7 @@ class _SDBSilos(
     _Modes,
     _Opens,
     _Powers,
-    _Quantitys,
+    _Quantities,
 ):
     _hash: int = 1155865682
     _prefab_name: int = "StructureSDBSilo"
@@ -19777,7 +19779,7 @@ class SecurityPrinter(
 class _SecurityPrinters(
     _BaseStructures,
     _Activates,
-    _ClearMemorys,
+    _ClearMemories,
     _Errors,
     _ExportCounts,
     _ImportCounts,
@@ -21633,7 +21635,7 @@ class Sorter(
 
 class _Sorters(
     _BaseStructures,
-    _ClearMemorys,
+    _ClearMemories,
     _Errors,
     _ExportCounts,
     _ImportCounts,
@@ -21758,7 +21760,7 @@ class StackerReverse(
 class _StackerReverses(
     _BaseStructures,
     _Activates,
-    _ClearMemorys,
+    _ClearMemories,
     _Errors,
     _ExportCounts,
     _ImportCounts,
@@ -21876,7 +21878,7 @@ class Stacker(
 class _Stackers(
     _BaseStructures,
     _Activates,
-    _ClearMemorys,
+    _ClearMemories,
     _Errors,
     _ExportCounts,
     _ImportCounts,
@@ -22112,7 +22114,7 @@ class _StirlingEngines(
     _Maximums,
     _PollWaters,
     _Powers,
-    _Quantitys,
+    _Quantities,
     _Ratios,
     _SettingWs,
     _Temperatures,
@@ -22765,7 +22767,7 @@ class ToolManufactory(
 class _ToolManufactories(
     _BaseStructures,
     _Activates,
-    _ClearMemorys,
+    _ClearMemories,
     _Errors,
     _ExportCounts,
     _ImportCounts,
@@ -23579,7 +23581,7 @@ class Unloader(
 
 class _Unloaders(
     _BaseStructures,
-    _ClearMemorys,
+    _ClearMemories,
     _Errors,
     _ExportCounts,
     _ImportCounts,
@@ -24184,13 +24186,13 @@ class VendingMachine(
 class _VendingMachines(
     _BaseStructures,
     _Activates,
-    _ClearMemorys,
+    _ClearMemories,
     _Errors,
     _ExportCounts,
     _ImportCounts,
     _Locks,
     _Powers,
-    _Quantitys,
+    _Quantities,
     _Ratios,
 ):
     _hash: int = -443130773
@@ -25053,7 +25055,7 @@ class WaterPurifier(_BaseStructure, _ClearMemory, _Error, _ImportCount, _Lock, _
 
 
 class _WaterPurifiers(
-    _BaseStructures, _ClearMemorys, _Errors, _ImportCounts, _Locks, _Powers
+    _BaseStructures, _ClearMemories, _Errors, _ImportCounts, _Locks, _Powers
 ):
     _hash: int = 887383294
     _prefab_name: int = "StructureWaterPurifier"

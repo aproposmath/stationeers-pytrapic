@@ -384,6 +384,8 @@ class _DeviceLogicType(_BaseAccess):
             return IC10Instruction("l", [self._id, self._logic_type], output)
 
     def _set(self, value: float | _Register):
+        if self._obj._batch_mode is not None:
+            return _DevicesLogicType(self._obj, self._logic_type)._set(value)
         return IC10Instruction("s", [self._id, self._logic_type, value])
 
 
