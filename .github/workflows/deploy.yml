@@ -59,6 +59,8 @@ jobs:
 
       - name: Checkout code
         uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
 
       - name: Restore dependencies
         run: dotnet restore
@@ -70,5 +72,6 @@ jobs:
           mkdir -p ./libs
           cp $STEAM_DIR/steamapps/common/Stationeers\ Dedicated\ Server/rocketstation_DedicatedServer_Data/Managed/*.dll ./libs
           export STATIONEERS_DLL_DIR=`pwd`/libs
+          export PYTRAPIC_VERSION=`./get_version.py`
           find libs
           dotnet build --configuration Release PyTrapIC.csproj
