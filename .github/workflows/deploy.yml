@@ -3,11 +3,11 @@ name: Build and Deploy to GitHub Pages
 on:
   push:
     branches:
-      - main
-  workflow_dispatch:
+      - '**'
 
 jobs:
-  build-deploy:
+  webapp:
+    if: github.ref_name == 'main'
     runs-on: ubuntu-latest
     permissions:
       id-token: write
@@ -44,3 +44,31 @@ jobs:
     - name: Deploy to GitHub Pages
       id: deployment
       uses: actions/deploy-pages@v4
+
+  build-mod:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: RageAgainstThePixel/setup-steamcmd@v1
+
+      - name: Setup .NET SDK
+        uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: '9.0.x'
+
+      - run: steamcmd +login anonymous +sDepotDownloadFileFilter "*.dll" +app_update 600760 -beta beta validate +quit
+
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Restore dependencies
+        run: dotnet restore
+        working-directory: ./mod
+
+      - name: Build project
+        working-directory: ./mod
+        run: |
+          mkdir -p ./libs
+          cp $STEAM_DIR/steamapps/common/Stationeers\ Dedicated\ Server/rocketstation_DedicatedServer_Data/Managed/*.dll ./libs
+          export STATIONEERS_DLL_DIR=`pwd`/libs
+          find libs
+          dotnet build --configuration Release PyTrapIC.csproj
