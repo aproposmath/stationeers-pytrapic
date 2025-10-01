@@ -45,7 +45,7 @@ def handle_airlock():
 
 
 def handle_heating():
-    charge = Batterys.Ratio.Average
+    charge = Batteries.Ratio.Average
     temp = gas_greenhouse.Temperature.Average
     WallHeaters.On = charge > 0.1 and temp < 273.15 + 20
     db.Setting = charge

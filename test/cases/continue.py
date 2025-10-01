@@ -1,7 +1,7 @@
 from stationeers_pytrapic.symbols import *
 
 while True:
-    charge = Batterys.Ratio.Average
+    charge = Batteries.Ratio.Average
 
     if charge < 0.2:
         continue

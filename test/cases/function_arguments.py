@@ -6,4 +6,4 @@ def set_enable_fuel_generator(on):
 
 
 while True:
-    set_enable_fuel_generator(Batterys.Ratio.Average < 0.2)
+    set_enable_fuel_generator(Batteries.Ratio.Average < 0.2)

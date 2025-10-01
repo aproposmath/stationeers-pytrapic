@@ -2,7 +2,7 @@ from stationeers_pytrapic.symbols import *
 
 
 def get_battery_charge():
-    return Batterys.Ratio.Average
+    return Batteries.Ratio.Average
 
 
 while True:

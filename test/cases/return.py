@@ -10,7 +10,7 @@ def f1():
 
 
 def f2():
-    charge = Batterys.Ratio.Average
+    charge = Batteries.Ratio.Average
 
     if charge > 0.2:
         return
@@ -19,7 +19,7 @@ def f2():
 
 
 def f3():
-    charge = Batterys.Ratio.Average
+    charge = Batteries.Ratio.Average
 
     if charge < 0.2:
         return

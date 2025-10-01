@@ -2,7 +2,7 @@ from stationeers_pytrapic.symbols import *
 
 while True:
 
-    charge = Batterys.Ratio.Average
+    charge = Batteries.Ratio.Average
     is_storm_incoming = WeatherStations.NextWeatherEventTime.Average < 1
 
     soon_loading = charge < 0.2 and is_storm_incoming
