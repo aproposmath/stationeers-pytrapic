@@ -529,6 +529,32 @@ class _Device(_BaseStructure, _GenericStructure):
         return f"Device({self._dev_id})"
 
 
+class _Devices(_BaseStructures, _GenericStructures):
+    def __init__(
+        self,
+        prefabHash: int,
+        name: str | int | None = None,
+        batch_mode: LogicBatchMethod = None,
+    ):
+        self._hash = prefabHash
+        self._prefab_name = prefabHash
+        self._name = name
+        self._batch_mode = batch_mode
+
+    def __getattr__(self, attr_name: str) -> _DeviceLogicType:
+        if attr_name in [
+            "_hash",
+            "_name",
+            "_prefab_name",
+            "_batch_mode",
+        ] or attr_name.startswith("__"):
+            return super().__getattr__(attr_name)
+        return _DevicesLogicType(self, attr_name)
+
+    def __str__(self):
+        return f"Device({self._dev_id})"
+
+
 @dataclass
 class _StackValue(_BaseAccess):
     _addr: str | int
@@ -638,6 +664,7 @@ __all__ = [
     "db",
     "_Register",
     "_Device",
+    "_Devices",
     "_slotIndex",
     "_deviceHash",
     "_nameHash",
