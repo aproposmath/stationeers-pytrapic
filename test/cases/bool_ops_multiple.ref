@@ -1,0 +1,17 @@
+lb r1 HASH("StructureGasSensor") Temperature Average
+sgt r0 r1 100
+lb r3 HASH("StructureGasSensor") Temperature Average
+slt r2 r3 200
+lb r5 HASH("StructureGasSensor") Pressure Average
+sgt r4 r5 150
+lb r7 HASH("StructureGasSensor") Pressure Average
+slt r6 r7 250
+and r8 r4 r6
+and r9 r2 r8
+and r10 r0 r9
+lb r12 HASH("StructureGasSensor") Pressure Average
+slt r11 r12 270
+or r13 r10 r11
+sbn HASH("StructureCondensationChamber") 123 On r13
+# registers: 14
+# lines: 15

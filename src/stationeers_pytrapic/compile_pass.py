@@ -428,7 +428,7 @@ class CompilerPassBoolOpToBinOp(CompilerPass):
             if len(other) == 2:
                 node.postinit(other[0], other[1])
             else:
-                node.postinit(other[0], handle_binop(node, other[1:]))
+                node.postinit(other[0], make_node_from_rest(node, other[1:]))
             return node
 
         children = tuple(node.get_children())
