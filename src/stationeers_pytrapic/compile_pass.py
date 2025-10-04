@@ -411,6 +411,36 @@ class CompilerPassFindNames(CompilerPass):
             self.data.add_name(node)
 
 
+class CompilerPassBoolOpToBinOp(CompilerPass):
+    def handle_node(self, node: astroid.NodeNG):
+        pass
+
+    def handle_binop(self, node: astroid.BinOp):
+        def make_node_from_rest(parent_node: astroid.BoolOp, other: tuple[astroid.NodeNG]):
+            node = astroid.BinOp(
+                parent_node.op, 
+                parent_node.lineno, 
+                parent_node.col_offset, 
+                parent_node,
+                end_col_offset=parent_node.end_col_offset,
+                end_lineno=parent_node.end_lineno,
+                )
+            if len(other) == 2:
+                node.postinit(other[0], other[1])
+            else:
+                node.postinit(other[0], make_node_from_rest(node, other[1:]))
+            return node
+
+        children = tuple(node.get_children())
+        for child in children:
+            self._visit_node(child)
+        if not isinstance(node, astroid.BoolOp):
+            return
+        if len(children) <= 2:
+            return
+        node.values = [children[0], make_node_from_rest(node, children[1:])]
+
+
 class CompilerPassCheckConstValue(CompilerPass):
     def handle_module(self, node: astroid.NodeNG):
         for child in node.get_children():
