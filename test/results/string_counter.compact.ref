@@ -37,11 +37,11 @@ trunc r5 r5
 mul r3 r3 256
 add r3 r3 r5
 add r3 r3 48
-mul r5 r5 r6
-sub r4 r4 r5
+mul r7 r5 r6
+sub r4 r4 r7
 div r6 r6 10
 j 32
 put db 511 r3
 j ra
-# registers: 7
+# registers: 8
 # lines: 45

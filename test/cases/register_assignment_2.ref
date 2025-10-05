@@ -1,0 +1,16 @@
+jal main
+main:
+  move r0 0
+lbwhile2:
+    yield
+    lbn r1 HASH("StructureLogicSwitch") HASH("Connect") Open Maximum
+    seqz r2 r0
+    and r3 r1 r2
+    beqz r3 lbelse4
+      sleep 5
+lbelse4:
+    move r0 r1
+    j lbwhile2
+  j ra
+# registers: 4
+# lines: 14

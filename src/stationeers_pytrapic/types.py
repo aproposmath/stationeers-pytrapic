@@ -70,7 +70,7 @@ class IC10Register:
             min_line = (
                 min(node.lineno for node in all_nodes) if all_nodes else sys.maxsize
             )
-            max_line = max(node.lineno for node in all_nodes) if all_nodes else -1
+            max_line = max(node.end_lineno for node in all_nodes) if all_nodes else -1
             self._lifetime = range(min_line, max_line + 1)
         return self._lifetime
 
