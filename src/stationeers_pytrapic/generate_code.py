@@ -976,7 +976,9 @@ class CompilerPassGatherCode(CompilerPass):
                 used_symbols.add(line.output)
             for inp in line.inputs:
                 if inp.is_register:
-                    used_symbols.add(inp.value)
+                    used_symbols.add(
+                        inp.code_expr if isinstance(inp, IC10Register) else inp.value
+                    )
 
         mapping = {}
 
@@ -1029,6 +1031,11 @@ class CompilerPassGatherCode(CompilerPass):
                 parent_registers
             )
             # print(f"scope '{scope}' uses registers {registers_by_scope[scope]}")
+
+        for sym in used_symbols:
+            if sym.code_expr in mapping:
+                sym.code_expr = mapping[sym.code_expr]
+            # print("used symbols", [s.name for s in used_symbols if s.is_register])
 
         # print("mapping", mapping)
         # if mapping:

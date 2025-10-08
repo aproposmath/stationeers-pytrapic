@@ -416,15 +416,17 @@ class CompilerPassBoolOpToBinOp(CompilerPass):
         pass
 
     def handle_binop(self, node: astroid.BinOp):
-        def make_node_from_rest(parent_node: astroid.BoolOp, other: tuple[astroid.NodeNG]):
+        def make_node_from_rest(
+            parent_node: astroid.BoolOp, other: tuple[astroid.NodeNG]
+        ):
             node = astroid.BinOp(
-                parent_node.op, 
-                parent_node.lineno, 
-                parent_node.col_offset, 
+                parent_node.op,
+                parent_node.lineno,
+                parent_node.col_offset,
                 parent_node,
                 end_col_offset=parent_node.end_col_offset,
                 end_lineno=parent_node.end_lineno,
-                )
+            )
             if len(other) == 2:
                 node.postinit(other[0], other[1])
             else:

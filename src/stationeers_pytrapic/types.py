@@ -8,7 +8,9 @@ import astroid
 
 from .types_generated import *
 from .types_generated import _GenericStructure, _GenericStructures
-from .utils import format_enum, get_loop_ancestor, is_compact_output
+from .utils import OutputMode, format_enum, get_loop_ancestor
+
+from . import utils
 
 
 @dataclass
@@ -198,7 +200,7 @@ def decode_data(encoded: str) -> dict:
     return json.loads(zlib.decompress(base64.b64decode(encoded)).decode())
 
 
-def compute_hash(name: int | str | _Register) -> int | str:
+def compute_hash(name: int | str | _Register, output_mode=None) -> int | str:
     if not isinstance(name, str):
         return name
 
@@ -216,7 +218,10 @@ def compute_hash(name: int | str | _Register) -> int | str:
 
     hash_str = f'HASH("{name}")'
 
-    if not is_compact_output():
+    if output_mode is None:
+        output_mode = utils._output_mode
+
+    if output_mode == OutputMode.VERBOSE:
         return hash_str
 
     import zlib
@@ -224,6 +229,9 @@ def compute_hash(name: int | str | _Register) -> int | str:
     val = zlib.crc32(name.encode())
     val = (val ^ 0x80000000) - 0x80000000
     eval_str = str(val)
+
+    if output_mode == OutputMode.NUMERIC:
+        return val
 
     return val if len(eval_str) < len(hash_str) else hash_str
 

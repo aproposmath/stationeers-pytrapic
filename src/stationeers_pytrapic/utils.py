@@ -11,6 +11,7 @@ class OutputMode(IntEnum):
 
     VERBOSE = 0
     COMPACT = 1
+    NUMERIC = 2
 
 
 _output_mode = OutputMode.VERBOSE
@@ -81,31 +82,44 @@ def get_negated_comparison_suffix(op: str):
     }[op]
 
 
+def _e(value: int | float | str) -> float:
+    from .types import compute_hash
+
+    if isinstance(value, str) and value.startswith('HASH("'):
+        value = compute_hash(value[6:-2], OutputMode.NUMERIC)
+        return value
+
+    if isinstance(value, str):
+        raise CompilerError("Cannot evaluate non-hash string constant", None)
+
+    return float(value)
+
+
 def get_unop_instruction(op: str):
     return {
-        "-": ("sub", lambda x: -x),
-        "~": ("neg", lambda x: ~x),
-        "not": ("seqz", lambda x: not x),
+        "-": ("sub", lambda x: -_e(x)),
+        "~": ("neg", lambda x: ~_e(x)),
+        "not": ("seqz", lambda x: not _e(x)),
     }.get(op, (None, None))
 
 
 def get_binop_instruction(op: str):
     comp = lambda op: "s" + get_comparison_suffix(op)
     return {
-        "+": ("add", lambda x, y: x + y),
-        "-": ("sub", lambda x, y: x - y),
-        "*": ("mul", lambda x, y: x * y),
-        "/": ("div", lambda x, y: x / y),
-        "%": ("mod", lambda x, y: x % y),
-        "**": ("pow", lambda x, y: x**y),
-        "and": ("and", lambda x, y: x and y),
-        "or": ("or", lambda x, y: x and y),
-        "==": (comp("=="), lambda x, y: x == y),
-        "!=": (comp("!="), lambda x, y: x != y),
-        "<": (comp("<"), lambda x, y: x < y),
-        ">": (comp(">"), lambda x, y: x > y),
-        "<=": (comp("<="), lambda x, y: x <= y),
-        ">=": (comp(">="), lambda x, y: x >= y),
+        "+": ("add", lambda x, y: _e(x) + _e(y)),
+        "-": ("sub", lambda x, y: _e(x) - _e(y)),
+        "*": ("mul", lambda x, y: _e(x) * _e(y)),
+        "/": ("div", lambda x, y: _e(x) / _e(y)),
+        "%": ("mod", lambda x, y: _e(x) % _e(y)),
+        "**": ("pow", lambda x, y: _e(x) ** _e(y)),
+        "and": ("and", lambda x, y: _e(x) and _e(y)),
+        "or": ("or", lambda x, y: _e(x) and _e(y)),
+        "==": (comp("=="), lambda x, y: _e(x) == _e(y)),
+        "!=": (comp("!="), lambda x, y: _e(x) != _e(y)),
+        "<": (comp("<"), lambda x, y: _e(x) < _e(y)),
+        ">": (comp(">"), lambda x, y: _e(x) > _e(y)),
+        "<=": (comp("<="), lambda x, y: _e(x) <= _e(y)),
+        ">=": (comp(">="), lambda x, y: _e(x) >= _e(y)),
     }.get(op, (None, None))
 
 
