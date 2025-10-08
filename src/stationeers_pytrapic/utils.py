@@ -90,7 +90,7 @@ def _e(value: int | float | str) -> float:
         return value
 
     if isinstance(value, str):
-        raise CompilerError("Cannot evaluate non-hash string constant", None)
+        raise CompilerError(f"Cannot evaluate non-hash string constant: {value}", None)
 
     return float(value)
 
@@ -114,8 +114,8 @@ def get_binop_instruction(op: str):
         "**": ("pow", lambda x, y: _e(x) ** _e(y)),
         "and": ("and", lambda x, y: _e(x) and _e(y)),
         "or": ("or", lambda x, y: _e(x) and _e(y)),
-        "==": (comp("=="), lambda x, y: _e(x) == _e(y)),
-        "!=": (comp("!="), lambda x, y: _e(x) != _e(y)),
+        "==": (comp("=="), lambda x, y: x == y),
+        "!=": (comp("!="), lambda x, y: x != y),
         "<": (comp("<"), lambda x, y: _e(x) < _e(y)),
         ">": (comp(">"), lambda x, y: _e(x) > _e(y)),
         "<=": (comp("<="), lambda x, y: _e(x) <= _e(y)),

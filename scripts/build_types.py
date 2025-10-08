@@ -90,9 +90,9 @@ class Structure:
 
 
 def get_name(name: str, multiple: bool) -> str:
-    if multiple and name[-1] == 'y':
-        name = name[:-1] + "ie"
     if multiple:
+        if name and name[-1] == 'y':
+            name = name[:-1] + "ie"
         name = name + "s"
     return name
 
@@ -209,7 +209,6 @@ def parse_json_file(json_file: Path) -> dict:
         if name.startswith("ThingItem"):
             if "LogicInsert" not in page or not page["LogicInsert"]:
                 continue
-            print("export item", name)
         elif not name.startswith("ThingStructure"):
             continue
 
@@ -277,9 +276,9 @@ def parse_json_file(json_file: Path) -> dict:
     print("Found structure types:", len(structure_types))
     print("Found properties", len(prop_count))
     print("Property counts:")
-    for prop, count in prop_count.items():
-        if count > 10:
-            print(f"  {prop}: {count}")
+    # for prop, count in prop_count.items():
+    #     if count > 10:
+    #         print(f"  {prop}: {count}")
 
     # print("Structure types:")
     # for struct_type in structure_types:
@@ -344,7 +343,7 @@ def extract_slots(page: dict, slot_types: dict) -> list[Slot]:
                 name = " ".join(name.split(" ")[:-1])
             name = name.replace(" ", "")
             slot_types[attrs] = name
-            print("New slot type:", name, attrs)
+            # print("New slot type:", name, attrs)
             slot.type_name = name
     return res
 
@@ -373,8 +372,8 @@ def generate_slot_types(pages):
                 if s.type_name == old_name:
                     s.type_name = new_name
 
-    for attrs, name in slot_types.items():
-        print(f"  {name}: {attrs}")
+    # for attrs, name in slot_types.items():
+    #     print(f"  {name}: {attrs}")
 
     for p in pages:
         if "_slots" not in p:
@@ -395,7 +394,7 @@ def generate_slot_types(pages):
         type_name = slot_types.pop(attrs)
         new_attrs = tuple(sorted(set(attrs) - common_slots))
         slot_types[new_attrs] = type_name
-        print(type_name, "\n\t\t", " ".join(new_attrs))
+        # print(type_name, "\n\t\t", " ".join(new_attrs))
 
     slot_types = {v: k for k, v in slot_types.items()}
     common_attrs = slot_types.pop("Common")
@@ -404,9 +403,9 @@ def generate_slot_types(pages):
         is_common = name == "Common"
         base_name = "_BaseSlotType" if is_common else "_SlotTypeCommon"
 
-        if multiple:
-            name += "s"
-            base_name += "s"
+        name = get_name(name, multiple)
+        base_name = get_name(base_name, multiple)
+
         code = f"class _SlotType{name}({base_name}):\n"
         for attr in attrs:
             code += Property(attr, True, True).generate_code(multiple, True)

@@ -357,7 +357,7 @@ class _SlotTypeBattery(_SlotTypeCommon):
         pass
 
 
-class _SlotTypeBatterys(_SlotTypeCommons):
+class _SlotTypeBatteries(_SlotTypeCommons):
     @property
     def Charge(self) -> _DevicesSlotType:
         return _DevicesSlotType(self, _LST.Charge)
