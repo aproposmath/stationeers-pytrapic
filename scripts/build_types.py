@@ -138,9 +138,7 @@ def generate_generic_structure(struct: Structure, multiple: bool = False) -> str
             names.append(slot.name.replace(" ", ""))
 
         slot_type = slot.type_name
-        ret_type = f"_SlotType{slot_type}"
-        if multiple:
-            ret_type = ret_type + "s"
+        ret_type = get_name(f"_SlotType{slot_type}", multiple)
 
         for name in names:
             code += f"  @property\n"
@@ -207,7 +205,12 @@ def parse_json_file(json_file: Path) -> dict:
     pages = []
     for page in data["pages"]:
         name = page["Key"]
-        if not name.startswith("ThingStructure"):
+
+        if name.startswith("ThingItem"):
+            if "LogicInsert" not in page or not page["LogicInsert"]:
+                continue
+            print("export item", name)
+        elif not name.startswith("ThingStructure"):
             continue
 
         nprops = 0
@@ -228,6 +231,7 @@ def parse_json_file(json_file: Path) -> dict:
     for page in pages:
         name = page["Key"]
         var_name = name.replace("ThingStructure", "")
+        var_name = var_name.replace("ThingItem", "")
         # print("Generating", var_name)
         prefab_hash = page["PrefabHash"]
         prefab_name = page["PrefabName"]

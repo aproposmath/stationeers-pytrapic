@@ -57,14 +57,6 @@ class _SlotTypeCommon(_BaseSlotType):
         pass
 
     @property
-    def PrefabHash(self) -> float:
-        return _DeviceSlotType(self, _LST.PrefabHash)
-
-    @PrefabHash.setter
-    def PrefabHash(self, value: int | float):
-        pass
-
-    @property
     def Quantity(self) -> float:
         return _DeviceSlotType(self, _LST.Quantity)
 
@@ -78,14 +70,6 @@ class _SlotTypeCommon(_BaseSlotType):
 
     @ReferenceId.setter
     def ReferenceId(self, value: int | float):
-        pass
-
-    @property
-    def SortingClass(self) -> float:
-        return _DeviceSlotType(self, _LST.SortingClass)
-
-    @SortingClass.setter
-    def SortingClass(self, value: int | float):
         pass
 
 
@@ -131,14 +115,6 @@ class _SlotTypeCommons(_BaseSlotTypes):
         pass
 
     @property
-    def PrefabHash(self) -> _DevicesSlotType:
-        return _DevicesSlotType(self, _LST.PrefabHash)
-
-    @PrefabHash.setter
-    def PrefabHash(self, value: int | float):
-        pass
-
-    @property
     def Quantity(self) -> _DevicesSlotType:
         return _DevicesSlotType(self, _LST.Quantity)
 
@@ -154,12 +130,60 @@ class _SlotTypeCommons(_BaseSlotTypes):
     def ReferenceId(self, value: int | float):
         pass
 
-    @property
-    def SortingClass(self) -> _DevicesSlotType:
-        return _DevicesSlotType(self, _LST.SortingClass)
 
-    @SortingClass.setter
-    def SortingClass(self, value: int | float):
+class _SlotType(_SlotTypeCommon):
+    @property
+    def FilterType(self) -> float:
+        return _DeviceSlotType(self, _LST.FilterType)
+
+    @FilterType.setter
+    def FilterType(self, value: int | float):
+        pass
+
+
+class _SlotTypes(_SlotTypeCommons):
+    @property
+    def FilterType(self) -> _DevicesSlotType:
+        return _DevicesSlotType(self, _LST.FilterType)
+
+    @FilterType.setter
+    def FilterType(self, value: int | float):
+        pass
+
+
+class _SlotTypeAirTank(_SlotTypeCommon):
+    @property
+    def Pressure(self) -> float:
+        return _DeviceSlotType(self, _LST.Pressure)
+
+    @Pressure.setter
+    def Pressure(self, value: int | float):
+        pass
+
+    @property
+    def Temperature(self) -> float:
+        return _DeviceSlotType(self, _LST.Temperature)
+
+    @Temperature.setter
+    def Temperature(self, value: int | float):
+        pass
+
+
+class _SlotTypeAirTanks(_SlotTypeCommons):
+    @property
+    def Pressure(self) -> _DevicesSlotType:
+        return _DevicesSlotType(self, _LST.Pressure)
+
+    @Pressure.setter
+    def Pressure(self, value: int | float):
+        pass
+
+    @property
+    def Temperature(self) -> _DevicesSlotType:
+        return _DevicesSlotType(self, _LST.Temperature)
+
+    @Temperature.setter
+    def Temperature(self, value: int | float):
         pass
 
 
@@ -172,6 +196,22 @@ class _SlotTypeAppliance(_SlotTypeCommon):
     def On(self, value: int | float):
         pass
 
+    @property
+    def PrefabHash(self) -> float:
+        return _DeviceSlotType(self, _LST.PrefabHash)
+
+    @PrefabHash.setter
+    def PrefabHash(self, value: int | float):
+        pass
+
+    @property
+    def SortingClass(self) -> float:
+        return _DeviceSlotType(self, _LST.SortingClass)
+
+    @SortingClass.setter
+    def SortingClass(self, value: int | float):
+        pass
+
 
 class _SlotTypeAppliances(_SlotTypeCommons):
     @property
@@ -180,6 +220,22 @@ class _SlotTypeAppliances(_SlotTypeCommons):
 
     @On.setter
     def On(self, value: int | float):
+        pass
+
+    @property
+    def PrefabHash(self) -> _DevicesSlotType:
+        return _DevicesSlotType(self, _LST.PrefabHash)
+
+    @PrefabHash.setter
+    def PrefabHash(self, value: int | float):
+        pass
+
+    @property
+    def SortingClass(self) -> _DevicesSlotType:
+        return _DevicesSlotType(self, _LST.SortingClass)
+
+    @SortingClass.setter
+    def SortingClass(self, value: int | float):
         pass
 
 
@@ -201,11 +257,27 @@ class _SlotTypeBack(_SlotTypeCommon):
         pass
 
     @property
+    def PrefabHash(self) -> float:
+        return _DeviceSlotType(self, _LST.PrefabHash)
+
+    @PrefabHash.setter
+    def PrefabHash(self, value: int | float):
+        pass
+
+    @property
     def Pressure(self) -> float:
         return _DeviceSlotType(self, _LST.Pressure)
 
     @Pressure.setter
     def Pressure(self, value: int | float):
+        pass
+
+    @property
+    def SortingClass(self) -> float:
+        return _DeviceSlotType(self, _LST.SortingClass)
+
+    @SortingClass.setter
+    def SortingClass(self, value: int | float):
         pass
 
 
@@ -227,11 +299,27 @@ class _SlotTypeBacks(_SlotTypeCommons):
         pass
 
     @property
+    def PrefabHash(self) -> _DevicesSlotType:
+        return _DevicesSlotType(self, _LST.PrefabHash)
+
+    @PrefabHash.setter
+    def PrefabHash(self, value: int | float):
+        pass
+
+    @property
     def Pressure(self) -> _DevicesSlotType:
         return _DevicesSlotType(self, _LST.Pressure)
 
     @Pressure.setter
     def Pressure(self, value: int | float):
+        pass
+
+    @property
+    def SortingClass(self) -> _DevicesSlotType:
+        return _DevicesSlotType(self, _LST.SortingClass)
+
+    @SortingClass.setter
+    def SortingClass(self, value: int | float):
         pass
 
 
@@ -252,6 +340,22 @@ class _SlotTypeBattery(_SlotTypeCommon):
     def ChargeRatio(self, value: int | float):
         pass
 
+    @property
+    def PrefabHash(self) -> float:
+        return _DeviceSlotType(self, _LST.PrefabHash)
+
+    @PrefabHash.setter
+    def PrefabHash(self, value: int | float):
+        pass
+
+    @property
+    def SortingClass(self) -> float:
+        return _DeviceSlotType(self, _LST.SortingClass)
+
+    @SortingClass.setter
+    def SortingClass(self, value: int | float):
+        pass
+
 
 class _SlotTypeBatterys(_SlotTypeCommons):
     @property
@@ -270,6 +374,22 @@ class _SlotTypeBatterys(_SlotTypeCommons):
     def ChargeRatio(self, value: int | float):
         pass
 
+    @property
+    def PrefabHash(self) -> _DevicesSlotType:
+        return _DevicesSlotType(self, _LST.PrefabHash)
+
+    @PrefabHash.setter
+    def PrefabHash(self, value: int | float):
+        pass
+
+    @property
+    def SortingClass(self) -> _DevicesSlotType:
+        return _DevicesSlotType(self, _LST.SortingClass)
+
+    @SortingClass.setter
+    def SortingClass(self, value: int | float):
+        pass
+
 
 class _SlotTypeCircuitboard(_SlotTypeCommon):
     @property
@@ -278,6 +398,22 @@ class _SlotTypeCircuitboard(_SlotTypeCommon):
 
     @Mode.setter
     def Mode(self, value: int | float):
+        pass
+
+    @property
+    def PrefabHash(self) -> float:
+        return _DeviceSlotType(self, _LST.PrefabHash)
+
+    @PrefabHash.setter
+    def PrefabHash(self, value: int | float):
+        pass
+
+    @property
+    def SortingClass(self) -> float:
+        return _DeviceSlotType(self, _LST.SortingClass)
+
+    @SortingClass.setter
+    def SortingClass(self, value: int | float):
         pass
 
 
@@ -290,6 +426,58 @@ class _SlotTypeCircuitboards(_SlotTypeCommons):
     def Mode(self, value: int | float):
         pass
 
+    @property
+    def PrefabHash(self) -> _DevicesSlotType:
+        return _DevicesSlotType(self, _LST.PrefabHash)
+
+    @PrefabHash.setter
+    def PrefabHash(self, value: int | float):
+        pass
+
+    @property
+    def SortingClass(self) -> _DevicesSlotType:
+        return _DevicesSlotType(self, _LST.SortingClass)
+
+    @SortingClass.setter
+    def SortingClass(self, value: int | float):
+        pass
+
+
+class _SlotTypeDataDisk(_SlotTypeCommon):
+    @property
+    def PrefabHash(self) -> float:
+        return _DeviceSlotType(self, _LST.PrefabHash)
+
+    @PrefabHash.setter
+    def PrefabHash(self, value: int | float):
+        pass
+
+    @property
+    def SortingClass(self) -> float:
+        return _DeviceSlotType(self, _LST.SortingClass)
+
+    @SortingClass.setter
+    def SortingClass(self, value: int | float):
+        pass
+
+
+class _SlotTypeDataDisks(_SlotTypeCommons):
+    @property
+    def PrefabHash(self) -> _DevicesSlotType:
+        return _DevicesSlotType(self, _LST.PrefabHash)
+
+    @PrefabHash.setter
+    def PrefabHash(self, value: int | float):
+        pass
+
+    @property
+    def SortingClass(self) -> _DevicesSlotType:
+        return _DevicesSlotType(self, _LST.SortingClass)
+
+    @SortingClass.setter
+    def SortingClass(self, value: int | float):
+        pass
+
 
 class _SlotTypeFilter(_SlotTypeCommon):
     @property
@@ -300,6 +488,22 @@ class _SlotTypeFilter(_SlotTypeCommon):
     def FilterType(self, value: int | float):
         pass
 
+    @property
+    def PrefabHash(self) -> float:
+        return _DeviceSlotType(self, _LST.PrefabHash)
+
+    @PrefabHash.setter
+    def PrefabHash(self, value: int | float):
+        pass
+
+    @property
+    def SortingClass(self) -> float:
+        return _DeviceSlotType(self, _LST.SortingClass)
+
+    @SortingClass.setter
+    def SortingClass(self, value: int | float):
+        pass
+
 
 class _SlotTypeFilters(_SlotTypeCommons):
     @property
@@ -308,6 +512,22 @@ class _SlotTypeFilters(_SlotTypeCommons):
 
     @FilterType.setter
     def FilterType(self, value: int | float):
+        pass
+
+    @property
+    def PrefabHash(self) -> _DevicesSlotType:
+        return _DevicesSlotType(self, _LST.PrefabHash)
+
+    @PrefabHash.setter
+    def PrefabHash(self, value: int | float):
+        pass
+
+    @property
+    def SortingClass(self) -> _DevicesSlotType:
+        return _DevicesSlotType(self, _LST.SortingClass)
+
+    @SortingClass.setter
+    def SortingClass(self, value: int | float):
         pass
 
 
@@ -321,11 +541,27 @@ class _SlotTypeGasCanister(_SlotTypeCommon):
         pass
 
     @property
+    def PrefabHash(self) -> float:
+        return _DeviceSlotType(self, _LST.PrefabHash)
+
+    @PrefabHash.setter
+    def PrefabHash(self, value: int | float):
+        pass
+
+    @property
     def Pressure(self) -> float:
         return _DeviceSlotType(self, _LST.Pressure)
 
     @Pressure.setter
     def Pressure(self, value: int | float):
+        pass
+
+    @property
+    def SortingClass(self) -> float:
+        return _DeviceSlotType(self, _LST.SortingClass)
+
+    @SortingClass.setter
+    def SortingClass(self, value: int | float):
         pass
 
     @property
@@ -355,11 +591,27 @@ class _SlotTypeGasCanisters(_SlotTypeCommons):
         pass
 
     @property
+    def PrefabHash(self) -> _DevicesSlotType:
+        return _DevicesSlotType(self, _LST.PrefabHash)
+
+    @PrefabHash.setter
+    def PrefabHash(self, value: int | float):
+        pass
+
+    @property
     def Pressure(self) -> _DevicesSlotType:
         return _DevicesSlotType(self, _LST.Pressure)
 
     @Pressure.setter
     def Pressure(self, value: int | float):
+        pass
+
+    @property
+    def SortingClass(self) -> _DevicesSlotType:
+        return _DevicesSlotType(self, _LST.SortingClass)
+
+    @SortingClass.setter
+    def SortingClass(self, value: int | float):
         pass
 
     @property
@@ -421,11 +673,27 @@ class _SlotTypeHelmet(_SlotTypeCommon):
         pass
 
     @property
+    def PrefabHash(self) -> float:
+        return _DeviceSlotType(self, _LST.PrefabHash)
+
+    @PrefabHash.setter
+    def PrefabHash(self, value: int | float):
+        pass
+
+    @property
     def Pressure(self) -> float:
         return _DeviceSlotType(self, _LST.Pressure)
 
     @Pressure.setter
     def Pressure(self, value: int | float):
+        pass
+
+    @property
+    def SortingClass(self) -> float:
+        return _DeviceSlotType(self, _LST.SortingClass)
+
+    @SortingClass.setter
+    def SortingClass(self, value: int | float):
         pass
 
 
@@ -471,11 +739,27 @@ class _SlotTypeHelmets(_SlotTypeCommons):
         pass
 
     @property
+    def PrefabHash(self) -> _DevicesSlotType:
+        return _DevicesSlotType(self, _LST.PrefabHash)
+
+    @PrefabHash.setter
+    def PrefabHash(self, value: int | float):
+        pass
+
+    @property
     def Pressure(self) -> _DevicesSlotType:
         return _DevicesSlotType(self, _LST.Pressure)
 
     @Pressure.setter
     def Pressure(self, value: int | float):
+        pass
+
+    @property
+    def SortingClass(self) -> _DevicesSlotType:
+        return _DevicesSlotType(self, _LST.SortingClass)
+
+    @SortingClass.setter
+    def SortingClass(self, value: int | float):
         pass
 
 
@@ -504,6 +788,22 @@ class _SlotTypeMask(_SlotTypeCommon):
     def Open(self, value: int | float):
         pass
 
+    @property
+    def PrefabHash(self) -> float:
+        return _DeviceSlotType(self, _LST.PrefabHash)
+
+    @PrefabHash.setter
+    def PrefabHash(self, value: int | float):
+        pass
+
+    @property
+    def SortingClass(self) -> float:
+        return _DeviceSlotType(self, _LST.SortingClass)
+
+    @SortingClass.setter
+    def SortingClass(self, value: int | float):
+        pass
+
 
 class _SlotTypeMasks(_SlotTypeCommons):
     @property
@@ -528,6 +828,22 @@ class _SlotTypeMasks(_SlotTypeCommons):
 
     @Open.setter
     def Open(self, value: int | float):
+        pass
+
+    @property
+    def PrefabHash(self) -> _DevicesSlotType:
+        return _DevicesSlotType(self, _LST.PrefabHash)
+
+    @PrefabHash.setter
+    def PrefabHash(self, value: int | float):
+        pass
+
+    @property
+    def SortingClass(self) -> _DevicesSlotType:
+        return _DevicesSlotType(self, _LST.SortingClass)
+
+    @SortingClass.setter
+    def SortingClass(self, value: int | float):
         pass
 
 
@@ -573,6 +889,14 @@ class _SlotTypePlant(_SlotTypeCommon):
         pass
 
     @property
+    def PrefabHash(self) -> float:
+        return _DeviceSlotType(self, _LST.PrefabHash)
+
+    @PrefabHash.setter
+    def PrefabHash(self, value: int | float):
+        pass
+
+    @property
     def Seeding(self) -> float:
         return _DeviceSlotType(self, _LST.Seeding)
 
@@ -586,6 +910,14 @@ class _SlotTypePlant(_SlotTypeCommon):
 
     @SeedingRatio.setter
     def SeedingRatio(self, value: int | float):
+        pass
+
+    @property
+    def SortingClass(self) -> float:
+        return _DeviceSlotType(self, _LST.SortingClass)
+
+    @SortingClass.setter
+    def SortingClass(self, value: int | float):
         pass
 
 
@@ -631,6 +963,14 @@ class _SlotTypePlants(_SlotTypeCommons):
         pass
 
     @property
+    def PrefabHash(self) -> _DevicesSlotType:
+        return _DevicesSlotType(self, _LST.PrefabHash)
+
+    @PrefabHash.setter
+    def PrefabHash(self, value: int | float):
+        pass
+
+    @property
     def Seeding(self) -> _DevicesSlotType:
         return _DevicesSlotType(self, _LST.Seeding)
 
@@ -646,6 +986,14 @@ class _SlotTypePlants(_SlotTypeCommons):
     def SeedingRatio(self, value: int | float):
         pass
 
+    @property
+    def SortingClass(self) -> _DevicesSlotType:
+        return _DevicesSlotType(self, _LST.SortingClass)
+
+    @SortingClass.setter
+    def SortingClass(self, value: int | float):
+        pass
+
 
 class _SlotTypeProgrammableChip(_SlotTypeCommon):
     @property
@@ -656,6 +1004,22 @@ class _SlotTypeProgrammableChip(_SlotTypeCommon):
     def LineNumber(self, value: int | float):
         pass
 
+    @property
+    def PrefabHash(self) -> float:
+        return _DeviceSlotType(self, _LST.PrefabHash)
+
+    @PrefabHash.setter
+    def PrefabHash(self, value: int | float):
+        pass
+
+    @property
+    def SortingClass(self) -> float:
+        return _DeviceSlotType(self, _LST.SortingClass)
+
+    @SortingClass.setter
+    def SortingClass(self, value: int | float):
+        pass
+
 
 class _SlotTypeProgrammableChips(_SlotTypeCommons):
     @property
@@ -664,6 +1028,22 @@ class _SlotTypeProgrammableChips(_SlotTypeCommons):
 
     @LineNumber.setter
     def LineNumber(self, value: int | float):
+        pass
+
+    @property
+    def PrefabHash(self) -> _DevicesSlotType:
+        return _DevicesSlotType(self, _LST.PrefabHash)
+
+    @PrefabHash.setter
+    def PrefabHash(self, value: int | float):
+        pass
+
+    @property
+    def SortingClass(self) -> _DevicesSlotType:
+        return _DevicesSlotType(self, _LST.SortingClass)
+
+    @SortingClass.setter
+    def SortingClass(self, value: int | float):
         pass
 
 
@@ -682,6 +1062,14 @@ class _SlotTypeSuit(_SlotTypeCommon):
 
     @ChargeRatio.setter
     def ChargeRatio(self, value: int | float):
+        pass
+
+    @property
+    def PrefabHash(self) -> float:
+        return _DeviceSlotType(self, _LST.PrefabHash)
+
+    @PrefabHash.setter
+    def PrefabHash(self, value: int | float):
         pass
 
     @property
@@ -708,6 +1096,14 @@ class _SlotTypeSuit(_SlotTypeCommon):
     def PressureWaste(self, value: int | float):
         pass
 
+    @property
+    def SortingClass(self) -> float:
+        return _DeviceSlotType(self, _LST.SortingClass)
+
+    @SortingClass.setter
+    def SortingClass(self, value: int | float):
+        pass
+
 
 class _SlotTypeSuits(_SlotTypeCommons):
     @property
@@ -724,6 +1120,14 @@ class _SlotTypeSuits(_SlotTypeCommons):
 
     @ChargeRatio.setter
     def ChargeRatio(self, value: int | float):
+        pass
+
+    @property
+    def PrefabHash(self) -> _DevicesSlotType:
+        return _DevicesSlotType(self, _LST.PrefabHash)
+
+    @PrefabHash.setter
+    def PrefabHash(self, value: int | float):
         pass
 
     @property
@@ -748,6 +1152,14 @@ class _SlotTypeSuits(_SlotTypeCommons):
 
     @PressureWaste.setter
     def PressureWaste(self, value: int | float):
+        pass
+
+    @property
+    def SortingClass(self) -> _DevicesSlotType:
+        return _DevicesSlotType(self, _LST.SortingClass)
+
+    @SortingClass.setter
+    def SortingClass(self, value: int | float):
         pass
 
 
@@ -1932,11 +2344,11 @@ class ActiveVent(
         return _DeviceLogicType(self, _LT.TotalMolesOutput)
 
     @property
-    def slot0(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(self, 0)
+    def slot0(self) -> _SlotTypeDataDisk:
+        return _SlotTypeDataDisk(self, 0)
 
     @property
-    def DataDisk(self) -> _SlotTypeCommon:
+    def DataDisk(self) -> _SlotTypeDataDisk:
         return self.slot0
 
 
@@ -2034,11 +2446,11 @@ class _ActiveVents(
         return _DevicesLogicType(self, _LT.TotalMolesOutput)
 
     @property
-    def slot0(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(self, 0)
+    def slot0(self) -> _SlotTypeDataDisks:
+        return _SlotTypeDataDisks(self, 0)
 
     @property
-    def DataDisk(self) -> _SlotTypeCommons:
+    def DataDisk(self) -> _SlotTypeDataDisks:
         return self.slot0
 
 
@@ -2065,19 +2477,19 @@ class AdvancedComposter(
     _prefab_name: int = "StructureAdvancedComposter"
 
     @property
-    def slot0(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(self, 0)
+    def slot0(self) -> _SlotTypeDataDisk:
+        return _SlotTypeDataDisk(self, 0)
 
     @property
-    def Import(self) -> _SlotTypeCommon:
+    def Import(self) -> _SlotTypeDataDisk:
         return self.slot0
 
     @property
-    def slot1(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(self, 1)
+    def slot1(self) -> _SlotTypeDataDisk:
+        return _SlotTypeDataDisk(self, 1)
 
     @property
-    def Export(self) -> _SlotTypeCommon:
+    def Export(self) -> _SlotTypeDataDisk:
         return self.slot1
 
 
@@ -2120,19 +2532,19 @@ class _AdvancedComposters(
         return AdvancedComposter(name=self._name, batch_mode=LogicBatchMethod.Sum)
 
     @property
-    def slot0(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(self, 0)
+    def slot0(self) -> _SlotTypeDataDisks:
+        return _SlotTypeDataDisks(self, 0)
 
     @property
-    def Import(self) -> _SlotTypeCommons:
+    def Import(self) -> _SlotTypeDataDisks:
         return self.slot0
 
     @property
-    def slot1(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(self, 1)
+    def slot1(self) -> _SlotTypeDataDisks:
+        return _SlotTypeDataDisks(self, 1)
 
     @property
-    def Export(self) -> _SlotTypeCommons:
+    def Export(self) -> _SlotTypeDataDisks:
         return self.slot1
 
 
@@ -2184,19 +2596,19 @@ class AdvancedFurnace(
         pass
 
     @property
-    def slot0(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(self, 0)
+    def slot0(self) -> _SlotTypeDataDisk:
+        return _SlotTypeDataDisk(self, 0)
 
     @property
-    def Import(self) -> _SlotTypeCommon:
+    def Import(self) -> _SlotTypeDataDisk:
         return self.slot0
 
     @property
-    def slot1(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(self, 1)
+    def slot1(self) -> _SlotTypeDataDisk:
+        return _SlotTypeDataDisk(self, 1)
 
     @property
-    def Export(self) -> _SlotTypeCommon:
+    def Export(self) -> _SlotTypeDataDisk:
         return self.slot1
 
 
@@ -2264,19 +2676,19 @@ class _AdvancedFurnaces(
         pass
 
     @property
-    def slot0(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(self, 0)
+    def slot0(self) -> _SlotTypeDataDisks:
+        return _SlotTypeDataDisks(self, 0)
 
     @property
-    def Import(self) -> _SlotTypeCommons:
+    def Import(self) -> _SlotTypeDataDisks:
         return self.slot0
 
     @property
-    def slot1(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(self, 1)
+    def slot1(self) -> _SlotTypeDataDisks:
+        return _SlotTypeDataDisks(self, 1)
 
     @property
-    def Export(self) -> _SlotTypeCommons:
+    def Export(self) -> _SlotTypeDataDisks:
         return self.slot1
 
 
@@ -2308,19 +2720,19 @@ class AdvancedPackagingMachine(
         return _DeviceLogicType(self, _LT.StackSize)
 
     @property
-    def slot0(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(self, 0)
+    def slot0(self) -> _SlotTypeDataDisk:
+        return _SlotTypeDataDisk(self, 0)
 
     @property
-    def Import(self) -> _SlotTypeCommon:
+    def Import(self) -> _SlotTypeDataDisk:
         return self.slot0
 
     @property
-    def slot1(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(self, 1)
+    def slot1(self) -> _SlotTypeDataDisk:
+        return _SlotTypeDataDisk(self, 1)
 
     @property
-    def Export(self) -> _SlotTypeCommon:
+    def Export(self) -> _SlotTypeDataDisk:
         return self.slot1
 
 
@@ -2376,11 +2788,131 @@ class _AdvancedPackagingMachines(
         return _DevicesLogicType(self, _LT.StackSize)
 
     @property
-    def slot0(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(self, 0)
+    def slot0(self) -> _SlotTypeDataDisks:
+        return _SlotTypeDataDisks(self, 0)
 
     @property
-    def Import(self) -> _SlotTypeCommons:
+    def Import(self) -> _SlotTypeDataDisks:
+        return self.slot0
+
+    @property
+    def slot1(self) -> _SlotTypeDataDisks:
+        return _SlotTypeDataDisks(self, 1)
+
+    @property
+    def Export(self) -> _SlotTypeDataDisks:
+        return self.slot1
+
+
+AdvancedPackagingMachines: _AdvancedPackagingMachines = _AdvancedPackagingMachines()
+
+
+class AdvancedTablet(_BaseStructure, _Activate, _Error, _Mode, _On):
+    _hash: int = 1722785341
+    _prefab_name: int = "ItemAdvancedTablet"
+
+    @property
+    def Power(self) -> float:
+        return _DeviceLogicType(self, _LT.Power)
+
+    @property
+    def SoundAlert(self) -> float:
+        return _DeviceLogicType(self, _LT.SoundAlert)
+
+    @SoundAlert.setter
+    def SoundAlert(self, value: int | float):
+        pass
+
+    @property
+    def Volume(self) -> float:
+        return _DeviceLogicType(self, _LT.Volume)
+
+    @Volume.setter
+    def Volume(self, value: int | float):
+        pass
+
+    @property
+    def slot0(self) -> _SlotTypeBattery:
+        return _SlotTypeBattery(self, 0)
+
+    @property
+    def Battery(self) -> _SlotTypeBattery:
+        return self.slot0
+
+    @property
+    def slot1(self) -> _SlotTypeCommon:
+        return _SlotTypeCommon(self, 1)
+
+    @property
+    def Cartridge(self) -> _SlotTypeCommon:
+        return self.slot1
+
+    @property
+    def slot2(self) -> _SlotTypeCommon:
+        return _SlotTypeCommon(self, 2)
+
+    @property
+    def Cartridge1(self) -> _SlotTypeCommon:
+        return self.slot2
+
+    @property
+    def slot3(self) -> _SlotTypeCommon:
+        return _SlotTypeCommon(self, 3)
+
+    @property
+    def ProgrammableChip(self) -> _SlotTypeCommon:
+        return self.slot3
+
+
+class _AdvancedTablets(_BaseStructures, _Activates, _Errors, _Modes, _Ons):
+    _hash: int = 1722785341
+    _prefab_name: int = "ItemAdvancedTablet"
+
+    def __getitem__(self, name: str | int | float) -> "_AdvancedTablets":
+        return _AdvancedTablets(name)
+
+    @property
+    def Average(self) -> AdvancedTablet:
+        return AdvancedTablet(name=self._name, batch_mode=LogicBatchMethod.Average)
+
+    @property
+    def Minimum(self) -> AdvancedTablet:
+        return AdvancedTablet(name=self._name, batch_mode=LogicBatchMethod.Minimum)
+
+    @property
+    def Maximum(self) -> AdvancedTablet:
+        return AdvancedTablet(name=self._name, batch_mode=LogicBatchMethod.Maximum)
+
+    @property
+    def Sum(self) -> AdvancedTablet:
+        return AdvancedTablet(name=self._name, batch_mode=LogicBatchMethod.Sum)
+
+    @property
+    def Power(self) -> _DevicesLogicType:
+        return _DevicesLogicType(self, _LT.Power)
+
+    @property
+    def SoundAlert(self) -> _DevicesLogicType:
+        return _DevicesLogicType(self, _LT.SoundAlert)
+
+    @SoundAlert.setter
+    def SoundAlert(self, value: int | float):
+        pass
+
+    @property
+    def Volume(self) -> _DevicesLogicType:
+        return _DevicesLogicType(self, _LT.Volume)
+
+    @Volume.setter
+    def Volume(self, value: int | float):
+        pass
+
+    @property
+    def slot0(self) -> _SlotTypeBatteries:
+        return _SlotTypeBatteries(self, 0)
+
+    @property
+    def Battery(self) -> _SlotTypeBatteries:
         return self.slot0
 
     @property
@@ -2388,11 +2920,27 @@ class _AdvancedPackagingMachines(
         return _SlotTypeCommons(self, 1)
 
     @property
-    def Export(self) -> _SlotTypeCommons:
+    def Cartridge(self) -> _SlotTypeCommons:
         return self.slot1
 
+    @property
+    def slot2(self) -> _SlotTypeCommons:
+        return _SlotTypeCommons(self, 2)
 
-AdvancedPackagingMachines: _AdvancedPackagingMachines = _AdvancedPackagingMachines()
+    @property
+    def Cartridge1(self) -> _SlotTypeCommons:
+        return self.slot2
+
+    @property
+    def slot3(self) -> _SlotTypeCommons:
+        return _SlotTypeCommons(self, 3)
+
+    @property
+    def ProgrammableChip(self) -> _SlotTypeCommons:
+        return self.slot3
+
+
+AdvancedTablets: _AdvancedTablets = _AdvancedTablets()
 
 
 class AirConditioner(
@@ -2473,11 +3021,11 @@ class AirConditioner(
         return _DeviceLogicType(self, _LT.TotalMolesOutput2)
 
     @property
-    def slot0(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(self, 0)
+    def slot0(self) -> _SlotTypeDataDisk:
+        return _SlotTypeDataDisk(self, 0)
 
     @property
-    def ProgrammableChip(self) -> _SlotTypeCommon:
+    def ProgrammableChip(self) -> _SlotTypeDataDisk:
         return self.slot0
 
 
@@ -2578,11 +3126,11 @@ class _AirConditioners(
         return _DevicesLogicType(self, _LT.TotalMolesOutput2)
 
     @property
-    def slot0(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(self, 0)
+    def slot0(self) -> _SlotTypeDataDisks:
+        return _SlotTypeDataDisks(self, 0)
 
     @property
-    def ProgrammableChip(self) -> _SlotTypeCommons:
+    def ProgrammableChip(self) -> _SlotTypeDataDisks:
         return self.slot0
 
 
@@ -2655,6 +3203,62 @@ class _AirlockWides(
 AirlockWides: _AirlockWides = _AirlockWides()
 
 
+class AngleGrinder(_BaseStructure, _Activate):
+    _hash: int = 201215010
+    _prefab_name: int = "ItemAngleGrinder"
+
+    @property
+    def Power(self) -> float:
+        return _DeviceLogicType(self, _LT.Power)
+
+    @property
+    def slot0(self) -> _SlotTypeBattery:
+        return _SlotTypeBattery(self, 0)
+
+    @property
+    def Battery(self) -> _SlotTypeBattery:
+        return self.slot0
+
+
+class _AngleGrinders(_BaseStructures, _Activates):
+    _hash: int = 201215010
+    _prefab_name: int = "ItemAngleGrinder"
+
+    def __getitem__(self, name: str | int | float) -> "_AngleGrinders":
+        return _AngleGrinders(name)
+
+    @property
+    def Average(self) -> AngleGrinder:
+        return AngleGrinder(name=self._name, batch_mode=LogicBatchMethod.Average)
+
+    @property
+    def Minimum(self) -> AngleGrinder:
+        return AngleGrinder(name=self._name, batch_mode=LogicBatchMethod.Minimum)
+
+    @property
+    def Maximum(self) -> AngleGrinder:
+        return AngleGrinder(name=self._name, batch_mode=LogicBatchMethod.Maximum)
+
+    @property
+    def Sum(self) -> AngleGrinder:
+        return AngleGrinder(name=self._name, batch_mode=LogicBatchMethod.Sum)
+
+    @property
+    def Power(self) -> _DevicesLogicType:
+        return _DevicesLogicType(self, _LT.Power)
+
+    @property
+    def slot0(self) -> _SlotTypeBatteries:
+        return _SlotTypeBatteries(self, 0)
+
+    @property
+    def Battery(self) -> _SlotTypeBatteries:
+        return self.slot0
+
+
+AngleGrinders: _AngleGrinders = _AngleGrinders()
+
+
 class ArcFurnace(
     _BaseStructure,
     _Activate,
@@ -2675,19 +3279,19 @@ class ArcFurnace(
         return _DeviceLogicType(self, _LT.RecipeHash)
 
     @property
-    def slot0(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(self, 0)
+    def slot0(self) -> _SlotTypeDataDisk:
+        return _SlotTypeDataDisk(self, 0)
 
     @property
-    def Import(self) -> _SlotTypeCommon:
+    def Import(self) -> _SlotTypeDataDisk:
         return self.slot0
 
     @property
-    def slot1(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(self, 1)
+    def slot1(self) -> _SlotTypeDataDisk:
+        return _SlotTypeDataDisk(self, 1)
 
     @property
-    def Export(self) -> _SlotTypeCommon:
+    def Export(self) -> _SlotTypeDataDisk:
         return self.slot1
 
 
@@ -2730,23 +3334,79 @@ class _ArcFurnaces(
         return _DevicesLogicType(self, _LT.RecipeHash)
 
     @property
-    def slot0(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(self, 0)
+    def slot0(self) -> _SlotTypeDataDisks:
+        return _SlotTypeDataDisks(self, 0)
 
     @property
-    def Import(self) -> _SlotTypeCommons:
+    def Import(self) -> _SlotTypeDataDisks:
         return self.slot0
 
     @property
-    def slot1(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(self, 1)
+    def slot1(self) -> _SlotTypeDataDisks:
+        return _SlotTypeDataDisks(self, 1)
 
     @property
-    def Export(self) -> _SlotTypeCommons:
+    def Export(self) -> _SlotTypeDataDisks:
         return self.slot1
 
 
 ArcFurnaces: _ArcFurnaces = _ArcFurnaces()
+
+
+class ArcWelder(_BaseStructure, _Activate):
+    _hash: int = 1385062886
+    _prefab_name: int = "ItemArcWelder"
+
+    @property
+    def Power(self) -> float:
+        return _DeviceLogicType(self, _LT.Power)
+
+    @property
+    def slot0(self) -> _SlotTypeBattery:
+        return _SlotTypeBattery(self, 0)
+
+    @property
+    def Battery(self) -> _SlotTypeBattery:
+        return self.slot0
+
+
+class _ArcWelders(_BaseStructures, _Activates):
+    _hash: int = 1385062886
+    _prefab_name: int = "ItemArcWelder"
+
+    def __getitem__(self, name: str | int | float) -> "_ArcWelders":
+        return _ArcWelders(name)
+
+    @property
+    def Average(self) -> ArcWelder:
+        return ArcWelder(name=self._name, batch_mode=LogicBatchMethod.Average)
+
+    @property
+    def Minimum(self) -> ArcWelder:
+        return ArcWelder(name=self._name, batch_mode=LogicBatchMethod.Minimum)
+
+    @property
+    def Maximum(self) -> ArcWelder:
+        return ArcWelder(name=self._name, batch_mode=LogicBatchMethod.Maximum)
+
+    @property
+    def Sum(self) -> ArcWelder:
+        return ArcWelder(name=self._name, batch_mode=LogicBatchMethod.Sum)
+
+    @property
+    def Power(self) -> _DevicesLogicType:
+        return _DevicesLogicType(self, _LT.Power)
+
+    @property
+    def slot0(self) -> _SlotTypeBatteries:
+        return _SlotTypeBatteries(self, 0)
+
+    @property
+    def Battery(self) -> _SlotTypeBatteries:
+        return self.slot0
+
+
+ArcWelders: _ArcWelders = _ArcWelders()
 
 
 class AreaPowerControl(
@@ -2772,11 +3432,11 @@ class AreaPowerControl(
         return self.slot0
 
     @property
-    def slot1(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(self, 1)
+    def slot1(self) -> _SlotTypeDataDisk:
+        return _SlotTypeDataDisk(self, 1)
 
     @property
-    def DataDisk(self) -> _SlotTypeCommon:
+    def DataDisk(self) -> _SlotTypeDataDisk:
         return self.slot1
 
 
@@ -2822,19 +3482,19 @@ class _AreaPowerControls(
         return _DevicesLogicType(self, _LT.PowerPotential)
 
     @property
-    def slot0(self) -> _SlotTypeBatterys:
-        return _SlotTypeBatterys(self, 0)
+    def slot0(self) -> _SlotTypeBatteries:
+        return _SlotTypeBatteries(self, 0)
 
     @property
-    def Battery(self) -> _SlotTypeBatterys:
+    def Battery(self) -> _SlotTypeBatteries:
         return self.slot0
 
     @property
-    def slot1(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(self, 1)
+    def slot1(self) -> _SlotTypeDataDisks:
+        return _SlotTypeDataDisks(self, 1)
 
     @property
-    def DataDisk(self) -> _SlotTypeCommons:
+    def DataDisk(self) -> _SlotTypeDataDisks:
         return self.slot1
 
 
@@ -2864,11 +3524,11 @@ class AreaPowerControlReversed(
         return self.slot0
 
     @property
-    def slot1(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(self, 1)
+    def slot1(self) -> _SlotTypeDataDisk:
+        return _SlotTypeDataDisk(self, 1)
 
     @property
-    def DataDisk(self) -> _SlotTypeCommon:
+    def DataDisk(self) -> _SlotTypeDataDisk:
         return self.slot1
 
 
@@ -2922,19 +3582,19 @@ class _AreaPowerControlReverseds(
         return _DevicesLogicType(self, _LT.PowerPotential)
 
     @property
-    def slot0(self) -> _SlotTypeBatterys:
-        return _SlotTypeBatterys(self, 0)
+    def slot0(self) -> _SlotTypeBatteries:
+        return _SlotTypeBatteries(self, 0)
 
     @property
-    def Battery(self) -> _SlotTypeBatterys:
+    def Battery(self) -> _SlotTypeBatteries:
         return self.slot0
 
     @property
-    def slot1(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(self, 1)
+    def slot1(self) -> _SlotTypeDataDisks:
+        return _SlotTypeDataDisks(self, 1)
 
     @property
-    def DataDisk(self) -> _SlotTypeCommons:
+    def DataDisk(self) -> _SlotTypeDataDisks:
         return self.slot1
 
 
@@ -2966,19 +3626,19 @@ class Autolathe(
         return _DeviceLogicType(self, _LT.StackSize)
 
     @property
-    def slot0(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(self, 0)
+    def slot0(self) -> _SlotTypeDataDisk:
+        return _SlotTypeDataDisk(self, 0)
 
     @property
-    def Import(self) -> _SlotTypeCommon:
+    def Import(self) -> _SlotTypeDataDisk:
         return self.slot0
 
     @property
-    def slot1(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(self, 1)
+    def slot1(self) -> _SlotTypeDataDisk:
+        return _SlotTypeDataDisk(self, 1)
 
     @property
-    def Export(self) -> _SlotTypeCommon:
+    def Export(self) -> _SlotTypeDataDisk:
         return self.slot1
 
 
@@ -3026,19 +3686,19 @@ class _Autolathes(
         return _DevicesLogicType(self, _LT.StackSize)
 
     @property
-    def slot0(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(self, 0)
+    def slot0(self) -> _SlotTypeDataDisks:
+        return _SlotTypeDataDisks(self, 0)
 
     @property
-    def Import(self) -> _SlotTypeCommons:
+    def Import(self) -> _SlotTypeDataDisks:
         return self.slot0
 
     @property
-    def slot1(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(self, 1)
+    def slot1(self) -> _SlotTypeDataDisks:
+        return _SlotTypeDataDisks(self, 1)
 
     @property
-    def Export(self) -> _SlotTypeCommons:
+    def Export(self) -> _SlotTypeDataDisks:
         return self.slot1
 
 
@@ -3070,19 +3730,19 @@ class AutomatedOven(
         return _DeviceLogicType(self, _LT.StackSize)
 
     @property
-    def slot0(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(self, 0)
+    def slot0(self) -> _SlotTypeDataDisk:
+        return _SlotTypeDataDisk(self, 0)
 
     @property
-    def Import(self) -> _SlotTypeCommon:
+    def Import(self) -> _SlotTypeDataDisk:
         return self.slot0
 
     @property
-    def slot1(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(self, 1)
+    def slot1(self) -> _SlotTypeDataDisk:
+        return _SlotTypeDataDisk(self, 1)
 
     @property
-    def Export(self) -> _SlotTypeCommon:
+    def Export(self) -> _SlotTypeDataDisk:
         return self.slot1
 
 
@@ -3130,19 +3790,19 @@ class _AutomatedOvens(
         return _DevicesLogicType(self, _LT.StackSize)
 
     @property
-    def slot0(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(self, 0)
+    def slot0(self) -> _SlotTypeDataDisks:
+        return _SlotTypeDataDisks(self, 0)
 
     @property
-    def Import(self) -> _SlotTypeCommons:
+    def Import(self) -> _SlotTypeDataDisks:
         return self.slot0
 
     @property
-    def slot1(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(self, 1)
+    def slot1(self) -> _SlotTypeDataDisks:
+        return _SlotTypeDataDisks(self, 1)
 
     @property
-    def Export(self) -> _SlotTypeCommons:
+    def Export(self) -> _SlotTypeDataDisks:
         return self.slot1
 
 
@@ -3163,19 +3823,19 @@ class AutoMinerSmall(
     _prefab_name: int = "StructureAutoMinerSmall"
 
     @property
-    def slot0(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(self, 0)
+    def slot0(self) -> _SlotTypeDataDisk:
+        return _SlotTypeDataDisk(self, 0)
 
     @property
-    def Import(self) -> _SlotTypeCommon:
+    def Import(self) -> _SlotTypeDataDisk:
         return self.slot0
 
     @property
-    def slot1(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(self, 1)
+    def slot1(self) -> _SlotTypeDataDisk:
+        return _SlotTypeDataDisk(self, 1)
 
     @property
-    def Export(self) -> _SlotTypeCommon:
+    def Export(self) -> _SlotTypeDataDisk:
         return self.slot1
 
 
@@ -3212,19 +3872,19 @@ class _AutoMinerSmalls(
         return AutoMinerSmall(name=self._name, batch_mode=LogicBatchMethod.Sum)
 
     @property
-    def slot0(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(self, 0)
+    def slot0(self) -> _SlotTypeDataDisks:
+        return _SlotTypeDataDisks(self, 0)
 
     @property
-    def Import(self) -> _SlotTypeCommons:
+    def Import(self) -> _SlotTypeDataDisks:
         return self.slot0
 
     @property
-    def slot1(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(self, 1)
+    def slot1(self) -> _SlotTypeDataDisks:
+        return _SlotTypeDataDisks(self, 1)
 
     @property
-    def Export(self) -> _SlotTypeCommons:
+    def Export(self) -> _SlotTypeDataDisks:
         return self.slot1
 
 
@@ -3535,6 +4195,102 @@ class _BatteryMediums(_BaseStructures, _Charges, _Maximums, _ModeRs, _Ons, _Rati
 BatteryMediums: _BatteryMediums = _BatteryMediums()
 
 
+class BatteryCellLarge(_BaseStructure, _Mode):
+    _hash: int = -459827268
+    _prefab_name: int = "ItemBatteryCellLarge"
+
+
+class _BatteryCellLarges(_BaseStructures, _Modes):
+    _hash: int = -459827268
+    _prefab_name: int = "ItemBatteryCellLarge"
+
+    def __getitem__(self, name: str | int | float) -> "_BatteryCellLarges":
+        return _BatteryCellLarges(name)
+
+    @property
+    def Average(self) -> BatteryCellLarge:
+        return BatteryCellLarge(name=self._name, batch_mode=LogicBatchMethod.Average)
+
+    @property
+    def Minimum(self) -> BatteryCellLarge:
+        return BatteryCellLarge(name=self._name, batch_mode=LogicBatchMethod.Minimum)
+
+    @property
+    def Maximum(self) -> BatteryCellLarge:
+        return BatteryCellLarge(name=self._name, batch_mode=LogicBatchMethod.Maximum)
+
+    @property
+    def Sum(self) -> BatteryCellLarge:
+        return BatteryCellLarge(name=self._name, batch_mode=LogicBatchMethod.Sum)
+
+
+BatteryCellLarges: _BatteryCellLarges = _BatteryCellLarges()
+
+
+class BatteryCellNuclear(_BaseStructure, _Mode):
+    _hash: int = 544617306
+    _prefab_name: int = "ItemBatteryCellNuclear"
+
+
+class _BatteryCellNuclears(_BaseStructures, _Modes):
+    _hash: int = 544617306
+    _prefab_name: int = "ItemBatteryCellNuclear"
+
+    def __getitem__(self, name: str | int | float) -> "_BatteryCellNuclears":
+        return _BatteryCellNuclears(name)
+
+    @property
+    def Average(self) -> BatteryCellNuclear:
+        return BatteryCellNuclear(name=self._name, batch_mode=LogicBatchMethod.Average)
+
+    @property
+    def Minimum(self) -> BatteryCellNuclear:
+        return BatteryCellNuclear(name=self._name, batch_mode=LogicBatchMethod.Minimum)
+
+    @property
+    def Maximum(self) -> BatteryCellNuclear:
+        return BatteryCellNuclear(name=self._name, batch_mode=LogicBatchMethod.Maximum)
+
+    @property
+    def Sum(self) -> BatteryCellNuclear:
+        return BatteryCellNuclear(name=self._name, batch_mode=LogicBatchMethod.Sum)
+
+
+BatteryCellNuclears: _BatteryCellNuclears = _BatteryCellNuclears()
+
+
+class BatteryCell(_BaseStructure, _Mode):
+    _hash: int = 700133157
+    _prefab_name: int = "ItemBatteryCell"
+
+
+class _BatteryCells(_BaseStructures, _Modes):
+    _hash: int = 700133157
+    _prefab_name: int = "ItemBatteryCell"
+
+    def __getitem__(self, name: str | int | float) -> "_BatteryCells":
+        return _BatteryCells(name)
+
+    @property
+    def Average(self) -> BatteryCell:
+        return BatteryCell(name=self._name, batch_mode=LogicBatchMethod.Average)
+
+    @property
+    def Minimum(self) -> BatteryCell:
+        return BatteryCell(name=self._name, batch_mode=LogicBatchMethod.Minimum)
+
+    @property
+    def Maximum(self) -> BatteryCell:
+        return BatteryCell(name=self._name, batch_mode=LogicBatchMethod.Maximum)
+
+    @property
+    def Sum(self) -> BatteryCell:
+        return BatteryCell(name=self._name, batch_mode=LogicBatchMethod.Sum)
+
+
+BatteryCells: _BatteryCells = _BatteryCells()
+
+
 class BatteryCharger(_BaseStructure, _Activate, _Error, _Power):
     _hash: int = 1945930022
     _prefab_name: int = "StructureBatteryCharger"
@@ -3584,24 +4340,24 @@ class _BatteryChargers(_BaseStructures, _Activates, _Errors, _Powers):
         return BatteryCharger(name=self._name, batch_mode=LogicBatchMethod.Sum)
 
     @property
-    def slot0(self) -> _SlotTypeBatterys:
-        return _SlotTypeBatterys(self, 0)
+    def slot0(self) -> _SlotTypeBatteries:
+        return _SlotTypeBatteries(self, 0)
 
     @property
-    def slot1(self) -> _SlotTypeBatterys:
-        return _SlotTypeBatterys(self, 1)
+    def slot1(self) -> _SlotTypeBatteries:
+        return _SlotTypeBatteries(self, 1)
 
     @property
-    def slot2(self) -> _SlotTypeBatterys:
-        return _SlotTypeBatterys(self, 2)
+    def slot2(self) -> _SlotTypeBatteries:
+        return _SlotTypeBatteries(self, 2)
 
     @property
-    def slot3(self) -> _SlotTypeBatterys:
-        return _SlotTypeBatterys(self, 3)
+    def slot3(self) -> _SlotTypeBatteries:
+        return _SlotTypeBatteries(self, 3)
 
     @property
-    def slot4(self) -> _SlotTypeBatterys:
-        return _SlotTypeBatterys(self, 4)
+    def slot4(self) -> _SlotTypeBatteries:
+        return _SlotTypeBatteries(self, 4)
 
 
 BatteryChargers: _BatteryChargers = _BatteryChargers()
@@ -3644,12 +4400,12 @@ class _BatteryChargerSmalls(_BaseStructures, _Activates, _Errors, _Powers):
         return BatteryChargerSmall(name=self._name, batch_mode=LogicBatchMethod.Sum)
 
     @property
-    def slot0(self) -> _SlotTypeBatterys:
-        return _SlotTypeBatterys(self, 0)
+    def slot0(self) -> _SlotTypeBatteries:
+        return _SlotTypeBatteries(self, 0)
 
     @property
-    def slot1(self) -> _SlotTypeBatterys:
-        return _SlotTypeBatterys(self, 1)
+    def slot1(self) -> _SlotTypeBatteries:
+        return _SlotTypeBatteries(self, 1)
 
 
 BatteryChargerSmalls: _BatteryChargerSmalls = _BatteryChargerSmalls()
@@ -3996,11 +4752,11 @@ class BlockBed(_BaseStructure, _Activate, _Error, _Power):
     _prefab_name: int = "StructureBlockBed"
 
     @property
-    def slot0(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(self, 0)
+    def slot0(self) -> _SlotTypeDataDisk:
+        return _SlotTypeDataDisk(self, 0)
 
     @property
-    def Bed(self) -> _SlotTypeCommon:
+    def Bed(self) -> _SlotTypeDataDisk:
         return self.slot0
 
 
@@ -4028,11 +4784,11 @@ class _BlockBeds(_BaseStructures, _Activates, _Errors, _Powers):
         return BlockBed(name=self._name, batch_mode=LogicBatchMethod.Sum)
 
     @property
-    def slot0(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(self, 0)
+    def slot0(self) -> _SlotTypeDataDisks:
+        return _SlotTypeDataDisks(self, 0)
 
     @property
-    def Bed(self) -> _SlotTypeCommons:
+    def Bed(self) -> _SlotTypeDataDisks:
         return self.slot0
 
 
@@ -4175,420 +4931,420 @@ class CargoStorageMedium(
     _prefab_name: int = "StructureCargoStorageMedium"
 
     @property
-    def slot0(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(self, 0)
+    def slot0(self) -> _SlotTypeDataDisk:
+        return _SlotTypeDataDisk(self, 0)
 
     @property
-    def Import(self) -> _SlotTypeCommon:
+    def Import(self) -> _SlotTypeDataDisk:
         return self.slot0
 
     @property
-    def slot1(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(self, 1)
+    def slot1(self) -> _SlotTypeDataDisk:
+        return _SlotTypeDataDisk(self, 1)
 
     @property
-    def Export(self) -> _SlotTypeCommon:
+    def Export(self) -> _SlotTypeDataDisk:
         return self.slot1
 
     @property
-    def slot10(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(self, 10)
+    def slot10(self) -> _SlotTypeDataDisk:
+        return _SlotTypeDataDisk(self, 10)
 
     @property
-    def slot100(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(self, 100)
+    def slot100(self) -> _SlotTypeDataDisk:
+        return _SlotTypeDataDisk(self, 100)
 
     @property
-    def slot101(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(self, 101)
+    def slot101(self) -> _SlotTypeDataDisk:
+        return _SlotTypeDataDisk(self, 101)
 
     @property
-    def slot11(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(self, 11)
+    def slot11(self) -> _SlotTypeDataDisk:
+        return _SlotTypeDataDisk(self, 11)
 
     @property
-    def slot12(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(self, 12)
+    def slot12(self) -> _SlotTypeDataDisk:
+        return _SlotTypeDataDisk(self, 12)
 
     @property
-    def slot13(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(self, 13)
+    def slot13(self) -> _SlotTypeDataDisk:
+        return _SlotTypeDataDisk(self, 13)
 
     @property
-    def slot14(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(self, 14)
+    def slot14(self) -> _SlotTypeDataDisk:
+        return _SlotTypeDataDisk(self, 14)
 
     @property
-    def slot15(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(self, 15)
+    def slot15(self) -> _SlotTypeDataDisk:
+        return _SlotTypeDataDisk(self, 15)
 
     @property
-    def slot16(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(self, 16)
+    def slot16(self) -> _SlotTypeDataDisk:
+        return _SlotTypeDataDisk(self, 16)
 
     @property
-    def slot17(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(self, 17)
+    def slot17(self) -> _SlotTypeDataDisk:
+        return _SlotTypeDataDisk(self, 17)
 
     @property
-    def slot18(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(self, 18)
+    def slot18(self) -> _SlotTypeDataDisk:
+        return _SlotTypeDataDisk(self, 18)
 
     @property
-    def slot19(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(self, 19)
+    def slot19(self) -> _SlotTypeDataDisk:
+        return _SlotTypeDataDisk(self, 19)
 
     @property
-    def slot2(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(self, 2)
+    def slot2(self) -> _SlotTypeDataDisk:
+        return _SlotTypeDataDisk(self, 2)
 
     @property
-    def slot20(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(self, 20)
+    def slot20(self) -> _SlotTypeDataDisk:
+        return _SlotTypeDataDisk(self, 20)
 
     @property
-    def slot21(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(self, 21)
+    def slot21(self) -> _SlotTypeDataDisk:
+        return _SlotTypeDataDisk(self, 21)
 
     @property
-    def slot22(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(self, 22)
+    def slot22(self) -> _SlotTypeDataDisk:
+        return _SlotTypeDataDisk(self, 22)
 
     @property
-    def slot23(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(self, 23)
+    def slot23(self) -> _SlotTypeDataDisk:
+        return _SlotTypeDataDisk(self, 23)
 
     @property
-    def slot24(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(self, 24)
+    def slot24(self) -> _SlotTypeDataDisk:
+        return _SlotTypeDataDisk(self, 24)
 
     @property
-    def slot25(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(self, 25)
+    def slot25(self) -> _SlotTypeDataDisk:
+        return _SlotTypeDataDisk(self, 25)
 
     @property
-    def slot26(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(self, 26)
+    def slot26(self) -> _SlotTypeDataDisk:
+        return _SlotTypeDataDisk(self, 26)
 
     @property
-    def slot27(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(self, 27)
+    def slot27(self) -> _SlotTypeDataDisk:
+        return _SlotTypeDataDisk(self, 27)
 
     @property
-    def slot28(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(self, 28)
+    def slot28(self) -> _SlotTypeDataDisk:
+        return _SlotTypeDataDisk(self, 28)
 
     @property
-    def slot29(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(self, 29)
+    def slot29(self) -> _SlotTypeDataDisk:
+        return _SlotTypeDataDisk(self, 29)
 
     @property
-    def slot3(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(self, 3)
+    def slot3(self) -> _SlotTypeDataDisk:
+        return _SlotTypeDataDisk(self, 3)
 
     @property
-    def slot30(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(self, 30)
+    def slot30(self) -> _SlotTypeDataDisk:
+        return _SlotTypeDataDisk(self, 30)
 
     @property
-    def slot31(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(self, 31)
+    def slot31(self) -> _SlotTypeDataDisk:
+        return _SlotTypeDataDisk(self, 31)
 
     @property
-    def slot32(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(self, 32)
+    def slot32(self) -> _SlotTypeDataDisk:
+        return _SlotTypeDataDisk(self, 32)
 
     @property
-    def slot33(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(self, 33)
+    def slot33(self) -> _SlotTypeDataDisk:
+        return _SlotTypeDataDisk(self, 33)
 
     @property
-    def slot34(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(self, 34)
+    def slot34(self) -> _SlotTypeDataDisk:
+        return _SlotTypeDataDisk(self, 34)
 
     @property
-    def slot35(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(self, 35)
+    def slot35(self) -> _SlotTypeDataDisk:
+        return _SlotTypeDataDisk(self, 35)
 
     @property
-    def slot36(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(self, 36)
+    def slot36(self) -> _SlotTypeDataDisk:
+        return _SlotTypeDataDisk(self, 36)
 
     @property
-    def slot37(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(self, 37)
+    def slot37(self) -> _SlotTypeDataDisk:
+        return _SlotTypeDataDisk(self, 37)
 
     @property
-    def slot38(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(self, 38)
+    def slot38(self) -> _SlotTypeDataDisk:
+        return _SlotTypeDataDisk(self, 38)
 
     @property
-    def slot39(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(self, 39)
+    def slot39(self) -> _SlotTypeDataDisk:
+        return _SlotTypeDataDisk(self, 39)
 
     @property
-    def slot4(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(self, 4)
+    def slot4(self) -> _SlotTypeDataDisk:
+        return _SlotTypeDataDisk(self, 4)
 
     @property
-    def slot40(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(self, 40)
+    def slot40(self) -> _SlotTypeDataDisk:
+        return _SlotTypeDataDisk(self, 40)
 
     @property
-    def slot41(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(self, 41)
+    def slot41(self) -> _SlotTypeDataDisk:
+        return _SlotTypeDataDisk(self, 41)
 
     @property
-    def slot42(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(self, 42)
+    def slot42(self) -> _SlotTypeDataDisk:
+        return _SlotTypeDataDisk(self, 42)
 
     @property
-    def slot43(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(self, 43)
+    def slot43(self) -> _SlotTypeDataDisk:
+        return _SlotTypeDataDisk(self, 43)
 
     @property
-    def slot44(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(self, 44)
+    def slot44(self) -> _SlotTypeDataDisk:
+        return _SlotTypeDataDisk(self, 44)
 
     @property
-    def slot45(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(self, 45)
+    def slot45(self) -> _SlotTypeDataDisk:
+        return _SlotTypeDataDisk(self, 45)
 
     @property
-    def slot46(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(self, 46)
+    def slot46(self) -> _SlotTypeDataDisk:
+        return _SlotTypeDataDisk(self, 46)
 
     @property
-    def slot47(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(self, 47)
+    def slot47(self) -> _SlotTypeDataDisk:
+        return _SlotTypeDataDisk(self, 47)
 
     @property
-    def slot48(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(self, 48)
+    def slot48(self) -> _SlotTypeDataDisk:
+        return _SlotTypeDataDisk(self, 48)
 
     @property
-    def slot49(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(self, 49)
+    def slot49(self) -> _SlotTypeDataDisk:
+        return _SlotTypeDataDisk(self, 49)
 
     @property
-    def slot5(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(self, 5)
+    def slot5(self) -> _SlotTypeDataDisk:
+        return _SlotTypeDataDisk(self, 5)
 
     @property
-    def slot50(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(self, 50)
+    def slot50(self) -> _SlotTypeDataDisk:
+        return _SlotTypeDataDisk(self, 50)
 
     @property
-    def slot51(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(self, 51)
+    def slot51(self) -> _SlotTypeDataDisk:
+        return _SlotTypeDataDisk(self, 51)
 
     @property
-    def slot52(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(self, 52)
+    def slot52(self) -> _SlotTypeDataDisk:
+        return _SlotTypeDataDisk(self, 52)
 
     @property
-    def slot53(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(self, 53)
+    def slot53(self) -> _SlotTypeDataDisk:
+        return _SlotTypeDataDisk(self, 53)
 
     @property
-    def slot54(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(self, 54)
+    def slot54(self) -> _SlotTypeDataDisk:
+        return _SlotTypeDataDisk(self, 54)
 
     @property
-    def slot55(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(self, 55)
+    def slot55(self) -> _SlotTypeDataDisk:
+        return _SlotTypeDataDisk(self, 55)
 
     @property
-    def slot56(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(self, 56)
+    def slot56(self) -> _SlotTypeDataDisk:
+        return _SlotTypeDataDisk(self, 56)
 
     @property
-    def slot57(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(self, 57)
+    def slot57(self) -> _SlotTypeDataDisk:
+        return _SlotTypeDataDisk(self, 57)
 
     @property
-    def slot58(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(self, 58)
+    def slot58(self) -> _SlotTypeDataDisk:
+        return _SlotTypeDataDisk(self, 58)
 
     @property
-    def slot59(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(self, 59)
+    def slot59(self) -> _SlotTypeDataDisk:
+        return _SlotTypeDataDisk(self, 59)
 
     @property
-    def slot6(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(self, 6)
+    def slot6(self) -> _SlotTypeDataDisk:
+        return _SlotTypeDataDisk(self, 6)
 
     @property
-    def slot60(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(self, 60)
+    def slot60(self) -> _SlotTypeDataDisk:
+        return _SlotTypeDataDisk(self, 60)
 
     @property
-    def slot61(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(self, 61)
+    def slot61(self) -> _SlotTypeDataDisk:
+        return _SlotTypeDataDisk(self, 61)
 
     @property
-    def slot62(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(self, 62)
+    def slot62(self) -> _SlotTypeDataDisk:
+        return _SlotTypeDataDisk(self, 62)
 
     @property
-    def slot63(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(self, 63)
+    def slot63(self) -> _SlotTypeDataDisk:
+        return _SlotTypeDataDisk(self, 63)
 
     @property
-    def slot64(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(self, 64)
+    def slot64(self) -> _SlotTypeDataDisk:
+        return _SlotTypeDataDisk(self, 64)
 
     @property
-    def slot65(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(self, 65)
+    def slot65(self) -> _SlotTypeDataDisk:
+        return _SlotTypeDataDisk(self, 65)
 
     @property
-    def slot66(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(self, 66)
+    def slot66(self) -> _SlotTypeDataDisk:
+        return _SlotTypeDataDisk(self, 66)
 
     @property
-    def slot67(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(self, 67)
+    def slot67(self) -> _SlotTypeDataDisk:
+        return _SlotTypeDataDisk(self, 67)
 
     @property
-    def slot68(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(self, 68)
+    def slot68(self) -> _SlotTypeDataDisk:
+        return _SlotTypeDataDisk(self, 68)
 
     @property
-    def slot69(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(self, 69)
+    def slot69(self) -> _SlotTypeDataDisk:
+        return _SlotTypeDataDisk(self, 69)
 
     @property
-    def slot7(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(self, 7)
+    def slot7(self) -> _SlotTypeDataDisk:
+        return _SlotTypeDataDisk(self, 7)
 
     @property
-    def slot70(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(self, 70)
+    def slot70(self) -> _SlotTypeDataDisk:
+        return _SlotTypeDataDisk(self, 70)
 
     @property
-    def slot71(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(self, 71)
+    def slot71(self) -> _SlotTypeDataDisk:
+        return _SlotTypeDataDisk(self, 71)
 
     @property
-    def slot72(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(self, 72)
+    def slot72(self) -> _SlotTypeDataDisk:
+        return _SlotTypeDataDisk(self, 72)
 
     @property
-    def slot73(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(self, 73)
+    def slot73(self) -> _SlotTypeDataDisk:
+        return _SlotTypeDataDisk(self, 73)
 
     @property
-    def slot74(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(self, 74)
+    def slot74(self) -> _SlotTypeDataDisk:
+        return _SlotTypeDataDisk(self, 74)
 
     @property
-    def slot75(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(self, 75)
+    def slot75(self) -> _SlotTypeDataDisk:
+        return _SlotTypeDataDisk(self, 75)
 
     @property
-    def slot76(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(self, 76)
+    def slot76(self) -> _SlotTypeDataDisk:
+        return _SlotTypeDataDisk(self, 76)
 
     @property
-    def slot77(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(self, 77)
+    def slot77(self) -> _SlotTypeDataDisk:
+        return _SlotTypeDataDisk(self, 77)
 
     @property
-    def slot78(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(self, 78)
+    def slot78(self) -> _SlotTypeDataDisk:
+        return _SlotTypeDataDisk(self, 78)
 
     @property
-    def slot79(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(self, 79)
+    def slot79(self) -> _SlotTypeDataDisk:
+        return _SlotTypeDataDisk(self, 79)
 
     @property
-    def slot8(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(self, 8)
+    def slot8(self) -> _SlotTypeDataDisk:
+        return _SlotTypeDataDisk(self, 8)
 
     @property
-    def slot80(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(self, 80)
+    def slot80(self) -> _SlotTypeDataDisk:
+        return _SlotTypeDataDisk(self, 80)
 
     @property
-    def slot81(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(self, 81)
+    def slot81(self) -> _SlotTypeDataDisk:
+        return _SlotTypeDataDisk(self, 81)
 
     @property
-    def slot82(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(self, 82)
+    def slot82(self) -> _SlotTypeDataDisk:
+        return _SlotTypeDataDisk(self, 82)
 
     @property
-    def slot83(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(self, 83)
+    def slot83(self) -> _SlotTypeDataDisk:
+        return _SlotTypeDataDisk(self, 83)
 
     @property
-    def slot84(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(self, 84)
+    def slot84(self) -> _SlotTypeDataDisk:
+        return _SlotTypeDataDisk(self, 84)
 
     @property
-    def slot85(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(self, 85)
+    def slot85(self) -> _SlotTypeDataDisk:
+        return _SlotTypeDataDisk(self, 85)
 
     @property
-    def slot86(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(self, 86)
+    def slot86(self) -> _SlotTypeDataDisk:
+        return _SlotTypeDataDisk(self, 86)
 
     @property
-    def slot87(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(self, 87)
+    def slot87(self) -> _SlotTypeDataDisk:
+        return _SlotTypeDataDisk(self, 87)
 
     @property
-    def slot88(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(self, 88)
+    def slot88(self) -> _SlotTypeDataDisk:
+        return _SlotTypeDataDisk(self, 88)
 
     @property
-    def slot89(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(self, 89)
+    def slot89(self) -> _SlotTypeDataDisk:
+        return _SlotTypeDataDisk(self, 89)
 
     @property
-    def slot9(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(self, 9)
+    def slot9(self) -> _SlotTypeDataDisk:
+        return _SlotTypeDataDisk(self, 9)
 
     @property
-    def slot90(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(self, 90)
+    def slot90(self) -> _SlotTypeDataDisk:
+        return _SlotTypeDataDisk(self, 90)
 
     @property
-    def slot91(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(self, 91)
+    def slot91(self) -> _SlotTypeDataDisk:
+        return _SlotTypeDataDisk(self, 91)
 
     @property
-    def slot92(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(self, 92)
+    def slot92(self) -> _SlotTypeDataDisk:
+        return _SlotTypeDataDisk(self, 92)
 
     @property
-    def slot93(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(self, 93)
+    def slot93(self) -> _SlotTypeDataDisk:
+        return _SlotTypeDataDisk(self, 93)
 
     @property
-    def slot94(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(self, 94)
+    def slot94(self) -> _SlotTypeDataDisk:
+        return _SlotTypeDataDisk(self, 94)
 
     @property
-    def slot95(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(self, 95)
+    def slot95(self) -> _SlotTypeDataDisk:
+        return _SlotTypeDataDisk(self, 95)
 
     @property
-    def slot96(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(self, 96)
+    def slot96(self) -> _SlotTypeDataDisk:
+        return _SlotTypeDataDisk(self, 96)
 
     @property
-    def slot97(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(self, 97)
+    def slot97(self) -> _SlotTypeDataDisk:
+        return _SlotTypeDataDisk(self, 97)
 
     @property
-    def slot98(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(self, 98)
+    def slot98(self) -> _SlotTypeDataDisk:
+        return _SlotTypeDataDisk(self, 98)
 
     @property
-    def slot99(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(self, 99)
+    def slot99(self) -> _SlotTypeDataDisk:
+        return _SlotTypeDataDisk(self, 99)
 
 
 class _CargoStorageMediums(
@@ -4626,420 +5382,420 @@ class _CargoStorageMediums(
         return CargoStorageMedium(name=self._name, batch_mode=LogicBatchMethod.Sum)
 
     @property
-    def slot0(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(self, 0)
+    def slot0(self) -> _SlotTypeDataDisks:
+        return _SlotTypeDataDisks(self, 0)
 
     @property
-    def Import(self) -> _SlotTypeCommons:
+    def Import(self) -> _SlotTypeDataDisks:
         return self.slot0
 
     @property
-    def slot1(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(self, 1)
+    def slot1(self) -> _SlotTypeDataDisks:
+        return _SlotTypeDataDisks(self, 1)
 
     @property
-    def Export(self) -> _SlotTypeCommons:
+    def Export(self) -> _SlotTypeDataDisks:
         return self.slot1
 
     @property
-    def slot10(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(self, 10)
+    def slot10(self) -> _SlotTypeDataDisks:
+        return _SlotTypeDataDisks(self, 10)
 
     @property
-    def slot100(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(self, 100)
+    def slot100(self) -> _SlotTypeDataDisks:
+        return _SlotTypeDataDisks(self, 100)
 
     @property
-    def slot101(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(self, 101)
+    def slot101(self) -> _SlotTypeDataDisks:
+        return _SlotTypeDataDisks(self, 101)
 
     @property
-    def slot11(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(self, 11)
+    def slot11(self) -> _SlotTypeDataDisks:
+        return _SlotTypeDataDisks(self, 11)
 
     @property
-    def slot12(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(self, 12)
+    def slot12(self) -> _SlotTypeDataDisks:
+        return _SlotTypeDataDisks(self, 12)
 
     @property
-    def slot13(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(self, 13)
+    def slot13(self) -> _SlotTypeDataDisks:
+        return _SlotTypeDataDisks(self, 13)
 
     @property
-    def slot14(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(self, 14)
+    def slot14(self) -> _SlotTypeDataDisks:
+        return _SlotTypeDataDisks(self, 14)
 
     @property
-    def slot15(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(self, 15)
+    def slot15(self) -> _SlotTypeDataDisks:
+        return _SlotTypeDataDisks(self, 15)
 
     @property
-    def slot16(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(self, 16)
+    def slot16(self) -> _SlotTypeDataDisks:
+        return _SlotTypeDataDisks(self, 16)
 
     @property
-    def slot17(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(self, 17)
+    def slot17(self) -> _SlotTypeDataDisks:
+        return _SlotTypeDataDisks(self, 17)
 
     @property
-    def slot18(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(self, 18)
+    def slot18(self) -> _SlotTypeDataDisks:
+        return _SlotTypeDataDisks(self, 18)
 
     @property
-    def slot19(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(self, 19)
+    def slot19(self) -> _SlotTypeDataDisks:
+        return _SlotTypeDataDisks(self, 19)
 
     @property
-    def slot2(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(self, 2)
+    def slot2(self) -> _SlotTypeDataDisks:
+        return _SlotTypeDataDisks(self, 2)
 
     @property
-    def slot20(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(self, 20)
+    def slot20(self) -> _SlotTypeDataDisks:
+        return _SlotTypeDataDisks(self, 20)
 
     @property
-    def slot21(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(self, 21)
+    def slot21(self) -> _SlotTypeDataDisks:
+        return _SlotTypeDataDisks(self, 21)
 
     @property
-    def slot22(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(self, 22)
+    def slot22(self) -> _SlotTypeDataDisks:
+        return _SlotTypeDataDisks(self, 22)
 
     @property
-    def slot23(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(self, 23)
+    def slot23(self) -> _SlotTypeDataDisks:
+        return _SlotTypeDataDisks(self, 23)
 
     @property
-    def slot24(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(self, 24)
+    def slot24(self) -> _SlotTypeDataDisks:
+        return _SlotTypeDataDisks(self, 24)
 
     @property
-    def slot25(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(self, 25)
+    def slot25(self) -> _SlotTypeDataDisks:
+        return _SlotTypeDataDisks(self, 25)
 
     @property
-    def slot26(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(self, 26)
+    def slot26(self) -> _SlotTypeDataDisks:
+        return _SlotTypeDataDisks(self, 26)
 
     @property
-    def slot27(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(self, 27)
+    def slot27(self) -> _SlotTypeDataDisks:
+        return _SlotTypeDataDisks(self, 27)
 
     @property
-    def slot28(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(self, 28)
+    def slot28(self) -> _SlotTypeDataDisks:
+        return _SlotTypeDataDisks(self, 28)
 
     @property
-    def slot29(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(self, 29)
+    def slot29(self) -> _SlotTypeDataDisks:
+        return _SlotTypeDataDisks(self, 29)
 
     @property
-    def slot3(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(self, 3)
+    def slot3(self) -> _SlotTypeDataDisks:
+        return _SlotTypeDataDisks(self, 3)
 
     @property
-    def slot30(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(self, 30)
+    def slot30(self) -> _SlotTypeDataDisks:
+        return _SlotTypeDataDisks(self, 30)
 
     @property
-    def slot31(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(self, 31)
+    def slot31(self) -> _SlotTypeDataDisks:
+        return _SlotTypeDataDisks(self, 31)
 
     @property
-    def slot32(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(self, 32)
+    def slot32(self) -> _SlotTypeDataDisks:
+        return _SlotTypeDataDisks(self, 32)
 
     @property
-    def slot33(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(self, 33)
+    def slot33(self) -> _SlotTypeDataDisks:
+        return _SlotTypeDataDisks(self, 33)
 
     @property
-    def slot34(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(self, 34)
+    def slot34(self) -> _SlotTypeDataDisks:
+        return _SlotTypeDataDisks(self, 34)
 
     @property
-    def slot35(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(self, 35)
+    def slot35(self) -> _SlotTypeDataDisks:
+        return _SlotTypeDataDisks(self, 35)
 
     @property
-    def slot36(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(self, 36)
+    def slot36(self) -> _SlotTypeDataDisks:
+        return _SlotTypeDataDisks(self, 36)
 
     @property
-    def slot37(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(self, 37)
+    def slot37(self) -> _SlotTypeDataDisks:
+        return _SlotTypeDataDisks(self, 37)
 
     @property
-    def slot38(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(self, 38)
+    def slot38(self) -> _SlotTypeDataDisks:
+        return _SlotTypeDataDisks(self, 38)
 
     @property
-    def slot39(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(self, 39)
+    def slot39(self) -> _SlotTypeDataDisks:
+        return _SlotTypeDataDisks(self, 39)
 
     @property
-    def slot4(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(self, 4)
+    def slot4(self) -> _SlotTypeDataDisks:
+        return _SlotTypeDataDisks(self, 4)
 
     @property
-    def slot40(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(self, 40)
+    def slot40(self) -> _SlotTypeDataDisks:
+        return _SlotTypeDataDisks(self, 40)
 
     @property
-    def slot41(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(self, 41)
+    def slot41(self) -> _SlotTypeDataDisks:
+        return _SlotTypeDataDisks(self, 41)
 
     @property
-    def slot42(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(self, 42)
+    def slot42(self) -> _SlotTypeDataDisks:
+        return _SlotTypeDataDisks(self, 42)
 
     @property
-    def slot43(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(self, 43)
+    def slot43(self) -> _SlotTypeDataDisks:
+        return _SlotTypeDataDisks(self, 43)
 
     @property
-    def slot44(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(self, 44)
+    def slot44(self) -> _SlotTypeDataDisks:
+        return _SlotTypeDataDisks(self, 44)
 
     @property
-    def slot45(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(self, 45)
+    def slot45(self) -> _SlotTypeDataDisks:
+        return _SlotTypeDataDisks(self, 45)
 
     @property
-    def slot46(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(self, 46)
+    def slot46(self) -> _SlotTypeDataDisks:
+        return _SlotTypeDataDisks(self, 46)
 
     @property
-    def slot47(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(self, 47)
+    def slot47(self) -> _SlotTypeDataDisks:
+        return _SlotTypeDataDisks(self, 47)
 
     @property
-    def slot48(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(self, 48)
+    def slot48(self) -> _SlotTypeDataDisks:
+        return _SlotTypeDataDisks(self, 48)
 
     @property
-    def slot49(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(self, 49)
+    def slot49(self) -> _SlotTypeDataDisks:
+        return _SlotTypeDataDisks(self, 49)
 
     @property
-    def slot5(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(self, 5)
+    def slot5(self) -> _SlotTypeDataDisks:
+        return _SlotTypeDataDisks(self, 5)
 
     @property
-    def slot50(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(self, 50)
+    def slot50(self) -> _SlotTypeDataDisks:
+        return _SlotTypeDataDisks(self, 50)
 
     @property
-    def slot51(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(self, 51)
+    def slot51(self) -> _SlotTypeDataDisks:
+        return _SlotTypeDataDisks(self, 51)
 
     @property
-    def slot52(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(self, 52)
+    def slot52(self) -> _SlotTypeDataDisks:
+        return _SlotTypeDataDisks(self, 52)
 
     @property
-    def slot53(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(self, 53)
+    def slot53(self) -> _SlotTypeDataDisks:
+        return _SlotTypeDataDisks(self, 53)
 
     @property
-    def slot54(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(self, 54)
+    def slot54(self) -> _SlotTypeDataDisks:
+        return _SlotTypeDataDisks(self, 54)
 
     @property
-    def slot55(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(self, 55)
+    def slot55(self) -> _SlotTypeDataDisks:
+        return _SlotTypeDataDisks(self, 55)
 
     @property
-    def slot56(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(self, 56)
+    def slot56(self) -> _SlotTypeDataDisks:
+        return _SlotTypeDataDisks(self, 56)
 
     @property
-    def slot57(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(self, 57)
+    def slot57(self) -> _SlotTypeDataDisks:
+        return _SlotTypeDataDisks(self, 57)
 
     @property
-    def slot58(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(self, 58)
+    def slot58(self) -> _SlotTypeDataDisks:
+        return _SlotTypeDataDisks(self, 58)
 
     @property
-    def slot59(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(self, 59)
+    def slot59(self) -> _SlotTypeDataDisks:
+        return _SlotTypeDataDisks(self, 59)
 
     @property
-    def slot6(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(self, 6)
+    def slot6(self) -> _SlotTypeDataDisks:
+        return _SlotTypeDataDisks(self, 6)
 
     @property
-    def slot60(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(self, 60)
+    def slot60(self) -> _SlotTypeDataDisks:
+        return _SlotTypeDataDisks(self, 60)
 
     @property
-    def slot61(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(self, 61)
+    def slot61(self) -> _SlotTypeDataDisks:
+        return _SlotTypeDataDisks(self, 61)
 
     @property
-    def slot62(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(self, 62)
+    def slot62(self) -> _SlotTypeDataDisks:
+        return _SlotTypeDataDisks(self, 62)
 
     @property
-    def slot63(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(self, 63)
+    def slot63(self) -> _SlotTypeDataDisks:
+        return _SlotTypeDataDisks(self, 63)
 
     @property
-    def slot64(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(self, 64)
+    def slot64(self) -> _SlotTypeDataDisks:
+        return _SlotTypeDataDisks(self, 64)
 
     @property
-    def slot65(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(self, 65)
+    def slot65(self) -> _SlotTypeDataDisks:
+        return _SlotTypeDataDisks(self, 65)
 
     @property
-    def slot66(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(self, 66)
+    def slot66(self) -> _SlotTypeDataDisks:
+        return _SlotTypeDataDisks(self, 66)
 
     @property
-    def slot67(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(self, 67)
+    def slot67(self) -> _SlotTypeDataDisks:
+        return _SlotTypeDataDisks(self, 67)
 
     @property
-    def slot68(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(self, 68)
+    def slot68(self) -> _SlotTypeDataDisks:
+        return _SlotTypeDataDisks(self, 68)
 
     @property
-    def slot69(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(self, 69)
+    def slot69(self) -> _SlotTypeDataDisks:
+        return _SlotTypeDataDisks(self, 69)
 
     @property
-    def slot7(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(self, 7)
+    def slot7(self) -> _SlotTypeDataDisks:
+        return _SlotTypeDataDisks(self, 7)
 
     @property
-    def slot70(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(self, 70)
+    def slot70(self) -> _SlotTypeDataDisks:
+        return _SlotTypeDataDisks(self, 70)
 
     @property
-    def slot71(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(self, 71)
+    def slot71(self) -> _SlotTypeDataDisks:
+        return _SlotTypeDataDisks(self, 71)
 
     @property
-    def slot72(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(self, 72)
+    def slot72(self) -> _SlotTypeDataDisks:
+        return _SlotTypeDataDisks(self, 72)
 
     @property
-    def slot73(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(self, 73)
+    def slot73(self) -> _SlotTypeDataDisks:
+        return _SlotTypeDataDisks(self, 73)
 
     @property
-    def slot74(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(self, 74)
+    def slot74(self) -> _SlotTypeDataDisks:
+        return _SlotTypeDataDisks(self, 74)
 
     @property
-    def slot75(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(self, 75)
+    def slot75(self) -> _SlotTypeDataDisks:
+        return _SlotTypeDataDisks(self, 75)
 
     @property
-    def slot76(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(self, 76)
+    def slot76(self) -> _SlotTypeDataDisks:
+        return _SlotTypeDataDisks(self, 76)
 
     @property
-    def slot77(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(self, 77)
+    def slot77(self) -> _SlotTypeDataDisks:
+        return _SlotTypeDataDisks(self, 77)
 
     @property
-    def slot78(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(self, 78)
+    def slot78(self) -> _SlotTypeDataDisks:
+        return _SlotTypeDataDisks(self, 78)
 
     @property
-    def slot79(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(self, 79)
+    def slot79(self) -> _SlotTypeDataDisks:
+        return _SlotTypeDataDisks(self, 79)
 
     @property
-    def slot8(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(self, 8)
+    def slot8(self) -> _SlotTypeDataDisks:
+        return _SlotTypeDataDisks(self, 8)
 
     @property
-    def slot80(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(self, 80)
+    def slot80(self) -> _SlotTypeDataDisks:
+        return _SlotTypeDataDisks(self, 80)
 
     @property
-    def slot81(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(self, 81)
+    def slot81(self) -> _SlotTypeDataDisks:
+        return _SlotTypeDataDisks(self, 81)
 
     @property
-    def slot82(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(self, 82)
+    def slot82(self) -> _SlotTypeDataDisks:
+        return _SlotTypeDataDisks(self, 82)
 
     @property
-    def slot83(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(self, 83)
+    def slot83(self) -> _SlotTypeDataDisks:
+        return _SlotTypeDataDisks(self, 83)
 
     @property
-    def slot84(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(self, 84)
+    def slot84(self) -> _SlotTypeDataDisks:
+        return _SlotTypeDataDisks(self, 84)
 
     @property
-    def slot85(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(self, 85)
+    def slot85(self) -> _SlotTypeDataDisks:
+        return _SlotTypeDataDisks(self, 85)
 
     @property
-    def slot86(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(self, 86)
+    def slot86(self) -> _SlotTypeDataDisks:
+        return _SlotTypeDataDisks(self, 86)
 
     @property
-    def slot87(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(self, 87)
+    def slot87(self) -> _SlotTypeDataDisks:
+        return _SlotTypeDataDisks(self, 87)
 
     @property
-    def slot88(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(self, 88)
+    def slot88(self) -> _SlotTypeDataDisks:
+        return _SlotTypeDataDisks(self, 88)
 
     @property
-    def slot89(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(self, 89)
+    def slot89(self) -> _SlotTypeDataDisks:
+        return _SlotTypeDataDisks(self, 89)
 
     @property
-    def slot9(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(self, 9)
+    def slot9(self) -> _SlotTypeDataDisks:
+        return _SlotTypeDataDisks(self, 9)
 
     @property
-    def slot90(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(self, 90)
+    def slot90(self) -> _SlotTypeDataDisks:
+        return _SlotTypeDataDisks(self, 90)
 
     @property
-    def slot91(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(self, 91)
+    def slot91(self) -> _SlotTypeDataDisks:
+        return _SlotTypeDataDisks(self, 91)
 
     @property
-    def slot92(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(self, 92)
+    def slot92(self) -> _SlotTypeDataDisks:
+        return _SlotTypeDataDisks(self, 92)
 
     @property
-    def slot93(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(self, 93)
+    def slot93(self) -> _SlotTypeDataDisks:
+        return _SlotTypeDataDisks(self, 93)
 
     @property
-    def slot94(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(self, 94)
+    def slot94(self) -> _SlotTypeDataDisks:
+        return _SlotTypeDataDisks(self, 94)
 
     @property
-    def slot95(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(self, 95)
+    def slot95(self) -> _SlotTypeDataDisks:
+        return _SlotTypeDataDisks(self, 95)
 
     @property
-    def slot96(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(self, 96)
+    def slot96(self) -> _SlotTypeDataDisks:
+        return _SlotTypeDataDisks(self, 96)
 
     @property
-    def slot97(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(self, 97)
+    def slot97(self) -> _SlotTypeDataDisks:
+        return _SlotTypeDataDisks(self, 97)
 
     @property
-    def slot98(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(self, 98)
+    def slot98(self) -> _SlotTypeDataDisks:
+        return _SlotTypeDataDisks(self, 98)
 
     @property
-    def slot99(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(self, 99)
+    def slot99(self) -> _SlotTypeDataDisks:
+        return _SlotTypeDataDisks(self, 99)
 
 
 CargoStorageMediums: _CargoStorageMediums = _CargoStorageMediums()
@@ -5061,220 +5817,220 @@ class CargoStorageSmall(
     _prefab_name: int = "StructureCargoStorageSmall"
 
     @property
-    def slot0(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(self, 0)
+    def slot0(self) -> _SlotTypeDataDisk:
+        return _SlotTypeDataDisk(self, 0)
 
     @property
-    def Import(self) -> _SlotTypeCommon:
+    def Import(self) -> _SlotTypeDataDisk:
         return self.slot0
 
     @property
-    def slot1(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(self, 1)
+    def slot1(self) -> _SlotTypeDataDisk:
+        return _SlotTypeDataDisk(self, 1)
 
     @property
-    def Export(self) -> _SlotTypeCommon:
+    def Export(self) -> _SlotTypeDataDisk:
         return self.slot1
 
     @property
-    def slot10(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(self, 10)
+    def slot10(self) -> _SlotTypeDataDisk:
+        return _SlotTypeDataDisk(self, 10)
 
     @property
-    def slot11(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(self, 11)
+    def slot11(self) -> _SlotTypeDataDisk:
+        return _SlotTypeDataDisk(self, 11)
 
     @property
-    def slot12(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(self, 12)
+    def slot12(self) -> _SlotTypeDataDisk:
+        return _SlotTypeDataDisk(self, 12)
 
     @property
-    def slot13(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(self, 13)
+    def slot13(self) -> _SlotTypeDataDisk:
+        return _SlotTypeDataDisk(self, 13)
 
     @property
-    def slot14(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(self, 14)
+    def slot14(self) -> _SlotTypeDataDisk:
+        return _SlotTypeDataDisk(self, 14)
 
     @property
-    def slot15(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(self, 15)
+    def slot15(self) -> _SlotTypeDataDisk:
+        return _SlotTypeDataDisk(self, 15)
 
     @property
-    def slot16(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(self, 16)
+    def slot16(self) -> _SlotTypeDataDisk:
+        return _SlotTypeDataDisk(self, 16)
 
     @property
-    def slot17(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(self, 17)
+    def slot17(self) -> _SlotTypeDataDisk:
+        return _SlotTypeDataDisk(self, 17)
 
     @property
-    def slot18(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(self, 18)
+    def slot18(self) -> _SlotTypeDataDisk:
+        return _SlotTypeDataDisk(self, 18)
 
     @property
-    def slot19(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(self, 19)
+    def slot19(self) -> _SlotTypeDataDisk:
+        return _SlotTypeDataDisk(self, 19)
 
     @property
-    def slot2(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(self, 2)
+    def slot2(self) -> _SlotTypeDataDisk:
+        return _SlotTypeDataDisk(self, 2)
 
     @property
-    def slot20(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(self, 20)
+    def slot20(self) -> _SlotTypeDataDisk:
+        return _SlotTypeDataDisk(self, 20)
 
     @property
-    def slot21(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(self, 21)
+    def slot21(self) -> _SlotTypeDataDisk:
+        return _SlotTypeDataDisk(self, 21)
 
     @property
-    def slot22(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(self, 22)
+    def slot22(self) -> _SlotTypeDataDisk:
+        return _SlotTypeDataDisk(self, 22)
 
     @property
-    def slot23(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(self, 23)
+    def slot23(self) -> _SlotTypeDataDisk:
+        return _SlotTypeDataDisk(self, 23)
 
     @property
-    def slot24(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(self, 24)
+    def slot24(self) -> _SlotTypeDataDisk:
+        return _SlotTypeDataDisk(self, 24)
 
     @property
-    def slot25(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(self, 25)
+    def slot25(self) -> _SlotTypeDataDisk:
+        return _SlotTypeDataDisk(self, 25)
 
     @property
-    def slot26(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(self, 26)
+    def slot26(self) -> _SlotTypeDataDisk:
+        return _SlotTypeDataDisk(self, 26)
 
     @property
-    def slot27(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(self, 27)
+    def slot27(self) -> _SlotTypeDataDisk:
+        return _SlotTypeDataDisk(self, 27)
 
     @property
-    def slot28(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(self, 28)
+    def slot28(self) -> _SlotTypeDataDisk:
+        return _SlotTypeDataDisk(self, 28)
 
     @property
-    def slot29(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(self, 29)
+    def slot29(self) -> _SlotTypeDataDisk:
+        return _SlotTypeDataDisk(self, 29)
 
     @property
-    def slot3(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(self, 3)
+    def slot3(self) -> _SlotTypeDataDisk:
+        return _SlotTypeDataDisk(self, 3)
 
     @property
-    def slot30(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(self, 30)
+    def slot30(self) -> _SlotTypeDataDisk:
+        return _SlotTypeDataDisk(self, 30)
 
     @property
-    def slot31(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(self, 31)
+    def slot31(self) -> _SlotTypeDataDisk:
+        return _SlotTypeDataDisk(self, 31)
 
     @property
-    def slot32(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(self, 32)
+    def slot32(self) -> _SlotTypeDataDisk:
+        return _SlotTypeDataDisk(self, 32)
 
     @property
-    def slot33(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(self, 33)
+    def slot33(self) -> _SlotTypeDataDisk:
+        return _SlotTypeDataDisk(self, 33)
 
     @property
-    def slot34(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(self, 34)
+    def slot34(self) -> _SlotTypeDataDisk:
+        return _SlotTypeDataDisk(self, 34)
 
     @property
-    def slot35(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(self, 35)
+    def slot35(self) -> _SlotTypeDataDisk:
+        return _SlotTypeDataDisk(self, 35)
 
     @property
-    def slot36(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(self, 36)
+    def slot36(self) -> _SlotTypeDataDisk:
+        return _SlotTypeDataDisk(self, 36)
 
     @property
-    def slot37(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(self, 37)
+    def slot37(self) -> _SlotTypeDataDisk:
+        return _SlotTypeDataDisk(self, 37)
 
     @property
-    def slot38(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(self, 38)
+    def slot38(self) -> _SlotTypeDataDisk:
+        return _SlotTypeDataDisk(self, 38)
 
     @property
-    def slot39(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(self, 39)
+    def slot39(self) -> _SlotTypeDataDisk:
+        return _SlotTypeDataDisk(self, 39)
 
     @property
-    def slot4(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(self, 4)
+    def slot4(self) -> _SlotTypeDataDisk:
+        return _SlotTypeDataDisk(self, 4)
 
     @property
-    def slot40(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(self, 40)
+    def slot40(self) -> _SlotTypeDataDisk:
+        return _SlotTypeDataDisk(self, 40)
 
     @property
-    def slot41(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(self, 41)
+    def slot41(self) -> _SlotTypeDataDisk:
+        return _SlotTypeDataDisk(self, 41)
 
     @property
-    def slot42(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(self, 42)
+    def slot42(self) -> _SlotTypeDataDisk:
+        return _SlotTypeDataDisk(self, 42)
 
     @property
-    def slot43(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(self, 43)
+    def slot43(self) -> _SlotTypeDataDisk:
+        return _SlotTypeDataDisk(self, 43)
 
     @property
-    def slot44(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(self, 44)
+    def slot44(self) -> _SlotTypeDataDisk:
+        return _SlotTypeDataDisk(self, 44)
 
     @property
-    def slot45(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(self, 45)
+    def slot45(self) -> _SlotTypeDataDisk:
+        return _SlotTypeDataDisk(self, 45)
 
     @property
-    def slot46(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(self, 46)
+    def slot46(self) -> _SlotTypeDataDisk:
+        return _SlotTypeDataDisk(self, 46)
 
     @property
-    def slot47(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(self, 47)
+    def slot47(self) -> _SlotTypeDataDisk:
+        return _SlotTypeDataDisk(self, 47)
 
     @property
-    def slot48(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(self, 48)
+    def slot48(self) -> _SlotTypeDataDisk:
+        return _SlotTypeDataDisk(self, 48)
 
     @property
-    def slot49(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(self, 49)
+    def slot49(self) -> _SlotTypeDataDisk:
+        return _SlotTypeDataDisk(self, 49)
 
     @property
-    def slot5(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(self, 5)
+    def slot5(self) -> _SlotTypeDataDisk:
+        return _SlotTypeDataDisk(self, 5)
 
     @property
-    def slot50(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(self, 50)
+    def slot50(self) -> _SlotTypeDataDisk:
+        return _SlotTypeDataDisk(self, 50)
 
     @property
-    def slot51(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(self, 51)
+    def slot51(self) -> _SlotTypeDataDisk:
+        return _SlotTypeDataDisk(self, 51)
 
     @property
-    def slot6(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(self, 6)
+    def slot6(self) -> _SlotTypeDataDisk:
+        return _SlotTypeDataDisk(self, 6)
 
     @property
-    def slot7(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(self, 7)
+    def slot7(self) -> _SlotTypeDataDisk:
+        return _SlotTypeDataDisk(self, 7)
 
     @property
-    def slot8(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(self, 8)
+    def slot8(self) -> _SlotTypeDataDisk:
+        return _SlotTypeDataDisk(self, 8)
 
     @property
-    def slot9(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(self, 9)
+    def slot9(self) -> _SlotTypeDataDisk:
+        return _SlotTypeDataDisk(self, 9)
 
 
 class _CargoStorageSmalls(
@@ -5312,220 +6068,220 @@ class _CargoStorageSmalls(
         return CargoStorageSmall(name=self._name, batch_mode=LogicBatchMethod.Sum)
 
     @property
-    def slot0(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(self, 0)
+    def slot0(self) -> _SlotTypeDataDisks:
+        return _SlotTypeDataDisks(self, 0)
 
     @property
-    def Import(self) -> _SlotTypeCommons:
+    def Import(self) -> _SlotTypeDataDisks:
         return self.slot0
 
     @property
-    def slot1(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(self, 1)
+    def slot1(self) -> _SlotTypeDataDisks:
+        return _SlotTypeDataDisks(self, 1)
 
     @property
-    def Export(self) -> _SlotTypeCommons:
+    def Export(self) -> _SlotTypeDataDisks:
         return self.slot1
 
     @property
-    def slot10(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(self, 10)
+    def slot10(self) -> _SlotTypeDataDisks:
+        return _SlotTypeDataDisks(self, 10)
 
     @property
-    def slot11(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(self, 11)
+    def slot11(self) -> _SlotTypeDataDisks:
+        return _SlotTypeDataDisks(self, 11)
 
     @property
-    def slot12(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(self, 12)
+    def slot12(self) -> _SlotTypeDataDisks:
+        return _SlotTypeDataDisks(self, 12)
 
     @property
-    def slot13(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(self, 13)
+    def slot13(self) -> _SlotTypeDataDisks:
+        return _SlotTypeDataDisks(self, 13)
 
     @property
-    def slot14(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(self, 14)
+    def slot14(self) -> _SlotTypeDataDisks:
+        return _SlotTypeDataDisks(self, 14)
 
     @property
-    def slot15(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(self, 15)
+    def slot15(self) -> _SlotTypeDataDisks:
+        return _SlotTypeDataDisks(self, 15)
 
     @property
-    def slot16(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(self, 16)
+    def slot16(self) -> _SlotTypeDataDisks:
+        return _SlotTypeDataDisks(self, 16)
 
     @property
-    def slot17(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(self, 17)
+    def slot17(self) -> _SlotTypeDataDisks:
+        return _SlotTypeDataDisks(self, 17)
 
     @property
-    def slot18(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(self, 18)
+    def slot18(self) -> _SlotTypeDataDisks:
+        return _SlotTypeDataDisks(self, 18)
 
     @property
-    def slot19(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(self, 19)
+    def slot19(self) -> _SlotTypeDataDisks:
+        return _SlotTypeDataDisks(self, 19)
 
     @property
-    def slot2(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(self, 2)
+    def slot2(self) -> _SlotTypeDataDisks:
+        return _SlotTypeDataDisks(self, 2)
 
     @property
-    def slot20(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(self, 20)
+    def slot20(self) -> _SlotTypeDataDisks:
+        return _SlotTypeDataDisks(self, 20)
 
     @property
-    def slot21(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(self, 21)
+    def slot21(self) -> _SlotTypeDataDisks:
+        return _SlotTypeDataDisks(self, 21)
 
     @property
-    def slot22(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(self, 22)
+    def slot22(self) -> _SlotTypeDataDisks:
+        return _SlotTypeDataDisks(self, 22)
 
     @property
-    def slot23(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(self, 23)
+    def slot23(self) -> _SlotTypeDataDisks:
+        return _SlotTypeDataDisks(self, 23)
 
     @property
-    def slot24(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(self, 24)
+    def slot24(self) -> _SlotTypeDataDisks:
+        return _SlotTypeDataDisks(self, 24)
 
     @property
-    def slot25(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(self, 25)
+    def slot25(self) -> _SlotTypeDataDisks:
+        return _SlotTypeDataDisks(self, 25)
 
     @property
-    def slot26(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(self, 26)
+    def slot26(self) -> _SlotTypeDataDisks:
+        return _SlotTypeDataDisks(self, 26)
 
     @property
-    def slot27(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(self, 27)
+    def slot27(self) -> _SlotTypeDataDisks:
+        return _SlotTypeDataDisks(self, 27)
 
     @property
-    def slot28(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(self, 28)
+    def slot28(self) -> _SlotTypeDataDisks:
+        return _SlotTypeDataDisks(self, 28)
 
     @property
-    def slot29(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(self, 29)
+    def slot29(self) -> _SlotTypeDataDisks:
+        return _SlotTypeDataDisks(self, 29)
 
     @property
-    def slot3(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(self, 3)
+    def slot3(self) -> _SlotTypeDataDisks:
+        return _SlotTypeDataDisks(self, 3)
 
     @property
-    def slot30(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(self, 30)
+    def slot30(self) -> _SlotTypeDataDisks:
+        return _SlotTypeDataDisks(self, 30)
 
     @property
-    def slot31(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(self, 31)
+    def slot31(self) -> _SlotTypeDataDisks:
+        return _SlotTypeDataDisks(self, 31)
 
     @property
-    def slot32(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(self, 32)
+    def slot32(self) -> _SlotTypeDataDisks:
+        return _SlotTypeDataDisks(self, 32)
 
     @property
-    def slot33(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(self, 33)
+    def slot33(self) -> _SlotTypeDataDisks:
+        return _SlotTypeDataDisks(self, 33)
 
     @property
-    def slot34(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(self, 34)
+    def slot34(self) -> _SlotTypeDataDisks:
+        return _SlotTypeDataDisks(self, 34)
 
     @property
-    def slot35(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(self, 35)
+    def slot35(self) -> _SlotTypeDataDisks:
+        return _SlotTypeDataDisks(self, 35)
 
     @property
-    def slot36(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(self, 36)
+    def slot36(self) -> _SlotTypeDataDisks:
+        return _SlotTypeDataDisks(self, 36)
 
     @property
-    def slot37(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(self, 37)
+    def slot37(self) -> _SlotTypeDataDisks:
+        return _SlotTypeDataDisks(self, 37)
 
     @property
-    def slot38(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(self, 38)
+    def slot38(self) -> _SlotTypeDataDisks:
+        return _SlotTypeDataDisks(self, 38)
 
     @property
-    def slot39(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(self, 39)
+    def slot39(self) -> _SlotTypeDataDisks:
+        return _SlotTypeDataDisks(self, 39)
 
     @property
-    def slot4(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(self, 4)
+    def slot4(self) -> _SlotTypeDataDisks:
+        return _SlotTypeDataDisks(self, 4)
 
     @property
-    def slot40(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(self, 40)
+    def slot40(self) -> _SlotTypeDataDisks:
+        return _SlotTypeDataDisks(self, 40)
 
     @property
-    def slot41(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(self, 41)
+    def slot41(self) -> _SlotTypeDataDisks:
+        return _SlotTypeDataDisks(self, 41)
 
     @property
-    def slot42(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(self, 42)
+    def slot42(self) -> _SlotTypeDataDisks:
+        return _SlotTypeDataDisks(self, 42)
 
     @property
-    def slot43(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(self, 43)
+    def slot43(self) -> _SlotTypeDataDisks:
+        return _SlotTypeDataDisks(self, 43)
 
     @property
-    def slot44(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(self, 44)
+    def slot44(self) -> _SlotTypeDataDisks:
+        return _SlotTypeDataDisks(self, 44)
 
     @property
-    def slot45(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(self, 45)
+    def slot45(self) -> _SlotTypeDataDisks:
+        return _SlotTypeDataDisks(self, 45)
 
     @property
-    def slot46(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(self, 46)
+    def slot46(self) -> _SlotTypeDataDisks:
+        return _SlotTypeDataDisks(self, 46)
 
     @property
-    def slot47(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(self, 47)
+    def slot47(self) -> _SlotTypeDataDisks:
+        return _SlotTypeDataDisks(self, 47)
 
     @property
-    def slot48(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(self, 48)
+    def slot48(self) -> _SlotTypeDataDisks:
+        return _SlotTypeDataDisks(self, 48)
 
     @property
-    def slot49(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(self, 49)
+    def slot49(self) -> _SlotTypeDataDisks:
+        return _SlotTypeDataDisks(self, 49)
 
     @property
-    def slot5(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(self, 5)
+    def slot5(self) -> _SlotTypeDataDisks:
+        return _SlotTypeDataDisks(self, 5)
 
     @property
-    def slot50(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(self, 50)
+    def slot50(self) -> _SlotTypeDataDisks:
+        return _SlotTypeDataDisks(self, 50)
 
     @property
-    def slot51(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(self, 51)
+    def slot51(self) -> _SlotTypeDataDisks:
+        return _SlotTypeDataDisks(self, 51)
 
     @property
-    def slot6(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(self, 6)
+    def slot6(self) -> _SlotTypeDataDisks:
+        return _SlotTypeDataDisks(self, 6)
 
     @property
-    def slot7(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(self, 7)
+    def slot7(self) -> _SlotTypeDataDisks:
+        return _SlotTypeDataDisks(self, 7)
 
     @property
-    def slot8(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(self, 8)
+    def slot8(self) -> _SlotTypeDataDisks:
+        return _SlotTypeDataDisks(self, 8)
 
     @property
-    def slot9(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(self, 9)
+    def slot9(self) -> _SlotTypeDataDisks:
+        return _SlotTypeDataDisks(self, 9)
 
 
 CargoStorageSmalls: _CargoStorageSmalls = _CargoStorageSmalls()
@@ -5545,19 +6301,19 @@ class Centrifuge(
     _prefab_name: int = "StructureCentrifuge"
 
     @property
-    def slot0(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(self, 0)
+    def slot0(self) -> _SlotTypeDataDisk:
+        return _SlotTypeDataDisk(self, 0)
 
     @property
-    def Import(self) -> _SlotTypeCommon:
+    def Import(self) -> _SlotTypeDataDisk:
         return self.slot0
 
     @property
-    def slot1(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(self, 1)
+    def slot1(self) -> _SlotTypeDataDisk:
+        return _SlotTypeDataDisk(self, 1)
 
     @property
-    def Export(self) -> _SlotTypeCommon:
+    def Export(self) -> _SlotTypeDataDisk:
         return self.slot1
 
 
@@ -5594,19 +6350,19 @@ class _Centrifuges(
         return Centrifuge(name=self._name, batch_mode=LogicBatchMethod.Sum)
 
     @property
-    def slot0(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(self, 0)
+    def slot0(self) -> _SlotTypeDataDisks:
+        return _SlotTypeDataDisks(self, 0)
 
     @property
-    def Import(self) -> _SlotTypeCommons:
+    def Import(self) -> _SlotTypeDataDisks:
         return self.slot0
 
     @property
-    def slot1(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(self, 1)
+    def slot1(self) -> _SlotTypeDataDisks:
+        return _SlotTypeDataDisks(self, 1)
 
     @property
-    def Export(self) -> _SlotTypeCommons:
+    def Export(self) -> _SlotTypeDataDisks:
         return self.slot1
 
 
@@ -5634,11 +6390,11 @@ class ChuteDigitalFlipFlopSplitterLeft(_BaseStructure, _Mode, _Power, _SettingW)
         pass
 
     @property
-    def slot0(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(self, 0)
+    def slot0(self) -> _SlotTypeDataDisk:
+        return _SlotTypeDataDisk(self, 0)
 
     @property
-    def TransportSlot(self) -> _SlotTypeCommon:
+    def TransportSlot(self) -> _SlotTypeDataDisk:
         return self.slot0
 
 
@@ -5692,11 +6448,11 @@ class _ChuteDigitalFlipFlopSplitterLefts(_BaseStructures, _Modes, _Powers, _Sett
         pass
 
     @property
-    def slot0(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(self, 0)
+    def slot0(self) -> _SlotTypeDataDisks:
+        return _SlotTypeDataDisks(self, 0)
 
     @property
-    def TransportSlot(self) -> _SlotTypeCommons:
+    def TransportSlot(self) -> _SlotTypeDataDisks:
         return self.slot0
 
 
@@ -5726,11 +6482,11 @@ class ChuteDigitalFlipFlopSplitterRight(_BaseStructure, _Mode, _Power, _SettingW
         pass
 
     @property
-    def slot0(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(self, 0)
+    def slot0(self) -> _SlotTypeDataDisk:
+        return _SlotTypeDataDisk(self, 0)
 
     @property
-    def TransportSlot(self) -> _SlotTypeCommon:
+    def TransportSlot(self) -> _SlotTypeDataDisk:
         return self.slot0
 
 
@@ -5784,11 +6540,11 @@ class _ChuteDigitalFlipFlopSplitterRights(_BaseStructures, _Modes, _Powers, _Set
         pass
 
     @property
-    def slot0(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(self, 0)
+    def slot0(self) -> _SlotTypeDataDisks:
+        return _SlotTypeDataDisks(self, 0)
 
     @property
-    def TransportSlot(self) -> _SlotTypeCommons:
+    def TransportSlot(self) -> _SlotTypeDataDisks:
         return self.slot0
 
 
@@ -5810,11 +6566,11 @@ class ChuteDigitalValveLeft(_BaseStructure, _Lock, _Open, _Power, _SettingW):
         pass
 
     @property
-    def slot0(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(self, 0)
+    def slot0(self) -> _SlotTypeDataDisk:
+        return _SlotTypeDataDisk(self, 0)
 
     @property
-    def TransportSlot(self) -> _SlotTypeCommon:
+    def TransportSlot(self) -> _SlotTypeDataDisk:
         return self.slot0
 
 
@@ -5856,11 +6612,11 @@ class _ChuteDigitalValveLefts(_BaseStructures, _Locks, _Opens, _Powers, _Setting
         pass
 
     @property
-    def slot0(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(self, 0)
+    def slot0(self) -> _SlotTypeDataDisks:
+        return _SlotTypeDataDisks(self, 0)
 
     @property
-    def TransportSlot(self) -> _SlotTypeCommons:
+    def TransportSlot(self) -> _SlotTypeDataDisks:
         return self.slot0
 
 
@@ -5880,11 +6636,11 @@ class ChuteDigitalValveRight(_BaseStructure, _Lock, _Open, _Power, _SettingW):
         pass
 
     @property
-    def slot0(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(self, 0)
+    def slot0(self) -> _SlotTypeDataDisk:
+        return _SlotTypeDataDisk(self, 0)
 
     @property
-    def TransportSlot(self) -> _SlotTypeCommon:
+    def TransportSlot(self) -> _SlotTypeDataDisk:
         return self.slot0
 
 
@@ -5926,11 +6682,11 @@ class _ChuteDigitalValveRights(_BaseStructures, _Locks, _Opens, _Powers, _Settin
         pass
 
     @property
-    def slot0(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(self, 0)
+    def slot0(self) -> _SlotTypeDataDisks:
+        return _SlotTypeDataDisks(self, 0)
 
     @property
-    def TransportSlot(self) -> _SlotTypeCommons:
+    def TransportSlot(self) -> _SlotTypeDataDisks:
         return self.slot0
 
 
@@ -5942,11 +6698,11 @@ class ChuteExportBin(_BaseStructure, _Error, _Lock, _Open, _Power):
     _prefab_name: int = "StructureChuteExportBin"
 
     @property
-    def slot0(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(self, 0)
+    def slot0(self) -> _SlotTypeDataDisk:
+        return _SlotTypeDataDisk(self, 0)
 
     @property
-    def Input(self) -> _SlotTypeCommon:
+    def Input(self) -> _SlotTypeDataDisk:
         return self.slot0
 
 
@@ -5974,11 +6730,11 @@ class _ChuteExportBins(_BaseStructures, _Errors, _Locks, _Opens, _Powers):
         return ChuteExportBin(name=self._name, batch_mode=LogicBatchMethod.Sum)
 
     @property
-    def slot0(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(self, 0)
+    def slot0(self) -> _SlotTypeDataDisks:
+        return _SlotTypeDataDisks(self, 0)
 
     @property
-    def Input(self) -> _SlotTypeCommons:
+    def Input(self) -> _SlotTypeDataDisks:
         return self.slot0
 
 
@@ -5990,11 +6746,11 @@ class ChuteBin(_BaseStructure, _Error, _Lock, _Open, _Power):
     _prefab_name: int = "StructureChuteBin"
 
     @property
-    def slot0(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(self, 0)
+    def slot0(self) -> _SlotTypeDataDisk:
+        return _SlotTypeDataDisk(self, 0)
 
     @property
-    def Input(self) -> _SlotTypeCommon:
+    def Input(self) -> _SlotTypeDataDisk:
         return self.slot0
 
 
@@ -6022,11 +6778,11 @@ class _ChuteBins(_BaseStructures, _Errors, _Locks, _Opens, _Powers):
         return ChuteBin(name=self._name, batch_mode=LogicBatchMethod.Sum)
 
     @property
-    def slot0(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(self, 0)
+    def slot0(self) -> _SlotTypeDataDisks:
+        return _SlotTypeDataDisks(self, 0)
 
     @property
-    def Input(self) -> _SlotTypeCommons:
+    def Input(self) -> _SlotTypeDataDisks:
         return self.slot0
 
 
@@ -6038,11 +6794,11 @@ class ChuteInlet(_BaseStructure, _ClearMemory, _ImportCount, _Lock):
     _prefab_name: int = "StructureChuteInlet"
 
     @property
-    def slot0(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(self, 0)
+    def slot0(self) -> _SlotTypeDataDisk:
+        return _SlotTypeDataDisk(self, 0)
 
     @property
-    def Import(self) -> _SlotTypeCommon:
+    def Import(self) -> _SlotTypeDataDisk:
         return self.slot0
 
 
@@ -6070,11 +6826,11 @@ class _ChuteInlets(_BaseStructures, _ClearMemories, _ImportCounts, _Locks):
         return ChuteInlet(name=self._name, batch_mode=LogicBatchMethod.Sum)
 
     @property
-    def slot0(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(self, 0)
+    def slot0(self) -> _SlotTypeDataDisks:
+        return _SlotTypeDataDisks(self, 0)
 
     @property
-    def Import(self) -> _SlotTypeCommons:
+    def Import(self) -> _SlotTypeDataDisks:
         return self.slot0
 
 
@@ -6086,11 +6842,11 @@ class ChuteOutlet(_BaseStructure, _ClearMemory, _ExportCount, _ImportCount, _Loc
     _prefab_name: int = "StructureChuteOutlet"
 
     @property
-    def slot0(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(self, 0)
+    def slot0(self) -> _SlotTypeDataDisk:
+        return _SlotTypeDataDisk(self, 0)
 
     @property
-    def Export(self) -> _SlotTypeCommon:
+    def Export(self) -> _SlotTypeDataDisk:
         return self.slot0
 
 
@@ -6120,11 +6876,11 @@ class _ChuteOutlets(
         return ChuteOutlet(name=self._name, batch_mode=LogicBatchMethod.Sum)
 
     @property
-    def slot0(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(self, 0)
+    def slot0(self) -> _SlotTypeDataDisks:
+        return _SlotTypeDataDisks(self, 0)
 
     @property
-    def Export(self) -> _SlotTypeCommons:
+    def Export(self) -> _SlotTypeDataDisks:
         return self.slot0
 
 
@@ -6209,27 +6965,27 @@ class CombustionCentrifuge(
         return _DeviceLogicType(self, _LT.TotalMolesOutput)
 
     @property
-    def slot0(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(self, 0)
+    def slot0(self) -> _SlotTypeDataDisk:
+        return _SlotTypeDataDisk(self, 0)
 
     @property
-    def Import(self) -> _SlotTypeCommon:
+    def Import(self) -> _SlotTypeDataDisk:
         return self.slot0
 
     @property
-    def slot1(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(self, 1)
+    def slot1(self) -> _SlotTypeDataDisk:
+        return _SlotTypeDataDisk(self, 1)
 
     @property
-    def Export(self) -> _SlotTypeCommon:
+    def Export(self) -> _SlotTypeDataDisk:
         return self.slot1
 
     @property
-    def slot2(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(self, 2)
+    def slot2(self) -> _SlotTypeDataDisk:
+        return _SlotTypeDataDisk(self, 2)
 
     @property
-    def ProgrammableChip(self) -> _SlotTypeCommon:
+    def ProgrammableChip(self) -> _SlotTypeDataDisk:
         return self.slot2
 
 
@@ -6336,27 +7092,27 @@ class _CombustionCentrifuges(
         return _DevicesLogicType(self, _LT.TotalMolesOutput)
 
     @property
-    def slot0(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(self, 0)
+    def slot0(self) -> _SlotTypeDataDisks:
+        return _SlotTypeDataDisks(self, 0)
 
     @property
-    def Import(self) -> _SlotTypeCommons:
+    def Import(self) -> _SlotTypeDataDisks:
         return self.slot0
 
     @property
-    def slot1(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(self, 1)
+    def slot1(self) -> _SlotTypeDataDisks:
+        return _SlotTypeDataDisks(self, 1)
 
     @property
-    def Export(self) -> _SlotTypeCommons:
+    def Export(self) -> _SlotTypeDataDisks:
         return self.slot1
 
     @property
-    def slot2(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(self, 2)
+    def slot2(self) -> _SlotTypeDataDisks:
+        return _SlotTypeDataDisks(self, 2)
 
     @property
-    def ProgrammableChip(self) -> _SlotTypeCommons:
+    def ProgrammableChip(self) -> _SlotTypeDataDisks:
         return self.slot2
 
 
@@ -6448,11 +7204,11 @@ class ComputerBigScreenWallMounted(_BaseStructure, _Error, _Lock, _Open, _Power)
     _prefab_name: int = "StructureComputerBigScreenWallMounted"
 
     @property
-    def slot0(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(self, 0)
+    def slot0(self) -> _SlotTypeDataDisk:
+        return _SlotTypeDataDisk(self, 0)
 
     @property
-    def Motherboard(self) -> _SlotTypeCommon:
+    def Motherboard(self) -> _SlotTypeDataDisk:
         return self.slot0
 
 
@@ -6488,11 +7244,11 @@ class _ComputerBigScreenWallMounteds(_BaseStructures, _Errors, _Locks, _Opens, _
         )
 
     @property
-    def slot0(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(self, 0)
+    def slot0(self) -> _SlotTypeDataDisks:
+        return _SlotTypeDataDisks(self, 0)
 
     @property
-    def Motherboard(self) -> _SlotTypeCommons:
+    def Motherboard(self) -> _SlotTypeDataDisks:
         return self.slot0
 
 
@@ -6506,11 +7262,11 @@ class ComputerBigScreen(_BaseStructure, _Error, _Lock, _Open, _Power):
     _prefab_name: int = "StructureComputerBigScreen"
 
     @property
-    def slot0(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(self, 0)
+    def slot0(self) -> _SlotTypeDataDisk:
+        return _SlotTypeDataDisk(self, 0)
 
     @property
-    def Motherboard(self) -> _SlotTypeCommon:
+    def Motherboard(self) -> _SlotTypeDataDisk:
         return self.slot0
 
 
@@ -6538,11 +7294,11 @@ class _ComputerBigScreens(_BaseStructures, _Errors, _Locks, _Opens, _Powers):
         return ComputerBigScreen(name=self._name, batch_mode=LogicBatchMethod.Sum)
 
     @property
-    def slot0(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(self, 0)
+    def slot0(self) -> _SlotTypeDataDisks:
+        return _SlotTypeDataDisks(self, 0)
 
     @property
-    def Motherboard(self) -> _SlotTypeCommons:
+    def Motherboard(self) -> _SlotTypeDataDisks:
         return self.slot0
 
 
@@ -6554,19 +7310,19 @@ class Computer(_BaseStructure, _Error, _Lock, _Open, _Power):
     _prefab_name: int = "StructureComputer"
 
     @property
-    def slot0(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(self, 0)
+    def slot0(self) -> _SlotTypeDataDisk:
+        return _SlotTypeDataDisk(self, 0)
 
     @property
-    def slot1(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(self, 1)
+    def slot1(self) -> _SlotTypeDataDisk:
+        return _SlotTypeDataDisk(self, 1)
 
     @property
-    def slot2(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(self, 2)
+    def slot2(self) -> _SlotTypeDataDisk:
+        return _SlotTypeDataDisk(self, 2)
 
     @property
-    def Motherboard(self) -> _SlotTypeCommon:
+    def Motherboard(self) -> _SlotTypeDataDisk:
         return self.slot2
 
 
@@ -6594,19 +7350,19 @@ class _Computers(_BaseStructures, _Errors, _Locks, _Opens, _Powers):
         return Computer(name=self._name, batch_mode=LogicBatchMethod.Sum)
 
     @property
-    def slot0(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(self, 0)
+    def slot0(self) -> _SlotTypeDataDisks:
+        return _SlotTypeDataDisks(self, 0)
 
     @property
-    def slot1(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(self, 1)
+    def slot1(self) -> _SlotTypeDataDisks:
+        return _SlotTypeDataDisks(self, 1)
 
     @property
-    def slot2(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(self, 2)
+    def slot2(self) -> _SlotTypeDataDisks:
+        return _SlotTypeDataDisks(self, 2)
 
     @property
-    def Motherboard(self) -> _SlotTypeCommons:
+    def Motherboard(self) -> _SlotTypeDataDisks:
         return self.slot2
 
 
@@ -6618,19 +7374,19 @@ class ComputerUpright(_BaseStructure, _Error, _Lock, _Open, _Power):
     _prefab_name: int = "StructureComputerUpright"
 
     @property
-    def slot0(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(self, 0)
+    def slot0(self) -> _SlotTypeDataDisk:
+        return _SlotTypeDataDisk(self, 0)
 
     @property
-    def slot1(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(self, 1)
+    def slot1(self) -> _SlotTypeDataDisk:
+        return _SlotTypeDataDisk(self, 1)
 
     @property
-    def slot2(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(self, 2)
+    def slot2(self) -> _SlotTypeDataDisk:
+        return _SlotTypeDataDisk(self, 2)
 
     @property
-    def Motherboard(self) -> _SlotTypeCommon:
+    def Motherboard(self) -> _SlotTypeDataDisk:
         return self.slot2
 
 
@@ -6658,19 +7414,19 @@ class _ComputerUprights(_BaseStructures, _Errors, _Locks, _Opens, _Powers):
         return ComputerUpright(name=self._name, batch_mode=LogicBatchMethod.Sum)
 
     @property
-    def slot0(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(self, 0)
+    def slot0(self) -> _SlotTypeDataDisks:
+        return _SlotTypeDataDisks(self, 0)
 
     @property
-    def slot1(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(self, 1)
+    def slot1(self) -> _SlotTypeDataDisks:
+        return _SlotTypeDataDisks(self, 1)
 
     @property
-    def slot2(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(self, 2)
+    def slot2(self) -> _SlotTypeDataDisks:
+        return _SlotTypeDataDisks(self, 2)
 
     @property
-    def Motherboard(self) -> _SlotTypeCommons:
+    def Motherboard(self) -> _SlotTypeDataDisks:
         return self.slot2
 
 
@@ -6966,28 +7722,28 @@ class CornerLocker(_BaseStructure, _Lock, _Open):
     _prefab_name: int = "StructureCornerLocker"
 
     @property
-    def slot0(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(self, 0)
+    def slot0(self) -> _SlotTypeDataDisk:
+        return _SlotTypeDataDisk(self, 0)
 
     @property
-    def slot1(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(self, 1)
+    def slot1(self) -> _SlotTypeDataDisk:
+        return _SlotTypeDataDisk(self, 1)
 
     @property
-    def slot2(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(self, 2)
+    def slot2(self) -> _SlotTypeDataDisk:
+        return _SlotTypeDataDisk(self, 2)
 
     @property
-    def slot3(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(self, 3)
+    def slot3(self) -> _SlotTypeDataDisk:
+        return _SlotTypeDataDisk(self, 3)
 
     @property
-    def slot4(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(self, 4)
+    def slot4(self) -> _SlotTypeDataDisk:
+        return _SlotTypeDataDisk(self, 4)
 
     @property
-    def slot5(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(self, 5)
+    def slot5(self) -> _SlotTypeDataDisk:
+        return _SlotTypeDataDisk(self, 5)
 
 
 class _CornerLockers(_BaseStructures, _Locks, _Opens):
@@ -7014,28 +7770,28 @@ class _CornerLockers(_BaseStructures, _Locks, _Opens):
         return CornerLocker(name=self._name, batch_mode=LogicBatchMethod.Sum)
 
     @property
-    def slot0(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(self, 0)
+    def slot0(self) -> _SlotTypeDataDisks:
+        return _SlotTypeDataDisks(self, 0)
 
     @property
-    def slot1(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(self, 1)
+    def slot1(self) -> _SlotTypeDataDisks:
+        return _SlotTypeDataDisks(self, 1)
 
     @property
-    def slot2(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(self, 2)
+    def slot2(self) -> _SlotTypeDataDisks:
+        return _SlotTypeDataDisks(self, 2)
 
     @property
-    def slot3(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(self, 3)
+    def slot3(self) -> _SlotTypeDataDisks:
+        return _SlotTypeDataDisks(self, 3)
 
     @property
-    def slot4(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(self, 4)
+    def slot4(self) -> _SlotTypeDataDisks:
+        return _SlotTypeDataDisks(self, 4)
 
     @property
-    def slot5(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(self, 5)
+    def slot5(self) -> _SlotTypeDataDisks:
+        return _SlotTypeDataDisks(self, 5)
 
 
 CornerLockers: _CornerLockers = _CornerLockers()
@@ -7202,11 +7958,11 @@ class CryoTubeHorizontal(
         return _DeviceLogicType(self, _LT.EntityState)
 
     @property
-    def slot0(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(self, 0)
+    def slot0(self) -> _SlotTypeDataDisk:
+        return _SlotTypeDataDisk(self, 0)
 
     @property
-    def Player(self) -> _SlotTypeCommon:
+    def Player(self) -> _SlotTypeDataDisk:
         return self.slot0
 
     @property
@@ -7258,11 +8014,11 @@ class _CryoTubeHorizontals(
         return _DevicesLogicType(self, _LT.EntityState)
 
     @property
-    def slot0(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(self, 0)
+    def slot0(self) -> _SlotTypeDataDisks:
+        return _SlotTypeDataDisks(self, 0)
 
     @property
-    def Player(self) -> _SlotTypeCommons:
+    def Player(self) -> _SlotTypeDataDisks:
         return self.slot0
 
     @property
@@ -7298,11 +8054,11 @@ class CryoTubeVertical(
         return _DeviceLogicType(self, _LT.EntityState)
 
     @property
-    def slot0(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(self, 0)
+    def slot0(self) -> _SlotTypeDataDisk:
+        return _SlotTypeDataDisk(self, 0)
 
     @property
-    def Player(self) -> _SlotTypeCommon:
+    def Player(self) -> _SlotTypeDataDisk:
         return self.slot0
 
     @property
@@ -7354,11 +8110,11 @@ class _CryoTubeVerticals(
         return _DevicesLogicType(self, _LT.EntityState)
 
     @property
-    def slot0(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(self, 0)
+    def slot0(self) -> _SlotTypeDataDisks:
+        return _SlotTypeDataDisks(self, 0)
 
     @property
-    def Player(self) -> _SlotTypeCommons:
+    def Player(self) -> _SlotTypeDataDisks:
         return self.slot0
 
     @property
@@ -7436,11 +8192,11 @@ class DeepMiner(
     _prefab_name: int = "StructureDeepMiner"
 
     @property
-    def slot0(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(self, 0)
+    def slot0(self) -> _SlotTypeDataDisk:
+        return _SlotTypeDataDisk(self, 0)
 
     @property
-    def Export(self) -> _SlotTypeCommon:
+    def Export(self) -> _SlotTypeDataDisk:
         return self.slot0
 
 
@@ -7478,11 +8234,11 @@ class _DeepMiners(
         return DeepMiner(name=self._name, batch_mode=LogicBatchMethod.Sum)
 
     @property
-    def slot0(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(self, 0)
+    def slot0(self) -> _SlotTypeDataDisks:
+        return _SlotTypeDataDisks(self, 0)
 
     @property
-    def Export(self) -> _SlotTypeCommons:
+    def Export(self) -> _SlotTypeDataDisks:
         return self.slot0
 
 
@@ -7624,11 +8380,11 @@ class SleeperVerticalDroid(_BaseStructure, _Activate, _Error, _Lock, _Open, _Pow
     _prefab_name: int = "StructureSleeperVerticalDroid"
 
     @property
-    def slot0(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(self, 0)
+    def slot0(self) -> _SlotTypeDataDisk:
+        return _SlotTypeDataDisk(self, 0)
 
     @property
-    def Player(self) -> _SlotTypeCommon:
+    def Player(self) -> _SlotTypeDataDisk:
         return self.slot0
 
 
@@ -7664,11 +8420,11 @@ class _SleeperVerticalDroids(
         return SleeperVerticalDroid(name=self._name, batch_mode=LogicBatchMethod.Sum)
 
     @property
-    def slot0(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(self, 0)
+    def slot0(self) -> _SlotTypeDataDisks:
+        return _SlotTypeDataDisks(self, 0)
 
     @property
-    def Player(self) -> _SlotTypeCommons:
+    def Player(self) -> _SlotTypeDataDisks:
         return self.slot0
 
 
@@ -7730,11 +8486,11 @@ class Electrolyzer(
         return _DeviceLogicType(self, _LT.TotalMolesOutput)
 
     @property
-    def slot0(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(self, 0)
+    def slot0(self) -> _SlotTypeDataDisk:
+        return _SlotTypeDataDisk(self, 0)
 
     @property
-    def ProgrammableChip(self) -> _SlotTypeCommon:
+    def ProgrammableChip(self) -> _SlotTypeDataDisk:
         return self.slot0
 
 
@@ -7812,11 +8568,11 @@ class _Electrolyzers(
         return _DevicesLogicType(self, _LT.TotalMolesOutput)
 
     @property
-    def slot0(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(self, 0)
+    def slot0(self) -> _SlotTypeDataDisks:
+        return _SlotTypeDataDisks(self, 0)
 
     @property
-    def ProgrammableChip(self) -> _SlotTypeCommons:
+    def ProgrammableChip(self) -> _SlotTypeDataDisks:
         return self.slot0
 
 
@@ -7848,19 +8604,19 @@ class ElectronicsPrinter(
         return _DeviceLogicType(self, _LT.StackSize)
 
     @property
-    def slot0(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(self, 0)
+    def slot0(self) -> _SlotTypeDataDisk:
+        return _SlotTypeDataDisk(self, 0)
 
     @property
-    def Import(self) -> _SlotTypeCommon:
+    def Import(self) -> _SlotTypeDataDisk:
         return self.slot0
 
     @property
-    def slot1(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(self, 1)
+    def slot1(self) -> _SlotTypeDataDisk:
+        return _SlotTypeDataDisk(self, 1)
 
     @property
-    def Export(self) -> _SlotTypeCommon:
+    def Export(self) -> _SlotTypeDataDisk:
         return self.slot1
 
 
@@ -7908,19 +8664,19 @@ class _ElectronicsPrinters(
         return _DevicesLogicType(self, _LT.StackSize)
 
     @property
-    def slot0(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(self, 0)
+    def slot0(self) -> _SlotTypeDataDisks:
+        return _SlotTypeDataDisks(self, 0)
 
     @property
-    def Import(self) -> _SlotTypeCommons:
+    def Import(self) -> _SlotTypeDataDisks:
         return self.slot0
 
     @property
-    def slot1(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(self, 1)
+    def slot1(self) -> _SlotTypeDataDisks:
+        return _SlotTypeDataDisks(self, 1)
 
     @property
-    def Export(self) -> _SlotTypeCommons:
+    def Export(self) -> _SlotTypeDataDisks:
         return self.slot1
 
 
@@ -8199,6 +8955,294 @@ class _ElevatorShafts(_BaseStructures, _Powers):
 ElevatorShafts: _ElevatorShafts = _ElevatorShafts()
 
 
+class EmergencyAngleGrinder(_BaseStructure, _Activate):
+    _hash: int = -351438780
+    _prefab_name: int = "ItemEmergencyAngleGrinder"
+
+    @property
+    def Power(self) -> float:
+        return _DeviceLogicType(self, _LT.Power)
+
+    @property
+    def slot0(self) -> _SlotTypeBattery:
+        return _SlotTypeBattery(self, 0)
+
+    @property
+    def Battery(self) -> _SlotTypeBattery:
+        return self.slot0
+
+
+class _EmergencyAngleGrinders(_BaseStructures, _Activates):
+    _hash: int = -351438780
+    _prefab_name: int = "ItemEmergencyAngleGrinder"
+
+    def __getitem__(self, name: str | int | float) -> "_EmergencyAngleGrinders":
+        return _EmergencyAngleGrinders(name)
+
+    @property
+    def Average(self) -> EmergencyAngleGrinder:
+        return EmergencyAngleGrinder(
+            name=self._name, batch_mode=LogicBatchMethod.Average
+        )
+
+    @property
+    def Minimum(self) -> EmergencyAngleGrinder:
+        return EmergencyAngleGrinder(
+            name=self._name, batch_mode=LogicBatchMethod.Minimum
+        )
+
+    @property
+    def Maximum(self) -> EmergencyAngleGrinder:
+        return EmergencyAngleGrinder(
+            name=self._name, batch_mode=LogicBatchMethod.Maximum
+        )
+
+    @property
+    def Sum(self) -> EmergencyAngleGrinder:
+        return EmergencyAngleGrinder(name=self._name, batch_mode=LogicBatchMethod.Sum)
+
+    @property
+    def Power(self) -> _DevicesLogicType:
+        return _DevicesLogicType(self, _LT.Power)
+
+    @property
+    def slot0(self) -> _SlotTypeBatteries:
+        return _SlotTypeBatteries(self, 0)
+
+    @property
+    def Battery(self) -> _SlotTypeBatteries:
+        return self.slot0
+
+
+EmergencyAngleGrinders: _EmergencyAngleGrinders = _EmergencyAngleGrinders()
+
+
+class EmergencyArcWelder(_BaseStructure, _Activate):
+    _hash: int = -1056029600
+    _prefab_name: int = "ItemEmergencyArcWelder"
+
+    @property
+    def Power(self) -> float:
+        return _DeviceLogicType(self, _LT.Power)
+
+    @property
+    def slot0(self) -> _SlotTypeBattery:
+        return _SlotTypeBattery(self, 0)
+
+    @property
+    def Battery(self) -> _SlotTypeBattery:
+        return self.slot0
+
+
+class _EmergencyArcWelders(_BaseStructures, _Activates):
+    _hash: int = -1056029600
+    _prefab_name: int = "ItemEmergencyArcWelder"
+
+    def __getitem__(self, name: str | int | float) -> "_EmergencyArcWelders":
+        return _EmergencyArcWelders(name)
+
+    @property
+    def Average(self) -> EmergencyArcWelder:
+        return EmergencyArcWelder(name=self._name, batch_mode=LogicBatchMethod.Average)
+
+    @property
+    def Minimum(self) -> EmergencyArcWelder:
+        return EmergencyArcWelder(name=self._name, batch_mode=LogicBatchMethod.Minimum)
+
+    @property
+    def Maximum(self) -> EmergencyArcWelder:
+        return EmergencyArcWelder(name=self._name, batch_mode=LogicBatchMethod.Maximum)
+
+    @property
+    def Sum(self) -> EmergencyArcWelder:
+        return EmergencyArcWelder(name=self._name, batch_mode=LogicBatchMethod.Sum)
+
+    @property
+    def Power(self) -> _DevicesLogicType:
+        return _DevicesLogicType(self, _LT.Power)
+
+    @property
+    def slot0(self) -> _SlotTypeBatteries:
+        return _SlotTypeBatteries(self, 0)
+
+    @property
+    def Battery(self) -> _SlotTypeBatteries:
+        return self.slot0
+
+
+EmergencyArcWelders: _EmergencyArcWelders = _EmergencyArcWelders()
+
+
+class EmergencyDrill(_BaseStructure, _Activate):
+    _hash: int = -2052458905
+    _prefab_name: int = "ItemEmergencyDrill"
+
+    @property
+    def Power(self) -> float:
+        return _DeviceLogicType(self, _LT.Power)
+
+    @property
+    def slot0(self) -> _SlotTypeBattery:
+        return _SlotTypeBattery(self, 0)
+
+    @property
+    def Battery(self) -> _SlotTypeBattery:
+        return self.slot0
+
+
+class _EmergencyDrills(_BaseStructures, _Activates):
+    _hash: int = -2052458905
+    _prefab_name: int = "ItemEmergencyDrill"
+
+    def __getitem__(self, name: str | int | float) -> "_EmergencyDrills":
+        return _EmergencyDrills(name)
+
+    @property
+    def Average(self) -> EmergencyDrill:
+        return EmergencyDrill(name=self._name, batch_mode=LogicBatchMethod.Average)
+
+    @property
+    def Minimum(self) -> EmergencyDrill:
+        return EmergencyDrill(name=self._name, batch_mode=LogicBatchMethod.Minimum)
+
+    @property
+    def Maximum(self) -> EmergencyDrill:
+        return EmergencyDrill(name=self._name, batch_mode=LogicBatchMethod.Maximum)
+
+    @property
+    def Sum(self) -> EmergencyDrill:
+        return EmergencyDrill(name=self._name, batch_mode=LogicBatchMethod.Sum)
+
+    @property
+    def Power(self) -> _DevicesLogicType:
+        return _DevicesLogicType(self, _LT.Power)
+
+    @property
+    def slot0(self) -> _SlotTypeBatteries:
+        return _SlotTypeBatteries(self, 0)
+
+    @property
+    def Battery(self) -> _SlotTypeBatteries:
+        return self.slot0
+
+
+EmergencyDrills: _EmergencyDrills = _EmergencyDrills()
+
+
+class EmergencySpaceHelmet(
+    _BaseStructure,
+    _BaseGas,
+    _Combustion,
+    _Hydrogen,
+    _Lock,
+    _On,
+    _Open,
+    _PollWater,
+    _Temperature,
+):
+    _hash: int = 205916793
+    _prefab_name: int = "ItemEmergencySpaceHelmet"
+
+    @property
+    def Flush(self) -> float:
+        return _DeviceLogicType(self, _LT.Flush)
+
+    @Flush.setter
+    def Flush(self, value: int | float):
+        pass
+
+    @property
+    def Power(self) -> float:
+        return _DeviceLogicType(self, _LT.Power)
+
+    @property
+    def SoundAlert(self) -> float:
+        return _DeviceLogicType(self, _LT.SoundAlert)
+
+    @SoundAlert.setter
+    def SoundAlert(self, value: int | float):
+        pass
+
+    @property
+    def Volume(self) -> float:
+        return _DeviceLogicType(self, _LT.Volume)
+
+    @Volume.setter
+    def Volume(self, value: int | float):
+        pass
+
+
+class _EmergencySpaceHelmets(
+    _BaseStructures,
+    _BaseGass,
+    _Combustions,
+    _Hydrogens,
+    _Locks,
+    _Ons,
+    _Opens,
+    _PollWaters,
+    _Temperatures,
+):
+    _hash: int = 205916793
+    _prefab_name: int = "ItemEmergencySpaceHelmet"
+
+    def __getitem__(self, name: str | int | float) -> "_EmergencySpaceHelmets":
+        return _EmergencySpaceHelmets(name)
+
+    @property
+    def Average(self) -> EmergencySpaceHelmet:
+        return EmergencySpaceHelmet(
+            name=self._name, batch_mode=LogicBatchMethod.Average
+        )
+
+    @property
+    def Minimum(self) -> EmergencySpaceHelmet:
+        return EmergencySpaceHelmet(
+            name=self._name, batch_mode=LogicBatchMethod.Minimum
+        )
+
+    @property
+    def Maximum(self) -> EmergencySpaceHelmet:
+        return EmergencySpaceHelmet(
+            name=self._name, batch_mode=LogicBatchMethod.Maximum
+        )
+
+    @property
+    def Sum(self) -> EmergencySpaceHelmet:
+        return EmergencySpaceHelmet(name=self._name, batch_mode=LogicBatchMethod.Sum)
+
+    @property
+    def Flush(self) -> _DevicesLogicType:
+        return _DevicesLogicType(self, _LT.Flush)
+
+    @Flush.setter
+    def Flush(self, value: int | float):
+        pass
+
+    @property
+    def Power(self) -> _DevicesLogicType:
+        return _DevicesLogicType(self, _LT.Power)
+
+    @property
+    def SoundAlert(self) -> _DevicesLogicType:
+        return _DevicesLogicType(self, _LT.SoundAlert)
+
+    @SoundAlert.setter
+    def SoundAlert(self, value: int | float):
+        pass
+
+    @property
+    def Volume(self) -> _DevicesLogicType:
+        return _DevicesLogicType(self, _LT.Volume)
+
+    @Volume.setter
+    def Volume(self, value: int | float):
+        pass
+
+
+EmergencySpaceHelmets: _EmergencySpaceHelmets = _EmergencySpaceHelmets()
+
+
 class EvaporationChamber(
     _BaseStructure,
     _BaseGas,
@@ -8365,11 +9409,11 @@ class Filtration(
         return _SlotTypeFilter(self, 1)
 
     @property
-    def slot2(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(self, 2)
+    def slot2(self) -> _SlotTypeDataDisk:
+        return _SlotTypeDataDisk(self, 2)
 
     @property
-    def ProgrammableChip(self) -> _SlotTypeCommon:
+    def ProgrammableChip(self) -> _SlotTypeDataDisk:
         return self.slot2
 
 
@@ -8466,11 +9510,11 @@ class _Filtrations(
         return _SlotTypeFilters(self, 1)
 
     @property
-    def slot2(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(self, 2)
+    def slot2(self) -> _SlotTypeDataDisks:
+        return _SlotTypeDataDisks(self, 2)
 
     @property
-    def ProgrammableChip(self) -> _SlotTypeCommons:
+    def ProgrammableChip(self) -> _SlotTypeDataDisks:
         return self.slot2
 
 
@@ -8507,6 +9551,62 @@ class _FlashingLights(_BaseStructures, _Locks, _Powers):
 
 
 FlashingLights: _FlashingLights = _FlashingLights()
+
+
+class Flashlight(_BaseStructure, _Mode, _On):
+    _hash: int = -838472102
+    _prefab_name: int = "ItemFlashlight"
+
+    @property
+    def Power(self) -> float:
+        return _DeviceLogicType(self, _LT.Power)
+
+    @property
+    def slot0(self) -> _SlotTypeBattery:
+        return _SlotTypeBattery(self, 0)
+
+    @property
+    def Battery(self) -> _SlotTypeBattery:
+        return self.slot0
+
+
+class _Flashlights(_BaseStructures, _Modes, _Ons):
+    _hash: int = -838472102
+    _prefab_name: int = "ItemFlashlight"
+
+    def __getitem__(self, name: str | int | float) -> "_Flashlights":
+        return _Flashlights(name)
+
+    @property
+    def Average(self) -> Flashlight:
+        return Flashlight(name=self._name, batch_mode=LogicBatchMethod.Average)
+
+    @property
+    def Minimum(self) -> Flashlight:
+        return Flashlight(name=self._name, batch_mode=LogicBatchMethod.Minimum)
+
+    @property
+    def Maximum(self) -> Flashlight:
+        return Flashlight(name=self._name, batch_mode=LogicBatchMethod.Maximum)
+
+    @property
+    def Sum(self) -> Flashlight:
+        return Flashlight(name=self._name, batch_mode=LogicBatchMethod.Sum)
+
+    @property
+    def Power(self) -> _DevicesLogicType:
+        return _DevicesLogicType(self, _LT.Power)
+
+    @property
+    def slot0(self) -> _SlotTypeBatteries:
+        return _SlotTypeBatteries(self, 0)
+
+    @property
+    def Battery(self) -> _SlotTypeBatteries:
+        return self.slot0
+
+
+Flashlights: _Flashlights = _Flashlights()
 
 
 class FridgeBig(
@@ -8571,64 +9671,64 @@ class FridgeBig(
         return _DeviceLogicType(self, _LT.TotalMolesOutput)
 
     @property
-    def slot0(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(self, 0)
+    def slot0(self) -> _SlotTypeDataDisk:
+        return _SlotTypeDataDisk(self, 0)
 
     @property
-    def slot1(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(self, 1)
+    def slot1(self) -> _SlotTypeDataDisk:
+        return _SlotTypeDataDisk(self, 1)
 
     @property
-    def slot10(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(self, 10)
+    def slot10(self) -> _SlotTypeDataDisk:
+        return _SlotTypeDataDisk(self, 10)
 
     @property
-    def slot11(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(self, 11)
+    def slot11(self) -> _SlotTypeDataDisk:
+        return _SlotTypeDataDisk(self, 11)
 
     @property
-    def slot12(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(self, 12)
+    def slot12(self) -> _SlotTypeDataDisk:
+        return _SlotTypeDataDisk(self, 12)
 
     @property
-    def slot13(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(self, 13)
+    def slot13(self) -> _SlotTypeDataDisk:
+        return _SlotTypeDataDisk(self, 13)
 
     @property
-    def slot14(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(self, 14)
+    def slot14(self) -> _SlotTypeDataDisk:
+        return _SlotTypeDataDisk(self, 14)
 
     @property
-    def slot2(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(self, 2)
+    def slot2(self) -> _SlotTypeDataDisk:
+        return _SlotTypeDataDisk(self, 2)
 
     @property
-    def slot3(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(self, 3)
+    def slot3(self) -> _SlotTypeDataDisk:
+        return _SlotTypeDataDisk(self, 3)
 
     @property
-    def slot4(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(self, 4)
+    def slot4(self) -> _SlotTypeDataDisk:
+        return _SlotTypeDataDisk(self, 4)
 
     @property
-    def slot5(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(self, 5)
+    def slot5(self) -> _SlotTypeDataDisk:
+        return _SlotTypeDataDisk(self, 5)
 
     @property
-    def slot6(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(self, 6)
+    def slot6(self) -> _SlotTypeDataDisk:
+        return _SlotTypeDataDisk(self, 6)
 
     @property
-    def slot7(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(self, 7)
+    def slot7(self) -> _SlotTypeDataDisk:
+        return _SlotTypeDataDisk(self, 7)
 
     @property
-    def slot8(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(self, 8)
+    def slot8(self) -> _SlotTypeDataDisk:
+        return _SlotTypeDataDisk(self, 8)
 
     @property
-    def slot9(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(self, 9)
+    def slot9(self) -> _SlotTypeDataDisk:
+        return _SlotTypeDataDisk(self, 9)
 
 
 class _FridgeBigs(
@@ -8712,64 +9812,64 @@ class _FridgeBigs(
         return _DevicesLogicType(self, _LT.TotalMolesOutput)
 
     @property
-    def slot0(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(self, 0)
+    def slot0(self) -> _SlotTypeDataDisks:
+        return _SlotTypeDataDisks(self, 0)
 
     @property
-    def slot1(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(self, 1)
+    def slot1(self) -> _SlotTypeDataDisks:
+        return _SlotTypeDataDisks(self, 1)
 
     @property
-    def slot10(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(self, 10)
+    def slot10(self) -> _SlotTypeDataDisks:
+        return _SlotTypeDataDisks(self, 10)
 
     @property
-    def slot11(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(self, 11)
+    def slot11(self) -> _SlotTypeDataDisks:
+        return _SlotTypeDataDisks(self, 11)
 
     @property
-    def slot12(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(self, 12)
+    def slot12(self) -> _SlotTypeDataDisks:
+        return _SlotTypeDataDisks(self, 12)
 
     @property
-    def slot13(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(self, 13)
+    def slot13(self) -> _SlotTypeDataDisks:
+        return _SlotTypeDataDisks(self, 13)
 
     @property
-    def slot14(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(self, 14)
+    def slot14(self) -> _SlotTypeDataDisks:
+        return _SlotTypeDataDisks(self, 14)
 
     @property
-    def slot2(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(self, 2)
+    def slot2(self) -> _SlotTypeDataDisks:
+        return _SlotTypeDataDisks(self, 2)
 
     @property
-    def slot3(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(self, 3)
+    def slot3(self) -> _SlotTypeDataDisks:
+        return _SlotTypeDataDisks(self, 3)
 
     @property
-    def slot4(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(self, 4)
+    def slot4(self) -> _SlotTypeDataDisks:
+        return _SlotTypeDataDisks(self, 4)
 
     @property
-    def slot5(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(self, 5)
+    def slot5(self) -> _SlotTypeDataDisks:
+        return _SlotTypeDataDisks(self, 5)
 
     @property
-    def slot6(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(self, 6)
+    def slot6(self) -> _SlotTypeDataDisks:
+        return _SlotTypeDataDisks(self, 6)
 
     @property
-    def slot7(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(self, 7)
+    def slot7(self) -> _SlotTypeDataDisks:
+        return _SlotTypeDataDisks(self, 7)
 
     @property
-    def slot8(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(self, 8)
+    def slot8(self) -> _SlotTypeDataDisks:
+        return _SlotTypeDataDisks(self, 8)
 
     @property
-    def slot9(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(self, 9)
+    def slot9(self) -> _SlotTypeDataDisks:
+        return _SlotTypeDataDisks(self, 9)
 
 
 FridgeBigs: _FridgeBigs = _FridgeBigs()
@@ -8835,12 +9935,12 @@ class FridgeSmall(
         return _DeviceLogicType(self, _LT.TotalMolesOutput)
 
     @property
-    def slot0(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(self, 0)
+    def slot0(self) -> _SlotTypeDataDisk:
+        return _SlotTypeDataDisk(self, 0)
 
     @property
-    def slot1(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(self, 1)
+    def slot1(self) -> _SlotTypeDataDisk:
+        return _SlotTypeDataDisk(self, 1)
 
 
 class _FridgeSmalls(
@@ -8922,12 +10022,12 @@ class _FridgeSmalls(
         return _DevicesLogicType(self, _LT.TotalMolesOutput)
 
     @property
-    def slot0(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(self, 0)
+    def slot0(self) -> _SlotTypeDataDisks:
+        return _SlotTypeDataDisks(self, 0)
 
     @property
-    def slot1(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(self, 1)
+    def slot1(self) -> _SlotTypeDataDisks:
+        return _SlotTypeDataDisks(self, 1)
 
 
 FridgeSmalls: _FridgeSmalls = _FridgeSmalls()
@@ -8960,19 +10060,19 @@ class Furnace(
         return _DeviceLogicType(self, _LT.RecipeHash)
 
     @property
-    def slot0(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(self, 0)
+    def slot0(self) -> _SlotTypeDataDisk:
+        return _SlotTypeDataDisk(self, 0)
 
     @property
-    def Import(self) -> _SlotTypeCommon:
+    def Import(self) -> _SlotTypeDataDisk:
         return self.slot0
 
     @property
-    def slot1(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(self, 1)
+    def slot1(self) -> _SlotTypeDataDisk:
+        return _SlotTypeDataDisk(self, 1)
 
     @property
-    def Export(self) -> _SlotTypeCommon:
+    def Export(self) -> _SlotTypeDataDisk:
         return self.slot1
 
 
@@ -9022,19 +10122,19 @@ class _Furnaces(
         return _DevicesLogicType(self, _LT.RecipeHash)
 
     @property
-    def slot0(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(self, 0)
+    def slot0(self) -> _SlotTypeDataDisks:
+        return _SlotTypeDataDisks(self, 0)
 
     @property
-    def Import(self) -> _SlotTypeCommons:
+    def Import(self) -> _SlotTypeDataDisks:
         return self.slot0
 
     @property
-    def slot1(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(self, 1)
+    def slot1(self) -> _SlotTypeDataDisks:
+        return _SlotTypeDataDisks(self, 1)
 
     @property
-    def Export(self) -> _SlotTypeCommons:
+    def Export(self) -> _SlotTypeDataDisks:
         return self.slot1
 
 
@@ -9543,6 +10643,106 @@ class _GasGenerators(
 GasGenerators: _GasGenerators = _GasGenerators()
 
 
+class GasMask(
+    _BaseStructure, _BaseGas, _Combustion, _Hydrogen, _PollWater, _Temperature
+):
+    _hash: int = 1716878560
+    _prefab_name: int = "ItemGasMask"
+
+    @property
+    def Flush(self) -> float:
+        return _DeviceLogicType(self, _LT.Flush)
+
+    @Flush.setter
+    def Flush(self, value: int | float):
+        pass
+
+    @property
+    def SoundAlert(self) -> float:
+        return _DeviceLogicType(self, _LT.SoundAlert)
+
+    @SoundAlert.setter
+    def SoundAlert(self, value: int | float):
+        pass
+
+    @property
+    def Volume(self) -> float:
+        return _DeviceLogicType(self, _LT.Volume)
+
+    @Volume.setter
+    def Volume(self, value: int | float):
+        pass
+
+    @property
+    def slot0(self) -> _SlotType:
+        return _SlotType(self, 0)
+
+    @property
+    def slot1(self) -> _SlotType:
+        return _SlotType(self, 1)
+
+
+class _GasMasks(
+    _BaseStructures, _BaseGass, _Combustions, _Hydrogens, _PollWaters, _Temperatures
+):
+    _hash: int = 1716878560
+    _prefab_name: int = "ItemGasMask"
+
+    def __getitem__(self, name: str | int | float) -> "_GasMasks":
+        return _GasMasks(name)
+
+    @property
+    def Average(self) -> GasMask:
+        return GasMask(name=self._name, batch_mode=LogicBatchMethod.Average)
+
+    @property
+    def Minimum(self) -> GasMask:
+        return GasMask(name=self._name, batch_mode=LogicBatchMethod.Minimum)
+
+    @property
+    def Maximum(self) -> GasMask:
+        return GasMask(name=self._name, batch_mode=LogicBatchMethod.Maximum)
+
+    @property
+    def Sum(self) -> GasMask:
+        return GasMask(name=self._name, batch_mode=LogicBatchMethod.Sum)
+
+    @property
+    def Flush(self) -> _DevicesLogicType:
+        return _DevicesLogicType(self, _LT.Flush)
+
+    @Flush.setter
+    def Flush(self, value: int | float):
+        pass
+
+    @property
+    def SoundAlert(self) -> _DevicesLogicType:
+        return _DevicesLogicType(self, _LT.SoundAlert)
+
+    @SoundAlert.setter
+    def SoundAlert(self, value: int | float):
+        pass
+
+    @property
+    def Volume(self) -> _DevicesLogicType:
+        return _DevicesLogicType(self, _LT.Volume)
+
+    @Volume.setter
+    def Volume(self, value: int | float):
+        pass
+
+    @property
+    def slot0(self) -> _SlotTypes:
+        return _SlotTypes(self, 0)
+
+    @property
+    def slot1(self) -> _SlotTypes:
+        return _SlotTypes(self, 1)
+
+
+GasMasks: _GasMasks = _GasMasks()
+
+
 class GasMixer(_BaseStructure, _Error, _Lock, _Maximum, _Power, _Ratio, _SettingW):
     _hash: int = 2104106366
     _prefab_name: int = "StructureGasMixer"
@@ -9730,11 +10930,11 @@ class SolidFuelGenerator(_BaseStructure, _ClearMemory, _ImportCount, _Lock, _On)
         return _DeviceLogicType(self, _LT.PowerGeneration)
 
     @property
-    def slot0(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(self, 0)
+    def slot0(self) -> _SlotTypeDataDisk:
+        return _SlotTypeDataDisk(self, 0)
 
     @property
-    def Input(self) -> _SlotTypeCommon:
+    def Input(self) -> _SlotTypeDataDisk:
         return self.slot0
 
 
@@ -9768,11 +10968,11 @@ class _SolidFuelGenerators(
         return _DevicesLogicType(self, _LT.PowerGeneration)
 
     @property
-    def slot0(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(self, 0)
+    def slot0(self) -> _SlotTypeDataDisks:
+        return _SlotTypeDataDisks(self, 0)
 
     @property
-    def Input(self) -> _SlotTypeCommons:
+    def Input(self) -> _SlotTypeDataDisks:
         return self.slot0
 
 
@@ -9843,6 +11043,1442 @@ class _GrowLights(_BaseStructures, _Locks, _Powers):
 GrowLights: _GrowLights = _GrowLights()
 
 
+class SuitHelmetHARM(
+    _BaseStructure,
+    _BaseGas,
+    _Combustion,
+    _Hydrogen,
+    _Lock,
+    _On,
+    _Open,
+    _PollWater,
+    _Temperature,
+):
+    _hash: int = -981522067
+    _prefab_name: int = "ItemSuitHelmetHARM"
+
+    @property
+    def Flush(self) -> float:
+        return _DeviceLogicType(self, _LT.Flush)
+
+    @Flush.setter
+    def Flush(self, value: int | float):
+        pass
+
+    @property
+    def Power(self) -> float:
+        return _DeviceLogicType(self, _LT.Power)
+
+    @property
+    def SoundAlert(self) -> float:
+        return _DeviceLogicType(self, _LT.SoundAlert)
+
+    @SoundAlert.setter
+    def SoundAlert(self, value: int | float):
+        pass
+
+    @property
+    def Volume(self) -> float:
+        return _DeviceLogicType(self, _LT.Volume)
+
+    @Volume.setter
+    def Volume(self, value: int | float):
+        pass
+
+
+class _SuitHelmetHARMs(
+    _BaseStructures,
+    _BaseGass,
+    _Combustions,
+    _Hydrogens,
+    _Locks,
+    _Ons,
+    _Opens,
+    _PollWaters,
+    _Temperatures,
+):
+    _hash: int = -981522067
+    _prefab_name: int = "ItemSuitHelmetHARM"
+
+    def __getitem__(self, name: str | int | float) -> "_SuitHelmetHARMs":
+        return _SuitHelmetHARMs(name)
+
+    @property
+    def Average(self) -> SuitHelmetHARM:
+        return SuitHelmetHARM(name=self._name, batch_mode=LogicBatchMethod.Average)
+
+    @property
+    def Minimum(self) -> SuitHelmetHARM:
+        return SuitHelmetHARM(name=self._name, batch_mode=LogicBatchMethod.Minimum)
+
+    @property
+    def Maximum(self) -> SuitHelmetHARM:
+        return SuitHelmetHARM(name=self._name, batch_mode=LogicBatchMethod.Maximum)
+
+    @property
+    def Sum(self) -> SuitHelmetHARM:
+        return SuitHelmetHARM(name=self._name, batch_mode=LogicBatchMethod.Sum)
+
+    @property
+    def Flush(self) -> _DevicesLogicType:
+        return _DevicesLogicType(self, _LT.Flush)
+
+    @Flush.setter
+    def Flush(self, value: int | float):
+        pass
+
+    @property
+    def Power(self) -> _DevicesLogicType:
+        return _DevicesLogicType(self, _LT.Power)
+
+    @property
+    def SoundAlert(self) -> _DevicesLogicType:
+        return _DevicesLogicType(self, _LT.SoundAlert)
+
+    @SoundAlert.setter
+    def SoundAlert(self, value: int | float):
+        pass
+
+    @property
+    def Volume(self) -> _DevicesLogicType:
+        return _DevicesLogicType(self, _LT.Volume)
+
+    @Volume.setter
+    def Volume(self, value: int | float):
+        pass
+
+
+SuitHelmetHARMs: _SuitHelmetHARMs = _SuitHelmetHARMs()
+
+
+class SuitHARM(
+    _BaseStructure,
+    _Activate,
+    _BaseGas,
+    _Combustion,
+    _Hydrogen,
+    _Lock,
+    _On,
+    _PollWater,
+    _SettingW,
+    _Temperature,
+):
+    _hash: int = -347191982
+    _prefab_name: int = "ItemSuitHARM"
+
+    @property
+    def AirRelease(self) -> float:
+        return _DeviceLogicType(self, _LT.AirRelease)
+
+    @AirRelease.setter
+    def AirRelease(self, value: int | float):
+        pass
+
+    @property
+    def EntityState(self) -> float:
+        return _DeviceLogicType(self, _LT.EntityState)
+
+    @property
+    def Error(self) -> float:
+        return _DeviceLogicType(self, _LT.Error)
+
+    @Error.setter
+    def Error(self, value: int | float):
+        pass
+
+    @property
+    def Filtration(self) -> float:
+        return _DeviceLogicType(self, _LT.Filtration)
+
+    @Filtration.setter
+    def Filtration(self, value: int | float):
+        pass
+
+    @property
+    def ForwardX(self) -> float:
+        return _DeviceLogicType(self, _LT.ForwardX)
+
+    @property
+    def ForwardY(self) -> float:
+        return _DeviceLogicType(self, _LT.ForwardY)
+
+    @property
+    def ForwardZ(self) -> float:
+        return _DeviceLogicType(self, _LT.ForwardZ)
+
+    @property
+    def Orientation(self) -> float:
+        return _DeviceLogicType(self, _LT.Orientation)
+
+    @property
+    def PositionX(self) -> float:
+        return _DeviceLogicType(self, _LT.PositionX)
+
+    @property
+    def PositionY(self) -> float:
+        return _DeviceLogicType(self, _LT.PositionY)
+
+    @property
+    def PositionZ(self) -> float:
+        return _DeviceLogicType(self, _LT.PositionZ)
+
+    @property
+    def Power(self) -> float:
+        return _DeviceLogicType(self, _LT.Power)
+
+    @property
+    def PressureExternal(self) -> float:
+        return _DeviceLogicType(self, _LT.PressureExternal)
+
+    @property
+    def PressureSetting(self) -> float:
+        return _DeviceLogicType(self, _LT.PressureSetting)
+
+    @PressureSetting.setter
+    def PressureSetting(self, value: int | float):
+        pass
+
+    @property
+    def SoundAlert(self) -> float:
+        return _DeviceLogicType(self, _LT.SoundAlert)
+
+    @SoundAlert.setter
+    def SoundAlert(self, value: int | float):
+        pass
+
+    @property
+    def TemperatureExternal(self) -> float:
+        return _DeviceLogicType(self, _LT.TemperatureExternal)
+
+    @property
+    def TemperatureSetting(self) -> float:
+        return _DeviceLogicType(self, _LT.TemperatureSetting)
+
+    @TemperatureSetting.setter
+    def TemperatureSetting(self, value: int | float):
+        pass
+
+    @property
+    def VelocityMagnitude(self) -> float:
+        return _DeviceLogicType(self, _LT.VelocityMagnitude)
+
+    @property
+    def VelocityRelativeX(self) -> float:
+        return _DeviceLogicType(self, _LT.VelocityRelativeX)
+
+    @property
+    def VelocityRelativeY(self) -> float:
+        return _DeviceLogicType(self, _LT.VelocityRelativeY)
+
+    @property
+    def VelocityRelativeZ(self) -> float:
+        return _DeviceLogicType(self, _LT.VelocityRelativeZ)
+
+    @property
+    def VelocityX(self) -> float:
+        return _DeviceLogicType(self, _LT.VelocityX)
+
+    @property
+    def VelocityY(self) -> float:
+        return _DeviceLogicType(self, _LT.VelocityY)
+
+    @property
+    def VelocityZ(self) -> float:
+        return _DeviceLogicType(self, _LT.VelocityZ)
+
+    @property
+    def Volume(self) -> float:
+        return _DeviceLogicType(self, _LT.Volume)
+
+    @Volume.setter
+    def Volume(self, value: int | float):
+        pass
+
+    @property
+    def slot0(self) -> _SlotTypeAirTank:
+        return _SlotTypeAirTank(self, 0)
+
+    @property
+    def AirTank(self) -> _SlotTypeAirTank:
+        return self.slot0
+
+    @property
+    def slot1(self) -> _SlotTypeAirTank:
+        return _SlotTypeAirTank(self, 1)
+
+    @property
+    def WasteTank(self) -> _SlotTypeAirTank:
+        return self.slot1
+
+    @property
+    def slot2(self) -> _SlotTypeCommon:
+        return _SlotTypeCommon(self, 2)
+
+    @property
+    def CoolantTank(self) -> _SlotTypeCommon:
+        return self.slot2
+
+    @property
+    def slot3(self) -> _SlotTypeBattery:
+        return _SlotTypeBattery(self, 3)
+
+    @property
+    def Battery(self) -> _SlotTypeBattery:
+        return self.slot3
+
+    @property
+    def slot4(self) -> _SlotTypeCommon:
+        return _SlotTypeCommon(self, 4)
+
+    @property
+    def Chip(self) -> _SlotTypeCommon:
+        return self.slot4
+
+    @property
+    def slot5(self) -> _SlotType:
+        return _SlotType(self, 5)
+
+    @property
+    def Filter1(self) -> _SlotType:
+        return self.slot5
+
+    @property
+    def slot6(self) -> _SlotType:
+        return _SlotType(self, 6)
+
+    @property
+    def Filter2(self) -> _SlotType:
+        return self.slot6
+
+    @property
+    def slot7(self) -> _SlotType:
+        return _SlotType(self, 7)
+
+    @property
+    def Filter3(self) -> _SlotType:
+        return self.slot7
+
+    @property
+    def slot8(self) -> _SlotType:
+        return _SlotType(self, 8)
+
+    @property
+    def Filter4(self) -> _SlotType:
+        return self.slot8
+
+    @property
+    def slot9(self) -> _SlotTypeCommon:
+        return _SlotTypeCommon(self, 9)
+
+    @property
+    def Back(self) -> _SlotTypeCommon:
+        return self.slot9
+
+
+class _SuitHARMs(
+    _BaseStructures,
+    _Activates,
+    _BaseGass,
+    _Combustions,
+    _Hydrogens,
+    _Locks,
+    _Ons,
+    _PollWaters,
+    _SettingWs,
+    _Temperatures,
+):
+    _hash: int = -347191982
+    _prefab_name: int = "ItemSuitHARM"
+
+    def __getitem__(self, name: str | int | float) -> "_SuitHARMs":
+        return _SuitHARMs(name)
+
+    @property
+    def Average(self) -> SuitHARM:
+        return SuitHARM(name=self._name, batch_mode=LogicBatchMethod.Average)
+
+    @property
+    def Minimum(self) -> SuitHARM:
+        return SuitHARM(name=self._name, batch_mode=LogicBatchMethod.Minimum)
+
+    @property
+    def Maximum(self) -> SuitHARM:
+        return SuitHARM(name=self._name, batch_mode=LogicBatchMethod.Maximum)
+
+    @property
+    def Sum(self) -> SuitHARM:
+        return SuitHARM(name=self._name, batch_mode=LogicBatchMethod.Sum)
+
+    @property
+    def AirRelease(self) -> _DevicesLogicType:
+        return _DevicesLogicType(self, _LT.AirRelease)
+
+    @AirRelease.setter
+    def AirRelease(self, value: int | float):
+        pass
+
+    @property
+    def EntityState(self) -> _DevicesLogicType:
+        return _DevicesLogicType(self, _LT.EntityState)
+
+    @property
+    def Error(self) -> _DevicesLogicType:
+        return _DevicesLogicType(self, _LT.Error)
+
+    @Error.setter
+    def Error(self, value: int | float):
+        pass
+
+    @property
+    def Filtration(self) -> _DevicesLogicType:
+        return _DevicesLogicType(self, _LT.Filtration)
+
+    @Filtration.setter
+    def Filtration(self, value: int | float):
+        pass
+
+    @property
+    def ForwardX(self) -> _DevicesLogicType:
+        return _DevicesLogicType(self, _LT.ForwardX)
+
+    @property
+    def ForwardY(self) -> _DevicesLogicType:
+        return _DevicesLogicType(self, _LT.ForwardY)
+
+    @property
+    def ForwardZ(self) -> _DevicesLogicType:
+        return _DevicesLogicType(self, _LT.ForwardZ)
+
+    @property
+    def Orientation(self) -> _DevicesLogicType:
+        return _DevicesLogicType(self, _LT.Orientation)
+
+    @property
+    def PositionX(self) -> _DevicesLogicType:
+        return _DevicesLogicType(self, _LT.PositionX)
+
+    @property
+    def PositionY(self) -> _DevicesLogicType:
+        return _DevicesLogicType(self, _LT.PositionY)
+
+    @property
+    def PositionZ(self) -> _DevicesLogicType:
+        return _DevicesLogicType(self, _LT.PositionZ)
+
+    @property
+    def Power(self) -> _DevicesLogicType:
+        return _DevicesLogicType(self, _LT.Power)
+
+    @property
+    def PressureExternal(self) -> _DevicesLogicType:
+        return _DevicesLogicType(self, _LT.PressureExternal)
+
+    @property
+    def PressureSetting(self) -> _DevicesLogicType:
+        return _DevicesLogicType(self, _LT.PressureSetting)
+
+    @PressureSetting.setter
+    def PressureSetting(self, value: int | float):
+        pass
+
+    @property
+    def SoundAlert(self) -> _DevicesLogicType:
+        return _DevicesLogicType(self, _LT.SoundAlert)
+
+    @SoundAlert.setter
+    def SoundAlert(self, value: int | float):
+        pass
+
+    @property
+    def TemperatureExternal(self) -> _DevicesLogicType:
+        return _DevicesLogicType(self, _LT.TemperatureExternal)
+
+    @property
+    def TemperatureSetting(self) -> _DevicesLogicType:
+        return _DevicesLogicType(self, _LT.TemperatureSetting)
+
+    @TemperatureSetting.setter
+    def TemperatureSetting(self, value: int | float):
+        pass
+
+    @property
+    def VelocityMagnitude(self) -> _DevicesLogicType:
+        return _DevicesLogicType(self, _LT.VelocityMagnitude)
+
+    @property
+    def VelocityRelativeX(self) -> _DevicesLogicType:
+        return _DevicesLogicType(self, _LT.VelocityRelativeX)
+
+    @property
+    def VelocityRelativeY(self) -> _DevicesLogicType:
+        return _DevicesLogicType(self, _LT.VelocityRelativeY)
+
+    @property
+    def VelocityRelativeZ(self) -> _DevicesLogicType:
+        return _DevicesLogicType(self, _LT.VelocityRelativeZ)
+
+    @property
+    def VelocityX(self) -> _DevicesLogicType:
+        return _DevicesLogicType(self, _LT.VelocityX)
+
+    @property
+    def VelocityY(self) -> _DevicesLogicType:
+        return _DevicesLogicType(self, _LT.VelocityY)
+
+    @property
+    def VelocityZ(self) -> _DevicesLogicType:
+        return _DevicesLogicType(self, _LT.VelocityZ)
+
+    @property
+    def Volume(self) -> _DevicesLogicType:
+        return _DevicesLogicType(self, _LT.Volume)
+
+    @Volume.setter
+    def Volume(self, value: int | float):
+        pass
+
+    @property
+    def slot0(self) -> _SlotTypeAirTanks:
+        return _SlotTypeAirTanks(self, 0)
+
+    @property
+    def AirTank(self) -> _SlotTypeAirTanks:
+        return self.slot0
+
+    @property
+    def slot1(self) -> _SlotTypeAirTanks:
+        return _SlotTypeAirTanks(self, 1)
+
+    @property
+    def WasteTank(self) -> _SlotTypeAirTanks:
+        return self.slot1
+
+    @property
+    def slot2(self) -> _SlotTypeCommons:
+        return _SlotTypeCommons(self, 2)
+
+    @property
+    def CoolantTank(self) -> _SlotTypeCommons:
+        return self.slot2
+
+    @property
+    def slot3(self) -> _SlotTypeBatteries:
+        return _SlotTypeBatteries(self, 3)
+
+    @property
+    def Battery(self) -> _SlotTypeBatteries:
+        return self.slot3
+
+    @property
+    def slot4(self) -> _SlotTypeCommons:
+        return _SlotTypeCommons(self, 4)
+
+    @property
+    def Chip(self) -> _SlotTypeCommons:
+        return self.slot4
+
+    @property
+    def slot5(self) -> _SlotTypes:
+        return _SlotTypes(self, 5)
+
+    @property
+    def Filter1(self) -> _SlotTypes:
+        return self.slot5
+
+    @property
+    def slot6(self) -> _SlotTypes:
+        return _SlotTypes(self, 6)
+
+    @property
+    def Filter2(self) -> _SlotTypes:
+        return self.slot6
+
+    @property
+    def slot7(self) -> _SlotTypes:
+        return _SlotTypes(self, 7)
+
+    @property
+    def Filter3(self) -> _SlotTypes:
+        return self.slot7
+
+    @property
+    def slot8(self) -> _SlotTypes:
+        return _SlotTypes(self, 8)
+
+    @property
+    def Filter4(self) -> _SlotTypes:
+        return self.slot8
+
+    @property
+    def slot9(self) -> _SlotTypeCommons:
+        return _SlotTypeCommons(self, 9)
+
+    @property
+    def Back(self) -> _SlotTypeCommons:
+        return self.slot9
+
+
+SuitHARMs: _SuitHARMs = _SuitHARMs()
+
+
+class Drill(_BaseStructure, _Activate):
+    _hash: int = 2009673399
+    _prefab_name: int = "ItemDrill"
+
+    @property
+    def Power(self) -> float:
+        return _DeviceLogicType(self, _LT.Power)
+
+    @property
+    def slot0(self) -> _SlotTypeBattery:
+        return _SlotTypeBattery(self, 0)
+
+    @property
+    def Battery(self) -> _SlotTypeBattery:
+        return self.slot0
+
+
+class _Drills(_BaseStructures, _Activates):
+    _hash: int = 2009673399
+    _prefab_name: int = "ItemDrill"
+
+    def __getitem__(self, name: str | int | float) -> "_Drills":
+        return _Drills(name)
+
+    @property
+    def Average(self) -> Drill:
+        return Drill(name=self._name, batch_mode=LogicBatchMethod.Average)
+
+    @property
+    def Minimum(self) -> Drill:
+        return Drill(name=self._name, batch_mode=LogicBatchMethod.Minimum)
+
+    @property
+    def Maximum(self) -> Drill:
+        return Drill(name=self._name, batch_mode=LogicBatchMethod.Maximum)
+
+    @property
+    def Sum(self) -> Drill:
+        return Drill(name=self._name, batch_mode=LogicBatchMethod.Sum)
+
+    @property
+    def Power(self) -> _DevicesLogicType:
+        return _DevicesLogicType(self, _LT.Power)
+
+    @property
+    def slot0(self) -> _SlotTypeBatteries:
+        return _SlotTypeBatteries(self, 0)
+
+    @property
+    def Battery(self) -> _SlotTypeBatteries:
+        return self.slot0
+
+
+Drills: _Drills = _Drills()
+
+
+class Tablet(_BaseStructure, _Error, _On):
+    _hash: int = -229808600
+    _prefab_name: int = "ItemTablet"
+
+    @property
+    def Power(self) -> float:
+        return _DeviceLogicType(self, _LT.Power)
+
+    @property
+    def slot0(self) -> _SlotTypeBattery:
+        return _SlotTypeBattery(self, 0)
+
+    @property
+    def Battery(self) -> _SlotTypeBattery:
+        return self.slot0
+
+    @property
+    def slot1(self) -> _SlotTypeCommon:
+        return _SlotTypeCommon(self, 1)
+
+    @property
+    def Cartridge(self) -> _SlotTypeCommon:
+        return self.slot1
+
+
+class _Tablets(_BaseStructures, _Errors, _Ons):
+    _hash: int = -229808600
+    _prefab_name: int = "ItemTablet"
+
+    def __getitem__(self, name: str | int | float) -> "_Tablets":
+        return _Tablets(name)
+
+    @property
+    def Average(self) -> Tablet:
+        return Tablet(name=self._name, batch_mode=LogicBatchMethod.Average)
+
+    @property
+    def Minimum(self) -> Tablet:
+        return Tablet(name=self._name, batch_mode=LogicBatchMethod.Minimum)
+
+    @property
+    def Maximum(self) -> Tablet:
+        return Tablet(name=self._name, batch_mode=LogicBatchMethod.Maximum)
+
+    @property
+    def Sum(self) -> Tablet:
+        return Tablet(name=self._name, batch_mode=LogicBatchMethod.Sum)
+
+    @property
+    def Power(self) -> _DevicesLogicType:
+        return _DevicesLogicType(self, _LT.Power)
+
+    @property
+    def slot0(self) -> _SlotTypeBatteries:
+        return _SlotTypeBatteries(self, 0)
+
+    @property
+    def Battery(self) -> _SlotTypeBatteries:
+        return self.slot0
+
+    @property
+    def slot1(self) -> _SlotTypeCommons:
+        return _SlotTypeCommons(self, 1)
+
+    @property
+    def Cartridge(self) -> _SlotTypeCommons:
+        return self.slot1
+
+
+Tablets: _Tablets = _Tablets()
+
+
+class HardHat(_BaseStructure, _On):
+    _hash: int = -1306016444
+    _prefab_name: int = "ItemHardHat"
+
+    @property
+    def Power(self) -> float:
+        return _DeviceLogicType(self, _LT.Power)
+
+    @property
+    def slot0(self) -> _SlotTypeBattery:
+        return _SlotTypeBattery(self, 0)
+
+    @property
+    def Battery(self) -> _SlotTypeBattery:
+        return self.slot0
+
+
+class _HardHats(_BaseStructures, _Ons):
+    _hash: int = -1306016444
+    _prefab_name: int = "ItemHardHat"
+
+    def __getitem__(self, name: str | int | float) -> "_HardHats":
+        return _HardHats(name)
+
+    @property
+    def Average(self) -> HardHat:
+        return HardHat(name=self._name, batch_mode=LogicBatchMethod.Average)
+
+    @property
+    def Minimum(self) -> HardHat:
+        return HardHat(name=self._name, batch_mode=LogicBatchMethod.Minimum)
+
+    @property
+    def Maximum(self) -> HardHat:
+        return HardHat(name=self._name, batch_mode=LogicBatchMethod.Maximum)
+
+    @property
+    def Sum(self) -> HardHat:
+        return HardHat(name=self._name, batch_mode=LogicBatchMethod.Sum)
+
+    @property
+    def Power(self) -> _DevicesLogicType:
+        return _DevicesLogicType(self, _LT.Power)
+
+    @property
+    def slot0(self) -> _SlotTypeBatteries:
+        return _SlotTypeBatteries(self, 0)
+
+    @property
+    def Battery(self) -> _SlotTypeBatteries:
+        return self.slot0
+
+
+HardHats: _HardHats = _HardHats()
+
+
+class HardSuit(
+    _BaseStructure,
+    _Activate,
+    _BaseGas,
+    _Combustion,
+    _Hydrogen,
+    _Lock,
+    _On,
+    _PollWater,
+    _SettingW,
+    _Temperature,
+):
+    _hash: int = -1758310454
+    _prefab_name: int = "ItemHardSuit"
+
+    @property
+    def AirRelease(self) -> float:
+        return _DeviceLogicType(self, _LT.AirRelease)
+
+    @AirRelease.setter
+    def AirRelease(self, value: int | float):
+        pass
+
+    @property
+    def EntityState(self) -> float:
+        return _DeviceLogicType(self, _LT.EntityState)
+
+    @property
+    def Error(self) -> float:
+        return _DeviceLogicType(self, _LT.Error)
+
+    @Error.setter
+    def Error(self, value: int | float):
+        pass
+
+    @property
+    def Filtration(self) -> float:
+        return _DeviceLogicType(self, _LT.Filtration)
+
+    @Filtration.setter
+    def Filtration(self, value: int | float):
+        pass
+
+    @property
+    def ForwardX(self) -> float:
+        return _DeviceLogicType(self, _LT.ForwardX)
+
+    @property
+    def ForwardY(self) -> float:
+        return _DeviceLogicType(self, _LT.ForwardY)
+
+    @property
+    def ForwardZ(self) -> float:
+        return _DeviceLogicType(self, _LT.ForwardZ)
+
+    @property
+    def Orientation(self) -> float:
+        return _DeviceLogicType(self, _LT.Orientation)
+
+    @property
+    def PositionX(self) -> float:
+        return _DeviceLogicType(self, _LT.PositionX)
+
+    @property
+    def PositionY(self) -> float:
+        return _DeviceLogicType(self, _LT.PositionY)
+
+    @property
+    def PositionZ(self) -> float:
+        return _DeviceLogicType(self, _LT.PositionZ)
+
+    @property
+    def Power(self) -> float:
+        return _DeviceLogicType(self, _LT.Power)
+
+    @property
+    def PressureExternal(self) -> float:
+        return _DeviceLogicType(self, _LT.PressureExternal)
+
+    @property
+    def PressureSetting(self) -> float:
+        return _DeviceLogicType(self, _LT.PressureSetting)
+
+    @PressureSetting.setter
+    def PressureSetting(self, value: int | float):
+        pass
+
+    @property
+    def SoundAlert(self) -> float:
+        return _DeviceLogicType(self, _LT.SoundAlert)
+
+    @SoundAlert.setter
+    def SoundAlert(self, value: int | float):
+        pass
+
+    @property
+    def TemperatureExternal(self) -> float:
+        return _DeviceLogicType(self, _LT.TemperatureExternal)
+
+    @property
+    def TemperatureSetting(self) -> float:
+        return _DeviceLogicType(self, _LT.TemperatureSetting)
+
+    @TemperatureSetting.setter
+    def TemperatureSetting(self, value: int | float):
+        pass
+
+    @property
+    def VelocityMagnitude(self) -> float:
+        return _DeviceLogicType(self, _LT.VelocityMagnitude)
+
+    @property
+    def VelocityRelativeX(self) -> float:
+        return _DeviceLogicType(self, _LT.VelocityRelativeX)
+
+    @property
+    def VelocityRelativeY(self) -> float:
+        return _DeviceLogicType(self, _LT.VelocityRelativeY)
+
+    @property
+    def VelocityRelativeZ(self) -> float:
+        return _DeviceLogicType(self, _LT.VelocityRelativeZ)
+
+    @property
+    def VelocityX(self) -> float:
+        return _DeviceLogicType(self, _LT.VelocityX)
+
+    @property
+    def VelocityY(self) -> float:
+        return _DeviceLogicType(self, _LT.VelocityY)
+
+    @property
+    def VelocityZ(self) -> float:
+        return _DeviceLogicType(self, _LT.VelocityZ)
+
+    @property
+    def Volume(self) -> float:
+        return _DeviceLogicType(self, _LT.Volume)
+
+    @Volume.setter
+    def Volume(self, value: int | float):
+        pass
+
+    @property
+    def slot0(self) -> _SlotTypeAirTank:
+        return _SlotTypeAirTank(self, 0)
+
+    @property
+    def AirTank(self) -> _SlotTypeAirTank:
+        return self.slot0
+
+    @property
+    def slot1(self) -> _SlotTypeAirTank:
+        return _SlotTypeAirTank(self, 1)
+
+    @property
+    def WasteTank(self) -> _SlotTypeAirTank:
+        return self.slot1
+
+    @property
+    def slot2(self) -> _SlotTypeBattery:
+        return _SlotTypeBattery(self, 2)
+
+    @property
+    def LifeSupport(self) -> _SlotTypeBattery:
+        return self.slot2
+
+    @property
+    def slot3(self) -> _SlotTypeCommon:
+        return _SlotTypeCommon(self, 3)
+
+    @property
+    def ProgrammableChip(self) -> _SlotTypeCommon:
+        return self.slot3
+
+    @property
+    def slot4(self) -> _SlotType:
+        return _SlotType(self, 4)
+
+    @property
+    def slot5(self) -> _SlotType:
+        return _SlotType(self, 5)
+
+    @property
+    def slot6(self) -> _SlotType:
+        return _SlotType(self, 6)
+
+    @property
+    def slot7(self) -> _SlotType:
+        return _SlotType(self, 7)
+
+
+class _HardSuits(
+    _BaseStructures,
+    _Activates,
+    _BaseGass,
+    _Combustions,
+    _Hydrogens,
+    _Locks,
+    _Ons,
+    _PollWaters,
+    _SettingWs,
+    _Temperatures,
+):
+    _hash: int = -1758310454
+    _prefab_name: int = "ItemHardSuit"
+
+    def __getitem__(self, name: str | int | float) -> "_HardSuits":
+        return _HardSuits(name)
+
+    @property
+    def Average(self) -> HardSuit:
+        return HardSuit(name=self._name, batch_mode=LogicBatchMethod.Average)
+
+    @property
+    def Minimum(self) -> HardSuit:
+        return HardSuit(name=self._name, batch_mode=LogicBatchMethod.Minimum)
+
+    @property
+    def Maximum(self) -> HardSuit:
+        return HardSuit(name=self._name, batch_mode=LogicBatchMethod.Maximum)
+
+    @property
+    def Sum(self) -> HardSuit:
+        return HardSuit(name=self._name, batch_mode=LogicBatchMethod.Sum)
+
+    @property
+    def AirRelease(self) -> _DevicesLogicType:
+        return _DevicesLogicType(self, _LT.AirRelease)
+
+    @AirRelease.setter
+    def AirRelease(self, value: int | float):
+        pass
+
+    @property
+    def EntityState(self) -> _DevicesLogicType:
+        return _DevicesLogicType(self, _LT.EntityState)
+
+    @property
+    def Error(self) -> _DevicesLogicType:
+        return _DevicesLogicType(self, _LT.Error)
+
+    @Error.setter
+    def Error(self, value: int | float):
+        pass
+
+    @property
+    def Filtration(self) -> _DevicesLogicType:
+        return _DevicesLogicType(self, _LT.Filtration)
+
+    @Filtration.setter
+    def Filtration(self, value: int | float):
+        pass
+
+    @property
+    def ForwardX(self) -> _DevicesLogicType:
+        return _DevicesLogicType(self, _LT.ForwardX)
+
+    @property
+    def ForwardY(self) -> _DevicesLogicType:
+        return _DevicesLogicType(self, _LT.ForwardY)
+
+    @property
+    def ForwardZ(self) -> _DevicesLogicType:
+        return _DevicesLogicType(self, _LT.ForwardZ)
+
+    @property
+    def Orientation(self) -> _DevicesLogicType:
+        return _DevicesLogicType(self, _LT.Orientation)
+
+    @property
+    def PositionX(self) -> _DevicesLogicType:
+        return _DevicesLogicType(self, _LT.PositionX)
+
+    @property
+    def PositionY(self) -> _DevicesLogicType:
+        return _DevicesLogicType(self, _LT.PositionY)
+
+    @property
+    def PositionZ(self) -> _DevicesLogicType:
+        return _DevicesLogicType(self, _LT.PositionZ)
+
+    @property
+    def Power(self) -> _DevicesLogicType:
+        return _DevicesLogicType(self, _LT.Power)
+
+    @property
+    def PressureExternal(self) -> _DevicesLogicType:
+        return _DevicesLogicType(self, _LT.PressureExternal)
+
+    @property
+    def PressureSetting(self) -> _DevicesLogicType:
+        return _DevicesLogicType(self, _LT.PressureSetting)
+
+    @PressureSetting.setter
+    def PressureSetting(self, value: int | float):
+        pass
+
+    @property
+    def SoundAlert(self) -> _DevicesLogicType:
+        return _DevicesLogicType(self, _LT.SoundAlert)
+
+    @SoundAlert.setter
+    def SoundAlert(self, value: int | float):
+        pass
+
+    @property
+    def TemperatureExternal(self) -> _DevicesLogicType:
+        return _DevicesLogicType(self, _LT.TemperatureExternal)
+
+    @property
+    def TemperatureSetting(self) -> _DevicesLogicType:
+        return _DevicesLogicType(self, _LT.TemperatureSetting)
+
+    @TemperatureSetting.setter
+    def TemperatureSetting(self, value: int | float):
+        pass
+
+    @property
+    def VelocityMagnitude(self) -> _DevicesLogicType:
+        return _DevicesLogicType(self, _LT.VelocityMagnitude)
+
+    @property
+    def VelocityRelativeX(self) -> _DevicesLogicType:
+        return _DevicesLogicType(self, _LT.VelocityRelativeX)
+
+    @property
+    def VelocityRelativeY(self) -> _DevicesLogicType:
+        return _DevicesLogicType(self, _LT.VelocityRelativeY)
+
+    @property
+    def VelocityRelativeZ(self) -> _DevicesLogicType:
+        return _DevicesLogicType(self, _LT.VelocityRelativeZ)
+
+    @property
+    def VelocityX(self) -> _DevicesLogicType:
+        return _DevicesLogicType(self, _LT.VelocityX)
+
+    @property
+    def VelocityY(self) -> _DevicesLogicType:
+        return _DevicesLogicType(self, _LT.VelocityY)
+
+    @property
+    def VelocityZ(self) -> _DevicesLogicType:
+        return _DevicesLogicType(self, _LT.VelocityZ)
+
+    @property
+    def Volume(self) -> _DevicesLogicType:
+        return _DevicesLogicType(self, _LT.Volume)
+
+    @Volume.setter
+    def Volume(self, value: int | float):
+        pass
+
+    @property
+    def slot0(self) -> _SlotTypeAirTanks:
+        return _SlotTypeAirTanks(self, 0)
+
+    @property
+    def AirTank(self) -> _SlotTypeAirTanks:
+        return self.slot0
+
+    @property
+    def slot1(self) -> _SlotTypeAirTanks:
+        return _SlotTypeAirTanks(self, 1)
+
+    @property
+    def WasteTank(self) -> _SlotTypeAirTanks:
+        return self.slot1
+
+    @property
+    def slot2(self) -> _SlotTypeBatteries:
+        return _SlotTypeBatteries(self, 2)
+
+    @property
+    def LifeSupport(self) -> _SlotTypeBatteries:
+        return self.slot2
+
+    @property
+    def slot3(self) -> _SlotTypeCommons:
+        return _SlotTypeCommons(self, 3)
+
+    @property
+    def ProgrammableChip(self) -> _SlotTypeCommons:
+        return self.slot3
+
+    @property
+    def slot4(self) -> _SlotTypes:
+        return _SlotTypes(self, 4)
+
+    @property
+    def slot5(self) -> _SlotTypes:
+        return _SlotTypes(self, 5)
+
+    @property
+    def slot6(self) -> _SlotTypes:
+        return _SlotTypes(self, 6)
+
+    @property
+    def slot7(self) -> _SlotTypes:
+        return _SlotTypes(self, 7)
+
+
+HardSuits: _HardSuits = _HardSuits()
+
+
+class HardsuitHelmet(
+    _BaseStructure,
+    _BaseGas,
+    _Combustion,
+    _Hydrogen,
+    _Lock,
+    _On,
+    _Open,
+    _PollWater,
+    _Temperature,
+):
+    _hash: int = -84573099
+    _prefab_name: int = "ItemHardsuitHelmet"
+
+    @property
+    def Flush(self) -> float:
+        return _DeviceLogicType(self, _LT.Flush)
+
+    @Flush.setter
+    def Flush(self, value: int | float):
+        pass
+
+    @property
+    def Power(self) -> float:
+        return _DeviceLogicType(self, _LT.Power)
+
+    @property
+    def SoundAlert(self) -> float:
+        return _DeviceLogicType(self, _LT.SoundAlert)
+
+    @SoundAlert.setter
+    def SoundAlert(self, value: int | float):
+        pass
+
+    @property
+    def Volume(self) -> float:
+        return _DeviceLogicType(self, _LT.Volume)
+
+    @Volume.setter
+    def Volume(self, value: int | float):
+        pass
+
+
+class _HardsuitHelmets(
+    _BaseStructures,
+    _BaseGass,
+    _Combustions,
+    _Hydrogens,
+    _Locks,
+    _Ons,
+    _Opens,
+    _PollWaters,
+    _Temperatures,
+):
+    _hash: int = -84573099
+    _prefab_name: int = "ItemHardsuitHelmet"
+
+    def __getitem__(self, name: str | int | float) -> "_HardsuitHelmets":
+        return _HardsuitHelmets(name)
+
+    @property
+    def Average(self) -> HardsuitHelmet:
+        return HardsuitHelmet(name=self._name, batch_mode=LogicBatchMethod.Average)
+
+    @property
+    def Minimum(self) -> HardsuitHelmet:
+        return HardsuitHelmet(name=self._name, batch_mode=LogicBatchMethod.Minimum)
+
+    @property
+    def Maximum(self) -> HardsuitHelmet:
+        return HardsuitHelmet(name=self._name, batch_mode=LogicBatchMethod.Maximum)
+
+    @property
+    def Sum(self) -> HardsuitHelmet:
+        return HardsuitHelmet(name=self._name, batch_mode=LogicBatchMethod.Sum)
+
+    @property
+    def Flush(self) -> _DevicesLogicType:
+        return _DevicesLogicType(self, _LT.Flush)
+
+    @Flush.setter
+    def Flush(self, value: int | float):
+        pass
+
+    @property
+    def Power(self) -> _DevicesLogicType:
+        return _DevicesLogicType(self, _LT.Power)
+
+    @property
+    def SoundAlert(self) -> _DevicesLogicType:
+        return _DevicesLogicType(self, _LT.SoundAlert)
+
+    @SoundAlert.setter
+    def SoundAlert(self, value: int | float):
+        pass
+
+    @property
+    def Volume(self) -> _DevicesLogicType:
+        return _DevicesLogicType(self, _LT.Volume)
+
+    @Volume.setter
+    def Volume(self, value: int | float):
+        pass
+
+
+HardsuitHelmets: _HardsuitHelmets = _HardsuitHelmets()
+
+
+class HardJetpack(_BaseStructure, _Activate, _On):
+    _hash: int = -412551656
+    _prefab_name: int = "ItemHardJetpack"
+
+    @property
+    def slot0(self) -> _SlotTypeAirTank:
+        return _SlotTypeAirTank(self, 0)
+
+    @property
+    def Propellant(self) -> _SlotTypeAirTank:
+        return self.slot0
+
+    @property
+    def slot1(self) -> _SlotTypeCommon:
+        return _SlotTypeCommon(self, 1)
+
+    @property
+    def slot10(self) -> _SlotTypeCommon:
+        return _SlotTypeCommon(self, 10)
+
+    @property
+    def slot11(self) -> _SlotTypeCommon:
+        return _SlotTypeCommon(self, 11)
+
+    @property
+    def slot12(self) -> _SlotTypeCommon:
+        return _SlotTypeCommon(self, 12)
+
+    @property
+    def slot13(self) -> _SlotTypeCommon:
+        return _SlotTypeCommon(self, 13)
+
+    @property
+    def slot14(self) -> _SlotTypeCommon:
+        return _SlotTypeCommon(self, 14)
+
+    @property
+    def slot2(self) -> _SlotTypeCommon:
+        return _SlotTypeCommon(self, 2)
+
+    @property
+    def slot3(self) -> _SlotTypeCommon:
+        return _SlotTypeCommon(self, 3)
+
+    @property
+    def slot4(self) -> _SlotTypeCommon:
+        return _SlotTypeCommon(self, 4)
+
+    @property
+    def slot5(self) -> _SlotTypeCommon:
+        return _SlotTypeCommon(self, 5)
+
+    @property
+    def slot6(self) -> _SlotTypeCommon:
+        return _SlotTypeCommon(self, 6)
+
+    @property
+    def slot7(self) -> _SlotTypeCommon:
+        return _SlotTypeCommon(self, 7)
+
+    @property
+    def slot8(self) -> _SlotTypeCommon:
+        return _SlotTypeCommon(self, 8)
+
+    @property
+    def slot9(self) -> _SlotTypeCommon:
+        return _SlotTypeCommon(self, 9)
+
+
+class _HardJetpacks(_BaseStructures, _Activates, _Ons):
+    _hash: int = -412551656
+    _prefab_name: int = "ItemHardJetpack"
+
+    def __getitem__(self, name: str | int | float) -> "_HardJetpacks":
+        return _HardJetpacks(name)
+
+    @property
+    def Average(self) -> HardJetpack:
+        return HardJetpack(name=self._name, batch_mode=LogicBatchMethod.Average)
+
+    @property
+    def Minimum(self) -> HardJetpack:
+        return HardJetpack(name=self._name, batch_mode=LogicBatchMethod.Minimum)
+
+    @property
+    def Maximum(self) -> HardJetpack:
+        return HardJetpack(name=self._name, batch_mode=LogicBatchMethod.Maximum)
+
+    @property
+    def Sum(self) -> HardJetpack:
+        return HardJetpack(name=self._name, batch_mode=LogicBatchMethod.Sum)
+
+    @property
+    def slot0(self) -> _SlotTypeAirTanks:
+        return _SlotTypeAirTanks(self, 0)
+
+    @property
+    def Propellant(self) -> _SlotTypeAirTanks:
+        return self.slot0
+
+    @property
+    def slot1(self) -> _SlotTypeCommons:
+        return _SlotTypeCommons(self, 1)
+
+    @property
+    def slot10(self) -> _SlotTypeCommons:
+        return _SlotTypeCommons(self, 10)
+
+    @property
+    def slot11(self) -> _SlotTypeCommons:
+        return _SlotTypeCommons(self, 11)
+
+    @property
+    def slot12(self) -> _SlotTypeCommons:
+        return _SlotTypeCommons(self, 12)
+
+    @property
+    def slot13(self) -> _SlotTypeCommons:
+        return _SlotTypeCommons(self, 13)
+
+    @property
+    def slot14(self) -> _SlotTypeCommons:
+        return _SlotTypeCommons(self, 14)
+
+    @property
+    def slot2(self) -> _SlotTypeCommons:
+        return _SlotTypeCommons(self, 2)
+
+    @property
+    def slot3(self) -> _SlotTypeCommons:
+        return _SlotTypeCommons(self, 3)
+
+    @property
+    def slot4(self) -> _SlotTypeCommons:
+        return _SlotTypeCommons(self, 4)
+
+    @property
+    def slot5(self) -> _SlotTypeCommons:
+        return _SlotTypeCommons(self, 5)
+
+    @property
+    def slot6(self) -> _SlotTypeCommons:
+        return _SlotTypeCommons(self, 6)
+
+    @property
+    def slot7(self) -> _SlotTypeCommons:
+        return _SlotTypeCommons(self, 7)
+
+    @property
+    def slot8(self) -> _SlotTypeCommons:
+        return _SlotTypeCommons(self, 8)
+
+    @property
+    def slot9(self) -> _SlotTypeCommons:
+        return _SlotTypeCommons(self, 9)
+
+
+HardJetpacks: _HardJetpacks = _HardJetpacks()
+
+
 class Harvie(
     _BaseStructure,
     _Activate,
@@ -9874,27 +12510,27 @@ class Harvie(
         pass
 
     @property
-    def slot0(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(self, 0)
+    def slot0(self) -> _SlotTypeDataDisk:
+        return _SlotTypeDataDisk(self, 0)
 
     @property
-    def Import(self) -> _SlotTypeCommon:
+    def Import(self) -> _SlotTypeDataDisk:
         return self.slot0
 
     @property
-    def slot1(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(self, 1)
+    def slot1(self) -> _SlotTypeDataDisk:
+        return _SlotTypeDataDisk(self, 1)
 
     @property
-    def Export(self) -> _SlotTypeCommon:
+    def Export(self) -> _SlotTypeDataDisk:
         return self.slot1
 
     @property
-    def slot2(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(self, 2)
+    def slot2(self) -> _SlotTypeDataDisk:
+        return _SlotTypeDataDisk(self, 2)
 
     @property
-    def Hand(self) -> _SlotTypeCommon:
+    def Hand(self) -> _SlotTypeDataDisk:
         return self.slot2
 
 
@@ -9948,31 +12584,87 @@ class _Harvies(
         pass
 
     @property
-    def slot0(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(self, 0)
+    def slot0(self) -> _SlotTypeDataDisks:
+        return _SlotTypeDataDisks(self, 0)
 
     @property
-    def Import(self) -> _SlotTypeCommons:
+    def Import(self) -> _SlotTypeDataDisks:
         return self.slot0
 
     @property
-    def slot1(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(self, 1)
+    def slot1(self) -> _SlotTypeDataDisks:
+        return _SlotTypeDataDisks(self, 1)
 
     @property
-    def Export(self) -> _SlotTypeCommons:
+    def Export(self) -> _SlotTypeDataDisks:
         return self.slot1
 
     @property
-    def slot2(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(self, 2)
+    def slot2(self) -> _SlotTypeDataDisks:
+        return _SlotTypeDataDisks(self, 2)
 
     @property
-    def Hand(self) -> _SlotTypeCommons:
+    def Hand(self) -> _SlotTypeDataDisks:
         return self.slot2
 
 
 Harvies: _Harvies = _Harvies()
+
+
+class WearLamp(_BaseStructure, _On):
+    _hash: int = -598730959
+    _prefab_name: int = "ItemWearLamp"
+
+    @property
+    def Power(self) -> float:
+        return _DeviceLogicType(self, _LT.Power)
+
+    @property
+    def slot0(self) -> _SlotTypeBattery:
+        return _SlotTypeBattery(self, 0)
+
+    @property
+    def Battery(self) -> _SlotTypeBattery:
+        return self.slot0
+
+
+class _WearLamps(_BaseStructures, _Ons):
+    _hash: int = -598730959
+    _prefab_name: int = "ItemWearLamp"
+
+    def __getitem__(self, name: str | int | float) -> "_WearLamps":
+        return _WearLamps(name)
+
+    @property
+    def Average(self) -> WearLamp:
+        return WearLamp(name=self._name, batch_mode=LogicBatchMethod.Average)
+
+    @property
+    def Minimum(self) -> WearLamp:
+        return WearLamp(name=self._name, batch_mode=LogicBatchMethod.Minimum)
+
+    @property
+    def Maximum(self) -> WearLamp:
+        return WearLamp(name=self._name, batch_mode=LogicBatchMethod.Maximum)
+
+    @property
+    def Sum(self) -> WearLamp:
+        return WearLamp(name=self._name, batch_mode=LogicBatchMethod.Sum)
+
+    @property
+    def Power(self) -> _DevicesLogicType:
+        return _DevicesLogicType(self, _LT.Power)
+
+    @property
+    def slot0(self) -> _SlotTypeBatteries:
+        return _SlotTypeBatteries(self, 0)
+
+    @property
+    def Battery(self) -> _SlotTypeBatteries:
+        return self.slot0
+
+
+WearLamps: _WearLamps = _WearLamps()
 
 
 class HydraulicPipeBender(
@@ -10000,19 +12692,19 @@ class HydraulicPipeBender(
         return _DeviceLogicType(self, _LT.StackSize)
 
     @property
-    def slot0(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(self, 0)
+    def slot0(self) -> _SlotTypeDataDisk:
+        return _SlotTypeDataDisk(self, 0)
 
     @property
-    def Import(self) -> _SlotTypeCommon:
+    def Import(self) -> _SlotTypeDataDisk:
         return self.slot0
 
     @property
-    def slot1(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(self, 1)
+    def slot1(self) -> _SlotTypeDataDisk:
+        return _SlotTypeDataDisk(self, 1)
 
     @property
-    def Export(self) -> _SlotTypeCommon:
+    def Export(self) -> _SlotTypeDataDisk:
         return self.slot1
 
 
@@ -10060,19 +12752,19 @@ class _HydraulicPipeBenders(
         return _DevicesLogicType(self, _LT.StackSize)
 
     @property
-    def slot0(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(self, 0)
+    def slot0(self) -> _SlotTypeDataDisks:
+        return _SlotTypeDataDisks(self, 0)
 
     @property
-    def Import(self) -> _SlotTypeCommons:
+    def Import(self) -> _SlotTypeDataDisks:
         return self.slot0
 
     @property
-    def slot1(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(self, 1)
+    def slot1(self) -> _SlotTypeDataDisks:
+        return _SlotTypeDataDisks(self, 1)
 
     @property
-    def Export(self) -> _SlotTypeCommons:
+    def Export(self) -> _SlotTypeDataDisks:
         return self.slot1
 
 
@@ -10094,11 +12786,11 @@ class HydroponicsTrayData(
         return self.slot0
 
     @property
-    def slot1(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(self, 1)
+    def slot1(self) -> _SlotTypeDataDisk:
+        return _SlotTypeDataDisk(self, 1)
 
     @property
-    def Fertiliser(self) -> _SlotTypeCommon:
+    def Fertiliser(self) -> _SlotTypeDataDisk:
         return self.slot1
 
 
@@ -10136,11 +12828,11 @@ class _HydroponicsTrayDatas(
         return self.slot0
 
     @property
-    def slot1(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(self, 1)
+    def slot1(self) -> _SlotTypeDataDisks:
+        return _SlotTypeDataDisks(self, 1)
 
     @property
-    def Fertiliser(self) -> _SlotTypeCommons:
+    def Fertiliser(self) -> _SlotTypeDataDisks:
         return self.slot1
 
 
@@ -10505,6 +13197,114 @@ class _CircuitHousingCompacts(_BaseStructures, _Errors, _Modes, _Powers, _Settin
 CircuitHousingCompacts: _CircuitHousingCompacts = _CircuitHousingCompacts()
 
 
+class IcarusHelmet(
+    _BaseStructure,
+    _BaseGas,
+    _Combustion,
+    _Hydrogen,
+    _Lock,
+    _On,
+    _Open,
+    _PollWater,
+    _Temperature,
+):
+    _hash: int = -1555582482
+    _prefab_name: int = "ItemIcarusHelmet"
+
+    @property
+    def Flush(self) -> float:
+        return _DeviceLogicType(self, _LT.Flush)
+
+    @Flush.setter
+    def Flush(self, value: int | float):
+        pass
+
+    @property
+    def Power(self) -> float:
+        return _DeviceLogicType(self, _LT.Power)
+
+    @property
+    def SoundAlert(self) -> float:
+        return _DeviceLogicType(self, _LT.SoundAlert)
+
+    @SoundAlert.setter
+    def SoundAlert(self, value: int | float):
+        pass
+
+    @property
+    def Volume(self) -> float:
+        return _DeviceLogicType(self, _LT.Volume)
+
+    @Volume.setter
+    def Volume(self, value: int | float):
+        pass
+
+
+class _IcarusHelmets(
+    _BaseStructures,
+    _BaseGass,
+    _Combustions,
+    _Hydrogens,
+    _Locks,
+    _Ons,
+    _Opens,
+    _PollWaters,
+    _Temperatures,
+):
+    _hash: int = -1555582482
+    _prefab_name: int = "ItemIcarusHelmet"
+
+    def __getitem__(self, name: str | int | float) -> "_IcarusHelmets":
+        return _IcarusHelmets(name)
+
+    @property
+    def Average(self) -> IcarusHelmet:
+        return IcarusHelmet(name=self._name, batch_mode=LogicBatchMethod.Average)
+
+    @property
+    def Minimum(self) -> IcarusHelmet:
+        return IcarusHelmet(name=self._name, batch_mode=LogicBatchMethod.Minimum)
+
+    @property
+    def Maximum(self) -> IcarusHelmet:
+        return IcarusHelmet(name=self._name, batch_mode=LogicBatchMethod.Maximum)
+
+    @property
+    def Sum(self) -> IcarusHelmet:
+        return IcarusHelmet(name=self._name, batch_mode=LogicBatchMethod.Sum)
+
+    @property
+    def Flush(self) -> _DevicesLogicType:
+        return _DevicesLogicType(self, _LT.Flush)
+
+    @Flush.setter
+    def Flush(self, value: int | float):
+        pass
+
+    @property
+    def Power(self) -> _DevicesLogicType:
+        return _DevicesLogicType(self, _LT.Power)
+
+    @property
+    def SoundAlert(self) -> _DevicesLogicType:
+        return _DevicesLogicType(self, _LT.SoundAlert)
+
+    @SoundAlert.setter
+    def SoundAlert(self, value: int | float):
+        pass
+
+    @property
+    def Volume(self) -> _DevicesLogicType:
+        return _DevicesLogicType(self, _LT.Volume)
+
+    @Volume.setter
+    def Volume(self, value: int | float):
+        pass
+
+
+IcarusHelmets: _IcarusHelmets = _IcarusHelmets()
+
+
 class IceCrusher(
     _BaseStructure,
     _Activate,
@@ -10521,11 +13321,11 @@ class IceCrusher(
     _prefab_name: int = "StructureIceCrusher"
 
     @property
-    def slot0(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(self, 0)
+    def slot0(self) -> _SlotTypeDataDisk:
+        return _SlotTypeDataDisk(self, 0)
 
     @property
-    def Import(self) -> _SlotTypeCommon:
+    def Import(self) -> _SlotTypeDataDisk:
         return self.slot0
 
 
@@ -10564,11 +13364,11 @@ class _IceCrushers(
         return IceCrusher(name=self._name, batch_mode=LogicBatchMethod.Sum)
 
     @property
-    def slot0(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(self, 0)
+    def slot0(self) -> _SlotTypeDataDisks:
+        return _SlotTypeDataDisks(self, 0)
 
     @property
-    def Import(self) -> _SlotTypeCommons:
+    def Import(self) -> _SlotTypeDataDisks:
         return self.slot0
 
 
@@ -10641,6 +13441,46 @@ class _EmergencyButtons(
 
 
 EmergencyButtons: _EmergencyButtons = _EmergencyButtons()
+
+
+class IntegratedCircuit10(_BaseStructure):
+    _hash: int = -744098481
+    _prefab_name: int = "ItemIntegratedCircuit10"
+
+    @property
+    def LineNumber(self) -> float:
+        return _DeviceLogicType(self, _LT.LineNumber)
+
+
+class _IntegratedCircuit10s(_BaseStructures):
+    _hash: int = -744098481
+    _prefab_name: int = "ItemIntegratedCircuit10"
+
+    def __getitem__(self, name: str | int | float) -> "_IntegratedCircuit10s":
+        return _IntegratedCircuit10s(name)
+
+    @property
+    def Average(self) -> IntegratedCircuit10:
+        return IntegratedCircuit10(name=self._name, batch_mode=LogicBatchMethod.Average)
+
+    @property
+    def Minimum(self) -> IntegratedCircuit10:
+        return IntegratedCircuit10(name=self._name, batch_mode=LogicBatchMethod.Minimum)
+
+    @property
+    def Maximum(self) -> IntegratedCircuit10:
+        return IntegratedCircuit10(name=self._name, batch_mode=LogicBatchMethod.Maximum)
+
+    @property
+    def Sum(self) -> IntegratedCircuit10:
+        return IntegratedCircuit10(name=self._name, batch_mode=LogicBatchMethod.Sum)
+
+    @property
+    def LineNumber(self) -> _DevicesLogicType:
+        return _DevicesLogicType(self, _LT.LineNumber)
+
+
+IntegratedCircuit10s: _IntegratedCircuit10s = _IntegratedCircuit10s()
 
 
 class InteriorDoorGlass(_BaseStructure, _Idle, _Lock, _Mode, _Open, _Power, _SettingW):
@@ -10795,6 +13635,126 @@ class _InteriorDoorTriangles(
 InteriorDoorTriangles: _InteriorDoorTriangles = _InteriorDoorTriangles()
 
 
+class JetpackBasic(_BaseStructure, _Activate, _On):
+    _hash: int = 1969189000
+    _prefab_name: int = "ItemJetpackBasic"
+
+    @property
+    def slot0(self) -> _SlotTypeAirTank:
+        return _SlotTypeAirTank(self, 0)
+
+    @property
+    def Propellant(self) -> _SlotTypeAirTank:
+        return self.slot0
+
+    @property
+    def slot1(self) -> _SlotTypeCommon:
+        return _SlotTypeCommon(self, 1)
+
+    @property
+    def slot2(self) -> _SlotTypeCommon:
+        return _SlotTypeCommon(self, 2)
+
+    @property
+    def slot3(self) -> _SlotTypeCommon:
+        return _SlotTypeCommon(self, 3)
+
+    @property
+    def slot4(self) -> _SlotTypeCommon:
+        return _SlotTypeCommon(self, 4)
+
+    @property
+    def slot5(self) -> _SlotTypeCommon:
+        return _SlotTypeCommon(self, 5)
+
+    @property
+    def slot6(self) -> _SlotTypeCommon:
+        return _SlotTypeCommon(self, 6)
+
+    @property
+    def slot7(self) -> _SlotTypeCommon:
+        return _SlotTypeCommon(self, 7)
+
+    @property
+    def slot8(self) -> _SlotTypeCommon:
+        return _SlotTypeCommon(self, 8)
+
+    @property
+    def slot9(self) -> _SlotTypeCommon:
+        return _SlotTypeCommon(self, 9)
+
+
+class _JetpackBasics(_BaseStructures, _Activates, _Ons):
+    _hash: int = 1969189000
+    _prefab_name: int = "ItemJetpackBasic"
+
+    def __getitem__(self, name: str | int | float) -> "_JetpackBasics":
+        return _JetpackBasics(name)
+
+    @property
+    def Average(self) -> JetpackBasic:
+        return JetpackBasic(name=self._name, batch_mode=LogicBatchMethod.Average)
+
+    @property
+    def Minimum(self) -> JetpackBasic:
+        return JetpackBasic(name=self._name, batch_mode=LogicBatchMethod.Minimum)
+
+    @property
+    def Maximum(self) -> JetpackBasic:
+        return JetpackBasic(name=self._name, batch_mode=LogicBatchMethod.Maximum)
+
+    @property
+    def Sum(self) -> JetpackBasic:
+        return JetpackBasic(name=self._name, batch_mode=LogicBatchMethod.Sum)
+
+    @property
+    def slot0(self) -> _SlotTypeAirTanks:
+        return _SlotTypeAirTanks(self, 0)
+
+    @property
+    def Propellant(self) -> _SlotTypeAirTanks:
+        return self.slot0
+
+    @property
+    def slot1(self) -> _SlotTypeCommons:
+        return _SlotTypeCommons(self, 1)
+
+    @property
+    def slot2(self) -> _SlotTypeCommons:
+        return _SlotTypeCommons(self, 2)
+
+    @property
+    def slot3(self) -> _SlotTypeCommons:
+        return _SlotTypeCommons(self, 3)
+
+    @property
+    def slot4(self) -> _SlotTypeCommons:
+        return _SlotTypeCommons(self, 4)
+
+    @property
+    def slot5(self) -> _SlotTypeCommons:
+        return _SlotTypeCommons(self, 5)
+
+    @property
+    def slot6(self) -> _SlotTypeCommons:
+        return _SlotTypeCommons(self, 6)
+
+    @property
+    def slot7(self) -> _SlotTypeCommons:
+        return _SlotTypeCommons(self, 7)
+
+    @property
+    def slot8(self) -> _SlotTypeCommons:
+        return _SlotTypeCommons(self, 8)
+
+    @property
+    def slot9(self) -> _SlotTypeCommons:
+        return _SlotTypeCommons(self, 9)
+
+
+JetpackBasics: _JetpackBasics = _JetpackBasics()
+
+
 class Klaxon(_BaseStructure, _Mode, _Power):
     _hash: int = -828056979
     _prefab_name: int = "StructureKlaxon"
@@ -10872,11 +13832,11 @@ class RoboticArmDock(_BaseStructure, _Activate, _Error, _Idle, _Power, _SettingW
         return _DeviceLogicType(self, _LT.PositionX)
 
     @property
-    def slot0(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(self, 0)
+    def slot0(self) -> _SlotTypeDataDisk:
+        return _SlotTypeDataDisk(self, 0)
 
     @property
-    def ArmSlot(self) -> _SlotTypeCommon:
+    def ArmSlot(self) -> _SlotTypeDataDisk:
         return self.slot0
 
 
@@ -10914,11 +13874,11 @@ class _RoboticArmDocks(
         return _DevicesLogicType(self, _LT.PositionX)
 
     @property
-    def slot0(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(self, 0)
+    def slot0(self) -> _SlotTypeDataDisks:
+        return _SlotTypeDataDisks(self, 0)
 
     @property
-    def ArmSlot(self) -> _SlotTypeCommons:
+    def ArmSlot(self) -> _SlotTypeDataDisks:
         return self.slot0
 
 
@@ -11142,11 +14102,11 @@ class LarreDockCargo(
         pass
 
     @property
-    def slot0(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(self, 0)
+    def slot0(self) -> _SlotTypeDataDisk:
+        return _SlotTypeDataDisk(self, 0)
 
     @property
-    def ArmSlot(self) -> _SlotTypeCommon:
+    def ArmSlot(self) -> _SlotTypeDataDisk:
         return self.slot0
 
     @property
@@ -11204,11 +14164,11 @@ class _LarreDockCargos(
         pass
 
     @property
-    def slot0(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(self, 0)
+    def slot0(self) -> _SlotTypeDataDisks:
+        return _SlotTypeDataDisks(self, 0)
 
     @property
-    def ArmSlot(self) -> _SlotTypeCommons:
+    def ArmSlot(self) -> _SlotTypeDataDisks:
         return self.slot0
 
     @property
@@ -11247,84 +14207,84 @@ class LarreDockCollector(
         return _DeviceLogicType(self, _LT.PositionX)
 
     @property
-    def slot0(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(self, 0)
+    def slot0(self) -> _SlotTypeDataDisk:
+        return _SlotTypeDataDisk(self, 0)
 
     @property
-    def slot1(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(self, 1)
+    def slot1(self) -> _SlotTypeDataDisk:
+        return _SlotTypeDataDisk(self, 1)
 
     @property
-    def slot10(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(self, 10)
+    def slot10(self) -> _SlotTypeDataDisk:
+        return _SlotTypeDataDisk(self, 10)
 
     @property
-    def slot11(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(self, 11)
+    def slot11(self) -> _SlotTypeDataDisk:
+        return _SlotTypeDataDisk(self, 11)
 
     @property
-    def slot12(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(self, 12)
+    def slot12(self) -> _SlotTypeDataDisk:
+        return _SlotTypeDataDisk(self, 12)
 
     @property
-    def slot13(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(self, 13)
+    def slot13(self) -> _SlotTypeDataDisk:
+        return _SlotTypeDataDisk(self, 13)
 
     @property
-    def slot14(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(self, 14)
+    def slot14(self) -> _SlotTypeDataDisk:
+        return _SlotTypeDataDisk(self, 14)
 
     @property
-    def slot15(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(self, 15)
+    def slot15(self) -> _SlotTypeDataDisk:
+        return _SlotTypeDataDisk(self, 15)
 
     @property
-    def slot16(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(self, 16)
+    def slot16(self) -> _SlotTypeDataDisk:
+        return _SlotTypeDataDisk(self, 16)
 
     @property
-    def slot17(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(self, 17)
+    def slot17(self) -> _SlotTypeDataDisk:
+        return _SlotTypeDataDisk(self, 17)
 
     @property
-    def slot18(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(self, 18)
+    def slot18(self) -> _SlotTypeDataDisk:
+        return _SlotTypeDataDisk(self, 18)
 
     @property
-    def slot19(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(self, 19)
+    def slot19(self) -> _SlotTypeDataDisk:
+        return _SlotTypeDataDisk(self, 19)
 
     @property
-    def slot2(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(self, 2)
+    def slot2(self) -> _SlotTypeDataDisk:
+        return _SlotTypeDataDisk(self, 2)
 
     @property
-    def slot3(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(self, 3)
+    def slot3(self) -> _SlotTypeDataDisk:
+        return _SlotTypeDataDisk(self, 3)
 
     @property
-    def slot4(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(self, 4)
+    def slot4(self) -> _SlotTypeDataDisk:
+        return _SlotTypeDataDisk(self, 4)
 
     @property
-    def slot5(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(self, 5)
+    def slot5(self) -> _SlotTypeDataDisk:
+        return _SlotTypeDataDisk(self, 5)
 
     @property
-    def slot6(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(self, 6)
+    def slot6(self) -> _SlotTypeDataDisk:
+        return _SlotTypeDataDisk(self, 6)
 
     @property
-    def slot7(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(self, 7)
+    def slot7(self) -> _SlotTypeDataDisk:
+        return _SlotTypeDataDisk(self, 7)
 
     @property
-    def slot8(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(self, 8)
+    def slot8(self) -> _SlotTypeDataDisk:
+        return _SlotTypeDataDisk(self, 8)
 
     @property
-    def slot9(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(self, 9)
+    def slot9(self) -> _SlotTypeDataDisk:
+        return _SlotTypeDataDisk(self, 9)
 
 
 class _LarreDockCollectors(
@@ -11370,84 +14330,84 @@ class _LarreDockCollectors(
         return _DevicesLogicType(self, _LT.PositionX)
 
     @property
-    def slot0(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(self, 0)
+    def slot0(self) -> _SlotTypeDataDisks:
+        return _SlotTypeDataDisks(self, 0)
 
     @property
-    def slot1(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(self, 1)
+    def slot1(self) -> _SlotTypeDataDisks:
+        return _SlotTypeDataDisks(self, 1)
 
     @property
-    def slot10(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(self, 10)
+    def slot10(self) -> _SlotTypeDataDisks:
+        return _SlotTypeDataDisks(self, 10)
 
     @property
-    def slot11(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(self, 11)
+    def slot11(self) -> _SlotTypeDataDisks:
+        return _SlotTypeDataDisks(self, 11)
 
     @property
-    def slot12(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(self, 12)
+    def slot12(self) -> _SlotTypeDataDisks:
+        return _SlotTypeDataDisks(self, 12)
 
     @property
-    def slot13(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(self, 13)
+    def slot13(self) -> _SlotTypeDataDisks:
+        return _SlotTypeDataDisks(self, 13)
 
     @property
-    def slot14(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(self, 14)
+    def slot14(self) -> _SlotTypeDataDisks:
+        return _SlotTypeDataDisks(self, 14)
 
     @property
-    def slot15(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(self, 15)
+    def slot15(self) -> _SlotTypeDataDisks:
+        return _SlotTypeDataDisks(self, 15)
 
     @property
-    def slot16(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(self, 16)
+    def slot16(self) -> _SlotTypeDataDisks:
+        return _SlotTypeDataDisks(self, 16)
 
     @property
-    def slot17(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(self, 17)
+    def slot17(self) -> _SlotTypeDataDisks:
+        return _SlotTypeDataDisks(self, 17)
 
     @property
-    def slot18(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(self, 18)
+    def slot18(self) -> _SlotTypeDataDisks:
+        return _SlotTypeDataDisks(self, 18)
 
     @property
-    def slot19(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(self, 19)
+    def slot19(self) -> _SlotTypeDataDisks:
+        return _SlotTypeDataDisks(self, 19)
 
     @property
-    def slot2(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(self, 2)
+    def slot2(self) -> _SlotTypeDataDisks:
+        return _SlotTypeDataDisks(self, 2)
 
     @property
-    def slot3(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(self, 3)
+    def slot3(self) -> _SlotTypeDataDisks:
+        return _SlotTypeDataDisks(self, 3)
 
     @property
-    def slot4(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(self, 4)
+    def slot4(self) -> _SlotTypeDataDisks:
+        return _SlotTypeDataDisks(self, 4)
 
     @property
-    def slot5(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(self, 5)
+    def slot5(self) -> _SlotTypeDataDisks:
+        return _SlotTypeDataDisks(self, 5)
 
     @property
-    def slot6(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(self, 6)
+    def slot6(self) -> _SlotTypeDataDisks:
+        return _SlotTypeDataDisks(self, 6)
 
     @property
-    def slot7(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(self, 7)
+    def slot7(self) -> _SlotTypeDataDisks:
+        return _SlotTypeDataDisks(self, 7)
 
     @property
-    def slot8(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(self, 8)
+    def slot8(self) -> _SlotTypeDataDisks:
+        return _SlotTypeDataDisks(self, 8)
 
     @property
-    def slot9(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(self, 9)
+    def slot9(self) -> _SlotTypeDataDisks:
+        return _SlotTypeDataDisks(self, 9)
 
 
 LarreDockCollectors: _LarreDockCollectors = _LarreDockCollectors()
@@ -11476,19 +14436,19 @@ class LarreDockHydroponics(
         return _DeviceLogicType(self, _LT.TargetSlotIndex)
 
     @property
-    def slot0(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(self, 0)
+    def slot0(self) -> _SlotTypeDataDisk:
+        return _SlotTypeDataDisk(self, 0)
 
     @property
-    def ArmSlot(self) -> _SlotTypeCommon:
+    def ArmSlot(self) -> _SlotTypeDataDisk:
         return self.slot0
 
     @property
-    def slot1(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(self, 1)
+    def slot1(self) -> _SlotTypeDataDisk:
+        return _SlotTypeDataDisk(self, 1)
 
     @property
-    def HopperSlot(self) -> _SlotTypeCommon:
+    def HopperSlot(self) -> _SlotTypeDataDisk:
         return self.slot1
 
     @property
@@ -11548,19 +14508,19 @@ class _LarreDockHydroponicss(
         return _DevicesLogicType(self, _LT.TargetSlotIndex)
 
     @property
-    def slot0(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(self, 0)
+    def slot0(self) -> _SlotTypeDataDisks:
+        return _SlotTypeDataDisks(self, 0)
 
     @property
-    def ArmSlot(self) -> _SlotTypeCommons:
+    def ArmSlot(self) -> _SlotTypeDataDisks:
         return self.slot0
 
     @property
-    def slot1(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(self, 1)
+    def slot1(self) -> _SlotTypeDataDisks:
+        return _SlotTypeDataDisks(self, 1)
 
     @property
-    def HopperSlot(self) -> _SlotTypeCommons:
+    def HopperSlot(self) -> _SlotTypeDataDisks:
         return self.slot1
 
     @property
@@ -11765,6 +14725,190 @@ class _ConsoleLED5s(_BaseStructures, _Errors, _Modes, _Powers, _SettingWs):
 
 
 ConsoleLED5s: _ConsoleLED5s = _ConsoleLED5s()
+
+
+class Labeller(_BaseStructure, _Error, _On):
+    _hash: int = -743968726
+    _prefab_name: int = "ItemLabeller"
+
+    @property
+    def Power(self) -> float:
+        return _DeviceLogicType(self, _LT.Power)
+
+    @property
+    def slot0(self) -> _SlotTypeBattery:
+        return _SlotTypeBattery(self, 0)
+
+    @property
+    def Battery(self) -> _SlotTypeBattery:
+        return self.slot0
+
+
+class _Labellers(_BaseStructures, _Errors, _Ons):
+    _hash: int = -743968726
+    _prefab_name: int = "ItemLabeller"
+
+    def __getitem__(self, name: str | int | float) -> "_Labellers":
+        return _Labellers(name)
+
+    @property
+    def Average(self) -> Labeller:
+        return Labeller(name=self._name, batch_mode=LogicBatchMethod.Average)
+
+    @property
+    def Minimum(self) -> Labeller:
+        return Labeller(name=self._name, batch_mode=LogicBatchMethod.Minimum)
+
+    @property
+    def Maximum(self) -> Labeller:
+        return Labeller(name=self._name, batch_mode=LogicBatchMethod.Maximum)
+
+    @property
+    def Sum(self) -> Labeller:
+        return Labeller(name=self._name, batch_mode=LogicBatchMethod.Sum)
+
+    @property
+    def Power(self) -> _DevicesLogicType:
+        return _DevicesLogicType(self, _LT.Power)
+
+    @property
+    def slot0(self) -> _SlotTypeBatteries:
+        return _SlotTypeBatteries(self, 0)
+
+    @property
+    def Battery(self) -> _SlotTypeBatteries:
+        return self.slot0
+
+
+Labellers: _Labellers = _Labellers()
+
+
+class Laptop(_BaseStructure, _Error, _On):
+    _hash: int = 141535121
+    _prefab_name: int = "ItemLaptop"
+
+    @property
+    def PositionX(self) -> float:
+        return _DeviceLogicType(self, _LT.PositionX)
+
+    @property
+    def PositionY(self) -> float:
+        return _DeviceLogicType(self, _LT.PositionY)
+
+    @property
+    def PositionZ(self) -> float:
+        return _DeviceLogicType(self, _LT.PositionZ)
+
+    @property
+    def Power(self) -> float:
+        return _DeviceLogicType(self, _LT.Power)
+
+    @property
+    def PressureExternal(self) -> float:
+        return _DeviceLogicType(self, _LT.PressureExternal)
+
+    @property
+    def TemperatureExternal(self) -> float:
+        return _DeviceLogicType(self, _LT.TemperatureExternal)
+
+    @property
+    def slot0(self) -> _SlotTypeCommon:
+        return _SlotTypeCommon(self, 0)
+
+    @property
+    def ProgrammableChip(self) -> _SlotTypeCommon:
+        return self.slot0
+
+    @property
+    def slot1(self) -> _SlotTypeBattery:
+        return _SlotTypeBattery(self, 1)
+
+    @property
+    def Battery(self) -> _SlotTypeBattery:
+        return self.slot1
+
+    @property
+    def slot2(self) -> _SlotTypeCommon:
+        return _SlotTypeCommon(self, 2)
+
+    @property
+    def Motherboard(self) -> _SlotTypeCommon:
+        return self.slot2
+
+
+class _Laptops(_BaseStructures, _Errors, _Ons):
+    _hash: int = 141535121
+    _prefab_name: int = "ItemLaptop"
+
+    def __getitem__(self, name: str | int | float) -> "_Laptops":
+        return _Laptops(name)
+
+    @property
+    def Average(self) -> Laptop:
+        return Laptop(name=self._name, batch_mode=LogicBatchMethod.Average)
+
+    @property
+    def Minimum(self) -> Laptop:
+        return Laptop(name=self._name, batch_mode=LogicBatchMethod.Minimum)
+
+    @property
+    def Maximum(self) -> Laptop:
+        return Laptop(name=self._name, batch_mode=LogicBatchMethod.Maximum)
+
+    @property
+    def Sum(self) -> Laptop:
+        return Laptop(name=self._name, batch_mode=LogicBatchMethod.Sum)
+
+    @property
+    def PositionX(self) -> _DevicesLogicType:
+        return _DevicesLogicType(self, _LT.PositionX)
+
+    @property
+    def PositionY(self) -> _DevicesLogicType:
+        return _DevicesLogicType(self, _LT.PositionY)
+
+    @property
+    def PositionZ(self) -> _DevicesLogicType:
+        return _DevicesLogicType(self, _LT.PositionZ)
+
+    @property
+    def Power(self) -> _DevicesLogicType:
+        return _DevicesLogicType(self, _LT.Power)
+
+    @property
+    def PressureExternal(self) -> _DevicesLogicType:
+        return _DevicesLogicType(self, _LT.PressureExternal)
+
+    @property
+    def TemperatureExternal(self) -> _DevicesLogicType:
+        return _DevicesLogicType(self, _LT.TemperatureExternal)
+
+    @property
+    def slot0(self) -> _SlotTypeCommons:
+        return _SlotTypeCommons(self, 0)
+
+    @property
+    def ProgrammableChip(self) -> _SlotTypeCommons:
+        return self.slot0
+
+    @property
+    def slot1(self) -> _SlotTypeBatteries:
+        return _SlotTypeBatteries(self, 1)
+
+    @property
+    def Battery(self) -> _SlotTypeBatteries:
+        return self.slot1
+
+    @property
+    def slot2(self) -> _SlotTypeCommons:
+        return _SlotTypeCommons(self, 2)
+
+    @property
+    def Motherboard(self) -> _SlotTypeCommons:
+        return self.slot2
+
+
+Laptops: _Laptops = _Laptops()
 
 
 class LargeDirectHeatExchangeLiquidtoLiquid(
@@ -13725,6 +16869,62 @@ class _LiquidTankStorages(_BaseStructures, _Quantities, _Temperatures):
 LiquidTankStorages: _LiquidTankStorages = _LiquidTankStorages()
 
 
+class LiquidVacuum(_BaseStructure, _Activate, _Error, _Mode, _On):
+    _hash: int = -1152751269
+    _prefab_name: int = "ItemLiquidVacuum"
+
+    @property
+    def Power(self) -> float:
+        return _DeviceLogicType(self, _LT.Power)
+
+    @property
+    def slot0(self) -> _SlotTypeBattery:
+        return _SlotTypeBattery(self, 0)
+
+    @property
+    def Battery(self) -> _SlotTypeBattery:
+        return self.slot0
+
+
+class _LiquidVacuums(_BaseStructures, _Activates, _Errors, _Modes, _Ons):
+    _hash: int = -1152751269
+    _prefab_name: int = "ItemLiquidVacuum"
+
+    def __getitem__(self, name: str | int | float) -> "_LiquidVacuums":
+        return _LiquidVacuums(name)
+
+    @property
+    def Average(self) -> LiquidVacuum:
+        return LiquidVacuum(name=self._name, batch_mode=LogicBatchMethod.Average)
+
+    @property
+    def Minimum(self) -> LiquidVacuum:
+        return LiquidVacuum(name=self._name, batch_mode=LogicBatchMethod.Minimum)
+
+    @property
+    def Maximum(self) -> LiquidVacuum:
+        return LiquidVacuum(name=self._name, batch_mode=LogicBatchMethod.Maximum)
+
+    @property
+    def Sum(self) -> LiquidVacuum:
+        return LiquidVacuum(name=self._name, batch_mode=LogicBatchMethod.Sum)
+
+    @property
+    def Power(self) -> _DevicesLogicType:
+        return _DevicesLogicType(self, _LT.Power)
+
+    @property
+    def slot0(self) -> _SlotTypeBatteries:
+        return _SlotTypeBatteries(self, 0)
+
+    @property
+    def Battery(self) -> _SlotTypeBatteries:
+        return self.slot0
+
+
+LiquidVacuums: _LiquidVacuums = _LiquidVacuums()
+
+
 class LiquidVolumePump(
     _BaseStructure, _Error, _Lock, _Maximum, _Power, _Ratio, _SettingW
 ):
@@ -13854,11 +17054,11 @@ class WaterWallCooler(
         return _DeviceLogicType(self, _LT.TotalMolesOutput)
 
     @property
-    def slot0(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(self, 0)
+    def slot0(self) -> _SlotTypeDataDisk:
+        return _SlotTypeDataDisk(self, 0)
 
     @property
-    def DataDisk(self) -> _SlotTypeCommon:
+    def DataDisk(self) -> _SlotTypeDataDisk:
         return self.slot0
 
 
@@ -13932,11 +17132,11 @@ class _WaterWallCoolers(
         return _DevicesLogicType(self, _LT.TotalMolesOutput)
 
     @property
-    def slot0(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(self, 0)
+    def slot0(self) -> _SlotTypeDataDisks:
+        return _SlotTypeDataDisks(self, 0)
 
     @property
-    def DataDisk(self) -> _SlotTypeCommons:
+    def DataDisk(self) -> _SlotTypeDataDisks:
         return self.slot0
 
 
@@ -13948,124 +17148,124 @@ class StorageLocker(_BaseStructure, _Lock, _Open):
     _prefab_name: int = "StructureStorageLocker"
 
     @property
-    def slot0(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(self, 0)
+    def slot0(self) -> _SlotTypeDataDisk:
+        return _SlotTypeDataDisk(self, 0)
 
     @property
-    def slot1(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(self, 1)
+    def slot1(self) -> _SlotTypeDataDisk:
+        return _SlotTypeDataDisk(self, 1)
 
     @property
-    def slot10(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(self, 10)
+    def slot10(self) -> _SlotTypeDataDisk:
+        return _SlotTypeDataDisk(self, 10)
 
     @property
-    def slot11(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(self, 11)
+    def slot11(self) -> _SlotTypeDataDisk:
+        return _SlotTypeDataDisk(self, 11)
 
     @property
-    def slot12(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(self, 12)
+    def slot12(self) -> _SlotTypeDataDisk:
+        return _SlotTypeDataDisk(self, 12)
 
     @property
-    def slot13(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(self, 13)
+    def slot13(self) -> _SlotTypeDataDisk:
+        return _SlotTypeDataDisk(self, 13)
 
     @property
-    def slot14(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(self, 14)
+    def slot14(self) -> _SlotTypeDataDisk:
+        return _SlotTypeDataDisk(self, 14)
 
     @property
-    def slot15(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(self, 15)
+    def slot15(self) -> _SlotTypeDataDisk:
+        return _SlotTypeDataDisk(self, 15)
 
     @property
-    def slot16(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(self, 16)
+    def slot16(self) -> _SlotTypeDataDisk:
+        return _SlotTypeDataDisk(self, 16)
 
     @property
-    def slot17(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(self, 17)
+    def slot17(self) -> _SlotTypeDataDisk:
+        return _SlotTypeDataDisk(self, 17)
 
     @property
-    def slot18(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(self, 18)
+    def slot18(self) -> _SlotTypeDataDisk:
+        return _SlotTypeDataDisk(self, 18)
 
     @property
-    def slot19(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(self, 19)
+    def slot19(self) -> _SlotTypeDataDisk:
+        return _SlotTypeDataDisk(self, 19)
 
     @property
-    def slot2(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(self, 2)
+    def slot2(self) -> _SlotTypeDataDisk:
+        return _SlotTypeDataDisk(self, 2)
 
     @property
-    def slot20(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(self, 20)
+    def slot20(self) -> _SlotTypeDataDisk:
+        return _SlotTypeDataDisk(self, 20)
 
     @property
-    def slot21(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(self, 21)
+    def slot21(self) -> _SlotTypeDataDisk:
+        return _SlotTypeDataDisk(self, 21)
 
     @property
-    def slot22(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(self, 22)
+    def slot22(self) -> _SlotTypeDataDisk:
+        return _SlotTypeDataDisk(self, 22)
 
     @property
-    def slot23(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(self, 23)
+    def slot23(self) -> _SlotTypeDataDisk:
+        return _SlotTypeDataDisk(self, 23)
 
     @property
-    def slot24(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(self, 24)
+    def slot24(self) -> _SlotTypeDataDisk:
+        return _SlotTypeDataDisk(self, 24)
 
     @property
-    def slot25(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(self, 25)
+    def slot25(self) -> _SlotTypeDataDisk:
+        return _SlotTypeDataDisk(self, 25)
 
     @property
-    def slot26(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(self, 26)
+    def slot26(self) -> _SlotTypeDataDisk:
+        return _SlotTypeDataDisk(self, 26)
 
     @property
-    def slot27(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(self, 27)
+    def slot27(self) -> _SlotTypeDataDisk:
+        return _SlotTypeDataDisk(self, 27)
 
     @property
-    def slot28(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(self, 28)
+    def slot28(self) -> _SlotTypeDataDisk:
+        return _SlotTypeDataDisk(self, 28)
 
     @property
-    def slot29(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(self, 29)
+    def slot29(self) -> _SlotTypeDataDisk:
+        return _SlotTypeDataDisk(self, 29)
 
     @property
-    def slot3(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(self, 3)
+    def slot3(self) -> _SlotTypeDataDisk:
+        return _SlotTypeDataDisk(self, 3)
 
     @property
-    def slot4(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(self, 4)
+    def slot4(self) -> _SlotTypeDataDisk:
+        return _SlotTypeDataDisk(self, 4)
 
     @property
-    def slot5(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(self, 5)
+    def slot5(self) -> _SlotTypeDataDisk:
+        return _SlotTypeDataDisk(self, 5)
 
     @property
-    def slot6(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(self, 6)
+    def slot6(self) -> _SlotTypeDataDisk:
+        return _SlotTypeDataDisk(self, 6)
 
     @property
-    def slot7(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(self, 7)
+    def slot7(self) -> _SlotTypeDataDisk:
+        return _SlotTypeDataDisk(self, 7)
 
     @property
-    def slot8(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(self, 8)
+    def slot8(self) -> _SlotTypeDataDisk:
+        return _SlotTypeDataDisk(self, 8)
 
     @property
-    def slot9(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(self, 9)
+    def slot9(self) -> _SlotTypeDataDisk:
+        return _SlotTypeDataDisk(self, 9)
 
 
 class _StorageLockers(_BaseStructures, _Locks, _Opens):
@@ -14092,124 +17292,124 @@ class _StorageLockers(_BaseStructures, _Locks, _Opens):
         return StorageLocker(name=self._name, batch_mode=LogicBatchMethod.Sum)
 
     @property
-    def slot0(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(self, 0)
+    def slot0(self) -> _SlotTypeDataDisks:
+        return _SlotTypeDataDisks(self, 0)
 
     @property
-    def slot1(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(self, 1)
+    def slot1(self) -> _SlotTypeDataDisks:
+        return _SlotTypeDataDisks(self, 1)
 
     @property
-    def slot10(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(self, 10)
+    def slot10(self) -> _SlotTypeDataDisks:
+        return _SlotTypeDataDisks(self, 10)
 
     @property
-    def slot11(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(self, 11)
+    def slot11(self) -> _SlotTypeDataDisks:
+        return _SlotTypeDataDisks(self, 11)
 
     @property
-    def slot12(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(self, 12)
+    def slot12(self) -> _SlotTypeDataDisks:
+        return _SlotTypeDataDisks(self, 12)
 
     @property
-    def slot13(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(self, 13)
+    def slot13(self) -> _SlotTypeDataDisks:
+        return _SlotTypeDataDisks(self, 13)
 
     @property
-    def slot14(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(self, 14)
+    def slot14(self) -> _SlotTypeDataDisks:
+        return _SlotTypeDataDisks(self, 14)
 
     @property
-    def slot15(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(self, 15)
+    def slot15(self) -> _SlotTypeDataDisks:
+        return _SlotTypeDataDisks(self, 15)
 
     @property
-    def slot16(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(self, 16)
+    def slot16(self) -> _SlotTypeDataDisks:
+        return _SlotTypeDataDisks(self, 16)
 
     @property
-    def slot17(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(self, 17)
+    def slot17(self) -> _SlotTypeDataDisks:
+        return _SlotTypeDataDisks(self, 17)
 
     @property
-    def slot18(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(self, 18)
+    def slot18(self) -> _SlotTypeDataDisks:
+        return _SlotTypeDataDisks(self, 18)
 
     @property
-    def slot19(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(self, 19)
+    def slot19(self) -> _SlotTypeDataDisks:
+        return _SlotTypeDataDisks(self, 19)
 
     @property
-    def slot2(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(self, 2)
+    def slot2(self) -> _SlotTypeDataDisks:
+        return _SlotTypeDataDisks(self, 2)
 
     @property
-    def slot20(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(self, 20)
+    def slot20(self) -> _SlotTypeDataDisks:
+        return _SlotTypeDataDisks(self, 20)
 
     @property
-    def slot21(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(self, 21)
+    def slot21(self) -> _SlotTypeDataDisks:
+        return _SlotTypeDataDisks(self, 21)
 
     @property
-    def slot22(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(self, 22)
+    def slot22(self) -> _SlotTypeDataDisks:
+        return _SlotTypeDataDisks(self, 22)
 
     @property
-    def slot23(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(self, 23)
+    def slot23(self) -> _SlotTypeDataDisks:
+        return _SlotTypeDataDisks(self, 23)
 
     @property
-    def slot24(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(self, 24)
+    def slot24(self) -> _SlotTypeDataDisks:
+        return _SlotTypeDataDisks(self, 24)
 
     @property
-    def slot25(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(self, 25)
+    def slot25(self) -> _SlotTypeDataDisks:
+        return _SlotTypeDataDisks(self, 25)
 
     @property
-    def slot26(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(self, 26)
+    def slot26(self) -> _SlotTypeDataDisks:
+        return _SlotTypeDataDisks(self, 26)
 
     @property
-    def slot27(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(self, 27)
+    def slot27(self) -> _SlotTypeDataDisks:
+        return _SlotTypeDataDisks(self, 27)
 
     @property
-    def slot28(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(self, 28)
+    def slot28(self) -> _SlotTypeDataDisks:
+        return _SlotTypeDataDisks(self, 28)
 
     @property
-    def slot29(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(self, 29)
+    def slot29(self) -> _SlotTypeDataDisks:
+        return _SlotTypeDataDisks(self, 29)
 
     @property
-    def slot3(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(self, 3)
+    def slot3(self) -> _SlotTypeDataDisks:
+        return _SlotTypeDataDisks(self, 3)
 
     @property
-    def slot4(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(self, 4)
+    def slot4(self) -> _SlotTypeDataDisks:
+        return _SlotTypeDataDisks(self, 4)
 
     @property
-    def slot5(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(self, 5)
+    def slot5(self) -> _SlotTypeDataDisks:
+        return _SlotTypeDataDisks(self, 5)
 
     @property
-    def slot6(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(self, 6)
+    def slot6(self) -> _SlotTypeDataDisks:
+        return _SlotTypeDataDisks(self, 6)
 
     @property
-    def slot7(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(self, 7)
+    def slot7(self) -> _SlotTypeDataDisks:
+        return _SlotTypeDataDisks(self, 7)
 
     @property
-    def slot8(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(self, 8)
+    def slot8(self) -> _SlotTypeDataDisks:
+        return _SlotTypeDataDisks(self, 8)
 
     @property
-    def slot9(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(self, 9)
+    def slot9(self) -> _SlotTypeDataDisks:
+        return _SlotTypeDataDisks(self, 9)
 
 
 StorageLockers: _StorageLockers = _StorageLockers()
@@ -14220,20 +17420,20 @@ class LockerSmall(_BaseStructure, _Lock, _Open):
     _prefab_name: int = "StructureLockerSmall"
 
     @property
-    def slot0(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(self, 0)
+    def slot0(self) -> _SlotTypeDataDisk:
+        return _SlotTypeDataDisk(self, 0)
 
     @property
-    def slot1(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(self, 1)
+    def slot1(self) -> _SlotTypeDataDisk:
+        return _SlotTypeDataDisk(self, 1)
 
     @property
-    def slot2(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(self, 2)
+    def slot2(self) -> _SlotTypeDataDisk:
+        return _SlotTypeDataDisk(self, 2)
 
     @property
-    def slot3(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(self, 3)
+    def slot3(self) -> _SlotTypeDataDisk:
+        return _SlotTypeDataDisk(self, 3)
 
 
 class _LockerSmalls(_BaseStructures, _Locks, _Opens):
@@ -14260,20 +17460,20 @@ class _LockerSmalls(_BaseStructures, _Locks, _Opens):
         return LockerSmall(name=self._name, batch_mode=LogicBatchMethod.Sum)
 
     @property
-    def slot0(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(self, 0)
+    def slot0(self) -> _SlotTypeDataDisks:
+        return _SlotTypeDataDisks(self, 0)
 
     @property
-    def slot1(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(self, 1)
+    def slot1(self) -> _SlotTypeDataDisks:
+        return _SlotTypeDataDisks(self, 1)
 
     @property
-    def slot2(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(self, 2)
+    def slot2(self) -> _SlotTypeDataDisks:
+        return _SlotTypeDataDisks(self, 2)
 
     @property
-    def slot3(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(self, 3)
+    def slot3(self) -> _SlotTypeDataDisks:
+        return _SlotTypeDataDisks(self, 3)
 
 
 LockerSmalls: _LockerSmalls = _LockerSmalls()
@@ -14601,35 +17801,35 @@ class LogicSorter(
         return _DeviceLogicType(self, _LT.StackSize)
 
     @property
-    def slot0(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(self, 0)
+    def slot0(self) -> _SlotTypeDataDisk:
+        return _SlotTypeDataDisk(self, 0)
 
     @property
-    def Import(self) -> _SlotTypeCommon:
+    def Import(self) -> _SlotTypeDataDisk:
         return self.slot0
 
     @property
-    def slot1(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(self, 1)
+    def slot1(self) -> _SlotTypeDataDisk:
+        return _SlotTypeDataDisk(self, 1)
 
     @property
-    def Export(self) -> _SlotTypeCommon:
+    def Export(self) -> _SlotTypeDataDisk:
         return self.slot1
 
     @property
-    def slot2(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(self, 2)
+    def slot2(self) -> _SlotTypeDataDisk:
+        return _SlotTypeDataDisk(self, 2)
 
     @property
-    def Export2(self) -> _SlotTypeCommon:
+    def Export2(self) -> _SlotTypeDataDisk:
         return self.slot2
 
     @property
-    def slot3(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(self, 3)
+    def slot3(self) -> _SlotTypeDataDisk:
+        return _SlotTypeDataDisk(self, 3)
 
     @property
-    def DataDisk(self) -> _SlotTypeCommon:
+    def DataDisk(self) -> _SlotTypeDataDisk:
         return self.slot3
 
 
@@ -14670,35 +17870,35 @@ class _LogicSorters(
         return _DevicesLogicType(self, _LT.StackSize)
 
     @property
-    def slot0(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(self, 0)
+    def slot0(self) -> _SlotTypeDataDisks:
+        return _SlotTypeDataDisks(self, 0)
 
     @property
-    def Import(self) -> _SlotTypeCommons:
+    def Import(self) -> _SlotTypeDataDisks:
         return self.slot0
 
     @property
-    def slot1(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(self, 1)
+    def slot1(self) -> _SlotTypeDataDisks:
+        return _SlotTypeDataDisks(self, 1)
 
     @property
-    def Export(self) -> _SlotTypeCommons:
+    def Export(self) -> _SlotTypeDataDisks:
         return self.slot1
 
     @property
-    def slot2(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(self, 2)
+    def slot2(self) -> _SlotTypeDataDisks:
+        return _SlotTypeDataDisks(self, 2)
 
     @property
-    def Export2(self) -> _SlotTypeCommons:
+    def Export2(self) -> _SlotTypeDataDisks:
         return self.slot2
 
     @property
-    def slot3(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(self, 3)
+    def slot3(self) -> _SlotTypeDataDisks:
+        return _SlotTypeDataDisks(self, 3)
 
     @property
-    def DataDisk(self) -> _SlotTypeCommons:
+    def DataDisk(self) -> _SlotTypeDataDisks:
         return self.slot3
 
 
@@ -15009,6 +18209,48 @@ class _MediumConvectionRadiators(_BaseStructures, _Maximums, _Ratios, _SettingWs
 MediumConvectionRadiators: _MediumConvectionRadiators = _MediumConvectionRadiators()
 
 
+class PassiveLargeRadiatorLiquid(_BaseStructure, _Maximum, _Ratio, _SettingW):
+    _hash: int = 24786172
+    _prefab_name: int = "StructurePassiveLargeRadiatorLiquid"
+
+
+class _PassiveLargeRadiatorLiquids(_BaseStructures, _Maximums, _Ratios, _SettingWs):
+    _hash: int = 24786172
+    _prefab_name: int = "StructurePassiveLargeRadiatorLiquid"
+
+    def __getitem__(self, name: str | int | float) -> "_PassiveLargeRadiatorLiquids":
+        return _PassiveLargeRadiatorLiquids(name)
+
+    @property
+    def Average(self) -> PassiveLargeRadiatorLiquid:
+        return PassiveLargeRadiatorLiquid(
+            name=self._name, batch_mode=LogicBatchMethod.Average
+        )
+
+    @property
+    def Minimum(self) -> PassiveLargeRadiatorLiquid:
+        return PassiveLargeRadiatorLiquid(
+            name=self._name, batch_mode=LogicBatchMethod.Minimum
+        )
+
+    @property
+    def Maximum(self) -> PassiveLargeRadiatorLiquid:
+        return PassiveLargeRadiatorLiquid(
+            name=self._name, batch_mode=LogicBatchMethod.Maximum
+        )
+
+    @property
+    def Sum(self) -> PassiveLargeRadiatorLiquid:
+        return PassiveLargeRadiatorLiquid(
+            name=self._name, batch_mode=LogicBatchMethod.Sum
+        )
+
+
+PassiveLargeRadiatorLiquids: _PassiveLargeRadiatorLiquids = (
+    _PassiveLargeRadiatorLiquids()
+)
+
+
 class MediumConvectionRadiatorLiquid(_BaseStructure, _Maximum, _Ratio, _SettingW):
     _hash: int = -1169014183
     _prefab_name: int = "StructureMediumConvectionRadiatorLiquid"
@@ -15050,48 +18292,6 @@ class _MediumConvectionRadiatorLiquids(_BaseStructures, _Maximums, _Ratios, _Set
 
 MediumConvectionRadiatorLiquids: _MediumConvectionRadiatorLiquids = (
     _MediumConvectionRadiatorLiquids()
-)
-
-
-class PassiveLargeRadiatorLiquid(_BaseStructure, _Maximum, _Ratio, _SettingW):
-    _hash: int = 24786172
-    _prefab_name: int = "StructurePassiveLargeRadiatorLiquid"
-
-
-class _PassiveLargeRadiatorLiquids(_BaseStructures, _Maximums, _Ratios, _SettingWs):
-    _hash: int = 24786172
-    _prefab_name: int = "StructurePassiveLargeRadiatorLiquid"
-
-    def __getitem__(self, name: str | int | float) -> "_PassiveLargeRadiatorLiquids":
-        return _PassiveLargeRadiatorLiquids(name)
-
-    @property
-    def Average(self) -> PassiveLargeRadiatorLiquid:
-        return PassiveLargeRadiatorLiquid(
-            name=self._name, batch_mode=LogicBatchMethod.Average
-        )
-
-    @property
-    def Minimum(self) -> PassiveLargeRadiatorLiquid:
-        return PassiveLargeRadiatorLiquid(
-            name=self._name, batch_mode=LogicBatchMethod.Minimum
-        )
-
-    @property
-    def Maximum(self) -> PassiveLargeRadiatorLiquid:
-        return PassiveLargeRadiatorLiquid(
-            name=self._name, batch_mode=LogicBatchMethod.Maximum
-        )
-
-    @property
-    def Sum(self) -> PassiveLargeRadiatorLiquid:
-        return PassiveLargeRadiatorLiquid(
-            name=self._name, batch_mode=LogicBatchMethod.Sum
-        )
-
-
-PassiveLargeRadiatorLiquids: _PassiveLargeRadiatorLiquids = (
-    _PassiveLargeRadiatorLiquids()
 )
 
 
@@ -15497,6 +18697,342 @@ class _PowerTransmitters(
 PowerTransmitters: _PowerTransmitters = _PowerTransmitters()
 
 
+class MiningDrill(_BaseStructure, _Activate, _Error, _Mode, _On):
+    _hash: int = 1055173191
+    _prefab_name: int = "ItemMiningDrill"
+
+    @property
+    def Power(self) -> float:
+        return _DeviceLogicType(self, _LT.Power)
+
+    @property
+    def slot0(self) -> _SlotTypeBattery:
+        return _SlotTypeBattery(self, 0)
+
+    @property
+    def Battery(self) -> _SlotTypeBattery:
+        return self.slot0
+
+
+class _MiningDrills(_BaseStructures, _Activates, _Errors, _Modes, _Ons):
+    _hash: int = 1055173191
+    _prefab_name: int = "ItemMiningDrill"
+
+    def __getitem__(self, name: str | int | float) -> "_MiningDrills":
+        return _MiningDrills(name)
+
+    @property
+    def Average(self) -> MiningDrill:
+        return MiningDrill(name=self._name, batch_mode=LogicBatchMethod.Average)
+
+    @property
+    def Minimum(self) -> MiningDrill:
+        return MiningDrill(name=self._name, batch_mode=LogicBatchMethod.Minimum)
+
+    @property
+    def Maximum(self) -> MiningDrill:
+        return MiningDrill(name=self._name, batch_mode=LogicBatchMethod.Maximum)
+
+    @property
+    def Sum(self) -> MiningDrill:
+        return MiningDrill(name=self._name, batch_mode=LogicBatchMethod.Sum)
+
+    @property
+    def Power(self) -> _DevicesLogicType:
+        return _DevicesLogicType(self, _LT.Power)
+
+    @property
+    def slot0(self) -> _SlotTypeBatteries:
+        return _SlotTypeBatteries(self, 0)
+
+    @property
+    def Battery(self) -> _SlotTypeBatteries:
+        return self.slot0
+
+
+MiningDrills: _MiningDrills = _MiningDrills()
+
+
+class MiningDrillHeavy(_BaseStructure, _Activate, _Error, _Mode, _On):
+    _hash: int = -1663349918
+    _prefab_name: int = "ItemMiningDrillHeavy"
+
+    @property
+    def Power(self) -> float:
+        return _DeviceLogicType(self, _LT.Power)
+
+    @property
+    def slot0(self) -> _SlotTypeBattery:
+        return _SlotTypeBattery(self, 0)
+
+    @property
+    def Battery(self) -> _SlotTypeBattery:
+        return self.slot0
+
+
+class _MiningDrillHeavies(_BaseStructures, _Activates, _Errors, _Modes, _Ons):
+    _hash: int = -1663349918
+    _prefab_name: int = "ItemMiningDrillHeavy"
+
+    def __getitem__(self, name: str | int | float) -> "_MiningDrillHeavies":
+        return _MiningDrillHeavies(name)
+
+    @property
+    def Average(self) -> MiningDrillHeavy:
+        return MiningDrillHeavy(name=self._name, batch_mode=LogicBatchMethod.Average)
+
+    @property
+    def Minimum(self) -> MiningDrillHeavy:
+        return MiningDrillHeavy(name=self._name, batch_mode=LogicBatchMethod.Minimum)
+
+    @property
+    def Maximum(self) -> MiningDrillHeavy:
+        return MiningDrillHeavy(name=self._name, batch_mode=LogicBatchMethod.Maximum)
+
+    @property
+    def Sum(self) -> MiningDrillHeavy:
+        return MiningDrillHeavy(name=self._name, batch_mode=LogicBatchMethod.Sum)
+
+    @property
+    def Power(self) -> _DevicesLogicType:
+        return _DevicesLogicType(self, _LT.Power)
+
+    @property
+    def slot0(self) -> _SlotTypeBatteries:
+        return _SlotTypeBatteries(self, 0)
+
+    @property
+    def Battery(self) -> _SlotTypeBatteries:
+        return self.slot0
+
+
+MiningDrillHeavies: _MiningDrillHeavies = _MiningDrillHeavies()
+
+
+class MKIIAngleGrinder(_BaseStructure, _Activate):
+    _hash: int = 240174650
+    _prefab_name: int = "ItemMKIIAngleGrinder"
+
+    @property
+    def Power(self) -> float:
+        return _DeviceLogicType(self, _LT.Power)
+
+    @property
+    def slot0(self) -> _SlotTypeBattery:
+        return _SlotTypeBattery(self, 0)
+
+    @property
+    def Battery(self) -> _SlotTypeBattery:
+        return self.slot0
+
+
+class _MKIIAngleGrinders(_BaseStructures, _Activates):
+    _hash: int = 240174650
+    _prefab_name: int = "ItemMKIIAngleGrinder"
+
+    def __getitem__(self, name: str | int | float) -> "_MKIIAngleGrinders":
+        return _MKIIAngleGrinders(name)
+
+    @property
+    def Average(self) -> MKIIAngleGrinder:
+        return MKIIAngleGrinder(name=self._name, batch_mode=LogicBatchMethod.Average)
+
+    @property
+    def Minimum(self) -> MKIIAngleGrinder:
+        return MKIIAngleGrinder(name=self._name, batch_mode=LogicBatchMethod.Minimum)
+
+    @property
+    def Maximum(self) -> MKIIAngleGrinder:
+        return MKIIAngleGrinder(name=self._name, batch_mode=LogicBatchMethod.Maximum)
+
+    @property
+    def Sum(self) -> MKIIAngleGrinder:
+        return MKIIAngleGrinder(name=self._name, batch_mode=LogicBatchMethod.Sum)
+
+    @property
+    def Power(self) -> _DevicesLogicType:
+        return _DevicesLogicType(self, _LT.Power)
+
+    @property
+    def slot0(self) -> _SlotTypeBatteries:
+        return _SlotTypeBatteries(self, 0)
+
+    @property
+    def Battery(self) -> _SlotTypeBatteries:
+        return self.slot0
+
+
+MKIIAngleGrinders: _MKIIAngleGrinders = _MKIIAngleGrinders()
+
+
+class MKIIArcWelder(_BaseStructure, _Activate):
+    _hash: int = -2061979347
+    _prefab_name: int = "ItemMKIIArcWelder"
+
+    @property
+    def Power(self) -> float:
+        return _DeviceLogicType(self, _LT.Power)
+
+    @property
+    def slot0(self) -> _SlotTypeBattery:
+        return _SlotTypeBattery(self, 0)
+
+    @property
+    def Battery(self) -> _SlotTypeBattery:
+        return self.slot0
+
+
+class _MKIIArcWelders(_BaseStructures, _Activates):
+    _hash: int = -2061979347
+    _prefab_name: int = "ItemMKIIArcWelder"
+
+    def __getitem__(self, name: str | int | float) -> "_MKIIArcWelders":
+        return _MKIIArcWelders(name)
+
+    @property
+    def Average(self) -> MKIIArcWelder:
+        return MKIIArcWelder(name=self._name, batch_mode=LogicBatchMethod.Average)
+
+    @property
+    def Minimum(self) -> MKIIArcWelder:
+        return MKIIArcWelder(name=self._name, batch_mode=LogicBatchMethod.Minimum)
+
+    @property
+    def Maximum(self) -> MKIIArcWelder:
+        return MKIIArcWelder(name=self._name, batch_mode=LogicBatchMethod.Maximum)
+
+    @property
+    def Sum(self) -> MKIIArcWelder:
+        return MKIIArcWelder(name=self._name, batch_mode=LogicBatchMethod.Sum)
+
+    @property
+    def Power(self) -> _DevicesLogicType:
+        return _DevicesLogicType(self, _LT.Power)
+
+    @property
+    def slot0(self) -> _SlotTypeBatteries:
+        return _SlotTypeBatteries(self, 0)
+
+    @property
+    def Battery(self) -> _SlotTypeBatteries:
+        return self.slot0
+
+
+MKIIArcWelders: _MKIIArcWelders = _MKIIArcWelders()
+
+
+class MKIIDrill(_BaseStructure, _Activate):
+    _hash: int = 324791548
+    _prefab_name: int = "ItemMKIIDrill"
+
+    @property
+    def Power(self) -> float:
+        return _DeviceLogicType(self, _LT.Power)
+
+    @property
+    def slot0(self) -> _SlotTypeBattery:
+        return _SlotTypeBattery(self, 0)
+
+    @property
+    def Battery(self) -> _SlotTypeBattery:
+        return self.slot0
+
+
+class _MKIIDrills(_BaseStructures, _Activates):
+    _hash: int = 324791548
+    _prefab_name: int = "ItemMKIIDrill"
+
+    def __getitem__(self, name: str | int | float) -> "_MKIIDrills":
+        return _MKIIDrills(name)
+
+    @property
+    def Average(self) -> MKIIDrill:
+        return MKIIDrill(name=self._name, batch_mode=LogicBatchMethod.Average)
+
+    @property
+    def Minimum(self) -> MKIIDrill:
+        return MKIIDrill(name=self._name, batch_mode=LogicBatchMethod.Minimum)
+
+    @property
+    def Maximum(self) -> MKIIDrill:
+        return MKIIDrill(name=self._name, batch_mode=LogicBatchMethod.Maximum)
+
+    @property
+    def Sum(self) -> MKIIDrill:
+        return MKIIDrill(name=self._name, batch_mode=LogicBatchMethod.Sum)
+
+    @property
+    def Power(self) -> _DevicesLogicType:
+        return _DevicesLogicType(self, _LT.Power)
+
+    @property
+    def slot0(self) -> _SlotTypeBatteries:
+        return _SlotTypeBatteries(self, 0)
+
+    @property
+    def Battery(self) -> _SlotTypeBatteries:
+        return self.slot0
+
+
+MKIIDrills: _MKIIDrills = _MKIIDrills()
+
+
+class MKIIMiningDrill(_BaseStructure, _Activate, _Error, _Mode, _On):
+    _hash: int = -1875271296
+    _prefab_name: int = "ItemMKIIMiningDrill"
+
+    @property
+    def Power(self) -> float:
+        return _DeviceLogicType(self, _LT.Power)
+
+    @property
+    def slot0(self) -> _SlotTypeBattery:
+        return _SlotTypeBattery(self, 0)
+
+    @property
+    def Battery(self) -> _SlotTypeBattery:
+        return self.slot0
+
+
+class _MKIIMiningDrills(_BaseStructures, _Activates, _Errors, _Modes, _Ons):
+    _hash: int = -1875271296
+    _prefab_name: int = "ItemMKIIMiningDrill"
+
+    def __getitem__(self, name: str | int | float) -> "_MKIIMiningDrills":
+        return _MKIIMiningDrills(name)
+
+    @property
+    def Average(self) -> MKIIMiningDrill:
+        return MKIIMiningDrill(name=self._name, batch_mode=LogicBatchMethod.Average)
+
+    @property
+    def Minimum(self) -> MKIIMiningDrill:
+        return MKIIMiningDrill(name=self._name, batch_mode=LogicBatchMethod.Minimum)
+
+    @property
+    def Maximum(self) -> MKIIMiningDrill:
+        return MKIIMiningDrill(name=self._name, batch_mode=LogicBatchMethod.Maximum)
+
+    @property
+    def Sum(self) -> MKIIMiningDrill:
+        return MKIIMiningDrill(name=self._name, batch_mode=LogicBatchMethod.Sum)
+
+    @property
+    def Power(self) -> _DevicesLogicType:
+        return _DevicesLogicType(self, _LT.Power)
+
+    @property
+    def slot0(self) -> _SlotTypeBatteries:
+        return _SlotTypeBatteries(self, 0)
+
+    @property
+    def Battery(self) -> _SlotTypeBatteries:
+        return self.slot0
+
+
+MKIIMiningDrills: _MKIIMiningDrills = _MKIIMiningDrills()
+
+
 class MotionSensor(_BaseStructure, _Activate, _On, _Quantity):
     _hash: int = -1713470563
     _prefab_name: int = "StructureMotionSensor"
@@ -15527,6 +19063,62 @@ class _MotionSensors(_BaseStructures, _Activates, _Ons, _Quantities):
 
 
 MotionSensors: _MotionSensors = _MotionSensors()
+
+
+class NVG(_BaseStructure, _Lock, _On):
+    _hash: int = 982514123
+    _prefab_name: int = "ItemNVG"
+
+    @property
+    def Power(self) -> float:
+        return _DeviceLogicType(self, _LT.Power)
+
+    @property
+    def slot0(self) -> _SlotTypeBattery:
+        return _SlotTypeBattery(self, 0)
+
+    @property
+    def Battery(self) -> _SlotTypeBattery:
+        return self.slot0
+
+
+class _NVGs(_BaseStructures, _Locks, _Ons):
+    _hash: int = 982514123
+    _prefab_name: int = "ItemNVG"
+
+    def __getitem__(self, name: str | int | float) -> "_NVGs":
+        return _NVGs(name)
+
+    @property
+    def Average(self) -> NVG:
+        return NVG(name=self._name, batch_mode=LogicBatchMethod.Average)
+
+    @property
+    def Minimum(self) -> NVG:
+        return NVG(name=self._name, batch_mode=LogicBatchMethod.Minimum)
+
+    @property
+    def Maximum(self) -> NVG:
+        return NVG(name=self._name, batch_mode=LogicBatchMethod.Maximum)
+
+    @property
+    def Sum(self) -> NVG:
+        return NVG(name=self._name, batch_mode=LogicBatchMethod.Sum)
+
+    @property
+    def Power(self) -> _DevicesLogicType:
+        return _DevicesLogicType(self, _LT.Power)
+
+    @property
+    def slot0(self) -> _SlotTypeBatteries:
+        return _SlotTypeBatteries(self, 0)
+
+    @property
+    def Battery(self) -> _SlotTypeBatteries:
+        return self.slot0
+
+
+NVGs: _NVGs = _NVGs()
 
 
 class Nitrolyzer(
@@ -15655,11 +19247,11 @@ class Nitrolyzer(
         return _DeviceLogicType(self, _LT.TotalMolesOutput)
 
     @property
-    def slot0(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(self, 0)
+    def slot0(self) -> _SlotTypeDataDisk:
+        return _SlotTypeDataDisk(self, 0)
 
     @property
-    def ProgrammableChip(self) -> _SlotTypeCommon:
+    def ProgrammableChip(self) -> _SlotTypeDataDisk:
         return self.slot0
 
 
@@ -15808,11 +19400,11 @@ class _Nitrolyzers(
         return _DevicesLogicType(self, _LT.TotalMolesOutput)
 
     @property
-    def slot0(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(self, 0)
+    def slot0(self) -> _SlotTypeDataDisks:
+        return _SlotTypeDataDisks(self, 0)
 
     @property
-    def ProgrammableChip(self) -> _SlotTypeCommons:
+    def ProgrammableChip(self) -> _SlotTypeDataDisks:
         return self.slot0
 
 
@@ -15834,19 +19426,19 @@ class HorizontalAutoMiner(
     _prefab_name: int = "StructureHorizontalAutoMiner"
 
     @property
-    def slot0(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(self, 0)
+    def slot0(self) -> _SlotTypeDataDisk:
+        return _SlotTypeDataDisk(self, 0)
 
     @property
-    def Import(self) -> _SlotTypeCommon:
+    def Import(self) -> _SlotTypeDataDisk:
         return self.slot0
 
     @property
-    def slot1(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(self, 1)
+    def slot1(self) -> _SlotTypeDataDisk:
+        return _SlotTypeDataDisk(self, 1)
 
     @property
-    def Export(self) -> _SlotTypeCommon:
+    def Export(self) -> _SlotTypeDataDisk:
         return self.slot1
 
 
@@ -15884,19 +19476,19 @@ class _HorizontalAutoMiners(
         return HorizontalAutoMiner(name=self._name, batch_mode=LogicBatchMethod.Sum)
 
     @property
-    def slot0(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(self, 0)
+    def slot0(self) -> _SlotTypeDataDisks:
+        return _SlotTypeDataDisks(self, 0)
 
     @property
-    def Import(self) -> _SlotTypeCommons:
+    def Import(self) -> _SlotTypeDataDisks:
         return self.slot0
 
     @property
-    def slot1(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(self, 1)
+    def slot1(self) -> _SlotTypeDataDisks:
+        return _SlotTypeDataDisks(self, 1)
 
     @property
-    def Export(self) -> _SlotTypeCommons:
+    def Export(self) -> _SlotTypeDataDisks:
         return self.slot1
 
 
@@ -16030,12 +19622,12 @@ class OverheadShortCornerLocker(_BaseStructure, _Lock, _Open):
     _prefab_name: int = "StructureOverheadShortCornerLocker"
 
     @property
-    def slot0(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(self, 0)
+    def slot0(self) -> _SlotTypeDataDisk:
+        return _SlotTypeDataDisk(self, 0)
 
     @property
-    def slot1(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(self, 1)
+    def slot1(self) -> _SlotTypeDataDisk:
+        return _SlotTypeDataDisk(self, 1)
 
 
 class _OverheadShortCornerLockers(_BaseStructures, _Locks, _Opens):
@@ -16070,12 +19662,12 @@ class _OverheadShortCornerLockers(_BaseStructures, _Locks, _Opens):
         )
 
     @property
-    def slot0(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(self, 0)
+    def slot0(self) -> _SlotTypeDataDisks:
+        return _SlotTypeDataDisks(self, 0)
 
     @property
-    def slot1(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(self, 1)
+    def slot1(self) -> _SlotTypeDataDisks:
+        return _SlotTypeDataDisks(self, 1)
 
 
 OverheadShortCornerLockers: _OverheadShortCornerLockers = _OverheadShortCornerLockers()
@@ -16086,44 +19678,44 @@ class OverheadShortLocker(_BaseStructure, _Lock, _Open):
     _prefab_name: int = "StructureOverheadShortLocker"
 
     @property
-    def slot0(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(self, 0)
+    def slot0(self) -> _SlotTypeDataDisk:
+        return _SlotTypeDataDisk(self, 0)
 
     @property
-    def slot1(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(self, 1)
+    def slot1(self) -> _SlotTypeDataDisk:
+        return _SlotTypeDataDisk(self, 1)
 
     @property
-    def slot2(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(self, 2)
+    def slot2(self) -> _SlotTypeDataDisk:
+        return _SlotTypeDataDisk(self, 2)
 
     @property
-    def slot3(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(self, 3)
+    def slot3(self) -> _SlotTypeDataDisk:
+        return _SlotTypeDataDisk(self, 3)
 
     @property
-    def slot4(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(self, 4)
+    def slot4(self) -> _SlotTypeDataDisk:
+        return _SlotTypeDataDisk(self, 4)
 
     @property
-    def slot5(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(self, 5)
+    def slot5(self) -> _SlotTypeDataDisk:
+        return _SlotTypeDataDisk(self, 5)
 
     @property
-    def slot6(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(self, 6)
+    def slot6(self) -> _SlotTypeDataDisk:
+        return _SlotTypeDataDisk(self, 6)
 
     @property
-    def slot7(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(self, 7)
+    def slot7(self) -> _SlotTypeDataDisk:
+        return _SlotTypeDataDisk(self, 7)
 
     @property
-    def slot8(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(self, 8)
+    def slot8(self) -> _SlotTypeDataDisk:
+        return _SlotTypeDataDisk(self, 8)
 
     @property
-    def slot9(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(self, 9)
+    def slot9(self) -> _SlotTypeDataDisk:
+        return _SlotTypeDataDisk(self, 9)
 
 
 class _OverheadShortLockers(_BaseStructures, _Locks, _Opens):
@@ -16150,44 +19742,44 @@ class _OverheadShortLockers(_BaseStructures, _Locks, _Opens):
         return OverheadShortLocker(name=self._name, batch_mode=LogicBatchMethod.Sum)
 
     @property
-    def slot0(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(self, 0)
+    def slot0(self) -> _SlotTypeDataDisks:
+        return _SlotTypeDataDisks(self, 0)
 
     @property
-    def slot1(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(self, 1)
+    def slot1(self) -> _SlotTypeDataDisks:
+        return _SlotTypeDataDisks(self, 1)
 
     @property
-    def slot2(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(self, 2)
+    def slot2(self) -> _SlotTypeDataDisks:
+        return _SlotTypeDataDisks(self, 2)
 
     @property
-    def slot3(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(self, 3)
+    def slot3(self) -> _SlotTypeDataDisks:
+        return _SlotTypeDataDisks(self, 3)
 
     @property
-    def slot4(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(self, 4)
+    def slot4(self) -> _SlotTypeDataDisks:
+        return _SlotTypeDataDisks(self, 4)
 
     @property
-    def slot5(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(self, 5)
+    def slot5(self) -> _SlotTypeDataDisks:
+        return _SlotTypeDataDisks(self, 5)
 
     @property
-    def slot6(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(self, 6)
+    def slot6(self) -> _SlotTypeDataDisks:
+        return _SlotTypeDataDisks(self, 6)
 
     @property
-    def slot7(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(self, 7)
+    def slot7(self) -> _SlotTypeDataDisks:
+        return _SlotTypeDataDisks(self, 7)
 
     @property
-    def slot8(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(self, 8)
+    def slot8(self) -> _SlotTypeDataDisks:
+        return _SlotTypeDataDisks(self, 8)
 
     @property
-    def slot9(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(self, 9)
+    def slot9(self) -> _SlotTypeDataDisks:
+        return _SlotTypeDataDisks(self, 9)
 
 
 OverheadShortLockers: _OverheadShortLockers = _OverheadShortLockers()
@@ -16511,16 +20103,72 @@ class _PipeIgniters(_BaseStructures, _Activates, _Errors):
 PipeIgniters: _PipeIgniters = _PipeIgniters()
 
 
+class PlantSampler(_BaseStructure, _Activate, _Mode, _On):
+    _hash: int = 173023800
+    _prefab_name: int = "ItemPlantSampler"
+
+    @property
+    def Power(self) -> float:
+        return _DeviceLogicType(self, _LT.Power)
+
+    @property
+    def slot0(self) -> _SlotTypeBattery:
+        return _SlotTypeBattery(self, 0)
+
+    @property
+    def Battery(self) -> _SlotTypeBattery:
+        return self.slot0
+
+
+class _PlantSamplers(_BaseStructures, _Activates, _Modes, _Ons):
+    _hash: int = 173023800
+    _prefab_name: int = "ItemPlantSampler"
+
+    def __getitem__(self, name: str | int | float) -> "_PlantSamplers":
+        return _PlantSamplers(name)
+
+    @property
+    def Average(self) -> PlantSampler:
+        return PlantSampler(name=self._name, batch_mode=LogicBatchMethod.Average)
+
+    @property
+    def Minimum(self) -> PlantSampler:
+        return PlantSampler(name=self._name, batch_mode=LogicBatchMethod.Minimum)
+
+    @property
+    def Maximum(self) -> PlantSampler:
+        return PlantSampler(name=self._name, batch_mode=LogicBatchMethod.Maximum)
+
+    @property
+    def Sum(self) -> PlantSampler:
+        return PlantSampler(name=self._name, batch_mode=LogicBatchMethod.Sum)
+
+    @property
+    def Power(self) -> _DevicesLogicType:
+        return _DevicesLogicType(self, _LT.Power)
+
+    @property
+    def slot0(self) -> _SlotTypeBatteries:
+        return _SlotTypeBatteries(self, 0)
+
+    @property
+    def Battery(self) -> _SlotTypeBatteries:
+        return self.slot0
+
+
+PlantSamplers: _PlantSamplers = _PlantSamplers()
+
+
 class PortablesConnector(_BaseStructure, _Maximum, _Open, _Ratio, _SettingW):
     _hash: int = -899013427
     _prefab_name: int = "StructurePortablesConnector"
 
     @property
-    def slot0(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(self, 0)
+    def slot0(self) -> _SlotTypeDataDisk:
+        return _SlotTypeDataDisk(self, 0)
 
     @property
-    def PortableSlot(self) -> _SlotTypeCommon:
+    def PortableSlot(self) -> _SlotTypeDataDisk:
         return self.slot0
 
 
@@ -16548,11 +20196,11 @@ class _PortablesConnectors(_BaseStructures, _Maximums, _Opens, _Ratios, _Setting
         return PortablesConnector(name=self._name, batch_mode=LogicBatchMethod.Sum)
 
     @property
-    def slot0(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(self, 0)
+    def slot0(self) -> _SlotTypeDataDisks:
+        return _SlotTypeDataDisks(self, 0)
 
     @property
-    def PortableSlot(self) -> _SlotTypeCommons:
+    def PortableSlot(self) -> _SlotTypeDataDisks:
         return self.slot0
 
 
@@ -16564,11 +20212,11 @@ class PowerConnector(_BaseStructure, _Open):
     _prefab_name: int = "StructurePowerConnector"
 
     @property
-    def slot0(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(self, 0)
+    def slot0(self) -> _SlotTypeDataDisk:
+        return _SlotTypeDataDisk(self, 0)
 
     @property
-    def Portableslot(self) -> _SlotTypeCommon:
+    def Portableslot(self) -> _SlotTypeDataDisk:
         return self.slot0
 
 
@@ -16596,11 +20244,11 @@ class _PowerConnectors(_BaseStructures, _Opens):
         return PowerConnector(name=self._name, batch_mode=LogicBatchMethod.Sum)
 
     @property
-    def slot0(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(self, 0)
+    def slot0(self) -> _SlotTypeDataDisks:
+        return _SlotTypeDataDisks(self, 0)
 
     @property
-    def Portableslot(self) -> _SlotTypeCommons:
+    def Portableslot(self) -> _SlotTypeDataDisks:
         return self.slot0
 
 
@@ -17493,19 +21141,19 @@ class Recycler(
     _prefab_name: int = "StructureRecycler"
 
     @property
-    def slot0(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(self, 0)
+    def slot0(self) -> _SlotTypeDataDisk:
+        return _SlotTypeDataDisk(self, 0)
 
     @property
-    def Import(self) -> _SlotTypeCommon:
+    def Import(self) -> _SlotTypeDataDisk:
         return self.slot0
 
     @property
-    def slot1(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(self, 1)
+    def slot1(self) -> _SlotTypeDataDisk:
+        return _SlotTypeDataDisk(self, 1)
 
     @property
-    def Export(self) -> _SlotTypeCommon:
+    def Export(self) -> _SlotTypeDataDisk:
         return self.slot1
 
 
@@ -17542,19 +21190,19 @@ class _Recyclers(
         return Recycler(name=self._name, batch_mode=LogicBatchMethod.Sum)
 
     @property
-    def slot0(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(self, 0)
+    def slot0(self) -> _SlotTypeDataDisks:
+        return _SlotTypeDataDisks(self, 0)
 
     @property
-    def Import(self) -> _SlotTypeCommons:
+    def Import(self) -> _SlotTypeDataDisks:
         return self.slot0
 
     @property
-    def slot1(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(self, 1)
+    def slot1(self) -> _SlotTypeDataDisks:
+        return _SlotTypeDataDisks(self, 1)
 
     @property
-    def Export(self) -> _SlotTypeCommons:
+    def Export(self) -> _SlotTypeDataDisks:
         return self.slot1
 
 
@@ -17591,420 +21239,420 @@ class RefrigeratedVendingMachine(
         pass
 
     @property
-    def slot0(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(self, 0)
+    def slot0(self) -> _SlotTypeDataDisk:
+        return _SlotTypeDataDisk(self, 0)
 
     @property
-    def Import(self) -> _SlotTypeCommon:
+    def Import(self) -> _SlotTypeDataDisk:
         return self.slot0
 
     @property
-    def slot1(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(self, 1)
+    def slot1(self) -> _SlotTypeDataDisk:
+        return _SlotTypeDataDisk(self, 1)
 
     @property
-    def Export(self) -> _SlotTypeCommon:
+    def Export(self) -> _SlotTypeDataDisk:
         return self.slot1
 
     @property
-    def slot10(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(self, 10)
+    def slot10(self) -> _SlotTypeDataDisk:
+        return _SlotTypeDataDisk(self, 10)
 
     @property
-    def slot100(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(self, 100)
+    def slot100(self) -> _SlotTypeDataDisk:
+        return _SlotTypeDataDisk(self, 100)
 
     @property
-    def slot101(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(self, 101)
+    def slot101(self) -> _SlotTypeDataDisk:
+        return _SlotTypeDataDisk(self, 101)
 
     @property
-    def slot11(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(self, 11)
+    def slot11(self) -> _SlotTypeDataDisk:
+        return _SlotTypeDataDisk(self, 11)
 
     @property
-    def slot12(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(self, 12)
+    def slot12(self) -> _SlotTypeDataDisk:
+        return _SlotTypeDataDisk(self, 12)
 
     @property
-    def slot13(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(self, 13)
+    def slot13(self) -> _SlotTypeDataDisk:
+        return _SlotTypeDataDisk(self, 13)
 
     @property
-    def slot14(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(self, 14)
+    def slot14(self) -> _SlotTypeDataDisk:
+        return _SlotTypeDataDisk(self, 14)
 
     @property
-    def slot15(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(self, 15)
+    def slot15(self) -> _SlotTypeDataDisk:
+        return _SlotTypeDataDisk(self, 15)
 
     @property
-    def slot16(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(self, 16)
+    def slot16(self) -> _SlotTypeDataDisk:
+        return _SlotTypeDataDisk(self, 16)
 
     @property
-    def slot17(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(self, 17)
+    def slot17(self) -> _SlotTypeDataDisk:
+        return _SlotTypeDataDisk(self, 17)
 
     @property
-    def slot18(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(self, 18)
+    def slot18(self) -> _SlotTypeDataDisk:
+        return _SlotTypeDataDisk(self, 18)
 
     @property
-    def slot19(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(self, 19)
+    def slot19(self) -> _SlotTypeDataDisk:
+        return _SlotTypeDataDisk(self, 19)
 
     @property
-    def slot2(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(self, 2)
+    def slot2(self) -> _SlotTypeDataDisk:
+        return _SlotTypeDataDisk(self, 2)
 
     @property
-    def slot20(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(self, 20)
+    def slot20(self) -> _SlotTypeDataDisk:
+        return _SlotTypeDataDisk(self, 20)
 
     @property
-    def slot21(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(self, 21)
+    def slot21(self) -> _SlotTypeDataDisk:
+        return _SlotTypeDataDisk(self, 21)
 
     @property
-    def slot22(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(self, 22)
+    def slot22(self) -> _SlotTypeDataDisk:
+        return _SlotTypeDataDisk(self, 22)
 
     @property
-    def slot23(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(self, 23)
+    def slot23(self) -> _SlotTypeDataDisk:
+        return _SlotTypeDataDisk(self, 23)
 
     @property
-    def slot24(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(self, 24)
+    def slot24(self) -> _SlotTypeDataDisk:
+        return _SlotTypeDataDisk(self, 24)
 
     @property
-    def slot25(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(self, 25)
+    def slot25(self) -> _SlotTypeDataDisk:
+        return _SlotTypeDataDisk(self, 25)
 
     @property
-    def slot26(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(self, 26)
+    def slot26(self) -> _SlotTypeDataDisk:
+        return _SlotTypeDataDisk(self, 26)
 
     @property
-    def slot27(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(self, 27)
+    def slot27(self) -> _SlotTypeDataDisk:
+        return _SlotTypeDataDisk(self, 27)
 
     @property
-    def slot28(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(self, 28)
+    def slot28(self) -> _SlotTypeDataDisk:
+        return _SlotTypeDataDisk(self, 28)
 
     @property
-    def slot29(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(self, 29)
+    def slot29(self) -> _SlotTypeDataDisk:
+        return _SlotTypeDataDisk(self, 29)
 
     @property
-    def slot3(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(self, 3)
+    def slot3(self) -> _SlotTypeDataDisk:
+        return _SlotTypeDataDisk(self, 3)
 
     @property
-    def slot30(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(self, 30)
+    def slot30(self) -> _SlotTypeDataDisk:
+        return _SlotTypeDataDisk(self, 30)
 
     @property
-    def slot31(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(self, 31)
+    def slot31(self) -> _SlotTypeDataDisk:
+        return _SlotTypeDataDisk(self, 31)
 
     @property
-    def slot32(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(self, 32)
+    def slot32(self) -> _SlotTypeDataDisk:
+        return _SlotTypeDataDisk(self, 32)
 
     @property
-    def slot33(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(self, 33)
+    def slot33(self) -> _SlotTypeDataDisk:
+        return _SlotTypeDataDisk(self, 33)
 
     @property
-    def slot34(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(self, 34)
+    def slot34(self) -> _SlotTypeDataDisk:
+        return _SlotTypeDataDisk(self, 34)
 
     @property
-    def slot35(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(self, 35)
+    def slot35(self) -> _SlotTypeDataDisk:
+        return _SlotTypeDataDisk(self, 35)
 
     @property
-    def slot36(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(self, 36)
+    def slot36(self) -> _SlotTypeDataDisk:
+        return _SlotTypeDataDisk(self, 36)
 
     @property
-    def slot37(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(self, 37)
+    def slot37(self) -> _SlotTypeDataDisk:
+        return _SlotTypeDataDisk(self, 37)
 
     @property
-    def slot38(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(self, 38)
+    def slot38(self) -> _SlotTypeDataDisk:
+        return _SlotTypeDataDisk(self, 38)
 
     @property
-    def slot39(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(self, 39)
+    def slot39(self) -> _SlotTypeDataDisk:
+        return _SlotTypeDataDisk(self, 39)
 
     @property
-    def slot4(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(self, 4)
+    def slot4(self) -> _SlotTypeDataDisk:
+        return _SlotTypeDataDisk(self, 4)
 
     @property
-    def slot40(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(self, 40)
+    def slot40(self) -> _SlotTypeDataDisk:
+        return _SlotTypeDataDisk(self, 40)
 
     @property
-    def slot41(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(self, 41)
+    def slot41(self) -> _SlotTypeDataDisk:
+        return _SlotTypeDataDisk(self, 41)
 
     @property
-    def slot42(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(self, 42)
+    def slot42(self) -> _SlotTypeDataDisk:
+        return _SlotTypeDataDisk(self, 42)
 
     @property
-    def slot43(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(self, 43)
+    def slot43(self) -> _SlotTypeDataDisk:
+        return _SlotTypeDataDisk(self, 43)
 
     @property
-    def slot44(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(self, 44)
+    def slot44(self) -> _SlotTypeDataDisk:
+        return _SlotTypeDataDisk(self, 44)
 
     @property
-    def slot45(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(self, 45)
+    def slot45(self) -> _SlotTypeDataDisk:
+        return _SlotTypeDataDisk(self, 45)
 
     @property
-    def slot46(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(self, 46)
+    def slot46(self) -> _SlotTypeDataDisk:
+        return _SlotTypeDataDisk(self, 46)
 
     @property
-    def slot47(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(self, 47)
+    def slot47(self) -> _SlotTypeDataDisk:
+        return _SlotTypeDataDisk(self, 47)
 
     @property
-    def slot48(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(self, 48)
+    def slot48(self) -> _SlotTypeDataDisk:
+        return _SlotTypeDataDisk(self, 48)
 
     @property
-    def slot49(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(self, 49)
+    def slot49(self) -> _SlotTypeDataDisk:
+        return _SlotTypeDataDisk(self, 49)
 
     @property
-    def slot5(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(self, 5)
+    def slot5(self) -> _SlotTypeDataDisk:
+        return _SlotTypeDataDisk(self, 5)
 
     @property
-    def slot50(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(self, 50)
+    def slot50(self) -> _SlotTypeDataDisk:
+        return _SlotTypeDataDisk(self, 50)
 
     @property
-    def slot51(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(self, 51)
+    def slot51(self) -> _SlotTypeDataDisk:
+        return _SlotTypeDataDisk(self, 51)
 
     @property
-    def slot52(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(self, 52)
+    def slot52(self) -> _SlotTypeDataDisk:
+        return _SlotTypeDataDisk(self, 52)
 
     @property
-    def slot53(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(self, 53)
+    def slot53(self) -> _SlotTypeDataDisk:
+        return _SlotTypeDataDisk(self, 53)
 
     @property
-    def slot54(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(self, 54)
+    def slot54(self) -> _SlotTypeDataDisk:
+        return _SlotTypeDataDisk(self, 54)
 
     @property
-    def slot55(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(self, 55)
+    def slot55(self) -> _SlotTypeDataDisk:
+        return _SlotTypeDataDisk(self, 55)
 
     @property
-    def slot56(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(self, 56)
+    def slot56(self) -> _SlotTypeDataDisk:
+        return _SlotTypeDataDisk(self, 56)
 
     @property
-    def slot57(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(self, 57)
+    def slot57(self) -> _SlotTypeDataDisk:
+        return _SlotTypeDataDisk(self, 57)
 
     @property
-    def slot58(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(self, 58)
+    def slot58(self) -> _SlotTypeDataDisk:
+        return _SlotTypeDataDisk(self, 58)
 
     @property
-    def slot59(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(self, 59)
+    def slot59(self) -> _SlotTypeDataDisk:
+        return _SlotTypeDataDisk(self, 59)
 
     @property
-    def slot6(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(self, 6)
+    def slot6(self) -> _SlotTypeDataDisk:
+        return _SlotTypeDataDisk(self, 6)
 
     @property
-    def slot60(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(self, 60)
+    def slot60(self) -> _SlotTypeDataDisk:
+        return _SlotTypeDataDisk(self, 60)
 
     @property
-    def slot61(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(self, 61)
+    def slot61(self) -> _SlotTypeDataDisk:
+        return _SlotTypeDataDisk(self, 61)
 
     @property
-    def slot62(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(self, 62)
+    def slot62(self) -> _SlotTypeDataDisk:
+        return _SlotTypeDataDisk(self, 62)
 
     @property
-    def slot63(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(self, 63)
+    def slot63(self) -> _SlotTypeDataDisk:
+        return _SlotTypeDataDisk(self, 63)
 
     @property
-    def slot64(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(self, 64)
+    def slot64(self) -> _SlotTypeDataDisk:
+        return _SlotTypeDataDisk(self, 64)
 
     @property
-    def slot65(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(self, 65)
+    def slot65(self) -> _SlotTypeDataDisk:
+        return _SlotTypeDataDisk(self, 65)
 
     @property
-    def slot66(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(self, 66)
+    def slot66(self) -> _SlotTypeDataDisk:
+        return _SlotTypeDataDisk(self, 66)
 
     @property
-    def slot67(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(self, 67)
+    def slot67(self) -> _SlotTypeDataDisk:
+        return _SlotTypeDataDisk(self, 67)
 
     @property
-    def slot68(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(self, 68)
+    def slot68(self) -> _SlotTypeDataDisk:
+        return _SlotTypeDataDisk(self, 68)
 
     @property
-    def slot69(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(self, 69)
+    def slot69(self) -> _SlotTypeDataDisk:
+        return _SlotTypeDataDisk(self, 69)
 
     @property
-    def slot7(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(self, 7)
+    def slot7(self) -> _SlotTypeDataDisk:
+        return _SlotTypeDataDisk(self, 7)
 
     @property
-    def slot70(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(self, 70)
+    def slot70(self) -> _SlotTypeDataDisk:
+        return _SlotTypeDataDisk(self, 70)
 
     @property
-    def slot71(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(self, 71)
+    def slot71(self) -> _SlotTypeDataDisk:
+        return _SlotTypeDataDisk(self, 71)
 
     @property
-    def slot72(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(self, 72)
+    def slot72(self) -> _SlotTypeDataDisk:
+        return _SlotTypeDataDisk(self, 72)
 
     @property
-    def slot73(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(self, 73)
+    def slot73(self) -> _SlotTypeDataDisk:
+        return _SlotTypeDataDisk(self, 73)
 
     @property
-    def slot74(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(self, 74)
+    def slot74(self) -> _SlotTypeDataDisk:
+        return _SlotTypeDataDisk(self, 74)
 
     @property
-    def slot75(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(self, 75)
+    def slot75(self) -> _SlotTypeDataDisk:
+        return _SlotTypeDataDisk(self, 75)
 
     @property
-    def slot76(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(self, 76)
+    def slot76(self) -> _SlotTypeDataDisk:
+        return _SlotTypeDataDisk(self, 76)
 
     @property
-    def slot77(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(self, 77)
+    def slot77(self) -> _SlotTypeDataDisk:
+        return _SlotTypeDataDisk(self, 77)
 
     @property
-    def slot78(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(self, 78)
+    def slot78(self) -> _SlotTypeDataDisk:
+        return _SlotTypeDataDisk(self, 78)
 
     @property
-    def slot79(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(self, 79)
+    def slot79(self) -> _SlotTypeDataDisk:
+        return _SlotTypeDataDisk(self, 79)
 
     @property
-    def slot8(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(self, 8)
+    def slot8(self) -> _SlotTypeDataDisk:
+        return _SlotTypeDataDisk(self, 8)
 
     @property
-    def slot80(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(self, 80)
+    def slot80(self) -> _SlotTypeDataDisk:
+        return _SlotTypeDataDisk(self, 80)
 
     @property
-    def slot81(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(self, 81)
+    def slot81(self) -> _SlotTypeDataDisk:
+        return _SlotTypeDataDisk(self, 81)
 
     @property
-    def slot82(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(self, 82)
+    def slot82(self) -> _SlotTypeDataDisk:
+        return _SlotTypeDataDisk(self, 82)
 
     @property
-    def slot83(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(self, 83)
+    def slot83(self) -> _SlotTypeDataDisk:
+        return _SlotTypeDataDisk(self, 83)
 
     @property
-    def slot84(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(self, 84)
+    def slot84(self) -> _SlotTypeDataDisk:
+        return _SlotTypeDataDisk(self, 84)
 
     @property
-    def slot85(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(self, 85)
+    def slot85(self) -> _SlotTypeDataDisk:
+        return _SlotTypeDataDisk(self, 85)
 
     @property
-    def slot86(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(self, 86)
+    def slot86(self) -> _SlotTypeDataDisk:
+        return _SlotTypeDataDisk(self, 86)
 
     @property
-    def slot87(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(self, 87)
+    def slot87(self) -> _SlotTypeDataDisk:
+        return _SlotTypeDataDisk(self, 87)
 
     @property
-    def slot88(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(self, 88)
+    def slot88(self) -> _SlotTypeDataDisk:
+        return _SlotTypeDataDisk(self, 88)
 
     @property
-    def slot89(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(self, 89)
+    def slot89(self) -> _SlotTypeDataDisk:
+        return _SlotTypeDataDisk(self, 89)
 
     @property
-    def slot9(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(self, 9)
+    def slot9(self) -> _SlotTypeDataDisk:
+        return _SlotTypeDataDisk(self, 9)
 
     @property
-    def slot90(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(self, 90)
+    def slot90(self) -> _SlotTypeDataDisk:
+        return _SlotTypeDataDisk(self, 90)
 
     @property
-    def slot91(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(self, 91)
+    def slot91(self) -> _SlotTypeDataDisk:
+        return _SlotTypeDataDisk(self, 91)
 
     @property
-    def slot92(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(self, 92)
+    def slot92(self) -> _SlotTypeDataDisk:
+        return _SlotTypeDataDisk(self, 92)
 
     @property
-    def slot93(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(self, 93)
+    def slot93(self) -> _SlotTypeDataDisk:
+        return _SlotTypeDataDisk(self, 93)
 
     @property
-    def slot94(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(self, 94)
+    def slot94(self) -> _SlotTypeDataDisk:
+        return _SlotTypeDataDisk(self, 94)
 
     @property
-    def slot95(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(self, 95)
+    def slot95(self) -> _SlotTypeDataDisk:
+        return _SlotTypeDataDisk(self, 95)
 
     @property
-    def slot96(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(self, 96)
+    def slot96(self) -> _SlotTypeDataDisk:
+        return _SlotTypeDataDisk(self, 96)
 
     @property
-    def slot97(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(self, 97)
+    def slot97(self) -> _SlotTypeDataDisk:
+        return _SlotTypeDataDisk(self, 97)
 
     @property
-    def slot98(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(self, 98)
+    def slot98(self) -> _SlotTypeDataDisk:
+        return _SlotTypeDataDisk(self, 98)
 
     @property
-    def slot99(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(self, 99)
+    def slot99(self) -> _SlotTypeDataDisk:
+        return _SlotTypeDataDisk(self, 99)
 
 
 class _RefrigeratedVendingMachines(
@@ -18064,425 +21712,481 @@ class _RefrigeratedVendingMachines(
         pass
 
     @property
-    def slot0(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(self, 0)
+    def slot0(self) -> _SlotTypeDataDisks:
+        return _SlotTypeDataDisks(self, 0)
 
     @property
-    def Import(self) -> _SlotTypeCommons:
+    def Import(self) -> _SlotTypeDataDisks:
         return self.slot0
 
     @property
-    def slot1(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(self, 1)
+    def slot1(self) -> _SlotTypeDataDisks:
+        return _SlotTypeDataDisks(self, 1)
 
     @property
-    def Export(self) -> _SlotTypeCommons:
+    def Export(self) -> _SlotTypeDataDisks:
         return self.slot1
 
     @property
-    def slot10(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(self, 10)
+    def slot10(self) -> _SlotTypeDataDisks:
+        return _SlotTypeDataDisks(self, 10)
 
     @property
-    def slot100(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(self, 100)
+    def slot100(self) -> _SlotTypeDataDisks:
+        return _SlotTypeDataDisks(self, 100)
 
     @property
-    def slot101(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(self, 101)
+    def slot101(self) -> _SlotTypeDataDisks:
+        return _SlotTypeDataDisks(self, 101)
 
     @property
-    def slot11(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(self, 11)
+    def slot11(self) -> _SlotTypeDataDisks:
+        return _SlotTypeDataDisks(self, 11)
 
     @property
-    def slot12(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(self, 12)
+    def slot12(self) -> _SlotTypeDataDisks:
+        return _SlotTypeDataDisks(self, 12)
 
     @property
-    def slot13(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(self, 13)
+    def slot13(self) -> _SlotTypeDataDisks:
+        return _SlotTypeDataDisks(self, 13)
 
     @property
-    def slot14(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(self, 14)
+    def slot14(self) -> _SlotTypeDataDisks:
+        return _SlotTypeDataDisks(self, 14)
 
     @property
-    def slot15(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(self, 15)
+    def slot15(self) -> _SlotTypeDataDisks:
+        return _SlotTypeDataDisks(self, 15)
 
     @property
-    def slot16(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(self, 16)
+    def slot16(self) -> _SlotTypeDataDisks:
+        return _SlotTypeDataDisks(self, 16)
 
     @property
-    def slot17(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(self, 17)
+    def slot17(self) -> _SlotTypeDataDisks:
+        return _SlotTypeDataDisks(self, 17)
 
     @property
-    def slot18(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(self, 18)
+    def slot18(self) -> _SlotTypeDataDisks:
+        return _SlotTypeDataDisks(self, 18)
 
     @property
-    def slot19(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(self, 19)
+    def slot19(self) -> _SlotTypeDataDisks:
+        return _SlotTypeDataDisks(self, 19)
 
     @property
-    def slot2(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(self, 2)
+    def slot2(self) -> _SlotTypeDataDisks:
+        return _SlotTypeDataDisks(self, 2)
 
     @property
-    def slot20(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(self, 20)
+    def slot20(self) -> _SlotTypeDataDisks:
+        return _SlotTypeDataDisks(self, 20)
 
     @property
-    def slot21(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(self, 21)
+    def slot21(self) -> _SlotTypeDataDisks:
+        return _SlotTypeDataDisks(self, 21)
 
     @property
-    def slot22(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(self, 22)
+    def slot22(self) -> _SlotTypeDataDisks:
+        return _SlotTypeDataDisks(self, 22)
 
     @property
-    def slot23(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(self, 23)
+    def slot23(self) -> _SlotTypeDataDisks:
+        return _SlotTypeDataDisks(self, 23)
 
     @property
-    def slot24(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(self, 24)
+    def slot24(self) -> _SlotTypeDataDisks:
+        return _SlotTypeDataDisks(self, 24)
 
     @property
-    def slot25(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(self, 25)
+    def slot25(self) -> _SlotTypeDataDisks:
+        return _SlotTypeDataDisks(self, 25)
 
     @property
-    def slot26(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(self, 26)
+    def slot26(self) -> _SlotTypeDataDisks:
+        return _SlotTypeDataDisks(self, 26)
 
     @property
-    def slot27(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(self, 27)
+    def slot27(self) -> _SlotTypeDataDisks:
+        return _SlotTypeDataDisks(self, 27)
 
     @property
-    def slot28(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(self, 28)
+    def slot28(self) -> _SlotTypeDataDisks:
+        return _SlotTypeDataDisks(self, 28)
 
     @property
-    def slot29(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(self, 29)
+    def slot29(self) -> _SlotTypeDataDisks:
+        return _SlotTypeDataDisks(self, 29)
 
     @property
-    def slot3(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(self, 3)
+    def slot3(self) -> _SlotTypeDataDisks:
+        return _SlotTypeDataDisks(self, 3)
 
     @property
-    def slot30(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(self, 30)
+    def slot30(self) -> _SlotTypeDataDisks:
+        return _SlotTypeDataDisks(self, 30)
 
     @property
-    def slot31(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(self, 31)
+    def slot31(self) -> _SlotTypeDataDisks:
+        return _SlotTypeDataDisks(self, 31)
 
     @property
-    def slot32(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(self, 32)
+    def slot32(self) -> _SlotTypeDataDisks:
+        return _SlotTypeDataDisks(self, 32)
 
     @property
-    def slot33(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(self, 33)
+    def slot33(self) -> _SlotTypeDataDisks:
+        return _SlotTypeDataDisks(self, 33)
 
     @property
-    def slot34(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(self, 34)
+    def slot34(self) -> _SlotTypeDataDisks:
+        return _SlotTypeDataDisks(self, 34)
 
     @property
-    def slot35(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(self, 35)
+    def slot35(self) -> _SlotTypeDataDisks:
+        return _SlotTypeDataDisks(self, 35)
 
     @property
-    def slot36(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(self, 36)
+    def slot36(self) -> _SlotTypeDataDisks:
+        return _SlotTypeDataDisks(self, 36)
 
     @property
-    def slot37(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(self, 37)
+    def slot37(self) -> _SlotTypeDataDisks:
+        return _SlotTypeDataDisks(self, 37)
 
     @property
-    def slot38(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(self, 38)
+    def slot38(self) -> _SlotTypeDataDisks:
+        return _SlotTypeDataDisks(self, 38)
 
     @property
-    def slot39(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(self, 39)
+    def slot39(self) -> _SlotTypeDataDisks:
+        return _SlotTypeDataDisks(self, 39)
 
     @property
-    def slot4(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(self, 4)
+    def slot4(self) -> _SlotTypeDataDisks:
+        return _SlotTypeDataDisks(self, 4)
 
     @property
-    def slot40(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(self, 40)
+    def slot40(self) -> _SlotTypeDataDisks:
+        return _SlotTypeDataDisks(self, 40)
 
     @property
-    def slot41(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(self, 41)
+    def slot41(self) -> _SlotTypeDataDisks:
+        return _SlotTypeDataDisks(self, 41)
 
     @property
-    def slot42(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(self, 42)
+    def slot42(self) -> _SlotTypeDataDisks:
+        return _SlotTypeDataDisks(self, 42)
 
     @property
-    def slot43(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(self, 43)
+    def slot43(self) -> _SlotTypeDataDisks:
+        return _SlotTypeDataDisks(self, 43)
 
     @property
-    def slot44(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(self, 44)
+    def slot44(self) -> _SlotTypeDataDisks:
+        return _SlotTypeDataDisks(self, 44)
 
     @property
-    def slot45(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(self, 45)
+    def slot45(self) -> _SlotTypeDataDisks:
+        return _SlotTypeDataDisks(self, 45)
 
     @property
-    def slot46(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(self, 46)
+    def slot46(self) -> _SlotTypeDataDisks:
+        return _SlotTypeDataDisks(self, 46)
 
     @property
-    def slot47(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(self, 47)
+    def slot47(self) -> _SlotTypeDataDisks:
+        return _SlotTypeDataDisks(self, 47)
 
     @property
-    def slot48(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(self, 48)
+    def slot48(self) -> _SlotTypeDataDisks:
+        return _SlotTypeDataDisks(self, 48)
 
     @property
-    def slot49(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(self, 49)
+    def slot49(self) -> _SlotTypeDataDisks:
+        return _SlotTypeDataDisks(self, 49)
 
     @property
-    def slot5(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(self, 5)
+    def slot5(self) -> _SlotTypeDataDisks:
+        return _SlotTypeDataDisks(self, 5)
 
     @property
-    def slot50(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(self, 50)
+    def slot50(self) -> _SlotTypeDataDisks:
+        return _SlotTypeDataDisks(self, 50)
 
     @property
-    def slot51(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(self, 51)
+    def slot51(self) -> _SlotTypeDataDisks:
+        return _SlotTypeDataDisks(self, 51)
 
     @property
-    def slot52(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(self, 52)
+    def slot52(self) -> _SlotTypeDataDisks:
+        return _SlotTypeDataDisks(self, 52)
 
     @property
-    def slot53(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(self, 53)
+    def slot53(self) -> _SlotTypeDataDisks:
+        return _SlotTypeDataDisks(self, 53)
 
     @property
-    def slot54(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(self, 54)
+    def slot54(self) -> _SlotTypeDataDisks:
+        return _SlotTypeDataDisks(self, 54)
 
     @property
-    def slot55(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(self, 55)
+    def slot55(self) -> _SlotTypeDataDisks:
+        return _SlotTypeDataDisks(self, 55)
 
     @property
-    def slot56(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(self, 56)
+    def slot56(self) -> _SlotTypeDataDisks:
+        return _SlotTypeDataDisks(self, 56)
 
     @property
-    def slot57(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(self, 57)
+    def slot57(self) -> _SlotTypeDataDisks:
+        return _SlotTypeDataDisks(self, 57)
 
     @property
-    def slot58(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(self, 58)
+    def slot58(self) -> _SlotTypeDataDisks:
+        return _SlotTypeDataDisks(self, 58)
 
     @property
-    def slot59(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(self, 59)
+    def slot59(self) -> _SlotTypeDataDisks:
+        return _SlotTypeDataDisks(self, 59)
 
     @property
-    def slot6(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(self, 6)
+    def slot6(self) -> _SlotTypeDataDisks:
+        return _SlotTypeDataDisks(self, 6)
 
     @property
-    def slot60(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(self, 60)
+    def slot60(self) -> _SlotTypeDataDisks:
+        return _SlotTypeDataDisks(self, 60)
 
     @property
-    def slot61(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(self, 61)
+    def slot61(self) -> _SlotTypeDataDisks:
+        return _SlotTypeDataDisks(self, 61)
 
     @property
-    def slot62(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(self, 62)
+    def slot62(self) -> _SlotTypeDataDisks:
+        return _SlotTypeDataDisks(self, 62)
 
     @property
-    def slot63(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(self, 63)
+    def slot63(self) -> _SlotTypeDataDisks:
+        return _SlotTypeDataDisks(self, 63)
 
     @property
-    def slot64(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(self, 64)
+    def slot64(self) -> _SlotTypeDataDisks:
+        return _SlotTypeDataDisks(self, 64)
 
     @property
-    def slot65(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(self, 65)
+    def slot65(self) -> _SlotTypeDataDisks:
+        return _SlotTypeDataDisks(self, 65)
 
     @property
-    def slot66(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(self, 66)
+    def slot66(self) -> _SlotTypeDataDisks:
+        return _SlotTypeDataDisks(self, 66)
 
     @property
-    def slot67(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(self, 67)
+    def slot67(self) -> _SlotTypeDataDisks:
+        return _SlotTypeDataDisks(self, 67)
 
     @property
-    def slot68(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(self, 68)
+    def slot68(self) -> _SlotTypeDataDisks:
+        return _SlotTypeDataDisks(self, 68)
 
     @property
-    def slot69(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(self, 69)
+    def slot69(self) -> _SlotTypeDataDisks:
+        return _SlotTypeDataDisks(self, 69)
 
     @property
-    def slot7(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(self, 7)
+    def slot7(self) -> _SlotTypeDataDisks:
+        return _SlotTypeDataDisks(self, 7)
 
     @property
-    def slot70(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(self, 70)
+    def slot70(self) -> _SlotTypeDataDisks:
+        return _SlotTypeDataDisks(self, 70)
 
     @property
-    def slot71(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(self, 71)
+    def slot71(self) -> _SlotTypeDataDisks:
+        return _SlotTypeDataDisks(self, 71)
 
     @property
-    def slot72(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(self, 72)
+    def slot72(self) -> _SlotTypeDataDisks:
+        return _SlotTypeDataDisks(self, 72)
 
     @property
-    def slot73(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(self, 73)
+    def slot73(self) -> _SlotTypeDataDisks:
+        return _SlotTypeDataDisks(self, 73)
 
     @property
-    def slot74(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(self, 74)
+    def slot74(self) -> _SlotTypeDataDisks:
+        return _SlotTypeDataDisks(self, 74)
 
     @property
-    def slot75(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(self, 75)
+    def slot75(self) -> _SlotTypeDataDisks:
+        return _SlotTypeDataDisks(self, 75)
 
     @property
-    def slot76(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(self, 76)
+    def slot76(self) -> _SlotTypeDataDisks:
+        return _SlotTypeDataDisks(self, 76)
 
     @property
-    def slot77(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(self, 77)
+    def slot77(self) -> _SlotTypeDataDisks:
+        return _SlotTypeDataDisks(self, 77)
 
     @property
-    def slot78(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(self, 78)
+    def slot78(self) -> _SlotTypeDataDisks:
+        return _SlotTypeDataDisks(self, 78)
 
     @property
-    def slot79(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(self, 79)
+    def slot79(self) -> _SlotTypeDataDisks:
+        return _SlotTypeDataDisks(self, 79)
 
     @property
-    def slot8(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(self, 8)
+    def slot8(self) -> _SlotTypeDataDisks:
+        return _SlotTypeDataDisks(self, 8)
 
     @property
-    def slot80(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(self, 80)
+    def slot80(self) -> _SlotTypeDataDisks:
+        return _SlotTypeDataDisks(self, 80)
 
     @property
-    def slot81(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(self, 81)
+    def slot81(self) -> _SlotTypeDataDisks:
+        return _SlotTypeDataDisks(self, 81)
 
     @property
-    def slot82(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(self, 82)
+    def slot82(self) -> _SlotTypeDataDisks:
+        return _SlotTypeDataDisks(self, 82)
 
     @property
-    def slot83(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(self, 83)
+    def slot83(self) -> _SlotTypeDataDisks:
+        return _SlotTypeDataDisks(self, 83)
 
     @property
-    def slot84(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(self, 84)
+    def slot84(self) -> _SlotTypeDataDisks:
+        return _SlotTypeDataDisks(self, 84)
 
     @property
-    def slot85(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(self, 85)
+    def slot85(self) -> _SlotTypeDataDisks:
+        return _SlotTypeDataDisks(self, 85)
 
     @property
-    def slot86(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(self, 86)
+    def slot86(self) -> _SlotTypeDataDisks:
+        return _SlotTypeDataDisks(self, 86)
 
     @property
-    def slot87(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(self, 87)
+    def slot87(self) -> _SlotTypeDataDisks:
+        return _SlotTypeDataDisks(self, 87)
 
     @property
-    def slot88(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(self, 88)
+    def slot88(self) -> _SlotTypeDataDisks:
+        return _SlotTypeDataDisks(self, 88)
 
     @property
-    def slot89(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(self, 89)
+    def slot89(self) -> _SlotTypeDataDisks:
+        return _SlotTypeDataDisks(self, 89)
 
     @property
-    def slot9(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(self, 9)
+    def slot9(self) -> _SlotTypeDataDisks:
+        return _SlotTypeDataDisks(self, 9)
 
     @property
-    def slot90(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(self, 90)
+    def slot90(self) -> _SlotTypeDataDisks:
+        return _SlotTypeDataDisks(self, 90)
 
     @property
-    def slot91(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(self, 91)
+    def slot91(self) -> _SlotTypeDataDisks:
+        return _SlotTypeDataDisks(self, 91)
 
     @property
-    def slot92(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(self, 92)
+    def slot92(self) -> _SlotTypeDataDisks:
+        return _SlotTypeDataDisks(self, 92)
 
     @property
-    def slot93(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(self, 93)
+    def slot93(self) -> _SlotTypeDataDisks:
+        return _SlotTypeDataDisks(self, 93)
 
     @property
-    def slot94(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(self, 94)
+    def slot94(self) -> _SlotTypeDataDisks:
+        return _SlotTypeDataDisks(self, 94)
 
     @property
-    def slot95(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(self, 95)
+    def slot95(self) -> _SlotTypeDataDisks:
+        return _SlotTypeDataDisks(self, 95)
 
     @property
-    def slot96(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(self, 96)
+    def slot96(self) -> _SlotTypeDataDisks:
+        return _SlotTypeDataDisks(self, 96)
 
     @property
-    def slot97(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(self, 97)
+    def slot97(self) -> _SlotTypeDataDisks:
+        return _SlotTypeDataDisks(self, 97)
 
     @property
-    def slot98(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(self, 98)
+    def slot98(self) -> _SlotTypeDataDisks:
+        return _SlotTypeDataDisks(self, 98)
 
     @property
-    def slot99(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(self, 99)
+    def slot99(self) -> _SlotTypeDataDisks:
+        return _SlotTypeDataDisks(self, 99)
 
 
 RefrigeratedVendingMachines: _RefrigeratedVendingMachines = (
     _RefrigeratedVendingMachines()
 )
+
+
+class RemoteDetonator(_BaseStructure, _Activate, _Error, _Lock, _Mode, _On):
+    _hash: int = 678483886
+    _prefab_name: int = "ItemRemoteDetonator"
+
+    @property
+    def Power(self) -> float:
+        return _DeviceLogicType(self, _LT.Power)
+
+    @property
+    def slot0(self) -> _SlotTypeBattery:
+        return _SlotTypeBattery(self, 0)
+
+    @property
+    def Battery(self) -> _SlotTypeBattery:
+        return self.slot0
+
+
+class _RemoteDetonators(_BaseStructures, _Activates, _Errors, _Locks, _Modes, _Ons):
+    _hash: int = 678483886
+    _prefab_name: int = "ItemRemoteDetonator"
+
+    def __getitem__(self, name: str | int | float) -> "_RemoteDetonators":
+        return _RemoteDetonators(name)
+
+    @property
+    def Average(self) -> RemoteDetonator:
+        return RemoteDetonator(name=self._name, batch_mode=LogicBatchMethod.Average)
+
+    @property
+    def Minimum(self) -> RemoteDetonator:
+        return RemoteDetonator(name=self._name, batch_mode=LogicBatchMethod.Minimum)
+
+    @property
+    def Maximum(self) -> RemoteDetonator:
+        return RemoteDetonator(name=self._name, batch_mode=LogicBatchMethod.Maximum)
+
+    @property
+    def Sum(self) -> RemoteDetonator:
+        return RemoteDetonator(name=self._name, batch_mode=LogicBatchMethod.Sum)
+
+    @property
+    def Power(self) -> _DevicesLogicType:
+        return _DevicesLogicType(self, _LT.Power)
+
+    @property
+    def slot0(self) -> _SlotTypeBatteries:
+        return _SlotTypeBatteries(self, 0)
+
+    @property
+    def Battery(self) -> _SlotTypeBatteries:
+        return self.slot0
+
+
+RemoteDetonators: _RemoteDetonators = _RemoteDetonators()
 
 
 class RocketAvionics(
@@ -19332,19 +23036,19 @@ class RocketManufactory(
         return _DeviceLogicType(self, _LT.StackSize)
 
     @property
-    def slot0(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(self, 0)
+    def slot0(self) -> _SlotTypeDataDisk:
+        return _SlotTypeDataDisk(self, 0)
 
     @property
-    def Import(self) -> _SlotTypeCommon:
+    def Import(self) -> _SlotTypeDataDisk:
         return self.slot0
 
     @property
-    def slot1(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(self, 1)
+    def slot1(self) -> _SlotTypeDataDisk:
+        return _SlotTypeDataDisk(self, 1)
 
     @property
-    def Export(self) -> _SlotTypeCommon:
+    def Export(self) -> _SlotTypeDataDisk:
         return self.slot1
 
 
@@ -19392,19 +23096,19 @@ class _RocketManufactories(
         return _DevicesLogicType(self, _LT.StackSize)
 
     @property
-    def slot0(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(self, 0)
+    def slot0(self) -> _SlotTypeDataDisks:
+        return _SlotTypeDataDisks(self, 0)
 
     @property
-    def Import(self) -> _SlotTypeCommons:
+    def Import(self) -> _SlotTypeDataDisks:
         return self.slot0
 
     @property
-    def slot1(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(self, 1)
+    def slot1(self) -> _SlotTypeDataDisks:
+        return _SlotTypeDataDisks(self, 1)
 
     @property
-    def Export(self) -> _SlotTypeCommons:
+    def Export(self) -> _SlotTypeDataDisks:
         return self.slot1
 
 
@@ -19429,19 +23133,19 @@ class RocketMiner(
         return _DeviceLogicType(self, _LT.DrillCondition)
 
     @property
-    def slot0(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(self, 0)
+    def slot0(self) -> _SlotTypeDataDisk:
+        return _SlotTypeDataDisk(self, 0)
 
     @property
-    def Export(self) -> _SlotTypeCommon:
+    def Export(self) -> _SlotTypeDataDisk:
         return self.slot0
 
     @property
-    def slot1(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(self, 1)
+    def slot1(self) -> _SlotTypeDataDisk:
+        return _SlotTypeDataDisk(self, 1)
 
     @property
-    def DrillHeadSlot(self) -> _SlotTypeCommon:
+    def DrillHeadSlot(self) -> _SlotTypeDataDisk:
         return self.slot1
 
 
@@ -19482,19 +23186,19 @@ class _RocketMiners(
         return _DevicesLogicType(self, _LT.DrillCondition)
 
     @property
-    def slot0(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(self, 0)
+    def slot0(self) -> _SlotTypeDataDisks:
+        return _SlotTypeDataDisks(self, 0)
 
     @property
-    def Export(self) -> _SlotTypeCommons:
+    def Export(self) -> _SlotTypeDataDisks:
         return self.slot0
 
     @property
-    def slot1(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(self, 1)
+    def slot1(self) -> _SlotTypeDataDisks:
+        return _SlotTypeDataDisks(self, 1)
 
     @property
-    def DrillHeadSlot(self) -> _SlotTypeCommons:
+    def DrillHeadSlot(self) -> _SlotTypeDataDisks:
         return self.slot1
 
 
@@ -19506,11 +23210,11 @@ class RocketScanner(_BaseStructure, _Error, _Lock, _Power):
     _prefab_name: int = "StructureRocketScanner"
 
     @property
-    def slot0(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(self, 0)
+    def slot0(self) -> _SlotTypeDataDisk:
+        return _SlotTypeDataDisk(self, 0)
 
     @property
-    def ScannerHeadSlot(self) -> _SlotTypeCommon:
+    def ScannerHeadSlot(self) -> _SlotTypeDataDisk:
         return self.slot0
 
 
@@ -19538,11 +23242,11 @@ class _RocketScanners(_BaseStructures, _Errors, _Locks, _Powers):
         return RocketScanner(name=self._name, batch_mode=LogicBatchMethod.Sum)
 
     @property
-    def slot0(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(self, 0)
+    def slot0(self) -> _SlotTypeDataDisks:
+        return _SlotTypeDataDisks(self, 0)
 
     @property
-    def ScannerHeadSlot(self) -> _SlotTypeCommons:
+    def ScannerHeadSlot(self) -> _SlotTypeDataDisks:
         return self.slot0
 
 
@@ -19554,11 +23258,11 @@ class SDBHopper(_BaseStructure, _ClearMemory, _ImportCount, _Open):
     _prefab_name: int = "StructureSDBHopper"
 
     @property
-    def slot0(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(self, 0)
+    def slot0(self) -> _SlotTypeDataDisk:
+        return _SlotTypeDataDisk(self, 0)
 
     @property
-    def Import(self) -> _SlotTypeCommon:
+    def Import(self) -> _SlotTypeDataDisk:
         return self.slot0
 
 
@@ -19586,11 +23290,11 @@ class _SDBHoppers(_BaseStructures, _ClearMemories, _ImportCounts, _Opens):
         return SDBHopper(name=self._name, batch_mode=LogicBatchMethod.Sum)
 
     @property
-    def slot0(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(self, 0)
+    def slot0(self) -> _SlotTypeDataDisks:
+        return _SlotTypeDataDisks(self, 0)
 
     @property
-    def Import(self) -> _SlotTypeCommons:
+    def Import(self) -> _SlotTypeDataDisks:
         return self.slot0
 
 
@@ -19602,11 +23306,11 @@ class SDBHopperAdvanced(_BaseStructure, _ClearMemory, _ImportCount, _Lock, _Open
     _prefab_name: int = "StructureSDBHopperAdvanced"
 
     @property
-    def slot0(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(self, 0)
+    def slot0(self) -> _SlotTypeDataDisk:
+        return _SlotTypeDataDisk(self, 0)
 
     @property
-    def Import(self) -> _SlotTypeCommon:
+    def Import(self) -> _SlotTypeDataDisk:
         return self.slot0
 
 
@@ -19636,11 +23340,11 @@ class _SDBHopperAdvanceds(
         return SDBHopperAdvanced(name=self._name, batch_mode=LogicBatchMethod.Sum)
 
     @property
-    def slot0(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(self, 0)
+    def slot0(self) -> _SlotTypeDataDisks:
+        return _SlotTypeDataDisks(self, 0)
 
     @property
-    def Import(self) -> _SlotTypeCommons:
+    def Import(self) -> _SlotTypeDataDisks:
         return self.slot0
 
 
@@ -19664,19 +23368,19 @@ class SDBSilo(
     _prefab_name: int = "StructureSDBSilo"
 
     @property
-    def slot0(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(self, 0)
+    def slot0(self) -> _SlotTypeDataDisk:
+        return _SlotTypeDataDisk(self, 0)
 
     @property
-    def Import(self) -> _SlotTypeCommon:
+    def Import(self) -> _SlotTypeDataDisk:
         return self.slot0
 
     @property
-    def slot1(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(self, 1)
+    def slot1(self) -> _SlotTypeDataDisk:
+        return _SlotTypeDataDisk(self, 1)
 
     @property
-    def Export(self) -> _SlotTypeCommon:
+    def Export(self) -> _SlotTypeDataDisk:
         return self.slot1
 
 
@@ -19716,19 +23420,19 @@ class _SDBSilos(
         return SDBSilo(name=self._name, batch_mode=LogicBatchMethod.Sum)
 
     @property
-    def slot0(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(self, 0)
+    def slot0(self) -> _SlotTypeDataDisks:
+        return _SlotTypeDataDisks(self, 0)
 
     @property
-    def Import(self) -> _SlotTypeCommons:
+    def Import(self) -> _SlotTypeDataDisks:
         return self.slot0
 
     @property
-    def slot1(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(self, 1)
+    def slot1(self) -> _SlotTypeDataDisks:
+        return _SlotTypeDataDisks(self, 1)
 
     @property
-    def Export(self) -> _SlotTypeCommons:
+    def Export(self) -> _SlotTypeDataDisks:
         return self.slot1
 
 
@@ -19760,19 +23464,19 @@ class SecurityPrinter(
         return _DeviceLogicType(self, _LT.StackSize)
 
     @property
-    def slot0(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(self, 0)
+    def slot0(self) -> _SlotTypeDataDisk:
+        return _SlotTypeDataDisk(self, 0)
 
     @property
-    def Import(self) -> _SlotTypeCommon:
+    def Import(self) -> _SlotTypeDataDisk:
         return self.slot0
 
     @property
-    def slot1(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(self, 1)
+    def slot1(self) -> _SlotTypeDataDisk:
+        return _SlotTypeDataDisk(self, 1)
 
     @property
-    def Export(self) -> _SlotTypeCommon:
+    def Export(self) -> _SlotTypeDataDisk:
         return self.slot1
 
 
@@ -19820,11 +23524,83 @@ class _SecurityPrinters(
         return _DevicesLogicType(self, _LT.StackSize)
 
     @property
-    def slot0(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(self, 0)
+    def slot0(self) -> _SlotTypeDataDisks:
+        return _SlotTypeDataDisks(self, 0)
 
     @property
-    def Import(self) -> _SlotTypeCommons:
+    def Import(self) -> _SlotTypeDataDisks:
+        return self.slot0
+
+    @property
+    def slot1(self) -> _SlotTypeDataDisks:
+        return _SlotTypeDataDisks(self, 1)
+
+    @property
+    def Export(self) -> _SlotTypeDataDisks:
+        return self.slot1
+
+
+SecurityPrinters: _SecurityPrinters = _SecurityPrinters()
+
+
+class SensorLenses(_BaseStructure, _On):
+    _hash: int = -1176140051
+    _prefab_name: int = "ItemSensorLenses"
+
+    @property
+    def Power(self) -> float:
+        return _DeviceLogicType(self, _LT.Power)
+
+    @property
+    def slot0(self) -> _SlotTypeBattery:
+        return _SlotTypeBattery(self, 0)
+
+    @property
+    def Battery(self) -> _SlotTypeBattery:
+        return self.slot0
+
+    @property
+    def slot1(self) -> _SlotTypeCommon:
+        return _SlotTypeCommon(self, 1)
+
+    @property
+    def SensorProcessingUnit(self) -> _SlotTypeCommon:
+        return self.slot1
+
+
+class _SensorLensess(_BaseStructures, _Ons):
+    _hash: int = -1176140051
+    _prefab_name: int = "ItemSensorLenses"
+
+    def __getitem__(self, name: str | int | float) -> "_SensorLensess":
+        return _SensorLensess(name)
+
+    @property
+    def Average(self) -> SensorLenses:
+        return SensorLenses(name=self._name, batch_mode=LogicBatchMethod.Average)
+
+    @property
+    def Minimum(self) -> SensorLenses:
+        return SensorLenses(name=self._name, batch_mode=LogicBatchMethod.Minimum)
+
+    @property
+    def Maximum(self) -> SensorLenses:
+        return SensorLenses(name=self._name, batch_mode=LogicBatchMethod.Maximum)
+
+    @property
+    def Sum(self) -> SensorLenses:
+        return SensorLenses(name=self._name, batch_mode=LogicBatchMethod.Sum)
+
+    @property
+    def Power(self) -> _DevicesLogicType:
+        return _DevicesLogicType(self, _LT.Power)
+
+    @property
+    def slot0(self) -> _SlotTypeBatteries:
+        return _SlotTypeBatteries(self, 0)
+
+    @property
+    def Battery(self) -> _SlotTypeBatteries:
         return self.slot0
 
     @property
@@ -19832,11 +23608,11 @@ class _SecurityPrinters(
         return _SlotTypeCommons(self, 1)
 
     @property
-    def Export(self) -> _SlotTypeCommons:
+    def SensorProcessingUnit(self) -> _SlotTypeCommons:
         return self.slot1
 
 
-SecurityPrinters: _SecurityPrinters = _SecurityPrinters()
+SensorLensess: _SensorLensess = _SensorLensess()
 
 
 class ShelfMedium(_BaseStructure, _Open):
@@ -19844,64 +23620,64 @@ class ShelfMedium(_BaseStructure, _Open):
     _prefab_name: int = "StructureShelfMedium"
 
     @property
-    def slot0(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(self, 0)
+    def slot0(self) -> _SlotTypeDataDisk:
+        return _SlotTypeDataDisk(self, 0)
 
     @property
-    def slot1(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(self, 1)
+    def slot1(self) -> _SlotTypeDataDisk:
+        return _SlotTypeDataDisk(self, 1)
 
     @property
-    def slot10(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(self, 10)
+    def slot10(self) -> _SlotTypeDataDisk:
+        return _SlotTypeDataDisk(self, 10)
 
     @property
-    def slot11(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(self, 11)
+    def slot11(self) -> _SlotTypeDataDisk:
+        return _SlotTypeDataDisk(self, 11)
 
     @property
-    def slot12(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(self, 12)
+    def slot12(self) -> _SlotTypeDataDisk:
+        return _SlotTypeDataDisk(self, 12)
 
     @property
-    def slot13(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(self, 13)
+    def slot13(self) -> _SlotTypeDataDisk:
+        return _SlotTypeDataDisk(self, 13)
 
     @property
-    def slot14(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(self, 14)
+    def slot14(self) -> _SlotTypeDataDisk:
+        return _SlotTypeDataDisk(self, 14)
 
     @property
-    def slot2(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(self, 2)
+    def slot2(self) -> _SlotTypeDataDisk:
+        return _SlotTypeDataDisk(self, 2)
 
     @property
-    def slot3(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(self, 3)
+    def slot3(self) -> _SlotTypeDataDisk:
+        return _SlotTypeDataDisk(self, 3)
 
     @property
-    def slot4(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(self, 4)
+    def slot4(self) -> _SlotTypeDataDisk:
+        return _SlotTypeDataDisk(self, 4)
 
     @property
-    def slot5(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(self, 5)
+    def slot5(self) -> _SlotTypeDataDisk:
+        return _SlotTypeDataDisk(self, 5)
 
     @property
-    def slot6(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(self, 6)
+    def slot6(self) -> _SlotTypeDataDisk:
+        return _SlotTypeDataDisk(self, 6)
 
     @property
-    def slot7(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(self, 7)
+    def slot7(self) -> _SlotTypeDataDisk:
+        return _SlotTypeDataDisk(self, 7)
 
     @property
-    def slot8(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(self, 8)
+    def slot8(self) -> _SlotTypeDataDisk:
+        return _SlotTypeDataDisk(self, 8)
 
     @property
-    def slot9(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(self, 9)
+    def slot9(self) -> _SlotTypeDataDisk:
+        return _SlotTypeDataDisk(self, 9)
 
 
 class _ShelfMediums(_BaseStructures, _Opens):
@@ -19928,64 +23704,64 @@ class _ShelfMediums(_BaseStructures, _Opens):
         return ShelfMedium(name=self._name, batch_mode=LogicBatchMethod.Sum)
 
     @property
-    def slot0(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(self, 0)
+    def slot0(self) -> _SlotTypeDataDisks:
+        return _SlotTypeDataDisks(self, 0)
 
     @property
-    def slot1(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(self, 1)
+    def slot1(self) -> _SlotTypeDataDisks:
+        return _SlotTypeDataDisks(self, 1)
 
     @property
-    def slot10(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(self, 10)
+    def slot10(self) -> _SlotTypeDataDisks:
+        return _SlotTypeDataDisks(self, 10)
 
     @property
-    def slot11(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(self, 11)
+    def slot11(self) -> _SlotTypeDataDisks:
+        return _SlotTypeDataDisks(self, 11)
 
     @property
-    def slot12(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(self, 12)
+    def slot12(self) -> _SlotTypeDataDisks:
+        return _SlotTypeDataDisks(self, 12)
 
     @property
-    def slot13(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(self, 13)
+    def slot13(self) -> _SlotTypeDataDisks:
+        return _SlotTypeDataDisks(self, 13)
 
     @property
-    def slot14(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(self, 14)
+    def slot14(self) -> _SlotTypeDataDisks:
+        return _SlotTypeDataDisks(self, 14)
 
     @property
-    def slot2(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(self, 2)
+    def slot2(self) -> _SlotTypeDataDisks:
+        return _SlotTypeDataDisks(self, 2)
 
     @property
-    def slot3(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(self, 3)
+    def slot3(self) -> _SlotTypeDataDisks:
+        return _SlotTypeDataDisks(self, 3)
 
     @property
-    def slot4(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(self, 4)
+    def slot4(self) -> _SlotTypeDataDisks:
+        return _SlotTypeDataDisks(self, 4)
 
     @property
-    def slot5(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(self, 5)
+    def slot5(self) -> _SlotTypeDataDisks:
+        return _SlotTypeDataDisks(self, 5)
 
     @property
-    def slot6(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(self, 6)
+    def slot6(self) -> _SlotTypeDataDisks:
+        return _SlotTypeDataDisks(self, 6)
 
     @property
-    def slot7(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(self, 7)
+    def slot7(self) -> _SlotTypeDataDisks:
+        return _SlotTypeDataDisks(self, 7)
 
     @property
-    def slot8(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(self, 8)
+    def slot8(self) -> _SlotTypeDataDisks:
+        return _SlotTypeDataDisks(self, 8)
 
     @property
-    def slot9(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(self, 9)
+    def slot9(self) -> _SlotTypeDataDisks:
+        return _SlotTypeDataDisks(self, 9)
 
 
 ShelfMediums: _ShelfMediums = _ShelfMediums()
@@ -19996,12 +23772,12 @@ class ShortCornerLocker(_BaseStructure, _Lock, _Open):
     _prefab_name: int = "StructureShortCornerLocker"
 
     @property
-    def slot0(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(self, 0)
+    def slot0(self) -> _SlotTypeDataDisk:
+        return _SlotTypeDataDisk(self, 0)
 
     @property
-    def slot1(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(self, 1)
+    def slot1(self) -> _SlotTypeDataDisk:
+        return _SlotTypeDataDisk(self, 1)
 
 
 class _ShortCornerLockers(_BaseStructures, _Locks, _Opens):
@@ -20028,12 +23804,12 @@ class _ShortCornerLockers(_BaseStructures, _Locks, _Opens):
         return ShortCornerLocker(name=self._name, batch_mode=LogicBatchMethod.Sum)
 
     @property
-    def slot0(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(self, 0)
+    def slot0(self) -> _SlotTypeDataDisks:
+        return _SlotTypeDataDisks(self, 0)
 
     @property
-    def slot1(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(self, 1)
+    def slot1(self) -> _SlotTypeDataDisks:
+        return _SlotTypeDataDisks(self, 1)
 
 
 ShortCornerLockers: _ShortCornerLockers = _ShortCornerLockers()
@@ -20044,44 +23820,44 @@ class ShortLocker(_BaseStructure, _Lock, _Open):
     _prefab_name: int = "StructureShortLocker"
 
     @property
-    def slot0(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(self, 0)
+    def slot0(self) -> _SlotTypeDataDisk:
+        return _SlotTypeDataDisk(self, 0)
 
     @property
-    def slot1(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(self, 1)
+    def slot1(self) -> _SlotTypeDataDisk:
+        return _SlotTypeDataDisk(self, 1)
 
     @property
-    def slot2(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(self, 2)
+    def slot2(self) -> _SlotTypeDataDisk:
+        return _SlotTypeDataDisk(self, 2)
 
     @property
-    def slot3(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(self, 3)
+    def slot3(self) -> _SlotTypeDataDisk:
+        return _SlotTypeDataDisk(self, 3)
 
     @property
-    def slot4(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(self, 4)
+    def slot4(self) -> _SlotTypeDataDisk:
+        return _SlotTypeDataDisk(self, 4)
 
     @property
-    def slot5(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(self, 5)
+    def slot5(self) -> _SlotTypeDataDisk:
+        return _SlotTypeDataDisk(self, 5)
 
     @property
-    def slot6(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(self, 6)
+    def slot6(self) -> _SlotTypeDataDisk:
+        return _SlotTypeDataDisk(self, 6)
 
     @property
-    def slot7(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(self, 7)
+    def slot7(self) -> _SlotTypeDataDisk:
+        return _SlotTypeDataDisk(self, 7)
 
     @property
-    def slot8(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(self, 8)
+    def slot8(self) -> _SlotTypeDataDisk:
+        return _SlotTypeDataDisk(self, 8)
 
     @property
-    def slot9(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(self, 9)
+    def slot9(self) -> _SlotTypeDataDisk:
+        return _SlotTypeDataDisk(self, 9)
 
 
 class _ShortLockers(_BaseStructures, _Locks, _Opens):
@@ -20108,44 +23884,44 @@ class _ShortLockers(_BaseStructures, _Locks, _Opens):
         return ShortLocker(name=self._name, batch_mode=LogicBatchMethod.Sum)
 
     @property
-    def slot0(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(self, 0)
+    def slot0(self) -> _SlotTypeDataDisks:
+        return _SlotTypeDataDisks(self, 0)
 
     @property
-    def slot1(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(self, 1)
+    def slot1(self) -> _SlotTypeDataDisks:
+        return _SlotTypeDataDisks(self, 1)
 
     @property
-    def slot2(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(self, 2)
+    def slot2(self) -> _SlotTypeDataDisks:
+        return _SlotTypeDataDisks(self, 2)
 
     @property
-    def slot3(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(self, 3)
+    def slot3(self) -> _SlotTypeDataDisks:
+        return _SlotTypeDataDisks(self, 3)
 
     @property
-    def slot4(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(self, 4)
+    def slot4(self) -> _SlotTypeDataDisks:
+        return _SlotTypeDataDisks(self, 4)
 
     @property
-    def slot5(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(self, 5)
+    def slot5(self) -> _SlotTypeDataDisks:
+        return _SlotTypeDataDisks(self, 5)
 
     @property
-    def slot6(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(self, 6)
+    def slot6(self) -> _SlotTypeDataDisks:
+        return _SlotTypeDataDisks(self, 6)
 
     @property
-    def slot7(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(self, 7)
+    def slot7(self) -> _SlotTypeDataDisks:
+        return _SlotTypeDataDisks(self, 7)
 
     @property
-    def slot8(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(self, 8)
+    def slot8(self) -> _SlotTypeDataDisks:
+        return _SlotTypeDataDisks(self, 8)
 
     @property
-    def slot9(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(self, 9)
+    def slot9(self) -> _SlotTypeDataDisks:
+        return _SlotTypeDataDisks(self, 9)
 
 
 ShortLockers: _ShortLockers = _ShortLockers()
@@ -20226,11 +24002,11 @@ class Sleeper(
         return _DeviceLogicType(self, _LT.EntityState)
 
     @property
-    def slot0(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(self, 0)
+    def slot0(self) -> _SlotTypeDataDisk:
+        return _SlotTypeDataDisk(self, 0)
 
     @property
-    def Bed(self) -> _SlotTypeCommon:
+    def Bed(self) -> _SlotTypeDataDisk:
         return self.slot0
 
 
@@ -20272,11 +24048,11 @@ class _Sleepers(
         return _DevicesLogicType(self, _LT.EntityState)
 
     @property
-    def slot0(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(self, 0)
+    def slot0(self) -> _SlotTypeDataDisks:
+        return _SlotTypeDataDisks(self, 0)
 
     @property
-    def Bed(self) -> _SlotTypeCommons:
+    def Bed(self) -> _SlotTypeDataDisks:
         return self.slot0
 
 
@@ -20303,11 +24079,11 @@ class SleeperLeft(
         return _DeviceLogicType(self, _LT.EntityState)
 
     @property
-    def slot0(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(self, 0)
+    def slot0(self) -> _SlotTypeDataDisk:
+        return _SlotTypeDataDisk(self, 0)
 
     @property
-    def Player(self) -> _SlotTypeCommon:
+    def Player(self) -> _SlotTypeDataDisk:
         return self.slot0
 
 
@@ -20350,11 +24126,11 @@ class _SleeperLefts(
         return _DevicesLogicType(self, _LT.EntityState)
 
     @property
-    def slot0(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(self, 0)
+    def slot0(self) -> _SlotTypeDataDisks:
+        return _SlotTypeDataDisks(self, 0)
 
     @property
-    def Player(self) -> _SlotTypeCommons:
+    def Player(self) -> _SlotTypeDataDisks:
         return self.slot0
 
 
@@ -20381,11 +24157,11 @@ class SleeperRight(
         return _DeviceLogicType(self, _LT.EntityState)
 
     @property
-    def slot0(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(self, 0)
+    def slot0(self) -> _SlotTypeDataDisk:
+        return _SlotTypeDataDisk(self, 0)
 
     @property
-    def Player(self) -> _SlotTypeCommon:
+    def Player(self) -> _SlotTypeDataDisk:
         return self.slot0
 
 
@@ -20428,11 +24204,11 @@ class _SleeperRights(
         return _DevicesLogicType(self, _LT.EntityState)
 
     @property
-    def slot0(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(self, 0)
+    def slot0(self) -> _SlotTypeDataDisks:
+        return _SlotTypeDataDisks(self, 0)
 
     @property
-    def Player(self) -> _SlotTypeCommons:
+    def Player(self) -> _SlotTypeDataDisks:
         return self.slot0
 
 
@@ -20459,11 +24235,11 @@ class SleeperVertical(
         return _DeviceLogicType(self, _LT.EntityState)
 
     @property
-    def slot0(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(self, 0)
+    def slot0(self) -> _SlotTypeDataDisk:
+        return _SlotTypeDataDisk(self, 0)
 
     @property
-    def Player(self) -> _SlotTypeCommon:
+    def Player(self) -> _SlotTypeDataDisk:
         return self.slot0
 
 
@@ -20506,11 +24282,11 @@ class _SleeperVerticals(
         return _DevicesLogicType(self, _LT.EntityState)
 
     @property
-    def slot0(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(self, 0)
+    def slot0(self) -> _SlotTypeDataDisks:
+        return _SlotTypeDataDisks(self, 0)
 
     @property
-    def Player(self) -> _SlotTypeCommons:
+    def Player(self) -> _SlotTypeDataDisks:
         return self.slot0
 
 
@@ -21601,35 +25377,35 @@ class Sorter(
         pass
 
     @property
-    def slot0(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(self, 0)
+    def slot0(self) -> _SlotTypeDataDisk:
+        return _SlotTypeDataDisk(self, 0)
 
     @property
-    def Import(self) -> _SlotTypeCommon:
+    def Import(self) -> _SlotTypeDataDisk:
         return self.slot0
 
     @property
-    def slot1(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(self, 1)
+    def slot1(self) -> _SlotTypeDataDisk:
+        return _SlotTypeDataDisk(self, 1)
 
     @property
-    def Export(self) -> _SlotTypeCommon:
+    def Export(self) -> _SlotTypeDataDisk:
         return self.slot1
 
     @property
-    def slot2(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(self, 2)
+    def slot2(self) -> _SlotTypeDataDisk:
+        return _SlotTypeDataDisk(self, 2)
 
     @property
-    def Export2(self) -> _SlotTypeCommon:
+    def Export2(self) -> _SlotTypeDataDisk:
         return self.slot2
 
     @property
-    def slot3(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(self, 3)
+    def slot3(self) -> _SlotTypeDataDisk:
+        return _SlotTypeDataDisk(self, 3)
 
     @property
-    def DataDisk(self) -> _SlotTypeCommon:
+    def DataDisk(self) -> _SlotTypeDataDisk:
         return self.slot3
 
 
@@ -21674,11 +25450,227 @@ class _Sorters(
         pass
 
     @property
-    def slot0(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(self, 0)
+    def slot0(self) -> _SlotTypeDataDisks:
+        return _SlotTypeDataDisks(self, 0)
 
     @property
-    def Import(self) -> _SlotTypeCommons:
+    def Import(self) -> _SlotTypeDataDisks:
+        return self.slot0
+
+    @property
+    def slot1(self) -> _SlotTypeDataDisks:
+        return _SlotTypeDataDisks(self, 1)
+
+    @property
+    def Export(self) -> _SlotTypeDataDisks:
+        return self.slot1
+
+    @property
+    def slot2(self) -> _SlotTypeDataDisks:
+        return _SlotTypeDataDisks(self, 2)
+
+    @property
+    def Export2(self) -> _SlotTypeDataDisks:
+        return self.slot2
+
+    @property
+    def slot3(self) -> _SlotTypeDataDisks:
+        return _SlotTypeDataDisks(self, 3)
+
+    @property
+    def DataDisk(self) -> _SlotTypeDataDisks:
+        return self.slot3
+
+
+Sorters: _Sorters = _Sorters()
+
+
+class SpaceHelmet(
+    _BaseStructure,
+    _BaseGas,
+    _Combustion,
+    _Hydrogen,
+    _Lock,
+    _On,
+    _Open,
+    _PollWater,
+    _Temperature,
+):
+    _hash: int = 714830451
+    _prefab_name: int = "ItemSpaceHelmet"
+
+    @property
+    def Flush(self) -> float:
+        return _DeviceLogicType(self, _LT.Flush)
+
+    @Flush.setter
+    def Flush(self, value: int | float):
+        pass
+
+    @property
+    def Power(self) -> float:
+        return _DeviceLogicType(self, _LT.Power)
+
+    @property
+    def SoundAlert(self) -> float:
+        return _DeviceLogicType(self, _LT.SoundAlert)
+
+    @SoundAlert.setter
+    def SoundAlert(self, value: int | float):
+        pass
+
+    @property
+    def Volume(self) -> float:
+        return _DeviceLogicType(self, _LT.Volume)
+
+    @Volume.setter
+    def Volume(self, value: int | float):
+        pass
+
+
+class _SpaceHelmets(
+    _BaseStructures,
+    _BaseGass,
+    _Combustions,
+    _Hydrogens,
+    _Locks,
+    _Ons,
+    _Opens,
+    _PollWaters,
+    _Temperatures,
+):
+    _hash: int = 714830451
+    _prefab_name: int = "ItemSpaceHelmet"
+
+    def __getitem__(self, name: str | int | float) -> "_SpaceHelmets":
+        return _SpaceHelmets(name)
+
+    @property
+    def Average(self) -> SpaceHelmet:
+        return SpaceHelmet(name=self._name, batch_mode=LogicBatchMethod.Average)
+
+    @property
+    def Minimum(self) -> SpaceHelmet:
+        return SpaceHelmet(name=self._name, batch_mode=LogicBatchMethod.Minimum)
+
+    @property
+    def Maximum(self) -> SpaceHelmet:
+        return SpaceHelmet(name=self._name, batch_mode=LogicBatchMethod.Maximum)
+
+    @property
+    def Sum(self) -> SpaceHelmet:
+        return SpaceHelmet(name=self._name, batch_mode=LogicBatchMethod.Sum)
+
+    @property
+    def Flush(self) -> _DevicesLogicType:
+        return _DevicesLogicType(self, _LT.Flush)
+
+    @Flush.setter
+    def Flush(self, value: int | float):
+        pass
+
+    @property
+    def Power(self) -> _DevicesLogicType:
+        return _DevicesLogicType(self, _LT.Power)
+
+    @property
+    def SoundAlert(self) -> _DevicesLogicType:
+        return _DevicesLogicType(self, _LT.SoundAlert)
+
+    @SoundAlert.setter
+    def SoundAlert(self, value: int | float):
+        pass
+
+    @property
+    def Volume(self) -> _DevicesLogicType:
+        return _DevicesLogicType(self, _LT.Volume)
+
+    @Volume.setter
+    def Volume(self, value: int | float):
+        pass
+
+
+SpaceHelmets: _SpaceHelmets = _SpaceHelmets()
+
+
+class Spacepack(_BaseStructure, _Activate, _On):
+    _hash: int = -1260618380
+    _prefab_name: int = "ItemSpacepack"
+
+    @property
+    def slot0(self) -> _SlotTypeAirTank:
+        return _SlotTypeAirTank(self, 0)
+
+    @property
+    def Propellant(self) -> _SlotTypeAirTank:
+        return self.slot0
+
+    @property
+    def slot1(self) -> _SlotTypeCommon:
+        return _SlotTypeCommon(self, 1)
+
+    @property
+    def slot2(self) -> _SlotTypeCommon:
+        return _SlotTypeCommon(self, 2)
+
+    @property
+    def slot3(self) -> _SlotTypeCommon:
+        return _SlotTypeCommon(self, 3)
+
+    @property
+    def slot4(self) -> _SlotTypeCommon:
+        return _SlotTypeCommon(self, 4)
+
+    @property
+    def slot5(self) -> _SlotTypeCommon:
+        return _SlotTypeCommon(self, 5)
+
+    @property
+    def slot6(self) -> _SlotTypeCommon:
+        return _SlotTypeCommon(self, 6)
+
+    @property
+    def slot7(self) -> _SlotTypeCommon:
+        return _SlotTypeCommon(self, 7)
+
+    @property
+    def slot8(self) -> _SlotTypeCommon:
+        return _SlotTypeCommon(self, 8)
+
+    @property
+    def slot9(self) -> _SlotTypeCommon:
+        return _SlotTypeCommon(self, 9)
+
+
+class _Spacepacks(_BaseStructures, _Activates, _Ons):
+    _hash: int = -1260618380
+    _prefab_name: int = "ItemSpacepack"
+
+    def __getitem__(self, name: str | int | float) -> "_Spacepacks":
+        return _Spacepacks(name)
+
+    @property
+    def Average(self) -> Spacepack:
+        return Spacepack(name=self._name, batch_mode=LogicBatchMethod.Average)
+
+    @property
+    def Minimum(self) -> Spacepack:
+        return Spacepack(name=self._name, batch_mode=LogicBatchMethod.Minimum)
+
+    @property
+    def Maximum(self) -> Spacepack:
+        return Spacepack(name=self._name, batch_mode=LogicBatchMethod.Maximum)
+
+    @property
+    def Sum(self) -> Spacepack:
+        return Spacepack(name=self._name, batch_mode=LogicBatchMethod.Sum)
+
+    @property
+    def slot0(self) -> _SlotTypeAirTanks:
+        return _SlotTypeAirTanks(self, 0)
+
+    @property
+    def Propellant(self) -> _SlotTypeAirTanks:
         return self.slot0
 
     @property
@@ -21686,27 +25678,39 @@ class _Sorters(
         return _SlotTypeCommons(self, 1)
 
     @property
-    def Export(self) -> _SlotTypeCommons:
-        return self.slot1
-
-    @property
     def slot2(self) -> _SlotTypeCommons:
         return _SlotTypeCommons(self, 2)
-
-    @property
-    def Export2(self) -> _SlotTypeCommons:
-        return self.slot2
 
     @property
     def slot3(self) -> _SlotTypeCommons:
         return _SlotTypeCommons(self, 3)
 
     @property
-    def DataDisk(self) -> _SlotTypeCommons:
-        return self.slot3
+    def slot4(self) -> _SlotTypeCommons:
+        return _SlotTypeCommons(self, 4)
+
+    @property
+    def slot5(self) -> _SlotTypeCommons:
+        return _SlotTypeCommons(self, 5)
+
+    @property
+    def slot6(self) -> _SlotTypeCommons:
+        return _SlotTypeCommons(self, 6)
+
+    @property
+    def slot7(self) -> _SlotTypeCommons:
+        return _SlotTypeCommons(self, 7)
+
+    @property
+    def slot8(self) -> _SlotTypeCommons:
+        return _SlotTypeCommons(self, 8)
+
+    @property
+    def slot9(self) -> _SlotTypeCommons:
+        return _SlotTypeCommons(self, 9)
 
 
-Sorters: _Sorters = _Sorters()
+Spacepacks: _Spacepacks = _Spacepacks()
 
 
 class StackerReverse(
@@ -21733,27 +25737,27 @@ class StackerReverse(
         pass
 
     @property
-    def slot0(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(self, 0)
+    def slot0(self) -> _SlotTypeDataDisk:
+        return _SlotTypeDataDisk(self, 0)
 
     @property
-    def Import(self) -> _SlotTypeCommon:
+    def Import(self) -> _SlotTypeDataDisk:
         return self.slot0
 
     @property
-    def slot1(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(self, 1)
+    def slot1(self) -> _SlotTypeDataDisk:
+        return _SlotTypeDataDisk(self, 1)
 
     @property
-    def Export(self) -> _SlotTypeCommon:
+    def Export(self) -> _SlotTypeDataDisk:
         return self.slot1
 
     @property
-    def slot2(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(self, 2)
+    def slot2(self) -> _SlotTypeDataDisk:
+        return _SlotTypeDataDisk(self, 2)
 
     @property
-    def Processing(self) -> _SlotTypeCommon:
+    def Processing(self) -> _SlotTypeDataDisk:
         return self.slot2
 
 
@@ -21800,27 +25804,27 @@ class _StackerReverses(
         pass
 
     @property
-    def slot0(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(self, 0)
+    def slot0(self) -> _SlotTypeDataDisks:
+        return _SlotTypeDataDisks(self, 0)
 
     @property
-    def Import(self) -> _SlotTypeCommons:
+    def Import(self) -> _SlotTypeDataDisks:
         return self.slot0
 
     @property
-    def slot1(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(self, 1)
+    def slot1(self) -> _SlotTypeDataDisks:
+        return _SlotTypeDataDisks(self, 1)
 
     @property
-    def Export(self) -> _SlotTypeCommons:
+    def Export(self) -> _SlotTypeDataDisks:
         return self.slot1
 
     @property
-    def slot2(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(self, 2)
+    def slot2(self) -> _SlotTypeDataDisks:
+        return _SlotTypeDataDisks(self, 2)
 
     @property
-    def Processing(self) -> _SlotTypeCommons:
+    def Processing(self) -> _SlotTypeDataDisks:
         return self.slot2
 
 
@@ -21851,27 +25855,27 @@ class Stacker(
         pass
 
     @property
-    def slot0(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(self, 0)
+    def slot0(self) -> _SlotTypeDataDisk:
+        return _SlotTypeDataDisk(self, 0)
 
     @property
-    def Import(self) -> _SlotTypeCommon:
+    def Import(self) -> _SlotTypeDataDisk:
         return self.slot0
 
     @property
-    def slot1(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(self, 1)
+    def slot1(self) -> _SlotTypeDataDisk:
+        return _SlotTypeDataDisk(self, 1)
 
     @property
-    def Export(self) -> _SlotTypeCommon:
+    def Export(self) -> _SlotTypeDataDisk:
         return self.slot1
 
     @property
-    def slot2(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(self, 2)
+    def slot2(self) -> _SlotTypeDataDisk:
+        return _SlotTypeDataDisk(self, 2)
 
     @property
-    def Processing(self) -> _SlotTypeCommon:
+    def Processing(self) -> _SlotTypeDataDisk:
         return self.slot2
 
 
@@ -21918,27 +25922,27 @@ class _Stackers(
         pass
 
     @property
-    def slot0(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(self, 0)
+    def slot0(self) -> _SlotTypeDataDisks:
+        return _SlotTypeDataDisks(self, 0)
 
     @property
-    def Import(self) -> _SlotTypeCommons:
+    def Import(self) -> _SlotTypeDataDisks:
         return self.slot0
 
     @property
-    def slot1(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(self, 1)
+    def slot1(self) -> _SlotTypeDataDisks:
+        return _SlotTypeDataDisks(self, 1)
 
     @property
-    def Export(self) -> _SlotTypeCommons:
+    def Export(self) -> _SlotTypeDataDisks:
         return self.slot1
 
     @property
-    def slot2(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(self, 2)
+    def slot2(self) -> _SlotTypeDataDisks:
+        return _SlotTypeDataDisks(self, 2)
 
     @property
-    def Processing(self) -> _SlotTypeCommons:
+    def Processing(self) -> _SlotTypeDataDisks:
         return self.slot2
 
 
@@ -22723,6 +26727,78 @@ class _GroundBasedTelescopes(
 GroundBasedTelescopes: _GroundBasedTelescopes = _GroundBasedTelescopes()
 
 
+class TerrainManipulator(_BaseStructure, _Activate, _Error, _Mode, _On):
+    _hash: int = 111280987
+    _prefab_name: int = "ItemTerrainManipulator"
+
+    @property
+    def Power(self) -> float:
+        return _DeviceLogicType(self, _LT.Power)
+
+    @property
+    def slot0(self) -> _SlotTypeBattery:
+        return _SlotTypeBattery(self, 0)
+
+    @property
+    def Battery(self) -> _SlotTypeBattery:
+        return self.slot0
+
+    @property
+    def slot1(self) -> _SlotTypeCommon:
+        return _SlotTypeCommon(self, 1)
+
+    @property
+    def DirtCanister(self) -> _SlotTypeCommon:
+        return self.slot1
+
+
+class _TerrainManipulators(_BaseStructures, _Activates, _Errors, _Modes, _Ons):
+    _hash: int = 111280987
+    _prefab_name: int = "ItemTerrainManipulator"
+
+    def __getitem__(self, name: str | int | float) -> "_TerrainManipulators":
+        return _TerrainManipulators(name)
+
+    @property
+    def Average(self) -> TerrainManipulator:
+        return TerrainManipulator(name=self._name, batch_mode=LogicBatchMethod.Average)
+
+    @property
+    def Minimum(self) -> TerrainManipulator:
+        return TerrainManipulator(name=self._name, batch_mode=LogicBatchMethod.Minimum)
+
+    @property
+    def Maximum(self) -> TerrainManipulator:
+        return TerrainManipulator(name=self._name, batch_mode=LogicBatchMethod.Maximum)
+
+    @property
+    def Sum(self) -> TerrainManipulator:
+        return TerrainManipulator(name=self._name, batch_mode=LogicBatchMethod.Sum)
+
+    @property
+    def Power(self) -> _DevicesLogicType:
+        return _DevicesLogicType(self, _LT.Power)
+
+    @property
+    def slot0(self) -> _SlotTypeBatteries:
+        return _SlotTypeBatteries(self, 0)
+
+    @property
+    def Battery(self) -> _SlotTypeBatteries:
+        return self.slot0
+
+    @property
+    def slot1(self) -> _SlotTypeCommons:
+        return _SlotTypeCommons(self, 1)
+
+    @property
+    def DirtCanister(self) -> _SlotTypeCommons:
+        return self.slot1
+
+
+TerrainManipulators: _TerrainManipulators = _TerrainManipulators()
+
+
 class ToolManufactory(
     _BaseStructure,
     _Activate,
@@ -22748,19 +26824,19 @@ class ToolManufactory(
         return _DeviceLogicType(self, _LT.StackSize)
 
     @property
-    def slot0(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(self, 0)
+    def slot0(self) -> _SlotTypeDataDisk:
+        return _SlotTypeDataDisk(self, 0)
 
     @property
-    def Import(self) -> _SlotTypeCommon:
+    def Import(self) -> _SlotTypeDataDisk:
         return self.slot0
 
     @property
-    def slot1(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(self, 1)
+    def slot1(self) -> _SlotTypeDataDisk:
+        return _SlotTypeDataDisk(self, 1)
 
     @property
-    def Export(self) -> _SlotTypeCommon:
+    def Export(self) -> _SlotTypeDataDisk:
         return self.slot1
 
 
@@ -22808,23 +26884,79 @@ class _ToolManufactories(
         return _DevicesLogicType(self, _LT.StackSize)
 
     @property
-    def slot0(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(self, 0)
+    def slot0(self) -> _SlotTypeDataDisks:
+        return _SlotTypeDataDisks(self, 0)
 
     @property
-    def Import(self) -> _SlotTypeCommons:
+    def Import(self) -> _SlotTypeDataDisks:
         return self.slot0
 
     @property
-    def slot1(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(self, 1)
+    def slot1(self) -> _SlotTypeDataDisks:
+        return _SlotTypeDataDisks(self, 1)
 
     @property
-    def Export(self) -> _SlotTypeCommons:
+    def Export(self) -> _SlotTypeDataDisks:
         return self.slot1
 
 
 ToolManufactories: _ToolManufactories = _ToolManufactories()
+
+
+class Beacon(_BaseStructure, _Error, _On):
+    _hash: int = -869869491
+    _prefab_name: int = "ItemBeacon"
+
+    @property
+    def Power(self) -> float:
+        return _DeviceLogicType(self, _LT.Power)
+
+    @property
+    def slot0(self) -> _SlotTypeBattery:
+        return _SlotTypeBattery(self, 0)
+
+    @property
+    def Battery(self) -> _SlotTypeBattery:
+        return self.slot0
+
+
+class _Beacons(_BaseStructures, _Errors, _Ons):
+    _hash: int = -869869491
+    _prefab_name: int = "ItemBeacon"
+
+    def __getitem__(self, name: str | int | float) -> "_Beacons":
+        return _Beacons(name)
+
+    @property
+    def Average(self) -> Beacon:
+        return Beacon(name=self._name, batch_mode=LogicBatchMethod.Average)
+
+    @property
+    def Minimum(self) -> Beacon:
+        return Beacon(name=self._name, batch_mode=LogicBatchMethod.Minimum)
+
+    @property
+    def Maximum(self) -> Beacon:
+        return Beacon(name=self._name, batch_mode=LogicBatchMethod.Maximum)
+
+    @property
+    def Sum(self) -> Beacon:
+        return Beacon(name=self._name, batch_mode=LogicBatchMethod.Sum)
+
+    @property
+    def Power(self) -> _DevicesLogicType:
+        return _DevicesLogicType(self, _LT.Power)
+
+    @property
+    def slot0(self) -> _SlotTypeBatteries:
+        return _SlotTypeBatteries(self, 0)
+
+    @property
+    def Battery(self) -> _SlotTypeBatteries:
+        return self.slot0
+
+
+Beacons: _Beacons = _Beacons()
 
 
 class TraderWaypoint(_BaseStructure, _Error, _Power):
@@ -23230,11 +27362,11 @@ class ChuteUmbilicalMale(_BaseStructure, _Error, _Lock, _ModeR, _Open, _Power):
     _prefab_name: int = "StructureChuteUmbilicalMale"
 
     @property
-    def slot0(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(self, 0)
+    def slot0(self) -> _SlotTypeDataDisk:
+        return _SlotTypeDataDisk(self, 0)
 
     @property
-    def TransportSlot(self) -> _SlotTypeCommon:
+    def TransportSlot(self) -> _SlotTypeDataDisk:
         return self.slot0
 
 
@@ -23262,11 +27394,11 @@ class _ChuteUmbilicalMales(_BaseStructures, _Errors, _Locks, _ModeRs, _Opens, _P
         return ChuteUmbilicalMale(name=self._name, batch_mode=LogicBatchMethod.Sum)
 
     @property
-    def slot0(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(self, 0)
+    def slot0(self) -> _SlotTypeDataDisks:
+        return _SlotTypeDataDisks(self, 0)
 
     @property
-    def TransportSlot(self) -> _SlotTypeCommons:
+    def TransportSlot(self) -> _SlotTypeDataDisks:
         return self.slot0
 
 
@@ -23563,19 +27695,19 @@ class Unloader(
         pass
 
     @property
-    def slot0(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(self, 0)
+    def slot0(self) -> _SlotTypeDataDisk:
+        return _SlotTypeDataDisk(self, 0)
 
     @property
-    def Import(self) -> _SlotTypeCommon:
+    def Import(self) -> _SlotTypeDataDisk:
         return self.slot0
 
     @property
-    def slot1(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(self, 1)
+    def slot1(self) -> _SlotTypeDataDisk:
+        return _SlotTypeDataDisk(self, 1)
 
     @property
-    def Export(self) -> _SlotTypeCommon:
+    def Export(self) -> _SlotTypeDataDisk:
         return self.slot1
 
 
@@ -23620,19 +27752,19 @@ class _Unloaders(
         pass
 
     @property
-    def slot0(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(self, 0)
+    def slot0(self) -> _SlotTypeDataDisks:
+        return _SlotTypeDataDisks(self, 0)
 
     @property
-    def Import(self) -> _SlotTypeCommons:
+    def Import(self) -> _SlotTypeDataDisks:
         return self.slot0
 
     @property
-    def slot1(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(self, 1)
+    def slot1(self) -> _SlotTypeDataDisks:
+        return _SlotTypeDataDisks(self, 1)
 
     @property
-    def Export(self) -> _SlotTypeCommons:
+    def Export(self) -> _SlotTypeDataDisks:
         return self.slot1
 
 
@@ -23767,420 +27899,420 @@ class VendingMachine(
         pass
 
     @property
-    def slot0(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(self, 0)
+    def slot0(self) -> _SlotTypeDataDisk:
+        return _SlotTypeDataDisk(self, 0)
 
     @property
-    def Import(self) -> _SlotTypeCommon:
+    def Import(self) -> _SlotTypeDataDisk:
         return self.slot0
 
     @property
-    def slot1(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(self, 1)
+    def slot1(self) -> _SlotTypeDataDisk:
+        return _SlotTypeDataDisk(self, 1)
 
     @property
-    def Export(self) -> _SlotTypeCommon:
+    def Export(self) -> _SlotTypeDataDisk:
         return self.slot1
 
     @property
-    def slot10(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(self, 10)
+    def slot10(self) -> _SlotTypeDataDisk:
+        return _SlotTypeDataDisk(self, 10)
 
     @property
-    def slot100(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(self, 100)
+    def slot100(self) -> _SlotTypeDataDisk:
+        return _SlotTypeDataDisk(self, 100)
 
     @property
-    def slot101(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(self, 101)
+    def slot101(self) -> _SlotTypeDataDisk:
+        return _SlotTypeDataDisk(self, 101)
 
     @property
-    def slot11(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(self, 11)
+    def slot11(self) -> _SlotTypeDataDisk:
+        return _SlotTypeDataDisk(self, 11)
 
     @property
-    def slot12(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(self, 12)
+    def slot12(self) -> _SlotTypeDataDisk:
+        return _SlotTypeDataDisk(self, 12)
 
     @property
-    def slot13(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(self, 13)
+    def slot13(self) -> _SlotTypeDataDisk:
+        return _SlotTypeDataDisk(self, 13)
 
     @property
-    def slot14(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(self, 14)
+    def slot14(self) -> _SlotTypeDataDisk:
+        return _SlotTypeDataDisk(self, 14)
 
     @property
-    def slot15(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(self, 15)
+    def slot15(self) -> _SlotTypeDataDisk:
+        return _SlotTypeDataDisk(self, 15)
 
     @property
-    def slot16(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(self, 16)
+    def slot16(self) -> _SlotTypeDataDisk:
+        return _SlotTypeDataDisk(self, 16)
 
     @property
-    def slot17(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(self, 17)
+    def slot17(self) -> _SlotTypeDataDisk:
+        return _SlotTypeDataDisk(self, 17)
 
     @property
-    def slot18(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(self, 18)
+    def slot18(self) -> _SlotTypeDataDisk:
+        return _SlotTypeDataDisk(self, 18)
 
     @property
-    def slot19(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(self, 19)
+    def slot19(self) -> _SlotTypeDataDisk:
+        return _SlotTypeDataDisk(self, 19)
 
     @property
-    def slot2(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(self, 2)
+    def slot2(self) -> _SlotTypeDataDisk:
+        return _SlotTypeDataDisk(self, 2)
 
     @property
-    def slot20(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(self, 20)
+    def slot20(self) -> _SlotTypeDataDisk:
+        return _SlotTypeDataDisk(self, 20)
 
     @property
-    def slot21(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(self, 21)
+    def slot21(self) -> _SlotTypeDataDisk:
+        return _SlotTypeDataDisk(self, 21)
 
     @property
-    def slot22(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(self, 22)
+    def slot22(self) -> _SlotTypeDataDisk:
+        return _SlotTypeDataDisk(self, 22)
 
     @property
-    def slot23(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(self, 23)
+    def slot23(self) -> _SlotTypeDataDisk:
+        return _SlotTypeDataDisk(self, 23)
 
     @property
-    def slot24(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(self, 24)
+    def slot24(self) -> _SlotTypeDataDisk:
+        return _SlotTypeDataDisk(self, 24)
 
     @property
-    def slot25(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(self, 25)
+    def slot25(self) -> _SlotTypeDataDisk:
+        return _SlotTypeDataDisk(self, 25)
 
     @property
-    def slot26(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(self, 26)
+    def slot26(self) -> _SlotTypeDataDisk:
+        return _SlotTypeDataDisk(self, 26)
 
     @property
-    def slot27(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(self, 27)
+    def slot27(self) -> _SlotTypeDataDisk:
+        return _SlotTypeDataDisk(self, 27)
 
     @property
-    def slot28(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(self, 28)
+    def slot28(self) -> _SlotTypeDataDisk:
+        return _SlotTypeDataDisk(self, 28)
 
     @property
-    def slot29(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(self, 29)
+    def slot29(self) -> _SlotTypeDataDisk:
+        return _SlotTypeDataDisk(self, 29)
 
     @property
-    def slot3(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(self, 3)
+    def slot3(self) -> _SlotTypeDataDisk:
+        return _SlotTypeDataDisk(self, 3)
 
     @property
-    def slot30(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(self, 30)
+    def slot30(self) -> _SlotTypeDataDisk:
+        return _SlotTypeDataDisk(self, 30)
 
     @property
-    def slot31(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(self, 31)
+    def slot31(self) -> _SlotTypeDataDisk:
+        return _SlotTypeDataDisk(self, 31)
 
     @property
-    def slot32(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(self, 32)
+    def slot32(self) -> _SlotTypeDataDisk:
+        return _SlotTypeDataDisk(self, 32)
 
     @property
-    def slot33(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(self, 33)
+    def slot33(self) -> _SlotTypeDataDisk:
+        return _SlotTypeDataDisk(self, 33)
 
     @property
-    def slot34(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(self, 34)
+    def slot34(self) -> _SlotTypeDataDisk:
+        return _SlotTypeDataDisk(self, 34)
 
     @property
-    def slot35(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(self, 35)
+    def slot35(self) -> _SlotTypeDataDisk:
+        return _SlotTypeDataDisk(self, 35)
 
     @property
-    def slot36(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(self, 36)
+    def slot36(self) -> _SlotTypeDataDisk:
+        return _SlotTypeDataDisk(self, 36)
 
     @property
-    def slot37(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(self, 37)
+    def slot37(self) -> _SlotTypeDataDisk:
+        return _SlotTypeDataDisk(self, 37)
 
     @property
-    def slot38(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(self, 38)
+    def slot38(self) -> _SlotTypeDataDisk:
+        return _SlotTypeDataDisk(self, 38)
 
     @property
-    def slot39(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(self, 39)
+    def slot39(self) -> _SlotTypeDataDisk:
+        return _SlotTypeDataDisk(self, 39)
 
     @property
-    def slot4(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(self, 4)
+    def slot4(self) -> _SlotTypeDataDisk:
+        return _SlotTypeDataDisk(self, 4)
 
     @property
-    def slot40(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(self, 40)
+    def slot40(self) -> _SlotTypeDataDisk:
+        return _SlotTypeDataDisk(self, 40)
 
     @property
-    def slot41(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(self, 41)
+    def slot41(self) -> _SlotTypeDataDisk:
+        return _SlotTypeDataDisk(self, 41)
 
     @property
-    def slot42(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(self, 42)
+    def slot42(self) -> _SlotTypeDataDisk:
+        return _SlotTypeDataDisk(self, 42)
 
     @property
-    def slot43(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(self, 43)
+    def slot43(self) -> _SlotTypeDataDisk:
+        return _SlotTypeDataDisk(self, 43)
 
     @property
-    def slot44(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(self, 44)
+    def slot44(self) -> _SlotTypeDataDisk:
+        return _SlotTypeDataDisk(self, 44)
 
     @property
-    def slot45(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(self, 45)
+    def slot45(self) -> _SlotTypeDataDisk:
+        return _SlotTypeDataDisk(self, 45)
 
     @property
-    def slot46(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(self, 46)
+    def slot46(self) -> _SlotTypeDataDisk:
+        return _SlotTypeDataDisk(self, 46)
 
     @property
-    def slot47(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(self, 47)
+    def slot47(self) -> _SlotTypeDataDisk:
+        return _SlotTypeDataDisk(self, 47)
 
     @property
-    def slot48(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(self, 48)
+    def slot48(self) -> _SlotTypeDataDisk:
+        return _SlotTypeDataDisk(self, 48)
 
     @property
-    def slot49(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(self, 49)
+    def slot49(self) -> _SlotTypeDataDisk:
+        return _SlotTypeDataDisk(self, 49)
 
     @property
-    def slot5(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(self, 5)
+    def slot5(self) -> _SlotTypeDataDisk:
+        return _SlotTypeDataDisk(self, 5)
 
     @property
-    def slot50(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(self, 50)
+    def slot50(self) -> _SlotTypeDataDisk:
+        return _SlotTypeDataDisk(self, 50)
 
     @property
-    def slot51(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(self, 51)
+    def slot51(self) -> _SlotTypeDataDisk:
+        return _SlotTypeDataDisk(self, 51)
 
     @property
-    def slot52(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(self, 52)
+    def slot52(self) -> _SlotTypeDataDisk:
+        return _SlotTypeDataDisk(self, 52)
 
     @property
-    def slot53(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(self, 53)
+    def slot53(self) -> _SlotTypeDataDisk:
+        return _SlotTypeDataDisk(self, 53)
 
     @property
-    def slot54(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(self, 54)
+    def slot54(self) -> _SlotTypeDataDisk:
+        return _SlotTypeDataDisk(self, 54)
 
     @property
-    def slot55(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(self, 55)
+    def slot55(self) -> _SlotTypeDataDisk:
+        return _SlotTypeDataDisk(self, 55)
 
     @property
-    def slot56(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(self, 56)
+    def slot56(self) -> _SlotTypeDataDisk:
+        return _SlotTypeDataDisk(self, 56)
 
     @property
-    def slot57(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(self, 57)
+    def slot57(self) -> _SlotTypeDataDisk:
+        return _SlotTypeDataDisk(self, 57)
 
     @property
-    def slot58(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(self, 58)
+    def slot58(self) -> _SlotTypeDataDisk:
+        return _SlotTypeDataDisk(self, 58)
 
     @property
-    def slot59(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(self, 59)
+    def slot59(self) -> _SlotTypeDataDisk:
+        return _SlotTypeDataDisk(self, 59)
 
     @property
-    def slot6(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(self, 6)
+    def slot6(self) -> _SlotTypeDataDisk:
+        return _SlotTypeDataDisk(self, 6)
 
     @property
-    def slot60(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(self, 60)
+    def slot60(self) -> _SlotTypeDataDisk:
+        return _SlotTypeDataDisk(self, 60)
 
     @property
-    def slot61(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(self, 61)
+    def slot61(self) -> _SlotTypeDataDisk:
+        return _SlotTypeDataDisk(self, 61)
 
     @property
-    def slot62(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(self, 62)
+    def slot62(self) -> _SlotTypeDataDisk:
+        return _SlotTypeDataDisk(self, 62)
 
     @property
-    def slot63(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(self, 63)
+    def slot63(self) -> _SlotTypeDataDisk:
+        return _SlotTypeDataDisk(self, 63)
 
     @property
-    def slot64(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(self, 64)
+    def slot64(self) -> _SlotTypeDataDisk:
+        return _SlotTypeDataDisk(self, 64)
 
     @property
-    def slot65(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(self, 65)
+    def slot65(self) -> _SlotTypeDataDisk:
+        return _SlotTypeDataDisk(self, 65)
 
     @property
-    def slot66(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(self, 66)
+    def slot66(self) -> _SlotTypeDataDisk:
+        return _SlotTypeDataDisk(self, 66)
 
     @property
-    def slot67(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(self, 67)
+    def slot67(self) -> _SlotTypeDataDisk:
+        return _SlotTypeDataDisk(self, 67)
 
     @property
-    def slot68(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(self, 68)
+    def slot68(self) -> _SlotTypeDataDisk:
+        return _SlotTypeDataDisk(self, 68)
 
     @property
-    def slot69(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(self, 69)
+    def slot69(self) -> _SlotTypeDataDisk:
+        return _SlotTypeDataDisk(self, 69)
 
     @property
-    def slot7(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(self, 7)
+    def slot7(self) -> _SlotTypeDataDisk:
+        return _SlotTypeDataDisk(self, 7)
 
     @property
-    def slot70(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(self, 70)
+    def slot70(self) -> _SlotTypeDataDisk:
+        return _SlotTypeDataDisk(self, 70)
 
     @property
-    def slot71(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(self, 71)
+    def slot71(self) -> _SlotTypeDataDisk:
+        return _SlotTypeDataDisk(self, 71)
 
     @property
-    def slot72(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(self, 72)
+    def slot72(self) -> _SlotTypeDataDisk:
+        return _SlotTypeDataDisk(self, 72)
 
     @property
-    def slot73(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(self, 73)
+    def slot73(self) -> _SlotTypeDataDisk:
+        return _SlotTypeDataDisk(self, 73)
 
     @property
-    def slot74(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(self, 74)
+    def slot74(self) -> _SlotTypeDataDisk:
+        return _SlotTypeDataDisk(self, 74)
 
     @property
-    def slot75(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(self, 75)
+    def slot75(self) -> _SlotTypeDataDisk:
+        return _SlotTypeDataDisk(self, 75)
 
     @property
-    def slot76(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(self, 76)
+    def slot76(self) -> _SlotTypeDataDisk:
+        return _SlotTypeDataDisk(self, 76)
 
     @property
-    def slot77(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(self, 77)
+    def slot77(self) -> _SlotTypeDataDisk:
+        return _SlotTypeDataDisk(self, 77)
 
     @property
-    def slot78(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(self, 78)
+    def slot78(self) -> _SlotTypeDataDisk:
+        return _SlotTypeDataDisk(self, 78)
 
     @property
-    def slot79(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(self, 79)
+    def slot79(self) -> _SlotTypeDataDisk:
+        return _SlotTypeDataDisk(self, 79)
 
     @property
-    def slot8(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(self, 8)
+    def slot8(self) -> _SlotTypeDataDisk:
+        return _SlotTypeDataDisk(self, 8)
 
     @property
-    def slot80(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(self, 80)
+    def slot80(self) -> _SlotTypeDataDisk:
+        return _SlotTypeDataDisk(self, 80)
 
     @property
-    def slot81(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(self, 81)
+    def slot81(self) -> _SlotTypeDataDisk:
+        return _SlotTypeDataDisk(self, 81)
 
     @property
-    def slot82(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(self, 82)
+    def slot82(self) -> _SlotTypeDataDisk:
+        return _SlotTypeDataDisk(self, 82)
 
     @property
-    def slot83(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(self, 83)
+    def slot83(self) -> _SlotTypeDataDisk:
+        return _SlotTypeDataDisk(self, 83)
 
     @property
-    def slot84(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(self, 84)
+    def slot84(self) -> _SlotTypeDataDisk:
+        return _SlotTypeDataDisk(self, 84)
 
     @property
-    def slot85(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(self, 85)
+    def slot85(self) -> _SlotTypeDataDisk:
+        return _SlotTypeDataDisk(self, 85)
 
     @property
-    def slot86(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(self, 86)
+    def slot86(self) -> _SlotTypeDataDisk:
+        return _SlotTypeDataDisk(self, 86)
 
     @property
-    def slot87(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(self, 87)
+    def slot87(self) -> _SlotTypeDataDisk:
+        return _SlotTypeDataDisk(self, 87)
 
     @property
-    def slot88(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(self, 88)
+    def slot88(self) -> _SlotTypeDataDisk:
+        return _SlotTypeDataDisk(self, 88)
 
     @property
-    def slot89(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(self, 89)
+    def slot89(self) -> _SlotTypeDataDisk:
+        return _SlotTypeDataDisk(self, 89)
 
     @property
-    def slot9(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(self, 9)
+    def slot9(self) -> _SlotTypeDataDisk:
+        return _SlotTypeDataDisk(self, 9)
 
     @property
-    def slot90(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(self, 90)
+    def slot90(self) -> _SlotTypeDataDisk:
+        return _SlotTypeDataDisk(self, 90)
 
     @property
-    def slot91(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(self, 91)
+    def slot91(self) -> _SlotTypeDataDisk:
+        return _SlotTypeDataDisk(self, 91)
 
     @property
-    def slot92(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(self, 92)
+    def slot92(self) -> _SlotTypeDataDisk:
+        return _SlotTypeDataDisk(self, 92)
 
     @property
-    def slot93(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(self, 93)
+    def slot93(self) -> _SlotTypeDataDisk:
+        return _SlotTypeDataDisk(self, 93)
 
     @property
-    def slot94(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(self, 94)
+    def slot94(self) -> _SlotTypeDataDisk:
+        return _SlotTypeDataDisk(self, 94)
 
     @property
-    def slot95(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(self, 95)
+    def slot95(self) -> _SlotTypeDataDisk:
+        return _SlotTypeDataDisk(self, 95)
 
     @property
-    def slot96(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(self, 96)
+    def slot96(self) -> _SlotTypeDataDisk:
+        return _SlotTypeDataDisk(self, 96)
 
     @property
-    def slot97(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(self, 97)
+    def slot97(self) -> _SlotTypeDataDisk:
+        return _SlotTypeDataDisk(self, 97)
 
     @property
-    def slot98(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(self, 98)
+    def slot98(self) -> _SlotTypeDataDisk:
+        return _SlotTypeDataDisk(self, 98)
 
     @property
-    def slot99(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(self, 99)
+    def slot99(self) -> _SlotTypeDataDisk:
+        return _SlotTypeDataDisk(self, 99)
 
 
 class _VendingMachines(
@@ -24226,423 +28358,605 @@ class _VendingMachines(
         pass
 
     @property
-    def slot0(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(self, 0)
+    def slot0(self) -> _SlotTypeDataDisks:
+        return _SlotTypeDataDisks(self, 0)
 
     @property
-    def Import(self) -> _SlotTypeCommons:
+    def Import(self) -> _SlotTypeDataDisks:
         return self.slot0
 
     @property
-    def slot1(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(self, 1)
+    def slot1(self) -> _SlotTypeDataDisks:
+        return _SlotTypeDataDisks(self, 1)
 
     @property
-    def Export(self) -> _SlotTypeCommons:
+    def Export(self) -> _SlotTypeDataDisks:
         return self.slot1
 
     @property
-    def slot10(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(self, 10)
+    def slot10(self) -> _SlotTypeDataDisks:
+        return _SlotTypeDataDisks(self, 10)
 
     @property
-    def slot100(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(self, 100)
+    def slot100(self) -> _SlotTypeDataDisks:
+        return _SlotTypeDataDisks(self, 100)
 
     @property
-    def slot101(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(self, 101)
+    def slot101(self) -> _SlotTypeDataDisks:
+        return _SlotTypeDataDisks(self, 101)
 
     @property
-    def slot11(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(self, 11)
+    def slot11(self) -> _SlotTypeDataDisks:
+        return _SlotTypeDataDisks(self, 11)
 
     @property
-    def slot12(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(self, 12)
+    def slot12(self) -> _SlotTypeDataDisks:
+        return _SlotTypeDataDisks(self, 12)
 
     @property
-    def slot13(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(self, 13)
+    def slot13(self) -> _SlotTypeDataDisks:
+        return _SlotTypeDataDisks(self, 13)
 
     @property
-    def slot14(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(self, 14)
+    def slot14(self) -> _SlotTypeDataDisks:
+        return _SlotTypeDataDisks(self, 14)
 
     @property
-    def slot15(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(self, 15)
+    def slot15(self) -> _SlotTypeDataDisks:
+        return _SlotTypeDataDisks(self, 15)
 
     @property
-    def slot16(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(self, 16)
+    def slot16(self) -> _SlotTypeDataDisks:
+        return _SlotTypeDataDisks(self, 16)
 
     @property
-    def slot17(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(self, 17)
+    def slot17(self) -> _SlotTypeDataDisks:
+        return _SlotTypeDataDisks(self, 17)
 
     @property
-    def slot18(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(self, 18)
+    def slot18(self) -> _SlotTypeDataDisks:
+        return _SlotTypeDataDisks(self, 18)
 
     @property
-    def slot19(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(self, 19)
+    def slot19(self) -> _SlotTypeDataDisks:
+        return _SlotTypeDataDisks(self, 19)
 
     @property
-    def slot2(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(self, 2)
+    def slot2(self) -> _SlotTypeDataDisks:
+        return _SlotTypeDataDisks(self, 2)
 
     @property
-    def slot20(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(self, 20)
+    def slot20(self) -> _SlotTypeDataDisks:
+        return _SlotTypeDataDisks(self, 20)
 
     @property
-    def slot21(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(self, 21)
+    def slot21(self) -> _SlotTypeDataDisks:
+        return _SlotTypeDataDisks(self, 21)
 
     @property
-    def slot22(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(self, 22)
+    def slot22(self) -> _SlotTypeDataDisks:
+        return _SlotTypeDataDisks(self, 22)
 
     @property
-    def slot23(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(self, 23)
+    def slot23(self) -> _SlotTypeDataDisks:
+        return _SlotTypeDataDisks(self, 23)
 
     @property
-    def slot24(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(self, 24)
+    def slot24(self) -> _SlotTypeDataDisks:
+        return _SlotTypeDataDisks(self, 24)
 
     @property
-    def slot25(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(self, 25)
+    def slot25(self) -> _SlotTypeDataDisks:
+        return _SlotTypeDataDisks(self, 25)
 
     @property
-    def slot26(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(self, 26)
+    def slot26(self) -> _SlotTypeDataDisks:
+        return _SlotTypeDataDisks(self, 26)
 
     @property
-    def slot27(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(self, 27)
+    def slot27(self) -> _SlotTypeDataDisks:
+        return _SlotTypeDataDisks(self, 27)
 
     @property
-    def slot28(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(self, 28)
+    def slot28(self) -> _SlotTypeDataDisks:
+        return _SlotTypeDataDisks(self, 28)
 
     @property
-    def slot29(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(self, 29)
+    def slot29(self) -> _SlotTypeDataDisks:
+        return _SlotTypeDataDisks(self, 29)
 
     @property
-    def slot3(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(self, 3)
+    def slot3(self) -> _SlotTypeDataDisks:
+        return _SlotTypeDataDisks(self, 3)
 
     @property
-    def slot30(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(self, 30)
+    def slot30(self) -> _SlotTypeDataDisks:
+        return _SlotTypeDataDisks(self, 30)
 
     @property
-    def slot31(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(self, 31)
+    def slot31(self) -> _SlotTypeDataDisks:
+        return _SlotTypeDataDisks(self, 31)
 
     @property
-    def slot32(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(self, 32)
+    def slot32(self) -> _SlotTypeDataDisks:
+        return _SlotTypeDataDisks(self, 32)
 
     @property
-    def slot33(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(self, 33)
+    def slot33(self) -> _SlotTypeDataDisks:
+        return _SlotTypeDataDisks(self, 33)
 
     @property
-    def slot34(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(self, 34)
+    def slot34(self) -> _SlotTypeDataDisks:
+        return _SlotTypeDataDisks(self, 34)
 
     @property
-    def slot35(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(self, 35)
+    def slot35(self) -> _SlotTypeDataDisks:
+        return _SlotTypeDataDisks(self, 35)
 
     @property
-    def slot36(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(self, 36)
+    def slot36(self) -> _SlotTypeDataDisks:
+        return _SlotTypeDataDisks(self, 36)
 
     @property
-    def slot37(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(self, 37)
+    def slot37(self) -> _SlotTypeDataDisks:
+        return _SlotTypeDataDisks(self, 37)
 
     @property
-    def slot38(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(self, 38)
+    def slot38(self) -> _SlotTypeDataDisks:
+        return _SlotTypeDataDisks(self, 38)
 
     @property
-    def slot39(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(self, 39)
+    def slot39(self) -> _SlotTypeDataDisks:
+        return _SlotTypeDataDisks(self, 39)
 
     @property
-    def slot4(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(self, 4)
+    def slot4(self) -> _SlotTypeDataDisks:
+        return _SlotTypeDataDisks(self, 4)
 
     @property
-    def slot40(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(self, 40)
+    def slot40(self) -> _SlotTypeDataDisks:
+        return _SlotTypeDataDisks(self, 40)
 
     @property
-    def slot41(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(self, 41)
+    def slot41(self) -> _SlotTypeDataDisks:
+        return _SlotTypeDataDisks(self, 41)
 
     @property
-    def slot42(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(self, 42)
+    def slot42(self) -> _SlotTypeDataDisks:
+        return _SlotTypeDataDisks(self, 42)
 
     @property
-    def slot43(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(self, 43)
+    def slot43(self) -> _SlotTypeDataDisks:
+        return _SlotTypeDataDisks(self, 43)
 
     @property
-    def slot44(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(self, 44)
+    def slot44(self) -> _SlotTypeDataDisks:
+        return _SlotTypeDataDisks(self, 44)
 
     @property
-    def slot45(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(self, 45)
+    def slot45(self) -> _SlotTypeDataDisks:
+        return _SlotTypeDataDisks(self, 45)
 
     @property
-    def slot46(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(self, 46)
+    def slot46(self) -> _SlotTypeDataDisks:
+        return _SlotTypeDataDisks(self, 46)
 
     @property
-    def slot47(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(self, 47)
+    def slot47(self) -> _SlotTypeDataDisks:
+        return _SlotTypeDataDisks(self, 47)
 
     @property
-    def slot48(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(self, 48)
+    def slot48(self) -> _SlotTypeDataDisks:
+        return _SlotTypeDataDisks(self, 48)
 
     @property
-    def slot49(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(self, 49)
+    def slot49(self) -> _SlotTypeDataDisks:
+        return _SlotTypeDataDisks(self, 49)
 
     @property
-    def slot5(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(self, 5)
+    def slot5(self) -> _SlotTypeDataDisks:
+        return _SlotTypeDataDisks(self, 5)
 
     @property
-    def slot50(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(self, 50)
+    def slot50(self) -> _SlotTypeDataDisks:
+        return _SlotTypeDataDisks(self, 50)
 
     @property
-    def slot51(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(self, 51)
+    def slot51(self) -> _SlotTypeDataDisks:
+        return _SlotTypeDataDisks(self, 51)
 
     @property
-    def slot52(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(self, 52)
+    def slot52(self) -> _SlotTypeDataDisks:
+        return _SlotTypeDataDisks(self, 52)
 
     @property
-    def slot53(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(self, 53)
+    def slot53(self) -> _SlotTypeDataDisks:
+        return _SlotTypeDataDisks(self, 53)
 
     @property
-    def slot54(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(self, 54)
+    def slot54(self) -> _SlotTypeDataDisks:
+        return _SlotTypeDataDisks(self, 54)
 
     @property
-    def slot55(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(self, 55)
+    def slot55(self) -> _SlotTypeDataDisks:
+        return _SlotTypeDataDisks(self, 55)
 
     @property
-    def slot56(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(self, 56)
+    def slot56(self) -> _SlotTypeDataDisks:
+        return _SlotTypeDataDisks(self, 56)
 
     @property
-    def slot57(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(self, 57)
+    def slot57(self) -> _SlotTypeDataDisks:
+        return _SlotTypeDataDisks(self, 57)
 
     @property
-    def slot58(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(self, 58)
+    def slot58(self) -> _SlotTypeDataDisks:
+        return _SlotTypeDataDisks(self, 58)
 
     @property
-    def slot59(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(self, 59)
+    def slot59(self) -> _SlotTypeDataDisks:
+        return _SlotTypeDataDisks(self, 59)
 
     @property
-    def slot6(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(self, 6)
+    def slot6(self) -> _SlotTypeDataDisks:
+        return _SlotTypeDataDisks(self, 6)
 
     @property
-    def slot60(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(self, 60)
+    def slot60(self) -> _SlotTypeDataDisks:
+        return _SlotTypeDataDisks(self, 60)
 
     @property
-    def slot61(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(self, 61)
+    def slot61(self) -> _SlotTypeDataDisks:
+        return _SlotTypeDataDisks(self, 61)
 
     @property
-    def slot62(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(self, 62)
+    def slot62(self) -> _SlotTypeDataDisks:
+        return _SlotTypeDataDisks(self, 62)
 
     @property
-    def slot63(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(self, 63)
+    def slot63(self) -> _SlotTypeDataDisks:
+        return _SlotTypeDataDisks(self, 63)
 
     @property
-    def slot64(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(self, 64)
+    def slot64(self) -> _SlotTypeDataDisks:
+        return _SlotTypeDataDisks(self, 64)
 
     @property
-    def slot65(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(self, 65)
+    def slot65(self) -> _SlotTypeDataDisks:
+        return _SlotTypeDataDisks(self, 65)
 
     @property
-    def slot66(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(self, 66)
+    def slot66(self) -> _SlotTypeDataDisks:
+        return _SlotTypeDataDisks(self, 66)
 
     @property
-    def slot67(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(self, 67)
+    def slot67(self) -> _SlotTypeDataDisks:
+        return _SlotTypeDataDisks(self, 67)
 
     @property
-    def slot68(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(self, 68)
+    def slot68(self) -> _SlotTypeDataDisks:
+        return _SlotTypeDataDisks(self, 68)
 
     @property
-    def slot69(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(self, 69)
+    def slot69(self) -> _SlotTypeDataDisks:
+        return _SlotTypeDataDisks(self, 69)
 
     @property
-    def slot7(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(self, 7)
+    def slot7(self) -> _SlotTypeDataDisks:
+        return _SlotTypeDataDisks(self, 7)
 
     @property
-    def slot70(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(self, 70)
+    def slot70(self) -> _SlotTypeDataDisks:
+        return _SlotTypeDataDisks(self, 70)
 
     @property
-    def slot71(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(self, 71)
+    def slot71(self) -> _SlotTypeDataDisks:
+        return _SlotTypeDataDisks(self, 71)
 
     @property
-    def slot72(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(self, 72)
+    def slot72(self) -> _SlotTypeDataDisks:
+        return _SlotTypeDataDisks(self, 72)
 
     @property
-    def slot73(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(self, 73)
+    def slot73(self) -> _SlotTypeDataDisks:
+        return _SlotTypeDataDisks(self, 73)
 
     @property
-    def slot74(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(self, 74)
+    def slot74(self) -> _SlotTypeDataDisks:
+        return _SlotTypeDataDisks(self, 74)
 
     @property
-    def slot75(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(self, 75)
+    def slot75(self) -> _SlotTypeDataDisks:
+        return _SlotTypeDataDisks(self, 75)
 
     @property
-    def slot76(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(self, 76)
+    def slot76(self) -> _SlotTypeDataDisks:
+        return _SlotTypeDataDisks(self, 76)
 
     @property
-    def slot77(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(self, 77)
+    def slot77(self) -> _SlotTypeDataDisks:
+        return _SlotTypeDataDisks(self, 77)
 
     @property
-    def slot78(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(self, 78)
+    def slot78(self) -> _SlotTypeDataDisks:
+        return _SlotTypeDataDisks(self, 78)
 
     @property
-    def slot79(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(self, 79)
+    def slot79(self) -> _SlotTypeDataDisks:
+        return _SlotTypeDataDisks(self, 79)
 
     @property
-    def slot8(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(self, 8)
+    def slot8(self) -> _SlotTypeDataDisks:
+        return _SlotTypeDataDisks(self, 8)
 
     @property
-    def slot80(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(self, 80)
+    def slot80(self) -> _SlotTypeDataDisks:
+        return _SlotTypeDataDisks(self, 80)
 
     @property
-    def slot81(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(self, 81)
+    def slot81(self) -> _SlotTypeDataDisks:
+        return _SlotTypeDataDisks(self, 81)
 
     @property
-    def slot82(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(self, 82)
+    def slot82(self) -> _SlotTypeDataDisks:
+        return _SlotTypeDataDisks(self, 82)
 
     @property
-    def slot83(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(self, 83)
+    def slot83(self) -> _SlotTypeDataDisks:
+        return _SlotTypeDataDisks(self, 83)
 
     @property
-    def slot84(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(self, 84)
+    def slot84(self) -> _SlotTypeDataDisks:
+        return _SlotTypeDataDisks(self, 84)
 
     @property
-    def slot85(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(self, 85)
+    def slot85(self) -> _SlotTypeDataDisks:
+        return _SlotTypeDataDisks(self, 85)
 
     @property
-    def slot86(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(self, 86)
+    def slot86(self) -> _SlotTypeDataDisks:
+        return _SlotTypeDataDisks(self, 86)
 
     @property
-    def slot87(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(self, 87)
+    def slot87(self) -> _SlotTypeDataDisks:
+        return _SlotTypeDataDisks(self, 87)
 
     @property
-    def slot88(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(self, 88)
+    def slot88(self) -> _SlotTypeDataDisks:
+        return _SlotTypeDataDisks(self, 88)
 
     @property
-    def slot89(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(self, 89)
+    def slot89(self) -> _SlotTypeDataDisks:
+        return _SlotTypeDataDisks(self, 89)
 
     @property
-    def slot9(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(self, 9)
+    def slot9(self) -> _SlotTypeDataDisks:
+        return _SlotTypeDataDisks(self, 9)
 
     @property
-    def slot90(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(self, 90)
+    def slot90(self) -> _SlotTypeDataDisks:
+        return _SlotTypeDataDisks(self, 90)
 
     @property
-    def slot91(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(self, 91)
+    def slot91(self) -> _SlotTypeDataDisks:
+        return _SlotTypeDataDisks(self, 91)
 
     @property
-    def slot92(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(self, 92)
+    def slot92(self) -> _SlotTypeDataDisks:
+        return _SlotTypeDataDisks(self, 92)
 
     @property
-    def slot93(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(self, 93)
+    def slot93(self) -> _SlotTypeDataDisks:
+        return _SlotTypeDataDisks(self, 93)
 
     @property
-    def slot94(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(self, 94)
+    def slot94(self) -> _SlotTypeDataDisks:
+        return _SlotTypeDataDisks(self, 94)
 
     @property
-    def slot95(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(self, 95)
+    def slot95(self) -> _SlotTypeDataDisks:
+        return _SlotTypeDataDisks(self, 95)
 
     @property
-    def slot96(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(self, 96)
+    def slot96(self) -> _SlotTypeDataDisks:
+        return _SlotTypeDataDisks(self, 96)
 
     @property
-    def slot97(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(self, 97)
+    def slot97(self) -> _SlotTypeDataDisks:
+        return _SlotTypeDataDisks(self, 97)
 
     @property
-    def slot98(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(self, 98)
+    def slot98(self) -> _SlotTypeDataDisks:
+        return _SlotTypeDataDisks(self, 98)
 
     @property
-    def slot99(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(self, 99)
+    def slot99(self) -> _SlotTypeDataDisks:
+        return _SlotTypeDataDisks(self, 99)
 
 
 VendingMachines: _VendingMachines = _VendingMachines()
+
+
+class VendingMachineSmall(
+    _BaseStructure,
+    _Activate,
+    _ClearMemory,
+    _Error,
+    _ExportCount,
+    _ImportCount,
+    _Lock,
+    _Power,
+    _Quantity,
+    _Ratio,
+):
+    _hash: int = 19591354
+    _prefab_name: int = "StructureVendingMachineSmall"
+
+    @property
+    def RequestHash(self) -> float:
+        return _DeviceLogicType(self, _LT.RequestHash)
+
+    @RequestHash.setter
+    def RequestHash(self, value: int | float):
+        pass
+
+    @property
+    def slot0(self) -> _SlotTypeDataDisk:
+        return _SlotTypeDataDisk(self, 0)
+
+    @property
+    def Import(self) -> _SlotTypeDataDisk:
+        return self.slot0
+
+    @property
+    def slot1(self) -> _SlotTypeDataDisk:
+        return _SlotTypeDataDisk(self, 1)
+
+    @property
+    def Export(self) -> _SlotTypeDataDisk:
+        return self.slot1
+
+    @property
+    def slot10(self) -> _SlotTypeDataDisk:
+        return _SlotTypeDataDisk(self, 10)
+
+    @property
+    def slot11(self) -> _SlotTypeDataDisk:
+        return _SlotTypeDataDisk(self, 11)
+
+    @property
+    def slot2(self) -> _SlotTypeDataDisk:
+        return _SlotTypeDataDisk(self, 2)
+
+    @property
+    def slot3(self) -> _SlotTypeDataDisk:
+        return _SlotTypeDataDisk(self, 3)
+
+    @property
+    def slot4(self) -> _SlotTypeDataDisk:
+        return _SlotTypeDataDisk(self, 4)
+
+    @property
+    def slot5(self) -> _SlotTypeDataDisk:
+        return _SlotTypeDataDisk(self, 5)
+
+    @property
+    def slot6(self) -> _SlotTypeDataDisk:
+        return _SlotTypeDataDisk(self, 6)
+
+    @property
+    def slot7(self) -> _SlotTypeDataDisk:
+        return _SlotTypeDataDisk(self, 7)
+
+    @property
+    def slot8(self) -> _SlotTypeDataDisk:
+        return _SlotTypeDataDisk(self, 8)
+
+    @property
+    def slot9(self) -> _SlotTypeDataDisk:
+        return _SlotTypeDataDisk(self, 9)
+
+
+class _VendingMachineSmalls(
+    _BaseStructures,
+    _Activates,
+    _ClearMemories,
+    _Errors,
+    _ExportCounts,
+    _ImportCounts,
+    _Locks,
+    _Powers,
+    _Quantities,
+    _Ratios,
+):
+    _hash: int = 19591354
+    _prefab_name: int = "StructureVendingMachineSmall"
+
+    def __getitem__(self, name: str | int | float) -> "_VendingMachineSmalls":
+        return _VendingMachineSmalls(name)
+
+    @property
+    def Average(self) -> VendingMachineSmall:
+        return VendingMachineSmall(name=self._name, batch_mode=LogicBatchMethod.Average)
+
+    @property
+    def Minimum(self) -> VendingMachineSmall:
+        return VendingMachineSmall(name=self._name, batch_mode=LogicBatchMethod.Minimum)
+
+    @property
+    def Maximum(self) -> VendingMachineSmall:
+        return VendingMachineSmall(name=self._name, batch_mode=LogicBatchMethod.Maximum)
+
+    @property
+    def Sum(self) -> VendingMachineSmall:
+        return VendingMachineSmall(name=self._name, batch_mode=LogicBatchMethod.Sum)
+
+    @property
+    def RequestHash(self) -> _DevicesLogicType:
+        return _DevicesLogicType(self, _LT.RequestHash)
+
+    @RequestHash.setter
+    def RequestHash(self, value: int | float):
+        pass
+
+    @property
+    def slot0(self) -> _SlotTypeDataDisks:
+        return _SlotTypeDataDisks(self, 0)
+
+    @property
+    def Import(self) -> _SlotTypeDataDisks:
+        return self.slot0
+
+    @property
+    def slot1(self) -> _SlotTypeDataDisks:
+        return _SlotTypeDataDisks(self, 1)
+
+    @property
+    def Export(self) -> _SlotTypeDataDisks:
+        return self.slot1
+
+    @property
+    def slot10(self) -> _SlotTypeDataDisks:
+        return _SlotTypeDataDisks(self, 10)
+
+    @property
+    def slot11(self) -> _SlotTypeDataDisks:
+        return _SlotTypeDataDisks(self, 11)
+
+    @property
+    def slot2(self) -> _SlotTypeDataDisks:
+        return _SlotTypeDataDisks(self, 2)
+
+    @property
+    def slot3(self) -> _SlotTypeDataDisks:
+        return _SlotTypeDataDisks(self, 3)
+
+    @property
+    def slot4(self) -> _SlotTypeDataDisks:
+        return _SlotTypeDataDisks(self, 4)
+
+    @property
+    def slot5(self) -> _SlotTypeDataDisks:
+        return _SlotTypeDataDisks(self, 5)
+
+    @property
+    def slot6(self) -> _SlotTypeDataDisks:
+        return _SlotTypeDataDisks(self, 6)
+
+    @property
+    def slot7(self) -> _SlotTypeDataDisks:
+        return _SlotTypeDataDisks(self, 7)
+
+    @property
+    def slot8(self) -> _SlotTypeDataDisks:
+        return _SlotTypeDataDisks(self, 8)
+
+    @property
+    def slot9(self) -> _SlotTypeDataDisks:
+        return _SlotTypeDataDisks(self, 9)
+
+
+VendingMachineSmalls: _VendingMachineSmalls = _VendingMachineSmalls()
 
 
 class VolumePump(_BaseStructure, _Error, _Lock, _Maximum, _Power, _Ratio, _SettingW):
@@ -24728,11 +29042,11 @@ class WallCooler(_BaseStructure, _Error, _Lock, _Maximum, _Power, _Ratio, _Setti
         return _DeviceLogicType(self, _LT.TotalMolesOutput)
 
     @property
-    def slot0(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(self, 0)
+    def slot0(self) -> _SlotTypeDataDisk:
+        return _SlotTypeDataDisk(self, 0)
 
     @property
-    def DataDisk(self) -> _SlotTypeCommon:
+    def DataDisk(self) -> _SlotTypeDataDisk:
         return self.slot0
 
 
@@ -24806,11 +29120,11 @@ class _WallCoolers(
         return _DevicesLogicType(self, _LT.TotalMolesOutput)
 
     @property
-    def slot0(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(self, 0)
+    def slot0(self) -> _SlotTypeDataDisks:
+        return _SlotTypeDataDisks(self, 0)
 
     @property
-    def DataDisk(self) -> _SlotTypeCommons:
+    def DataDisk(self) -> _SlotTypeDataDisks:
         return self.slot0
 
 
@@ -24822,11 +29136,11 @@ class WallHeater(_BaseStructure, _Error, _Lock, _Power):
     _prefab_name: int = "StructureWallHeater"
 
     @property
-    def slot0(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(self, 0)
+    def slot0(self) -> _SlotTypeDataDisk:
+        return _SlotTypeDataDisk(self, 0)
 
     @property
-    def DataDisk(self) -> _SlotTypeCommon:
+    def DataDisk(self) -> _SlotTypeDataDisk:
         return self.slot0
 
 
@@ -24854,11 +29168,11 @@ class _WallHeaters(_BaseStructures, _Errors, _Locks, _Powers):
         return WallHeater(name=self._name, batch_mode=LogicBatchMethod.Sum)
 
     @property
-    def slot0(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(self, 0)
+    def slot0(self) -> _SlotTypeDataDisks:
+        return _SlotTypeDataDisks(self, 0)
 
     @property
-    def DataDisk(self) -> _SlotTypeCommons:
+    def DataDisk(self) -> _SlotTypeDataDisks:
         return self.slot0
 
 
@@ -24934,11 +29248,11 @@ class _WallLightBatteries(_BaseStructures, _Locks, _Powers):
         return WallLightBattery(name=self._name, batch_mode=LogicBatchMethod.Sum)
 
     @property
-    def slot0(self) -> _SlotTypeBatterys:
-        return _SlotTypeBatterys(self, 0)
+    def slot0(self) -> _SlotTypeBatteries:
+        return _SlotTypeBatteries(self, 0)
 
     @property
-    def Battery(self) -> _SlotTypeBatterys:
+    def Battery(self) -> _SlotTypeBatteries:
         return self.slot0
 
 
@@ -25046,11 +29360,11 @@ class WaterPurifier(_BaseStructure, _ClearMemory, _Error, _ImportCount, _Lock, _
     _prefab_name: int = "StructureWaterPurifier"
 
     @property
-    def slot0(self) -> _SlotTypeCommon:
-        return _SlotTypeCommon(self, 0)
+    def slot0(self) -> _SlotTypeDataDisk:
+        return _SlotTypeDataDisk(self, 0)
 
     @property
-    def Import(self) -> _SlotTypeCommon:
+    def Import(self) -> _SlotTypeDataDisk:
         return self.slot0
 
 
@@ -25080,11 +29394,11 @@ class _WaterPurifiers(
         return WaterPurifier(name=self._name, batch_mode=LogicBatchMethod.Sum)
 
     @property
-    def slot0(self) -> _SlotTypeCommons:
-        return _SlotTypeCommons(self, 0)
+    def slot0(self) -> _SlotTypeDataDisks:
+        return _SlotTypeDataDisks(self, 0)
 
     @property
-    def Import(self) -> _SlotTypeCommons:
+    def Import(self) -> _SlotTypeDataDisks:
         return self.slot0
 
 
@@ -25285,3 +29599,45 @@ class _WindTurbines(_BaseStructures):
 
 
 WindTurbines: _WindTurbines = _WindTurbines()
+
+
+class WirelessBatteryCellExtraLarge(_BaseStructure, _Mode):
+    _hash: int = -504717121
+    _prefab_name: int = "ItemWirelessBatteryCellExtraLarge"
+
+
+class _WirelessBatteryCellExtraLarges(_BaseStructures, _Modes):
+    _hash: int = -504717121
+    _prefab_name: int = "ItemWirelessBatteryCellExtraLarge"
+
+    def __getitem__(self, name: str | int | float) -> "_WirelessBatteryCellExtraLarges":
+        return _WirelessBatteryCellExtraLarges(name)
+
+    @property
+    def Average(self) -> WirelessBatteryCellExtraLarge:
+        return WirelessBatteryCellExtraLarge(
+            name=self._name, batch_mode=LogicBatchMethod.Average
+        )
+
+    @property
+    def Minimum(self) -> WirelessBatteryCellExtraLarge:
+        return WirelessBatteryCellExtraLarge(
+            name=self._name, batch_mode=LogicBatchMethod.Minimum
+        )
+
+    @property
+    def Maximum(self) -> WirelessBatteryCellExtraLarge:
+        return WirelessBatteryCellExtraLarge(
+            name=self._name, batch_mode=LogicBatchMethod.Maximum
+        )
+
+    @property
+    def Sum(self) -> WirelessBatteryCellExtraLarge:
+        return WirelessBatteryCellExtraLarge(
+            name=self._name, batch_mode=LogicBatchMethod.Sum
+        )
+
+
+WirelessBatteryCellExtraLarges: _WirelessBatteryCellExtraLarges = (
+    _WirelessBatteryCellExtraLarges()
+)
