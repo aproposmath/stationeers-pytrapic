@@ -142,7 +142,7 @@ async function compileCode() {
 
       var msg = result.error.description;
 
-      if (result.error.line !== undefined) {
+      if (result.error.lineno !== undefined) {
         msg += ` on line ${result.error.lineno}`;
       }
       if (result.error.offset !== undefined) {
