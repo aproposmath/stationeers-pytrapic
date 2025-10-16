@@ -187,18 +187,20 @@ class CompilerPassGenerateCode(CompilerPass):
                 node,
             )
 
-        if hasattr(attr, "__call__") and attrname in [
-            "Minimum",
-            "Maximum",
-            "Sum",
-            "Average",
-        ]:
+        is_batch_method = attrname in LogicBatchMethod.__members__
+
+        if is_batch_method and hasattr(attr, "__call__"):
             symbol = self.get_intermediate_symbol(node)
             data.add(attr(symbol))
             data.result = symbol
+        elif is_batch_method and hasattr(attr, "_load") and not attr._logic_type:
+            data.result = attr
         elif is_loadable_type(attr):
             symbol = self.get_intermediate_symbol(node)
-            data.add(attr._load(symbol))
+            try:
+                data.add(attr._load(symbol))
+            except ValueError as e:
+                raise CompilerError(f"Error loading attribute {attrname}: {e}", node)
             data.result = symbol
         else:
             data.result = attr

@@ -134,10 +134,22 @@ class IC10Instruction:
         return regs
 
     def to_string(self, shift=2) -> str:
+        from .compile_pass import CompilerError
+
+        for inp in self.inputs:
+            if not isinstance(inp, IC10Operand):
+                raise CompilerError(
+                    f"Input must be an IC10Operand, have {inp}", self.node
+                )
+            if isinstance(inp.value, _DevicesLogicType):
+                raise CompilerError(
+                    f"Missing LogicBatchMethod in expression",
+                    self.node,
+                )
+
         code = " " * self.indent * shift + self.op
         if self.output:
             if not isinstance(self.output, IC10Register):
-                from .compile_pass import CompilerError
 
                 raise CompilerError(
                     f"Output must be a register, have '{self.output}' of type {type(self.output)}",
@@ -399,9 +411,12 @@ class _DeviceLogicType(_BaseAccess):
 
 @dataclass
 class _DevicesLogicType(_BaseBatchAccess):
-    _logic_type: str
+    _logic_type: str = ""
 
     def _load(self, batch_mode: LogicBatchMethod):
+        if not self._logic_type:
+            raise ValueError("Logic type must be set")
+
         if self._name is None:
             # All devices of a specific type
             return lambda r: IC10Instruction(
@@ -558,6 +573,28 @@ class _Devices(_BaseStructures, _GenericStructures):
         ] or attr_name.startswith("__"):
             return super().__getattr__(attr_name)
         return _DevicesLogicType(self, attr_name)
+
+    def _get_batch_device(self, batch_mode: LogicBatchMethod) -> "_Device":
+        d = _Device()
+        d._prefab_name = self._prefab_name
+        d._batch_mode = batch_mode
+        return d
+
+    @property
+    def Minimum(self) -> _DeviceLogicType:
+        return self._get_batch_device(LogicBatchMethod.Minimum)
+
+    @property
+    def Maximum(self) -> _DeviceLogicType:
+        return self._get_batch_device(LogicBatchMethod.Maximum)
+
+    @property
+    def Average(self) -> _DeviceLogicType:
+        return self._get_batch_device(LogicBatchMethod.Average)
+
+    @property
+    def Sum(self) -> _DeviceLogicType:
+        return self._get_batch_device(LogicBatchMethod.Sum)
 
     def __str__(self):
         return f"Device({self._dev_id})"

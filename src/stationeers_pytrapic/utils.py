@@ -176,7 +176,7 @@ class CompilerError(Exception):
 
     def __str__(self):
         if self.node:
-            return f"Compiler error at line {self.node.lineno}:{self.node.col_offset}:\n\t{super().__str__()}"
+            return f"Compiler error at line {self.node.lineno}:{self.node.col_offset}: {super().__str__()}\n  {self.node.lineno:>6} | {self.node.as_string()}\n"
         return super().__str__()
 
 
@@ -204,6 +204,8 @@ def is_builtin_structure(val):
     return is_enum or isinstance(
         val,
         (
+            symbols._DeviceLogicType,
+            symbols._DevicesLogicType,
             symbols._GenericStructures,
             symbols._GenericStructure,
             types._BaseStructure,
