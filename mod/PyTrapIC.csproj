@@ -1,5 +1,6 @@
 <?xml version="1.0"?>
 <Project Sdk="Microsoft.NET.Sdk">
+  <Import Project="PyTrapIC.props" Condition="Exists('PyTrapIC.props')"/>
   <PropertyGroup>
     <TargetFramework>net46</TargetFramework>
     <AssemblyName>PyTrapIC</AssemblyName>
@@ -12,36 +13,58 @@
     <ContinuousIntegrationBuild>true</ContinuousIntegrationBuild>
     <EnableSourceControlManagerQueries>false</EnableSourceControlManagerQueries>
   </PropertyGroup>
+  <!-- Remove and add VersionInfo.cs to avoid missing it on first build and duplicate compilation on subsequent builds -->
   <ItemGroup>
+    <Compile Remove="VersionInfo.cs"/>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="VersionInfo.cs"/>
+  </ItemGroup>
+  <Target Name="GetVersionFromPython" BeforeTargets="BeforeBuild">
+    <!-- The argument after create_version_info.py must match the namespace name in Main.cs -->
+    <Exec Command="python3 create_version_info.py StationeersPyTrapIC"/>
+    <ReadLinesFromFile File="version.txt">
+      <Output TaskParameter="Lines" PropertyName="VersionString"/>
+    </ReadLinesFromFile>
+  </Target>
+  <ItemGroup>
+    <PackageReference Include="Krafs.Publicizer" Version="2.3.0">
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+      <PrivateAssets>all</PrivateAssets>
+    </PackageReference>
     <PackageReference Include="UnityEngine.Modules" Version="2021.2.3" IncludeAssets="compile"/>
     <PackageReference Include="BepInEx.Analyzers" Version="1.*" PrivateAssets="all"/>
     <PackageReference Include="BepInEx.Core" Version="5.*"/>
     <PackageReference Include="BepInEx.PluginInfoProps" Version="1.*"/>
+    <Publicize Include="Assembly-CSharp"/>
     <Reference Include="Unity.TextMeshPro">
-      <HintPath>$(STATIONEERS_DLL_DIR)Unity.TextMeshPro.dll</HintPath>
+      <HintPath>$(StationeersDllDir)/Unity.TextMeshPro.dll</HintPath>
       <Private>false</Private>
     </Reference>
     <Reference Include="UniTask">
-      <HintPath>$(STATIONEERS_DLL_DIR)UniTask.dll</HintPath>
+      <HintPath>$(StationeersDllDir)/UniTask.dll</HintPath>
       <Private>false</Private>
     </Reference>
     <Reference Include="Newtonsoft.Json">
-      <HintPath>$(STATIONEERS_DLL_DIR)Newtonsoft.Json.dll</HintPath>
+      <HintPath>$(StationeersDllDir)/Newtonsoft.Json.dll</HintPath>
       <Private>false</Private>
     </Reference>
     <Reference Include="netstandard">
-      <HintPath>$(STATIONEERS_DLL_DIR)netstandard.dll</HintPath>
+      <HintPath>$(StationeersDllDir)/netstandard.dll</HintPath>
       <Private>false</Private>
     </Reference>
-    <Reference Include="netstandard">
-      <HintPath>$(STATIONEERS_DLL_DIR)UnityEngine.UI.dll</HintPath>
-      <Private>false</Private>
-    </Reference>
+    <!-- <Reference Include="UnityEngine.UI"> -->
+    <!--   <HintPath>$(StationeersDllDir)/UnityEngine.UI.dll</HintPath> -->
+    <!--   <Private>false</Private> -->
+    <!-- </Reference> -->
     <Reference Include="Assembly-CSharp">
-      <HintPath>$(STATIONEERS_DLL_DIR)/publicized_assemblies/Assembly-CSharp_publicized.dll</HintPath>
+      <HintPath>$(StationeersDllDir)/Assembly-CSharp.dll</HintPath>
       <Private>false</Private>
     </Reference>
-    <Compile Remove="ori/*"/>
+    <Reference Include="RG.ImGui">
+      <HintPath>$(StationeersDllDir)/RG.ImGui.dll</HintPath>
+      <Private>false</Private>
+    </Reference>
   </ItemGroup>
   <ItemGroup Condition="'$(TargetFramework.TrimEnd(`0123456789`))' == 'net'">
     <PackageReference Include="Microsoft.NETFramework.ReferenceAssemblies" Version="1.0.2" PrivateAssets="all"/>

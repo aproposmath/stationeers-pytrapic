@@ -15,11 +15,14 @@ using Assets.Scripts.Objects;
 using Assets.Scripts.Objects.Electrical;
 using Assets.Scripts.Objects.Motherboards;
 using Assets.Scripts.UI;
+using Assets.Scripts.UI.ImGuiUi;
 using BepInEx;
 using BepInEx.Logging;
 using Cysharp.Threading.Tasks;
 using HarmonyLib;
+using ImGuiNET;
 using Newtonsoft.Json;
+// using UI.ImGuiUi.ImGuiWindows;
 using UI.Tooltips;
 using UnityEngine;
 using Util.Commands;
@@ -325,6 +328,9 @@ namespace StationeersPyTrapIC
 
         public void UpdatePythonModules(bool force = false)
         {
+            return;
+#if DEBUG
+#endif
             // Todo: check for verison number and build time, do this only when changed
             string modulesZipDir = Path.Combine(
                 Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location),
@@ -338,6 +344,7 @@ namespace StationeersPyTrapIC
 
         public void InstallPython(bool force = false)
         {
+            return;
             try
             {
                 if (
@@ -683,7 +690,7 @@ namespace StationeersPyTrapIC
             string inputString
         )
         {
-            L.Debug($"Reformatting line: {inputString}");
+            // L.Debug($"Reformatting line: {inputString}");
             string newCode = InputSourceCode.Copy();
             // L.Debug($"Have code");
             if (SourceData.NeedsCompile(newCode))
@@ -875,6 +882,14 @@ namespace StationeersPyTrapIC
                 L.Error($"Error loading source data for ID ${data.ReferenceId}: {ex}");
             }
         }
+
+        [HarmonyPatch(typeof(ImguiCreativeSpawnMenu))]
+        [HarmonyPatch(nameof(ImguiCreativeSpawnMenu.Draw))]
+        [HarmonyPostfix]
+        static void ImguiCreativeSpawnMenuDrawPatch_Postfix()
+        {
+            ImGuiEditor.Draw();
+        }
     }
 
     [BepInPlugin(pluginGuid, pluginName, pluginVersion)]
@@ -888,6 +903,7 @@ namespace StationeersPyTrapIC
         {
             try
             {
+                L.Debug("Awake PyTrapIC plugin");
                 var sw = Stopwatch.StartNew();
                 L.Initialize(Logger);
                 L.Info(
