@@ -883,12 +883,14 @@ namespace StationeersPyTrapIC
             }
         }
 
+        static ImGuiEditor CodeEditor = new ImGuiEditor();
+
         [HarmonyPatch(typeof(ImguiCreativeSpawnMenu))]
         [HarmonyPatch(nameof(ImguiCreativeSpawnMenu.Draw))]
         [HarmonyPostfix]
         static void ImguiCreativeSpawnMenuDrawPatch_Postfix()
         {
-            ImGuiEditor.Draw();
+            CodeEditor.Draw();
         }
     }
 

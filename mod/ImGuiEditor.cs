@@ -15,6 +15,64 @@ using UnityEngine;
 
 namespace StationeersPyTrapIC
 {
+    using Ed = ImGuiEditor;
+
+    public struct TextRange
+    {
+        public TextPosition Start;
+        public TextPosition End;
+
+        public TextRange(TextPosition start, TextPosition end)
+        {
+            Start = start;
+            End = end;
+        }
+
+        public TextRange Sorted()
+        {
+            TextRange range = this;
+            if (End < Start)
+            {
+                range.Start = End;
+                range.End = Start;
+            }
+            return range;
+        }
+
+        public void Reset()
+        {
+            Start.Reset();
+            End.Reset();
+        }
+
+        public static explicit operator bool(TextRange range)
+        {
+            return (bool)range.Start && (bool)range.End && (range.Start != range.End);
+        }
+
+        public static bool operator true(TextRange range)
+        {
+            return (bool)range;
+        }
+
+        public static bool operator false(TextRange range)
+        {
+            return (bool)range;
+        }
+    }
+
+    public struct IntRange
+    {
+        public int Start;
+        public int Next;
+
+        public IntRange(int start, int next)
+        {
+            Start = start;
+            Next = next;
+        }
+    }
+
     public struct TextPosition
     {
         public int Line;
@@ -48,6 +106,27 @@ namespace StationeersPyTrapIC
         {
             Line = line;
             Col = column;
+        }
+
+        public void Reset()
+        {
+            Line = -1;
+            Col = -1;
+        }
+
+        public static explicit operator bool(TextPosition pos)
+        {
+            return pos.Line >= 0 && pos.Col >= 0;
+        }
+
+        public static bool operator true(TextPosition pos)
+        {
+            return (bool)pos;
+        }
+
+        public static bool operator false(TextPosition pos)
+        {
+            return (bool)pos;
         }
     }
 
@@ -123,7 +202,7 @@ namespace StationeersPyTrapIC
             return tokens;
         }
 
-        public void DrawLine(int lineIndex, string line)
+        public void DrawLine(int lineIndex, string line, TextRange selection = default)
         {
             float charWidth = ImGui.CalcTextSize("M").x;
             var codeComment = line.Split('#');
@@ -138,35 +217,28 @@ namespace StationeersPyTrapIC
             int selectionMin = -1,
                 selectionMax = -1;
 
-            TextPosition selectionStart = new TextPosition();
-            TextPosition selectionEnd = new TextPosition();
-            if (ImGuiEditor.selectionEnd.HasValue && ImGuiEditor.selectionStart.HasValue)
+            if (selection)
             {
-                selectionStart = ImGuiEditor.selectionStart.Value;
-                selectionEnd = ImGuiEditor.selectionEnd.Value;
-                if (selectionEnd < selectionStart)
+                float lineHeight = ImGui.GetTextLineHeightWithSpacing();
+                if (selection.Start.Line <= lineIndex && selection.End.Line >= lineIndex)
                 {
-                    var temp = selectionStart;
-                    selectionStart = selectionEnd;
-                    selectionEnd = temp;
+                    selectionMin = lineIndex == selection.Start.Line ? selection.Start.Col : 0;
+                    selectionMax =
+                        lineIndex == selection.End.Line ? selection.End.Col : line.Length;
+
+                    selectionMin = Mathf.Clamp(selectionMin, 0, line.Length);
+                    selectionMax = Mathf.Clamp(selectionMax, 0, line.Length);
+
+                    Vector2 selStart = new Vector2(pos.x + charWidth * selectionMin, pos.y);
+                    Vector2 selEnd = new Vector2(
+                        pos.x + charWidth * selectionMax,
+                        pos.y + lineHeight
+                    );
+
+                    ImGui
+                        .GetWindowDrawList()
+                        .AddRectFilled(selStart, selEnd, ICodeFormatter.ColorSelection);
                 }
-            }
-
-            float lineHeight = ImGui.GetTextLineHeightWithSpacing();
-            if (selectionStart.Line <= lineIndex && selectionEnd.Line >= lineIndex)
-            {
-                selectionMin = lineIndex == selectionStart.Line ? selectionStart.Col : 0;
-                selectionMax = lineIndex == selectionEnd.Line ? selectionEnd.Col : line.Length;
-
-                selectionMin = Mathf.Clamp(selectionMin, 0, line.Length);
-                selectionMax = Mathf.Clamp(selectionMax, 0, line.Length);
-
-                Vector2 selStart = new Vector2(pos.x + charWidth * selectionMin, pos.y);
-                Vector2 selEnd = new Vector2(pos.x + charWidth * selectionMax, pos.y + lineHeight);
-
-                ImGui
-                    .GetWindowDrawList()
-                    .AddRectFilled(selStart, selEnd, ICodeFormatter.ColorSelection);
             }
             foreach (var token in tokens)
             {
@@ -348,13 +420,13 @@ namespace StationeersPyTrapIC
         public TextPosition CaretPos;
     }
 
-    public static class ImGuiEditor
+    public class ImGuiEditor
     {
-        public static ICodeFormatter CodeFormatter = new IC10CodeFormatter();
+        public ICodeFormatter CodeFormatter = new IC10CodeFormatter();
 
-        public static List<string> Lines = new List<string>();
-        public static string Code => string.Join("\n", Lines);
-        public static EditorState State
+        public List<string> Lines = new List<string>();
+        public string Code => string.Join("\n", Lines);
+        public EditorState State
         {
             get { return new EditorState { Code = Code, CaretPos = caretPos }; }
             set
@@ -365,16 +437,29 @@ namespace StationeersPyTrapIC
             }
         }
 
-        public static List<EditorState> UndoStack = new List<EditorState>();
+        public LinkedList<EditorState> UndoList = new LinkedList<EditorState>();
+        public bool scrollToCaret = false;
 
-        public static void PushUndoState()
+        public void PushUndoState()
         {
-            UndoStack.Add(State);
-            if (UndoStack.Count > 100)
-                UndoStack.RemoveAt(0);
+            var state = State;
+            if (UndoList.Count > 0 && state.Code == UndoList.First.Value.Code)
+                return;
+            UndoList.AddFirst(State);
+            while (UndoList.Count > 100)
+                UndoList.RemoveLast();
         }
 
-        public static string CurrentLine
+        public void Undo()
+        {
+            if (UndoList.Count == 0)
+                return;
+
+            State = UndoList.First.Value;
+            UndoList.RemoveFirst();
+        }
+
+        public string CurrentLine
         {
             get { return Lines[caretLine]; }
             set
@@ -386,33 +471,61 @@ namespace StationeersPyTrapIC
             }
         }
 
-        public static bool show = true;
-        public static Vector2 windowSize = new Vector2(420, 320);
-        public static Vector2 windowPos = new Vector2(300, 100);
-        public static bool isInitialized = false;
-        public static TextPosition caretPos = new TextPosition(0, 0);
-        public static int caretLine
+        public bool show = true;
+        public bool isInitialized = false;
+        public TextPosition caretPos = new TextPosition(0, 0);
+        public int caretLine
         {
             get { return caretPos.Line; }
             set { caretPos.Line = value; }
         }
-        public static int caretCol
+        public int caretCol
         {
             get { return caretPos.Col; }
             set { caretPos.Col = value; }
         }
 
-        public static TextPosition? selectionStart = null;
-        public static TextPosition? selectionEnd = null;
+        public TextRange Selection;
 
-        public static void MoveCaret(
+        public void CaretToEndOfLine()
+        {
+            caretCol = Lines[caretLine].Length;
+        }
+
+        public void CaretToStartOfLine()
+        {
+            caretCol = 0;
+        }
+
+        public void CaretUp()
+        {
+            MoveCaret(0, -1, true);
+        }
+
+        public void CaretDown()
+        {
+            MoveCaret(0, 1, true);
+        }
+
+        public void CaretLeft()
+        {
+            MoveCaret(-1, 0, true);
+        }
+
+        public void CaretRight()
+        {
+            MoveCaret(1, 0, true);
+        }
+
+        public void MoveCaret(
             int horizontal = 0,
             int vertical = 0,
             bool isRelative = true,
             bool isSelecting = false
         )
         {
-            ResetSelection();
+            scrollToCaret = true;
+            Selection.Reset();
             TextPosition newPos = caretPos;
             if (isRelative)
             {
@@ -438,52 +551,48 @@ namespace StationeersPyTrapIC
                 return;
 
             if (isSelecting)
-            {
-                selectionEnd = newPos;
-            }
+                Selection.End = newPos;
             else
-            {
-                selectionStart = null;
-                selectionEnd = null;
-            }
+                Selection.Reset();
             caretPos = newPos;
         }
 
-        public static void SelectAll()
+        public void SelectAll()
         {
-            selectionStart = new TextPosition(0, 0);
-            selectionEnd = new TextPosition(Lines.Count - 1, Lines[Lines.Count - 1].Length);
+            Selection.Start = new TextPosition(0, 0);
+            Selection.End = new TextPosition(Lines.Count - 1, Lines[Lines.Count - 1].Length);
         }
 
-        public static void Cut()
+        public void Cut()
         {
             GameManager.Clipboard = string.Join("\n", Lines);
         }
 
-        public static void Copy()
+        public void Copy()
         {
-            string code = GetSelectedCode();
+            string code = SelectedCode;
             if (code != null)
                 GameManager.Clipboard = code;
         }
 
-        public static void Paste()
+        public void Paste()
         {
             DeleteSelectedCode();
-            Insert(GameManager.Clipboard);
+            Insert(GameManager.Clipboard.Replace("\r", ""));
         }
 
-        public static void ClearCode()
+        public void ClearCode()
         {
+            PushUndoState();
             Lines.Clear();
             Lines.Add("");
             CodeFormatter.ResetCode("");
             caretLine = 0;
             caretCol = 0;
-            ResetSelection();
+            Selection.Reset();
         }
 
-        public static void Insert(string code)
+        public void Insert(string code)
         {
             var newLines = new List<string>(code.Split('\n'));
             if (newLines.Count == 0)
@@ -497,37 +606,18 @@ namespace StationeersPyTrapIC
             MoveCaret(0, newLines.Count, true);
         }
 
-        public static void Export()
+        public void Export()
         {
             L.Debug("Export invoked");
         }
 
-        public static void ResetSelection()
-        {
-            selectionStart = null;
-            selectionEnd = null;
-        }
+        public bool HaveSelection => (bool)Selection;
 
-        public static bool HaveSelection()
+        public string GetCode(TextRange range)
         {
-            return selectionStart.HasValue
-                && selectionEnd.HasValue
-                && selectionStart.Value != selectionEnd.Value;
-        }
+            var start = range.Start;
+            var end = range.End;
 
-        public static string GetSelectedCode()
-        {
-            if (!HaveSelection())
-                return null;
-
-            TextPosition start = selectionStart.Value;
-            TextPosition end = selectionEnd.Value;
-            if (end < start)
-            {
-                var temp = start;
-                start = end;
-                end = temp;
-            }
             if (start.Line == end.Line)
                 return Lines[start.Line].Substring(start.Col, end.Col - start.Col);
 
@@ -538,24 +628,17 @@ namespace StationeersPyTrapIC
             return code;
         }
 
-        public static bool DeleteSelectedCode()
-        {
-            ResetSelection();
+        public string SelectedCode => GetCode(Selection.Sorted());
 
-            if (!HaveSelection())
+        public bool DeleteRange(TextRange range)
+        {
+            if (!(bool)range)
                 return false;
 
             PushUndoState();
 
-            TextPosition start = selectionStart.Value;
-            TextPosition end = selectionEnd.Value;
-            if (end < start)
-            {
-                var temp = start;
-                start = end;
-                end = temp;
-            }
-
+            var start = range.Start;
+            var end = range.End;
             if (start.Line == end.Line)
             {
                 string line = Lines[start.Line];
@@ -583,7 +666,17 @@ namespace StationeersPyTrapIC
             return true;
         }
 
-        public static void HandleInput()
+        public bool DeleteSelectedCode()
+        {
+            if (DeleteRange(Selection))
+            {
+                Selection.Reset();
+                return true;
+            }
+            return false;
+        }
+
+        public void HandleInput()
         {
             var io = ImGui.GetIO();
             io.ConfigWindowsMoveFromTitleBarOnly = true;
@@ -599,17 +692,11 @@ namespace StationeersPyTrapIC
                     Copy();
                 if (ImGui.IsKeyPressed(ImGuiKey.X))
                 {
-                    GameManager.Clipboard = GetSelectedCode();
+                    GameManager.Clipboard = SelectedCode;
                     DeleteSelectedCode();
                 }
                 if (ImGui.IsKeyPressed(ImGuiKey.Z))
-                {
-                    if (UndoStack.Count == 0)
-                        return;
-
-                    State = UndoStack[UndoStack.Count - 1];
-                    UndoStack.RemoveAt(UndoStack.Count - 1);
-                }
+                    Undo();
             }
             else
             {
@@ -639,21 +726,28 @@ namespace StationeersPyTrapIC
                 }
                 if (ImGui.IsKeyPressed(ImGuiKey.Enter))
                 {
-                    if (!DeleteSelectedCode())
-                        PushUndoState();
+                    PushUndoState();
                     string newLine = CurrentLine.Substring(caretCol);
                     CurrentLine = CurrentLine.Substring(0, caretCol);
                     Lines.Insert(caretLine + 1, newLine);
                     MoveCaret(0, caretLine + 1, false);
                 }
                 if (ImGui.IsKeyPressed(ImGuiKey.LeftArrow))
-                    MoveCaret(-1, 0, true, shiftDown);
+                    CaretLeft();
                 if (ImGui.IsKeyPressed(ImGuiKey.RightArrow))
-                    MoveCaret(1, 0, true, shiftDown);
+                    CaretRight();
                 if (ImGui.IsKeyPressed(ImGuiKey.UpArrow))
-                    MoveCaret(0, -1, true, shiftDown);
+                    CaretUp();
                 if (ImGui.IsKeyPressed(ImGuiKey.DownArrow))
-                    MoveCaret(0, 1, true, shiftDown);
+                    CaretDown();
+                if (ImGui.IsKeyPressed(ImGuiKey.Home))
+                    CaretToStartOfLine();
+                if (ImGui.IsKeyPressed(ImGuiKey.End))
+                    CaretToEndOfLine();
+                if (ImGui.IsKeyPressed(ImGuiKey.PageUp))
+                    MoveCaret(0, -20, true);
+                if (ImGui.IsKeyPressed(ImGuiKey.PageDown))
+                    MoveCaret(0, 20, true);
 
                 string input = "";
                 for (int i = 0; i < io.InputQueueCharacters.Size; i++)
@@ -671,7 +765,7 @@ namespace StationeersPyTrapIC
             }
         }
 
-        public static void DrawHeader()
+        public void DrawHeader()
         {
             if (ImGui.Button("Clear"))
                 ClearCode();
@@ -700,17 +794,20 @@ namespace StationeersPyTrapIC
             if (ImGui.Button("Pause")) { }
         }
 
-        public static void DrawFooter()
+        public void DrawFooter()
         {
             ImGui.Text(
-                $"Lines: {Lines.Count}  Caret: ({caretLine},{caretCol})  Undo: {UndoStack.Count}"
+                $"Lines: {Lines.Count}  Caret: ({caretLine},{caretCol})  Undo: {UndoList.Count}"
             );
+            ImGui.SameLine();
+
+            ImGui.SetCursorPosX(ImGui.GetWindowWidth() - 200);
             if (ImGui.Button("Cancel")) { }
             ImGui.SameLine();
             if (ImGui.Button("Confirm")) { }
         }
 
-        static bool MouseIsInsideTextArea(Vector2 mousePos, Vector2 textOrigin)
+        bool MouseIsInsideTextArea(Vector2 mousePos, Vector2 textOrigin)
         {
             float textAreaHeight = ImGui.GetTextLineHeightWithSpacing() * Lines.Count;
             float textAreaWidth = ImGui.GetContentRegionAvail().x; // or full width
@@ -721,7 +818,7 @@ namespace StationeersPyTrapIC
                 && mousePos.y <= textOrigin.y + textAreaHeight;
         }
 
-        public static unsafe void DrawCodeArea()
+        public unsafe void DrawCodeArea()
         {
             Vector2 availSize = ImGui.GetContentRegionAvail();
             float statusLineHeight = ImGui.GetTextLineHeightWithSpacing() * 2;
@@ -744,26 +841,49 @@ namespace StationeersPyTrapIC
                 if (MouseIsInsideTextArea(mousePos, textAreaOrigin))
                 {
                     caretPos = GetTextPositionFromMouse(mousePos, textAreaOrigin);
-                    selectionStart = caretPos;
-                    selectionEnd = null;
+                    Selection.Start = caretPos;
+                    Selection.End.Reset();
                 }
             }
-            if (selectionStart.HasValue && (ImGui.IsMouseDown(0) || ImGui.IsMouseReleased(0)))
-                selectionEnd = GetTextPositionFromMouse(mousePos, textAreaOrigin);
+            if ((bool)Selection.Start && (ImGui.IsMouseDown(0) || ImGui.IsMouseReleased(0)))
+                Selection.End = GetTextPositionFromMouse(mousePos, textAreaOrigin);
 
+            if (scrollToCaret)
+            {
+                float lineHeight = ImGui.GetTextLineHeightWithSpacing();
+                float lineSpacing = ImGui.GetStyle().ItemSpacing.y;
+
+                float scrollY = ImGui.GetScrollY();
+                float pageHeight = Lines.Count * lineHeight - ImGui.GetScrollMaxY();
+                float viewTop = scrollY;
+                float viewBottom = scrollY + pageHeight;
+
+                float caretTop = caretLine * lineHeight;
+                float caretBottom = caretTop + lineHeight;
+
+                if (caretTop < viewTop)
+                    scrollY = caretTop;
+                else if (caretBottom > viewBottom)
+                    scrollY = caretBottom - pageHeight + lineSpacing;
+
+                ImGui.SetScrollY(Math.Min(scrollY, ImGui.GetScrollMaxY()));
+                scrollToCaret = false;
+            }
+
+            var selection = Selection.Sorted();
             while (clipper.Step())
                 for (int i = clipper.DisplayStart; i < clipper.DisplayEnd; i++)
                 {
                     if (i == caretLine)
                         DrawCaret(ImGui.GetCursorScreenPos());
-                    CodeFormatter.DrawLine(i, Lines[i]);
+                    CodeFormatter.DrawLine(i, Lines[i], selection);
                     ImGui.NewLine();
                 }
             clipper.End();
             ImGui.EndChild();
         }
 
-        public static void DrawCaret(Vector2 linePos)
+        public void DrawCaret(Vector2 linePos)
         {
             bool blinkOn = ((int)(ImGui.GetTime() * 2) % 2) == 0;
 
@@ -784,60 +904,39 @@ namespace StationeersPyTrapIC
             }
         }
 
-        public static void Draw()
+        public void Draw()
         {
             ImGui.PushStyleColor(ImGuiCol.WindowBg, new Vector4(0.1f, 0.1f, 0.1f, 1.0f));
+            ImGui.GetStyle().Colors[(int)ImGuiCol.WindowBg] = new Vector4(0.1f, 0.1f, 0.1f, 1.0f);
+            ImGui.Begin("IC10 Editor", ref show, 0);
 
-            ImGui.Begin("Test", ref show, 0);
             if (!isInitialized)
             {
-                ImGui.SetWindowSize(windowSize);
-                ImGui.SetWindowPos(windowPos);
+                var displaySize = ImGui.GetIO().DisplaySize;
+                var windowSize = new Vector2(
+                    Math.Min(1200, displaySize.x - 100),
+                    displaySize.y - 100
+                );
+                var windowPos = 0.5f * (displaySize - windowSize);
+
+                Lines.Clear();
+                Lines.Add("");
+                ImGui.SetNextWindowSize(windowSize);
+                ImGui.SetNextWindowPos(windowPos);
                 isInitialized = true;
             }
 
-            var drawList = ImGui.GetWindowDrawList();
-            var pos = ImGui.GetCursorScreenPos();
-            float lineHeight = ImGui.GetTextLineHeightWithSpacing();
-            drawList.AddRectFilled(
-                new Vector2(pos.x, pos.y),
-                new Vector2(pos.x + 200, pos.y + lineHeight * 4),
-                0xFF000000
-            );
-            drawList.AddText(pos, 0xFFFFFFFF, "WHITEWHITEWHITEWHITE");
-            pos.y += lineHeight;
-            drawList.AddText(pos, 0xFF808080, "GRAYGRAYGRAYGRAYGRAY");
-            pos.y += lineHeight;
-            drawList.AddText(pos, 0xFFFF8080, "BLUEBLUEBLUEBLUEBLUE");
+            HandleInput();
+
+            DrawHeader();
+            DrawCodeArea();
+            DrawFooter();
 
             ImGui.End();
             ImGui.PopStyleColor();
         }
 
-        //     ImGui.PushStyleColor(ImGuiCol.WindowBg, new Vector4(0.1f, 0.1f, 0.1f, 1.0f));
-        //     ImGui.GetStyle().Colors[(int)ImGuiCol.WindowBg] = new Vector4(0.1f, 0.1f, 0.1f, 1.0f); // RGBA
-        //     ImGui.Begin("IC10 Editor", ref show, 0);
-        //     if (!isInitialized)
-        //     {
-        //         Lines.Clear();
-        //         Lines.Add("");
-        //         ImGui.SetWindowSize(windowSize);
-        //         ImGui.SetWindowPos(windowPos);
-        //         isInitialized = true;
-        //     }
-        //
-        //     var io = ImGui.GetIO();
-        //     HandleInput();
-        //
-        //     DrawHeader();
-        //     DrawCodeArea();
-        //     DrawFooter();
-        //
-        //     ImGui.End();
-        //     ImGui.PopStyleColor();
-        // }
-
-        static TextPosition GetTextPositionFromMouse(Vector2 mousePos, Vector2 origin)
+        TextPosition GetTextPositionFromMouse(Vector2 mousePos, Vector2 origin)
         {
             float charWidth = ImGui.CalcTextSize("M").x;
             float lineHeight = ImGui.GetTextLineHeightWithSpacing();
