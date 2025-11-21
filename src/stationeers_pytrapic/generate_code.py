@@ -626,7 +626,7 @@ class CompilerPassGenerateCode(CompilerPass):
         sym = self.get_intermediate_symbol(node)
         data = node._ndata
         data.result = sym
-        data.add(IC10("select", [test, left, right], sym))
+        data.add_end(IC10("select", [test, left, right], sym))
 
     def handle_if(self, node: astroid.If):
         else_label, end_label = self.get_label("else", "end")
