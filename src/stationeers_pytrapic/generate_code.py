@@ -223,7 +223,10 @@ class CompilerPassGenerateCode(CompilerPass):
             except TypeError as e:
                 raise CompilerError(f"Error calling function {fname}: {e}", node)
             if isinstance(result, IC10Instruction):
-                if result.output != None:
+                if result.op == "define":
+                    name = result.inputs[0].value
+                    result.output = IC10Register(name, code_expr=name)
+                elif result.output != None:
                     # instruction returns a value, so we need to assign it to a symbol
                     result.output = self.get_intermediate_symbol(node)
                 data.add(result)
