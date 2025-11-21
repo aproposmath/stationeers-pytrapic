@@ -33,6 +33,11 @@ def format_enum(enum_val) -> str | int:
         return enum_val.value
 
 
+_math_functions = {"sin", "cos", "tan", "asin", "acos", "atan", "atan2", "sqrt", "log", "exp" }
+
+def is_math_function(name: str) -> bool:
+    return name in _math_functions
+
 def is_builtin_function(name: str) -> bool:
     return name in ["HASH", "STR"]
 
@@ -241,7 +246,26 @@ def is_constant(node):
         return True, node.value
 
     if isinstance(node, astroid.Call):
-        if isinstance(node.func, astroid.Name) and is_builtin_function(node.func.name):
+        if not isinstance(node.func, astroid.Name):
+            return False, None
+        if is_math_function(node.func.name):
+            import math
+
+            args = []
+            for arg in node.args:
+                arg_const, arg_value = is_constant(arg)
+                if not arg_const:
+                    return False, None
+                args.append(arg_value)
+            func = getattr(math, node.func.name, None)
+            if func:
+                try:
+                    return True, func(*args)
+                except Exception:
+                    return False, None
+            else:
+                return False, None
+        elif is_builtin_function(node.func.name):
             from . import symbols
 
             return True, getattr(symbols, node.func.name)(node.args[0].value)
@@ -254,7 +278,6 @@ def is_constant(node):
     if isinstance(node, astroid.BinOp):
         left_const, left_value = is_constant(node.left)
         right_const, right_value = is_constant(node.right)
-        print("binop", node.op, left_const, left_value, right_const, right_value)
         if left_const and right_const:
             _, func = get_binop_instruction(node.op)
             if func:

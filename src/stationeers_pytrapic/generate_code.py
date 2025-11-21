@@ -18,6 +18,7 @@ from .utils import (
     is_builtin_name,
     is_builtin_structure,
     is_loadable_type,
+    is_math_function,
     logger,
     get_function_name,
 )
@@ -238,6 +239,10 @@ class CompilerPassGenerateCode(CompilerPass):
 
         if node.kwargs:
             raise CompilerError("**kwargs are not supported", node)
+
+        if is_math_function(fname) and data.is_constant:
+            data.result = IC10Operand(data.constant_value)
+            return
 
         if is_builtin_name(fname):
             func = getattr(symbols, fname)
