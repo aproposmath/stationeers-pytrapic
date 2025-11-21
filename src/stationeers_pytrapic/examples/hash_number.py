@@ -43,16 +43,10 @@ def hash_number(crc, n):
 
     return crc
 
-def main():
+while True:
     i = 0
     while i < 150:
         hash_value = hash_number(prefix, i)
         # access ConsoleLED5s with name hash
         ConsoleLED5s[hash_value].On = 1
         i += 1
-
-    while True:
-        db.Setting = 0
-
-if __name__ == "__main__":
-    main()
