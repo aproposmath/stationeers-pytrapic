@@ -4,8 +4,8 @@ sbn -1129453144 HASH("In") 3 1
 sbn -1129453144 HASH("In") 28 0
 sbn -1129453144 HASH("Out") 3 1
 sbn -1129453144 HASH("Out") 28 0
-lbn r0 576516101 1749372462 28 3
-ble r0 0 22
+lbn r0 576516101 $68454E2E 28 3
+brle r0 0 15
 lbn r1 -324331872 HASH("In") 2 3
 sgt r0 r1 0
 select r1 r0 HASH("Out") HASH("In")
@@ -13,16 +13,16 @@ select r2 r0 HASH("In") HASH("Out")
 sbn -324331872 r2 2 0
 sbn -1129453144 r2 28 1
 lb r0 -1252983604 5 3
-beq r0 0 17
-j 14
+breq r0 0 2
+jr -2
 sleep 0.2
 sbn -1129453144 r2 28 0
 sbn -324331872 r1 2 1
-sbn 576516101 1749372462 28 0
+sbn 576516101 $68454E2E 28 0
 sleep 1
 l r1 d0 21
 sgt r0 r1 90
 s d1 28 r0
-j 6
+jr -19
 # registers: 3
 # lines: 26

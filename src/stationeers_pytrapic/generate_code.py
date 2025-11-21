@@ -26,6 +26,32 @@ from .utils import (
 # and 510, 509, ... for function arguments
 _RETURN_VALUE_ADDRESS = 511
 
+_HAS_RELATIVE_INSTRUCTION = set( [
+"j",
+"bap",
+"bapz",
+"bdns",
+"bdse",
+"beq",
+"beqz",
+"bge",
+"bgez",
+"bgt",
+"bgtz",
+"ble",
+"blez",
+"blt",
+"bltz",
+"bna",
+"bnan",
+"bnaz",
+"bne",
+"bnez",
+            ]
+        )
+
+def is_branch(op: str) -> bool:
+    return op.startswith("b") or op in ["j", "jal"]
 
 def remove_unused_labels(code: str) -> str:
     lines = code.splitlines()
@@ -1064,25 +1090,59 @@ class CompilerPassGatherCode(CompilerPass):
 
         self.used_registers = sorted(used_registers)
 
-    def remove_labels(self, code):
 
+
+    def remove_labels(self, code, relative_numbers: bool=True, keep_labels: set|None = None) -> str:
         label_map = {}
         i_line = 0
         new_code = []
+        keep_labels = keep_labels or set()
+
+        if relative_numbers:
+            # we must keep labels that are the target of jal instructions,
+            # because there is no jral
+            for line in code.splitlines():
+                cline = line.split("#")[0].strip()
+                op = cline.split()[0] if cline else ""
+                if is_branch(op) and not op in _HAS_RELATIVE_INSTRUCTION:
+                    parts = cline.split()
+                    if len(parts) >= 2:
+                        label = parts[1]
+                        keep_labels.add(label)
+
         for line in code.splitlines():
             cline = line.split("#")[0].strip()
-            if cline.endswith(":"):
+            label = cline[:-1] if cline.endswith(":") else None
+            if label and label not in keep_labels:
                 label = cline[:-1]
                 label_map[label] = len(new_code)
             else:
                 i_line += 1
                 new_code.append(line)
 
+        for line_num, line in enumerate(new_code):
+            for label, target_line in label_map.items():
+                pattern = r"\b{}\b".format(re.escape(label))
+                if re.search(pattern, line):
+                    if relative_numbers:
+                        offset = target_line - line_num
+                        replacement = str(offset)
+                        instruction = line.split("#")[0].strip().split()[0]
+                        if instruction  == "jal":
+                            replacement = str(target_line)
+                        new_instruction = instruction[:1] + "r" + instruction[1:]
+                        line = line.replace(instruction, new_instruction, 1)
+                    else:
+                        replacement = str(target_line)
+
+                    line = re.sub(pattern, replacement, line)
+            new_code[line_num] = line
+
         new_code = "\n".join(new_code)
 
-        for label, line_num in label_map.items():
-            pattern = r"\b{}\b".format(re.escape(label))
-            new_code = re.sub(pattern, str(line_num), new_code)
+        # for label, line_num in label_map.items():
+        #     pattern = r"\b{}\b".format(re.escape(label))
+        #     new_code = re.sub(pattern, str(line_num), new_code)
 
         return new_code
 

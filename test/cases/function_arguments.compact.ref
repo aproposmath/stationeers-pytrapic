@@ -1,6 +1,6 @@
 lb r1 -400115994 24 0
 slt r0 r1 0.2
 sb 813146305 28 r0
-j 0
+jr -3
 # registers: 2
 # lines: 4

@@ -1,3 +1,3 @@
-Error: Compiler error at line 9:4:
-> light = GrowLight(ref_id=1)
-Cannot reassign assign GrowLight(DeviceId(_id=IC10Operand(value=1), _is_ref_id=True)) to light at line 9
+Error: Compiler error at line 9:4: Cannot reassign assign GrowLight(DeviceId(_id=IC10Operand(value=1), _is_ref_id=True)) to light at line 9
+       9 | light = GrowLight(ref_id=1)
+

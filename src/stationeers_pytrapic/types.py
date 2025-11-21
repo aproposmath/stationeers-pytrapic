@@ -90,6 +90,8 @@ class IC10Operand:
             value = value._dev_id._id or "db"
         elif isinstance(value, DeviceId):
             value = value._id or "db"
+        elif isinstance(value, float) and int(value) == value:
+            value = int(value)
         self.value = value
 
     @property
@@ -108,6 +110,8 @@ class IC10Operand:
             ndigits = 16 + -int(math.log10(abs(self.value)))
             format_str = f"{{value:.{ndigits}f}}"
             return format_str.format(value=self.value).rstrip("0").rstrip(".")
+        elif isinstance(self.value, int):
+            return utils.format_int(self.value)
         return str(self.value)
 
 

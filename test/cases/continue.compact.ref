@@ -1,9 +1,9 @@
 lb r0 -400115994 24 0
-bge r0 0.2 3
-j 0
-bge r0 0.1 5
-j 7
+brge r0 0.2 2
+jr -2
+brge r0 0.1 2
+jr 3
 sb -247344692 9 1
-j 0
+jr -6
 # registers: 1
 # lines: 7

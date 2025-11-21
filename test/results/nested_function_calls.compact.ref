@@ -1,11 +1,12 @@
 push ra
 sb -1758710260 28 0
-jal 7
-jal 7
+jal inner.function
+jal inner.function
 pop ra
 lb r0 -1758710260 28 3
 s db Setting r0
+inner.function:
 sb -1758710260 28 1
 j ra
 # registers: 1
-# lines: 9
+# lines: 10

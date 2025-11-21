@@ -315,3 +315,20 @@ def is_constant(node):
     elif res:
         print(res, "check const", node, inferred)
     return res
+
+_all_hashes = set()
+
+def format_int(value):
+    if not _all_hashes:
+        from . import symbols
+        for name in dir(symbols):
+            val = getattr(symbols, name)
+            if hasattr(val, "_hash"):
+                h = val._hash
+                if isinstance(h, int):
+                    _all_hashes.add(h)
+
+    if value <= 10000 or value in _all_hashes:
+        return str(value)
+    
+    return f"${value:X}"
