@@ -65,6 +65,11 @@
       <HintPath>$(StationeersDllDir)/RG.ImGui.dll</HintPath>
       <Private>false</Private>
     </Reference>
+    <Publicize Include="IC10Editor"/>
+    <Reference Include="IC10Editor">
+      <HintPath>../../StationeersIC10Editor/bin/Debug/net46/IC10Editor.dll</HintPath>
+      <Private>false</Private>
+    </Reference>
   </ItemGroup>
   <ItemGroup Condition="'$(TargetFramework.TrimEnd(`0123456789`))' == 'net'">
     <PackageReference Include="Microsoft.NETFramework.ReferenceAssemblies" Version="1.0.2" PrivateAssets="all"/>

@@ -26,6 +26,7 @@ using Newtonsoft.Json;
 using UI.Tooltips;
 using UnityEngine;
 using Util.Commands;
+using StationeersIC10Editor;
 
 namespace StationeersPyTrapIC
 {
@@ -462,6 +463,10 @@ namespace StationeersPyTrapIC
             AddStationpediaPages();
 
             L.Info($"PythonCompiler running");
+            CodeFormatters.RegisterFormatter("Python", () => new PythonFormatter(), true);
+            CodeFormatters.RegisterFormatter("Slang", () => new SlangFormatter(), true);
+            L.Info($"Registered Python code formatter");
+            L.Info($"Get formatter {CodeFormatters.GetFormatter()}");
         }
 
         public void AddStationpediaPages()
@@ -500,7 +505,7 @@ namespace StationeersPyTrapIC
             }
         }
 
-        public CompileResponse Compile(string pythonCode)
+        public CompileResponse Compile(string pythonCode, int lineno = -1, int column = -1)
         {
             if (!IsRunning())
             {
@@ -510,10 +515,10 @@ namespace StationeersPyTrapIC
                     error = { description = "Python compiler is not running" },
                 };
             }
-            int lineno = -1;
-            int column = -1;
-            GetPosition(out lineno, out column);
-            L.Debug($"Compiling code at {lineno}:{column}");
+            // int lineno = lineno_;
+            // int column = column_;
+            // GetPosition(out lineno, out column);
+            // L.Debug($"Compiling code at {lineno}:{column}");
 
             var modules = SourceData.LoadImportedModules(pythonCode);
             var compileOptions = options.Copy();
@@ -599,6 +604,7 @@ namespace StationeersPyTrapIC
         }
     }
 
+    /*
     [HarmonyPatch]
     public static class PyTrapICPatches
     {
@@ -883,21 +889,25 @@ namespace StationeersPyTrapIC
             }
         }
 
-        [HarmonyPatch(typeof(ImguiCreativeSpawnMenu))]
-        [HarmonyPatch(nameof(ImguiCreativeSpawnMenu.Draw))]
-        [HarmonyPostfix]
-        static void ImguiCreativeSpawnMenuDrawPatch_Postfix()
-        {
-            ImGuiEditor.Draw();
-        }
+        // [HarmonyPatch(typeof(ImguiCreativeSpawnMenu))]
+        // [HarmonyPatch(nameof(ImguiCreativeSpawnMenu.Draw))]
+        // [HarmonyPostfix]
+        // static void ImguiCreativeSpawnMenuDrawPatch_Postfix()
+        // {
+        //     ImGuiEditor.Draw();
+        // }
     }
+    */
 
+
+    [BepInDependency("aproposmath-stationeers-ic10-editor", BepInDependency.DependencyFlags.HardDependency)]
     [BepInPlugin(pluginGuid, pluginName, pluginVersion)]
     public class PyTrapICPlugin : BaseUnityPlugin
     {
         public const string pluginGuid = "3f6a33e3-915f-4e35-90b0-2f07b29a91af";
         public const string pluginName = "PyTrapIC";
         public const string pluginVersion = VersionInfo.Version;
+        private Harmony _harmony;
 
         private void Awake()
         {
@@ -913,18 +923,29 @@ namespace StationeersPyTrapIC
                 PythonCompiler.Instance = new PythonCompiler();
                 CommandLine.AddCommand("pytrapic", new PyTrapICCommand());
 
-                var harmony = new Harmony(pluginGuid);
-                harmony.PatchAll();
+                _harmony = new Harmony(pluginGuid);
+                // _harmony.PatchAll();
 
                 sw.Stop();
                 L.Info(
                     $"PyTrapIC {VersionInfo.VersionGit} initialized in {sw.ElapsedMilliseconds}ms"
                 );
+
+
+                IC10EditorPatches.Cleanup();
+
             }
             catch (Exception ex)
             {
                 L.Error($"Error during PyTrapIC {VersionInfo.VersionGit} init: {ex}");
             }
+        }
+
+        private void OnDestroy()
+        {
+            L.Info($"OnDestroy ${pluginName} {VersionInfo.VersionGit}");
+            if(_harmony != null)
+              _harmony.UnpatchSelf();
         }
     }
 
