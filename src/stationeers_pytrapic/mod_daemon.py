@@ -16,9 +16,29 @@ from pathlib import Path
 from pygments import highlight as _highlight
 from pygments.formatters import BBCodeFormatter
 from pygments.lexers import LuaLexer, PythonLexer
+from pygments.style import Style
 
 from .compiler import CompileOptions, compile_code
 from .stationpedia import get_pages_encoded
+
+from . import symbols
+from . import types_generated
+
+
+_logic_types = set()
+
+f = open("/tmp/logic_types.txt", "w")
+
+for t in dir(types_generated):
+    # check if t is a class and is a subclass of enum
+    attr = getattr(types_generated, t)
+    if isinstance(attr, type):
+        # add all enum members to the set
+        for member in dir(attr):
+            if not member.startswith("_") and member[:1].isupper():
+                _logic_types.add(member)
+                f.write(member + "\n")
+
 
 
 def _get_ignore_symbol_names():
@@ -32,8 +52,40 @@ def _get_ignore_symbol_names():
             names.remove(n)
     return names
 
+class MyStyle(Style):
+    from pygments.token import Token, Comment, Keyword, Name, String, Error, Generic, Number, Operator
+    # public static uint ColorError = ColorFromHTML("#ff0000");
+    # public static uint ColorWarning = ColorFromHTML("#ff8f00");
+    # public static uint ColorComment = ColorFromHTML("#808080");
+    # public static uint ColorLineNumber = ColorFromHTML("#808080");
+    # public static uint ColorDefault = ColorFromHTML("#ffffff");
+    # public static uint ColorSelection = ColorFromHTML("#1a44b0ff");
+    # public static uint ColorNumber = ColorFromHTML("#20b2aa");
+    #     public static uint ColorInstruction = ColorFromHTML("#ffff00");
+    #
+    #     public static uint ColorDevice = ColorFromHTML("#00ff00");
+    #     public static uint ColorLogicType = ColorFromHTML("#ff8000");
+    #     public static uint ColorRegister = ColorFromHTML("#0080ff");
+    #     public static uint ColorBasicEnum = ColorFromHTML("#20b2aa");
+    #
+    #     public static uint ColorDefine = ColorNumber;
+    #     public static uint ColorAlias = ColorFromHTML("#4d4dcc");
+    #     public static uint ColorLabel = ColorFromHTML("#800080");
 
-formatter = BBCodeFormatter(style="solarized-light")
+    styles = {
+        Name.Constant:   '#20b2aa',
+        Token.Literal.Number:   '#20b2aa',
+        Token:                  '#ffffff',
+        Comment:                '#808080',
+        Keyword:                '#ffff00',
+        Name:                   '#ffffff',
+        Name.Class:             '#00ff00',
+        Name.Function:          '#0080ff',
+        Name.Property:          '#ff8000',
+        String:                 '#20b2aa',
+    }
+
+formatter = BBCodeFormatter(style=MyStyle)
 
 replace = lambda s: s.replace("[", "<").replace("]", ">")
 for ttype in formatter.styles:
@@ -49,6 +101,7 @@ ENABLE_LOGGING = __name__ == "__main__"
 ENABLE_LOGGING = False
 
 _ignore_symbol_names = _get_ignore_symbol_names()
+_symbols_names = set(dir(symbols)) - _ignore_symbol_names
 
 _jedi_project_dir = tempfile.mkdtemp(prefix="jedi_project_")
 
@@ -176,7 +229,11 @@ def highlight(code, error_line=None):
     tokens = []
     col = 0  # column offset within current line
 
-    def token_color(tokentype):
+    def token_color(tokentype, text=""):
+        if text in _symbols_names:
+            return "#00ff00"  # ColorLogicType
+        if text in _logic_types:
+            return "#ff8000"  # ColorLogicType
         style_def = style.style_for_token(tokentype)
         return style_def.get("color", "ffffff").lower().rjust(6, "0")
 
@@ -192,7 +249,7 @@ def highlight(code, error_line=None):
             # Handle all chunks before newline
             for i, chunk in enumerate(parts):
                 if chunk:
-                    color = "#" + token_color(tok_type)
+                    color = "#" + token_color(tok_type, chunk)
                     if error_line is not None and iline + 1 == error_line:
                         color = "#ff0000"
                     token_repr = f"{col}@@{color}@@{chunk}"
@@ -208,7 +265,7 @@ def highlight(code, error_line=None):
             continue
 
         # Normal token (no newline)
-        color = "#" + token_color(tok_type)
+        color = "#" + token_color(tok_type, text)
         if error_line is not None and iline + 1 == error_line:
             color = "#ff0000"
         token_repr = f"{col}{FIELD_SEP}{color}{FIELD_SEP}{text}"
@@ -217,6 +274,7 @@ def highlight(code, error_line=None):
         col += len(text)
 
     return TOKEN_SEP.join(tokens)
+
 
 def process_input(line):
     log(f"Received line: {line}")

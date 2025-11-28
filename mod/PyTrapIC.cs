@@ -254,7 +254,7 @@ namespace StationeersPyTrapIC
             public bool inline_functions = true;
             public bool remove_labels = true;
             public bool append_version = true;
-            public bool compact = true;
+            public bool compact = false;
 
             public CompileOptions Copy()
             {
@@ -463,10 +463,9 @@ namespace StationeersPyTrapIC
             AddStationpediaPages();
 
             L.Info($"PythonCompiler running");
-            CodeFormatters.RegisterFormatter("Python", () => new PythonFormatter(), true);
-            CodeFormatters.RegisterFormatter("Slang", () => new SlangFormatter(), true);
             L.Info($"Registered Python code formatter");
             L.Info($"Get formatter {CodeFormatters.GetFormatter()}");
+            _initTcs.TrySetResult();
         }
 
         public void AddStationpediaPages()
@@ -482,9 +481,13 @@ namespace StationeersPyTrapIC
             }
         }
 
+
+        private readonly UniTaskCompletionSource _initTcs = new UniTaskCompletionSource();
+        public UniTask WaitForReadyAsync() => _initTcs.Task;
+
         public PythonCompiler()
         {
-            Init().Forget();
+            UniTask.RunOnThreadPool(() => Init());
         }
 
         public static void GetPosition(out int lineno, out int column)
@@ -576,6 +579,7 @@ namespace StationeersPyTrapIC
             return Encoding.UTF8.GetString(raw);
         }
 
+        private System.Object _sendDataLock = new System.Object();
         public string SendData(string data)
         {
             if (data == lastInput)
@@ -583,18 +587,21 @@ namespace StationeersPyTrapIC
 
             try
             {
-                L.Debug($"Sending data to Python compiler");
-                String response = null;
-                using (new Timer("Compile"))
-                    response = SendCommand(data);
-                if (response == null)
+                lock (_sendDataLock)
                 {
-                    L.Error($"No response from Python compiler, was sent: {data}");
-                    return "Error: No response from Python compiler";
+                    L.Debug($"Sending data to Python compiler");
+                    String response = null;
+                    using (new Timer("Compile"))
+                        response = SendCommand(data);
+                    if (response == null)
+                    {
+                        L.Error($"No response from Python compiler, was sent: {data}");
+                        return "Error: No response from Python compiler";
+                    }
+                    lastInput = data;
+                    lastOutput = response;
+                    return response;
                 }
-                lastInput = data;
-                lastOutput = response;
-                return response;
             }
             catch (Exception ex)
             {
@@ -923,7 +930,7 @@ namespace StationeersPyTrapIC
                 PythonCompiler.Instance = new PythonCompiler();
                 CommandLine.AddCommand("pytrapic", new PyTrapICCommand());
 
-                _harmony = new Harmony(pluginGuid);
+                // _harmony = new Harmony(pluginGuid);
                 // _harmony.PatchAll();
 
                 sw.Stop();
@@ -933,6 +940,7 @@ namespace StationeersPyTrapIC
 
 
                 IC10EditorPatches.Cleanup();
+                CodeFormatters.RegisterFormatter("Python", () => new PythonFormatter(), true);
 
             }
             catch (Exception ex)
@@ -943,9 +951,10 @@ namespace StationeersPyTrapIC
 
         private void OnDestroy()
         {
+            IC10EditorPatches.Cleanup();
             L.Info($"OnDestroy ${pluginName} {VersionInfo.VersionGit}");
-            if(_harmony != null)
-              _harmony.UnpatchSelf();
+            // if(_harmony != null)
+            //   _harmony.UnpatchSelf();
         }
     }
 
