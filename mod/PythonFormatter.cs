@@ -1,13 +1,11 @@
 namespace StationeersPyTrapIC
 {
     using ImGuiNET;
-    using System;
     using System.Threading.Tasks;
     using UnityEngine;
     using StationeersIC10Editor;
     using StationeersIC10Editor.IC10;
     using Cysharp.Threading.Tasks;
-    using System.Threading;
 
     public class PythonFormatter : ICodeFormatter
     {
@@ -19,12 +17,32 @@ namespace StationeersPyTrapIC
         public int DebounceDelayMs = 100;
         private System.Object _Mutex = new System.Object();
 
+        public static double MatchingScore(string code)
+        {
+            L.Info("Calculating matching score for PythonFormatter...");
+            if (code.StartsWith("from stationeers_pytrapic.symbols import *"))
+            {
+                L.Info("High confidence match for PythonFormatter.");
+                return 1.0;
+            }
+
+            if (code.Contains("pytrapic"))
+            {
+                L.Info("Medium confidence match for PythonFormatter.");
+                return 0.5;
+            }
+
+            L.Info("Low confidence match for PythonFormatter.");
+            return 0.0;
+        }
+
         public PythonFormatter()
           : base()
         {
             OnCodeChanged += () =>
             {
                 UniTask.RunOnThreadPool(() => ResetCodeDebounced(RawText));
+                lastCompileResponse = null;
             };
         }
 
@@ -62,6 +80,7 @@ namespace StationeersPyTrapIC
             // }
 
             // make sure this is run in a mutex
+            PythonCompiler.CompileResponse response;
             lock (_Mutex)
             {
                 if (counter != _DebounceCounter)
@@ -71,18 +90,32 @@ namespace StationeersPyTrapIC
                 }
                 L.Info($"Debounce delay elapsed, proceeding with code reset.");
 
-                L.Info($"Resetting code {code.Length} chars");
                 var sw = System.Diagnostics.Stopwatch.StartNew();
-                lastCompileResponse = PythonCompiler.Instance.Compile(code);
-                var compiled = lastCompileResponse.code ?? "";
+                response = PythonCompiler.Instance.Compile(code, _lastCaretPos.Line + 1, _lastCaretPos.Col);
                 sw.Stop();
                 L.Info($"Compilation took {sw.ElapsedMilliseconds} ms");
-                L.Info($"got compiled code {compiled.Length} chars");
-                IC10Formatter.ResetCode(compiled);
-                Lines = ParseHighlightResponse(lastCompileResponse);
             }
 
+            if (counter != _DebounceCounter)
+            {
+                L.Info("Newer debounce task detected after compilation, cancelling this one.");
+                return;
+            }
+            lastCompileResponse = response;
+            var compiled = lastCompileResponse.code ?? "";
+            await UniTask.SwitchToThreadPool();
+            IC10Formatter.ResetCode(compiled);
+            Lines = ParseHighlightResponse(lastCompileResponse);
+            ParseAutocomplete(lastCompileResponse);
+
             // ResetCode(code);
+        }
+
+        public void ParseAutocomplete(PythonCompiler.CompileResponse compiled)
+        {
+            L.Info($"Parsing autocomplete entries... {compiled.completion} chars");
+            if (compiled.completion == null)
+                return;
         }
 
         public override void ResetCode(string code)
@@ -91,7 +124,7 @@ namespace StationeersPyTrapIC
             var lines = code.Split('\n');
             foreach (var line in lines)
                 Lines.Add(new Line(line));
-            // ResetCodeDebounced(code).Forget();
+            ResetCodeDebounced(code).Forget();
             // L.Info($"Resetting code {code.Length} chars");
             // var sw = System.Diagnostics.Stopwatch.StartNew();
             // lastCompileResponse = PythonCompiler.Instance.Compile(code);
@@ -147,6 +180,30 @@ namespace StationeersPyTrapIC
             ImGui.TextColored(new Vector4(1, 0, 0, 1), oneline);
         }
 
+        public override void PerformAutocomplete()
+        {
+            var line = CurrentLine;
+            if (line == null)
+                return;
+            if (lastCompileResponse?.completion == null)
+                return;
+
+            if (lastCompileResponse.completion.Length == 0)
+                return;
+
+            if (line.Text.Length < _lastCaretPos.Col)
+                return;
+
+            var completion = lastCompileResponse.completion;
+            var prefixLength = lastCompileResponse.completion_prefix_length;
+
+            var col = _lastCaretPos.Col - prefixLength;
+
+            var newLine = line.Text.Substring(0, col) + completion + line.Text.Substring(_lastCaretPos.Col);
+            Editor.ReplaceLine(_lastCaretPos.Line, newLine);
+            Editor.CaretPos = new TextPosition(_lastCaretPos.Line, col + completion.Length);
+        }
+
         public FormattedText ParseHighlightResponse(PythonCompiler.CompileResponse compiled)
         {
             var lines = compiled.highlighted.Split('\n');
@@ -168,13 +225,14 @@ namespace StationeersPyTrapIC
                     L.Info($"Line index {i} exceeds unformatted lines length {unformattedLines.Length}. Skipping.");
                     break;
                 }
-                var line = new Line();
                 if (string.IsNullOrWhiteSpace(lines[i]))
                 {
-                    result.Add(line);
+                    result.Add(new Line(lines[i]));
                     continue;
                 }
                 var tokens = lines[i].Split(TOKEN_SEP);
+                string lineText = unformattedLines[i];
+                var line = new Line(lineText);
                 foreach (var token in tokens)
                 {
                     if (string.IsNullOrWhiteSpace(token))
@@ -185,15 +243,15 @@ namespace StationeersPyTrapIC
                         continue;
                     }
 
-                    var t = new Token(fields[2], int.Parse(fields[0]), ICodeFormatter.ColorFromHTML(fields[1]));
-                    t.Tooltip = compiled.tooltip + ", " + compiled.completion + ", " + compiled.error;
-                    line.Add(t);
+                    var t = new SemanticToken(i, int.Parse(fields[0]), (int)fields[2].Length, ICodeFormatter.ColorFromHTML(fields[1]), 0);
+                    t.Data = compiled.tooltip + ", " + compiled.completion + ", " + compiled.error;
+                    line.AddToken(t);
                 }
                 result.Add(line);
             }
 
             for (int i = lines.Length; i < unformattedLines.Length; i++)
-                result.Add(new Line());
+                result.Add(new Line(""));
             L.Info("Code reset complete. Total lines: " + result.Count);
 
             return result;

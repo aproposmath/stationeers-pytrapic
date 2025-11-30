@@ -940,7 +940,7 @@ namespace StationeersPyTrapIC
 
 
                 IC10EditorPatches.Cleanup();
-                CodeFormatters.RegisterFormatter("Python", () => new PythonFormatter(), true);
+                CodeFormatters.RegisterFormatter("Python", typeof(PythonFormatter));
 
             }
             catch (Exception ex)
