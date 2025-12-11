@@ -107,10 +107,8 @@ _jedi_project_dir = tempfile.mkdtemp(prefix="jedi_project_")
 
 
 def format_completion(c):
-    name = f"<b>{c.name}</b>"
-    type_ = f"<color=#8888ff><i>{c.type}</i></color>"
-    return f"{name} - {type_}"
-
+    col = token_color(c.type, c.name)
+    return f"{c.name}{FIELD_SEP}{col}{FIELD_SEP}{c.type}"
 
 def longest_common_prefix(strings):
     if not strings:
@@ -157,7 +155,7 @@ def format_completions(completions):
     t1 = time.time()
     log(f"Formatted {len(completions)} completions in {1000*(t1 - t0):.1f} ms")
     return {
-        "tooltip": result,
+        "suggestions": result,
         "completion_prefix_length": prefix_len,
         "completion": completion,
     }
@@ -216,9 +214,26 @@ from pygments.token import Token
 from pygments import lex
 from pygments.token import Token
 
+style = formatter.style
+def token_color(tokentype, text=""):
+    if text in _symbols_names:
+        if isinstance(getattr(symbols, text), type):
+            return "#00ff00"  # ColorLogicType
+        elif callable(getattr(symbols, text)):
+            return "#0080ff"  # ColorRegister
+        else:
+            return "#20b2aa"  # ColorBasicEnum
+    if text in _logic_types:
+        return "#ff8000"  # ColorLogicType
+    try:
+        style_def = style.style_for_token(tokentype)
+        return style_def.get("color", "ffffff").lower().rjust(6, "0")
+    except:
+        return "#ffffff"
+
+
 def highlight(code, error_line=None):
     lexer = get_lexer(code)
-    style = formatter.style
     """
     Returns a string where:
         - Each token is encoded as "col@@#color@@text"
@@ -228,14 +243,6 @@ def highlight(code, error_line=None):
     """
     tokens = []
     col = 0  # column offset within current line
-
-    def token_color(tokentype, text=""):
-        if text in _symbols_names:
-            return "#00ff00"  # ColorLogicType
-        if text in _logic_types:
-            return "#ff8000"  # ColorLogicType
-        style_def = style.style_for_token(tokentype)
-        return style_def.get("color", "ffffff").lower().rjust(6, "0")
 
     iline = 0
     for tok_type, text in lex(code, lexer):
@@ -278,6 +285,7 @@ def highlight(code, error_line=None):
 
 def process_input(line):
     log(f"Received line: {line}")
+    t0 = time.time()
     if not line:
         return
 
@@ -300,10 +308,12 @@ def process_input(line):
         log(f"got modules {list(modules.keys())}")
 
         options = CompileOptions(**(msg.get("options", {})))
+        t1 = time.time()
         response = compile_code(
             modules,
             options,
         )
+        t2 = time.time()
         error_line = None
         if response and "error" in response and "line" in response["error"]:
             error_line = response["error"]["line"]
@@ -349,10 +359,13 @@ def process_input(line):
                 completions = script.complete(line=lineno, column=column)
                 log(f"Got {len(completions)} completions")
                 if completions:
+                    log(f"First completion: {completions[0].name} ({completions[0].type})")
                     response.update(format_completions(completions))
             except Exception as e:
                 log(f"Jedi exception: {e}")
                 error(f"Jedi exception: {e}")
+        t3 = time.time()
+        log(f"Processing times: parse {1000*(t1 - t0):.1f} ms, compile {1000*(t2 - t1):.1f} ms, jedi {1000*(t3 - t2):.1f} ms")
 
     except json.JSONDecodeError:
         response = {"error": {"message": "Invalid JSON format"}}

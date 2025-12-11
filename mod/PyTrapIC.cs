@@ -4,27 +4,15 @@ using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using System.Reflection;
-using System.Runtime.CompilerServices;
 using System.Text;
 using System.Text.RegularExpressions;
-using System.Threading;
-using System.Threading.Tasks;
 using Assets.Scripts.Networking;
 using Assets.Scripts.Networking.Transports;
-using Assets.Scripts.Objects;
-using Assets.Scripts.Objects.Electrical;
-using Assets.Scripts.Objects.Motherboards;
 using Assets.Scripts.UI;
-using Assets.Scripts.UI.ImGuiUi;
 using BepInEx;
 using BepInEx.Logging;
 using Cysharp.Threading.Tasks;
-using HarmonyLib;
-using ImGuiNET;
 using Newtonsoft.Json;
-// using UI.ImGuiUi.ImGuiWindows;
-using UI.Tooltips;
-using UnityEngine;
 using Util.Commands;
 using StationeersIC10Editor;
 
@@ -227,9 +215,6 @@ namespace StationeersPyTrapIC
         public static PythonCompiler Instance = null;
         public static List<PediaPage> pages = new List<PediaPage>();
 
-        public static ConditionalWeakTable<ISourceCode, SourceData> Data =
-            new ConditionalWeakTable<ISourceCode, SourceData>();
-
         public static CompileOptions options = new CompileOptions();
 
         private Process _process;
@@ -279,7 +264,7 @@ namespace StationeersPyTrapIC
             public CompileError error;
             public string highlighted;
             public string code;
-            public string tooltip;
+            public string suggestions;
             public string completion;
             public int completion_prefix_length;
             public int num_lines;
@@ -329,8 +314,9 @@ namespace StationeersPyTrapIC
 
         public void UpdatePythonModules(bool force = false)
         {
-            return;
 #if DEBUG
+            // I'm using symlinks to the python sources for development
+            return;
 #endif
             // Todo: check for verison number and build time, do this only when changed
             string modulesZipDir = Path.Combine(
@@ -345,7 +331,10 @@ namespace StationeersPyTrapIC
 
         public void InstallPython(bool force = false)
         {
+#if DEBUG
+            // I'm using symlinks to the python sources for development
             return;
+#endif
             try
             {
                 if (
@@ -518,10 +507,6 @@ namespace StationeersPyTrapIC
                     error = { description = "Python compiler is not running" },
                 };
             }
-            // int lineno = lineno_;
-            // int column = column_;
-            // GetPosition(out lineno, out column);
-            // L.Debug($"Compiling code at {lineno}:{column}");
 
             var modules = SourceData.LoadImportedModules(pythonCode);
             var compileOptions = options.Copy();
@@ -611,310 +596,14 @@ namespace StationeersPyTrapIC
         }
     }
 
-    /*
-    [HarmonyPatch]
-    public static class PyTrapICPatches
-    {
-        private static bool isPasting = false; // fix for faster pasting
-
-        [HarmonyPatch(typeof(Stationpedia), nameof(Stationpedia.Regenerate)), HarmonyPostfix]
-        public static void Stationpedia_Regenerate()
-        {
-            if (PythonCompiler.Instance != null)
-                PythonCompiler.Instance.AddStationpediaPages();
-        }
-
-        [
-            HarmonyPatch(
-                typeof(ProgrammableChip),
-                nameof(ProgrammableChip.SetSourceCode),
-                new[] { typeof(string) }
-            ),
-            HarmonyPrefix
-        ]
-        public static void ProgrammableChip_SetSourceCode(
-            ProgrammableChip __instance,
-            ref string sourceCode
-        )
-        {
-            L.Debug($"Setting source code for chip {__instance.ReferenceId}:\n{sourceCode}");
-            if (SourceData.NeedsCompile(sourceCode))
-            {
-                var ic10code = PythonCompiler.Instance.Compile(sourceCode).code;
-                var sourceData = PythonCompiler.Data.GetOrCreateValue(__instance);
-                sourceData.IC10Code = ic10code;
-                sourceData.PythonCode = sourceCode;
-                sourceCode = ic10code;
-                L.Debug($"Compiled IC10 code:\n{ic10code}");
-            }
-        }
-
-        [
-            HarmonyPatch(typeof(ProgrammableChip), nameof(ProgrammableChip.GetSourceCode)),
-            HarmonyPostfix
-        ]
-        public static void ProgrammableChip_GetSourceCode(
-            ProgrammableChip __instance,
-            ref AsciiString __result
-        )
-        {
-            var sourceData = new SourceData { };
-            if (PythonCompiler.Data.TryGetValue(__instance, out sourceData))
-            {
-                __result = AsciiString.Parse(sourceData.PythonCode);
-            }
-        }
-
-        [
-            HarmonyPatch(
-                typeof(ProgrammableChipMotherboard),
-                nameof(ProgrammableChipMotherboard.SetSourceCode)
-            ),
-            HarmonyPostfix
-        ]
-        public static void ProgrammableChipMotherboard_SetSourceCode(
-            ProgrammableChipMotherboard __instance,
-            ref string sourceCode
-        )
-        {
-            if (SourceData.NeedsCompile(sourceCode))
-            {
-                // Editor.mode = Editor.Mode.EditPython;
-                // Editor.SetPythonCode(sourceCode);
-                // __instance.SourceCode.text = PythonCompiler.Instance.Highlight(sourceCode);
-                var sourceCodeObj = AccessTools
-                    .Field(__instance.GetType(), "SourceCode")
-                    .GetValue(__instance);
-                var textProp = AccessTools.Property(sourceCodeObj.GetType(), "text");
-                textProp.SetValue(sourceCodeObj, PythonCompiler.Instance.Highlight(sourceCode));
-            }
-        }
-
-        [
-            HarmonyPatch(
-                typeof(EditorLineOfCode),
-                nameof(EditorLineOfCode.ReformatText),
-                new[] { typeof(string) }
-            ),
-            HarmonyPrefix
-        ]
-        public static bool EditorLineOfCode_ReformatText(
-            EditorLineOfCode __instance,
-            string inputString
-        )
-        {
-            // L.Debug($"Reformatting line: {inputString}");
-            string newCode = InputSourceCode.Copy();
-            // L.Debug($"Have code");
-            if (SourceData.NeedsCompile(newCode))
-            {
-                // L.Debug($"Needs compile");
-                // just set the current line to white color
-                int nr = Int32.Parse(__instance.LineNumber.text.TrimEnd('.'));
-                // __instance.FormattedText.text = $"<color=white>{inputString}</color>";
-                InputSourceCode.Instance.LinesOfCode[nr].FormattedText.text =
-                    $"<color=white>{inputString}</color>";
-
-                // and trigger full reformat of the code asynchronously
-                Editor.mode = Editor.Mode.EditPython;
-                // L.Debug($"Call SetPythonCode");
-                Editor.SetPythonCode(newCode);
-                // L.Debug($"done SetPythonCode");
-
-                return false;
-            }
-
-            // run original method, but only if we are not pasting (performance fix)
-            return !isPasting;
-        }
-
-        [
-            HarmonyPatch(typeof(InputSourceCode), nameof(InputSourceCode.UpdateFileSize)),
-            HarmonyPrefix
-        ]
-        public static bool PatchInputSourceCodeUpdateFileSize()
-        {
-            if (Editor.mode == Editor.Mode.EditIC10 || Editor.mode == Editor.Mode.ViewIC10)
-                return true; // run original method
-
-            Editor.SetStatusText();
-            return false;
-        }
-
-        [HarmonyPatch(typeof(InputSourceCode), "HandleInput"), HarmonyPrefix]
-        public static bool InputSourceCode_HandleInputPrefix()
-        {
-            bool ctrlPressed =
-                Input.GetKey(KeyCode.LeftControl) || Input.GetKey(KeyCode.RightControl);
-
-            if (ctrlPressed && Input.GetKeyDown(KeyCode.I))
-            {
-                L.Debug("Toggling preview");
-                Editor.TogglePreview();
-                return false;
-            }
-
-            if (ctrlPressed && Input.GetKeyDown(KeyCode.M))
-            {
-                L.Debug("Toggling preview");
-                Editor.ToggleCompileMode();
-                return false;
-            }
-
-            if (Input.GetKeyDown(KeyCode.Tab))
-            {
-                int lineno,
-                    column;
-                PythonCompiler.GetPosition(out lineno, out column);
-                // either insert 4 spaces, or trigger autocomplete
-                Editor.HandleTabKey(lineno - 1, column);
-                return false;
-            }
-
-            // UITooltipManager.ClearTooltip();
-
-            return true;
-        }
-
-        [HarmonyPatch(typeof(InputSourceCode), "HandleInput"), HarmonyPostfix]
-        public static void InputSourceCode_HandleInput()
-        {
-            // L.Debug("Post HandleInput");
-            // if (Editor.mode == Editor.Mode.EditPython)
-            //     Editor.SetPythonCode(InputSourceCode.Copy());
-
-            Editor.UpdateTooltip();
-        }
-
-        [HarmonyPatch(typeof(InputSourceCode), nameof(InputSourceCode.Paste)), HarmonyPrefix]
-        public static void PatchInputSourceCodePastePrefix()
-        {
-            isPasting = true;
-        }
-
-        [HarmonyPatch(typeof(InputSourceCode), nameof(InputSourceCode.Paste)), HarmonyPostfix]
-        public static void PatchInputSourceCodePastePostfix()
-        {
-            var instance = InputSourceCode.Instance;
-            if (instance == null)
-                return;
-            isPasting = false;
-
-            string newCode = InputSourceCode.Copy();
-            if (SourceData.NeedsCompile(newCode))
-            {
-                Editor.mode = Editor.Mode.EditPython;
-                Editor.SetPythonCode(newCode);
-            }
-            else
-            {
-                Editor.mode = Editor.Mode.EditIC10;
-                Editor.SetIC10Code(newCode);
-                using (new Timer("Formatting code"))
-                    for (int i = 0; i < instance.LinesOfCode.Count; i++)
-                        instance.LinesOfCode[i].ReformatText();
-            }
-        }
-
-        [HarmonyPatch(typeof(ProgrammableChip), "SerializeSave"), HarmonyPostfix]
-        static void ProgrammableChip_SerializeSave(
-            ProgrammableChip __instance,
-            ref ThingSaveData __result
-        )
-        {
-            var data = __result as ProgrammableChipSaveData;
-            if (data == null)
-            {
-                L.Debug("Save data is not of type ProgrammableChipSaveData");
-                return;
-            }
-
-            var sourceData = new SourceData { };
-            if (!PythonCompiler.Data.TryGetValue(__instance, out sourceData))
-            {
-                L.Debug($"No chip data found for ID {data.ReferenceId}");
-                return;
-            }
-
-            L.Debug($"Saving Python code: {sourceData.PythonCode}");
-            L.Debug($"Saving IC10 code: {sourceData.IC10Code}");
-            if (data.AliasesKeys == null)
-            {
-                data.AliasesKeys = new[] { sourceData.Serialize() };
-            }
-            else
-            {
-                var listData = new List<string>(data.AliasesKeys);
-                listData.Add(sourceData.Serialize());
-                data.AliasesKeys = listData.ToArray();
-            }
-            // make sure the IC10 code is set as the main source code
-            // such that the save game can be loaded without this mod
-            data.SourceCode = sourceData.IC10Code;
-        }
-
-        [HarmonyPatch(typeof(ProgrammableChip), "DeserializeSave"), HarmonyPrefix]
-        static void ProgrammableChip_DeserializeSave(
-            ref ThingSaveData savedData,
-            ProgrammableChip __instance
-        )
-        {
-            var data = savedData as ProgrammableChipSaveData;
-            if (data == null)
-            {
-                L.Error("Load data is not of type ProgrammableChipSaveData");
-                return;
-            }
-
-            if (data.AliasesKeys == null)
-            {
-                return;
-            }
-
-            try
-            {
-                L.Debug($"Loading source data for ID {data.ReferenceId}");
-                if (
-                    data.AliasesValues == null
-                    || data.AliasesKeys.Length > data.AliasesValues.Length
-                )
-                {
-                    SourceData sourceData = PythonCompiler.Data.GetOrCreateValue(__instance);
-                    sourceData.Deserialize(data.AliasesKeys[data.AliasesKeys.Length - 1]);
-                    L.Debug($"Loaded Python code: {sourceData.PythonCode}");
-                    L.Debug($"Loaded IC10 code: {sourceData.IC10Code}");
-                    data.AliasesKeys = data.AliasesKeys.Take(data.AliasesKeys.Length - 1).ToArray();
-                }
-                else
-                {
-                    L.Debug($"No python sources data found for ID {data.ReferenceId}");
-                }
-            }
-            catch (Exception ex)
-            {
-                L.Error($"Error loading source data for ID ${data.ReferenceId}: {ex}");
-            }
-        }
-
-        // [HarmonyPatch(typeof(ImguiCreativeSpawnMenu))]
-        // [HarmonyPatch(nameof(ImguiCreativeSpawnMenu.Draw))]
-        // [HarmonyPostfix]
-        // static void ImguiCreativeSpawnMenuDrawPatch_Postfix()
-        // {
-        //     ImGuiEditor.Draw();
-        // }
-    }
-    */
-
 
     [BepInDependency("aproposmath-stationeers-ic10-editor", BepInDependency.DependencyFlags.HardDependency)]
     [BepInPlugin(pluginGuid, pluginName, pluginVersion)]
     public class PyTrapICPlugin : BaseUnityPlugin
     {
-        public const string pluginGuid = "3f6a33e3-915f-4e35-90b0-2f07b29a91af";
+        public const string pluginGuid = "aproposmath-stationeers-pytrapic";
         public const string pluginName = "PyTrapIC";
         public const string pluginVersion = VersionInfo.Version;
-        private Harmony _harmony;
 
         private void Awake()
         {
@@ -930,18 +619,12 @@ namespace StationeersPyTrapIC
                 PythonCompiler.Instance = new PythonCompiler();
                 CommandLine.AddCommand("pytrapic", new PyTrapICCommand());
 
-                // _harmony = new Harmony(pluginGuid);
-                // _harmony.PatchAll();
-
                 sw.Stop();
                 L.Info(
                     $"PyTrapIC {VersionInfo.VersionGit} initialized in {sw.ElapsedMilliseconds}ms"
                 );
 
-
-                IC10EditorPatches.Cleanup();
                 CodeFormatters.RegisterFormatter("Python", typeof(PythonFormatter));
-
             }
             catch (Exception ex)
             {
@@ -951,10 +634,7 @@ namespace StationeersPyTrapIC
 
         private void OnDestroy()
         {
-            IC10EditorPatches.Cleanup();
             L.Info($"OnDestroy ${pluginName} {VersionInfo.VersionGit}");
-            // if(_harmony != null)
-            //   _harmony.UnpatchSelf();
         }
     }
 
