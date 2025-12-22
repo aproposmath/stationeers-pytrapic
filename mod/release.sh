@@ -1,8 +1,6 @@
 #! /bin/bash
 set -e
 
-export STATIONEERS_DLL_DIR=~/.sa/Stationeers/rocketstation_Data/Managed/
-export PYTRAPIC_VERSION=`./get_version.py`
 MOD_DIR=`pwd`
 DIST_DIR=/tmp/pytrapic_dist
 
@@ -14,7 +12,6 @@ rm -rf $DIST_DIR
 mkdir -p $DIST_DIR/pytrapic
 
 cp bin/Release/net46/PyTrapIC.dll $DIST_DIR/pytrapic/
-cp version.txt build_time.txt $DIST_DIR/pytrapic/
 
 cd $DIST_DIR
 
@@ -24,9 +21,10 @@ source venv/bin/activate
 pip install $MOD_DIR/..
 
 cd venv/lib/python3*/site-packages
-cp -r $MOD_DIR/jedi/jedi .
-rm -r pip*
-rm -r *.dist-info
+# cp -r $MOD_DIR/jedi/jedi .
+rm -rf pip*
+rm -rf *.dist-info
+rm -rf *.egg-info
 zip -r $DIST_DIR/pytrapic/pytrapic_python_modules.zip *
                 
 cd $DIST_DIR

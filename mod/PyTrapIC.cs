@@ -13,8 +13,8 @@ using BepInEx;
 using BepInEx.Logging;
 using Cysharp.Threading.Tasks;
 using Newtonsoft.Json;
-using Util.Commands;
 using StationeersIC10Editor;
+using Util.Commands;
 
 namespace StationeersPyTrapIC
 {
@@ -273,17 +273,14 @@ namespace StationeersPyTrapIC
             public CompileInput input;
         }
 
-        private void StopProcess()
+        public void StopProcess()
         {
             if (_process == null)
                 return;
-            L.Info("Stopping PythonCompiler instance");
+            L.Info($"Stopping PythonCompiler instance, has quit already: {_process.HasExited}");
             if (!_process.HasExited)
             {
-                _stdin?.WriteLine("EXIT");
-                System.Threading.Thread.Sleep(100);
-                if (!_process.HasExited)
-                    _process.Kill();
+                _process.Kill();
             }
         }
 
@@ -297,116 +294,9 @@ namespace StationeersPyTrapIC
             return _process != null && !_process.HasExited;
         }
 
-        public string GetCacheDir()
-        {
-            return Path.Combine(BepInEx.Paths.CachePath, "pytrapic");
-        }
-
-        public string GetVenvDir()
-        {
-            return Path.Combine(GetCacheDir(), $"venv");
-        }
-
-        public string GetPythonExePath()
-        {
-            return Path.Combine(GetVenvDir(), "python.exe");
-        }
-
-        public void UpdatePythonModules(bool force = false)
-        {
-#if DEBUG
-            // I'm using symlinks to the python sources for development
-            return;
-#endif
-            // Todo: check for verison number and build time, do this only when changed
-            string modulesZipDir = Path.Combine(
-                Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location),
-                "pytrapic_python_modules.zip"
-            );
-            string extractDir = Path.Combine(GetVenvDir(), "site-packages");
-            if (Directory.Exists(extractDir))
-                Directory.Delete(extractDir, recursive: true);
-            System.IO.Compression.ZipFile.ExtractToDirectory(modulesZipDir, extractDir);
-        }
-
-        public void InstallPython(bool force = false)
-        {
-#if DEBUG
-            // I'm using symlinks to the python sources for development
-            return;
-#endif
-            try
-            {
-                if (
-                    File.Exists(GetPythonExePath())
-                    && File.Exists(Path.Combine(GetVenvDir(), "pytrapic_python_modules.zip"))
-                    && !force
-                )
-                {
-                    L.Debug("Python already installed");
-                    return;
-                }
-                Timer t = new Timer("InstallPython");
-
-                StopProcess();
-
-                if (File.Exists(GetPythonExePath()) && force)
-                {
-                    L.Info($"Forcing re-install of Python {PYTHON_VERSION} and dependencies");
-                    try
-                    {
-                        Directory.Delete(GetVenvDir(), true);
-                    }
-                    catch (Exception ex)
-                    {
-                        L.Error($"Error deleting existing venv: {ex}");
-                        return;
-                    }
-                }
-
-                L.Info("Installing Python and dependencies");
-                var pythonZipName = $"python-{PYTHON_VERSION}-embed-amd64.zip";
-                var url = $"https://www.python.org/ftp/python/{PYTHON_VERSION}/{pythonZipName}";
-                var pythonDir = GetVenvDir();
-                var pythonZipPath = Path.Combine(
-                    BepInEx.Paths.CachePath,
-                    "pytrapic",
-                    pythonZipName
-                );
-                Directory.CreateDirectory(pythonDir);
-                using (var client = new System.Net.WebClient())
-                {
-                    client.DownloadFile(url, pythonZipPath);
-                }
-                System.IO.Compression.ZipFile.ExtractToDirectory(pythonZipPath, pythonDir);
-
-                var pythonVersion = PYTHON_VERSION
-                    .Substring(0, PYTHON_VERSION.LastIndexOf('.'))
-                    .Replace(".", "");
-
-                File.AppendAllText(
-                    Path.Combine(pythonDir, $"python{pythonVersion}._pth"),
-                    "\nsite-packages\n",
-                    Encoding.UTF8
-                );
-
-                L.Info($"Installed Python {PYTHON_VERSION} to {pythonDir}");
-                t.Dispose();
-            }
-            catch (Exception ex)
-            {
-                L.Error($"Error installing Python: {ex}");
-            }
-        }
-
         public async UniTaskVoid Init(bool forceRestart = false, bool forceInstall = false)
         {
-            L.Debug("Initializing PythonCompiler");
-            using (new Timer("Install Python"))
-                InstallPython(forceInstall);
-            using (new Timer("Update Python modules"))
-                UpdatePythonModules();
-            L.Debug("Python installation checked");
+            await UniTask.SwitchToThreadPool();
             if (IsRunning())
             {
                 if (!forceRestart)
@@ -414,8 +304,10 @@ namespace StationeersPyTrapIC
 
                 StopProcess();
             }
-            L.Debug($"Starting PythonCompiler instance");
-            var pythonPath = GetPythonExePath();
+            PythonVenv.Init(forceInstall);
+            L.Debug("Python installation checked");
+
+            var pythonPath = PythonVenv.PythonExe;
             _process = new Process
             {
                 StartInfo = new ProcessStartInfo
@@ -429,6 +321,9 @@ namespace StationeersPyTrapIC
                     CreateNoWindow = true,
                 },
             };
+
+            L.Info($"Starting Python compiler at: ${pythonPath}");
+            L.Info($"Full command line : {_process.StartInfo.FileName} {_process.StartInfo.Arguments}");
 
             _process.Start();
             _stdin = _process.StandardInput;
@@ -446,8 +341,13 @@ namespace StationeersPyTrapIC
                 throw new Exception("Failed to get standard input/output streams");
             }
 
+            var pagesResponse = await _stdout.ReadLineAsync();
+            L.Info($"Received Stationpedia pages from Python compiler");
+            L.Info($"Pages response length: {pagesResponse.Length}");
+            L.Info($"Decoding Stationpedia pages {pagesResponse}");
+
             pages = JsonConvert.DeserializeObject<List<PediaPage>>(
-                Encoding.UTF8.GetString((Convert.FromBase64String(await _stdout.ReadLineAsync())))
+                Encoding.UTF8.GetString((Convert.FromBase64String(pagesResponse)))
             );
             AddStationpediaPages();
 
@@ -470,8 +370,8 @@ namespace StationeersPyTrapIC
             }
         }
 
-
         private readonly UniTaskCompletionSource _initTcs = new UniTaskCompletionSource();
+
         public UniTask WaitForReadyAsync() => _initTcs.Task;
 
         public PythonCompiler()
@@ -565,6 +465,7 @@ namespace StationeersPyTrapIC
         }
 
         private System.Object _sendDataLock = new System.Object();
+
         public string SendData(string data)
         {
             if (data == lastInput)
@@ -596,14 +497,19 @@ namespace StationeersPyTrapIC
         }
     }
 
-
-    [BepInDependency("aproposmath-stationeers-ic10-editor", BepInDependency.DependencyFlags.HardDependency)]
-    [BepInPlugin(pluginGuid, pluginName, pluginVersion)]
+    [BepInDependency(
+        "aproposmath-stationeers-ic10-editor",
+        BepInDependency.DependencyFlags.HardDependency
+    )]
+    [BepInPlugin(PluginGuid, PluginName, PluginVersion)]
     public class PyTrapICPlugin : BaseUnityPlugin
     {
-        public const string pluginGuid = "aproposmath-stationeers-pytrapic";
-        public const string pluginName = "PyTrapIC";
-        public const string pluginVersion = VersionInfo.Version;
+        public const string PluginGuid = "aproposmath-stationeers-pytrapic";
+        // public const string pluginName = "PyTrapIC";
+        // public const string pluginVersion = VersionInfo.Version;
+        public const string PluginName = ThisAssembly.AssemblyName;
+        public const string PluginVersion = ThisAssembly.AssemblyVersion;
+        public const string PluginLongVersion = ThisAssembly.AssemblyInformationalVersion;
 
         private void Awake()
         {
@@ -613,7 +519,7 @@ namespace StationeersPyTrapIC
                 var sw = Stopwatch.StartNew();
                 L.Initialize(Logger);
                 L.Info(
-                    $"Awake PyTrapIC {VersionInfo.VersionGit} build time {VersionInfo.BuildTime}"
+                    $"Awake PyTrapIC {PluginLongVersion}"
                 );
 
                 PythonCompiler.Instance = new PythonCompiler();
@@ -621,20 +527,21 @@ namespace StationeersPyTrapIC
 
                 sw.Stop();
                 L.Info(
-                    $"PyTrapIC {VersionInfo.VersionGit} initialized in {sw.ElapsedMilliseconds}ms"
+                    $"PyTrapIC {PluginLongVersion} initialized in {sw.ElapsedMilliseconds}ms"
                 );
 
                 CodeFormatters.RegisterFormatter("Python", typeof(PythonFormatter));
             }
             catch (Exception ex)
             {
-                L.Error($"Error during PyTrapIC {VersionInfo.VersionGit} init: {ex}");
+                L.Error($"Error during PyTrapIC {PluginLongVersion} init: {ex}");
             }
         }
 
         private void OnDestroy()
         {
-            L.Info($"OnDestroy ${pluginName} {VersionInfo.VersionGit}");
+            L.Info($"OnDestroy ${PluginName} {PluginLongVersion}");
+            PythonCompiler.Instance.StopProcess();
         }
     }
 
@@ -677,7 +584,7 @@ Available commands:
                 case "libraries":
                     return string.Join("\n", SourceData.loadLibraries().Keys.OrderBy(x => x));
                 case "version":
-                    return VersionInfo.VersionGit;
+                    return $"PyTrapIC version {PyTrapICPlugin.PluginLongVersion}";
                 case "reinstall":
                     PythonCompiler.Instance.Init(true, true).Forget();
                     return "Python and dependencies reinstalled.";

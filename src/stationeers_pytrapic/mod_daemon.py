@@ -42,6 +42,7 @@ for t in dir(types_generated):
 
 
 def _get_ignore_symbol_names():
+    return set()
     import jedi
 
     s = jedi.Script("")
@@ -103,7 +104,7 @@ ENABLE_LOGGING = False
 _ignore_symbol_names = _get_ignore_symbol_names()
 _symbols_names = set(dir(symbols)) - _ignore_symbol_names
 
-_jedi_project_dir = tempfile.mkdtemp(prefix="jedi_project_")
+# _jedi_project_dir = tempfile.mkdtemp(prefix="jedi_project_")
 
 
 def format_completion(c):
@@ -325,45 +326,45 @@ def process_input(line):
             error("Error: " + response.get("error", {}).get("description", ""))
             error("stack_trace: \n" + str(stack_trace))
 
-        lineno = msg.get("lineno", -1)
-        column = msg.get("column", -1)
-        if lineno >= 0 and column > 0:
-            try:
-                import jedi
-
-                if len(modules) > 1:
-                    tmpdir = Path(_jedi_project_dir)
-                    (tmpdir / "__init__.py").write_text("", encoding="utf-8")
-                    lib_path = tmpdir / "library"
-                    lib_path.mkdir(exist_ok=True)
-                    (lib_path / "__init__.py").write_text("", encoding="utf-8")
-
-                    for mod_name, code in modules.items():
-                        if mod_name == "":
-                            path = tmpdir / "script.py"
-                        else:
-                            path = lib_path / (mod_name + ".py")
-                        log("write module " + str(path))
-                        log(code)
-                        path.write_text(code, encoding="utf-8")
-
-                    project = jedi.Project(path=tmpdir, added_sys_path=str(tmpdir))
-                    script = jedi.Script(modules[""], path="script.py", project=project)
-                else:
-                    # no library modules, just use jedi.Script directly
-                    script = jedi.Script(modules[""], path="script.py")
-
-                # line_shift = len(all_code.splitlines()) - len(code.splitlines())
-                # script = jedi.Script(all_code, path="script.py")
-                log(f"Getting completions at {lineno}:{column}")
-                completions = script.complete(line=lineno, column=column)
-                log(f"Got {len(completions)} completions")
-                if completions:
-                    log(f"First completion: {completions[0].name} ({completions[0].type})")
-                    response.update(format_completions(completions))
-            except Exception as e:
-                log(f"Jedi exception: {e}")
-                error(f"Jedi exception: {e}")
+        # lineno = msg.get("lineno", -1)
+        # column = msg.get("column", -1)
+        # if lineno >= 0 and column > 0:
+        #     try:
+        #         import jedi
+        #
+        #         if len(modules) > 1:
+        #             tmpdir = Path(_jedi_project_dir)
+        #             (tmpdir / "__init__.py").write_text("", encoding="utf-8")
+        #             lib_path = tmpdir / "library"
+        #             lib_path.mkdir(exist_ok=True)
+        #             (lib_path / "__init__.py").write_text("", encoding="utf-8")
+        #
+        #             for mod_name, code in modules.items():
+        #                 if mod_name == "":
+        #                     path = tmpdir / "script.py"
+        #                 else:
+        #                     path = lib_path / (mod_name + ".py")
+        #                 log("write module " + str(path))
+        #                 log(code)
+        #                 path.write_text(code, encoding="utf-8")
+        #
+        #             project = jedi.Project(path=tmpdir, added_sys_path=str(tmpdir))
+        #             script = jedi.Script(modules[""], path="script.py", project=project)
+        #         else:
+        #             # no library modules, just use jedi.Script directly
+        #             script = jedi.Script(modules[""], path="script.py")
+        #
+        #         # line_shift = len(all_code.splitlines()) - len(code.splitlines())
+        #         # script = jedi.Script(all_code, path="script.py")
+        #         log(f"Getting completions at {lineno}:{column}")
+        #         completions = script.complete(line=lineno, column=column)
+        #         log(f"Got {len(completions)} completions")
+        #         if completions:
+        #             log(f"First completion: {completions[0].name} ({completions[0].type})")
+        #             response.update(format_completions(completions))
+        #     except Exception as e:
+        #         log(f"Jedi exception: {e}")
+        #         error(f"Jedi exception: {e}")
         t3 = time.time()
         log(f"Processing times: parse {1000*(t1 - t0):.1f} ms, compile {1000*(t2 - t1):.1f} ms, jedi {1000*(t3 - t2):.1f} ms")
 
@@ -392,13 +393,13 @@ def process_input(line):
 async def main():
     try:
         print(get_pages_encoded(), flush=True, file=_stdout)
-        log("Importing jedi")
-        import jedi
-
-        log("Imported jedi")
-
-        jedi.preload_module("stationeers_pytrapic.symbols")
-        log("Jedi preloaded successfully")
+        # log("Importing jedi")
+        # import jedi
+        #
+        # log("Imported jedi")
+        #
+        # jedi.preload_module("stationeers_pytrapic.symbols")
+        # log("Jedi preloaded successfully")
         while True:
             line = sys.stdin.readline()
 
@@ -428,10 +429,10 @@ if __name__ == "__main__":
             _log_file.close()
         if _err_file is not None:
             _err_file.close()
-        if Path(_jedi_project_dir).exists():
-            import shutil
-
-            shutil.rmtree(_jedi_project_dir)
+        # if Path(_jedi_project_dir).exists():
+        #     import shutil
+        #
+        #     shutil.rmtree(_jedi_project_dir)
 
     atexit.register(at_exit_handler)
     asyncio.run(main())

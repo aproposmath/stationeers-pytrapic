@@ -2,7 +2,7 @@
 description="PyTrapIC - Python Transpiler to IC10 for Stationeers"
 license = "MIT"
 name = "stationeers_pytrapic"
-dependencies = ['astroid', 'luaparser', 'pygments', 'parso'] # jedi removed because there are issues with running the pip version with wine
+dependencies = ['astroid', 'luaparser', 'pygments', 'parso', 'jedi==0.19.2']
 requires-python = ">=3.10"
 dynamic = ["version"]
 

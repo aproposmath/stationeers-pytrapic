@@ -1,11 +1,11 @@
 namespace StationeersPyTrapIC
 {
-    using ImGuiNET;
     using System.Threading.Tasks;
-    using UnityEngine;
+    using Cysharp.Threading.Tasks;
+    using ImGuiNET;
     using StationeersIC10Editor;
     using StationeersIC10Editor.IC10;
-    using Cysharp.Threading.Tasks;
+    using UnityEngine;
 
     public class PythonFormatter : ICodeFormatter
     {
@@ -33,7 +33,7 @@ namespace StationeersPyTrapIC
         }
 
         public PythonFormatter()
-          : base()
+            : base()
         {
             OnCodeChanged += () =>
             {
@@ -46,6 +46,9 @@ namespace StationeersPyTrapIC
         {
             if (string.IsNullOrWhiteSpace(code))
                 return;
+
+            var caretPos = _lastCaretPos;
+            L.Info("caretPos: " + caretPos.Line + "," + caretPos.Col);
 
             await PythonCompiler.Instance.WaitForReadyAsync();
             var counter = ++_DebounceCounter;
@@ -63,9 +66,14 @@ namespace StationeersPyTrapIC
                     return;
                 }
                 L.Info($"Debounce delay elapsed, proceeding with code reset.");
+                L.Info("caretPos: " + caretPos.Line + "," + caretPos.Col);
 
                 var sw = System.Diagnostics.Stopwatch.StartNew();
-                response = PythonCompiler.Instance.Compile(code, _lastCaretPos.Line + 1, _lastCaretPos.Col);
+                response = PythonCompiler.Instance.Compile(
+                    code,
+                    caretPos.Line + 1,
+                    caretPos.Col + 1
+                );
                 sw.Stop();
                 L.Info($"Compilation took {sw.ElapsedMilliseconds} ms");
             }
@@ -89,7 +97,7 @@ namespace StationeersPyTrapIC
 
         private const char FIELD_SEP = (char)0x1F;
 
-        static public Token ParseToken(string tokenStr)
+        public static Token ParseToken(string tokenStr)
         {
             var parts = tokenStr.Split(FIELD_SEP);
             if (parts.Length != 3)
@@ -118,7 +126,10 @@ namespace StationeersPyTrapIC
 
             foreach (var token in line)
             {
-                if (col >= line.Text.Length || (col >= token.Column && col < token.Column + token.Length))
+                if (
+                    col >= line.Text.Length
+                    || (col >= token.Column && col < token.Column + token.Length)
+                )
                 {
                     token.Error = errText;
                     token.Tooltip = errText;
@@ -136,11 +147,19 @@ namespace StationeersPyTrapIC
 
             var suggestions = compiled.suggestions.Split('\n');
 
-            if (suggestions.Length == 1 && compiled.completion_prefix_length == suggestions[0].IndexOf(FIELD_SEP))
+            if (
+                suggestions.Length == 1
+                && compiled.completion_prefix_length == suggestions[0].IndexOf(FIELD_SEP)
+            )
                 return;
 
             if (string.IsNullOrWhiteSpace(compiled.completion))
                 return;
+
+            var prefixLength = lastCompileResponse.completion_prefix_length;
+            if (prefixLength < 0 || prefixLength >= compiled.completion.Length)
+                return;
+            _autocompleteInsertText = compiled.completion.Substring(prefixLength);
 
             var autocomplete = new StyledText();
             foreach (var line in suggestions)
@@ -161,10 +180,6 @@ namespace StationeersPyTrapIC
             }
 
             _autocomplete = autocomplete;
-
-            var prefixLength = lastCompileResponse.completion_prefix_length;
-            var col = _lastCaretPos.Col - prefixLength;
-            _autocompleteInsertText = compiled.completion.Substring(prefixLength);
         }
 
         public override void ResetCode(string code)
@@ -173,7 +188,10 @@ namespace StationeersPyTrapIC
 
             if (code.Contains("# PYTRAPIC_SOURCE:"))
             {
-                var parts = code.Split(new string[] { "# PYTRAPIC_SOURCE:" }, System.StringSplitOptions.None);
+                var parts = code.Split(
+                    new string[] { "# PYTRAPIC_SOURCE:" },
+                    System.StringSplitOptions.None
+                );
                 if (parts.Length >= 2)
                     code = DecodeSource(parts[1].Trim());
             }
@@ -193,11 +211,17 @@ namespace StationeersPyTrapIC
 
             var width = Mathf.Max(Lines.Width + 10.0f + LineNumberOffset * charWidth, space.x / 2);
 
-            ImGui.GetWindowDrawList().AddLine(
-                new Vector2(cursorPos.x + width + 4.5f * charWidth, cursorPos.y),
-                new Vector2(cursorPos.x + width + 4.5f * charWidth, cursorPos.y + space.y + Settings.LineHeight),
-                ColorLineNumber, 1.0f
-            );
+            ImGui
+                .GetWindowDrawList()
+                .AddLine(
+                    new Vector2(cursorPos.x + width + 4.5f * charWidth, cursorPos.y),
+                    new Vector2(
+                        cursorPos.x + width + 4.5f * charWidth,
+                        cursorPos.y + space.y + Settings.LineHeight
+                    ),
+                    ColorLineNumber,
+                    1.0f
+                );
 
             cursorPos.x += width;
             ImGui.SetCursorScreenPos(cursorPos);
@@ -235,7 +259,9 @@ namespace StationeersPyTrapIC
             {
                 if (i >= unformattedLines.Length)
                 {
-                    L.Info($"Line index {i} exceeds unformatted lines length {unformattedLines.Length}. Skipping.");
+                    L.Info(
+                        $"Line index {i} exceeds unformatted lines length {unformattedLines.Length}. Skipping."
+                    );
                     break;
                 }
                 if (string.IsNullOrWhiteSpace(lines[i]))
@@ -256,7 +282,11 @@ namespace StationeersPyTrapIC
                         continue;
                     }
 
-                    var t = new Token(int.Parse(fields[0]), fields[2], ICodeFormatter.ColorFromHTML(fields[1]));
+                    var t = new Token(
+                        int.Parse(fields[0]),
+                        fields[2],
+                        ICodeFormatter.ColorFromHTML(fields[1])
+                    );
                     line.Add(t);
                 }
                 result.Add(line);

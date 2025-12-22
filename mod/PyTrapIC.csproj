@@ -5,7 +5,6 @@
     <TargetFramework>net46</TargetFramework>
     <AssemblyName>PyTrapIC</AssemblyName>
     <Description>Python to IC10 Transpiler</Description>
-    <Version>$(PYTRAPIC_VERSION)</Version>
     <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
     <LangVersion>latest</LangVersion>
     <Deterministic>true</Deterministic>
@@ -13,20 +12,6 @@
     <ContinuousIntegrationBuild>true</ContinuousIntegrationBuild>
     <EnableSourceControlManagerQueries>false</EnableSourceControlManagerQueries>
   </PropertyGroup>
-  <!-- Remove and add VersionInfo.cs to avoid missing it on first build and duplicate compilation on subsequent builds -->
-  <ItemGroup>
-    <Compile Remove="VersionInfo.cs"/>
-  </ItemGroup>
-  <ItemGroup>
-    <Compile Include="VersionInfo.cs"/>
-  </ItemGroup>
-  <Target Name="GetVersionFromPython" BeforeTargets="BeforeBuild">
-    <!-- The argument after create_version_info.py must match the namespace name in Main.cs -->
-    <Exec Command="python3 create_version_info.py StationeersPyTrapIC"/>
-    <ReadLinesFromFile File="version.txt">
-      <Output TaskParameter="Lines" PropertyName="VersionString"/>
-    </ReadLinesFromFile>
-  </Target>
   <ItemGroup>
     <PackageReference Include="Krafs.Publicizer" Version="2.3.0">
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
@@ -36,6 +21,10 @@
     <PackageReference Include="BepInEx.Analyzers" Version="1.*" PrivateAssets="all"/>
     <PackageReference Include="BepInEx.Core" Version="5.*"/>
     <PackageReference Include="BepInEx.PluginInfoProps" Version="1.*"/>
+    <PackageReference Include="Nerdbank.GitVersioning" Version="3.*" Condition="!Exists('packages.config')">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
     <Publicize Include="Assembly-CSharp"/>
     <Reference Include="Unity.TextMeshPro">
       <HintPath>$(StationeersDllDir)/Unity.TextMeshPro.dll</HintPath>
@@ -53,10 +42,6 @@
       <HintPath>$(StationeersDllDir)/netstandard.dll</HintPath>
       <Private>false</Private>
     </Reference>
-    <!-- <Reference Include="UnityEngine.UI"> -->
-    <!--   <HintPath>$(StationeersDllDir)/UnityEngine.UI.dll</HintPath> -->
-    <!--   <Private>false</Private> -->
-    <!-- </Reference> -->
     <Reference Include="Assembly-CSharp">
       <HintPath>$(StationeersDllDir)/Assembly-CSharp.dll</HintPath>
       <Private>false</Private>
