@@ -343,8 +343,16 @@ namespace StationeersPyTrapIC
 
             var pagesResponse = await _stdout.ReadLineAsync();
             L.Info($"Received Stationpedia pages from Python compiler");
-            L.Info($"Pages response length: {pagesResponse.Length}");
             L.Info($"Decoding Stationpedia pages {pagesResponse}");
+
+            if(pagesResponse == null)
+            {
+                var errors = await _process.StandardError.ReadToEndAsync();
+                L.Error($"Python compiler stderr: {errors}");
+                L.Error($"No response from Python compiler for Stationpedia pages");
+                throw new Exception("No response from Python compiler for Stationpedia pages");
+            }
+            L.Info($"Pages response length: {pagesResponse.Length}");
 
             pages = JsonConvert.DeserializeObject<List<PediaPage>>(
                 Encoding.UTF8.GetString((Convert.FromBase64String(pagesResponse)))

@@ -53,53 +53,53 @@ def _get_ignore_symbol_names():
             names.remove(n)
     return names
 
-class MyStyle(Style):
-    from pygments.token import Token, Comment, Keyword, Name, String, Error, Generic, Number, Operator
-    # public static uint ColorError = ColorFromHTML("#ff0000");
-    # public static uint ColorWarning = ColorFromHTML("#ff8f00");
-    # public static uint ColorComment = ColorFromHTML("#808080");
-    # public static uint ColorLineNumber = ColorFromHTML("#808080");
-    # public static uint ColorDefault = ColorFromHTML("#ffffff");
-    # public static uint ColorSelection = ColorFromHTML("#1a44b0ff");
-    # public static uint ColorNumber = ColorFromHTML("#20b2aa");
-    #     public static uint ColorInstruction = ColorFromHTML("#ffff00");
-    #
-    #     public static uint ColorDevice = ColorFromHTML("#00ff00");
-    #     public static uint ColorLogicType = ColorFromHTML("#ff8000");
-    #     public static uint ColorRegister = ColorFromHTML("#0080ff");
-    #     public static uint ColorBasicEnum = ColorFromHTML("#20b2aa");
-    #
-    #     public static uint ColorDefine = ColorNumber;
-    #     public static uint ColorAlias = ColorFromHTML("#4d4dcc");
-    #     public static uint ColorLabel = ColorFromHTML("#800080");
+# class MyStyle(Style):
+#     from pygments.token import Token, Comment, Keyword, Name, String, Error, Generic, Number, Operator
+#     # public static uint ColorError = ColorFromHTML("#ff0000");
+#     # public static uint ColorWarning = ColorFromHTML("#ff8f00");
+#     # public static uint ColorComment = ColorFromHTML("#808080");
+#     # public static uint ColorLineNumber = ColorFromHTML("#808080");
+#     # public static uint ColorDefault = ColorFromHTML("#ffffff");
+#     # public static uint ColorSelection = ColorFromHTML("#1a44b0ff");
+#     # public static uint ColorNumber = ColorFromHTML("#20b2aa");
+#     #     public static uint ColorInstruction = ColorFromHTML("#ffff00");
+#     #
+#     #     public static uint ColorDevice = ColorFromHTML("#00ff00");
+#     #     public static uint ColorLogicType = ColorFromHTML("#ff8000");
+#     #     public static uint ColorRegister = ColorFromHTML("#0080ff");
+#     #     public static uint ColorBasicEnum = ColorFromHTML("#20b2aa");
+#     #
+#     #     public static uint ColorDefine = ColorNumber;
+#     #     public static uint ColorAlias = ColorFromHTML("#4d4dcc");
+#     #     public static uint ColorLabel = ColorFromHTML("#800080");
+#
+#     styles = {
+#         Name.Constant:   '#20b2aa',
+#         Token.Literal.Number:   '#20b2aa',
+#         Token:                  '#ffffff',
+#         Comment:                '#808080',
+#         Keyword:                '#ffff00',
+#         Name:                   '#ffffff',
+#         Name.Class:             '#00ff00',
+#         Name.Function:          '#0080ff',
+#         Name.Property:          '#ff8000',
+#         String:                 '#20b2aa',
+#     }
+#
+# formatter = BBCodeFormatter(style=MyStyle)
 
-    styles = {
-        Name.Constant:   '#20b2aa',
-        Token.Literal.Number:   '#20b2aa',
-        Token:                  '#ffffff',
-        Comment:                '#808080',
-        Keyword:                '#ffff00',
-        Name:                   '#ffffff',
-        Name.Class:             '#00ff00',
-        Name.Function:          '#0080ff',
-        Name.Property:          '#ff8000',
-        String:                 '#20b2aa',
-    }
-
-formatter = BBCodeFormatter(style=MyStyle)
-
-replace = lambda s: s.replace("[", "<").replace("]", ">")
-for ttype in formatter.styles:
-    start, end = formatter.styles[ttype]
-    if "657b83" in start or "657b83" in end:
-        formatter.styles[ttype] = "", ""
-    else:
-        formatter.styles[ttype] = replace(start), replace(end)
+# replace = lambda s: s.replace("[", "<").replace("]", ">")
+# for ttype in formatter.styles:
+#     start, end = formatter.styles[ttype]
+#     if "657b83" in start or "657b83" in end:
+#         formatter.styles[ttype] = "", ""
+#     else:
+#         formatter.styles[ttype] = replace(start), replace(end)
 
 _log_file = None  # Global log file handle
 _err_file = None  # Global error file handle
 ENABLE_LOGGING = __name__ == "__main__"
-ENABLE_LOGGING = False
+# ENABLE_LOGGING = False
 
 _ignore_symbol_names = _get_ignore_symbol_names()
 _symbols_names = set(dir(symbols)) - _ignore_symbol_names
@@ -212,10 +212,10 @@ from pygments import lex
 from pygments.token import Token
 
 
-from pygments import lex
-from pygments.token import Token
+# from pygments import lex
+# from pygments.token import Token
 
-style = formatter.style
+# style = formatter.style
 def token_color(tokentype, text=""):
     if text in _symbols_names:
         if isinstance(getattr(symbols, text), type):
@@ -318,8 +318,8 @@ def process_input(line):
         error_line = None
         if response and "error" in response and "line" in response["error"]:
             error_line = response["error"]["line"]
-        highlighted = highlight(code, error_line=error_line)
-        response["highlighted"] = highlighted
+        # highlighted = highlight(code, error_line=error_line)
+        # response["highlighted"] = highlighted
 
         stack_trace = response.get("error", {}).get("stack_trace", None)
         if stack_trace is not None:
