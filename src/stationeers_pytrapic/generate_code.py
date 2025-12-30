@@ -428,6 +428,8 @@ class CompilerPassGenerateCode(CompilerPass):
                 else:
                     if isinstance(calling_arg, IC10Register):
                         calling_arg = calling_arg.code_expr
+                    elif isinstance(calling_arg, IC10Operand):
+                        calling_arg = calling_arg.value
                     arg_sym.code_expr = calling_arg
                 func_data.args.append(arg_sym)
         else:

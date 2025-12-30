@@ -3,10 +3,25 @@ lbwhile1:
   slt r0 r1 0.2
   put db 510 r0
   jal set.enable.fuel.generator
+  put db 510 6
+  put db 509 5
+  put db 508 4
+  put db 507 3
+  jal set.stack.entry
   j lbwhile1
 set.enable.fuel.generator:
   get r2 db 510
   sb HASH("StructureSolidFuelGenerator") On r2
   j ra
-# registers: 3
-# lines: 10
+set.stack.entry:
+  get r2 db 510
+  get r3 db 509
+  get r4 db 508
+  get r5 db 507
+  put $BEEF 0 r2
+  put $BEEF 1 r3
+  put $BEEF 2 r4
+  put $BEEF 3 r5
+  j ra
+# registers: 6
+# lines: 25

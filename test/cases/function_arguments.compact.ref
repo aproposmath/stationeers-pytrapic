@@ -1,6 +1,10 @@
 lb r1 -400115994 24 0
 slt r0 r1 0.2
 sb 813146305 28 r0
-jr -3
+put $BEEF 0 6
+put $BEEF 1 5
+put $BEEF 2 4
+put $BEEF 3 3
+jr -7
 # registers: 2
-# lines: 4
+# lines: 8
