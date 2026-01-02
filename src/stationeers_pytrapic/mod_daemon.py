@@ -9,7 +9,7 @@ import base64
 import datetime
 import json
 import sys
-import tempfile
+# import tempfile
 import time
 from pathlib import Path
 
@@ -27,8 +27,6 @@ from . import types_generated
 
 _logic_types = set()
 
-f = open("/tmp/logic_types.txt", "w")
-
 for t in dir(types_generated):
     # check if t is a class and is a subclass of enum
     attr = getattr(types_generated, t)
@@ -37,8 +35,6 @@ for t in dir(types_generated):
         for member in dir(attr):
             if not member.startswith("_") and member[:1].isupper():
                 _logic_types.add(member)
-                f.write(member + "\n")
-
 
 
 def _get_ignore_symbol_names():
@@ -86,7 +82,7 @@ def _get_ignore_symbol_names():
 #         String:                 '#20b2aa',
 #     }
 #
-# formatter = BBCodeFormatter(style=MyStyle)
+formatter = BBCodeFormatter()
 
 # replace = lambda s: s.replace("[", "<").replace("]", ">")
 # for ttype in formatter.styles:
@@ -99,7 +95,7 @@ def _get_ignore_symbol_names():
 _log_file = None  # Global log file handle
 _err_file = None  # Global error file handle
 ENABLE_LOGGING = __name__ == "__main__"
-# ENABLE_LOGGING = False
+ENABLE_LOGGING = False
 
 _ignore_symbol_names = _get_ignore_symbol_names()
 _symbols_names = set(dir(symbols)) - _ignore_symbol_names
@@ -196,20 +192,20 @@ def get_lexer(code):
     return _lexer[get_languate(code)]
 
 
-# def highlight(code, error_line=None):
-#     lines = _highlight(code, get_lexer(code), formatter).splitlines()
-#     for i, line in enumerate(lines):
-#         if error_line is not None and i + 1 == error_line:
-#             lines[i] = "<color=#ff0000>" + line + "</color>"
-#         else:
-#             lines[i] = "<color=#ffffff>" + line + "</color>"
-#     return "\n".join(lines)
+def highlight(code, error_line=None):
+    lines = _highlight(code, get_lexer(code), formatter).splitlines()
+    for i, line in enumerate(lines):
+        if error_line is not None and i + 1 == error_line:
+            lines[i] = "<color=#ff0000>" + line + "</color>"
+        else:
+            lines[i] = "<color=#ffffff>" + line + "</color>"
+    return "\n".join(lines)
 
 TOKEN_SEP = "\x1E"   # RS
 FIELD_SEP = "\x1F"   # US
 
-from pygments import lex
-from pygments.token import Token
+# from pygments import lex
+# from pygments.token import Token
 
 
 # from pygments import lex
@@ -233,55 +229,55 @@ def token_color(tokentype, text=""):
         return "#ffffff"
 
 
-def highlight(code, error_line=None):
-    lexer = get_lexer(code)
-    """
-    Returns a string where:
-        - Each token is encoded as "col@@#color@@text"
-        - Tokens are separated by "@@@"
-        - NEWLINES in the original code are kept exactly (not tokenized),
-          so splitting by '\n' recovers the original code lines.
-    """
-    tokens = []
-    col = 0  # column offset within current line
-
-    iline = 0
-    for tok_type, text in lex(code, lexer):
-        if text == "":
-            continue
-
-        if "\n" in text:
-            # Emit tokens for text *before* the newline
-            parts = text.split("\n")
-
-            # Handle all chunks before newline
-            for i, chunk in enumerate(parts):
-                if chunk:
-                    color = "#" + token_color(tok_type, chunk)
-                    if error_line is not None and iline + 1 == error_line:
-                        color = "#ff0000"
-                    token_repr = f"{col}@@{color}@@{chunk}"
-                    tokens.append(token_repr)
-                    col += len(chunk)
-
-                if i < len(parts) - 1:
-                    # Here comes a newline → emit it literally
-                    tokens.append("\n")
-                    iline += 1
-                    col = 0
-
-            continue
-
-        # Normal token (no newline)
-        color = "#" + token_color(tok_type, text)
-        if error_line is not None and iline + 1 == error_line:
-            color = "#ff0000"
-        token_repr = f"{col}{FIELD_SEP}{color}{FIELD_SEP}{text}"
-        tokens.append(token_repr)
-
-        col += len(text)
-
-    return TOKEN_SEP.join(tokens)
+# def highlight(code, error_line=None):
+#     lexer = get_lexer(code)
+#     """
+#     Returns a string where:
+#         - Each token is encoded as "col@@#color@@text"
+#         - Tokens are separated by "@@@"
+#         - NEWLINES in the original code are kept exactly (not tokenized),
+#           so splitting by '\n' recovers the original code lines.
+#     """
+#     tokens = []
+#     col = 0  # column offset within current line
+#
+#     iline = 0
+#     for tok_type, text in lex(code, lexer):
+#         if text == "":
+#             continue
+#
+#         if "\n" in text:
+#             # Emit tokens for text *before* the newline
+#             parts = text.split("\n")
+#
+#             # Handle all chunks before newline
+#             for i, chunk in enumerate(parts):
+#                 if chunk:
+#                     color = "#" + token_color(tok_type, chunk)
+#                     if error_line is not None and iline + 1 == error_line:
+#                         color = "#ff0000"
+#                     token_repr = f"{col}@@{color}@@{chunk}"
+#                     tokens.append(token_repr)
+#                     col += len(chunk)
+#
+#                 if i < len(parts) - 1:
+#                     # Here comes a newline → emit it literally
+#                     tokens.append("\n")
+#                     iline += 1
+#                     col = 0
+#
+#             continue
+#
+#         # Normal token (no newline)
+#         color = "#" + token_color(tok_type, text)
+#         if error_line is not None and iline + 1 == error_line:
+#             color = "#ff0000"
+#         token_repr = f"{col}{FIELD_SEP}{color}{FIELD_SEP}{text}"
+#         tokens.append(token_repr)
+#
+#         col += len(text)
+#
+#     return TOKEN_SEP.join(tokens)
 
 
 def process_input(line):

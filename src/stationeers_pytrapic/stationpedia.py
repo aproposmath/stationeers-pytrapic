@@ -2,17 +2,6 @@ import base64
 import json
 from pathlib import Path
 
-_solar_code = """from stationeers_pytrapic.symbols import *
-
-panels = SolarPanels  # port facing north
-sensor = DaylightSensor(d0)  # port facing east
-
-while True:
-    panels.Horizontal = sensor.Horizontal
-    panels.Vertical = 90 - sensor.Vertical
-"""
-
-
 def highlight(code: str) -> str:
     from .mod_daemon import highlight as _highlight
 
@@ -50,15 +39,16 @@ Click the code below to copy the code.
 def get_pages():
     main_text = readme
     examples = [
-        ("solar", "solar", "Solar Panel Alignment"),
-        ("airlock", "airlock", "Simple Airlock"),
+        ("getting_started", "Getting Started"),
+        ("solar", "Solar Panel Alignment"),
+        ("airlock", "Simple Airlock"),
     ]
 
     example_links = ""
     pages = []
 
-    for name, code_file, description in examples:
-        pages.append(get_example_page(name, code_file, description))
+    for name, description in examples:
+        pages.append(get_example_page(name, name, description))
         example_links += f'• <color=green><link="pytrapic_example_{name}">{description}</link></color>\n'
 
     main_text = readme.replace("__EXAMPLES_LIST__", example_links.strip())
@@ -83,7 +73,7 @@ def get_pages_encoded() -> str:
 
 
 _lib_code = """from stationeers_pytrapic.symbols import *
-from library import your_lib_name
+from .library import your_lib_name
 your_lib_name.init()
 while True:
     your_lib_name.update()
@@ -98,8 +88,7 @@ This mod lets you write code for Stationeers' ICs in Python instead of IC10 asse
 • Import code from <b>Libraries</b> (local or workshop) for easy code sharing/reuse
 • Syntax highlighting  
 • Auto-completion (<color="yellow">Tab</color> key)
-• IC10 preview (toggle with <color="yellow">Ctrl+I</color>)
-• Generate compact / verbose code (toggle with <color="yellow">Ctrl+M</color>)
+• IC10 preview
 • Compile errors shown as tooltips  
 • All IC10 commands available as Python functions (intrinsics)
 
@@ -107,21 +96,21 @@ This mod lets you write code for Stationeers' ICs in Python instead of IC10 asse
 
 The <color=yellow><b>first line</b></color> in your code must <color=yellow><b>exactly match</b></color>:
 <color=#a0a0a0><margin=3em><link=Clipboard>from stationeers_pytrapic.symbols import *</link></margin></color>
-Only then will the mod recognize it as Python code. Otherwise it will be treated as IC10 as usual. See the <b>Examples</b> below. You can copy each example code to the clipboard by clicking the code block at the very bottom of the example page.
+Only then will the mod recognize it as Python code. See the <b>Examples</b> below. You can copy each example code to the clipboard by clicking the code block at the very bottom of the example page.
 
 <h1>Examples</h1>
 
 __EXAMPLES_LIST__
 
 <h1>Usage Notes</h1>
-• Non-invasive mod, you can remove it anytime, no parts added
-• ICs run translated IC10, not Python  
+• Save-compatible: Remove/add it any time without breaking your savegames
+• Multiplayer-compatible: Also works if you are the only one using it (untested)
+• ICs still run IC10, not Python (Python code will be transpiled to IC10 on export)
 • Start Python code with:<br><i>from stationeers_pytrapic.symbols import *</i>  
-• Removing mod keeps ICs working (in IC10 form), but you will lose Python source code
-• Function args/returns use top stack slots (511, 510, ...)  
-• Structures match Stationpedia names (without "Structure")  
-• Access structures by port:<indent=40%>WallHeater(d0)</indent>
-• Or by type:<indent=40%>WallHeaters</indent>
+• Function args/returns use top stack slots (511, 510, ...), otherwise the stack is not used by the transpiler
+• Structures match Stationpedia names (without "Structure", e.g. "ArcFurnace")  
+• Access structures by pin:<indent=40%>WallHeater(d0)</indent>
+• Or all of them by type (append "s"):<indent=40%>WallHeaters</indent>
 • Access by name:<indent=40%>WallHeaters["Greenhouse"]</indent>
 
 <h1>Libraries</h1>

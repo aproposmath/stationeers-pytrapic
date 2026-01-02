@@ -541,7 +541,7 @@ class _BaseStructures:
         return type(self).__name__[1:] + f"(name={self._name})"
 
 
-class _Device(_BaseStructure, _GenericStructure):
+class Device(_BaseStructure, _GenericStructure):
     def __getattr__(self, attr_name: str) -> _DeviceLogicType:
         if attr_name in [
             "_dev_id",
@@ -555,8 +555,7 @@ class _Device(_BaseStructure, _GenericStructure):
     def __str__(self):
         return f"Device({self._dev_id})"
 
-
-class _Devices(_BaseStructures, _GenericStructures):
+class Devices(_BaseStructures, _GenericStructures):
     def __init__(
         self,
         prefabHash: int,
@@ -603,6 +602,9 @@ class _Devices(_BaseStructures, _GenericStructures):
     def __str__(self):
         return f"Device({self._dev_id})"
 
+_Device = Device
+_Devices = Devices
+
 
 @dataclass
 class _StackValue(_BaseAccess):
@@ -626,12 +628,12 @@ class _StackValue(_BaseAccess):
 
 @dataclass
 class Stack(_BaseAccess):
-    def __init__(self, device_id=None, ref_id: str | None = None):
+    def __init__(self, device_id=None, ref_id: str | int | _Reg | None = None):
         if device_id is None and ref_id is None:
             device_id = "db"
         self._obj = _BaseStructure(device_id, ref_id)
 
-    def __getitem__(self, index: int | _Register) -> _Register:
+    def __getitem__(self, index: int | _Register) -> float:
         return _StackValue(self._obj, index)
 
     def __setitem__(self, index: int | _Register, value: float | _Register) -> None:
@@ -660,15 +662,15 @@ r15 = _Reg("r15")
 r16 = _Reg("r16")
 sp = _Reg("sp")
 
-d0 = _Device("d0")
-d1 = _Device("d1")
-d2 = _Device("d2")
-d3 = _Device("d3")
-d4 = _Device("d4")
-d5 = _Device("d5")
-db = _Device("db")
+d0: _Device = _Device("d0")
+d1: _Device = _Device("d1")
+d2: _Device = _Device("d2")
+d3: _Device = _Device("d3")
+d4: _Device = _Device("d4")
+d5: _Device = _Device("d5")
+db: _Device = _Device("db")
 
-stack = Stack()
+stack: Stack = Stack()
 
 
 pi: float = math.pi
@@ -714,6 +716,8 @@ __all__ = [
     "_Register",
     "_Device",
     "_Devices",
+    "Device",
+    "Devices",
     "_slotIndex",
     "_deviceHash",
     "_nameHash",
