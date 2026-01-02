@@ -2,10 +2,13 @@ namespace StationeersPyTrapIC;
 
 using System;
 using System.IO;
+using System.Diagnostics;
 using System.Threading.Tasks;
 using Cysharp.Threading.Tasks;
 using StationeersIC10Editor;
 using ImGuiEditor.LSP;
+
+
 
 
 public class PythonFormatter : LSPFormatter
@@ -14,7 +17,7 @@ public class PythonFormatter : LSPFormatter
     private long _lastResponseVersion = -1;
 
     public int DebounceDelayMs = 100;
-    private System.Object _Mutex = new System.Object();
+    private static System.Object _Mutex = new System.Object();
 
     protected static LspClient _sharedLspClient = null;
 
@@ -37,14 +40,72 @@ public class PythonFormatter : LSPFormatter
         }
     }
 
-    public static string WorkspacePath
+    public static string WorkspacePath => PythonWorkspace.WorkspaceDir;
+
+    public static LspClient StartBasedPyrightLSPServer()
     {
-        get
+        // open a socket and listen
+        var listener = new System.Net.Sockets.TcpListener(System.Net.IPAddress.Loopback, 0);
+        listener.Start();
+        int port = ((System.Net.IPEndPoint)listener.LocalEndpoint).Port;
+        StationeersIC10Editor.L.Debug("BasedPyright LSP server listening on port " + port);
+
+        var lspClient = new LspClient();
+
+        UniTask.RunOnThreadPool(async () =>
         {
-            string path = Path.Combine(BepInEx.Paths.CachePath, "pytrapic", "ws");
-            Directory.CreateDirectory(path);
-            return path;
-        }
+            var client = await listener.AcceptTcpClientAsync();
+            StationeersIC10Editor.L.Debug("BasedPyright LSP server accepted connection.");
+            // get stream
+            var stream = client.GetStream();
+            lspClient.Init(stream, stream);
+        }).Forget();
+
+
+        string workingDir = Path.Combine(BepInEx.Paths.CachePath, "pytrapic");
+        // string PyRightExe = Path.Combine(workingDir, ".venv", "Scripts", "basedpyright-langserver.exe");
+        string SiteDir = Path.Combine(PythonWorkspace.VenvDir, "Lib", "site-packages");
+        string NodeExe = Path.Combine(SiteDir, "nodejs_wheel", "node.exe");
+        string PyRightJS = Path.Combine(SiteDir, "basedpyright", "langserver.index.js");
+        string Args = $"{PyRightJS} --no-warnings --title \"abc\" --verbose --socket={port}";
+        // string Args = "--stdio";
+        var startInfo = new ProcessStartInfo
+        {
+            FileName = NodeExe,
+            Arguments = Args,
+            RedirectStandardInput = true,
+            RedirectStandardOutput = true,
+            RedirectStandardError = true,
+            UseShellExecute = false,
+            CreateNoWindow = false,
+            WorkingDirectory = workingDir
+        };
+
+        var process = new Process
+        {
+            StartInfo = startInfo,
+            EnableRaisingEvents = true
+        };
+
+        process.OutputDataReceived += (s, e) =>
+        {
+            if (e.Data != null)
+                File.AppendAllText("pr-stdout.log", e.Data + Environment.NewLine);
+        };
+
+        process.ErrorDataReceived += (s, e) =>
+        {
+            if (e.Data != null)
+                File.AppendAllText("pr-stderr.log", e.Data + Environment.NewLine);
+        };
+
+        process.Start();
+        process.BeginOutputReadLine();
+        process.BeginErrorReadLine();
+
+        lspClient._process1 = process;
+
+        return lspClient;
     }
 
     public static LspClient SharedLspClient
@@ -53,11 +114,20 @@ public class PythonFormatter : LSPFormatter
         {
             if (_sharedLspClient == null)
             {
-                _sharedLspClient = LspClient.StartBasedPyrightLSPServer();
+                _sharedLspClient = StartBasedPyrightLSPServer();
                 _sharedLspClient.OnInfo += (msg) => L.Debug($"[Shared LSP] {msg}");
                 _sharedLspClient.OnError += (msg) => L.Debug($"[Shared LSP] {msg}");
             }
             return _sharedLspClient;
+        }
+    }
+
+    public static void DisposeSharedLspClient()
+    {
+        if (_sharedLspClient != null)
+        {
+            _sharedLspClient._process1.Kill();
+            _sharedLspClient = null;
         }
     }
 
@@ -79,10 +149,43 @@ public class PythonFormatter : LSPFormatter
         };
     }
 
+    public async UniTask WriteLibraries()
+    {
+        await Editor.ParentTab.ParentWindow.LoadLibraries();
+
+        var libs = Editor.ParentTab.ParentWindow.LibraryCodes;
+
+        if (libs == null)
+        {
+            L.Info("Library codes is null");
+            return;
+        }
+
+        string initPath = Path.Combine(WorkspacePath, "library", "__init__.py");
+        Directory.CreateDirectory(Path.GetDirectoryName(initPath));
+        File.WriteAllText(initPath, "# Init file for libs package\n");
+        File.WriteAllText(Path.Combine(WorkspacePath, "__init__.py"), "\n");
+
+        string libPath = Path.Combine(WorkspacePath, "library");
+
+        foreach (var kvp in libs)
+        {
+            if(!kvp.Value.Instructions.Contains("stationeers_pytrapic"))
+              continue;
+
+            string fileName = kvp.Key;
+            foreach (char c in " ._<>:\"/\\|?*")
+                fileName = fileName.Replace(c, '_');
+            var filePath = Path.Combine(libPath, fileName + ".py");
+            File.WriteAllText(filePath, kvp.Value.Instructions);
+        }
+    }
+
     public override void SubmitChanges()
     {
         if (Identifier.uri == null)
         {
+            WriteLibraries().Forget();
             string filename = Editor.FileName + ".py";
             Identifier.uri = new Uri(Path.Combine(WorkspacePath, filename)).AbsoluteUri;
         }
@@ -109,7 +212,9 @@ public class PythonFormatter : LSPFormatter
         if (Lines.Count == 0 || Lines.Count == 1 && string.IsNullOrWhiteSpace(Lines[0].Text))
             return;
 
+        await UniTask.SwitchToMainThread();
         SubmitChanges();
+        await UniTask.SwitchToThreadPool();
 
         await PythonCompiler.Instance.WaitForReadyAsync();
         int versionBefore = Version;
@@ -127,18 +232,18 @@ public class PythonFormatter : LSPFormatter
         {
             if (versionBefore != Version)
             {
-                L.Info("Newer debounce task detected, cancelling this one.");
+                L.Debug("Newer debounce task detected, cancelling this one.");
                 return;
             }
-            L.Info($"Debounce delay elapsed, proceeding with code reset.");
+            L.Debug($"Debounce delay elapsed, proceeding with code reset.");
 
             var sw = System.Diagnostics.Stopwatch.StartNew();
             var response = PythonCompiler.Instance.Compile(code);
             sw.Stop();
-            L.Info($"Compilation took {sw.ElapsedMilliseconds} ms");
+            L.Debug($"Compilation took {sw.ElapsedMilliseconds} ms");
             if (versionBefore != Version)
             {
-                L.Info("Code changed during compilation, cancelling this one.");
+                L.Debug("Code changed during compilation, cancelling this one.");
                 return;
             }
             lastCompileResponse = response;
@@ -147,7 +252,7 @@ public class PythonFormatter : LSPFormatter
 
         var compiled = lastCompileResponse.code ?? "";
         await UniTask.SwitchToMainThread();
-        L.Info($"Applying compiled code to IC10 editor, editor = {IC10Editor}");
+        L.Debug($"Applying compiled code to IC10 editor, editor = {IC10Editor}");
         IC10Editor.ResetCode(compiled);
     }
 
@@ -160,9 +265,9 @@ public class PythonFormatter : LSPFormatter
 
     public override void ResetCode(string code)
     {
-        L.Info($"ResetCode called in PythonFormatter. CODE: |{code}|");
+        L.Debug($"ResetCode called in PythonFormatter. CODE: |{code}|");
         var pyCode = ExtractEncodedSource(code, SOURCE_TAG);
-        L.Info($"pyCode : |{pyCode}|");
+        L.Debug($"pyCode : |{pyCode}|");
         if (!string.IsNullOrEmpty(pyCode))
             code = pyCode;
         base.ResetCode(code);
@@ -184,8 +289,8 @@ public class PythonFormatter : LSPFormatter
         }
         else
         {
-            L.Info("Timeout waiting for compilation result.");
-            L.Info($"Last response version: {_lastResponseVersion}, Current version: {Version}");
+            L.Debug("Timeout waiting for compilation result.");
+            L.Debug($"Last response version: {_lastResponseVersion}, Current version: {Version}");
         }
 
         return code;

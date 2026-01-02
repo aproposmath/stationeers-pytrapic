@@ -65,7 +65,8 @@ namespace StationeersPyTrapIC
             if (IsPythonCode(code))
             {
                 // return @"^\s*import\s+library\.(\w+)\s*$";
-                return @"^\s*from\s+library\s+import\s+(\w+)\s*$";
+                // return @"^\s*from\s+\.library\.(\w+)\s+import\s+\*\s*$";
+                return @"^\s*from\s+\.library\s+import\s+(\w+)\s*$";
             }
             if (IsLuaCode(code))
             {
@@ -104,6 +105,15 @@ namespace StationeersPyTrapIC
 
             Dictionary<string, string> result = new Dictionary<string, string>();
             result[""] = code;
+
+            L.Debug($"Found {firstMatches.Count} library import(s) in code");
+            L.Debug($"Import regex: {importRegex}");
+            L.Debug($"Code to search:\n{code}");
+            L.Debug($"First matches:");
+            foreach (Match match in firstMatches)
+            {
+                L.Debug($" - {match.Value}");
+            }
 
             if (firstMatches.Count == 0)
             {
@@ -277,7 +287,7 @@ namespace StationeersPyTrapIC
         {
             if (_process == null)
                 return;
-            L.Info($"Stopping PythonCompiler instance, has quit already: {_process.HasExited}");
+            L.Debug($"Stopping PythonCompiler instance, has quit already: {_process.HasExited}");
             if (!_process.HasExited)
             {
                 _process.Kill();
@@ -304,10 +314,10 @@ namespace StationeersPyTrapIC
 
                 StopProcess();
             }
-            PythonVenv.Init(forceInstall);
+            await PythonWorkspace.InitWorkspace(forceInstall);
             L.Debug("Python installation checked");
 
-            var pythonPath = PythonVenv.PythonExe;
+            var pythonPath = PythonWorkspace.PythonExe;
             _process = new Process
             {
                 StartInfo = new ProcessStartInfo
@@ -322,8 +332,8 @@ namespace StationeersPyTrapIC
                 },
             };
 
-            L.Info($"Starting Python compiler at: ${pythonPath}");
-            L.Info($"Full command line : {_process.StartInfo.FileName} {_process.StartInfo.Arguments}");
+            L.Debug($"Starting Python compiler at: ${pythonPath}");
+            L.Debug($"Full command line : {_process.StartInfo.FileName} {_process.StartInfo.Arguments}");
 
             _process.Start();
             _stdin = _process.StandardInput;
@@ -342,8 +352,8 @@ namespace StationeersPyTrapIC
             }
 
             var pagesResponse = await _stdout.ReadLineAsync();
-            L.Info($"Received Stationpedia pages from Python compiler");
-            L.Info($"Decoding Stationpedia pages {pagesResponse}");
+            L.Debug($"Received Stationpedia pages from Python compiler");
+            L.Debug($"Decoding Stationpedia pages {pagesResponse}");
 
             if(pagesResponse == null)
             {
@@ -352,22 +362,22 @@ namespace StationeersPyTrapIC
                 L.Error($"No response from Python compiler for Stationpedia pages");
                 throw new Exception("No response from Python compiler for Stationpedia pages");
             }
-            L.Info($"Pages response length: {pagesResponse.Length}");
+            L.Debug($"Pages response length: {pagesResponse.Length}");
 
             pages = JsonConvert.DeserializeObject<List<PediaPage>>(
                 Encoding.UTF8.GetString((Convert.FromBase64String(pagesResponse)))
             );
             AddStationpediaPages();
 
-            L.Info($"PythonCompiler running");
-            L.Info($"Registered Python code formatter");
-            L.Info($"Get formatter {CodeFormatters.GetFormatter()}");
+            L.Debug($"PythonCompiler running");
+            L.Debug($"Registered Python code formatter");
+            L.Debug($"Get formatter {CodeFormatters.GetFormatter()}");
             _initTcs.TrySetResult();
         }
 
         public void AddStationpediaPages()
         {
-            L.Info($"Add {pages.Count} PyTrapIC pages to Stationpedia");
+            L.Debug($"Add {pages.Count} PyTrapIC pages to Stationpedia");
             foreach (var page in pages)
             {
                 L.Debug($"Stationpedia page: {page.key} - {page.title}");
@@ -534,7 +544,7 @@ namespace StationeersPyTrapIC
                 CommandLine.AddCommand("pytrapic", new PyTrapICCommand());
 
                 sw.Stop();
-                L.Info(
+                L.Debug(
                     $"PyTrapIC {PluginLongVersion} initialized in {sw.ElapsedMilliseconds}ms"
                 );
 
@@ -550,6 +560,7 @@ namespace StationeersPyTrapIC
         {
             L.Info($"OnDestroy ${PluginName} {PluginLongVersion}");
             PythonCompiler.Instance.StopProcess();
+            PythonFormatter.DisposeSharedLspClient();
         }
     }
 

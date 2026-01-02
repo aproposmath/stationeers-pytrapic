@@ -1,8 +1,8 @@
-<?xml version="1.0"?>
+<?xml version="1.0" encoding="utf-8"?>
 <Project Sdk="Microsoft.NET.Sdk">
-  <Import Project="PyTrapIC.props" Condition="Exists('PyTrapIC.props')"/>
+  <Import Project="PyTrapIC.props" Condition="Exists('PyTrapIC.props')" />
   <PropertyGroup>
-    <TargetFramework>net46</TargetFramework>
+    <TargetFramework>net48</TargetFramework>
     <AssemblyName>PyTrapIC</AssemblyName>
     <Description>Python to IC10 Transpiler</Description>
     <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
@@ -17,15 +17,17 @@
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
       <PrivateAssets>all</PrivateAssets>
     </PackageReference>
-    <PackageReference Include="UnityEngine.Modules" Version="2021.2.3" IncludeAssets="compile"/>
-    <PackageReference Include="BepInEx.Analyzers" Version="1.*" PrivateAssets="all"/>
-    <PackageReference Include="BepInEx.Core" Version="5.*"/>
-    <PackageReference Include="BepInEx.PluginInfoProps" Version="1.*"/>
+    <PackageReference Include="System.IO.Compression" Version="4.3.0" />
+    <PackageReference Include="System.IO.Compression.ZipFile" Version="4.3.0" />
+    <PackageReference Include="UnityEngine.Modules" Version="2021.2.3" IncludeAssets="compile" />
+    <PackageReference Include="BepInEx.Analyzers" Version="1.*" PrivateAssets="all" />
+    <PackageReference Include="BepInEx.Core" Version="5.*" />
+    <PackageReference Include="BepInEx.PluginInfoProps" Version="1.*" />
     <PackageReference Include="Nerdbank.GitVersioning" Version="3.*" Condition="!Exists('packages.config')">
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
-    <Publicize Include="Assembly-CSharp"/>
+    <Publicize Include="Assembly-CSharp" />
     <Reference Include="Unity.TextMeshPro">
       <HintPath>$(StationeersDllDir)/Unity.TextMeshPro.dll</HintPath>
       <Private>false</Private>
@@ -50,13 +52,17 @@
       <HintPath>$(StationeersDllDir)/RG.ImGui.dll</HintPath>
       <Private>false</Private>
     </Reference>
-    <Publicize Include="IC10Editor"/>
+    <Reference Include="StationeersLaunchPad">
+      <HintPath>$(StationeersDllDir)/../../BepInEx/plugins/StationeersLaunchPad/StationeersLaunchPad.dll</HintPath>
+      <Private>false</Private>
+    </Reference>
+    <Publicize Include="IC10Editor" />
     <Reference Include="IC10Editor">
       <HintPath>../../StationeersIC10Editor/bin/Debug/net46/IC10Editor.dll</HintPath>
       <Private>false</Private>
     </Reference>
   </ItemGroup>
   <ItemGroup Condition="'$(TargetFramework.TrimEnd(`0123456789`))' == 'net'">
-    <PackageReference Include="Microsoft.NETFramework.ReferenceAssemblies" Version="1.0.2" PrivateAssets="all"/>
+    <PackageReference Include="Microsoft.NETFramework.ReferenceAssemblies" Version="1.0.2" PrivateAssets="all" />
   </ItemGroup>
 </Project>
