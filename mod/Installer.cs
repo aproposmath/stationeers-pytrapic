@@ -17,13 +17,16 @@ public class PythonWorkspace
     public static string VenvDir => Path.Combine(WorkspaceDir, $".venv");
     public static string PythonExe => Path.Combine(VenvDir, "python.exe");
     public static string PipExe => Path.Combine(VenvDir, "Scripts", "pip.exe");
-    public static bool IsInitialized => File.Exists(VersionFile) && File.ReadAllText(VersionFile).Trim() == PyTrapICPlugin.PluginLongVersion;
+    public static bool IsInitialized => File.Exists(VersionFile) && File.ReadAllText(VersionFile).Trim() == PyTrapICPlugin.PluginVersion;
 
 
     private static SemaphoreSlim _initLock = new SemaphoreSlim(1);
 
     public static async UniTask InitWorkspace(bool forceReinstall = false)
     {
+#if DEBUG
+      return;
+#endif
         // check if already installed
         if (IsInitialized && !forceReinstall)
         {
@@ -69,6 +72,8 @@ public class PythonWorkspace
         archive.ExtractToDirectory(CacheDir);
 
         // write version.txt
-        File.WriteAllText(VersionFile, PyTrapICPlugin.PluginLongVersion);
+        File.WriteAllText(VersionFile, PyTrapICPlugin.PluginVersion);
+
+        L.Info("Python workspace installation complete");
     }
 }

@@ -16,6 +16,7 @@ using Newtonsoft.Json;
 using StationeersIC10Editor;
 using Util.Commands;
 
+using Git = ThisAssembly.Git;
 namespace StationeersPyTrapIC
 {
     public class Timer : IDisposable
@@ -523,11 +524,8 @@ namespace StationeersPyTrapIC
     public class PyTrapICPlugin : BaseUnityPlugin
     {
         public const string PluginGuid = "aproposmath-stationeers-pytrapic";
-        // public const string pluginName = "PyTrapIC";
-        // public const string pluginVersion = VersionInfo.Version;
-        public const string PluginName = ThisAssembly.AssemblyName;
-        public const string PluginVersion = ThisAssembly.AssemblyVersion;
-        public const string PluginLongVersion = ThisAssembly.AssemblyInformationalVersion;
+        public const string PluginName = "PyTrapIC";
+        public const string PluginVersion = Git.SemVer.Major + "." + Git.SemVer.Minor + "." + Git.SemVer.Patch;
 
         private void Awake()
         {
@@ -537,7 +535,7 @@ namespace StationeersPyTrapIC
                 var sw = Stopwatch.StartNew();
                 L.Initialize(Logger);
                 L.Info(
-                    $"Awake PyTrapIC {PluginLongVersion}"
+                    $"Awake PyTrapIC {PluginVersion}"
                 );
 
                 PythonCompiler.Instance = new PythonCompiler();
@@ -545,20 +543,20 @@ namespace StationeersPyTrapIC
 
                 sw.Stop();
                 L.Debug(
-                    $"PyTrapIC {PluginLongVersion} initialized in {sw.ElapsedMilliseconds}ms"
+                    $"PyTrapIC {PluginVersion} initialized in {sw.ElapsedMilliseconds}ms"
                 );
 
                 CodeFormatters.RegisterFormatter("Python", typeof(PythonFormatter));
             }
             catch (Exception ex)
             {
-                L.Error($"Error during PyTrapIC {PluginLongVersion} init: {ex}");
+                L.Error($"Error during PyTrapIC {PluginVersion} init: {ex}");
             }
         }
 
         private void OnDestroy()
         {
-            L.Info($"OnDestroy ${PluginName} {PluginLongVersion}");
+            L.Info($"OnDestroy ${PluginName} {PluginVersion}");
             PythonCompiler.Instance.StopProcess();
             PythonFormatter.DisposeSharedLspClient();
         }
@@ -603,7 +601,7 @@ Available commands:
                 case "libraries":
                     return string.Join("\n", SourceData.loadLibraries().Keys.OrderBy(x => x));
                 case "version":
-                    return $"PyTrapIC version {PyTrapICPlugin.PluginLongVersion}";
+                    return $"PyTrapIC version {PyTrapICPlugin.PluginVersion}";
                 case "reinstall":
                     PythonCompiler.Instance.Init(true, true).Forget();
                     return "Python and dependencies reinstalled.";

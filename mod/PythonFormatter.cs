@@ -8,9 +8,6 @@ using Cysharp.Threading.Tasks;
 using StationeersIC10Editor;
 using ImGuiEditor.LSP;
 
-
-
-
 public class PythonFormatter : LSPFormatter
 {
     private PythonCompiler.CompileResponse lastCompileResponse = null;
@@ -157,7 +154,7 @@ public class PythonFormatter : LSPFormatter
 
         if (libs == null)
         {
-            L.Info("Library codes is null");
+            L.Debug("Library codes is null");
             return;
         }
 
@@ -170,8 +167,8 @@ public class PythonFormatter : LSPFormatter
 
         foreach (var kvp in libs)
         {
-            if(!kvp.Value.Instructions.Contains("stationeers_pytrapic"))
-              continue;
+            if (!kvp.Value.Instructions.Contains("stationeers_pytrapic"))
+                continue;
 
             string fileName = kvp.Key;
             foreach (char c in " ._<>:\"/\\|?*")
@@ -251,6 +248,10 @@ public class PythonFormatter : LSPFormatter
         }
 
         var compiled = lastCompileResponse.code ?? "";
+        var error = lastCompileResponse.error;
+        if (error != null)
+            compiled = $"# Error during compilation at line {error.line - 1}, column {error.column - 1}:\n# {error.description.Replace("\n", "\n# ")}\n\n" + compiled;
+
         await UniTask.SwitchToMainThread();
         L.Debug($"Applying compiled code to IC10 editor, editor = {IC10Editor}");
         IC10Editor.ResetCode(compiled);
@@ -294,5 +295,70 @@ public class PythonFormatter : LSPFormatter
         }
 
         return code;
+    }
+
+    private TextPosition _lastHoverTextPos = new TextPosition(-1, -1);
+    private StyledText _lastHoverInfo = null;
+    private TextPosition _reqestedHoverPos = new TextPosition(-1, -1);
+
+    public async UniTaskVoid GetHoverInfo(TextPosition pos)
+    {
+        if(pos == _lastHoverTextPos || pos == _reqestedHoverPos)
+            return;
+
+        _reqestedHoverPos = pos;
+
+        await Task.Delay(500);
+
+        if (_reqestedHoverPos != pos)
+            return;
+
+        _tooltip = null;
+        _lastHoverInfo = null;
+
+        var hover = await LspClient.SendRequestAsync("textDocument/hover",
+            new
+            {
+                textDocument = new { uri = Identifier.uri },
+                position = new { line = pos.Line, character = pos.Col }
+            });
+        if (hover == null || !hover.HasValues || hover["contents"] == null)
+            return;
+        string value = (string)hover["contents"]["value"];
+        var info = new StyledText();
+        foreach (var line in value.Split('\n'))
+            info.AddLine(line, ICodeFormatter.DefaultStyle);
+
+        if(info.Count == 0)
+            return;
+
+        _lastHoverInfo = info;
+
+
+        if (pos == _reqestedHoverPos)
+        {
+            await UniTask.SwitchToMainThread();
+            _lastHoverTextPos = pos;
+            UpdateTooltip(pos);
+        }
+    }
+
+    public override void UpdateTooltip(TextPosition mouseTextPos)
+    {
+        if (_lastHoverTextPos != mouseTextPos)
+        {
+            _lastHoverInfo = null;
+            GetHoverInfo(mouseTextPos).Forget();
+        }
+
+        base.UpdateTooltip(mouseTextPos);
+        if (_lastHoverInfo != null)
+        {
+            var tooltip = new StyledText();
+            if (_tooltip != null)
+                tooltip.AddRange(_tooltip);
+            tooltip.AddRange(_lastHoverInfo);
+            _tooltip = tooltip;
+        }
     }
 }
