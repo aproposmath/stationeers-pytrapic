@@ -64,7 +64,7 @@ public class PythonFormatter : LSPFormatter
         string SiteDir = Path.Combine(PythonWorkspace.VenvDir, "Lib", "site-packages");
         string NodeExe = Path.Combine(SiteDir, "nodejs_wheel", "node.exe");
         string PyRightJS = Path.Combine(SiteDir, "basedpyright", "langserver.index.js");
-        string Args = $"{PyRightJS} --no-warnings --title \"abc\" --verbose --socket={port}";
+        string Args = $"\"{PyRightJS}\" --no-warnings --title \"abc\" --verbose --socket={port}";
         // string Args = "--stdio";
         var startInfo = new ProcessStartInfo
         {
@@ -74,7 +74,7 @@ public class PythonFormatter : LSPFormatter
             RedirectStandardOutput = true,
             RedirectStandardError = true,
             UseShellExecute = false,
-            CreateNoWindow = false,
+            CreateNoWindow = true,
             WorkingDirectory = workingDir
         };
 
