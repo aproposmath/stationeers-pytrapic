@@ -39,7 +39,46 @@ public class PythonFormatter : LSPFormatter
 
     public static string WorkspacePath => PythonWorkspace.WorkspaceDir;
 
-    public static LspClient StartBasedPyrightLSPServer()
+    public static LspClient StartTyLSPServer()
+    {
+        // experimental support, not used currently
+        string workingDir = PythonWorkspace.WorkspaceDir;
+        string TyExe = Path.Combine(workingDir, "ty.exe");
+        string Args = "server";
+        var startInfo = new ProcessStartInfo
+        {
+            FileName = TyExe,
+            Arguments = Args,
+            RedirectStandardInput = true,
+            RedirectStandardOutput = true,
+            RedirectStandardError = true,
+            UseShellExecute = false,
+            CreateNoWindow = true,
+            WorkingDirectory = workingDir
+        };
+
+        var lsp = new LspClientStdio(startInfo);
+        lsp.OnInitialized += () =>
+        {
+
+            lsp.SendNotificationAsync("workspace/didChangeConfiguration", new
+            {
+                settings = new
+                {
+                    ty = new
+                    {
+                        completions = new
+                        {
+                            autoImport = false
+                        }
+                    }
+                }
+            }).Forget();
+        };
+        return lsp;
+    }
+
+    public static LspClient StartBasedPyrightLSPServer123()
     {
         // open a socket and listen
         var listener = new System.Net.Sockets.TcpListener(System.Net.IPAddress.Loopback, 0);
@@ -53,19 +92,15 @@ public class PythonFormatter : LSPFormatter
         {
             var client = await listener.AcceptTcpClientAsync();
             StationeersIC10Editor.L.Debug("BasedPyright LSP server accepted connection.");
-            // get stream
             var stream = client.GetStream();
             lspClient.Init(stream, stream);
         }).Forget();
 
-
         string workingDir = Path.Combine(BepInEx.Paths.CachePath, "pytrapic");
-        // string PyRightExe = Path.Combine(workingDir, ".venv", "Scripts", "basedpyright-langserver.exe");
         string SiteDir = Path.Combine(PythonWorkspace.VenvDir, "Lib", "site-packages");
         string NodeExe = Path.Combine(SiteDir, "nodejs_wheel", "node.exe");
         string PyRightJS = Path.Combine(SiteDir, "basedpyright", "langserver.index.js");
-        string Args = $"\"{PyRightJS}\" --no-warnings --title \"abc\" --verbose --socket={port}";
-        // string Args = "--stdio";
+        string Args = $"{PyRightJS} --socket={port}";
         var startInfo = new ProcessStartInfo
         {
             FileName = NodeExe,
@@ -74,7 +109,7 @@ public class PythonFormatter : LSPFormatter
             RedirectStandardOutput = true,
             RedirectStandardError = true,
             UseShellExecute = false,
-            CreateNoWindow = true,
+            CreateNoWindow = !NodeExe.StartsWith("Z:"), // this must be false when running with wine on Linux
             WorkingDirectory = workingDir
         };
 
@@ -87,20 +122,38 @@ public class PythonFormatter : LSPFormatter
         process.OutputDataReceived += (s, e) =>
         {
             if (e.Data != null)
-                File.AppendAllText("pr-stdout.log", e.Data + Environment.NewLine);
+                File.AppendAllText(Path.Combine(PythonWorkspace.WorkspaceDir, "lsp-stdout.log"), e.Data + Environment.NewLine);
         };
 
         process.ErrorDataReceived += (s, e) =>
         {
             if (e.Data != null)
-                File.AppendAllText("pr-stderr.log", e.Data + Environment.NewLine);
+                File.AppendAllText(Path.Combine(PythonWorkspace.WorkspaceDir, "lsp-stderr.log"), e.Data + Environment.NewLine);
         };
 
         process.Start();
         process.BeginOutputReadLine();
         process.BeginErrorReadLine();
 
-        lspClient._process1 = process;
+        lspClient._process = process;
+
+        lspClient.OnInitialized += () =>
+        {
+
+            lspClient.SendNotificationAsync("workspace/didChangeConfiguration", new
+            {
+                settings = new
+                {
+                    basedpyright = new
+                    {
+                        analysis = new
+                        {
+                            autoImportCompletions = false
+                        }
+                    }
+                }
+            }).Forget();
+        };
 
         return lspClient;
     }
@@ -111,7 +164,7 @@ public class PythonFormatter : LSPFormatter
         {
             if (_sharedLspClient == null)
             {
-                _sharedLspClient = StartBasedPyrightLSPServer();
+                _sharedLspClient = StartBasedPyrightLSPServer123();
                 _sharedLspClient.OnInfo += (msg) => L.Debug($"[Shared LSP] {msg}");
                 _sharedLspClient.OnError += (msg) => L.Debug($"[Shared LSP] {msg}");
             }
@@ -123,7 +176,7 @@ public class PythonFormatter : LSPFormatter
     {
         if (_sharedLspClient != null)
         {
-            _sharedLspClient._process1.Kill();
+            _sharedLspClient.Dispose();
             _sharedLspClient = null;
         }
     }
@@ -303,10 +356,10 @@ public class PythonFormatter : LSPFormatter
 
     public async UniTaskVoid GetHoverInfo(TextPosition pos)
     {
-        if(pos.Line < 0 || pos.Col < 0)
+        if (pos.Line < 0 || pos.Col < 0)
             return;
 
-        if(pos == _lastHoverTextPos || pos == _reqestedHoverPos)
+        if (pos == _lastHoverTextPos || pos == _reqestedHoverPos)
             return;
 
         _reqestedHoverPos = pos;
@@ -325,6 +378,7 @@ public class PythonFormatter : LSPFormatter
                 textDocument = new { uri = Identifier.uri },
                 position = new { line = pos.Line, character = pos.Col }
             });
+
         if (hover == null || !hover.HasValues || hover["contents"] == null)
             return;
         string value = (string)hover["contents"]["value"];
@@ -332,11 +386,10 @@ public class PythonFormatter : LSPFormatter
         foreach (var line in value.Split('\n'))
             info.AddLine(line, ICodeFormatter.DefaultStyle);
 
-        if(info.Count == 0)
+        if (info.Count == 0)
             return;
 
         _lastHoverInfo = info;
-
 
         if (pos == _reqestedHoverPos)
         {

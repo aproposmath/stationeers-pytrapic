@@ -25,7 +25,7 @@ public class PythonWorkspace
     public static async UniTask InitWorkspace(bool forceReinstall = false)
     {
 #if DEBUG
-      return;
+        return;
 #endif
         // check if already installed
         if (IsInitialized && !forceReinstall)

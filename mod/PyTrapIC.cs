@@ -107,15 +107,6 @@ namespace StationeersPyTrapIC
             Dictionary<string, string> result = new Dictionary<string, string>();
             result[""] = code;
 
-            L.Debug($"Found {firstMatches.Count} library import(s) in code");
-            L.Debug($"Import regex: {importRegex}");
-            L.Debug($"Code to search:\n{code}");
-            L.Debug($"First matches:");
-            foreach (Match match in firstMatches)
-            {
-                L.Debug($" - {match.Value}");
-            }
-
             if (firstMatches.Count == 0)
             {
                 return result; // No library imports found
@@ -356,7 +347,7 @@ namespace StationeersPyTrapIC
             L.Debug($"Received Stationpedia pages from Python compiler");
             L.Debug($"Decoding Stationpedia pages {pagesResponse}");
 
-            if(pagesResponse == null)
+            if (pagesResponse == null)
             {
                 var errors = await _process.StandardError.ReadToEndAsync();
                 L.Error($"Python compiler stderr: {errors}");
