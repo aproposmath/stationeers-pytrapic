@@ -628,7 +628,7 @@ class _StackValue(_BaseAccess):
 
 @dataclass
 class Stack(_BaseAccess):
-    def __init__(self, device_id=None, ref_id: str | int | _Reg | None = None):
+    def __init__(self, device_id=None, ref_id: str | int | _Register | None = None):
         if device_id is None and ref_id is None:
             device_id = "db"
         self._obj = _BaseStructure(device_id, ref_id)
