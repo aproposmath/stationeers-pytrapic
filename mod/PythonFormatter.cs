@@ -303,6 +303,9 @@ public class PythonFormatter : LSPFormatter
 
     public async UniTaskVoid GetHoverInfo(TextPosition pos)
     {
+        if(pos.Line < 0 || pos.Col < 0)
+            return;
+
         if(pos == _lastHoverTextPos || pos == _reqestedHoverPos)
             return;
 
