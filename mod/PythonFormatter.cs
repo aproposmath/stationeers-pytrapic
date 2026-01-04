@@ -243,7 +243,7 @@ public class PythonFormatter : LSPFormatter
     }
 
 
-    public static double MatchingScore(string code)
+    public static new double MatchingScore(string code)
     {
         if (code.StartsWith("from stationeers_pytrapic.symbols import *"))
             return 1.0;
