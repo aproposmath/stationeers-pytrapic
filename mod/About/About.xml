@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ModMetadata xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <Name>PyTrapIC - Python to IC10 Transpiler</Name>
+  <Author>aproposmath</Author>
+  <Version>0.2.2</Version>
+  <Description>
+        This mod allows you to write [b]Python[/b] instead of IC10. The Python code is converted into IC10 before it's written to the chip. It depends on the IC10 Editor mod, which replaces the in-game code editor. To use it, select "Python" as the language in the top right corner of the IC10 Editor window. Search for "pytrapic" in the Stationpedia for examples.
+
+        - Save-compatible: Remove/add it any time without breaking your savegames
+        - Multiplayer-compatible: Also works if you are the only one using it (untested)
+        - Write code in Python instead of IC10 assembly language
+        - Supports a subset of Python (see below for more details)
+        - Syntax highlighting, autocomplete, hover details (via basedpyright lsp)
+        - Compile errors are shown as tooltip
+        - Intrinsics: all IC10 commands are available as Python function
+        - Import saved libraries as python modules for easy code reusability
+
+        [b]Installation[/b]
+        This is a [b]StationeersLaunchPad[/b] Plugin Mod. It requires BepInEx to be installed.
+        See: https://github.com/StationeersLaunchPad/StationeersLaunchPad
+
+        Known issues/pitfalls:
+        - This the first release for the in-game mod, so there might be bugs. I you find one, don't keep it! Reach out to me via discord/github/steam.
+
+        Source Code: https://github.com/aproposmath/stationeers-pytrapic
+        Compiler features: https://github.com/aproposmath/stationeers-pytrapic/blob/dev/README.md#implementation-status
+    </Description>
+  <ChangeLog>
+        0.2.2:
+
+        - Fix Windows LSP issues (again)
+  </ChangeLog>
+  <WorkshopHandle>3637577272</WorkshopHandle>
+  <Tags>
+    <Tag>IC10</Tag>
+    <Tag>Python</Tag>
+    <Tag>Editor</Tag>
+    <Tag>Code</Tag>
+    <Tag>BepInEx</Tag>
+    <Tag>Compiler</Tag>
+    <Tag>Transpiler</Tag>
+    <Tag>StationeersLaunchPad</Tag>
+  </Tags>
+  <DependsOn WorkshopHandle="3592775931" />
+  <OrderAfter WorkshopHandle="3592775931" />
+  <InGameDescription><![CDATA[
+<size=30><color=#ffff00>PyTrapIC - Python to IC10 Transpiler</color></size>
+This mod allows you to write [b]Python[/b] instead of IC10. The Python code is converted into IC10 before it's written to the chip. It depends on the IC10 Editor mod, which replaces the in-game code editor. To use it, select "Python" as the language in the top right corner of the IC10 Editor window. Search for "pytrapic" in the Stationpedia for examples.
+
+- Save-compatible: Remove/add it any time without breaking your savegames
+- Multiplayer-compatible: Also works if you are the only one using it (untested)
+- Write code in Python instead of IC10 assembly language
+- Supports a subset of Python (see below for more details)
+- Syntax highlighting
+- Compile errors are shown as tooltip
+- Intrinsics: all IC10 commands are available as Python function
+- Import saved libraries as python modules for easy code reusability
+
+[b]Installation[/b]
+This is a [b]StationeersLaunchPad[/b] Plugin Mod. It requires BepInEx to be installed.
+See: https://github.com/StationeersLaunchPad/StationeersLaunchPad
+
+<b><color=#ffff00>Installation</color></b>
+This is a <color=#ffa500>StationeersLaunchPad</color> Plugin Mod. It requires BepInEx to be installed.
+See: https://github.com/StationeersLaunchPad/StationeersLaunchPad
+
+Known issues/pitfalls:
+- This the first release for the in-game mod, so there might be bugs. I you find one, don't keep it! Reach out to me via discord/github/steam.
+
+Source Code: https://github.com/aproposmath/stationeers-pytrapic
+Compiler features: https://github.com/aproposmath/stationeers-pytrapic/blob/dev/README.md#implementation-status
+]]></InGameDescription>
+</ModMetadata>

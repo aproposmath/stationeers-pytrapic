@@ -100,7 +100,11 @@ public class PythonFormatter : LSPFormatter
         string SiteDir = Path.Combine(PythonWorkspace.VenvDir, "Lib", "site-packages");
         string NodeExe = Path.Combine(SiteDir, "nodejs_wheel", "node.exe");
         string PyRightJS = Path.Combine(SiteDir, "basedpyright", "langserver.index.js");
-        string Args = $"{PyRightJS} --socket={port}";
+
+        bool isLinux = NodeExe.StartsWith("Z:");
+
+        string Args = isLinux ? $"{PyRightJS}" : $"\"{PyRightJS}\"";
+        Args += $" --socket={port}";
         var startInfo = new ProcessStartInfo
         {
             FileName = NodeExe,
@@ -109,7 +113,7 @@ public class PythonFormatter : LSPFormatter
             RedirectStandardOutput = true,
             RedirectStandardError = true,
             UseShellExecute = false,
-            CreateNoWindow = !NodeExe.StartsWith("Z:"), // this must be false when running with wine on Linux
+            CreateNoWindow = !isLinux, // this must be false when running with wine on Linux
             WorkingDirectory = workingDir
         };
 
