@@ -516,7 +516,7 @@ namespace StationeersPyTrapIC
     {
         public const string PluginGuid = "aproposmath-stationeers-pytrapic";
         public const string PluginName = "PyTrapIC";
-        public const string PluginVersion = Git.SemVer.Major + "." + Git.SemVer.Minor + "." + Git.SemVer.Patch;
+        public const string PluginVersion = Git.BaseVersion.Major + "." + Git.BaseVersion.Minor + "." + Git.BaseVersion.Patch;
 
         private void Awake()
         {
