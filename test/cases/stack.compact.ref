@@ -13,5 +13,9 @@ getd r1 255 9
 putd 255 r0 r1
 get r0 db 88
 poke r0 r0
-# registers: 2
-# lines: 15
+l r0 db Setting
+mul r1 10 r0
+add r2 r0 r0
+poke r2 r1
+# registers: 3
+# lines: 19

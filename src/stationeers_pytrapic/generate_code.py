@@ -549,22 +549,6 @@ class CompilerPassGenerateCode(CompilerPass):
         elif isinstance(target, astroid.AssignAttr):
             rhs = self.compile_node(list(node.get_children())[1])
             lhs = self.compile_node(target)
-
-            # if (
-            #     isinstance(lhs, (symbols._DeviceLogicType, symbols._DeviceSlotType))
-            #     and lhs._id is None
-            # ):
-            #     name = lhs._cls.__name__
-            #     raise CompilerError(
-            #         f"""Cannot use "{name}"" directly, either use "{name}s" to set all devices of this type or create a specific device with "{name}(d0)".""",
-            #         target,
-            #     )
-            #
-            # if isinstance(rhs, (symbols._DevicesLogicType, symbols._DevicesSlotType)):
-            #     raise CompilerError(
-            #         "You need to take either Minimum/Maximum/Average/Sum", target
-            #     )
-
             expr = lhs._set(rhs)
             data.add(expr)
         elif isinstance(target, astroid.Subscript):
@@ -868,6 +852,15 @@ class CompilerPassGatherCode(CompilerPass):
         if isinstance(node, astroid.Assign):
             special_nodes.add(node.value)
             self._visit_node(node.value)
+            target = node.targets[0]
+            special_nodes.add(target)
+            self._visit_node(target)
+
+        if isinstance(node, astroid.Subscript):
+            special_nodes.add(node.value)
+            self._visit_node(node.value)
+            special_nodes.add(node.slice)
+            self._visit_node(node.slice)
 
         if isinstance(node, astroid.BinOp):
             for child in node.get_children():

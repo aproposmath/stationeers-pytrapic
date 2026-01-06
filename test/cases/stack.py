@@ -1,7 +1,6 @@
 from stationeers_pytrapic.symbols import *
 
 stack[123] = 999.9
-
 st = Stack()
 a = 13 + stack[12]
 st[a] = stack[9]
@@ -17,3 +16,6 @@ st1[a] = st1[9]
 
 a = stack[88]
 stack[a] = a
+
+a = db.Setting
+stack[a+a] = 10*a
