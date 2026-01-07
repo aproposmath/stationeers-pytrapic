@@ -1,0 +1,19 @@
+lbwhile1:
+  jal outer1
+  jal outer1
+  jal outer2
+  jal outer2
+  j lbwhile1
+inner:
+  s db Setting 0
+  j ra
+outer1:
+  s db Setting 1
+  j inner
+outer2:
+  s db Setting 2
+  jal inner
+  s db Setting 3
+  j ra
+# registers: 0
+# lines: 17

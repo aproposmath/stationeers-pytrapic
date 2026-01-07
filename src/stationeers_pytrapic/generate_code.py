@@ -459,11 +459,33 @@ class CompilerPassGenerateCode(CompilerPass):
                 arg._ndata.result = sym
                 func_data.args.append(sym)
 
-        if sym_data.is_read != 1 or not self.data.options.inline_functions:
-            data.add_end(IC10("j", ["ra"], indent=1))
-
         for stmt in node.body:
             self._visit_node(stmt)
+
+        apply_tail_call_optimization = False
+
+        if node.body:
+            last_node = node.body[-1]
+            if isinstance(last_node, astroid.Expr):
+                last_node = last_node.value
+
+            if isinstance(last_node, astroid.Call):
+                ndata = last_node._ndata
+                sd = self.data.get_sym_data(last_node.func)
+                if sd.is_read != 1 or not self.data.options.inline_functions:
+                    apply_tail_call_optimization = True
+                    last_op = ndata.code[""][-1]
+                    if not last_op.op == "jal":
+                        raise CompilerError(
+                            "Tail call optimization can only be applied to direct function calls",
+                            last_node,
+                        )
+                    last_op.op = "j"
+
+        if not apply_tail_call_optimization and (
+            sym_data.is_read != 1 or not self.data.options.inline_functions
+        ):
+            data.add_end(IC10("j", ["ra"], indent=1))
 
     def handle_assign_name(self, node: astroid.AssignName):
         data = node._ndata
