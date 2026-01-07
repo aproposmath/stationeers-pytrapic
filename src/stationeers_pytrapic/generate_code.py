@@ -934,6 +934,8 @@ class CompilerPassGatherCode(CompilerPass):
 
         for fname in sorted(self.data.functions.keys()):
             func = self.data.functions[fname]
+            if fname != "" and func.is_called:
+                func.add_ra_instructions()
             if fname == "" or func.is_called:
                 for line in func.code:
                     self.code.append(line)

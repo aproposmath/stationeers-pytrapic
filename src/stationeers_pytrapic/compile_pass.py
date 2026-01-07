@@ -42,6 +42,29 @@ class FunctionData:
     def has_return_value(self) -> bool:
         return self.node and self.node._ndata.func_has_return_value
 
+    def add_ra_instructions(self):
+        have_calls = False
+        have_returns = False
+        end_label_pos = None
+
+        name = self.name.replace("_", ".")
+
+        for i, instr in enumerate(self.code):
+            if instr.op.endswith("al"):
+                have_calls = True
+            if instr.op == "j" and instr.inputs[0].value == "ra":
+                have_returns = True
+            if instr.op.endswith(name + "end:"):
+                end_label_pos = i
+
+        if have_calls and have_returns:
+            ra = IC10Register("ra", code_expr="ra")
+            indent = self.code[0].indent + 1
+            self.code.insert(1, IC10Instruction("push", [ra], indent=indent))
+            self.code.insert(
+                end_label_pos + 2, IC10Instruction("pop", [], ra, indent=indent)
+            )
+
 
 @dataclass
 class CompileOptions:

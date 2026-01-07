@@ -11,9 +11,11 @@ outer1:
   s db Setting 1
   j inner
 outer2:
+  push ra
   s db Setting 2
   jal inner
   s db Setting 3
+  pop ra
   j ra
 # registers: 0
-# lines: 17
+# lines: 19

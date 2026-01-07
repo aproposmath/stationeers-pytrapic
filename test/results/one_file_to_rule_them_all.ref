@@ -26,11 +26,13 @@ handle.growlight:
   s d1 On r0
   j ra
 ic.airlock.greenhouse:
+  push ra
   jal setup.airlock
 lbwhile1:
     jal handle.airlock
     jal handle.growlight
     j lbwhile1
+  pop ra
   j ra
 setup.airlock:
   sbn HASH("StructureGlassDoor") HASH("In") Lock 1
@@ -41,4 +43,4 @@ setup.airlock:
   sbn HASH("StructureActiveVent") HASH("Out") On 0
   j ra
 # registers: 3
-# lines: 42
+# lines: 44

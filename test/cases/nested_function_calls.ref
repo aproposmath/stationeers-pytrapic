@@ -16,14 +16,17 @@ f.inner:
   put db 511 r15
   j ra
 f.mid:
+  push ra
   jal f.inner
   get r10 db 511
   jal f.inner
   get r11 db 511
   mul r12 r10 r11
   put db 511 r12
+  pop ra
   j ra
 f.outer:
+  push ra
   jal f.mid
   get r5 db 511
   jal f.mid
@@ -33,6 +36,7 @@ f.outer:
   get r8 db 511
   add r9 r7 r8
   put db 511 r9
+  pop ra
   j ra
 # registers: 16
-# lines: 36
+# lines: 40

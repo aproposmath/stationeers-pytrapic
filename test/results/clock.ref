@@ -41,6 +41,7 @@ lbelse37:
   put db 511 r12
   j ra
 calc.time.to.sunset:
+  push ra
   get r6 db 510
   put db 510 0
   jal calc.time
@@ -52,6 +53,7 @@ lbelse44:
   add r9 r8 1200
   mod r7 r9 1200
   put db 511 r7
+  pop ra
   j ra
 get.vertical:
   l r14 d0 Vertical
@@ -82,6 +84,7 @@ lbelse23:
   move r9 r8
   j ra
 init:
+  push ra
   clr db
   move r6 0
   move r7 0
@@ -112,8 +115,10 @@ init:
   sqrt r7 r12
   sub r0 r10 r7
   add r1 r10 r7
+  pop ra
   j ra
 update:
+  push ra
   jal get.vertical
   get r6 db 511
   put db 510 r6
@@ -122,6 +127,7 @@ update:
   jal calc.time
   get r7 db 511
   put db 511 r7
+  pop ra
   j ra
 # registers: 16
-# lines: 125
+# lines: 131
