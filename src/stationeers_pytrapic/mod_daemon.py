@@ -9,6 +9,7 @@ import base64
 import datetime
 import json
 import sys
+
 # import tempfile
 import time
 from pathlib import Path
@@ -48,6 +49,7 @@ def _get_ignore_symbol_names():
         if n in names:
             names.remove(n)
     return names
+
 
 # class MyStyle(Style):
 #     from pygments.token import Token, Comment, Keyword, Name, String, Error, Generic, Number, Operator
@@ -106,6 +108,7 @@ _symbols_names = set(dir(symbols)) - _ignore_symbol_names
 def format_completion(c):
     col = token_color(c.type, c.name)
     return f"{c.name}{FIELD_SEP}{col}{FIELD_SEP}{c.type}"
+
 
 def longest_common_prefix(strings):
     if not strings:
@@ -201,8 +204,9 @@ def highlight(code, error_line=None):
             lines[i] = "<color=#ffffff>" + line + "</color>"
     return "\n".join(lines)
 
-TOKEN_SEP = "\x1E"   # RS
-FIELD_SEP = "\x1F"   # US
+
+TOKEN_SEP = "\x1E"  # RS
+FIELD_SEP = "\x1F"  # US
 
 # from pygments import lex
 # from pygments.token import Token
@@ -210,6 +214,7 @@ FIELD_SEP = "\x1F"   # US
 
 # from pygments import lex
 # from pygments.token import Token
+
 
 # style = formatter.style
 def token_color(tokentype, text=""):
@@ -362,7 +367,9 @@ def process_input(line):
         #         log(f"Jedi exception: {e}")
         #         error(f"Jedi exception: {e}")
         t3 = time.time()
-        log(f"Processing times: parse {1000*(t1 - t0):.1f} ms, compile {1000*(t2 - t1):.1f} ms, jedi {1000*(t3 - t2):.1f} ms")
+        log(
+            f"Processing times: parse {1000*(t1 - t0):.1f} ms, compile {1000*(t2 - t1):.1f} ms, jedi {1000*(t3 - t2):.1f} ms"
+        )
 
     except json.JSONDecodeError:
         response = {"error": {"message": "Invalid JSON format"}}

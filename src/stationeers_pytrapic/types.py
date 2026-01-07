@@ -555,6 +555,7 @@ class Device(_BaseStructure, _GenericStructure):
     def __str__(self):
         return f"Device({self._dev_id})"
 
+
 class Devices(_BaseStructures, _GenericStructures):
     def __init__(
         self,
@@ -601,6 +602,7 @@ class Devices(_BaseStructures, _GenericStructures):
 
     def __str__(self):
         return f"Device({self._dev_id})"
+
 
 _Device = Device
 _Devices = Devices

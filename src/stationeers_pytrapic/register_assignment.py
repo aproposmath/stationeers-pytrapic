@@ -4,6 +4,7 @@ from .compile_pass import CodeData
 from .types import IC10Register, IC10Instruction
 from .utils import get_scope_name, CompilerError
 
+
 def assign_colors(symbols: list[IC10Register]):
     # Sort by start time
     symbols_sorted = sorted(symbols, key=lambda s: s.lifetime.start)
@@ -38,6 +39,7 @@ def assign_colors(symbols: list[IC10Register]):
         active.append((end, sym._color))
 
     return symbols
+
 
 def assign_registers(data: CodeData, code: list[IC10Instruction]):
     # topological sort of function scopes
@@ -148,9 +150,7 @@ def assign_registers(data: CodeData, code: list[IC10Instruction]):
                 blocked_registers.add(reg_num)
 
         registers_by_scope[scope] = used_registers.union(parent_registers)
-        blocked_registers_by_scope[scope] = blocked_registers.union(
-            parent_registers
-        )
+        blocked_registers_by_scope[scope] = blocked_registers.union(parent_registers)
         # print(f"scope '{scope}' uses registers {registers_by_scope[scope]}")
 
     for sym in used_symbols:

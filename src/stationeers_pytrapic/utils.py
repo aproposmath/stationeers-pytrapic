@@ -33,10 +33,23 @@ def format_enum(enum_val) -> str | int:
         return enum_val.value
 
 
-_math_functions = {"sin", "cos", "tan", "asin", "acos", "atan", "atan2", "sqrt", "log", "exp" }
+_math_functions = {
+    "sin",
+    "cos",
+    "tan",
+    "asin",
+    "acos",
+    "atan",
+    "atan2",
+    "sqrt",
+    "log",
+    "exp",
+}
+
 
 def is_math_function(name: str) -> bool:
     return name in _math_functions
+
 
 def is_builtin_function(name: str) -> bool:
     return name in ["HASH", "STR"]
@@ -339,11 +352,14 @@ def is_constant(node):
         print(res, "check const", node, inferred)
     return res
 
+
 _all_hashes = set()
+
 
 def format_int(value):
     if not _all_hashes:
         from . import symbols
+
         for name in dir(symbols):
             val = getattr(symbols, name)
             if hasattr(val, "_hash"):
@@ -353,5 +369,5 @@ def format_int(value):
 
     if value <= 10000 or value in _all_hashes:
         return str(value)
-    
+
     return f"${value:X}"

@@ -91,17 +91,19 @@ class Structure:
 
 def get_name(name: str, multiple: bool) -> str:
     if multiple:
-        if name and name[-1] == 'y':
+        if name and name[-1] == "y":
             name = name[:-1] + "ie"
         name = name + "s"
     return name
+
 
 def generate_generic_structure(struct: Structure, multiple: bool = False) -> str:
     code = ""
     is_base = struct.id is None
     bases = (
         ", ".join(
-            [get_name("_BaseStructure", multiple)] + sorted([get_name(b, multiple) for b in struct.bases])
+            [get_name("_BaseStructure", multiple)]
+            + sorted([get_name(b, multiple) for b in struct.bases])
         )
         if not is_base
         else ""
@@ -149,9 +151,7 @@ def generate_generic_structure(struct: Structure, multiple: bool = False) -> str
             if multiple:
                 code += f"      return {ret_type}(self, {slot.number})\n"
             else:
-                code += (
-                    f"      return {ret_type}(self, {slot.number})\n"
-                )
+                code += f"      return {ret_type}(self, {slot.number})\n"
 
     if multiple and not is_base:
         code += f"{struct_name} : {classname} = {classname}()\n"

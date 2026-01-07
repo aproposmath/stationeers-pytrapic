@@ -2,6 +2,7 @@ from stationeers_pytrapic.symbols import *
 
 prefix = define("PREFIX", 'HASH("Some name prefix ")')
 
+
 # Computes CRC32 hash of "SOME NAME PREFIX " + some number
 def hash_number(crc, n):
     # signed -> unsigned hash
@@ -12,15 +13,15 @@ def hash_number(crc, n):
 
     n_digits = 1
     factor = 1
-    while 10*factor <= n:
+    while 10 * factor <= n:
         n_digits += 1
         factor *= 10
 
     while n_digits > 0:
         n_digits -= 1
-        digit = floor(n/factor)
-        n -= digit*factor
-        factor /=10
+        digit = floor(n / factor)
+        n -= digit * factor
+        factor /= 10
 
         # convert digit to ASCII
         digit += 48
@@ -42,6 +43,7 @@ def hash_number(crc, n):
         crc -= 2**32
 
     return crc
+
 
 while True:
     i = 0

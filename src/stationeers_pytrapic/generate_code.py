@@ -29,32 +29,35 @@ from .register_assignment import assign_registers
 # and 510, 509, ... for function arguments
 _RETURN_VALUE_ADDRESS = 511
 
-_HAS_RELATIVE_INSTRUCTION = set( [
-"j",
-"bap",
-"bapz",
-"bdns",
-"bdse",
-"beq",
-"beqz",
-"bge",
-"bgez",
-"bgt",
-"bgtz",
-"ble",
-"blez",
-"blt",
-"bltz",
-"bna",
-"bnan",
-"bnaz",
-"bne",
-"bnez",
-            ]
-        )
+_HAS_RELATIVE_INSTRUCTION = set(
+    [
+        "j",
+        "bap",
+        "bapz",
+        "bdns",
+        "bdse",
+        "beq",
+        "beqz",
+        "bge",
+        "bgez",
+        "bgt",
+        "bgtz",
+        "ble",
+        "blez",
+        "blt",
+        "bltz",
+        "bna",
+        "bnan",
+        "bnaz",
+        "bne",
+        "bnez",
+    ]
+)
+
 
 def is_branch(op: str) -> bool:
     return op.startswith("b") or op in ["j", "jal"]
+
 
 def remove_unused_labels(code: str) -> str:
     lines = code.splitlines()
@@ -916,7 +919,9 @@ class CompilerPassGatherCode(CompilerPass):
         self.used_registers = assign_registers(self.data, self.code)
         self.get_code()
 
-    def remove_labels(self, code, relative_numbers: bool=True, keep_labels: set|None = None) -> str:
+    def remove_labels(
+        self, code, relative_numbers: bool = True, keep_labels: set | None = None
+    ) -> str:
         label_map = {}
         i_line = 0
         new_code = []
@@ -952,7 +957,7 @@ class CompilerPassGatherCode(CompilerPass):
                         offset = target_line - line_num
                         replacement = str(offset)
                         instruction = line.split("#")[0].strip().split()[0]
-                        if instruction  == "jal":
+                        if instruction == "jal":
                             replacement = str(target_line)
                         new_instruction = instruction[:1] + "r" + instruction[1:]
                         line = line.replace(instruction, new_instruction, 1)

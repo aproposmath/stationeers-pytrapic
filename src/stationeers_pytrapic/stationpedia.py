@@ -2,6 +2,7 @@ import base64
 import json
 from pathlib import Path
 
+
 def highlight(code: str) -> str:
     from .mod_daemon import highlight as _highlight
 

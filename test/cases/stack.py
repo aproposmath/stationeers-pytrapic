@@ -18,4 +18,4 @@ a = stack[88]
 stack[a] = a
 
 a = db.Setting
-stack[a+a] = 10*a
+stack[a + a] = 10 * a
