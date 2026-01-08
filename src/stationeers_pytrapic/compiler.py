@@ -36,6 +36,7 @@ class Compiler:
     def __init__(self, options: CompileOptions):
         self.passes = [
             CompilerPassSetModuleNames,
+            CompilerPassHandleConstexpr,
             CompilerPassBoolOpToBinOp,
             CompilerPassSetNodeData,
             CompilerPassCreateFunctionData,

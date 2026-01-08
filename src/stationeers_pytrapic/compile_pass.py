@@ -86,6 +86,8 @@ class CodeData:
     symbols: dict[str, dict[str, IC10Register]]
     register_map: dict[str, str]
     functions: dict[str, FunctionData]
+    constexpr_functions: dict[str, str]
+    constexpr_functions_code: str
     result: dict[str, str | int]
     structures: dict[str, dict[str, object]] = field(default_factory=dict)
     modules: dict[str, astroid.Module] = field(default_factory=dict)
@@ -101,6 +103,8 @@ class CodeData:
         self.functions = {}
         self.result = {"code": "No code generated"}
         self.structures = {}
+        self.constexpr_functions = {}
+        self.constexpr_functions_code = None
         self.modules = modules if modules is not None else {}
 
     def get_tmp_sym_data(self, node: astroid.NodeNG, name: str) -> IC10Register:
@@ -221,6 +225,7 @@ class NodeData:
 
 class CompilerPass:
     skip_unused_nodes: bool = False
+    ignore_unimplemented_nodes: bool = False
 
     def __init__(self, data: CodeData):
         self.data = data
@@ -299,6 +304,8 @@ class CompilerPass:
                 return
 
         if type(node) not in self._handlers:
+            if self.ignore_unimplemented_nodes:
+                return
             raise CompilerError(
                 f"Unsupported node type '{type(node)}' in compiler pass '{type(self).__name__}'",
                 node,
@@ -315,9 +322,10 @@ class CompilerPass:
         self.handle_node(node)
 
     def handle_node(self, node):
-        raise NotImplementedError(
-            f"Unsupported node type '{type(node)}' in compiler pass '{type(self).__name__}'"
-        )
+        if not self.ignore_unimplemented_nodes:
+            raise NotImplementedError(
+                f"Unsupported node type '{type(node)}' in compiler pass '{type(self).__name__}'"
+            )
 
     def handle_pass(self, node: astroid.Pass):
         self.handle_node(node)
@@ -408,8 +416,7 @@ class CompilerPass:
 
 
 class CompilerPassSetModuleNames(CompilerPass):
-    def handle_node(self, node: astroid.NodeNG):
-        pass
+    ignore_unimplemented_nodes = True
 
     def handle_import_from(self, node: astroid.ImportFrom):
         if node.modname != "library":
@@ -547,7 +554,7 @@ class CompilerPassCheckConstValue(CompilerPass):
         if fname in self.data.functions:
             func_data = self.data.functions[fname]
             if func_data.is_constexpr:
-                value = eval_constexpr(func_data.node, node)
+                value = eval_constexpr(self.data, node)
                 update_parent = data.is_constant == False
                 data.set_constant(value)
 
@@ -781,6 +788,53 @@ class CompilerPassCheckReturnValues(CompilerPass):
         pass
 
 
+class CompilerPassHandleConstexpr(CompilerPass):
+    skip_unused_nodes = True
+    ignore_unimplemented_nodes = True
+
+    def check_constexpr_function(self, node):
+        # check if any node in the function body is an import statement or eval/exec statement
+        for child in node.get_children():
+            if isinstance(child, astroid.Import) or isinstance(
+                child, astroid.ImportFrom
+            ):
+                raise CompilerError(
+                    "Constexpr functions cannot contain import statements",
+                    child,
+                )
+            if isinstance(child, astroid.Call):
+                fname = get_function_name(child.func)
+                if fname in ("eval", "exec"):
+                    raise CompilerError(
+                        "Constexpr functions cannot contain eval or exec statements",
+                        child,
+                    )
+            self.check_constexpr_function(child)
+
+    def handle_decorators(self, node: astroid.Decorators):
+        for n in node.nodes:
+            if not isinstance(n, astroid.Name):
+                raise CompilerError(
+                    f"Unsupported decorator type: {type(n)}",
+                    n,
+                )
+            if n.name == "constexpr":
+                fnode = node.parent
+                self.check_constexpr_function(fnode)
+                scope = get_scope_name(fnode)
+                self.data.constexpr_functions[scope] = (
+                    self.data.constexpr_functions.get(scope, "")
+                    + "\n"
+                    + fnode.as_string()
+                )
+                fnode.body = []
+            else:
+                raise CompilerError(
+                    f"Unsupported decorator: {n.name}",
+                    n,
+                )
+
+
 class CompilerPassCreateFunctionData(CompilerPass):
 
     def handle_function_def(self, node: astroid.FunctionDef):
@@ -796,17 +850,7 @@ class CompilerPassCreateFunctionData(CompilerPass):
 
     def handle_decorators(self, node: astroid.Decorators):
         for n in node.nodes:
-            if not isinstance(n, astroid.Name):
-                raise CompilerError(
-                    f"Unsupported decorator type: {type(n)}",
-                    n,
-                )
             if n.name == "constexpr":
                 data = self.data.functions[get_function_name(node.parent)]
                 data.is_constexpr = True
                 node.parent._ndata.is_constexpr = True
-            else:
-                raise CompilerError(
-                    f"Unsupported decorator: {n.name}",
-                    n,
-                )

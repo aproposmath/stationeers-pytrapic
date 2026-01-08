@@ -273,7 +273,7 @@ def is_constant(node, data):
         fname = node.func.name
         if fname in data.functions:
             if data.functions[fname].is_constexpr:
-                value = eval_constexpr(data.functions[fname].node, node)
+                value = eval_constexpr(data, node)
                 return True, value
         if is_math_function(node.func.name):
             import math
@@ -397,14 +397,26 @@ except ImportError:
     _is_pyodide = False
 
 
-def eval_constexpr(function_node, call_node):
+def eval_constexpr(data, call_node):
+    if data.constexpr_functions_code is None:
+        code = ""
+        for scope, funcs in data.constexpr_functions.items():
+            if scope == "":
+                code += funcs
+            else:
+                code += f"class {scope}:\n"
+                for line in funcs.splitlines():
+                    code += "    " + line + "\n"
+            code += "\n"
+        data.constexpr_functions_code = code
+
     code = f"""
 from stationeers_pytrapic.utils import calc_hash as HASH
 
 def constexpr(f):
     return f
 
-{function_node.as_string()}
+{data.constexpr_functions_code}
 
 """
     if _is_pyodide:
