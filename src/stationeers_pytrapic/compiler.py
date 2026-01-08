@@ -129,5 +129,30 @@ def compile_code(
 ):
     if isinstance(options, dict):
         options = CompileOptions(**options)
+
+    main_module = src[""] if isinstance(src, dict) else src
+    if "pytrapic:" in main_module:
+        for line in main_module.splitlines():
+            if "pytrapic:" not in line:
+                continue
+            line = line.strip()
+            if not line.startswith("#"):
+                continue
+            tokens = line.split("#", 1)
+            if len(tokens) < 2:
+                continue
+            tokens = tokens[1].split("pytrapic:", 1)
+            if len(tokens) < 2:
+                continue
+            tokens = tokens[1].strip().split(",")
+            for tag in tokens:
+                tag = tag.strip().replace("-", "_")
+                value = not tag.startswith("no_")
+                if not value:
+                    tag = tag[3:].strip()
+
+                if hasattr(options, tag):
+                    setattr(options, tag, value)
+
     set_output_mode(OutputMode.COMPACT if options.compact else OutputMode.VERBOSE)
     return Compiler(options).compile(src)
