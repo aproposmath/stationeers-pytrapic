@@ -787,10 +787,10 @@ class CompilerPassGenerateCode(CompilerPass):
         data.start_label = for_label
         data.end_label = end_label
 
-        data.add(IC10(f"{for_label}:"))
         iter_sym = self.get_intermediate_symbol(node)
-
         data.add(IC10("move", [start], iter_sym))
+        data.add(IC10(f"{for_label}:"))
+
         data.add(IC10("bge" if is_increasing else "ble", [iter_sym, end, end_label]))
         target_sym = self.data.get_sym_data(node.target)
 

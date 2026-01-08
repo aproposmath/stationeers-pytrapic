@@ -30,8 +30,8 @@ lbwhile1:
 range1:
   get r4 db 510
   move r5 0
-lbfor7:
   move r6 0
+lbfor7:
   bge r6 r4 lbfor.end7
     add r5 r5 r6
     add r6 r6 1
@@ -41,8 +41,8 @@ lbfor.end7:
   j ra
 range1.const:
   move r4 0
-lbfor24:
   move r5 0
+lbfor24:
   bge r5 10 lbfor.end24
     add r4 r4 r5
     add r5 r5 1
@@ -54,8 +54,8 @@ range2:
   get r4 db 510
   get r5 db 509
   move r6 0
-lbfor13:
   move r7 r4
+lbfor13:
   bge r7 r5 lbfor.end13
     add r6 r6 r7
     add r7 r7 1
@@ -65,8 +65,8 @@ lbfor.end13:
   j ra
 range2.const:
   move r4 0
-lbfor28:
   move r5 5
+lbfor28:
   bge r5 15 lbfor.end28
     add r4 r4 r5
     add r5 r5 1
@@ -79,8 +79,8 @@ range3:
   get r5 db 509
   get r6 db 508
   move r7 0
-lbfor20:
   move r8 r4
+lbfor20:
   bge r8 r5 lbfor.end20
     add r7 r7 r8
     add r8 r8 r6
@@ -90,8 +90,8 @@ lbfor.end20:
   j ra
 range3.const:
   move r4 0
-lbfor32:
   move r5 2
+lbfor32:
   bge r5 20 lbfor.end32
     add r4 r4 r5
     add r5 r5 3
