@@ -232,6 +232,7 @@ class CompilerPass:
             astroid.Expr: self.handle_expr,
             astroid.Import: self.handle_import,
             astroid.While: self.handle_while,
+            astroid.For: self.handle_for,
             astroid.IfExp: self.handle_ifexp,
             astroid.Attribute: self.handle_attribute,
             astroid.Compare: self.handle_compare,
@@ -330,6 +331,9 @@ class CompilerPass:
         self.handle_node(node)
 
     def handle_while(self, node: astroid.While):
+        self.handle_node(node)
+
+    def handle_for(self, node: astroid.For):
         self.handle_node(node)
 
     def handle_ifexp(self, node: astroid.IfExp):

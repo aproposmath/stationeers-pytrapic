@@ -1,0 +1,103 @@
+lbwhile1:
+  get r0 db 0
+  get r1 db 1
+  get r2 db 2
+  put db 510 r0
+  jal range1
+  get r3 db 511
+  s db Setting r3
+  put db 510 r0
+  put db 509 r1
+  jal range2
+  get r3 db 511
+  s db Setting r3
+  put db 510 r0
+  put db 509 r1
+  put db 508 r2
+  jal range3
+  get r3 db 511
+  s db Setting r3
+  jal range1.const
+  get r3 db 511
+  s db Setting r3
+  jal range2.const
+  get r3 db 511
+  s db Setting r3
+  jal range3.const
+  get r3 db 511
+  s db Setting r3
+  j lbwhile1
+range1:
+  get r4 db 510
+  move r5 0
+lbfor7:
+  move r6 0
+  bge r6 r4 lbfor.end7
+    add r5 r5 r6
+    add r6 r6 1
+    j lbfor7
+lbfor.end7:
+  put db 511 r5
+  j ra
+range1.const:
+  move r4 0
+lbfor24:
+  move r5 0
+  bge r5 10 lbfor.end24
+    add r4 r4 r5
+    add r5 r5 1
+    j lbfor24
+lbfor.end24:
+  put db 511 r4
+  j ra
+range2:
+  get r4 db 510
+  get r5 db 509
+  move r6 0
+lbfor13:
+  move r7 r4
+  bge r7 r5 lbfor.end13
+    add r6 r6 r7
+    add r7 r7 1
+    j lbfor13
+lbfor.end13:
+  put db 511 r6
+  j ra
+range2.const:
+  move r4 0
+lbfor28:
+  move r5 5
+  bge r5 15 lbfor.end28
+    add r4 r4 r5
+    add r5 r5 1
+    j lbfor28
+lbfor.end28:
+  put db 511 r4
+  j ra
+range3:
+  get r4 db 510
+  get r5 db 509
+  get r6 db 508
+  move r7 0
+lbfor20:
+  move r8 r4
+  bge r8 r5 lbfor.end20
+    add r7 r7 r8
+    add r8 r8 r6
+    j lbfor20
+lbfor.end20:
+  put db 511 r7
+  j ra
+range3.const:
+  move r4 0
+lbfor32:
+  move r5 2
+  bge r5 20 lbfor.end32
+    add r4 r4 r5
+    add r5 r5 3
+    j lbfor32
+lbfor.end32:
+  put db 511 r4
+  j ra
+# registers: 9
+# lines: 101

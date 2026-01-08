@@ -746,6 +746,58 @@ class CompilerPassGenerateCode(CompilerPass):
             data.result = sym
             data.add_end(IC10(instruction, [left_name, right_name], sym))
 
+    def handle_for(self, node: astroid.For):
+        iter_ = node.iter
+
+        if (
+            not isinstance(iter_, astroid.Call)
+            or not isinstance(iter_.func, astroid.Name)
+            or iter_.func.name != "range"
+        ):
+            raise CompilerError(
+                "Only for loops over ranges are supported currently", node
+            )
+
+        args = iter_.args
+        start = 0
+        end = None
+        step = 1
+        is_increasing = True
+        n_args = len(args)
+
+        if n_args == 1:
+            end = self.compile_node(args[0])
+        elif n_args == 2:
+            start = self.compile_node(args[0])
+            end = self.compile_node(args[1])
+        elif n_args == 3:
+            start = self.compile_node(args[0])
+            end = self.compile_node(args[1])
+            step = self.compile_node(args[2])
+            if args[2]._ndata.is_constant:
+                is_increasing = args[2]._ndata.constant_value >= 0
+
+        for_label, end_label = self.get_label("for", "for.end")
+        data = node._ndata
+        data.start_label = for_label
+        data.end_label = end_label
+
+        data.add(IC10(f"{for_label}:"))
+        iter_sym = self.get_intermediate_symbol(node)
+
+        data.add(IC10("move", [start], iter_sym))
+        data.add(IC10("bge" if is_increasing else "ble", [iter_sym, end, end_label]))
+        target_sym = self.data.get_sym_data(node.target)
+
+        if not target_sym.code_expr:
+            target_sym.code_expr = iter_sym.code_expr
+
+        for stmt in node.body:
+            self.compile_node(stmt)
+        data.add_end(IC10("add", [iter_sym, step], iter_sym, indent=1))
+        data.add_end(IC10("j", [for_label], indent=1))
+        data.add_end(IC10(f"{end_label}:"))
+
     def handle_while(self, node: astroid.While):
         test = node.test
         while_label, end_label = self.get_label("while", "while.end")

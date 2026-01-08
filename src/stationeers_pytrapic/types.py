@@ -685,6 +685,8 @@ constants = {
     "rgas": rgas,
 }
 
+range = __builtins__["range"]
+
 __all__ = [
     "pi",
     "rgas",
@@ -718,6 +720,7 @@ __all__ = [
     "_Register",
     "_Device",
     "_Devices",
+    "range",
     "Device",
     "Devices",
     "_slotIndex",
