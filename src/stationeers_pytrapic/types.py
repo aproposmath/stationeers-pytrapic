@@ -8,7 +8,7 @@ import astroid
 
 from .types_generated import *
 from .types_generated import _GenericStructure, _GenericStructures
-from .utils import OutputMode, format_enum, get_loop_ancestor
+from .utils import OutputMode, format_enum, get_loop_ancestor, calc_hash
 
 from . import utils
 
@@ -240,10 +240,7 @@ def compute_hash(name: int | str | _Register, output_mode=None) -> int | str:
     if output_mode == OutputMode.VERBOSE:
         return hash_str
 
-    import zlib
-
-    val = zlib.crc32(name.encode())
-    val = (val ^ 0x80000000) - 0x80000000
+    val = calc_hash(name)
     eval_str = str(val)
 
     if output_mode == OutputMode.NUMERIC:
@@ -687,6 +684,11 @@ constants = {
 
 range = __builtins__["range"]
 
+
+def constexpr(func):
+    return func
+
+
 __all__ = [
     "pi",
     "rgas",
@@ -721,6 +723,7 @@ __all__ = [
     "_Device",
     "_Devices",
     "range",
+    "constexpr",
     "Device",
     "Devices",
     "_slotIndex",

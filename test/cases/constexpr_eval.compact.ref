@@ -1,0 +1,14 @@
+yield
+l r0 d1 12
+breqz r0 3
+lb r1 336213101 217 2
+putd r1 0 $277621E10A02
+l r0 d2 12
+breqz r0 5
+lb r1 1307165496 217 2
+getd r1 r1 63
+add r2 r1 1
+putd r1 r2 -30543096565246
+jr -11
+# registers: 3
+# lines: 12

@@ -16,6 +16,7 @@ from .utils import (
     is_builtin_name,
     is_constant,
     logger,
+    eval_constexpr,
 )
 
 
@@ -25,6 +26,7 @@ class FunctionData:
     sym_data: IC10Register
     code: list[IC10Instruction] = field(default_factory=list)
     args: list[IC10Register] = field(default_factory=list)
+    is_constexpr: bool = False
 
     @property
     def name(self) -> str:
@@ -169,6 +171,7 @@ class NodeData:
     is_compiled = False
     start_label: str = None
     end_label: str = None
+    function_data: FunctionData = None
 
     code: dict[CodeType, list[IC10Instruction]] = None
     result = None
@@ -254,6 +257,7 @@ class CompilerPass:
             astroid.Break: self.handle_break,
             astroid.AugAssign: self.handle_immediate_op,
             astroid.List: self.handle_node,
+            astroid.Decorators: self.handle_decorators,
         }
 
     def _log(self, level, *args):
@@ -399,6 +403,9 @@ class CompilerPass:
     def handle_break(self, node: astroid.Break):
         self.handle_node(node)
 
+    def handle_decorators(self, node: astroid.Decorators):
+        self.handle_node(node)
+
 
 class CompilerPassSetModuleNames(CompilerPass):
     def handle_node(self, node: astroid.NodeNG):
@@ -525,6 +532,31 @@ class CompilerPassCheckConstValue(CompilerPass):
         else:
             self.handle_node(node)
 
+    def handle_function_def(self, node: astroid.FunctionDef):
+        function_data = node._ndata.function_data
+        if function_data.is_constexpr:
+            return
+        self.handle_node(node)
+
+    def handle_call(self, node: astroid.Call):
+        fname = get_function_name(node.func)
+        data = node._ndata
+        if data.is_constant:
+            return
+
+        if fname in self.data.functions:
+            func_data = self.data.functions[fname]
+            if func_data.is_constexpr:
+                value = eval_constexpr(func_data.node, node)
+                update_parent = data.is_constant == False
+                data.set_constant(value)
+
+                if update_parent:
+                    self._visit_node(node.parent)
+
+                return
+        self.handle_node(node)
+
     def handle_node(self, node: astroid.NodeNG):
         data = node._ndata
 
@@ -537,7 +569,7 @@ class CompilerPassCheckConstValue(CompilerPass):
         for child in node.get_children():
             self._visit_node(child)
 
-        is_const, value = is_constant(node)
+        is_const, value = is_constant(node, self.data)
 
         update_parent = data.is_constant == False and is_const
         if is_const:
@@ -571,8 +603,8 @@ class CompilerPassCheckConstValueAssign(CompilerPassCheckConstValue):
     def run(self):
         self._info("run")
         for module in self.data.modules.values():
-            self._visit_node_recursive(module)
-        self._visit_node_recursive(self.tree)
+            self._visit_node(module)
+        self._visit_node(self.tree)
 
 
 class CompilerPassCheckUsed(CompilerPass):
@@ -752,9 +784,29 @@ class CompilerPassCheckReturnValues(CompilerPass):
 class CompilerPassCreateFunctionData(CompilerPass):
 
     def handle_function_def(self, node: astroid.FunctionDef):
+        self.data.add_name(node)
         sym_data = self.data.get_sym_data(node)
         name = get_function_name(node)
-        self.data.functions[name] = FunctionData(node, sym_data)
+        fdata = FunctionData(node, sym_data)
+        self.data.functions[name] = fdata
+        node._ndata.function_data = fdata
 
     def handle_node(self, node: astroid.NodeNG):
         pass
+
+    def handle_decorators(self, node: astroid.Decorators):
+        for n in node.nodes:
+            if not isinstance(n, astroid.Name):
+                raise CompilerError(
+                    f"Unsupported decorator type: {type(n)}",
+                    n,
+                )
+            if n.name == "constexpr":
+                data = self.data.functions[get_function_name(node.parent)]
+                data.is_constexpr = True
+                node.parent._ndata.is_constexpr = True
+            else:
+                raise CompilerError(
+                    f"Unsupported decorator: {n.name}",
+                    n,
+                )

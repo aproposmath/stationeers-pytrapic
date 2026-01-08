@@ -1,0 +1,23 @@
+lbwhile1:
+  yield
+  l r0 d1 Setting
+  beqz r0 lbelse2
+    jal build.plastic.sheets
+lbelse2:
+  l r0 d2 Setting
+  beqz r0 lbelse5
+    jal build.cables
+lbelse5:
+  j lbwhile1
+build.cables:
+  lb r1 HASH("StructureElectronicsPrinter") ReferenceId Minimum
+  getd r1 r1 63
+  add r2 r1 1
+  putd r1 r2 -30543096565246
+  j ra
+build.plastic.sheets:
+  lb r1 HASH("StructureAutolathe") ReferenceId Minimum
+  putd r1 0 $277621E10A02
+  j ra
+# registers: 3
+# lines: 21

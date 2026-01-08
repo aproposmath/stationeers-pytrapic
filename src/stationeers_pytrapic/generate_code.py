@@ -21,6 +21,7 @@ from .utils import (
     is_math_function,
     logger,
     get_function_name,
+    eval_constexpr,
 )
 
 from .register_assignment import assign_registers
@@ -281,6 +282,10 @@ class CompilerPassGenerateCode(CompilerPass):
 
         func_node = self.functions[fname]
         func_data = self.data.functions[fname]
+
+        if func_data.is_constexpr:
+            data.result = IC10Operand(data.constant_value)
+            return
 
         do_inline = self.data.options.inline_functions and func_data.can_inline
 
@@ -986,6 +991,8 @@ class CompilerPassGatherCode(CompilerPass):
 
         for fname in sorted(self.data.functions.keys()):
             func = self.data.functions[fname]
+            if func.is_constexpr:
+                continue
             if fname != "" and func.is_called:
                 func.add_ra_instructions()
             if fname == "" or func.is_called:

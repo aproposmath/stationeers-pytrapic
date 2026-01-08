@@ -6,6 +6,14 @@ import astroid
 logger = logging.getLogger("stationeers_pytrapic")
 
 
+def calc_hash(name: str) -> int:
+    import zlib
+
+    val = zlib.crc32(name.encode())
+    val = (val ^ 0x80000000) - 0x80000000
+    return val
+
+
 class OutputMode(IntEnum):
     """Defines the output mode for enum formatting, either keep their names or use their numbers."""
 
@@ -246,7 +254,7 @@ def get_loop_ancestor(node):
     return node
 
 
-def is_constant(node):
+def is_constant(node, data):
     from .types import constants
 
     if hasattr(node, "_ndata") and node._ndata.is_constant:
@@ -261,12 +269,18 @@ def is_constant(node):
     if isinstance(node, astroid.Call):
         if not isinstance(node.func, astroid.Name):
             return False, None
+
+        fname = node.func.name
+        if fname in data.functions:
+            if data.functions[fname].is_constexpr:
+                value = eval_constexpr(data.functions[fname].node, node)
+                return True, value
         if is_math_function(node.func.name):
             import math
 
             args = []
             for arg in node.args:
-                arg_const, arg_value = is_constant(arg)
+                arg_const, arg_value = is_constant(arg, data)
                 if not arg_const:
                     return False, None
                 args.append(arg_value)
@@ -289,8 +303,8 @@ def is_constant(node):
         return True, constants[node.name]
 
     if isinstance(node, astroid.BinOp):
-        left_const, left_value = is_constant(node.left)
-        right_const, right_value = is_constant(node.right)
+        left_const, left_value = is_constant(node.left, data)
+        right_const, right_value = is_constant(node.right, data)
         if left_const and right_const:
             _, func = get_binop_instruction(node.op)
             if func:
@@ -300,7 +314,7 @@ def is_constant(node):
                     return False, None
 
     if isinstance(node, astroid.UnaryOp):
-        operand_const, operand_value = is_constant(node.operand)
+        operand_const, operand_value = is_constant(node.operand, data)
         if operand_const:
             _, func = get_unop_instruction(node.op)
             if func:
@@ -371,3 +385,82 @@ def format_int(value):
         return str(value)
 
     return f"${value:X}"
+
+
+_eval_constexpr_cache = {}
+
+try:
+    import js as _js
+
+    _is_pyodide = True
+except ImportError:
+    _is_pyodide = False
+
+
+def eval_constexpr(function_node, call_node):
+    code = f"""
+from stationeers_pytrapic.utils import calc_hash as HASH
+
+def constexpr(f):
+    return f
+
+{function_node.as_string()}
+
+"""
+    if _is_pyodide:
+        code += f"\nresult = {call_node.as_string()}\n"
+    else:
+        code += f"\nprint({call_node.as_string()})\n"
+    if code in _eval_constexpr_cache:
+        return _eval_constexpr_cache[code]
+
+    if _is_pyodide:
+        vars = {}
+        try:
+            exec(code, vars, vars)
+            result = vars["result"]
+        except Exception as e:
+            raise CompilerError(
+                f"Error during evaluating constexpr function call {call_node.as_string()}:\n{e}",
+                call_node,
+            )
+        try:
+            result = int(result)
+            result = format_int(result)
+        except ValueError:
+            pass
+        _eval_constexpr_cache[code] = result
+        return result
+
+    # run this in a separate process to avoid side effects and have a timeout and proper cleanup
+    import subprocess
+    import sys
+
+    process = subprocess.Popen(
+        [sys.executable, "-c", code],
+        stdout=subprocess.PIPE,
+        stderr=subprocess.PIPE,
+    )
+
+    try:
+        stdout, stderr = process.communicate(timeout=1)
+
+    except subprocess.TimeoutExpired:
+        raise CompilerError(
+            f"Timeout during evaluating constexpr function call {call_node.as_string()}",
+            call_node,
+        )
+    if process.returncode != 0:
+        raise CompilerError(
+            f"Error during evaluating constexpr function call {call_node.as_string()}:\n{stderr.decode()}",
+            call_node,
+        )
+    result = stdout.decode().strip()
+    try:
+        result = int(result)
+        result = format_int(result)
+    except ValueError:
+        pass
+
+    _eval_constexpr_cache[code] = result
+    return result

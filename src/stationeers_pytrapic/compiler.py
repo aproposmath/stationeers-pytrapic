@@ -38,6 +38,7 @@ class Compiler:
             CompilerPassSetModuleNames,
             CompilerPassBoolOpToBinOp,
             CompilerPassSetNodeData,
+            CompilerPassCreateFunctionData,
             CompilerPassCheckConstValue,
             CompilerPassCheckUsed,
             CompilerPassFindNames,
@@ -47,7 +48,6 @@ class Compiler:
             CompilerPassCheckConstValueAssign,
             # CompilerPassListSymbols,
             CompilerPassCheckReturnValues,
-            CompilerPassCreateFunctionData,
             CompilerPassGenerateCode,
             CompilerPassGatherCode,
         ]
