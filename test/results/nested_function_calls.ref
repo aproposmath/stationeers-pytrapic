@@ -5,8 +5,11 @@ inner.function:
   sb HASH("StructureGrowLight") On 1
   j ra
 outer.function:
+  push ra
   sb HASH("StructureGrowLight") On 0
   jal inner.function
-  j inner.function
+  jal inner.function
+  pop ra
+  j ra
 # registers: 1
-# lines: 10
+# lines: 13

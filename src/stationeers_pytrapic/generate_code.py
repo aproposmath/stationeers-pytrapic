@@ -469,7 +469,9 @@ class CompilerPassGenerateCode(CompilerPass):
 
         apply_tail_call_optimization = False
 
-        if node.body:
+        if node.body and (
+            not func_data.can_inline or not self.data.options.inline_functions
+        ):
             last_node = node.body[-1]
             if isinstance(last_node, astroid.Expr):
                 last_node = last_node.value

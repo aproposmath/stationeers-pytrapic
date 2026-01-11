@@ -1,6 +1,6 @@
 sb -1758710260 28 0
 jal inner.function
-j inner.function
+jal inner.function
 lb r0 -1758710260 28 3
 s db Setting r0
 inner.function:
