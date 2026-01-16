@@ -205,8 +205,8 @@ def highlight(code, error_line=None):
     return "\n".join(lines)
 
 
-TOKEN_SEP = "\x1E"  # RS
-FIELD_SEP = "\x1F"  # US
+TOKEN_SEP = "\x1e"  # RS
+FIELD_SEP = "\x1f"  # US
 
 # from pygments import lex
 # from pygments.token import Token

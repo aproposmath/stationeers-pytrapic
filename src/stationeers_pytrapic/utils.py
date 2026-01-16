@@ -1,7 +1,7 @@
 import logging
 from enum import IntEnum
 
-import astroid
+from astroid import nodes
 
 logger = logging.getLogger("stationeers_pytrapic")
 
@@ -158,13 +158,13 @@ def get_scope_name(node):
         return ""
     sc = node.scope()
     parents = []
-    while sc and not isinstance(sc, astroid.Module):
+    while sc and not isinstance(sc, nodes.Module):
         parents.append(sc.name)
         sc = sc.parent.scope() if sc.parent else None
 
-    if isinstance(node, astroid.FunctionDef) or (
-        isinstance(node, astroid.Name)
-        and isinstance(node.parent, astroid.Call)
+    if isinstance(node, nodes.FunctionDef) or (
+        isinstance(node, nodes.Name)
+        and isinstance(node.parent, nodes.Call)
         and node == node.parent.func
     ):
         parents = parents[1:]
@@ -189,11 +189,11 @@ def get_function_name(node):
     if scope:
         scope += "."
 
-    if isinstance(node, astroid.FunctionDef):
+    if isinstance(node, nodes.FunctionDef):
         return scope + node.name
-    elif isinstance(node, astroid.Attribute):
+    elif isinstance(node, nodes.Attribute):
         return scope + node.expr.name + "." + node.attrname
-    elif isinstance(node, astroid.Name):
+    elif isinstance(node, nodes.Name):
         return scope + node.name
     else:
         raise CompilerError("Cannot get function name", node)
@@ -212,7 +212,7 @@ class CompilerError(Exception):
 
 def get_function_parent(node):
     for par in node.node_ancestors():
-        if isinstance(par, astroid.FunctionDef):
+        if isinstance(par, nodes.FunctionDef):
             return par
     raise CompilerError("No parent function found", node)
 
@@ -247,9 +247,9 @@ def is_builtin_structure(val):
 
 def get_loop_ancestor(node):
     for par in node.node_ancestors():
-        if isinstance(par, astroid.FunctionDef):
+        if isinstance(par, nodes.FunctionDef):
             return node
-        if isinstance(par, (astroid.For, astroid.While)):
+        if isinstance(par, (nodes.For, nodes.While)):
             return par
     return node
 
@@ -263,11 +263,11 @@ def is_constant(node, data):
     if isinstance(node, (int, float, str)):
         return True, node
 
-    if isinstance(node, astroid.Const):
+    if isinstance(node, nodes.Const):
         return True, node.value
 
-    if isinstance(node, astroid.Call):
-        if not isinstance(node.func, astroid.Name):
+    if isinstance(node, nodes.Call):
+        if not isinstance(node.func, nodes.Name):
             return False, None
 
         fname = node.func.name
@@ -299,10 +299,10 @@ def is_constant(node, data):
         else:
             return False, None
 
-    if isinstance(node, astroid.Name) and node.name in constants:
+    if isinstance(node, nodes.Name) and node.name in constants:
         return True, constants[node.name]
 
-    if isinstance(node, astroid.BinOp):
+    if isinstance(node, nodes.BinOp):
         left_const, left_value = is_constant(node.left, data)
         right_const, right_value = is_constant(node.right, data)
         if left_const and right_const:
@@ -313,7 +313,7 @@ def is_constant(node, data):
                 except Exception:
                     return False, None
 
-    if isinstance(node, astroid.UnaryOp):
+    if isinstance(node, nodes.UnaryOp):
         operand_const, operand_value = is_constant(node.operand, data)
         if operand_const:
             _, func = get_unop_instruction(node.op)
@@ -337,13 +337,13 @@ def is_constant(node, data):
 
     # check if a parent is a while or for loop -> take care! the var could be ovewritten multiple times
     for par in node.node_ancestors():
-        if isinstance(par, (astroid.For, astroid.While)):
+        if isinstance(par, (nodes.For, nodes.While)):
             # print("no constant in loop", inferred, node)
             return False, None
-        if isinstance(par, astroid.FunctionDef):
+        if isinstance(par, nodes.FunctionDef):
             break
 
-    if isinstance(inferred, astroid.Const):
+    if isinstance(inferred, nodes.Const):
         return True, inferred.value
 
     return False, None
@@ -354,11 +354,11 @@ def is_constant(node, data):
                 res = False
         except:
             res = False
-    if res and isinstance(node, astroid.Name):
+    if res and isinstance(node, nodes.Name):
         print(res, "check const", node, inferred)
         # print("scope", node.scope())
         print("lookup", node.lookup(node.name))
-    elif res and isinstance(inferred[0], astroid.Name):
+    elif res and isinstance(inferred[0], nodes.Name):
         print(res, "check const", node, inferred)
         # print("scope", node.scope())
         print("lookup", inferred[0].lookup(inferred[0].name))

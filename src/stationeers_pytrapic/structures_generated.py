@@ -189,6 +189,14 @@ class _SlotTypeAirTanks(_SlotTypeCommons):
 
 class _SlotTypeAppliance(_SlotTypeCommon):
     @property
+    def FreeSlots(self) -> float:
+        return _DeviceSlotType(self, _LST.FreeSlots)
+
+    @FreeSlots.setter
+    def FreeSlots(self, value: int | float):
+        pass
+
+    @property
     def On(self) -> float:
         return _DeviceSlotType(self, _LST.On)
 
@@ -212,8 +220,24 @@ class _SlotTypeAppliance(_SlotTypeCommon):
     def SortingClass(self, value: int | float):
         pass
 
+    @property
+    def TotalSlots(self) -> float:
+        return _DeviceSlotType(self, _LST.TotalSlots)
+
+    @TotalSlots.setter
+    def TotalSlots(self, value: int | float):
+        pass
+
 
 class _SlotTypeAppliances(_SlotTypeCommons):
+    @property
+    def FreeSlots(self) -> _DevicesSlotType:
+        return _DevicesSlotType(self, _LST.FreeSlots)
+
+    @FreeSlots.setter
+    def FreeSlots(self, value: int | float):
+        pass
+
     @property
     def On(self) -> _DevicesSlotType:
         return _DevicesSlotType(self, _LST.On)
@@ -238,6 +262,14 @@ class _SlotTypeAppliances(_SlotTypeCommons):
     def SortingClass(self, value: int | float):
         pass
 
+    @property
+    def TotalSlots(self) -> _DevicesSlotType:
+        return _DevicesSlotType(self, _LST.TotalSlots)
+
+    @TotalSlots.setter
+    def TotalSlots(self, value: int | float):
+        pass
+
 
 class _SlotTypeBack(_SlotTypeCommon):
     @property
@@ -254,6 +286,14 @@ class _SlotTypeBack(_SlotTypeCommon):
 
     @ChargeRatio.setter
     def ChargeRatio(self, value: int | float):
+        pass
+
+    @property
+    def FreeSlots(self) -> float:
+        return _DeviceSlotType(self, _LST.FreeSlots)
+
+    @FreeSlots.setter
+    def FreeSlots(self, value: int | float):
         pass
 
     @property
@@ -280,6 +320,14 @@ class _SlotTypeBack(_SlotTypeCommon):
     def SortingClass(self, value: int | float):
         pass
 
+    @property
+    def TotalSlots(self) -> float:
+        return _DeviceSlotType(self, _LST.TotalSlots)
+
+    @TotalSlots.setter
+    def TotalSlots(self, value: int | float):
+        pass
+
 
 class _SlotTypeBacks(_SlotTypeCommons):
     @property
@@ -296,6 +344,14 @@ class _SlotTypeBacks(_SlotTypeCommons):
 
     @ChargeRatio.setter
     def ChargeRatio(self, value: int | float):
+        pass
+
+    @property
+    def FreeSlots(self) -> _DevicesSlotType:
+        return _DevicesSlotType(self, _LST.FreeSlots)
+
+    @FreeSlots.setter
+    def FreeSlots(self, value: int | float):
         pass
 
     @property
@@ -322,6 +378,14 @@ class _SlotTypeBacks(_SlotTypeCommons):
     def SortingClass(self, value: int | float):
         pass
 
+    @property
+    def TotalSlots(self) -> _DevicesSlotType:
+        return _DevicesSlotType(self, _LST.TotalSlots)
+
+    @TotalSlots.setter
+    def TotalSlots(self, value: int | float):
+        pass
+
 
 class _SlotTypeBattery(_SlotTypeCommon):
     @property
@@ -341,6 +405,14 @@ class _SlotTypeBattery(_SlotTypeCommon):
         pass
 
     @property
+    def FreeSlots(self) -> float:
+        return _DeviceSlotType(self, _LST.FreeSlots)
+
+    @FreeSlots.setter
+    def FreeSlots(self, value: int | float):
+        pass
+
+    @property
     def PrefabHash(self) -> float:
         return _DeviceSlotType(self, _LST.PrefabHash)
 
@@ -354,6 +426,14 @@ class _SlotTypeBattery(_SlotTypeCommon):
 
     @SortingClass.setter
     def SortingClass(self, value: int | float):
+        pass
+
+    @property
+    def TotalSlots(self) -> float:
+        return _DeviceSlotType(self, _LST.TotalSlots)
+
+    @TotalSlots.setter
+    def TotalSlots(self, value: int | float):
         pass
 
 
@@ -375,6 +455,14 @@ class _SlotTypeBatteries(_SlotTypeCommons):
         pass
 
     @property
+    def FreeSlots(self) -> _DevicesSlotType:
+        return _DevicesSlotType(self, _LST.FreeSlots)
+
+    @FreeSlots.setter
+    def FreeSlots(self, value: int | float):
+        pass
+
+    @property
     def PrefabHash(self) -> _DevicesSlotType:
         return _DevicesSlotType(self, _LST.PrefabHash)
 
@@ -390,8 +478,24 @@ class _SlotTypeBatteries(_SlotTypeCommons):
     def SortingClass(self, value: int | float):
         pass
 
+    @property
+    def TotalSlots(self) -> _DevicesSlotType:
+        return _DevicesSlotType(self, _LST.TotalSlots)
+
+    @TotalSlots.setter
+    def TotalSlots(self, value: int | float):
+        pass
+
 
 class _SlotTypeCircuitboard(_SlotTypeCommon):
+    @property
+    def FreeSlots(self) -> float:
+        return _DeviceSlotType(self, _LST.FreeSlots)
+
+    @FreeSlots.setter
+    def FreeSlots(self, value: int | float):
+        pass
+
     @property
     def Mode(self) -> float:
         return _DeviceSlotType(self, _LST.Mode)
@@ -416,8 +520,24 @@ class _SlotTypeCircuitboard(_SlotTypeCommon):
     def SortingClass(self, value: int | float):
         pass
 
+    @property
+    def TotalSlots(self) -> float:
+        return _DeviceSlotType(self, _LST.TotalSlots)
+
+    @TotalSlots.setter
+    def TotalSlots(self, value: int | float):
+        pass
+
 
 class _SlotTypeCircuitboards(_SlotTypeCommons):
+    @property
+    def FreeSlots(self) -> _DevicesSlotType:
+        return _DevicesSlotType(self, _LST.FreeSlots)
+
+    @FreeSlots.setter
+    def FreeSlots(self, value: int | float):
+        pass
+
     @property
     def Mode(self) -> _DevicesSlotType:
         return _DevicesSlotType(self, _LST.Mode)
@@ -442,8 +562,24 @@ class _SlotTypeCircuitboards(_SlotTypeCommons):
     def SortingClass(self, value: int | float):
         pass
 
+    @property
+    def TotalSlots(self) -> _DevicesSlotType:
+        return _DevicesSlotType(self, _LST.TotalSlots)
+
+    @TotalSlots.setter
+    def TotalSlots(self, value: int | float):
+        pass
+
 
 class _SlotTypeDataDisk(_SlotTypeCommon):
+    @property
+    def FreeSlots(self) -> float:
+        return _DeviceSlotType(self, _LST.FreeSlots)
+
+    @FreeSlots.setter
+    def FreeSlots(self, value: int | float):
+        pass
+
     @property
     def PrefabHash(self) -> float:
         return _DeviceSlotType(self, _LST.PrefabHash)
@@ -460,8 +596,24 @@ class _SlotTypeDataDisk(_SlotTypeCommon):
     def SortingClass(self, value: int | float):
         pass
 
+    @property
+    def TotalSlots(self) -> float:
+        return _DeviceSlotType(self, _LST.TotalSlots)
+
+    @TotalSlots.setter
+    def TotalSlots(self, value: int | float):
+        pass
+
 
 class _SlotTypeDataDisks(_SlotTypeCommons):
+    @property
+    def FreeSlots(self) -> _DevicesSlotType:
+        return _DevicesSlotType(self, _LST.FreeSlots)
+
+    @FreeSlots.setter
+    def FreeSlots(self, value: int | float):
+        pass
+
     @property
     def PrefabHash(self) -> _DevicesSlotType:
         return _DevicesSlotType(self, _LST.PrefabHash)
@@ -476,6 +628,14 @@ class _SlotTypeDataDisks(_SlotTypeCommons):
 
     @SortingClass.setter
     def SortingClass(self, value: int | float):
+        pass
+
+    @property
+    def TotalSlots(self) -> _DevicesSlotType:
+        return _DevicesSlotType(self, _LST.TotalSlots)
+
+    @TotalSlots.setter
+    def TotalSlots(self, value: int | float):
         pass
 
 
@@ -489,6 +649,14 @@ class _SlotTypeFilter(_SlotTypeCommon):
         pass
 
     @property
+    def FreeSlots(self) -> float:
+        return _DeviceSlotType(self, _LST.FreeSlots)
+
+    @FreeSlots.setter
+    def FreeSlots(self, value: int | float):
+        pass
+
+    @property
     def PrefabHash(self) -> float:
         return _DeviceSlotType(self, _LST.PrefabHash)
 
@@ -504,6 +672,14 @@ class _SlotTypeFilter(_SlotTypeCommon):
     def SortingClass(self, value: int | float):
         pass
 
+    @property
+    def TotalSlots(self) -> float:
+        return _DeviceSlotType(self, _LST.TotalSlots)
+
+    @TotalSlots.setter
+    def TotalSlots(self, value: int | float):
+        pass
+
 
 class _SlotTypeFilters(_SlotTypeCommons):
     @property
@@ -512,6 +688,14 @@ class _SlotTypeFilters(_SlotTypeCommons):
 
     @FilterType.setter
     def FilterType(self, value: int | float):
+        pass
+
+    @property
+    def FreeSlots(self) -> _DevicesSlotType:
+        return _DevicesSlotType(self, _LST.FreeSlots)
+
+    @FreeSlots.setter
+    def FreeSlots(self, value: int | float):
         pass
 
     @property
@@ -530,8 +714,24 @@ class _SlotTypeFilters(_SlotTypeCommons):
     def SortingClass(self, value: int | float):
         pass
 
+    @property
+    def TotalSlots(self) -> _DevicesSlotType:
+        return _DevicesSlotType(self, _LST.TotalSlots)
+
+    @TotalSlots.setter
+    def TotalSlots(self, value: int | float):
+        pass
+
 
 class _SlotTypeGasCanister(_SlotTypeCommon):
+    @property
+    def FreeSlots(self) -> float:
+        return _DeviceSlotType(self, _LST.FreeSlots)
+
+    @FreeSlots.setter
+    def FreeSlots(self, value: int | float):
+        pass
+
     @property
     def Open(self) -> float:
         return _DeviceSlotType(self, _LST.Open)
@@ -573,6 +773,14 @@ class _SlotTypeGasCanister(_SlotTypeCommon):
         pass
 
     @property
+    def TotalSlots(self) -> float:
+        return _DeviceSlotType(self, _LST.TotalSlots)
+
+    @TotalSlots.setter
+    def TotalSlots(self, value: int | float):
+        pass
+
+    @property
     def Volume(self) -> float:
         return _DeviceSlotType(self, _LST.Volume)
 
@@ -582,6 +790,14 @@ class _SlotTypeGasCanister(_SlotTypeCommon):
 
 
 class _SlotTypeGasCanisters(_SlotTypeCommons):
+    @property
+    def FreeSlots(self) -> _DevicesSlotType:
+        return _DevicesSlotType(self, _LST.FreeSlots)
+
+    @FreeSlots.setter
+    def FreeSlots(self, value: int | float):
+        pass
+
     @property
     def Open(self) -> _DevicesSlotType:
         return _DevicesSlotType(self, _LST.Open)
@@ -623,6 +839,14 @@ class _SlotTypeGasCanisters(_SlotTypeCommons):
         pass
 
     @property
+    def TotalSlots(self) -> _DevicesSlotType:
+        return _DevicesSlotType(self, _LST.TotalSlots)
+
+    @TotalSlots.setter
+    def TotalSlots(self, value: int | float):
+        pass
+
+    @property
     def Volume(self) -> _DevicesSlotType:
         return _DevicesSlotType(self, _LST.Volume)
 
@@ -646,6 +870,14 @@ class _SlotTypeHelmet(_SlotTypeCommon):
 
     @ChargeRatio.setter
     def ChargeRatio(self, value: int | float):
+        pass
+
+    @property
+    def FreeSlots(self) -> float:
+        return _DeviceSlotType(self, _LST.FreeSlots)
+
+    @FreeSlots.setter
+    def FreeSlots(self, value: int | float):
         pass
 
     @property
@@ -696,6 +928,14 @@ class _SlotTypeHelmet(_SlotTypeCommon):
     def SortingClass(self, value: int | float):
         pass
 
+    @property
+    def TotalSlots(self) -> float:
+        return _DeviceSlotType(self, _LST.TotalSlots)
+
+    @TotalSlots.setter
+    def TotalSlots(self, value: int | float):
+        pass
+
 
 class _SlotTypeHelmets(_SlotTypeCommons):
     @property
@@ -712,6 +952,14 @@ class _SlotTypeHelmets(_SlotTypeCommons):
 
     @ChargeRatio.setter
     def ChargeRatio(self, value: int | float):
+        pass
+
+    @property
+    def FreeSlots(self) -> _DevicesSlotType:
+        return _DevicesSlotType(self, _LST.FreeSlots)
+
+    @FreeSlots.setter
+    def FreeSlots(self, value: int | float):
         pass
 
     @property
@@ -762,8 +1010,24 @@ class _SlotTypeHelmets(_SlotTypeCommons):
     def SortingClass(self, value: int | float):
         pass
 
+    @property
+    def TotalSlots(self) -> _DevicesSlotType:
+        return _DevicesSlotType(self, _LST.TotalSlots)
+
+    @TotalSlots.setter
+    def TotalSlots(self, value: int | float):
+        pass
+
 
 class _SlotTypeMask(_SlotTypeCommon):
+    @property
+    def FreeSlots(self) -> float:
+        return _DeviceSlotType(self, _LST.FreeSlots)
+
+    @FreeSlots.setter
+    def FreeSlots(self, value: int | float):
+        pass
+
     @property
     def Lock(self) -> float:
         return _DeviceSlotType(self, _LST.Lock)
@@ -804,8 +1068,24 @@ class _SlotTypeMask(_SlotTypeCommon):
     def SortingClass(self, value: int | float):
         pass
 
+    @property
+    def TotalSlots(self) -> float:
+        return _DeviceSlotType(self, _LST.TotalSlots)
+
+    @TotalSlots.setter
+    def TotalSlots(self, value: int | float):
+        pass
+
 
 class _SlotTypeMasks(_SlotTypeCommons):
+    @property
+    def FreeSlots(self) -> _DevicesSlotType:
+        return _DevicesSlotType(self, _LST.FreeSlots)
+
+    @FreeSlots.setter
+    def FreeSlots(self, value: int | float):
+        pass
+
     @property
     def Lock(self) -> _DevicesSlotType:
         return _DevicesSlotType(self, _LST.Lock)
@@ -846,6 +1126,14 @@ class _SlotTypeMasks(_SlotTypeCommons):
     def SortingClass(self, value: int | float):
         pass
 
+    @property
+    def TotalSlots(self) -> _DevicesSlotType:
+        return _DevicesSlotType(self, _LST.TotalSlots)
+
+    @TotalSlots.setter
+    def TotalSlots(self, value: int | float):
+        pass
+
 
 class _SlotTypePlant(_SlotTypeCommon):
     @property
@@ -854,6 +1142,14 @@ class _SlotTypePlant(_SlotTypeCommon):
 
     @Efficiency.setter
     def Efficiency(self, value: int | float):
+        pass
+
+    @property
+    def FreeSlots(self) -> float:
+        return _DeviceSlotType(self, _LST.FreeSlots)
+
+    @FreeSlots.setter
+    def FreeSlots(self, value: int | float):
         pass
 
     @property
@@ -920,6 +1216,14 @@ class _SlotTypePlant(_SlotTypeCommon):
     def SortingClass(self, value: int | float):
         pass
 
+    @property
+    def TotalSlots(self) -> float:
+        return _DeviceSlotType(self, _LST.TotalSlots)
+
+    @TotalSlots.setter
+    def TotalSlots(self, value: int | float):
+        pass
+
 
 class _SlotTypePlants(_SlotTypeCommons):
     @property
@@ -928,6 +1232,14 @@ class _SlotTypePlants(_SlotTypeCommons):
 
     @Efficiency.setter
     def Efficiency(self, value: int | float):
+        pass
+
+    @property
+    def FreeSlots(self) -> _DevicesSlotType:
+        return _DevicesSlotType(self, _LST.FreeSlots)
+
+    @FreeSlots.setter
+    def FreeSlots(self, value: int | float):
         pass
 
     @property
@@ -994,8 +1306,24 @@ class _SlotTypePlants(_SlotTypeCommons):
     def SortingClass(self, value: int | float):
         pass
 
+    @property
+    def TotalSlots(self) -> _DevicesSlotType:
+        return _DevicesSlotType(self, _LST.TotalSlots)
+
+    @TotalSlots.setter
+    def TotalSlots(self, value: int | float):
+        pass
+
 
 class _SlotTypeProgrammableChip(_SlotTypeCommon):
+    @property
+    def FreeSlots(self) -> float:
+        return _DeviceSlotType(self, _LST.FreeSlots)
+
+    @FreeSlots.setter
+    def FreeSlots(self, value: int | float):
+        pass
+
     @property
     def LineNumber(self) -> float:
         return _DeviceSlotType(self, _LST.LineNumber)
@@ -1020,8 +1348,24 @@ class _SlotTypeProgrammableChip(_SlotTypeCommon):
     def SortingClass(self, value: int | float):
         pass
 
+    @property
+    def TotalSlots(self) -> float:
+        return _DeviceSlotType(self, _LST.TotalSlots)
+
+    @TotalSlots.setter
+    def TotalSlots(self, value: int | float):
+        pass
+
 
 class _SlotTypeProgrammableChips(_SlotTypeCommons):
+    @property
+    def FreeSlots(self) -> _DevicesSlotType:
+        return _DevicesSlotType(self, _LST.FreeSlots)
+
+    @FreeSlots.setter
+    def FreeSlots(self, value: int | float):
+        pass
+
     @property
     def LineNumber(self) -> _DevicesSlotType:
         return _DevicesSlotType(self, _LST.LineNumber)
@@ -1046,6 +1390,14 @@ class _SlotTypeProgrammableChips(_SlotTypeCommons):
     def SortingClass(self, value: int | float):
         pass
 
+    @property
+    def TotalSlots(self) -> _DevicesSlotType:
+        return _DevicesSlotType(self, _LST.TotalSlots)
+
+    @TotalSlots.setter
+    def TotalSlots(self, value: int | float):
+        pass
+
 
 class _SlotTypeSuit(_SlotTypeCommon):
     @property
@@ -1062,6 +1414,14 @@ class _SlotTypeSuit(_SlotTypeCommon):
 
     @ChargeRatio.setter
     def ChargeRatio(self, value: int | float):
+        pass
+
+    @property
+    def FreeSlots(self) -> float:
+        return _DeviceSlotType(self, _LST.FreeSlots)
+
+    @FreeSlots.setter
+    def FreeSlots(self, value: int | float):
         pass
 
     @property
@@ -1104,6 +1464,14 @@ class _SlotTypeSuit(_SlotTypeCommon):
     def SortingClass(self, value: int | float):
         pass
 
+    @property
+    def TotalSlots(self) -> float:
+        return _DeviceSlotType(self, _LST.TotalSlots)
+
+    @TotalSlots.setter
+    def TotalSlots(self, value: int | float):
+        pass
+
 
 class _SlotTypeSuits(_SlotTypeCommons):
     @property
@@ -1120,6 +1488,14 @@ class _SlotTypeSuits(_SlotTypeCommons):
 
     @ChargeRatio.setter
     def ChargeRatio(self, value: int | float):
+        pass
+
+    @property
+    def FreeSlots(self) -> _DevicesSlotType:
+        return _DevicesSlotType(self, _LST.FreeSlots)
+
+    @FreeSlots.setter
+    def FreeSlots(self, value: int | float):
         pass
 
     @property
@@ -1160,6 +1536,14 @@ class _SlotTypeSuits(_SlotTypeCommons):
 
     @SortingClass.setter
     def SortingClass(self, value: int | float):
+        pass
+
+    @property
+    def TotalSlots(self) -> _DevicesSlotType:
+        return _DevicesSlotType(self, _LST.TotalSlots)
+
+    @TotalSlots.setter
+    def TotalSlots(self, value: int | float):
         pass
 
 
@@ -2121,6 +2505,366 @@ class _Quantities:
     @property
     def Quantity(self) -> _DevicesLogicType:
         return _DevicesLogicType(self, _LT.Quantity)
+
+
+class CrewUmbilical(_BaseStructure, _Error, _Lock, _Mode, _Open, _Power):
+    _hash: int = 1203291689
+    _prefab_name: int = "StructureCrewUmbilical"
+
+
+class _CrewUmbilicals(_BaseStructures, _Errors, _Locks, _Modes, _Opens, _Powers):
+    _hash: int = 1203291689
+    _prefab_name: int = "StructureCrewUmbilical"
+
+    def __getitem__(self, name: str | int | float) -> "_CrewUmbilicals":
+        return _CrewUmbilicals(name)
+
+    @property
+    def Average(self) -> CrewUmbilical:
+        return CrewUmbilical(name=self._name, batch_mode=LogicBatchMethod.Average)
+
+    @property
+    def Minimum(self) -> CrewUmbilical:
+        return CrewUmbilical(name=self._name, batch_mode=LogicBatchMethod.Minimum)
+
+    @property
+    def Maximum(self) -> CrewUmbilical:
+        return CrewUmbilical(name=self._name, batch_mode=LogicBatchMethod.Maximum)
+
+    @property
+    def Sum(self) -> CrewUmbilical:
+        return CrewUmbilical(name=self._name, batch_mode=LogicBatchMethod.Sum)
+
+
+CrewUmbilicals: _CrewUmbilicals = _CrewUmbilicals()
+
+
+class Robot(_BaseStructure, _Error, _Mode, _On):
+    _hash: int = 434786784
+    _prefab_name: int = "Robot"
+
+    @property
+    def ForwardX(self) -> float:
+        return _DeviceLogicType(self, _LT.ForwardX)
+
+    @property
+    def ForwardY(self) -> float:
+        return _DeviceLogicType(self, _LT.ForwardY)
+
+    @property
+    def ForwardZ(self) -> float:
+        return _DeviceLogicType(self, _LT.ForwardZ)
+
+    @property
+    def MineablesInQueue(self) -> float:
+        return _DeviceLogicType(self, _LT.MineablesInQueue)
+
+    @property
+    def MineablesInVicinity(self) -> float:
+        return _DeviceLogicType(self, _LT.MineablesInVicinity)
+
+    @property
+    def Orientation(self) -> float:
+        return _DeviceLogicType(self, _LT.Orientation)
+
+    @property
+    def PositionX(self) -> float:
+        return _DeviceLogicType(self, _LT.PositionX)
+
+    @property
+    def PositionY(self) -> float:
+        return _DeviceLogicType(self, _LT.PositionY)
+
+    @property
+    def PositionZ(self) -> float:
+        return _DeviceLogicType(self, _LT.PositionZ)
+
+    @property
+    def Power(self) -> float:
+        return _DeviceLogicType(self, _LT.Power)
+
+    @property
+    def PressureExternal(self) -> float:
+        return _DeviceLogicType(self, _LT.PressureExternal)
+
+    @property
+    def TargetX(self) -> float:
+        return _DeviceLogicType(self, _LT.TargetX)
+
+    @TargetX.setter
+    def TargetX(self, value: int | float):
+        pass
+
+    @property
+    def TargetY(self) -> float:
+        return _DeviceLogicType(self, _LT.TargetY)
+
+    @TargetY.setter
+    def TargetY(self, value: int | float):
+        pass
+
+    @property
+    def TargetZ(self) -> float:
+        return _DeviceLogicType(self, _LT.TargetZ)
+
+    @TargetZ.setter
+    def TargetZ(self, value: int | float):
+        pass
+
+    @property
+    def TemperatureExternal(self) -> float:
+        return _DeviceLogicType(self, _LT.TemperatureExternal)
+
+    @property
+    def VelocityMagnitude(self) -> float:
+        return _DeviceLogicType(self, _LT.VelocityMagnitude)
+
+    @property
+    def VelocityRelativeX(self) -> float:
+        return _DeviceLogicType(self, _LT.VelocityRelativeX)
+
+    @property
+    def VelocityRelativeY(self) -> float:
+        return _DeviceLogicType(self, _LT.VelocityRelativeY)
+
+    @property
+    def VelocityRelativeZ(self) -> float:
+        return _DeviceLogicType(self, _LT.VelocityRelativeZ)
+
+    @property
+    def VelocityX(self) -> float:
+        return _DeviceLogicType(self, _LT.VelocityX)
+
+    @property
+    def VelocityY(self) -> float:
+        return _DeviceLogicType(self, _LT.VelocityY)
+
+    @property
+    def VelocityZ(self) -> float:
+        return _DeviceLogicType(self, _LT.VelocityZ)
+
+    @property
+    def slot0(self) -> _SlotTypeBattery:
+        return _SlotTypeBattery(self, 0)
+
+    @property
+    def Battery(self) -> _SlotTypeBattery:
+        return self.slot0
+
+    @property
+    def slot1(self) -> _SlotTypeCommon:
+        return _SlotTypeCommon(self, 1)
+
+    @property
+    def ProgrammableChip(self) -> _SlotTypeCommon:
+        return self.slot1
+
+    @property
+    def slot2(self) -> _SlotTypeCommon:
+        return _SlotTypeCommon(self, 2)
+
+    @property
+    def slot3(self) -> _SlotTypeCommon:
+        return _SlotTypeCommon(self, 3)
+
+    @property
+    def slot4(self) -> _SlotTypeCommon:
+        return _SlotTypeCommon(self, 4)
+
+    @property
+    def slot5(self) -> _SlotTypeCommon:
+        return _SlotTypeCommon(self, 5)
+
+    @property
+    def slot6(self) -> _SlotTypeCommon:
+        return _SlotTypeCommon(self, 6)
+
+    @property
+    def slot7(self) -> _SlotTypeCommon:
+        return _SlotTypeCommon(self, 7)
+
+    @property
+    def slot8(self) -> _SlotTypeCommon:
+        return _SlotTypeCommon(self, 8)
+
+    @property
+    def slot9(self) -> _SlotTypeCommon:
+        return _SlotTypeCommon(self, 9)
+
+
+class _Robots(_BaseStructures, _Errors, _Modes, _Ons):
+    _hash: int = 434786784
+    _prefab_name: int = "Robot"
+
+    def __getitem__(self, name: str | int | float) -> "_Robots":
+        return _Robots(name)
+
+    @property
+    def Average(self) -> Robot:
+        return Robot(name=self._name, batch_mode=LogicBatchMethod.Average)
+
+    @property
+    def Minimum(self) -> Robot:
+        return Robot(name=self._name, batch_mode=LogicBatchMethod.Minimum)
+
+    @property
+    def Maximum(self) -> Robot:
+        return Robot(name=self._name, batch_mode=LogicBatchMethod.Maximum)
+
+    @property
+    def Sum(self) -> Robot:
+        return Robot(name=self._name, batch_mode=LogicBatchMethod.Sum)
+
+    @property
+    def ForwardX(self) -> _DevicesLogicType:
+        return _DevicesLogicType(self, _LT.ForwardX)
+
+    @property
+    def ForwardY(self) -> _DevicesLogicType:
+        return _DevicesLogicType(self, _LT.ForwardY)
+
+    @property
+    def ForwardZ(self) -> _DevicesLogicType:
+        return _DevicesLogicType(self, _LT.ForwardZ)
+
+    @property
+    def MineablesInQueue(self) -> _DevicesLogicType:
+        return _DevicesLogicType(self, _LT.MineablesInQueue)
+
+    @property
+    def MineablesInVicinity(self) -> _DevicesLogicType:
+        return _DevicesLogicType(self, _LT.MineablesInVicinity)
+
+    @property
+    def Orientation(self) -> _DevicesLogicType:
+        return _DevicesLogicType(self, _LT.Orientation)
+
+    @property
+    def PositionX(self) -> _DevicesLogicType:
+        return _DevicesLogicType(self, _LT.PositionX)
+
+    @property
+    def PositionY(self) -> _DevicesLogicType:
+        return _DevicesLogicType(self, _LT.PositionY)
+
+    @property
+    def PositionZ(self) -> _DevicesLogicType:
+        return _DevicesLogicType(self, _LT.PositionZ)
+
+    @property
+    def Power(self) -> _DevicesLogicType:
+        return _DevicesLogicType(self, _LT.Power)
+
+    @property
+    def PressureExternal(self) -> _DevicesLogicType:
+        return _DevicesLogicType(self, _LT.PressureExternal)
+
+    @property
+    def TargetX(self) -> _DevicesLogicType:
+        return _DevicesLogicType(self, _LT.TargetX)
+
+    @TargetX.setter
+    def TargetX(self, value: int | float):
+        pass
+
+    @property
+    def TargetY(self) -> _DevicesLogicType:
+        return _DevicesLogicType(self, _LT.TargetY)
+
+    @TargetY.setter
+    def TargetY(self, value: int | float):
+        pass
+
+    @property
+    def TargetZ(self) -> _DevicesLogicType:
+        return _DevicesLogicType(self, _LT.TargetZ)
+
+    @TargetZ.setter
+    def TargetZ(self, value: int | float):
+        pass
+
+    @property
+    def TemperatureExternal(self) -> _DevicesLogicType:
+        return _DevicesLogicType(self, _LT.TemperatureExternal)
+
+    @property
+    def VelocityMagnitude(self) -> _DevicesLogicType:
+        return _DevicesLogicType(self, _LT.VelocityMagnitude)
+
+    @property
+    def VelocityRelativeX(self) -> _DevicesLogicType:
+        return _DevicesLogicType(self, _LT.VelocityRelativeX)
+
+    @property
+    def VelocityRelativeY(self) -> _DevicesLogicType:
+        return _DevicesLogicType(self, _LT.VelocityRelativeY)
+
+    @property
+    def VelocityRelativeZ(self) -> _DevicesLogicType:
+        return _DevicesLogicType(self, _LT.VelocityRelativeZ)
+
+    @property
+    def VelocityX(self) -> _DevicesLogicType:
+        return _DevicesLogicType(self, _LT.VelocityX)
+
+    @property
+    def VelocityY(self) -> _DevicesLogicType:
+        return _DevicesLogicType(self, _LT.VelocityY)
+
+    @property
+    def VelocityZ(self) -> _DevicesLogicType:
+        return _DevicesLogicType(self, _LT.VelocityZ)
+
+    @property
+    def slot0(self) -> _SlotTypeBatteries:
+        return _SlotTypeBatteries(self, 0)
+
+    @property
+    def Battery(self) -> _SlotTypeBatteries:
+        return self.slot0
+
+    @property
+    def slot1(self) -> _SlotTypeCommons:
+        return _SlotTypeCommons(self, 1)
+
+    @property
+    def ProgrammableChip(self) -> _SlotTypeCommons:
+        return self.slot1
+
+    @property
+    def slot2(self) -> _SlotTypeCommons:
+        return _SlotTypeCommons(self, 2)
+
+    @property
+    def slot3(self) -> _SlotTypeCommons:
+        return _SlotTypeCommons(self, 3)
+
+    @property
+    def slot4(self) -> _SlotTypeCommons:
+        return _SlotTypeCommons(self, 4)
+
+    @property
+    def slot5(self) -> _SlotTypeCommons:
+        return _SlotTypeCommons(self, 5)
+
+    @property
+    def slot6(self) -> _SlotTypeCommons:
+        return _SlotTypeCommons(self, 6)
+
+    @property
+    def slot7(self) -> _SlotTypeCommons:
+        return _SlotTypeCommons(self, 7)
+
+    @property
+    def slot8(self) -> _SlotTypeCommons:
+        return _SlotTypeCommons(self, 8)
+
+    @property
+    def slot9(self) -> _SlotTypeCommons:
+        return _SlotTypeCommons(self, 9)
+
+
+Robots: _Robots = _Robots()
 
 
 class AccessBridge(_BaseStructure, _Activate, _Lock, _Open, _Power):
@@ -4409,6 +5153,84 @@ class _BatteryChargerSmalls(_BaseStructures, _Activates, _Errors, _Powers):
 
 
 BatteryChargerSmalls: _BatteryChargerSmalls = _BatteryChargerSmalls()
+
+
+class Battery_Wireless_cell(_BaseStructure, _Mode):
+    _hash: int = -462415758
+    _prefab_name: int = "Battery_Wireless_cell"
+
+
+class _Battery_Wireless_cells(_BaseStructures, _Modes):
+    _hash: int = -462415758
+    _prefab_name: int = "Battery_Wireless_cell"
+
+    def __getitem__(self, name: str | int | float) -> "_Battery_Wireless_cells":
+        return _Battery_Wireless_cells(name)
+
+    @property
+    def Average(self) -> Battery_Wireless_cell:
+        return Battery_Wireless_cell(
+            name=self._name, batch_mode=LogicBatchMethod.Average
+        )
+
+    @property
+    def Minimum(self) -> Battery_Wireless_cell:
+        return Battery_Wireless_cell(
+            name=self._name, batch_mode=LogicBatchMethod.Minimum
+        )
+
+    @property
+    def Maximum(self) -> Battery_Wireless_cell:
+        return Battery_Wireless_cell(
+            name=self._name, batch_mode=LogicBatchMethod.Maximum
+        )
+
+    @property
+    def Sum(self) -> Battery_Wireless_cell:
+        return Battery_Wireless_cell(name=self._name, batch_mode=LogicBatchMethod.Sum)
+
+
+Battery_Wireless_cells: _Battery_Wireless_cells = _Battery_Wireless_cells()
+
+
+class Battery_Wireless_cell_Big(_BaseStructure, _Mode):
+    _hash: int = -41519077
+    _prefab_name: int = "Battery_Wireless_cell_Big"
+
+
+class _Battery_Wireless_cell_Bigs(_BaseStructures, _Modes):
+    _hash: int = -41519077
+    _prefab_name: int = "Battery_Wireless_cell_Big"
+
+    def __getitem__(self, name: str | int | float) -> "_Battery_Wireless_cell_Bigs":
+        return _Battery_Wireless_cell_Bigs(name)
+
+    @property
+    def Average(self) -> Battery_Wireless_cell_Big:
+        return Battery_Wireless_cell_Big(
+            name=self._name, batch_mode=LogicBatchMethod.Average
+        )
+
+    @property
+    def Minimum(self) -> Battery_Wireless_cell_Big:
+        return Battery_Wireless_cell_Big(
+            name=self._name, batch_mode=LogicBatchMethod.Minimum
+        )
+
+    @property
+    def Maximum(self) -> Battery_Wireless_cell_Big:
+        return Battery_Wireless_cell_Big(
+            name=self._name, batch_mode=LogicBatchMethod.Maximum
+        )
+
+    @property
+    def Sum(self) -> Battery_Wireless_cell_Big:
+        return Battery_Wireless_cell_Big(
+            name=self._name, batch_mode=LogicBatchMethod.Sum
+        )
+
+
+Battery_Wireless_cell_Bigs: _Battery_Wireless_cell_Bigs = _Battery_Wireless_cell_Bigs()
 
 
 class Beacon(_BaseStructure, _Error, _Lock, _Power):
@@ -7153,6 +7975,40 @@ class _CompositeDoors(
 CompositeDoors: _CompositeDoors = _CompositeDoors()
 
 
+class CompositeRollCover(_BaseStructure, _Idle, _Lock, _Mode, _On, _Open, _SettingW):
+    _hash: int = 1228794916
+    _prefab_name: int = "CompositeRollCover"
+
+
+class _CompositeRollCovers(
+    _BaseStructures, _Idles, _Locks, _Modes, _Ons, _Opens, _SettingWs
+):
+    _hash: int = 1228794916
+    _prefab_name: int = "CompositeRollCover"
+
+    def __getitem__(self, name: str | int | float) -> "_CompositeRollCovers":
+        return _CompositeRollCovers(name)
+
+    @property
+    def Average(self) -> CompositeRollCover:
+        return CompositeRollCover(name=self._name, batch_mode=LogicBatchMethod.Average)
+
+    @property
+    def Minimum(self) -> CompositeRollCover:
+        return CompositeRollCover(name=self._name, batch_mode=LogicBatchMethod.Minimum)
+
+    @property
+    def Maximum(self) -> CompositeRollCover:
+        return CompositeRollCover(name=self._name, batch_mode=LogicBatchMethod.Maximum)
+
+    @property
+    def Sum(self) -> CompositeRollCover:
+        return CompositeRollCover(name=self._name, batch_mode=LogicBatchMethod.Sum)
+
+
+CompositeRollCovers: _CompositeRollCovers = _CompositeRollCovers()
+
+
 class CompositeWindowShutterController(_BaseStructure, _Error, _Lock, _Open, _Power):
     _hash: int = -2078371660
     _prefab_name: int = "StructureCompositeWindowShutterController"
@@ -7525,7 +8381,7 @@ class _CondensationValves(_BaseStructures, _Maximums, _Ons, _Ratios, _SettingWs)
 CondensationValves: _CondensationValves = _CondensationValves()
 
 
-class Console(_BaseStructure, _Error, _Open, _Power, _SettingR):
+class Console(_BaseStructure, _Activate, _Error, _Open, _Power, _SettingR):
     _hash: int = 235638270
     _prefab_name: int = "StructureConsole"
 
@@ -7537,16 +8393,8 @@ class Console(_BaseStructure, _Error, _Open, _Power, _SettingR):
     def Circuitboard(self) -> _SlotTypeCircuitboard:
         return self.slot0
 
-    @property
-    def slot1(self) -> _SlotTypeCircuitboard:
-        return _SlotTypeCircuitboard(self, 1)
 
-    @property
-    def DataDisk(self) -> _SlotTypeCircuitboard:
-        return self.slot1
-
-
-class _Consoles(_BaseStructures, _Errors, _Opens, _Powers, _SettingRs):
+class _Consoles(_BaseStructures, _Activates, _Errors, _Opens, _Powers, _SettingRs):
     _hash: int = 235638270
     _prefab_name: int = "StructureConsole"
 
@@ -7577,19 +8425,11 @@ class _Consoles(_BaseStructures, _Errors, _Opens, _Powers, _SettingRs):
     def Circuitboard(self) -> _SlotTypeCircuitboards:
         return self.slot0
 
-    @property
-    def slot1(self) -> _SlotTypeCircuitboards:
-        return _SlotTypeCircuitboards(self, 1)
-
-    @property
-    def DataDisk(self) -> _SlotTypeCircuitboards:
-        return self.slot1
-
 
 Consoles: _Consoles = _Consoles()
 
 
-class ConsoleDual(_BaseStructure, _Error, _Open, _Power, _SettingR):
+class ConsoleDual(_BaseStructure, _Activate, _Error, _Open, _Power, _SettingR):
     _hash: int = -722284333
     _prefab_name: int = "StructureConsoleDual"
 
@@ -7601,16 +8441,8 @@ class ConsoleDual(_BaseStructure, _Error, _Open, _Power, _SettingR):
     def Circuitboard(self) -> _SlotTypeCircuitboard:
         return self.slot0
 
-    @property
-    def slot1(self) -> _SlotTypeCircuitboard:
-        return _SlotTypeCircuitboard(self, 1)
 
-    @property
-    def DataDisk(self) -> _SlotTypeCircuitboard:
-        return self.slot1
-
-
-class _ConsoleDuals(_BaseStructures, _Errors, _Opens, _Powers, _SettingRs):
+class _ConsoleDuals(_BaseStructures, _Activates, _Errors, _Opens, _Powers, _SettingRs):
     _hash: int = -722284333
     _prefab_name: int = "StructureConsoleDual"
 
@@ -7641,19 +8473,11 @@ class _ConsoleDuals(_BaseStructures, _Errors, _Opens, _Powers, _SettingRs):
     def Circuitboard(self) -> _SlotTypeCircuitboards:
         return self.slot0
 
-    @property
-    def slot1(self) -> _SlotTypeCircuitboards:
-        return _SlotTypeCircuitboards(self, 1)
-
-    @property
-    def DataDisk(self) -> _SlotTypeCircuitboards:
-        return self.slot1
-
 
 ConsoleDuals: _ConsoleDuals = _ConsoleDuals()
 
 
-class ConsoleMonitor(_BaseStructure, _Error, _Open, _Power, _SettingR):
+class ConsoleMonitor(_BaseStructure, _Activate, _Error, _Open, _Power, _SettingR):
     _hash: int = 801677497
     _prefab_name: int = "StructureConsoleMonitor"
 
@@ -7665,16 +8489,10 @@ class ConsoleMonitor(_BaseStructure, _Error, _Open, _Power, _SettingR):
     def Circuitboard(self) -> _SlotTypeCircuitboard:
         return self.slot0
 
-    @property
-    def slot1(self) -> _SlotTypeCircuitboard:
-        return _SlotTypeCircuitboard(self, 1)
 
-    @property
-    def DataDisk(self) -> _SlotTypeCircuitboard:
-        return self.slot1
-
-
-class _ConsoleMonitors(_BaseStructures, _Errors, _Opens, _Powers, _SettingRs):
+class _ConsoleMonitors(
+    _BaseStructures, _Activates, _Errors, _Opens, _Powers, _SettingRs
+):
     _hash: int = 801677497
     _prefab_name: int = "StructureConsoleMonitor"
 
@@ -7704,14 +8522,6 @@ class _ConsoleMonitors(_BaseStructures, _Errors, _Opens, _Powers, _SettingRs):
     @property
     def Circuitboard(self) -> _SlotTypeCircuitboards:
         return self.slot0
-
-    @property
-    def slot1(self) -> _SlotTypeCircuitboards:
-        return _SlotTypeCircuitboards(self, 1)
-
-    @property
-    def DataDisk(self) -> _SlotTypeCircuitboards:
-        return self.slot1
 
 
 ConsoleMonitors: _ConsoleMonitors = _ConsoleMonitors()
@@ -8245,6 +9055,110 @@ class _DeepMiners(
 DeepMiners: _DeepMiners = _DeepMiners()
 
 
+class Defibrillator(_BaseStructure, _Error, _On):
+    _hash: int = -1045025550
+    _prefab_name: int = "ItemDefibrillator"
+
+    @property
+    def Power(self) -> float:
+        return _DeviceLogicType(self, _LT.Power)
+
+    @property
+    def slot0(self) -> _SlotTypeBattery:
+        return _SlotTypeBattery(self, 0)
+
+    @property
+    def Battery(self) -> _SlotTypeBattery:
+        return self.slot0
+
+
+class _Defibrillators(_BaseStructures, _Errors, _Ons):
+    _hash: int = -1045025550
+    _prefab_name: int = "ItemDefibrillator"
+
+    def __getitem__(self, name: str | int | float) -> "_Defibrillators":
+        return _Defibrillators(name)
+
+    @property
+    def Average(self) -> Defibrillator:
+        return Defibrillator(name=self._name, batch_mode=LogicBatchMethod.Average)
+
+    @property
+    def Minimum(self) -> Defibrillator:
+        return Defibrillator(name=self._name, batch_mode=LogicBatchMethod.Minimum)
+
+    @property
+    def Maximum(self) -> Defibrillator:
+        return Defibrillator(name=self._name, batch_mode=LogicBatchMethod.Maximum)
+
+    @property
+    def Sum(self) -> Defibrillator:
+        return Defibrillator(name=self._name, batch_mode=LogicBatchMethod.Sum)
+
+    @property
+    def Power(self) -> _DevicesLogicType:
+        return _DevicesLogicType(self, _LT.Power)
+
+    @property
+    def slot0(self) -> _SlotTypeBatteries:
+        return _SlotTypeBatteries(self, 0)
+
+    @property
+    def Battery(self) -> _SlotTypeBatteries:
+        return self.slot0
+
+
+Defibrillators: _Defibrillators = _Defibrillators()
+
+
+class DeviceStepUnit(_BaseStructure, _Activate, _Error, _Mode, _Power):
+    _hash: int = 1762696475
+    _prefab_name: int = "DeviceStepUnit"
+
+    @property
+    def Volume(self) -> float:
+        return _DeviceLogicType(self, _LT.Volume)
+
+    @Volume.setter
+    def Volume(self, value: int | float):
+        pass
+
+
+class _DeviceStepUnits(_BaseStructures, _Activates, _Errors, _Modes, _Powers):
+    _hash: int = 1762696475
+    _prefab_name: int = "DeviceStepUnit"
+
+    def __getitem__(self, name: str | int | float) -> "_DeviceStepUnits":
+        return _DeviceStepUnits(name)
+
+    @property
+    def Average(self) -> DeviceStepUnit:
+        return DeviceStepUnit(name=self._name, batch_mode=LogicBatchMethod.Average)
+
+    @property
+    def Minimum(self) -> DeviceStepUnit:
+        return DeviceStepUnit(name=self._name, batch_mode=LogicBatchMethod.Minimum)
+
+    @property
+    def Maximum(self) -> DeviceStepUnit:
+        return DeviceStepUnit(name=self._name, batch_mode=LogicBatchMethod.Maximum)
+
+    @property
+    def Sum(self) -> DeviceStepUnit:
+        return DeviceStepUnit(name=self._name, batch_mode=LogicBatchMethod.Sum)
+
+    @property
+    def Volume(self) -> _DevicesLogicType:
+        return _DevicesLogicType(self, _LT.Volume)
+
+    @Volume.setter
+    def Volume(self, value: int | float):
+        pass
+
+
+DeviceStepUnits: _DeviceStepUnits = _DeviceStepUnits()
+
+
 class LogicDial(_BaseStructure, _Mode, _Ratio, _SettingW):
     _hash: int = 554524804
     _prefab_name: int = "StructureLogicDial"
@@ -8343,36 +9257,36 @@ class _DiodeSlides(_BaseStructures, _Locks, _Powers, _SettingWs):
 DiodeSlides: _DiodeSlides = _DiodeSlides()
 
 
-class DrinkingFountain(_BaseStructure, _Error, _Power):
-    _hash: int = 1968371847
-    _prefab_name: int = "StructureDrinkingFountain"
+class DrinkingFountain2x1(_BaseStructure, _Error, _Power):
+    _hash: int = -739488459
+    _prefab_name: int = "StructureDrinkingFountain2x1"
 
 
-class _DrinkingFountains(_BaseStructures, _Errors, _Powers):
-    _hash: int = 1968371847
-    _prefab_name: int = "StructureDrinkingFountain"
+class _DrinkingFountain2x1s(_BaseStructures, _Errors, _Powers):
+    _hash: int = -739488459
+    _prefab_name: int = "StructureDrinkingFountain2x1"
 
-    def __getitem__(self, name: str | int | float) -> "_DrinkingFountains":
-        return _DrinkingFountains(name)
-
-    @property
-    def Average(self) -> DrinkingFountain:
-        return DrinkingFountain(name=self._name, batch_mode=LogicBatchMethod.Average)
+    def __getitem__(self, name: str | int | float) -> "_DrinkingFountain2x1s":
+        return _DrinkingFountain2x1s(name)
 
     @property
-    def Minimum(self) -> DrinkingFountain:
-        return DrinkingFountain(name=self._name, batch_mode=LogicBatchMethod.Minimum)
+    def Average(self) -> DrinkingFountain2x1:
+        return DrinkingFountain2x1(name=self._name, batch_mode=LogicBatchMethod.Average)
 
     @property
-    def Maximum(self) -> DrinkingFountain:
-        return DrinkingFountain(name=self._name, batch_mode=LogicBatchMethod.Maximum)
+    def Minimum(self) -> DrinkingFountain2x1:
+        return DrinkingFountain2x1(name=self._name, batch_mode=LogicBatchMethod.Minimum)
 
     @property
-    def Sum(self) -> DrinkingFountain:
-        return DrinkingFountain(name=self._name, batch_mode=LogicBatchMethod.Sum)
+    def Maximum(self) -> DrinkingFountain2x1:
+        return DrinkingFountain2x1(name=self._name, batch_mode=LogicBatchMethod.Maximum)
+
+    @property
+    def Sum(self) -> DrinkingFountain2x1:
+        return DrinkingFountain2x1(name=self._name, batch_mode=LogicBatchMethod.Sum)
 
 
-DrinkingFountains: _DrinkingFountains = _DrinkingFountains()
+DrinkingFountain2x1s: _DrinkingFountain2x1s = _DrinkingFountain2x1s()
 
 
 class SleeperVerticalDroid(_BaseStructure, _Activate, _Error, _Lock, _Open, _Power):
@@ -8429,6 +9343,62 @@ class _SleeperVerticalDroids(
 
 
 SleeperVerticalDroids: _SleeperVerticalDroids = _SleeperVerticalDroids()
+
+
+class DynamicGPR(_BaseStructure, _Activate, _On):
+    _hash: int = -2085885850
+    _prefab_name: int = "DynamicGPR"
+
+    @property
+    def Power(self) -> float:
+        return _DeviceLogicType(self, _LT.Power)
+
+    @property
+    def slot0(self) -> _SlotTypeBattery:
+        return _SlotTypeBattery(self, 0)
+
+    @property
+    def Battery(self) -> _SlotTypeBattery:
+        return self.slot0
+
+
+class _DynamicGPRs(_BaseStructures, _Activates, _Ons):
+    _hash: int = -2085885850
+    _prefab_name: int = "DynamicGPR"
+
+    def __getitem__(self, name: str | int | float) -> "_DynamicGPRs":
+        return _DynamicGPRs(name)
+
+    @property
+    def Average(self) -> DynamicGPR:
+        return DynamicGPR(name=self._name, batch_mode=LogicBatchMethod.Average)
+
+    @property
+    def Minimum(self) -> DynamicGPR:
+        return DynamicGPR(name=self._name, batch_mode=LogicBatchMethod.Minimum)
+
+    @property
+    def Maximum(self) -> DynamicGPR:
+        return DynamicGPR(name=self._name, batch_mode=LogicBatchMethod.Maximum)
+
+    @property
+    def Sum(self) -> DynamicGPR:
+        return DynamicGPR(name=self._name, batch_mode=LogicBatchMethod.Sum)
+
+    @property
+    def Power(self) -> _DevicesLogicType:
+        return _DevicesLogicType(self, _LT.Power)
+
+    @property
+    def slot0(self) -> _SlotTypeBatteries:
+        return _SlotTypeBatteries(self, 0)
+
+    @property
+    def Battery(self) -> _SlotTypeBatteries:
+        return self.slot0
+
+
+DynamicGPRs: _DynamicGPRs = _DynamicGPRs()
 
 
 class Electrolyzer(
@@ -9519,6 +10489,192 @@ class _Filtrations(
 
 
 Filtrations: _Filtrations = _Filtrations()
+
+
+class FiltrationLiquid(
+    _BaseStructure,
+    _BaseGasInput,
+    _BaseGasOutput,
+    _BaseGasOutput2,
+    _Error,
+    _Lock,
+    _Maximum,
+    _Mode,
+    _Open,
+    _Power,
+    _Ratio,
+    _SettingW,
+):
+    _hash: int = -1399038877
+    _prefab_name: int = "StructureFiltrationLiquid"
+
+    @property
+    def CombustionInput(self) -> float:
+        return _DeviceLogicType(self, _LT.CombustionInput)
+
+    @property
+    def CombustionOutput(self) -> float:
+        return _DeviceLogicType(self, _LT.CombustionOutput)
+
+    @property
+    def CombustionOutput2(self) -> float:
+        return _DeviceLogicType(self, _LT.CombustionOutput2)
+
+    @property
+    def PressureInput(self) -> float:
+        return _DeviceLogicType(self, _LT.PressureInput)
+
+    @property
+    def PressureOutput(self) -> float:
+        return _DeviceLogicType(self, _LT.PressureOutput)
+
+    @property
+    def PressureOutput2(self) -> float:
+        return _DeviceLogicType(self, _LT.PressureOutput2)
+
+    @property
+    def TemperatureInput(self) -> float:
+        return _DeviceLogicType(self, _LT.TemperatureInput)
+
+    @property
+    def TemperatureOutput(self) -> float:
+        return _DeviceLogicType(self, _LT.TemperatureOutput)
+
+    @property
+    def TemperatureOutput2(self) -> float:
+        return _DeviceLogicType(self, _LT.TemperatureOutput2)
+
+    @property
+    def TotalMolesInput(self) -> float:
+        return _DeviceLogicType(self, _LT.TotalMolesInput)
+
+    @property
+    def TotalMolesOutput(self) -> float:
+        return _DeviceLogicType(self, _LT.TotalMolesOutput)
+
+    @property
+    def TotalMolesOutput2(self) -> float:
+        return _DeviceLogicType(self, _LT.TotalMolesOutput2)
+
+    @property
+    def slot0(self) -> _SlotTypeFilter:
+        return _SlotTypeFilter(self, 0)
+
+    @property
+    def slot1(self) -> _SlotTypeFilter:
+        return _SlotTypeFilter(self, 1)
+
+    @property
+    def slot2(self) -> _SlotTypeDataDisk:
+        return _SlotTypeDataDisk(self, 2)
+
+    @property
+    def ProgrammableChip(self) -> _SlotTypeDataDisk:
+        return self.slot2
+
+
+class _FiltrationLiquids(
+    _BaseStructures,
+    _BaseGasInputs,
+    _BaseGasOutput2s,
+    _BaseGasOutputs,
+    _Errors,
+    _Locks,
+    _Maximums,
+    _Modes,
+    _Opens,
+    _Powers,
+    _Ratios,
+    _SettingWs,
+):
+    _hash: int = -1399038877
+    _prefab_name: int = "StructureFiltrationLiquid"
+
+    def __getitem__(self, name: str | int | float) -> "_FiltrationLiquids":
+        return _FiltrationLiquids(name)
+
+    @property
+    def Average(self) -> FiltrationLiquid:
+        return FiltrationLiquid(name=self._name, batch_mode=LogicBatchMethod.Average)
+
+    @property
+    def Minimum(self) -> FiltrationLiquid:
+        return FiltrationLiquid(name=self._name, batch_mode=LogicBatchMethod.Minimum)
+
+    @property
+    def Maximum(self) -> FiltrationLiquid:
+        return FiltrationLiquid(name=self._name, batch_mode=LogicBatchMethod.Maximum)
+
+    @property
+    def Sum(self) -> FiltrationLiquid:
+        return FiltrationLiquid(name=self._name, batch_mode=LogicBatchMethod.Sum)
+
+    @property
+    def CombustionInput(self) -> _DevicesLogicType:
+        return _DevicesLogicType(self, _LT.CombustionInput)
+
+    @property
+    def CombustionOutput(self) -> _DevicesLogicType:
+        return _DevicesLogicType(self, _LT.CombustionOutput)
+
+    @property
+    def CombustionOutput2(self) -> _DevicesLogicType:
+        return _DevicesLogicType(self, _LT.CombustionOutput2)
+
+    @property
+    def PressureInput(self) -> _DevicesLogicType:
+        return _DevicesLogicType(self, _LT.PressureInput)
+
+    @property
+    def PressureOutput(self) -> _DevicesLogicType:
+        return _DevicesLogicType(self, _LT.PressureOutput)
+
+    @property
+    def PressureOutput2(self) -> _DevicesLogicType:
+        return _DevicesLogicType(self, _LT.PressureOutput2)
+
+    @property
+    def TemperatureInput(self) -> _DevicesLogicType:
+        return _DevicesLogicType(self, _LT.TemperatureInput)
+
+    @property
+    def TemperatureOutput(self) -> _DevicesLogicType:
+        return _DevicesLogicType(self, _LT.TemperatureOutput)
+
+    @property
+    def TemperatureOutput2(self) -> _DevicesLogicType:
+        return _DevicesLogicType(self, _LT.TemperatureOutput2)
+
+    @property
+    def TotalMolesInput(self) -> _DevicesLogicType:
+        return _DevicesLogicType(self, _LT.TotalMolesInput)
+
+    @property
+    def TotalMolesOutput(self) -> _DevicesLogicType:
+        return _DevicesLogicType(self, _LT.TotalMolesOutput)
+
+    @property
+    def TotalMolesOutput2(self) -> _DevicesLogicType:
+        return _DevicesLogicType(self, _LT.TotalMolesOutput2)
+
+    @property
+    def slot0(self) -> _SlotTypeFilters:
+        return _SlotTypeFilters(self, 0)
+
+    @property
+    def slot1(self) -> _SlotTypeFilters:
+        return _SlotTypeFilters(self, 1)
+
+    @property
+    def slot2(self) -> _SlotTypeDataDisks:
+        return _SlotTypeDataDisks(self, 2)
+
+    @property
+    def ProgrammableChip(self) -> _SlotTypeDataDisks:
+        return self.slot2
+
+
+FiltrationLiquids: _FiltrationLiquids = _FiltrationLiquids()
 
 
 class FlashingLight(_BaseStructure, _Lock, _Power):
@@ -10777,16 +11933,20 @@ class _GasMixers(
 GasMixers: _GasMixers = _GasMixers()
 
 
-class GasSensor(_BaseStructure, _BaseGas, _Hydrogen, _PollWater, _Temperature):
+class GasSensor(
+    _BaseStructure, _BaseGas, _Combustion, _Hydrogen, _PollWater, _Temperature
+):
     _hash: int = -1252983604
     _prefab_name: int = "StructureGasSensor"
 
     @property
-    def Combustion(self) -> float:
-        return _DeviceLogicType(self, _LT.Combustion)
+    def VolumeOfLiquid(self) -> float:
+        return _DeviceLogicType(self, _LT.VolumeOfLiquid)
 
 
-class _GasSensors(_BaseStructures, _BaseGass, _Hydrogens, _PollWaters, _Temperatures):
+class _GasSensors(
+    _BaseStructures, _BaseGass, _Combustions, _Hydrogens, _PollWaters, _Temperatures
+):
     _hash: int = -1252983604
     _prefab_name: int = "StructureGasSensor"
 
@@ -10810,8 +11970,8 @@ class _GasSensors(_BaseStructures, _BaseGass, _Hydrogens, _PollWaters, _Temperat
         return GasSensor(name=self._name, batch_mode=LogicBatchMethod.Sum)
 
     @property
-    def Combustion(self) -> _DevicesLogicType:
-        return _DevicesLogicType(self, _LT.Combustion)
+    def VolumeOfLiquid(self) -> _DevicesLogicType:
+        return _DevicesLogicType(self, _LT.VolumeOfLiquid)
 
 
 GasSensors: _GasSensors = _GasSensors()
@@ -11041,6 +12201,154 @@ class _GrowLights(_BaseStructures, _Locks, _Powers):
 
 
 GrowLights: _GrowLights = _GrowLights()
+
+
+class H2Combustor(
+    _BaseStructure,
+    _Activate,
+    _BaseGas,
+    _BaseGasInput,
+    _BaseGasOutput,
+    _Combustion,
+    _Error,
+    _Hydrogen,
+    _Lock,
+    _Maximum,
+    _Mode,
+    _Open,
+    _PollWater,
+    _Power,
+    _Ratio,
+    _SettingW,
+    _Temperature,
+):
+    _hash: int = 1840108251
+    _prefab_name: int = "H2Combustor"
+
+    @property
+    def CombustionInput(self) -> float:
+        return _DeviceLogicType(self, _LT.CombustionInput)
+
+    @property
+    def CombustionOutput(self) -> float:
+        return _DeviceLogicType(self, _LT.CombustionOutput)
+
+    @property
+    def PressureInput(self) -> float:
+        return _DeviceLogicType(self, _LT.PressureInput)
+
+    @property
+    def PressureOutput(self) -> float:
+        return _DeviceLogicType(self, _LT.PressureOutput)
+
+    @property
+    def TemperatureInput(self) -> float:
+        return _DeviceLogicType(self, _LT.TemperatureInput)
+
+    @property
+    def TemperatureOutput(self) -> float:
+        return _DeviceLogicType(self, _LT.TemperatureOutput)
+
+    @property
+    def TotalMolesInput(self) -> float:
+        return _DeviceLogicType(self, _LT.TotalMolesInput)
+
+    @property
+    def TotalMolesOutput(self) -> float:
+        return _DeviceLogicType(self, _LT.TotalMolesOutput)
+
+    @property
+    def slot0(self) -> _SlotTypeDataDisk:
+        return _SlotTypeDataDisk(self, 0)
+
+    @property
+    def ProgrammableChip(self) -> _SlotTypeDataDisk:
+        return self.slot0
+
+
+class _H2Combustors(
+    _BaseStructures,
+    _Activates,
+    _BaseGasInputs,
+    _BaseGasOutputs,
+    _BaseGass,
+    _Combustions,
+    _Errors,
+    _Hydrogens,
+    _Locks,
+    _Maximums,
+    _Modes,
+    _Opens,
+    _PollWaters,
+    _Powers,
+    _Ratios,
+    _SettingWs,
+    _Temperatures,
+):
+    _hash: int = 1840108251
+    _prefab_name: int = "H2Combustor"
+
+    def __getitem__(self, name: str | int | float) -> "_H2Combustors":
+        return _H2Combustors(name)
+
+    @property
+    def Average(self) -> H2Combustor:
+        return H2Combustor(name=self._name, batch_mode=LogicBatchMethod.Average)
+
+    @property
+    def Minimum(self) -> H2Combustor:
+        return H2Combustor(name=self._name, batch_mode=LogicBatchMethod.Minimum)
+
+    @property
+    def Maximum(self) -> H2Combustor:
+        return H2Combustor(name=self._name, batch_mode=LogicBatchMethod.Maximum)
+
+    @property
+    def Sum(self) -> H2Combustor:
+        return H2Combustor(name=self._name, batch_mode=LogicBatchMethod.Sum)
+
+    @property
+    def CombustionInput(self) -> _DevicesLogicType:
+        return _DevicesLogicType(self, _LT.CombustionInput)
+
+    @property
+    def CombustionOutput(self) -> _DevicesLogicType:
+        return _DevicesLogicType(self, _LT.CombustionOutput)
+
+    @property
+    def PressureInput(self) -> _DevicesLogicType:
+        return _DevicesLogicType(self, _LT.PressureInput)
+
+    @property
+    def PressureOutput(self) -> _DevicesLogicType:
+        return _DevicesLogicType(self, _LT.PressureOutput)
+
+    @property
+    def TemperatureInput(self) -> _DevicesLogicType:
+        return _DevicesLogicType(self, _LT.TemperatureInput)
+
+    @property
+    def TemperatureOutput(self) -> _DevicesLogicType:
+        return _DevicesLogicType(self, _LT.TemperatureOutput)
+
+    @property
+    def TotalMolesInput(self) -> _DevicesLogicType:
+        return _DevicesLogicType(self, _LT.TotalMolesInput)
+
+    @property
+    def TotalMolesOutput(self) -> _DevicesLogicType:
+        return _DevicesLogicType(self, _LT.TotalMolesOutput)
+
+    @property
+    def slot0(self) -> _SlotTypeDataDisks:
+        return _SlotTypeDataDisks(self, 0)
+
+    @property
+    def ProgrammableChip(self) -> _SlotTypeDataDisks:
+        return self.slot0
+
+
+H2Combustors: _H2Combustors = _H2Combustors()
 
 
 class SuitHelmetHARM(
@@ -12667,6 +13975,180 @@ class _WearLamps(_BaseStructures, _Ons):
 WearLamps: _WearLamps = _WearLamps()
 
 
+class PressureFedGasEngineHeavy(
+    _BaseStructure,
+    _BaseGas,
+    _Combustion,
+    _Error,
+    _Hydrogen,
+    _PollWater,
+    _Power,
+    _Temperature,
+):
+    _hash: int = -762538653
+    _prefab_name: int = "StructurePressureFedGasEngineHeavy"
+
+    @property
+    def PassedMoles(self) -> float:
+        return _DeviceLogicType(self, _LT.PassedMoles)
+
+    @property
+    def Throttle(self) -> float:
+        return _DeviceLogicType(self, _LT.Throttle)
+
+    @Throttle.setter
+    def Throttle(self, value: int | float):
+        pass
+
+
+class _PressureFedGasEngineHeavies(
+    _BaseStructures,
+    _BaseGass,
+    _Combustions,
+    _Errors,
+    _Hydrogens,
+    _PollWaters,
+    _Powers,
+    _Temperatures,
+):
+    _hash: int = -762538653
+    _prefab_name: int = "StructurePressureFedGasEngineHeavy"
+
+    def __getitem__(self, name: str | int | float) -> "_PressureFedGasEngineHeavies":
+        return _PressureFedGasEngineHeavies(name)
+
+    @property
+    def Average(self) -> PressureFedGasEngineHeavy:
+        return PressureFedGasEngineHeavy(
+            name=self._name, batch_mode=LogicBatchMethod.Average
+        )
+
+    @property
+    def Minimum(self) -> PressureFedGasEngineHeavy:
+        return PressureFedGasEngineHeavy(
+            name=self._name, batch_mode=LogicBatchMethod.Minimum
+        )
+
+    @property
+    def Maximum(self) -> PressureFedGasEngineHeavy:
+        return PressureFedGasEngineHeavy(
+            name=self._name, batch_mode=LogicBatchMethod.Maximum
+        )
+
+    @property
+    def Sum(self) -> PressureFedGasEngineHeavy:
+        return PressureFedGasEngineHeavy(
+            name=self._name, batch_mode=LogicBatchMethod.Sum
+        )
+
+    @property
+    def PassedMoles(self) -> _DevicesLogicType:
+        return _DevicesLogicType(self, _LT.PassedMoles)
+
+    @property
+    def Throttle(self) -> _DevicesLogicType:
+        return _DevicesLogicType(self, _LT.Throttle)
+
+    @Throttle.setter
+    def Throttle(self, value: int | float):
+        pass
+
+
+PressureFedGasEngineHeavies: _PressureFedGasEngineHeavies = (
+    _PressureFedGasEngineHeavies()
+)
+
+
+class PressureFedLiquidEngineHeavy(
+    _BaseStructure,
+    _BaseGas,
+    _Combustion,
+    _Error,
+    _Hydrogen,
+    _Maximum,
+    _PollWater,
+    _Power,
+    _Ratio,
+    _SettingW,
+    _Temperature,
+):
+    _hash: int = -2122207560
+    _prefab_name: int = "StructurePressureFedLiquidEngineHeavy"
+
+    @property
+    def PassedMoles(self) -> float:
+        return _DeviceLogicType(self, _LT.PassedMoles)
+
+    @property
+    def Throttle(self) -> float:
+        return _DeviceLogicType(self, _LT.Throttle)
+
+    @Throttle.setter
+    def Throttle(self, value: int | float):
+        pass
+
+
+class _PressureFedLiquidEngineHeavies(
+    _BaseStructures,
+    _BaseGass,
+    _Combustions,
+    _Errors,
+    _Hydrogens,
+    _Maximums,
+    _PollWaters,
+    _Powers,
+    _Ratios,
+    _SettingWs,
+    _Temperatures,
+):
+    _hash: int = -2122207560
+    _prefab_name: int = "StructurePressureFedLiquidEngineHeavy"
+
+    def __getitem__(self, name: str | int | float) -> "_PressureFedLiquidEngineHeavies":
+        return _PressureFedLiquidEngineHeavies(name)
+
+    @property
+    def Average(self) -> PressureFedLiquidEngineHeavy:
+        return PressureFedLiquidEngineHeavy(
+            name=self._name, batch_mode=LogicBatchMethod.Average
+        )
+
+    @property
+    def Minimum(self) -> PressureFedLiquidEngineHeavy:
+        return PressureFedLiquidEngineHeavy(
+            name=self._name, batch_mode=LogicBatchMethod.Minimum
+        )
+
+    @property
+    def Maximum(self) -> PressureFedLiquidEngineHeavy:
+        return PressureFedLiquidEngineHeavy(
+            name=self._name, batch_mode=LogicBatchMethod.Maximum
+        )
+
+    @property
+    def Sum(self) -> PressureFedLiquidEngineHeavy:
+        return PressureFedLiquidEngineHeavy(
+            name=self._name, batch_mode=LogicBatchMethod.Sum
+        )
+
+    @property
+    def PassedMoles(self) -> _DevicesLogicType:
+        return _DevicesLogicType(self, _LT.PassedMoles)
+
+    @property
+    def Throttle(self) -> _DevicesLogicType:
+        return _DevicesLogicType(self, _LT.Throttle)
+
+    @Throttle.setter
+    def Throttle(self, value: int | float):
+        pass
+
+
+PressureFedLiquidEngineHeavies: _PressureFedLiquidEngineHeavies = (
+    _PressureFedLiquidEngineHeavies()
+)
+
+
 class HydraulicPipeBender(
     _BaseStructure,
     _Activate,
@@ -13064,11 +14546,11 @@ class CircuitHousing(_BaseStructure, _Error, _Mode, _Power, _SettingW):
         return _DeviceLogicType(self, _LT.StackSize)
 
     @property
-    def slot0(self) -> _SlotTypeProgrammableChip:
-        return _SlotTypeProgrammableChip(self, 0)
+    def slot0(self) -> _SlotTypeCommon:
+        return _SlotTypeCommon(self, 0)
 
     @property
-    def ProgrammableChip(self) -> _SlotTypeProgrammableChip:
+    def ProgrammableChip(self) -> _SlotTypeCommon:
         return self.slot0
 
 
@@ -13108,11 +14590,11 @@ class _CircuitHousings(_BaseStructures, _Errors, _Modes, _Powers, _SettingWs):
         return _DevicesLogicType(self, _LT.StackSize)
 
     @property
-    def slot0(self) -> _SlotTypeProgrammableChips:
-        return _SlotTypeProgrammableChips(self, 0)
+    def slot0(self) -> _SlotTypeCommons:
+        return _SlotTypeCommons(self, 0)
 
     @property
-    def ProgrammableChip(self) -> _SlotTypeProgrammableChips:
+    def ProgrammableChip(self) -> _SlotTypeCommons:
         return self.slot0
 
 
@@ -14783,6 +16265,530 @@ class _Labellers(_BaseStructures, _Errors, _Ons):
 Labellers: _Labellers = _Labellers()
 
 
+class Landingpad_DataConnectionPiece(
+    _BaseStructure,
+    _Activate,
+    _BaseGas,
+    _Combustion,
+    _Error,
+    _Hydrogen,
+    _ModeR,
+    _PollWater,
+    _Power,
+    _Temperature,
+):
+    _hash: int = -2066405918
+    _prefab_name: int = "Landingpad_DataConnectionPiece"
+
+    @property
+    def ContactTypeId(self) -> float:
+        return _DeviceLogicType(self, _LT.ContactTypeId)
+
+    @property
+    def Vertical(self) -> float:
+        return _DeviceLogicType(self, _LT.Vertical)
+
+    @Vertical.setter
+    def Vertical(self, value: int | float):
+        pass
+
+
+class _Landingpad_DataConnectionPieces(
+    _BaseStructures,
+    _Activates,
+    _BaseGass,
+    _Combustions,
+    _Errors,
+    _Hydrogens,
+    _ModeRs,
+    _PollWaters,
+    _Powers,
+    _Temperatures,
+):
+    _hash: int = -2066405918
+    _prefab_name: int = "Landingpad_DataConnectionPiece"
+
+    def __getitem__(
+        self, name: str | int | float
+    ) -> "_Landingpad_DataConnectionPieces":
+        return _Landingpad_DataConnectionPieces(name)
+
+    @property
+    def Average(self) -> Landingpad_DataConnectionPiece:
+        return Landingpad_DataConnectionPiece(
+            name=self._name, batch_mode=LogicBatchMethod.Average
+        )
+
+    @property
+    def Minimum(self) -> Landingpad_DataConnectionPiece:
+        return Landingpad_DataConnectionPiece(
+            name=self._name, batch_mode=LogicBatchMethod.Minimum
+        )
+
+    @property
+    def Maximum(self) -> Landingpad_DataConnectionPiece:
+        return Landingpad_DataConnectionPiece(
+            name=self._name, batch_mode=LogicBatchMethod.Maximum
+        )
+
+    @property
+    def Sum(self) -> Landingpad_DataConnectionPiece:
+        return Landingpad_DataConnectionPiece(
+            name=self._name, batch_mode=LogicBatchMethod.Sum
+        )
+
+    @property
+    def ContactTypeId(self) -> _DevicesLogicType:
+        return _DevicesLogicType(self, _LT.ContactTypeId)
+
+    @property
+    def Vertical(self) -> _DevicesLogicType:
+        return _DevicesLogicType(self, _LT.Vertical)
+
+    @Vertical.setter
+    def Vertical(self, value: int | float):
+        pass
+
+
+Landingpad_DataConnectionPieces: _Landingpad_DataConnectionPieces = (
+    _Landingpad_DataConnectionPieces()
+)
+
+
+class Landingpad_GasConnectorInwardPiece(
+    _BaseStructure,
+    _BaseGas,
+    _Combustion,
+    _Error,
+    _Hydrogen,
+    _Maximum,
+    _PollWater,
+    _Power,
+    _Ratio,
+    _SettingW,
+    _Temperature,
+):
+    _hash: int = 817945707
+    _prefab_name: int = "Landingpad_GasConnectorInwardPiece"
+
+
+class _Landingpad_GasConnectorInwardPieces(
+    _BaseStructures,
+    _BaseGass,
+    _Combustions,
+    _Errors,
+    _Hydrogens,
+    _Maximums,
+    _PollWaters,
+    _Powers,
+    _Ratios,
+    _SettingWs,
+    _Temperatures,
+):
+    _hash: int = 817945707
+    _prefab_name: int = "Landingpad_GasConnectorInwardPiece"
+
+    def __getitem__(
+        self, name: str | int | float
+    ) -> "_Landingpad_GasConnectorInwardPieces":
+        return _Landingpad_GasConnectorInwardPieces(name)
+
+    @property
+    def Average(self) -> Landingpad_GasConnectorInwardPiece:
+        return Landingpad_GasConnectorInwardPiece(
+            name=self._name, batch_mode=LogicBatchMethod.Average
+        )
+
+    @property
+    def Minimum(self) -> Landingpad_GasConnectorInwardPiece:
+        return Landingpad_GasConnectorInwardPiece(
+            name=self._name, batch_mode=LogicBatchMethod.Minimum
+        )
+
+    @property
+    def Maximum(self) -> Landingpad_GasConnectorInwardPiece:
+        return Landingpad_GasConnectorInwardPiece(
+            name=self._name, batch_mode=LogicBatchMethod.Maximum
+        )
+
+    @property
+    def Sum(self) -> Landingpad_GasConnectorInwardPiece:
+        return Landingpad_GasConnectorInwardPiece(
+            name=self._name, batch_mode=LogicBatchMethod.Sum
+        )
+
+
+Landingpad_GasConnectorInwardPieces: _Landingpad_GasConnectorInwardPieces = (
+    _Landingpad_GasConnectorInwardPieces()
+)
+
+
+class Landingpad_GasConnectorOutwardPiece(
+    _BaseStructure,
+    _BaseGas,
+    _Combustion,
+    _Error,
+    _Hydrogen,
+    _Maximum,
+    _PollWater,
+    _Power,
+    _Ratio,
+    _SettingW,
+    _Temperature,
+):
+    _hash: int = -1100218307
+    _prefab_name: int = "Landingpad_GasConnectorOutwardPiece"
+
+
+class _Landingpad_GasConnectorOutwardPieces(
+    _BaseStructures,
+    _BaseGass,
+    _Combustions,
+    _Errors,
+    _Hydrogens,
+    _Maximums,
+    _PollWaters,
+    _Powers,
+    _Ratios,
+    _SettingWs,
+    _Temperatures,
+):
+    _hash: int = -1100218307
+    _prefab_name: int = "Landingpad_GasConnectorOutwardPiece"
+
+    def __getitem__(
+        self, name: str | int | float
+    ) -> "_Landingpad_GasConnectorOutwardPieces":
+        return _Landingpad_GasConnectorOutwardPieces(name)
+
+    @property
+    def Average(self) -> Landingpad_GasConnectorOutwardPiece:
+        return Landingpad_GasConnectorOutwardPiece(
+            name=self._name, batch_mode=LogicBatchMethod.Average
+        )
+
+    @property
+    def Minimum(self) -> Landingpad_GasConnectorOutwardPiece:
+        return Landingpad_GasConnectorOutwardPiece(
+            name=self._name, batch_mode=LogicBatchMethod.Minimum
+        )
+
+    @property
+    def Maximum(self) -> Landingpad_GasConnectorOutwardPiece:
+        return Landingpad_GasConnectorOutwardPiece(
+            name=self._name, batch_mode=LogicBatchMethod.Maximum
+        )
+
+    @property
+    def Sum(self) -> Landingpad_GasConnectorOutwardPiece:
+        return Landingpad_GasConnectorOutwardPiece(
+            name=self._name, batch_mode=LogicBatchMethod.Sum
+        )
+
+
+Landingpad_GasConnectorOutwardPieces: _Landingpad_GasConnectorOutwardPieces = (
+    _Landingpad_GasConnectorOutwardPieces()
+)
+
+
+class Landingpad_LiquidConnectorInwardPiece(
+    _BaseStructure,
+    _BaseGas,
+    _Combustion,
+    _Error,
+    _Hydrogen,
+    _Maximum,
+    _PollWater,
+    _Power,
+    _Ratio,
+    _SettingW,
+    _Temperature,
+):
+    _hash: int = -1216167727
+    _prefab_name: int = "Landingpad_LiquidConnectorInwardPiece"
+
+
+class _Landingpad_LiquidConnectorInwardPieces(
+    _BaseStructures,
+    _BaseGass,
+    _Combustions,
+    _Errors,
+    _Hydrogens,
+    _Maximums,
+    _PollWaters,
+    _Powers,
+    _Ratios,
+    _SettingWs,
+    _Temperatures,
+):
+    _hash: int = -1216167727
+    _prefab_name: int = "Landingpad_LiquidConnectorInwardPiece"
+
+    def __getitem__(
+        self, name: str | int | float
+    ) -> "_Landingpad_LiquidConnectorInwardPieces":
+        return _Landingpad_LiquidConnectorInwardPieces(name)
+
+    @property
+    def Average(self) -> Landingpad_LiquidConnectorInwardPiece:
+        return Landingpad_LiquidConnectorInwardPiece(
+            name=self._name, batch_mode=LogicBatchMethod.Average
+        )
+
+    @property
+    def Minimum(self) -> Landingpad_LiquidConnectorInwardPiece:
+        return Landingpad_LiquidConnectorInwardPiece(
+            name=self._name, batch_mode=LogicBatchMethod.Minimum
+        )
+
+    @property
+    def Maximum(self) -> Landingpad_LiquidConnectorInwardPiece:
+        return Landingpad_LiquidConnectorInwardPiece(
+            name=self._name, batch_mode=LogicBatchMethod.Maximum
+        )
+
+    @property
+    def Sum(self) -> Landingpad_LiquidConnectorInwardPiece:
+        return Landingpad_LiquidConnectorInwardPiece(
+            name=self._name, batch_mode=LogicBatchMethod.Sum
+        )
+
+
+Landingpad_LiquidConnectorInwardPieces: _Landingpad_LiquidConnectorInwardPieces = (
+    _Landingpad_LiquidConnectorInwardPieces()
+)
+
+
+class Landingpad_LiquidConnectorOutwardPiece(
+    _BaseStructure,
+    _BaseGas,
+    _Combustion,
+    _Error,
+    _Hydrogen,
+    _Maximum,
+    _PollWater,
+    _Power,
+    _Ratio,
+    _SettingW,
+    _Temperature,
+):
+    _hash: int = -1788929869
+    _prefab_name: int = "Landingpad_LiquidConnectorOutwardPiece"
+
+
+class _Landingpad_LiquidConnectorOutwardPieces(
+    _BaseStructures,
+    _BaseGass,
+    _Combustions,
+    _Errors,
+    _Hydrogens,
+    _Maximums,
+    _PollWaters,
+    _Powers,
+    _Ratios,
+    _SettingWs,
+    _Temperatures,
+):
+    _hash: int = -1788929869
+    _prefab_name: int = "Landingpad_LiquidConnectorOutwardPiece"
+
+    def __getitem__(
+        self, name: str | int | float
+    ) -> "_Landingpad_LiquidConnectorOutwardPieces":
+        return _Landingpad_LiquidConnectorOutwardPieces(name)
+
+    @property
+    def Average(self) -> Landingpad_LiquidConnectorOutwardPiece:
+        return Landingpad_LiquidConnectorOutwardPiece(
+            name=self._name, batch_mode=LogicBatchMethod.Average
+        )
+
+    @property
+    def Minimum(self) -> Landingpad_LiquidConnectorOutwardPiece:
+        return Landingpad_LiquidConnectorOutwardPiece(
+            name=self._name, batch_mode=LogicBatchMethod.Minimum
+        )
+
+    @property
+    def Maximum(self) -> Landingpad_LiquidConnectorOutwardPiece:
+        return Landingpad_LiquidConnectorOutwardPiece(
+            name=self._name, batch_mode=LogicBatchMethod.Maximum
+        )
+
+    @property
+    def Sum(self) -> Landingpad_LiquidConnectorOutwardPiece:
+        return Landingpad_LiquidConnectorOutwardPiece(
+            name=self._name, batch_mode=LogicBatchMethod.Sum
+        )
+
+
+Landingpad_LiquidConnectorOutwardPieces: _Landingpad_LiquidConnectorOutwardPieces = (
+    _Landingpad_LiquidConnectorOutwardPieces()
+)
+
+
+class Landingpad_GasTankConnectorPiece(_BaseStructure, _Error, _Mode, _Power):
+    _hash: int = 1724924668
+    _prefab_name: int = "Landingpad_GasTankConnectorPiece"
+
+    @property
+    def slot0(self) -> _SlotTypeDataDisk:
+        return _SlotTypeDataDisk(self, 0)
+
+    @property
+    def PortableSlot(self) -> _SlotTypeDataDisk:
+        return self.slot0
+
+
+class _Landingpad_GasTankConnectorPieces(_BaseStructures, _Errors, _Modes, _Powers):
+    _hash: int = 1724924668
+    _prefab_name: int = "Landingpad_GasTankConnectorPiece"
+
+    def __getitem__(
+        self, name: str | int | float
+    ) -> "_Landingpad_GasTankConnectorPieces":
+        return _Landingpad_GasTankConnectorPieces(name)
+
+    @property
+    def Average(self) -> Landingpad_GasTankConnectorPiece:
+        return Landingpad_GasTankConnectorPiece(
+            name=self._name, batch_mode=LogicBatchMethod.Average
+        )
+
+    @property
+    def Minimum(self) -> Landingpad_GasTankConnectorPiece:
+        return Landingpad_GasTankConnectorPiece(
+            name=self._name, batch_mode=LogicBatchMethod.Minimum
+        )
+
+    @property
+    def Maximum(self) -> Landingpad_GasTankConnectorPiece:
+        return Landingpad_GasTankConnectorPiece(
+            name=self._name, batch_mode=LogicBatchMethod.Maximum
+        )
+
+    @property
+    def Sum(self) -> Landingpad_GasTankConnectorPiece:
+        return Landingpad_GasTankConnectorPiece(
+            name=self._name, batch_mode=LogicBatchMethod.Sum
+        )
+
+    @property
+    def slot0(self) -> _SlotTypeDataDisks:
+        return _SlotTypeDataDisks(self, 0)
+
+    @property
+    def PortableSlot(self) -> _SlotTypeDataDisks:
+        return self.slot0
+
+
+Landingpad_GasTankConnectorPieces: _Landingpad_GasTankConnectorPieces = (
+    _Landingpad_GasTankConnectorPieces()
+)
+
+
+class Landingpad_LiquidTankConnectorPiece(_BaseStructure, _Error, _Mode, _Power):
+    _hash: int = 102601368
+    _prefab_name: int = "Landingpad_LiquidTankConnectorPiece"
+
+    @property
+    def slot0(self) -> _SlotTypeDataDisk:
+        return _SlotTypeDataDisk(self, 0)
+
+    @property
+    def PortableSlot(self) -> _SlotTypeDataDisk:
+        return self.slot0
+
+
+class _Landingpad_LiquidTankConnectorPieces(_BaseStructures, _Errors, _Modes, _Powers):
+    _hash: int = 102601368
+    _prefab_name: int = "Landingpad_LiquidTankConnectorPiece"
+
+    def __getitem__(
+        self, name: str | int | float
+    ) -> "_Landingpad_LiquidTankConnectorPieces":
+        return _Landingpad_LiquidTankConnectorPieces(name)
+
+    @property
+    def Average(self) -> Landingpad_LiquidTankConnectorPiece:
+        return Landingpad_LiquidTankConnectorPiece(
+            name=self._name, batch_mode=LogicBatchMethod.Average
+        )
+
+    @property
+    def Minimum(self) -> Landingpad_LiquidTankConnectorPiece:
+        return Landingpad_LiquidTankConnectorPiece(
+            name=self._name, batch_mode=LogicBatchMethod.Minimum
+        )
+
+    @property
+    def Maximum(self) -> Landingpad_LiquidTankConnectorPiece:
+        return Landingpad_LiquidTankConnectorPiece(
+            name=self._name, batch_mode=LogicBatchMethod.Maximum
+        )
+
+    @property
+    def Sum(self) -> Landingpad_LiquidTankConnectorPiece:
+        return Landingpad_LiquidTankConnectorPiece(
+            name=self._name, batch_mode=LogicBatchMethod.Sum
+        )
+
+    @property
+    def slot0(self) -> _SlotTypeDataDisks:
+        return _SlotTypeDataDisks(self, 0)
+
+    @property
+    def PortableSlot(self) -> _SlotTypeDataDisks:
+        return self.slot0
+
+
+Landingpad_LiquidTankConnectorPieces: _Landingpad_LiquidTankConnectorPieces = (
+    _Landingpad_LiquidTankConnectorPieces()
+)
+
+
+class Landingpad_ThreshholdPiece(_BaseStructure, _Power):
+    _hash: int = -1514298582
+    _prefab_name: int = "Landingpad_ThreshholdPiece"
+
+
+class _Landingpad_ThreshholdPieces(_BaseStructures, _Powers):
+    _hash: int = -1514298582
+    _prefab_name: int = "Landingpad_ThreshholdPiece"
+
+    def __getitem__(self, name: str | int | float) -> "_Landingpad_ThreshholdPieces":
+        return _Landingpad_ThreshholdPieces(name)
+
+    @property
+    def Average(self) -> Landingpad_ThreshholdPiece:
+        return Landingpad_ThreshholdPiece(
+            name=self._name, batch_mode=LogicBatchMethod.Average
+        )
+
+    @property
+    def Minimum(self) -> Landingpad_ThreshholdPiece:
+        return Landingpad_ThreshholdPiece(
+            name=self._name, batch_mode=LogicBatchMethod.Minimum
+        )
+
+    @property
+    def Maximum(self) -> Landingpad_ThreshholdPiece:
+        return Landingpad_ThreshholdPiece(
+            name=self._name, batch_mode=LogicBatchMethod.Maximum
+        )
+
+    @property
+    def Sum(self) -> Landingpad_ThreshholdPiece:
+        return Landingpad_ThreshholdPiece(
+            name=self._name, batch_mode=LogicBatchMethod.Sum
+        )
+
+
+Landingpad_ThreshholdPieces: _Landingpad_ThreshholdPieces = (
+    _Landingpad_ThreshholdPieces()
+)
+
+
 class Laptop(_BaseStructure, _Error, _On):
     _hash: int = 141535121
     _prefab_name: int = "ItemLaptop"
@@ -15158,6 +17164,10 @@ class LargeSatelliteDish(
         pass
 
     @property
+    def ContactSlotIndex(self) -> float:
+        return _DeviceLogicType(self, _LT.ContactSlotIndex)
+
+    @property
     def ContactTypeId(self) -> float:
         return _DeviceLogicType(self, _LT.ContactTypeId)
 
@@ -15230,6 +17240,10 @@ class _LargeSatelliteDishs(
     @BestContactFilter.setter
     def BestContactFilter(self, value: int | float):
         pass
+
+    @property
+    def ContactSlotIndex(self) -> _DevicesLogicType:
+        return _DevicesLogicType(self, _LT.ContactSlotIndex)
 
     @property
     def ContactTypeId(self) -> _DevicesLogicType:
@@ -17143,6 +19157,86 @@ class _WaterWallCoolers(
 WaterWallCoolers: _WaterWallCoolers = _WaterWallCoolers()
 
 
+class Packer(_BaseStructure, _Error, _Lock, _Mode, _Open, _Power):
+    _hash: int = 94539235
+    _prefab_name: int = "StructurePacker"
+
+    @property
+    def slot0(self) -> _SlotTypeDataDisk:
+        return _SlotTypeDataDisk(self, 0)
+
+    @property
+    def Payload(self) -> _SlotTypeDataDisk:
+        return self.slot0
+
+    @property
+    def slot1(self) -> _SlotTypeDataDisk:
+        return _SlotTypeDataDisk(self, 1)
+
+    @property
+    def Recipient(self) -> _SlotTypeDataDisk:
+        return self.slot1
+
+    @property
+    def slot2(self) -> _SlotTypeDataDisk:
+        return _SlotTypeDataDisk(self, 2)
+
+    @property
+    def Export(self) -> _SlotTypeDataDisk:
+        return self.slot2
+
+
+class _Packers(_BaseStructures, _Errors, _Locks, _Modes, _Opens, _Powers):
+    _hash: int = 94539235
+    _prefab_name: int = "StructurePacker"
+
+    def __getitem__(self, name: str | int | float) -> "_Packers":
+        return _Packers(name)
+
+    @property
+    def Average(self) -> Packer:
+        return Packer(name=self._name, batch_mode=LogicBatchMethod.Average)
+
+    @property
+    def Minimum(self) -> Packer:
+        return Packer(name=self._name, batch_mode=LogicBatchMethod.Minimum)
+
+    @property
+    def Maximum(self) -> Packer:
+        return Packer(name=self._name, batch_mode=LogicBatchMethod.Maximum)
+
+    @property
+    def Sum(self) -> Packer:
+        return Packer(name=self._name, batch_mode=LogicBatchMethod.Sum)
+
+    @property
+    def slot0(self) -> _SlotTypeDataDisks:
+        return _SlotTypeDataDisks(self, 0)
+
+    @property
+    def Payload(self) -> _SlotTypeDataDisks:
+        return self.slot0
+
+    @property
+    def slot1(self) -> _SlotTypeDataDisks:
+        return _SlotTypeDataDisks(self, 1)
+
+    @property
+    def Recipient(self) -> _SlotTypeDataDisks:
+        return self.slot1
+
+    @property
+    def slot2(self) -> _SlotTypeDataDisks:
+        return _SlotTypeDataDisks(self, 2)
+
+    @property
+    def Export(self) -> _SlotTypeDataDisks:
+        return self.slot2
+
+
+Packers: _Packers = _Packers()
+
+
 class StorageLocker(_BaseStructure, _Lock, _Open):
     _hash: int = -793623899
     _prefab_name: int = "StructureStorageLocker"
@@ -17905,6 +19999,86 @@ class _LogicSorters(
 LogicSorters: _LogicSorters = _LogicSorters()
 
 
+class LogicStepSequencer8(_BaseStructure, _Activate, _Error, _Mode, _Power):
+    _hash: int = 1531272458
+    _prefab_name: int = "LogicStepSequencer8"
+
+    @property
+    def Bpm(self) -> float:
+        return _DeviceLogicType(self, _LT.Bpm)
+
+    @Bpm.setter
+    def Bpm(self, value: int | float):
+        pass
+
+    @property
+    def Time(self) -> float:
+        return _DeviceLogicType(self, _LT.Time)
+
+    @Time.setter
+    def Time(self, value: int | float):
+        pass
+
+    @property
+    def slot0(self) -> _SlotTypeDataDisk:
+        return _SlotTypeDataDisk(self, 0)
+
+    @property
+    def SoundCartridge(self) -> _SlotTypeDataDisk:
+        return self.slot0
+
+
+class _LogicStepSequencer8s(_BaseStructures, _Activates, _Errors, _Modes, _Powers):
+    _hash: int = 1531272458
+    _prefab_name: int = "LogicStepSequencer8"
+
+    def __getitem__(self, name: str | int | float) -> "_LogicStepSequencer8s":
+        return _LogicStepSequencer8s(name)
+
+    @property
+    def Average(self) -> LogicStepSequencer8:
+        return LogicStepSequencer8(name=self._name, batch_mode=LogicBatchMethod.Average)
+
+    @property
+    def Minimum(self) -> LogicStepSequencer8:
+        return LogicStepSequencer8(name=self._name, batch_mode=LogicBatchMethod.Minimum)
+
+    @property
+    def Maximum(self) -> LogicStepSequencer8:
+        return LogicStepSequencer8(name=self._name, batch_mode=LogicBatchMethod.Maximum)
+
+    @property
+    def Sum(self) -> LogicStepSequencer8:
+        return LogicStepSequencer8(name=self._name, batch_mode=LogicBatchMethod.Sum)
+
+    @property
+    def Bpm(self) -> _DevicesLogicType:
+        return _DevicesLogicType(self, _LT.Bpm)
+
+    @Bpm.setter
+    def Bpm(self, value: int | float):
+        pass
+
+    @property
+    def Time(self) -> _DevicesLogicType:
+        return _DevicesLogicType(self, _LT.Time)
+
+    @Time.setter
+    def Time(self, value: int | float):
+        pass
+
+    @property
+    def slot0(self) -> _SlotTypeDataDisks:
+        return _SlotTypeDataDisks(self, 0)
+
+    @property
+    def SoundCartridge(self) -> _SlotTypeDataDisks:
+        return self.slot0
+
+
+LogicStepSequencer8s: _LogicStepSequencer8s = _LogicStepSequencer8s()
+
+
 class LogicRocketUplink(_BaseStructure, _Error, _Power):
     _hash: int = 546002924
     _prefab_name: int = "StructureLogicRocketUplink"
@@ -18031,6 +20205,70 @@ class _LogicWriterSwitchs(_BaseStructures, _Activates, _Errors, _Powers):
 
 
 LogicWriterSwitchs: _LogicWriterSwitchs = _LogicWriterSwitchs()
+
+
+class DeviceLfoVolume(_BaseStructure, _Activate, _Error, _Mode, _Power):
+    _hash: int = -1844430312
+    _prefab_name: int = "DeviceLfoVolume"
+
+    @property
+    def Bpm(self) -> float:
+        return _DeviceLogicType(self, _LT.Bpm)
+
+    @Bpm.setter
+    def Bpm(self, value: int | float):
+        pass
+
+    @property
+    def Time(self) -> float:
+        return _DeviceLogicType(self, _LT.Time)
+
+    @Time.setter
+    def Time(self, value: int | float):
+        pass
+
+
+class _DeviceLfoVolumes(_BaseStructures, _Activates, _Errors, _Modes, _Powers):
+    _hash: int = -1844430312
+    _prefab_name: int = "DeviceLfoVolume"
+
+    def __getitem__(self, name: str | int | float) -> "_DeviceLfoVolumes":
+        return _DeviceLfoVolumes(name)
+
+    @property
+    def Average(self) -> DeviceLfoVolume:
+        return DeviceLfoVolume(name=self._name, batch_mode=LogicBatchMethod.Average)
+
+    @property
+    def Minimum(self) -> DeviceLfoVolume:
+        return DeviceLfoVolume(name=self._name, batch_mode=LogicBatchMethod.Minimum)
+
+    @property
+    def Maximum(self) -> DeviceLfoVolume:
+        return DeviceLfoVolume(name=self._name, batch_mode=LogicBatchMethod.Maximum)
+
+    @property
+    def Sum(self) -> DeviceLfoVolume:
+        return DeviceLfoVolume(name=self._name, batch_mode=LogicBatchMethod.Sum)
+
+    @property
+    def Bpm(self) -> _DevicesLogicType:
+        return _DevicesLogicType(self, _LT.Bpm)
+
+    @Bpm.setter
+    def Bpm(self, value: int | float):
+        pass
+
+    @property
+    def Time(self) -> _DevicesLogicType:
+        return _DevicesLogicType(self, _LT.Time)
+
+    @Time.setter
+    def Time(self, value: int | float):
+        pass
+
+
+DeviceLfoVolumes: _DeviceLfoVolumes = _DeviceLfoVolumes()
 
 
 class ManualFloorHatch(_BaseStructure, _Idle, _Lock, _Open, _SettingW):
@@ -18414,6 +20652,10 @@ class SatelliteDish(
         pass
 
     @property
+    def ContactSlotIndex(self) -> float:
+        return _DeviceLogicType(self, _LT.ContactSlotIndex)
+
+    @property
     def ContactTypeId(self) -> float:
         return _DeviceLogicType(self, _LT.ContactTypeId)
 
@@ -18490,6 +20732,10 @@ class _SatelliteDishs(
     @BestContactFilter.setter
     def BestContactFilter(self, value: int | float):
         pass
+
+    @property
+    def ContactSlotIndex(self) -> _DevicesLogicType:
+        return _DevicesLogicType(self, _LT.ContactSlotIndex)
 
     @property
     def ContactTypeId(self) -> _DevicesLogicType:
@@ -19503,6 +21749,10 @@ class OccupancySensor(_BaseStructure, _Quantity):
     def Activate(self) -> float:
         return _DeviceLogicType(self, _LT.Activate)
 
+    @property
+    def StackSize(self) -> float:
+        return _DeviceLogicType(self, _LT.StackSize)
+
 
 class _OccupancySensors(_BaseStructures, _Quantities):
     _hash: int = 322782515
@@ -19530,6 +21780,10 @@ class _OccupancySensors(_BaseStructures, _Quantities):
     @property
     def Activate(self) -> _DevicesLogicType:
         return _DevicesLogicType(self, _LT.Activate)
+
+    @property
+    def StackSize(self) -> _DevicesLogicType:
+        return _DevicesLogicType(self, _LT.StackSize)
 
 
 OccupancySensors: _OccupancySensors = _OccupancySensors()
@@ -19929,6 +22183,156 @@ class _LogicPidControllers(_BaseStructures, _Errors, _Powers, _SettingRs):
 LogicPidControllers: _LogicPidControllers = _LogicPidControllers()
 
 
+class PassiveSpeaker(_BaseStructure):
+    _hash: int = 248893646
+    _prefab_name: int = "PassiveSpeaker"
+
+    @property
+    def SoundAlert(self) -> float:
+        return _DeviceLogicType(self, _LT.SoundAlert)
+
+    @SoundAlert.setter
+    def SoundAlert(self, value: int | float):
+        pass
+
+    @property
+    def Volume(self) -> float:
+        return _DeviceLogicType(self, _LT.Volume)
+
+    @Volume.setter
+    def Volume(self, value: int | float):
+        pass
+
+
+class _PassiveSpeakers(_BaseStructures):
+    _hash: int = 248893646
+    _prefab_name: int = "PassiveSpeaker"
+
+    def __getitem__(self, name: str | int | float) -> "_PassiveSpeakers":
+        return _PassiveSpeakers(name)
+
+    @property
+    def Average(self) -> PassiveSpeaker:
+        return PassiveSpeaker(name=self._name, batch_mode=LogicBatchMethod.Average)
+
+    @property
+    def Minimum(self) -> PassiveSpeaker:
+        return PassiveSpeaker(name=self._name, batch_mode=LogicBatchMethod.Minimum)
+
+    @property
+    def Maximum(self) -> PassiveSpeaker:
+        return PassiveSpeaker(name=self._name, batch_mode=LogicBatchMethod.Maximum)
+
+    @property
+    def Sum(self) -> PassiveSpeaker:
+        return PassiveSpeaker(name=self._name, batch_mode=LogicBatchMethod.Sum)
+
+    @property
+    def SoundAlert(self) -> _DevicesLogicType:
+        return _DevicesLogicType(self, _LT.SoundAlert)
+
+    @SoundAlert.setter
+    def SoundAlert(self, value: int | float):
+        pass
+
+    @property
+    def Volume(self) -> _DevicesLogicType:
+        return _DevicesLogicType(self, _LT.Volume)
+
+    @Volume.setter
+    def Volume(self, value: int | float):
+        pass
+
+
+PassiveSpeakers: _PassiveSpeakers = _PassiveSpeakers()
+
+
+class RocketLargePayloadBay(_BaseStructure, _Error, _Lock, _Open, _Power):
+    _hash: int = 1081471167
+    _prefab_name: int = "StructureRocketLargePayloadBay"
+
+    @property
+    def PositionX(self) -> float:
+        return _DeviceLogicType(self, _LT.PositionX)
+
+    @PositionX.setter
+    def PositionX(self, value: int | float):
+        pass
+
+    @property
+    def PositionZ(self) -> float:
+        return _DeviceLogicType(self, _LT.PositionZ)
+
+    @PositionZ.setter
+    def PositionZ(self, value: int | float):
+        pass
+
+    @property
+    def slot0(self) -> _SlotTypeDataDisk:
+        return _SlotTypeDataDisk(self, 0)
+
+    @property
+    def Payload(self) -> _SlotTypeDataDisk:
+        return self.slot0
+
+
+class _RocketLargePayloadBaies(_BaseStructures, _Errors, _Locks, _Opens, _Powers):
+    _hash: int = 1081471167
+    _prefab_name: int = "StructureRocketLargePayloadBay"
+
+    def __getitem__(self, name: str | int | float) -> "_RocketLargePayloadBaies":
+        return _RocketLargePayloadBaies(name)
+
+    @property
+    def Average(self) -> RocketLargePayloadBay:
+        return RocketLargePayloadBay(
+            name=self._name, batch_mode=LogicBatchMethod.Average
+        )
+
+    @property
+    def Minimum(self) -> RocketLargePayloadBay:
+        return RocketLargePayloadBay(
+            name=self._name, batch_mode=LogicBatchMethod.Minimum
+        )
+
+    @property
+    def Maximum(self) -> RocketLargePayloadBay:
+        return RocketLargePayloadBay(
+            name=self._name, batch_mode=LogicBatchMethod.Maximum
+        )
+
+    @property
+    def Sum(self) -> RocketLargePayloadBay:
+        return RocketLargePayloadBay(name=self._name, batch_mode=LogicBatchMethod.Sum)
+
+    @property
+    def PositionX(self) -> _DevicesLogicType:
+        return _DevicesLogicType(self, _LT.PositionX)
+
+    @PositionX.setter
+    def PositionX(self, value: int | float):
+        pass
+
+    @property
+    def PositionZ(self) -> _DevicesLogicType:
+        return _DevicesLogicType(self, _LT.PositionZ)
+
+    @PositionZ.setter
+    def PositionZ(self, value: int | float):
+        pass
+
+    @property
+    def slot0(self) -> _SlotTypeDataDisks:
+        return _SlotTypeDataDisks(self, 0)
+
+    @property
+    def Payload(self) -> _SlotTypeDataDisks:
+        return self.slot0
+
+
+RocketLargePayloadBaies: _RocketLargePayloadBaies = _RocketLargePayloadBaies()
+
+
 class PipeAnalysizer(
     _BaseStructure,
     _BaseGas,
@@ -20157,6 +22561,110 @@ class _PlantSamplers(_BaseStructures, _Activates, _Modes, _Ons):
 
 
 PlantSamplers: _PlantSamplers = _PlantSamplers()
+
+
+class DynamicLight(_BaseStructure, _Lock, _On, _Open):
+    _hash: int = -21970188
+    _prefab_name: int = "DynamicLight"
+
+    @property
+    def Power(self) -> float:
+        return _DeviceLogicType(self, _LT.Power)
+
+    @property
+    def slot0(self) -> _SlotTypeBattery:
+        return _SlotTypeBattery(self, 0)
+
+    @property
+    def Battery(self) -> _SlotTypeBattery:
+        return self.slot0
+
+
+class _DynamicLights(_BaseStructures, _Locks, _Ons, _Opens):
+    _hash: int = -21970188
+    _prefab_name: int = "DynamicLight"
+
+    def __getitem__(self, name: str | int | float) -> "_DynamicLights":
+        return _DynamicLights(name)
+
+    @property
+    def Average(self) -> DynamicLight:
+        return DynamicLight(name=self._name, batch_mode=LogicBatchMethod.Average)
+
+    @property
+    def Minimum(self) -> DynamicLight:
+        return DynamicLight(name=self._name, batch_mode=LogicBatchMethod.Minimum)
+
+    @property
+    def Maximum(self) -> DynamicLight:
+        return DynamicLight(name=self._name, batch_mode=LogicBatchMethod.Maximum)
+
+    @property
+    def Sum(self) -> DynamicLight:
+        return DynamicLight(name=self._name, batch_mode=LogicBatchMethod.Sum)
+
+    @property
+    def Power(self) -> _DevicesLogicType:
+        return _DevicesLogicType(self, _LT.Power)
+
+    @property
+    def slot0(self) -> _SlotTypeBatteries:
+        return _SlotTypeBatteries(self, 0)
+
+    @property
+    def Battery(self) -> _SlotTypeBatteries:
+        return self.slot0
+
+
+DynamicLights: _DynamicLights = _DynamicLights()
+
+
+class PortableSolarPanel(_BaseStructure, _Open):
+    _hash: int = 2043318949
+    _prefab_name: int = "PortableSolarPanel"
+
+    @property
+    def slot0(self) -> _SlotTypeBattery:
+        return _SlotTypeBattery(self, 0)
+
+    @property
+    def Battery(self) -> _SlotTypeBattery:
+        return self.slot0
+
+
+class _PortableSolarPanels(_BaseStructures, _Opens):
+    _hash: int = 2043318949
+    _prefab_name: int = "PortableSolarPanel"
+
+    def __getitem__(self, name: str | int | float) -> "_PortableSolarPanels":
+        return _PortableSolarPanels(name)
+
+    @property
+    def Average(self) -> PortableSolarPanel:
+        return PortableSolarPanel(name=self._name, batch_mode=LogicBatchMethod.Average)
+
+    @property
+    def Minimum(self) -> PortableSolarPanel:
+        return PortableSolarPanel(name=self._name, batch_mode=LogicBatchMethod.Minimum)
+
+    @property
+    def Maximum(self) -> PortableSolarPanel:
+        return PortableSolarPanel(name=self._name, batch_mode=LogicBatchMethod.Maximum)
+
+    @property
+    def Sum(self) -> PortableSolarPanel:
+        return PortableSolarPanel(name=self._name, batch_mode=LogicBatchMethod.Sum)
+
+    @property
+    def slot0(self) -> _SlotTypeBatteries:
+        return _SlotTypeBatteries(self, 0)
+
+    @property
+    def Battery(self) -> _SlotTypeBatteries:
+        return self.slot0
+
+
+PortableSolarPanels: _PortableSolarPanels = _PortableSolarPanels()
 
 
 class PortablesConnector(_BaseStructure, _Maximum, _Open, _Ratio, _SettingW):
@@ -21239,6 +23747,14 @@ class RefrigeratedVendingMachine(
         pass
 
     @property
+    def TargetPrefabHash(self) -> float:
+        return _DeviceLogicType(self, _LT.TargetPrefabHash)
+
+    @property
+    def TargetSlotIndex(self) -> float:
+        return _DeviceLogicType(self, _LT.TargetSlotIndex)
+
+    @property
     def slot0(self) -> _SlotTypeDataDisk:
         return _SlotTypeDataDisk(self, 0)
 
@@ -21710,6 +24226,14 @@ class _RefrigeratedVendingMachines(
     @RequestHash.setter
     def RequestHash(self, value: int | float):
         pass
+
+    @property
+    def TargetPrefabHash(self) -> _DevicesLogicType:
+        return _DevicesLogicType(self, _LT.TargetPrefabHash)
+
+    @property
+    def TargetSlotIndex(self) -> _DevicesLogicType:
+        return _DevicesLogicType(self, _LT.TargetSlotIndex)
 
     @property
     def slot0(self) -> _SlotTypeDataDisks:
@@ -23253,6 +25777,134 @@ class _RocketScanners(_BaseStructures, _Errors, _Locks, _Powers):
 RocketScanners: _RocketScanners = _RocketScanners()
 
 
+class Rover_MkI(_BaseStructure, _On):
+    _hash: int = -2049946335
+    _prefab_name: int = "Rover_MkI"
+
+    @property
+    def Power(self) -> float:
+        return _DeviceLogicType(self, _LT.Power)
+
+    @property
+    def slot0(self) -> _SlotTypeCommon:
+        return _SlotTypeCommon(self, 0)
+
+    @property
+    def slot1(self) -> _SlotTypeCommon:
+        return _SlotTypeCommon(self, 1)
+
+    @property
+    def slot10(self) -> _SlotTypeCommon:
+        return _SlotTypeCommon(self, 10)
+
+    @property
+    def slot2(self) -> _SlotTypeBattery:
+        return _SlotTypeBattery(self, 2)
+
+    @property
+    def slot3(self) -> _SlotTypeBattery:
+        return _SlotTypeBattery(self, 3)
+
+    @property
+    def slot4(self) -> _SlotTypeBattery:
+        return _SlotTypeBattery(self, 4)
+
+    @property
+    def slot5(self) -> _SlotTypeCommon:
+        return _SlotTypeCommon(self, 5)
+
+    @property
+    def slot6(self) -> _SlotTypeCommon:
+        return _SlotTypeCommon(self, 6)
+
+    @property
+    def slot7(self) -> _SlotTypeCommon:
+        return _SlotTypeCommon(self, 7)
+
+    @property
+    def slot8(self) -> _SlotTypeCommon:
+        return _SlotTypeCommon(self, 8)
+
+    @property
+    def slot9(self) -> _SlotTypeCommon:
+        return _SlotTypeCommon(self, 9)
+
+
+class _Rover_MkIs(_BaseStructures, _Ons):
+    _hash: int = -2049946335
+    _prefab_name: int = "Rover_MkI"
+
+    def __getitem__(self, name: str | int | float) -> "_Rover_MkIs":
+        return _Rover_MkIs(name)
+
+    @property
+    def Average(self) -> Rover_MkI:
+        return Rover_MkI(name=self._name, batch_mode=LogicBatchMethod.Average)
+
+    @property
+    def Minimum(self) -> Rover_MkI:
+        return Rover_MkI(name=self._name, batch_mode=LogicBatchMethod.Minimum)
+
+    @property
+    def Maximum(self) -> Rover_MkI:
+        return Rover_MkI(name=self._name, batch_mode=LogicBatchMethod.Maximum)
+
+    @property
+    def Sum(self) -> Rover_MkI:
+        return Rover_MkI(name=self._name, batch_mode=LogicBatchMethod.Sum)
+
+    @property
+    def Power(self) -> _DevicesLogicType:
+        return _DevicesLogicType(self, _LT.Power)
+
+    @property
+    def slot0(self) -> _SlotTypeCommons:
+        return _SlotTypeCommons(self, 0)
+
+    @property
+    def slot1(self) -> _SlotTypeCommons:
+        return _SlotTypeCommons(self, 1)
+
+    @property
+    def slot10(self) -> _SlotTypeCommons:
+        return _SlotTypeCommons(self, 10)
+
+    @property
+    def slot2(self) -> _SlotTypeBatteries:
+        return _SlotTypeBatteries(self, 2)
+
+    @property
+    def slot3(self) -> _SlotTypeBatteries:
+        return _SlotTypeBatteries(self, 3)
+
+    @property
+    def slot4(self) -> _SlotTypeBatteries:
+        return _SlotTypeBatteries(self, 4)
+
+    @property
+    def slot5(self) -> _SlotTypeCommons:
+        return _SlotTypeCommons(self, 5)
+
+    @property
+    def slot6(self) -> _SlotTypeCommons:
+        return _SlotTypeCommons(self, 6)
+
+    @property
+    def slot7(self) -> _SlotTypeCommons:
+        return _SlotTypeCommons(self, 7)
+
+    @property
+    def slot8(self) -> _SlotTypeCommons:
+        return _SlotTypeCommons(self, 8)
+
+    @property
+    def slot9(self) -> _SlotTypeCommons:
+        return _SlotTypeCommons(self, 9)
+
+
+Rover_MkIs: _Rover_MkIs = _Rover_MkIs()
+
+
 class SDBHopper(_BaseStructure, _ClearMemory, _ImportCount, _Open):
     _hash: int = -1875856925
     _prefab_name: int = "StructureSDBHopper"
@@ -24514,6 +27166,10 @@ class SmallSatelliteDish(
         pass
 
     @property
+    def ContactSlotIndex(self) -> float:
+        return _DeviceLogicType(self, _LT.ContactSlotIndex)
+
+    @property
     def ContactTypeId(self) -> float:
         return _DeviceLogicType(self, _LT.ContactTypeId)
 
@@ -24586,6 +27242,10 @@ class _SmallSatelliteDishs(
     @BestContactFilter.setter
     def BestContactFilter(self, value: int | float):
         pass
+
+    @property
+    def ContactSlotIndex(self) -> _DevicesLogicType:
+        return _DevicesLogicType(self, _LT.ContactSlotIndex)
 
     @property
     def ContactTypeId(self) -> _DevicesLogicType:
@@ -26173,6 +28833,46 @@ class _StirlingEngines(
 StirlingEngines: _StirlingEngines = _StirlingEngines()
 
 
+class StopWatch(_BaseStructure, _Activate, _Error, _Power):
+    _hash: int = -1527229051
+    _prefab_name: int = "StopWatch"
+
+    @property
+    def Time(self) -> float:
+        return _DeviceLogicType(self, _LT.Time)
+
+
+class _StopWatchs(_BaseStructures, _Activates, _Errors, _Powers):
+    _hash: int = -1527229051
+    _prefab_name: int = "StopWatch"
+
+    def __getitem__(self, name: str | int | float) -> "_StopWatchs":
+        return _StopWatchs(name)
+
+    @property
+    def Average(self) -> StopWatch:
+        return StopWatch(name=self._name, batch_mode=LogicBatchMethod.Average)
+
+    @property
+    def Minimum(self) -> StopWatch:
+        return StopWatch(name=self._name, batch_mode=LogicBatchMethod.Minimum)
+
+    @property
+    def Maximum(self) -> StopWatch:
+        return StopWatch(name=self._name, batch_mode=LogicBatchMethod.Maximum)
+
+    @property
+    def Sum(self) -> StopWatch:
+        return StopWatch(name=self._name, batch_mode=LogicBatchMethod.Sum)
+
+    @property
+    def Time(self) -> _DevicesLogicType:
+        return _DevicesLogicType(self, _LT.Time)
+
+
+StopWatchs: _StopWatchs = _StopWatchs()
+
+
 class SuitStorage(_BaseStructure, _Error, _Maximum, _Power, _Ratio, _SettingW):
     _hash: int = 255034731
     _prefab_name: int = "StructureSuitStorage"
@@ -26251,6 +28951,312 @@ class _SuitStorages(_BaseStructures, _Errors, _Maximums, _Powers, _Ratios, _Sett
 
 
 SuitStorages: _SuitStorages = _SuitStorages()
+
+
+class SuitStorageFrame(_BaseStructure, _Error, _Maximum, _Power, _Ratio, _SettingW):
+    _hash: int = -504802150
+    _prefab_name: int = "StructureSuitStorageFrame"
+
+    @property
+    def slot0(self) -> _SlotTypeHelmet:
+        return _SlotTypeHelmet(self, 0)
+
+    @property
+    def Helmet(self) -> _SlotTypeHelmet:
+        return self.slot0
+
+    @property
+    def slot1(self) -> _SlotTypeSuit:
+        return _SlotTypeSuit(self, 1)
+
+    @property
+    def Suit(self) -> _SlotTypeSuit:
+        return self.slot1
+
+    @property
+    def slot2(self) -> _SlotTypeBack:
+        return _SlotTypeBack(self, 2)
+
+    @property
+    def Back(self) -> _SlotTypeBack:
+        return self.slot2
+
+
+class _SuitStorageFrames(
+    _BaseStructures, _Errors, _Maximums, _Powers, _Ratios, _SettingWs
+):
+    _hash: int = -504802150
+    _prefab_name: int = "StructureSuitStorageFrame"
+
+    def __getitem__(self, name: str | int | float) -> "_SuitStorageFrames":
+        return _SuitStorageFrames(name)
+
+    @property
+    def Average(self) -> SuitStorageFrame:
+        return SuitStorageFrame(name=self._name, batch_mode=LogicBatchMethod.Average)
+
+    @property
+    def Minimum(self) -> SuitStorageFrame:
+        return SuitStorageFrame(name=self._name, batch_mode=LogicBatchMethod.Minimum)
+
+    @property
+    def Maximum(self) -> SuitStorageFrame:
+        return SuitStorageFrame(name=self._name, batch_mode=LogicBatchMethod.Maximum)
+
+    @property
+    def Sum(self) -> SuitStorageFrame:
+        return SuitStorageFrame(name=self._name, batch_mode=LogicBatchMethod.Sum)
+
+    @property
+    def slot0(self) -> _SlotTypeHelmets:
+        return _SlotTypeHelmets(self, 0)
+
+    @property
+    def Helmet(self) -> _SlotTypeHelmets:
+        return self.slot0
+
+    @property
+    def slot1(self) -> _SlotTypeSuits:
+        return _SlotTypeSuits(self, 1)
+
+    @property
+    def Suit(self) -> _SlotTypeSuits:
+        return self.slot1
+
+    @property
+    def slot2(self) -> _SlotTypeBacks:
+        return _SlotTypeBacks(self, 2)
+
+    @property
+    def Back(self) -> _SlotTypeBacks:
+        return self.slot2
+
+
+SuitStorageFrames: _SuitStorageFrames = _SuitStorageFrames()
+
+
+class SuitStorageLocker(_BaseStructure, _Error, _Maximum, _Power, _Ratio, _SettingW):
+    _hash: int = -346183425
+    _prefab_name: int = "StructureSuitStorageLocker"
+
+    @property
+    def slot0(self) -> _SlotTypeHelmet:
+        return _SlotTypeHelmet(self, 0)
+
+    @property
+    def Helmet(self) -> _SlotTypeHelmet:
+        return self.slot0
+
+    @property
+    def slot1(self) -> _SlotTypeSuit:
+        return _SlotTypeSuit(self, 1)
+
+    @property
+    def Suit(self) -> _SlotTypeSuit:
+        return self.slot1
+
+    @property
+    def slot2(self) -> _SlotTypeBack:
+        return _SlotTypeBack(self, 2)
+
+    @property
+    def Back(self) -> _SlotTypeBack:
+        return self.slot2
+
+
+class _SuitStorageLockers(
+    _BaseStructures, _Errors, _Maximums, _Powers, _Ratios, _SettingWs
+):
+    _hash: int = -346183425
+    _prefab_name: int = "StructureSuitStorageLocker"
+
+    def __getitem__(self, name: str | int | float) -> "_SuitStorageLockers":
+        return _SuitStorageLockers(name)
+
+    @property
+    def Average(self) -> SuitStorageLocker:
+        return SuitStorageLocker(name=self._name, batch_mode=LogicBatchMethod.Average)
+
+    @property
+    def Minimum(self) -> SuitStorageLocker:
+        return SuitStorageLocker(name=self._name, batch_mode=LogicBatchMethod.Minimum)
+
+    @property
+    def Maximum(self) -> SuitStorageLocker:
+        return SuitStorageLocker(name=self._name, batch_mode=LogicBatchMethod.Maximum)
+
+    @property
+    def Sum(self) -> SuitStorageLocker:
+        return SuitStorageLocker(name=self._name, batch_mode=LogicBatchMethod.Sum)
+
+    @property
+    def slot0(self) -> _SlotTypeHelmets:
+        return _SlotTypeHelmets(self, 0)
+
+    @property
+    def Helmet(self) -> _SlotTypeHelmets:
+        return self.slot0
+
+    @property
+    def slot1(self) -> _SlotTypeSuits:
+        return _SlotTypeSuits(self, 1)
+
+    @property
+    def Suit(self) -> _SlotTypeSuits:
+        return self.slot1
+
+    @property
+    def slot2(self) -> _SlotTypeBacks:
+        return _SlotTypeBacks(self, 2)
+
+    @property
+    def Back(self) -> _SlotTypeBacks:
+        return self.slot2
+
+
+SuitStorageLockers: _SuitStorageLockers = _SuitStorageLockers()
+
+
+class SuperLargeDirectHeatExchangeGastoLiquid(
+    _BaseStructure, _Maximum, _Ratio, _SettingW
+):
+    _hash: int = 1905804401
+    _prefab_name: int = "StructureSuperLargeDirectHeatExchangeGastoLiquid"
+
+
+class _SuperLargeDirectHeatExchangeGastoLiquids(
+    _BaseStructures, _Maximums, _Ratios, _SettingWs
+):
+    _hash: int = 1905804401
+    _prefab_name: int = "StructureSuperLargeDirectHeatExchangeGastoLiquid"
+
+    def __getitem__(
+        self, name: str | int | float
+    ) -> "_SuperLargeDirectHeatExchangeGastoLiquids":
+        return _SuperLargeDirectHeatExchangeGastoLiquids(name)
+
+    @property
+    def Average(self) -> SuperLargeDirectHeatExchangeGastoLiquid:
+        return SuperLargeDirectHeatExchangeGastoLiquid(
+            name=self._name, batch_mode=LogicBatchMethod.Average
+        )
+
+    @property
+    def Minimum(self) -> SuperLargeDirectHeatExchangeGastoLiquid:
+        return SuperLargeDirectHeatExchangeGastoLiquid(
+            name=self._name, batch_mode=LogicBatchMethod.Minimum
+        )
+
+    @property
+    def Maximum(self) -> SuperLargeDirectHeatExchangeGastoLiquid:
+        return SuperLargeDirectHeatExchangeGastoLiquid(
+            name=self._name, batch_mode=LogicBatchMethod.Maximum
+        )
+
+    @property
+    def Sum(self) -> SuperLargeDirectHeatExchangeGastoLiquid:
+        return SuperLargeDirectHeatExchangeGastoLiquid(
+            name=self._name, batch_mode=LogicBatchMethod.Sum
+        )
+
+
+SuperLargeDirectHeatExchangeGastoLiquids: _SuperLargeDirectHeatExchangeGastoLiquids = (
+    _SuperLargeDirectHeatExchangeGastoLiquids()
+)
+
+
+class SuperLargeDirectHeatExchangeGastoGas(_BaseStructure, _Maximum, _Ratio, _SettingW):
+    _hash: int = -257115623
+    _prefab_name: int = "StructureSuperLargeDirectHeatExchangeGastoGas"
+
+
+class _SuperLargeDirectHeatExchangeGastoGass(
+    _BaseStructures, _Maximums, _Ratios, _SettingWs
+):
+    _hash: int = -257115623
+    _prefab_name: int = "StructureSuperLargeDirectHeatExchangeGastoGas"
+
+    def __getitem__(
+        self, name: str | int | float
+    ) -> "_SuperLargeDirectHeatExchangeGastoGass":
+        return _SuperLargeDirectHeatExchangeGastoGass(name)
+
+    @property
+    def Average(self) -> SuperLargeDirectHeatExchangeGastoGas:
+        return SuperLargeDirectHeatExchangeGastoGas(
+            name=self._name, batch_mode=LogicBatchMethod.Average
+        )
+
+    @property
+    def Minimum(self) -> SuperLargeDirectHeatExchangeGastoGas:
+        return SuperLargeDirectHeatExchangeGastoGas(
+            name=self._name, batch_mode=LogicBatchMethod.Minimum
+        )
+
+    @property
+    def Maximum(self) -> SuperLargeDirectHeatExchangeGastoGas:
+        return SuperLargeDirectHeatExchangeGastoGas(
+            name=self._name, batch_mode=LogicBatchMethod.Maximum
+        )
+
+    @property
+    def Sum(self) -> SuperLargeDirectHeatExchangeGastoGas:
+        return SuperLargeDirectHeatExchangeGastoGas(
+            name=self._name, batch_mode=LogicBatchMethod.Sum
+        )
+
+
+SuperLargeDirectHeatExchangeGastoGass: _SuperLargeDirectHeatExchangeGastoGass = (
+    _SuperLargeDirectHeatExchangeGastoGass()
+)
+
+
+class SuperLargeDirectHeatExchangeLiquidToLiquid(
+    _BaseStructure, _Maximum, _Ratio, _SettingW
+):
+    _hash: int = 223034547
+    _prefab_name: int = "StructureSuperLargeDirectHeatExchangeLiquidToLiquid"
+
+
+class _SuperLargeDirectHeatExchangeLiquidToLiquids(
+    _BaseStructures, _Maximums, _Ratios, _SettingWs
+):
+    _hash: int = 223034547
+    _prefab_name: int = "StructureSuperLargeDirectHeatExchangeLiquidToLiquid"
+
+    def __getitem__(
+        self, name: str | int | float
+    ) -> "_SuperLargeDirectHeatExchangeLiquidToLiquids":
+        return _SuperLargeDirectHeatExchangeLiquidToLiquids(name)
+
+    @property
+    def Average(self) -> SuperLargeDirectHeatExchangeLiquidToLiquid:
+        return SuperLargeDirectHeatExchangeLiquidToLiquid(
+            name=self._name, batch_mode=LogicBatchMethod.Average
+        )
+
+    @property
+    def Minimum(self) -> SuperLargeDirectHeatExchangeLiquidToLiquid:
+        return SuperLargeDirectHeatExchangeLiquidToLiquid(
+            name=self._name, batch_mode=LogicBatchMethod.Minimum
+        )
+
+    @property
+    def Maximum(self) -> SuperLargeDirectHeatExchangeLiquidToLiquid:
+        return SuperLargeDirectHeatExchangeLiquidToLiquid(
+            name=self._name, batch_mode=LogicBatchMethod.Maximum
+        )
+
+    @property
+    def Sum(self) -> SuperLargeDirectHeatExchangeLiquidToLiquid:
+        return SuperLargeDirectHeatExchangeLiquidToLiquid(
+            name=self._name, batch_mode=LogicBatchMethod.Sum
+        )
+
+
+SuperLargeDirectHeatExchangeLiquidToLiquids: (
+    _SuperLargeDirectHeatExchangeLiquidToLiquids
+) = _SuperLargeDirectHeatExchangeLiquidToLiquids()
 
 
 class LogicSwitch2(_BaseStructure, _Lock, _Open, _SettingR):
@@ -27899,6 +30905,14 @@ class VendingMachine(
         pass
 
     @property
+    def TargetPrefabHash(self) -> float:
+        return _DeviceLogicType(self, _LT.TargetPrefabHash)
+
+    @property
+    def TargetSlotIndex(self) -> float:
+        return _DeviceLogicType(self, _LT.TargetSlotIndex)
+
+    @property
     def slot0(self) -> _SlotTypeDataDisk:
         return _SlotTypeDataDisk(self, 0)
 
@@ -28358,6 +31372,14 @@ class _VendingMachines(
         pass
 
     @property
+    def TargetPrefabHash(self) -> _DevicesLogicType:
+        return _DevicesLogicType(self, _LT.TargetPrefabHash)
+
+    @property
+    def TargetSlotIndex(self) -> _DevicesLogicType:
+        return _DevicesLogicType(self, _LT.TargetSlotIndex)
+
+    @property
     def slot0(self) -> _SlotTypeDataDisks:
         return _SlotTypeDataDisks(self, 0)
 
@@ -28801,6 +31823,14 @@ class VendingMachineSmall(
         pass
 
     @property
+    def TargetPrefabHash(self) -> float:
+        return _DeviceLogicType(self, _LT.TargetPrefabHash)
+
+    @property
+    def TargetSlotIndex(self) -> float:
+        return _DeviceLogicType(self, _LT.TargetSlotIndex)
+
+    @property
     def slot0(self) -> _SlotTypeDataDisk:
         return _SlotTypeDataDisk(self, 0)
 
@@ -28898,6 +31928,14 @@ class _VendingMachineSmalls(
     @RequestHash.setter
     def RequestHash(self, value: int | float):
         pass
+
+    @property
+    def TargetPrefabHash(self) -> _DevicesLogicType:
+        return _DevicesLogicType(self, _LT.TargetPrefabHash)
+
+    @property
+    def TargetSlotIndex(self) -> _DevicesLogicType:
+        return _DevicesLogicType(self, _LT.TargetSlotIndex)
 
     @property
     def slot0(self) -> _SlotTypeDataDisks:
@@ -29529,6 +32567,10 @@ class WeatherStation(_BaseStructure, _Activate, _Error, _Lock, _ModeR, _Power):
     def NextWeatherEventTime(self) -> float:
         return _DeviceLogicType(self, _LT.NextWeatherEventTime)
 
+    @property
+    def NextWeatherHash(self) -> float:
+        return _DeviceLogicType(self, _LT.NextWeatherHash)
+
 
 class _WeatherStations(_BaseStructures, _Activates, _Errors, _Locks, _ModeRs, _Powers):
     _hash: int = 1997212478
@@ -29556,6 +32598,10 @@ class _WeatherStations(_BaseStructures, _Activates, _Errors, _Locks, _ModeRs, _P
     @property
     def NextWeatherEventTime(self) -> _DevicesLogicType:
         return _DevicesLogicType(self, _LT.NextWeatherEventTime)
+
+    @property
+    def NextWeatherHash(self) -> _DevicesLogicType:
+        return _DevicesLogicType(self, _LT.NextWeatherHash)
 
 
 WeatherStations: _WeatherStations = _WeatherStations()

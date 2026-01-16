@@ -206,10 +206,7 @@ def parse_json_file(json_file: Path) -> dict:
     for page in data["pages"]:
         name = page["Key"]
 
-        if name.startswith("ThingItem"):
-            if "LogicInsert" not in page or not page["LogicInsert"]:
-                continue
-        elif not name.startswith("ThingStructure"):
+        if not "LogicInfo" in page:
             continue
 
         nprops = 0
@@ -229,8 +226,14 @@ def parse_json_file(json_file: Path) -> dict:
 
     for page in pages:
         name = page["Key"]
-        var_name = name.replace("ThingStructure", "")
-        var_name = var_name.replace("ThingItem", "")
+
+        prefixes_to_remove = ["ThingItem", "ThingStructure", "Thing"]
+
+        for prefix in prefixes_to_remove:
+            if name.startswith(prefix):
+                var_name = name[len(prefix) :]
+                break
+
         # print("Generating", var_name)
         prefab_hash = page["PrefabHash"]
         prefab_name = page["PrefabName"]

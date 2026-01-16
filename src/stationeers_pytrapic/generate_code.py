@@ -1,7 +1,7 @@
 import re
 from contextlib import contextmanager
 
-import astroid
+from astroid import nodes
 
 from . import _version, intrinsics, structures_generated, symbols, types
 from .compile_pass import CodeData, CompilerError, CompilerPass, FunctionData
@@ -99,11 +99,11 @@ class CompilerPassGenerateCode(CompilerPass):
 
         self._names = {}
 
-        self.ignore_nodes(astroid.ImportFrom, astroid.Import, astroid.Pass)
+        self.ignore_nodes(nodes.ImportFrom, nodes.Import, nodes.Pass)
         self.functions = {}
 
     def set_name_(
-        self, node: astroid.NodeNG, symbol: IC10Register, identifyer: str | None = None
+        self, node: nodes.NodeNG, symbol: IC10Register, identifyer: str | None = None
     ):
         logger.info("set name %s %s %s", node, symbol, identifyer)
         if identifyer is not None:
@@ -125,9 +125,9 @@ class CompilerPassGenerateCode(CompilerPass):
         return name
 
     def get_intermediate_symbol(self, node) -> str:
-        if isinstance(node.parent, astroid.Assign):
+        if isinstance(node.parent, nodes.Assign):
             target = node.parent.targets[0]
-            if isinstance(target, astroid.AssignName):
+            if isinstance(target, nodes.AssignName):
                 sym = self.data.get_sym_data(target)
                 if not sym.code_expr:
                     sym.code_expr = self.get_register_name()
@@ -144,7 +144,7 @@ class CompilerPassGenerateCode(CompilerPass):
         self._name_counter += 1
         return name
 
-    def get_name(self, node: astroid.NodeNG, identifyer: str | None = None) -> str:
+    def get_name(self, node: nodes.NodeNG, identifyer: str | None = None) -> str:
         return self.data.get_sym_data(node)
 
         logger.debug("get name %s %s", node, identifyer)
@@ -182,27 +182,27 @@ class CompilerPassGenerateCode(CompilerPass):
             return name, name2
         return name
 
-    def compile_node(self, node: astroid.NodeNG):
+    def compile_node(self, node: nodes.NodeNG):
         if not node._ndata.is_compiled:
             self._visit_node(node)
             node._ndata.is_compiled = True
         return node._ndata.result
 
-    def handle_not_implemented(self, node: astroid.NodeNG):
+    def handle_not_implemented(self, node: nodes.NodeNG):
         comment = f"not implemented: {type(node).__name__} at line {node.lineno}"
         node._ndata.add(IC10("", comment=comment))
 
-    def handle_module(self, node: astroid.Module):
+    def handle_module(self, node: nodes.Module):
         for stmt in node.body:
             self._visit_node(stmt)
 
-    def handle_arguments(self, node: astroid.Arguments):
+    def handle_arguments(self, node: nodes.Arguments):
         pass
 
-    def handle_global(self, node: astroid.Global):
+    def handle_global(self, node: nodes.Global):
         pass  # nothing todo, astroid is correctly handling the scope() of variables declared global
 
-    def handle_attribute(self, node: astroid.Attribute):
+    def handle_attribute(self, node: nodes.Attribute):
         expr = self.compile_node(node.expr)
         attrname = node.attrname
         data = node._ndata
@@ -238,7 +238,7 @@ class CompilerPassGenerateCode(CompilerPass):
         else:
             data.result = attr
 
-    def handle_call(self, node: astroid.Call):
+    def handle_call(self, node: nodes.Call):
         data = node._ndata
 
         fname = get_function_name(node.func)
@@ -310,8 +310,8 @@ class CompilerPassGenerateCode(CompilerPass):
                 data.result = func_data.sym_data
             else:
                 if (
-                    isinstance(node.parent, astroid.Assign)
-                    and isinstance(node.parent.targets[0], astroid.AssignName)
+                    isinstance(node.parent, nodes.Assign)
+                    and isinstance(node.parent.targets[0], nodes.AssignName)
                     and node.parent.value is node
                 ):
                     symbol = self.data.get_sym_data(node.parent.targets[0])
@@ -325,10 +325,10 @@ class CompilerPassGenerateCode(CompilerPass):
                 data.add_end(IC10("get", ["db", _RETURN_VALUE_ADDRESS], symbol))
                 data.result = symbol
 
-    def handle_expr(self, node: astroid.Expr):
+    def handle_expr(self, node: nodes.Expr):
         self._visit_node(node.value)
 
-    def handle_return(self, node: astroid.Return):
+    def handle_return(self, node: nodes.Return):
         func_node = get_function_parent(node)
         fname = get_function_name(func_node)
         func_data = self.data.functions[fname]
@@ -351,19 +351,19 @@ class CompilerPassGenerateCode(CompilerPass):
             label = fname.replace("_", ".") + "end"
             data.add(IC10("j", [label], indent=-1))
 
-    def handle_continue(self, node: astroid.Continue):
-        while not isinstance(node.parent, (astroid.While, astroid.For)):
+    def handle_continue(self, node: nodes.Continue):
+        while not isinstance(node.parent, (nodes.While, nodes.For)):
             node = node.parent
         start_label = node.parent._ndata.start_label
         node._ndata.add(IC10("j", [start_label]))
 
-    def handle_break(self, node: astroid.Break):
-        while not isinstance(node.parent, (astroid.While, astroid.For)):
+    def handle_break(self, node: nodes.Break):
+        while not isinstance(node.parent, (nodes.While, nodes.For)):
             node = node.parent
         end_label = node.parent._ndata.end_label
         node._ndata.add(IC10("j", [end_label]))
 
-    def handle_name(self, node: astroid.Name):
+    def handle_name(self, node: nodes.Name):
         # todo: detect if name is in locals/globals
         # throw proper error if not
         name = node.name
@@ -388,7 +388,7 @@ class CompilerPassGenerateCode(CompilerPass):
             sym_data = self.data.get_sym_data(node)
             node._ndata.result = sym_data
 
-    def handle_const(self, node: astroid.Const):
+    def handle_const(self, node: nodes.Const):
         data = node._ndata
         if isinstance(node.value, bool):
             data.result = IC10Operand(int(node.value))
@@ -401,11 +401,11 @@ class CompilerPassGenerateCode(CompilerPass):
         else:
             raise CompilerError(f"Unsupported constant type: {type(node.value)}", node)
 
-    def handle_function_def(self, node: astroid.FunctionDef):
+    def handle_function_def(self, node: nodes.FunctionDef):
         fname = get_function_name(node)
         self.functions[fname] = node
 
-    def compile_function(self, node: astroid.FunctionDef):
+    def compile_function(self, node: nodes.FunctionDef):
         data = node._ndata
         if data.code[""]:
             # function already compiled
@@ -473,10 +473,10 @@ class CompilerPassGenerateCode(CompilerPass):
             not func_data.can_inline or not self.data.options.inline_functions
         ):
             last_node = node.body[-1]
-            if isinstance(last_node, astroid.Expr):
+            if isinstance(last_node, nodes.Expr):
                 last_node = last_node.value
 
-            if isinstance(last_node, astroid.Call):
+            if isinstance(last_node, nodes.Call):
                 ndata = last_node._ndata
                 sd = self.data.get_sym_data(last_node.func)
                 if sd.is_read != 1 or not self.data.options.inline_functions:
@@ -494,14 +494,14 @@ class CompilerPassGenerateCode(CompilerPass):
         ):
             data.add_end(IC10("j", ["ra"], indent=1))
 
-    def handle_assign_name(self, node: astroid.AssignName):
+    def handle_assign_name(self, node: nodes.AssignName):
         data = node._ndata
         sym = self.data.get_sym_data(node.targets[0])
         node.targets[0]._ndata.result = sym
         data.result = sym
         # list(node.get_children())[0]._ndata.result = sym
 
-    def handle_assign(self, node: astroid.Assign):
+    def handle_assign(self, node: nodes.Assign):
         target = node.targets[0]
         data = node._ndata
 
@@ -515,7 +515,7 @@ class CompilerPassGenerateCode(CompilerPass):
         if len(node.targets) != 1:
             raise NotImplementedError("Multiple assignment targets are not supported")
 
-        elif isinstance(target, astroid.AssignName):
+        elif isinstance(target, nodes.AssignName):
             value = self.compile_node(node.value)
             value_name = value.__name__ if isinstance(value, type) else value
             if isinstance(value, IC10Instruction):
@@ -563,7 +563,7 @@ class CompilerPassGenerateCode(CompilerPass):
             else:
                 sym_data = self.data.get_sym_data(target)
                 can_assign_directly = not sym_data.is_overwritten
-                if isinstance(node.value, astroid.Call):
+                if isinstance(node.value, nodes.Call):
                     can_assign_directly = can_assign_directly and is_builtin_function(
                         node.value.func.name
                     )
@@ -580,12 +580,12 @@ class CompilerPassGenerateCode(CompilerPass):
                     data.result = sym_data
             target._ndata.result = data.result
             target._ndata.is_compiled = True
-        elif isinstance(target, astroid.AssignAttr):
+        elif isinstance(target, nodes.AssignAttr):
             rhs = self.compile_node(list(node.get_children())[1])
             lhs = self.compile_node(target)
             expr = lhs._set(rhs)
             data.add(expr)
-        elif isinstance(target, astroid.Subscript):
+        elif isinstance(target, nodes.Subscript):
             rhs = self.compile_node(node.value)
             lhs = self.compile_node(target.value)
             slice_ = self.compile_node(target.slice)
@@ -596,7 +596,7 @@ class CompilerPassGenerateCode(CompilerPass):
         else:
             raise CompilerError(f"Unsupported assignment target: {type(target)}")
 
-    def handle_assign_attr(self, node: astroid.AssignAttr):
+    def handle_assign_attr(self, node: nodes.AssignAttr):
         expr = self.compile_node(node.expr)
         if not hasattr(expr, node.attrname):
             raise CompilerError(
@@ -609,7 +609,7 @@ class CompilerPassGenerateCode(CompilerPass):
 
         node._ndata.result = val
 
-    def handle_subscript(self, node: astroid.Subscript):
+    def handle_subscript(self, node: nodes.Subscript):
         from .types import _StackValue
 
         value = self.compile_node(node.value)
@@ -622,9 +622,9 @@ class CompilerPassGenerateCode(CompilerPass):
             res = sym
         data.result = res
 
-    def handle_compare(self, node: astroid.Compare):
+    def handle_compare(self, node: nodes.Compare):
         if (
-            isinstance(node.parent, (astroid.If, astroid.While))
+            isinstance(node.parent, (nodes.If, nodes.While))
             and node == node.parent.test
         ):
             # no need to calculate comparison result, it's done by the branch instruction of the parent
@@ -638,7 +638,7 @@ class CompilerPassGenerateCode(CompilerPass):
         data.add(IC10(instruction, [left, right], sym))
         data.result = sym
 
-    def handle_ifexp(self, node: astroid.IfExp):
+    def handle_ifexp(self, node: nodes.IfExp):
         test = self.compile_node(node.test)
         left = self.compile_node(node.body)
         right = self.compile_node(node.orelse)
@@ -648,7 +648,7 @@ class CompilerPassGenerateCode(CompilerPass):
         data.result = sym
         data.add_end(IC10("select", [test, left, right], sym))
 
-    def handle_if(self, node: astroid.If):
+    def handle_if(self, node: nodes.If):
         else_label, end_label = self.get_label("else", "end")
 
         test = self.compile_node(node.test)
@@ -664,19 +664,19 @@ class CompilerPassGenerateCode(CompilerPass):
                 emit_else = False
             else:
                 emit_if = False
-        elif isinstance(node.test, astroid.Compare):
+        elif isinstance(node.test, nodes.Compare):
             left = self.compile_node(node.test.left)
             right = self.compile_node(node.test.ops[0][1])
             cmp_op = node.test.ops[0][0]
 
             instruction = "b" + get_negated_comparison_suffix(cmp_op)
             data.add(IC10(instruction, [left, right, else_label]))
-        elif isinstance(node.test, astroid.Const):
+        elif isinstance(node.test, nodes.Const):
             if node.test.value:
                 emit_else = False
             else:
                 emit_if = False
-        elif isinstance(node.test, (astroid.BoolOp, astroid.Name, astroid.Attribute)):
+        elif isinstance(node.test, (nodes.BoolOp, nodes.Name, nodes.Attribute)):
             data.add(IC10("beqz", [test, else_label]))
         else:
             raise NotImplementedError(f"Unsupported if test: {type(node.test)}")
@@ -700,7 +700,7 @@ class CompilerPassGenerateCode(CompilerPass):
 
         data.add_end(IC10(f"{end_label}:", indent=-1))
 
-    def handle_unop(self, node: astroid.UnaryOp):
+    def handle_unop(self, node: nodes.UnaryOp):
         data = node._ndata
 
         if data.is_constant:
@@ -719,7 +719,7 @@ class CompilerPassGenerateCode(CompilerPass):
         else:
             data.add_end(IC10(opcode, [opname], sym))
 
-    def handle_immediate_op(self, node: astroid.AugAssign):
+    def handle_immediate_op(self, node: nodes.AugAssign):
         if node.op[-1] != "=":
             raise CompilerError(f"Unsupported immediate operation: {node.op}", node)
         op = node.op[:-1]
@@ -731,7 +731,7 @@ class CompilerPassGenerateCode(CompilerPass):
         data.result = sym
         data.add_end(IC10(instruction, [left_name, right_name], left_name))
 
-    def handle_binop(self, node: astroid.BinOp):
+    def handle_binop(self, node: nodes.BinOp):
         data = node._ndata
 
         if data.is_constant:
@@ -746,19 +746,19 @@ class CompilerPassGenerateCode(CompilerPass):
         if instruction is None:
             raise CompilerError(f"Unsupported binary operation: {op}", node)
 
-        if isinstance(left, astroid.Const) and isinstance(right, astroid.Const):
+        if isinstance(left, nodes.Const) and isinstance(right, nodes.Const):
             data.result = IC10Operand(func(left.value, right.value))
         else:
             sym = self.get_intermediate_symbol(node)
             data.result = sym
             data.add_end(IC10(instruction, [left_name, right_name], sym))
 
-    def handle_for(self, node: astroid.For):
+    def handle_for(self, node: nodes.For):
         iter_ = node.iter
 
         if (
-            not isinstance(iter_, astroid.Call)
-            or not isinstance(iter_.func, astroid.Name)
+            not isinstance(iter_, nodes.Call)
+            or not isinstance(iter_.func, nodes.Name)
             or iter_.func.name != "range"
         ):
             raise CompilerError(
@@ -805,7 +805,7 @@ class CompilerPassGenerateCode(CompilerPass):
         data.add_end(IC10("j", [for_label], indent=1))
         data.add_end(IC10(f"{end_label}:"))
 
-    def handle_while(self, node: astroid.While):
+    def handle_while(self, node: nodes.While):
         test = node.test
         while_label, end_label = self.get_label("while", "while.end")
         data = node._ndata
@@ -814,14 +814,14 @@ class CompilerPassGenerateCode(CompilerPass):
         data.end_label = end_label
 
         data.add(IC10(f"{while_label}:"))
-        if isinstance(test, astroid.Compare):
+        if isinstance(test, nodes.Compare):
             left = self.compile_node(test.left)
             cmp_op, right_node = test.ops[0]
             right = self.compile_node(right_node)
 
             instruction = "b" + get_negated_comparison_suffix(cmp_op)
             data.add(IC10(instruction, [left, right, end_label]))
-        elif isinstance(test, astroid.Const):
+        elif isinstance(test, nodes.Const):
             if not test.value:
                 return
         else:
@@ -865,7 +865,7 @@ class CompilerPassGatherCode(CompilerPass):
         yield
         self._indent_level -= num_indents
 
-    def gather_code(self, node: astroid.NodeNG, special_nodes=None):
+    def gather_code(self, node: nodes.NodeNG, special_nodes=None):
         data = node._ndata
         special_nodes = special_nodes or []
 
@@ -874,7 +874,7 @@ class CompilerPassGatherCode(CompilerPass):
                 self.add_line(line)
 
         do_indent = isinstance(
-            node, (astroid.FunctionDef, astroid.While, astroid.For, astroid.If)
+            node, (nodes.FunctionDef, nodes.While, nodes.For, nodes.If)
         )
 
         with self.indent(do_indent):
@@ -885,16 +885,16 @@ class CompilerPassGatherCode(CompilerPass):
             for line in data.code.get("else", []):
                 self.add_line(line)
 
-            if isinstance(node, astroid.If):
+            if isinstance(node, nodes.If):
                 for child in node.orelse:
                     self._visit_node(child)
-            if isinstance(node, astroid.IfExp):
+            if isinstance(node, nodes.IfExp):
                 self._visit_node(node.orelse)
 
         for line in data.code.get("end", []):
             self.add_line(line)
 
-    def handle_node(self, node: astroid.NodeNG):
+    def handle_node(self, node: nodes.NodeNG):
         if not hasattr(node, "_ndata"):
             return
         data = node._ndata
@@ -903,11 +903,11 @@ class CompilerPassGatherCode(CompilerPass):
 
         old_target = self._target
 
-        if isinstance(node, astroid.FunctionDef):
+        if isinstance(node, nodes.FunctionDef):
             fname = get_function_name(node)
             self._target = self.data.functions[fname]
 
-        if isinstance(node, astroid.Call):
+        if isinstance(node, nodes.Call):
             fname = get_function_name(node.func)
             if not is_builtin_name(fname):
                 if fname not in self.data.functions:
@@ -924,7 +924,7 @@ class CompilerPassGatherCode(CompilerPass):
         if isinstance(data.code, str):
             data.code = [data.code]
 
-        if isinstance(node, astroid.While):
+        if isinstance(node, nodes.While):
             if data.code[""][0].op.endswith(":"):
                 # emit while loop start label explicitly now, before any comparison is generated
                 self.add_line(data.code[""][0])
@@ -935,47 +935,47 @@ class CompilerPassGatherCode(CompilerPass):
             special_nodes.add(node.test)
             self._visit_node(node.test)
 
-        if isinstance(node, astroid.Assign):
+        if isinstance(node, nodes.Assign):
             special_nodes.add(node.value)
             self._visit_node(node.value)
             target = node.targets[0]
             special_nodes.add(target)
             self._visit_node(target)
 
-        if isinstance(node, astroid.Subscript):
+        if isinstance(node, nodes.Subscript):
             special_nodes.add(node.value)
             self._visit_node(node.value)
             special_nodes.add(node.slice)
             self._visit_node(node.slice)
 
-        if isinstance(node, astroid.BinOp):
+        if isinstance(node, nodes.BinOp):
             for child in node.get_children():
                 special_nodes.add(child)
                 self._visit_node(child)
 
-        if isinstance(node, astroid.If):
+        if isinstance(node, nodes.If):
             for child in node.orelse:
                 special_nodes.add(child)
 
-        if isinstance(node, astroid.Compare):
+        if isinstance(node, nodes.Compare):
             special_nodes.add(node.left)
             self._visit_node(node.left)
             for _, right in node.ops:
                 special_nodes.add(right)
                 self._visit_node(right)
             # if (
-            #     isinstance(node.parent, (astroid.If, astroid.While))
+            #     isinstance(node.parent, (nodes.If, nodes.While))
             #     and node == node.parent.test
             # ):
             #     # no need to calculate comparison result, it's done by the branch instruction of the parent
             #     data.code[""] = []
             #
-        if isinstance(node, astroid.Call):
+        if isinstance(node, nodes.Call):
             for arg in node.args:
                 special_nodes.add(arg)
                 self._visit_node(arg)
 
-        if isinstance(node, astroid.Return) and node.value is not None:
+        if isinstance(node, nodes.Return) and node.value is not None:
             special_nodes.add(node.value)
             self._visit_node(node.value)
 

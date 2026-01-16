@@ -282,6 +282,8 @@ class LogicType(_IntEnum):
     Setpoint = 278
     Reset = 279
     StackSize = 280
+    NextWeatherHash = 281
+    ContactSlotIndex = 282
 
 
 class LogicSlotType(_IntEnum):
@@ -316,6 +318,8 @@ class LogicSlotType(_IntEnum):
     Mode = 28
     MaturityRatio = 29
     SeedingRatio = 30
+    FreeSlots = 31
+    TotalSlots = 32
 
 
 class LogicReagentMode(_IntEnum):
@@ -641,12 +645,8 @@ class DisplayMode(_IntEnum):
     Litres = 12
     Mol = 13
     Pa = 14
-
-
-class ContactTier(_IntEnum):
-    Close = 0
-    Medium = 1
-    Far = 2
+    Newtons = 15
+    Degrees = 16
 
 
 class SettingDisplayMode(_IntEnum):
@@ -2941,6 +2941,22 @@ class _GenericStructure:
     @StackSize.setter
     def StackSize(self, value):
         return self.__setattr__("StackSize", value)
+
+    @property
+    def NextWeatherHash(self) -> "stationeers_pytrapic.types._DeviceLogicType":
+        return self.__getattr__("NextWeatherHash")
+
+    @NextWeatherHash.setter
+    def NextWeatherHash(self, value):
+        return self.__setattr__("NextWeatherHash", value)
+
+    @property
+    def ContactSlotIndex(self) -> "stationeers_pytrapic.types._DeviceLogicType":
+        return self.__getattr__("ContactSlotIndex")
+
+    @ContactSlotIndex.setter
+    def ContactSlotIndex(self, value):
+        return self.__setattr__("ContactSlotIndex", value)
 
 
 class _GenericStructures:
@@ -5242,3 +5258,19 @@ class _GenericStructures:
     @StackSize.setter
     def StackSize(self, value):
         return self.__setattr__("StackSize", value)
+
+    @property
+    def NextWeatherHash(self) -> "stationeers_pytrapic.types._DevicesLogicType":
+        return self.__getattr__("NextWeatherHash")
+
+    @NextWeatherHash.setter
+    def NextWeatherHash(self, value):
+        return self.__setattr__("NextWeatherHash", value)
+
+    @property
+    def ContactSlotIndex(self) -> "stationeers_pytrapic.types._DevicesLogicType":
+        return self.__getattr__("ContactSlotIndex")
+
+    @ContactSlotIndex.setter
+    def ContactSlotIndex(self, value):
+        return self.__setattr__("ContactSlotIndex", value)

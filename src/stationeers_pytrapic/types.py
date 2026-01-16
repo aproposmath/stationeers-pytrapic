@@ -4,7 +4,7 @@ import sys
 from dataclasses import dataclass, field
 import copy
 
-import astroid
+from astroid import nodes
 
 from .types_generated import *
 from .types_generated import _GenericStructure, _GenericStructures
@@ -22,8 +22,8 @@ class IC10Register:
     _color: int = -1
     _is_intermediate: bool = False
 
-    nodes_reading: list[astroid.NodeNG] = field(default_factory=list)
-    nodes_writing: list[astroid.NodeNG] = field(default_factory=list)
+    nodes_reading: list[nodes.NodeNG] = field(default_factory=list)
+    nodes_writing: list[nodes.NodeNG] = field(default_factory=list)
 
     def __hash__(self):
         return hash((self.code_expr, self.scope))
@@ -125,7 +125,7 @@ class IC10Instruction:
     lineno: int | None = (
         None  # ic10 line number, this is set later and might change during compile passes
     )
-    node: astroid.NodeNG = None
+    node: nodes.NodeNG = None
 
     @property
     def registers(self) -> list[IC10Register]:

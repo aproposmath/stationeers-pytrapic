@@ -1,4 +1,4 @@
-import astroid
+from astroid import nodes
 
 from .compile_pass import CodeData
 from .types import IC10Register, IC10Instruction
@@ -52,7 +52,7 @@ def assign_registers(data: CodeData, code: list[IC10Instruction]):
         for node in func.sym_data.nodes_reading:
             scope = get_scope_name(node)
             scopes = [scope] if scope else []
-            if isinstance(node.scope(), astroid.FunctionDef):
+            if isinstance(node.scope(), nodes.FunctionDef):
                 scopes.append(node.scope().name)
 
             scope = ".".join(scopes)

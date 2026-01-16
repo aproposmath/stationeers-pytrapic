@@ -2,6 +2,7 @@ import glob
 from pathlib import Path
 
 import astroid
+from astroid import nodes
 import pytest
 from test_cases import run_case
 
@@ -15,7 +16,7 @@ def find_imported_libraries(src):
 
     tree = astroid.parse(src)
     for node in tree.body:
-        if isinstance(node, astroid.ImportFrom) and node.modname == "library":
+        if isinstance(node, nodes.ImportFrom) and node.modname == "library":
             for name, _ in node.names:
                 libraries[name] = load_library(name)
     return libraries

@@ -2,7 +2,7 @@ import logging
 from dataclasses import dataclass, field
 from typing import Literal
 
-import astroid
+from astroid import nodes
 
 from . import symbols
 from .types import IC10Instruction, IC10Register
@@ -22,7 +22,7 @@ from .utils import (
 
 @dataclass
 class FunctionData:
-    node: astroid.FunctionDef
+    node: nodes.FunctionDef
     sym_data: IC10Register
     code: list[IC10Instruction] = field(default_factory=list)
     args: list[IC10Register] = field(default_factory=list)
@@ -81,7 +81,7 @@ class CompileOptions:
 @dataclass
 class CodeData:
     original_code: list[str]
-    tree: astroid.Module
+    tree: nodes.Module
     options: CompileOptions
     symbols: dict[str, dict[str, IC10Register]]
     register_map: dict[str, str]
@@ -90,10 +90,10 @@ class CodeData:
     constexpr_functions_code: str
     result: dict[str, str | int]
     structures: dict[str, dict[str, object]] = field(default_factory=dict)
-    modules: dict[str, astroid.Module] = field(default_factory=dict)
+    modules: dict[str, nodes.Module] = field(default_factory=dict)
 
     def __init__(
-        self, code: str, tree: astroid.Module, options: CompileOptions, modules=None
+        self, code: str, tree: nodes.Module, options: CompileOptions, modules=None
     ):
         self.original_code = code.splitlines()
         self.tree = tree
@@ -107,7 +107,7 @@ class CodeData:
         self.constexpr_functions_code = None
         self.modules = modules if modules is not None else {}
 
-    def get_tmp_sym_data(self, node: astroid.NodeNG, name: str) -> IC10Register:
+    def get_tmp_sym_data(self, node: nodes.NodeNG, name: str) -> IC10Register:
         scope = get_scope_name(node)
         if scope not in self.symbols:
             self.symbols[scope] = {}
@@ -116,7 +116,7 @@ class CodeData:
         return local_symbols[name]
 
     def get_sym_data(
-        self, node: astroid.AssignName | astroid.Name, new_if_not_existing: bool = False
+        self, node: nodes.AssignName | nodes.Name, new_if_not_existing: bool = False
     ) -> IC10Register:
 
         name = node.name
@@ -137,12 +137,12 @@ class CodeData:
                 )
         return local_symbols[name]
 
-    def add_name(self, node: astroid.FunctionDef | astroid.Name | astroid.AssignName):
+    def add_name(self, node: nodes.FunctionDef | nodes.Name | nodes.AssignName):
         if is_builtin_name(node.name):
             return
         self.get_sym_data(node, new_if_not_existing=True)
 
-    def set_name_read(self, node: astroid.NodeNG):
+    def set_name_read(self, node: nodes.NodeNG):
         if is_builtin_name(node.name):
             return
 
@@ -169,7 +169,7 @@ class NodeData:
     is_used: bool = None
     is_constant: bool = None
     constant_value: str | float | None = None
-    node: astroid.NodeNG = None
+    node: nodes.NodeNG = None
     code_data: CodeData = None
     indent: int = 0
     is_compiled = False
@@ -232,37 +232,37 @@ class CompilerPass:
         self.tree = data.tree
 
         self._handlers = {
-            astroid.Pass: self.handle_pass,
-            astroid.Global: self.handle_global,
-            astroid.Module: self.handle_module,
-            astroid.FunctionDef: self.handle_function_def,
-            astroid.Keyword: self.handle_keyword,
-            astroid.Expr: self.handle_expr,
-            astroid.Import: self.handle_import,
-            astroid.While: self.handle_while,
-            astroid.For: self.handle_for,
-            astroid.IfExp: self.handle_ifexp,
-            astroid.Attribute: self.handle_attribute,
-            astroid.Compare: self.handle_compare,
-            astroid.ImportFrom: self.handle_import_from,
-            astroid.Call: self.handle_call,
-            astroid.Name: self.handle_name,
-            astroid.Const: self.handle_const,
-            astroid.Assign: self.handle_assign,
-            astroid.AssignName: self.handle_assign_name,
-            astroid.AssignAttr: self.handle_assign_attr,
-            astroid.Subscript: self.handle_subscript,
-            astroid.If: self.handle_if,
-            astroid.BinOp: self.handle_binop,
-            astroid.BoolOp: self.handle_binop,
-            astroid.UnaryOp: self.handle_unop,
-            astroid.Arguments: self.handle_arguments,
-            astroid.Return: self.handle_return,
-            astroid.Continue: self.handle_continue,
-            astroid.Break: self.handle_break,
-            astroid.AugAssign: self.handle_immediate_op,
-            astroid.List: self.handle_node,
-            astroid.Decorators: self.handle_decorators,
+            nodes.Pass: self.handle_pass,
+            nodes.Global: self.handle_global,
+            nodes.Module: self.handle_module,
+            nodes.FunctionDef: self.handle_function_def,
+            nodes.Keyword: self.handle_keyword,
+            nodes.Expr: self.handle_expr,
+            nodes.Import: self.handle_import,
+            nodes.While: self.handle_while,
+            nodes.For: self.handle_for,
+            nodes.IfExp: self.handle_ifexp,
+            nodes.Attribute: self.handle_attribute,
+            nodes.Compare: self.handle_compare,
+            nodes.ImportFrom: self.handle_import_from,
+            nodes.Call: self.handle_call,
+            nodes.Name: self.handle_name,
+            nodes.Const: self.handle_const,
+            nodes.Assign: self.handle_assign,
+            nodes.AssignName: self.handle_assign_name,
+            nodes.AssignAttr: self.handle_assign_attr,
+            nodes.Subscript: self.handle_subscript,
+            nodes.If: self.handle_if,
+            nodes.BinOp: self.handle_binop,
+            nodes.BoolOp: self.handle_binop,
+            nodes.UnaryOp: self.handle_unop,
+            nodes.Arguments: self.handle_arguments,
+            nodes.Return: self.handle_return,
+            nodes.Continue: self.handle_continue,
+            nodes.Break: self.handle_break,
+            nodes.AugAssign: self.handle_immediate_op,
+            nodes.List: self.handle_node,
+            nodes.Decorators: self.handle_decorators,
         }
 
     def _log(self, level, *args):
@@ -286,7 +286,7 @@ class CompilerPass:
             if node_type in self._handlers:
                 self._handlers[node_type] = self.handle_ignore
 
-    def _visit_node_recursive(self, node: astroid.NodeNG):
+    def _visit_node_recursive(self, node: nodes.NodeNG):
         self._debug("_visit_node_recursive", node)
         if self.skip_unused_nodes and hasattr(node, "_ndata"):
             if node._ndata.is_used is False:
@@ -296,7 +296,7 @@ class CompilerPass:
         for child in node.get_children():
             self._visit_node_recursive(child)
 
-    def _visit_node(self, node: astroid.NodeNG):
+    def _visit_node(self, node: nodes.NodeNG):
         self._debug("_visit_node", node)
         if self.skip_unused_nodes and hasattr(node, "_ndata"):
             if node._ndata.is_used is False:
@@ -318,7 +318,7 @@ class CompilerPass:
             self._visit_node_recursive(module)
         self._visit_node_recursive(self.tree)
 
-    def handle_arguments(self, node: astroid.Arguments):
+    def handle_arguments(self, node: nodes.Arguments):
         self.handle_node(node)
 
     def handle_node(self, node):
@@ -327,98 +327,98 @@ class CompilerPass:
                 f"Unsupported node type '{type(node)}' in compiler pass '{type(self).__name__}'"
             )
 
-    def handle_pass(self, node: astroid.Pass):
+    def handle_pass(self, node: nodes.Pass):
         self.handle_node(node)
 
-    def handle_module(self, node: astroid.Module):
+    def handle_module(self, node: nodes.Module):
         self.handle_node(node)
 
-    def handle_function_def(self, node: astroid.FunctionDef):
+    def handle_function_def(self, node: nodes.FunctionDef):
         self.handle_node(node)
 
-    def handle_expr(self, node: astroid.Expr):
+    def handle_expr(self, node: nodes.Expr):
         self.handle_node(node)
 
-    def handle_import(self, node: astroid.Import):
+    def handle_import(self, node: nodes.Import):
         self.handle_node(node)
 
-    def handle_while(self, node: astroid.While):
+    def handle_while(self, node: nodes.While):
         self.handle_node(node)
 
-    def handle_for(self, node: astroid.For):
+    def handle_for(self, node: nodes.For):
         self.handle_node(node)
 
-    def handle_ifexp(self, node: astroid.IfExp):
+    def handle_ifexp(self, node: nodes.IfExp):
         self.handle_node(node)
 
-    def handle_keyword(self, node: astroid.Keyword):
+    def handle_keyword(self, node: nodes.Keyword):
         self.handle_node(node)
 
-    def handle_attribute(self, node: astroid.Attribute):
+    def handle_attribute(self, node: nodes.Attribute):
         self.handle_node(node)
 
-    def handle_compare(self, node: astroid.Compare):
+    def handle_compare(self, node: nodes.Compare):
         self.handle_node(node)
 
-    def handle_import_from(self, node: astroid.ImportFrom):
+    def handle_import_from(self, node: nodes.ImportFrom):
         self.handle_node(node)
 
-    def handle_call(self, node: astroid.Call):
+    def handle_call(self, node: nodes.Call):
         self.handle_node(node)
 
-    def handle_name(self, node: astroid.Name):
+    def handle_name(self, node: nodes.Name):
         self.handle_node(node)
 
-    def handle_const(self, node: astroid.Const):
+    def handle_const(self, node: nodes.Const):
         self.handle_node(node)
 
-    def handle_assign_name(self, node: astroid.AssignName):
+    def handle_assign_name(self, node: nodes.AssignName):
         self.handle_node(node)
 
-    def handle_assign_attr(self, node: astroid.AssignAttr):
+    def handle_assign_attr(self, node: nodes.AssignAttr):
         self.handle_node(node)
 
-    def handle_assign(self, node: astroid.Assign):
+    def handle_assign(self, node: nodes.Assign):
         self.handle_node(node)
 
-    def handle_immediate_op(self, node: astroid.AugAssign):
+    def handle_immediate_op(self, node: nodes.AugAssign):
         self.handle_node(node)
 
-    def handle_subscript(self, node: astroid.Subscript):
+    def handle_subscript(self, node: nodes.Subscript):
         self.handle_node(node)
 
-    def handle_if(self, node: astroid.If):
+    def handle_if(self, node: nodes.If):
         self.handle_node(node)
 
-    def handle_binop(self, node: astroid.BinOp):
+    def handle_binop(self, node: nodes.BinOp):
         self.handle_node(node)
 
-    def handle_unop(self, node: astroid.UnaryOp):
+    def handle_unop(self, node: nodes.UnaryOp):
         self.handle_node(node)
 
-    def handle_ignore(self, node: astroid.NodeNG):
+    def handle_ignore(self, node: nodes.NodeNG):
         pass
 
-    def handle_global(self, node: astroid.Global):
+    def handle_global(self, node: nodes.Global):
         self.handle_node(node)
 
-    def handle_return(self, node: astroid.Return):
+    def handle_return(self, node: nodes.Return):
         self.handle_node(node)
 
-    def handle_continue(self, node: astroid.Continue):
+    def handle_continue(self, node: nodes.Continue):
         self.handle_node(node)
 
-    def handle_break(self, node: astroid.Break):
+    def handle_break(self, node: nodes.Break):
         self.handle_node(node)
 
-    def handle_decorators(self, node: astroid.Decorators):
+    def handle_decorators(self, node: nodes.Decorators):
         self.handle_node(node)
 
 
 class CompilerPassSetModuleNames(CompilerPass):
     ignore_unimplemented_nodes = True
 
-    def handle_import_from(self, node: astroid.ImportFrom):
+    def handle_import_from(self, node: nodes.ImportFrom):
         if node.modname != "library":
             return
         for name, alias in node.names:
@@ -437,7 +437,7 @@ class CompilerPassSetModuleNames(CompilerPass):
 
 
 class CompilerPassSetNodeData(CompilerPass):
-    def handle_node(self, node: astroid.NodeNG):
+    def handle_node(self, node: nodes.NodeNG):
         if hasattr(node, "_ndata"):
             raise ValueError(
                 f"Node {node} already has _ndata set. "
@@ -447,20 +447,20 @@ class CompilerPassSetNodeData(CompilerPass):
 
 
 class CompilerPassFindNames(CompilerPass):
-    def handle_node(self, node: astroid.NodeNG):
-        if isinstance(node, (astroid.FunctionDef, astroid.Name, astroid.AssignName)):
+    def handle_node(self, node: nodes.NodeNG):
+        if isinstance(node, (nodes.FunctionDef, nodes.Name, nodes.AssignName)):
             self.data.add_name(node)
 
 
 class CompilerPassBoolOpToBinOp(CompilerPass):
-    def handle_node(self, node: astroid.NodeNG):
+    def handle_node(self, node: nodes.NodeNG):
         pass
 
-    def handle_binop(self, node: astroid.BinOp):
+    def handle_binop(self, node: nodes.BinOp):
         def make_node_from_rest(
-            parent_node: astroid.BoolOp, other: tuple[astroid.NodeNG]
+            parent_node: nodes.BoolOp, other: tuple[nodes.NodeNG]
         ):
-            node = astroid.BinOp(
+            node = nodes.BinOp(
                 parent_node.op,
                 parent_node.lineno,
                 parent_node.col_offset,
@@ -477,7 +477,7 @@ class CompilerPassBoolOpToBinOp(CompilerPass):
         children = tuple(node.get_children())
         for child in children:
             self._visit_node(child)
-        if not isinstance(node, astroid.BoolOp):
+        if not isinstance(node, nodes.BoolOp):
             return
         if len(children) <= 2:
             return
@@ -485,11 +485,11 @@ class CompilerPassBoolOpToBinOp(CompilerPass):
 
 
 class CompilerPassCheckConstValue(CompilerPass):
-    def handle_module(self, node: astroid.NodeNG):
+    def handle_module(self, node: nodes.NodeNG):
         for child in node.get_children():
             self._visit_node(child)
 
-    def handle_compare(self, node: astroid.Compare):
+    def handle_compare(self, node: nodes.Compare):
         left = node.left
         right = node.ops[0][1]
         self._visit_node(left)
@@ -501,7 +501,7 @@ class CompilerPassCheckConstValue(CompilerPass):
             val = func(left._ndata.constant_value, right._ndata.constant_value)
             node._ndata.set_constant(val)
 
-    def handle_binop(self, node: astroid.BinOp):
+    def handle_binop(self, node: nodes.BinOp):
         data = node._ndata
 
         if data.is_constant:
@@ -519,7 +519,7 @@ class CompilerPassCheckConstValue(CompilerPass):
         else:
             data.is_constant = False
 
-    def handle_unop(self, node: astroid.UnaryOp):
+    def handle_unop(self, node: nodes.UnaryOp):
         data = node._ndata
         if data.is_constant:
             return
@@ -529,7 +529,7 @@ class CompilerPassCheckConstValue(CompilerPass):
             node._ndata.set_constant(func(node.operand._ndata.constant_value))
             # self._visit_node(node.parent)
 
-    def handle_name(self, node: astroid.Name):
+    def handle_name(self, node: nodes.Name):
         if node.name == "__name__":
             scope_name = get_scope_name(node)
             mod_name = scope_name.split(".")[0]
@@ -539,13 +539,13 @@ class CompilerPassCheckConstValue(CompilerPass):
         else:
             self.handle_node(node)
 
-    def handle_function_def(self, node: astroid.FunctionDef):
+    def handle_function_def(self, node: nodes.FunctionDef):
         function_data = node._ndata.function_data
         if function_data.is_constexpr:
             return
         self.handle_node(node)
 
-    def handle_call(self, node: astroid.Call):
+    def handle_call(self, node: nodes.Call):
         fname = get_function_name(node.func)
         data = node._ndata
         if data.is_constant:
@@ -564,7 +564,7 @@ class CompilerPassCheckConstValue(CompilerPass):
                 return
         self.handle_node(node)
 
-    def handle_node(self, node: astroid.NodeNG):
+    def handle_node(self, node: nodes.NodeNG):
         data = node._ndata
 
         if data.is_constant:
@@ -595,13 +595,13 @@ class CompilerPassCheckConstValue(CompilerPass):
 class CompilerPassCheckConstValueAssign(CompilerPassCheckConstValue):
     skip_unused_nodes = True
 
-    def handle_assign(self, node: astroid.Assign):
+    def handle_assign(self, node: nodes.Assign):
         for child in node.get_children():
             self._visit_node(child)
         if node.value._ndata.is_constant:
             value = node.value._ndata.constant_value
             target = node.targets[0]
-            if isinstance(target, astroid.AssignName):
+            if isinstance(target, nodes.AssignName):
                 sym = self.data.get_sym_data(target)
                 if not sym.is_overwritten:
                     for read_node in sym.nodes_reading:
@@ -615,17 +615,17 @@ class CompilerPassCheckConstValueAssign(CompilerPassCheckConstValue):
 
 
 class CompilerPassCheckUsed(CompilerPass):
-    def __init__(self, tree: astroid.Module):
+    def __init__(self, tree: nodes.Module):
         super().__init__(tree)
         self._have_unset_nodes = True
         self._throw_on_unset = False
 
         self._functions = {}
 
-    def handle_node(self, node: astroid.NodeNG):
+    def handle_node(self, node: nodes.NodeNG):
         data = node._ndata
 
-        if isinstance(node, astroid.FunctionDef):
+        if isinstance(node, nodes.FunctionDef):
             fname = get_function_name(node)
             if fname in self._functions and self._functions[fname] != node:
                 raise CompilerError(
@@ -636,7 +636,7 @@ class CompilerPassCheckUsed(CompilerPass):
             data.is_used = data.is_used or False
             self._have_unset_nodes = True
 
-        if isinstance(node, (astroid.If, astroid.While)):
+        if isinstance(node, (nodes.If, nodes.While)):
             test_data = node.test._ndata
             if data.is_used is None:
                 data.is_used = True
@@ -658,9 +658,9 @@ class CompilerPassCheckUsed(CompilerPass):
             self._have_unset_nodes = True
             return
 
-        if isinstance(node, astroid.Call):
+        if isinstance(node, nodes.Call):
             fname = get_function_name(node.func)
-            if isinstance(node.func, (astroid.Attribute, astroid.Name)):
+            if isinstance(node.func, (nodes.Attribute, nodes.Name)):
                 if fname in self._functions:
                     func = self._functions[fname]
                     func._ndata.is_used = func._ndata.is_used or data.is_used
@@ -678,11 +678,11 @@ class CompilerPassCheckUsed(CompilerPass):
         for child in node.get_children():
             child._ndata.is_used = data.is_used
 
-    def handle_module(self, node: astroid.Module):
+    def handle_module(self, node: nodes.Module):
         node._ndata.is_used = True
 
         for child in node.get_children():
-            if not isinstance(child, (astroid.FunctionDef, astroid.If)):
+            if not isinstance(child, (nodes.FunctionDef, nodes.If)):
                 child._ndata.is_used = True
 
     def run(self):
@@ -704,16 +704,16 @@ class CompilerPassCheckUsed(CompilerPass):
 class CompilerPassResetReadWritten(CompilerPass):
     skip_unused_nodes = True
 
-    def handle_node(self, node: astroid.NodeNG):
+    def handle_node(self, node: nodes.NodeNG):
         pass
 
-    def handle_assign_name(self, node: astroid.AssignName):
+    def handle_assign_name(self, node: nodes.AssignName):
         if not is_builtin_name(node.name):
             sym_data = self.data.get_sym_data(node)
             sym_data.nodes_writing.clear()
             sym_data.nodes_reading.clear()
 
-    def handle_name(self, node: astroid.Name):
+    def handle_name(self, node: nodes.Name):
         if not is_builtin_name(node.name):
             sym_data = self.data.get_sym_data(node)
             sym_data.nodes_writing.clear()
@@ -726,20 +726,20 @@ class CompilerPassResetReadWritten(CompilerPass):
 
 
 class CompilerPassSetReadWritten(CompilerPassResetReadWritten):
-    def handle_assign_name(self, node: astroid.AssignName):
+    def handle_assign_name(self, node: nodes.AssignName):
         self.data.set_name_written(node)
 
-    def handle_name(self, node: astroid.Name):
+    def handle_name(self, node: nodes.Name):
         self.data.set_name_read(node)
 
-    def handle_function_def(self, node: astroid.FunctionDef):
+    def handle_function_def(self, node: nodes.FunctionDef):
         self.data.set_name_written(node)
 
-    def handle_attribute(self, node: astroid.Attribute):
+    def handle_attribute(self, node: nodes.Attribute):
         # scope = get_scope_name(node) #.expr.as_string()
         scope = (
             node.expr.name
-            if isinstance(node.expr, astroid.Name)
+            if isinstance(node.expr, nodes.Name)
             else get_scope_name(node.expr)
         )
         if scope in self.data.modules:
@@ -756,25 +756,25 @@ class CompilerPassSetReadWritten(CompilerPassResetReadWritten):
 
 
 class CompilerPassCheckReadWritten(CompilerPassResetReadWritten):
-    def handle_assign_name(self, node: astroid.AssignName):
+    def handle_assign_name(self, node: nodes.AssignName):
         if node._ndata.is_used and not is_builtin_name(node.name):
             sym_data = self.data.get_sym_data(node)
             if sym_data.is_read == 0:
                 # print(f"mark unused name '{node.name}' in scope '{sym_data.scope}'")
                 node._ndata.is_used = False
 
-    def handle_name(self, node: astroid.Name):
+    def handle_name(self, node: nodes.Name):
         pass
         # if node._ndata.is_used and not is_builtin_name(node.name):
         #     parent = node.parent
-        #     if isinstance(parent, astroid.Call):
+        #     if isinstance(parent, nodes.Call):
         #         self.data.set_function_called(node.name)
         #     else:
         #         self.data.set_name_read(node.scope(), node.name)
 
 
 class CompilerPassCheckReturnValues(CompilerPass):
-    def handle_return(self, node: astroid.Return):
+    def handle_return(self, node: nodes.Return):
         if not node._ndata.is_used:
             return
 
@@ -784,7 +784,7 @@ class CompilerPassCheckReturnValues(CompilerPass):
         function_node = get_function_parent(node)
         function_node._ndata.func_has_return_value = True
 
-    def handle_node(self, node: astroid.NodeNG):
+    def handle_node(self, node: nodes.NodeNG):
         pass
 
 
@@ -795,14 +795,14 @@ class CompilerPassHandleConstexpr(CompilerPass):
     def check_constexpr_function(self, node):
         # check if any node in the function body is an import statement or eval/exec statement
         for child in node.get_children():
-            if isinstance(child, astroid.Import) or isinstance(
-                child, astroid.ImportFrom
+            if isinstance(child, nodes.Import) or isinstance(
+                child, nodes.ImportFrom
             ):
                 raise CompilerError(
                     "Constexpr functions cannot contain import statements",
                     child,
                 )
-            if isinstance(child, astroid.Call):
+            if isinstance(child, nodes.Call):
                 fname = get_function_name(child.func)
                 if fname in ("eval", "exec"):
                     raise CompilerError(
@@ -811,9 +811,9 @@ class CompilerPassHandleConstexpr(CompilerPass):
                     )
             self.check_constexpr_function(child)
 
-    def handle_decorators(self, node: astroid.Decorators):
+    def handle_decorators(self, node: nodes.Decorators):
         for n in node.nodes:
-            if not isinstance(n, astroid.Name):
+            if not isinstance(n, nodes.Name):
                 raise CompilerError(
                     f"Unsupported decorator type: {type(n)}",
                     n,
@@ -837,7 +837,7 @@ class CompilerPassHandleConstexpr(CompilerPass):
 
 class CompilerPassCreateFunctionData(CompilerPass):
 
-    def handle_function_def(self, node: astroid.FunctionDef):
+    def handle_function_def(self, node: nodes.FunctionDef):
         self.data.add_name(node)
         sym_data = self.data.get_sym_data(node)
         name = get_function_name(node)
@@ -845,10 +845,10 @@ class CompilerPassCreateFunctionData(CompilerPass):
         self.data.functions[name] = fdata
         node._ndata.function_data = fdata
 
-    def handle_node(self, node: astroid.NodeNG):
+    def handle_node(self, node: nodes.NodeNG):
         pass
 
-    def handle_decorators(self, node: astroid.Decorators):
+    def handle_decorators(self, node: nodes.Decorators):
         for n in node.nodes:
             if n.name == "constexpr":
                 data = self.data.functions[get_function_name(node.parent)]
