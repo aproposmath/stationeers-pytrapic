@@ -457,9 +457,7 @@ class CompilerPassBoolOpToBinOp(CompilerPass):
         pass
 
     def handle_binop(self, node: nodes.BinOp):
-        def make_node_from_rest(
-            parent_node: nodes.BoolOp, other: tuple[nodes.NodeNG]
-        ):
+        def make_node_from_rest(parent_node: nodes.BoolOp, other: tuple[nodes.NodeNG]):
             node = nodes.BinOp(
                 parent_node.op,
                 parent_node.lineno,
@@ -795,9 +793,7 @@ class CompilerPassHandleConstexpr(CompilerPass):
     def check_constexpr_function(self, node):
         # check if any node in the function body is an import statement or eval/exec statement
         for child in node.get_children():
-            if isinstance(child, nodes.Import) or isinstance(
-                child, nodes.ImportFrom
-            ):
+            if isinstance(child, nodes.Import) or isinstance(child, nodes.ImportFrom):
                 raise CompilerError(
                     "Constexpr functions cannot contain import statements",
                     child,

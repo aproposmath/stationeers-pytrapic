@@ -11,17 +11,17 @@ type_mapping = {
     "r?": "_Register",
     "d?": "Device",
     "num": "float",
-    "r": "Reister",
+    "r": "Register",
     "d": "_Device",
     "Device": "_Device",
     "Register": "_Register",
-    "logicType": "LogicType",
-    "reagentMode": "LogicReagentMode",
-    "slotIndex": "_slotIndex",
-    "logicSlotType": "LogicSlotType",
-    "deviceHash": "_deviceHash",
-    "batchMode": "LogicBatchMethod",
-    "nameHash": "_nameHash",
+    "logicType": "LogicType|int|float",
+    "reagentMode": "LogicReagentMode|int|float",
+    "slotIndex": "int|float",
+    "logicSlotType": "LogicSlotType|int|float",
+    "deviceHash": "_deviceHash|int|float",
+    "batchMode": "LogicBatchMethod|int|float",
+    "nameHash": "int|float",
 }
 
 
@@ -110,6 +110,8 @@ def parse_dl_entry(entry):
         if p["name"] == "":
             param_index = i if parameters[0]["name"] == "output" else i + 1
             p["name"] = f"param{param_index}"
+        if ["name"] != "output" and p["type"] == "_Register":
+            p["type"] = "float"
 
     return {
         "name": name,
