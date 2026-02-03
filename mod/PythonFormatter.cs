@@ -222,16 +222,16 @@ public class PythonFormatter : LSPFormatter
 
         string libPath = Path.Combine(WorkspacePath, "library");
 
-        foreach (var kvp in libs)
+        foreach (var lib in libs)
         {
-            if (!kvp.Value.Instructions.Contains("stationeers_pytrapic"))
+            if (!lib.Instructions.Contains("stationeers_pytrapic"))
                 continue;
 
-            string fileName = kvp.Key;
+            string fileName = lib.Title;
             foreach (char c in " ._<>:\"/\\|?*")
                 fileName = fileName.Replace(c, '_');
             var filePath = Path.Combine(libPath, fileName + ".py");
-            File.WriteAllText(filePath, kvp.Value.Instructions);
+            File.WriteAllText(filePath, lib.Instructions);
         }
     }
 
