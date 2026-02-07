@@ -1,0 +1,6 @@
+l r0 db Setting
+bnez r0 lbelse1
+  yield
+lbelse1:
+# registers: 1
+# lines: 4

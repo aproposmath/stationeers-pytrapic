@@ -1,0 +1,5 @@
+l r0 db Setting
+brnez r0 2
+yield
+# registers: 1
+# lines: 3

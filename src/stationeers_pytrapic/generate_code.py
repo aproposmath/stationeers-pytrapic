@@ -650,36 +650,43 @@ class CompilerPassGenerateCode(CompilerPass):
 
     def handle_if(self, node: nodes.If):
         else_label, end_label = self.get_label("else", "end")
-
-        test = self.compile_node(node.test)
+        
+        test_node = node.test
+        negate_test = False
+        
+        if isinstance(test_node, nodes.UnaryOp) and test_node.op == "not":
+            test_node = test_node.operand
+            negate_test = True
+        
+        test = self.compile_node(test_node)
 
         emit_if = len(node.body) > 0
         emit_else = len(node.orelse) > 0
 
         data = node._ndata
-        test_data = node.test._ndata
-
+        test_data = test_node._ndata
+        
         if test_data.is_constant:
             if test_data.constant_value:
-                emit_else = False
+                emit_else = negate_test
             else:
-                emit_if = False
-        elif isinstance(node.test, nodes.Compare):
-            left = self.compile_node(node.test.left)
-            right = self.compile_node(node.test.ops[0][1])
-            cmp_op = node.test.ops[0][0]
+                emit_if = negate_test
+        elif isinstance(test_node, nodes.Compare):
+            left = self.compile_node(test_node.left)
+            right = self.compile_node(test_node.ops[0][1])
+            cmp_op = test_node.ops[0][0]
 
-            instruction = "b" + get_negated_comparison_suffix(cmp_op)
+            instruction = "b" + (get_comparison_suffix(cmp_op) if negate_test else get_negated_comparison_suffix(cmp_op))
             data.add(IC10(instruction, [left, right, else_label]))
-        elif isinstance(node.test, nodes.Const):
-            if node.test.value:
-                emit_else = False
+        elif isinstance(test_node, nodes.Const):
+            if test_node.value:
+                emit_else = negate_test
             else:
-                emit_if = False
-        elif isinstance(node.test, (nodes.BoolOp, nodes.Name, nodes.Attribute)):
-            data.add(IC10("beqz", [test, else_label]))
+                emit_if = negate_test
+        elif isinstance(test_node, (nodes.BoolOp, nodes.Name, nodes.Attribute)):
+            data.add(IC10("bnez" if negate_test else "beqz", [test, else_label]))
         else:
-            raise NotImplementedError(f"Unsupported if test: {type(node.test)}")
+            raise NotImplementedError(f"Unsupported if test: {type(test_node)}")
 
         for stmt in node.body:
             if emit_if:
