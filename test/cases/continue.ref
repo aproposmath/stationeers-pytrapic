@@ -1,7 +1,7 @@
 lbwhile1:
   lb r0 HASH("StructureBattery") Ratio Average
   bge r0 0.2 lbelse3
-  j lbwhile1
+    j lbwhile1
 lbelse3:
   bge r0 0.1 lbelse4
   j lbwhile.end1

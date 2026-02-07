@@ -352,9 +352,10 @@ class CompilerPassGenerateCode(CompilerPass):
             data.add(IC10("j", [label], indent=-1))
 
     def handle_continue(self, node: nodes.Continue):
-        while not isinstance(node.parent, (nodes.While, nodes.For)):
-            node = node.parent
-        start_label = node.parent._ndata.start_label
+        loop_node = node
+        while not isinstance(loop_node, (nodes.While, nodes.For)):
+            loop_node = loop_node.parent
+        start_label = loop_node._ndata.start_label
         node._ndata.add(IC10("j", [start_label]))
 
     def handle_break(self, node: nodes.Break):
@@ -875,7 +876,6 @@ class CompilerPassGatherCode(CompilerPass):
     def gather_code(self, node: nodes.NodeNG, special_nodes=None):
         data = node._ndata
         special_nodes = special_nodes or []
-
         if "" in data.code:
             for line in data.code[""]:
                 self.add_line(line)

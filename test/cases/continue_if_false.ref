@@ -1,0 +1,9 @@
+lbwhile1:
+  l r0 db Open
+  bne r0 0 lbelse2
+    s db Setting 111
+    j lbwhile1
+lbelse2:
+  j lbwhile1
+# registers: 1
+# lines: 7

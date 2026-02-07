@@ -1,0 +1,7 @@
+l r0 db Open
+brne r0 0 3
+s db Setting 111
+jr -3
+jr -4
+# registers: 1
+# lines: 5
