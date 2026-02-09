@@ -261,7 +261,8 @@ class CompilerPass:
             nodes.Continue: self.handle_continue,
             nodes.Break: self.handle_break,
             nodes.AugAssign: self.handle_immediate_op,
-            nodes.List: self.handle_node,
+            nodes.List: self.handle_list,
+            nodes.Tuple: self.handle_list,
             nodes.Decorators: self.handle_decorators,
         }
 
@@ -412,6 +413,12 @@ class CompilerPass:
         self.handle_node(node)
 
     def handle_decorators(self, node: nodes.Decorators):
+        self.handle_node(node)
+
+    def handle_list(self, node: nodes.List):
+        self.handle_node(node)
+
+    def handle_tuple(self, node: nodes.Tuple):
         self.handle_node(node)
 
 

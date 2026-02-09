@@ -1,0 +1,30 @@
+l r0 db Setting
+move r1 3
+seq r2 r0 1
+select r1 r2 6 r1
+seq r2 r0 2
+select r1 r2 7 r1
+seq r2 r0 3
+select r1 r2 3 r1
+seq r2 r0 4
+select r1 r2 6 r1
+s db On r1
+s db Setting 999
+select r2 r0 456 123
+s db On r2
+s db Setting 999
+s db On 777
+move r2 0
+brge r2 3 10
+move r4 -17887051
+seq r5 r0 1
+select r4 r5 HASH("N2") r4
+seq r5 r0 2
+select r4 r5 $32ABE8C1 r4
+lbn r5 -1252983604 r4 5 0
+sbn -815193061 r4 12 r5
+add r2 r2 1
+jr -9
+jr -11
+# registers: 5
+# lines: 28

@@ -25,7 +25,6 @@ from .stationpedia import get_pages_encoded
 from . import symbols
 from . import types_generated
 
-
 _logic_types = set()
 
 for t in dir(types_generated):

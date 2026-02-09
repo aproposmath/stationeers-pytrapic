@@ -124,8 +124,8 @@ class CompilerPassGenerateCode(CompilerPass):
         self._name_counter += 1
         return name
 
-    def get_intermediate_symbol(self, node) -> str:
-        if isinstance(node.parent, nodes.Assign):
+    def get_intermediate_symbol(self, node, force_new=False) -> str:
+        if not force_new and isinstance(node.parent, nodes.Assign):
             target = node.parent.targets[0]
             if isinstance(target, nodes.AssignName):
                 sym = self.data.get_sym_data(target)
@@ -406,6 +406,14 @@ class CompilerPassGenerateCode(CompilerPass):
         fname = get_function_name(node)
         self.functions[fname] = node
 
+    def handle_tuple(self, node: nodes.Tuple):
+        if not node._ndata.is_constant:
+            raise CompilerError("Tuple must be constant", node)
+
+    def handle_list(self, node: nodes.List):
+        if not node._ndata.is_constant:
+            raise CompilerError("List must be constant", node)
+
     def compile_function(self, node: nodes.FunctionDef):
         data = node._ndata
         if data.code[""]:
@@ -548,7 +556,11 @@ class CompilerPassGenerateCode(CompilerPass):
                 # # assign new name to symbol instead of extra move instruction
                 # value.name = target.name
                 # self.set_name(target, value, target.name)
-            elif is_builtin_structure(value) or value_name in symbols.__dict__:
+            elif (
+                is_builtin_structure(value)
+                or isinstance(value_name, str)
+                and value_name in symbols.__dict__
+            ):
                 data.result = value
                 structures = self.data.structures
                 scope_name = get_scope_name(target)
@@ -610,11 +622,44 @@ class CompilerPassGenerateCode(CompilerPass):
 
         node._ndata.result = val
 
+    def _handle_constant_array_dynamic_index_access(
+        self, node, array: list | tuple, index: IC10Register
+    ):
+        data = node._ndata
+        sym = self.get_intermediate_symbol(node)
+
+        n = len(array)
+
+        if n == 1:
+            # only one entry, assume the index is always zero
+            data.result = array[0]
+            return
+
+        if n == 2:
+            # two entries, assume the index is either zero or one
+            data.add(IC10("select", [index, array[1], array[0]], sym))
+            data.result = sym
+            return
+
+        # TODO: use jump tables for more efficiency (both in terms of code size and
+        # run time instructions)
+        sym_cmp = self.get_intermediate_symbol(node, True)
+
+        data.add(IC10("move", [array[0]], sym))
+        for i in range(1, n):
+            data.add(IC10("seq", [index, i], sym_cmp))
+            data.add(IC10("select", [sym_cmp, array[i], sym], sym))
+        data.result = sym
+
     def handle_subscript(self, node: nodes.Subscript):
         from .types import _StackValue
 
         value = self.compile_node(node.value)
         slice_ = self.compile_node(node.slice)
+
+        if isinstance(value, (list, tuple)):
+            return self._handle_constant_array_dynamic_index_access(node, value, slice_)
+
         res = value[slice_]
         data = node._ndata
         if isinstance(res, _StackValue):
@@ -651,14 +696,14 @@ class CompilerPassGenerateCode(CompilerPass):
 
     def handle_if(self, node: nodes.If):
         else_label, end_label = self.get_label("else", "end")
-        
+
         test_node = node.test
         negate_test = False
-        
+
         if isinstance(test_node, nodes.UnaryOp) and test_node.op == "not":
             test_node = test_node.operand
             negate_test = True
-        
+
         test = self.compile_node(test_node)
 
         emit_if = len(node.body) > 0
@@ -666,7 +711,7 @@ class CompilerPassGenerateCode(CompilerPass):
 
         data = node._ndata
         test_data = test_node._ndata
-        
+
         if test_data.is_constant:
             if test_data.constant_value:
                 emit_else = negate_test
@@ -677,7 +722,11 @@ class CompilerPassGenerateCode(CompilerPass):
             right = self.compile_node(test_node.ops[0][1])
             cmp_op = test_node.ops[0][0]
 
-            instruction = "b" + (get_comparison_suffix(cmp_op) if negate_test else get_negated_comparison_suffix(cmp_op))
+            instruction = "b" + (
+                get_comparison_suffix(cmp_op)
+                if negate_test
+                else get_negated_comparison_suffix(cmp_op)
+            )
             data.add(IC10(instruction, [left, right, else_label]))
         elif isinstance(test_node, nodes.Const):
             if test_node.value:

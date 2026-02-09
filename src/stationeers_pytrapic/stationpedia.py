@@ -119,9 +119,7 @@ If you have some python code stored in a library named <color=#a0a0a0><i>your_li
 
 {highlight(_lib_code)}
 
-""".replace(
-        "<h1>", "<b><size=150%><color=#3060ff>"
-    )
+""".replace("<h1>", "<b><size=150%><color=#3060ff>")
     .replace("</h1>", "</color></size></b>")
     .replace("<h2>", "<b><size=100%><color=#3060ff>")
     .replace("</h2>", "</color></size></b>")

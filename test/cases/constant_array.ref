@@ -1,0 +1,38 @@
+l r0 db Setting
+move r1 3
+seq r2 r0 1
+select r1 r2 6 r1
+seq r2 r0 2
+select r1 r2 7 r1
+seq r2 r0 3
+select r1 r2 3 r1
+seq r2 r0 4
+select r1 r2 6 r1
+s db On r1
+s db Setting 999
+select r2 r0 456 123
+s db On r2
+s db Setting 999
+s db On 777
+lbwhile6:
+  move r2 0
+lbfor7:
+  bge r2 3 lbfor.end7
+    put db 510 r0
+    jal show.amount
+    add r2 r2 1
+    j lbfor7
+lbfor.end7:
+  j lbwhile6
+show.amount:
+  get r3 db 510
+  move r4 HASH("O2")
+  seq r5 r3 1
+  select r4 r5 HASH("N2") r4
+  seq r5 r3 2
+  select r4 r5 HASH("CO2") r4
+  lbn r5 HASH("StructureGasSensor") r4 Pressure Average
+  sbn HASH("StructureConsoleLED5") r4 Setting r5
+  j ra
+# registers: 6
+# lines: 36

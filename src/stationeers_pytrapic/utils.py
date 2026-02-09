@@ -323,6 +323,16 @@ def is_constant(node, data):
                 except Exception:
                     return False, None
 
+    if isinstance(node, (nodes.List, nodes.Tuple)):
+        elements_value = []
+        for el in node.elts:
+            el_const, el_value = is_constant(el, data)
+            if not el_const:
+                return False, None
+            elements_value.append(el_value)
+
+        return True, elements_value
+
     try:
         inferred = node.inferred()
     except Exception:
