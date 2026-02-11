@@ -1,7 +1,5 @@
 l r0 db Setting
-move r1 3
-seq r2 r0 1
-select r1 r2 6 r1
+select r1 r0 6 3
 seq r2 r0 2
 select r1 r2 7 r1
 seq r2 r0 3
@@ -23,16 +21,101 @@ lbfor7:
     add r2 r2 1
     j lbfor7
 lbfor.end7:
+  jal len1
+  jal len2
+  jal len3
+  jal len4
+  jal len5
+  jal len6
+  jal len7
+  jal len8
   j lbwhile6
+len1:
+  l r3 db On
+  s db Setting 90
+  j ra
+len2:
+  l r3 db On
+  select r4 r3 91 90
+  s db Setting r4
+  j ra
+len3:
+  l r3 db On
+  select r4 r3 91 90
+  seq r5 r3 2
+  select r4 r5 92 r4
+  s db Setting r4
+  j ra
+len4:
+  l r3 db On
+  select r4 r3 91 90
+  seq r5 r3 2
+  select r4 r5 92 r4
+  seq r5 r3 3
+  select r4 r5 93 r4
+  s db Setting r4
+  j ra
+len5:
+  l r3 db On
+  select r4 r3 91 90
+  seq r5 r3 2
+  select r4 r5 92 r4
+  seq r5 r3 3
+  select r4 r5 93 r4
+  seq r5 r3 4
+  select r4 r5 94 r4
+  s db Setting r4
+  j ra
+len6:
+  l r3 db On
+  mod r5 r3 2
+  sub r4 r3 r5
+  brgez r4
+    select r4 r5 90 91
+    j lbend28
+    select r4 r5 92 93
+    j lbend28
+    select r4 r5 94 95
+lbend28:
+  s db Setting r4
+  j ra
+len7:
+  l r3 db On
+  mod r5 r3 2
+  sub r4 r3 r5
+  brgez r4
+    select r4 r5 90 91
+    j lbend32
+    select r4 r5 92 93
+    j lbend32
+    select r4 r5 94 95
+    j lbend32
+    select r4 r5 96 90
+lbend32:
+  s db Setting r4
+  j ra
+len8:
+  l r3 db On
+  mod r5 r3 2
+  sub r4 r3 r5
+  brgez r4
+    select r4 r5 90 91
+    j lbend36
+    select r4 r5 92 93
+    j lbend36
+    select r4 r5 94 95
+    j lbend36
+    select r4 r5 96 97
+lbend36:
+  s db Setting r4
+  j ra
 show.amount:
   get r3 db 510
-  move r4 HASH("O2")
-  seq r5 r3 1
-  select r4 r5 HASH("N2") r4
+  select r4 r3 HASH("N2") HASH("O2")
   seq r5 r3 2
   select r4 r5 HASH("CO2") r4
   lbn r5 HASH("StructureGasSensor") r4 Pressure Average
   sbn HASH("StructureConsoleLED5") r4 Setting r5
   j ra
 # registers: 6
-# lines: 36
+# lines: 119

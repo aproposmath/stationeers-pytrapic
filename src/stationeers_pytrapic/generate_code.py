@@ -635,33 +635,56 @@ class CompilerPassGenerateCode(CompilerPass):
             data.result = array[0]
             return
 
-        if n == 2:
+        JUMP_TABLE_LIMIT = 6
+        
+        if n < JUMP_TABLE_LIMIT:
             # two entries, assume the index is either zero or one
             data.add(IC10("select", [index, array[1], array[0]], sym))
             data.result = sym
+            if n == 2:
+                return
+            t = self.get_intermediate_symbol(node, True)
+            for i in range(2, n):
+                data.add(IC10("seq", [index, i], t))
+                data.add(IC10("select", [t, array[i], sym], sym))
             return
 
-        # TODO: use jump tables for more efficiency (both in terms of code size and
-        # run time instructions)
-        sym_cmp = self.get_intermediate_symbol(node, True)
+        end_label = self.get_label("end")
+        data.add_end(IC10(f"{end_label}:"))
 
-        data.add(IC10("move", [array[0]], sym))
-        for i in range(1, n):
-            data.add(IC10("seq", [index, i], sym_cmp))
-            data.add(IC10("select", [sym_cmp, array[i], sym], sym))
+        # Use a jump table for efficient constant array access with a dynamic index.
+        t1 = sym
+        t2 = self.get_intermediate_symbol(node, True)
+        data.add(IC10("mod", [index, 2], t2))
+        data.add(IC10("sub", [index, t2], t1))
+        data.add(IC10("brgez", [t1]))
+        
+        array2 = [v for v in array]
+        if len(array2) %2 == 1:
+            array2.append(array2[0])
+
+        for i in range(0, n, 2):
+            data.add(IC10("select", [t2, array2[i], array2[i+1]], sym, indent=1))
+            if i < (n - 2):
+                data.add(IC10("j", [end_label], indent=1))
+
         data.result = sym
-
+        
     def handle_subscript(self, node: nodes.Subscript):
         from .types import _StackValue
+        data = node._ndata
+        
+        if data.is_constant:
+            data.result = data.constant_value
+            return
 
         value = self.compile_node(node.value)
         slice_ = self.compile_node(node.slice)
-
+        
         if isinstance(value, (list, tuple)):
             return self._handle_constant_array_dynamic_index_access(node, value, slice_)
 
         res = value[slice_]
-        data = node._ndata
         if isinstance(res, _StackValue):
             sym = self.get_intermediate_symbol(node)
             data.add(value[slice_]._load(sym))
