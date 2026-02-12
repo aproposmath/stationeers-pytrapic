@@ -172,15 +172,13 @@ class CompilerPassGenerateCode(CompilerPass):
             # print("\treturn name", self._names[key])
             return self._names[key]
 
-    def get_label(
-        self, prefix: str = "tmp", prefix2: str | None = None
-    ) -> str | tuple[str, str]:
+    def get_label(self, *prefixes: str) -> str | tuple[str, str]:
         self._name_counter += 1
-        name = f"lb{prefix}{self._name_counter}"
-        if prefix2 is not None:
-            name2 = f"lb{prefix2}{self._name_counter}"
-            return name, name2
-        return name
+
+        names = [f"lb{prefix}{self._name_counter}" for prefix in prefixes]
+        if len(prefixes) == 1:
+            return names[0]
+        return names
 
     def compile_node(self, node: nodes.NodeNG):
         if not node._ndata.is_compiled:
@@ -636,7 +634,7 @@ class CompilerPassGenerateCode(CompilerPass):
             return
 
         JUMP_TABLE_LIMIT = 6
-        
+
         if n < JUMP_TABLE_LIMIT:
             # two entries, assume the index is either zero or one
             data.add(IC10("select", [index, array[1], array[0]], sym))
@@ -658,29 +656,30 @@ class CompilerPassGenerateCode(CompilerPass):
         data.add(IC10("mod", [index, 2], t2))
         data.add(IC10("sub", [index, t2], t1))
         data.add(IC10("brgez", [t1]))
-        
+
         array2 = [v for v in array]
-        if len(array2) %2 == 1:
+        if len(array2) % 2 == 1:
             array2.append(array2[0])
 
         for i in range(0, n, 2):
-            data.add(IC10("select", [t2, array2[i], array2[i+1]], sym, indent=1))
+            data.add(IC10("select", [t2, array2[i], array2[i + 1]], sym, indent=1))
             if i < (n - 2):
                 data.add(IC10("j", [end_label], indent=1))
 
         data.result = sym
-        
+
     def handle_subscript(self, node: nodes.Subscript):
         from .types import _StackValue
+
         data = node._ndata
-        
+
         if data.is_constant:
             data.result = data.constant_value
             return
 
         value = self.compile_node(node.value)
         slice_ = self.compile_node(node.slice)
-        
+
         if isinstance(value, (list, tuple)):
             return self._handle_constant_array_dynamic_index_access(node, value, slice_)
 
@@ -833,8 +832,39 @@ class CompilerPassGenerateCode(CompilerPass):
             data.result = sym
             data.add_end(IC10(instruction, [left_name, right_name], sym))
 
+    def _handle_for_list(self, node: nodes.For):
+        iter_data = node.iter._ndata
+
+        if not iter_data.is_constant:
+            raise CompilerError("List must be constant", node)
+
+        values = iter_data.constant_value
+        for_label, body_label, end_label = self.get_label("for", "for.body", "for.end")
+        value_sym = self.data.get_sym_data(node.target)
+        if not value_sym.code_expr:
+            value_sym.code_expr = self.get_intermediate_symbol(node, True).code_expr
+        data = node._ndata
+        data.add(IC10("move", [for_label], value_sym))
+        data.add(IC10(f"{for_label}:"))
+        for v in values:
+            data.add(IC10("move", [v], value_sym))
+            data.add(IC10("jal", [body_label]))
+        data.add(IC10("j", [end_label]))
+
+        data.add(IC10(f"{body_label}:"))
+        data.add_end(IC10("j", ["ra"], indent=1))
+        data.add_end(IC10(f"{end_label}:"))
+
+        for stmt in node.body:
+            self.compile_node(stmt)
+
+        data.result = value_sym
+
     def handle_for(self, node: nodes.For):
         iter_ = node.iter
+
+        if isinstance(iter_, nodes.List):
+            return self._handle_for_list(node)
 
         if (
             not isinstance(iter_, nodes.Call)

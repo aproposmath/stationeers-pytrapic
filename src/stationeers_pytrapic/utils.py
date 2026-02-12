@@ -332,7 +332,7 @@ def is_constant(node, data):
             elements_value.append(el_value)
 
         return True, elements_value
-        
+
     if isinstance(node, nodes.Subscript):
         value_const, value_value = is_constant(node.value, data)
         slice_const, slice_value = is_constant(node.slice, data)
