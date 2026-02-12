@@ -4,6 +4,6 @@ sb -2045627372 20 r0
 l r0 d0 21
 sub r1 90 r0
 sb -2045627372 21 r1
-jr -6
+j 0
 # registers: 2
 # lines: 7

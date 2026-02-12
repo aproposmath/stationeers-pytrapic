@@ -1,41 +1,38 @@
-jal f.outer
+jal 24
 get r0 db 511
-jal f.outer
+jal 24
 get r1 db 511
 add r2 r0 r1
-jal f.mid
+jal 15
 get r3 db 511
 add r4 r2 r3
 s db Setting r4
-jr -9
-f.inner:
+j 0
 l r13 db Setting
 l r14 db Setting
 add r15 r13 r14
 put db 511 r15
 j ra
-f.mid:
 push ra
-jal f.inner
+jal 10
 get r10 db 511
-jal f.inner
+jal 10
 get r11 db 511
 mul r12 r10 r11
 put db 511 r12
 pop ra
 j ra
-f.outer:
 push ra
-jal f.mid
+jal 15
 get r5 db 511
-jal f.mid
+jal 15
 get r6 db 511
 add r7 r5 r6
-jal f.inner
+jal 10
 get r8 db 511
 add r9 r7 r8
 put db 511 r9
 pop ra
 j ra
 # registers: 16
-# lines: 39
+# lines: 36

@@ -1,13 +1,13 @@
 ls r0 d0 0 1
-breqz r0 2
+beqz r0 3
 s d0 9 1
 ls r0 d0 0 17
 ss d0 1 1 r0
 lbs r0 -247344692 0 1 3
-breqz r0 2
+beqz r0 8
 sb -247344692 9 1
 lbs r0 -247344692 0 17 3
 sbs -247344692 1 1 r0
-jr -10
+j 0
 # registers: 1
 # lines: 11

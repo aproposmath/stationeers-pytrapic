@@ -5,33 +5,32 @@ yield
 move r2 0
 put db 510 r2
 put db 509 r0
-jal append.number
+jal 19
 get r2 db 511
 mul r2 r2 256
 add r2 r2 47
 put db 510 r2
 put db 509 r1
-jal append.number
+jal 19
 get r2 db 511
 sb -1949054743 12 r2
 add r0 r0 1
 sub r1 r1 1
-jr -15
-append.number:
+j 3
 get r3 db 510
 get r4 db 509
-brne r4 0 5
+bne r4 0 26
 mul r5 256 r3
 add r6 r5 48
 put db 511 r6
-jr 19
+j 44
 move r6 1
 div r5 r4 10
-brgt r6 r5 3
+bgt r6 r5 31
 mul r6 r6 10
-jr -3
+j 27
 s db Setting r6
-brlt r6 1 11
+blt r6 1 43
 round r6 r6
 div r5 r4 r6
 trunc r5 r5
@@ -41,8 +40,8 @@ add r3 r3 48
 mul r7 r5 r6
 sub r4 r4 r7
 div r6 r6 10
-jr -10
+j 32
 put db 511 r3
 j ra
 # registers: 8
-# lines: 46
+# lines: 45

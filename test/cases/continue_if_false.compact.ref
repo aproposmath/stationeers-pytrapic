@@ -1,7 +1,7 @@
 l r0 db Open
-brne r0 0 3
+bne r0 0 4
 s db Setting 111
-jr -3
-jr -4
+j 0
+j 0
 # registers: 1
 # lines: 5

@@ -5,6 +5,6 @@ put $BEEF 0 6
 put $BEEF 1 5
 put $BEEF 2 4
 put $BEEF 3 3
-jr -7
+j 0
 # registers: 2
 # lines: 8

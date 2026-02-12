@@ -3,9 +3,9 @@ yield
 lbn r1 1220484876 -1150107517 2 3
 seqz r2 r0
 and r3 r1 r2
-breqz r3 2
+beqz r3 7
 sleep 5
 move r0 r1
-jr -7
+j 1
 # registers: 4
 # lines: 9

@@ -13,14 +13,14 @@ s db On r2
 s db Setting 999
 s db On 777
 move r2 0
-brge r2 3 8
+bge r2 3 23
 select r4 r0 HASH("N2") -17887051
 seq r5 r0 2
 select r4 r5 $32ABE8C1 r4
 lbn r5 -1252983604 r4 5 0
 sbn -815193061 r4 12 r5
 add r2 r2 1
-jr -7
+j 15
 l r3 db On
 s db Setting 90
 l r3 db On
@@ -52,9 +52,9 @@ mod r5 r3 2
 sub r4 r3 r5
 brgez r4
 select r4 r5 90 91
-jr 4
+j 58
 select r4 r5 92 93
-jr 2
+j 58
 select r4 r5 94 95
 s db Setting r4
 l r3 db On
@@ -62,11 +62,11 @@ mod r5 r3 2
 sub r4 r3 r5
 brgez r4
 select r4 r5 90 91
-jr 6
+j 70
 select r4 r5 92 93
-jr 4
+j 70
 select r4 r5 94 95
-jr 2
+j 70
 select r4 r5 96 90
 s db Setting r4
 l r3 db On
@@ -74,13 +74,13 @@ mod r5 r3 2
 sub r4 r3 r5
 brgez r4
 select r4 r5 90 91
-jr 6
+j 82
 select r4 r5 92 93
-jr 4
+j 82
 select r4 r5 94 95
-jr 2
+j 82
 select r4 r5 96 97
 s db Setting r4
-jr -69
+j 14
 # registers: 6
 # lines: 84

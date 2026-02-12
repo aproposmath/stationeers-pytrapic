@@ -5,19 +5,19 @@ move r3 0
 clr db
 move r4 0
 move r5 0
-jal get.vertical
+jal 91
 get r8 db 511
 sub r4 r4 r8
 add r5 r5 r8
 sleep 5
-jal get.vertical
+jal 91
 get r8 db 511
 move r2 r8
 move r9 r8
 mul r10 2 r8
 sub r5 r5 r10
 sleep 5
-jal get.vertical
+jal 91
 get r8 db 511
 add r4 r4 r8
 add r5 r5 r8
@@ -39,39 +39,38 @@ sbn -815193061 -934885189 28 1
 sbn -815193061 -934885189 12 0
 sbn -815193061 -934885189 3 7
 yield
-jal get.vertical
+jal 91
 get r4 db 511
 move r9 r2
-breq r9 0 11
-brne r3 0 2
+beq r9 0 55
+bne r3 0 47
 sub r10 r4 r9
 sub r10 r4 r9
 mul r11 r10 r3
-brge r11 0 6
-brle r3 0 3
+bge r11 0 55
+ble r3 0 53
 move r1 r9
-jr 2
+j 54
 move r0 r9
 move r3 r10
 move r9 r4
 put db 510 r4
-jal calc.time
+jal 73
 get r5 db 511
 move r6 r5
 sbn -815193061 -811190405 12 r6
 s db Setting r6
 put db 510 0
-jal calc.time
+jal 73
 get r5 db 511
-brge r5 0 2
+bge r5 0 67
 sub r5 1200 r5
 sub r8 r5 r6
 add r9 r8 1200
 mod r5 r9 1200
 move r7 r5
 sbn -815193061 -934885189 12 r7
-jr -32
-calc.time:
+j 40
 get r10 db 510
 mul r11 0.5 r1
 mul r12 0.5 r0
@@ -83,14 +82,13 @@ max r12 r12 -1
 min r12 r12 1
 acos r11 r12
 div r12 r11 6.283185307179586
-brle r3 0 2
+ble r3 0 86
 sub r12 1 r12
 add r11 r12 0.5
 mod r14 r11 1
 mul r12 r14 1200
 put db 511 r12
 j ra
-get.vertical:
 l r14 d0 21
 sub r15 90 r14
 mul r13 r15 0.0174532925199433
@@ -98,4 +96,4 @@ sin r15 r13
 put db 511 r15
 j ra
 # registers: 16
-# lines: 99
+# lines: 97

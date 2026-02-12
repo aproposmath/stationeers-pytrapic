@@ -1114,7 +1114,7 @@ class CompilerPassGatherCode(CompilerPass):
         self.get_code()
 
     def remove_labels(
-        self, code, relative_numbers: bool = True, keep_labels: set | None = None
+        self, code, relative_numbers: bool = False, keep_labels: set | None = None
     ) -> str:
         label_map = {}
         i_line = 0

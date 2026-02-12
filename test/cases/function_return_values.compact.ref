@@ -2,6 +2,6 @@ lb r2 -400115994 24 0
 move r0 r2
 slt r1 r0 0.2
 sb 813146305 28 r1
-jr -4
+j 0
 # registers: 3
 # lines: 5

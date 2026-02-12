@@ -4,11 +4,11 @@ slt r1 r4 1
 slt r4 r0 0.2
 and r2 r4 r1
 seqz r3 r2
-breqz r2 2
+beqz r2 8
 s db Setting 2
-breqz r3 3
+beqz r3 11
 sub r4 0 r0
 s db Setting r4
-jr -11
+j 0
 # registers: 5
 # lines: 12

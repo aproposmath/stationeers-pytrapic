@@ -4,6 +4,6 @@ lbn r3 -1252983604 $7A57C43A 6 2
 slt r2 r3 413.15
 and r4 r0 r2
 sb -1129453144 28 r4
-jr -6
+j 0
 # registers: 5
 # lines: 7
