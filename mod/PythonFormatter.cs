@@ -84,14 +84,14 @@ public class PythonFormatter : LSPFormatter
         var listener = new System.Net.Sockets.TcpListener(System.Net.IPAddress.Loopback, 0);
         listener.Start();
         int port = ((System.Net.IPEndPoint)listener.LocalEndpoint).Port;
-        StationeersIC10Editor.L.Debug("BasedPyright LSP server listening on port " + port);
+        L.Debug("BasedPyright LSP server listening on port " + port);
 
         var lspClient = new LspClient();
 
         UniTask.RunOnThreadPool(async () =>
         {
             var client = await listener.AcceptTcpClientAsync();
-            StationeersIC10Editor.L.Debug("BasedPyright LSP server accepted connection.");
+            L.Debug("BasedPyright LSP server accepted connection.");
             var stream = client.GetStream();
             lspClient.Init(stream, stream);
         }).Forget();
@@ -247,7 +247,7 @@ public class PythonFormatter : LSPFormatter
     }
 
 
-    public static new double MatchingScore(string code)
+    public static double MatchingScore(string code)
     {
         if (code.StartsWith("from stationeers_pytrapic.symbols import *"))
             return 1.0;

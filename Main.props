@@ -1,0 +1,11 @@
+<?xml version="1.0"?>
+<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <!-- MANDATORY: Change this to your mod id. This will be used as Bepinex plugin GUID and as ModID in About.xml -->
+    <ModID>stationeers-example-mod</ModID>
+    <AssemblyName>PyTrapIC</AssemblyName>
+    <Description>Python to IC10 Transpiler</Description>
+    <!-- Optional: Set this if it's not found automatically or you want to force a specific Stationeers directory -->
+    <StationeersDirectory/>
+  </PropertyGroup>
+</Project>

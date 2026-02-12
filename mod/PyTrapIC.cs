@@ -16,7 +16,6 @@ using Newtonsoft.Json;
 using StationeersIC10Editor;
 using Util.Commands;
 
-using Git = ThisAssembly.Git;
 namespace StationeersPyTrapIC
 {
     public class Timer : IDisposable
@@ -514,9 +513,14 @@ namespace StationeersPyTrapIC
     [BepInPlugin(PluginGuid, PluginName, PluginVersion)]
     public class PyTrapICPlugin : BaseUnityPlugin
     {
-        public const string PluginGuid = "aproposmath-stationeers-pytrapic";
-        public const string PluginName = "PyTrapIC";
-        public const string PluginVersion = Git.BaseVersion.Major + "." + Git.BaseVersion.Minor + "." + Git.BaseVersion.Patch;
+        public const string PluginGuid = ThisModInfo.AssemblyGuid;
+        public const string PluginName = ThisModInfo.AssemblyName;
+        public const string PluginVersion = ThisModInfo.Version;
+        public const string PluginVersionGit = ThisModInfo.VersionGit;
+        public static readonly string PluginBuildTime = DateTime
+            .Parse(ThisModInfo.BuildTime)
+            .ToLocalTime()
+            .ToString("yyyy-MM-dd HH:mm:ss");
 
         private void Awake()
         {
@@ -526,7 +530,7 @@ namespace StationeersPyTrapIC
                 var sw = Stopwatch.StartNew();
                 L.Initialize(Logger);
                 L.Info(
-                    $"Awake PyTrapIC {PluginVersion}"
+                    $"Awake {PluginName} {PluginVersion}, build time {PluginBuildTime}"
                 );
 
                 PythonCompiler.Instance = new PythonCompiler();
@@ -541,7 +545,7 @@ namespace StationeersPyTrapIC
             }
             catch (Exception ex)
             {
-                L.Error($"Error during PyTrapIC {PluginVersion} init: {ex}");
+                L.Error($"Error during {PluginName} {PluginVersion} init: {ex}");
             }
         }
 
