@@ -3,19 +3,4 @@
   <Import Project="Main.props"/>
   <Import Project="Template/Template.props"/>
   <Import Project="Template/FindStationeers.props"/>
-  <ItemGroup>
-  <Reference Include="StationeersLaunchPad.dll">
-      <HintPath>$(StationeersDirectory)/BepInEx/plugins/StationeersLaunchPad/StationeersLaunchPad.dll</HintPath>
-      <Private>false</Private>
-  </Reference>
-  <Reference Include="IC10Editor.dll">
-      <HintPath>$(HOME)/private/.apm/StationeersIC10Editor/bin/Debug/net48/IC10Editor.dll</HintPath>
-      <Private>false</Private>
-  </Reference>
-  <!-- <Publicize Include="IC10Editor" /> -->
-  <PackageReference Include="System.IO.Compression" Version="4.3.0" />
-  <PackageReference Include="System.IO.Compression.ZipFile" Version="4.3.0" />
-  <Compile Remove="Template/VersionInfo.g.cs" />
-  <Compile Include="Template/VersionInfo.g.cs" />
-</ItemGroup>
 </Project>

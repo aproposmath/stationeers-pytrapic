@@ -1,4 +1,4 @@
-<?xml version="1.0"?>
+<?xml version="1.0" ?>
 <Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup>
     <!-- MANDATORY: Change this to your mod id. This will be used as Bepinex plugin GUID and as ModID in About.xml -->
@@ -6,6 +6,23 @@
     <AssemblyName>PyTrapIC</AssemblyName>
     <Description>Python to IC10 Transpiler</Description>
     <!-- Optional: Set this if it's not found automatically or you want to force a specific Stationeers directory -->
-    <StationeersDirectory/>
+    <StationeersDirectory />
+    <Dependencies>
+      <Url>https://github.com/aproposmath/StationeersIC10Editor/releases/download/main/IC10Editor-main.zip</Url>
+      <Url>https://github.com/StationeersLaunchPad/StationeersLaunchPad/releases/download/v0.2.25/StationeersLaunchPad-client-v0.2.25.zip</Url>
+    </Dependencies>
   </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="StationeersLaunchPad.dll">
+      <HintPath
+        >Template/dependencies/StationeersLaunchPad/StationeersLaunchPad.dll</HintPath>
+      <Private>false</Private>
+    </Reference>
+    <Reference Include="IC10Editor.dll">
+      <HintPath>Template/dependencies/IC10Editor.dll</HintPath>
+      <Private>false</Private>
+    </Reference>
+    <PackageReference Include="System.IO.Compression" Version="4.3.0" />
+    <PackageReference Include="System.IO.Compression.ZipFile" Version="4.3.0" />
+  </ItemGroup>
 </Project>
