@@ -5,59 +5,85 @@ from stationeers_pytrapic import compiler
 
 _try_url = "https://aproposmath.github.io/stationeers-pytrapic?fileUrl=https://raw.githubusercontent.com/aproposmath/stationeers-pytrapic/refs/heads/main/src/stationeers_pytrapic/examples/"
 
-_table_template = """
-<details{open_attr}>
-<summary><strong>{name}</strong> — <a href="{url}" target="_blank" rel="noopener noreferrer">Try it</a></summary>
+_collapse_header = """
+<details>
+<summary id="{tag}"><strong>{name}</strong></summary>
+"""
 
+_collapse_footer = """
+</details>
+"""
+
+_table_template = """
 <table>
-<th>Python</th>
-<th>IC10</th>
-<tr>
-<td>
+<tr><th style="padding:2px 6px;">Python&nbsp;&nbsp;<a href="{url}" target="_blank" rel="noopener noreferrer">Open in online editor</a>
+</th></tr>
+<tr><td style="padding:2px 6px;">
 
 ```py
 {py_src}
 ```
 
-</td>
-<td>
+</td></tr>
+<tr><th style="padding:2px 6px;">IC10</th></tr>
+<tr><td style="padding:2px 6px;">
 
 ```asm
 {ic10_src}
 ```
 
-</td>
-</tr>
+</td></tr>
 </table>
-</details>
 """
 
 
-def compile_examples(examples, open_attr=""):
+def compile_examples(examples, collapse=True):
     examples_dir = Path(compiler.__file__).parent / "examples"
     result = ""
+    options = compiler.CompileOptions(
+        compact=False,
+        remove_labels=True,
+        inline_functions=True,
+    )
     for example in examples:
-        py_src = (examples_dir / example).read_text(encoding="utf-8").strip()
-        ic10_src = compiler.compile_code(py_src)["code"].strip()
+        py_src = (examples_dir / example).read_text(encoding="utf-8").strip().replace("\n\n\n", "\n\n")
+        data = compiler.compile_code(py_src, options)
+        # print(data)
+        ic10_src = data['code'].strip()
         name = example.removesuffix(".py").replace("_", " ").title()
-        result += _table_template.format(
+        markdown = _table_template.format(
             py_src=py_src,
             ic10_src=ic10_src,
             name=name,
             url=_try_url + example,
-            open_attr=open_attr,
         )
+
+        header_template = _collapse_header if collapse else ""
+        footer = _collapse_footer if collapse else ""
+        result += header_template.format(name=name, tag="example-"+example.replace("_","-").replace(".", "-")) + markdown + footer
     return result
 
 
 def get_examples():
     # Implement your logic here to generate examples
-    return compile_examples(["constexpr.py", "compiler_options.py"])
+    return compile_examples(
+        [
+            "logic_types.py",
+            "batch_operations.py",
+            "loops.py",
+            "misc.py",
+            "stack.py",
+            "constexpr.py",
+            "intrinsics.py",
+            "compiler_options.py",
+        ],
+        True,
+    ).strip()
 
 
 def get_simple_examples():
     # Implement your logic here to generate simple examples
-    return compile_examples(["solar.py"], " open")
+    return compile_examples(["solar.py"], False).strip()
 
 
 def replace_section(text: str, header: str, new_body: str) -> str:
@@ -72,8 +98,10 @@ def main() -> None:
     readme_path = Path("README.md")
     readme = readme_path.read_text(encoding="utf-8")
 
-    simple_examples_body = get_simple_examples()
-    readme = replace_section(readme, "## Simple Examples", simple_examples_body)
+    simple_examples_body = (
+        "More examples are [below](#examples)\n\n" + get_simple_examples()
+    )
+    readme = replace_section(readme, "## Simple Example", simple_examples_body)
 
     examples_body = get_examples()
     readme = replace_section(readme, "## Examples", examples_body)

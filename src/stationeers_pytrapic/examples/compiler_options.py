@@ -2,8 +2,7 @@ from stationeers_pytrapic.symbols import *
 
 # Available compiler options
 # name              Default    Description
-# compact           False      labels, evaluates hashes (if shorter), use numbers for logic types etc.,
-#                              also implies remove-labels and inline-functions
+# compact           False      evaluates HASH/STR (if shorter), use numbers instead of enums
 # inline-functions  True       Inline function calls if possible
 # remove-labels     False      removes jump labels
 # append-version    True       add comment with PyTrapIC version
@@ -13,7 +12,8 @@ from stationeers_pytrapic.symbols import *
 
 # pytrapic: compact
 # pytrapic: no-append-version
-# pytrapic: no-inline-functions
+# pytrapic: inline-functions
+# pytrapic: remove-labels
 
 
 def some_function():
