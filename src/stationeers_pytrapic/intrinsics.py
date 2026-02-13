@@ -837,4 +837,6 @@ def HASH(name: str) -> float:
 
 
 def STR(s: str) -> float:
-    return f'STR("{s}")'
+    from .types import compute_string
+
+    return compute_string(s)

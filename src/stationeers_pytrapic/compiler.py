@@ -126,10 +126,12 @@ class Compiler:
 
 def compile_code(
     src: str | dict,
-    options: CompileOptions | dict,
+    options: CompileOptions | dict | None = None,
 ):
     if isinstance(options, dict):
         options = CompileOptions(**options)
+    if options is None:
+        options = CompileOptions()
 
     main_module = src[""] if isinstance(src, dict) else src
     if "pytrapic:" in main_module:

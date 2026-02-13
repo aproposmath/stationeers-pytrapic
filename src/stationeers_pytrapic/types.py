@@ -216,6 +216,21 @@ def decode_data(encoded: str) -> dict:
     return json.loads(zlib.decompress(base64.b64decode(encoded)).decode())
 
 
+def _apply_output_mode(
+    num_value: float, string_value: str, output_mode: OutputMode
+) -> float:
+    if output_mode is None:
+        output_mode = utils._output_mode
+
+    if output_mode == OutputMode.VERBOSE:
+        return string_value
+
+    if output_mode == OutputMode.NUMERIC:
+        return num_value
+
+    return num_value if len(str(num_value)) < len(string_value) else string_value
+
+
 def compute_hash(name: int | str | _Register, output_mode=None) -> int | str:
     if not isinstance(name, str):
         return name
@@ -233,20 +248,16 @@ def compute_hash(name: int | str | _Register, output_mode=None) -> int | str:
         name = name[6:-2]
 
     hash_str = f'HASH("{name}")'
-
-    if output_mode is None:
-        output_mode = utils._output_mode
-
-    if output_mode == OutputMode.VERBOSE:
-        return hash_str
-
     val = calc_hash(name)
-    eval_str = str(val)
 
-    if output_mode == OutputMode.NUMERIC:
-        return val
+    return _apply_output_mode(val, hash_str, output_mode)
 
-    return val if len(eval_str) < len(hash_str) else hash_str
+
+def compute_string(s: str, output_mode=None) -> float:
+    val = 0
+    for char in s[::-1]:
+        val = val << 8 | ord(char)
+    return _apply_output_mode(val, f'STR("{s}")', output_mode)
 
 
 class _deviceHash(float):

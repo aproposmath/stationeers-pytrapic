@@ -430,6 +430,8 @@ def eval_constexpr(data, call_node):
         data.constexpr_functions_code = code
 
     code = f"""
+from stationeers_pytrapic.types import *
+from stationeers_pytrapic.types_generated import *
 from stationeers_pytrapic.utils import calc_hash as HASH
 
 def constexpr(f):
