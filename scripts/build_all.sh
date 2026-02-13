@@ -5,9 +5,9 @@ set -e
 rm -rf dist typings
 
 cd scripts
-python build_intrinsics.py
-python build_types.py
 python build_enums.py
+python build_types.py
+python build_intrinsics.py
 cd ..
 
 black src

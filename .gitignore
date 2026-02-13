@@ -12,3 +12,6 @@ typings
 *.asm
 src/stationeers_pytrapic/_version.py
 codes
+bin
+obj
+ws
