@@ -1,0 +1,5 @@
+put d0 0 $90003
+put d1 0 $A0303
+putd $3455 0 -167626437375
+# registers: 0
+# lines: 3

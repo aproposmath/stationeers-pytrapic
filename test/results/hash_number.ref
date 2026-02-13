@@ -1,0 +1,62 @@
+define PREFIX HASH("Some name prefix ")
+lbwhile1:
+  move r0 0
+lbwhile3:
+  bge r0 150 lbwhile.end3
+    put db 510 PREFIX
+    put db 509 r0
+    jal hash.number
+    get r1 db 511
+    sbn HASH("StructureConsoleLED5") r1 On 1
+    add r0 r0 1
+    j lbwhile3
+lbwhile.end3:
+  j lbwhile1
+hash.number:
+  get r2 db 510
+  get r3 db 509
+  bge r2 0 lbelse6
+    add r2 r2 $100000000
+lbelse6:
+  xor r2 r2 $FFFFFFFF
+  move r4 1
+  move r5 1
+lbwhile9:
+  mul r6 10 r5
+  bgt r6 r3 lbwhile.end9
+    add r4 r4 1
+    mul r5 r5 10
+    j lbwhile9
+lbwhile.end9:
+lbwhile11:
+  ble r4 0 lbwhile.end11
+    sub r4 r4 1
+    div r8 r3 r5
+    floor r6 r8
+    mul r8 r6 r5
+    sub r3 r3 r8
+    div r5 r5 10
+    add r6 r6 48
+    and r6 r6 255
+    xor r2 r2 r6
+    move r7 0
+lbwhile16:
+    bge r7 8 lbwhile.end16
+      add r7 r7 1
+      mod r8 r2 2
+      srl r2 r2 1
+      bne r8 1 lbelse18
+        xor r2 r2 $EDB88320
+lbelse18:
+      j lbwhile16
+lbwhile.end16:
+    j lbwhile11
+lbwhile.end11:
+  xor r2 r2 $FFFFFFFF
+  blt r2 $80000000 lbelse19
+    sub r2 r2 $100000000
+lbelse19:
+  put db 511 r2
+  j ra
+# registers: 9
+# lines: 60

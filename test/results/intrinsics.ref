@@ -1,0 +1,10 @@
+s db Setting STR("Hello")
+s db Setting HASH("StructureAutholathe")
+push HASH("Some name")
+pop r1
+s db Setting r1
+lbn r0 HASH('StructureBattery')  Average Ratio
+slt r1 r0 0.1
+sbn HASH("StructureDiode") HASH("Low Power") On r1
+# registers: 2
+# lines: 8

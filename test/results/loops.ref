@@ -1,0 +1,50 @@
+lbwhile1:
+  jal while.condition
+  jal for.range
+  get r0 db 511
+  s db Setting r0
+  jal for.list
+  jal for.range
+  get r0 db 511
+  j lbwhile1
+for.list:
+  push ra
+  move r1 lbfor9
+lbfor9:
+  move r1 HASH("O2")
+  jal lbfor.body9
+  move r1 HASH("N2")
+  jal lbfor.body9
+  move r1 HASH("VOL")
+  jal lbfor.body9
+  move r1 HASH("CO2")
+  jal lbfor.body9
+  j lbfor.end9
+lbfor.body9:
+    lbn r2 HASH("StructurePipeAnalysizer") r1 Pressure Average
+    sbn HASH("StructureConsoleLED1x2") r1 Setting r2
+    j ra
+lbfor.end9:
+  pop ra
+  j ra
+for.range:
+  move r1 0
+  move r2 0
+lbfor5:
+  bge r2 10 lbfor.end5
+    get r3 db r2
+    add r1 r1 r3
+    add r2 r2 1
+    j lbfor5
+lbfor.end5:
+  put db 511 r1
+  j ra
+while.condition:
+lbwhile2:
+  lbn r1 HASH("StructureGasSensor") HASH("Airlock") Pressure Average
+  ble r1 0 lbwhile.end2
+    j lbwhile2
+lbwhile.end2:
+  j ra
+# registers: 4
+# lines: 48

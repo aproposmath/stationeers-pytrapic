@@ -1,0 +1,33 @@
+lbn r1 -1252983604 $7532089C 5 0
+ble r1 0 3
+j 0
+jal 22
+get r0 db 511
+s db Setting r0
+move r1 7
+move r1 -17887051
+jal 16
+move r1 HASH("N2")
+jal 16
+move r1 HASH("VOL")
+jal 16
+move r1 $32ABE8C1
+jal 16
+j 19
+lbn r2 435685051 r1 5 0
+sbn -53151617 r1 12 r2
+j ra
+jal 22
+get r0 db 511
+j 0
+move r1 0
+move r2 0
+bge r2 10 29
+get r3 db r2
+add r1 r1 r3
+add r2 r2 1
+j 24
+put db 511 r1
+j ra
+# registers: 4
+# lines: 31

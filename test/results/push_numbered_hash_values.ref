@@ -1,0 +1,82 @@
+define PREFIX HASH("Some name prefix ")
+define FIRST_NUMBER 0
+define LAST_NUMBER 42
+s db Mode 6
+s db Setting STR("CALC..")
+jal init.lut
+move r0 FIRST_NUMBER
+lbwhile2:
+bgt r0 LAST_NUMBER lbwhile.end2
+  put db 510 PREFIX
+  put db 509 r0
+  jal hash.number.fast.nibble
+  get r1 db 511
+  push r1
+  add r0 r0 1
+  j lbwhile2
+lbwhile.end2:
+s db Setting STR("DONE")
+hash.number.fast.nibble:
+  get r2 db 510
+  get r3 db 509
+  bge r2 0 lbelse5
+    add r2 r2 $100000000
+lbelse5:
+  xor r2 r2 $FFFFFFFF
+  move r4 1
+  move r5 1
+lbwhile8:
+  mul r6 10 r5
+  bgt r6 r3 lbwhile.end8
+    add r4 r4 1
+    mul r5 r5 10
+    j lbwhile8
+lbwhile.end8:
+lbwhile10:
+  ble r4 0 lbwhile.end10
+    sub r4 r4 1
+    div r8 r3 r5
+    floor r6 r8
+    mul r8 r6 r5
+    sub r3 r3 r8
+    div r5 r5 10
+    add r6 r6 48
+    xor r2 r2 r6
+    and r8 r2 15
+    add r7 496 r8
+    get r8 db r7
+    srl r9 r2 4
+    xor r2 r8 r9
+    and r9 r2 15
+    add r7 496 r9
+    get r9 db r7
+    srl r8 r2 4
+    xor r2 r9 r8
+    j lbwhile10
+lbwhile.end10:
+  xor r2 r2 $FFFFFFFF
+  blt r2 $80000000 lbelse21
+    sub r2 r2 $100000000
+lbelse21:
+  put db 511 r2
+  j ra
+init.lut:
+  poke 496 0
+  poke 497 $1DB71064
+  poke 498 $3B6E20C8
+  poke 499 $26D930AC
+  poke 500 $76DC4190
+  poke 501 $6B6B51F4
+  poke 502 $4DB26158
+  poke 503 $5005713C
+  poke 504 $EDB88320
+  poke 505 $F00F9344
+  poke 506 $D6D6A3E8
+  poke 507 $CB61B38C
+  poke 508 $9B64C2B0
+  poke 509 $86D3D2D4
+  poke 510 $A00AE278
+  poke 511 $BDBDF21C
+  j ra
+# registers: 10
+# lines: 80

@@ -1,0 +1,10 @@
+lb r0 1076425094 20 2
+add r0 r0 1
+ble r0 10 4
+j 8
+move r1 3
+lb r2 1076425094 20 3
+mul r1 r1 r2
+j 1
+# registers: 3
+# lines: 8

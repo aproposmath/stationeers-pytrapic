@@ -1,0 +1,9 @@
+poke 0 123
+get r0 db 2
+get r1 db 3
+add r2 r0 r1
+s db Settings r2
+put d3 0 456
+putd 9045 0 789
+# registers: 3
+# lines: 7

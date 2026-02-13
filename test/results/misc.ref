@@ -1,0 +1,9 @@
+l r1 d0 Vertical
+sgt r0 r1 90
+sb HASH("StructureGrowLight") On r0
+l r0 d0 Vertical
+slt r1 r0 90
+select r2 r1 STR("Day") STR("Night")
+s db Setting r2
+# registers: 3
+# lines: 7

@@ -1,0 +1,44 @@
+define PREFIX HASH("Some name prefix ")
+move r0 0
+bge r0 150 41
+move r1 PREFIX
+move r3 r0
+bge r1 0 7
+add r1 r1 $100000000
+xor r1 r1 $FFFFFFFF
+move r4 1
+move r5 1
+mul r6 10 r5
+bgt r6 r3 15
+add r4 r4 1
+mul r5 r5 10
+j 10
+ble r4 0 34
+sub r4 r4 1
+div r8 r3 r5
+floor r6 r8
+mul r8 r6 r5
+sub r3 r3 r8
+div r5 r5 10
+add r6 r6 48
+and r6 r6 255
+xor r1 r1 r6
+move r7 0
+bge r7 8 33
+add r7 r7 1
+mod r8 r1 2
+srl r1 r1 1
+bne r8 1 32
+xor r1 r1 $EDB88320
+j 26
+j 15
+xor r1 r1 $FFFFFFFF
+blt r1 $80000000 37
+sub r1 r1 $100000000
+move r2 r1
+sbn -815193061 r2 28 1
+add r0 r0 1
+j 2
+j 1
+# registers: 9
+# lines: 42

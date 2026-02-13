@@ -1,0 +1,10 @@
+s db Setting STR("Hello")
+s db Setting -1606719762
+push -1461459240
+pop r1
+s db Setting r1
+lbn r0 HASH('StructureBattery')  Average 24
+slt r1 r0 0.1
+sbn 1944485013 $556E6480 28 r1
+# registers: 2
+# lines: 8

@@ -1,0 +1,7 @@
+l r0 d0 RatioCarbonDioxide
+s db Setting r0
+s d1 Setting 295.15
+l r0 d5 Horizontal
+s db Setting r0
+# registers: 1
+# lines: 5

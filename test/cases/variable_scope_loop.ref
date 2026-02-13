@@ -1,0 +1,13 @@
+lb r0 HASH("StructureDaylightSensor") Horizontal Minimum
+lbwhile2:
+  add r0 r0 1
+  ble r0 10 lbelse3
+  j lbwhile.end2
+lbelse3:
+  move r1 3
+  lb r2 HASH("StructureDaylightSensor") Horizontal Maximum
+  mul r1 r1 r2
+  j lbwhile2
+lbwhile.end2:
+# registers: 3
+# lines: 11
