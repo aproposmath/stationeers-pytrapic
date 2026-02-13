@@ -47,7 +47,7 @@ def compile_examples(examples, open_attr=""):
 
 def get_examples():
     # Implement your logic here to generate examples
-    return compile_examples(["constexpr.py"])
+    return compile_examples(["constexpr.py", "compiler_options.py"])
 
 
 def get_simple_examples():

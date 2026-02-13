@@ -14,9 +14,9 @@ def filter_by_sorting_class(cls, negate=False):
 @constexpr
 def filter_by_name(name, negate=False):
     hash = HASH(name) << 8
-    instruction = SorterInstruction.FilterPrefabHashNotEquals
+    instruction = SorterInstruction.FilterPrefabHashEquals
     if negate:
-        instruction = SorterInstruction.FilterPrefabHashEquals
+        instruction = SorterInstruction.FilterPrefabHashNotEquals
     return hash + instruction
 
 
