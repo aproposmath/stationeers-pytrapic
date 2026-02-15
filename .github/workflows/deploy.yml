@@ -18,4 +18,5 @@ jobs:
         with:
           fetch-depth: 0
           submodules: recursive
+          fetch-tags: true
       - uses: ./Template
