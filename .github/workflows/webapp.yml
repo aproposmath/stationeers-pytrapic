@@ -4,6 +4,10 @@ on:
   push:
     branches:
       - main
+    paths-ignore:
+      - '**/*.md'
+      - 'mod/**'
+      - 'Template'
   workflow_dispatch:
 
 jobs:
