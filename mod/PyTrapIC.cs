@@ -165,51 +165,6 @@ namespace StationeersPyTrapIC
         }
     }
 
-    public static class L
-    {
-        private static ManualLogSource _logger;
-#if DEBUG
-        private static bool _debugEnabled = true;
-#else
-        private static bool _debugEnabled = false;
-#endif
-
-        public static string Timestamp => DateTime.Now.ToString("HH:mm:ss.fff - ");
-
-        public static void Initialize(ManualLogSource logger)
-        {
-            _logger = logger;
-        }
-
-        public static bool ToggleDebug()
-        {
-            _debugEnabled = !_debugEnabled;
-            return _debugEnabled;
-        }
-
-        public static void Log(string message)
-        {
-            _logger?.LogMessage(Timestamp + message?.ToString());
-        }
-
-        public static void Info(object msg)
-        {
-            _logger?.LogInfo(Timestamp + msg?.ToString());
-        }
-
-        public static void Error(object msg)
-        {
-            _logger?.LogError(Timestamp + msg?.ToString());
-        }
-
-        public static void Debug(object msg)
-        {
-            if (!_debugEnabled)
-                return;
-            _logger?.LogDebug(Timestamp + msg?.ToString());
-        }
-    }
-
     public class PythonCompiler
     {
         public static readonly string PYTHON_VERSION = "3.13.7";
@@ -510,48 +465,36 @@ namespace StationeersPyTrapIC
         "aproposmath-stationeers-ic10-editor",
         BepInDependency.DependencyFlags.HardDependency
     )]
-    [BepInPlugin(PluginGuid, PluginName, PluginVersion)]
+    [BepInPlugin(ThisModInfo.ModID, ThisModInfo.AssemblyName, ThisModInfo.Version)]
     public class PyTrapICPlugin : BaseUnityPlugin
     {
-        public const string PluginGuid = ThisModInfo.AssemblyGuid;
-        public const string PluginName = ThisModInfo.AssemblyName;
-        public const string PluginVersion = ThisModInfo.Version;
-        public const string PluginVersionGit = ThisModInfo.VersionGit;
-        public static readonly string PluginBuildTime = DateTime
-            .Parse(ThisModInfo.BuildTime)
-            .ToLocalTime()
-            .ToString("yyyy-MM-dd HH:mm:ss");
-
         private void Awake()
         {
             try
             {
-                L.Debug("Awake PyTrapIC plugin");
+                L.SetLogger(this.Logger);
+                L.Info( $"Awake {ThisModInfo.Info}");
                 var sw = Stopwatch.StartNew();
-                L.Initialize(Logger);
-                L.Info(
-                    $"Awake {PluginName} {PluginVersion}, build time {PluginBuildTime}"
-                );
 
                 PythonCompiler.Instance = new PythonCompiler();
                 CommandLine.AddCommand("pytrapic", new PyTrapICCommand());
 
                 sw.Stop();
                 L.Debug(
-                    $"PyTrapIC {PluginVersion} initialized in {sw.ElapsedMilliseconds}ms"
+                    $"PyTrapIC initialized in {sw.ElapsedMilliseconds}ms"
                 );
 
                 CodeFormatters.RegisterFormatter("Python", typeof(PythonFormatter));
             }
             catch (Exception ex)
             {
-                L.Error($"Error during {PluginName} {PluginVersion} init: {ex}");
+                L.Error($"Error during init of {ThisModInfo.Info}: {ex}");
             }
         }
 
         private void OnDestroy()
         {
-            L.Info($"OnDestroy ${PluginName} {PluginVersion}");
+            L.Info($"OnDestroy of ${ThisModInfo.Info}");
             PythonCompiler.Instance.StopProcess();
             PythonFormatter.DisposeSharedLspClient();
         }
@@ -591,12 +534,10 @@ Available commands:
                     return PythonCompiler.Instance.IsRunning()
                         ? "Python daemon is running."
                         : "Python daemon is not running.";
-                case "debug_logging":
-                    return "Debug logging " + (L.ToggleDebug() ? "enabled." : "disabled.");
                 case "libraries":
                     return string.Join("\n", SourceData.loadLibraries().Keys.OrderBy(x => x));
                 case "version":
-                    return $"PyTrapIC version {PyTrapICPlugin.PluginVersion}";
+                    return $"PyTrapIC version {ThisModInfo.Version}, git version: {ThisModInfo.VersionGit}, Python {PythonCompiler.PYTHON_VERSION}";
                 case "reinstall":
                     PythonCompiler.Instance.Init(true, true).Forget();
                     return "Python and dependencies reinstalled.";

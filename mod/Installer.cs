@@ -22,9 +22,9 @@ public class PythonWorkspace
     public static string TypingsDir => Path.Combine(WorkspaceDir, "typings");
 
 #if DEBUG
-    public static string VersionTag => "v" + PyTrapICPlugin.PluginVersion;
-#else
     public static string VersionTag => "main";
+#else
+    public static string VersionTag => "v" + ThisModInfo.Version;
 #endif
     public static string VersionFile => Path.Combine(WorkspaceDir, "pytrapic_version.txt");
     public static bool IsInitialized => File.Exists(VersionFile) && File.ReadAllText(VersionFile).Trim() == VersionTag;
@@ -113,8 +113,7 @@ public class PythonWorkspace
 
             await FetchAndExtract(WorkspaceVersionTag, "ws.zip", CacheDir);
 
-            // write version.txt
-            File.WriteAllText(VersionFile, PyTrapICPlugin.PluginVersion);
+            File.WriteAllText(WorkspaceVersionFile, WorkspaceVersionTag);
 
             L.Info("Python workspace installation complete");
         }
@@ -145,6 +144,7 @@ public class PythonWorkspace
             await FetchAndExtract(VersionTag, "typings.zip", WorkspaceDir);
 
             File.WriteAllText(VersionFile, VersionTag);
+            L.Info("PyTrapIC installation complete");
         }
 
         finally

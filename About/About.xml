@@ -1,7 +1,8 @@
 <ModMetadata>
   <Name>PyTrapIC - Python to IC10 Transpiler</Name>
   <Author>aproposmath</Author>
-  <Version>0.2.4.15-dev</Version>
+  <ModID>com.github.aproposmath.stationeers-pytrapic</ModID>
+  <Version></Version>
   <Description>
         This mod allows you to write [b]Python[/b] instead of IC10. The Python code is converted into IC10 before it's written to the chip. It depends on the IC10 Editor mod, which replaces the in-game code editor. To use it, select "Python" as the language in the top right corner of the IC10 Editor window. Search for "pytrapic" in the Stationpedia for examples.
 
