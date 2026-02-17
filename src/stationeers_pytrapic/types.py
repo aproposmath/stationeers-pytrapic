@@ -699,6 +699,9 @@ range = __builtins__["range"]
 def constexpr(func):
     return func
 
+def emit_code(func):
+    return func
+
 
 __all__ = [
     "pi",
