@@ -417,6 +417,8 @@ except ImportError:
 
 
 def eval_constexpr(data, call_node):
+    import json
+
     if data.constexpr_functions_code is None:
         code = ""
         for scope, funcs in data.constexpr_functions.items():
@@ -444,10 +446,10 @@ def emit_code(f):
     
 {data.constexpr_functions_code}
 
+__result = __json.dumps({call_node.as_string()})
+
 """
-    if _is_pyodide:
-        code += f"\nresult = {call_node.as_string()}\n"
-    else:
+    if not _is_pyodide:
         code += f"\nprint(__json.dumps({call_node.as_string()}))\n"
     if code in _eval_constexpr_cache:
         return _eval_constexpr_cache[code]
@@ -456,19 +458,14 @@ def emit_code(f):
         vars = {}
         try:
             exec(code, vars, vars)
-            result = vars["result"]
+            result = json.loads(vars["__result"])
+            _eval_constexpr_cache[code] = result
+            return result
         except Exception as e:
             raise CompilerError(
                 f"Error during evaluating constexpr function call {call_node.as_string()}:\n{e}",
                 call_node,
             )
-        try:
-            result = int(result)
-            result = format_int(result)
-        except ValueError:
-            pass
-        _eval_constexpr_cache[code] = result
-        return result
 
     # run this in a separate process to avoid side effects and have a timeout and proper cleanup
     import subprocess
@@ -495,8 +492,6 @@ def emit_code(f):
         )
     result_json = stdout.decode().strip()
     try:
-        import json
-
         result = json.loads(result_json)
     except ValueError:
         raise ValueError(f"Invalid JSON result in constexpr function: {result_json}")
