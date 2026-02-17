@@ -4,13 +4,13 @@
     "sha256:2824ef65dc4286c09f5949b0e00e978c70bb04af60421b08f6975d8df9efb8a9": false,
     "sha256:50db84fa4f8e0fff84f7d69ad593a4fc93008df51cc6087318783f57b7e13218": false,
     "sha256:830016920cfa6d80b8f4573b3d5c0ee35d835f13012469e9c4926d7f5f935e43": false,
-    "sha256:a0aa4dd847a3692d496b2c940fd29e2fe13b43ab7d88879ab450522f1f18f61c": {
+    "sha256:b5193a1b112d2cb458830534e7a7ed3c062ffcb5f748cd332d5a435e82c4f671": {
         "author": "aproposmath",
         "branch": [],
         "depends_on": [
             "3592775931"
         ],
-        "digest": "sha256:a0aa4dd847a3692d496b2c940fd29e2fe13b43ab7d88879ab450522f1f18f61c",
+        "digest": "sha256:b5193a1b112d2cb458830534e7a7ed3c062ffcb5f748cd332d5a435e82c4f671",
         "id": "com.github.aproposmath.stationeers-pytrapic",
         "name": "PyTrapIC - Python to IC10 Transpiler",
         "tag": [
@@ -24,7 +24,7 @@
             "StationeersLaunchPad"
         ],
         "url": "https://github.com/aproposmath/stationeers-pytrapic/releases/download/main/PyTrapIC-main.zip",
-        "version": "0.2.3.25-dev"
+        "version": "0.2.3.26-dev"
     },
     "sha256:c6f22565feeb1b165d0e872be83af9cc522aa6d86ab2ca9475b1bce8626a2108": false,
     "sha256:d483dbe218dba8c23c0a2ebf68d77afaf55604484cd40cedbfa68fb61e779bd7": false
