@@ -430,20 +430,25 @@ def eval_constexpr(data, call_node):
         data.constexpr_functions_code = code
 
     code = f"""
+from stationeers_pytrapic.symbols import *
 from stationeers_pytrapic.types import *
 from stationeers_pytrapic.types_generated import *
 from stationeers_pytrapic.utils import calc_hash as HASH
+import json as __json
 
 def constexpr(f):
     return f
-
+    
+def emit_code(f):
+    return f
+    
 {data.constexpr_functions_code}
 
 """
     if _is_pyodide:
         code += f"\nresult = {call_node.as_string()}\n"
     else:
-        code += f"\nprint({call_node.as_string()})\n"
+        code += f"\nprint(__json.dumps({call_node.as_string()}))\n"
     if code in _eval_constexpr_cache:
         return _eval_constexpr_cache[code]
 
@@ -488,12 +493,13 @@ def constexpr(f):
             f"Error during evaluating constexpr function call {call_node.as_string()}:\n{stderr.decode()}",
             call_node,
         )
-    result = stdout.decode().strip()
+    result_json = stdout.decode().strip()
     try:
-        result = int(result)
-        result = format_int(result)
+        import json
+
+        result = json.loads(result_json)
     except ValueError:
-        pass
+        raise ValueError(f"Invalid JSON result in constexpr function: {result_json}")
 
     _eval_constexpr_cache[code] = result
     return result

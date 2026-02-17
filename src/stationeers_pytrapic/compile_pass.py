@@ -27,6 +27,7 @@ class FunctionData:
     code: list[IC10Instruction] = field(default_factory=list)
     args: list[IC10Register] = field(default_factory=list)
     is_constexpr: bool = False
+    is_emit: bool = False
 
     @property
     def name(self) -> str:
@@ -558,7 +559,12 @@ class CompilerPassCheckConstValue(CompilerPass):
 
         if fname in self.data.functions:
             func_data = self.data.functions[fname]
-            if func_data.is_constexpr:
+            if func_data.is_emit:
+                lines = eval_constexpr(self.data, node)
+                for line in lines:
+                    data.add(IC10Instruction(line))
+
+            elif func_data.is_constexpr:
                 value = eval_constexpr(self.data, node)
                 update_parent = data.is_constant == False
                 data.set_constant(value)
@@ -798,21 +804,14 @@ class CompilerPassHandleConstexpr(CompilerPass):
     ignore_unimplemented_nodes = True
 
     def check_constexpr_function(self, node):
-        # check if any node in the function body is an import statement or eval/exec statement
-        for child in node.get_children():
-            if isinstance(child, nodes.Import) or isinstance(child, nodes.ImportFrom):
-                raise CompilerError(
-                    "Constexpr functions cannot contain import statements",
-                    child,
-                )
-            if isinstance(child, nodes.Call):
-                fname = get_function_name(child.func)
-                if fname in ("eval", "exec"):
-                    raise CompilerError(
-                        "Constexpr functions cannot contain eval or exec statements",
-                        child,
-                    )
-            self.check_constexpr_function(child)
+        import re
+
+        # check via regex if  the code contain "open", "eval" or "exec"
+        if re.search(r"\b(open|eval|exec)\b", node.as_string()):
+            raise CompilerError(
+                "Constexpr functions cannot contain open, eval or exec statements",
+                node,
+            )
 
     def handle_decorators(self, node: nodes.Decorators):
         for n in node.nodes:
@@ -821,7 +820,7 @@ class CompilerPassHandleConstexpr(CompilerPass):
                     f"Unsupported decorator type: {type(n)}",
                     n,
                 )
-            if n.name == "constexpr":
+            if n.name in ["constexpr", "emit_code"]:
                 fnode = node.parent
                 self.check_constexpr_function(fnode)
                 scope = get_scope_name(fnode)
@@ -853,7 +852,8 @@ class CompilerPassCreateFunctionData(CompilerPass):
 
     def handle_decorators(self, node: nodes.Decorators):
         for n in node.nodes:
-            if n.name == "constexpr":
+            if n.name in ["constexpr", "emit_code"]:
                 data = self.data.functions[get_function_name(node.parent)]
                 data.is_constexpr = True
+                data.is_emit = n.name == "emit_code"
                 node.parent._ndata.is_constexpr = True

@@ -862,8 +862,11 @@ class CompilerPassGenerateCode(CompilerPass):
 
     def handle_for(self, node: nodes.For):
         iter_ = node.iter
+        iter_data = node.iter._ndata
 
-        if isinstance(iter_, nodes.List):
+        if isinstance(iter_, nodes.List) or (
+            iter_data.is_constant and isinstance(iter_data.constant_value, list)
+        ):
             return self._handle_for_list(node)
 
         if (
