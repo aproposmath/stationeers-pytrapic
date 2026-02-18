@@ -50,7 +50,7 @@ s db Setting r4
 l r3 db On
 mod r5 r3 2
 sub r4 r3 r5
-brgez r4
+jr r4
 select r4 r5 90 91
 j 58
 select r4 r5 92 93
@@ -60,7 +60,7 @@ s db Setting r4
 l r3 db On
 mod r5 r3 2
 sub r4 r3 r5
-brgez r4
+jr r4
 select r4 r5 90 91
 j 70
 select r4 r5 92 93
@@ -72,7 +72,7 @@ s db Setting r4
 l r3 db On
 mod r5 r3 2
 sub r4 r3 r5
-brgez r4
+jr r4
 select r4 r5 90 91
 j 82
 select r4 r5 92 93

@@ -70,7 +70,7 @@ len6:
   l r3 db On
   mod r5 r3 2
   sub r4 r3 r5
-  brgez r4
+  jr r4
     select r4 r5 90 91
     j lbend28
     select r4 r5 92 93
@@ -83,7 +83,7 @@ len7:
   l r3 db On
   mod r5 r3 2
   sub r4 r3 r5
-  brgez r4
+  jr r4
     select r4 r5 90 91
     j lbend32
     select r4 r5 92 93
@@ -98,7 +98,7 @@ len8:
   l r3 db On
   mod r5 r3 2
   sub r4 r3 r5
-  brgez r4
+  jr r4
     select r4 r5 90 91
     j lbend36
     select r4 r5 92 93

@@ -655,7 +655,7 @@ class CompilerPassGenerateCode(CompilerPass):
         t2 = self.get_intermediate_symbol(node, True)
         data.add(IC10("mod", [index, 2], t2))
         data.add(IC10("sub", [index, t2], t1))
-        data.add(IC10("brgez", [t1]))
+        data.add(IC10("jr", [t1]))
 
         array2 = [v for v in array]
         if len(array2) % 2 == 1:
