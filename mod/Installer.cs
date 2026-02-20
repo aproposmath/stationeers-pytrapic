@@ -1,6 +1,7 @@
 using System;
 using System.IO;
 using System.IO.Compression;
+using System.Linq;
 
 using Cysharp.Threading.Tasks;
 using System.Threading;
@@ -36,29 +37,27 @@ public class PythonWorkspace
 
     private static async UniTask<ZipArchive> FetchZip(string url)
     {
-        using (var downloadRequest = UnityWebRequest.Get(url))
+        using var downloadRequest = UnityWebRequest.Get(url);
+        L.Info($"Downloading {url}");
+        var downloadResult = await downloadRequest.SendWebRequest();
+
+        if (downloadResult.result != UnityWebRequest.Result.Success)
         {
-            L.Info($"Downloading {url}");
-            var downloadResult = await downloadRequest.SendWebRequest();
-
-            if (downloadResult.result != UnityWebRequest.Result.Success)
-            {
-                L.Error($"Failed to download {url}! result: {downloadResult.result}, error: {downloadResult.error}");
-                return null;
-            }
-
-            var data = downloadRequest.downloadHandler.data;
-            L.Debug($"Downloaded {data.Length} bytes");
-            var stream = new MemoryStream(data.Length);
-            stream.Write(data, 0, data.Length);
-            stream.Position = 0;
-
-            return new ZipArchive(stream);
+            L.Error($"Failed to download {url}! result: {downloadResult.result}, error: {downloadResult.error}");
+            return null;
         }
+
+        var data = downloadRequest.downloadHandler.data;
+        L.Info($"Downloaded {data.Length} bytes");
+        var stream = new MemoryStream(data.Length);
+        stream.Write(data, 0, data.Length);
+        stream.Position = 0;
+
+        return new ZipArchive(stream);
     }
 
 
-    public static async UniTask FetchAndExtract(string versionTag, string assetName, string extractDir)
+    public static async UniTask FetchAndExtract(string extractDir, string versionTag, string prefix, string extension = ".zip")
     {
         var url = $"https://api.github.com/repos/aproposmath/stationeers-pytrapic/releases/tags/{versionTag}";
         using var request = UnityWebRequest.Get(url);
@@ -72,15 +71,19 @@ public class PythonWorkspace
         }
 
         var json = JsonConvert.DeserializeObject<Newtonsoft.Json.Linq.JObject>(request.downloadHandler.text);
-        var assetUrl = (string)json.SelectToken($"$.assets[?(@.name == '{assetName}')].browser_download_url");
 
-        if (assetUrl == null)
+        var asset = json["assets"].FirstOrDefault((a) => {
+            string name = a["name"]?.ToString();
+            return name != null && name.StartsWith(prefix) && name.EndsWith(extension);
+        });
+        
+        if (asset == null)
         {
-            L.Error($"Could not find asset ${assetName} in release ${versionTag}");
-            throw new Exception($"Could not find asset ${assetName} in release ${versionTag}");
+            L.Error($"Could not find asset {prefix} in release {versionTag}");
+            throw new Exception($"Could not find asset {prefix} in release {versionTag}");
         }
-
-        var archive = await FetchZip(assetUrl);
+        
+        var archive = await FetchZip(asset["browser_download_url"].ToString());
         archive.ExtractToDirectory(extractDir);
     }
 
@@ -113,7 +116,7 @@ public class PythonWorkspace
 
             L.Info("Installing Python workspace");
 
-            await FetchAndExtract(WorkspaceVersionTag, "ws.zip", CacheDir);
+            await FetchAndExtract(CacheDir, WorkspaceVersionTag, "ws", ".zip");
 
             File.WriteAllText(WorkspaceVersionFile, WorkspaceVersionTag);
 
@@ -142,8 +145,8 @@ public class PythonWorkspace
             if (Directory.Exists(TypingsDir))
                 Directory.Delete(TypingsDir, true);
 
-            await FetchAndExtract(VersionTag, "stationeers-pytrapic.whl", SitePackagesDir);
-            await FetchAndExtract(VersionTag, "typings.zip", WorkspaceDir);
+            await FetchAndExtract(SitePackagesDir, VersionTag, "stationeers_pytrapic", ".whl");
+            await FetchAndExtract(WorkspaceDir, VersionTag, "typings", ".zip");
 
             File.WriteAllText(VersionFile, VersionTag);
             L.Info("PyTrapIC installation complete");

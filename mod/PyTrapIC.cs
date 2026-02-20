@@ -260,7 +260,7 @@ namespace StationeersPyTrapIC
 
                 StopProcess();
             }
-            await PythonWorkspace.InitWorkspace(forceInstall);
+            await PythonWorkspace.InitPytrapic(forceInstall);
             L.Debug("Python installation checked");
 
             var pythonPath = PythonWorkspace.PythonExe;
@@ -299,7 +299,7 @@ namespace StationeersPyTrapIC
 
             var pagesResponse = await _stdout.ReadLineAsync();
             L.Debug($"Received Stationpedia pages from Python compiler");
-            L.Debug($"Decoding Stationpedia pages {pagesResponse}");
+            // L.Debug($"Decoding Stationpedia pages {pagesResponse}");
 
             if (pagesResponse == null)
             {

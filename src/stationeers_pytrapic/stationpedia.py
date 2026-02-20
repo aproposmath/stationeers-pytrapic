@@ -40,7 +40,14 @@ Click the code below to copy the code.
 def get_pages():
     main_text = readme
     examples = [
-        ("getting_started", "Getting Started"),
+        ("logic_types", "Logic Types"),
+        ("batch_operations", "Batch Operations"),
+        ("loops", "Loops"),
+        ("misc", "Miscellaneous"),
+        ("stack", "Stack"),
+        ("constexpr", "Constexpr"),
+        ("intrinsics", "Intrinsics"),
+        ("compiler_options", "Compiler Options"),
         ("solar", "Solar Panel Alignment"),
         ("airlock", "Simple Airlock"),
     ]
@@ -119,7 +126,9 @@ If you have some python code stored in a library named <color=#a0a0a0><i>your_li
 
 {highlight(_lib_code)}
 
-""".replace("<h1>", "<b><size=150%><color=#3060ff>")
+""".replace(
+        "<h1>", "<b><size=150%><color=#3060ff>"
+    )
     .replace("</h1>", "</color></size></b>")
     .replace("<h2>", "<b><size=100%><color=#3060ff>")
     .replace("</h2>", "</color></size></b>")
