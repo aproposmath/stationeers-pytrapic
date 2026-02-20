@@ -13,11 +13,6 @@
     </Dependencies>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="StationeersLaunchPad.dll">
-      <HintPath
-        >Template/dependencies/StationeersLaunchPad/StationeersLaunchPad.dll</HintPath>
-      <Private>false</Private>
-    </Reference>
     <Reference Include="IC10Editor.dll">
       <HintPath>Template/dependencies/IC10Editor.dll</HintPath>
       <Private>false</Private>
