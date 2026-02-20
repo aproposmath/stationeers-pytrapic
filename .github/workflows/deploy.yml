@@ -19,4 +19,10 @@ jobs:
           fetch-tags: true
           fetch-depth: 0
           submodules: recursive
+      - name: Build wheel
+        run: |
+          pip install mypy build wheel
+          python -m build -w . -o dist/release
+          stubgen -o typings/ src/stationeers_pytrapic
+          zip -r dist/release/typings.zip typings
       - uses: ./Template
