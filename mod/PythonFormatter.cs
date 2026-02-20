@@ -18,7 +18,7 @@ public class PythonFormatter : LSPFormatter
 
     protected static LspClient _sharedLspClient = null;
 
-    protected static StaticFormatter StaticFormatter = new PythonStaticFormatter();
+    public static StaticFormatter StaticFormatter = new PythonStaticFormatter();
 
     public Editor _IC10Editor = null;
     public Editor IC10Editor
@@ -205,6 +205,8 @@ public class PythonFormatter : LSPFormatter
 
     public async UniTask WriteLibraries()
     {
+        if (Editor.ParentTab == null)
+            return;
         await Editor.ParentTab.ParentWindow.LoadLibraries();
 
         var libs = Editor.ParentTab.ParentWindow.LibraryCodes;
@@ -239,7 +241,8 @@ public class PythonFormatter : LSPFormatter
     {
         if (Identifier.uri == null)
         {
-            WriteLibraries().Forget();
+            if(!Editor.IsReadOnly)
+                WriteLibraries().Forget();
             string filename = Editor.FileName + ".py";
             Identifier.uri = new Uri(Path.Combine(WorkspacePath, filename)).AbsoluteUri;
         }
@@ -311,7 +314,7 @@ public class PythonFormatter : LSPFormatter
 
         await UniTask.SwitchToMainThread();
         L.Debug($"Applying compiled code to IC10 editor, editor = {IC10Editor}");
-        IC10Editor.ResetCode(compiled);
+        IC10Editor.ResetCode(compiled, false);
     }
 
     public override StyledLine ParseLine(string line)
