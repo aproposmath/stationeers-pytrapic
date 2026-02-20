@@ -25,4 +25,6 @@ jobs:
           python -m build -w . -o dist/release
           stubgen -o typings/ src/stationeers_pytrapic
           zip -r dist/release/typings.zip typings
+          echo "zip_path=dist/release/typings.zip" >> "$GITHUB_OUTPUT"
+          echo zip_path=dist/release/*.whl >> "$GITHUB_OUTPUT"
       - uses: ./Template
