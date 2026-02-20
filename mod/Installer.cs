@@ -72,7 +72,7 @@ public class PythonWorkspace
         }
 
         var json = JsonConvert.DeserializeObject<Newtonsoft.Json.Linq.JObject>(request.downloadHandler.text);
-        var assetUrl = (string)json.SelectToken($"$.assets[?(@.name == '{assetName}')].url");
+        var assetUrl = (string)json.SelectToken($"$.assets[?(@.name == '{assetName}')].browser_download_url");
 
         if (assetUrl == null)
         {
