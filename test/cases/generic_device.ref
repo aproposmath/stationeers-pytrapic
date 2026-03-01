@@ -1,0 +1,7 @@
+lbn r0 HASH("ModularDeviceSquareButton") HASH("name") Temperature Maximum
+s db Setting r0
+sbn HASH("ModularDeviceSquareButton") HASH("name") Setting 123
+lbn r0 HASH("ModularDeviceSquareButton") HASH("name") Temperature Maximum
+s db Setting r0
+# registers: 1
+# lines: 5

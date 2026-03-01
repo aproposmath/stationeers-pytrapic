@@ -1,0 +1,7 @@
+lbn r0 $5730162D $5E237E06 Temperature 3
+s db Setting r0
+sbn $5730162D $5E237E06 Setting 123
+lbn r0 $5730162D $5E237E06 Temperature 3
+s db Setting r0
+# registers: 1
+# lines: 5

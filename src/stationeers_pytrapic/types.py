@@ -554,6 +554,7 @@ class Device(_BaseStructure, _GenericStructure):
         if attr_name in [
             "_dev_id",
             "_id",
+            "_name",
             "_hash",
             "_is_ref_id",
         ] or attr_name.startswith("__"):
@@ -590,6 +591,7 @@ class Devices(_BaseStructures, _GenericStructures):
         d = _Device()
         d._prefab_name = self._prefab_name
         d._batch_mode = batch_mode
+        d._name = self._name
         return d
 
     @property
