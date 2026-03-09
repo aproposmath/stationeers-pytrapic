@@ -914,6 +914,7 @@ class CompilerPassGenerateCode(CompilerPass):
 
         for stmt in node.body:
             self.compile_node(stmt)
+
         data.add_end(IC10("add", [iter_sym, step], iter_sym, indent=1))
         data.add_end(IC10("j", [for_label], indent=1))
         data.add_end(IC10(f"{end_label}:"))
@@ -981,9 +982,8 @@ class CompilerPassGatherCode(CompilerPass):
     def gather_code(self, node: nodes.NodeNG, special_nodes=None):
         data = node._ndata
         special_nodes = special_nodes or []
-        if "" in data.code:
-            for line in data.code[""]:
-                self.add_line(line)
+        for line in data.code.get("", []):
+            self.add_line(line)
 
         do_indent = isinstance(
             node, (nodes.FunctionDef, nodes.While, nodes.For, nodes.If)
@@ -1090,6 +1090,10 @@ class CompilerPassGatherCode(CompilerPass):
         if isinstance(node, nodes.Return) and node.value is not None:
             special_nodes.add(node.value)
             self._visit_node(node.value)
+
+        if isinstance(node, nodes.For):
+            special_nodes.add(node.iter)
+            self._visit_node(node.iter)
 
         self.gather_code(node, special_nodes)
 

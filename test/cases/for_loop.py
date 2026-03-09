@@ -18,6 +18,12 @@ def range3(start, stop, step):
         a += i
     return a
 
+def range_ops():
+    a = 0
+    for i in range(stack[0], stack[1]+10, 2):
+        a += i
+    return a
+
 def range1_const():
     a = 0
     for i in range(10):
@@ -46,3 +52,4 @@ while True:
     db.Setting = range1_const()
     db.Setting = range2_const()
     db.Setting = range3_const()
+    db.Setting = range_ops()

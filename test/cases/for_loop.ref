@@ -26,6 +26,9 @@ lbwhile1:
   jal range3.const
   get r3 db 511
   s db Setting r3
+  jal range.ops
+  get r3 db 511
+  s db Setting r3
   j lbwhile1
 range1:
   get r4 db 510
@@ -99,5 +102,19 @@ lbfor32:
 lbfor.end32:
   put db 511 r4
   j ra
+range.ops:
+  move r4 0
+  get r6 db 0
+  get r7 db 1
+  add r8 r7 10
+  move r5 r6
+lbfor39:
+  bge r5 r8 lbfor.end39
+    add r4 r4 r5
+    add r5 r5 2
+    j lbfor39
+lbfor.end39:
+  put db 511 r4
+  j ra
 # registers: 9
-# lines: 101
+# lines: 118
