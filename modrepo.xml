@@ -3,11 +3,11 @@
   >
   <ModVersion
       ModID="com.github.aproposmath.stationeers-pytrapic"
-      Version="0.2.3.36-dev"
+      Version="0.2.3.37-dev"
       Name="PyTrapIC - Python to IC10 Transpiler"
       Author="aproposmath"
       Url="https://github.com/aproposmath/stationeers-pytrapic/releases/download/main/PyTrapIC-main.zip"
-      Digest="sha256:583541d927f90d65dc9221a3df9a026a402f072f3faccc33ed3acbc39ce1925b"
+      Digest="sha256:1546d2b1ecbea0cbb1d392f20f69507a24a0848c37ee4c7ba5efb8c7ba17f366"
   />
 </ModRepo
 >
