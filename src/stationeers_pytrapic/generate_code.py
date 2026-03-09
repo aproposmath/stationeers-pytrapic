@@ -561,7 +561,13 @@ class CompilerPassGenerateCode(CompilerPass):
                 or isinstance(value_name, str)
                 and value_name in symbols.__dict__
             ):
+                from .types import _BaseStructure
                 data.result = value
+                
+                if isinstance(value, _BaseStructure):
+                    if isinstance(value._dev_id._id, IC10Register):
+                        value._dev_id._id._is_intermediate = False
+                    
                 structures = self.data.structures
                 scope_name = get_scope_name(target)
                 if scope_name not in structures:
