@@ -8,8 +8,11 @@ inner:
   s db Setting 0
   j ra
 outer1:
+  push ra
   s db Setting 1
-  j inner
+  jal inner
+  pop ra
+  j ra
 outer2:
   push ra
   s db Setting 2
@@ -18,4 +21,4 @@ outer2:
   pop ra
   j ra
 # registers: 0
-# lines: 19
+# lines: 22

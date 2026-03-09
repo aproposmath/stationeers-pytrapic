@@ -1,12 +1,15 @@
 jal 7
 jal 7
-jal 9
-jal 9
+jal 12
+jal 12
 j 0
 s db Setting 0
 j ra
+push ra
 s db Setting 1
-j 5
+jal 5
+pop ra
+j ra
 push ra
 s db Setting 2
 jal 5
@@ -14,4 +17,4 @@ s db Setting 3
 pop ra
 j ra
 # registers: 0
-# lines: 15
+# lines: 18

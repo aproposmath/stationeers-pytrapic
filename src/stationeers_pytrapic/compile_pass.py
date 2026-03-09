@@ -77,6 +77,7 @@ class CompileOptions:
     remove_labels: bool = False
     append_version: bool = True
     compact: bool = False
+    tail_call_optimization: bool = False
 
 
 @dataclass
