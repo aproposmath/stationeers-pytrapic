@@ -1,0 +1,7 @@
+add r2 1 2
+add r4 r2 3
+move r0 r4
+move r1 r0
+s db Setting r1
+# registers: 4
+# lines: 5

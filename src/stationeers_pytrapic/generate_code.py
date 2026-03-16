@@ -295,8 +295,10 @@ class CompilerPassGenerateCode(CompilerPass):
                     arg,
                 )
             if not do_inline:
-                addr = _RETURN_VALUE_ADDRESS - 1 - i
-                data.add(IC10("put", ["db", addr, d]))
+                if self.data.options.use_push_pop_functions:
+                    data.add(IC10("push", [d]))
+                else:
+                    data.add(IC10("put", ["db", _RETURN_VALUE_ADDRESS - 1 - i, d]))
 
         data.add(IC10("jal", [fname.replace("_", ".")]))
         self.compile_function(self.functions[fname])
@@ -320,7 +322,10 @@ class CompilerPassGenerateCode(CompilerPass):
                         symbol.code_expr = self.get_register_name()
                 else:
                     symbol = self.get_intermediate_symbol(node)
-                data.add_end(IC10("get", ["db", _RETURN_VALUE_ADDRESS], symbol))
+                if self.data.options.use_push_pop_functions:
+                    data.add_end(IC10("pop", [], symbol))
+                else:
+                    data.add_end(IC10("get", ["db", _RETURN_VALUE_ADDRESS], symbol))
                 data.result = symbol
 
     def handle_expr(self, node: nodes.Expr):
@@ -342,7 +347,10 @@ class CompilerPassGenerateCode(CompilerPass):
                 sym_data = self.data.get_sym_data(func_node)
                 data.add(IC10("move", [d], sym_data))
             else:
-                data.add(IC10("put", ["db", _RETURN_VALUE_ADDRESS, d]))
+                if self.data.options.use_push_pop_functions:
+                    data.add(IC10("push", [d]))
+                else:
+                    data.add(IC10("put", ["db", _RETURN_VALUE_ADDRESS, d]))
 
         if node != func_node.body[-1]:
             # only jump to end of function, if return is not the last statement
@@ -450,18 +458,15 @@ class CompilerPassGenerateCode(CompilerPass):
                     arg_sym.code_expr = calling_arg
                 func_data.args.append(arg_sym)
         else:
-            for i, arg in enumerate(node.args.args):
+            arg_list = list(reversed(node.args.args)) if self.data.options.use_push_pop_functions else node.args.args
+            for i, arg in enumerate(arg_list):
                 reg = self.get_register_name()
                 sym = self.data.get_sym_data(arg)
                 sym.code_expr = reg
-                data.add(
-                    IC10(
-                        "get",
-                        ["db", _RETURN_VALUE_ADDRESS - 1 - i],
-                        sym,
-                        indent=1,
-                    )
-                )
+                if self.data.options.use_push_pop_functions:
+                    data.add(IC10("pop", [], sym, indent=1))
+                else:
+                    data.add(IC10("get", ["db", _RETURN_VALUE_ADDRESS - 1 - i], sym, indent=1))
                 if arg.name in symbols.__dict__:
                     raise CompilerError(
                         f"Function argument name {arg.name} conflicts with a built-in name",
@@ -1120,7 +1125,7 @@ class CompilerPassGatherCode(CompilerPass):
             if func.is_constexpr:
                 continue
             if fname != "" and func.is_called:
-                func.add_ra_instructions()
+                func.add_ra_instructions(self.data.options)
             if fname == "" or func.is_called:
                 for line in func.code:
                     self.code.append(line)
