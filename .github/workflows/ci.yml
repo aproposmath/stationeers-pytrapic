@@ -1,0 +1,78 @@
+name: CI
+
+on:
+  pull_request:
+  push:
+    branches:
+      - main
+
+# Cancel in-progress runs for the same branch/PR when a new commit is pushed,
+# avoiding wasted CI minutes on superseded work.
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  ci:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          submodules: recursive
+
+      - name: Set up Python 3.10
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.10"
+          # Cache downloaded pip packages across runs to speed up dependency
+          # installation on repeated pushes.
+          cache: pip
+
+      - name: Install dependencies
+        run: |
+          pip install pytest pytest-cov pip-audit astroid pygments mypy pyright ruff setuptools setuptools_scm
+
+      - name: Install package
+        run: pip install -e .
+
+      - name: Audit dependencies
+        # Scans installed packages against known CVE databases (PyPI Advisory DB
+        # and OSV). Fails the build if any dependency has a known vulnerability.
+        run: pip-audit
+
+      - name: Format check (ruff)
+        # Verifies code is formatted to ruff's Black-compatible style without
+        # modifying files; keeps formatting concerns separate from lint rules.
+        run: ruff format --check src/ test/
+
+      - name: Lint (ruff)
+        # ruff is a fast linter; --output-format=github emits inline annotations
+        # visible directly in the PR diff view.
+        run: ruff check src/ test/ --output-format=github
+
+      - name: Type check (mypy)
+        # mypy performs static type inference with a focus on gradual typing,
+        # flow analysis, and plugin-based extensibility (e.g. astroid integration).
+        run: mypy src/stationeers_pytrapic
+
+      - name: Type check (pyright)
+        # pyright uses a distinct type narrowing engine from mypy; the two tools
+        # catch disjoint sets of errors (e.g. pyright is stricter about Protocol
+        # and TypeGuard, mypy is stricter about certain decorator patterns).
+        run: pyright src/stationeers_pytrapic
+
+      - name: Test
+        # --tb=short: concise tracebacks suitable for CI logs.
+        # --strict-markers: fail if any test uses an undefined pytest marker,
+        #   preventing silently misconfigured test suites.
+        run: pytest test/ --cov=stationeers_pytrapic --cov-report=xml --tb=short --strict-markers
+
+      - name: Coverage comment
+        # Posts a coverage diff comment on PRs showing which lines changed by
+        # this PR are/aren't covered. Skipped on non-PR events.
+        if: github.event_name == 'pull_request'
+        uses: py-cov-action/python-coverage-comment-action@v3
+        with:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

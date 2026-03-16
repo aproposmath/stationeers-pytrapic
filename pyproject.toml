@@ -11,3 +11,36 @@ build-backend = "setuptools.build_meta"
 
 [tool.setuptools_scm]
 version_file = "src/stationeers_pytrapic/_version.py"
+
+[tool.ruff]
+# Default: 88 (same as Black)
+line-length = 88
+# Match project's minimum Python version; affects UP rule modernization targets.
+# Default: "py38"
+target-version = "py310"
+
+[tool.ruff.lint]
+# Default: ["E4", "E7", "E9", "F"]  (pycodestyle errors + pyflakes)
+# Added rule sets:
+#   "I"   - isort:                  import ordering
+#   "UP"  - pyupgrade:              modernize syntax for the target Python version
+#   "B"   - flake8-bugbear:         likely bugs and opinionated design issues
+#   "C4"  - flake8-comprehensions:  suggest idiomatic comprehension forms
+#   "SIM" - flake8-simplify:        flag unnecessarily complex code patterns
+select = ["E4", "E7", "E9", "F", "I", "UP", "B", "C4", "SIM"]
+
+# Default: []
+ignore = [
+    # SIM108 pushes ternary operators in place of if/else blocks; this can
+    # reduce readability for non-trivial conditions.
+    "SIM108",
+    # B009/B010 forbid getattr/setattr with literal names; occasionally useful
+    # for dynamic attribute patterns common in compiler/transpiler code.
+    "B009",
+    "B010",
+]
+
+[tool.ruff.lint.isort]
+# Default: [] — tells ruff which packages are first-party so imports are
+# grouped correctly (stdlib / third-party / first-party).
+known-first-party = ["stationeers_pytrapic"]
