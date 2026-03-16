@@ -6,15 +6,21 @@ data = json.load(open("Enums.json", "r"))
 
 generated_types = set()
 
-file_code = f"from enum import IntEnum as _IntEnum\n\n"
-for collection in data.values():
+file_code = (
+    "from enum import IntEnum as _IntEnum\n\n"
+    "class _NamedIntEnum(_IntEnum):\n"
+    '    """IntEnum subclass for enums whose names IC10 understands (LogicType, LogicSlotType, LogicBatchMethod)."""\n'
+    "    pass\n\n"
+)
+for collection_name, collection in data.items():
     for enum_data in collection.values():
         name = enum_data["enumName"]
         if name in generated_types:
             continue
         generated_types.add(name)
         values = enum_data["values"]
-        file_code += f"\nclass {name}(_IntEnum):\n"
+        base = "_NamedIntEnum" if collection_name == "scriptEnums" else "_IntEnum"
+        file_code += f"\nclass {name}({base}):\n"
         for value_name, value in values.items():
             if keyword.iskeyword(value_name):
                 value_name += "_"

@@ -35,10 +35,10 @@ def set_output_mode(mode: OutputMode):
 
 
 def format_enum(enum_val) -> str | int:
-    if _output_mode == OutputMode.VERBOSE:
+    from .types_generated import _NamedIntEnum
+    if _output_mode == OutputMode.VERBOSE and isinstance(enum_val, _NamedIntEnum):
         return enum_val.name
-    else:
-        return enum_val.value
+    return enum_val.value
 
 
 _math_functions = {

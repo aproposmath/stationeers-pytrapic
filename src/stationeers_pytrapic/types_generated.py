@@ -1,7 +1,12 @@
 from enum import IntEnum as _IntEnum
 
 
-class LogicType(_IntEnum):
+class _NamedIntEnum(_IntEnum):
+    """IntEnum subclass for enums whose names IC10 understands (LogicType, LogicSlotType, LogicBatchMethod)."""
+    pass
+
+
+class LogicType(_NamedIntEnum):
     None_ = 0
     Power = 1
     Open = 2
@@ -286,7 +291,7 @@ class LogicType(_IntEnum):
     ContactSlotIndex = 282
 
 
-class LogicSlotType(_IntEnum):
+class LogicSlotType(_NamedIntEnum):
     None_ = 0
     Occupied = 1
     OccupantHash = 2
@@ -329,7 +334,7 @@ class LogicReagentMode(_IntEnum):
     TotalContents = 3
 
 
-class LogicBatchMethod(_IntEnum):
+class LogicBatchMethod(_NamedIntEnum):
     Average = 0
     Sum = 1
     Minimum = 2
