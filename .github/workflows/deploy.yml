@@ -23,6 +23,9 @@ jobs:
         run: |
           pip install mypy build wheel
           python -m build -w . -o dist/release
+          if [[ "${GITHUB_REF}" == "refs/heads/main" ]]; then
+            mv dist/release/stationeers_pytrapic-*.whl dist/release/stationeers_pytrapic-main-py3-none-any.whl
+          fi
           stubgen -o typings/ src/stationeers_pytrapic
           zip -r dist/release/typings.zip typings
           echo "zip_path=dist/release/typings.zip" >> "$GITHUB_OUTPUT"
