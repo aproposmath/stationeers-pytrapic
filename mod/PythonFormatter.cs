@@ -241,7 +241,7 @@ public class PythonFormatter : LSPFormatter
     {
         if (Identifier.uri == null)
         {
-            if(!Editor.IsReadOnly)
+            if (!Editor.IsReadOnly)
                 WriteLibraries().Forget();
             string filename = Editor.FileName + ".py";
             Identifier.uri = new Uri(Path.Combine(WorkspacePath, filename)).AbsoluteUri;
