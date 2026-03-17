@@ -74,3 +74,113 @@ while True:
 
 - Limited Lua support (the first code line must be `require("stationeers_pytrapic.symbols")`)
 
+---
+
+## Developer Setup
+
+The mod is a C# BepInEx plugin built with the .NET SDK. The build system is MSBuild and lives mostly in the `Template/` git submodule at the project root.
+
+### Prerequisites
+
+- **.NET SDK 10** (see `global.json` at the repo root; `rollForward: latestMajor` means newer major versions also work)
+- **Python 3** — required by the `GenerateVersion` MSBuild target that runs before every build
+- **Stationeers** — needed to compile against the game's DLLs (see [Game DLLs](#game-dlls) below)
+
+### Clone with submodule
+
+The `Template/` directory is a git submodule. Initialise it after cloning:
+
+```sh
+# git
+git submodule update --init
+
+# jj (if using Jujutsu)
+jj git submodule update --init
+```
+
+### Game DLLs
+
+The build needs Stationeers' managed DLLs (e.g. `Assembly-CSharp.dll`). The build system tries to locate them automatically, then falls back to the checked-in stub libraries in `Template/libs/`.
+
+**Auto-detection order** (from `Template/FindStationeers.props`):
+
+| Priority | Condition |
+|----------|-----------|
+| 1 | `STATIONEERS_DIR` environment variable |
+| 2 | Default Windows Steam paths (`C:/Program Files (x86)/Steam/…`, `D:/…`, `E:/…`) |
+| 3 | Default Linux Steam paths (`~/.steam/steam/…`, `~/Steam/…`, `$STEAMROOT/…`) |
+| 4 | `StationeersDirectory` set in `Local.Developer.props` |
+| 5 | CI fallback: `Template/libs/` (used automatically when `GITHUB_ACTIONS=true`) |
+
+**macOS**: Stationeers has no macOS client, so the game DLLs are never present. The build will automatically use the checked-in stub libraries in `Template/libs/`. No extra steps needed.
+
+**Linux / Windows with non-standard Steam path**: create a `Local.Developer.props` file in the repo root (it is gitignored) to override the path:
+
+```xml
+<Project>
+  <PropertyGroup>
+    <StationeersDllDir>/path/to/Stationeers/rocketstation_Data/Managed</StationeersDllDir>
+  </PropertyGroup>
+</Project>
+```
+
+You can also set the `STATIONEERS_DIR` environment variable to the Stationeers install root (the directory containing `rocketstation_Data/`) instead.
+
+### Download mod dependencies
+
+The mod depends on two external DLLs (the IC10 editor and StationeersLaunchPad) that are not in the repo. Download them once from the project root:
+
+```sh
+python3 Template/download_dependencies.py
+```
+
+This reads the `<Dependencies>` URLs from `Main.props` and extracts the DLLs into `Template/dependencies/`.
+
+### Building
+
+From the **repo root** (where `Main.csproj` lives):
+
+```sh
+dotnet build -c Debug Main.csproj
+```
+
+Or use the convenience script from `mod/` (also installs into BepInEx plugins):
+
+```sh
+cd mod && ./build.sh
+```
+
+`build.sh` defaults the install path to `~/.sa/Stationeers/BepInEx/plugins/`. Override it with:
+
+```sh
+STATIONEERS_MOD_DIR=/your/path/BepInEx/plugins ./build.sh
+```
+
+### IDEs
+
+Any editor with MSBuild/C# support works. Open `Main.csproj` (at the repo root) as the project file.
+
+- **JetBrains Rider** — open `Main.csproj` directly; Rider picks up NuGet sources from `NuGet.Config` automatically
+- **Visual Studio** (Windows) — open `Main.csproj`; restores NuGet packages on first build
+- **VS Code** — install the [C# Dev Kit](https://marketplace.visualstudio.com/items?itemName=ms-dotnettools.csdevkit) extension, then open the repo root folder
+
+`Local.Developer.props` is the right place for any machine-specific overrides (Stationeers path, Python executable name, etc.) so they stay out of version control. An example file to override the Python executable on systems where it is `python3` instead of `python`:
+
+```xml
+<Project>
+  <PropertyGroup>
+    <PythonExec>python3</PythonExec>
+  </PropertyGroup>
+</Project>
+```
+
+### Building a release zip
+
+From the repo root:
+
+```sh
+cd mod && ./release.sh
+```
+
+Output: `dist/PyTrapIC.zip`, ready to unzip into `BepInEx/plugins/`.
+

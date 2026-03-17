@@ -3,4 +3,11 @@
   <Import Project="Main.props"/>
   <Import Project="Template/Template.props"/>
   <Import Project="Template/FindStationeers.props"/>
+  <!--
+    Load a local props file if present - this should not be checked-in, but should allow the
+    developer to add local path or tool overrides, etc.
+  -->
+  <Import Project="Local.Developer.props" Condition="Exists('Local.Developer.props')" />
+  <!-- A file to handle release into a dist directory. Loaded after Templates to override. -->
+  <Import Project="Dist.props" Condition="Exists('Dist.props')" />
 </Project>

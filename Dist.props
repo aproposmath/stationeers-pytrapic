@@ -1,0 +1,52 @@
+<?xml version="1.0"?>
+<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <DistDir Condition="'$(DistDir)' == ''">dist</DistDir>
+    <ModDistDir>$(DistDir)/pytrapic</ModDistDir>
+    <PublishDistPdbs Condition="'$(PublishDistPdbs)' == ''">true</PublishDistPdbs>
+  </PropertyGroup>
+
+  <!-- Stage a copy of About/ into the build output dir before version generation.
+       Only runs on Release so Debug builds are unaffected. -->
+  <Target Name="StageAbout"
+          BeforeTargets="GenerateVersion"
+          Condition="'$(Configuration)' == 'Release'">
+    <ItemGroup>
+      <StagedAboutFiles Include="About/**/*" />
+    </ItemGroup>
+    <MakeDir Directories="$(OutputPath)About" />
+    <Copy SourceFiles="@(StagedAboutFiles)"
+          DestinationFolder="$(OutputPath)About/%(RecursiveDir)"
+          SkipUnchangedFiles="true" />
+  </Target>
+
+  <!-- Override GenerateVersion from Template/Template.props.
+       On Release: points create_version_info.py at the staged About copy.
+       On Debug: falls back to the same behavior as Template.props (source About.xml). -->
+  <Target Name="GenerateVersion" BeforeTargets="BeforeBuild">
+    <PropertyGroup>
+      <_AboutXmlPath Condition="'$(Configuration)' == 'Release'">$(OutputPath)About/About.xml</_AboutXmlPath>
+      <_AboutXmlPath Condition="'$(Configuration)' != 'Release'">About/About.xml</_AboutXmlPath>
+    </PropertyGroup>
+    <Exec Command="$(PythonExec) Template/create_version_info.py Template/VersionInfo.g.cs $(AssemblyName) $(_AboutXmlPath) $(Configuration)" />
+  </Target>
+
+  <!-- Publish dist: sources About from the staged (version-stamped) path on Release. -->
+  <Target Name="PublishDist" AfterTargets="Build" Condition="'$(Configuration)' == 'Release'">
+    <MakeDir Directories="$(ModDistDir)" />
+    <ItemGroup>
+      <DistDlls Include="$(OutputPath)$(AssemblyName).dll" />
+      <DistPdb Include="$(OutputPath)$(AssemblyName).pdb" Condition="'$(PublishDistPdbs)' != 'false'" />
+      <DistAbout Include="$(OutputPath)About/**/*" />
+    </ItemGroup>
+    <Copy SourceFiles="@(DistDlls)" DestinationFolder="$(ModDistDir)" />
+    <Copy SourceFiles="@(DistPdb)" DestinationFolder="$(ModDistDir)" />
+    <Copy SourceFiles="@(DistAbout)"
+          DestinationFolder="$(ModDistDir)/About/%(RecursiveDir)"
+          SkipUnchangedFiles="true" />
+  </Target>
+
+  <Target Name="CleanDist" AfterTargets="Clean" Condition="Exists('$(ModDistDir)')">
+    <RemoveDir Directories="$(ModDistDir)" />
+  </Target>
+</Project>

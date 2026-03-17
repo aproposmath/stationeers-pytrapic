@@ -503,3 +503,60 @@ j 0
 The transpiler itself is written in Python and uses [astroid](https://pypi.org/project/astroid/) to parse python code.
 
 The web application uses [Pyodide](https://pyodide.org/) to run the transpiler in the browser. The editor is based on [monaco](https://microsoft.github.io/monaco-editor/) and uses [monaco-pyright-lsp](https://github.com/SardineFish/monaco-pyright-lsp) for code completion. No data is sent to the server, everything is running in the browser.
+
+## Developer / Contributor Setup
+
+### Python Environment
+
+The project requires **Python 3.10+**. A `.venv` is the recommended way to work locally.
+
+Create and activate the venv (first time only):
+
+```sh
+python3 -m venv .venv
+source .venv/bin/activate
+```
+
+Install the package in editable mode with its dependencies:
+
+```sh
+pip install -e .
+```
+
+For building wheels, generating type stubs, and running the webapp data pipeline, also install:
+
+```sh
+pip install build wheel pyright setuptools setuptools_scm
+```
+
+> **macOS note:** The system Python (e.g. Homebrew Python 3.14) is PEP 668 "externally managed" and will refuse `pip install` without `--break-system-packages`. Always use the project `.venv`.
+
+### Running Tests
+
+```sh
+pip install pytest
+pytest
+```
+
+Tests live in `test/` and compare transpiler output against `.ref` reference files.
+
+### Project Structure
+
+```
+src/stationeers_pytrapic/   # transpiler core (Python)
+test/                        # pytest test cases and reference outputs
+mod/                         # in-game C# mod (PyTrapIC.cs)
+webapp/                      # browser IDE (TypeScript + Vite)
+scripts/                     # code generation and build helpers
+pyproject.toml               # package metadata and build config
+```
+
+Version is managed by `setuptools_scm` from git tags, written to `src/stationeers_pytrapic/_version.py` at build time.
+
+### Webapp
+
+The browser IDE has its own setup steps (Node.js, data file generation). See [webapp/README.md](webapp/README.md).
+
+### C# Mod
+
+The in-game BepInEx mod has its own setup steps (.NET SDK, game DLLs, mod dependencies). See the [Developer Setup section in mod/README.md](mod/README.md#developer-setup).

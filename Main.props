@@ -5,8 +5,9 @@
     <ModID>stationeers-pytrapic</ModID>
     <AssemblyName>PyTrapIC</AssemblyName>
     <Description>Python to IC10 Transpiler</Description>
-    <!-- Optional: Set this if it's not found automatically or you want to force a specific Stationeers directory -->
-    <StationeersDirectory />
+    <!-- Optional: Set this in Local.Developer.props if it's not found automatically or you want to force a specific Stationeers directory -->
+    <!-- <StationeersDllDir>Template/libs</StationeersDllDir> -->
+    
     <Dependencies>
       <Url>https://github.com/aproposmath/StationeersIC10Editor/releases/download/main/IC10Editor-main.zip</Url>
       <Url>https://github.com/StationeersLaunchPad/StationeersLaunchPad/releases/download/v0.2.25/StationeersLaunchPad-client-v0.2.25.zip</Url>

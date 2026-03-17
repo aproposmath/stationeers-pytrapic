@@ -1,12 +1,12 @@
-#! /bin/bash
+#!/usr/bin/env bash
 set -e
 
+if [[ ! -f Main.csproj ]]; then
+  echo "Run from project root"; exit 1
+fi
 
-dotnet build -c Release PyTrapIC.csproj
+dist_dir="${DIST_DIR:-dist}"
+dotnet clean Main.csproj
+dotnet build -c Release Main.csproj  # PublishDist target handles dist/ population
 
-rm -rf pytrapic PyTrapIC.zip
-mkdir -p pytrapic
-
-cp bin/Release/net48/PyTrapIC.dll pytrapic/
-cp -r About pytrapic/
-zip -r PyTrapIC.zip ./pytrapic
+(cd "${dist_dir}" && zip -r PyTrapIC.zip pytrapic && echo "Released to ${dist_dir}/pytrapic/")
