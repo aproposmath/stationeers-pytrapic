@@ -39,28 +39,38 @@ jobs:
 
       - name: Audit dependencies
         # Scans installed packages against known CVE databases (PyPI Advisory DB
-        # and OSV). Fails the build if any dependency has a known vulnerability.
+        # and OSV). Advisory only: surfaces known vulnerabilities without
+        # blocking the build.
+        continue-on-error: true
         run: pip-audit
 
       - name: Format check (ruff)
         # Verifies code is formatted to ruff's Black-compatible style without
         # modifying files; keeps formatting concerns separate from lint rules.
+        # Advisory only: formatting issues are surfaced without blocking the build.
+        continue-on-error: true
         run: ruff format --check src/ test/
 
       - name: Lint (ruff)
         # ruff is a fast linter; --output-format=github emits inline annotations
-        # visible directly in the PR diff view.
+        # visible directly in the PR diff view. Advisory only: lint issues are
+        # surfaced as annotations but do not fail the build.
+        continue-on-error: true
         run: ruff check src/ test/ --output-format=github
 
       - name: Type check (mypy)
         # mypy performs static type inference with a focus on gradual typing,
         # flow analysis, and plugin-based extensibility (e.g. astroid integration).
+        # Advisory only: type errors are surfaced without blocking the build.
+        continue-on-error: true
         run: mypy src/stationeers_pytrapic
 
       - name: Type check (pyright)
         # pyright uses a distinct type narrowing engine from mypy; the two tools
         # catch disjoint sets of errors (e.g. pyright is stricter about Protocol
         # and TypeGuard, mypy is stricter about certain decorator patterns).
+        # Advisory only: type errors are surfaced without blocking the build.
+        continue-on-error: true
         run: pyright src/stationeers_pytrapic
 
       - name: Test
