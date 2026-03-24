@@ -9,7 +9,7 @@ def main():
     HeatCap += furnace.RatioNitrousOxide * 28.2
     HeatCap += furnace.RatioPollutant * 28.2
     HeatCap += furnace.RatioOxygen * 28.2
-    HeatCap += furnace.RatioVolatiles * 28.2
+    HeatCap += furnace.RatioMethane * 28.2
     HeatCap *= furnace.TotalMoles
 
     return HeatCap

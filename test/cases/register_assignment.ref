@@ -15,7 +15,7 @@ main:
   l r3 d0 RatioOxygen
   mul r2 r3 28.2
   add r1 r1 r2
-  l r2 d0 RatioVolatiles
+  l r2 d0 RatioMethane
   mul r3 r2 28.2
   add r1 r1 r3
   l r3 d0 TotalMoles
