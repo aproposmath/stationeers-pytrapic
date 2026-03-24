@@ -20,7 +20,7 @@ class LogicType(_IntEnum):
     RatioCarbonDioxide = 15
     RatioNitrogen = 16
     RatioPollutant = 17
-    RatioVolatiles = 18
+    RatioMethane = 18
     RatioWater = 19
     Horizontal = 20
     Vertical = 21
@@ -114,7 +114,7 @@ class LogicType(_IntEnum):
     RatioCarbonDioxideInput = 109
     RatioNitrogenInput = 110
     RatioPollutantInput = 111
-    RatioVolatilesInput = 112
+    RatioMethaneInput = 112
     RatioWaterInput = 113
     RatioNitrousOxideInput = 114
     TotalMolesInput = 115
@@ -124,7 +124,7 @@ class LogicType(_IntEnum):
     RatioCarbonDioxideInput2 = 119
     RatioNitrogenInput2 = 120
     RatioPollutantInput2 = 121
-    RatioVolatilesInput2 = 122
+    RatioMethaneInput2 = 122
     RatioWaterInput2 = 123
     RatioNitrousOxideInput2 = 124
     TotalMolesInput2 = 125
@@ -134,7 +134,7 @@ class LogicType(_IntEnum):
     RatioCarbonDioxideOutput = 129
     RatioNitrogenOutput = 130
     RatioPollutantOutput = 131
-    RatioVolatilesOutput = 132
+    RatioMethaneOutput = 132
     RatioWaterOutput = 133
     RatioNitrousOxideOutput = 134
     TotalMolesOutput = 135
@@ -144,7 +144,7 @@ class LogicType(_IntEnum):
     RatioCarbonDioxideOutput2 = 139
     RatioNitrogenOutput2 = 140
     RatioPollutantOutput2 = 141
-    RatioVolatilesOutput2 = 142
+    RatioMethaneOutput2 = 142
     RatioWaterOutput2 = 143
     RatioNitrousOxideOutput2 = 144
     TotalMolesOutput2 = 145
@@ -189,11 +189,11 @@ class LogicType(_IntEnum):
     RatioLiquidOxygenInput2 = 185
     RatioLiquidOxygenOutput = 186
     RatioLiquidOxygenOutput2 = 187
-    RatioLiquidVolatiles = 188
-    RatioLiquidVolatilesInput = 189
-    RatioLiquidVolatilesInput2 = 190
-    RatioLiquidVolatilesOutput = 191
-    RatioLiquidVolatilesOutput2 = 192
+    RatioLiquidMethane = 188
+    RatioLiquidMethaneInput = 189
+    RatioLiquidMethaneInput2 = 190
+    RatioLiquidMethaneOutput = 191
+    RatioLiquidMethaneOutput2 = 192
     RatioSteam = 193
     RatioSteamInput = 194
     RatioSteamInput2 = 195
@@ -284,6 +284,17 @@ class LogicType(_IntEnum):
     StackSize = 280
     NextWeatherHash = 281
     ContactSlotIndex = 282
+    RatioHydrazine = 283
+    RatioLiquidHydrazine = 284
+    RatioLiquidAlcohol = 285
+    RatioHelium = 286
+    RatioLiquidSodiumChloride = 287
+    RatioSilanol = 288
+    RatioLiquidSilanol = 289
+    RatioHydrochloricAcid = 290
+    RatioLiquidHydrochloricAcid = 291
+    RatioOzone = 292
+    RatioLiquidOzone = 293
 
 
 class LogicSlotType(_IntEnum):
@@ -532,14 +543,14 @@ class GasType(_IntEnum):
     Nitrogen = 2
     Air = 3
     CarbonDioxide = 4
-    Volatiles = 8
+    Methane = 8
     Fuel = 9
     Pollutant = 16
     Water = 32
     NitrousOxide = 64
     LiquidNitrogen = 128
     LiquidOxygen = 256
-    LiquidVolatiles = 512
+    LiquidMethane = 512
     Steam = 1024
     LiquidCarbonDioxide = 2048
     LiquidPollutant = 4096
@@ -547,6 +558,17 @@ class GasType(_IntEnum):
     Hydrogen = 16384
     LiquidHydrogen = 32768
     PollutedWater = 65536
+    Hydrazine = 131072
+    LiquidHydrazine = 262144
+    LiquidAlcohol = 524288
+    Helium = 1048576
+    LiquidSodiumChloride = 2097152
+    Silanol = 4194304
+    LiquidSilanol = 8388608
+    HydrochloricAcid = 16777216
+    LiquidHydrochloricAcid = 33554432
+    Ozone = 67108864
+    LiquidOzone = 134217728
 
 
 class RocketMode(_IntEnum):
@@ -801,12 +823,12 @@ class _GenericStructure:
         return self.__setattr__("RatioPollutant", value)
 
     @property
-    def RatioVolatiles(self) -> "stationeers_pytrapic.types._DeviceLogicType":
-        return self.__getattr__("RatioVolatiles")
+    def RatioMethane(self) -> "stationeers_pytrapic.types._DeviceLogicType":
+        return self.__getattr__("RatioMethane")
 
-    @RatioVolatiles.setter
-    def RatioVolatiles(self, value):
-        return self.__setattr__("RatioVolatiles", value)
+    @RatioMethane.setter
+    def RatioMethane(self, value):
+        return self.__setattr__("RatioMethane", value)
 
     @property
     def RatioWater(self) -> "stationeers_pytrapic.types._DeviceLogicType":
@@ -1555,12 +1577,12 @@ class _GenericStructure:
         return self.__setattr__("RatioPollutantInput", value)
 
     @property
-    def RatioVolatilesInput(self) -> "stationeers_pytrapic.types._DeviceLogicType":
-        return self.__getattr__("RatioVolatilesInput")
+    def RatioMethaneInput(self) -> "stationeers_pytrapic.types._DeviceLogicType":
+        return self.__getattr__("RatioMethaneInput")
 
-    @RatioVolatilesInput.setter
-    def RatioVolatilesInput(self, value):
-        return self.__setattr__("RatioVolatilesInput", value)
+    @RatioMethaneInput.setter
+    def RatioMethaneInput(self, value):
+        return self.__setattr__("RatioMethaneInput", value)
 
     @property
     def RatioWaterInput(self) -> "stationeers_pytrapic.types._DeviceLogicType":
@@ -1635,12 +1657,12 @@ class _GenericStructure:
         return self.__setattr__("RatioPollutantInput2", value)
 
     @property
-    def RatioVolatilesInput2(self) -> "stationeers_pytrapic.types._DeviceLogicType":
-        return self.__getattr__("RatioVolatilesInput2")
+    def RatioMethaneInput2(self) -> "stationeers_pytrapic.types._DeviceLogicType":
+        return self.__getattr__("RatioMethaneInput2")
 
-    @RatioVolatilesInput2.setter
-    def RatioVolatilesInput2(self, value):
-        return self.__setattr__("RatioVolatilesInput2", value)
+    @RatioMethaneInput2.setter
+    def RatioMethaneInput2(self, value):
+        return self.__setattr__("RatioMethaneInput2", value)
 
     @property
     def RatioWaterInput2(self) -> "stationeers_pytrapic.types._DeviceLogicType":
@@ -1715,12 +1737,12 @@ class _GenericStructure:
         return self.__setattr__("RatioPollutantOutput", value)
 
     @property
-    def RatioVolatilesOutput(self) -> "stationeers_pytrapic.types._DeviceLogicType":
-        return self.__getattr__("RatioVolatilesOutput")
+    def RatioMethaneOutput(self) -> "stationeers_pytrapic.types._DeviceLogicType":
+        return self.__getattr__("RatioMethaneOutput")
 
-    @RatioVolatilesOutput.setter
-    def RatioVolatilesOutput(self, value):
-        return self.__setattr__("RatioVolatilesOutput", value)
+    @RatioMethaneOutput.setter
+    def RatioMethaneOutput(self, value):
+        return self.__setattr__("RatioMethaneOutput", value)
 
     @property
     def RatioWaterOutput(self) -> "stationeers_pytrapic.types._DeviceLogicType":
@@ -1797,12 +1819,12 @@ class _GenericStructure:
         return self.__setattr__("RatioPollutantOutput2", value)
 
     @property
-    def RatioVolatilesOutput2(self) -> "stationeers_pytrapic.types._DeviceLogicType":
-        return self.__getattr__("RatioVolatilesOutput2")
+    def RatioMethaneOutput2(self) -> "stationeers_pytrapic.types._DeviceLogicType":
+        return self.__getattr__("RatioMethaneOutput2")
 
-    @RatioVolatilesOutput2.setter
-    def RatioVolatilesOutput2(self, value):
-        return self.__setattr__("RatioVolatilesOutput2", value)
+    @RatioMethaneOutput2.setter
+    def RatioMethaneOutput2(self, value):
+        return self.__setattr__("RatioMethaneOutput2", value)
 
     @property
     def RatioWaterOutput2(self) -> "stationeers_pytrapic.types._DeviceLogicType":
@@ -2167,52 +2189,46 @@ class _GenericStructure:
         return self.__setattr__("RatioLiquidOxygenOutput2", value)
 
     @property
-    def RatioLiquidVolatiles(self) -> "stationeers_pytrapic.types._DeviceLogicType":
-        return self.__getattr__("RatioLiquidVolatiles")
+    def RatioLiquidMethane(self) -> "stationeers_pytrapic.types._DeviceLogicType":
+        return self.__getattr__("RatioLiquidMethane")
 
-    @RatioLiquidVolatiles.setter
-    def RatioLiquidVolatiles(self, value):
-        return self.__setattr__("RatioLiquidVolatiles", value)
-
-    @property
-    def RatioLiquidVolatilesInput(
-        self,
-    ) -> "stationeers_pytrapic.types._DeviceLogicType":
-        return self.__getattr__("RatioLiquidVolatilesInput")
-
-    @RatioLiquidVolatilesInput.setter
-    def RatioLiquidVolatilesInput(self, value):
-        return self.__setattr__("RatioLiquidVolatilesInput", value)
+    @RatioLiquidMethane.setter
+    def RatioLiquidMethane(self, value):
+        return self.__setattr__("RatioLiquidMethane", value)
 
     @property
-    def RatioLiquidVolatilesInput2(
-        self,
-    ) -> "stationeers_pytrapic.types._DeviceLogicType":
-        return self.__getattr__("RatioLiquidVolatilesInput2")
+    def RatioLiquidMethaneInput(self) -> "stationeers_pytrapic.types._DeviceLogicType":
+        return self.__getattr__("RatioLiquidMethaneInput")
 
-    @RatioLiquidVolatilesInput2.setter
-    def RatioLiquidVolatilesInput2(self, value):
-        return self.__setattr__("RatioLiquidVolatilesInput2", value)
+    @RatioLiquidMethaneInput.setter
+    def RatioLiquidMethaneInput(self, value):
+        return self.__setattr__("RatioLiquidMethaneInput", value)
 
     @property
-    def RatioLiquidVolatilesOutput(
-        self,
-    ) -> "stationeers_pytrapic.types._DeviceLogicType":
-        return self.__getattr__("RatioLiquidVolatilesOutput")
+    def RatioLiquidMethaneInput2(self) -> "stationeers_pytrapic.types._DeviceLogicType":
+        return self.__getattr__("RatioLiquidMethaneInput2")
 
-    @RatioLiquidVolatilesOutput.setter
-    def RatioLiquidVolatilesOutput(self, value):
-        return self.__setattr__("RatioLiquidVolatilesOutput", value)
+    @RatioLiquidMethaneInput2.setter
+    def RatioLiquidMethaneInput2(self, value):
+        return self.__setattr__("RatioLiquidMethaneInput2", value)
 
     @property
-    def RatioLiquidVolatilesOutput2(
+    def RatioLiquidMethaneOutput(self) -> "stationeers_pytrapic.types._DeviceLogicType":
+        return self.__getattr__("RatioLiquidMethaneOutput")
+
+    @RatioLiquidMethaneOutput.setter
+    def RatioLiquidMethaneOutput(self, value):
+        return self.__setattr__("RatioLiquidMethaneOutput", value)
+
+    @property
+    def RatioLiquidMethaneOutput2(
         self,
     ) -> "stationeers_pytrapic.types._DeviceLogicType":
-        return self.__getattr__("RatioLiquidVolatilesOutput2")
+        return self.__getattr__("RatioLiquidMethaneOutput2")
 
-    @RatioLiquidVolatilesOutput2.setter
-    def RatioLiquidVolatilesOutput2(self, value):
-        return self.__setattr__("RatioLiquidVolatilesOutput2", value)
+    @RatioLiquidMethaneOutput2.setter
+    def RatioLiquidMethaneOutput2(self, value):
+        return self.__setattr__("RatioLiquidMethaneOutput2", value)
 
     @property
     def RatioSteam(self) -> "stationeers_pytrapic.types._DeviceLogicType":
@@ -2958,6 +2974,98 @@ class _GenericStructure:
     def ContactSlotIndex(self, value):
         return self.__setattr__("ContactSlotIndex", value)
 
+    @property
+    def RatioHydrazine(self) -> "stationeers_pytrapic.types._DeviceLogicType":
+        return self.__getattr__("RatioHydrazine")
+
+    @RatioHydrazine.setter
+    def RatioHydrazine(self, value):
+        return self.__setattr__("RatioHydrazine", value)
+
+    @property
+    def RatioLiquidHydrazine(self) -> "stationeers_pytrapic.types._DeviceLogicType":
+        return self.__getattr__("RatioLiquidHydrazine")
+
+    @RatioLiquidHydrazine.setter
+    def RatioLiquidHydrazine(self, value):
+        return self.__setattr__("RatioLiquidHydrazine", value)
+
+    @property
+    def RatioLiquidAlcohol(self) -> "stationeers_pytrapic.types._DeviceLogicType":
+        return self.__getattr__("RatioLiquidAlcohol")
+
+    @RatioLiquidAlcohol.setter
+    def RatioLiquidAlcohol(self, value):
+        return self.__setattr__("RatioLiquidAlcohol", value)
+
+    @property
+    def RatioHelium(self) -> "stationeers_pytrapic.types._DeviceLogicType":
+        return self.__getattr__("RatioHelium")
+
+    @RatioHelium.setter
+    def RatioHelium(self, value):
+        return self.__setattr__("RatioHelium", value)
+
+    @property
+    def RatioLiquidSodiumChloride(
+        self,
+    ) -> "stationeers_pytrapic.types._DeviceLogicType":
+        return self.__getattr__("RatioLiquidSodiumChloride")
+
+    @RatioLiquidSodiumChloride.setter
+    def RatioLiquidSodiumChloride(self, value):
+        return self.__setattr__("RatioLiquidSodiumChloride", value)
+
+    @property
+    def RatioSilanol(self) -> "stationeers_pytrapic.types._DeviceLogicType":
+        return self.__getattr__("RatioSilanol")
+
+    @RatioSilanol.setter
+    def RatioSilanol(self, value):
+        return self.__setattr__("RatioSilanol", value)
+
+    @property
+    def RatioLiquidSilanol(self) -> "stationeers_pytrapic.types._DeviceLogicType":
+        return self.__getattr__("RatioLiquidSilanol")
+
+    @RatioLiquidSilanol.setter
+    def RatioLiquidSilanol(self, value):
+        return self.__setattr__("RatioLiquidSilanol", value)
+
+    @property
+    def RatioHydrochloricAcid(self) -> "stationeers_pytrapic.types._DeviceLogicType":
+        return self.__getattr__("RatioHydrochloricAcid")
+
+    @RatioHydrochloricAcid.setter
+    def RatioHydrochloricAcid(self, value):
+        return self.__setattr__("RatioHydrochloricAcid", value)
+
+    @property
+    def RatioLiquidHydrochloricAcid(
+        self,
+    ) -> "stationeers_pytrapic.types._DeviceLogicType":
+        return self.__getattr__("RatioLiquidHydrochloricAcid")
+
+    @RatioLiquidHydrochloricAcid.setter
+    def RatioLiquidHydrochloricAcid(self, value):
+        return self.__setattr__("RatioLiquidHydrochloricAcid", value)
+
+    @property
+    def RatioOzone(self) -> "stationeers_pytrapic.types._DeviceLogicType":
+        return self.__getattr__("RatioOzone")
+
+    @RatioOzone.setter
+    def RatioOzone(self, value):
+        return self.__setattr__("RatioOzone", value)
+
+    @property
+    def RatioLiquidOzone(self) -> "stationeers_pytrapic.types._DeviceLogicType":
+        return self.__getattr__("RatioLiquidOzone")
+
+    @RatioLiquidOzone.setter
+    def RatioLiquidOzone(self, value):
+        return self.__setattr__("RatioLiquidOzone", value)
+
 
 class _GenericStructures:
 
@@ -3106,12 +3214,12 @@ class _GenericStructures:
         return self.__setattr__("RatioPollutant", value)
 
     @property
-    def RatioVolatiles(self) -> "stationeers_pytrapic.types._DevicesLogicType":
-        return self.__getattr__("RatioVolatiles")
+    def RatioMethane(self) -> "stationeers_pytrapic.types._DevicesLogicType":
+        return self.__getattr__("RatioMethane")
 
-    @RatioVolatiles.setter
-    def RatioVolatiles(self, value):
-        return self.__setattr__("RatioVolatiles", value)
+    @RatioMethane.setter
+    def RatioMethane(self, value):
+        return self.__setattr__("RatioMethane", value)
 
     @property
     def RatioWater(self) -> "stationeers_pytrapic.types._DevicesLogicType":
@@ -3860,12 +3968,12 @@ class _GenericStructures:
         return self.__setattr__("RatioPollutantInput", value)
 
     @property
-    def RatioVolatilesInput(self) -> "stationeers_pytrapic.types._DevicesLogicType":
-        return self.__getattr__("RatioVolatilesInput")
+    def RatioMethaneInput(self) -> "stationeers_pytrapic.types._DevicesLogicType":
+        return self.__getattr__("RatioMethaneInput")
 
-    @RatioVolatilesInput.setter
-    def RatioVolatilesInput(self, value):
-        return self.__setattr__("RatioVolatilesInput", value)
+    @RatioMethaneInput.setter
+    def RatioMethaneInput(self, value):
+        return self.__setattr__("RatioMethaneInput", value)
 
     @property
     def RatioWaterInput(self) -> "stationeers_pytrapic.types._DevicesLogicType":
@@ -3942,12 +4050,12 @@ class _GenericStructures:
         return self.__setattr__("RatioPollutantInput2", value)
 
     @property
-    def RatioVolatilesInput2(self) -> "stationeers_pytrapic.types._DevicesLogicType":
-        return self.__getattr__("RatioVolatilesInput2")
+    def RatioMethaneInput2(self) -> "stationeers_pytrapic.types._DevicesLogicType":
+        return self.__getattr__("RatioMethaneInput2")
 
-    @RatioVolatilesInput2.setter
-    def RatioVolatilesInput2(self, value):
-        return self.__setattr__("RatioVolatilesInput2", value)
+    @RatioMethaneInput2.setter
+    def RatioMethaneInput2(self, value):
+        return self.__setattr__("RatioMethaneInput2", value)
 
     @property
     def RatioWaterInput2(self) -> "stationeers_pytrapic.types._DevicesLogicType":
@@ -4024,12 +4132,12 @@ class _GenericStructures:
         return self.__setattr__("RatioPollutantOutput", value)
 
     @property
-    def RatioVolatilesOutput(self) -> "stationeers_pytrapic.types._DevicesLogicType":
-        return self.__getattr__("RatioVolatilesOutput")
+    def RatioMethaneOutput(self) -> "stationeers_pytrapic.types._DevicesLogicType":
+        return self.__getattr__("RatioMethaneOutput")
 
-    @RatioVolatilesOutput.setter
-    def RatioVolatilesOutput(self, value):
-        return self.__setattr__("RatioVolatilesOutput", value)
+    @RatioMethaneOutput.setter
+    def RatioMethaneOutput(self, value):
+        return self.__setattr__("RatioMethaneOutput", value)
 
     @property
     def RatioWaterOutput(self) -> "stationeers_pytrapic.types._DevicesLogicType":
@@ -4106,12 +4214,12 @@ class _GenericStructures:
         return self.__setattr__("RatioPollutantOutput2", value)
 
     @property
-    def RatioVolatilesOutput2(self) -> "stationeers_pytrapic.types._DevicesLogicType":
-        return self.__getattr__("RatioVolatilesOutput2")
+    def RatioMethaneOutput2(self) -> "stationeers_pytrapic.types._DevicesLogicType":
+        return self.__getattr__("RatioMethaneOutput2")
 
-    @RatioVolatilesOutput2.setter
-    def RatioVolatilesOutput2(self, value):
-        return self.__setattr__("RatioVolatilesOutput2", value)
+    @RatioMethaneOutput2.setter
+    def RatioMethaneOutput2(self, value):
+        return self.__setattr__("RatioMethaneOutput2", value)
 
     @property
     def RatioWaterOutput2(self) -> "stationeers_pytrapic.types._DevicesLogicType":
@@ -4482,52 +4590,50 @@ class _GenericStructures:
         return self.__setattr__("RatioLiquidOxygenOutput2", value)
 
     @property
-    def RatioLiquidVolatiles(self) -> "stationeers_pytrapic.types._DevicesLogicType":
-        return self.__getattr__("RatioLiquidVolatiles")
+    def RatioLiquidMethane(self) -> "stationeers_pytrapic.types._DevicesLogicType":
+        return self.__getattr__("RatioLiquidMethane")
 
-    @RatioLiquidVolatiles.setter
-    def RatioLiquidVolatiles(self, value):
-        return self.__setattr__("RatioLiquidVolatiles", value)
-
-    @property
-    def RatioLiquidVolatilesInput(
-        self,
-    ) -> "stationeers_pytrapic.types._DevicesLogicType":
-        return self.__getattr__("RatioLiquidVolatilesInput")
-
-    @RatioLiquidVolatilesInput.setter
-    def RatioLiquidVolatilesInput(self, value):
-        return self.__setattr__("RatioLiquidVolatilesInput", value)
+    @RatioLiquidMethane.setter
+    def RatioLiquidMethane(self, value):
+        return self.__setattr__("RatioLiquidMethane", value)
 
     @property
-    def RatioLiquidVolatilesInput2(
-        self,
-    ) -> "stationeers_pytrapic.types._DevicesLogicType":
-        return self.__getattr__("RatioLiquidVolatilesInput2")
+    def RatioLiquidMethaneInput(self) -> "stationeers_pytrapic.types._DevicesLogicType":
+        return self.__getattr__("RatioLiquidMethaneInput")
 
-    @RatioLiquidVolatilesInput2.setter
-    def RatioLiquidVolatilesInput2(self, value):
-        return self.__setattr__("RatioLiquidVolatilesInput2", value)
+    @RatioLiquidMethaneInput.setter
+    def RatioLiquidMethaneInput(self, value):
+        return self.__setattr__("RatioLiquidMethaneInput", value)
 
     @property
-    def RatioLiquidVolatilesOutput(
+    def RatioLiquidMethaneInput2(
         self,
     ) -> "stationeers_pytrapic.types._DevicesLogicType":
-        return self.__getattr__("RatioLiquidVolatilesOutput")
+        return self.__getattr__("RatioLiquidMethaneInput2")
 
-    @RatioLiquidVolatilesOutput.setter
-    def RatioLiquidVolatilesOutput(self, value):
-        return self.__setattr__("RatioLiquidVolatilesOutput", value)
+    @RatioLiquidMethaneInput2.setter
+    def RatioLiquidMethaneInput2(self, value):
+        return self.__setattr__("RatioLiquidMethaneInput2", value)
 
     @property
-    def RatioLiquidVolatilesOutput2(
+    def RatioLiquidMethaneOutput(
         self,
     ) -> "stationeers_pytrapic.types._DevicesLogicType":
-        return self.__getattr__("RatioLiquidVolatilesOutput2")
+        return self.__getattr__("RatioLiquidMethaneOutput")
 
-    @RatioLiquidVolatilesOutput2.setter
-    def RatioLiquidVolatilesOutput2(self, value):
-        return self.__setattr__("RatioLiquidVolatilesOutput2", value)
+    @RatioLiquidMethaneOutput.setter
+    def RatioLiquidMethaneOutput(self, value):
+        return self.__setattr__("RatioLiquidMethaneOutput", value)
+
+    @property
+    def RatioLiquidMethaneOutput2(
+        self,
+    ) -> "stationeers_pytrapic.types._DevicesLogicType":
+        return self.__getattr__("RatioLiquidMethaneOutput2")
+
+    @RatioLiquidMethaneOutput2.setter
+    def RatioLiquidMethaneOutput2(self, value):
+        return self.__setattr__("RatioLiquidMethaneOutput2", value)
 
     @property
     def RatioSteam(self) -> "stationeers_pytrapic.types._DevicesLogicType":
@@ -5274,3 +5380,95 @@ class _GenericStructures:
     @ContactSlotIndex.setter
     def ContactSlotIndex(self, value):
         return self.__setattr__("ContactSlotIndex", value)
+
+    @property
+    def RatioHydrazine(self) -> "stationeers_pytrapic.types._DevicesLogicType":
+        return self.__getattr__("RatioHydrazine")
+
+    @RatioHydrazine.setter
+    def RatioHydrazine(self, value):
+        return self.__setattr__("RatioHydrazine", value)
+
+    @property
+    def RatioLiquidHydrazine(self) -> "stationeers_pytrapic.types._DevicesLogicType":
+        return self.__getattr__("RatioLiquidHydrazine")
+
+    @RatioLiquidHydrazine.setter
+    def RatioLiquidHydrazine(self, value):
+        return self.__setattr__("RatioLiquidHydrazine", value)
+
+    @property
+    def RatioLiquidAlcohol(self) -> "stationeers_pytrapic.types._DevicesLogicType":
+        return self.__getattr__("RatioLiquidAlcohol")
+
+    @RatioLiquidAlcohol.setter
+    def RatioLiquidAlcohol(self, value):
+        return self.__setattr__("RatioLiquidAlcohol", value)
+
+    @property
+    def RatioHelium(self) -> "stationeers_pytrapic.types._DevicesLogicType":
+        return self.__getattr__("RatioHelium")
+
+    @RatioHelium.setter
+    def RatioHelium(self, value):
+        return self.__setattr__("RatioHelium", value)
+
+    @property
+    def RatioLiquidSodiumChloride(
+        self,
+    ) -> "stationeers_pytrapic.types._DevicesLogicType":
+        return self.__getattr__("RatioLiquidSodiumChloride")
+
+    @RatioLiquidSodiumChloride.setter
+    def RatioLiquidSodiumChloride(self, value):
+        return self.__setattr__("RatioLiquidSodiumChloride", value)
+
+    @property
+    def RatioSilanol(self) -> "stationeers_pytrapic.types._DevicesLogicType":
+        return self.__getattr__("RatioSilanol")
+
+    @RatioSilanol.setter
+    def RatioSilanol(self, value):
+        return self.__setattr__("RatioSilanol", value)
+
+    @property
+    def RatioLiquidSilanol(self) -> "stationeers_pytrapic.types._DevicesLogicType":
+        return self.__getattr__("RatioLiquidSilanol")
+
+    @RatioLiquidSilanol.setter
+    def RatioLiquidSilanol(self, value):
+        return self.__setattr__("RatioLiquidSilanol", value)
+
+    @property
+    def RatioHydrochloricAcid(self) -> "stationeers_pytrapic.types._DevicesLogicType":
+        return self.__getattr__("RatioHydrochloricAcid")
+
+    @RatioHydrochloricAcid.setter
+    def RatioHydrochloricAcid(self, value):
+        return self.__setattr__("RatioHydrochloricAcid", value)
+
+    @property
+    def RatioLiquidHydrochloricAcid(
+        self,
+    ) -> "stationeers_pytrapic.types._DevicesLogicType":
+        return self.__getattr__("RatioLiquidHydrochloricAcid")
+
+    @RatioLiquidHydrochloricAcid.setter
+    def RatioLiquidHydrochloricAcid(self, value):
+        return self.__setattr__("RatioLiquidHydrochloricAcid", value)
+
+    @property
+    def RatioOzone(self) -> "stationeers_pytrapic.types._DevicesLogicType":
+        return self.__getattr__("RatioOzone")
+
+    @RatioOzone.setter
+    def RatioOzone(self, value):
+        return self.__setattr__("RatioOzone", value)
+
+    @property
+    def RatioLiquidOzone(self) -> "stationeers_pytrapic.types._DevicesLogicType":
+        return self.__getattr__("RatioLiquidOzone")
+
+    @RatioLiquidOzone.setter
+    def RatioLiquidOzone(self, value):
+        return self.__setattr__("RatioLiquidOzone", value)
