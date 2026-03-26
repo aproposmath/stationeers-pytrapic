@@ -67,9 +67,12 @@ class FunctionData:
             if options and options.use_push_pop_functions:
                 # Count leading arg pops (right after the function label at pos 0)
                 n_args = next(
-                    (i for i, instr in enumerate(self.code[1:])
-                     if not (instr.op == "pop" and instr.output is not None)),
-                    len(self.code[1:])
+                    (
+                        i
+                        for i, instr in enumerate(self.code[1:])
+                        if not (instr.op == "pop" and instr.output is not None)
+                    ),
+                    len(self.code[1:]),
                 )
 
                 end_name = name + "end"
@@ -78,8 +81,13 @@ class FunctionData:
                 # path) — needs 'pop ra' before its preceding return-value push, or before
                 # the exit point itself for bare/non-returning exits.
                 exit_points = [
-                    i for i, instr in enumerate(self.code)
-                    if (instr.op == "j" and instr.inputs and str(instr.inputs[0].value) == end_name)
+                    i
+                    for i, instr in enumerate(self.code)
+                    if (
+                        instr.op == "j"
+                        and instr.inputs
+                        and str(instr.inputs[0].value) == end_name
+                    )
                     or instr.op == (end_name + ":")
                 ]
                 pop_ra_positions = [
@@ -89,10 +97,12 @@ class FunctionData:
 
                 # Collect all inserts and apply highest-index first so earlier indices
                 # remain valid without adjustment.
-                all_inserts = (
-                    [(1 + n_args, IC10Instruction("push", [ra], indent=indent))]
-                    + [(pos, IC10Instruction("pop", [], ra, indent=indent)) for pos in set(pop_ra_positions)]
-                )
+                all_inserts = [
+                    (1 + n_args, IC10Instruction("push", [ra], indent=indent))
+                ] + [
+                    (pos, IC10Instruction("pop", [], ra, indent=indent))
+                    for pos in set(pop_ra_positions)
+                ]
                 for pos, instr in sorted(all_inserts, key=lambda x: x[0], reverse=True):
                     self.code.insert(pos, instr)
             else:

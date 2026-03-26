@@ -458,7 +458,11 @@ class CompilerPassGenerateCode(CompilerPass):
                     arg_sym.code_expr = calling_arg
                 func_data.args.append(arg_sym)
         else:
-            arg_list = list(reversed(node.args.args)) if self.data.options.use_push_pop_functions else node.args.args
+            arg_list = (
+                list(reversed(node.args.args))
+                if self.data.options.use_push_pop_functions
+                else node.args.args
+            )
             for i, arg in enumerate(arg_list):
                 reg = self.get_register_name()
                 sym = self.data.get_sym_data(arg)
@@ -466,7 +470,11 @@ class CompilerPassGenerateCode(CompilerPass):
                 if self.data.options.use_push_pop_functions:
                     data.add(IC10("pop", [], sym, indent=1))
                 else:
-                    data.add(IC10("get", ["db", _RETURN_VALUE_ADDRESS - 1 - i], sym, indent=1))
+                    data.add(
+                        IC10(
+                            "get", ["db", _RETURN_VALUE_ADDRESS - 1 - i], sym, indent=1
+                        )
+                    )
                 if arg.name in symbols.__dict__:
                     raise CompilerError(
                         f"Function argument name {arg.name} conflicts with a built-in name",
@@ -567,12 +575,13 @@ class CompilerPassGenerateCode(CompilerPass):
                 and value_name in symbols.__dict__
             ):
                 from .types import _BaseStructure
+
                 data.result = value
-                
+
                 if isinstance(value, _BaseStructure):
                     if isinstance(value._dev_id._id, IC10Register):
                         value._dev_id._id._is_intermediate = False
-                    
+
                 structures = self.data.structures
                 scope_name = get_scope_name(target)
                 if scope_name not in structures:

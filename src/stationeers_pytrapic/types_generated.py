@@ -295,6 +295,62 @@ class LogicType(_IntEnum):
     RatioLiquidHydrochloricAcid = 291
     RatioOzone = 292
     RatioLiquidOzone = 293
+    RatioHydrogenInput = 294
+    RatioHydrogenInput2 = 295
+    RatioHydrogenOutput = 296
+    RatioHydrogenOutput2 = 297
+    RatioLiquidHydrogenInput = 298
+    RatioLiquidHydrogenInput2 = 299
+    RatioLiquidHydrogenOutput = 300
+    RatioLiquidHydrogenOutput2 = 301
+    RatioPollutedWaterInput = 302
+    RatioPollutedWaterInput2 = 303
+    RatioPollutedWaterOutput = 304
+    RatioPollutedWaterOutput2 = 305
+    RatioHydrazineInput = 306
+    RatioHydrazineInput2 = 307
+    RatioHydrazineOutput = 308
+    RatioHydrazineOutput2 = 309
+    RatioLiquidHydrazineInput = 310
+    RatioLiquidHydrazineInput2 = 311
+    RatioLiquidHydrazineOutput = 312
+    RatioLiquidHydrazineOutput2 = 313
+    RatioLiquidAlcoholInput = 314
+    RatioLiquidAlcoholInput2 = 315
+    RatioLiquidAlcoholOutput = 316
+    RatioLiquidAlcoholOutput2 = 317
+    RatioHeliumInput = 318
+    RatioHeliumInput2 = 319
+    RatioHeliumOutput = 320
+    RatioHeliumOutput2 = 321
+    RatioLiquidSodiumChlorideInput = 322
+    RatioLiquidSodiumChlorideInput2 = 323
+    RatioLiquidSodiumChlorideOutput = 324
+    RatioLiquidSodiumChlorideOutput2 = 325
+    RatioSilanolInput = 326
+    RatioSilanolInput2 = 327
+    RatioSilanolOutput = 328
+    RatioSilanolOutput2 = 329
+    RatioLiquidSilanolInput = 330
+    RatioLiquidSilanolInput2 = 331
+    RatioLiquidSilanolOutput = 332
+    RatioLiquidSilanolOutput2 = 333
+    RatioHydrochloricAcidInput = 334
+    RatioHydrochloricAcidInput2 = 335
+    RatioHydrochloricAcidOutput = 336
+    RatioHydrochloricAcidOutput2 = 337
+    RatioLiquidHydrochloricAcidInput = 338
+    RatioLiquidHydrochloricAcidInput2 = 339
+    RatioLiquidHydrochloricAcidOutput = 340
+    RatioLiquidHydrochloricAcidOutput2 = 341
+    RatioOzoneInput = 342
+    RatioOzoneInput2 = 343
+    RatioOzoneOutput = 344
+    RatioOzoneOutput2 = 345
+    RatioLiquidOzoneInput = 346
+    RatioLiquidOzoneInput2 = 347
+    RatioLiquidOzoneOutput = 348
+    RatioLiquidOzoneOutput2 = 349
 
 
 class LogicSlotType(_IntEnum):
@@ -3066,6 +3122,498 @@ class _GenericStructure:
     def RatioLiquidOzone(self, value):
         return self.__setattr__("RatioLiquidOzone", value)
 
+    @property
+    def RatioHydrogenInput(self) -> "stationeers_pytrapic.types._DeviceLogicType":
+        return self.__getattr__("RatioHydrogenInput")
+
+    @RatioHydrogenInput.setter
+    def RatioHydrogenInput(self, value):
+        return self.__setattr__("RatioHydrogenInput", value)
+
+    @property
+    def RatioHydrogenInput2(self) -> "stationeers_pytrapic.types._DeviceLogicType":
+        return self.__getattr__("RatioHydrogenInput2")
+
+    @RatioHydrogenInput2.setter
+    def RatioHydrogenInput2(self, value):
+        return self.__setattr__("RatioHydrogenInput2", value)
+
+    @property
+    def RatioHydrogenOutput(self) -> "stationeers_pytrapic.types._DeviceLogicType":
+        return self.__getattr__("RatioHydrogenOutput")
+
+    @RatioHydrogenOutput.setter
+    def RatioHydrogenOutput(self, value):
+        return self.__setattr__("RatioHydrogenOutput", value)
+
+    @property
+    def RatioHydrogenOutput2(self) -> "stationeers_pytrapic.types._DeviceLogicType":
+        return self.__getattr__("RatioHydrogenOutput2")
+
+    @RatioHydrogenOutput2.setter
+    def RatioHydrogenOutput2(self, value):
+        return self.__setattr__("RatioHydrogenOutput2", value)
+
+    @property
+    def RatioLiquidHydrogenInput(self) -> "stationeers_pytrapic.types._DeviceLogicType":
+        return self.__getattr__("RatioLiquidHydrogenInput")
+
+    @RatioLiquidHydrogenInput.setter
+    def RatioLiquidHydrogenInput(self, value):
+        return self.__setattr__("RatioLiquidHydrogenInput", value)
+
+    @property
+    def RatioLiquidHydrogenInput2(
+        self,
+    ) -> "stationeers_pytrapic.types._DeviceLogicType":
+        return self.__getattr__("RatioLiquidHydrogenInput2")
+
+    @RatioLiquidHydrogenInput2.setter
+    def RatioLiquidHydrogenInput2(self, value):
+        return self.__setattr__("RatioLiquidHydrogenInput2", value)
+
+    @property
+    def RatioLiquidHydrogenOutput(
+        self,
+    ) -> "stationeers_pytrapic.types._DeviceLogicType":
+        return self.__getattr__("RatioLiquidHydrogenOutput")
+
+    @RatioLiquidHydrogenOutput.setter
+    def RatioLiquidHydrogenOutput(self, value):
+        return self.__setattr__("RatioLiquidHydrogenOutput", value)
+
+    @property
+    def RatioLiquidHydrogenOutput2(
+        self,
+    ) -> "stationeers_pytrapic.types._DeviceLogicType":
+        return self.__getattr__("RatioLiquidHydrogenOutput2")
+
+    @RatioLiquidHydrogenOutput2.setter
+    def RatioLiquidHydrogenOutput2(self, value):
+        return self.__setattr__("RatioLiquidHydrogenOutput2", value)
+
+    @property
+    def RatioPollutedWaterInput(self) -> "stationeers_pytrapic.types._DeviceLogicType":
+        return self.__getattr__("RatioPollutedWaterInput")
+
+    @RatioPollutedWaterInput.setter
+    def RatioPollutedWaterInput(self, value):
+        return self.__setattr__("RatioPollutedWaterInput", value)
+
+    @property
+    def RatioPollutedWaterInput2(self) -> "stationeers_pytrapic.types._DeviceLogicType":
+        return self.__getattr__("RatioPollutedWaterInput2")
+
+    @RatioPollutedWaterInput2.setter
+    def RatioPollutedWaterInput2(self, value):
+        return self.__setattr__("RatioPollutedWaterInput2", value)
+
+    @property
+    def RatioPollutedWaterOutput(self) -> "stationeers_pytrapic.types._DeviceLogicType":
+        return self.__getattr__("RatioPollutedWaterOutput")
+
+    @RatioPollutedWaterOutput.setter
+    def RatioPollutedWaterOutput(self, value):
+        return self.__setattr__("RatioPollutedWaterOutput", value)
+
+    @property
+    def RatioPollutedWaterOutput2(
+        self,
+    ) -> "stationeers_pytrapic.types._DeviceLogicType":
+        return self.__getattr__("RatioPollutedWaterOutput2")
+
+    @RatioPollutedWaterOutput2.setter
+    def RatioPollutedWaterOutput2(self, value):
+        return self.__setattr__("RatioPollutedWaterOutput2", value)
+
+    @property
+    def RatioHydrazineInput(self) -> "stationeers_pytrapic.types._DeviceLogicType":
+        return self.__getattr__("RatioHydrazineInput")
+
+    @RatioHydrazineInput.setter
+    def RatioHydrazineInput(self, value):
+        return self.__setattr__("RatioHydrazineInput", value)
+
+    @property
+    def RatioHydrazineInput2(self) -> "stationeers_pytrapic.types._DeviceLogicType":
+        return self.__getattr__("RatioHydrazineInput2")
+
+    @RatioHydrazineInput2.setter
+    def RatioHydrazineInput2(self, value):
+        return self.__setattr__("RatioHydrazineInput2", value)
+
+    @property
+    def RatioHydrazineOutput(self) -> "stationeers_pytrapic.types._DeviceLogicType":
+        return self.__getattr__("RatioHydrazineOutput")
+
+    @RatioHydrazineOutput.setter
+    def RatioHydrazineOutput(self, value):
+        return self.__setattr__("RatioHydrazineOutput", value)
+
+    @property
+    def RatioHydrazineOutput2(self) -> "stationeers_pytrapic.types._DeviceLogicType":
+        return self.__getattr__("RatioHydrazineOutput2")
+
+    @RatioHydrazineOutput2.setter
+    def RatioHydrazineOutput2(self, value):
+        return self.__setattr__("RatioHydrazineOutput2", value)
+
+    @property
+    def RatioLiquidHydrazineInput(
+        self,
+    ) -> "stationeers_pytrapic.types._DeviceLogicType":
+        return self.__getattr__("RatioLiquidHydrazineInput")
+
+    @RatioLiquidHydrazineInput.setter
+    def RatioLiquidHydrazineInput(self, value):
+        return self.__setattr__("RatioLiquidHydrazineInput", value)
+
+    @property
+    def RatioLiquidHydrazineInput2(
+        self,
+    ) -> "stationeers_pytrapic.types._DeviceLogicType":
+        return self.__getattr__("RatioLiquidHydrazineInput2")
+
+    @RatioLiquidHydrazineInput2.setter
+    def RatioLiquidHydrazineInput2(self, value):
+        return self.__setattr__("RatioLiquidHydrazineInput2", value)
+
+    @property
+    def RatioLiquidHydrazineOutput(
+        self,
+    ) -> "stationeers_pytrapic.types._DeviceLogicType":
+        return self.__getattr__("RatioLiquidHydrazineOutput")
+
+    @RatioLiquidHydrazineOutput.setter
+    def RatioLiquidHydrazineOutput(self, value):
+        return self.__setattr__("RatioLiquidHydrazineOutput", value)
+
+    @property
+    def RatioLiquidHydrazineOutput2(
+        self,
+    ) -> "stationeers_pytrapic.types._DeviceLogicType":
+        return self.__getattr__("RatioLiquidHydrazineOutput2")
+
+    @RatioLiquidHydrazineOutput2.setter
+    def RatioLiquidHydrazineOutput2(self, value):
+        return self.__setattr__("RatioLiquidHydrazineOutput2", value)
+
+    @property
+    def RatioLiquidAlcoholInput(self) -> "stationeers_pytrapic.types._DeviceLogicType":
+        return self.__getattr__("RatioLiquidAlcoholInput")
+
+    @RatioLiquidAlcoholInput.setter
+    def RatioLiquidAlcoholInput(self, value):
+        return self.__setattr__("RatioLiquidAlcoholInput", value)
+
+    @property
+    def RatioLiquidAlcoholInput2(self) -> "stationeers_pytrapic.types._DeviceLogicType":
+        return self.__getattr__("RatioLiquidAlcoholInput2")
+
+    @RatioLiquidAlcoholInput2.setter
+    def RatioLiquidAlcoholInput2(self, value):
+        return self.__setattr__("RatioLiquidAlcoholInput2", value)
+
+    @property
+    def RatioLiquidAlcoholOutput(self) -> "stationeers_pytrapic.types._DeviceLogicType":
+        return self.__getattr__("RatioLiquidAlcoholOutput")
+
+    @RatioLiquidAlcoholOutput.setter
+    def RatioLiquidAlcoholOutput(self, value):
+        return self.__setattr__("RatioLiquidAlcoholOutput", value)
+
+    @property
+    def RatioLiquidAlcoholOutput2(
+        self,
+    ) -> "stationeers_pytrapic.types._DeviceLogicType":
+        return self.__getattr__("RatioLiquidAlcoholOutput2")
+
+    @RatioLiquidAlcoholOutput2.setter
+    def RatioLiquidAlcoholOutput2(self, value):
+        return self.__setattr__("RatioLiquidAlcoholOutput2", value)
+
+    @property
+    def RatioHeliumInput(self) -> "stationeers_pytrapic.types._DeviceLogicType":
+        return self.__getattr__("RatioHeliumInput")
+
+    @RatioHeliumInput.setter
+    def RatioHeliumInput(self, value):
+        return self.__setattr__("RatioHeliumInput", value)
+
+    @property
+    def RatioHeliumInput2(self) -> "stationeers_pytrapic.types._DeviceLogicType":
+        return self.__getattr__("RatioHeliumInput2")
+
+    @RatioHeliumInput2.setter
+    def RatioHeliumInput2(self, value):
+        return self.__setattr__("RatioHeliumInput2", value)
+
+    @property
+    def RatioHeliumOutput(self) -> "stationeers_pytrapic.types._DeviceLogicType":
+        return self.__getattr__("RatioHeliumOutput")
+
+    @RatioHeliumOutput.setter
+    def RatioHeliumOutput(self, value):
+        return self.__setattr__("RatioHeliumOutput", value)
+
+    @property
+    def RatioHeliumOutput2(self) -> "stationeers_pytrapic.types._DeviceLogicType":
+        return self.__getattr__("RatioHeliumOutput2")
+
+    @RatioHeliumOutput2.setter
+    def RatioHeliumOutput2(self, value):
+        return self.__setattr__("RatioHeliumOutput2", value)
+
+    @property
+    def RatioLiquidSodiumChlorideInput(
+        self,
+    ) -> "stationeers_pytrapic.types._DeviceLogicType":
+        return self.__getattr__("RatioLiquidSodiumChlorideInput")
+
+    @RatioLiquidSodiumChlorideInput.setter
+    def RatioLiquidSodiumChlorideInput(self, value):
+        return self.__setattr__("RatioLiquidSodiumChlorideInput", value)
+
+    @property
+    def RatioLiquidSodiumChlorideInput2(
+        self,
+    ) -> "stationeers_pytrapic.types._DeviceLogicType":
+        return self.__getattr__("RatioLiquidSodiumChlorideInput2")
+
+    @RatioLiquidSodiumChlorideInput2.setter
+    def RatioLiquidSodiumChlorideInput2(self, value):
+        return self.__setattr__("RatioLiquidSodiumChlorideInput2", value)
+
+    @property
+    def RatioLiquidSodiumChlorideOutput(
+        self,
+    ) -> "stationeers_pytrapic.types._DeviceLogicType":
+        return self.__getattr__("RatioLiquidSodiumChlorideOutput")
+
+    @RatioLiquidSodiumChlorideOutput.setter
+    def RatioLiquidSodiumChlorideOutput(self, value):
+        return self.__setattr__("RatioLiquidSodiumChlorideOutput", value)
+
+    @property
+    def RatioLiquidSodiumChlorideOutput2(
+        self,
+    ) -> "stationeers_pytrapic.types._DeviceLogicType":
+        return self.__getattr__("RatioLiquidSodiumChlorideOutput2")
+
+    @RatioLiquidSodiumChlorideOutput2.setter
+    def RatioLiquidSodiumChlorideOutput2(self, value):
+        return self.__setattr__("RatioLiquidSodiumChlorideOutput2", value)
+
+    @property
+    def RatioSilanolInput(self) -> "stationeers_pytrapic.types._DeviceLogicType":
+        return self.__getattr__("RatioSilanolInput")
+
+    @RatioSilanolInput.setter
+    def RatioSilanolInput(self, value):
+        return self.__setattr__("RatioSilanolInput", value)
+
+    @property
+    def RatioSilanolInput2(self) -> "stationeers_pytrapic.types._DeviceLogicType":
+        return self.__getattr__("RatioSilanolInput2")
+
+    @RatioSilanolInput2.setter
+    def RatioSilanolInput2(self, value):
+        return self.__setattr__("RatioSilanolInput2", value)
+
+    @property
+    def RatioSilanolOutput(self) -> "stationeers_pytrapic.types._DeviceLogicType":
+        return self.__getattr__("RatioSilanolOutput")
+
+    @RatioSilanolOutput.setter
+    def RatioSilanolOutput(self, value):
+        return self.__setattr__("RatioSilanolOutput", value)
+
+    @property
+    def RatioSilanolOutput2(self) -> "stationeers_pytrapic.types._DeviceLogicType":
+        return self.__getattr__("RatioSilanolOutput2")
+
+    @RatioSilanolOutput2.setter
+    def RatioSilanolOutput2(self, value):
+        return self.__setattr__("RatioSilanolOutput2", value)
+
+    @property
+    def RatioLiquidSilanolInput(self) -> "stationeers_pytrapic.types._DeviceLogicType":
+        return self.__getattr__("RatioLiquidSilanolInput")
+
+    @RatioLiquidSilanolInput.setter
+    def RatioLiquidSilanolInput(self, value):
+        return self.__setattr__("RatioLiquidSilanolInput", value)
+
+    @property
+    def RatioLiquidSilanolInput2(self) -> "stationeers_pytrapic.types._DeviceLogicType":
+        return self.__getattr__("RatioLiquidSilanolInput2")
+
+    @RatioLiquidSilanolInput2.setter
+    def RatioLiquidSilanolInput2(self, value):
+        return self.__setattr__("RatioLiquidSilanolInput2", value)
+
+    @property
+    def RatioLiquidSilanolOutput(self) -> "stationeers_pytrapic.types._DeviceLogicType":
+        return self.__getattr__("RatioLiquidSilanolOutput")
+
+    @RatioLiquidSilanolOutput.setter
+    def RatioLiquidSilanolOutput(self, value):
+        return self.__setattr__("RatioLiquidSilanolOutput", value)
+
+    @property
+    def RatioLiquidSilanolOutput2(
+        self,
+    ) -> "stationeers_pytrapic.types._DeviceLogicType":
+        return self.__getattr__("RatioLiquidSilanolOutput2")
+
+    @RatioLiquidSilanolOutput2.setter
+    def RatioLiquidSilanolOutput2(self, value):
+        return self.__setattr__("RatioLiquidSilanolOutput2", value)
+
+    @property
+    def RatioHydrochloricAcidInput(
+        self,
+    ) -> "stationeers_pytrapic.types._DeviceLogicType":
+        return self.__getattr__("RatioHydrochloricAcidInput")
+
+    @RatioHydrochloricAcidInput.setter
+    def RatioHydrochloricAcidInput(self, value):
+        return self.__setattr__("RatioHydrochloricAcidInput", value)
+
+    @property
+    def RatioHydrochloricAcidInput2(
+        self,
+    ) -> "stationeers_pytrapic.types._DeviceLogicType":
+        return self.__getattr__("RatioHydrochloricAcidInput2")
+
+    @RatioHydrochloricAcidInput2.setter
+    def RatioHydrochloricAcidInput2(self, value):
+        return self.__setattr__("RatioHydrochloricAcidInput2", value)
+
+    @property
+    def RatioHydrochloricAcidOutput(
+        self,
+    ) -> "stationeers_pytrapic.types._DeviceLogicType":
+        return self.__getattr__("RatioHydrochloricAcidOutput")
+
+    @RatioHydrochloricAcidOutput.setter
+    def RatioHydrochloricAcidOutput(self, value):
+        return self.__setattr__("RatioHydrochloricAcidOutput", value)
+
+    @property
+    def RatioHydrochloricAcidOutput2(
+        self,
+    ) -> "stationeers_pytrapic.types._DeviceLogicType":
+        return self.__getattr__("RatioHydrochloricAcidOutput2")
+
+    @RatioHydrochloricAcidOutput2.setter
+    def RatioHydrochloricAcidOutput2(self, value):
+        return self.__setattr__("RatioHydrochloricAcidOutput2", value)
+
+    @property
+    def RatioLiquidHydrochloricAcidInput(
+        self,
+    ) -> "stationeers_pytrapic.types._DeviceLogicType":
+        return self.__getattr__("RatioLiquidHydrochloricAcidInput")
+
+    @RatioLiquidHydrochloricAcidInput.setter
+    def RatioLiquidHydrochloricAcidInput(self, value):
+        return self.__setattr__("RatioLiquidHydrochloricAcidInput", value)
+
+    @property
+    def RatioLiquidHydrochloricAcidInput2(
+        self,
+    ) -> "stationeers_pytrapic.types._DeviceLogicType":
+        return self.__getattr__("RatioLiquidHydrochloricAcidInput2")
+
+    @RatioLiquidHydrochloricAcidInput2.setter
+    def RatioLiquidHydrochloricAcidInput2(self, value):
+        return self.__setattr__("RatioLiquidHydrochloricAcidInput2", value)
+
+    @property
+    def RatioLiquidHydrochloricAcidOutput(
+        self,
+    ) -> "stationeers_pytrapic.types._DeviceLogicType":
+        return self.__getattr__("RatioLiquidHydrochloricAcidOutput")
+
+    @RatioLiquidHydrochloricAcidOutput.setter
+    def RatioLiquidHydrochloricAcidOutput(self, value):
+        return self.__setattr__("RatioLiquidHydrochloricAcidOutput", value)
+
+    @property
+    def RatioLiquidHydrochloricAcidOutput2(
+        self,
+    ) -> "stationeers_pytrapic.types._DeviceLogicType":
+        return self.__getattr__("RatioLiquidHydrochloricAcidOutput2")
+
+    @RatioLiquidHydrochloricAcidOutput2.setter
+    def RatioLiquidHydrochloricAcidOutput2(self, value):
+        return self.__setattr__("RatioLiquidHydrochloricAcidOutput2", value)
+
+    @property
+    def RatioOzoneInput(self) -> "stationeers_pytrapic.types._DeviceLogicType":
+        return self.__getattr__("RatioOzoneInput")
+
+    @RatioOzoneInput.setter
+    def RatioOzoneInput(self, value):
+        return self.__setattr__("RatioOzoneInput", value)
+
+    @property
+    def RatioOzoneInput2(self) -> "stationeers_pytrapic.types._DeviceLogicType":
+        return self.__getattr__("RatioOzoneInput2")
+
+    @RatioOzoneInput2.setter
+    def RatioOzoneInput2(self, value):
+        return self.__setattr__("RatioOzoneInput2", value)
+
+    @property
+    def RatioOzoneOutput(self) -> "stationeers_pytrapic.types._DeviceLogicType":
+        return self.__getattr__("RatioOzoneOutput")
+
+    @RatioOzoneOutput.setter
+    def RatioOzoneOutput(self, value):
+        return self.__setattr__("RatioOzoneOutput", value)
+
+    @property
+    def RatioOzoneOutput2(self) -> "stationeers_pytrapic.types._DeviceLogicType":
+        return self.__getattr__("RatioOzoneOutput2")
+
+    @RatioOzoneOutput2.setter
+    def RatioOzoneOutput2(self, value):
+        return self.__setattr__("RatioOzoneOutput2", value)
+
+    @property
+    def RatioLiquidOzoneInput(self) -> "stationeers_pytrapic.types._DeviceLogicType":
+        return self.__getattr__("RatioLiquidOzoneInput")
+
+    @RatioLiquidOzoneInput.setter
+    def RatioLiquidOzoneInput(self, value):
+        return self.__setattr__("RatioLiquidOzoneInput", value)
+
+    @property
+    def RatioLiquidOzoneInput2(self) -> "stationeers_pytrapic.types._DeviceLogicType":
+        return self.__getattr__("RatioLiquidOzoneInput2")
+
+    @RatioLiquidOzoneInput2.setter
+    def RatioLiquidOzoneInput2(self, value):
+        return self.__setattr__("RatioLiquidOzoneInput2", value)
+
+    @property
+    def RatioLiquidOzoneOutput(self) -> "stationeers_pytrapic.types._DeviceLogicType":
+        return self.__getattr__("RatioLiquidOzoneOutput")
+
+    @RatioLiquidOzoneOutput.setter
+    def RatioLiquidOzoneOutput(self, value):
+        return self.__setattr__("RatioLiquidOzoneOutput", value)
+
+    @property
+    def RatioLiquidOzoneOutput2(self) -> "stationeers_pytrapic.types._DeviceLogicType":
+        return self.__getattr__("RatioLiquidOzoneOutput2")
+
+    @RatioLiquidOzoneOutput2.setter
+    def RatioLiquidOzoneOutput2(self, value):
+        return self.__setattr__("RatioLiquidOzoneOutput2", value)
+
 
 class _GenericStructures:
 
@@ -5472,3 +6020,509 @@ class _GenericStructures:
     @RatioLiquidOzone.setter
     def RatioLiquidOzone(self, value):
         return self.__setattr__("RatioLiquidOzone", value)
+
+    @property
+    def RatioHydrogenInput(self) -> "stationeers_pytrapic.types._DevicesLogicType":
+        return self.__getattr__("RatioHydrogenInput")
+
+    @RatioHydrogenInput.setter
+    def RatioHydrogenInput(self, value):
+        return self.__setattr__("RatioHydrogenInput", value)
+
+    @property
+    def RatioHydrogenInput2(self) -> "stationeers_pytrapic.types._DevicesLogicType":
+        return self.__getattr__("RatioHydrogenInput2")
+
+    @RatioHydrogenInput2.setter
+    def RatioHydrogenInput2(self, value):
+        return self.__setattr__("RatioHydrogenInput2", value)
+
+    @property
+    def RatioHydrogenOutput(self) -> "stationeers_pytrapic.types._DevicesLogicType":
+        return self.__getattr__("RatioHydrogenOutput")
+
+    @RatioHydrogenOutput.setter
+    def RatioHydrogenOutput(self, value):
+        return self.__setattr__("RatioHydrogenOutput", value)
+
+    @property
+    def RatioHydrogenOutput2(self) -> "stationeers_pytrapic.types._DevicesLogicType":
+        return self.__getattr__("RatioHydrogenOutput2")
+
+    @RatioHydrogenOutput2.setter
+    def RatioHydrogenOutput2(self, value):
+        return self.__setattr__("RatioHydrogenOutput2", value)
+
+    @property
+    def RatioLiquidHydrogenInput(
+        self,
+    ) -> "stationeers_pytrapic.types._DevicesLogicType":
+        return self.__getattr__("RatioLiquidHydrogenInput")
+
+    @RatioLiquidHydrogenInput.setter
+    def RatioLiquidHydrogenInput(self, value):
+        return self.__setattr__("RatioLiquidHydrogenInput", value)
+
+    @property
+    def RatioLiquidHydrogenInput2(
+        self,
+    ) -> "stationeers_pytrapic.types._DevicesLogicType":
+        return self.__getattr__("RatioLiquidHydrogenInput2")
+
+    @RatioLiquidHydrogenInput2.setter
+    def RatioLiquidHydrogenInput2(self, value):
+        return self.__setattr__("RatioLiquidHydrogenInput2", value)
+
+    @property
+    def RatioLiquidHydrogenOutput(
+        self,
+    ) -> "stationeers_pytrapic.types._DevicesLogicType":
+        return self.__getattr__("RatioLiquidHydrogenOutput")
+
+    @RatioLiquidHydrogenOutput.setter
+    def RatioLiquidHydrogenOutput(self, value):
+        return self.__setattr__("RatioLiquidHydrogenOutput", value)
+
+    @property
+    def RatioLiquidHydrogenOutput2(
+        self,
+    ) -> "stationeers_pytrapic.types._DevicesLogicType":
+        return self.__getattr__("RatioLiquidHydrogenOutput2")
+
+    @RatioLiquidHydrogenOutput2.setter
+    def RatioLiquidHydrogenOutput2(self, value):
+        return self.__setattr__("RatioLiquidHydrogenOutput2", value)
+
+    @property
+    def RatioPollutedWaterInput(self) -> "stationeers_pytrapic.types._DevicesLogicType":
+        return self.__getattr__("RatioPollutedWaterInput")
+
+    @RatioPollutedWaterInput.setter
+    def RatioPollutedWaterInput(self, value):
+        return self.__setattr__("RatioPollutedWaterInput", value)
+
+    @property
+    def RatioPollutedWaterInput2(
+        self,
+    ) -> "stationeers_pytrapic.types._DevicesLogicType":
+        return self.__getattr__("RatioPollutedWaterInput2")
+
+    @RatioPollutedWaterInput2.setter
+    def RatioPollutedWaterInput2(self, value):
+        return self.__setattr__("RatioPollutedWaterInput2", value)
+
+    @property
+    def RatioPollutedWaterOutput(
+        self,
+    ) -> "stationeers_pytrapic.types._DevicesLogicType":
+        return self.__getattr__("RatioPollutedWaterOutput")
+
+    @RatioPollutedWaterOutput.setter
+    def RatioPollutedWaterOutput(self, value):
+        return self.__setattr__("RatioPollutedWaterOutput", value)
+
+    @property
+    def RatioPollutedWaterOutput2(
+        self,
+    ) -> "stationeers_pytrapic.types._DevicesLogicType":
+        return self.__getattr__("RatioPollutedWaterOutput2")
+
+    @RatioPollutedWaterOutput2.setter
+    def RatioPollutedWaterOutput2(self, value):
+        return self.__setattr__("RatioPollutedWaterOutput2", value)
+
+    @property
+    def RatioHydrazineInput(self) -> "stationeers_pytrapic.types._DevicesLogicType":
+        return self.__getattr__("RatioHydrazineInput")
+
+    @RatioHydrazineInput.setter
+    def RatioHydrazineInput(self, value):
+        return self.__setattr__("RatioHydrazineInput", value)
+
+    @property
+    def RatioHydrazineInput2(self) -> "stationeers_pytrapic.types._DevicesLogicType":
+        return self.__getattr__("RatioHydrazineInput2")
+
+    @RatioHydrazineInput2.setter
+    def RatioHydrazineInput2(self, value):
+        return self.__setattr__("RatioHydrazineInput2", value)
+
+    @property
+    def RatioHydrazineOutput(self) -> "stationeers_pytrapic.types._DevicesLogicType":
+        return self.__getattr__("RatioHydrazineOutput")
+
+    @RatioHydrazineOutput.setter
+    def RatioHydrazineOutput(self, value):
+        return self.__setattr__("RatioHydrazineOutput", value)
+
+    @property
+    def RatioHydrazineOutput2(self) -> "stationeers_pytrapic.types._DevicesLogicType":
+        return self.__getattr__("RatioHydrazineOutput2")
+
+    @RatioHydrazineOutput2.setter
+    def RatioHydrazineOutput2(self, value):
+        return self.__setattr__("RatioHydrazineOutput2", value)
+
+    @property
+    def RatioLiquidHydrazineInput(
+        self,
+    ) -> "stationeers_pytrapic.types._DevicesLogicType":
+        return self.__getattr__("RatioLiquidHydrazineInput")
+
+    @RatioLiquidHydrazineInput.setter
+    def RatioLiquidHydrazineInput(self, value):
+        return self.__setattr__("RatioLiquidHydrazineInput", value)
+
+    @property
+    def RatioLiquidHydrazineInput2(
+        self,
+    ) -> "stationeers_pytrapic.types._DevicesLogicType":
+        return self.__getattr__("RatioLiquidHydrazineInput2")
+
+    @RatioLiquidHydrazineInput2.setter
+    def RatioLiquidHydrazineInput2(self, value):
+        return self.__setattr__("RatioLiquidHydrazineInput2", value)
+
+    @property
+    def RatioLiquidHydrazineOutput(
+        self,
+    ) -> "stationeers_pytrapic.types._DevicesLogicType":
+        return self.__getattr__("RatioLiquidHydrazineOutput")
+
+    @RatioLiquidHydrazineOutput.setter
+    def RatioLiquidHydrazineOutput(self, value):
+        return self.__setattr__("RatioLiquidHydrazineOutput", value)
+
+    @property
+    def RatioLiquidHydrazineOutput2(
+        self,
+    ) -> "stationeers_pytrapic.types._DevicesLogicType":
+        return self.__getattr__("RatioLiquidHydrazineOutput2")
+
+    @RatioLiquidHydrazineOutput2.setter
+    def RatioLiquidHydrazineOutput2(self, value):
+        return self.__setattr__("RatioLiquidHydrazineOutput2", value)
+
+    @property
+    def RatioLiquidAlcoholInput(self) -> "stationeers_pytrapic.types._DevicesLogicType":
+        return self.__getattr__("RatioLiquidAlcoholInput")
+
+    @RatioLiquidAlcoholInput.setter
+    def RatioLiquidAlcoholInput(self, value):
+        return self.__setattr__("RatioLiquidAlcoholInput", value)
+
+    @property
+    def RatioLiquidAlcoholInput2(
+        self,
+    ) -> "stationeers_pytrapic.types._DevicesLogicType":
+        return self.__getattr__("RatioLiquidAlcoholInput2")
+
+    @RatioLiquidAlcoholInput2.setter
+    def RatioLiquidAlcoholInput2(self, value):
+        return self.__setattr__("RatioLiquidAlcoholInput2", value)
+
+    @property
+    def RatioLiquidAlcoholOutput(
+        self,
+    ) -> "stationeers_pytrapic.types._DevicesLogicType":
+        return self.__getattr__("RatioLiquidAlcoholOutput")
+
+    @RatioLiquidAlcoholOutput.setter
+    def RatioLiquidAlcoholOutput(self, value):
+        return self.__setattr__("RatioLiquidAlcoholOutput", value)
+
+    @property
+    def RatioLiquidAlcoholOutput2(
+        self,
+    ) -> "stationeers_pytrapic.types._DevicesLogicType":
+        return self.__getattr__("RatioLiquidAlcoholOutput2")
+
+    @RatioLiquidAlcoholOutput2.setter
+    def RatioLiquidAlcoholOutput2(self, value):
+        return self.__setattr__("RatioLiquidAlcoholOutput2", value)
+
+    @property
+    def RatioHeliumInput(self) -> "stationeers_pytrapic.types._DevicesLogicType":
+        return self.__getattr__("RatioHeliumInput")
+
+    @RatioHeliumInput.setter
+    def RatioHeliumInput(self, value):
+        return self.__setattr__("RatioHeliumInput", value)
+
+    @property
+    def RatioHeliumInput2(self) -> "stationeers_pytrapic.types._DevicesLogicType":
+        return self.__getattr__("RatioHeliumInput2")
+
+    @RatioHeliumInput2.setter
+    def RatioHeliumInput2(self, value):
+        return self.__setattr__("RatioHeliumInput2", value)
+
+    @property
+    def RatioHeliumOutput(self) -> "stationeers_pytrapic.types._DevicesLogicType":
+        return self.__getattr__("RatioHeliumOutput")
+
+    @RatioHeliumOutput.setter
+    def RatioHeliumOutput(self, value):
+        return self.__setattr__("RatioHeliumOutput", value)
+
+    @property
+    def RatioHeliumOutput2(self) -> "stationeers_pytrapic.types._DevicesLogicType":
+        return self.__getattr__("RatioHeliumOutput2")
+
+    @RatioHeliumOutput2.setter
+    def RatioHeliumOutput2(self, value):
+        return self.__setattr__("RatioHeliumOutput2", value)
+
+    @property
+    def RatioLiquidSodiumChlorideInput(
+        self,
+    ) -> "stationeers_pytrapic.types._DevicesLogicType":
+        return self.__getattr__("RatioLiquidSodiumChlorideInput")
+
+    @RatioLiquidSodiumChlorideInput.setter
+    def RatioLiquidSodiumChlorideInput(self, value):
+        return self.__setattr__("RatioLiquidSodiumChlorideInput", value)
+
+    @property
+    def RatioLiquidSodiumChlorideInput2(
+        self,
+    ) -> "stationeers_pytrapic.types._DevicesLogicType":
+        return self.__getattr__("RatioLiquidSodiumChlorideInput2")
+
+    @RatioLiquidSodiumChlorideInput2.setter
+    def RatioLiquidSodiumChlorideInput2(self, value):
+        return self.__setattr__("RatioLiquidSodiumChlorideInput2", value)
+
+    @property
+    def RatioLiquidSodiumChlorideOutput(
+        self,
+    ) -> "stationeers_pytrapic.types._DevicesLogicType":
+        return self.__getattr__("RatioLiquidSodiumChlorideOutput")
+
+    @RatioLiquidSodiumChlorideOutput.setter
+    def RatioLiquidSodiumChlorideOutput(self, value):
+        return self.__setattr__("RatioLiquidSodiumChlorideOutput", value)
+
+    @property
+    def RatioLiquidSodiumChlorideOutput2(
+        self,
+    ) -> "stationeers_pytrapic.types._DevicesLogicType":
+        return self.__getattr__("RatioLiquidSodiumChlorideOutput2")
+
+    @RatioLiquidSodiumChlorideOutput2.setter
+    def RatioLiquidSodiumChlorideOutput2(self, value):
+        return self.__setattr__("RatioLiquidSodiumChlorideOutput2", value)
+
+    @property
+    def RatioSilanolInput(self) -> "stationeers_pytrapic.types._DevicesLogicType":
+        return self.__getattr__("RatioSilanolInput")
+
+    @RatioSilanolInput.setter
+    def RatioSilanolInput(self, value):
+        return self.__setattr__("RatioSilanolInput", value)
+
+    @property
+    def RatioSilanolInput2(self) -> "stationeers_pytrapic.types._DevicesLogicType":
+        return self.__getattr__("RatioSilanolInput2")
+
+    @RatioSilanolInput2.setter
+    def RatioSilanolInput2(self, value):
+        return self.__setattr__("RatioSilanolInput2", value)
+
+    @property
+    def RatioSilanolOutput(self) -> "stationeers_pytrapic.types._DevicesLogicType":
+        return self.__getattr__("RatioSilanolOutput")
+
+    @RatioSilanolOutput.setter
+    def RatioSilanolOutput(self, value):
+        return self.__setattr__("RatioSilanolOutput", value)
+
+    @property
+    def RatioSilanolOutput2(self) -> "stationeers_pytrapic.types._DevicesLogicType":
+        return self.__getattr__("RatioSilanolOutput2")
+
+    @RatioSilanolOutput2.setter
+    def RatioSilanolOutput2(self, value):
+        return self.__setattr__("RatioSilanolOutput2", value)
+
+    @property
+    def RatioLiquidSilanolInput(self) -> "stationeers_pytrapic.types._DevicesLogicType":
+        return self.__getattr__("RatioLiquidSilanolInput")
+
+    @RatioLiquidSilanolInput.setter
+    def RatioLiquidSilanolInput(self, value):
+        return self.__setattr__("RatioLiquidSilanolInput", value)
+
+    @property
+    def RatioLiquidSilanolInput2(
+        self,
+    ) -> "stationeers_pytrapic.types._DevicesLogicType":
+        return self.__getattr__("RatioLiquidSilanolInput2")
+
+    @RatioLiquidSilanolInput2.setter
+    def RatioLiquidSilanolInput2(self, value):
+        return self.__setattr__("RatioLiquidSilanolInput2", value)
+
+    @property
+    def RatioLiquidSilanolOutput(
+        self,
+    ) -> "stationeers_pytrapic.types._DevicesLogicType":
+        return self.__getattr__("RatioLiquidSilanolOutput")
+
+    @RatioLiquidSilanolOutput.setter
+    def RatioLiquidSilanolOutput(self, value):
+        return self.__setattr__("RatioLiquidSilanolOutput", value)
+
+    @property
+    def RatioLiquidSilanolOutput2(
+        self,
+    ) -> "stationeers_pytrapic.types._DevicesLogicType":
+        return self.__getattr__("RatioLiquidSilanolOutput2")
+
+    @RatioLiquidSilanolOutput2.setter
+    def RatioLiquidSilanolOutput2(self, value):
+        return self.__setattr__("RatioLiquidSilanolOutput2", value)
+
+    @property
+    def RatioHydrochloricAcidInput(
+        self,
+    ) -> "stationeers_pytrapic.types._DevicesLogicType":
+        return self.__getattr__("RatioHydrochloricAcidInput")
+
+    @RatioHydrochloricAcidInput.setter
+    def RatioHydrochloricAcidInput(self, value):
+        return self.__setattr__("RatioHydrochloricAcidInput", value)
+
+    @property
+    def RatioHydrochloricAcidInput2(
+        self,
+    ) -> "stationeers_pytrapic.types._DevicesLogicType":
+        return self.__getattr__("RatioHydrochloricAcidInput2")
+
+    @RatioHydrochloricAcidInput2.setter
+    def RatioHydrochloricAcidInput2(self, value):
+        return self.__setattr__("RatioHydrochloricAcidInput2", value)
+
+    @property
+    def RatioHydrochloricAcidOutput(
+        self,
+    ) -> "stationeers_pytrapic.types._DevicesLogicType":
+        return self.__getattr__("RatioHydrochloricAcidOutput")
+
+    @RatioHydrochloricAcidOutput.setter
+    def RatioHydrochloricAcidOutput(self, value):
+        return self.__setattr__("RatioHydrochloricAcidOutput", value)
+
+    @property
+    def RatioHydrochloricAcidOutput2(
+        self,
+    ) -> "stationeers_pytrapic.types._DevicesLogicType":
+        return self.__getattr__("RatioHydrochloricAcidOutput2")
+
+    @RatioHydrochloricAcidOutput2.setter
+    def RatioHydrochloricAcidOutput2(self, value):
+        return self.__setattr__("RatioHydrochloricAcidOutput2", value)
+
+    @property
+    def RatioLiquidHydrochloricAcidInput(
+        self,
+    ) -> "stationeers_pytrapic.types._DevicesLogicType":
+        return self.__getattr__("RatioLiquidHydrochloricAcidInput")
+
+    @RatioLiquidHydrochloricAcidInput.setter
+    def RatioLiquidHydrochloricAcidInput(self, value):
+        return self.__setattr__("RatioLiquidHydrochloricAcidInput", value)
+
+    @property
+    def RatioLiquidHydrochloricAcidInput2(
+        self,
+    ) -> "stationeers_pytrapic.types._DevicesLogicType":
+        return self.__getattr__("RatioLiquidHydrochloricAcidInput2")
+
+    @RatioLiquidHydrochloricAcidInput2.setter
+    def RatioLiquidHydrochloricAcidInput2(self, value):
+        return self.__setattr__("RatioLiquidHydrochloricAcidInput2", value)
+
+    @property
+    def RatioLiquidHydrochloricAcidOutput(
+        self,
+    ) -> "stationeers_pytrapic.types._DevicesLogicType":
+        return self.__getattr__("RatioLiquidHydrochloricAcidOutput")
+
+    @RatioLiquidHydrochloricAcidOutput.setter
+    def RatioLiquidHydrochloricAcidOutput(self, value):
+        return self.__setattr__("RatioLiquidHydrochloricAcidOutput", value)
+
+    @property
+    def RatioLiquidHydrochloricAcidOutput2(
+        self,
+    ) -> "stationeers_pytrapic.types._DevicesLogicType":
+        return self.__getattr__("RatioLiquidHydrochloricAcidOutput2")
+
+    @RatioLiquidHydrochloricAcidOutput2.setter
+    def RatioLiquidHydrochloricAcidOutput2(self, value):
+        return self.__setattr__("RatioLiquidHydrochloricAcidOutput2", value)
+
+    @property
+    def RatioOzoneInput(self) -> "stationeers_pytrapic.types._DevicesLogicType":
+        return self.__getattr__("RatioOzoneInput")
+
+    @RatioOzoneInput.setter
+    def RatioOzoneInput(self, value):
+        return self.__setattr__("RatioOzoneInput", value)
+
+    @property
+    def RatioOzoneInput2(self) -> "stationeers_pytrapic.types._DevicesLogicType":
+        return self.__getattr__("RatioOzoneInput2")
+
+    @RatioOzoneInput2.setter
+    def RatioOzoneInput2(self, value):
+        return self.__setattr__("RatioOzoneInput2", value)
+
+    @property
+    def RatioOzoneOutput(self) -> "stationeers_pytrapic.types._DevicesLogicType":
+        return self.__getattr__("RatioOzoneOutput")
+
+    @RatioOzoneOutput.setter
+    def RatioOzoneOutput(self, value):
+        return self.__setattr__("RatioOzoneOutput", value)
+
+    @property
+    def RatioOzoneOutput2(self) -> "stationeers_pytrapic.types._DevicesLogicType":
+        return self.__getattr__("RatioOzoneOutput2")
+
+    @RatioOzoneOutput2.setter
+    def RatioOzoneOutput2(self, value):
+        return self.__setattr__("RatioOzoneOutput2", value)
+
+    @property
+    def RatioLiquidOzoneInput(self) -> "stationeers_pytrapic.types._DevicesLogicType":
+        return self.__getattr__("RatioLiquidOzoneInput")
+
+    @RatioLiquidOzoneInput.setter
+    def RatioLiquidOzoneInput(self, value):
+        return self.__setattr__("RatioLiquidOzoneInput", value)
+
+    @property
+    def RatioLiquidOzoneInput2(self) -> "stationeers_pytrapic.types._DevicesLogicType":
+        return self.__getattr__("RatioLiquidOzoneInput2")
+
+    @RatioLiquidOzoneInput2.setter
+    def RatioLiquidOzoneInput2(self, value):
+        return self.__setattr__("RatioLiquidOzoneInput2", value)
+
+    @property
+    def RatioLiquidOzoneOutput(self) -> "stationeers_pytrapic.types._DevicesLogicType":
+        return self.__getattr__("RatioLiquidOzoneOutput")
+
+    @RatioLiquidOzoneOutput.setter
+    def RatioLiquidOzoneOutput(self, value):
+        return self.__setattr__("RatioLiquidOzoneOutput", value)
+
+    @property
+    def RatioLiquidOzoneOutput2(self) -> "stationeers_pytrapic.types._DevicesLogicType":
+        return self.__getattr__("RatioLiquidOzoneOutput2")
+
+    @RatioLiquidOzoneOutput2.setter
+    def RatioLiquidOzoneOutput2(self, value):
+        return self.__setattr__("RatioLiquidOzoneOutput2", value)

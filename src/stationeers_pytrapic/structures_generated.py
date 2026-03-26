@@ -2884,6 +2884,50 @@ class LiquidDrain(_BaseStructure, _Error, _Lock, _Maximum, _Power, _Ratio, _Sett
         return _DeviceLogicType(self, _LT.RatioCarbonDioxideOutput)
 
     @property
+    def RatioHeliumOutput(self) -> float:
+        return _DeviceLogicType(self, _LT.RatioHeliumOutput)
+
+    @property
+    def RatioHydrazineOutput(self) -> float:
+        return _DeviceLogicType(self, _LT.RatioHydrazineOutput)
+
+    @property
+    def RatioHydrochloricAcidOutput(self) -> float:
+        return _DeviceLogicType(self, _LT.RatioHydrochloricAcidOutput)
+
+    @property
+    def RatioHydrogenOutput(self) -> float:
+        return _DeviceLogicType(self, _LT.RatioHydrogenOutput)
+
+    @property
+    def RatioLiquidAlcoholOutput(self) -> float:
+        return _DeviceLogicType(self, _LT.RatioLiquidAlcoholOutput)
+
+    @property
+    def RatioLiquidHydrazineOutput(self) -> float:
+        return _DeviceLogicType(self, _LT.RatioLiquidHydrazineOutput)
+
+    @property
+    def RatioLiquidHydrochloricAcidOutput(self) -> float:
+        return _DeviceLogicType(self, _LT.RatioLiquidHydrochloricAcidOutput)
+
+    @property
+    def RatioLiquidHydrogenOutput(self) -> float:
+        return _DeviceLogicType(self, _LT.RatioLiquidHydrogenOutput)
+
+    @property
+    def RatioLiquidOzoneOutput(self) -> float:
+        return _DeviceLogicType(self, _LT.RatioLiquidOzoneOutput)
+
+    @property
+    def RatioLiquidSilanolOutput(self) -> float:
+        return _DeviceLogicType(self, _LT.RatioLiquidSilanolOutput)
+
+    @property
+    def RatioLiquidSodiumChlorideOutput(self) -> float:
+        return _DeviceLogicType(self, _LT.RatioLiquidSodiumChlorideOutput)
+
+    @property
     def RatioMethaneOutput(self) -> float:
         return _DeviceLogicType(self, _LT.RatioMethaneOutput)
 
@@ -2900,8 +2944,20 @@ class LiquidDrain(_BaseStructure, _Error, _Lock, _Maximum, _Power, _Ratio, _Sett
         return _DeviceLogicType(self, _LT.RatioOxygenOutput)
 
     @property
+    def RatioOzoneOutput(self) -> float:
+        return _DeviceLogicType(self, _LT.RatioOzoneOutput)
+
+    @property
     def RatioPollutantOutput(self) -> float:
         return _DeviceLogicType(self, _LT.RatioPollutantOutput)
+
+    @property
+    def RatioPollutedWaterOutput(self) -> float:
+        return _DeviceLogicType(self, _LT.RatioPollutedWaterOutput)
+
+    @property
+    def RatioSilanolOutput(self) -> float:
+        return _DeviceLogicType(self, _LT.RatioSilanolOutput)
 
     @property
     def RatioWaterOutput(self) -> float:
@@ -2954,6 +3010,50 @@ class _LiquidDrains(
         return _DevicesLogicType(self, _LT.RatioCarbonDioxideOutput)
 
     @property
+    def RatioHeliumOutput(self) -> _DevicesLogicType:
+        return _DevicesLogicType(self, _LT.RatioHeliumOutput)
+
+    @property
+    def RatioHydrazineOutput(self) -> _DevicesLogicType:
+        return _DevicesLogicType(self, _LT.RatioHydrazineOutput)
+
+    @property
+    def RatioHydrochloricAcidOutput(self) -> _DevicesLogicType:
+        return _DevicesLogicType(self, _LT.RatioHydrochloricAcidOutput)
+
+    @property
+    def RatioHydrogenOutput(self) -> _DevicesLogicType:
+        return _DevicesLogicType(self, _LT.RatioHydrogenOutput)
+
+    @property
+    def RatioLiquidAlcoholOutput(self) -> _DevicesLogicType:
+        return _DevicesLogicType(self, _LT.RatioLiquidAlcoholOutput)
+
+    @property
+    def RatioLiquidHydrazineOutput(self) -> _DevicesLogicType:
+        return _DevicesLogicType(self, _LT.RatioLiquidHydrazineOutput)
+
+    @property
+    def RatioLiquidHydrochloricAcidOutput(self) -> _DevicesLogicType:
+        return _DevicesLogicType(self, _LT.RatioLiquidHydrochloricAcidOutput)
+
+    @property
+    def RatioLiquidHydrogenOutput(self) -> _DevicesLogicType:
+        return _DevicesLogicType(self, _LT.RatioLiquidHydrogenOutput)
+
+    @property
+    def RatioLiquidOzoneOutput(self) -> _DevicesLogicType:
+        return _DevicesLogicType(self, _LT.RatioLiquidOzoneOutput)
+
+    @property
+    def RatioLiquidSilanolOutput(self) -> _DevicesLogicType:
+        return _DevicesLogicType(self, _LT.RatioLiquidSilanolOutput)
+
+    @property
+    def RatioLiquidSodiumChlorideOutput(self) -> _DevicesLogicType:
+        return _DevicesLogicType(self, _LT.RatioLiquidSodiumChlorideOutput)
+
+    @property
     def RatioMethaneOutput(self) -> _DevicesLogicType:
         return _DevicesLogicType(self, _LT.RatioMethaneOutput)
 
@@ -2970,8 +3070,20 @@ class _LiquidDrains(
         return _DevicesLogicType(self, _LT.RatioOxygenOutput)
 
     @property
+    def RatioOzoneOutput(self) -> _DevicesLogicType:
+        return _DevicesLogicType(self, _LT.RatioOzoneOutput)
+
+    @property
     def RatioPollutantOutput(self) -> _DevicesLogicType:
         return _DevicesLogicType(self, _LT.RatioPollutantOutput)
+
+    @property
+    def RatioPollutedWaterOutput(self) -> _DevicesLogicType:
+        return _DevicesLogicType(self, _LT.RatioPollutedWaterOutput)
+
+    @property
+    def RatioSilanolOutput(self) -> _DevicesLogicType:
+        return _DevicesLogicType(self, _LT.RatioSilanolOutput)
 
     @property
     def RatioWaterOutput(self) -> _DevicesLogicType:
@@ -3024,6 +3136,50 @@ class ActiveVent(
         return _DeviceLogicType(self, _LT.RatioCarbonDioxideOutput)
 
     @property
+    def RatioHeliumOutput(self) -> float:
+        return _DeviceLogicType(self, _LT.RatioHeliumOutput)
+
+    @property
+    def RatioHydrazineOutput(self) -> float:
+        return _DeviceLogicType(self, _LT.RatioHydrazineOutput)
+
+    @property
+    def RatioHydrochloricAcidOutput(self) -> float:
+        return _DeviceLogicType(self, _LT.RatioHydrochloricAcidOutput)
+
+    @property
+    def RatioHydrogenOutput(self) -> float:
+        return _DeviceLogicType(self, _LT.RatioHydrogenOutput)
+
+    @property
+    def RatioLiquidAlcoholOutput(self) -> float:
+        return _DeviceLogicType(self, _LT.RatioLiquidAlcoholOutput)
+
+    @property
+    def RatioLiquidHydrazineOutput(self) -> float:
+        return _DeviceLogicType(self, _LT.RatioLiquidHydrazineOutput)
+
+    @property
+    def RatioLiquidHydrochloricAcidOutput(self) -> float:
+        return _DeviceLogicType(self, _LT.RatioLiquidHydrochloricAcidOutput)
+
+    @property
+    def RatioLiquidHydrogenOutput(self) -> float:
+        return _DeviceLogicType(self, _LT.RatioLiquidHydrogenOutput)
+
+    @property
+    def RatioLiquidOzoneOutput(self) -> float:
+        return _DeviceLogicType(self, _LT.RatioLiquidOzoneOutput)
+
+    @property
+    def RatioLiquidSilanolOutput(self) -> float:
+        return _DeviceLogicType(self, _LT.RatioLiquidSilanolOutput)
+
+    @property
+    def RatioLiquidSodiumChlorideOutput(self) -> float:
+        return _DeviceLogicType(self, _LT.RatioLiquidSodiumChlorideOutput)
+
+    @property
     def RatioMethaneOutput(self) -> float:
         return _DeviceLogicType(self, _LT.RatioMethaneOutput)
 
@@ -3040,8 +3196,20 @@ class ActiveVent(
         return _DeviceLogicType(self, _LT.RatioOxygenOutput)
 
     @property
+    def RatioOzoneOutput(self) -> float:
+        return _DeviceLogicType(self, _LT.RatioOzoneOutput)
+
+    @property
     def RatioPollutantOutput(self) -> float:
         return _DeviceLogicType(self, _LT.RatioPollutantOutput)
+
+    @property
+    def RatioPollutedWaterOutput(self) -> float:
+        return _DeviceLogicType(self, _LT.RatioPollutedWaterOutput)
+
+    @property
+    def RatioSilanolOutput(self) -> float:
+        return _DeviceLogicType(self, _LT.RatioSilanolOutput)
 
     @property
     def RatioWaterOutput(self) -> float:
@@ -3126,6 +3294,50 @@ class _ActiveVents(
         return _DevicesLogicType(self, _LT.RatioCarbonDioxideOutput)
 
     @property
+    def RatioHeliumOutput(self) -> _DevicesLogicType:
+        return _DevicesLogicType(self, _LT.RatioHeliumOutput)
+
+    @property
+    def RatioHydrazineOutput(self) -> _DevicesLogicType:
+        return _DevicesLogicType(self, _LT.RatioHydrazineOutput)
+
+    @property
+    def RatioHydrochloricAcidOutput(self) -> _DevicesLogicType:
+        return _DevicesLogicType(self, _LT.RatioHydrochloricAcidOutput)
+
+    @property
+    def RatioHydrogenOutput(self) -> _DevicesLogicType:
+        return _DevicesLogicType(self, _LT.RatioHydrogenOutput)
+
+    @property
+    def RatioLiquidAlcoholOutput(self) -> _DevicesLogicType:
+        return _DevicesLogicType(self, _LT.RatioLiquidAlcoholOutput)
+
+    @property
+    def RatioLiquidHydrazineOutput(self) -> _DevicesLogicType:
+        return _DevicesLogicType(self, _LT.RatioLiquidHydrazineOutput)
+
+    @property
+    def RatioLiquidHydrochloricAcidOutput(self) -> _DevicesLogicType:
+        return _DevicesLogicType(self, _LT.RatioLiquidHydrochloricAcidOutput)
+
+    @property
+    def RatioLiquidHydrogenOutput(self) -> _DevicesLogicType:
+        return _DevicesLogicType(self, _LT.RatioLiquidHydrogenOutput)
+
+    @property
+    def RatioLiquidOzoneOutput(self) -> _DevicesLogicType:
+        return _DevicesLogicType(self, _LT.RatioLiquidOzoneOutput)
+
+    @property
+    def RatioLiquidSilanolOutput(self) -> _DevicesLogicType:
+        return _DevicesLogicType(self, _LT.RatioLiquidSilanolOutput)
+
+    @property
+    def RatioLiquidSodiumChlorideOutput(self) -> _DevicesLogicType:
+        return _DevicesLogicType(self, _LT.RatioLiquidSodiumChlorideOutput)
+
+    @property
     def RatioMethaneOutput(self) -> _DevicesLogicType:
         return _DevicesLogicType(self, _LT.RatioMethaneOutput)
 
@@ -3142,8 +3354,20 @@ class _ActiveVents(
         return _DevicesLogicType(self, _LT.RatioOxygenOutput)
 
     @property
+    def RatioOzoneOutput(self) -> _DevicesLogicType:
+        return _DevicesLogicType(self, _LT.RatioOzoneOutput)
+
+    @property
     def RatioPollutantOutput(self) -> _DevicesLogicType:
         return _DevicesLogicType(self, _LT.RatioPollutantOutput)
+
+    @property
+    def RatioPollutedWaterOutput(self) -> _DevicesLogicType:
+        return _DevicesLogicType(self, _LT.RatioPollutedWaterOutput)
+
+    @property
+    def RatioSilanolOutput(self) -> _DevicesLogicType:
+        return _DevicesLogicType(self, _LT.RatioSilanolOutput)
 
     @property
     def RatioWaterOutput(self) -> _DevicesLogicType:
@@ -3904,6 +4128,66 @@ class AirConditioner(
         return _DeviceLogicType(self, _LT.RatioCarbonDioxideOutput2)
 
     @property
+    def RatioHeliumInput(self) -> float:
+        return _DeviceLogicType(self, _LT.RatioHeliumInput)
+
+    @property
+    def RatioHeliumOutput(self) -> float:
+        return _DeviceLogicType(self, _LT.RatioHeliumOutput)
+
+    @property
+    def RatioHeliumOutput2(self) -> float:
+        return _DeviceLogicType(self, _LT.RatioHeliumOutput2)
+
+    @property
+    def RatioHydrazineInput(self) -> float:
+        return _DeviceLogicType(self, _LT.RatioHydrazineInput)
+
+    @property
+    def RatioHydrazineOutput(self) -> float:
+        return _DeviceLogicType(self, _LT.RatioHydrazineOutput)
+
+    @property
+    def RatioHydrazineOutput2(self) -> float:
+        return _DeviceLogicType(self, _LT.RatioHydrazineOutput2)
+
+    @property
+    def RatioHydrochloricAcidInput(self) -> float:
+        return _DeviceLogicType(self, _LT.RatioHydrochloricAcidInput)
+
+    @property
+    def RatioHydrochloricAcidOutput(self) -> float:
+        return _DeviceLogicType(self, _LT.RatioHydrochloricAcidOutput)
+
+    @property
+    def RatioHydrochloricAcidOutput2(self) -> float:
+        return _DeviceLogicType(self, _LT.RatioHydrochloricAcidOutput2)
+
+    @property
+    def RatioHydrogenInput(self) -> float:
+        return _DeviceLogicType(self, _LT.RatioHydrogenInput)
+
+    @property
+    def RatioHydrogenOutput(self) -> float:
+        return _DeviceLogicType(self, _LT.RatioHydrogenOutput)
+
+    @property
+    def RatioHydrogenOutput2(self) -> float:
+        return _DeviceLogicType(self, _LT.RatioHydrogenOutput2)
+
+    @property
+    def RatioLiquidAlcoholInput(self) -> float:
+        return _DeviceLogicType(self, _LT.RatioLiquidAlcoholInput)
+
+    @property
+    def RatioLiquidAlcoholOutput(self) -> float:
+        return _DeviceLogicType(self, _LT.RatioLiquidAlcoholOutput)
+
+    @property
+    def RatioLiquidAlcoholOutput2(self) -> float:
+        return _DeviceLogicType(self, _LT.RatioLiquidAlcoholOutput2)
+
+    @property
     def RatioLiquidCarbonDioxideInput(self) -> float:
         return _DeviceLogicType(self, _LT.RatioLiquidCarbonDioxideInput)
 
@@ -3914,6 +4198,42 @@ class AirConditioner(
     @property
     def RatioLiquidCarbonDioxideOutput2(self) -> float:
         return _DeviceLogicType(self, _LT.RatioLiquidCarbonDioxideOutput2)
+
+    @property
+    def RatioLiquidHydrazineInput(self) -> float:
+        return _DeviceLogicType(self, _LT.RatioLiquidHydrazineInput)
+
+    @property
+    def RatioLiquidHydrazineOutput(self) -> float:
+        return _DeviceLogicType(self, _LT.RatioLiquidHydrazineOutput)
+
+    @property
+    def RatioLiquidHydrazineOutput2(self) -> float:
+        return _DeviceLogicType(self, _LT.RatioLiquidHydrazineOutput2)
+
+    @property
+    def RatioLiquidHydrochloricAcidInput(self) -> float:
+        return _DeviceLogicType(self, _LT.RatioLiquidHydrochloricAcidInput)
+
+    @property
+    def RatioLiquidHydrochloricAcidOutput(self) -> float:
+        return _DeviceLogicType(self, _LT.RatioLiquidHydrochloricAcidOutput)
+
+    @property
+    def RatioLiquidHydrochloricAcidOutput2(self) -> float:
+        return _DeviceLogicType(self, _LT.RatioLiquidHydrochloricAcidOutput2)
+
+    @property
+    def RatioLiquidHydrogenInput(self) -> float:
+        return _DeviceLogicType(self, _LT.RatioLiquidHydrogenInput)
+
+    @property
+    def RatioLiquidHydrogenOutput(self) -> float:
+        return _DeviceLogicType(self, _LT.RatioLiquidHydrogenOutput)
+
+    @property
+    def RatioLiquidHydrogenOutput2(self) -> float:
+        return _DeviceLogicType(self, _LT.RatioLiquidHydrogenOutput2)
 
     @property
     def RatioLiquidMethaneInput(self) -> float:
@@ -3964,6 +4284,18 @@ class AirConditioner(
         return _DeviceLogicType(self, _LT.RatioLiquidOxygenOutput2)
 
     @property
+    def RatioLiquidOzoneInput(self) -> float:
+        return _DeviceLogicType(self, _LT.RatioLiquidOzoneInput)
+
+    @property
+    def RatioLiquidOzoneOutput(self) -> float:
+        return _DeviceLogicType(self, _LT.RatioLiquidOzoneOutput)
+
+    @property
+    def RatioLiquidOzoneOutput2(self) -> float:
+        return _DeviceLogicType(self, _LT.RatioLiquidOzoneOutput2)
+
+    @property
     def RatioLiquidPollutantInput(self) -> float:
         return _DeviceLogicType(self, _LT.RatioLiquidPollutantInput)
 
@@ -3974,6 +4306,30 @@ class AirConditioner(
     @property
     def RatioLiquidPollutantOutput2(self) -> float:
         return _DeviceLogicType(self, _LT.RatioLiquidPollutantOutput2)
+
+    @property
+    def RatioLiquidSilanolInput(self) -> float:
+        return _DeviceLogicType(self, _LT.RatioLiquidSilanolInput)
+
+    @property
+    def RatioLiquidSilanolOutput(self) -> float:
+        return _DeviceLogicType(self, _LT.RatioLiquidSilanolOutput)
+
+    @property
+    def RatioLiquidSilanolOutput2(self) -> float:
+        return _DeviceLogicType(self, _LT.RatioLiquidSilanolOutput2)
+
+    @property
+    def RatioLiquidSodiumChlorideInput(self) -> float:
+        return _DeviceLogicType(self, _LT.RatioLiquidSodiumChlorideInput)
+
+    @property
+    def RatioLiquidSodiumChlorideOutput(self) -> float:
+        return _DeviceLogicType(self, _LT.RatioLiquidSodiumChlorideOutput)
+
+    @property
+    def RatioLiquidSodiumChlorideOutput2(self) -> float:
+        return _DeviceLogicType(self, _LT.RatioLiquidSodiumChlorideOutput2)
 
     @property
     def RatioMethaneInput(self) -> float:
@@ -4024,6 +4380,18 @@ class AirConditioner(
         return _DeviceLogicType(self, _LT.RatioOxygenOutput2)
 
     @property
+    def RatioOzoneInput(self) -> float:
+        return _DeviceLogicType(self, _LT.RatioOzoneInput)
+
+    @property
+    def RatioOzoneOutput(self) -> float:
+        return _DeviceLogicType(self, _LT.RatioOzoneOutput)
+
+    @property
+    def RatioOzoneOutput2(self) -> float:
+        return _DeviceLogicType(self, _LT.RatioOzoneOutput2)
+
+    @property
     def RatioPollutantInput(self) -> float:
         return _DeviceLogicType(self, _LT.RatioPollutantInput)
 
@@ -4034,6 +4402,30 @@ class AirConditioner(
     @property
     def RatioPollutantOutput2(self) -> float:
         return _DeviceLogicType(self, _LT.RatioPollutantOutput2)
+
+    @property
+    def RatioPollutedWaterInput(self) -> float:
+        return _DeviceLogicType(self, _LT.RatioPollutedWaterInput)
+
+    @property
+    def RatioPollutedWaterOutput(self) -> float:
+        return _DeviceLogicType(self, _LT.RatioPollutedWaterOutput)
+
+    @property
+    def RatioPollutedWaterOutput2(self) -> float:
+        return _DeviceLogicType(self, _LT.RatioPollutedWaterOutput2)
+
+    @property
+    def RatioSilanolInput(self) -> float:
+        return _DeviceLogicType(self, _LT.RatioSilanolInput)
+
+    @property
+    def RatioSilanolOutput(self) -> float:
+        return _DeviceLogicType(self, _LT.RatioSilanolOutput)
+
+    @property
+    def RatioSilanolOutput2(self) -> float:
+        return _DeviceLogicType(self, _LT.RatioSilanolOutput2)
 
     @property
     def RatioSteamInput(self) -> float:
@@ -4174,6 +4566,66 @@ class _AirConditioners(
         return _DevicesLogicType(self, _LT.RatioCarbonDioxideOutput2)
 
     @property
+    def RatioHeliumInput(self) -> _DevicesLogicType:
+        return _DevicesLogicType(self, _LT.RatioHeliumInput)
+
+    @property
+    def RatioHeliumOutput(self) -> _DevicesLogicType:
+        return _DevicesLogicType(self, _LT.RatioHeliumOutput)
+
+    @property
+    def RatioHeliumOutput2(self) -> _DevicesLogicType:
+        return _DevicesLogicType(self, _LT.RatioHeliumOutput2)
+
+    @property
+    def RatioHydrazineInput(self) -> _DevicesLogicType:
+        return _DevicesLogicType(self, _LT.RatioHydrazineInput)
+
+    @property
+    def RatioHydrazineOutput(self) -> _DevicesLogicType:
+        return _DevicesLogicType(self, _LT.RatioHydrazineOutput)
+
+    @property
+    def RatioHydrazineOutput2(self) -> _DevicesLogicType:
+        return _DevicesLogicType(self, _LT.RatioHydrazineOutput2)
+
+    @property
+    def RatioHydrochloricAcidInput(self) -> _DevicesLogicType:
+        return _DevicesLogicType(self, _LT.RatioHydrochloricAcidInput)
+
+    @property
+    def RatioHydrochloricAcidOutput(self) -> _DevicesLogicType:
+        return _DevicesLogicType(self, _LT.RatioHydrochloricAcidOutput)
+
+    @property
+    def RatioHydrochloricAcidOutput2(self) -> _DevicesLogicType:
+        return _DevicesLogicType(self, _LT.RatioHydrochloricAcidOutput2)
+
+    @property
+    def RatioHydrogenInput(self) -> _DevicesLogicType:
+        return _DevicesLogicType(self, _LT.RatioHydrogenInput)
+
+    @property
+    def RatioHydrogenOutput(self) -> _DevicesLogicType:
+        return _DevicesLogicType(self, _LT.RatioHydrogenOutput)
+
+    @property
+    def RatioHydrogenOutput2(self) -> _DevicesLogicType:
+        return _DevicesLogicType(self, _LT.RatioHydrogenOutput2)
+
+    @property
+    def RatioLiquidAlcoholInput(self) -> _DevicesLogicType:
+        return _DevicesLogicType(self, _LT.RatioLiquidAlcoholInput)
+
+    @property
+    def RatioLiquidAlcoholOutput(self) -> _DevicesLogicType:
+        return _DevicesLogicType(self, _LT.RatioLiquidAlcoholOutput)
+
+    @property
+    def RatioLiquidAlcoholOutput2(self) -> _DevicesLogicType:
+        return _DevicesLogicType(self, _LT.RatioLiquidAlcoholOutput2)
+
+    @property
     def RatioLiquidCarbonDioxideInput(self) -> _DevicesLogicType:
         return _DevicesLogicType(self, _LT.RatioLiquidCarbonDioxideInput)
 
@@ -4184,6 +4636,42 @@ class _AirConditioners(
     @property
     def RatioLiquidCarbonDioxideOutput2(self) -> _DevicesLogicType:
         return _DevicesLogicType(self, _LT.RatioLiquidCarbonDioxideOutput2)
+
+    @property
+    def RatioLiquidHydrazineInput(self) -> _DevicesLogicType:
+        return _DevicesLogicType(self, _LT.RatioLiquidHydrazineInput)
+
+    @property
+    def RatioLiquidHydrazineOutput(self) -> _DevicesLogicType:
+        return _DevicesLogicType(self, _LT.RatioLiquidHydrazineOutput)
+
+    @property
+    def RatioLiquidHydrazineOutput2(self) -> _DevicesLogicType:
+        return _DevicesLogicType(self, _LT.RatioLiquidHydrazineOutput2)
+
+    @property
+    def RatioLiquidHydrochloricAcidInput(self) -> _DevicesLogicType:
+        return _DevicesLogicType(self, _LT.RatioLiquidHydrochloricAcidInput)
+
+    @property
+    def RatioLiquidHydrochloricAcidOutput(self) -> _DevicesLogicType:
+        return _DevicesLogicType(self, _LT.RatioLiquidHydrochloricAcidOutput)
+
+    @property
+    def RatioLiquidHydrochloricAcidOutput2(self) -> _DevicesLogicType:
+        return _DevicesLogicType(self, _LT.RatioLiquidHydrochloricAcidOutput2)
+
+    @property
+    def RatioLiquidHydrogenInput(self) -> _DevicesLogicType:
+        return _DevicesLogicType(self, _LT.RatioLiquidHydrogenInput)
+
+    @property
+    def RatioLiquidHydrogenOutput(self) -> _DevicesLogicType:
+        return _DevicesLogicType(self, _LT.RatioLiquidHydrogenOutput)
+
+    @property
+    def RatioLiquidHydrogenOutput2(self) -> _DevicesLogicType:
+        return _DevicesLogicType(self, _LT.RatioLiquidHydrogenOutput2)
 
     @property
     def RatioLiquidMethaneInput(self) -> _DevicesLogicType:
@@ -4234,6 +4722,18 @@ class _AirConditioners(
         return _DevicesLogicType(self, _LT.RatioLiquidOxygenOutput2)
 
     @property
+    def RatioLiquidOzoneInput(self) -> _DevicesLogicType:
+        return _DevicesLogicType(self, _LT.RatioLiquidOzoneInput)
+
+    @property
+    def RatioLiquidOzoneOutput(self) -> _DevicesLogicType:
+        return _DevicesLogicType(self, _LT.RatioLiquidOzoneOutput)
+
+    @property
+    def RatioLiquidOzoneOutput2(self) -> _DevicesLogicType:
+        return _DevicesLogicType(self, _LT.RatioLiquidOzoneOutput2)
+
+    @property
     def RatioLiquidPollutantInput(self) -> _DevicesLogicType:
         return _DevicesLogicType(self, _LT.RatioLiquidPollutantInput)
 
@@ -4244,6 +4744,30 @@ class _AirConditioners(
     @property
     def RatioLiquidPollutantOutput2(self) -> _DevicesLogicType:
         return _DevicesLogicType(self, _LT.RatioLiquidPollutantOutput2)
+
+    @property
+    def RatioLiquidSilanolInput(self) -> _DevicesLogicType:
+        return _DevicesLogicType(self, _LT.RatioLiquidSilanolInput)
+
+    @property
+    def RatioLiquidSilanolOutput(self) -> _DevicesLogicType:
+        return _DevicesLogicType(self, _LT.RatioLiquidSilanolOutput)
+
+    @property
+    def RatioLiquidSilanolOutput2(self) -> _DevicesLogicType:
+        return _DevicesLogicType(self, _LT.RatioLiquidSilanolOutput2)
+
+    @property
+    def RatioLiquidSodiumChlorideInput(self) -> _DevicesLogicType:
+        return _DevicesLogicType(self, _LT.RatioLiquidSodiumChlorideInput)
+
+    @property
+    def RatioLiquidSodiumChlorideOutput(self) -> _DevicesLogicType:
+        return _DevicesLogicType(self, _LT.RatioLiquidSodiumChlorideOutput)
+
+    @property
+    def RatioLiquidSodiumChlorideOutput2(self) -> _DevicesLogicType:
+        return _DevicesLogicType(self, _LT.RatioLiquidSodiumChlorideOutput2)
 
     @property
     def RatioMethaneInput(self) -> _DevicesLogicType:
@@ -4294,6 +4818,18 @@ class _AirConditioners(
         return _DevicesLogicType(self, _LT.RatioOxygenOutput2)
 
     @property
+    def RatioOzoneInput(self) -> _DevicesLogicType:
+        return _DevicesLogicType(self, _LT.RatioOzoneInput)
+
+    @property
+    def RatioOzoneOutput(self) -> _DevicesLogicType:
+        return _DevicesLogicType(self, _LT.RatioOzoneOutput)
+
+    @property
+    def RatioOzoneOutput2(self) -> _DevicesLogicType:
+        return _DevicesLogicType(self, _LT.RatioOzoneOutput2)
+
+    @property
     def RatioPollutantInput(self) -> _DevicesLogicType:
         return _DevicesLogicType(self, _LT.RatioPollutantInput)
 
@@ -4304,6 +4840,30 @@ class _AirConditioners(
     @property
     def RatioPollutantOutput2(self) -> _DevicesLogicType:
         return _DevicesLogicType(self, _LT.RatioPollutantOutput2)
+
+    @property
+    def RatioPollutedWaterInput(self) -> _DevicesLogicType:
+        return _DevicesLogicType(self, _LT.RatioPollutedWaterInput)
+
+    @property
+    def RatioPollutedWaterOutput(self) -> _DevicesLogicType:
+        return _DevicesLogicType(self, _LT.RatioPollutedWaterOutput)
+
+    @property
+    def RatioPollutedWaterOutput2(self) -> _DevicesLogicType:
+        return _DevicesLogicType(self, _LT.RatioPollutedWaterOutput2)
+
+    @property
+    def RatioSilanolInput(self) -> _DevicesLogicType:
+        return _DevicesLogicType(self, _LT.RatioSilanolInput)
+
+    @property
+    def RatioSilanolOutput(self) -> _DevicesLogicType:
+        return _DevicesLogicType(self, _LT.RatioSilanolOutput)
+
+    @property
+    def RatioSilanolOutput2(self) -> _DevicesLogicType:
+        return _DevicesLogicType(self, _LT.RatioSilanolOutput2)
 
     @property
     def RatioSteamInput(self) -> _DevicesLogicType:
@@ -8280,16 +8840,56 @@ class CombustionCentrifuge(
         return _DeviceLogicType(self, _LT.RatioHelium)
 
     @property
+    def RatioHeliumInput(self) -> float:
+        return _DeviceLogicType(self, _LT.RatioHeliumInput)
+
+    @property
+    def RatioHeliumOutput(self) -> float:
+        return _DeviceLogicType(self, _LT.RatioHeliumOutput)
+
+    @property
     def RatioHydrazine(self) -> float:
         return _DeviceLogicType(self, _LT.RatioHydrazine)
+
+    @property
+    def RatioHydrazineInput(self) -> float:
+        return _DeviceLogicType(self, _LT.RatioHydrazineInput)
+
+    @property
+    def RatioHydrazineOutput(self) -> float:
+        return _DeviceLogicType(self, _LT.RatioHydrazineOutput)
 
     @property
     def RatioHydrochloricAcid(self) -> float:
         return _DeviceLogicType(self, _LT.RatioHydrochloricAcid)
 
     @property
+    def RatioHydrochloricAcidInput(self) -> float:
+        return _DeviceLogicType(self, _LT.RatioHydrochloricAcidInput)
+
+    @property
+    def RatioHydrochloricAcidOutput(self) -> float:
+        return _DeviceLogicType(self, _LT.RatioHydrochloricAcidOutput)
+
+    @property
+    def RatioHydrogenInput(self) -> float:
+        return _DeviceLogicType(self, _LT.RatioHydrogenInput)
+
+    @property
+    def RatioHydrogenOutput(self) -> float:
+        return _DeviceLogicType(self, _LT.RatioHydrogenOutput)
+
+    @property
     def RatioLiquidAlcohol(self) -> float:
         return _DeviceLogicType(self, _LT.RatioLiquidAlcohol)
+
+    @property
+    def RatioLiquidAlcoholInput(self) -> float:
+        return _DeviceLogicType(self, _LT.RatioLiquidAlcoholInput)
+
+    @property
+    def RatioLiquidAlcoholOutput(self) -> float:
+        return _DeviceLogicType(self, _LT.RatioLiquidAlcoholOutput)
 
     @property
     def RatioLiquidCarbonDioxide(self) -> float:
@@ -8308,8 +8908,32 @@ class CombustionCentrifuge(
         return _DeviceLogicType(self, _LT.RatioLiquidHydrazine)
 
     @property
+    def RatioLiquidHydrazineInput(self) -> float:
+        return _DeviceLogicType(self, _LT.RatioLiquidHydrazineInput)
+
+    @property
+    def RatioLiquidHydrazineOutput(self) -> float:
+        return _DeviceLogicType(self, _LT.RatioLiquidHydrazineOutput)
+
+    @property
     def RatioLiquidHydrochloricAcid(self) -> float:
         return _DeviceLogicType(self, _LT.RatioLiquidHydrochloricAcid)
+
+    @property
+    def RatioLiquidHydrochloricAcidInput(self) -> float:
+        return _DeviceLogicType(self, _LT.RatioLiquidHydrochloricAcidInput)
+
+    @property
+    def RatioLiquidHydrochloricAcidOutput(self) -> float:
+        return _DeviceLogicType(self, _LT.RatioLiquidHydrochloricAcidOutput)
+
+    @property
+    def RatioLiquidHydrogenInput(self) -> float:
+        return _DeviceLogicType(self, _LT.RatioLiquidHydrogenInput)
+
+    @property
+    def RatioLiquidHydrogenOutput(self) -> float:
+        return _DeviceLogicType(self, _LT.RatioLiquidHydrogenOutput)
 
     @property
     def RatioLiquidMethane(self) -> float:
@@ -8364,6 +8988,14 @@ class CombustionCentrifuge(
         return _DeviceLogicType(self, _LT.RatioLiquidOzone)
 
     @property
+    def RatioLiquidOzoneInput(self) -> float:
+        return _DeviceLogicType(self, _LT.RatioLiquidOzoneInput)
+
+    @property
+    def RatioLiquidOzoneOutput(self) -> float:
+        return _DeviceLogicType(self, _LT.RatioLiquidOzoneOutput)
+
+    @property
     def RatioLiquidPollutant(self) -> float:
         return _DeviceLogicType(self, _LT.RatioLiquidPollutant)
 
@@ -8380,8 +9012,24 @@ class CombustionCentrifuge(
         return _DeviceLogicType(self, _LT.RatioLiquidSilanol)
 
     @property
+    def RatioLiquidSilanolInput(self) -> float:
+        return _DeviceLogicType(self, _LT.RatioLiquidSilanolInput)
+
+    @property
+    def RatioLiquidSilanolOutput(self) -> float:
+        return _DeviceLogicType(self, _LT.RatioLiquidSilanolOutput)
+
+    @property
     def RatioLiquidSodiumChloride(self) -> float:
         return _DeviceLogicType(self, _LT.RatioLiquidSodiumChloride)
+
+    @property
+    def RatioLiquidSodiumChlorideInput(self) -> float:
+        return _DeviceLogicType(self, _LT.RatioLiquidSodiumChlorideInput)
+
+    @property
+    def RatioLiquidSodiumChlorideOutput(self) -> float:
+        return _DeviceLogicType(self, _LT.RatioLiquidSodiumChlorideOutput)
 
     @property
     def RatioMethane(self) -> float:
@@ -8436,6 +9084,14 @@ class CombustionCentrifuge(
         return _DeviceLogicType(self, _LT.RatioOzone)
 
     @property
+    def RatioOzoneInput(self) -> float:
+        return _DeviceLogicType(self, _LT.RatioOzoneInput)
+
+    @property
+    def RatioOzoneOutput(self) -> float:
+        return _DeviceLogicType(self, _LT.RatioOzoneOutput)
+
+    @property
     def RatioPollutant(self) -> float:
         return _DeviceLogicType(self, _LT.RatioPollutant)
 
@@ -8448,8 +9104,24 @@ class CombustionCentrifuge(
         return _DeviceLogicType(self, _LT.RatioPollutantOutput)
 
     @property
+    def RatioPollutedWaterInput(self) -> float:
+        return _DeviceLogicType(self, _LT.RatioPollutedWaterInput)
+
+    @property
+    def RatioPollutedWaterOutput(self) -> float:
+        return _DeviceLogicType(self, _LT.RatioPollutedWaterOutput)
+
+    @property
     def RatioSilanol(self) -> float:
         return _DeviceLogicType(self, _LT.RatioSilanol)
+
+    @property
+    def RatioSilanolInput(self) -> float:
+        return _DeviceLogicType(self, _LT.RatioSilanolInput)
+
+    @property
+    def RatioSilanolOutput(self) -> float:
+        return _DeviceLogicType(self, _LT.RatioSilanolOutput)
 
     @property
     def RatioSteam(self) -> float:
@@ -8616,16 +9288,56 @@ class _CombustionCentrifuges(
         return _DevicesLogicType(self, _LT.RatioHelium)
 
     @property
+    def RatioHeliumInput(self) -> _DevicesLogicType:
+        return _DevicesLogicType(self, _LT.RatioHeliumInput)
+
+    @property
+    def RatioHeliumOutput(self) -> _DevicesLogicType:
+        return _DevicesLogicType(self, _LT.RatioHeliumOutput)
+
+    @property
     def RatioHydrazine(self) -> _DevicesLogicType:
         return _DevicesLogicType(self, _LT.RatioHydrazine)
+
+    @property
+    def RatioHydrazineInput(self) -> _DevicesLogicType:
+        return _DevicesLogicType(self, _LT.RatioHydrazineInput)
+
+    @property
+    def RatioHydrazineOutput(self) -> _DevicesLogicType:
+        return _DevicesLogicType(self, _LT.RatioHydrazineOutput)
 
     @property
     def RatioHydrochloricAcid(self) -> _DevicesLogicType:
         return _DevicesLogicType(self, _LT.RatioHydrochloricAcid)
 
     @property
+    def RatioHydrochloricAcidInput(self) -> _DevicesLogicType:
+        return _DevicesLogicType(self, _LT.RatioHydrochloricAcidInput)
+
+    @property
+    def RatioHydrochloricAcidOutput(self) -> _DevicesLogicType:
+        return _DevicesLogicType(self, _LT.RatioHydrochloricAcidOutput)
+
+    @property
+    def RatioHydrogenInput(self) -> _DevicesLogicType:
+        return _DevicesLogicType(self, _LT.RatioHydrogenInput)
+
+    @property
+    def RatioHydrogenOutput(self) -> _DevicesLogicType:
+        return _DevicesLogicType(self, _LT.RatioHydrogenOutput)
+
+    @property
     def RatioLiquidAlcohol(self) -> _DevicesLogicType:
         return _DevicesLogicType(self, _LT.RatioLiquidAlcohol)
+
+    @property
+    def RatioLiquidAlcoholInput(self) -> _DevicesLogicType:
+        return _DevicesLogicType(self, _LT.RatioLiquidAlcoholInput)
+
+    @property
+    def RatioLiquidAlcoholOutput(self) -> _DevicesLogicType:
+        return _DevicesLogicType(self, _LT.RatioLiquidAlcoholOutput)
 
     @property
     def RatioLiquidCarbonDioxide(self) -> _DevicesLogicType:
@@ -8644,8 +9356,32 @@ class _CombustionCentrifuges(
         return _DevicesLogicType(self, _LT.RatioLiquidHydrazine)
 
     @property
+    def RatioLiquidHydrazineInput(self) -> _DevicesLogicType:
+        return _DevicesLogicType(self, _LT.RatioLiquidHydrazineInput)
+
+    @property
+    def RatioLiquidHydrazineOutput(self) -> _DevicesLogicType:
+        return _DevicesLogicType(self, _LT.RatioLiquidHydrazineOutput)
+
+    @property
     def RatioLiquidHydrochloricAcid(self) -> _DevicesLogicType:
         return _DevicesLogicType(self, _LT.RatioLiquidHydrochloricAcid)
+
+    @property
+    def RatioLiquidHydrochloricAcidInput(self) -> _DevicesLogicType:
+        return _DevicesLogicType(self, _LT.RatioLiquidHydrochloricAcidInput)
+
+    @property
+    def RatioLiquidHydrochloricAcidOutput(self) -> _DevicesLogicType:
+        return _DevicesLogicType(self, _LT.RatioLiquidHydrochloricAcidOutput)
+
+    @property
+    def RatioLiquidHydrogenInput(self) -> _DevicesLogicType:
+        return _DevicesLogicType(self, _LT.RatioLiquidHydrogenInput)
+
+    @property
+    def RatioLiquidHydrogenOutput(self) -> _DevicesLogicType:
+        return _DevicesLogicType(self, _LT.RatioLiquidHydrogenOutput)
 
     @property
     def RatioLiquidMethane(self) -> _DevicesLogicType:
@@ -8700,6 +9436,14 @@ class _CombustionCentrifuges(
         return _DevicesLogicType(self, _LT.RatioLiquidOzone)
 
     @property
+    def RatioLiquidOzoneInput(self) -> _DevicesLogicType:
+        return _DevicesLogicType(self, _LT.RatioLiquidOzoneInput)
+
+    @property
+    def RatioLiquidOzoneOutput(self) -> _DevicesLogicType:
+        return _DevicesLogicType(self, _LT.RatioLiquidOzoneOutput)
+
+    @property
     def RatioLiquidPollutant(self) -> _DevicesLogicType:
         return _DevicesLogicType(self, _LT.RatioLiquidPollutant)
 
@@ -8716,8 +9460,24 @@ class _CombustionCentrifuges(
         return _DevicesLogicType(self, _LT.RatioLiquidSilanol)
 
     @property
+    def RatioLiquidSilanolInput(self) -> _DevicesLogicType:
+        return _DevicesLogicType(self, _LT.RatioLiquidSilanolInput)
+
+    @property
+    def RatioLiquidSilanolOutput(self) -> _DevicesLogicType:
+        return _DevicesLogicType(self, _LT.RatioLiquidSilanolOutput)
+
+    @property
     def RatioLiquidSodiumChloride(self) -> _DevicesLogicType:
         return _DevicesLogicType(self, _LT.RatioLiquidSodiumChloride)
+
+    @property
+    def RatioLiquidSodiumChlorideInput(self) -> _DevicesLogicType:
+        return _DevicesLogicType(self, _LT.RatioLiquidSodiumChlorideInput)
+
+    @property
+    def RatioLiquidSodiumChlorideOutput(self) -> _DevicesLogicType:
+        return _DevicesLogicType(self, _LT.RatioLiquidSodiumChlorideOutput)
 
     @property
     def RatioMethane(self) -> _DevicesLogicType:
@@ -8772,6 +9532,14 @@ class _CombustionCentrifuges(
         return _DevicesLogicType(self, _LT.RatioOzone)
 
     @property
+    def RatioOzoneInput(self) -> _DevicesLogicType:
+        return _DevicesLogicType(self, _LT.RatioOzoneInput)
+
+    @property
+    def RatioOzoneOutput(self) -> _DevicesLogicType:
+        return _DevicesLogicType(self, _LT.RatioOzoneOutput)
+
+    @property
     def RatioPollutant(self) -> _DevicesLogicType:
         return _DevicesLogicType(self, _LT.RatioPollutant)
 
@@ -8784,8 +9552,24 @@ class _CombustionCentrifuges(
         return _DevicesLogicType(self, _LT.RatioPollutantOutput)
 
     @property
+    def RatioPollutedWaterInput(self) -> _DevicesLogicType:
+        return _DevicesLogicType(self, _LT.RatioPollutedWaterInput)
+
+    @property
+    def RatioPollutedWaterOutput(self) -> _DevicesLogicType:
+        return _DevicesLogicType(self, _LT.RatioPollutedWaterOutput)
+
+    @property
     def RatioSilanol(self) -> _DevicesLogicType:
         return _DevicesLogicType(self, _LT.RatioSilanol)
+
+    @property
+    def RatioSilanolInput(self) -> _DevicesLogicType:
+        return _DevicesLogicType(self, _LT.RatioSilanolInput)
+
+    @property
+    def RatioSilanolOutput(self) -> _DevicesLogicType:
+        return _DevicesLogicType(self, _LT.RatioSilanolOutput)
 
     @property
     def RatioSteam(self) -> _DevicesLogicType:
@@ -8929,16 +9713,56 @@ class CombustionDeepMiner(
         return _DeviceLogicType(self, _LT.RatioHelium)
 
     @property
+    def RatioHeliumInput(self) -> float:
+        return _DeviceLogicType(self, _LT.RatioHeliumInput)
+
+    @property
+    def RatioHeliumOutput(self) -> float:
+        return _DeviceLogicType(self, _LT.RatioHeliumOutput)
+
+    @property
     def RatioHydrazine(self) -> float:
         return _DeviceLogicType(self, _LT.RatioHydrazine)
+
+    @property
+    def RatioHydrazineInput(self) -> float:
+        return _DeviceLogicType(self, _LT.RatioHydrazineInput)
+
+    @property
+    def RatioHydrazineOutput(self) -> float:
+        return _DeviceLogicType(self, _LT.RatioHydrazineOutput)
 
     @property
     def RatioHydrochloricAcid(self) -> float:
         return _DeviceLogicType(self, _LT.RatioHydrochloricAcid)
 
     @property
+    def RatioHydrochloricAcidInput(self) -> float:
+        return _DeviceLogicType(self, _LT.RatioHydrochloricAcidInput)
+
+    @property
+    def RatioHydrochloricAcidOutput(self) -> float:
+        return _DeviceLogicType(self, _LT.RatioHydrochloricAcidOutput)
+
+    @property
+    def RatioHydrogenInput(self) -> float:
+        return _DeviceLogicType(self, _LT.RatioHydrogenInput)
+
+    @property
+    def RatioHydrogenOutput(self) -> float:
+        return _DeviceLogicType(self, _LT.RatioHydrogenOutput)
+
+    @property
     def RatioLiquidAlcohol(self) -> float:
         return _DeviceLogicType(self, _LT.RatioLiquidAlcohol)
+
+    @property
+    def RatioLiquidAlcoholInput(self) -> float:
+        return _DeviceLogicType(self, _LT.RatioLiquidAlcoholInput)
+
+    @property
+    def RatioLiquidAlcoholOutput(self) -> float:
+        return _DeviceLogicType(self, _LT.RatioLiquidAlcoholOutput)
 
     @property
     def RatioLiquidCarbonDioxide(self) -> float:
@@ -8957,8 +9781,32 @@ class CombustionDeepMiner(
         return _DeviceLogicType(self, _LT.RatioLiquidHydrazine)
 
     @property
+    def RatioLiquidHydrazineInput(self) -> float:
+        return _DeviceLogicType(self, _LT.RatioLiquidHydrazineInput)
+
+    @property
+    def RatioLiquidHydrazineOutput(self) -> float:
+        return _DeviceLogicType(self, _LT.RatioLiquidHydrazineOutput)
+
+    @property
     def RatioLiquidHydrochloricAcid(self) -> float:
         return _DeviceLogicType(self, _LT.RatioLiquidHydrochloricAcid)
+
+    @property
+    def RatioLiquidHydrochloricAcidInput(self) -> float:
+        return _DeviceLogicType(self, _LT.RatioLiquidHydrochloricAcidInput)
+
+    @property
+    def RatioLiquidHydrochloricAcidOutput(self) -> float:
+        return _DeviceLogicType(self, _LT.RatioLiquidHydrochloricAcidOutput)
+
+    @property
+    def RatioLiquidHydrogenInput(self) -> float:
+        return _DeviceLogicType(self, _LT.RatioLiquidHydrogenInput)
+
+    @property
+    def RatioLiquidHydrogenOutput(self) -> float:
+        return _DeviceLogicType(self, _LT.RatioLiquidHydrogenOutput)
 
     @property
     def RatioLiquidMethane(self) -> float:
@@ -9013,6 +9861,14 @@ class CombustionDeepMiner(
         return _DeviceLogicType(self, _LT.RatioLiquidOzone)
 
     @property
+    def RatioLiquidOzoneInput(self) -> float:
+        return _DeviceLogicType(self, _LT.RatioLiquidOzoneInput)
+
+    @property
+    def RatioLiquidOzoneOutput(self) -> float:
+        return _DeviceLogicType(self, _LT.RatioLiquidOzoneOutput)
+
+    @property
     def RatioLiquidPollutant(self) -> float:
         return _DeviceLogicType(self, _LT.RatioLiquidPollutant)
 
@@ -9029,8 +9885,24 @@ class CombustionDeepMiner(
         return _DeviceLogicType(self, _LT.RatioLiquidSilanol)
 
     @property
+    def RatioLiquidSilanolInput(self) -> float:
+        return _DeviceLogicType(self, _LT.RatioLiquidSilanolInput)
+
+    @property
+    def RatioLiquidSilanolOutput(self) -> float:
+        return _DeviceLogicType(self, _LT.RatioLiquidSilanolOutput)
+
+    @property
     def RatioLiquidSodiumChloride(self) -> float:
         return _DeviceLogicType(self, _LT.RatioLiquidSodiumChloride)
+
+    @property
+    def RatioLiquidSodiumChlorideInput(self) -> float:
+        return _DeviceLogicType(self, _LT.RatioLiquidSodiumChlorideInput)
+
+    @property
+    def RatioLiquidSodiumChlorideOutput(self) -> float:
+        return _DeviceLogicType(self, _LT.RatioLiquidSodiumChlorideOutput)
 
     @property
     def RatioMethane(self) -> float:
@@ -9085,6 +9957,14 @@ class CombustionDeepMiner(
         return _DeviceLogicType(self, _LT.RatioOzone)
 
     @property
+    def RatioOzoneInput(self) -> float:
+        return _DeviceLogicType(self, _LT.RatioOzoneInput)
+
+    @property
+    def RatioOzoneOutput(self) -> float:
+        return _DeviceLogicType(self, _LT.RatioOzoneOutput)
+
+    @property
     def RatioPollutant(self) -> float:
         return _DeviceLogicType(self, _LT.RatioPollutant)
 
@@ -9097,8 +9977,24 @@ class CombustionDeepMiner(
         return _DeviceLogicType(self, _LT.RatioPollutantOutput)
 
     @property
+    def RatioPollutedWaterInput(self) -> float:
+        return _DeviceLogicType(self, _LT.RatioPollutedWaterInput)
+
+    @property
+    def RatioPollutedWaterOutput(self) -> float:
+        return _DeviceLogicType(self, _LT.RatioPollutedWaterOutput)
+
+    @property
     def RatioSilanol(self) -> float:
         return _DeviceLogicType(self, _LT.RatioSilanol)
+
+    @property
+    def RatioSilanolInput(self) -> float:
+        return _DeviceLogicType(self, _LT.RatioSilanolInput)
+
+    @property
+    def RatioSilanolOutput(self) -> float:
+        return _DeviceLogicType(self, _LT.RatioSilanolOutput)
 
     @property
     def RatioSteam(self) -> float:
@@ -9250,16 +10146,56 @@ class _CombustionDeepMiners(
         return _DevicesLogicType(self, _LT.RatioHelium)
 
     @property
+    def RatioHeliumInput(self) -> _DevicesLogicType:
+        return _DevicesLogicType(self, _LT.RatioHeliumInput)
+
+    @property
+    def RatioHeliumOutput(self) -> _DevicesLogicType:
+        return _DevicesLogicType(self, _LT.RatioHeliumOutput)
+
+    @property
     def RatioHydrazine(self) -> _DevicesLogicType:
         return _DevicesLogicType(self, _LT.RatioHydrazine)
+
+    @property
+    def RatioHydrazineInput(self) -> _DevicesLogicType:
+        return _DevicesLogicType(self, _LT.RatioHydrazineInput)
+
+    @property
+    def RatioHydrazineOutput(self) -> _DevicesLogicType:
+        return _DevicesLogicType(self, _LT.RatioHydrazineOutput)
 
     @property
     def RatioHydrochloricAcid(self) -> _DevicesLogicType:
         return _DevicesLogicType(self, _LT.RatioHydrochloricAcid)
 
     @property
+    def RatioHydrochloricAcidInput(self) -> _DevicesLogicType:
+        return _DevicesLogicType(self, _LT.RatioHydrochloricAcidInput)
+
+    @property
+    def RatioHydrochloricAcidOutput(self) -> _DevicesLogicType:
+        return _DevicesLogicType(self, _LT.RatioHydrochloricAcidOutput)
+
+    @property
+    def RatioHydrogenInput(self) -> _DevicesLogicType:
+        return _DevicesLogicType(self, _LT.RatioHydrogenInput)
+
+    @property
+    def RatioHydrogenOutput(self) -> _DevicesLogicType:
+        return _DevicesLogicType(self, _LT.RatioHydrogenOutput)
+
+    @property
     def RatioLiquidAlcohol(self) -> _DevicesLogicType:
         return _DevicesLogicType(self, _LT.RatioLiquidAlcohol)
+
+    @property
+    def RatioLiquidAlcoholInput(self) -> _DevicesLogicType:
+        return _DevicesLogicType(self, _LT.RatioLiquidAlcoholInput)
+
+    @property
+    def RatioLiquidAlcoholOutput(self) -> _DevicesLogicType:
+        return _DevicesLogicType(self, _LT.RatioLiquidAlcoholOutput)
 
     @property
     def RatioLiquidCarbonDioxide(self) -> _DevicesLogicType:
@@ -9278,8 +10214,32 @@ class _CombustionDeepMiners(
         return _DevicesLogicType(self, _LT.RatioLiquidHydrazine)
 
     @property
+    def RatioLiquidHydrazineInput(self) -> _DevicesLogicType:
+        return _DevicesLogicType(self, _LT.RatioLiquidHydrazineInput)
+
+    @property
+    def RatioLiquidHydrazineOutput(self) -> _DevicesLogicType:
+        return _DevicesLogicType(self, _LT.RatioLiquidHydrazineOutput)
+
+    @property
     def RatioLiquidHydrochloricAcid(self) -> _DevicesLogicType:
         return _DevicesLogicType(self, _LT.RatioLiquidHydrochloricAcid)
+
+    @property
+    def RatioLiquidHydrochloricAcidInput(self) -> _DevicesLogicType:
+        return _DevicesLogicType(self, _LT.RatioLiquidHydrochloricAcidInput)
+
+    @property
+    def RatioLiquidHydrochloricAcidOutput(self) -> _DevicesLogicType:
+        return _DevicesLogicType(self, _LT.RatioLiquidHydrochloricAcidOutput)
+
+    @property
+    def RatioLiquidHydrogenInput(self) -> _DevicesLogicType:
+        return _DevicesLogicType(self, _LT.RatioLiquidHydrogenInput)
+
+    @property
+    def RatioLiquidHydrogenOutput(self) -> _DevicesLogicType:
+        return _DevicesLogicType(self, _LT.RatioLiquidHydrogenOutput)
 
     @property
     def RatioLiquidMethane(self) -> _DevicesLogicType:
@@ -9334,6 +10294,14 @@ class _CombustionDeepMiners(
         return _DevicesLogicType(self, _LT.RatioLiquidOzone)
 
     @property
+    def RatioLiquidOzoneInput(self) -> _DevicesLogicType:
+        return _DevicesLogicType(self, _LT.RatioLiquidOzoneInput)
+
+    @property
+    def RatioLiquidOzoneOutput(self) -> _DevicesLogicType:
+        return _DevicesLogicType(self, _LT.RatioLiquidOzoneOutput)
+
+    @property
     def RatioLiquidPollutant(self) -> _DevicesLogicType:
         return _DevicesLogicType(self, _LT.RatioLiquidPollutant)
 
@@ -9350,8 +10318,24 @@ class _CombustionDeepMiners(
         return _DevicesLogicType(self, _LT.RatioLiquidSilanol)
 
     @property
+    def RatioLiquidSilanolInput(self) -> _DevicesLogicType:
+        return _DevicesLogicType(self, _LT.RatioLiquidSilanolInput)
+
+    @property
+    def RatioLiquidSilanolOutput(self) -> _DevicesLogicType:
+        return _DevicesLogicType(self, _LT.RatioLiquidSilanolOutput)
+
+    @property
     def RatioLiquidSodiumChloride(self) -> _DevicesLogicType:
         return _DevicesLogicType(self, _LT.RatioLiquidSodiumChloride)
+
+    @property
+    def RatioLiquidSodiumChlorideInput(self) -> _DevicesLogicType:
+        return _DevicesLogicType(self, _LT.RatioLiquidSodiumChlorideInput)
+
+    @property
+    def RatioLiquidSodiumChlorideOutput(self) -> _DevicesLogicType:
+        return _DevicesLogicType(self, _LT.RatioLiquidSodiumChlorideOutput)
 
     @property
     def RatioMethane(self) -> _DevicesLogicType:
@@ -9406,6 +10390,14 @@ class _CombustionDeepMiners(
         return _DevicesLogicType(self, _LT.RatioOzone)
 
     @property
+    def RatioOzoneInput(self) -> _DevicesLogicType:
+        return _DevicesLogicType(self, _LT.RatioOzoneInput)
+
+    @property
+    def RatioOzoneOutput(self) -> _DevicesLogicType:
+        return _DevicesLogicType(self, _LT.RatioOzoneOutput)
+
+    @property
     def RatioPollutant(self) -> _DevicesLogicType:
         return _DevicesLogicType(self, _LT.RatioPollutant)
 
@@ -9418,8 +10410,24 @@ class _CombustionDeepMiners(
         return _DevicesLogicType(self, _LT.RatioPollutantOutput)
 
     @property
+    def RatioPollutedWaterInput(self) -> _DevicesLogicType:
+        return _DevicesLogicType(self, _LT.RatioPollutedWaterInput)
+
+    @property
+    def RatioPollutedWaterOutput(self) -> _DevicesLogicType:
+        return _DevicesLogicType(self, _LT.RatioPollutedWaterOutput)
+
+    @property
     def RatioSilanol(self) -> _DevicesLogicType:
         return _DevicesLogicType(self, _LT.RatioSilanol)
+
+    @property
+    def RatioSilanolInput(self) -> _DevicesLogicType:
+        return _DevicesLogicType(self, _LT.RatioSilanolInput)
+
+    @property
+    def RatioSilanolOutput(self) -> _DevicesLogicType:
+        return _DevicesLogicType(self, _LT.RatioSilanolOutput)
 
     @property
     def RatioSteam(self) -> _DevicesLogicType:
@@ -9549,16 +10557,56 @@ class H2Combustor(
         return _DeviceLogicType(self, _LT.RatioHelium)
 
     @property
+    def RatioHeliumInput(self) -> float:
+        return _DeviceLogicType(self, _LT.RatioHeliumInput)
+
+    @property
+    def RatioHeliumOutput(self) -> float:
+        return _DeviceLogicType(self, _LT.RatioHeliumOutput)
+
+    @property
     def RatioHydrazine(self) -> float:
         return _DeviceLogicType(self, _LT.RatioHydrazine)
+
+    @property
+    def RatioHydrazineInput(self) -> float:
+        return _DeviceLogicType(self, _LT.RatioHydrazineInput)
+
+    @property
+    def RatioHydrazineOutput(self) -> float:
+        return _DeviceLogicType(self, _LT.RatioHydrazineOutput)
 
     @property
     def RatioHydrochloricAcid(self) -> float:
         return _DeviceLogicType(self, _LT.RatioHydrochloricAcid)
 
     @property
+    def RatioHydrochloricAcidInput(self) -> float:
+        return _DeviceLogicType(self, _LT.RatioHydrochloricAcidInput)
+
+    @property
+    def RatioHydrochloricAcidOutput(self) -> float:
+        return _DeviceLogicType(self, _LT.RatioHydrochloricAcidOutput)
+
+    @property
+    def RatioHydrogenInput(self) -> float:
+        return _DeviceLogicType(self, _LT.RatioHydrogenInput)
+
+    @property
+    def RatioHydrogenOutput(self) -> float:
+        return _DeviceLogicType(self, _LT.RatioHydrogenOutput)
+
+    @property
     def RatioLiquidAlcohol(self) -> float:
         return _DeviceLogicType(self, _LT.RatioLiquidAlcohol)
+
+    @property
+    def RatioLiquidAlcoholInput(self) -> float:
+        return _DeviceLogicType(self, _LT.RatioLiquidAlcoholInput)
+
+    @property
+    def RatioLiquidAlcoholOutput(self) -> float:
+        return _DeviceLogicType(self, _LT.RatioLiquidAlcoholOutput)
 
     @property
     def RatioLiquidCarbonDioxide(self) -> float:
@@ -9577,8 +10625,32 @@ class H2Combustor(
         return _DeviceLogicType(self, _LT.RatioLiquidHydrazine)
 
     @property
+    def RatioLiquidHydrazineInput(self) -> float:
+        return _DeviceLogicType(self, _LT.RatioLiquidHydrazineInput)
+
+    @property
+    def RatioLiquidHydrazineOutput(self) -> float:
+        return _DeviceLogicType(self, _LT.RatioLiquidHydrazineOutput)
+
+    @property
     def RatioLiquidHydrochloricAcid(self) -> float:
         return _DeviceLogicType(self, _LT.RatioLiquidHydrochloricAcid)
+
+    @property
+    def RatioLiquidHydrochloricAcidInput(self) -> float:
+        return _DeviceLogicType(self, _LT.RatioLiquidHydrochloricAcidInput)
+
+    @property
+    def RatioLiquidHydrochloricAcidOutput(self) -> float:
+        return _DeviceLogicType(self, _LT.RatioLiquidHydrochloricAcidOutput)
+
+    @property
+    def RatioLiquidHydrogenInput(self) -> float:
+        return _DeviceLogicType(self, _LT.RatioLiquidHydrogenInput)
+
+    @property
+    def RatioLiquidHydrogenOutput(self) -> float:
+        return _DeviceLogicType(self, _LT.RatioLiquidHydrogenOutput)
 
     @property
     def RatioLiquidMethane(self) -> float:
@@ -9633,6 +10705,14 @@ class H2Combustor(
         return _DeviceLogicType(self, _LT.RatioLiquidOzone)
 
     @property
+    def RatioLiquidOzoneInput(self) -> float:
+        return _DeviceLogicType(self, _LT.RatioLiquidOzoneInput)
+
+    @property
+    def RatioLiquidOzoneOutput(self) -> float:
+        return _DeviceLogicType(self, _LT.RatioLiquidOzoneOutput)
+
+    @property
     def RatioLiquidPollutant(self) -> float:
         return _DeviceLogicType(self, _LT.RatioLiquidPollutant)
 
@@ -9649,8 +10729,24 @@ class H2Combustor(
         return _DeviceLogicType(self, _LT.RatioLiquidSilanol)
 
     @property
+    def RatioLiquidSilanolInput(self) -> float:
+        return _DeviceLogicType(self, _LT.RatioLiquidSilanolInput)
+
+    @property
+    def RatioLiquidSilanolOutput(self) -> float:
+        return _DeviceLogicType(self, _LT.RatioLiquidSilanolOutput)
+
+    @property
     def RatioLiquidSodiumChloride(self) -> float:
         return _DeviceLogicType(self, _LT.RatioLiquidSodiumChloride)
+
+    @property
+    def RatioLiquidSodiumChlorideInput(self) -> float:
+        return _DeviceLogicType(self, _LT.RatioLiquidSodiumChlorideInput)
+
+    @property
+    def RatioLiquidSodiumChlorideOutput(self) -> float:
+        return _DeviceLogicType(self, _LT.RatioLiquidSodiumChlorideOutput)
 
     @property
     def RatioMethane(self) -> float:
@@ -9705,6 +10801,14 @@ class H2Combustor(
         return _DeviceLogicType(self, _LT.RatioOzone)
 
     @property
+    def RatioOzoneInput(self) -> float:
+        return _DeviceLogicType(self, _LT.RatioOzoneInput)
+
+    @property
+    def RatioOzoneOutput(self) -> float:
+        return _DeviceLogicType(self, _LT.RatioOzoneOutput)
+
+    @property
     def RatioPollutant(self) -> float:
         return _DeviceLogicType(self, _LT.RatioPollutant)
 
@@ -9717,8 +10821,24 @@ class H2Combustor(
         return _DeviceLogicType(self, _LT.RatioPollutantOutput)
 
     @property
+    def RatioPollutedWaterInput(self) -> float:
+        return _DeviceLogicType(self, _LT.RatioPollutedWaterInput)
+
+    @property
+    def RatioPollutedWaterOutput(self) -> float:
+        return _DeviceLogicType(self, _LT.RatioPollutedWaterOutput)
+
+    @property
     def RatioSilanol(self) -> float:
         return _DeviceLogicType(self, _LT.RatioSilanol)
+
+    @property
+    def RatioSilanolInput(self) -> float:
+        return _DeviceLogicType(self, _LT.RatioSilanolInput)
+
+    @property
+    def RatioSilanolOutput(self) -> float:
+        return _DeviceLogicType(self, _LT.RatioSilanolOutput)
 
     @property
     def RatioSteam(self) -> float:
@@ -9840,16 +10960,56 @@ class _H2Combustors(
         return _DevicesLogicType(self, _LT.RatioHelium)
 
     @property
+    def RatioHeliumInput(self) -> _DevicesLogicType:
+        return _DevicesLogicType(self, _LT.RatioHeliumInput)
+
+    @property
+    def RatioHeliumOutput(self) -> _DevicesLogicType:
+        return _DevicesLogicType(self, _LT.RatioHeliumOutput)
+
+    @property
     def RatioHydrazine(self) -> _DevicesLogicType:
         return _DevicesLogicType(self, _LT.RatioHydrazine)
+
+    @property
+    def RatioHydrazineInput(self) -> _DevicesLogicType:
+        return _DevicesLogicType(self, _LT.RatioHydrazineInput)
+
+    @property
+    def RatioHydrazineOutput(self) -> _DevicesLogicType:
+        return _DevicesLogicType(self, _LT.RatioHydrazineOutput)
 
     @property
     def RatioHydrochloricAcid(self) -> _DevicesLogicType:
         return _DevicesLogicType(self, _LT.RatioHydrochloricAcid)
 
     @property
+    def RatioHydrochloricAcidInput(self) -> _DevicesLogicType:
+        return _DevicesLogicType(self, _LT.RatioHydrochloricAcidInput)
+
+    @property
+    def RatioHydrochloricAcidOutput(self) -> _DevicesLogicType:
+        return _DevicesLogicType(self, _LT.RatioHydrochloricAcidOutput)
+
+    @property
+    def RatioHydrogenInput(self) -> _DevicesLogicType:
+        return _DevicesLogicType(self, _LT.RatioHydrogenInput)
+
+    @property
+    def RatioHydrogenOutput(self) -> _DevicesLogicType:
+        return _DevicesLogicType(self, _LT.RatioHydrogenOutput)
+
+    @property
     def RatioLiquidAlcohol(self) -> _DevicesLogicType:
         return _DevicesLogicType(self, _LT.RatioLiquidAlcohol)
+
+    @property
+    def RatioLiquidAlcoholInput(self) -> _DevicesLogicType:
+        return _DevicesLogicType(self, _LT.RatioLiquidAlcoholInput)
+
+    @property
+    def RatioLiquidAlcoholOutput(self) -> _DevicesLogicType:
+        return _DevicesLogicType(self, _LT.RatioLiquidAlcoholOutput)
 
     @property
     def RatioLiquidCarbonDioxide(self) -> _DevicesLogicType:
@@ -9868,8 +11028,32 @@ class _H2Combustors(
         return _DevicesLogicType(self, _LT.RatioLiquidHydrazine)
 
     @property
+    def RatioLiquidHydrazineInput(self) -> _DevicesLogicType:
+        return _DevicesLogicType(self, _LT.RatioLiquidHydrazineInput)
+
+    @property
+    def RatioLiquidHydrazineOutput(self) -> _DevicesLogicType:
+        return _DevicesLogicType(self, _LT.RatioLiquidHydrazineOutput)
+
+    @property
     def RatioLiquidHydrochloricAcid(self) -> _DevicesLogicType:
         return _DevicesLogicType(self, _LT.RatioLiquidHydrochloricAcid)
+
+    @property
+    def RatioLiquidHydrochloricAcidInput(self) -> _DevicesLogicType:
+        return _DevicesLogicType(self, _LT.RatioLiquidHydrochloricAcidInput)
+
+    @property
+    def RatioLiquidHydrochloricAcidOutput(self) -> _DevicesLogicType:
+        return _DevicesLogicType(self, _LT.RatioLiquidHydrochloricAcidOutput)
+
+    @property
+    def RatioLiquidHydrogenInput(self) -> _DevicesLogicType:
+        return _DevicesLogicType(self, _LT.RatioLiquidHydrogenInput)
+
+    @property
+    def RatioLiquidHydrogenOutput(self) -> _DevicesLogicType:
+        return _DevicesLogicType(self, _LT.RatioLiquidHydrogenOutput)
 
     @property
     def RatioLiquidMethane(self) -> _DevicesLogicType:
@@ -9924,6 +11108,14 @@ class _H2Combustors(
         return _DevicesLogicType(self, _LT.RatioLiquidOzone)
 
     @property
+    def RatioLiquidOzoneInput(self) -> _DevicesLogicType:
+        return _DevicesLogicType(self, _LT.RatioLiquidOzoneInput)
+
+    @property
+    def RatioLiquidOzoneOutput(self) -> _DevicesLogicType:
+        return _DevicesLogicType(self, _LT.RatioLiquidOzoneOutput)
+
+    @property
     def RatioLiquidPollutant(self) -> _DevicesLogicType:
         return _DevicesLogicType(self, _LT.RatioLiquidPollutant)
 
@@ -9940,8 +11132,24 @@ class _H2Combustors(
         return _DevicesLogicType(self, _LT.RatioLiquidSilanol)
 
     @property
+    def RatioLiquidSilanolInput(self) -> _DevicesLogicType:
+        return _DevicesLogicType(self, _LT.RatioLiquidSilanolInput)
+
+    @property
+    def RatioLiquidSilanolOutput(self) -> _DevicesLogicType:
+        return _DevicesLogicType(self, _LT.RatioLiquidSilanolOutput)
+
+    @property
     def RatioLiquidSodiumChloride(self) -> _DevicesLogicType:
         return _DevicesLogicType(self, _LT.RatioLiquidSodiumChloride)
+
+    @property
+    def RatioLiquidSodiumChlorideInput(self) -> _DevicesLogicType:
+        return _DevicesLogicType(self, _LT.RatioLiquidSodiumChlorideInput)
+
+    @property
+    def RatioLiquidSodiumChlorideOutput(self) -> _DevicesLogicType:
+        return _DevicesLogicType(self, _LT.RatioLiquidSodiumChlorideOutput)
 
     @property
     def RatioMethane(self) -> _DevicesLogicType:
@@ -9996,6 +11204,14 @@ class _H2Combustors(
         return _DevicesLogicType(self, _LT.RatioOzone)
 
     @property
+    def RatioOzoneInput(self) -> _DevicesLogicType:
+        return _DevicesLogicType(self, _LT.RatioOzoneInput)
+
+    @property
+    def RatioOzoneOutput(self) -> _DevicesLogicType:
+        return _DevicesLogicType(self, _LT.RatioOzoneOutput)
+
+    @property
     def RatioPollutant(self) -> _DevicesLogicType:
         return _DevicesLogicType(self, _LT.RatioPollutant)
 
@@ -10008,8 +11224,24 @@ class _H2Combustors(
         return _DevicesLogicType(self, _LT.RatioPollutantOutput)
 
     @property
+    def RatioPollutedWaterInput(self) -> _DevicesLogicType:
+        return _DevicesLogicType(self, _LT.RatioPollutedWaterInput)
+
+    @property
+    def RatioPollutedWaterOutput(self) -> _DevicesLogicType:
+        return _DevicesLogicType(self, _LT.RatioPollutedWaterOutput)
+
+    @property
     def RatioSilanol(self) -> _DevicesLogicType:
         return _DevicesLogicType(self, _LT.RatioSilanol)
+
+    @property
+    def RatioSilanolInput(self) -> _DevicesLogicType:
+        return _DevicesLogicType(self, _LT.RatioSilanolInput)
+
+    @property
+    def RatioSilanolOutput(self) -> _DevicesLogicType:
+        return _DevicesLogicType(self, _LT.RatioSilanolOutput)
 
     @property
     def RatioSteam(self) -> _DevicesLogicType:
@@ -11705,12 +12937,76 @@ class Electrolyzer(
         return _DeviceLogicType(self, _LT.RatioCarbonDioxideOutput)
 
     @property
+    def RatioHeliumInput(self) -> float:
+        return _DeviceLogicType(self, _LT.RatioHeliumInput)
+
+    @property
+    def RatioHeliumOutput(self) -> float:
+        return _DeviceLogicType(self, _LT.RatioHeliumOutput)
+
+    @property
+    def RatioHydrazineInput(self) -> float:
+        return _DeviceLogicType(self, _LT.RatioHydrazineInput)
+
+    @property
+    def RatioHydrazineOutput(self) -> float:
+        return _DeviceLogicType(self, _LT.RatioHydrazineOutput)
+
+    @property
+    def RatioHydrochloricAcidInput(self) -> float:
+        return _DeviceLogicType(self, _LT.RatioHydrochloricAcidInput)
+
+    @property
+    def RatioHydrochloricAcidOutput(self) -> float:
+        return _DeviceLogicType(self, _LT.RatioHydrochloricAcidOutput)
+
+    @property
+    def RatioHydrogenInput(self) -> float:
+        return _DeviceLogicType(self, _LT.RatioHydrogenInput)
+
+    @property
+    def RatioHydrogenOutput(self) -> float:
+        return _DeviceLogicType(self, _LT.RatioHydrogenOutput)
+
+    @property
+    def RatioLiquidAlcoholInput(self) -> float:
+        return _DeviceLogicType(self, _LT.RatioLiquidAlcoholInput)
+
+    @property
+    def RatioLiquidAlcoholOutput(self) -> float:
+        return _DeviceLogicType(self, _LT.RatioLiquidAlcoholOutput)
+
+    @property
     def RatioLiquidCarbonDioxideInput(self) -> float:
         return _DeviceLogicType(self, _LT.RatioLiquidCarbonDioxideInput)
 
     @property
     def RatioLiquidCarbonDioxideOutput(self) -> float:
         return _DeviceLogicType(self, _LT.RatioLiquidCarbonDioxideOutput)
+
+    @property
+    def RatioLiquidHydrazineInput(self) -> float:
+        return _DeviceLogicType(self, _LT.RatioLiquidHydrazineInput)
+
+    @property
+    def RatioLiquidHydrazineOutput(self) -> float:
+        return _DeviceLogicType(self, _LT.RatioLiquidHydrazineOutput)
+
+    @property
+    def RatioLiquidHydrochloricAcidInput(self) -> float:
+        return _DeviceLogicType(self, _LT.RatioLiquidHydrochloricAcidInput)
+
+    @property
+    def RatioLiquidHydrochloricAcidOutput(self) -> float:
+        return _DeviceLogicType(self, _LT.RatioLiquidHydrochloricAcidOutput)
+
+    @property
+    def RatioLiquidHydrogenInput(self) -> float:
+        return _DeviceLogicType(self, _LT.RatioLiquidHydrogenInput)
+
+    @property
+    def RatioLiquidHydrogenOutput(self) -> float:
+        return _DeviceLogicType(self, _LT.RatioLiquidHydrogenOutput)
 
     @property
     def RatioLiquidMethaneInput(self) -> float:
@@ -11745,12 +13041,36 @@ class Electrolyzer(
         return _DeviceLogicType(self, _LT.RatioLiquidOxygenOutput)
 
     @property
+    def RatioLiquidOzoneInput(self) -> float:
+        return _DeviceLogicType(self, _LT.RatioLiquidOzoneInput)
+
+    @property
+    def RatioLiquidOzoneOutput(self) -> float:
+        return _DeviceLogicType(self, _LT.RatioLiquidOzoneOutput)
+
+    @property
     def RatioLiquidPollutantInput(self) -> float:
         return _DeviceLogicType(self, _LT.RatioLiquidPollutantInput)
 
     @property
     def RatioLiquidPollutantOutput(self) -> float:
         return _DeviceLogicType(self, _LT.RatioLiquidPollutantOutput)
+
+    @property
+    def RatioLiquidSilanolInput(self) -> float:
+        return _DeviceLogicType(self, _LT.RatioLiquidSilanolInput)
+
+    @property
+    def RatioLiquidSilanolOutput(self) -> float:
+        return _DeviceLogicType(self, _LT.RatioLiquidSilanolOutput)
+
+    @property
+    def RatioLiquidSodiumChlorideInput(self) -> float:
+        return _DeviceLogicType(self, _LT.RatioLiquidSodiumChlorideInput)
+
+    @property
+    def RatioLiquidSodiumChlorideOutput(self) -> float:
+        return _DeviceLogicType(self, _LT.RatioLiquidSodiumChlorideOutput)
 
     @property
     def RatioMethaneInput(self) -> float:
@@ -11785,12 +13105,36 @@ class Electrolyzer(
         return _DeviceLogicType(self, _LT.RatioOxygenOutput)
 
     @property
+    def RatioOzoneInput(self) -> float:
+        return _DeviceLogicType(self, _LT.RatioOzoneInput)
+
+    @property
+    def RatioOzoneOutput(self) -> float:
+        return _DeviceLogicType(self, _LT.RatioOzoneOutput)
+
+    @property
     def RatioPollutantInput(self) -> float:
         return _DeviceLogicType(self, _LT.RatioPollutantInput)
 
     @property
     def RatioPollutantOutput(self) -> float:
         return _DeviceLogicType(self, _LT.RatioPollutantOutput)
+
+    @property
+    def RatioPollutedWaterInput(self) -> float:
+        return _DeviceLogicType(self, _LT.RatioPollutedWaterInput)
+
+    @property
+    def RatioPollutedWaterOutput(self) -> float:
+        return _DeviceLogicType(self, _LT.RatioPollutedWaterOutput)
+
+    @property
+    def RatioSilanolInput(self) -> float:
+        return _DeviceLogicType(self, _LT.RatioSilanolInput)
+
+    @property
+    def RatioSilanolOutput(self) -> float:
+        return _DeviceLogicType(self, _LT.RatioSilanolOutput)
 
     @property
     def RatioSteamInput(self) -> float:
@@ -11892,12 +13236,76 @@ class _Electrolyzers(
         return _DevicesLogicType(self, _LT.RatioCarbonDioxideOutput)
 
     @property
+    def RatioHeliumInput(self) -> _DevicesLogicType:
+        return _DevicesLogicType(self, _LT.RatioHeliumInput)
+
+    @property
+    def RatioHeliumOutput(self) -> _DevicesLogicType:
+        return _DevicesLogicType(self, _LT.RatioHeliumOutput)
+
+    @property
+    def RatioHydrazineInput(self) -> _DevicesLogicType:
+        return _DevicesLogicType(self, _LT.RatioHydrazineInput)
+
+    @property
+    def RatioHydrazineOutput(self) -> _DevicesLogicType:
+        return _DevicesLogicType(self, _LT.RatioHydrazineOutput)
+
+    @property
+    def RatioHydrochloricAcidInput(self) -> _DevicesLogicType:
+        return _DevicesLogicType(self, _LT.RatioHydrochloricAcidInput)
+
+    @property
+    def RatioHydrochloricAcidOutput(self) -> _DevicesLogicType:
+        return _DevicesLogicType(self, _LT.RatioHydrochloricAcidOutput)
+
+    @property
+    def RatioHydrogenInput(self) -> _DevicesLogicType:
+        return _DevicesLogicType(self, _LT.RatioHydrogenInput)
+
+    @property
+    def RatioHydrogenOutput(self) -> _DevicesLogicType:
+        return _DevicesLogicType(self, _LT.RatioHydrogenOutput)
+
+    @property
+    def RatioLiquidAlcoholInput(self) -> _DevicesLogicType:
+        return _DevicesLogicType(self, _LT.RatioLiquidAlcoholInput)
+
+    @property
+    def RatioLiquidAlcoholOutput(self) -> _DevicesLogicType:
+        return _DevicesLogicType(self, _LT.RatioLiquidAlcoholOutput)
+
+    @property
     def RatioLiquidCarbonDioxideInput(self) -> _DevicesLogicType:
         return _DevicesLogicType(self, _LT.RatioLiquidCarbonDioxideInput)
 
     @property
     def RatioLiquidCarbonDioxideOutput(self) -> _DevicesLogicType:
         return _DevicesLogicType(self, _LT.RatioLiquidCarbonDioxideOutput)
+
+    @property
+    def RatioLiquidHydrazineInput(self) -> _DevicesLogicType:
+        return _DevicesLogicType(self, _LT.RatioLiquidHydrazineInput)
+
+    @property
+    def RatioLiquidHydrazineOutput(self) -> _DevicesLogicType:
+        return _DevicesLogicType(self, _LT.RatioLiquidHydrazineOutput)
+
+    @property
+    def RatioLiquidHydrochloricAcidInput(self) -> _DevicesLogicType:
+        return _DevicesLogicType(self, _LT.RatioLiquidHydrochloricAcidInput)
+
+    @property
+    def RatioLiquidHydrochloricAcidOutput(self) -> _DevicesLogicType:
+        return _DevicesLogicType(self, _LT.RatioLiquidHydrochloricAcidOutput)
+
+    @property
+    def RatioLiquidHydrogenInput(self) -> _DevicesLogicType:
+        return _DevicesLogicType(self, _LT.RatioLiquidHydrogenInput)
+
+    @property
+    def RatioLiquidHydrogenOutput(self) -> _DevicesLogicType:
+        return _DevicesLogicType(self, _LT.RatioLiquidHydrogenOutput)
 
     @property
     def RatioLiquidMethaneInput(self) -> _DevicesLogicType:
@@ -11932,12 +13340,36 @@ class _Electrolyzers(
         return _DevicesLogicType(self, _LT.RatioLiquidOxygenOutput)
 
     @property
+    def RatioLiquidOzoneInput(self) -> _DevicesLogicType:
+        return _DevicesLogicType(self, _LT.RatioLiquidOzoneInput)
+
+    @property
+    def RatioLiquidOzoneOutput(self) -> _DevicesLogicType:
+        return _DevicesLogicType(self, _LT.RatioLiquidOzoneOutput)
+
+    @property
     def RatioLiquidPollutantInput(self) -> _DevicesLogicType:
         return _DevicesLogicType(self, _LT.RatioLiquidPollutantInput)
 
     @property
     def RatioLiquidPollutantOutput(self) -> _DevicesLogicType:
         return _DevicesLogicType(self, _LT.RatioLiquidPollutantOutput)
+
+    @property
+    def RatioLiquidSilanolInput(self) -> _DevicesLogicType:
+        return _DevicesLogicType(self, _LT.RatioLiquidSilanolInput)
+
+    @property
+    def RatioLiquidSilanolOutput(self) -> _DevicesLogicType:
+        return _DevicesLogicType(self, _LT.RatioLiquidSilanolOutput)
+
+    @property
+    def RatioLiquidSodiumChlorideInput(self) -> _DevicesLogicType:
+        return _DevicesLogicType(self, _LT.RatioLiquidSodiumChlorideInput)
+
+    @property
+    def RatioLiquidSodiumChlorideOutput(self) -> _DevicesLogicType:
+        return _DevicesLogicType(self, _LT.RatioLiquidSodiumChlorideOutput)
 
     @property
     def RatioMethaneInput(self) -> _DevicesLogicType:
@@ -11972,12 +13404,36 @@ class _Electrolyzers(
         return _DevicesLogicType(self, _LT.RatioOxygenOutput)
 
     @property
+    def RatioOzoneInput(self) -> _DevicesLogicType:
+        return _DevicesLogicType(self, _LT.RatioOzoneInput)
+
+    @property
+    def RatioOzoneOutput(self) -> _DevicesLogicType:
+        return _DevicesLogicType(self, _LT.RatioOzoneOutput)
+
+    @property
     def RatioPollutantInput(self) -> _DevicesLogicType:
         return _DevicesLogicType(self, _LT.RatioPollutantInput)
 
     @property
     def RatioPollutantOutput(self) -> _DevicesLogicType:
         return _DevicesLogicType(self, _LT.RatioPollutantOutput)
+
+    @property
+    def RatioPollutedWaterInput(self) -> _DevicesLogicType:
+        return _DevicesLogicType(self, _LT.RatioPollutedWaterInput)
+
+    @property
+    def RatioPollutedWaterOutput(self) -> _DevicesLogicType:
+        return _DevicesLogicType(self, _LT.RatioPollutedWaterOutput)
+
+    @property
+    def RatioSilanolInput(self) -> _DevicesLogicType:
+        return _DevicesLogicType(self, _LT.RatioSilanolInput)
+
+    @property
+    def RatioSilanolOutput(self) -> _DevicesLogicType:
+        return _DevicesLogicType(self, _LT.RatioSilanolOutput)
 
     @property
     def RatioSteamInput(self) -> _DevicesLogicType:
@@ -13225,6 +14681,66 @@ class Fermenter(
         return _DeviceLogicType(self, _LT.RatioCarbonDioxideOutput)
 
     @property
+    def RatioHeliumInput(self) -> float:
+        return _DeviceLogicType(self, _LT.RatioHeliumInput)
+
+    @property
+    def RatioHeliumInput2(self) -> float:
+        return _DeviceLogicType(self, _LT.RatioHeliumInput2)
+
+    @property
+    def RatioHeliumOutput(self) -> float:
+        return _DeviceLogicType(self, _LT.RatioHeliumOutput)
+
+    @property
+    def RatioHydrazineInput(self) -> float:
+        return _DeviceLogicType(self, _LT.RatioHydrazineInput)
+
+    @property
+    def RatioHydrazineInput2(self) -> float:
+        return _DeviceLogicType(self, _LT.RatioHydrazineInput2)
+
+    @property
+    def RatioHydrazineOutput(self) -> float:
+        return _DeviceLogicType(self, _LT.RatioHydrazineOutput)
+
+    @property
+    def RatioHydrochloricAcidInput(self) -> float:
+        return _DeviceLogicType(self, _LT.RatioHydrochloricAcidInput)
+
+    @property
+    def RatioHydrochloricAcidInput2(self) -> float:
+        return _DeviceLogicType(self, _LT.RatioHydrochloricAcidInput2)
+
+    @property
+    def RatioHydrochloricAcidOutput(self) -> float:
+        return _DeviceLogicType(self, _LT.RatioHydrochloricAcidOutput)
+
+    @property
+    def RatioHydrogenInput(self) -> float:
+        return _DeviceLogicType(self, _LT.RatioHydrogenInput)
+
+    @property
+    def RatioHydrogenInput2(self) -> float:
+        return _DeviceLogicType(self, _LT.RatioHydrogenInput2)
+
+    @property
+    def RatioHydrogenOutput(self) -> float:
+        return _DeviceLogicType(self, _LT.RatioHydrogenOutput)
+
+    @property
+    def RatioLiquidAlcoholInput(self) -> float:
+        return _DeviceLogicType(self, _LT.RatioLiquidAlcoholInput)
+
+    @property
+    def RatioLiquidAlcoholInput2(self) -> float:
+        return _DeviceLogicType(self, _LT.RatioLiquidAlcoholInput2)
+
+    @property
+    def RatioLiquidAlcoholOutput(self) -> float:
+        return _DeviceLogicType(self, _LT.RatioLiquidAlcoholOutput)
+
+    @property
     def RatioLiquidCarbonDioxideInput(self) -> float:
         return _DeviceLogicType(self, _LT.RatioLiquidCarbonDioxideInput)
 
@@ -13235,6 +14751,42 @@ class Fermenter(
     @property
     def RatioLiquidCarbonDioxideOutput(self) -> float:
         return _DeviceLogicType(self, _LT.RatioLiquidCarbonDioxideOutput)
+
+    @property
+    def RatioLiquidHydrazineInput(self) -> float:
+        return _DeviceLogicType(self, _LT.RatioLiquidHydrazineInput)
+
+    @property
+    def RatioLiquidHydrazineInput2(self) -> float:
+        return _DeviceLogicType(self, _LT.RatioLiquidHydrazineInput2)
+
+    @property
+    def RatioLiquidHydrazineOutput(self) -> float:
+        return _DeviceLogicType(self, _LT.RatioLiquidHydrazineOutput)
+
+    @property
+    def RatioLiquidHydrochloricAcidInput(self) -> float:
+        return _DeviceLogicType(self, _LT.RatioLiquidHydrochloricAcidInput)
+
+    @property
+    def RatioLiquidHydrochloricAcidInput2(self) -> float:
+        return _DeviceLogicType(self, _LT.RatioLiquidHydrochloricAcidInput2)
+
+    @property
+    def RatioLiquidHydrochloricAcidOutput(self) -> float:
+        return _DeviceLogicType(self, _LT.RatioLiquidHydrochloricAcidOutput)
+
+    @property
+    def RatioLiquidHydrogenInput(self) -> float:
+        return _DeviceLogicType(self, _LT.RatioLiquidHydrogenInput)
+
+    @property
+    def RatioLiquidHydrogenInput2(self) -> float:
+        return _DeviceLogicType(self, _LT.RatioLiquidHydrogenInput2)
+
+    @property
+    def RatioLiquidHydrogenOutput(self) -> float:
+        return _DeviceLogicType(self, _LT.RatioLiquidHydrogenOutput)
 
     @property
     def RatioLiquidMethaneInput(self) -> float:
@@ -13285,6 +14837,18 @@ class Fermenter(
         return _DeviceLogicType(self, _LT.RatioLiquidOxygenOutput)
 
     @property
+    def RatioLiquidOzoneInput(self) -> float:
+        return _DeviceLogicType(self, _LT.RatioLiquidOzoneInput)
+
+    @property
+    def RatioLiquidOzoneInput2(self) -> float:
+        return _DeviceLogicType(self, _LT.RatioLiquidOzoneInput2)
+
+    @property
+    def RatioLiquidOzoneOutput(self) -> float:
+        return _DeviceLogicType(self, _LT.RatioLiquidOzoneOutput)
+
+    @property
     def RatioLiquidPollutantInput(self) -> float:
         return _DeviceLogicType(self, _LT.RatioLiquidPollutantInput)
 
@@ -13295,6 +14859,30 @@ class Fermenter(
     @property
     def RatioLiquidPollutantOutput(self) -> float:
         return _DeviceLogicType(self, _LT.RatioLiquidPollutantOutput)
+
+    @property
+    def RatioLiquidSilanolInput(self) -> float:
+        return _DeviceLogicType(self, _LT.RatioLiquidSilanolInput)
+
+    @property
+    def RatioLiquidSilanolInput2(self) -> float:
+        return _DeviceLogicType(self, _LT.RatioLiquidSilanolInput2)
+
+    @property
+    def RatioLiquidSilanolOutput(self) -> float:
+        return _DeviceLogicType(self, _LT.RatioLiquidSilanolOutput)
+
+    @property
+    def RatioLiquidSodiumChlorideInput(self) -> float:
+        return _DeviceLogicType(self, _LT.RatioLiquidSodiumChlorideInput)
+
+    @property
+    def RatioLiquidSodiumChlorideInput2(self) -> float:
+        return _DeviceLogicType(self, _LT.RatioLiquidSodiumChlorideInput2)
+
+    @property
+    def RatioLiquidSodiumChlorideOutput(self) -> float:
+        return _DeviceLogicType(self, _LT.RatioLiquidSodiumChlorideOutput)
 
     @property
     def RatioMethaneInput(self) -> float:
@@ -13345,6 +14933,18 @@ class Fermenter(
         return _DeviceLogicType(self, _LT.RatioOxygenOutput)
 
     @property
+    def RatioOzoneInput(self) -> float:
+        return _DeviceLogicType(self, _LT.RatioOzoneInput)
+
+    @property
+    def RatioOzoneInput2(self) -> float:
+        return _DeviceLogicType(self, _LT.RatioOzoneInput2)
+
+    @property
+    def RatioOzoneOutput(self) -> float:
+        return _DeviceLogicType(self, _LT.RatioOzoneOutput)
+
+    @property
     def RatioPollutantInput(self) -> float:
         return _DeviceLogicType(self, _LT.RatioPollutantInput)
 
@@ -13355,6 +14955,30 @@ class Fermenter(
     @property
     def RatioPollutantOutput(self) -> float:
         return _DeviceLogicType(self, _LT.RatioPollutantOutput)
+
+    @property
+    def RatioPollutedWaterInput(self) -> float:
+        return _DeviceLogicType(self, _LT.RatioPollutedWaterInput)
+
+    @property
+    def RatioPollutedWaterInput2(self) -> float:
+        return _DeviceLogicType(self, _LT.RatioPollutedWaterInput2)
+
+    @property
+    def RatioPollutedWaterOutput(self) -> float:
+        return _DeviceLogicType(self, _LT.RatioPollutedWaterOutput)
+
+    @property
+    def RatioSilanolInput(self) -> float:
+        return _DeviceLogicType(self, _LT.RatioSilanolInput)
+
+    @property
+    def RatioSilanolInput2(self) -> float:
+        return _DeviceLogicType(self, _LT.RatioSilanolInput2)
+
+    @property
+    def RatioSilanolOutput(self) -> float:
+        return _DeviceLogicType(self, _LT.RatioSilanolOutput)
 
     @property
     def RatioSteamInput(self) -> float:
@@ -13497,6 +15121,66 @@ class _Fermenters(
         return _DevicesLogicType(self, _LT.RatioCarbonDioxideOutput)
 
     @property
+    def RatioHeliumInput(self) -> _DevicesLogicType:
+        return _DevicesLogicType(self, _LT.RatioHeliumInput)
+
+    @property
+    def RatioHeliumInput2(self) -> _DevicesLogicType:
+        return _DevicesLogicType(self, _LT.RatioHeliumInput2)
+
+    @property
+    def RatioHeliumOutput(self) -> _DevicesLogicType:
+        return _DevicesLogicType(self, _LT.RatioHeliumOutput)
+
+    @property
+    def RatioHydrazineInput(self) -> _DevicesLogicType:
+        return _DevicesLogicType(self, _LT.RatioHydrazineInput)
+
+    @property
+    def RatioHydrazineInput2(self) -> _DevicesLogicType:
+        return _DevicesLogicType(self, _LT.RatioHydrazineInput2)
+
+    @property
+    def RatioHydrazineOutput(self) -> _DevicesLogicType:
+        return _DevicesLogicType(self, _LT.RatioHydrazineOutput)
+
+    @property
+    def RatioHydrochloricAcidInput(self) -> _DevicesLogicType:
+        return _DevicesLogicType(self, _LT.RatioHydrochloricAcidInput)
+
+    @property
+    def RatioHydrochloricAcidInput2(self) -> _DevicesLogicType:
+        return _DevicesLogicType(self, _LT.RatioHydrochloricAcidInput2)
+
+    @property
+    def RatioHydrochloricAcidOutput(self) -> _DevicesLogicType:
+        return _DevicesLogicType(self, _LT.RatioHydrochloricAcidOutput)
+
+    @property
+    def RatioHydrogenInput(self) -> _DevicesLogicType:
+        return _DevicesLogicType(self, _LT.RatioHydrogenInput)
+
+    @property
+    def RatioHydrogenInput2(self) -> _DevicesLogicType:
+        return _DevicesLogicType(self, _LT.RatioHydrogenInput2)
+
+    @property
+    def RatioHydrogenOutput(self) -> _DevicesLogicType:
+        return _DevicesLogicType(self, _LT.RatioHydrogenOutput)
+
+    @property
+    def RatioLiquidAlcoholInput(self) -> _DevicesLogicType:
+        return _DevicesLogicType(self, _LT.RatioLiquidAlcoholInput)
+
+    @property
+    def RatioLiquidAlcoholInput2(self) -> _DevicesLogicType:
+        return _DevicesLogicType(self, _LT.RatioLiquidAlcoholInput2)
+
+    @property
+    def RatioLiquidAlcoholOutput(self) -> _DevicesLogicType:
+        return _DevicesLogicType(self, _LT.RatioLiquidAlcoholOutput)
+
+    @property
     def RatioLiquidCarbonDioxideInput(self) -> _DevicesLogicType:
         return _DevicesLogicType(self, _LT.RatioLiquidCarbonDioxideInput)
 
@@ -13507,6 +15191,42 @@ class _Fermenters(
     @property
     def RatioLiquidCarbonDioxideOutput(self) -> _DevicesLogicType:
         return _DevicesLogicType(self, _LT.RatioLiquidCarbonDioxideOutput)
+
+    @property
+    def RatioLiquidHydrazineInput(self) -> _DevicesLogicType:
+        return _DevicesLogicType(self, _LT.RatioLiquidHydrazineInput)
+
+    @property
+    def RatioLiquidHydrazineInput2(self) -> _DevicesLogicType:
+        return _DevicesLogicType(self, _LT.RatioLiquidHydrazineInput2)
+
+    @property
+    def RatioLiquidHydrazineOutput(self) -> _DevicesLogicType:
+        return _DevicesLogicType(self, _LT.RatioLiquidHydrazineOutput)
+
+    @property
+    def RatioLiquidHydrochloricAcidInput(self) -> _DevicesLogicType:
+        return _DevicesLogicType(self, _LT.RatioLiquidHydrochloricAcidInput)
+
+    @property
+    def RatioLiquidHydrochloricAcidInput2(self) -> _DevicesLogicType:
+        return _DevicesLogicType(self, _LT.RatioLiquidHydrochloricAcidInput2)
+
+    @property
+    def RatioLiquidHydrochloricAcidOutput(self) -> _DevicesLogicType:
+        return _DevicesLogicType(self, _LT.RatioLiquidHydrochloricAcidOutput)
+
+    @property
+    def RatioLiquidHydrogenInput(self) -> _DevicesLogicType:
+        return _DevicesLogicType(self, _LT.RatioLiquidHydrogenInput)
+
+    @property
+    def RatioLiquidHydrogenInput2(self) -> _DevicesLogicType:
+        return _DevicesLogicType(self, _LT.RatioLiquidHydrogenInput2)
+
+    @property
+    def RatioLiquidHydrogenOutput(self) -> _DevicesLogicType:
+        return _DevicesLogicType(self, _LT.RatioLiquidHydrogenOutput)
 
     @property
     def RatioLiquidMethaneInput(self) -> _DevicesLogicType:
@@ -13557,6 +15277,18 @@ class _Fermenters(
         return _DevicesLogicType(self, _LT.RatioLiquidOxygenOutput)
 
     @property
+    def RatioLiquidOzoneInput(self) -> _DevicesLogicType:
+        return _DevicesLogicType(self, _LT.RatioLiquidOzoneInput)
+
+    @property
+    def RatioLiquidOzoneInput2(self) -> _DevicesLogicType:
+        return _DevicesLogicType(self, _LT.RatioLiquidOzoneInput2)
+
+    @property
+    def RatioLiquidOzoneOutput(self) -> _DevicesLogicType:
+        return _DevicesLogicType(self, _LT.RatioLiquidOzoneOutput)
+
+    @property
     def RatioLiquidPollutantInput(self) -> _DevicesLogicType:
         return _DevicesLogicType(self, _LT.RatioLiquidPollutantInput)
 
@@ -13567,6 +15299,30 @@ class _Fermenters(
     @property
     def RatioLiquidPollutantOutput(self) -> _DevicesLogicType:
         return _DevicesLogicType(self, _LT.RatioLiquidPollutantOutput)
+
+    @property
+    def RatioLiquidSilanolInput(self) -> _DevicesLogicType:
+        return _DevicesLogicType(self, _LT.RatioLiquidSilanolInput)
+
+    @property
+    def RatioLiquidSilanolInput2(self) -> _DevicesLogicType:
+        return _DevicesLogicType(self, _LT.RatioLiquidSilanolInput2)
+
+    @property
+    def RatioLiquidSilanolOutput(self) -> _DevicesLogicType:
+        return _DevicesLogicType(self, _LT.RatioLiquidSilanolOutput)
+
+    @property
+    def RatioLiquidSodiumChlorideInput(self) -> _DevicesLogicType:
+        return _DevicesLogicType(self, _LT.RatioLiquidSodiumChlorideInput)
+
+    @property
+    def RatioLiquidSodiumChlorideInput2(self) -> _DevicesLogicType:
+        return _DevicesLogicType(self, _LT.RatioLiquidSodiumChlorideInput2)
+
+    @property
+    def RatioLiquidSodiumChlorideOutput(self) -> _DevicesLogicType:
+        return _DevicesLogicType(self, _LT.RatioLiquidSodiumChlorideOutput)
 
     @property
     def RatioMethaneInput(self) -> _DevicesLogicType:
@@ -13617,6 +15373,18 @@ class _Fermenters(
         return _DevicesLogicType(self, _LT.RatioOxygenOutput)
 
     @property
+    def RatioOzoneInput(self) -> _DevicesLogicType:
+        return _DevicesLogicType(self, _LT.RatioOzoneInput)
+
+    @property
+    def RatioOzoneInput2(self) -> _DevicesLogicType:
+        return _DevicesLogicType(self, _LT.RatioOzoneInput2)
+
+    @property
+    def RatioOzoneOutput(self) -> _DevicesLogicType:
+        return _DevicesLogicType(self, _LT.RatioOzoneOutput)
+
+    @property
     def RatioPollutantInput(self) -> _DevicesLogicType:
         return _DevicesLogicType(self, _LT.RatioPollutantInput)
 
@@ -13627,6 +15395,30 @@ class _Fermenters(
     @property
     def RatioPollutantOutput(self) -> _DevicesLogicType:
         return _DevicesLogicType(self, _LT.RatioPollutantOutput)
+
+    @property
+    def RatioPollutedWaterInput(self) -> _DevicesLogicType:
+        return _DevicesLogicType(self, _LT.RatioPollutedWaterInput)
+
+    @property
+    def RatioPollutedWaterInput2(self) -> _DevicesLogicType:
+        return _DevicesLogicType(self, _LT.RatioPollutedWaterInput2)
+
+    @property
+    def RatioPollutedWaterOutput(self) -> _DevicesLogicType:
+        return _DevicesLogicType(self, _LT.RatioPollutedWaterOutput)
+
+    @property
+    def RatioSilanolInput(self) -> _DevicesLogicType:
+        return _DevicesLogicType(self, _LT.RatioSilanolInput)
+
+    @property
+    def RatioSilanolInput2(self) -> _DevicesLogicType:
+        return _DevicesLogicType(self, _LT.RatioSilanolInput2)
+
+    @property
+    def RatioSilanolOutput(self) -> _DevicesLogicType:
+        return _DevicesLogicType(self, _LT.RatioSilanolOutput)
 
     @property
     def RatioSteamInput(self) -> _DevicesLogicType:
@@ -13739,6 +15531,66 @@ class Filtration(
         return _DeviceLogicType(self, _LT.RatioCarbonDioxideOutput2)
 
     @property
+    def RatioHeliumInput(self) -> float:
+        return _DeviceLogicType(self, _LT.RatioHeliumInput)
+
+    @property
+    def RatioHeliumOutput(self) -> float:
+        return _DeviceLogicType(self, _LT.RatioHeliumOutput)
+
+    @property
+    def RatioHeliumOutput2(self) -> float:
+        return _DeviceLogicType(self, _LT.RatioHeliumOutput2)
+
+    @property
+    def RatioHydrazineInput(self) -> float:
+        return _DeviceLogicType(self, _LT.RatioHydrazineInput)
+
+    @property
+    def RatioHydrazineOutput(self) -> float:
+        return _DeviceLogicType(self, _LT.RatioHydrazineOutput)
+
+    @property
+    def RatioHydrazineOutput2(self) -> float:
+        return _DeviceLogicType(self, _LT.RatioHydrazineOutput2)
+
+    @property
+    def RatioHydrochloricAcidInput(self) -> float:
+        return _DeviceLogicType(self, _LT.RatioHydrochloricAcidInput)
+
+    @property
+    def RatioHydrochloricAcidOutput(self) -> float:
+        return _DeviceLogicType(self, _LT.RatioHydrochloricAcidOutput)
+
+    @property
+    def RatioHydrochloricAcidOutput2(self) -> float:
+        return _DeviceLogicType(self, _LT.RatioHydrochloricAcidOutput2)
+
+    @property
+    def RatioHydrogenInput(self) -> float:
+        return _DeviceLogicType(self, _LT.RatioHydrogenInput)
+
+    @property
+    def RatioHydrogenOutput(self) -> float:
+        return _DeviceLogicType(self, _LT.RatioHydrogenOutput)
+
+    @property
+    def RatioHydrogenOutput2(self) -> float:
+        return _DeviceLogicType(self, _LT.RatioHydrogenOutput2)
+
+    @property
+    def RatioLiquidAlcoholInput(self) -> float:
+        return _DeviceLogicType(self, _LT.RatioLiquidAlcoholInput)
+
+    @property
+    def RatioLiquidAlcoholOutput(self) -> float:
+        return _DeviceLogicType(self, _LT.RatioLiquidAlcoholOutput)
+
+    @property
+    def RatioLiquidAlcoholOutput2(self) -> float:
+        return _DeviceLogicType(self, _LT.RatioLiquidAlcoholOutput2)
+
+    @property
     def RatioLiquidCarbonDioxideInput(self) -> float:
         return _DeviceLogicType(self, _LT.RatioLiquidCarbonDioxideInput)
 
@@ -13749,6 +15601,42 @@ class Filtration(
     @property
     def RatioLiquidCarbonDioxideOutput2(self) -> float:
         return _DeviceLogicType(self, _LT.RatioLiquidCarbonDioxideOutput2)
+
+    @property
+    def RatioLiquidHydrazineInput(self) -> float:
+        return _DeviceLogicType(self, _LT.RatioLiquidHydrazineInput)
+
+    @property
+    def RatioLiquidHydrazineOutput(self) -> float:
+        return _DeviceLogicType(self, _LT.RatioLiquidHydrazineOutput)
+
+    @property
+    def RatioLiquidHydrazineOutput2(self) -> float:
+        return _DeviceLogicType(self, _LT.RatioLiquidHydrazineOutput2)
+
+    @property
+    def RatioLiquidHydrochloricAcidInput(self) -> float:
+        return _DeviceLogicType(self, _LT.RatioLiquidHydrochloricAcidInput)
+
+    @property
+    def RatioLiquidHydrochloricAcidOutput(self) -> float:
+        return _DeviceLogicType(self, _LT.RatioLiquidHydrochloricAcidOutput)
+
+    @property
+    def RatioLiquidHydrochloricAcidOutput2(self) -> float:
+        return _DeviceLogicType(self, _LT.RatioLiquidHydrochloricAcidOutput2)
+
+    @property
+    def RatioLiquidHydrogenInput(self) -> float:
+        return _DeviceLogicType(self, _LT.RatioLiquidHydrogenInput)
+
+    @property
+    def RatioLiquidHydrogenOutput(self) -> float:
+        return _DeviceLogicType(self, _LT.RatioLiquidHydrogenOutput)
+
+    @property
+    def RatioLiquidHydrogenOutput2(self) -> float:
+        return _DeviceLogicType(self, _LT.RatioLiquidHydrogenOutput2)
 
     @property
     def RatioLiquidMethaneInput(self) -> float:
@@ -13799,6 +15687,18 @@ class Filtration(
         return _DeviceLogicType(self, _LT.RatioLiquidOxygenOutput2)
 
     @property
+    def RatioLiquidOzoneInput(self) -> float:
+        return _DeviceLogicType(self, _LT.RatioLiquidOzoneInput)
+
+    @property
+    def RatioLiquidOzoneOutput(self) -> float:
+        return _DeviceLogicType(self, _LT.RatioLiquidOzoneOutput)
+
+    @property
+    def RatioLiquidOzoneOutput2(self) -> float:
+        return _DeviceLogicType(self, _LT.RatioLiquidOzoneOutput2)
+
+    @property
     def RatioLiquidPollutantInput(self) -> float:
         return _DeviceLogicType(self, _LT.RatioLiquidPollutantInput)
 
@@ -13809,6 +15709,30 @@ class Filtration(
     @property
     def RatioLiquidPollutantOutput2(self) -> float:
         return _DeviceLogicType(self, _LT.RatioLiquidPollutantOutput2)
+
+    @property
+    def RatioLiquidSilanolInput(self) -> float:
+        return _DeviceLogicType(self, _LT.RatioLiquidSilanolInput)
+
+    @property
+    def RatioLiquidSilanolOutput(self) -> float:
+        return _DeviceLogicType(self, _LT.RatioLiquidSilanolOutput)
+
+    @property
+    def RatioLiquidSilanolOutput2(self) -> float:
+        return _DeviceLogicType(self, _LT.RatioLiquidSilanolOutput2)
+
+    @property
+    def RatioLiquidSodiumChlorideInput(self) -> float:
+        return _DeviceLogicType(self, _LT.RatioLiquidSodiumChlorideInput)
+
+    @property
+    def RatioLiquidSodiumChlorideOutput(self) -> float:
+        return _DeviceLogicType(self, _LT.RatioLiquidSodiumChlorideOutput)
+
+    @property
+    def RatioLiquidSodiumChlorideOutput2(self) -> float:
+        return _DeviceLogicType(self, _LT.RatioLiquidSodiumChlorideOutput2)
 
     @property
     def RatioMethaneInput(self) -> float:
@@ -13859,6 +15783,18 @@ class Filtration(
         return _DeviceLogicType(self, _LT.RatioOxygenOutput2)
 
     @property
+    def RatioOzoneInput(self) -> float:
+        return _DeviceLogicType(self, _LT.RatioOzoneInput)
+
+    @property
+    def RatioOzoneOutput(self) -> float:
+        return _DeviceLogicType(self, _LT.RatioOzoneOutput)
+
+    @property
+    def RatioOzoneOutput2(self) -> float:
+        return _DeviceLogicType(self, _LT.RatioOzoneOutput2)
+
+    @property
     def RatioPollutantInput(self) -> float:
         return _DeviceLogicType(self, _LT.RatioPollutantInput)
 
@@ -13869,6 +15805,30 @@ class Filtration(
     @property
     def RatioPollutantOutput2(self) -> float:
         return _DeviceLogicType(self, _LT.RatioPollutantOutput2)
+
+    @property
+    def RatioPollutedWaterInput(self) -> float:
+        return _DeviceLogicType(self, _LT.RatioPollutedWaterInput)
+
+    @property
+    def RatioPollutedWaterOutput(self) -> float:
+        return _DeviceLogicType(self, _LT.RatioPollutedWaterOutput)
+
+    @property
+    def RatioPollutedWaterOutput2(self) -> float:
+        return _DeviceLogicType(self, _LT.RatioPollutedWaterOutput2)
+
+    @property
+    def RatioSilanolInput(self) -> float:
+        return _DeviceLogicType(self, _LT.RatioSilanolInput)
+
+    @property
+    def RatioSilanolOutput(self) -> float:
+        return _DeviceLogicType(self, _LT.RatioSilanolOutput)
+
+    @property
+    def RatioSilanolOutput2(self) -> float:
+        return _DeviceLogicType(self, _LT.RatioSilanolOutput2)
 
     @property
     def RatioSteamInput(self) -> float:
@@ -14005,6 +15965,66 @@ class _Filtrations(
         return _DevicesLogicType(self, _LT.RatioCarbonDioxideOutput2)
 
     @property
+    def RatioHeliumInput(self) -> _DevicesLogicType:
+        return _DevicesLogicType(self, _LT.RatioHeliumInput)
+
+    @property
+    def RatioHeliumOutput(self) -> _DevicesLogicType:
+        return _DevicesLogicType(self, _LT.RatioHeliumOutput)
+
+    @property
+    def RatioHeliumOutput2(self) -> _DevicesLogicType:
+        return _DevicesLogicType(self, _LT.RatioHeliumOutput2)
+
+    @property
+    def RatioHydrazineInput(self) -> _DevicesLogicType:
+        return _DevicesLogicType(self, _LT.RatioHydrazineInput)
+
+    @property
+    def RatioHydrazineOutput(self) -> _DevicesLogicType:
+        return _DevicesLogicType(self, _LT.RatioHydrazineOutput)
+
+    @property
+    def RatioHydrazineOutput2(self) -> _DevicesLogicType:
+        return _DevicesLogicType(self, _LT.RatioHydrazineOutput2)
+
+    @property
+    def RatioHydrochloricAcidInput(self) -> _DevicesLogicType:
+        return _DevicesLogicType(self, _LT.RatioHydrochloricAcidInput)
+
+    @property
+    def RatioHydrochloricAcidOutput(self) -> _DevicesLogicType:
+        return _DevicesLogicType(self, _LT.RatioHydrochloricAcidOutput)
+
+    @property
+    def RatioHydrochloricAcidOutput2(self) -> _DevicesLogicType:
+        return _DevicesLogicType(self, _LT.RatioHydrochloricAcidOutput2)
+
+    @property
+    def RatioHydrogenInput(self) -> _DevicesLogicType:
+        return _DevicesLogicType(self, _LT.RatioHydrogenInput)
+
+    @property
+    def RatioHydrogenOutput(self) -> _DevicesLogicType:
+        return _DevicesLogicType(self, _LT.RatioHydrogenOutput)
+
+    @property
+    def RatioHydrogenOutput2(self) -> _DevicesLogicType:
+        return _DevicesLogicType(self, _LT.RatioHydrogenOutput2)
+
+    @property
+    def RatioLiquidAlcoholInput(self) -> _DevicesLogicType:
+        return _DevicesLogicType(self, _LT.RatioLiquidAlcoholInput)
+
+    @property
+    def RatioLiquidAlcoholOutput(self) -> _DevicesLogicType:
+        return _DevicesLogicType(self, _LT.RatioLiquidAlcoholOutput)
+
+    @property
+    def RatioLiquidAlcoholOutput2(self) -> _DevicesLogicType:
+        return _DevicesLogicType(self, _LT.RatioLiquidAlcoholOutput2)
+
+    @property
     def RatioLiquidCarbonDioxideInput(self) -> _DevicesLogicType:
         return _DevicesLogicType(self, _LT.RatioLiquidCarbonDioxideInput)
 
@@ -14015,6 +16035,42 @@ class _Filtrations(
     @property
     def RatioLiquidCarbonDioxideOutput2(self) -> _DevicesLogicType:
         return _DevicesLogicType(self, _LT.RatioLiquidCarbonDioxideOutput2)
+
+    @property
+    def RatioLiquidHydrazineInput(self) -> _DevicesLogicType:
+        return _DevicesLogicType(self, _LT.RatioLiquidHydrazineInput)
+
+    @property
+    def RatioLiquidHydrazineOutput(self) -> _DevicesLogicType:
+        return _DevicesLogicType(self, _LT.RatioLiquidHydrazineOutput)
+
+    @property
+    def RatioLiquidHydrazineOutput2(self) -> _DevicesLogicType:
+        return _DevicesLogicType(self, _LT.RatioLiquidHydrazineOutput2)
+
+    @property
+    def RatioLiquidHydrochloricAcidInput(self) -> _DevicesLogicType:
+        return _DevicesLogicType(self, _LT.RatioLiquidHydrochloricAcidInput)
+
+    @property
+    def RatioLiquidHydrochloricAcidOutput(self) -> _DevicesLogicType:
+        return _DevicesLogicType(self, _LT.RatioLiquidHydrochloricAcidOutput)
+
+    @property
+    def RatioLiquidHydrochloricAcidOutput2(self) -> _DevicesLogicType:
+        return _DevicesLogicType(self, _LT.RatioLiquidHydrochloricAcidOutput2)
+
+    @property
+    def RatioLiquidHydrogenInput(self) -> _DevicesLogicType:
+        return _DevicesLogicType(self, _LT.RatioLiquidHydrogenInput)
+
+    @property
+    def RatioLiquidHydrogenOutput(self) -> _DevicesLogicType:
+        return _DevicesLogicType(self, _LT.RatioLiquidHydrogenOutput)
+
+    @property
+    def RatioLiquidHydrogenOutput2(self) -> _DevicesLogicType:
+        return _DevicesLogicType(self, _LT.RatioLiquidHydrogenOutput2)
 
     @property
     def RatioLiquidMethaneInput(self) -> _DevicesLogicType:
@@ -14065,6 +16121,18 @@ class _Filtrations(
         return _DevicesLogicType(self, _LT.RatioLiquidOxygenOutput2)
 
     @property
+    def RatioLiquidOzoneInput(self) -> _DevicesLogicType:
+        return _DevicesLogicType(self, _LT.RatioLiquidOzoneInput)
+
+    @property
+    def RatioLiquidOzoneOutput(self) -> _DevicesLogicType:
+        return _DevicesLogicType(self, _LT.RatioLiquidOzoneOutput)
+
+    @property
+    def RatioLiquidOzoneOutput2(self) -> _DevicesLogicType:
+        return _DevicesLogicType(self, _LT.RatioLiquidOzoneOutput2)
+
+    @property
     def RatioLiquidPollutantInput(self) -> _DevicesLogicType:
         return _DevicesLogicType(self, _LT.RatioLiquidPollutantInput)
 
@@ -14075,6 +16143,30 @@ class _Filtrations(
     @property
     def RatioLiquidPollutantOutput2(self) -> _DevicesLogicType:
         return _DevicesLogicType(self, _LT.RatioLiquidPollutantOutput2)
+
+    @property
+    def RatioLiquidSilanolInput(self) -> _DevicesLogicType:
+        return _DevicesLogicType(self, _LT.RatioLiquidSilanolInput)
+
+    @property
+    def RatioLiquidSilanolOutput(self) -> _DevicesLogicType:
+        return _DevicesLogicType(self, _LT.RatioLiquidSilanolOutput)
+
+    @property
+    def RatioLiquidSilanolOutput2(self) -> _DevicesLogicType:
+        return _DevicesLogicType(self, _LT.RatioLiquidSilanolOutput2)
+
+    @property
+    def RatioLiquidSodiumChlorideInput(self) -> _DevicesLogicType:
+        return _DevicesLogicType(self, _LT.RatioLiquidSodiumChlorideInput)
+
+    @property
+    def RatioLiquidSodiumChlorideOutput(self) -> _DevicesLogicType:
+        return _DevicesLogicType(self, _LT.RatioLiquidSodiumChlorideOutput)
+
+    @property
+    def RatioLiquidSodiumChlorideOutput2(self) -> _DevicesLogicType:
+        return _DevicesLogicType(self, _LT.RatioLiquidSodiumChlorideOutput2)
 
     @property
     def RatioMethaneInput(self) -> _DevicesLogicType:
@@ -14125,6 +16217,18 @@ class _Filtrations(
         return _DevicesLogicType(self, _LT.RatioOxygenOutput2)
 
     @property
+    def RatioOzoneInput(self) -> _DevicesLogicType:
+        return _DevicesLogicType(self, _LT.RatioOzoneInput)
+
+    @property
+    def RatioOzoneOutput(self) -> _DevicesLogicType:
+        return _DevicesLogicType(self, _LT.RatioOzoneOutput)
+
+    @property
+    def RatioOzoneOutput2(self) -> _DevicesLogicType:
+        return _DevicesLogicType(self, _LT.RatioOzoneOutput2)
+
+    @property
     def RatioPollutantInput(self) -> _DevicesLogicType:
         return _DevicesLogicType(self, _LT.RatioPollutantInput)
 
@@ -14135,6 +16239,30 @@ class _Filtrations(
     @property
     def RatioPollutantOutput2(self) -> _DevicesLogicType:
         return _DevicesLogicType(self, _LT.RatioPollutantOutput2)
+
+    @property
+    def RatioPollutedWaterInput(self) -> _DevicesLogicType:
+        return _DevicesLogicType(self, _LT.RatioPollutedWaterInput)
+
+    @property
+    def RatioPollutedWaterOutput(self) -> _DevicesLogicType:
+        return _DevicesLogicType(self, _LT.RatioPollutedWaterOutput)
+
+    @property
+    def RatioPollutedWaterOutput2(self) -> _DevicesLogicType:
+        return _DevicesLogicType(self, _LT.RatioPollutedWaterOutput2)
+
+    @property
+    def RatioSilanolInput(self) -> _DevicesLogicType:
+        return _DevicesLogicType(self, _LT.RatioSilanolInput)
+
+    @property
+    def RatioSilanolOutput(self) -> _DevicesLogicType:
+        return _DevicesLogicType(self, _LT.RatioSilanolOutput)
+
+    @property
+    def RatioSilanolOutput2(self) -> _DevicesLogicType:
+        return _DevicesLogicType(self, _LT.RatioSilanolOutput2)
 
     @property
     def RatioSteamInput(self) -> _DevicesLogicType:
@@ -14247,6 +16375,66 @@ class FiltrationLiquid(
         return _DeviceLogicType(self, _LT.RatioCarbonDioxideOutput2)
 
     @property
+    def RatioHeliumInput(self) -> float:
+        return _DeviceLogicType(self, _LT.RatioHeliumInput)
+
+    @property
+    def RatioHeliumOutput(self) -> float:
+        return _DeviceLogicType(self, _LT.RatioHeliumOutput)
+
+    @property
+    def RatioHeliumOutput2(self) -> float:
+        return _DeviceLogicType(self, _LT.RatioHeliumOutput2)
+
+    @property
+    def RatioHydrazineInput(self) -> float:
+        return _DeviceLogicType(self, _LT.RatioHydrazineInput)
+
+    @property
+    def RatioHydrazineOutput(self) -> float:
+        return _DeviceLogicType(self, _LT.RatioHydrazineOutput)
+
+    @property
+    def RatioHydrazineOutput2(self) -> float:
+        return _DeviceLogicType(self, _LT.RatioHydrazineOutput2)
+
+    @property
+    def RatioHydrochloricAcidInput(self) -> float:
+        return _DeviceLogicType(self, _LT.RatioHydrochloricAcidInput)
+
+    @property
+    def RatioHydrochloricAcidOutput(self) -> float:
+        return _DeviceLogicType(self, _LT.RatioHydrochloricAcidOutput)
+
+    @property
+    def RatioHydrochloricAcidOutput2(self) -> float:
+        return _DeviceLogicType(self, _LT.RatioHydrochloricAcidOutput2)
+
+    @property
+    def RatioHydrogenInput(self) -> float:
+        return _DeviceLogicType(self, _LT.RatioHydrogenInput)
+
+    @property
+    def RatioHydrogenOutput(self) -> float:
+        return _DeviceLogicType(self, _LT.RatioHydrogenOutput)
+
+    @property
+    def RatioHydrogenOutput2(self) -> float:
+        return _DeviceLogicType(self, _LT.RatioHydrogenOutput2)
+
+    @property
+    def RatioLiquidAlcoholInput(self) -> float:
+        return _DeviceLogicType(self, _LT.RatioLiquidAlcoholInput)
+
+    @property
+    def RatioLiquidAlcoholOutput(self) -> float:
+        return _DeviceLogicType(self, _LT.RatioLiquidAlcoholOutput)
+
+    @property
+    def RatioLiquidAlcoholOutput2(self) -> float:
+        return _DeviceLogicType(self, _LT.RatioLiquidAlcoholOutput2)
+
+    @property
     def RatioLiquidCarbonDioxideInput(self) -> float:
         return _DeviceLogicType(self, _LT.RatioLiquidCarbonDioxideInput)
 
@@ -14257,6 +16445,42 @@ class FiltrationLiquid(
     @property
     def RatioLiquidCarbonDioxideOutput2(self) -> float:
         return _DeviceLogicType(self, _LT.RatioLiquidCarbonDioxideOutput2)
+
+    @property
+    def RatioLiquidHydrazineInput(self) -> float:
+        return _DeviceLogicType(self, _LT.RatioLiquidHydrazineInput)
+
+    @property
+    def RatioLiquidHydrazineOutput(self) -> float:
+        return _DeviceLogicType(self, _LT.RatioLiquidHydrazineOutput)
+
+    @property
+    def RatioLiquidHydrazineOutput2(self) -> float:
+        return _DeviceLogicType(self, _LT.RatioLiquidHydrazineOutput2)
+
+    @property
+    def RatioLiquidHydrochloricAcidInput(self) -> float:
+        return _DeviceLogicType(self, _LT.RatioLiquidHydrochloricAcidInput)
+
+    @property
+    def RatioLiquidHydrochloricAcidOutput(self) -> float:
+        return _DeviceLogicType(self, _LT.RatioLiquidHydrochloricAcidOutput)
+
+    @property
+    def RatioLiquidHydrochloricAcidOutput2(self) -> float:
+        return _DeviceLogicType(self, _LT.RatioLiquidHydrochloricAcidOutput2)
+
+    @property
+    def RatioLiquidHydrogenInput(self) -> float:
+        return _DeviceLogicType(self, _LT.RatioLiquidHydrogenInput)
+
+    @property
+    def RatioLiquidHydrogenOutput(self) -> float:
+        return _DeviceLogicType(self, _LT.RatioLiquidHydrogenOutput)
+
+    @property
+    def RatioLiquidHydrogenOutput2(self) -> float:
+        return _DeviceLogicType(self, _LT.RatioLiquidHydrogenOutput2)
 
     @property
     def RatioLiquidMethaneInput(self) -> float:
@@ -14307,6 +16531,18 @@ class FiltrationLiquid(
         return _DeviceLogicType(self, _LT.RatioLiquidOxygenOutput2)
 
     @property
+    def RatioLiquidOzoneInput(self) -> float:
+        return _DeviceLogicType(self, _LT.RatioLiquidOzoneInput)
+
+    @property
+    def RatioLiquidOzoneOutput(self) -> float:
+        return _DeviceLogicType(self, _LT.RatioLiquidOzoneOutput)
+
+    @property
+    def RatioLiquidOzoneOutput2(self) -> float:
+        return _DeviceLogicType(self, _LT.RatioLiquidOzoneOutput2)
+
+    @property
     def RatioLiquidPollutantInput(self) -> float:
         return _DeviceLogicType(self, _LT.RatioLiquidPollutantInput)
 
@@ -14317,6 +16553,30 @@ class FiltrationLiquid(
     @property
     def RatioLiquidPollutantOutput2(self) -> float:
         return _DeviceLogicType(self, _LT.RatioLiquidPollutantOutput2)
+
+    @property
+    def RatioLiquidSilanolInput(self) -> float:
+        return _DeviceLogicType(self, _LT.RatioLiquidSilanolInput)
+
+    @property
+    def RatioLiquidSilanolOutput(self) -> float:
+        return _DeviceLogicType(self, _LT.RatioLiquidSilanolOutput)
+
+    @property
+    def RatioLiquidSilanolOutput2(self) -> float:
+        return _DeviceLogicType(self, _LT.RatioLiquidSilanolOutput2)
+
+    @property
+    def RatioLiquidSodiumChlorideInput(self) -> float:
+        return _DeviceLogicType(self, _LT.RatioLiquidSodiumChlorideInput)
+
+    @property
+    def RatioLiquidSodiumChlorideOutput(self) -> float:
+        return _DeviceLogicType(self, _LT.RatioLiquidSodiumChlorideOutput)
+
+    @property
+    def RatioLiquidSodiumChlorideOutput2(self) -> float:
+        return _DeviceLogicType(self, _LT.RatioLiquidSodiumChlorideOutput2)
 
     @property
     def RatioMethaneInput(self) -> float:
@@ -14367,6 +16627,18 @@ class FiltrationLiquid(
         return _DeviceLogicType(self, _LT.RatioOxygenOutput2)
 
     @property
+    def RatioOzoneInput(self) -> float:
+        return _DeviceLogicType(self, _LT.RatioOzoneInput)
+
+    @property
+    def RatioOzoneOutput(self) -> float:
+        return _DeviceLogicType(self, _LT.RatioOzoneOutput)
+
+    @property
+    def RatioOzoneOutput2(self) -> float:
+        return _DeviceLogicType(self, _LT.RatioOzoneOutput2)
+
+    @property
     def RatioPollutantInput(self) -> float:
         return _DeviceLogicType(self, _LT.RatioPollutantInput)
 
@@ -14377,6 +16649,30 @@ class FiltrationLiquid(
     @property
     def RatioPollutantOutput2(self) -> float:
         return _DeviceLogicType(self, _LT.RatioPollutantOutput2)
+
+    @property
+    def RatioPollutedWaterInput(self) -> float:
+        return _DeviceLogicType(self, _LT.RatioPollutedWaterInput)
+
+    @property
+    def RatioPollutedWaterOutput(self) -> float:
+        return _DeviceLogicType(self, _LT.RatioPollutedWaterOutput)
+
+    @property
+    def RatioPollutedWaterOutput2(self) -> float:
+        return _DeviceLogicType(self, _LT.RatioPollutedWaterOutput2)
+
+    @property
+    def RatioSilanolInput(self) -> float:
+        return _DeviceLogicType(self, _LT.RatioSilanolInput)
+
+    @property
+    def RatioSilanolOutput(self) -> float:
+        return _DeviceLogicType(self, _LT.RatioSilanolOutput)
+
+    @property
+    def RatioSilanolOutput2(self) -> float:
+        return _DeviceLogicType(self, _LT.RatioSilanolOutput2)
 
     @property
     def RatioSteamInput(self) -> float:
@@ -14513,6 +16809,66 @@ class _FiltrationLiquids(
         return _DevicesLogicType(self, _LT.RatioCarbonDioxideOutput2)
 
     @property
+    def RatioHeliumInput(self) -> _DevicesLogicType:
+        return _DevicesLogicType(self, _LT.RatioHeliumInput)
+
+    @property
+    def RatioHeliumOutput(self) -> _DevicesLogicType:
+        return _DevicesLogicType(self, _LT.RatioHeliumOutput)
+
+    @property
+    def RatioHeliumOutput2(self) -> _DevicesLogicType:
+        return _DevicesLogicType(self, _LT.RatioHeliumOutput2)
+
+    @property
+    def RatioHydrazineInput(self) -> _DevicesLogicType:
+        return _DevicesLogicType(self, _LT.RatioHydrazineInput)
+
+    @property
+    def RatioHydrazineOutput(self) -> _DevicesLogicType:
+        return _DevicesLogicType(self, _LT.RatioHydrazineOutput)
+
+    @property
+    def RatioHydrazineOutput2(self) -> _DevicesLogicType:
+        return _DevicesLogicType(self, _LT.RatioHydrazineOutput2)
+
+    @property
+    def RatioHydrochloricAcidInput(self) -> _DevicesLogicType:
+        return _DevicesLogicType(self, _LT.RatioHydrochloricAcidInput)
+
+    @property
+    def RatioHydrochloricAcidOutput(self) -> _DevicesLogicType:
+        return _DevicesLogicType(self, _LT.RatioHydrochloricAcidOutput)
+
+    @property
+    def RatioHydrochloricAcidOutput2(self) -> _DevicesLogicType:
+        return _DevicesLogicType(self, _LT.RatioHydrochloricAcidOutput2)
+
+    @property
+    def RatioHydrogenInput(self) -> _DevicesLogicType:
+        return _DevicesLogicType(self, _LT.RatioHydrogenInput)
+
+    @property
+    def RatioHydrogenOutput(self) -> _DevicesLogicType:
+        return _DevicesLogicType(self, _LT.RatioHydrogenOutput)
+
+    @property
+    def RatioHydrogenOutput2(self) -> _DevicesLogicType:
+        return _DevicesLogicType(self, _LT.RatioHydrogenOutput2)
+
+    @property
+    def RatioLiquidAlcoholInput(self) -> _DevicesLogicType:
+        return _DevicesLogicType(self, _LT.RatioLiquidAlcoholInput)
+
+    @property
+    def RatioLiquidAlcoholOutput(self) -> _DevicesLogicType:
+        return _DevicesLogicType(self, _LT.RatioLiquidAlcoholOutput)
+
+    @property
+    def RatioLiquidAlcoholOutput2(self) -> _DevicesLogicType:
+        return _DevicesLogicType(self, _LT.RatioLiquidAlcoholOutput2)
+
+    @property
     def RatioLiquidCarbonDioxideInput(self) -> _DevicesLogicType:
         return _DevicesLogicType(self, _LT.RatioLiquidCarbonDioxideInput)
 
@@ -14523,6 +16879,42 @@ class _FiltrationLiquids(
     @property
     def RatioLiquidCarbonDioxideOutput2(self) -> _DevicesLogicType:
         return _DevicesLogicType(self, _LT.RatioLiquidCarbonDioxideOutput2)
+
+    @property
+    def RatioLiquidHydrazineInput(self) -> _DevicesLogicType:
+        return _DevicesLogicType(self, _LT.RatioLiquidHydrazineInput)
+
+    @property
+    def RatioLiquidHydrazineOutput(self) -> _DevicesLogicType:
+        return _DevicesLogicType(self, _LT.RatioLiquidHydrazineOutput)
+
+    @property
+    def RatioLiquidHydrazineOutput2(self) -> _DevicesLogicType:
+        return _DevicesLogicType(self, _LT.RatioLiquidHydrazineOutput2)
+
+    @property
+    def RatioLiquidHydrochloricAcidInput(self) -> _DevicesLogicType:
+        return _DevicesLogicType(self, _LT.RatioLiquidHydrochloricAcidInput)
+
+    @property
+    def RatioLiquidHydrochloricAcidOutput(self) -> _DevicesLogicType:
+        return _DevicesLogicType(self, _LT.RatioLiquidHydrochloricAcidOutput)
+
+    @property
+    def RatioLiquidHydrochloricAcidOutput2(self) -> _DevicesLogicType:
+        return _DevicesLogicType(self, _LT.RatioLiquidHydrochloricAcidOutput2)
+
+    @property
+    def RatioLiquidHydrogenInput(self) -> _DevicesLogicType:
+        return _DevicesLogicType(self, _LT.RatioLiquidHydrogenInput)
+
+    @property
+    def RatioLiquidHydrogenOutput(self) -> _DevicesLogicType:
+        return _DevicesLogicType(self, _LT.RatioLiquidHydrogenOutput)
+
+    @property
+    def RatioLiquidHydrogenOutput2(self) -> _DevicesLogicType:
+        return _DevicesLogicType(self, _LT.RatioLiquidHydrogenOutput2)
 
     @property
     def RatioLiquidMethaneInput(self) -> _DevicesLogicType:
@@ -14573,6 +16965,18 @@ class _FiltrationLiquids(
         return _DevicesLogicType(self, _LT.RatioLiquidOxygenOutput2)
 
     @property
+    def RatioLiquidOzoneInput(self) -> _DevicesLogicType:
+        return _DevicesLogicType(self, _LT.RatioLiquidOzoneInput)
+
+    @property
+    def RatioLiquidOzoneOutput(self) -> _DevicesLogicType:
+        return _DevicesLogicType(self, _LT.RatioLiquidOzoneOutput)
+
+    @property
+    def RatioLiquidOzoneOutput2(self) -> _DevicesLogicType:
+        return _DevicesLogicType(self, _LT.RatioLiquidOzoneOutput2)
+
+    @property
     def RatioLiquidPollutantInput(self) -> _DevicesLogicType:
         return _DevicesLogicType(self, _LT.RatioLiquidPollutantInput)
 
@@ -14583,6 +16987,30 @@ class _FiltrationLiquids(
     @property
     def RatioLiquidPollutantOutput2(self) -> _DevicesLogicType:
         return _DevicesLogicType(self, _LT.RatioLiquidPollutantOutput2)
+
+    @property
+    def RatioLiquidSilanolInput(self) -> _DevicesLogicType:
+        return _DevicesLogicType(self, _LT.RatioLiquidSilanolInput)
+
+    @property
+    def RatioLiquidSilanolOutput(self) -> _DevicesLogicType:
+        return _DevicesLogicType(self, _LT.RatioLiquidSilanolOutput)
+
+    @property
+    def RatioLiquidSilanolOutput2(self) -> _DevicesLogicType:
+        return _DevicesLogicType(self, _LT.RatioLiquidSilanolOutput2)
+
+    @property
+    def RatioLiquidSodiumChlorideInput(self) -> _DevicesLogicType:
+        return _DevicesLogicType(self, _LT.RatioLiquidSodiumChlorideInput)
+
+    @property
+    def RatioLiquidSodiumChlorideOutput(self) -> _DevicesLogicType:
+        return _DevicesLogicType(self, _LT.RatioLiquidSodiumChlorideOutput)
+
+    @property
+    def RatioLiquidSodiumChlorideOutput2(self) -> _DevicesLogicType:
+        return _DevicesLogicType(self, _LT.RatioLiquidSodiumChlorideOutput2)
 
     @property
     def RatioMethaneInput(self) -> _DevicesLogicType:
@@ -14633,6 +17061,18 @@ class _FiltrationLiquids(
         return _DevicesLogicType(self, _LT.RatioOxygenOutput2)
 
     @property
+    def RatioOzoneInput(self) -> _DevicesLogicType:
+        return _DevicesLogicType(self, _LT.RatioOzoneInput)
+
+    @property
+    def RatioOzoneOutput(self) -> _DevicesLogicType:
+        return _DevicesLogicType(self, _LT.RatioOzoneOutput)
+
+    @property
+    def RatioOzoneOutput2(self) -> _DevicesLogicType:
+        return _DevicesLogicType(self, _LT.RatioOzoneOutput2)
+
+    @property
     def RatioPollutantInput(self) -> _DevicesLogicType:
         return _DevicesLogicType(self, _LT.RatioPollutantInput)
 
@@ -14643,6 +17083,30 @@ class _FiltrationLiquids(
     @property
     def RatioPollutantOutput2(self) -> _DevicesLogicType:
         return _DevicesLogicType(self, _LT.RatioPollutantOutput2)
+
+    @property
+    def RatioPollutedWaterInput(self) -> _DevicesLogicType:
+        return _DevicesLogicType(self, _LT.RatioPollutedWaterInput)
+
+    @property
+    def RatioPollutedWaterOutput(self) -> _DevicesLogicType:
+        return _DevicesLogicType(self, _LT.RatioPollutedWaterOutput)
+
+    @property
+    def RatioPollutedWaterOutput2(self) -> _DevicesLogicType:
+        return _DevicesLogicType(self, _LT.RatioPollutedWaterOutput2)
+
+    @property
+    def RatioSilanolInput(self) -> _DevicesLogicType:
+        return _DevicesLogicType(self, _LT.RatioSilanolInput)
+
+    @property
+    def RatioSilanolOutput(self) -> _DevicesLogicType:
+        return _DevicesLogicType(self, _LT.RatioSilanolOutput)
+
+    @property
+    def RatioSilanolOutput2(self) -> _DevicesLogicType:
+        return _DevicesLogicType(self, _LT.RatioSilanolOutput2)
 
     @property
     def RatioSteamInput(self) -> _DevicesLogicType:
@@ -14837,16 +17301,36 @@ class FridgeBig(
         return _DeviceLogicType(self, _LT.RatioHelium)
 
     @property
+    def RatioHeliumOutput(self) -> float:
+        return _DeviceLogicType(self, _LT.RatioHeliumOutput)
+
+    @property
     def RatioHydrazine(self) -> float:
         return _DeviceLogicType(self, _LT.RatioHydrazine)
+
+    @property
+    def RatioHydrazineOutput(self) -> float:
+        return _DeviceLogicType(self, _LT.RatioHydrazineOutput)
 
     @property
     def RatioHydrochloricAcid(self) -> float:
         return _DeviceLogicType(self, _LT.RatioHydrochloricAcid)
 
     @property
+    def RatioHydrochloricAcidOutput(self) -> float:
+        return _DeviceLogicType(self, _LT.RatioHydrochloricAcidOutput)
+
+    @property
+    def RatioHydrogenOutput(self) -> float:
+        return _DeviceLogicType(self, _LT.RatioHydrogenOutput)
+
+    @property
     def RatioLiquidAlcohol(self) -> float:
         return _DeviceLogicType(self, _LT.RatioLiquidAlcohol)
+
+    @property
+    def RatioLiquidAlcoholOutput(self) -> float:
+        return _DeviceLogicType(self, _LT.RatioLiquidAlcoholOutput)
 
     @property
     def RatioLiquidCarbonDioxide(self) -> float:
@@ -14857,8 +17341,20 @@ class FridgeBig(
         return _DeviceLogicType(self, _LT.RatioLiquidHydrazine)
 
     @property
+    def RatioLiquidHydrazineOutput(self) -> float:
+        return _DeviceLogicType(self, _LT.RatioLiquidHydrazineOutput)
+
+    @property
     def RatioLiquidHydrochloricAcid(self) -> float:
         return _DeviceLogicType(self, _LT.RatioLiquidHydrochloricAcid)
+
+    @property
+    def RatioLiquidHydrochloricAcidOutput(self) -> float:
+        return _DeviceLogicType(self, _LT.RatioLiquidHydrochloricAcidOutput)
+
+    @property
+    def RatioLiquidHydrogenOutput(self) -> float:
+        return _DeviceLogicType(self, _LT.RatioLiquidHydrogenOutput)
 
     @property
     def RatioLiquidMethane(self) -> float:
@@ -14881,6 +17377,10 @@ class FridgeBig(
         return _DeviceLogicType(self, _LT.RatioLiquidOzone)
 
     @property
+    def RatioLiquidOzoneOutput(self) -> float:
+        return _DeviceLogicType(self, _LT.RatioLiquidOzoneOutput)
+
+    @property
     def RatioLiquidPollutant(self) -> float:
         return _DeviceLogicType(self, _LT.RatioLiquidPollutant)
 
@@ -14889,8 +17389,16 @@ class FridgeBig(
         return _DeviceLogicType(self, _LT.RatioLiquidSilanol)
 
     @property
+    def RatioLiquidSilanolOutput(self) -> float:
+        return _DeviceLogicType(self, _LT.RatioLiquidSilanolOutput)
+
+    @property
     def RatioLiquidSodiumChloride(self) -> float:
         return _DeviceLogicType(self, _LT.RatioLiquidSodiumChloride)
+
+    @property
+    def RatioLiquidSodiumChlorideOutput(self) -> float:
+        return _DeviceLogicType(self, _LT.RatioLiquidSodiumChlorideOutput)
 
     @property
     def RatioMethane(self) -> float:
@@ -14929,6 +17437,10 @@ class FridgeBig(
         return _DeviceLogicType(self, _LT.RatioOzone)
 
     @property
+    def RatioOzoneOutput(self) -> float:
+        return _DeviceLogicType(self, _LT.RatioOzoneOutput)
+
+    @property
     def RatioPollutant(self) -> float:
         return _DeviceLogicType(self, _LT.RatioPollutant)
 
@@ -14937,8 +17449,16 @@ class FridgeBig(
         return _DeviceLogicType(self, _LT.RatioPollutantOutput)
 
     @property
+    def RatioPollutedWaterOutput(self) -> float:
+        return _DeviceLogicType(self, _LT.RatioPollutedWaterOutput)
+
+    @property
     def RatioSilanol(self) -> float:
         return _DeviceLogicType(self, _LT.RatioSilanol)
+
+    @property
+    def RatioSilanolOutput(self) -> float:
+        return _DeviceLogicType(self, _LT.RatioSilanolOutput)
 
     @property
     def RatioSteam(self) -> float:
@@ -15077,16 +17597,36 @@ class _FridgeBigs(
         return _DevicesLogicType(self, _LT.RatioHelium)
 
     @property
+    def RatioHeliumOutput(self) -> _DevicesLogicType:
+        return _DevicesLogicType(self, _LT.RatioHeliumOutput)
+
+    @property
     def RatioHydrazine(self) -> _DevicesLogicType:
         return _DevicesLogicType(self, _LT.RatioHydrazine)
+
+    @property
+    def RatioHydrazineOutput(self) -> _DevicesLogicType:
+        return _DevicesLogicType(self, _LT.RatioHydrazineOutput)
 
     @property
     def RatioHydrochloricAcid(self) -> _DevicesLogicType:
         return _DevicesLogicType(self, _LT.RatioHydrochloricAcid)
 
     @property
+    def RatioHydrochloricAcidOutput(self) -> _DevicesLogicType:
+        return _DevicesLogicType(self, _LT.RatioHydrochloricAcidOutput)
+
+    @property
+    def RatioHydrogenOutput(self) -> _DevicesLogicType:
+        return _DevicesLogicType(self, _LT.RatioHydrogenOutput)
+
+    @property
     def RatioLiquidAlcohol(self) -> _DevicesLogicType:
         return _DevicesLogicType(self, _LT.RatioLiquidAlcohol)
+
+    @property
+    def RatioLiquidAlcoholOutput(self) -> _DevicesLogicType:
+        return _DevicesLogicType(self, _LT.RatioLiquidAlcoholOutput)
 
     @property
     def RatioLiquidCarbonDioxide(self) -> _DevicesLogicType:
@@ -15097,8 +17637,20 @@ class _FridgeBigs(
         return _DevicesLogicType(self, _LT.RatioLiquidHydrazine)
 
     @property
+    def RatioLiquidHydrazineOutput(self) -> _DevicesLogicType:
+        return _DevicesLogicType(self, _LT.RatioLiquidHydrazineOutput)
+
+    @property
     def RatioLiquidHydrochloricAcid(self) -> _DevicesLogicType:
         return _DevicesLogicType(self, _LT.RatioLiquidHydrochloricAcid)
+
+    @property
+    def RatioLiquidHydrochloricAcidOutput(self) -> _DevicesLogicType:
+        return _DevicesLogicType(self, _LT.RatioLiquidHydrochloricAcidOutput)
+
+    @property
+    def RatioLiquidHydrogenOutput(self) -> _DevicesLogicType:
+        return _DevicesLogicType(self, _LT.RatioLiquidHydrogenOutput)
 
     @property
     def RatioLiquidMethane(self) -> _DevicesLogicType:
@@ -15121,6 +17673,10 @@ class _FridgeBigs(
         return _DevicesLogicType(self, _LT.RatioLiquidOzone)
 
     @property
+    def RatioLiquidOzoneOutput(self) -> _DevicesLogicType:
+        return _DevicesLogicType(self, _LT.RatioLiquidOzoneOutput)
+
+    @property
     def RatioLiquidPollutant(self) -> _DevicesLogicType:
         return _DevicesLogicType(self, _LT.RatioLiquidPollutant)
 
@@ -15129,8 +17685,16 @@ class _FridgeBigs(
         return _DevicesLogicType(self, _LT.RatioLiquidSilanol)
 
     @property
+    def RatioLiquidSilanolOutput(self) -> _DevicesLogicType:
+        return _DevicesLogicType(self, _LT.RatioLiquidSilanolOutput)
+
+    @property
     def RatioLiquidSodiumChloride(self) -> _DevicesLogicType:
         return _DevicesLogicType(self, _LT.RatioLiquidSodiumChloride)
+
+    @property
+    def RatioLiquidSodiumChlorideOutput(self) -> _DevicesLogicType:
+        return _DevicesLogicType(self, _LT.RatioLiquidSodiumChlorideOutput)
 
     @property
     def RatioMethane(self) -> _DevicesLogicType:
@@ -15169,6 +17733,10 @@ class _FridgeBigs(
         return _DevicesLogicType(self, _LT.RatioOzone)
 
     @property
+    def RatioOzoneOutput(self) -> _DevicesLogicType:
+        return _DevicesLogicType(self, _LT.RatioOzoneOutput)
+
+    @property
     def RatioPollutant(self) -> _DevicesLogicType:
         return _DevicesLogicType(self, _LT.RatioPollutant)
 
@@ -15177,8 +17745,16 @@ class _FridgeBigs(
         return _DevicesLogicType(self, _LT.RatioPollutantOutput)
 
     @property
+    def RatioPollutedWaterOutput(self) -> _DevicesLogicType:
+        return _DevicesLogicType(self, _LT.RatioPollutedWaterOutput)
+
+    @property
     def RatioSilanol(self) -> _DevicesLogicType:
         return _DevicesLogicType(self, _LT.RatioSilanol)
+
+    @property
+    def RatioSilanolOutput(self) -> _DevicesLogicType:
+        return _DevicesLogicType(self, _LT.RatioSilanolOutput)
 
     @property
     def RatioSteam(self) -> _DevicesLogicType:
@@ -15299,16 +17875,36 @@ class FridgeSmall(
         return _DeviceLogicType(self, _LT.RatioHelium)
 
     @property
+    def RatioHeliumOutput(self) -> float:
+        return _DeviceLogicType(self, _LT.RatioHeliumOutput)
+
+    @property
     def RatioHydrazine(self) -> float:
         return _DeviceLogicType(self, _LT.RatioHydrazine)
+
+    @property
+    def RatioHydrazineOutput(self) -> float:
+        return _DeviceLogicType(self, _LT.RatioHydrazineOutput)
 
     @property
     def RatioHydrochloricAcid(self) -> float:
         return _DeviceLogicType(self, _LT.RatioHydrochloricAcid)
 
     @property
+    def RatioHydrochloricAcidOutput(self) -> float:
+        return _DeviceLogicType(self, _LT.RatioHydrochloricAcidOutput)
+
+    @property
+    def RatioHydrogenOutput(self) -> float:
+        return _DeviceLogicType(self, _LT.RatioHydrogenOutput)
+
+    @property
     def RatioLiquidAlcohol(self) -> float:
         return _DeviceLogicType(self, _LT.RatioLiquidAlcohol)
+
+    @property
+    def RatioLiquidAlcoholOutput(self) -> float:
+        return _DeviceLogicType(self, _LT.RatioLiquidAlcoholOutput)
 
     @property
     def RatioLiquidCarbonDioxide(self) -> float:
@@ -15319,8 +17915,20 @@ class FridgeSmall(
         return _DeviceLogicType(self, _LT.RatioLiquidHydrazine)
 
     @property
+    def RatioLiquidHydrazineOutput(self) -> float:
+        return _DeviceLogicType(self, _LT.RatioLiquidHydrazineOutput)
+
+    @property
     def RatioLiquidHydrochloricAcid(self) -> float:
         return _DeviceLogicType(self, _LT.RatioLiquidHydrochloricAcid)
+
+    @property
+    def RatioLiquidHydrochloricAcidOutput(self) -> float:
+        return _DeviceLogicType(self, _LT.RatioLiquidHydrochloricAcidOutput)
+
+    @property
+    def RatioLiquidHydrogenOutput(self) -> float:
+        return _DeviceLogicType(self, _LT.RatioLiquidHydrogenOutput)
 
     @property
     def RatioLiquidMethane(self) -> float:
@@ -15343,6 +17951,10 @@ class FridgeSmall(
         return _DeviceLogicType(self, _LT.RatioLiquidOzone)
 
     @property
+    def RatioLiquidOzoneOutput(self) -> float:
+        return _DeviceLogicType(self, _LT.RatioLiquidOzoneOutput)
+
+    @property
     def RatioLiquidPollutant(self) -> float:
         return _DeviceLogicType(self, _LT.RatioLiquidPollutant)
 
@@ -15351,8 +17963,16 @@ class FridgeSmall(
         return _DeviceLogicType(self, _LT.RatioLiquidSilanol)
 
     @property
+    def RatioLiquidSilanolOutput(self) -> float:
+        return _DeviceLogicType(self, _LT.RatioLiquidSilanolOutput)
+
+    @property
     def RatioLiquidSodiumChloride(self) -> float:
         return _DeviceLogicType(self, _LT.RatioLiquidSodiumChloride)
+
+    @property
+    def RatioLiquidSodiumChlorideOutput(self) -> float:
+        return _DeviceLogicType(self, _LT.RatioLiquidSodiumChlorideOutput)
 
     @property
     def RatioMethane(self) -> float:
@@ -15391,6 +18011,10 @@ class FridgeSmall(
         return _DeviceLogicType(self, _LT.RatioOzone)
 
     @property
+    def RatioOzoneOutput(self) -> float:
+        return _DeviceLogicType(self, _LT.RatioOzoneOutput)
+
+    @property
     def RatioPollutant(self) -> float:
         return _DeviceLogicType(self, _LT.RatioPollutant)
 
@@ -15399,8 +18023,16 @@ class FridgeSmall(
         return _DeviceLogicType(self, _LT.RatioPollutantOutput)
 
     @property
+    def RatioPollutedWaterOutput(self) -> float:
+        return _DeviceLogicType(self, _LT.RatioPollutedWaterOutput)
+
+    @property
     def RatioSilanol(self) -> float:
         return _DeviceLogicType(self, _LT.RatioSilanol)
+
+    @property
+    def RatioSilanolOutput(self) -> float:
+        return _DeviceLogicType(self, _LT.RatioSilanolOutput)
 
     @property
     def RatioSteam(self) -> float:
@@ -15485,16 +18117,36 @@ class _FridgeSmalls(
         return _DevicesLogicType(self, _LT.RatioHelium)
 
     @property
+    def RatioHeliumOutput(self) -> _DevicesLogicType:
+        return _DevicesLogicType(self, _LT.RatioHeliumOutput)
+
+    @property
     def RatioHydrazine(self) -> _DevicesLogicType:
         return _DevicesLogicType(self, _LT.RatioHydrazine)
+
+    @property
+    def RatioHydrazineOutput(self) -> _DevicesLogicType:
+        return _DevicesLogicType(self, _LT.RatioHydrazineOutput)
 
     @property
     def RatioHydrochloricAcid(self) -> _DevicesLogicType:
         return _DevicesLogicType(self, _LT.RatioHydrochloricAcid)
 
     @property
+    def RatioHydrochloricAcidOutput(self) -> _DevicesLogicType:
+        return _DevicesLogicType(self, _LT.RatioHydrochloricAcidOutput)
+
+    @property
+    def RatioHydrogenOutput(self) -> _DevicesLogicType:
+        return _DevicesLogicType(self, _LT.RatioHydrogenOutput)
+
+    @property
     def RatioLiquidAlcohol(self) -> _DevicesLogicType:
         return _DevicesLogicType(self, _LT.RatioLiquidAlcohol)
+
+    @property
+    def RatioLiquidAlcoholOutput(self) -> _DevicesLogicType:
+        return _DevicesLogicType(self, _LT.RatioLiquidAlcoholOutput)
 
     @property
     def RatioLiquidCarbonDioxide(self) -> _DevicesLogicType:
@@ -15505,8 +18157,20 @@ class _FridgeSmalls(
         return _DevicesLogicType(self, _LT.RatioLiquidHydrazine)
 
     @property
+    def RatioLiquidHydrazineOutput(self) -> _DevicesLogicType:
+        return _DevicesLogicType(self, _LT.RatioLiquidHydrazineOutput)
+
+    @property
     def RatioLiquidHydrochloricAcid(self) -> _DevicesLogicType:
         return _DevicesLogicType(self, _LT.RatioLiquidHydrochloricAcid)
+
+    @property
+    def RatioLiquidHydrochloricAcidOutput(self) -> _DevicesLogicType:
+        return _DevicesLogicType(self, _LT.RatioLiquidHydrochloricAcidOutput)
+
+    @property
+    def RatioLiquidHydrogenOutput(self) -> _DevicesLogicType:
+        return _DevicesLogicType(self, _LT.RatioLiquidHydrogenOutput)
 
     @property
     def RatioLiquidMethane(self) -> _DevicesLogicType:
@@ -15529,6 +18193,10 @@ class _FridgeSmalls(
         return _DevicesLogicType(self, _LT.RatioLiquidOzone)
 
     @property
+    def RatioLiquidOzoneOutput(self) -> _DevicesLogicType:
+        return _DevicesLogicType(self, _LT.RatioLiquidOzoneOutput)
+
+    @property
     def RatioLiquidPollutant(self) -> _DevicesLogicType:
         return _DevicesLogicType(self, _LT.RatioLiquidPollutant)
 
@@ -15537,8 +18205,16 @@ class _FridgeSmalls(
         return _DevicesLogicType(self, _LT.RatioLiquidSilanol)
 
     @property
+    def RatioLiquidSilanolOutput(self) -> _DevicesLogicType:
+        return _DevicesLogicType(self, _LT.RatioLiquidSilanolOutput)
+
+    @property
     def RatioLiquidSodiumChloride(self) -> _DevicesLogicType:
         return _DevicesLogicType(self, _LT.RatioLiquidSodiumChloride)
+
+    @property
+    def RatioLiquidSodiumChlorideOutput(self) -> _DevicesLogicType:
+        return _DevicesLogicType(self, _LT.RatioLiquidSodiumChlorideOutput)
 
     @property
     def RatioMethane(self) -> _DevicesLogicType:
@@ -15577,6 +18253,10 @@ class _FridgeSmalls(
         return _DevicesLogicType(self, _LT.RatioOzone)
 
     @property
+    def RatioOzoneOutput(self) -> _DevicesLogicType:
+        return _DevicesLogicType(self, _LT.RatioOzoneOutput)
+
+    @property
     def RatioPollutant(self) -> _DevicesLogicType:
         return _DevicesLogicType(self, _LT.RatioPollutant)
 
@@ -15585,8 +18265,16 @@ class _FridgeSmalls(
         return _DevicesLogicType(self, _LT.RatioPollutantOutput)
 
     @property
+    def RatioPollutedWaterOutput(self) -> _DevicesLogicType:
+        return _DevicesLogicType(self, _LT.RatioPollutedWaterOutput)
+
+    @property
     def RatioSilanol(self) -> _DevicesLogicType:
         return _DevicesLogicType(self, _LT.RatioSilanol)
+
+    @property
+    def RatioSilanolOutput(self) -> _DevicesLogicType:
+        return _DevicesLogicType(self, _LT.RatioSilanolOutput)
 
     @property
     def RatioSteam(self) -> _DevicesLogicType:
@@ -15961,16 +18649,36 @@ class LargeRocketGasFuelTank(
         return _DeviceLogicType(self, _LT.RatioHelium)
 
     @property
+    def RatioHeliumOutput(self) -> float:
+        return _DeviceLogicType(self, _LT.RatioHeliumOutput)
+
+    @property
     def RatioHydrazine(self) -> float:
         return _DeviceLogicType(self, _LT.RatioHydrazine)
+
+    @property
+    def RatioHydrazineOutput(self) -> float:
+        return _DeviceLogicType(self, _LT.RatioHydrazineOutput)
 
     @property
     def RatioHydrochloricAcid(self) -> float:
         return _DeviceLogicType(self, _LT.RatioHydrochloricAcid)
 
     @property
+    def RatioHydrochloricAcidOutput(self) -> float:
+        return _DeviceLogicType(self, _LT.RatioHydrochloricAcidOutput)
+
+    @property
+    def RatioHydrogenOutput(self) -> float:
+        return _DeviceLogicType(self, _LT.RatioHydrogenOutput)
+
+    @property
     def RatioLiquidAlcohol(self) -> float:
         return _DeviceLogicType(self, _LT.RatioLiquidAlcohol)
+
+    @property
+    def RatioLiquidAlcoholOutput(self) -> float:
+        return _DeviceLogicType(self, _LT.RatioLiquidAlcoholOutput)
 
     @property
     def RatioLiquidCarbonDioxide(self) -> float:
@@ -15981,8 +18689,20 @@ class LargeRocketGasFuelTank(
         return _DeviceLogicType(self, _LT.RatioLiquidHydrazine)
 
     @property
+    def RatioLiquidHydrazineOutput(self) -> float:
+        return _DeviceLogicType(self, _LT.RatioLiquidHydrazineOutput)
+
+    @property
     def RatioLiquidHydrochloricAcid(self) -> float:
         return _DeviceLogicType(self, _LT.RatioLiquidHydrochloricAcid)
+
+    @property
+    def RatioLiquidHydrochloricAcidOutput(self) -> float:
+        return _DeviceLogicType(self, _LT.RatioLiquidHydrochloricAcidOutput)
+
+    @property
+    def RatioLiquidHydrogenOutput(self) -> float:
+        return _DeviceLogicType(self, _LT.RatioLiquidHydrogenOutput)
 
     @property
     def RatioLiquidMethane(self) -> float:
@@ -16005,6 +18725,10 @@ class LargeRocketGasFuelTank(
         return _DeviceLogicType(self, _LT.RatioLiquidOzone)
 
     @property
+    def RatioLiquidOzoneOutput(self) -> float:
+        return _DeviceLogicType(self, _LT.RatioLiquidOzoneOutput)
+
+    @property
     def RatioLiquidPollutant(self) -> float:
         return _DeviceLogicType(self, _LT.RatioLiquidPollutant)
 
@@ -16013,8 +18737,16 @@ class LargeRocketGasFuelTank(
         return _DeviceLogicType(self, _LT.RatioLiquidSilanol)
 
     @property
+    def RatioLiquidSilanolOutput(self) -> float:
+        return _DeviceLogicType(self, _LT.RatioLiquidSilanolOutput)
+
+    @property
     def RatioLiquidSodiumChloride(self) -> float:
         return _DeviceLogicType(self, _LT.RatioLiquidSodiumChloride)
+
+    @property
+    def RatioLiquidSodiumChlorideOutput(self) -> float:
+        return _DeviceLogicType(self, _LT.RatioLiquidSodiumChlorideOutput)
 
     @property
     def RatioMethane(self) -> float:
@@ -16053,6 +18785,10 @@ class LargeRocketGasFuelTank(
         return _DeviceLogicType(self, _LT.RatioOzone)
 
     @property
+    def RatioOzoneOutput(self) -> float:
+        return _DeviceLogicType(self, _LT.RatioOzoneOutput)
+
+    @property
     def RatioPollutant(self) -> float:
         return _DeviceLogicType(self, _LT.RatioPollutant)
 
@@ -16061,8 +18797,16 @@ class LargeRocketGasFuelTank(
         return _DeviceLogicType(self, _LT.RatioPollutantOutput)
 
     @property
+    def RatioPollutedWaterOutput(self) -> float:
+        return _DeviceLogicType(self, _LT.RatioPollutedWaterOutput)
+
+    @property
     def RatioSilanol(self) -> float:
         return _DeviceLogicType(self, _LT.RatioSilanol)
+
+    @property
+    def RatioSilanolOutput(self) -> float:
+        return _DeviceLogicType(self, _LT.RatioSilanolOutput)
 
     @property
     def RatioSteam(self) -> float:
@@ -16145,16 +18889,36 @@ class _LargeRocketGasFuelTanks(
         return _DevicesLogicType(self, _LT.RatioHelium)
 
     @property
+    def RatioHeliumOutput(self) -> _DevicesLogicType:
+        return _DevicesLogicType(self, _LT.RatioHeliumOutput)
+
+    @property
     def RatioHydrazine(self) -> _DevicesLogicType:
         return _DevicesLogicType(self, _LT.RatioHydrazine)
+
+    @property
+    def RatioHydrazineOutput(self) -> _DevicesLogicType:
+        return _DevicesLogicType(self, _LT.RatioHydrazineOutput)
 
     @property
     def RatioHydrochloricAcid(self) -> _DevicesLogicType:
         return _DevicesLogicType(self, _LT.RatioHydrochloricAcid)
 
     @property
+    def RatioHydrochloricAcidOutput(self) -> _DevicesLogicType:
+        return _DevicesLogicType(self, _LT.RatioHydrochloricAcidOutput)
+
+    @property
+    def RatioHydrogenOutput(self) -> _DevicesLogicType:
+        return _DevicesLogicType(self, _LT.RatioHydrogenOutput)
+
+    @property
     def RatioLiquidAlcohol(self) -> _DevicesLogicType:
         return _DevicesLogicType(self, _LT.RatioLiquidAlcohol)
+
+    @property
+    def RatioLiquidAlcoholOutput(self) -> _DevicesLogicType:
+        return _DevicesLogicType(self, _LT.RatioLiquidAlcoholOutput)
 
     @property
     def RatioLiquidCarbonDioxide(self) -> _DevicesLogicType:
@@ -16165,8 +18929,20 @@ class _LargeRocketGasFuelTanks(
         return _DevicesLogicType(self, _LT.RatioLiquidHydrazine)
 
     @property
+    def RatioLiquidHydrazineOutput(self) -> _DevicesLogicType:
+        return _DevicesLogicType(self, _LT.RatioLiquidHydrazineOutput)
+
+    @property
     def RatioLiquidHydrochloricAcid(self) -> _DevicesLogicType:
         return _DevicesLogicType(self, _LT.RatioLiquidHydrochloricAcid)
+
+    @property
+    def RatioLiquidHydrochloricAcidOutput(self) -> _DevicesLogicType:
+        return _DevicesLogicType(self, _LT.RatioLiquidHydrochloricAcidOutput)
+
+    @property
+    def RatioLiquidHydrogenOutput(self) -> _DevicesLogicType:
+        return _DevicesLogicType(self, _LT.RatioLiquidHydrogenOutput)
 
     @property
     def RatioLiquidMethane(self) -> _DevicesLogicType:
@@ -16189,6 +18965,10 @@ class _LargeRocketGasFuelTanks(
         return _DevicesLogicType(self, _LT.RatioLiquidOzone)
 
     @property
+    def RatioLiquidOzoneOutput(self) -> _DevicesLogicType:
+        return _DevicesLogicType(self, _LT.RatioLiquidOzoneOutput)
+
+    @property
     def RatioLiquidPollutant(self) -> _DevicesLogicType:
         return _DevicesLogicType(self, _LT.RatioLiquidPollutant)
 
@@ -16197,8 +18977,16 @@ class _LargeRocketGasFuelTanks(
         return _DevicesLogicType(self, _LT.RatioLiquidSilanol)
 
     @property
+    def RatioLiquidSilanolOutput(self) -> _DevicesLogicType:
+        return _DevicesLogicType(self, _LT.RatioLiquidSilanolOutput)
+
+    @property
     def RatioLiquidSodiumChloride(self) -> _DevicesLogicType:
         return _DevicesLogicType(self, _LT.RatioLiquidSodiumChloride)
+
+    @property
+    def RatioLiquidSodiumChlorideOutput(self) -> _DevicesLogicType:
+        return _DevicesLogicType(self, _LT.RatioLiquidSodiumChlorideOutput)
 
     @property
     def RatioMethane(self) -> _DevicesLogicType:
@@ -16237,6 +19025,10 @@ class _LargeRocketGasFuelTanks(
         return _DevicesLogicType(self, _LT.RatioOzone)
 
     @property
+    def RatioOzoneOutput(self) -> _DevicesLogicType:
+        return _DevicesLogicType(self, _LT.RatioOzoneOutput)
+
+    @property
     def RatioPollutant(self) -> _DevicesLogicType:
         return _DevicesLogicType(self, _LT.RatioPollutant)
 
@@ -16245,8 +19037,16 @@ class _LargeRocketGasFuelTanks(
         return _DevicesLogicType(self, _LT.RatioPollutantOutput)
 
     @property
+    def RatioPollutedWaterOutput(self) -> _DevicesLogicType:
+        return _DevicesLogicType(self, _LT.RatioPollutedWaterOutput)
+
+    @property
     def RatioSilanol(self) -> _DevicesLogicType:
         return _DevicesLogicType(self, _LT.RatioSilanol)
+
+    @property
+    def RatioSilanolOutput(self) -> _DevicesLogicType:
+        return _DevicesLogicType(self, _LT.RatioSilanolOutput)
 
     @property
     def RatioSteam(self) -> _DevicesLogicType:
@@ -16307,16 +19107,36 @@ class MediumRocketGasFuelTank(
         return _DeviceLogicType(self, _LT.RatioHelium)
 
     @property
+    def RatioHeliumOutput(self) -> float:
+        return _DeviceLogicType(self, _LT.RatioHeliumOutput)
+
+    @property
     def RatioHydrazine(self) -> float:
         return _DeviceLogicType(self, _LT.RatioHydrazine)
+
+    @property
+    def RatioHydrazineOutput(self) -> float:
+        return _DeviceLogicType(self, _LT.RatioHydrazineOutput)
 
     @property
     def RatioHydrochloricAcid(self) -> float:
         return _DeviceLogicType(self, _LT.RatioHydrochloricAcid)
 
     @property
+    def RatioHydrochloricAcidOutput(self) -> float:
+        return _DeviceLogicType(self, _LT.RatioHydrochloricAcidOutput)
+
+    @property
+    def RatioHydrogenOutput(self) -> float:
+        return _DeviceLogicType(self, _LT.RatioHydrogenOutput)
+
+    @property
     def RatioLiquidAlcohol(self) -> float:
         return _DeviceLogicType(self, _LT.RatioLiquidAlcohol)
+
+    @property
+    def RatioLiquidAlcoholOutput(self) -> float:
+        return _DeviceLogicType(self, _LT.RatioLiquidAlcoholOutput)
 
     @property
     def RatioLiquidCarbonDioxide(self) -> float:
@@ -16327,8 +19147,20 @@ class MediumRocketGasFuelTank(
         return _DeviceLogicType(self, _LT.RatioLiquidHydrazine)
 
     @property
+    def RatioLiquidHydrazineOutput(self) -> float:
+        return _DeviceLogicType(self, _LT.RatioLiquidHydrazineOutput)
+
+    @property
     def RatioLiquidHydrochloricAcid(self) -> float:
         return _DeviceLogicType(self, _LT.RatioLiquidHydrochloricAcid)
+
+    @property
+    def RatioLiquidHydrochloricAcidOutput(self) -> float:
+        return _DeviceLogicType(self, _LT.RatioLiquidHydrochloricAcidOutput)
+
+    @property
+    def RatioLiquidHydrogenOutput(self) -> float:
+        return _DeviceLogicType(self, _LT.RatioLiquidHydrogenOutput)
 
     @property
     def RatioLiquidMethane(self) -> float:
@@ -16351,6 +19183,10 @@ class MediumRocketGasFuelTank(
         return _DeviceLogicType(self, _LT.RatioLiquidOzone)
 
     @property
+    def RatioLiquidOzoneOutput(self) -> float:
+        return _DeviceLogicType(self, _LT.RatioLiquidOzoneOutput)
+
+    @property
     def RatioLiquidPollutant(self) -> float:
         return _DeviceLogicType(self, _LT.RatioLiquidPollutant)
 
@@ -16359,8 +19195,16 @@ class MediumRocketGasFuelTank(
         return _DeviceLogicType(self, _LT.RatioLiquidSilanol)
 
     @property
+    def RatioLiquidSilanolOutput(self) -> float:
+        return _DeviceLogicType(self, _LT.RatioLiquidSilanolOutput)
+
+    @property
     def RatioLiquidSodiumChloride(self) -> float:
         return _DeviceLogicType(self, _LT.RatioLiquidSodiumChloride)
+
+    @property
+    def RatioLiquidSodiumChlorideOutput(self) -> float:
+        return _DeviceLogicType(self, _LT.RatioLiquidSodiumChlorideOutput)
 
     @property
     def RatioMethane(self) -> float:
@@ -16399,6 +19243,10 @@ class MediumRocketGasFuelTank(
         return _DeviceLogicType(self, _LT.RatioOzone)
 
     @property
+    def RatioOzoneOutput(self) -> float:
+        return _DeviceLogicType(self, _LT.RatioOzoneOutput)
+
+    @property
     def RatioPollutant(self) -> float:
         return _DeviceLogicType(self, _LT.RatioPollutant)
 
@@ -16407,8 +19255,16 @@ class MediumRocketGasFuelTank(
         return _DeviceLogicType(self, _LT.RatioPollutantOutput)
 
     @property
+    def RatioPollutedWaterOutput(self) -> float:
+        return _DeviceLogicType(self, _LT.RatioPollutedWaterOutput)
+
+    @property
     def RatioSilanol(self) -> float:
         return _DeviceLogicType(self, _LT.RatioSilanol)
+
+    @property
+    def RatioSilanolOutput(self) -> float:
+        return _DeviceLogicType(self, _LT.RatioSilanolOutput)
 
     @property
     def RatioSteam(self) -> float:
@@ -16491,16 +19347,36 @@ class _MediumRocketGasFuelTanks(
         return _DevicesLogicType(self, _LT.RatioHelium)
 
     @property
+    def RatioHeliumOutput(self) -> _DevicesLogicType:
+        return _DevicesLogicType(self, _LT.RatioHeliumOutput)
+
+    @property
     def RatioHydrazine(self) -> _DevicesLogicType:
         return _DevicesLogicType(self, _LT.RatioHydrazine)
+
+    @property
+    def RatioHydrazineOutput(self) -> _DevicesLogicType:
+        return _DevicesLogicType(self, _LT.RatioHydrazineOutput)
 
     @property
     def RatioHydrochloricAcid(self) -> _DevicesLogicType:
         return _DevicesLogicType(self, _LT.RatioHydrochloricAcid)
 
     @property
+    def RatioHydrochloricAcidOutput(self) -> _DevicesLogicType:
+        return _DevicesLogicType(self, _LT.RatioHydrochloricAcidOutput)
+
+    @property
+    def RatioHydrogenOutput(self) -> _DevicesLogicType:
+        return _DevicesLogicType(self, _LT.RatioHydrogenOutput)
+
+    @property
     def RatioLiquidAlcohol(self) -> _DevicesLogicType:
         return _DevicesLogicType(self, _LT.RatioLiquidAlcohol)
+
+    @property
+    def RatioLiquidAlcoholOutput(self) -> _DevicesLogicType:
+        return _DevicesLogicType(self, _LT.RatioLiquidAlcoholOutput)
 
     @property
     def RatioLiquidCarbonDioxide(self) -> _DevicesLogicType:
@@ -16511,8 +19387,20 @@ class _MediumRocketGasFuelTanks(
         return _DevicesLogicType(self, _LT.RatioLiquidHydrazine)
 
     @property
+    def RatioLiquidHydrazineOutput(self) -> _DevicesLogicType:
+        return _DevicesLogicType(self, _LT.RatioLiquidHydrazineOutput)
+
+    @property
     def RatioLiquidHydrochloricAcid(self) -> _DevicesLogicType:
         return _DevicesLogicType(self, _LT.RatioLiquidHydrochloricAcid)
+
+    @property
+    def RatioLiquidHydrochloricAcidOutput(self) -> _DevicesLogicType:
+        return _DevicesLogicType(self, _LT.RatioLiquidHydrochloricAcidOutput)
+
+    @property
+    def RatioLiquidHydrogenOutput(self) -> _DevicesLogicType:
+        return _DevicesLogicType(self, _LT.RatioLiquidHydrogenOutput)
 
     @property
     def RatioLiquidMethane(self) -> _DevicesLogicType:
@@ -16535,6 +19423,10 @@ class _MediumRocketGasFuelTanks(
         return _DevicesLogicType(self, _LT.RatioLiquidOzone)
 
     @property
+    def RatioLiquidOzoneOutput(self) -> _DevicesLogicType:
+        return _DevicesLogicType(self, _LT.RatioLiquidOzoneOutput)
+
+    @property
     def RatioLiquidPollutant(self) -> _DevicesLogicType:
         return _DevicesLogicType(self, _LT.RatioLiquidPollutant)
 
@@ -16543,8 +19435,16 @@ class _MediumRocketGasFuelTanks(
         return _DevicesLogicType(self, _LT.RatioLiquidSilanol)
 
     @property
+    def RatioLiquidSilanolOutput(self) -> _DevicesLogicType:
+        return _DevicesLogicType(self, _LT.RatioLiquidSilanolOutput)
+
+    @property
     def RatioLiquidSodiumChloride(self) -> _DevicesLogicType:
         return _DevicesLogicType(self, _LT.RatioLiquidSodiumChloride)
+
+    @property
+    def RatioLiquidSodiumChlorideOutput(self) -> _DevicesLogicType:
+        return _DevicesLogicType(self, _LT.RatioLiquidSodiumChlorideOutput)
 
     @property
     def RatioMethane(self) -> _DevicesLogicType:
@@ -16583,6 +19483,10 @@ class _MediumRocketGasFuelTanks(
         return _DevicesLogicType(self, _LT.RatioOzone)
 
     @property
+    def RatioOzoneOutput(self) -> _DevicesLogicType:
+        return _DevicesLogicType(self, _LT.RatioOzoneOutput)
+
+    @property
     def RatioPollutant(self) -> _DevicesLogicType:
         return _DevicesLogicType(self, _LT.RatioPollutant)
 
@@ -16591,8 +19495,16 @@ class _MediumRocketGasFuelTanks(
         return _DevicesLogicType(self, _LT.RatioPollutantOutput)
 
     @property
+    def RatioPollutedWaterOutput(self) -> _DevicesLogicType:
+        return _DevicesLogicType(self, _LT.RatioPollutedWaterOutput)
+
+    @property
     def RatioSilanol(self) -> _DevicesLogicType:
         return _DevicesLogicType(self, _LT.RatioSilanol)
+
+    @property
+    def RatioSilanolOutput(self) -> _DevicesLogicType:
+        return _DevicesLogicType(self, _LT.RatioSilanolOutput)
 
     @property
     def RatioSteam(self) -> _DevicesLogicType:
@@ -16653,16 +19565,36 @@ class CapsuleTankGas(
         return _DeviceLogicType(self, _LT.RatioHelium)
 
     @property
+    def RatioHeliumOutput(self) -> float:
+        return _DeviceLogicType(self, _LT.RatioHeliumOutput)
+
+    @property
     def RatioHydrazine(self) -> float:
         return _DeviceLogicType(self, _LT.RatioHydrazine)
+
+    @property
+    def RatioHydrazineOutput(self) -> float:
+        return _DeviceLogicType(self, _LT.RatioHydrazineOutput)
 
     @property
     def RatioHydrochloricAcid(self) -> float:
         return _DeviceLogicType(self, _LT.RatioHydrochloricAcid)
 
     @property
+    def RatioHydrochloricAcidOutput(self) -> float:
+        return _DeviceLogicType(self, _LT.RatioHydrochloricAcidOutput)
+
+    @property
+    def RatioHydrogenOutput(self) -> float:
+        return _DeviceLogicType(self, _LT.RatioHydrogenOutput)
+
+    @property
     def RatioLiquidAlcohol(self) -> float:
         return _DeviceLogicType(self, _LT.RatioLiquidAlcohol)
+
+    @property
+    def RatioLiquidAlcoholOutput(self) -> float:
+        return _DeviceLogicType(self, _LT.RatioLiquidAlcoholOutput)
 
     @property
     def RatioLiquidCarbonDioxide(self) -> float:
@@ -16673,8 +19605,20 @@ class CapsuleTankGas(
         return _DeviceLogicType(self, _LT.RatioLiquidHydrazine)
 
     @property
+    def RatioLiquidHydrazineOutput(self) -> float:
+        return _DeviceLogicType(self, _LT.RatioLiquidHydrazineOutput)
+
+    @property
     def RatioLiquidHydrochloricAcid(self) -> float:
         return _DeviceLogicType(self, _LT.RatioLiquidHydrochloricAcid)
+
+    @property
+    def RatioLiquidHydrochloricAcidOutput(self) -> float:
+        return _DeviceLogicType(self, _LT.RatioLiquidHydrochloricAcidOutput)
+
+    @property
+    def RatioLiquidHydrogenOutput(self) -> float:
+        return _DeviceLogicType(self, _LT.RatioLiquidHydrogenOutput)
 
     @property
     def RatioLiquidMethane(self) -> float:
@@ -16697,6 +19641,10 @@ class CapsuleTankGas(
         return _DeviceLogicType(self, _LT.RatioLiquidOzone)
 
     @property
+    def RatioLiquidOzoneOutput(self) -> float:
+        return _DeviceLogicType(self, _LT.RatioLiquidOzoneOutput)
+
+    @property
     def RatioLiquidPollutant(self) -> float:
         return _DeviceLogicType(self, _LT.RatioLiquidPollutant)
 
@@ -16705,8 +19653,16 @@ class CapsuleTankGas(
         return _DeviceLogicType(self, _LT.RatioLiquidSilanol)
 
     @property
+    def RatioLiquidSilanolOutput(self) -> float:
+        return _DeviceLogicType(self, _LT.RatioLiquidSilanolOutput)
+
+    @property
     def RatioLiquidSodiumChloride(self) -> float:
         return _DeviceLogicType(self, _LT.RatioLiquidSodiumChloride)
+
+    @property
+    def RatioLiquidSodiumChlorideOutput(self) -> float:
+        return _DeviceLogicType(self, _LT.RatioLiquidSodiumChlorideOutput)
 
     @property
     def RatioMethane(self) -> float:
@@ -16745,6 +19701,10 @@ class CapsuleTankGas(
         return _DeviceLogicType(self, _LT.RatioOzone)
 
     @property
+    def RatioOzoneOutput(self) -> float:
+        return _DeviceLogicType(self, _LT.RatioOzoneOutput)
+
+    @property
     def RatioPollutant(self) -> float:
         return _DeviceLogicType(self, _LT.RatioPollutant)
 
@@ -16753,8 +19713,16 @@ class CapsuleTankGas(
         return _DeviceLogicType(self, _LT.RatioPollutantOutput)
 
     @property
+    def RatioPollutedWaterOutput(self) -> float:
+        return _DeviceLogicType(self, _LT.RatioPollutedWaterOutput)
+
+    @property
     def RatioSilanol(self) -> float:
         return _DeviceLogicType(self, _LT.RatioSilanol)
+
+    @property
+    def RatioSilanolOutput(self) -> float:
+        return _DeviceLogicType(self, _LT.RatioSilanolOutput)
 
     @property
     def RatioSteam(self) -> float:
@@ -16831,16 +19799,36 @@ class _CapsuleTankGass(
         return _DevicesLogicType(self, _LT.RatioHelium)
 
     @property
+    def RatioHeliumOutput(self) -> _DevicesLogicType:
+        return _DevicesLogicType(self, _LT.RatioHeliumOutput)
+
+    @property
     def RatioHydrazine(self) -> _DevicesLogicType:
         return _DevicesLogicType(self, _LT.RatioHydrazine)
+
+    @property
+    def RatioHydrazineOutput(self) -> _DevicesLogicType:
+        return _DevicesLogicType(self, _LT.RatioHydrazineOutput)
 
     @property
     def RatioHydrochloricAcid(self) -> _DevicesLogicType:
         return _DevicesLogicType(self, _LT.RatioHydrochloricAcid)
 
     @property
+    def RatioHydrochloricAcidOutput(self) -> _DevicesLogicType:
+        return _DevicesLogicType(self, _LT.RatioHydrochloricAcidOutput)
+
+    @property
+    def RatioHydrogenOutput(self) -> _DevicesLogicType:
+        return _DevicesLogicType(self, _LT.RatioHydrogenOutput)
+
+    @property
     def RatioLiquidAlcohol(self) -> _DevicesLogicType:
         return _DevicesLogicType(self, _LT.RatioLiquidAlcohol)
+
+    @property
+    def RatioLiquidAlcoholOutput(self) -> _DevicesLogicType:
+        return _DevicesLogicType(self, _LT.RatioLiquidAlcoholOutput)
 
     @property
     def RatioLiquidCarbonDioxide(self) -> _DevicesLogicType:
@@ -16851,8 +19839,20 @@ class _CapsuleTankGass(
         return _DevicesLogicType(self, _LT.RatioLiquidHydrazine)
 
     @property
+    def RatioLiquidHydrazineOutput(self) -> _DevicesLogicType:
+        return _DevicesLogicType(self, _LT.RatioLiquidHydrazineOutput)
+
+    @property
     def RatioLiquidHydrochloricAcid(self) -> _DevicesLogicType:
         return _DevicesLogicType(self, _LT.RatioLiquidHydrochloricAcid)
+
+    @property
+    def RatioLiquidHydrochloricAcidOutput(self) -> _DevicesLogicType:
+        return _DevicesLogicType(self, _LT.RatioLiquidHydrochloricAcidOutput)
+
+    @property
+    def RatioLiquidHydrogenOutput(self) -> _DevicesLogicType:
+        return _DevicesLogicType(self, _LT.RatioLiquidHydrogenOutput)
 
     @property
     def RatioLiquidMethane(self) -> _DevicesLogicType:
@@ -16875,6 +19875,10 @@ class _CapsuleTankGass(
         return _DevicesLogicType(self, _LT.RatioLiquidOzone)
 
     @property
+    def RatioLiquidOzoneOutput(self) -> _DevicesLogicType:
+        return _DevicesLogicType(self, _LT.RatioLiquidOzoneOutput)
+
+    @property
     def RatioLiquidPollutant(self) -> _DevicesLogicType:
         return _DevicesLogicType(self, _LT.RatioLiquidPollutant)
 
@@ -16883,8 +19887,16 @@ class _CapsuleTankGass(
         return _DevicesLogicType(self, _LT.RatioLiquidSilanol)
 
     @property
+    def RatioLiquidSilanolOutput(self) -> _DevicesLogicType:
+        return _DevicesLogicType(self, _LT.RatioLiquidSilanolOutput)
+
+    @property
     def RatioLiquidSodiumChloride(self) -> _DevicesLogicType:
         return _DevicesLogicType(self, _LT.RatioLiquidSodiumChloride)
+
+    @property
+    def RatioLiquidSodiumChlorideOutput(self) -> _DevicesLogicType:
+        return _DevicesLogicType(self, _LT.RatioLiquidSodiumChlorideOutput)
 
     @property
     def RatioMethane(self) -> _DevicesLogicType:
@@ -16923,6 +19935,10 @@ class _CapsuleTankGass(
         return _DevicesLogicType(self, _LT.RatioOzone)
 
     @property
+    def RatioOzoneOutput(self) -> _DevicesLogicType:
+        return _DevicesLogicType(self, _LT.RatioOzoneOutput)
+
+    @property
     def RatioPollutant(self) -> _DevicesLogicType:
         return _DevicesLogicType(self, _LT.RatioPollutant)
 
@@ -16931,8 +19947,16 @@ class _CapsuleTankGass(
         return _DevicesLogicType(self, _LT.RatioPollutantOutput)
 
     @property
+    def RatioPollutedWaterOutput(self) -> _DevicesLogicType:
+        return _DevicesLogicType(self, _LT.RatioPollutedWaterOutput)
+
+    @property
     def RatioSilanol(self) -> _DevicesLogicType:
         return _DevicesLogicType(self, _LT.RatioSilanol)
+
+    @property
+    def RatioSilanolOutput(self) -> _DevicesLogicType:
+        return _DevicesLogicType(self, _LT.RatioSilanolOutput)
 
     @property
     def RatioSteam(self) -> _DevicesLogicType:
@@ -21538,16 +24562,36 @@ class HydroponicsStation(
         return _DeviceLogicType(self, _LT.RatioHelium)
 
     @property
+    def RatioHeliumOutput(self) -> float:
+        return _DeviceLogicType(self, _LT.RatioHeliumOutput)
+
+    @property
     def RatioHydrazine(self) -> float:
         return _DeviceLogicType(self, _LT.RatioHydrazine)
+
+    @property
+    def RatioHydrazineOutput(self) -> float:
+        return _DeviceLogicType(self, _LT.RatioHydrazineOutput)
 
     @property
     def RatioHydrochloricAcid(self) -> float:
         return _DeviceLogicType(self, _LT.RatioHydrochloricAcid)
 
     @property
+    def RatioHydrochloricAcidOutput(self) -> float:
+        return _DeviceLogicType(self, _LT.RatioHydrochloricAcidOutput)
+
+    @property
+    def RatioHydrogenOutput(self) -> float:
+        return _DeviceLogicType(self, _LT.RatioHydrogenOutput)
+
+    @property
     def RatioLiquidAlcohol(self) -> float:
         return _DeviceLogicType(self, _LT.RatioLiquidAlcohol)
+
+    @property
+    def RatioLiquidAlcoholOutput(self) -> float:
+        return _DeviceLogicType(self, _LT.RatioLiquidAlcoholOutput)
 
     @property
     def RatioLiquidCarbonDioxide(self) -> float:
@@ -21558,8 +24602,20 @@ class HydroponicsStation(
         return _DeviceLogicType(self, _LT.RatioLiquidHydrazine)
 
     @property
+    def RatioLiquidHydrazineOutput(self) -> float:
+        return _DeviceLogicType(self, _LT.RatioLiquidHydrazineOutput)
+
+    @property
     def RatioLiquidHydrochloricAcid(self) -> float:
         return _DeviceLogicType(self, _LT.RatioLiquidHydrochloricAcid)
+
+    @property
+    def RatioLiquidHydrochloricAcidOutput(self) -> float:
+        return _DeviceLogicType(self, _LT.RatioLiquidHydrochloricAcidOutput)
+
+    @property
+    def RatioLiquidHydrogenOutput(self) -> float:
+        return _DeviceLogicType(self, _LT.RatioLiquidHydrogenOutput)
 
     @property
     def RatioLiquidMethane(self) -> float:
@@ -21582,6 +24638,10 @@ class HydroponicsStation(
         return _DeviceLogicType(self, _LT.RatioLiquidOzone)
 
     @property
+    def RatioLiquidOzoneOutput(self) -> float:
+        return _DeviceLogicType(self, _LT.RatioLiquidOzoneOutput)
+
+    @property
     def RatioLiquidPollutant(self) -> float:
         return _DeviceLogicType(self, _LT.RatioLiquidPollutant)
 
@@ -21590,8 +24650,16 @@ class HydroponicsStation(
         return _DeviceLogicType(self, _LT.RatioLiquidSilanol)
 
     @property
+    def RatioLiquidSilanolOutput(self) -> float:
+        return _DeviceLogicType(self, _LT.RatioLiquidSilanolOutput)
+
+    @property
     def RatioLiquidSodiumChloride(self) -> float:
         return _DeviceLogicType(self, _LT.RatioLiquidSodiumChloride)
+
+    @property
+    def RatioLiquidSodiumChlorideOutput(self) -> float:
+        return _DeviceLogicType(self, _LT.RatioLiquidSodiumChlorideOutput)
 
     @property
     def RatioMethane(self) -> float:
@@ -21630,6 +24698,10 @@ class HydroponicsStation(
         return _DeviceLogicType(self, _LT.RatioOzone)
 
     @property
+    def RatioOzoneOutput(self) -> float:
+        return _DeviceLogicType(self, _LT.RatioOzoneOutput)
+
+    @property
     def RatioPollutant(self) -> float:
         return _DeviceLogicType(self, _LT.RatioPollutant)
 
@@ -21638,8 +24710,16 @@ class HydroponicsStation(
         return _DeviceLogicType(self, _LT.RatioPollutantOutput)
 
     @property
+    def RatioPollutedWaterOutput(self) -> float:
+        return _DeviceLogicType(self, _LT.RatioPollutedWaterOutput)
+
+    @property
     def RatioSilanol(self) -> float:
         return _DeviceLogicType(self, _LT.RatioSilanol)
+
+    @property
+    def RatioSilanolOutput(self) -> float:
+        return _DeviceLogicType(self, _LT.RatioSilanolOutput)
 
     @property
     def RatioSteam(self) -> float:
@@ -21749,16 +24829,36 @@ class _HydroponicsStations(
         return _DevicesLogicType(self, _LT.RatioHelium)
 
     @property
+    def RatioHeliumOutput(self) -> _DevicesLogicType:
+        return _DevicesLogicType(self, _LT.RatioHeliumOutput)
+
+    @property
     def RatioHydrazine(self) -> _DevicesLogicType:
         return _DevicesLogicType(self, _LT.RatioHydrazine)
+
+    @property
+    def RatioHydrazineOutput(self) -> _DevicesLogicType:
+        return _DevicesLogicType(self, _LT.RatioHydrazineOutput)
 
     @property
     def RatioHydrochloricAcid(self) -> _DevicesLogicType:
         return _DevicesLogicType(self, _LT.RatioHydrochloricAcid)
 
     @property
+    def RatioHydrochloricAcidOutput(self) -> _DevicesLogicType:
+        return _DevicesLogicType(self, _LT.RatioHydrochloricAcidOutput)
+
+    @property
+    def RatioHydrogenOutput(self) -> _DevicesLogicType:
+        return _DevicesLogicType(self, _LT.RatioHydrogenOutput)
+
+    @property
     def RatioLiquidAlcohol(self) -> _DevicesLogicType:
         return _DevicesLogicType(self, _LT.RatioLiquidAlcohol)
+
+    @property
+    def RatioLiquidAlcoholOutput(self) -> _DevicesLogicType:
+        return _DevicesLogicType(self, _LT.RatioLiquidAlcoholOutput)
 
     @property
     def RatioLiquidCarbonDioxide(self) -> _DevicesLogicType:
@@ -21769,8 +24869,20 @@ class _HydroponicsStations(
         return _DevicesLogicType(self, _LT.RatioLiquidHydrazine)
 
     @property
+    def RatioLiquidHydrazineOutput(self) -> _DevicesLogicType:
+        return _DevicesLogicType(self, _LT.RatioLiquidHydrazineOutput)
+
+    @property
     def RatioLiquidHydrochloricAcid(self) -> _DevicesLogicType:
         return _DevicesLogicType(self, _LT.RatioLiquidHydrochloricAcid)
+
+    @property
+    def RatioLiquidHydrochloricAcidOutput(self) -> _DevicesLogicType:
+        return _DevicesLogicType(self, _LT.RatioLiquidHydrochloricAcidOutput)
+
+    @property
+    def RatioLiquidHydrogenOutput(self) -> _DevicesLogicType:
+        return _DevicesLogicType(self, _LT.RatioLiquidHydrogenOutput)
 
     @property
     def RatioLiquidMethane(self) -> _DevicesLogicType:
@@ -21793,6 +24905,10 @@ class _HydroponicsStations(
         return _DevicesLogicType(self, _LT.RatioLiquidOzone)
 
     @property
+    def RatioLiquidOzoneOutput(self) -> _DevicesLogicType:
+        return _DevicesLogicType(self, _LT.RatioLiquidOzoneOutput)
+
+    @property
     def RatioLiquidPollutant(self) -> _DevicesLogicType:
         return _DevicesLogicType(self, _LT.RatioLiquidPollutant)
 
@@ -21801,8 +24917,16 @@ class _HydroponicsStations(
         return _DevicesLogicType(self, _LT.RatioLiquidSilanol)
 
     @property
+    def RatioLiquidSilanolOutput(self) -> _DevicesLogicType:
+        return _DevicesLogicType(self, _LT.RatioLiquidSilanolOutput)
+
+    @property
     def RatioLiquidSodiumChloride(self) -> _DevicesLogicType:
         return _DevicesLogicType(self, _LT.RatioLiquidSodiumChloride)
+
+    @property
+    def RatioLiquidSodiumChlorideOutput(self) -> _DevicesLogicType:
+        return _DevicesLogicType(self, _LT.RatioLiquidSodiumChlorideOutput)
 
     @property
     def RatioMethane(self) -> _DevicesLogicType:
@@ -21841,6 +24965,10 @@ class _HydroponicsStations(
         return _DevicesLogicType(self, _LT.RatioOzone)
 
     @property
+    def RatioOzoneOutput(self) -> _DevicesLogicType:
+        return _DevicesLogicType(self, _LT.RatioOzoneOutput)
+
+    @property
     def RatioPollutant(self) -> _DevicesLogicType:
         return _DevicesLogicType(self, _LT.RatioPollutant)
 
@@ -21849,8 +24977,16 @@ class _HydroponicsStations(
         return _DevicesLogicType(self, _LT.RatioPollutantOutput)
 
     @property
+    def RatioPollutedWaterOutput(self) -> _DevicesLogicType:
+        return _DevicesLogicType(self, _LT.RatioPollutedWaterOutput)
+
+    @property
     def RatioSilanol(self) -> _DevicesLogicType:
         return _DevicesLogicType(self, _LT.RatioSilanol)
+
+    @property
+    def RatioSilanolOutput(self) -> _DevicesLogicType:
+        return _DevicesLogicType(self, _LT.RatioSilanolOutput)
 
     @property
     def RatioSteam(self) -> _DevicesLogicType:
@@ -26414,16 +29550,36 @@ class LargeRocketLiquidFuelTank(
         return _DeviceLogicType(self, _LT.RatioHelium)
 
     @property
+    def RatioHeliumOutput(self) -> float:
+        return _DeviceLogicType(self, _LT.RatioHeliumOutput)
+
+    @property
     def RatioHydrazine(self) -> float:
         return _DeviceLogicType(self, _LT.RatioHydrazine)
+
+    @property
+    def RatioHydrazineOutput(self) -> float:
+        return _DeviceLogicType(self, _LT.RatioHydrazineOutput)
 
     @property
     def RatioHydrochloricAcid(self) -> float:
         return _DeviceLogicType(self, _LT.RatioHydrochloricAcid)
 
     @property
+    def RatioHydrochloricAcidOutput(self) -> float:
+        return _DeviceLogicType(self, _LT.RatioHydrochloricAcidOutput)
+
+    @property
+    def RatioHydrogenOutput(self) -> float:
+        return _DeviceLogicType(self, _LT.RatioHydrogenOutput)
+
+    @property
     def RatioLiquidAlcohol(self) -> float:
         return _DeviceLogicType(self, _LT.RatioLiquidAlcohol)
+
+    @property
+    def RatioLiquidAlcoholOutput(self) -> float:
+        return _DeviceLogicType(self, _LT.RatioLiquidAlcoholOutput)
 
     @property
     def RatioLiquidCarbonDioxide(self) -> float:
@@ -26434,8 +29590,20 @@ class LargeRocketLiquidFuelTank(
         return _DeviceLogicType(self, _LT.RatioLiquidHydrazine)
 
     @property
+    def RatioLiquidHydrazineOutput(self) -> float:
+        return _DeviceLogicType(self, _LT.RatioLiquidHydrazineOutput)
+
+    @property
     def RatioLiquidHydrochloricAcid(self) -> float:
         return _DeviceLogicType(self, _LT.RatioLiquidHydrochloricAcid)
+
+    @property
+    def RatioLiquidHydrochloricAcidOutput(self) -> float:
+        return _DeviceLogicType(self, _LT.RatioLiquidHydrochloricAcidOutput)
+
+    @property
+    def RatioLiquidHydrogenOutput(self) -> float:
+        return _DeviceLogicType(self, _LT.RatioLiquidHydrogenOutput)
 
     @property
     def RatioLiquidMethane(self) -> float:
@@ -26458,6 +29626,10 @@ class LargeRocketLiquidFuelTank(
         return _DeviceLogicType(self, _LT.RatioLiquidOzone)
 
     @property
+    def RatioLiquidOzoneOutput(self) -> float:
+        return _DeviceLogicType(self, _LT.RatioLiquidOzoneOutput)
+
+    @property
     def RatioLiquidPollutant(self) -> float:
         return _DeviceLogicType(self, _LT.RatioLiquidPollutant)
 
@@ -26466,8 +29638,16 @@ class LargeRocketLiquidFuelTank(
         return _DeviceLogicType(self, _LT.RatioLiquidSilanol)
 
     @property
+    def RatioLiquidSilanolOutput(self) -> float:
+        return _DeviceLogicType(self, _LT.RatioLiquidSilanolOutput)
+
+    @property
     def RatioLiquidSodiumChloride(self) -> float:
         return _DeviceLogicType(self, _LT.RatioLiquidSodiumChloride)
+
+    @property
+    def RatioLiquidSodiumChlorideOutput(self) -> float:
+        return _DeviceLogicType(self, _LT.RatioLiquidSodiumChlorideOutput)
 
     @property
     def RatioMethane(self) -> float:
@@ -26506,6 +29686,10 @@ class LargeRocketLiquidFuelTank(
         return _DeviceLogicType(self, _LT.RatioOzone)
 
     @property
+    def RatioOzoneOutput(self) -> float:
+        return _DeviceLogicType(self, _LT.RatioOzoneOutput)
+
+    @property
     def RatioPollutant(self) -> float:
         return _DeviceLogicType(self, _LT.RatioPollutant)
 
@@ -26514,8 +29698,16 @@ class LargeRocketLiquidFuelTank(
         return _DeviceLogicType(self, _LT.RatioPollutantOutput)
 
     @property
+    def RatioPollutedWaterOutput(self) -> float:
+        return _DeviceLogicType(self, _LT.RatioPollutedWaterOutput)
+
+    @property
     def RatioSilanol(self) -> float:
         return _DeviceLogicType(self, _LT.RatioSilanol)
+
+    @property
+    def RatioSilanolOutput(self) -> float:
+        return _DeviceLogicType(self, _LT.RatioSilanolOutput)
 
     @property
     def RatioSteam(self) -> float:
@@ -26600,16 +29792,36 @@ class _LargeRocketLiquidFuelTanks(
         return _DevicesLogicType(self, _LT.RatioHelium)
 
     @property
+    def RatioHeliumOutput(self) -> _DevicesLogicType:
+        return _DevicesLogicType(self, _LT.RatioHeliumOutput)
+
+    @property
     def RatioHydrazine(self) -> _DevicesLogicType:
         return _DevicesLogicType(self, _LT.RatioHydrazine)
+
+    @property
+    def RatioHydrazineOutput(self) -> _DevicesLogicType:
+        return _DevicesLogicType(self, _LT.RatioHydrazineOutput)
 
     @property
     def RatioHydrochloricAcid(self) -> _DevicesLogicType:
         return _DevicesLogicType(self, _LT.RatioHydrochloricAcid)
 
     @property
+    def RatioHydrochloricAcidOutput(self) -> _DevicesLogicType:
+        return _DevicesLogicType(self, _LT.RatioHydrochloricAcidOutput)
+
+    @property
+    def RatioHydrogenOutput(self) -> _DevicesLogicType:
+        return _DevicesLogicType(self, _LT.RatioHydrogenOutput)
+
+    @property
     def RatioLiquidAlcohol(self) -> _DevicesLogicType:
         return _DevicesLogicType(self, _LT.RatioLiquidAlcohol)
+
+    @property
+    def RatioLiquidAlcoholOutput(self) -> _DevicesLogicType:
+        return _DevicesLogicType(self, _LT.RatioLiquidAlcoholOutput)
 
     @property
     def RatioLiquidCarbonDioxide(self) -> _DevicesLogicType:
@@ -26620,8 +29832,20 @@ class _LargeRocketLiquidFuelTanks(
         return _DevicesLogicType(self, _LT.RatioLiquidHydrazine)
 
     @property
+    def RatioLiquidHydrazineOutput(self) -> _DevicesLogicType:
+        return _DevicesLogicType(self, _LT.RatioLiquidHydrazineOutput)
+
+    @property
     def RatioLiquidHydrochloricAcid(self) -> _DevicesLogicType:
         return _DevicesLogicType(self, _LT.RatioLiquidHydrochloricAcid)
+
+    @property
+    def RatioLiquidHydrochloricAcidOutput(self) -> _DevicesLogicType:
+        return _DevicesLogicType(self, _LT.RatioLiquidHydrochloricAcidOutput)
+
+    @property
+    def RatioLiquidHydrogenOutput(self) -> _DevicesLogicType:
+        return _DevicesLogicType(self, _LT.RatioLiquidHydrogenOutput)
 
     @property
     def RatioLiquidMethane(self) -> _DevicesLogicType:
@@ -26644,6 +29868,10 @@ class _LargeRocketLiquidFuelTanks(
         return _DevicesLogicType(self, _LT.RatioLiquidOzone)
 
     @property
+    def RatioLiquidOzoneOutput(self) -> _DevicesLogicType:
+        return _DevicesLogicType(self, _LT.RatioLiquidOzoneOutput)
+
+    @property
     def RatioLiquidPollutant(self) -> _DevicesLogicType:
         return _DevicesLogicType(self, _LT.RatioLiquidPollutant)
 
@@ -26652,8 +29880,16 @@ class _LargeRocketLiquidFuelTanks(
         return _DevicesLogicType(self, _LT.RatioLiquidSilanol)
 
     @property
+    def RatioLiquidSilanolOutput(self) -> _DevicesLogicType:
+        return _DevicesLogicType(self, _LT.RatioLiquidSilanolOutput)
+
+    @property
     def RatioLiquidSodiumChloride(self) -> _DevicesLogicType:
         return _DevicesLogicType(self, _LT.RatioLiquidSodiumChloride)
+
+    @property
+    def RatioLiquidSodiumChlorideOutput(self) -> _DevicesLogicType:
+        return _DevicesLogicType(self, _LT.RatioLiquidSodiumChlorideOutput)
 
     @property
     def RatioMethane(self) -> _DevicesLogicType:
@@ -26692,6 +29928,10 @@ class _LargeRocketLiquidFuelTanks(
         return _DevicesLogicType(self, _LT.RatioOzone)
 
     @property
+    def RatioOzoneOutput(self) -> _DevicesLogicType:
+        return _DevicesLogicType(self, _LT.RatioOzoneOutput)
+
+    @property
     def RatioPollutant(self) -> _DevicesLogicType:
         return _DevicesLogicType(self, _LT.RatioPollutant)
 
@@ -26700,8 +29940,16 @@ class _LargeRocketLiquidFuelTanks(
         return _DevicesLogicType(self, _LT.RatioPollutantOutput)
 
     @property
+    def RatioPollutedWaterOutput(self) -> _DevicesLogicType:
+        return _DevicesLogicType(self, _LT.RatioPollutedWaterOutput)
+
+    @property
     def RatioSilanol(self) -> _DevicesLogicType:
         return _DevicesLogicType(self, _LT.RatioSilanol)
+
+    @property
+    def RatioSilanolOutput(self) -> _DevicesLogicType:
+        return _DevicesLogicType(self, _LT.RatioSilanolOutput)
 
     @property
     def RatioSteam(self) -> _DevicesLogicType:
@@ -26762,16 +30010,36 @@ class MediumRocketLiquidFuelTank(
         return _DeviceLogicType(self, _LT.RatioHelium)
 
     @property
+    def RatioHeliumOutput(self) -> float:
+        return _DeviceLogicType(self, _LT.RatioHeliumOutput)
+
+    @property
     def RatioHydrazine(self) -> float:
         return _DeviceLogicType(self, _LT.RatioHydrazine)
+
+    @property
+    def RatioHydrazineOutput(self) -> float:
+        return _DeviceLogicType(self, _LT.RatioHydrazineOutput)
 
     @property
     def RatioHydrochloricAcid(self) -> float:
         return _DeviceLogicType(self, _LT.RatioHydrochloricAcid)
 
     @property
+    def RatioHydrochloricAcidOutput(self) -> float:
+        return _DeviceLogicType(self, _LT.RatioHydrochloricAcidOutput)
+
+    @property
+    def RatioHydrogenOutput(self) -> float:
+        return _DeviceLogicType(self, _LT.RatioHydrogenOutput)
+
+    @property
     def RatioLiquidAlcohol(self) -> float:
         return _DeviceLogicType(self, _LT.RatioLiquidAlcohol)
+
+    @property
+    def RatioLiquidAlcoholOutput(self) -> float:
+        return _DeviceLogicType(self, _LT.RatioLiquidAlcoholOutput)
 
     @property
     def RatioLiquidCarbonDioxide(self) -> float:
@@ -26782,8 +30050,20 @@ class MediumRocketLiquidFuelTank(
         return _DeviceLogicType(self, _LT.RatioLiquidHydrazine)
 
     @property
+    def RatioLiquidHydrazineOutput(self) -> float:
+        return _DeviceLogicType(self, _LT.RatioLiquidHydrazineOutput)
+
+    @property
     def RatioLiquidHydrochloricAcid(self) -> float:
         return _DeviceLogicType(self, _LT.RatioLiquidHydrochloricAcid)
+
+    @property
+    def RatioLiquidHydrochloricAcidOutput(self) -> float:
+        return _DeviceLogicType(self, _LT.RatioLiquidHydrochloricAcidOutput)
+
+    @property
+    def RatioLiquidHydrogenOutput(self) -> float:
+        return _DeviceLogicType(self, _LT.RatioLiquidHydrogenOutput)
 
     @property
     def RatioLiquidMethane(self) -> float:
@@ -26806,6 +30086,10 @@ class MediumRocketLiquidFuelTank(
         return _DeviceLogicType(self, _LT.RatioLiquidOzone)
 
     @property
+    def RatioLiquidOzoneOutput(self) -> float:
+        return _DeviceLogicType(self, _LT.RatioLiquidOzoneOutput)
+
+    @property
     def RatioLiquidPollutant(self) -> float:
         return _DeviceLogicType(self, _LT.RatioLiquidPollutant)
 
@@ -26814,8 +30098,16 @@ class MediumRocketLiquidFuelTank(
         return _DeviceLogicType(self, _LT.RatioLiquidSilanol)
 
     @property
+    def RatioLiquidSilanolOutput(self) -> float:
+        return _DeviceLogicType(self, _LT.RatioLiquidSilanolOutput)
+
+    @property
     def RatioLiquidSodiumChloride(self) -> float:
         return _DeviceLogicType(self, _LT.RatioLiquidSodiumChloride)
+
+    @property
+    def RatioLiquidSodiumChlorideOutput(self) -> float:
+        return _DeviceLogicType(self, _LT.RatioLiquidSodiumChlorideOutput)
 
     @property
     def RatioMethane(self) -> float:
@@ -26854,6 +30146,10 @@ class MediumRocketLiquidFuelTank(
         return _DeviceLogicType(self, _LT.RatioOzone)
 
     @property
+    def RatioOzoneOutput(self) -> float:
+        return _DeviceLogicType(self, _LT.RatioOzoneOutput)
+
+    @property
     def RatioPollutant(self) -> float:
         return _DeviceLogicType(self, _LT.RatioPollutant)
 
@@ -26862,8 +30158,16 @@ class MediumRocketLiquidFuelTank(
         return _DeviceLogicType(self, _LT.RatioPollutantOutput)
 
     @property
+    def RatioPollutedWaterOutput(self) -> float:
+        return _DeviceLogicType(self, _LT.RatioPollutedWaterOutput)
+
+    @property
     def RatioSilanol(self) -> float:
         return _DeviceLogicType(self, _LT.RatioSilanol)
+
+    @property
+    def RatioSilanolOutput(self) -> float:
+        return _DeviceLogicType(self, _LT.RatioSilanolOutput)
 
     @property
     def RatioSteam(self) -> float:
@@ -26948,16 +30252,36 @@ class _MediumRocketLiquidFuelTanks(
         return _DevicesLogicType(self, _LT.RatioHelium)
 
     @property
+    def RatioHeliumOutput(self) -> _DevicesLogicType:
+        return _DevicesLogicType(self, _LT.RatioHeliumOutput)
+
+    @property
     def RatioHydrazine(self) -> _DevicesLogicType:
         return _DevicesLogicType(self, _LT.RatioHydrazine)
+
+    @property
+    def RatioHydrazineOutput(self) -> _DevicesLogicType:
+        return _DevicesLogicType(self, _LT.RatioHydrazineOutput)
 
     @property
     def RatioHydrochloricAcid(self) -> _DevicesLogicType:
         return _DevicesLogicType(self, _LT.RatioHydrochloricAcid)
 
     @property
+    def RatioHydrochloricAcidOutput(self) -> _DevicesLogicType:
+        return _DevicesLogicType(self, _LT.RatioHydrochloricAcidOutput)
+
+    @property
+    def RatioHydrogenOutput(self) -> _DevicesLogicType:
+        return _DevicesLogicType(self, _LT.RatioHydrogenOutput)
+
+    @property
     def RatioLiquidAlcohol(self) -> _DevicesLogicType:
         return _DevicesLogicType(self, _LT.RatioLiquidAlcohol)
+
+    @property
+    def RatioLiquidAlcoholOutput(self) -> _DevicesLogicType:
+        return _DevicesLogicType(self, _LT.RatioLiquidAlcoholOutput)
 
     @property
     def RatioLiquidCarbonDioxide(self) -> _DevicesLogicType:
@@ -26968,8 +30292,20 @@ class _MediumRocketLiquidFuelTanks(
         return _DevicesLogicType(self, _LT.RatioLiquidHydrazine)
 
     @property
+    def RatioLiquidHydrazineOutput(self) -> _DevicesLogicType:
+        return _DevicesLogicType(self, _LT.RatioLiquidHydrazineOutput)
+
+    @property
     def RatioLiquidHydrochloricAcid(self) -> _DevicesLogicType:
         return _DevicesLogicType(self, _LT.RatioLiquidHydrochloricAcid)
+
+    @property
+    def RatioLiquidHydrochloricAcidOutput(self) -> _DevicesLogicType:
+        return _DevicesLogicType(self, _LT.RatioLiquidHydrochloricAcidOutput)
+
+    @property
+    def RatioLiquidHydrogenOutput(self) -> _DevicesLogicType:
+        return _DevicesLogicType(self, _LT.RatioLiquidHydrogenOutput)
 
     @property
     def RatioLiquidMethane(self) -> _DevicesLogicType:
@@ -26992,6 +30328,10 @@ class _MediumRocketLiquidFuelTanks(
         return _DevicesLogicType(self, _LT.RatioLiquidOzone)
 
     @property
+    def RatioLiquidOzoneOutput(self) -> _DevicesLogicType:
+        return _DevicesLogicType(self, _LT.RatioLiquidOzoneOutput)
+
+    @property
     def RatioLiquidPollutant(self) -> _DevicesLogicType:
         return _DevicesLogicType(self, _LT.RatioLiquidPollutant)
 
@@ -27000,8 +30340,16 @@ class _MediumRocketLiquidFuelTanks(
         return _DevicesLogicType(self, _LT.RatioLiquidSilanol)
 
     @property
+    def RatioLiquidSilanolOutput(self) -> _DevicesLogicType:
+        return _DevicesLogicType(self, _LT.RatioLiquidSilanolOutput)
+
+    @property
     def RatioLiquidSodiumChloride(self) -> _DevicesLogicType:
         return _DevicesLogicType(self, _LT.RatioLiquidSodiumChloride)
+
+    @property
+    def RatioLiquidSodiumChlorideOutput(self) -> _DevicesLogicType:
+        return _DevicesLogicType(self, _LT.RatioLiquidSodiumChlorideOutput)
 
     @property
     def RatioMethane(self) -> _DevicesLogicType:
@@ -27040,6 +30388,10 @@ class _MediumRocketLiquidFuelTanks(
         return _DevicesLogicType(self, _LT.RatioOzone)
 
     @property
+    def RatioOzoneOutput(self) -> _DevicesLogicType:
+        return _DevicesLogicType(self, _LT.RatioOzoneOutput)
+
+    @property
     def RatioPollutant(self) -> _DevicesLogicType:
         return _DevicesLogicType(self, _LT.RatioPollutant)
 
@@ -27048,8 +30400,16 @@ class _MediumRocketLiquidFuelTanks(
         return _DevicesLogicType(self, _LT.RatioPollutantOutput)
 
     @property
+    def RatioPollutedWaterOutput(self) -> _DevicesLogicType:
+        return _DevicesLogicType(self, _LT.RatioPollutedWaterOutput)
+
+    @property
     def RatioSilanol(self) -> _DevicesLogicType:
         return _DevicesLogicType(self, _LT.RatioSilanol)
+
+    @property
+    def RatioSilanolOutput(self) -> _DevicesLogicType:
+        return _DevicesLogicType(self, _LT.RatioSilanolOutput)
 
     @property
     def RatioSteam(self) -> _DevicesLogicType:
@@ -27112,16 +30472,36 @@ class CapsuleTankLiquid(
         return _DeviceLogicType(self, _LT.RatioHelium)
 
     @property
+    def RatioHeliumOutput(self) -> float:
+        return _DeviceLogicType(self, _LT.RatioHeliumOutput)
+
+    @property
     def RatioHydrazine(self) -> float:
         return _DeviceLogicType(self, _LT.RatioHydrazine)
+
+    @property
+    def RatioHydrazineOutput(self) -> float:
+        return _DeviceLogicType(self, _LT.RatioHydrazineOutput)
 
     @property
     def RatioHydrochloricAcid(self) -> float:
         return _DeviceLogicType(self, _LT.RatioHydrochloricAcid)
 
     @property
+    def RatioHydrochloricAcidOutput(self) -> float:
+        return _DeviceLogicType(self, _LT.RatioHydrochloricAcidOutput)
+
+    @property
+    def RatioHydrogenOutput(self) -> float:
+        return _DeviceLogicType(self, _LT.RatioHydrogenOutput)
+
+    @property
     def RatioLiquidAlcohol(self) -> float:
         return _DeviceLogicType(self, _LT.RatioLiquidAlcohol)
+
+    @property
+    def RatioLiquidAlcoholOutput(self) -> float:
+        return _DeviceLogicType(self, _LT.RatioLiquidAlcoholOutput)
 
     @property
     def RatioLiquidCarbonDioxide(self) -> float:
@@ -27132,8 +30512,20 @@ class CapsuleTankLiquid(
         return _DeviceLogicType(self, _LT.RatioLiquidHydrazine)
 
     @property
+    def RatioLiquidHydrazineOutput(self) -> float:
+        return _DeviceLogicType(self, _LT.RatioLiquidHydrazineOutput)
+
+    @property
     def RatioLiquidHydrochloricAcid(self) -> float:
         return _DeviceLogicType(self, _LT.RatioLiquidHydrochloricAcid)
+
+    @property
+    def RatioLiquidHydrochloricAcidOutput(self) -> float:
+        return _DeviceLogicType(self, _LT.RatioLiquidHydrochloricAcidOutput)
+
+    @property
+    def RatioLiquidHydrogenOutput(self) -> float:
+        return _DeviceLogicType(self, _LT.RatioLiquidHydrogenOutput)
 
     @property
     def RatioLiquidMethane(self) -> float:
@@ -27156,6 +30548,10 @@ class CapsuleTankLiquid(
         return _DeviceLogicType(self, _LT.RatioLiquidOzone)
 
     @property
+    def RatioLiquidOzoneOutput(self) -> float:
+        return _DeviceLogicType(self, _LT.RatioLiquidOzoneOutput)
+
+    @property
     def RatioLiquidPollutant(self) -> float:
         return _DeviceLogicType(self, _LT.RatioLiquidPollutant)
 
@@ -27164,8 +30560,16 @@ class CapsuleTankLiquid(
         return _DeviceLogicType(self, _LT.RatioLiquidSilanol)
 
     @property
+    def RatioLiquidSilanolOutput(self) -> float:
+        return _DeviceLogicType(self, _LT.RatioLiquidSilanolOutput)
+
+    @property
     def RatioLiquidSodiumChloride(self) -> float:
         return _DeviceLogicType(self, _LT.RatioLiquidSodiumChloride)
+
+    @property
+    def RatioLiquidSodiumChlorideOutput(self) -> float:
+        return _DeviceLogicType(self, _LT.RatioLiquidSodiumChlorideOutput)
 
     @property
     def RatioMethane(self) -> float:
@@ -27204,6 +30608,10 @@ class CapsuleTankLiquid(
         return _DeviceLogicType(self, _LT.RatioOzone)
 
     @property
+    def RatioOzoneOutput(self) -> float:
+        return _DeviceLogicType(self, _LT.RatioOzoneOutput)
+
+    @property
     def RatioPollutant(self) -> float:
         return _DeviceLogicType(self, _LT.RatioPollutant)
 
@@ -27212,8 +30620,16 @@ class CapsuleTankLiquid(
         return _DeviceLogicType(self, _LT.RatioPollutantOutput)
 
     @property
+    def RatioPollutedWaterOutput(self) -> float:
+        return _DeviceLogicType(self, _LT.RatioPollutedWaterOutput)
+
+    @property
     def RatioSilanol(self) -> float:
         return _DeviceLogicType(self, _LT.RatioSilanol)
+
+    @property
+    def RatioSilanolOutput(self) -> float:
+        return _DeviceLogicType(self, _LT.RatioSilanolOutput)
 
     @property
     def RatioSteam(self) -> float:
@@ -27290,16 +30706,36 @@ class _CapsuleTankLiquids(
         return _DevicesLogicType(self, _LT.RatioHelium)
 
     @property
+    def RatioHeliumOutput(self) -> _DevicesLogicType:
+        return _DevicesLogicType(self, _LT.RatioHeliumOutput)
+
+    @property
     def RatioHydrazine(self) -> _DevicesLogicType:
         return _DevicesLogicType(self, _LT.RatioHydrazine)
+
+    @property
+    def RatioHydrazineOutput(self) -> _DevicesLogicType:
+        return _DevicesLogicType(self, _LT.RatioHydrazineOutput)
 
     @property
     def RatioHydrochloricAcid(self) -> _DevicesLogicType:
         return _DevicesLogicType(self, _LT.RatioHydrochloricAcid)
 
     @property
+    def RatioHydrochloricAcidOutput(self) -> _DevicesLogicType:
+        return _DevicesLogicType(self, _LT.RatioHydrochloricAcidOutput)
+
+    @property
+    def RatioHydrogenOutput(self) -> _DevicesLogicType:
+        return _DevicesLogicType(self, _LT.RatioHydrogenOutput)
+
+    @property
     def RatioLiquidAlcohol(self) -> _DevicesLogicType:
         return _DevicesLogicType(self, _LT.RatioLiquidAlcohol)
+
+    @property
+    def RatioLiquidAlcoholOutput(self) -> _DevicesLogicType:
+        return _DevicesLogicType(self, _LT.RatioLiquidAlcoholOutput)
 
     @property
     def RatioLiquidCarbonDioxide(self) -> _DevicesLogicType:
@@ -27310,8 +30746,20 @@ class _CapsuleTankLiquids(
         return _DevicesLogicType(self, _LT.RatioLiquidHydrazine)
 
     @property
+    def RatioLiquidHydrazineOutput(self) -> _DevicesLogicType:
+        return _DevicesLogicType(self, _LT.RatioLiquidHydrazineOutput)
+
+    @property
     def RatioLiquidHydrochloricAcid(self) -> _DevicesLogicType:
         return _DevicesLogicType(self, _LT.RatioLiquidHydrochloricAcid)
+
+    @property
+    def RatioLiquidHydrochloricAcidOutput(self) -> _DevicesLogicType:
+        return _DevicesLogicType(self, _LT.RatioLiquidHydrochloricAcidOutput)
+
+    @property
+    def RatioLiquidHydrogenOutput(self) -> _DevicesLogicType:
+        return _DevicesLogicType(self, _LT.RatioLiquidHydrogenOutput)
 
     @property
     def RatioLiquidMethane(self) -> _DevicesLogicType:
@@ -27334,6 +30782,10 @@ class _CapsuleTankLiquids(
         return _DevicesLogicType(self, _LT.RatioLiquidOzone)
 
     @property
+    def RatioLiquidOzoneOutput(self) -> _DevicesLogicType:
+        return _DevicesLogicType(self, _LT.RatioLiquidOzoneOutput)
+
+    @property
     def RatioLiquidPollutant(self) -> _DevicesLogicType:
         return _DevicesLogicType(self, _LT.RatioLiquidPollutant)
 
@@ -27342,8 +30794,16 @@ class _CapsuleTankLiquids(
         return _DevicesLogicType(self, _LT.RatioLiquidSilanol)
 
     @property
+    def RatioLiquidSilanolOutput(self) -> _DevicesLogicType:
+        return _DevicesLogicType(self, _LT.RatioLiquidSilanolOutput)
+
+    @property
     def RatioLiquidSodiumChloride(self) -> _DevicesLogicType:
         return _DevicesLogicType(self, _LT.RatioLiquidSodiumChloride)
+
+    @property
+    def RatioLiquidSodiumChlorideOutput(self) -> _DevicesLogicType:
+        return _DevicesLogicType(self, _LT.RatioLiquidSodiumChlorideOutput)
 
     @property
     def RatioMethane(self) -> _DevicesLogicType:
@@ -27382,6 +30842,10 @@ class _CapsuleTankLiquids(
         return _DevicesLogicType(self, _LT.RatioOzone)
 
     @property
+    def RatioOzoneOutput(self) -> _DevicesLogicType:
+        return _DevicesLogicType(self, _LT.RatioOzoneOutput)
+
+    @property
     def RatioPollutant(self) -> _DevicesLogicType:
         return _DevicesLogicType(self, _LT.RatioPollutant)
 
@@ -27390,8 +30854,16 @@ class _CapsuleTankLiquids(
         return _DevicesLogicType(self, _LT.RatioPollutantOutput)
 
     @property
+    def RatioPollutedWaterOutput(self) -> _DevicesLogicType:
+        return _DevicesLogicType(self, _LT.RatioPollutedWaterOutput)
+
+    @property
     def RatioSilanol(self) -> _DevicesLogicType:
         return _DevicesLogicType(self, _LT.RatioSilanol)
+
+    @property
+    def RatioSilanolOutput(self) -> _DevicesLogicType:
+        return _DevicesLogicType(self, _LT.RatioSilanolOutput)
 
     @property
     def RatioSteam(self) -> _DevicesLogicType:
@@ -28116,6 +31588,50 @@ class WaterWallCooler(
         return _DeviceLogicType(self, _LT.RatioCarbonDioxideOutput)
 
     @property
+    def RatioHeliumOutput(self) -> float:
+        return _DeviceLogicType(self, _LT.RatioHeliumOutput)
+
+    @property
+    def RatioHydrazineOutput(self) -> float:
+        return _DeviceLogicType(self, _LT.RatioHydrazineOutput)
+
+    @property
+    def RatioHydrochloricAcidOutput(self) -> float:
+        return _DeviceLogicType(self, _LT.RatioHydrochloricAcidOutput)
+
+    @property
+    def RatioHydrogenOutput(self) -> float:
+        return _DeviceLogicType(self, _LT.RatioHydrogenOutput)
+
+    @property
+    def RatioLiquidAlcoholOutput(self) -> float:
+        return _DeviceLogicType(self, _LT.RatioLiquidAlcoholOutput)
+
+    @property
+    def RatioLiquidHydrazineOutput(self) -> float:
+        return _DeviceLogicType(self, _LT.RatioLiquidHydrazineOutput)
+
+    @property
+    def RatioLiquidHydrochloricAcidOutput(self) -> float:
+        return _DeviceLogicType(self, _LT.RatioLiquidHydrochloricAcidOutput)
+
+    @property
+    def RatioLiquidHydrogenOutput(self) -> float:
+        return _DeviceLogicType(self, _LT.RatioLiquidHydrogenOutput)
+
+    @property
+    def RatioLiquidOzoneOutput(self) -> float:
+        return _DeviceLogicType(self, _LT.RatioLiquidOzoneOutput)
+
+    @property
+    def RatioLiquidSilanolOutput(self) -> float:
+        return _DeviceLogicType(self, _LT.RatioLiquidSilanolOutput)
+
+    @property
+    def RatioLiquidSodiumChlorideOutput(self) -> float:
+        return _DeviceLogicType(self, _LT.RatioLiquidSodiumChlorideOutput)
+
+    @property
     def RatioMethaneOutput(self) -> float:
         return _DeviceLogicType(self, _LT.RatioMethaneOutput)
 
@@ -28132,8 +31648,20 @@ class WaterWallCooler(
         return _DeviceLogicType(self, _LT.RatioOxygenOutput)
 
     @property
+    def RatioOzoneOutput(self) -> float:
+        return _DeviceLogicType(self, _LT.RatioOzoneOutput)
+
+    @property
     def RatioPollutantOutput(self) -> float:
         return _DeviceLogicType(self, _LT.RatioPollutantOutput)
+
+    @property
+    def RatioPollutedWaterOutput(self) -> float:
+        return _DeviceLogicType(self, _LT.RatioPollutedWaterOutput)
+
+    @property
+    def RatioSilanolOutput(self) -> float:
+        return _DeviceLogicType(self, _LT.RatioSilanolOutput)
 
     @property
     def RatioWaterOutput(self) -> float:
@@ -28194,6 +31722,50 @@ class _WaterWallCoolers(
         return _DevicesLogicType(self, _LT.RatioCarbonDioxideOutput)
 
     @property
+    def RatioHeliumOutput(self) -> _DevicesLogicType:
+        return _DevicesLogicType(self, _LT.RatioHeliumOutput)
+
+    @property
+    def RatioHydrazineOutput(self) -> _DevicesLogicType:
+        return _DevicesLogicType(self, _LT.RatioHydrazineOutput)
+
+    @property
+    def RatioHydrochloricAcidOutput(self) -> _DevicesLogicType:
+        return _DevicesLogicType(self, _LT.RatioHydrochloricAcidOutput)
+
+    @property
+    def RatioHydrogenOutput(self) -> _DevicesLogicType:
+        return _DevicesLogicType(self, _LT.RatioHydrogenOutput)
+
+    @property
+    def RatioLiquidAlcoholOutput(self) -> _DevicesLogicType:
+        return _DevicesLogicType(self, _LT.RatioLiquidAlcoholOutput)
+
+    @property
+    def RatioLiquidHydrazineOutput(self) -> _DevicesLogicType:
+        return _DevicesLogicType(self, _LT.RatioLiquidHydrazineOutput)
+
+    @property
+    def RatioLiquidHydrochloricAcidOutput(self) -> _DevicesLogicType:
+        return _DevicesLogicType(self, _LT.RatioLiquidHydrochloricAcidOutput)
+
+    @property
+    def RatioLiquidHydrogenOutput(self) -> _DevicesLogicType:
+        return _DevicesLogicType(self, _LT.RatioLiquidHydrogenOutput)
+
+    @property
+    def RatioLiquidOzoneOutput(self) -> _DevicesLogicType:
+        return _DevicesLogicType(self, _LT.RatioLiquidOzoneOutput)
+
+    @property
+    def RatioLiquidSilanolOutput(self) -> _DevicesLogicType:
+        return _DevicesLogicType(self, _LT.RatioLiquidSilanolOutput)
+
+    @property
+    def RatioLiquidSodiumChlorideOutput(self) -> _DevicesLogicType:
+        return _DevicesLogicType(self, _LT.RatioLiquidSodiumChlorideOutput)
+
+    @property
     def RatioMethaneOutput(self) -> _DevicesLogicType:
         return _DevicesLogicType(self, _LT.RatioMethaneOutput)
 
@@ -28210,8 +31782,20 @@ class _WaterWallCoolers(
         return _DevicesLogicType(self, _LT.RatioOxygenOutput)
 
     @property
+    def RatioOzoneOutput(self) -> _DevicesLogicType:
+        return _DevicesLogicType(self, _LT.RatioOzoneOutput)
+
+    @property
     def RatioPollutantOutput(self) -> _DevicesLogicType:
         return _DevicesLogicType(self, _LT.RatioPollutantOutput)
+
+    @property
+    def RatioPollutedWaterOutput(self) -> _DevicesLogicType:
+        return _DevicesLogicType(self, _LT.RatioPollutedWaterOutput)
+
+    @property
+    def RatioSilanolOutput(self) -> _DevicesLogicType:
+        return _DevicesLogicType(self, _LT.RatioSilanolOutput)
 
     @property
     def RatioWaterOutput(self) -> _DevicesLogicType:
@@ -30494,16 +34078,76 @@ class Nitrolyzer(
         return _DeviceLogicType(self, _LT.RatioHelium)
 
     @property
+    def RatioHeliumInput(self) -> float:
+        return _DeviceLogicType(self, _LT.RatioHeliumInput)
+
+    @property
+    def RatioHeliumInput2(self) -> float:
+        return _DeviceLogicType(self, _LT.RatioHeliumInput2)
+
+    @property
+    def RatioHeliumOutput(self) -> float:
+        return _DeviceLogicType(self, _LT.RatioHeliumOutput)
+
+    @property
     def RatioHydrazine(self) -> float:
         return _DeviceLogicType(self, _LT.RatioHydrazine)
+
+    @property
+    def RatioHydrazineInput(self) -> float:
+        return _DeviceLogicType(self, _LT.RatioHydrazineInput)
+
+    @property
+    def RatioHydrazineInput2(self) -> float:
+        return _DeviceLogicType(self, _LT.RatioHydrazineInput2)
+
+    @property
+    def RatioHydrazineOutput(self) -> float:
+        return _DeviceLogicType(self, _LT.RatioHydrazineOutput)
 
     @property
     def RatioHydrochloricAcid(self) -> float:
         return _DeviceLogicType(self, _LT.RatioHydrochloricAcid)
 
     @property
+    def RatioHydrochloricAcidInput(self) -> float:
+        return _DeviceLogicType(self, _LT.RatioHydrochloricAcidInput)
+
+    @property
+    def RatioHydrochloricAcidInput2(self) -> float:
+        return _DeviceLogicType(self, _LT.RatioHydrochloricAcidInput2)
+
+    @property
+    def RatioHydrochloricAcidOutput(self) -> float:
+        return _DeviceLogicType(self, _LT.RatioHydrochloricAcidOutput)
+
+    @property
+    def RatioHydrogenInput(self) -> float:
+        return _DeviceLogicType(self, _LT.RatioHydrogenInput)
+
+    @property
+    def RatioHydrogenInput2(self) -> float:
+        return _DeviceLogicType(self, _LT.RatioHydrogenInput2)
+
+    @property
+    def RatioHydrogenOutput(self) -> float:
+        return _DeviceLogicType(self, _LT.RatioHydrogenOutput)
+
+    @property
     def RatioLiquidAlcohol(self) -> float:
         return _DeviceLogicType(self, _LT.RatioLiquidAlcohol)
+
+    @property
+    def RatioLiquidAlcoholInput(self) -> float:
+        return _DeviceLogicType(self, _LT.RatioLiquidAlcoholInput)
+
+    @property
+    def RatioLiquidAlcoholInput2(self) -> float:
+        return _DeviceLogicType(self, _LT.RatioLiquidAlcoholInput2)
+
+    @property
+    def RatioLiquidAlcoholOutput(self) -> float:
+        return _DeviceLogicType(self, _LT.RatioLiquidAlcoholOutput)
 
     @property
     def RatioLiquidCarbonDioxide(self) -> float:
@@ -30526,8 +34170,44 @@ class Nitrolyzer(
         return _DeviceLogicType(self, _LT.RatioLiquidHydrazine)
 
     @property
+    def RatioLiquidHydrazineInput(self) -> float:
+        return _DeviceLogicType(self, _LT.RatioLiquidHydrazineInput)
+
+    @property
+    def RatioLiquidHydrazineInput2(self) -> float:
+        return _DeviceLogicType(self, _LT.RatioLiquidHydrazineInput2)
+
+    @property
+    def RatioLiquidHydrazineOutput(self) -> float:
+        return _DeviceLogicType(self, _LT.RatioLiquidHydrazineOutput)
+
+    @property
     def RatioLiquidHydrochloricAcid(self) -> float:
         return _DeviceLogicType(self, _LT.RatioLiquidHydrochloricAcid)
+
+    @property
+    def RatioLiquidHydrochloricAcidInput(self) -> float:
+        return _DeviceLogicType(self, _LT.RatioLiquidHydrochloricAcidInput)
+
+    @property
+    def RatioLiquidHydrochloricAcidInput2(self) -> float:
+        return _DeviceLogicType(self, _LT.RatioLiquidHydrochloricAcidInput2)
+
+    @property
+    def RatioLiquidHydrochloricAcidOutput(self) -> float:
+        return _DeviceLogicType(self, _LT.RatioLiquidHydrochloricAcidOutput)
+
+    @property
+    def RatioLiquidHydrogenInput(self) -> float:
+        return _DeviceLogicType(self, _LT.RatioLiquidHydrogenInput)
+
+    @property
+    def RatioLiquidHydrogenInput2(self) -> float:
+        return _DeviceLogicType(self, _LT.RatioLiquidHydrogenInput2)
+
+    @property
+    def RatioLiquidHydrogenOutput(self) -> float:
+        return _DeviceLogicType(self, _LT.RatioLiquidHydrogenOutput)
 
     @property
     def RatioLiquidMethane(self) -> float:
@@ -30598,6 +34278,18 @@ class Nitrolyzer(
         return _DeviceLogicType(self, _LT.RatioLiquidOzone)
 
     @property
+    def RatioLiquidOzoneInput(self) -> float:
+        return _DeviceLogicType(self, _LT.RatioLiquidOzoneInput)
+
+    @property
+    def RatioLiquidOzoneInput2(self) -> float:
+        return _DeviceLogicType(self, _LT.RatioLiquidOzoneInput2)
+
+    @property
+    def RatioLiquidOzoneOutput(self) -> float:
+        return _DeviceLogicType(self, _LT.RatioLiquidOzoneOutput)
+
+    @property
     def RatioLiquidPollutant(self) -> float:
         return _DeviceLogicType(self, _LT.RatioLiquidPollutant)
 
@@ -30618,8 +34310,32 @@ class Nitrolyzer(
         return _DeviceLogicType(self, _LT.RatioLiquidSilanol)
 
     @property
+    def RatioLiquidSilanolInput(self) -> float:
+        return _DeviceLogicType(self, _LT.RatioLiquidSilanolInput)
+
+    @property
+    def RatioLiquidSilanolInput2(self) -> float:
+        return _DeviceLogicType(self, _LT.RatioLiquidSilanolInput2)
+
+    @property
+    def RatioLiquidSilanolOutput(self) -> float:
+        return _DeviceLogicType(self, _LT.RatioLiquidSilanolOutput)
+
+    @property
     def RatioLiquidSodiumChloride(self) -> float:
         return _DeviceLogicType(self, _LT.RatioLiquidSodiumChloride)
+
+    @property
+    def RatioLiquidSodiumChlorideInput(self) -> float:
+        return _DeviceLogicType(self, _LT.RatioLiquidSodiumChlorideInput)
+
+    @property
+    def RatioLiquidSodiumChlorideInput2(self) -> float:
+        return _DeviceLogicType(self, _LT.RatioLiquidSodiumChlorideInput2)
+
+    @property
+    def RatioLiquidSodiumChlorideOutput(self) -> float:
+        return _DeviceLogicType(self, _LT.RatioLiquidSodiumChlorideOutput)
 
     @property
     def RatioMethane(self) -> float:
@@ -30690,6 +34406,18 @@ class Nitrolyzer(
         return _DeviceLogicType(self, _LT.RatioOzone)
 
     @property
+    def RatioOzoneInput(self) -> float:
+        return _DeviceLogicType(self, _LT.RatioOzoneInput)
+
+    @property
+    def RatioOzoneInput2(self) -> float:
+        return _DeviceLogicType(self, _LT.RatioOzoneInput2)
+
+    @property
+    def RatioOzoneOutput(self) -> float:
+        return _DeviceLogicType(self, _LT.RatioOzoneOutput)
+
+    @property
     def RatioPollutant(self) -> float:
         return _DeviceLogicType(self, _LT.RatioPollutant)
 
@@ -30706,8 +34434,32 @@ class Nitrolyzer(
         return _DeviceLogicType(self, _LT.RatioPollutantOutput)
 
     @property
+    def RatioPollutedWaterInput(self) -> float:
+        return _DeviceLogicType(self, _LT.RatioPollutedWaterInput)
+
+    @property
+    def RatioPollutedWaterInput2(self) -> float:
+        return _DeviceLogicType(self, _LT.RatioPollutedWaterInput2)
+
+    @property
+    def RatioPollutedWaterOutput(self) -> float:
+        return _DeviceLogicType(self, _LT.RatioPollutedWaterOutput)
+
+    @property
     def RatioSilanol(self) -> float:
         return _DeviceLogicType(self, _LT.RatioSilanol)
+
+    @property
+    def RatioSilanolInput(self) -> float:
+        return _DeviceLogicType(self, _LT.RatioSilanolInput)
+
+    @property
+    def RatioSilanolInput2(self) -> float:
+        return _DeviceLogicType(self, _LT.RatioSilanolInput2)
+
+    @property
+    def RatioSilanolOutput(self) -> float:
+        return _DeviceLogicType(self, _LT.RatioSilanolOutput)
 
     @property
     def RatioSteam(self) -> float:
@@ -30856,16 +34608,76 @@ class _Nitrolyzers(
         return _DevicesLogicType(self, _LT.RatioHelium)
 
     @property
+    def RatioHeliumInput(self) -> _DevicesLogicType:
+        return _DevicesLogicType(self, _LT.RatioHeliumInput)
+
+    @property
+    def RatioHeliumInput2(self) -> _DevicesLogicType:
+        return _DevicesLogicType(self, _LT.RatioHeliumInput2)
+
+    @property
+    def RatioHeliumOutput(self) -> _DevicesLogicType:
+        return _DevicesLogicType(self, _LT.RatioHeliumOutput)
+
+    @property
     def RatioHydrazine(self) -> _DevicesLogicType:
         return _DevicesLogicType(self, _LT.RatioHydrazine)
+
+    @property
+    def RatioHydrazineInput(self) -> _DevicesLogicType:
+        return _DevicesLogicType(self, _LT.RatioHydrazineInput)
+
+    @property
+    def RatioHydrazineInput2(self) -> _DevicesLogicType:
+        return _DevicesLogicType(self, _LT.RatioHydrazineInput2)
+
+    @property
+    def RatioHydrazineOutput(self) -> _DevicesLogicType:
+        return _DevicesLogicType(self, _LT.RatioHydrazineOutput)
 
     @property
     def RatioHydrochloricAcid(self) -> _DevicesLogicType:
         return _DevicesLogicType(self, _LT.RatioHydrochloricAcid)
 
     @property
+    def RatioHydrochloricAcidInput(self) -> _DevicesLogicType:
+        return _DevicesLogicType(self, _LT.RatioHydrochloricAcidInput)
+
+    @property
+    def RatioHydrochloricAcidInput2(self) -> _DevicesLogicType:
+        return _DevicesLogicType(self, _LT.RatioHydrochloricAcidInput2)
+
+    @property
+    def RatioHydrochloricAcidOutput(self) -> _DevicesLogicType:
+        return _DevicesLogicType(self, _LT.RatioHydrochloricAcidOutput)
+
+    @property
+    def RatioHydrogenInput(self) -> _DevicesLogicType:
+        return _DevicesLogicType(self, _LT.RatioHydrogenInput)
+
+    @property
+    def RatioHydrogenInput2(self) -> _DevicesLogicType:
+        return _DevicesLogicType(self, _LT.RatioHydrogenInput2)
+
+    @property
+    def RatioHydrogenOutput(self) -> _DevicesLogicType:
+        return _DevicesLogicType(self, _LT.RatioHydrogenOutput)
+
+    @property
     def RatioLiquidAlcohol(self) -> _DevicesLogicType:
         return _DevicesLogicType(self, _LT.RatioLiquidAlcohol)
+
+    @property
+    def RatioLiquidAlcoholInput(self) -> _DevicesLogicType:
+        return _DevicesLogicType(self, _LT.RatioLiquidAlcoholInput)
+
+    @property
+    def RatioLiquidAlcoholInput2(self) -> _DevicesLogicType:
+        return _DevicesLogicType(self, _LT.RatioLiquidAlcoholInput2)
+
+    @property
+    def RatioLiquidAlcoholOutput(self) -> _DevicesLogicType:
+        return _DevicesLogicType(self, _LT.RatioLiquidAlcoholOutput)
 
     @property
     def RatioLiquidCarbonDioxide(self) -> _DevicesLogicType:
@@ -30888,8 +34700,44 @@ class _Nitrolyzers(
         return _DevicesLogicType(self, _LT.RatioLiquidHydrazine)
 
     @property
+    def RatioLiquidHydrazineInput(self) -> _DevicesLogicType:
+        return _DevicesLogicType(self, _LT.RatioLiquidHydrazineInput)
+
+    @property
+    def RatioLiquidHydrazineInput2(self) -> _DevicesLogicType:
+        return _DevicesLogicType(self, _LT.RatioLiquidHydrazineInput2)
+
+    @property
+    def RatioLiquidHydrazineOutput(self) -> _DevicesLogicType:
+        return _DevicesLogicType(self, _LT.RatioLiquidHydrazineOutput)
+
+    @property
     def RatioLiquidHydrochloricAcid(self) -> _DevicesLogicType:
         return _DevicesLogicType(self, _LT.RatioLiquidHydrochloricAcid)
+
+    @property
+    def RatioLiquidHydrochloricAcidInput(self) -> _DevicesLogicType:
+        return _DevicesLogicType(self, _LT.RatioLiquidHydrochloricAcidInput)
+
+    @property
+    def RatioLiquidHydrochloricAcidInput2(self) -> _DevicesLogicType:
+        return _DevicesLogicType(self, _LT.RatioLiquidHydrochloricAcidInput2)
+
+    @property
+    def RatioLiquidHydrochloricAcidOutput(self) -> _DevicesLogicType:
+        return _DevicesLogicType(self, _LT.RatioLiquidHydrochloricAcidOutput)
+
+    @property
+    def RatioLiquidHydrogenInput(self) -> _DevicesLogicType:
+        return _DevicesLogicType(self, _LT.RatioLiquidHydrogenInput)
+
+    @property
+    def RatioLiquidHydrogenInput2(self) -> _DevicesLogicType:
+        return _DevicesLogicType(self, _LT.RatioLiquidHydrogenInput2)
+
+    @property
+    def RatioLiquidHydrogenOutput(self) -> _DevicesLogicType:
+        return _DevicesLogicType(self, _LT.RatioLiquidHydrogenOutput)
 
     @property
     def RatioLiquidMethane(self) -> _DevicesLogicType:
@@ -30960,6 +34808,18 @@ class _Nitrolyzers(
         return _DevicesLogicType(self, _LT.RatioLiquidOzone)
 
     @property
+    def RatioLiquidOzoneInput(self) -> _DevicesLogicType:
+        return _DevicesLogicType(self, _LT.RatioLiquidOzoneInput)
+
+    @property
+    def RatioLiquidOzoneInput2(self) -> _DevicesLogicType:
+        return _DevicesLogicType(self, _LT.RatioLiquidOzoneInput2)
+
+    @property
+    def RatioLiquidOzoneOutput(self) -> _DevicesLogicType:
+        return _DevicesLogicType(self, _LT.RatioLiquidOzoneOutput)
+
+    @property
     def RatioLiquidPollutant(self) -> _DevicesLogicType:
         return _DevicesLogicType(self, _LT.RatioLiquidPollutant)
 
@@ -30980,8 +34840,32 @@ class _Nitrolyzers(
         return _DevicesLogicType(self, _LT.RatioLiquidSilanol)
 
     @property
+    def RatioLiquidSilanolInput(self) -> _DevicesLogicType:
+        return _DevicesLogicType(self, _LT.RatioLiquidSilanolInput)
+
+    @property
+    def RatioLiquidSilanolInput2(self) -> _DevicesLogicType:
+        return _DevicesLogicType(self, _LT.RatioLiquidSilanolInput2)
+
+    @property
+    def RatioLiquidSilanolOutput(self) -> _DevicesLogicType:
+        return _DevicesLogicType(self, _LT.RatioLiquidSilanolOutput)
+
+    @property
     def RatioLiquidSodiumChloride(self) -> _DevicesLogicType:
         return _DevicesLogicType(self, _LT.RatioLiquidSodiumChloride)
+
+    @property
+    def RatioLiquidSodiumChlorideInput(self) -> _DevicesLogicType:
+        return _DevicesLogicType(self, _LT.RatioLiquidSodiumChlorideInput)
+
+    @property
+    def RatioLiquidSodiumChlorideInput2(self) -> _DevicesLogicType:
+        return _DevicesLogicType(self, _LT.RatioLiquidSodiumChlorideInput2)
+
+    @property
+    def RatioLiquidSodiumChlorideOutput(self) -> _DevicesLogicType:
+        return _DevicesLogicType(self, _LT.RatioLiquidSodiumChlorideOutput)
 
     @property
     def RatioMethane(self) -> _DevicesLogicType:
@@ -31052,6 +34936,18 @@ class _Nitrolyzers(
         return _DevicesLogicType(self, _LT.RatioOzone)
 
     @property
+    def RatioOzoneInput(self) -> _DevicesLogicType:
+        return _DevicesLogicType(self, _LT.RatioOzoneInput)
+
+    @property
+    def RatioOzoneInput2(self) -> _DevicesLogicType:
+        return _DevicesLogicType(self, _LT.RatioOzoneInput2)
+
+    @property
+    def RatioOzoneOutput(self) -> _DevicesLogicType:
+        return _DevicesLogicType(self, _LT.RatioOzoneOutput)
+
+    @property
     def RatioPollutant(self) -> _DevicesLogicType:
         return _DevicesLogicType(self, _LT.RatioPollutant)
 
@@ -31068,8 +34964,32 @@ class _Nitrolyzers(
         return _DevicesLogicType(self, _LT.RatioPollutantOutput)
 
     @property
+    def RatioPollutedWaterInput(self) -> _DevicesLogicType:
+        return _DevicesLogicType(self, _LT.RatioPollutedWaterInput)
+
+    @property
+    def RatioPollutedWaterInput2(self) -> _DevicesLogicType:
+        return _DevicesLogicType(self, _LT.RatioPollutedWaterInput2)
+
+    @property
+    def RatioPollutedWaterOutput(self) -> _DevicesLogicType:
+        return _DevicesLogicType(self, _LT.RatioPollutedWaterOutput)
+
+    @property
     def RatioSilanol(self) -> _DevicesLogicType:
         return _DevicesLogicType(self, _LT.RatioSilanol)
+
+    @property
+    def RatioSilanolInput(self) -> _DevicesLogicType:
+        return _DevicesLogicType(self, _LT.RatioSilanolInput)
+
+    @property
+    def RatioSilanolInput2(self) -> _DevicesLogicType:
+        return _DevicesLogicType(self, _LT.RatioSilanolInput2)
+
+    @property
+    def RatioSilanolOutput(self) -> _DevicesLogicType:
+        return _DevicesLogicType(self, _LT.RatioSilanolOutput)
 
     @property
     def RatioSteam(self) -> _DevicesLogicType:
@@ -32540,6 +36460,50 @@ class PoweredVent(_BaseStructure, _Error, _Lock, _Mode, _Power):
         return _DeviceLogicType(self, _LT.RatioCarbonDioxideOutput)
 
     @property
+    def RatioHeliumOutput(self) -> float:
+        return _DeviceLogicType(self, _LT.RatioHeliumOutput)
+
+    @property
+    def RatioHydrazineOutput(self) -> float:
+        return _DeviceLogicType(self, _LT.RatioHydrazineOutput)
+
+    @property
+    def RatioHydrochloricAcidOutput(self) -> float:
+        return _DeviceLogicType(self, _LT.RatioHydrochloricAcidOutput)
+
+    @property
+    def RatioHydrogenOutput(self) -> float:
+        return _DeviceLogicType(self, _LT.RatioHydrogenOutput)
+
+    @property
+    def RatioLiquidAlcoholOutput(self) -> float:
+        return _DeviceLogicType(self, _LT.RatioLiquidAlcoholOutput)
+
+    @property
+    def RatioLiquidHydrazineOutput(self) -> float:
+        return _DeviceLogicType(self, _LT.RatioLiquidHydrazineOutput)
+
+    @property
+    def RatioLiquidHydrochloricAcidOutput(self) -> float:
+        return _DeviceLogicType(self, _LT.RatioLiquidHydrochloricAcidOutput)
+
+    @property
+    def RatioLiquidHydrogenOutput(self) -> float:
+        return _DeviceLogicType(self, _LT.RatioLiquidHydrogenOutput)
+
+    @property
+    def RatioLiquidOzoneOutput(self) -> float:
+        return _DeviceLogicType(self, _LT.RatioLiquidOzoneOutput)
+
+    @property
+    def RatioLiquidSilanolOutput(self) -> float:
+        return _DeviceLogicType(self, _LT.RatioLiquidSilanolOutput)
+
+    @property
+    def RatioLiquidSodiumChlorideOutput(self) -> float:
+        return _DeviceLogicType(self, _LT.RatioLiquidSodiumChlorideOutput)
+
+    @property
     def RatioMethaneOutput(self) -> float:
         return _DeviceLogicType(self, _LT.RatioMethaneOutput)
 
@@ -32556,8 +36520,20 @@ class PoweredVent(_BaseStructure, _Error, _Lock, _Mode, _Power):
         return _DeviceLogicType(self, _LT.RatioOxygenOutput)
 
     @property
+    def RatioOzoneOutput(self) -> float:
+        return _DeviceLogicType(self, _LT.RatioOzoneOutput)
+
+    @property
     def RatioPollutantOutput(self) -> float:
         return _DeviceLogicType(self, _LT.RatioPollutantOutput)
+
+    @property
+    def RatioPollutedWaterOutput(self) -> float:
+        return _DeviceLogicType(self, _LT.RatioPollutedWaterOutput)
+
+    @property
+    def RatioSilanolOutput(self) -> float:
+        return _DeviceLogicType(self, _LT.RatioSilanolOutput)
 
     @property
     def RatioWaterOutput(self) -> float:
@@ -32616,6 +36592,50 @@ class _PoweredVents(_BaseStructures, _Errors, _Locks, _Modes, _Powers):
         return _DevicesLogicType(self, _LT.RatioCarbonDioxideOutput)
 
     @property
+    def RatioHeliumOutput(self) -> _DevicesLogicType:
+        return _DevicesLogicType(self, _LT.RatioHeliumOutput)
+
+    @property
+    def RatioHydrazineOutput(self) -> _DevicesLogicType:
+        return _DevicesLogicType(self, _LT.RatioHydrazineOutput)
+
+    @property
+    def RatioHydrochloricAcidOutput(self) -> _DevicesLogicType:
+        return _DevicesLogicType(self, _LT.RatioHydrochloricAcidOutput)
+
+    @property
+    def RatioHydrogenOutput(self) -> _DevicesLogicType:
+        return _DevicesLogicType(self, _LT.RatioHydrogenOutput)
+
+    @property
+    def RatioLiquidAlcoholOutput(self) -> _DevicesLogicType:
+        return _DevicesLogicType(self, _LT.RatioLiquidAlcoholOutput)
+
+    @property
+    def RatioLiquidHydrazineOutput(self) -> _DevicesLogicType:
+        return _DevicesLogicType(self, _LT.RatioLiquidHydrazineOutput)
+
+    @property
+    def RatioLiquidHydrochloricAcidOutput(self) -> _DevicesLogicType:
+        return _DevicesLogicType(self, _LT.RatioLiquidHydrochloricAcidOutput)
+
+    @property
+    def RatioLiquidHydrogenOutput(self) -> _DevicesLogicType:
+        return _DevicesLogicType(self, _LT.RatioLiquidHydrogenOutput)
+
+    @property
+    def RatioLiquidOzoneOutput(self) -> _DevicesLogicType:
+        return _DevicesLogicType(self, _LT.RatioLiquidOzoneOutput)
+
+    @property
+    def RatioLiquidSilanolOutput(self) -> _DevicesLogicType:
+        return _DevicesLogicType(self, _LT.RatioLiquidSilanolOutput)
+
+    @property
+    def RatioLiquidSodiumChlorideOutput(self) -> _DevicesLogicType:
+        return _DevicesLogicType(self, _LT.RatioLiquidSodiumChlorideOutput)
+
+    @property
     def RatioMethaneOutput(self) -> _DevicesLogicType:
         return _DevicesLogicType(self, _LT.RatioMethaneOutput)
 
@@ -32632,8 +36652,20 @@ class _PoweredVents(_BaseStructures, _Errors, _Locks, _Modes, _Powers):
         return _DevicesLogicType(self, _LT.RatioOxygenOutput)
 
     @property
+    def RatioOzoneOutput(self) -> _DevicesLogicType:
+        return _DevicesLogicType(self, _LT.RatioOzoneOutput)
+
+    @property
     def RatioPollutantOutput(self) -> _DevicesLogicType:
         return _DevicesLogicType(self, _LT.RatioPollutantOutput)
+
+    @property
+    def RatioPollutedWaterOutput(self) -> _DevicesLogicType:
+        return _DevicesLogicType(self, _LT.RatioPollutedWaterOutput)
+
+    @property
+    def RatioSilanolOutput(self) -> _DevicesLogicType:
+        return _DevicesLogicType(self, _LT.RatioSilanolOutput)
 
     @property
     def RatioWaterOutput(self) -> _DevicesLogicType:
@@ -32676,6 +36708,50 @@ class PoweredVentLarge(_BaseStructure, _Error, _Lock, _Mode, _Power):
         return _DeviceLogicType(self, _LT.RatioCarbonDioxideOutput)
 
     @property
+    def RatioHeliumOutput(self) -> float:
+        return _DeviceLogicType(self, _LT.RatioHeliumOutput)
+
+    @property
+    def RatioHydrazineOutput(self) -> float:
+        return _DeviceLogicType(self, _LT.RatioHydrazineOutput)
+
+    @property
+    def RatioHydrochloricAcidOutput(self) -> float:
+        return _DeviceLogicType(self, _LT.RatioHydrochloricAcidOutput)
+
+    @property
+    def RatioHydrogenOutput(self) -> float:
+        return _DeviceLogicType(self, _LT.RatioHydrogenOutput)
+
+    @property
+    def RatioLiquidAlcoholOutput(self) -> float:
+        return _DeviceLogicType(self, _LT.RatioLiquidAlcoholOutput)
+
+    @property
+    def RatioLiquidHydrazineOutput(self) -> float:
+        return _DeviceLogicType(self, _LT.RatioLiquidHydrazineOutput)
+
+    @property
+    def RatioLiquidHydrochloricAcidOutput(self) -> float:
+        return _DeviceLogicType(self, _LT.RatioLiquidHydrochloricAcidOutput)
+
+    @property
+    def RatioLiquidHydrogenOutput(self) -> float:
+        return _DeviceLogicType(self, _LT.RatioLiquidHydrogenOutput)
+
+    @property
+    def RatioLiquidOzoneOutput(self) -> float:
+        return _DeviceLogicType(self, _LT.RatioLiquidOzoneOutput)
+
+    @property
+    def RatioLiquidSilanolOutput(self) -> float:
+        return _DeviceLogicType(self, _LT.RatioLiquidSilanolOutput)
+
+    @property
+    def RatioLiquidSodiumChlorideOutput(self) -> float:
+        return _DeviceLogicType(self, _LT.RatioLiquidSodiumChlorideOutput)
+
+    @property
     def RatioMethaneOutput(self) -> float:
         return _DeviceLogicType(self, _LT.RatioMethaneOutput)
 
@@ -32692,8 +36768,20 @@ class PoweredVentLarge(_BaseStructure, _Error, _Lock, _Mode, _Power):
         return _DeviceLogicType(self, _LT.RatioOxygenOutput)
 
     @property
+    def RatioOzoneOutput(self) -> float:
+        return _DeviceLogicType(self, _LT.RatioOzoneOutput)
+
+    @property
     def RatioPollutantOutput(self) -> float:
         return _DeviceLogicType(self, _LT.RatioPollutantOutput)
+
+    @property
+    def RatioPollutedWaterOutput(self) -> float:
+        return _DeviceLogicType(self, _LT.RatioPollutedWaterOutput)
+
+    @property
+    def RatioSilanolOutput(self) -> float:
+        return _DeviceLogicType(self, _LT.RatioSilanolOutput)
 
     @property
     def RatioWaterOutput(self) -> float:
@@ -32752,6 +36840,50 @@ class _PoweredVentLarges(_BaseStructures, _Errors, _Locks, _Modes, _Powers):
         return _DevicesLogicType(self, _LT.RatioCarbonDioxideOutput)
 
     @property
+    def RatioHeliumOutput(self) -> _DevicesLogicType:
+        return _DevicesLogicType(self, _LT.RatioHeliumOutput)
+
+    @property
+    def RatioHydrazineOutput(self) -> _DevicesLogicType:
+        return _DevicesLogicType(self, _LT.RatioHydrazineOutput)
+
+    @property
+    def RatioHydrochloricAcidOutput(self) -> _DevicesLogicType:
+        return _DevicesLogicType(self, _LT.RatioHydrochloricAcidOutput)
+
+    @property
+    def RatioHydrogenOutput(self) -> _DevicesLogicType:
+        return _DevicesLogicType(self, _LT.RatioHydrogenOutput)
+
+    @property
+    def RatioLiquidAlcoholOutput(self) -> _DevicesLogicType:
+        return _DevicesLogicType(self, _LT.RatioLiquidAlcoholOutput)
+
+    @property
+    def RatioLiquidHydrazineOutput(self) -> _DevicesLogicType:
+        return _DevicesLogicType(self, _LT.RatioLiquidHydrazineOutput)
+
+    @property
+    def RatioLiquidHydrochloricAcidOutput(self) -> _DevicesLogicType:
+        return _DevicesLogicType(self, _LT.RatioLiquidHydrochloricAcidOutput)
+
+    @property
+    def RatioLiquidHydrogenOutput(self) -> _DevicesLogicType:
+        return _DevicesLogicType(self, _LT.RatioLiquidHydrogenOutput)
+
+    @property
+    def RatioLiquidOzoneOutput(self) -> _DevicesLogicType:
+        return _DevicesLogicType(self, _LT.RatioLiquidOzoneOutput)
+
+    @property
+    def RatioLiquidSilanolOutput(self) -> _DevicesLogicType:
+        return _DevicesLogicType(self, _LT.RatioLiquidSilanolOutput)
+
+    @property
+    def RatioLiquidSodiumChlorideOutput(self) -> _DevicesLogicType:
+        return _DevicesLogicType(self, _LT.RatioLiquidSodiumChlorideOutput)
+
+    @property
     def RatioMethaneOutput(self) -> _DevicesLogicType:
         return _DevicesLogicType(self, _LT.RatioMethaneOutput)
 
@@ -32768,8 +36900,20 @@ class _PoweredVentLarges(_BaseStructures, _Errors, _Locks, _Modes, _Powers):
         return _DevicesLogicType(self, _LT.RatioOxygenOutput)
 
     @property
+    def RatioOzoneOutput(self) -> _DevicesLogicType:
+        return _DevicesLogicType(self, _LT.RatioOzoneOutput)
+
+    @property
     def RatioPollutantOutput(self) -> _DevicesLogicType:
         return _DevicesLogicType(self, _LT.RatioPollutantOutput)
+
+    @property
+    def RatioPollutedWaterOutput(self) -> _DevicesLogicType:
+        return _DevicesLogicType(self, _LT.RatioPollutedWaterOutput)
+
+    @property
+    def RatioSilanolOutput(self) -> _DevicesLogicType:
+        return _DevicesLogicType(self, _LT.RatioSilanolOutput)
 
     @property
     def RatioWaterOutput(self) -> _DevicesLogicType:
@@ -36031,6 +40175,50 @@ class RocketEngineTiny(
         return _DeviceLogicType(self, _LT.RatioCarbonDioxideOutput)
 
     @property
+    def RatioHeliumOutput(self) -> float:
+        return _DeviceLogicType(self, _LT.RatioHeliumOutput)
+
+    @property
+    def RatioHydrazineOutput(self) -> float:
+        return _DeviceLogicType(self, _LT.RatioHydrazineOutput)
+
+    @property
+    def RatioHydrochloricAcidOutput(self) -> float:
+        return _DeviceLogicType(self, _LT.RatioHydrochloricAcidOutput)
+
+    @property
+    def RatioHydrogenOutput(self) -> float:
+        return _DeviceLogicType(self, _LT.RatioHydrogenOutput)
+
+    @property
+    def RatioLiquidAlcoholOutput(self) -> float:
+        return _DeviceLogicType(self, _LT.RatioLiquidAlcoholOutput)
+
+    @property
+    def RatioLiquidHydrazineOutput(self) -> float:
+        return _DeviceLogicType(self, _LT.RatioLiquidHydrazineOutput)
+
+    @property
+    def RatioLiquidHydrochloricAcidOutput(self) -> float:
+        return _DeviceLogicType(self, _LT.RatioLiquidHydrochloricAcidOutput)
+
+    @property
+    def RatioLiquidHydrogenOutput(self) -> float:
+        return _DeviceLogicType(self, _LT.RatioLiquidHydrogenOutput)
+
+    @property
+    def RatioLiquidOzoneOutput(self) -> float:
+        return _DeviceLogicType(self, _LT.RatioLiquidOzoneOutput)
+
+    @property
+    def RatioLiquidSilanolOutput(self) -> float:
+        return _DeviceLogicType(self, _LT.RatioLiquidSilanolOutput)
+
+    @property
+    def RatioLiquidSodiumChlorideOutput(self) -> float:
+        return _DeviceLogicType(self, _LT.RatioLiquidSodiumChlorideOutput)
+
+    @property
     def RatioMethaneOutput(self) -> float:
         return _DeviceLogicType(self, _LT.RatioMethaneOutput)
 
@@ -36047,8 +40235,20 @@ class RocketEngineTiny(
         return _DeviceLogicType(self, _LT.RatioOxygenOutput)
 
     @property
+    def RatioOzoneOutput(self) -> float:
+        return _DeviceLogicType(self, _LT.RatioOzoneOutput)
+
+    @property
     def RatioPollutantOutput(self) -> float:
         return _DeviceLogicType(self, _LT.RatioPollutantOutput)
+
+    @property
+    def RatioPollutedWaterOutput(self) -> float:
+        return _DeviceLogicType(self, _LT.RatioPollutedWaterOutput)
+
+    @property
+    def RatioSilanolOutput(self) -> float:
+        return _DeviceLogicType(self, _LT.RatioSilanolOutput)
 
     @property
     def RatioWaterOutput(self) -> float:
@@ -36101,6 +40301,50 @@ class _RocketEngineTinies(
         return _DevicesLogicType(self, _LT.RatioCarbonDioxideOutput)
 
     @property
+    def RatioHeliumOutput(self) -> _DevicesLogicType:
+        return _DevicesLogicType(self, _LT.RatioHeliumOutput)
+
+    @property
+    def RatioHydrazineOutput(self) -> _DevicesLogicType:
+        return _DevicesLogicType(self, _LT.RatioHydrazineOutput)
+
+    @property
+    def RatioHydrochloricAcidOutput(self) -> _DevicesLogicType:
+        return _DevicesLogicType(self, _LT.RatioHydrochloricAcidOutput)
+
+    @property
+    def RatioHydrogenOutput(self) -> _DevicesLogicType:
+        return _DevicesLogicType(self, _LT.RatioHydrogenOutput)
+
+    @property
+    def RatioLiquidAlcoholOutput(self) -> _DevicesLogicType:
+        return _DevicesLogicType(self, _LT.RatioLiquidAlcoholOutput)
+
+    @property
+    def RatioLiquidHydrazineOutput(self) -> _DevicesLogicType:
+        return _DevicesLogicType(self, _LT.RatioLiquidHydrazineOutput)
+
+    @property
+    def RatioLiquidHydrochloricAcidOutput(self) -> _DevicesLogicType:
+        return _DevicesLogicType(self, _LT.RatioLiquidHydrochloricAcidOutput)
+
+    @property
+    def RatioLiquidHydrogenOutput(self) -> _DevicesLogicType:
+        return _DevicesLogicType(self, _LT.RatioLiquidHydrogenOutput)
+
+    @property
+    def RatioLiquidOzoneOutput(self) -> _DevicesLogicType:
+        return _DevicesLogicType(self, _LT.RatioLiquidOzoneOutput)
+
+    @property
+    def RatioLiquidSilanolOutput(self) -> _DevicesLogicType:
+        return _DevicesLogicType(self, _LT.RatioLiquidSilanolOutput)
+
+    @property
+    def RatioLiquidSodiumChlorideOutput(self) -> _DevicesLogicType:
+        return _DevicesLogicType(self, _LT.RatioLiquidSodiumChlorideOutput)
+
+    @property
     def RatioMethaneOutput(self) -> _DevicesLogicType:
         return _DevicesLogicType(self, _LT.RatioMethaneOutput)
 
@@ -36117,8 +40361,20 @@ class _RocketEngineTinies(
         return _DevicesLogicType(self, _LT.RatioOxygenOutput)
 
     @property
+    def RatioOzoneOutput(self) -> _DevicesLogicType:
+        return _DevicesLogicType(self, _LT.RatioOzoneOutput)
+
+    @property
     def RatioPollutantOutput(self) -> _DevicesLogicType:
         return _DevicesLogicType(self, _LT.RatioPollutantOutput)
+
+    @property
+    def RatioPollutedWaterOutput(self) -> _DevicesLogicType:
+        return _DevicesLogicType(self, _LT.RatioPollutedWaterOutput)
+
+    @property
+    def RatioSilanolOutput(self) -> _DevicesLogicType:
+        return _DevicesLogicType(self, _LT.RatioSilanolOutput)
 
     @property
     def RatioWaterOutput(self) -> _DevicesLogicType:
@@ -36421,6 +40677,66 @@ class RocketFiltrationGas(
         return _DeviceLogicType(self, _LT.RatioCarbonDioxideOutput2)
 
     @property
+    def RatioHeliumInput(self) -> float:
+        return _DeviceLogicType(self, _LT.RatioHeliumInput)
+
+    @property
+    def RatioHeliumOutput(self) -> float:
+        return _DeviceLogicType(self, _LT.RatioHeliumOutput)
+
+    @property
+    def RatioHeliumOutput2(self) -> float:
+        return _DeviceLogicType(self, _LT.RatioHeliumOutput2)
+
+    @property
+    def RatioHydrazineInput(self) -> float:
+        return _DeviceLogicType(self, _LT.RatioHydrazineInput)
+
+    @property
+    def RatioHydrazineOutput(self) -> float:
+        return _DeviceLogicType(self, _LT.RatioHydrazineOutput)
+
+    @property
+    def RatioHydrazineOutput2(self) -> float:
+        return _DeviceLogicType(self, _LT.RatioHydrazineOutput2)
+
+    @property
+    def RatioHydrochloricAcidInput(self) -> float:
+        return _DeviceLogicType(self, _LT.RatioHydrochloricAcidInput)
+
+    @property
+    def RatioHydrochloricAcidOutput(self) -> float:
+        return _DeviceLogicType(self, _LT.RatioHydrochloricAcidOutput)
+
+    @property
+    def RatioHydrochloricAcidOutput2(self) -> float:
+        return _DeviceLogicType(self, _LT.RatioHydrochloricAcidOutput2)
+
+    @property
+    def RatioHydrogenInput(self) -> float:
+        return _DeviceLogicType(self, _LT.RatioHydrogenInput)
+
+    @property
+    def RatioHydrogenOutput(self) -> float:
+        return _DeviceLogicType(self, _LT.RatioHydrogenOutput)
+
+    @property
+    def RatioHydrogenOutput2(self) -> float:
+        return _DeviceLogicType(self, _LT.RatioHydrogenOutput2)
+
+    @property
+    def RatioLiquidAlcoholInput(self) -> float:
+        return _DeviceLogicType(self, _LT.RatioLiquidAlcoholInput)
+
+    @property
+    def RatioLiquidAlcoholOutput(self) -> float:
+        return _DeviceLogicType(self, _LT.RatioLiquidAlcoholOutput)
+
+    @property
+    def RatioLiquidAlcoholOutput2(self) -> float:
+        return _DeviceLogicType(self, _LT.RatioLiquidAlcoholOutput2)
+
+    @property
     def RatioLiquidCarbonDioxideInput(self) -> float:
         return _DeviceLogicType(self, _LT.RatioLiquidCarbonDioxideInput)
 
@@ -36431,6 +40747,42 @@ class RocketFiltrationGas(
     @property
     def RatioLiquidCarbonDioxideOutput2(self) -> float:
         return _DeviceLogicType(self, _LT.RatioLiquidCarbonDioxideOutput2)
+
+    @property
+    def RatioLiquidHydrazineInput(self) -> float:
+        return _DeviceLogicType(self, _LT.RatioLiquidHydrazineInput)
+
+    @property
+    def RatioLiquidHydrazineOutput(self) -> float:
+        return _DeviceLogicType(self, _LT.RatioLiquidHydrazineOutput)
+
+    @property
+    def RatioLiquidHydrazineOutput2(self) -> float:
+        return _DeviceLogicType(self, _LT.RatioLiquidHydrazineOutput2)
+
+    @property
+    def RatioLiquidHydrochloricAcidInput(self) -> float:
+        return _DeviceLogicType(self, _LT.RatioLiquidHydrochloricAcidInput)
+
+    @property
+    def RatioLiquidHydrochloricAcidOutput(self) -> float:
+        return _DeviceLogicType(self, _LT.RatioLiquidHydrochloricAcidOutput)
+
+    @property
+    def RatioLiquidHydrochloricAcidOutput2(self) -> float:
+        return _DeviceLogicType(self, _LT.RatioLiquidHydrochloricAcidOutput2)
+
+    @property
+    def RatioLiquidHydrogenInput(self) -> float:
+        return _DeviceLogicType(self, _LT.RatioLiquidHydrogenInput)
+
+    @property
+    def RatioLiquidHydrogenOutput(self) -> float:
+        return _DeviceLogicType(self, _LT.RatioLiquidHydrogenOutput)
+
+    @property
+    def RatioLiquidHydrogenOutput2(self) -> float:
+        return _DeviceLogicType(self, _LT.RatioLiquidHydrogenOutput2)
 
     @property
     def RatioLiquidMethaneInput(self) -> float:
@@ -36481,6 +40833,18 @@ class RocketFiltrationGas(
         return _DeviceLogicType(self, _LT.RatioLiquidOxygenOutput2)
 
     @property
+    def RatioLiquidOzoneInput(self) -> float:
+        return _DeviceLogicType(self, _LT.RatioLiquidOzoneInput)
+
+    @property
+    def RatioLiquidOzoneOutput(self) -> float:
+        return _DeviceLogicType(self, _LT.RatioLiquidOzoneOutput)
+
+    @property
+    def RatioLiquidOzoneOutput2(self) -> float:
+        return _DeviceLogicType(self, _LT.RatioLiquidOzoneOutput2)
+
+    @property
     def RatioLiquidPollutantInput(self) -> float:
         return _DeviceLogicType(self, _LT.RatioLiquidPollutantInput)
 
@@ -36491,6 +40855,30 @@ class RocketFiltrationGas(
     @property
     def RatioLiquidPollutantOutput2(self) -> float:
         return _DeviceLogicType(self, _LT.RatioLiquidPollutantOutput2)
+
+    @property
+    def RatioLiquidSilanolInput(self) -> float:
+        return _DeviceLogicType(self, _LT.RatioLiquidSilanolInput)
+
+    @property
+    def RatioLiquidSilanolOutput(self) -> float:
+        return _DeviceLogicType(self, _LT.RatioLiquidSilanolOutput)
+
+    @property
+    def RatioLiquidSilanolOutput2(self) -> float:
+        return _DeviceLogicType(self, _LT.RatioLiquidSilanolOutput2)
+
+    @property
+    def RatioLiquidSodiumChlorideInput(self) -> float:
+        return _DeviceLogicType(self, _LT.RatioLiquidSodiumChlorideInput)
+
+    @property
+    def RatioLiquidSodiumChlorideOutput(self) -> float:
+        return _DeviceLogicType(self, _LT.RatioLiquidSodiumChlorideOutput)
+
+    @property
+    def RatioLiquidSodiumChlorideOutput2(self) -> float:
+        return _DeviceLogicType(self, _LT.RatioLiquidSodiumChlorideOutput2)
 
     @property
     def RatioMethaneInput(self) -> float:
@@ -36541,6 +40929,18 @@ class RocketFiltrationGas(
         return _DeviceLogicType(self, _LT.RatioOxygenOutput2)
 
     @property
+    def RatioOzoneInput(self) -> float:
+        return _DeviceLogicType(self, _LT.RatioOzoneInput)
+
+    @property
+    def RatioOzoneOutput(self) -> float:
+        return _DeviceLogicType(self, _LT.RatioOzoneOutput)
+
+    @property
+    def RatioOzoneOutput2(self) -> float:
+        return _DeviceLogicType(self, _LT.RatioOzoneOutput2)
+
+    @property
     def RatioPollutantInput(self) -> float:
         return _DeviceLogicType(self, _LT.RatioPollutantInput)
 
@@ -36551,6 +40951,30 @@ class RocketFiltrationGas(
     @property
     def RatioPollutantOutput2(self) -> float:
         return _DeviceLogicType(self, _LT.RatioPollutantOutput2)
+
+    @property
+    def RatioPollutedWaterInput(self) -> float:
+        return _DeviceLogicType(self, _LT.RatioPollutedWaterInput)
+
+    @property
+    def RatioPollutedWaterOutput(self) -> float:
+        return _DeviceLogicType(self, _LT.RatioPollutedWaterOutput)
+
+    @property
+    def RatioPollutedWaterOutput2(self) -> float:
+        return _DeviceLogicType(self, _LT.RatioPollutedWaterOutput2)
+
+    @property
+    def RatioSilanolInput(self) -> float:
+        return _DeviceLogicType(self, _LT.RatioSilanolInput)
+
+    @property
+    def RatioSilanolOutput(self) -> float:
+        return _DeviceLogicType(self, _LT.RatioSilanolOutput)
+
+    @property
+    def RatioSilanolOutput2(self) -> float:
+        return _DeviceLogicType(self, _LT.RatioSilanolOutput2)
 
     @property
     def RatioSteamInput(self) -> float:
@@ -36671,6 +41095,66 @@ class _RocketFiltrationGass(
         return _DevicesLogicType(self, _LT.RatioCarbonDioxideOutput2)
 
     @property
+    def RatioHeliumInput(self) -> _DevicesLogicType:
+        return _DevicesLogicType(self, _LT.RatioHeliumInput)
+
+    @property
+    def RatioHeliumOutput(self) -> _DevicesLogicType:
+        return _DevicesLogicType(self, _LT.RatioHeliumOutput)
+
+    @property
+    def RatioHeliumOutput2(self) -> _DevicesLogicType:
+        return _DevicesLogicType(self, _LT.RatioHeliumOutput2)
+
+    @property
+    def RatioHydrazineInput(self) -> _DevicesLogicType:
+        return _DevicesLogicType(self, _LT.RatioHydrazineInput)
+
+    @property
+    def RatioHydrazineOutput(self) -> _DevicesLogicType:
+        return _DevicesLogicType(self, _LT.RatioHydrazineOutput)
+
+    @property
+    def RatioHydrazineOutput2(self) -> _DevicesLogicType:
+        return _DevicesLogicType(self, _LT.RatioHydrazineOutput2)
+
+    @property
+    def RatioHydrochloricAcidInput(self) -> _DevicesLogicType:
+        return _DevicesLogicType(self, _LT.RatioHydrochloricAcidInput)
+
+    @property
+    def RatioHydrochloricAcidOutput(self) -> _DevicesLogicType:
+        return _DevicesLogicType(self, _LT.RatioHydrochloricAcidOutput)
+
+    @property
+    def RatioHydrochloricAcidOutput2(self) -> _DevicesLogicType:
+        return _DevicesLogicType(self, _LT.RatioHydrochloricAcidOutput2)
+
+    @property
+    def RatioHydrogenInput(self) -> _DevicesLogicType:
+        return _DevicesLogicType(self, _LT.RatioHydrogenInput)
+
+    @property
+    def RatioHydrogenOutput(self) -> _DevicesLogicType:
+        return _DevicesLogicType(self, _LT.RatioHydrogenOutput)
+
+    @property
+    def RatioHydrogenOutput2(self) -> _DevicesLogicType:
+        return _DevicesLogicType(self, _LT.RatioHydrogenOutput2)
+
+    @property
+    def RatioLiquidAlcoholInput(self) -> _DevicesLogicType:
+        return _DevicesLogicType(self, _LT.RatioLiquidAlcoholInput)
+
+    @property
+    def RatioLiquidAlcoholOutput(self) -> _DevicesLogicType:
+        return _DevicesLogicType(self, _LT.RatioLiquidAlcoholOutput)
+
+    @property
+    def RatioLiquidAlcoholOutput2(self) -> _DevicesLogicType:
+        return _DevicesLogicType(self, _LT.RatioLiquidAlcoholOutput2)
+
+    @property
     def RatioLiquidCarbonDioxideInput(self) -> _DevicesLogicType:
         return _DevicesLogicType(self, _LT.RatioLiquidCarbonDioxideInput)
 
@@ -36681,6 +41165,42 @@ class _RocketFiltrationGass(
     @property
     def RatioLiquidCarbonDioxideOutput2(self) -> _DevicesLogicType:
         return _DevicesLogicType(self, _LT.RatioLiquidCarbonDioxideOutput2)
+
+    @property
+    def RatioLiquidHydrazineInput(self) -> _DevicesLogicType:
+        return _DevicesLogicType(self, _LT.RatioLiquidHydrazineInput)
+
+    @property
+    def RatioLiquidHydrazineOutput(self) -> _DevicesLogicType:
+        return _DevicesLogicType(self, _LT.RatioLiquidHydrazineOutput)
+
+    @property
+    def RatioLiquidHydrazineOutput2(self) -> _DevicesLogicType:
+        return _DevicesLogicType(self, _LT.RatioLiquidHydrazineOutput2)
+
+    @property
+    def RatioLiquidHydrochloricAcidInput(self) -> _DevicesLogicType:
+        return _DevicesLogicType(self, _LT.RatioLiquidHydrochloricAcidInput)
+
+    @property
+    def RatioLiquidHydrochloricAcidOutput(self) -> _DevicesLogicType:
+        return _DevicesLogicType(self, _LT.RatioLiquidHydrochloricAcidOutput)
+
+    @property
+    def RatioLiquidHydrochloricAcidOutput2(self) -> _DevicesLogicType:
+        return _DevicesLogicType(self, _LT.RatioLiquidHydrochloricAcidOutput2)
+
+    @property
+    def RatioLiquidHydrogenInput(self) -> _DevicesLogicType:
+        return _DevicesLogicType(self, _LT.RatioLiquidHydrogenInput)
+
+    @property
+    def RatioLiquidHydrogenOutput(self) -> _DevicesLogicType:
+        return _DevicesLogicType(self, _LT.RatioLiquidHydrogenOutput)
+
+    @property
+    def RatioLiquidHydrogenOutput2(self) -> _DevicesLogicType:
+        return _DevicesLogicType(self, _LT.RatioLiquidHydrogenOutput2)
 
     @property
     def RatioLiquidMethaneInput(self) -> _DevicesLogicType:
@@ -36731,6 +41251,18 @@ class _RocketFiltrationGass(
         return _DevicesLogicType(self, _LT.RatioLiquidOxygenOutput2)
 
     @property
+    def RatioLiquidOzoneInput(self) -> _DevicesLogicType:
+        return _DevicesLogicType(self, _LT.RatioLiquidOzoneInput)
+
+    @property
+    def RatioLiquidOzoneOutput(self) -> _DevicesLogicType:
+        return _DevicesLogicType(self, _LT.RatioLiquidOzoneOutput)
+
+    @property
+    def RatioLiquidOzoneOutput2(self) -> _DevicesLogicType:
+        return _DevicesLogicType(self, _LT.RatioLiquidOzoneOutput2)
+
+    @property
     def RatioLiquidPollutantInput(self) -> _DevicesLogicType:
         return _DevicesLogicType(self, _LT.RatioLiquidPollutantInput)
 
@@ -36741,6 +41273,30 @@ class _RocketFiltrationGass(
     @property
     def RatioLiquidPollutantOutput2(self) -> _DevicesLogicType:
         return _DevicesLogicType(self, _LT.RatioLiquidPollutantOutput2)
+
+    @property
+    def RatioLiquidSilanolInput(self) -> _DevicesLogicType:
+        return _DevicesLogicType(self, _LT.RatioLiquidSilanolInput)
+
+    @property
+    def RatioLiquidSilanolOutput(self) -> _DevicesLogicType:
+        return _DevicesLogicType(self, _LT.RatioLiquidSilanolOutput)
+
+    @property
+    def RatioLiquidSilanolOutput2(self) -> _DevicesLogicType:
+        return _DevicesLogicType(self, _LT.RatioLiquidSilanolOutput2)
+
+    @property
+    def RatioLiquidSodiumChlorideInput(self) -> _DevicesLogicType:
+        return _DevicesLogicType(self, _LT.RatioLiquidSodiumChlorideInput)
+
+    @property
+    def RatioLiquidSodiumChlorideOutput(self) -> _DevicesLogicType:
+        return _DevicesLogicType(self, _LT.RatioLiquidSodiumChlorideOutput)
+
+    @property
+    def RatioLiquidSodiumChlorideOutput2(self) -> _DevicesLogicType:
+        return _DevicesLogicType(self, _LT.RatioLiquidSodiumChlorideOutput2)
 
     @property
     def RatioMethaneInput(self) -> _DevicesLogicType:
@@ -36791,6 +41347,18 @@ class _RocketFiltrationGass(
         return _DevicesLogicType(self, _LT.RatioOxygenOutput2)
 
     @property
+    def RatioOzoneInput(self) -> _DevicesLogicType:
+        return _DevicesLogicType(self, _LT.RatioOzoneInput)
+
+    @property
+    def RatioOzoneOutput(self) -> _DevicesLogicType:
+        return _DevicesLogicType(self, _LT.RatioOzoneOutput)
+
+    @property
+    def RatioOzoneOutput2(self) -> _DevicesLogicType:
+        return _DevicesLogicType(self, _LT.RatioOzoneOutput2)
+
+    @property
     def RatioPollutantInput(self) -> _DevicesLogicType:
         return _DevicesLogicType(self, _LT.RatioPollutantInput)
 
@@ -36801,6 +41369,30 @@ class _RocketFiltrationGass(
     @property
     def RatioPollutantOutput2(self) -> _DevicesLogicType:
         return _DevicesLogicType(self, _LT.RatioPollutantOutput2)
+
+    @property
+    def RatioPollutedWaterInput(self) -> _DevicesLogicType:
+        return _DevicesLogicType(self, _LT.RatioPollutedWaterInput)
+
+    @property
+    def RatioPollutedWaterOutput(self) -> _DevicesLogicType:
+        return _DevicesLogicType(self, _LT.RatioPollutedWaterOutput)
+
+    @property
+    def RatioPollutedWaterOutput2(self) -> _DevicesLogicType:
+        return _DevicesLogicType(self, _LT.RatioPollutedWaterOutput2)
+
+    @property
+    def RatioSilanolInput(self) -> _DevicesLogicType:
+        return _DevicesLogicType(self, _LT.RatioSilanolInput)
+
+    @property
+    def RatioSilanolOutput(self) -> _DevicesLogicType:
+        return _DevicesLogicType(self, _LT.RatioSilanolOutput)
+
+    @property
+    def RatioSilanolOutput2(self) -> _DevicesLogicType:
+        return _DevicesLogicType(self, _LT.RatioSilanolOutput2)
 
     @property
     def RatioSteamInput(self) -> _DevicesLogicType:
@@ -39443,124 +44035,6 @@ class _Spacepacks(_BaseStructures, _Activates, _Ons):
 Spacepacks: _Spacepacks = _Spacepacks()
 
 
-class Stacker(
-    _BaseStructure,
-    _Activate,
-    _ClearMemory,
-    _Error,
-    _ExportCount,
-    _ImportCount,
-    _Lock,
-    _Mode,
-    _Power,
-    _SettingW,
-):
-    _hash: int = -2020231820
-    _prefab_name: int = "StructureStacker"
-
-    @property
-    def Output(self) -> float:
-        return _DeviceLogicType(self, _LT.Output)
-
-    @Output.setter
-    def Output(self, value: int | float):
-        pass
-
-    @property
-    def slot0(self) -> _SlotTypeDataDisk:
-        return _SlotTypeDataDisk(self, 0)
-
-    @property
-    def Import(self) -> _SlotTypeDataDisk:
-        return self.slot0
-
-    @property
-    def slot1(self) -> _SlotTypeDataDisk:
-        return _SlotTypeDataDisk(self, 1)
-
-    @property
-    def Export(self) -> _SlotTypeDataDisk:
-        return self.slot1
-
-    @property
-    def slot2(self) -> _SlotTypeDataDisk:
-        return _SlotTypeDataDisk(self, 2)
-
-    @property
-    def Processing(self) -> _SlotTypeDataDisk:
-        return self.slot2
-
-
-class _Stackers(
-    _BaseStructures,
-    _Activates,
-    _ClearMemories,
-    _Errors,
-    _ExportCounts,
-    _ImportCounts,
-    _Locks,
-    _Modes,
-    _Powers,
-    _SettingWs,
-):
-    _hash: int = -2020231820
-    _prefab_name: int = "StructureStacker"
-
-    def __getitem__(self, name: str | int | float) -> "_Stackers":
-        return _Stackers(name)
-
-    @property
-    def Average(self) -> Stacker:
-        return Stacker(name=self._name, batch_mode=LogicBatchMethod.Average)
-
-    @property
-    def Minimum(self) -> Stacker:
-        return Stacker(name=self._name, batch_mode=LogicBatchMethod.Minimum)
-
-    @property
-    def Maximum(self) -> Stacker:
-        return Stacker(name=self._name, batch_mode=LogicBatchMethod.Maximum)
-
-    @property
-    def Sum(self) -> Stacker:
-        return Stacker(name=self._name, batch_mode=LogicBatchMethod.Sum)
-
-    @property
-    def Output(self) -> _DevicesLogicType:
-        return _DevicesLogicType(self, _LT.Output)
-
-    @Output.setter
-    def Output(self, value: int | float):
-        pass
-
-    @property
-    def slot0(self) -> _SlotTypeDataDisks:
-        return _SlotTypeDataDisks(self, 0)
-
-    @property
-    def Import(self) -> _SlotTypeDataDisks:
-        return self.slot0
-
-    @property
-    def slot1(self) -> _SlotTypeDataDisks:
-        return _SlotTypeDataDisks(self, 1)
-
-    @property
-    def Export(self) -> _SlotTypeDataDisks:
-        return self.slot1
-
-    @property
-    def slot2(self) -> _SlotTypeDataDisks:
-        return _SlotTypeDataDisks(self, 2)
-
-    @property
-    def Processing(self) -> _SlotTypeDataDisks:
-        return self.slot2
-
-
-Stackers: _Stackers = _Stackers()
-
-
 class StackerReverse(
     _BaseStructure,
     _Activate,
@@ -39677,6 +44151,124 @@ class _StackerReverses(
 
 
 StackerReverses: _StackerReverses = _StackerReverses()
+
+
+class Stacker(
+    _BaseStructure,
+    _Activate,
+    _ClearMemory,
+    _Error,
+    _ExportCount,
+    _ImportCount,
+    _Lock,
+    _Mode,
+    _Power,
+    _SettingW,
+):
+    _hash: int = -2020231820
+    _prefab_name: int = "StructureStacker"
+
+    @property
+    def Output(self) -> float:
+        return _DeviceLogicType(self, _LT.Output)
+
+    @Output.setter
+    def Output(self, value: int | float):
+        pass
+
+    @property
+    def slot0(self) -> _SlotTypeDataDisk:
+        return _SlotTypeDataDisk(self, 0)
+
+    @property
+    def Import(self) -> _SlotTypeDataDisk:
+        return self.slot0
+
+    @property
+    def slot1(self) -> _SlotTypeDataDisk:
+        return _SlotTypeDataDisk(self, 1)
+
+    @property
+    def Export(self) -> _SlotTypeDataDisk:
+        return self.slot1
+
+    @property
+    def slot2(self) -> _SlotTypeDataDisk:
+        return _SlotTypeDataDisk(self, 2)
+
+    @property
+    def Processing(self) -> _SlotTypeDataDisk:
+        return self.slot2
+
+
+class _Stackers(
+    _BaseStructures,
+    _Activates,
+    _ClearMemories,
+    _Errors,
+    _ExportCounts,
+    _ImportCounts,
+    _Locks,
+    _Modes,
+    _Powers,
+    _SettingWs,
+):
+    _hash: int = -2020231820
+    _prefab_name: int = "StructureStacker"
+
+    def __getitem__(self, name: str | int | float) -> "_Stackers":
+        return _Stackers(name)
+
+    @property
+    def Average(self) -> Stacker:
+        return Stacker(name=self._name, batch_mode=LogicBatchMethod.Average)
+
+    @property
+    def Minimum(self) -> Stacker:
+        return Stacker(name=self._name, batch_mode=LogicBatchMethod.Minimum)
+
+    @property
+    def Maximum(self) -> Stacker:
+        return Stacker(name=self._name, batch_mode=LogicBatchMethod.Maximum)
+
+    @property
+    def Sum(self) -> Stacker:
+        return Stacker(name=self._name, batch_mode=LogicBatchMethod.Sum)
+
+    @property
+    def Output(self) -> _DevicesLogicType:
+        return _DevicesLogicType(self, _LT.Output)
+
+    @Output.setter
+    def Output(self, value: int | float):
+        pass
+
+    @property
+    def slot0(self) -> _SlotTypeDataDisks:
+        return _SlotTypeDataDisks(self, 0)
+
+    @property
+    def Import(self) -> _SlotTypeDataDisks:
+        return self.slot0
+
+    @property
+    def slot1(self) -> _SlotTypeDataDisks:
+        return _SlotTypeDataDisks(self, 1)
+
+    @property
+    def Export(self) -> _SlotTypeDataDisks:
+        return self.slot1
+
+    @property
+    def slot2(self) -> _SlotTypeDataDisks:
+        return _SlotTypeDataDisks(self, 2)
+
+    @property
+    def Processing(self) -> _SlotTypeDataDisks:
+        return self.slot2
+
+
+Stackers: _Stackers = _Stackers()
 
 
 class Battery(_BaseStructure, _Charge, _Error, _Lock, _Maximum, _ModeR, _On, _Ratio):
@@ -43106,6 +47698,50 @@ class WallCooler(_BaseStructure, _Error, _Lock, _Maximum, _Power, _Ratio, _Setti
         return _DeviceLogicType(self, _LT.RatioCarbonDioxideOutput)
 
     @property
+    def RatioHeliumOutput(self) -> float:
+        return _DeviceLogicType(self, _LT.RatioHeliumOutput)
+
+    @property
+    def RatioHydrazineOutput(self) -> float:
+        return _DeviceLogicType(self, _LT.RatioHydrazineOutput)
+
+    @property
+    def RatioHydrochloricAcidOutput(self) -> float:
+        return _DeviceLogicType(self, _LT.RatioHydrochloricAcidOutput)
+
+    @property
+    def RatioHydrogenOutput(self) -> float:
+        return _DeviceLogicType(self, _LT.RatioHydrogenOutput)
+
+    @property
+    def RatioLiquidAlcoholOutput(self) -> float:
+        return _DeviceLogicType(self, _LT.RatioLiquidAlcoholOutput)
+
+    @property
+    def RatioLiquidHydrazineOutput(self) -> float:
+        return _DeviceLogicType(self, _LT.RatioLiquidHydrazineOutput)
+
+    @property
+    def RatioLiquidHydrochloricAcidOutput(self) -> float:
+        return _DeviceLogicType(self, _LT.RatioLiquidHydrochloricAcidOutput)
+
+    @property
+    def RatioLiquidHydrogenOutput(self) -> float:
+        return _DeviceLogicType(self, _LT.RatioLiquidHydrogenOutput)
+
+    @property
+    def RatioLiquidOzoneOutput(self) -> float:
+        return _DeviceLogicType(self, _LT.RatioLiquidOzoneOutput)
+
+    @property
+    def RatioLiquidSilanolOutput(self) -> float:
+        return _DeviceLogicType(self, _LT.RatioLiquidSilanolOutput)
+
+    @property
+    def RatioLiquidSodiumChlorideOutput(self) -> float:
+        return _DeviceLogicType(self, _LT.RatioLiquidSodiumChlorideOutput)
+
+    @property
     def RatioMethaneOutput(self) -> float:
         return _DeviceLogicType(self, _LT.RatioMethaneOutput)
 
@@ -43122,8 +47758,20 @@ class WallCooler(_BaseStructure, _Error, _Lock, _Maximum, _Power, _Ratio, _Setti
         return _DeviceLogicType(self, _LT.RatioOxygenOutput)
 
     @property
+    def RatioOzoneOutput(self) -> float:
+        return _DeviceLogicType(self, _LT.RatioOzoneOutput)
+
+    @property
     def RatioPollutantOutput(self) -> float:
         return _DeviceLogicType(self, _LT.RatioPollutantOutput)
+
+    @property
+    def RatioPollutedWaterOutput(self) -> float:
+        return _DeviceLogicType(self, _LT.RatioPollutedWaterOutput)
+
+    @property
+    def RatioSilanolOutput(self) -> float:
+        return _DeviceLogicType(self, _LT.RatioSilanolOutput)
 
     @property
     def RatioWaterOutput(self) -> float:
@@ -43184,6 +47832,50 @@ class _WallCoolers(
         return _DevicesLogicType(self, _LT.RatioCarbonDioxideOutput)
 
     @property
+    def RatioHeliumOutput(self) -> _DevicesLogicType:
+        return _DevicesLogicType(self, _LT.RatioHeliumOutput)
+
+    @property
+    def RatioHydrazineOutput(self) -> _DevicesLogicType:
+        return _DevicesLogicType(self, _LT.RatioHydrazineOutput)
+
+    @property
+    def RatioHydrochloricAcidOutput(self) -> _DevicesLogicType:
+        return _DevicesLogicType(self, _LT.RatioHydrochloricAcidOutput)
+
+    @property
+    def RatioHydrogenOutput(self) -> _DevicesLogicType:
+        return _DevicesLogicType(self, _LT.RatioHydrogenOutput)
+
+    @property
+    def RatioLiquidAlcoholOutput(self) -> _DevicesLogicType:
+        return _DevicesLogicType(self, _LT.RatioLiquidAlcoholOutput)
+
+    @property
+    def RatioLiquidHydrazineOutput(self) -> _DevicesLogicType:
+        return _DevicesLogicType(self, _LT.RatioLiquidHydrazineOutput)
+
+    @property
+    def RatioLiquidHydrochloricAcidOutput(self) -> _DevicesLogicType:
+        return _DevicesLogicType(self, _LT.RatioLiquidHydrochloricAcidOutput)
+
+    @property
+    def RatioLiquidHydrogenOutput(self) -> _DevicesLogicType:
+        return _DevicesLogicType(self, _LT.RatioLiquidHydrogenOutput)
+
+    @property
+    def RatioLiquidOzoneOutput(self) -> _DevicesLogicType:
+        return _DevicesLogicType(self, _LT.RatioLiquidOzoneOutput)
+
+    @property
+    def RatioLiquidSilanolOutput(self) -> _DevicesLogicType:
+        return _DevicesLogicType(self, _LT.RatioLiquidSilanolOutput)
+
+    @property
+    def RatioLiquidSodiumChlorideOutput(self) -> _DevicesLogicType:
+        return _DevicesLogicType(self, _LT.RatioLiquidSodiumChlorideOutput)
+
+    @property
     def RatioMethaneOutput(self) -> _DevicesLogicType:
         return _DevicesLogicType(self, _LT.RatioMethaneOutput)
 
@@ -43200,8 +47892,20 @@ class _WallCoolers(
         return _DevicesLogicType(self, _LT.RatioOxygenOutput)
 
     @property
+    def RatioOzoneOutput(self) -> _DevicesLogicType:
+        return _DevicesLogicType(self, _LT.RatioOzoneOutput)
+
+    @property
     def RatioPollutantOutput(self) -> _DevicesLogicType:
         return _DevicesLogicType(self, _LT.RatioPollutantOutput)
+
+    @property
+    def RatioPollutedWaterOutput(self) -> _DevicesLogicType:
+        return _DevicesLogicType(self, _LT.RatioPollutedWaterOutput)
+
+    @property
+    def RatioSilanolOutput(self) -> _DevicesLogicType:
+        return _DevicesLogicType(self, _LT.RatioSilanolOutput)
 
     @property
     def RatioWaterOutput(self) -> _DevicesLogicType:
@@ -43501,6 +48205,62 @@ class _WaterPurifiers(
 WaterPurifiers: _WaterPurifiers = _WaterPurifiers()
 
 
+class WaterBottleFillerPowered(_BaseStructure, _Activate, _Error, _Power):
+    _hash: int = -756587791
+    _prefab_name: int = "StructureWaterBottleFillerPowered"
+
+    @property
+    def slot0(self) -> _SlotTypeGasCanister:
+        return _SlotTypeGasCanister(self, 0)
+
+    @property
+    def slot1(self) -> _SlotTypeGasCanister:
+        return _SlotTypeGasCanister(self, 1)
+
+
+class _WaterBottleFillerPowereds(_BaseStructures, _Activates, _Errors, _Powers):
+    _hash: int = -756587791
+    _prefab_name: int = "StructureWaterBottleFillerPowered"
+
+    def __getitem__(self, name: str | int | float) -> "_WaterBottleFillerPowereds":
+        return _WaterBottleFillerPowereds(name)
+
+    @property
+    def Average(self) -> WaterBottleFillerPowered:
+        return WaterBottleFillerPowered(
+            name=self._name, batch_mode=LogicBatchMethod.Average
+        )
+
+    @property
+    def Minimum(self) -> WaterBottleFillerPowered:
+        return WaterBottleFillerPowered(
+            name=self._name, batch_mode=LogicBatchMethod.Minimum
+        )
+
+    @property
+    def Maximum(self) -> WaterBottleFillerPowered:
+        return WaterBottleFillerPowered(
+            name=self._name, batch_mode=LogicBatchMethod.Maximum
+        )
+
+    @property
+    def Sum(self) -> WaterBottleFillerPowered:
+        return WaterBottleFillerPowered(
+            name=self._name, batch_mode=LogicBatchMethod.Sum
+        )
+
+    @property
+    def slot0(self) -> _SlotTypeGasCanisters:
+        return _SlotTypeGasCanisters(self, 0)
+
+    @property
+    def slot1(self) -> _SlotTypeGasCanisters:
+        return _SlotTypeGasCanisters(self, 1)
+
+
+WaterBottleFillerPowereds: _WaterBottleFillerPowereds = _WaterBottleFillerPowereds()
+
+
 class WaterBottleFillerPoweredBottom(_BaseStructure, _Activate, _Error, _Power):
     _hash: int = 1986658780
     _prefab_name: int = "StructureWaterBottleFillerPoweredBottom"
@@ -43559,62 +48319,6 @@ class _WaterBottleFillerPoweredBottoms(_BaseStructures, _Activates, _Errors, _Po
 WaterBottleFillerPoweredBottoms: _WaterBottleFillerPoweredBottoms = (
     _WaterBottleFillerPoweredBottoms()
 )
-
-
-class WaterBottleFillerPowered(_BaseStructure, _Activate, _Error, _Power):
-    _hash: int = -756587791
-    _prefab_name: int = "StructureWaterBottleFillerPowered"
-
-    @property
-    def slot0(self) -> _SlotTypeGasCanister:
-        return _SlotTypeGasCanister(self, 0)
-
-    @property
-    def slot1(self) -> _SlotTypeGasCanister:
-        return _SlotTypeGasCanister(self, 1)
-
-
-class _WaterBottleFillerPowereds(_BaseStructures, _Activates, _Errors, _Powers):
-    _hash: int = -756587791
-    _prefab_name: int = "StructureWaterBottleFillerPowered"
-
-    def __getitem__(self, name: str | int | float) -> "_WaterBottleFillerPowereds":
-        return _WaterBottleFillerPowereds(name)
-
-    @property
-    def Average(self) -> WaterBottleFillerPowered:
-        return WaterBottleFillerPowered(
-            name=self._name, batch_mode=LogicBatchMethod.Average
-        )
-
-    @property
-    def Minimum(self) -> WaterBottleFillerPowered:
-        return WaterBottleFillerPowered(
-            name=self._name, batch_mode=LogicBatchMethod.Minimum
-        )
-
-    @property
-    def Maximum(self) -> WaterBottleFillerPowered:
-        return WaterBottleFillerPowered(
-            name=self._name, batch_mode=LogicBatchMethod.Maximum
-        )
-
-    @property
-    def Sum(self) -> WaterBottleFillerPowered:
-        return WaterBottleFillerPowered(
-            name=self._name, batch_mode=LogicBatchMethod.Sum
-        )
-
-    @property
-    def slot0(self) -> _SlotTypeGasCanisters:
-        return _SlotTypeGasCanisters(self, 0)
-
-    @property
-    def slot1(self) -> _SlotTypeGasCanisters:
-        return _SlotTypeGasCanisters(self, 1)
-
-
-WaterBottleFillerPowereds: _WaterBottleFillerPowereds = _WaterBottleFillerPowereds()
 
 
 class WeatherStation(_BaseStructure, _Activate, _Error, _Lock, _ModeR, _Power):
