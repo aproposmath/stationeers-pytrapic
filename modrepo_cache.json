@@ -1,19 +1,12 @@
 {
     "sha256:00901f35392ac2fd68638af53a612fe1779e4bc60b739c5543cc4e01715a6ee9": false,
-    "sha256:1c867d9d4854714c9298fd83a9fbd70148abb54327a49827c7aebfc2a1a6c05b": false,
-    "sha256:2824ef65dc4286c09f5949b0e00e978c70bb04af60421b08f6975d8df9efb8a9": false,
-    "sha256:50db84fa4f8e0fff84f7d69ad593a4fc93008df51cc6087318783f57b7e13218": false,
-    "sha256:830016920cfa6d80b8f4573b3d5c0ee35d835f13012469e9c4926d7f5f935e43": false,
-    "sha256:c6f22565feeb1b165d0e872be83af9cc522aa6d86ab2ca9475b1bce8626a2108": false,
-    "sha256:d483dbe218dba8c23c0a2ebf68d77afaf55604484cd40cedbfa68fb61e779bd7": false,
-    "sha256:f3899ec42a9e91f0be06c58e22d715a977e742cd628c4acbcf848f7afa757d9a": false,
-    "sha256:f3bfecf5cc3ac600232a5c89c1518e5e43ff16c2d291b16cddb26956010ac6e0": {
+    "sha256:10f007a0d05f46099918f1b2b5f5ab2ee94257bd0c6e33d643c2731da94f619f": {
         "author": "aproposmath",
         "branch": [],
         "depends_on": [
             "3592775931"
         ],
-        "digest": "sha256:f3bfecf5cc3ac600232a5c89c1518e5e43ff16c2d291b16cddb26956010ac6e0",
+        "digest": "sha256:10f007a0d05f46099918f1b2b5f5ab2ee94257bd0c6e33d643c2731da94f619f",
         "id": "com.github.aproposmath.stationeers-pytrapic",
         "name": "PyTrapIC - Python to IC10 Transpiler",
         "tag": [
@@ -27,6 +20,13 @@
             "StationeersLaunchPad"
         ],
         "url": "https://github.com/aproposmath/stationeers-pytrapic/releases/download/main/PyTrapIC-main.zip",
-        "version": "0.2.3.51-dev"
-    }
+        "version": "0.2.3.52-dev"
+    },
+    "sha256:1c867d9d4854714c9298fd83a9fbd70148abb54327a49827c7aebfc2a1a6c05b": false,
+    "sha256:2824ef65dc4286c09f5949b0e00e978c70bb04af60421b08f6975d8df9efb8a9": false,
+    "sha256:50db84fa4f8e0fff84f7d69ad593a4fc93008df51cc6087318783f57b7e13218": false,
+    "sha256:6a0835d2fc6b073506b6a08c0d024bcd5389650a95fc444695df0185cefb4eee": false,
+    "sha256:830016920cfa6d80b8f4573b3d5c0ee35d835f13012469e9c4926d7f5f935e43": false,
+    "sha256:c6f22565feeb1b165d0e872be83af9cc522aa6d86ab2ca9475b1bce8626a2108": false,
+    "sha256:d483dbe218dba8c23c0a2ebf68d77afaf55604484cd40cedbfa68fb61e779bd7": false
 }
