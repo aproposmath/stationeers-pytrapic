@@ -1,11 +1,16 @@
 {
-    "sha256:003d02bf00fca5ec559c8fe99e26d3c9361f49572131d5ecbdbdd7572447c604": {
+    "sha256:00901f35392ac2fd68638af53a612fe1779e4bc60b739c5543cc4e01715a6ee9": false,
+    "sha256:1c867d9d4854714c9298fd83a9fbd70148abb54327a49827c7aebfc2a1a6c05b": false,
+    "sha256:2824ef65dc4286c09f5949b0e00e978c70bb04af60421b08f6975d8df9efb8a9": false,
+    "sha256:465f3a3040a86a3fc91cdf5cf7711c06156720634a6dabe62b78eabfea62b099": false,
+    "sha256:50db84fa4f8e0fff84f7d69ad593a4fc93008df51cc6087318783f57b7e13218": false,
+    "sha256:7c813929f577988049893b9d1495e72156d7bd2ce8053edb2b680d430bd927a3": {
         "author": "aproposmath",
         "branch": [],
         "depends_on": [
             "3592775931"
         ],
-        "digest": "sha256:003d02bf00fca5ec559c8fe99e26d3c9361f49572131d5ecbdbdd7572447c604",
+        "digest": "sha256:7c813929f577988049893b9d1495e72156d7bd2ce8053edb2b680d430bd927a3",
         "id": "com.github.aproposmath.stationeers-pytrapic",
         "name": "PyTrapIC - Python to IC10 Transpiler",
         "tag": [
@@ -21,11 +26,6 @@
         "url": "https://github.com/aproposmath/stationeers-pytrapic/releases/download/main/PyTrapIC-main.zip",
         "version": "dev"
     },
-    "sha256:00901f35392ac2fd68638af53a612fe1779e4bc60b739c5543cc4e01715a6ee9": false,
-    "sha256:15ed87f009c52f1ce3bf705e1a63f00d105ac582a0b93a2a2f8facdb3ab1d93b": false,
-    "sha256:1c867d9d4854714c9298fd83a9fbd70148abb54327a49827c7aebfc2a1a6c05b": false,
-    "sha256:2824ef65dc4286c09f5949b0e00e978c70bb04af60421b08f6975d8df9efb8a9": false,
-    "sha256:50db84fa4f8e0fff84f7d69ad593a4fc93008df51cc6087318783f57b7e13218": false,
     "sha256:830016920cfa6d80b8f4573b3d5c0ee35d835f13012469e9c4926d7f5f935e43": false,
     "sha256:c6f22565feeb1b165d0e872be83af9cc522aa6d86ab2ca9475b1bce8626a2108": false,
     "sha256:d483dbe218dba8c23c0a2ebf68d77afaf55604484cd40cedbfa68fb61e779bd7": false
