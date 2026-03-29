@@ -109,9 +109,9 @@ public class PythonFormatter : LSPFormatter
         {
             FileName = NodeExe,
             Arguments = Args,
-            RedirectStandardInput = true,
-            RedirectStandardOutput = true,
-            RedirectStandardError = true,
+            RedirectStandardInput = false,
+            RedirectStandardOutput = false,
+            RedirectStandardError = false,
             UseShellExecute = false,
             CreateNoWindow = !isLinux, // this must be false when running with wine on Linux
             WorkingDirectory = workingDir
@@ -123,21 +123,12 @@ public class PythonFormatter : LSPFormatter
             EnableRaisingEvents = true
         };
 
-        process.OutputDataReceived += (s, e) =>
+        process.Exited += (s, e) =>
         {
-            if (e.Data != null)
-                File.AppendAllText(Path.Combine(PythonWorkspace.WorkspaceDir, "lsp-stdout.log"), e.Data + Environment.NewLine);
-        };
-
-        process.ErrorDataReceived += (s, e) =>
-        {
-            if (e.Data != null)
-                File.AppendAllText(Path.Combine(PythonWorkspace.WorkspaceDir, "lsp-stderr.log"), e.Data + Environment.NewLine);
+            L.Error($"Pyright exited with code {process.ExitCode}");
         };
 
         process.Start();
-        process.BeginOutputReadLine();
-        process.BeginErrorReadLine();
 
         lspClient._process = process;
 
