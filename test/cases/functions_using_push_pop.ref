@@ -1,0 +1,27 @@
+push 1
+push 2
+push 3
+jal compute
+pop r0
+s db Setting r0
+add.two:
+  pop r7
+  pop r6
+  add r8 r6 r7
+  push r8
+  j ra
+compute:
+  pop r3
+  pop r2
+  pop r1
+  push ra
+  add r4 r1 r2
+  push r4
+  push r3
+  jal add.two
+  pop r5
+  pop ra
+  push r5
+  j ra
+# registers: 9
+# lines: 25

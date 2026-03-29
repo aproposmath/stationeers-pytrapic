@@ -256,7 +256,7 @@ def ss(
 
 
 def rmap(param1: float, param2: _Device, reagentHash: _Register | float) -> None:
-    """Given a reagent hash, store the corresponding prefab hash that the device expects to fulfill the reagent requirement. For example, on an autolathe, the hash for Iron will store the hash for ItemIronIngot."""
+    """Given a reagent hash (signed 32bit int), store the corresponding prefab hash that the device expects to fulfill the reagent requirement. For example, on an autolathe, the hash for Iron will store the hash for ItemIronIngot."""
     return _IC10("rmap", [param1, param2, reagentHash], None)
 
 
@@ -372,14 +372,24 @@ def xor(a: _Register | float, b: _Register | float) -> float:
     return _IC10("xor", [a, b], _Register("invalid"))
 
 
-def ext(a: _Register | float, b: _Register | float, c: _Register | float) -> float:
-    """Extracts a bit field from a, beginning at b for c length and placed in the provided register. Payload cannot exceed 53 bits in final length."""
-    return _IC10("ext", [a, b, c], _Register("invalid"))
+def ext(
+    param1: float,
+    source: _Register | float,
+    offset: _Register | float,
+    length: _Register | float,
+) -> None:
+    """Extracts a bit field from source value, beginning at bit offset for length bits and places result in the provided register. Payload cannot exceed 53 bits in final length."""
+    return _IC10("ext", [param1, source, offset, length], None)
 
 
-def ins(a: _Register | float, b: _Register | float, c: _Register | float) -> float:
-    """Inserts a bit field of a into the provided register, beginning at b for c length. Payload cannot exceed 53 bits in final length."""
-    return _IC10("ins", [a, b, c], _Register("invalid"))
+def ins(
+    param1: float,
+    field: _Register | float,
+    offset: _Register | float,
+    length: _Register | float,
+) -> None:
+    """Inserts a bit field into the provided register, beginning at bit offset for length bits. Payload cannot exceed 53 bits in final length. NOTE: As of 2026-01-12, stable version has a bug with parameter order (uses offset-length-field instead of field-offset-length). Beta version has correct order."""
+    return _IC10("ins", [param1, field, offset, length], None)
 
 
 def select(a: _Register | float, b: _Register | float, c: _Register | float) -> float:

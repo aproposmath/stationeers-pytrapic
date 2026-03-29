@@ -233,6 +233,8 @@ def parse_json_file(json_file: Path) -> dict:
             if name.startswith(prefix):
                 var_name = name[len(prefix) :]
                 break
+                
+        var_name = var_name.replace("(", "_").replace(")", "")
 
         # print("Generating", var_name)
         prefab_hash = page["PrefabHash"]

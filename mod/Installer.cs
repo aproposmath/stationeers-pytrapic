@@ -7,6 +7,7 @@ using Cysharp.Threading.Tasks;
 using System.Threading;
 using UnityEngine.Networking;
 using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 
 namespace StationeersPyTrapIC;
 
@@ -56,8 +57,7 @@ public class PythonWorkspace
         return new ZipArchive(stream);
     }
 
-
-    public static async UniTask FetchAndExtract(string extractDir, string versionTag, string prefix, string extension = ".zip")
+    public static async UniTask<JObject> FetchRelease(string versionTag)
     {
         var url = $"https://api.github.com/repos/aproposmath/stationeers-pytrapic/releases/tags/{versionTag}";
         using var request = UnityWebRequest.Get(url);
@@ -70,19 +70,23 @@ public class PythonWorkspace
             throw new Exception($"Failed to fetch release info for tag {versionTag}");
         }
 
-        var json = JsonConvert.DeserializeObject<Newtonsoft.Json.Linq.JObject>(request.downloadHandler.text);
+        return JsonConvert.DeserializeObject<JObject>(request.downloadHandler.text);
+    }
 
-        var asset = json["assets"].FirstOrDefault((a) => {
+    public static async UniTask FetchAndExtractAsset(JObject release, string extractDir, string prefix, string extension = ".zip")
+    {
+        var asset = release["assets"].FirstOrDefault((a) =>
+        {
             string name = a["name"]?.ToString();
             return name != null && name.StartsWith(prefix) && name.EndsWith(extension);
         });
-        
+
         if (asset == null)
         {
-            L.Error($"Could not find asset {prefix} in release {versionTag}");
-            throw new Exception($"Could not find asset {prefix} in release {versionTag}");
+            L.Error($"Could not find asset {prefix} in release {release["tag_name"]}");
+            throw new Exception($"Could not find asset {prefix} in release {release["tag_name"]}");
         }
-        
+
         var archive = await FetchZip(asset["browser_download_url"].ToString());
         archive.ExtractToDirectory(extractDir);
     }
@@ -116,7 +120,7 @@ public class PythonWorkspace
 
             L.Info("Installing Python workspace");
 
-            await FetchAndExtract(CacheDir, WorkspaceVersionTag, "ws", ".zip");
+            await FetchAndExtractAsset(await FetchRelease(WorkspaceVersionTag), CacheDir, "ws", ".zip");
 
             File.WriteAllText(WorkspaceVersionFile, WorkspaceVersionTag);
 
@@ -145,8 +149,9 @@ public class PythonWorkspace
             if (Directory.Exists(TypingsDir))
                 Directory.Delete(TypingsDir, true);
 
-            await FetchAndExtract(SitePackagesDir, VersionTag, "stationeers_pytrapic", ".whl");
-            await FetchAndExtract(WorkspaceDir, VersionTag, "typings", ".zip");
+            var release = await FetchRelease(VersionTag);
+            await FetchAndExtractAsset(release, SitePackagesDir, "stationeers_pytrapic", ".whl");
+            await FetchAndExtractAsset(release, WorkspaceDir, "typings", ".zip");
 
             File.WriteAllText(VersionFile, VersionTag);
             L.Info("PyTrapIC installation complete");

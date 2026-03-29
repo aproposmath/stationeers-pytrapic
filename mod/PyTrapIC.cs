@@ -473,7 +473,7 @@ namespace StationeersPyTrapIC
             try
             {
                 L.SetLogger(this.Logger);
-                L.Info( $"Awake {ThisModInfo.Info}");
+                L.Info($"Awake {ThisModInfo.Info}");
                 var sw = Stopwatch.StartNew();
 
                 PythonCompiler.Instance = new PythonCompiler();

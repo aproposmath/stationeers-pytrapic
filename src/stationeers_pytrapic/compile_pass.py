@@ -45,7 +45,7 @@ class FunctionData:
     def has_return_value(self) -> bool:
         return self.node and self.node._ndata.func_has_return_value
 
-    def add_ra_instructions(self):
+    def add_ra_instructions(self, options=None):
         have_calls = False
         have_returns = False
         end_label_pos = None
@@ -63,10 +63,53 @@ class FunctionData:
         if have_calls and have_returns:
             ra = IC10Register("ra", code_expr="ra")
             indent = self.code[0].indent + 1
-            self.code.insert(1, IC10Instruction("push", [ra], indent=indent))
-            self.code.insert(
-                end_label_pos + 2, IC10Instruction("pop", [], ra, indent=indent)
-            )
+
+            if options and options.use_push_pop_functions:
+                # Count leading arg pops (right after the function label at pos 0)
+                n_args = next(
+                    (
+                        i
+                        for i, instr in enumerate(self.code[1:])
+                        if not (instr.op == "pop" and instr.output is not None)
+                    ),
+                    len(self.code[1:]),
+                )
+
+                end_name = name + "end"
+
+                # Every exit point — 'j {name}end' (early return) or '{name}end:' (normal
+                # path) — needs 'pop ra' before its preceding return-value push, or before
+                # the exit point itself for bare/non-returning exits.
+                exit_points = [
+                    i
+                    for i, instr in enumerate(self.code)
+                    if (
+                        instr.op == "j"
+                        and instr.inputs
+                        and str(instr.inputs[0].value) == end_name
+                    )
+                    or instr.op == (end_name + ":")
+                ]
+                pop_ra_positions = [
+                    pos - 1 if pos > 0 and self.code[pos - 1].op == "push" else pos
+                    for pos in exit_points
+                ]
+
+                # Collect all inserts and apply highest-index first so earlier indices
+                # remain valid without adjustment.
+                all_inserts = [
+                    (1 + n_args, IC10Instruction("push", [ra], indent=indent))
+                ] + [
+                    (pos, IC10Instruction("pop", [], ra, indent=indent))
+                    for pos in set(pop_ra_positions)
+                ]
+                for pos, instr in sorted(all_inserts, key=lambda x: x[0], reverse=True):
+                    self.code.insert(pos, instr)
+            else:
+                self.code.insert(1, IC10Instruction("push", [ra], indent=indent))
+                self.code.insert(
+                    end_label_pos + 2, IC10Instruction("pop", [], ra, indent=indent)
+                )
 
 
 @dataclass
@@ -78,6 +121,7 @@ class CompileOptions:
     append_version: bool = True
     compact: bool = False
     tail_call_optimization: bool = False
+    use_push_pop_functions: bool = False
 
 
 @dataclass
