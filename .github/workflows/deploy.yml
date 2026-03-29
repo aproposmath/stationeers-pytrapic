@@ -31,3 +31,5 @@ jobs:
           echo "zip_path=dist/release/typings.zip" >> "$GITHUB_OUTPUT"
           echo zip_path=dist/release/*.whl >> "$GITHUB_OUTPUT"
       - uses: ./Template
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
