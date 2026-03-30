@@ -1,0 +1,14 @@
+alias pump d0
+alias furnace d1
+lbwhile1:
+  yield
+  bdns pump lbelse2
+    s pump On 1
+lbelse2:
+  bdse furnace lbelse4
+    j lbwhile1
+lbelse4:
+  s furnace Activate 1
+  j lbwhile1
+# registers: 0
+# lines: 12

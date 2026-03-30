@@ -21,7 +21,7 @@ from .utils import (
     is_math_function,
     logger,
     get_function_name,
-    eval_constexpr,
+    try_replace_call_with_branch,
 )
 
 from .register_assignment import assign_registers
@@ -788,6 +788,10 @@ class CompilerPassGenerateCode(CompilerPass):
                 emit_if = negate_test
         elif isinstance(test_node, (nodes.BoolOp, nodes.Name, nodes.Attribute)):
             data.add(IC10("bnez" if negate_test else "beqz", [test, else_label]))
+        elif isinstance(test_node, nodes.Call) and try_replace_call_with_branch(
+            test_node, else_label
+        ):
+            pass
         else:
             raise NotImplementedError(f"Unsupported if test: {type(test_node)}")
 

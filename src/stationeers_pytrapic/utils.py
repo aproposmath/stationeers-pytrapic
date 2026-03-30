@@ -502,3 +502,25 @@ __result = __json.dumps({call_node.as_string()})
 
     _eval_constexpr_cache[code] = result
     return result
+
+
+_branch_variant = {
+    "sdse": "bdns",
+    "sdns": "bdse",
+}
+
+
+def try_replace_call_with_branch(node: nodes.Call, else_label: str) -> bool:
+    from .types import IC10Operand
+
+    fname = node.func.as_string()
+    data = node._ndata
+    if fname in _branch_variant:
+        instr = data.code[""][-1]
+        if instr.op != fname:
+            return False
+        instr.op = _branch_variant[fname]
+        instr.output = None
+        instr.inputs.append(IC10Operand(else_label))
+        return True
+    return False

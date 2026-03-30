@@ -1,0 +1,11 @@
+alias pump d0
+alias furnace d1
+yield
+bdns pump 5
+s pump 28 1
+bdse furnace 7
+j 2
+s furnace 9 1
+j 2
+# registers: 0
+# lines: 9
