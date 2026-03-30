@@ -170,6 +170,8 @@ class IC10Instruction:
         inputs = inputs or []
         for i in range(len(inputs)):
             value = inputs[i]
+            if isinstance(value, _BaseStructure):
+                value = value.Id
             if isinstance(value, enum.IntEnum):
                 value = format_enum(value)
             if not isinstance(value, IC10Operand):
