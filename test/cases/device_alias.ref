@@ -1,0 +1,7 @@
+alias panel1 d1
+alias SOLAR_PANEL_2 d2
+s d0 Horizontal 1
+s panel1 Horizontal 2
+s SOLAR_PANEL_2 Horizontal 3
+# registers: 0
+# lines: 5

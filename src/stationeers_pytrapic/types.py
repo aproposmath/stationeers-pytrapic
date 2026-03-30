@@ -87,7 +87,7 @@ class IC10Operand:
 
     def __init__(self, value: str | float | int | IC10Register):
         if isinstance(value, _Device):
-            value = value._dev_id._id or "db"
+            value = value.Id or "db"
         elif isinstance(value, DeviceId):
             value = value._id or "db"
         elif isinstance(value, float) and int(value) == value:
@@ -491,6 +491,7 @@ class _BaseStructure:
     _hash: int = -1
     _name: str | int | None = None
     _batch_mode: LogicBatchMethod = None
+    _alias: str | bool = False
 
     def __init__(
         self,
@@ -498,16 +499,22 @@ class _BaseStructure:
         ref_id: str | None = None,
         name: str | int | None = None,
         batch_mode: LogicBatchMethod = None,
+        alias: str | bool = False,
     ):
+        # The compiler converts bool arguments to IC10Operand, so we need to convert them back to bool
+        if isinstance(alias, IC10Operand):
+            alias = bool(alias.value)
+
         if isinstance(device_id, _BaseStructure):
-            self._dev_id = device_id._dev_id
-        elif isinstance(device_id, DeviceId):
-            self._dev_id = device_id
+            _dev_id = device_id._dev_id
+        if isinstance(device_id, DeviceId):
+            self._dev_id = DeviceId(device_id._id, device_id._is_ref_id)
         else:
             self._dev_id = DeviceId(device_id or ref_id, ref_id is not None)
 
         self._name = name
         self._batch_mode = batch_mode
+        self._alias = alias
 
     @property
     def PrefabHash(self) -> float:
@@ -520,6 +527,10 @@ class _BaseStructure:
     @property
     def NameHash(self) -> float:
         return _DeviceLogicType(self, LogicType.NameHash)
+
+    @property
+    def Id(self):
+        return self._alias if self._alias else self._dev_id._id
 
     def __str__(self):
         return type(self).__name__ + f"({self._dev_id})"
@@ -553,10 +564,11 @@ class Device(_BaseStructure, _GenericStructure):
     def __getattr__(self, attr_name: str) -> _DeviceLogicType:
         if attr_name in [
             "_dev_id",
-            "_id",
             "_name",
             "_hash",
             "_is_ref_id",
+            "_alias",
+            "Id",
         ] or attr_name.startswith("__"):
             return super().__getattr__(attr_name)
         return _DeviceLogicType(self, attr_name)

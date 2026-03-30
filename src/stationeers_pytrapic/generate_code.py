@@ -5,7 +5,7 @@ from astroid import nodes
 
 from . import _version, intrinsics, structures_generated, symbols, types
 from .compile_pass import CodeData, CompilerError, CompilerPass, FunctionData
-from .types import IC10, IC10Instruction, IC10Operand, IC10Register
+from .types import IC10, IC10Instruction, IC10Operand, IC10Register, _BaseStructure
 from .types_generated import LogicBatchMethod
 from .utils import (
     get_comparison_suffix,
@@ -269,6 +269,11 @@ class CompilerPassGenerateCode(CompilerPass):
                 data.result = result.output
             elif is_builtin_structure(result):
                 data.result = result
+                if isinstance(result, _BaseStructure) and isinstance(
+                    result._alias, str
+                ):
+                    data.add(IC10("alias", [result._alias, result._dev_id._id]))
+                    result._dev_id._id = result._alias
             elif is_builtin_function(fname):
                 data.result = IC10Register(name="", code_expr=result)
             else:
@@ -579,7 +584,11 @@ class CompilerPassGenerateCode(CompilerPass):
                 data.result = value
 
                 if isinstance(value, _BaseStructure):
-                    if isinstance(value._dev_id._id, IC10Register):
+                    if value._alias == True:
+                        value._alias = target.name
+                        data.add(IC10("alias", [target.name, value._dev_id._id]))
+                        value._dev_id._id = target.name
+                    elif isinstance(value._dev_id._id, IC10Register):
                         value._dev_id._id._is_intermediate = False
 
                 structures = self.data.structures
