@@ -1,17 +1,17 @@
 {
     "sha256:00901f35392ac2fd68638af53a612fe1779e4bc60b739c5543cc4e01715a6ee9": false,
+    "sha256:01037bf06f2a29c299c7a96a1344a76c2c14563c67e1afc6a46a2f418ce4948c": false,
     "sha256:1c867d9d4854714c9298fd83a9fbd70148abb54327a49827c7aebfc2a1a6c05b": false,
     "sha256:2824ef65dc4286c09f5949b0e00e978c70bb04af60421b08f6975d8df9efb8a9": false,
     "sha256:50db84fa4f8e0fff84f7d69ad593a4fc93008df51cc6087318783f57b7e13218": false,
     "sha256:830016920cfa6d80b8f4573b3d5c0ee35d835f13012469e9c4926d7f5f935e43": false,
-    "sha256:93b6f3c06a8489a540b3a58e4572ebea950be084f06cf3e1ac746bd3c18cd743": false,
-    "sha256:c02edb84f1855737373dcd9f7e7b38c2480895be29ac8f3041d271e5de6af4b4": {
+    "sha256:b79b350549a62e0f638b1477a8fd1a6671057ba1d282a83d10947e772b244fbb": {
         "author": "aproposmath",
         "branch": [],
         "depends_on": [
             "3592775931"
         ],
-        "digest": "sha256:c02edb84f1855737373dcd9f7e7b38c2480895be29ac8f3041d271e5de6af4b4",
+        "digest": "sha256:b79b350549a62e0f638b1477a8fd1a6671057ba1d282a83d10947e772b244fbb",
         "id": "com.github.aproposmath.stationeers-pytrapic",
         "name": "PyTrapIC - Python to IC10 Transpiler",
         "tag": [
