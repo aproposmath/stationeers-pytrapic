@@ -35,8 +35,12 @@ def set_output_mode(mode: OutputMode):
 
 
 def format_enum(enum_val) -> str | int:
+    from .types_generated import LogicType, LogicBatchMethod, LogicSlotType
+
     if _output_mode == OutputMode.VERBOSE:
-        return enum_val.name
+        if isinstance(enum_val, (LogicType, LogicBatchMethod, LogicSlotType)):
+            return enum_val.name
+        return enum_val.__class__.__name__ + "." + enum_val.name
     else:
         return enum_val.value
 

@@ -1,0 +1,9 @@
+lbwhile1:
+  jal hi
+  j lbwhile1
+hi:
+  s d0 Mode DisplayMode.String
+  s d0 Setting STR("Hi")
+  j ra
+# registers: 0
+# lines: 7
