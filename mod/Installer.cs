@@ -19,6 +19,7 @@ public class PythonWorkspace
     public static string SitePackagesDir => Path.Combine(VenvDir, "Lib", "site-packages");
     public static string PythonExe => Path.Combine(VenvDir, "python.exe");
     public static string PipExe => Path.Combine(VenvDir, "Scripts", "pip.exe");
+    public static string TyExe = Path.Combine(SitePackagesDir, "ty-0.0.26.data", "scripts", "ty.exe");
 
     public static string TypingsDir => Path.Combine(WorkspaceDir, "typings");
 
@@ -30,7 +31,7 @@ public class PythonWorkspace
     public static string VersionFile => Path.Combine(WorkspaceDir, "pytrapic_version.txt");
     public static bool IsInitialized => File.Exists(VersionFile) && File.ReadAllText(VersionFile).Trim() == VersionTag;
 
-    public const string WorkspaceVersionTag = "v0.2.3"; // manually increase this if some dependencies change
+    public const string WorkspaceVersionTag = "v0.3.0"; // manually increase this if some dependencies change
     public static string WorkspaceVersionFile => Path.Combine(WorkspaceDir, "pytrapic_ws_version.txt");
     public static bool IsWorkspaceInitialized => File.Exists(WorkspaceVersionFile) && File.ReadAllText(WorkspaceVersionFile).Trim() == WorkspaceVersionTag;
 

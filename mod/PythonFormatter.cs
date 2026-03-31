@@ -1,6 +1,8 @@
 namespace StationeersPyTrapIC;
 
 using System;
+using System.Collections.Generic;
+
 using System.IO;
 using System.Diagnostics;
 using System.Threading.Tasks;
@@ -14,7 +16,7 @@ public class PythonFormatter : LSPFormatter
     private long _lastResponseVersion = -1;
 
     public int DebounceDelayMs = 100;
-    private static System.Object _Mutex = new System.Object();
+    private static Object _Mutex = new();
 
     protected static LspClient _sharedLspClient = null;
 
@@ -42,115 +44,42 @@ public class PythonFormatter : LSPFormatter
     public static LspClient StartTyLSPServer()
     {
         // experimental support, not used currently
-        string workingDir = PythonWorkspace.WorkspaceDir;
-        string TyExe = Path.Combine(workingDir, "ty.exe");
         string Args = "server";
         var startInfo = new ProcessStartInfo
         {
-            FileName = TyExe,
+            FileName = PythonWorkspace.TyExe,
             Arguments = Args,
             RedirectStandardInput = true,
             RedirectStandardOutput = true,
             RedirectStandardError = true,
             UseShellExecute = false,
             CreateNoWindow = true,
-            WorkingDirectory = workingDir
+            WorkingDirectory = PythonWorkspace.VenvDir
         };
 
-        var lsp = new LspClientStdio(startInfo);
+        startInfo.Environment["PYTHONPATH"] = PythonWorkspace.SitePackagesDir;
+
+        var rootURI = new Uri(WorkspacePath).AbsoluteUri;
+
+        var initializationOptions = new
+        {
+            completions = new { autoImport = false },
+            // logFile = Path.Combine(WorkspacePath, "ty.log"),
+            // logLevel = "trace",
+        };
+
+        var lsp = new LspClientStdio(startInfo, initializationOptions, rootURI);
         lsp.OnInitialized += () =>
         {
-
             lsp.SendNotificationAsync("workspace/didChangeConfiguration", new
             {
-                settings = new
+                settings = new Dictionary<string, object>
                 {
-                    ty = new
-                    {
-                        completions = new
-                        {
-                            autoImport = false
-                        }
-                    }
+                    ["ty.completions.autoImport"] = false
                 }
             }).Forget();
         };
         return lsp;
-    }
-
-    public static LspClient StartBasedPyrightLSPServer123()
-    {
-        // open a socket and listen
-        var listener = new System.Net.Sockets.TcpListener(System.Net.IPAddress.Loopback, 0);
-        listener.Start();
-        int port = ((System.Net.IPEndPoint)listener.LocalEndpoint).Port;
-        L.Debug("BasedPyright LSP server listening on port " + port);
-
-        var lspClient = new LspClient();
-
-        UniTask.RunOnThreadPool(async () =>
-        {
-            var client = await listener.AcceptTcpClientAsync();
-            L.Debug("BasedPyright LSP server accepted connection.");
-            var stream = client.GetStream();
-            lspClient.Init(stream, stream);
-        }).Forget();
-
-        string workingDir = Path.Combine(BepInEx.Paths.CachePath, "pytrapic");
-        string SiteDir = Path.Combine(PythonWorkspace.VenvDir, "Lib", "site-packages");
-        string NodeExe = Path.Combine(SiteDir, "nodejs_wheel", "node.exe");
-        string PyRightJS = Path.Combine(SiteDir, "basedpyright", "langserver.index.js");
-
-        bool isLinux = NodeExe.StartsWith("Z:");
-
-        string Args = isLinux ? $"{PyRightJS}" : $"\"{PyRightJS}\"";
-        Args += $" --socket={port}";
-        var startInfo = new ProcessStartInfo
-        {
-            FileName = NodeExe,
-            Arguments = Args,
-            RedirectStandardInput = false,
-            RedirectStandardOutput = false,
-            RedirectStandardError = false,
-            UseShellExecute = false,
-            CreateNoWindow = !isLinux, // this must be false when running with wine on Linux
-            WorkingDirectory = workingDir
-        };
-
-        var process = new Process
-        {
-            StartInfo = startInfo,
-            EnableRaisingEvents = true
-        };
-
-        process.Exited += (s, e) =>
-        {
-            L.Error($"Pyright exited with code {process.ExitCode}");
-        };
-
-        process.Start();
-
-        lspClient._process = process;
-
-        lspClient.OnInitialized += () =>
-        {
-
-            lspClient.SendNotificationAsync("workspace/didChangeConfiguration", new
-            {
-                settings = new
-                {
-                    basedpyright = new
-                    {
-                        analysis = new
-                        {
-                            autoImportCompletions = false
-                        }
-                    }
-                }
-            }).Forget();
-        };
-
-        return lspClient;
     }
 
     public static LspClient SharedLspClient
@@ -159,7 +88,7 @@ public class PythonFormatter : LSPFormatter
         {
             if (_sharedLspClient == null)
             {
-                _sharedLspClient = StartBasedPyrightLSPServer123();
+                _sharedLspClient = StartTyLSPServer();
                 _sharedLspClient.OnInfo += (msg) => L.Debug($"[Shared LSP] {msg}");
                 _sharedLspClient.OnError += (msg) => L.Debug($"[Shared LSP] {msg}");
             }
@@ -167,13 +96,12 @@ public class PythonFormatter : LSPFormatter
         }
     }
 
+    public static object Mutex { get => _Mutex; set => _Mutex = value; }
+
     public static void DisposeSharedLspClient()
     {
-        if (_sharedLspClient != null)
-        {
-            _sharedLspClient.Dispose();
-            _sharedLspClient = null;
-        }
+        _sharedLspClient?.Dispose();
+        _sharedLspClient = null;
     }
 
     public PythonFormatter()
@@ -184,7 +112,12 @@ public class PythonFormatter : LSPFormatter
 
         LspClient = SharedLspClient;
         LspClient.OnDiagnostics += UpdateDiagnostics;
-        LspClient.OnInitialized += () => { SubmitChanges(); };
+        LspClient.OnInitialized += () =>
+        {
+            Identifier.uri = null;
+            SubmitChanges();
+            ResetCodeDebounced().Forget();
+        };
         if (LspClient.IsInitialized)
             ResetCodeDebounced().Forget();
         OnCodeChanged += () =>
@@ -276,7 +209,7 @@ public class PythonFormatter : LSPFormatter
         if (versionBefore != Version)
             return;
 
-        lock (_Mutex)
+        lock (Mutex)
         {
             if (versionBefore != Version)
             {
@@ -317,9 +250,9 @@ public class PythonFormatter : LSPFormatter
 
     public override void ResetCode(string code)
     {
-        L.Debug($"ResetCode called in PythonFormatter. CODE: |{code}|");
+        // L.Debug($"ResetCode called in PythonFormatter. CODE: |{code}|");
         var pyCode = ExtractEncodedSource(code, SOURCE_TAG);
-        L.Debug($"pyCode : |{pyCode}|");
+        // L.Debug($"pyCode : |{pyCode}|");
         if (!string.IsNullOrEmpty(pyCode))
             code = pyCode;
         base.ResetCode(code);

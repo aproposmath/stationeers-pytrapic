@@ -30,7 +30,7 @@ grep -q '^[[:space:]]*import[[:space:]]\+site[[:space:]]*$' "$PTH" || printf '%s
 echo "download wheels"
 python -m pip -q download --dest "$WHEELHOUSE" --only-binary=:all: \
   --platform win_amd64 --python-version 314 --implementation cp --abi cp314 \
-  "$WHL" basedpyright
+  "$WHL" ty
 
 echo "unpack wheels"
 # unpack everything
@@ -38,8 +38,4 @@ for whl in "$WHEELHOUSE"/*.whl; do
   unzip -q -o "$whl" -d "$SITE"
 done
 
-rm -rf typings
-basedpyright --createstub stationeers_pytrapic
-mv typings "$WS"
-cp scripts/pyrightconfig.json ws/
 zip -r ws.zip "$WS"
