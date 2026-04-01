@@ -442,7 +442,7 @@ namespace StationeersPyTrapIC
     }
 
     [BepInDependency(
-        "aproposmath-stationeers-ic10-editor",
+        "com.github.aproposmath.StationeersIC10Editor",
         BepInDependency.DependencyFlags.HardDependency
     )]
     [BepInPlugin(ThisModInfo.ModID, ThisModInfo.AssemblyName, ThisModInfo.Version)]
