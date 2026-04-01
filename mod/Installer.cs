@@ -125,13 +125,6 @@ public class PythonWorkspace
 
             L.Info("Python workspace installation complete");
         }
-        catch (Exception ex)
-        {
-            L.Error($"Failed to install Python workspace: {ex.Message}");
-            L.Error("Deleting workspace");
-            if (Directory.Exists(WorkspaceDir))
-                Directory.Delete(WorkspaceDir, true);
-        }
         finally
         {
             _initLock.Release();
@@ -161,7 +154,13 @@ public class PythonWorkspace
             File.WriteAllText(VersionFile, VersionTag);
             L.Info("PyTrapIC installation complete");
         }
-
+        catch (Exception ex)
+        {
+            L.Error($"Failed to initialize PyTrapIC workspace: {ex}");
+            L.Error("Deleting workspace");
+            if (Directory.Exists(WorkspaceDir))
+                Directory.Delete(WorkspaceDir, true);
+        }
         finally
         {
             _initLock.Release();
