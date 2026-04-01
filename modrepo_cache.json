@@ -7,6 +7,28 @@
     "sha256:45b03eb55fab3c08301e6aee9e5086b0f40b6f90645f661f8dbf70e60fe3cb76": false,
     "sha256:50db84fa4f8e0fff84f7d69ad593a4fc93008df51cc6087318783f57b7e13218": false,
     "sha256:830016920cfa6d80b8f4573b3d5c0ee35d835f13012469e9c4926d7f5f935e43": false,
+    "sha256:aa78e1124bd7de189a5c94e0c0af65d672bc26333b4d9e31fa18f2ed9b74ab38": {
+        "author": "aproposmath",
+        "branch": [],
+        "depends_on": [
+            "3592775931"
+        ],
+        "digest": "sha256:aa78e1124bd7de189a5c94e0c0af65d672bc26333b4d9e31fa18f2ed9b74ab38",
+        "id": "com.github.aproposmath.stationeers-pytrapic",
+        "name": "PyTrapIC - Python to IC10 Transpiler",
+        "tag": [
+            "IC10",
+            "Python",
+            "Editor",
+            "Code",
+            "BepInEx",
+            "Compiler",
+            "Transpiler",
+            "StationeersLaunchPad"
+        ],
+        "url": "https://github.com/aproposmath/stationeers-pytrapic/releases/download/v0.3.1/PyTrapIC-v0.3.1.zip",
+        "version": "dev"
+    },
     "sha256:bd8742bda1a707608fc46f93385822a94e5e4256608850436d94bd9d43acbec8": {
         "author": "aproposmath",
         "branch": [],
@@ -31,6 +53,7 @@
     },
     "sha256:c6f22565feeb1b165d0e872be83af9cc522aa6d86ab2ca9475b1bce8626a2108": false,
     "sha256:d483dbe218dba8c23c0a2ebf68d77afaf55604484cd40cedbfa68fb61e779bd7": false,
+    "sha256:e9b2c3bf1e7b4711e38797b76ea6dbdba0dc3f705525164d254811d4c576274c": false,
     "sha256:fcc66b156ff432bc1bd44ba5a0ec206938c934ad9bb99ea91964c699cdb06237": {
         "author": "aproposmath",
         "branch": [],

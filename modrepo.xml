@@ -6,6 +6,14 @@
       Version="dev"
       Name="PyTrapIC - Python to IC10 Transpiler"
       Author="aproposmath"
+      Url="https://github.com/aproposmath/stationeers-pytrapic/releases/download/v0.3.1/PyTrapIC-v0.3.1.zip"
+      Digest="sha256:aa78e1124bd7de189a5c94e0c0af65d672bc26333b4d9e31fa18f2ed9b74ab38"
+  />
+  <ModVersion
+      ModID="com.github.aproposmath.stationeers-pytrapic"
+      Version="dev"
+      Name="PyTrapIC - Python to IC10 Transpiler"
+      Author="aproposmath"
       Url="https://github.com/aproposmath/stationeers-pytrapic/releases/download/v0.3.0/PyTrapIC-v0.3.0.zip"
       Digest="sha256:bd8742bda1a707608fc46f93385822a94e5e4256608850436d94bd9d43acbec8"
   />
