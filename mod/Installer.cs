@@ -21,8 +21,6 @@ public class PythonWorkspace
     public static string PythonExe => Path.Combine(VenvDir, "python.exe");
     public static string TyExe = Path.Combine(ScriptsDir, "ty.exe");
 
-    public static string TypingsDir => Path.Combine(WorkspaceDir, "typings");
-
 #if DEBUG
     public static string VersionTag => "main";
 #else
@@ -127,6 +125,13 @@ public class PythonWorkspace
 
             L.Info("Python workspace installation complete");
         }
+        catch (Exception ex)
+        {
+            L.Error($"Failed to install Python workspace: {ex.Message}");
+            L.Error("Deleting workspace");
+            if (Directory.Exists(WorkspaceDir))
+                Directory.Delete(WorkspaceDir, true);
+        }
         finally
         {
             _initLock.Release();
@@ -145,14 +150,13 @@ public class PythonWorkspace
             await _initLock.WaitAsync();
 
             foreach (var dir in Directory.GetDirectories(SitePackagesDir, "stationeers_pytrapic*", SearchOption.TopDirectoryOnly))
+            {
+                L.Info($"Deleting {dir}");
                 Directory.Delete(dir, true);
-
-            if (Directory.Exists(TypingsDir))
-                Directory.Delete(TypingsDir, true);
+            }
 
             var release = await FetchRelease(VersionTag);
             await FetchAndExtractAsset(release, SitePackagesDir, "stationeers_pytrapic", ".whl");
-            await FetchAndExtractAsset(release, WorkspaceDir, "typings", ".zip");
 
             File.WriteAllText(VersionFile, VersionTag);
             L.Info("PyTrapIC installation complete");
