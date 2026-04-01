@@ -1,7 +1,7 @@
 [project]
 description="PyTrapIC - Python Transpiler to IC10 for Stationeers"
 name = "stationeers_pytrapic"
-dependencies = ['astroid', 'pygments']
+dependencies = ['astroid']
 requires-python = ">=3.10"
 dynamic = ["version"]
 

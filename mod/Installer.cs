@@ -15,11 +15,11 @@ public class PythonWorkspace
 {
     public static string CacheDir => Path.Combine(BepInEx.Paths.CachePath, "pytrapic");
     public static string WorkspaceDir => Path.Combine(CacheDir, "ws");
-    public static string VenvDir => Path.Combine(WorkspaceDir, $".venv");
+    public static string VenvDir => Path.Combine(WorkspaceDir, $"venv");
     public static string SitePackagesDir => Path.Combine(VenvDir, "Lib", "site-packages");
+    public static string ScriptsDir => Path.Combine(VenvDir, "scripts");
     public static string PythonExe => Path.Combine(VenvDir, "python.exe");
-    public static string PipExe => Path.Combine(VenvDir, "Scripts", "pip.exe");
-    public static string TyExe = Path.Combine(SitePackagesDir, "ty-0.0.26.data", "scripts", "ty.exe");
+    public static string TyExe = Path.Combine(ScriptsDir, "ty.exe");
 
     public static string TypingsDir => Path.Combine(WorkspaceDir, "typings");
 

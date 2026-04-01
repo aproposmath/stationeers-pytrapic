@@ -2,9 +2,9 @@
 set -euo pipefail
 
 WS="ws"
-OUT="$WS/.venv"
+OUT="$WS/venv"
 URL="https://www.python.org/ftp/python/3.14.2/python-3.14.2-embed-amd64.zip"
-SITE="$WS/.venv/Lib/site-packages"
+SITE="$WS/venv/Lib/site-packages"
 WHEELHOUSE="wheelhouse"
 
 rm -rf "$WS" "$WHEELHOUSE" dist/* ws.zip
@@ -37,5 +37,8 @@ echo "unpack wheels"
 for whl in "$WHEELHOUSE"/*.whl; do
   unzip -q -o "$whl" -d "$SITE"
 done
+
+cp -r $SITE/*.data/* $OUT/
+rm -r $SITE/*.data/
 
 zip -r ws.zip "$WS"
