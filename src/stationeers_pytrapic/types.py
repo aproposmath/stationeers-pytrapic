@@ -498,7 +498,7 @@ class _BaseStructure:
     def __init__(
         self,
         device_id: "_BaseStructure | str | None" = None,
-        ref_id: str | None = None,
+        ref_id: str | None | float | IC10Register = None,
         name: str | int | None = None,
         batch_mode: LogicBatchMethod = None,
         alias: str | bool = False,
@@ -508,7 +508,7 @@ class _BaseStructure:
             alias = bool(alias.value)
 
         if isinstance(device_id, _BaseStructure):
-            _dev_id = device_id._dev_id
+            device_id = device_id.Id
         if isinstance(device_id, DeviceId):
             self._dev_id = DeviceId(device_id._id, device_id._is_ref_id)
         else:

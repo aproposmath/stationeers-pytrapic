@@ -297,23 +297,23 @@ namespace StationeersPyTrapIC
                 throw new Exception("Failed to get standard input/output streams");
             }
 
-            var pagesResponse = await _stdout.ReadLineAsync();
-            L.Debug($"Received Stationpedia pages from Python compiler");
-            // L.Debug($"Decoding Stationpedia pages {pagesResponse}");
+            // var pagesResponse = await _stdout.ReadLineAsync();
+            // L.Debug($"Received Stationpedia pages from Python compiler");
+            // // L.Debug($"Decoding Stationpedia pages {pagesResponse}");
 
-            if (pagesResponse == null)
-            {
-                var errors = await _process.StandardError.ReadToEndAsync();
-                L.Error($"Python compiler stderr: {errors}");
-                L.Error($"No response from Python compiler for Stationpedia pages");
-                throw new Exception("No response from Python compiler for Stationpedia pages");
-            }
-            L.Debug($"Pages response length: {pagesResponse.Length}");
+            // if (pagesResponse == null)
+            // {
+            //     var errors = await _process.StandardError.ReadToEndAsync();
+            //     L.Error($"Python compiler stderr: {errors}");
+            //     L.Error($"No response from Python compiler for Stationpedia pages");
+            //     throw new Exception("No response from Python compiler for Stationpedia pages");
+            // }
+            // L.Debug($"Pages response length: {pagesResponse.Length}");
 
-            pages = JsonConvert.DeserializeObject<List<PediaPage>>(
-                Encoding.UTF8.GetString((Convert.FromBase64String(pagesResponse)))
-            );
-            AddStationpediaPages();
+            // pages = JsonConvert.DeserializeObject<List<PediaPage>>(
+            //     Encoding.UTF8.GetString((Convert.FromBase64String(pagesResponse)))
+            // );
+            // AddStationpediaPages();
 
             L.Debug($"PythonCompiler running");
             L.Debug($"Registered Python code formatter");
@@ -363,19 +363,10 @@ namespace StationeersPyTrapIC
 
         public CompileResponse Compile(string pythonCode, int lineno = -1, int column = -1)
         {
-            if (!IsRunning())
-            {
-                L.Error("Python compiler is not running, cannot compile");
-                return new CompileResponse
-                {
-                    error = { description = "Python compiler is not running" },
-                };
-            }
-
             var modules = SourceData.LoadImportedModules(pythonCode);
             var compileOptions = options.Copy();
 
-            CompileInput input = new CompileInput
+            CompileInput input = new()
             {
                 action = "compile",
                 code = modules,
@@ -383,6 +374,17 @@ namespace StationeersPyTrapIC
                 lineno = lineno,
                 column = column,
             };
+            
+            if (!IsRunning())
+            {
+                L.Error("Python compiler is not running, cannot compile");
+                return new CompileResponse
+                {
+                    error = { description = "Python compiler is not running" },
+                    input = input,
+                };
+            }
+
 
             var response = JsonConvert.DeserializeObject<CompileResponse>(
                 SendData(JsonConvert.SerializeObject(input))
@@ -390,28 +392,6 @@ namespace StationeersPyTrapIC
             response.input = input;
 
             return response;
-        }
-
-        public string Highlight(string pythonCode)
-        {
-            if (!IsRunning())
-            {
-                L.Error("Python compiler is not running, cannot highlight");
-                return pythonCode;
-            }
-
-            if (pythonCode.Length == 0)
-                return pythonCode;
-
-            CompileResponse data = Compile(pythonCode);
-
-            if (data == null || data.highlighted == null)
-            {
-                L.Error($"Error highlighting code: {data?.error}");
-                return pythonCode;
-            }
-
-            return data.highlighted;
         }
 
         public string SendCommand(string message)

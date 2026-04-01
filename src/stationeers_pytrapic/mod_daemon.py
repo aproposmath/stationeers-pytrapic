@@ -13,7 +13,7 @@ import sys
 import time
 
 from .compiler import CompileOptions, compile_code
-from .stationpedia import get_pages_encoded
+# from .stationpedia import get_pages_encoded
 
 _log_file = None  # Global log file handle
 _err_file = None  # Global error file handle
@@ -107,7 +107,7 @@ def process_input(line):
 
 async def main():
     try:
-        print(get_pages_encoded(), flush=True, file=_stdout)
+        # print(get_pages_encoded(), flush=True, file=_stdout)
         while True:
             line = sys.stdin.readline()
 

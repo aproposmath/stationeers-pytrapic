@@ -840,13 +840,13 @@ def bnezal(a: _Register | float, b: _Register | float) -> None:
     return _IC10("bnezal", [a, b], None)
 
 
-def HASH(name: str) -> float:
+def HASH(name: str) -> int:
     from .types import compute_hash
 
     return compute_hash(name)
 
 
-def STR(s: str) -> float:
+def STR(s: str) -> int:
     from .types import compute_string
 
     return compute_string(s)
