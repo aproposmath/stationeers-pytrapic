@@ -131,15 +131,8 @@ public class PythonFormatter : LSPFormatter
     {
         if (Editor.ParentTab == null)
             return;
-        await Editor.ParentTab.ParentWindow.LoadLibraries();
-
-        var libs = Editor.ParentTab.ParentWindow.LibraryCodes;
-
-        if (libs == null)
-        {
-            L.Debug("Library codes is null");
-            return;
-        }
+            
+        var libs = LibraryWindow.VersionedScripts;
 
         string initPath = Path.Combine(WorkspacePath, "library", "__init__.py");
         Directory.CreateDirectory(Path.GetDirectoryName(initPath));
@@ -150,14 +143,14 @@ public class PythonFormatter : LSPFormatter
 
         foreach (var lib in libs)
         {
-            if (!lib.Instructions.Contains("stationeers_pytrapic"))
+            if (!lib.Data.Instructions.Contains("stationeers_pytrapic"))
                 continue;
 
             string fileName = lib.Title;
             foreach (char c in " ._<>:\"/\\|?*")
                 fileName = fileName.Replace(c, '_');
             var filePath = Path.Combine(libPath, fileName + ".py");
-            File.WriteAllText(filePath, lib.Instructions);
+            File.WriteAllText(filePath, lib.Data.Instructions);
         }
     }
 

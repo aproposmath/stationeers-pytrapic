@@ -464,6 +464,7 @@ namespace StationeersPyTrapIC
                     $"PyTrapIC initialized in {sw.ElapsedMilliseconds}ms"
                 );
 
+                CodeFormatters.RegisterFormatter("Python", typeof(PythonStaticFormatter));
                 CodeFormatters.RegisterFormatter("Python", typeof(PythonFormatter));
             }
             catch (Exception ex)

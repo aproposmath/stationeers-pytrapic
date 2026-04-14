@@ -26,9 +26,9 @@
         Compiler features: https://github.com/aproposmath/stationeers-pytrapic/blob/dev/README.md#implementation-status
     </Description>
   <ChangeLog>
-        0.2.4:
+        0.3.2:
 
-        - Fix bug in code generation with continue statements (thx @Phil)
+        - Compatibility with latest IC10Editor
   </ChangeLog>
   <WorkshopHandle>3637577272</WorkshopHandle>
   <Tags>
