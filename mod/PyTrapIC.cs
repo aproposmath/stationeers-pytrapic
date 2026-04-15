@@ -457,7 +457,7 @@ namespace StationeersPyTrapIC
                 var sw = Stopwatch.StartNew();
 
                 PythonCompiler.Instance = new PythonCompiler();
-                CommandLine.AddCommand("pytrapic", new PyTrapICCommand());
+                CommandLine._commandsMap["pytrapic"] = new PyTrapICCommand();
 
                 sw.Stop();
                 L.Debug(
@@ -522,6 +522,10 @@ Available commands:
                 case "reinstall":
                     PythonCompiler.Instance.Init(true, true).Forget();
                     return "Python and dependencies reinstalled.";
+                case "build":
+                    LogicDataExtractor.ExtractAndBuild();
+                    return "Rebuilt data types based on currently loaded mods.";
+
                 default:
                     return HelpText;
             }

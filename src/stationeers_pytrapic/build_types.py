@@ -1,4 +1,5 @@
 import json
+import sys
 from dataclasses import dataclass, field
 from pathlib import Path
 
@@ -248,7 +249,7 @@ def parse_json_file(json_file: Path) -> dict:
             if name.startswith(prefix):
                 var_name = name[len(prefix) :]
                 break
-                
+
         var_name = var_name.replace("(", "_").replace(")", "")
 
         # print("Generating", var_name)
@@ -443,11 +444,11 @@ def generate_slot_types(pages):
 
 
 if __name__ == "__main__":
-    json_file = Path(__file__).parent / "Stationpedia.json"
+    json_file = Path(sys.argv[1])
+    out_path = Path(__file__).parent
+
     for file_name, content in parse_json_file(json_file).items():
-        out_file = (
-            Path(__file__).parent.parent / "src" / "stationeers_pytrapic" / file_name
-        )
+        out_file = out_path / file_name
 
         out_file.write_text(content, encoding="utf-8")
 

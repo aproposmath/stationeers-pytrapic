@@ -6,7 +6,7 @@ rm -rf dist typings
 
 cd scripts
 python build_enums.py
-python build_types.py
+python ../src/stationeers_pytrapic/build_types.py Stationpedia.json
 python build_intrinsics.py
 cd ..
 
