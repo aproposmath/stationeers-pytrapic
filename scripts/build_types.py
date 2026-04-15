@@ -2,20 +2,35 @@ import json
 from dataclasses import dataclass, field
 from pathlib import Path
 
+
 gases = [
     "RatioCarbonDioxide",
+    "RatioHelium",
+    "RatioHydrazine",
+    "RatioHydrochloricAcid",
+    "RatioHydrogen",
+    "RatioLiquidAlcohol",
     "RatioLiquidCarbonDioxide",
+    "RatioLiquidHydrazine",
+    "RatioLiquidHydrochloricAcid",
+    "RatioLiquidHydrogen",
+    "RatioLiquidMethane",
     "RatioLiquidNitrogen",
     "RatioLiquidNitrousOxide",
     "RatioLiquidOxygen",
+    "RatioLiquidOzone",
     "RatioLiquidPollutant",
-    "RatioLiquidVolatiles",
+    "RatioLiquidSilanol",
+    "RatioLiquidSodiumChloride",
+    "RatioMethane",
     "RatioNitrogen",
     "RatioNitrousOxide",
     "RatioOxygen",
+    "RatioOzone",
     "RatioPollutant",
+    "RatioPollutedWater",
+    "RatioSilanol",
     "RatioSteam",
-    "RatioVolatiles",
     "RatioWater",
 ]
 
