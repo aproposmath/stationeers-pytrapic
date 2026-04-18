@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Diagnostics;
 using System.Threading.Tasks;
+using System.Threading;
 using Cysharp.Threading.Tasks;
 using StationeersIC10Editor;
 using ImGuiEditor.LSP;
@@ -131,7 +132,7 @@ public class PythonFormatter : LSPFormatter
     {
         if (Editor.ParentTab == null)
             return;
-            
+
         var libs = LibraryWindow.VersionedScripts;
 
         string initPath = Path.Combine(WorkspacePath, "library", "__init__.py");
@@ -181,6 +182,28 @@ public class PythonFormatter : LSPFormatter
         return 0.0;
     }
 
+    private static readonly Dictionary<string, PythonCompiler.CompileResponse> _CompileCache = [];
+    private static readonly Queue<string> _CompileCacheKeys = [];
+
+    public async UniTask<PythonCompiler.CompileResponse> CompileCode(string code)
+    {
+        if (_CompileCache.TryGetValue(code, out var cachedResponse))
+            return cachedResponse;
+        await UniTask.SwitchToThreadPool();
+
+        var sw = Stopwatch.StartNew();
+        await PythonCompiler.Instance.WaitForReadyAsync();
+        var response = PythonCompiler.Instance.Compile(code);
+        sw.Stop();
+        L.Debug($"Compilation took {sw.ElapsedMilliseconds} ms");
+        lastCompileResponse = response;
+        _CompileCache[code] = response;
+        _CompileCacheKeys.Enqueue(code);
+        while (_CompileCacheKeys.Count > 100)
+            _CompileCache.Remove(_CompileCacheKeys.Dequeue());
+        return response;
+    }
+
     public async UniTaskVoid ResetCodeDebounced()
     {
         if (Lines.Count == 0 || Lines.Count == 1 && string.IsNullOrWhiteSpace(Lines[0].Text))
@@ -188,41 +211,23 @@ public class PythonFormatter : LSPFormatter
 
         await UniTask.SwitchToMainThread();
         SubmitChanges();
-        await UniTask.SwitchToThreadPool();
 
-        await PythonCompiler.Instance.WaitForReadyAsync();
         int versionBefore = Version;
         await Task.Delay(DebounceDelayMs);
+
+        L.Debug($"ResetCodeDebounced called, Version: {Version}, versionBefore: {versionBefore}, _lastResponseVersion: {_lastResponseVersion}");
 
         if (versionBefore != Version)
             return;
 
         string code = RawText;
 
+        var response = await CompileCode(code);
+
         if (versionBefore != Version)
             return;
-
-        lock (Mutex)
-        {
-            if (versionBefore != Version)
-            {
-                L.Debug("Newer debounce task detected, cancelling this one.");
-                return;
-            }
-            L.Debug($"Debounce delay elapsed, proceeding with code reset.");
-
-            var sw = System.Diagnostics.Stopwatch.StartNew();
-            var response = PythonCompiler.Instance.Compile(code);
-            sw.Stop();
-            L.Debug($"Compilation took {sw.ElapsedMilliseconds} ms");
-            if (versionBefore != Version)
-            {
-                L.Debug("Code changed during compilation, cancelling this one.");
-                return;
-            }
-            lastCompileResponse = response;
-            _lastResponseVersion = versionBefore;
-        }
+        lastCompileResponse = response;
+        _lastResponseVersion = versionBefore;
 
         var compiled = lastCompileResponse.code ?? "";
         var error = lastCompileResponse.error;
@@ -253,11 +258,13 @@ public class PythonFormatter : LSPFormatter
 
     public override string Compile()
     {
+        if (_lastResponseVersion == -1)
+            ResetCodeDebounced().Forget();
         for (var itry = 0; itry < 10; itry++)
         {
             if (_lastResponseVersion == Version && lastCompileResponse != null)
                 break;
-            System.Threading.Thread.Sleep(100);
+            Thread.Sleep(100);
         }
 
         var code = "Error compiling Python source.\n";

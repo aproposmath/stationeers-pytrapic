@@ -19,13 +19,13 @@ public class LogicDataExtractor
         ExtractLogicData(typesFile);
 
         var pyExe = PythonWorkspace.PythonExe;
-        
+
         // run python -m stationeers_pytrapic.build_types typesFile
         var process = Process.Start(new ProcessStartInfo(pyExe, $"-m stationeers_pytrapic.build_types {typesFile}") { UseShellExecute = false });
         // wait for the process to finish
         process.WaitForExit();
     }
-    
+
     public static void ExtractLogicData(string outputFile)
     {
         StreamWriter sw = new(outputFile);
@@ -58,7 +58,7 @@ public class LogicDataExtractor
             WriteLogicInsert(writer, page.LogicInsert, "LogicInsert");
             WriteLogicInsert(writer, page.LogicSlotInsert, "LogicSlotInsert");
             WriteLogicSlotInsert(writer, page);
-            
+
             writer.WriteEndObject();
         }
         writer.WriteEndArray();
@@ -80,7 +80,7 @@ public class LogicDataExtractor
         }
         writer.WriteEndArray();
     }
-    
+
     public static void WriteLogicSlotInsert(JsonTextWriter writer, StationpediaPage page)
     {
         writer.WritePropertyName("SlotInserts");

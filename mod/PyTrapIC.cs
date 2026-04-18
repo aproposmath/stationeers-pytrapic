@@ -75,35 +75,12 @@ namespace StationeersPyTrapIC
             return @"$^"; // matches nothing
         }
 
-        public static Dictionary<string, SteamTransport.ItemWrapper> loadLibraries()
-        {
-            using (new Timer("Load libraries"))
-            {
-                // todo: can we cache this without missing updates?
-                // todo: can this be loaded async without blocking?
-
-                var libraries = NetworkManager
-                    .GetLocalAndWorkshopItems(SteamTransport.WorkshopType.ICCode)
-                    .GetAwaiter()
-                    .GetResult();
-
-                Dictionary<string, SteamTransport.ItemWrapper> libraryMap =
-                    new Dictionary<string, SteamTransport.ItemWrapper>();
-
-                foreach (var lib in libraries)
-                    libraryMap[lib.DirectoryName.ToLowerInvariant()] = lib;
-
-                return libraryMap;
-            }
-        }
-
         public static Dictionary<string, string> LoadImportedModules(string code)
         {
             var importRegex = new Regex(getImportRegex(code), RegexOptions.Multiline);
-
             var firstMatches = importRegex.Matches(code);
 
-            Dictionary<string, string> result = new Dictionary<string, string>();
+            Dictionary<string, string> result = [];
             result[""] = code;
 
             if (firstMatches.Count == 0)
@@ -111,10 +88,16 @@ namespace StationeersPyTrapIC
                 return result; // No library imports found
             }
 
-            var libraries = loadLibraries();
+            Dictionary<string, VersionedScript> libraries = [];
+            foreach (var lib in LibraryWindow.VersionedScripts)
+            {
+                if (!lib.Data.Instructions.StartsWith("from stationeers_pytrapic.symbols import *"))
+                    continue;
+                libraries[lib.Title] = lib;
+                L.Debug($"Found library in library window: {lib.Title}");
+            }
 
-            List<string> codesToSearch = new List<string>();
-            codesToSearch.Add(code);
+            List<string> codesToSearch = [code];
 
             while (codesToSearch.Count > 0)
             {
@@ -124,6 +107,7 @@ namespace StationeersPyTrapIC
                 foreach (Match match in matches)
                 {
                     string libName = match.Groups[1].Value.ToLowerInvariant();
+                    L.Debug($"Found import of library: {libName}");
 
                     if (result.ContainsKey(libName))
                         continue; // Already imported
@@ -134,15 +118,11 @@ namespace StationeersPyTrapIC
                         continue; // Library not found, skip replacement
                     }
 
-                    var lib = libraries[libName];
-                    L.Debug($"Found matching library {libName}: {lib.FilePathFullName}");
-                    InstructionData instructionData = InstructionData.GetFromFile(
-                        lib.FilePathFullName
-                    );
+                    L.Debug($"Found matching library {libName}");
 
-                    result[libName] = instructionData.Instructions;
-                    codesToSearch.Add(instructionData.Instructions);
-                    // code = code.Replace(match.Value, instructionData.Instructions);
+                    var libCode = libraries[libName].Data.Instructions;
+                    result[libName] = libCode;
+                    codesToSearch.Add(libCode);
                 }
             }
 
@@ -374,7 +354,7 @@ namespace StationeersPyTrapIC
                 lineno = lineno,
                 column = column,
             };
-            
+
             if (!IsRunning())
             {
                 L.Error("Python compiler is not running, cannot compile");
@@ -466,6 +446,8 @@ namespace StationeersPyTrapIC
 
                 CodeFormatters.RegisterFormatter("Python", typeof(PythonStaticFormatter));
                 CodeFormatters.RegisterFormatter("Python", typeof(PythonFormatter));
+                if (LibraryWindow.LocalScripts.Count == 0)
+                    LibraryWindow.LoadScripts().Forget();
             }
             catch (Exception ex)
             {
@@ -515,8 +497,6 @@ Available commands:
                     return PythonCompiler.Instance.IsRunning()
                         ? "Python daemon is running."
                         : "Python daemon is not running.";
-                case "libraries":
-                    return string.Join("\n", SourceData.loadLibraries().Keys.OrderBy(x => x));
                 case "version":
                     return $"PyTrapIC version {ThisModInfo.Version}, git version: {ThisModInfo.VersionGit}, Python {PythonCompiler.PYTHON_VERSION}";
                 case "reinstall":
