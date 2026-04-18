@@ -60,6 +60,6 @@ move r1 r2
 push r1
 add r0 r0 1
 j 22
-s db Setting 1162760004
+s db Setting 1146048069
 # registers: 10
 # lines: 63

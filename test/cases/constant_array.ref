@@ -70,6 +70,7 @@ len6:
   l r3 db On
   mod r5 r3 2
   sub r4 r3 r5
+  add r4 r4 1
   jr r4
     select r4 r5 90 91
     j lbend28
@@ -83,6 +84,7 @@ len7:
   l r3 db On
   mod r5 r3 2
   sub r4 r3 r5
+  add r4 r4 1
   jr r4
     select r4 r5 90 91
     j lbend32
@@ -98,6 +100,7 @@ len8:
   l r3 db On
   mod r5 r3 2
   sub r4 r3 r5
+  add r4 r4 1
   jr r4
     select r4 r5 90 91
     j lbend36
@@ -118,4 +121,4 @@ show.amount:
   sbn HASH("StructureConsoleLED5") r4 Setting r5
   j ra
 # registers: 6
-# lines: 119
+# lines: 122

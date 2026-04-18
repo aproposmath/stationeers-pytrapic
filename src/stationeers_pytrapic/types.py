@@ -257,7 +257,7 @@ def compute_hash(name: int | str | _Register, output_mode=None) -> int | str:
 
 def compute_string(s: str, output_mode=None) -> float:
     val = 0
-    for char in s[::-1]:
+    for char in s:
         val = val << 8 | ord(char)
     return _apply_output_mode(val, f'STR("{s}")', output_mode)
 
