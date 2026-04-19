@@ -8,18 +8,27 @@ generated_types = set()
 
 file_code = f"from enum import IntEnum as _IntEnum\n\n"
 for collection in data.values():
-    for enum_data in collection.values():
-        name = enum_data["enumName"]
+    for name in collection.keys():
+        enum_data = collection[name]
         if name in generated_types:
             continue
         generated_types.add(name)
-        values = enum_data["values"]
-        file_code += f"\nclass {name}(_IntEnum):\n"
-        for value_name, value in values.items():
-            if keyword.iskeyword(value_name):
-                value_name += "_"
-            value = value["value"]
-            file_code += f"    {value_name} = {value}\n"
+
+        if name == "_unnamed":
+            values = enum_data["values"]
+            for value_name, value in values.items():
+                if keyword.iskeyword(value_name):
+                    value_name += "_"
+                value = value["value"]
+                file_code += f"{value_name} = {value}\n"
+        else:
+            values = enum_data["values"]
+            file_code += f"\nclass {name}(_IntEnum):\n"
+            for value_name, value in values.items():
+                if keyword.iskeyword(value_name):
+                    value_name += "_"
+                value = value["value"]
+                file_code += f"    {value_name} = {value}\n"
 
 
 logic_types = data["scriptEnums"]["LogicType"]["values"]

@@ -3,9 +3,9 @@ from stationeers_pytrapic.symbols import *
 
 @constexpr
 def filter_by_sorting_class(cls, negate=False):
-    condop = ConditionOperation.Equals
+    condop = Equals
     if negate:
-        condop = ConditionOperation.NotEquals
+        condop = NotEquals
     condop = condop << 8
     cls = cls << 16
     return cls + condop + SorterInstruction.FilterSortingClassCompare

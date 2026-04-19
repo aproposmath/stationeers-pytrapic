@@ -403,7 +403,7 @@ class LogicBatchMethod(_IntEnum):
     Maximum = 3
 
 
-class SoundAlert(_IntEnum):
+class Sound(_IntEnum):
     None_ = 0
     Alarm2 = 1
     Alarm3 = 2
@@ -452,7 +452,7 @@ class SoundAlert(_IntEnum):
     Alarm1 = 45
 
 
-class LogicTransmitterMode(_IntEnum):
+class TransmitterMode(_IntEnum):
     Passive = 0
     Active = 1
 
@@ -463,7 +463,7 @@ class ElevatorMode(_IntEnum):
     Downward = 2
 
 
-class ColorType(_IntEnum):
+class Color(_IntEnum):
     Blue = 0
     Gray = 1
     Green = 2
@@ -485,7 +485,7 @@ class EntityState(_IntEnum):
     Decay = 3
 
 
-class AirControlMode(_IntEnum):
+class AirControl(_IntEnum):
     None_ = 0
     Offline = 1
     Pressure = 2
@@ -498,19 +498,18 @@ class DaylightSensorMode(_IntEnum):
     Vertical = 2
 
 
-class ConditionOperation(_IntEnum):
-    Equals = 0
-    Greater = 1
-    Less = 2
-    NotEquals = 3
+Equals = 0
+Greater = 1
+Less = 2
+NotEquals = 3
 
 
-class AirConditioningMode(_IntEnum):
+class AirCon(_IntEnum):
     Cold = 0
     Hot = 1
 
 
-class VentDirection(_IntEnum):
+class Vent(_IntEnum):
     Outward = 0
     Inward = 1
 
@@ -547,7 +546,7 @@ class SortingClass(_IntEnum):
     Ices = 10
 
 
-class Class(_IntEnum):
+class SlotClass(_IntEnum):
     None_ = 0
     Helmet = 1
     Suit = 2
