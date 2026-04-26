@@ -147,11 +147,10 @@ namespace StationeersPyTrapIC
 
     public class PythonCompiler
     {
-        public static readonly string PYTHON_VERSION = "3.13.7";
         public static PythonCompiler Instance = null;
-        public static List<PediaPage> pages = new List<PediaPage>();
+        public static List<PediaPage> pages = [];
 
-        public static CompileOptions options = new CompileOptions();
+        public static CompileOptions options = new();
 
         private Process _process;
         private StreamWriter _stdin;
@@ -230,7 +229,7 @@ namespace StationeersPyTrapIC
             return _process != null && !_process.HasExited;
         }
 
-        public async UniTaskVoid Init(bool forceRestart = false, bool forceInstall = false)
+        public async UniTask Init(bool forceRestart = false, bool forceInstall = false)
         {
             await UniTask.SwitchToThreadPool();
             if (IsRunning())
@@ -242,6 +241,8 @@ namespace StationeersPyTrapIC
             }
             await PythonWorkspace.InitPytrapic(forceInstall);
             L.Debug("Python installation checked");
+
+            LogicDataExtractor.ExtractAndBuild();
 
             var pythonPath = PythonWorkspace.PythonExe;
             _process = new Process
@@ -320,7 +321,7 @@ namespace StationeersPyTrapIC
 
         public PythonCompiler()
         {
-            UniTask.RunOnThreadPool(() => Init());
+            // UniTask.RunOnThreadPool(() => Init());
         }
 
         public static void GetPosition(out int lineno, out int column)
@@ -400,7 +401,7 @@ namespace StationeersPyTrapIC
                 lock (_sendDataLock)
                 {
                     L.Debug($"Sending data to Python compiler");
-                    String response = null;
+                    string response = null;
                     using (new Timer("Compile"))
                         response = SendCommand(data);
                     if (response == null)
@@ -436,7 +437,7 @@ namespace StationeersPyTrapIC
                 L.Info($"Awake {ThisModInfo.Info}");
                 var sw = Stopwatch.StartNew();
 
-                PythonCompiler.Instance = new PythonCompiler();
+                // PythonCompiler.Instance = new PythonCompiler();
                 CommandLine._commandsMap["pytrapic"] = new PyTrapICCommand();
 
                 sw.Stop();
@@ -458,7 +459,7 @@ namespace StationeersPyTrapIC
         private void OnDestroy()
         {
             L.Info($"OnDestroy of ${ThisModInfo.Info}");
-            PythonCompiler.Instance.StopProcess();
+            PythonCompiler.Instance?.StopProcess();
             PythonFormatter.DisposeSharedLspClient();
         }
     }
@@ -472,7 +473,7 @@ Available commands:
     help           Show this help message
     restart        Restart Python daemon for compiling
     status         Check if Python daemon is running
-    libraries      List available libraries
+    build          Rebuild data types based on currently loaded mods
     version        Show PyTrapIC version
     reinstall      Reinstall Python and dependencies
     debug_logging  Toggle debug logging";
@@ -498,14 +499,23 @@ Available commands:
                         ? "Python daemon is running."
                         : "Python daemon is not running.";
                 case "version":
-                    return $"PyTrapIC version {ThisModInfo.Version}, git version: {ThisModInfo.VersionGit}, Python {PythonCompiler.PYTHON_VERSION}";
+                    return $"PyTrapIC version {ThisModInfo.Version}, git version: {ThisModInfo.VersionGit}, workspace version: {PythonWorkspace.WorkspaceVersionTag}";
                 case "reinstall":
                     PythonCompiler.Instance.Init(true, true).Forget();
                     return "Python and dependencies reinstalled.";
                 case "build":
-                    LogicDataExtractor.ExtractAndBuild();
-                    return "Rebuilt data types based on currently loaded mods.";
-
+                    try
+                    {
+                        LogicDataExtractor.ExtractAndBuild(true);
+                        PythonCompiler.Instance?.Init(true).Forget();
+                        return "Rebuilt data types based on currently loaded mods.";
+                    }
+                    catch (Exception ex)
+                    {
+                        File.Copy(PythonWorkspace.StructuresBackupFile, PythonWorkspace.StructuresFile, true);
+                        L.Error($"Error during build command: {ex}");
+                        return $"Error during build: {ex.Message}";
+                    }
                 default:
                     return HelpText;
             }

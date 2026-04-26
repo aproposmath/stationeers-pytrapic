@@ -1,4 +1,10 @@
+namespace StationeersPyTrapIC;
+
 using System.IO;
+using System;
+using System.Text;
+
+using System.Linq;
 using System.Diagnostics;
 using System.Collections.Generic;
 
@@ -9,41 +15,75 @@ using Assets.Scripts.UI;
 using Assets.Scripts.Objects;
 using Assets.Scripts.Objects.Pipes;
 
-namespace StationeersPyTrapIC;
-
 public class LogicDataExtractor
 {
-    public static void ExtractAndBuild()
+    static readonly string TypesFile = Path.Combine(PythonWorkspace.CacheDir, "pytrapic_types_data.json");
+
+    public static void ExtractAndBuild(bool force = false)
     {
-        var typesFile = Path.Combine(PythonWorkspace.CacheDir, "pytrapic_types_data.json");
-        ExtractLogicData(typesFile);
+        if (!force && !HasLogicDataChanged())
+            return;
 
-        var pyExe = PythonWorkspace.PythonExe;
+        try
+        {
+            var typesData = ExtractLogicData();
+            File.WriteAllText(TypesFile, typesData);
 
-        // run python -m stationeers_pytrapic.build_types typesFile
-        var process = Process.Start(new ProcessStartInfo(pyExe, $"-m stationeers_pytrapic.build_types {typesFile}") { UseShellExecute = false });
-        // wait for the process to finish
-        process.WaitForExit();
+            var pyExe = PythonWorkspace.PythonExe;
+            var sw = Stopwatch.StartNew();
+            Process.Start(new ProcessStartInfo(pyExe, $"-m stationeers_pytrapic.build_types {TypesFile}") { UseShellExecute = false }).WaitForExit();
+            var buildTime = sw.ElapsedMilliseconds;
+            L.Debug($"Building structures_generated.py took {buildTime}ms");
+        }
+        catch (Exception ex)
+        {
+            L.Error($"Failed to rebuild logic data: {ex}");
+            L.Error($"{ex.StackTrace}");
+            File.Copy(PythonWorkspace.StructuresBackupFile, PythonWorkspace.StructuresFile);
+            if (File.Exists(TypesFile))
+                File.Delete(TypesFile);
+            throw;
+        }
     }
 
-    public static void ExtractLogicData(string outputFile)
+    public static bool HasLogicDataChanged()
     {
-        StreamWriter sw = new(outputFile);
-        using var writer = new JsonTextWriter(sw);
+        var newData = ExtractLogicData();
+        if (!File.Exists(TypesFile)) return true;
+        var oldData = File.ReadAllText(TypesFile);
+        return newData != oldData;
+    }
+
+    public static string ExtractLogicData()
+    {
+        var stopwatch = Stopwatch.StartNew();
+        StringBuilder sb = new();
+        TextWriter tw = new StringWriter(sb);
+        using var writer = new JsonTextWriter(tw);
         writer.WriteStartObject();
         writer.WritePropertyName("version");
         writer.WriteValue(typeof(Stationpedia).Assembly.GetName().Version.ToString());
         writer.WritePropertyName("pages");
         writer.WriteStartArray();
+
+        var prefabHashes = new HashSet<int>();
+
         foreach (var page in Stationpedia.StationpediaPages)
         {
-            page.ParsePage();
-
-            var name = page.PrefabName;
-            var prefab = Prefab.Find(name);
+            var hash = page.PrefabHash;
+            var prefab = Prefab.Find(hash);
             if (prefab is not ILogicable) continue;
+            prefabHashes.Add(hash);
+        }
 
-            var key = page.Key;
+        List<int> sortedPrefabHashes = [.. prefabHashes.OrderBy(h => h)];
+
+        foreach (var hash in sortedPrefabHashes)
+        {
+            var prefab = Prefab.Find(hash);
+            var name = prefab.PrefabName;
+            var key = "Thing" + name;
+            var page = Stationpedia.Instance.GetPage(key);
 
             writer.WriteStartObject();
             writer.WritePropertyName("Key");
@@ -63,6 +103,9 @@ public class LogicDataExtractor
         }
         writer.WriteEndArray();
         writer.WriteEndObject();
+        stopwatch.Stop();
+        L.Debug($"Logic data extraction took {stopwatch.ElapsedMilliseconds}ms");
+        return sb.ToString();
     }
 
     public static void WriteLogicInsert(JsonTextWriter writer, List<StationLogicInsert> data, string name)

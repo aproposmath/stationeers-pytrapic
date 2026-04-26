@@ -20,6 +20,8 @@ public class PythonWorkspace
     public static string ScriptsDir => Path.Combine(VenvDir, "scripts");
     public static string PythonExe => Path.Combine(VenvDir, "python.exe");
     public static string TyExe = Path.Combine(ScriptsDir, "ty.exe");
+    public static string StructuresFile => Path.Combine(SitePackagesDir, "stationeers_pytrapic", "structures_generated.py");
+    public static string StructuresBackupFile => StructuresFile + ".bak";
 
 #if DEBUG
     public static string VersionTag => "main";
@@ -150,6 +152,9 @@ public class PythonWorkspace
 
             var release = await FetchRelease(VersionTag);
             await FetchAndExtractAsset(release, SitePackagesDir, "stationeers_pytrapic", ".whl");
+
+            var pyPackageDir = Path.Combine(SitePackagesDir, "stationeers_pytrapic");
+            File.Copy(StructuresFile, StructuresBackupFile, true);
 
             File.WriteAllText(VersionFile, VersionTag);
             L.Info("PyTrapIC installation complete");

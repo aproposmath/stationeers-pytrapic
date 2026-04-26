@@ -2,6 +2,7 @@ namespace StationeersPyTrapIC;
 
 using System;
 using System.Collections.Generic;
+using System.Collections.Concurrent;
 
 using System.IO;
 using System.Diagnostics;
@@ -90,8 +91,8 @@ public class PythonFormatter : LSPFormatter
             if (_sharedLspClient == null)
             {
                 _sharedLspClient = StartTyLSPServer();
-                _sharedLspClient.OnInfo += (msg) => L.Debug($"[Shared LSP] {msg}");
-                _sharedLspClient.OnError += (msg) => L.Debug($"[Shared LSP] {msg}");
+                // _sharedLspClient.OnInfo += (msg) => L.Debug($"[Shared LSP] {msg}");
+                // _sharedLspClient.OnError += (msg) => L.Debug($"[Shared LSP] {msg}");
             }
             return _sharedLspClient;
         }
@@ -157,14 +158,18 @@ public class PythonFormatter : LSPFormatter
 
     public override void SubmitChanges()
     {
-        if (Identifier.uri == null)
+        lock (Mutex)
         {
-            if (!Editor.IsReadOnly)
-                WriteLibraries().Forget();
-            string filename = Editor.FileName + ".py";
-            Identifier.uri = new Uri(Path.Combine(WorkspacePath, filename)).AbsoluteUri;
+            if (Identifier.uri == null)
+            {
+                if (!Editor.IsReadOnly)
+                    WriteLibraries().Forget();
+                string filename = Editor.FileName.Replace('|', '/') + ".py";
+                L.Debug($"Setting document URI to {filename}");
+                Identifier.uri = new Uri(Path.Combine(WorkspacePath, filename)).AbsoluteUri;
+            }
+            base.SubmitChanges();
         }
-        base.SubmitChanges();
     }
 
 
@@ -182,16 +187,20 @@ public class PythonFormatter : LSPFormatter
         return 0.0;
     }
 
-    private static readonly Dictionary<string, PythonCompiler.CompileResponse> _CompileCache = [];
+    private static readonly ConcurrentDictionary<string, PythonCompiler.CompileResponse> _CompileCache = [];
     private static readonly Queue<string> _CompileCacheKeys = [];
 
     public async UniTask<PythonCompiler.CompileResponse> CompileCode(string code)
     {
         if (_CompileCache.TryGetValue(code, out var cachedResponse))
             return cachedResponse;
-        await UniTask.SwitchToThreadPool();
-
         var sw = Stopwatch.StartNew();
+        if (PythonCompiler.Instance == null)
+        {
+            PythonCompiler.Instance = new PythonCompiler();
+            await PythonCompiler.Instance.Init();
+        }
+        await UniTask.SwitchToThreadPool();
         await PythonCompiler.Instance.WaitForReadyAsync();
         var response = PythonCompiler.Instance.Compile(code);
         sw.Stop();
@@ -200,7 +209,7 @@ public class PythonFormatter : LSPFormatter
         _CompileCache[code] = response;
         _CompileCacheKeys.Enqueue(code);
         while (_CompileCacheKeys.Count > 100)
-            _CompileCache.Remove(_CompileCacheKeys.Dequeue());
+            _CompileCache.TryRemove(_CompileCacheKeys.Dequeue(), out _);
         return response;
     }
 
@@ -209,8 +218,9 @@ public class PythonFormatter : LSPFormatter
         if (Lines.Count == 0 || Lines.Count == 1 && string.IsNullOrWhiteSpace(Lines[0].Text))
             return;
 
-        await UniTask.SwitchToMainThread();
+        // await UniTask.SwitchToMainThread();
         SubmitChanges();
+        await UniTask.SwitchToThreadPool();
 
         int versionBefore = Version;
         await Task.Delay(DebounceDelayMs);
@@ -222,10 +232,15 @@ public class PythonFormatter : LSPFormatter
 
         string code = RawText;
 
+        L.Debug("Starting compilation of code from ResetCodeDebounced...");
+
         var response = await CompileCode(code);
+
+        L.Debug($"Compilation finished in ResetCodeDebounced with response: {response?.code}, error: {response?.error}, versionBefore: {versionBefore}, current Version: {Version}");
 
         if (versionBefore != Version)
             return;
+        L.Debug($"Applying compilation result from ResetCodeDebounced, versionBefore: {versionBefore}, current Version: {Version}");
         lastCompileResponse = response;
         _lastResponseVersion = versionBefore;
 
@@ -260,7 +275,8 @@ public class PythonFormatter : LSPFormatter
     {
         if (_lastResponseVersion == -1)
             ResetCodeDebounced().Forget();
-        for (var itry = 0; itry < 10; itry++)
+            
+        for (var itry = 0; itry < 20; itry++)
         {
             if (_lastResponseVersion == Version && lastCompileResponse != null)
                 break;
@@ -287,7 +303,7 @@ public class PythonFormatter : LSPFormatter
 
     public async UniTaskVoid GetHoverInfo(TextPosition pos)
     {
-        if (pos.Line < 0 || pos.Col < 0)
+        if (!_isOpen || pos.Line < 0 || pos.Col < 0)
             return;
 
         if (pos == _lastHoverTextPos || pos == _reqestedHoverPos)
