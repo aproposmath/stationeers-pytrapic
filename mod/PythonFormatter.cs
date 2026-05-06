@@ -172,19 +172,45 @@ public class PythonFormatter : LSPFormatter
         }
     }
 
-
-    public static double MatchingScore(string code)
+    public static double MatchingScore(string input)
     {
-        if (code.StartsWith("from stationeers_pytrapic.symbols import *"))
+        var trimmed = input.Trim();
+
+        if (trimmed.StartsWith("from stationeers_pytrapic.symbols import *") || trimmed.Contains(SOURCE_TAG))
             return 1.0;
 
-        if (code.Contains(SOURCE_TAG))
-            return 1.0;
-
-        if (code.Contains("stationeers_pytrapic"))
+        if (trimmed.Contains("stationeers_pytrapic"))
             return 0.7;
 
-        return 0.0;
+        if (string.IsNullOrEmpty(trimmed))
+            return 0.0;
+
+        var lines = trimmed.Split('\n');
+        double score = 0.0;
+
+        if (lines[0].Contains("import"))
+        {
+            score += 0.5 * lines.Length;
+            if (lines[0].Contains("from"))
+                score += 0.5 * lines.Length;
+            if (lines[0].EndsWith("*"))
+                score += 0.5 * lines.Length;
+        }
+
+        foreach (var line in lines)
+        {
+            var trimmedLine = line.TrimStart();
+
+            if (trimmedLine.EndsWith(":"))
+                score += 1;
+            if (trimmedLine.StartsWith("def "))
+                score += 1;
+            if (trimmedLine.StartsWith("if") || trimmedLine.StartsWith("elif") || trimmedLine.StartsWith("else") || trimmedLine.StartsWith("for ") || trimmedLine.StartsWith("while "))
+                score += 0.5;
+            if (trimmedLine.StartsWith("#"))
+                score += 0.2;
+        }
+        return score / lines.Length;
     }
 
     private static readonly ConcurrentDictionary<string, PythonCompiler.CompileResponse> _CompileCache = [];
@@ -220,6 +246,11 @@ public class PythonFormatter : LSPFormatter
 
         // await UniTask.SwitchToMainThread();
         SubmitChanges();
+
+        // This is the case for the library preview, we don't want to compile and show the IC10 code in this case
+        if (Editor.IsReadOnly)
+            return;
+
         await UniTask.SwitchToThreadPool();
 
         int versionBefore = Version;
@@ -275,7 +306,7 @@ public class PythonFormatter : LSPFormatter
     {
         if (_lastResponseVersion == -1)
             ResetCodeDebounced().Forget();
-            
+
         for (var itry = 0; itry < 20; itry++)
         {
             if (_lastResponseVersion == Version && lastCompileResponse != null)
