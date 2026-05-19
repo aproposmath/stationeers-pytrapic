@@ -30883,7 +30883,7 @@ class _ToolManufactories(
 ToolManufactories: _ToolManufactories = _ToolManufactories()
 
 
-class Beacon(_BaseStructure, _Error, _On):
+class TrackingBeacon(_BaseStructure, _Error, _On):
     _hash: int = -869869491
     _prefab_name: int = "ItemBeacon"
 
@@ -30900,28 +30900,28 @@ class Beacon(_BaseStructure, _Error, _On):
         return self.slot0
 
 
-class _Beacons(_BaseStructures, _Errors, _Ons):
+class _TrackingBeacons(_BaseStructures, _Errors, _Ons):
     _hash: int = -869869491
     _prefab_name: int = "ItemBeacon"
 
-    def __getitem__(self, name: str | int | float) -> "_Beacons":
-        return _Beacons(name)
+    def __getitem__(self, name: str | int | float) -> "_TrackingBeacons":
+        return _TrackingBeacons(name)
 
     @property
-    def Average(self) -> Beacon:
-        return Beacon(name=self._name, batch_mode=LogicBatchMethod.Average)
+    def Average(self) -> TrackingBeacon:
+        return TrackingBeacon(name=self._name, batch_mode=LogicBatchMethod.Average)
 
     @property
-    def Minimum(self) -> Beacon:
-        return Beacon(name=self._name, batch_mode=LogicBatchMethod.Minimum)
+    def Minimum(self) -> TrackingBeacon:
+        return TrackingBeacon(name=self._name, batch_mode=LogicBatchMethod.Minimum)
 
     @property
-    def Maximum(self) -> Beacon:
-        return Beacon(name=self._name, batch_mode=LogicBatchMethod.Maximum)
+    def Maximum(self) -> TrackingBeacon:
+        return TrackingBeacon(name=self._name, batch_mode=LogicBatchMethod.Maximum)
 
     @property
-    def Sum(self) -> Beacon:
-        return Beacon(name=self._name, batch_mode=LogicBatchMethod.Sum)
+    def Sum(self) -> TrackingBeacon:
+        return TrackingBeacon(name=self._name, batch_mode=LogicBatchMethod.Sum)
 
     @property
     def Power(self) -> _DevicesLogicType:
@@ -30936,7 +30936,7 @@ class _Beacons(_BaseStructures, _Errors, _Ons):
         return self.slot0
 
 
-Beacons: _Beacons = _Beacons()
+TrackingBeacons: _TrackingBeacons = _TrackingBeacons()
 
 
 class TraderWaypoint(_BaseStructure, _Error, _Power):

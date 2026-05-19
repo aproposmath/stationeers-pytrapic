@@ -243,12 +243,17 @@ def parse_json_file(json_file: Path) -> dict:
     for page in pages:
         name = page["Key"]
 
-        prefixes_to_remove = ["ThingItem", "ThingStructure", "Thing"]
+        # Avoid name conflict between ThingItemBeacon and StructureBeacon
+        if name == "ThingItemBeacon":
+            name = "TrackingBeacon"
+            var_name = "TrackingBeacon"
+        else:
+            prefixes_to_remove = ["ThingItem", "ThingStructure", "Thing"]
 
-        for prefix in prefixes_to_remove:
-            if name.startswith(prefix):
-                var_name = name[len(prefix) :]
-                break
+            for prefix in prefixes_to_remove:
+                if name.startswith(prefix):
+                    var_name = name[len(prefix) :]
+                    break
 
         var_name = var_name.replace("(", "_").replace(")", "")
 
