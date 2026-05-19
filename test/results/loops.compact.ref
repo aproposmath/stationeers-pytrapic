@@ -23,8 +23,8 @@ j 0
 move r1 0
 move r2 0
 bge r2 10 29
-get r3 db r2
-add r1 r1 r3
+get r4 db r2
+add r1 r1 r4
 add r2 r2 1
 j 24
 put db 511 r1

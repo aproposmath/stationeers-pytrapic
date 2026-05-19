@@ -7,15 +7,15 @@ sbn HASH("StructureActiveVent") HASH("Out") On 0
 lbwhile1:
   lbn r3 HASH("StructureDiodeSlide") HASH("Switch") On Maximum
   ble r3 0 lbelse2
-    lbn r3 HASH("StructureGlassDoor") HASH("In") Open Maximum
-    sgt r0 r3 0
+    lbn r4 HASH("StructureGlassDoor") HASH("In") Open Maximum
+    sgt r0 r4 0
     select r1 r0 HASH("Out") HASH("In")
     select r2 r0 HASH("In") HASH("Out")
     sbn HASH("StructureGlassDoor") r2 Open 0
     sbn HASH("StructureActiveVent") r2 On 1
 lbwhile8:
-    lb r3 HASH("StructureGasSensor") Pressure Maximum
-    beq r3 0 lbwhile.end8
+    lb r4 HASH("StructureGasSensor") Pressure Maximum
+    beq r4 0 lbwhile.end8
       j lbwhile8
 lbwhile.end8:
     sleep 0.2
@@ -25,5 +25,5 @@ lbwhile.end8:
     sleep 1
 lbelse2:
   j lbwhile1
-# registers: 4
+# registers: 5
 # lines: 27

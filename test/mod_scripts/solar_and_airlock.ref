@@ -19,20 +19,20 @@ airlock.init:
 airlock.update:
   lbn r1 HASH("StructureDiodeSlide") HASH("Switch") On Maximum
   ble r1 0 lbelse5
-    lbn r2 HASH("StructureGlassDoor") HASH("In") Open Maximum
-    sgt r1 r2 0
-    select r2 r1 HASH("Out") HASH("In")
-    select r3 r1 HASH("In") HASH("Out")
-    sbn HASH("StructureGlassDoor") r3 Open 0
-    sbn HASH("StructureActiveVent") r3 On 1
+    lbn r3 HASH("StructureGlassDoor") HASH("In") Open Maximum
+    sgt r2 r3 0
+    select r3 r2 HASH("Out") HASH("In")
+    select r4 r2 HASH("In") HASH("Out")
+    sbn HASH("StructureGlassDoor") r4 Open 0
+    sbn HASH("StructureActiveVent") r4 On 1
 lbwhile11:
-    lb r1 HASH("StructureGasSensor") Pressure Maximum
-    beq r1 0 lbwhile.end11
+    lb r2 HASH("StructureGasSensor") Pressure Maximum
+    beq r2 0 lbwhile.end11
       j lbwhile11
 lbwhile.end11:
     sleep 0.2
-    sbn HASH("StructureActiveVent") r3 On 0
-    sbn HASH("StructureGlassDoor") r2 Open 1
+    sbn HASH("StructureActiveVent") r4 On 0
+    sbn HASH("StructureGlassDoor") r3 Open 1
     sbn HASH("StructureDiodeSlide") HASH("Switch") On 0
     sleep 1
 lbelse5:
@@ -46,5 +46,5 @@ solar.update:
   sub r2 90 r1
   sb HASH("StructureSolarPanel") Vertical r2
   j ra
-# registers: 4
+# registers: 5
 # lines: 48

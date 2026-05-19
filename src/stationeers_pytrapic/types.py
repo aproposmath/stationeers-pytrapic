@@ -56,8 +56,10 @@ class IC10Register:
     def lifetime(self):
         if self._lifetime is None:
             if self._is_intermediate:
-                n = self.nodes_writing[0].lineno
-                self._lifetime = range(n, n + 1)
+                node = self.nodes_writing[0]
+                while not node.is_statement:
+                    node = node.parent
+                self._lifetime = range(node.lineno, node.end_lineno + 1)
                 return self._lifetime
 
             for node in self.nodes_writing:

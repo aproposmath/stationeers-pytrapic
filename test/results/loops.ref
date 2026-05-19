@@ -32,8 +32,8 @@ for.range:
   move r2 0
 lbfor5:
   bge r2 10 lbfor.end5
-    get r3 db r2
-    add r1 r1 r3
+    get r4 db r2
+    add r1 r1 r4
     add r2 r2 1
     j lbfor5
 lbfor.end5:

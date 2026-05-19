@@ -6,11 +6,11 @@ lbn r2 HASH("StructureBattery") HASH("Bank1") Charge Average
 bge r2 0.2 lbelse3
   sb HASH("StructureSolidFuelGenerator") On 1
 lbwhile5:
-  lbn r2 HASH("StructureBattery") HASH("Bank1") Charge Average
-  bge r2 0.3 lbwhile.end5
+  lbn r3 HASH("StructureBattery") HASH("Bank1") Charge Average
+  bge r3 0.3 lbwhile.end5
     j lbwhile5
 lbwhile.end5:
   sb HASH("StructureSolidFuelGenerator") On 0
 lbelse3:
-# registers: 3
+# registers: 4
 # lines: 14
