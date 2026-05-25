@@ -1153,6 +1153,13 @@ class CompilerPassGatherCode(CompilerPass):
                 for line in func.code:
                     self.code.append(line)
 
+        source_map = self.data.source_map
+        for i, line in enumerate(self.code):
+            line.lineno = i
+            if line.node not in source_map:
+                source_map[line.node] = []
+            source_map[line.node].append(line)
+
         self.used_registers = assign_registers(self.data, self.code)
         self.get_code()
 

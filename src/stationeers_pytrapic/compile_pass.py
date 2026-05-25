@@ -137,6 +137,7 @@ class CodeData:
     result: dict[str, str | int]
     structures: dict[str, dict[str, object]] = field(default_factory=dict)
     modules: dict[str, nodes.Module] = field(default_factory=dict)
+    source_map: dict[nodes.NodeNG, list[IC10Instruction]] = field(default_factory=dict)
 
     def __init__(
         self, code: str, tree: nodes.Module, options: CompileOptions, modules=None
@@ -152,6 +153,7 @@ class CodeData:
         self.constexpr_functions = {}
         self.constexpr_functions_code = None
         self.modules = modules if modules is not None else {}
+        self.source_map = {}
 
     def get_tmp_sym_data(self, node: nodes.NodeNG, name: str) -> IC10Register:
         scope = get_scope_name(node)
