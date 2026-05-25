@@ -1,13 +1,65 @@
+import sys
+
 from astroid import nodes
 
 from .compile_pass import CodeData
-from .types import IC10Register, IC10Instruction
-from .utils import get_scope_name, CompilerError
+from .types import IC10Instruction, IC10Register
+from .utils import CompilerError, get_loop_ancestor, get_scope_name
+
+
+def calc_ic10_lifetimes(
+    data: CodeData, code: list[IC10Instruction], used_symbols: set[IC10Register]
+):
+    registers = set()
+    read_lines = {}
+    write_lines = {}
+    for line in code:
+        if line.output and isinstance(line.output, IC10Register):
+            registers.add(line.output)
+            write_lines.setdefault(line.output.code_expr, []).append(line.lineno)
+        for inp in line.inputs:
+            if inp.is_register:
+                registers.add(inp.value)
+                read_lines.setdefault(inp.value.code_expr, []).append(line.lineno)
+
+    def get_code_node(node):
+        while node not in data.source_map and node.parent is not None:
+            node = node.parent
+
+        return node
+
+    def get_range(node_list):
+        if not isinstance(node_list, list):
+            node_list = [node_list]
+        lines = []
+        for node in node_list:
+            code_node = get_code_node(node)
+            if isinstance(code_node, nodes.Module):
+                lines.append(0)
+                lines.append(sys.maxsize)
+            else:
+                lines += [line.lineno for line in data.source_map[code_node]]
+        return range(min(lines), max(lines) + 1)
+
+    for reg in used_symbols:
+        if not reg.code_expr.startswith("__register."):
+            continue
+        _ = reg.lifetime
+        if reg._is_intermediate:
+            expr = reg.code_expr
+            if not expr in read_lines or not expr in write_lines:
+                reg.lifetime_ic10 = range(-1, -1)
+            else:
+                reg.lifetime_ic10 = range(min(write_lines[expr]), max(read_lines[expr]))
+        else:
+            reg.lifetime_ic10 = get_range(
+                [get_loop_ancestor(n) for n in reg.nodes_reading + reg.nodes_writing]
+            )
 
 
 def assign_colors(symbols: list[IC10Register]):
     # Sort by start time
-    symbols_sorted = sorted(symbols, key=lambda s: s.lifetime.start)
+    symbols_sorted = sorted(symbols, key=lambda s: s.lifetime_ic10.start)
 
     active = []  # list of (end, color) for currently active intervals
     free_colors = []  # pool of reusable colors
@@ -17,7 +69,8 @@ def assign_colors(symbols: list[IC10Register]):
     #     print(f"\t{s.name} {s.lifetime} {s._is_intermediate}")
 
     for sym in symbols_sorted:
-        start, end = sym.lifetime.start, sym.lifetime.stop
+        lifetime = sym.lifetime_ic10
+        start, end = lifetime.start, lifetime.stop
 
         # Expire intervals that ended before this one starts
         still_active = []
@@ -104,6 +157,7 @@ def assign_registers(data: CodeData, code: list[IC10Instruction]):
                 )
 
     mapping = {}
+    calc_ic10_lifetimes(data, code, used_symbols)
 
     for scope in sorted_scopes:
         if not scope in data.symbols:

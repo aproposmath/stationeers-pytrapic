@@ -1,7 +1,25 @@
-add r2 1 2
-add r4 r2 3
-move r0 r4
-move r1 r0
-s db Setting r1
-# registers: 4
-# lines: 5
+put db 510 1
+put db 509 2
+put db 508 3
+jal 11
+get r0 db 511
+s db Setting r0
+get r5 db 510
+get r6 db 509
+add r7 r5 r6
+put db 511 r7
+j ra
+push ra
+get r1 db 510
+get r2 db 509
+get r3 db 508
+add r4 r1 r2
+put db 510 r4
+put db 509 r3
+jal 6
+get r4 db 511
+put db 511 r4
+pop ra
+j ra
+# registers: 8
+# lines: 23

@@ -8,25 +8,25 @@ move r0 88
 yield
 lbn r1 576516101 $68454E2E 28 3
 ble r1 0 24
-lbn r3 -324331872 HASH("In") 2 3
-sgt r2 r3 0
-select r3 r2 HASH("Out") HASH("In")
-select r4 r2 HASH("In") HASH("Out")
-sbn -324331872 r4 2 0
-sbn -1129453144 r4 28 1
-lb r2 -1252983604 5 3
-beq r2 0 19
+lbn r4 -324331872 HASH("In") 2 3
+sgt r1 r4 0
+select r2 r1 HASH("Out") HASH("In")
+select r3 r1 HASH("In") HASH("Out")
+sbn -324331872 r3 2 0
+sbn -1129453144 r3 28 1
+lb r4 -1252983604 5 3
+beq r4 0 19
 j 16
 sleep 0.2
-sbn -1129453144 r4 28 0
-sbn -324331872 r3 2 1
+sbn -1129453144 r3 28 0
+sbn -324331872 r2 2 1
 sbn 576516101 $68454E2E 28 0
 sleep 1
 l r1 d0 20
 sb -2045627372 20 r1
 l r1 d0 21
-sub r2 90 r1
-sb -2045627372 21 r2
+sub r1 90 r1
+sb -2045627372 21 r1
 sub r0 r0 1
 s db Setting r0
 j 7

@@ -22,6 +22,7 @@ class IC10Register:
     _color: int = -1
     _is_intermediate: bool = False
 
+    lifetime_ic10: range | None = None
     nodes_reading: list[nodes.NodeNG] = field(default_factory=list)
     nodes_writing: list[nodes.NodeNG] = field(default_factory=list)
 
@@ -124,9 +125,7 @@ class IC10Instruction:
     output: IC10Register | None = None  # output register (or None if no output)
     comment: str = ""
     indent: int = 0
-    lineno: int | None = (
-        None  # ic10 line number, this is set later and might change during compile passes
-    )
+    lineno: int = -1
     node: nodes.NodeNG = None
 
     @property

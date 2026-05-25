@@ -1,10 +1,10 @@
 lbwhile1:
-  lbn r1 HASH("StructurePipeAnalysizer") HASH("NightAir") Pressure Average
-  slt r0 r1 5000
-  lbn r3 HASH("StructureGasSensor") HASH("Outside") Temperature Minimum
-  slt r2 r3 413.15
-  and r4 r0 r2
-  sb HASH("StructureActiveVent") On r4
+  lbn r0 HASH("StructurePipeAnalysizer") HASH("NightAir") Pressure Average
+  slt r0 r0 5000
+  lbn r1 HASH("StructureGasSensor") HASH("Outside") Temperature Minimum
+  slt r1 r1 413.15
+  and r1 r0 r1
+  sb HASH("StructureActiveVent") On r1
   j lbwhile1
-# registers: 5
+# registers: 2
 # lines: 8

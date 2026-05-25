@@ -5,10 +5,10 @@ jal compute
 get r0 db 511
 s db Setting r0
 add.two:
-  get r6 db 510
-  get r7 db 509
-  add r8 r6 r7
-  put db 511 r8
+  get r5 db 510
+  get r6 db 509
+  add r7 r5 r6
+  put db 511 r7
   j ra
 compute:
   push ra
@@ -19,9 +19,9 @@ compute:
   put db 510 r4
   put db 509 r3
   jal add.two
-  get r5 db 511
-  put db 511 r5
+  get r4 db 511
+  put db 511 r4
   pop ra
   j ra
-# registers: 9
+# registers: 8
 # lines: 25

@@ -1,9 +1,9 @@
-lbn r1 435685051 $6499152C 5 0
-slt r0 r1 5000
-lbn r3 -1252983604 $7A57C43A 6 2
-slt r2 r3 413.15
-and r4 r0 r2
-sb -1129453144 28 r4
+lbn r0 435685051 $6499152C 5 0
+slt r0 r0 5000
+lbn r1 -1252983604 $7A57C43A 6 2
+slt r1 r1 413.15
+and r1 r0 r1
+sb -1129453144 28 r1
 j 0
-# registers: 5
+# registers: 2
 # lines: 7

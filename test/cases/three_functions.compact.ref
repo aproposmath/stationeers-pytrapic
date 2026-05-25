@@ -7,43 +7,43 @@ sbn -1129453144 HASH("In") 28 0
 sb -247344692 28 1
 lbn r0 555215790 $68454E2E 28 3
 ble r0 0 23
-lbn r2 -324331872 HASH("In") 2 3
-sgt r1 r2 0
-select r2 r1 HASH("Out") HASH("In")
-select r3 r1 HASH("In") HASH("Out")
-sbn -324331872 r3 2 0
-sbn -1129453144 r3 28 1
-lbn r1 -1252983604 $7532089C 5 3
-beq r1 0 18
+lbn r3 -324331872 HASH("In") 2 3
+sgt r0 r3 0
+select r1 r0 HASH("Out") HASH("In")
+select r2 r0 HASH("In") HASH("Out")
+sbn -324331872 r2 2 0
+sbn -1129453144 r2 28 1
+lbn r3 -1252983604 $7532089C 5 3
+beq r3 0 18
 j 15
 sleep 0.2
-sbn -1129453144 r3 28 0
-sbn -324331872 r2 2 1
+sbn -1129453144 r2 28 0
+sbn -324331872 r1 2 1
 sbn 555215790 $68454E2E 28 0
 sleep 1
 lb r0 -400115994 24 0
 lbn r1 -1252983604 -1825180981 6 0
 sgt r2 r0 0.1
 slt r3 r1 293.15
-and r4 r2 r3
-sb 24258244 28 r4
+and r3 r2 r3
+sb 24258244 28 r3
 s db Setting r0
 sbn -1129453144 -2085733260 3 1
 lbn r0 -1252983604 -2085733260 6 0
 lbn r1 -1252983604 -2085733260 5 0
-lbn r3 -1252983604 -2085733260 14 0
-sgt r2 r3 0.95
-sgt r4 r1 0
-and r5 r2 r4
-beqz r5 41
+lbn r2 -1252983604 -2085733260 14 0
+sgt r2 r2 0.95
+sgt r3 r1 0
+and r3 r2 r3
+beqz r3 41
 sbn -1129453144 -2085733260 28 1
 sb -247344692 28 0
 j 44
 sbn -1129453144 -2085733260 28 0
 sb -247344692 28 1
 sb -247344692 9 1
-sgt r5 r0 150
-sbn -739292323 -2085733260 28 r5
+sgt r3 r0 150
+sbn -739292323 -2085733260 28 r3
 j 7
-# registers: 6
+# registers: 4
 # lines: 47

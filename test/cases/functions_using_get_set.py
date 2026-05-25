@@ -1,4 +1,6 @@
 # pytrapic: no_use_push_pop_functions
+# pytrapic: no-inline-functions
+
 from stationeers_pytrapic.symbols import *
 
 

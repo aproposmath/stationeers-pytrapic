@@ -36,14 +36,14 @@ len1:
   j ra
 len2:
   l r3 db On
-  select r4 r3 91 90
-  s db Setting r4
+  select r3 r3 91 90
+  s db Setting r3
   j ra
 len3:
   l r3 db On
   select r4 r3 91 90
-  seq r5 r3 2
-  select r4 r5 92 r4
+  seq r3 r3 2
+  select r4 r3 92 r4
   s db Setting r4
   j ra
 len4:
@@ -68,49 +68,49 @@ len5:
   j ra
 len6:
   l r3 db On
-  mod r5 r3 2
-  sub r4 r3 r5
-  add r4 r4 1
-  jr r4
-    select r4 r5 90 91
+  mod r4 r3 2
+  sub r3 r3 r4
+  add r3 r3 1
+  jr r3
+    select r3 r4 90 91
     j lbend28
-    select r4 r5 92 93
+    select r3 r4 92 93
     j lbend28
-    select r4 r5 94 95
+    select r3 r4 94 95
 lbend28:
-  s db Setting r4
+  s db Setting r3
   j ra
 len7:
   l r3 db On
-  mod r5 r3 2
-  sub r4 r3 r5
-  add r4 r4 1
-  jr r4
-    select r4 r5 90 91
+  mod r4 r3 2
+  sub r3 r3 r4
+  add r3 r3 1
+  jr r3
+    select r3 r4 90 91
     j lbend32
-    select r4 r5 92 93
+    select r3 r4 92 93
     j lbend32
-    select r4 r5 94 95
+    select r3 r4 94 95
     j lbend32
-    select r4 r5 96 90
+    select r3 r4 96 90
 lbend32:
-  s db Setting r4
+  s db Setting r3
   j ra
 len8:
   l r3 db On
-  mod r5 r3 2
-  sub r4 r3 r5
-  add r4 r4 1
-  jr r4
-    select r4 r5 90 91
+  mod r4 r3 2
+  sub r3 r3 r4
+  add r3 r3 1
+  jr r3
+    select r3 r4 90 91
     j lbend36
-    select r4 r5 92 93
+    select r3 r4 92 93
     j lbend36
-    select r4 r5 94 95
+    select r3 r4 94 95
     j lbend36
-    select r4 r5 96 97
+    select r3 r4 96 97
 lbend36:
-  s db Setting r4
+  s db Setting r3
   j ra
 show.amount:
   get r3 db 510

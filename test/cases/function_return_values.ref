@@ -1,12 +1,12 @@
 lbwhile1:
   jal get.battery.charge
-  get r1 db 511
-  slt r0 r1 0.2
+  get r0 db 511
+  slt r0 r0 0.2
   sb HASH("StructureSolidFuelGenerator") On r0
   j lbwhile1
 get.battery.charge:
-  lb r2 HASH("StructureBattery") Ratio Average
-  put db 511 r2
+  lb r1 HASH("StructureBattery") Ratio Average
+  put db 511 r1
   j ra
-# registers: 3
+# registers: 2
 # lines: 10

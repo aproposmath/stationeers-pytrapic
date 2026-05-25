@@ -1,9 +1,9 @@
-l r1 d0 21
-sgt r0 r1 90
+l r0 d0 21
+sgt r0 r0 90
 sb -1758710260 28 r0
 l r0 d0 21
-slt r1 r0 90
-select r2 r1 4481401 STR("Night")
-s db Setting r2
-# registers: 3
+slt r0 r0 90
+select r0 r0 4481401 STR("Night")
+s db Setting r0
+# registers: 1
 # lines: 7

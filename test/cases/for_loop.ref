@@ -104,12 +104,12 @@ lbfor.end32:
   j ra
 range.ops:
   move r4 0
-  get r6 db 0
-  get r7 db 1
-  add r8 r7 10
-  move r5 r6
+  get r5 db 0
+  get r6 db 1
+  add r6 r6 10
+  move r5 r5
 lbfor39:
-  bge r5 r8 lbfor.end39
+  bge r5 r6 lbfor.end39
     add r4 r4 r5
     add r5 r5 2
     j lbfor39

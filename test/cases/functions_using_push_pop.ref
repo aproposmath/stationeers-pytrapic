@@ -5,10 +5,10 @@ jal compute
 pop r0
 s db Setting r0
 add.two:
-  pop r7
   pop r6
-  add r8 r6 r7
-  push r8
+  pop r5
+  add r7 r5 r6
+  push r7
   j ra
 compute:
   pop r3
@@ -19,9 +19,9 @@ compute:
   push r4
   push r3
   jal add.two
-  pop r5
+  pop r4
   pop ra
-  push r5
+  push r4
   j ra
-# registers: 9
+# registers: 8
 # lines: 25

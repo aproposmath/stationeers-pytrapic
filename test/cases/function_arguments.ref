@@ -1,6 +1,6 @@
 lbwhile1:
-  lb r1 HASH("StructureBattery") Ratio Average
-  slt r0 r1 0.2
+  lb r0 HASH("StructureBattery") Ratio Average
+  slt r0 r0 0.2
   put db 510 r0
   jal set.enable.fuel.generator
   put db 510 6
@@ -10,18 +10,18 @@ lbwhile1:
   jal set.stack.entry
   j lbwhile1
 set.enable.fuel.generator:
-  get r2 db 510
-  sb HASH("StructureSolidFuelGenerator") On r2
+  get r1 db 510
+  sb HASH("StructureSolidFuelGenerator") On r1
   j ra
 set.stack.entry:
-  get r2 db 510
-  get r3 db 509
-  get r4 db 508
-  get r5 db 507
-  put $BEEF 0 r2
-  put $BEEF 1 r3
-  put $BEEF 2 r4
-  put $BEEF 3 r5
+  get r1 db 510
+  get r2 db 509
+  get r3 db 508
+  get r4 db 507
+  put $BEEF 0 r1
+  put $BEEF 1 r2
+  put $BEEF 2 r3
+  put $BEEF 3 r4
   j ra
-# registers: 6
+# registers: 5
 # lines: 25

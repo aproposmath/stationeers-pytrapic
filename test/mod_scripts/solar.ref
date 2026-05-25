@@ -9,8 +9,8 @@ solar.update:
   l r0 d0 Horizontal
   sb HASH("StructureSolarPanel") Horizontal r0
   l r0 d0 Vertical
-  sub r1 90 r0
-  sb HASH("StructureSolarPanel") Vertical r1
+  sub r0 90 r0
+  sb HASH("StructureSolarPanel") Vertical r0
   j ra
-# registers: 2
+# registers: 1
 # lines: 14

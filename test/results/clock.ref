@@ -21,24 +21,24 @@ lbwhile19:
   sbn HASH("StructureConsoleLED5") HASH("Sunset") Setting r5
   j lbwhile19
 calc.time:
-  get r10 db 510
-  mul r11 0.5 r1
-  mul r12 0.5 r0
-  add r13 r11 r12
-  sub r14 r11 r12
-  sub r11 r10 r13
-  div r12 r11 r14
-  max r12 r12 -1
-  min r12 r12 1
-  acos r11 r12
-  div r12 r11 6.283185307179586
+  get r9 db 510
+  mul r10 0.5 r1
+  mul r11 0.5 r0
+  add r12 r10 r11
+  sub r13 r10 r11
+  sub r15 r9 r12
+  div r14 r15 r13
+  max r14 r14 -1
+  min r14 r14 1
+  acos r15 r14
+  div r14 r15 6.283185307179586
   ble r3 0 lbelse37
-    sub r12 1 r12
+    sub r14 1 r14
 lbelse37:
-  add r11 r12 0.5
-  mod r14 r11 1
-  mul r12 r14 1200
-  put db 511 r12
+  add r15 r14 0.5
+  mod r15 r15 1
+  mul r14 r15 1200
+  put db 511 r14
   j ra
 calc.time.to.sunset:
   push ra
@@ -50,17 +50,17 @@ calc.time.to.sunset:
     sub r7 1200 r7
 lbelse44:
   sub r8 r7 r6
-  add r9 r8 1200
-  mod r7 r9 1200
+  add r8 r8 1200
+  mod r7 r8 1200
   put db 511 r7
   pop ra
   j ra
 get.vertical:
   l r14 d0 Vertical
-  sub r15 90 r14
-  mul r13 r15 0.0174532925199433
-  sin r15 r13
-  put db 511 r15
+  sub r14 90 r14
+  mul r13 r14 0.0174532925199433
+  sin r14 r13
+  put db 511 r14
   j ra
 handle.minmax:
   get r8 db 510
@@ -86,35 +86,35 @@ lbelse23:
 init:
   push ra
   clr db
-  move r6 0
-  move r7 0
+  move r9 0
+  move r10 0
   jal get.vertical
-  get r8 db 511
-  sub r6 r6 r8
-  add r7 r7 r8
+  get r6 db 511
+  sub r9 r9 r6
+  add r10 r10 r6
   sleep 5
   jal get.vertical
-  get r8 db 511
-  move r2 r8
-  move r9 r8
-  mul r10 2 r8
-  sub r7 r7 r10
+  get r6 db 511
+  move r2 r6
+  move r11 r6
+  mul r12 2 r6
+  sub r10 r10 r12
   sleep 5
   jal get.vertical
-  get r8 db 511
-  add r6 r6 r8
-  add r7 r7 r8
-  mul r6 r6 19.09859317102744
-  mul r7 r7 1459.025044449664
-  move r3 r6
-  add r10 r9 r7
-  sub r9 r9 r10
-  mul r8 r9 r9
-  mul r11 r6 r6
-  add r12 r8 r11
-  sqrt r7 r12
-  sub r0 r10 r7
-  add r1 r10 r7
+  get r6 db 511
+  add r9 r9 r6
+  add r10 r10 r6
+  mul r9 r9 19.09859317102744
+  mul r10 r10 1459.025044449664
+  move r3 r9
+  add r7 r11 r10
+  sub r11 r11 r7
+  mul r12 r11 r11
+  mul r11 r9 r9
+  add r11 r12 r11
+  sqrt r8 r11
+  sub r0 r7 r8
+  add r1 r7 r8
   pop ra
   j ra
 update:

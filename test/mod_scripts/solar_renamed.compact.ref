@@ -2,8 +2,8 @@ yield
 l r0 d0 20
 sb -2045627372 20 r0
 l r0 d0 21
-sub r1 90 r0
-sb -2045627372 21 r1
+sub r0 90 r0
+sb -2045627372 21 r0
 j 0
-# registers: 2
+# registers: 1
 # lines: 7
