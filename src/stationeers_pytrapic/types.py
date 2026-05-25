@@ -98,7 +98,7 @@ class IC10Operand:
 
     @property
     def is_register(self) -> bool:
-        return isinstance(self.value, IC10Register)
+        return isinstance(self.value, IC10Register) and self.value.is_register
 
     def to_string(self) -> str:
         if isinstance(self.value, IC10Register):
