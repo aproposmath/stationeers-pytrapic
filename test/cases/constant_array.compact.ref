@@ -15,8 +15,8 @@ s db On 777
 move r2 0
 bge r2 3 23
 select r4 r0 HASH("N2") -17887051
-seq r5 r0 2
-select r4 r5 $32ABE8C1 r4
+seq r3 r0 2
+select r4 r3 $32ABE8C1 r4
 lbn r5 -1252983604 r4 5 0
 sbn -815193061 r4 12 r5
 add r2 r2 1

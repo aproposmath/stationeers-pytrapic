@@ -6,8 +6,8 @@ sbn -1129453144 HASH("Out") 3 1
 sbn -1129453144 HASH("Out") 28 0
 lbn r0 576516101 $68454E2E 28 3
 ble r0 0 22
-lbn r3 -324331872 HASH("In") 2 3
-sgt r0 r3 0
+lbn r0 -324331872 HASH("In") 2 3
+sgt r0 r0 0
 select r1 r0 HASH("Out") HASH("In")
 select r2 r0 HASH("In") HASH("Out")
 sbn -324331872 r2 2 0

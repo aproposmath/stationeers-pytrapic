@@ -28,16 +28,16 @@ lbfor.end9:
   pop ra
   j ra
 for.range:
-  move r1 0
   move r2 0
+  move r3 0
 lbfor5:
-  bge r2 10 lbfor.end5
-    get r4 db r2
-    add r1 r1 r4
-    add r2 r2 1
+  bge r3 10 lbfor.end5
+    get r4 db r3
+    add r2 r2 r4
+    add r3 r3 1
     j lbfor5
 lbfor.end5:
-  put db 511 r1
+  put db 511 r2
   j ra
 while.condition:
 lbwhile2:
@@ -46,5 +46,5 @@ lbwhile2:
     j lbwhile2
 lbwhile.end2:
   j ra
-# registers: 4
+# registers: 5
 # lines: 48

@@ -14,6 +14,7 @@ def compile_code_testing(code, compact=False):
             inline_functions=compact,
             append_version=False,
             remove_labels=compact,
+            indent=not compact,
         ),
     )
 

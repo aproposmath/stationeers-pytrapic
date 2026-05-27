@@ -15,6 +15,7 @@ using Cysharp.Threading.Tasks;
 using Newtonsoft.Json;
 using StationeersIC10Editor;
 using Util.Commands;
+using BepInEx.Configuration;
 
 namespace StationeersPyTrapIC
 {
@@ -175,10 +176,16 @@ namespace StationeersPyTrapIC
             public bool remove_labels = true;
             public bool append_version = true;
             public bool compact = false;
+            public bool indent = false;
 
             public CompileOptions Copy()
             {
                 return (CompileOptions)this.MemberwiseClone();
+            }
+
+            public override string ToString()
+            {
+                return JsonConvert.SerializeObject(this);
             }
         }
 
@@ -206,6 +213,7 @@ namespace StationeersPyTrapIC
             public int num_registers;
             public int num_bytes;
             public CompileInput input;
+            public Dictionary<int, List<int>> source_mapping;
         }
 
         public void StopProcess()
@@ -342,18 +350,17 @@ namespace StationeersPyTrapIC
             }
         }
 
-        public CompileResponse Compile(string pythonCode, int lineno = -1, int column = -1)
+        public CompileResponse Compile(string pythonCode, CompileOptions? compileOptions = null)
         {
             var modules = SourceData.LoadImportedModules(pythonCode);
-            var compileOptions = options.Copy();
 
             CompileInput input = new()
             {
                 action = "compile",
                 code = modules,
-                options = compileOptions,
-                lineno = lineno,
-                column = column,
+                options = compileOptions ?? options.Copy(),
+                lineno = -1,
+                column = -1,
             };
 
             if (!IsRunning())
@@ -429,6 +436,43 @@ namespace StationeersPyTrapIC
     [BepInPlugin(ThisModInfo.ModID, ThisModInfo.AssemblyName, ThisModInfo.Version)]
     public class PyTrapICPlugin : BaseUnityPlugin
     {
+        public static ConfigEntry<bool> InlineFunctions;
+        public static ConfigEntry<bool> RemoveLabels;
+        public static ConfigEntry<bool> CompactOutput;
+        public static ConfigEntry<bool> IndentOutput;
+
+
+        private void BindAllConfigs()
+        {
+            InlineFunctions = Config.Bind(
+                "General",
+                "InlineFunctions",
+                true,
+                "Inline functions in the generated IC10 code (only done for functions that are called once)"
+            );
+
+            RemoveLabels = Config.Bind(
+                "General",
+                "RemoveLabels",
+                true,
+                "Remove labels and replace them with hard-coded (absolute or relative) line numbers"
+            );
+
+            CompactOutput = Config.Bind(
+                "General",
+                "CompactOutput",
+                false,
+                "Evaluate HASH() and STR() if the number is shorter"
+            );
+
+            IndentOutput = Config.Bind(
+                "General",
+                "IndentOutput",
+                true,
+                "Indent the generated IC10 code for better readability"
+            );
+        }
+
         private void Awake()
         {
             try
@@ -436,6 +480,8 @@ namespace StationeersPyTrapIC
                 L.SetLogger(this.Logger);
                 L.Info($"Awake {ThisModInfo.Info}");
                 var sw = Stopwatch.StartNew();
+
+                BindAllConfigs();
 
                 // PythonCompiler.Instance = new PythonCompiler();
                 CommandLine._commandsMap["pytrapic"] = new PyTrapICCommand();

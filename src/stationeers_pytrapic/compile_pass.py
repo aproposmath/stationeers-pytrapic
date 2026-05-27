@@ -122,11 +122,14 @@ class CompileOptions:
     compact: bool = False
     tail_call_optimization: bool = False
     use_push_pop_functions: bool = False
+    indent: bool = True
 
 
 @dataclass
 class CodeData:
     original_code: list[str]
+    generated_code: list[IC10Instruction]
+    generated_code_with_labels: list[IC10Instruction]
     tree: nodes.Module
     options: CompileOptions
     symbols: dict[str, dict[str, IC10Register]]
@@ -134,15 +137,18 @@ class CodeData:
     functions: dict[str, FunctionData]
     constexpr_functions: dict[str, str]
     constexpr_functions_code: str
-    result: dict[str, str | int]
+    result: dict[str, str | int | dict[int, list[int]]]
     structures: dict[str, dict[str, object]] = field(default_factory=dict)
     modules: dict[str, nodes.Module] = field(default_factory=dict)
     source_map: dict[nodes.NodeNG, list[IC10Instruction]] = field(default_factory=dict)
+    source_map_with_labels: dict[nodes.NodeNG, list[int]] = field(default_factory=dict)
 
     def __init__(
         self, code: str, tree: nodes.Module, options: CompileOptions, modules=None
     ):
         self.original_code = code.splitlines()
+        self.generated_code = []
+        self.generated_code_with_labels = []
         self.tree = tree
         self.options = options
         self.symbols = {"": {}}
@@ -154,6 +160,7 @@ class CodeData:
         self.constexpr_functions_code = None
         self.modules = modules if modules is not None else {}
         self.source_map = {}
+        self.source_map_with_labels = {}
 
     def get_tmp_sym_data(self, node: nodes.NodeNG, name: str) -> IC10Register:
         scope = get_scope_name(node)

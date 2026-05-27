@@ -1,22 +1,22 @@
-l r2 d0 15
-mul r1 r2 28.2
-l r2 d0 16
-mul r2 r2 28.2
-add r1 r1 r2
-l r2 d0 83
-mul r2 r2 28.2
-add r1 r1 r2
-l r2 d0 17
-mul r2 r2 28.2
-add r1 r1 r2
-l r2 d0 14
-mul r2 r2 28.2
-add r1 r1 r2
-l r2 d0 18
-mul r2 r2 28.2
-add r1 r1 r2
-l r2 d0 66
-mul r1 r1 r2
-move r0 r1
+l r1 d0 15
+mul r2 r1 28.2
+l r1 d0 16
+mul r1 r1 28.2
+add r2 r2 r1
+l r1 d0 83
+mul r1 r1 28.2
+add r2 r2 r1
+l r1 d0 17
+mul r1 r1 28.2
+add r2 r2 r1
+l r1 d0 14
+mul r1 r1 28.2
+add r2 r2 r1
+l r1 d0 18
+mul r1 r1 28.2
+add r2 r2 r1
+l r1 d0 66
+mul r2 r2 r1
+move r0 r2
 # registers: 3
 # lines: 20

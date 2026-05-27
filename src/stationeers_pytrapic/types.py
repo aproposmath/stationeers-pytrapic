@@ -128,6 +128,18 @@ class IC10Instruction:
     lineno: int = -1
     node: nodes.NodeNG = None
 
+    def copy(self):
+        line = IC10Instruction(
+            self.op,
+            self.inputs,
+            self.output,
+            self.comment,
+            self.indent,
+        )
+        line.lineno = self.lineno
+        line.node = self.node
+        return line
+
     @property
     def registers(self) -> list[IC10Register]:
         regs = []

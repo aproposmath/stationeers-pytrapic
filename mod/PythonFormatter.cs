@@ -11,6 +11,8 @@ using System.Threading;
 using Cysharp.Threading.Tasks;
 using StationeersIC10Editor;
 using ImGuiEditor.LSP;
+using ImGuiNET;
+using BepInEx.Configuration;
 
 public class PythonFormatter : LSPFormatter
 {
@@ -36,10 +38,15 @@ public class PythonFormatter : LSPFormatter
                 _IC10Editor = new Editor(Editor.KeyHandler);
                 _IC10Editor.IsReadOnly = true;
                 tab.AddEditor(_IC10Editor);
+                _IC10Editor.CodeFormatter = new StationeersIC10Editor.IC10.IC10CodeFormatter();
+                _IC10Editor.CodeFormatter.Editor = _IC10Editor;
+                _IC10Editor.CodeFormatter.OnCaretMoved += () => UpdateHighlightedIC10Lines();
             }
             return _IC10Editor;
         }
     }
+
+    public StationeersIC10Editor.IC10.IC10CodeFormatter IC10Formatter => IC10Editor.CodeFormatter as StationeersIC10Editor.IC10.IC10CodeFormatter;
 
     public static string WorkspacePath => PythonWorkspace.WorkspaceDir;
 
@@ -127,6 +134,8 @@ public class PythonFormatter : LSPFormatter
             UniTask.RunOnThreadPool(() => ResetCodeDebounced());
             lastCompileResponse = null;
         };
+
+        OnCaretMoved += UpdateHighlightedIC10Lines;
     }
 
     public async UniTask WriteLibraries()
@@ -218,7 +227,9 @@ public class PythonFormatter : LSPFormatter
 
     public async UniTask<PythonCompiler.CompileResponse> CompileCode(string code)
     {
-        if (_CompileCache.TryGetValue(code, out var cachedResponse))
+        var options = PythonCompiler.options.Copy();
+        var cacheKey = options.ToString() + "|" + code;
+        if (_CompileCache.TryGetValue(cacheKey, out var cachedResponse))
             return cachedResponse;
         var sw = Stopwatch.StartNew();
         if (PythonCompiler.Instance == null)
@@ -228,11 +239,11 @@ public class PythonFormatter : LSPFormatter
         }
         await UniTask.SwitchToThreadPool();
         await PythonCompiler.Instance.WaitForReadyAsync();
-        var response = PythonCompiler.Instance.Compile(code);
+        var response = PythonCompiler.Instance.Compile(code, options);
         sw.Stop();
         L.Debug($"Compilation took {sw.ElapsedMilliseconds} ms");
         lastCompileResponse = response;
-        _CompileCache[code] = response;
+        _CompileCache[cacheKey] = response;
         _CompileCacheKeys.Enqueue(code);
         while (_CompileCacheKeys.Count > 100)
             _CompileCache.TryRemove(_CompileCacheKeys.Dequeue(), out _);
@@ -282,7 +293,11 @@ public class PythonFormatter : LSPFormatter
 
         await UniTask.SwitchToMainThread();
         L.Debug($"Applying compiled code to IC10 editor, editor = {IC10Editor}");
-        IC10Editor.ResetCode(compiled, false);
+        IC10Editor.CaretPos = new TextPosition(0, 0);
+        IC10Formatter.ResetCode(compiled);
+        IC10Formatter.OnCodeChanged();
+        IC10Formatter.OnCaretMoved();
+        UpdateHighlightedIC10Lines();
     }
 
     public override StyledLine ParseLine(string line)
@@ -394,5 +409,61 @@ public class PythonFormatter : LSPFormatter
             tooltip.AddRange(_lastHoverInfo);
             _tooltip = tooltip;
         }
+    }
+
+    private void DrawCheckBox(string label, ConfigEntry<bool> entry, ref bool value)
+    {
+        if (ImGuiUtils.Checkbox(label, ref value, entry.Description.Description))
+        {
+            entry.Value = value;
+            ResetCodeDebounced().Forget();
+        }
+    }
+
+    public override void DrawButtons()
+    {
+        DrawCheckBox("Inline", PyTrapICPlugin.InlineFunctions, ref PythonCompiler.options.inline_functions);
+        ImGui.SameLine();
+        DrawCheckBox("No Labels", PyTrapICPlugin.RemoveLabels, ref PythonCompiler.options.remove_labels);
+        ImGui.SameLine();
+        DrawCheckBox("Compact", PyTrapICPlugin.CompactOutput, ref PythonCompiler.options.compact);
+        ImGui.SameLine();
+        DrawCheckBox("Indent", PyTrapICPlugin.IndentOutput, ref PythonCompiler.options.indent);
+        ImGui.SameLine();
+        var pos = ImGui.GetCursorScreenPos();
+
+        if (lastCompileResponse != null)
+        {
+            var str = $" {lastCompileResponse.num_registers} registers";
+            ImGui.GetWindowDrawList().AddText(pos + new UnityEngine.Vector2(-ImGui.CalcTextSize(str).x - 0.5f * Settings.CharWidth, Settings.LineHeightWithSpacing), 0xffffffff, str);
+        }
+    }
+
+    public static uint ColorBackground = ColorFromHTML("#000080");
+
+    public void UpdateHighlightedIC10Lines()
+    {
+        var lineStyles = IC10Editor.CodeFormatter.LineStyles;
+        var style = new Style { Background = ColorBackground };
+        foreach (var i in new List<int>(lineStyles.Keys))
+        {
+            var lineStyle = lineStyles[i];
+            if (lineStyle.Equals(style))
+                lineStyles.Remove(i);
+            else if (lineStyle.Background == style.Background)
+                lineStyles[i] = new Style { Color = lineStyle.Color };
+        }
+
+        if (lastCompileResponse == null || lastCompileResponse.source_mapping == null)
+            return;
+
+        if (lastCompileResponse.source_mapping.TryGetValue(_lastCaretPos.Line, out var ic10LineNumbers))
+            foreach (var ic10Line in ic10LineNumbers)
+            {
+                if (lineStyles.ContainsKey(ic10Line))
+                    lineStyles[ic10Line] = new Style { Color = lineStyles[ic10Line].Color, Background = ColorBackground };
+                else
+                    lineStyles[ic10Line] = style;
+            }
     }
 }

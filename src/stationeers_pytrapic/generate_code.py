@@ -1,30 +1,29 @@
-import re
+import copy
 from contextlib import contextmanager
 
 from astroid import nodes
 
 from . import _version, intrinsics, structures_generated, symbols, types
 from .compile_pass import CodeData, CompilerError, CompilerPass, FunctionData
+from .register_assignment import assign_registers
 from .types import IC10, IC10Instruction, IC10Operand, IC10Register, _BaseStructure
 from .types_generated import LogicBatchMethod
 from .utils import (
-    get_comparison_suffix,
-    get_negated_comparison_suffix,
-    get_unop_instruction,
-    get_scope_name,
     get_binop_instruction,
+    get_comparison_suffix,
+    get_function_name,
     get_function_parent,
+    get_negated_comparison_suffix,
+    get_scope_name,
+    get_unop_instruction,
     is_builtin_function,
     is_builtin_name,
     is_builtin_structure,
     is_loadable_type,
     is_math_function,
     logger,
-    get_function_name,
     try_replace_call_with_branch,
 )
-
-from .register_assignment import assign_registers
 
 # use stack addresses 511 for function return values
 # and 510, 509, ... for function arguments
@@ -58,34 +57,6 @@ _HAS_RELATIVE_INSTRUCTION = set(
 
 def is_branch(op: str) -> bool:
     return op.startswith("b") or op in ["j", "jal"]
-
-
-def remove_unused_labels(code: str) -> str:
-    lines = code.splitlines()
-
-    labels = set()
-    used_labels = set()
-
-    for line in lines:
-        tokens = line.split()
-        if len(tokens) == 1 and tokens[0].endswith(":"):
-            labels.add(tokens[0][:-1])
-
-    for line in lines:
-        tokens = line.split()
-        for label in labels:
-            if label in tokens:
-                used_labels.add(label)
-
-    unused_labels = labels - used_labels
-
-    result = []
-    for line in lines:
-        if line.endswith(":") and line[:-1] in unused_labels:
-            continue
-        result.append(line)
-
-    return "\n".join(result)
 
 
 class CompilerPassGenerateCode(CompilerPass):
@@ -992,7 +963,6 @@ class CompilerPassGenerateCode(CompilerPass):
 class CompilerPassGatherCode(CompilerPass):
     def __init__(self, data: CodeData):
         super().__init__(data)
-        self.code = []
         self._indent_level = 0
 
         self._target = None
@@ -1151,73 +1121,96 @@ class CompilerPassGatherCode(CompilerPass):
                 func.add_ra_instructions(self.data.options)
             if fname == "" or func.is_called:
                 for line in func.code:
-                    self.code.append(line)
+                    self.data.generated_code_with_labels.append(line)
+
+        source_map = self.data.source_map_with_labels
+        for i, line in enumerate(self.data.generated_code_with_labels):
+            line.lineno = i
+            if line.node not in source_map:
+                source_map[line.node] = []
+            source_map[line.node].append(i)
+
+        if self.data.options.remove_labels:
+            self.remove_labels()
+        else:
+            self.remove_unused_labels()
 
         source_map = self.data.source_map
-        for i, line in enumerate(self.code):
+        for i, line in enumerate(self.data.generated_code):
             line.lineno = i
             if line.node not in source_map:
                 source_map[line.node] = []
             source_map[line.node].append(line)
 
-        self.used_registers = assign_registers(self.data, self.code)
+        self.used_registers = assign_registers(self.data, self.data.generated_code)
+
         self.get_code()
 
+    def remove_unused_labels(self):
+        lines = [line.copy() for line in self.data.generated_code_with_labels]
+
+        labels = set()
+        used_labels = set()
+
+        for line in lines:
+            if line.op.endswith(":"):
+                labels.add(line.op[:-1])
+
+        for line in lines:
+            for input in line.inputs:
+                if input.value in labels:
+                    used_labels.add(input.value)
+
+        unused_labels = labels - used_labels
+        self.data.generated_code = [
+            line
+            for line in lines
+            if not (line.op.endswith(":") and line.op[:-1] in unused_labels)
+        ]
+
     def remove_labels(
-        self, code, relative_numbers: bool = False, keep_labels: set | None = None
-    ) -> str:
+        self, relative_numbers: bool = False, keep_labels: set | None = None
+    ):
         label_map = {}
         i_line = 0
         new_code = []
         keep_labels = keep_labels or set()
 
+        code = [line.copy() for line in self.data.generated_code_with_labels]
+
         if relative_numbers:
             # we must keep labels that are the target of jal instructions,
             # because there is no jral
-            for line in code.splitlines():
-                cline = line.split("#")[0].strip()
-                op = cline.split()[0] if cline else ""
-                if is_branch(op) and not op in _HAS_RELATIVE_INSTRUCTION:
-                    parts = cline.split()
-                    if len(parts) >= 2:
-                        label = parts[1]
+            for line in code:
+                if is_branch(line.op) and not line.op in _HAS_RELATIVE_INSTRUCTION:
+                    if len(line.inputs) >= 1:
+                        label = len.inputs[0]
                         keep_labels.add(label)
 
-        for line in code.splitlines():
-            cline = line.split("#")[0].strip()
-            label = cline[:-1] if cline.endswith(":") else None
+        for line in code:
+            label = line.op[:-1] if line.op.endswith(":") else None
             if label and label not in keep_labels:
-                label = cline[:-1]
                 label_map[label] = len(new_code)
             else:
                 i_line += 1
                 new_code.append(line)
 
         for line_num, line in enumerate(new_code):
-            for label, target_line in label_map.items():
-                pattern = r"\b{}\b".format(re.escape(label))
-                if re.search(pattern, line):
+            for input in line.inputs:
+                if input.value in label_map:
+                    target_line = label_map[input.value]
                     if relative_numbers:
                         offset = target_line - line_num
                         replacement = str(offset)
                         instruction = line.split("#")[0].strip().split()[0]
                         if instruction == "jal":
                             replacement = str(target_line)
-                        new_instruction = instruction[:1] + "r" + instruction[1:]
-                        line = line.replace(instruction, new_instruction, 1)
                     else:
                         replacement = str(target_line)
 
-                    line = re.sub(pattern, replacement, line)
-            new_code[line_num] = line
+                    input.value = str(replacement)
 
-        new_code = "\n".join(new_code)
-
-        # for label, line_num in label_map.items():
-        #     pattern = r"\b{}\b".format(re.escape(label))
-        #     new_code = re.sub(pattern, str(line_num), new_code)
-
-        return new_code
+        self.data.generated_code = new_code
 
     def strip_code(self, code: str) -> str:
         return "\n".join([line.strip() for line in code.splitlines()])
@@ -1227,12 +1220,15 @@ class CompilerPassGatherCode(CompilerPass):
     ):
         s = ""
 
-        shift = 2
+        shift = 2 if self.data.options.indent else 0
         code_width = 0
 
         lines = []
 
-        for line in self.code:
+        min_indent = min((line.indent for line in self.data.generated_code), default=0)
+
+        for line in self.data.generated_code:
+            line.indent -= min_indent
             lines.append(line.to_string(shift))
             code_width = max(code_width, len(lines[-1]))
 
@@ -1242,7 +1238,7 @@ class CompilerPassGatherCode(CompilerPass):
         original_code = self.data.original_code
 
         prev_comment = None
-        for i, line in enumerate(self.code):
+        for i, line in enumerate(self.data.generated_code):
             c = lines[i]
             if c.endswith(":"):
                 # labels are not allowed to have indentation
@@ -1269,14 +1265,8 @@ class CompilerPassGatherCode(CompilerPass):
         # if len(self._symbols) > 16:
         #     raise CompilerError("Running out of registers.")
 
-        if options.remove_labels:
-            s = self.remove_labels(s)
-            s = self.strip_code(s)
-        else:
-            s = remove_unused_labels(s)
-
+        lines = s.splitlines()
         if options.append_version:
-            lines = s.splitlines()
             version_string = f" # Generated by PyTrapIC v{_version.__version__}"
             l = len(version_string)
             for i in range(len(lines)):
@@ -1285,13 +1275,24 @@ class CompilerPassGatherCode(CompilerPass):
                     break
             s = "\n".join(lines)
 
-        num_lines = len(s.splitlines())
+        num_lines = len(lines)
         num_registers = len(self.used_registers)
         num_bytes = len(s) + num_lines - 1
+
+        src_mapping = {}
+
+        for line in self.data.generated_code:
+            if line.node and not line.node.root().name:
+                i_py = line.node.lineno - 1
+                i_ic10 = line.lineno
+                if i_py not in src_mapping:
+                    src_mapping[i_py] = []
+                src_mapping[i_py].append(i_ic10)
 
         self.data.result = {
             "code": s,
             "num_lines": num_lines,
             "num_registers": num_registers,
             "num_bytes": num_bytes,
+            "source_mapping": src_mapping,
         }

@@ -115,10 +115,10 @@ lbend36:
 show.amount:
   get r3 db 510
   select r4 r3 HASH("N2") HASH("O2")
-  seq r5 r3 2
-  select r4 r5 HASH("CO2") r4
-  lbn r5 HASH("StructureGasSensor") r4 Pressure Average
-  sbn HASH("StructureConsoleLED5") r4 Setting r5
+  seq r3 r3 2
+  select r4 r3 HASH("CO2") r4
+  lbn r3 HASH("StructureGasSensor") r4 Pressure Average
+  sbn HASH("StructureConsoleLED5") r4 Setting r3
   j ra
 # registers: 6
 # lines: 122

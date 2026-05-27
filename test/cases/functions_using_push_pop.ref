@@ -5,19 +5,19 @@ jal compute
 pop r0
 s db Setting r0
 add.two:
-  pop r6
   pop r5
-  add r7 r5 r6
+  pop r6
+  add r7 r6 r5
   push r7
   j ra
 compute:
-  pop r3
-  pop r2
   pop r1
+  pop r2
+  pop r3
   push ra
-  add r4 r1 r2
+  add r4 r3 r2
   push r4
-  push r3
+  push r1
   jal add.two
   pop r4
   pop ra

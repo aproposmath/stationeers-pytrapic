@@ -6,30 +6,30 @@ clr db
 move r9 0
 move r10 0
 jal 91
-get r6 db 511
-sub r9 r9 r6
-add r10 r10 r6
+get r5 db 511
+sub r9 r9 r5
+add r10 r10 r5
 sleep 5
 jal 91
-get r6 db 511
-move r2 r6
-move r11 r6
-mul r12 2 r6
-sub r10 r10 r12
+get r5 db 511
+move r2 r5
+move r12 r5
+mul r11 2 r5
+sub r10 r10 r11
 sleep 5
 jal 91
-get r6 db 511
-add r9 r9 r6
-add r10 r10 r6
+get r5 db 511
+add r9 r9 r5
+add r10 r10 r5
 mul r9 r9 19.09859317102744
 mul r10 r10 1459.025044449664
 move r3 r9
-add r7 r11 r10
-sub r11 r11 r7
-mul r12 r11 r11
-mul r11 r9 r9
-add r11 r12 r11
-sqrt r8 r11
+add r7 r12 r10
+sub r12 r12 r7
+mul r11 r12 r12
+mul r10 r9 r9
+add r10 r11 r10
+sqrt r8 r10
 sub r0 r7 r8
 add r1 r7 r8
 sbn -815193061 -811190405 28 1
@@ -40,12 +40,12 @@ sbn -815193061 -934885189 12 0
 sbn -815193061 -934885189 3 7
 yield
 jal 91
-get r6 db 511
+get r5 db 511
 move r9 r2
 beq r9 0 55
 bne r3 0 47
-sub r10 r6 r9
-sub r10 r6 r9
+sub r10 r5 r9
+sub r10 r5 r9
 mul r11 r10 r3
 bge r11 0 55
 ble r3 0 53
@@ -53,8 +53,8 @@ move r1 r9
 j 54
 move r0 r9
 move r3 r10
-move r9 r6
-put db 510 r6
+move r9 r5
+put db 510 r5
 jal 73
 get r7 db 511
 move r4 r7
@@ -65,35 +65,35 @@ jal 73
 get r7 db 511
 bge r7 0 67
 sub r7 1200 r7
-sub r8 r7 r4
-add r8 r8 1200
-mod r7 r8 1200
-move r5 r7
-sbn -815193061 -934885189 12 r5
+sub r5 r7 r4
+add r5 r5 1200
+mod r7 r5 1200
+move r6 r7
+sbn -815193061 -934885189 12 r6
 j 40
-get r9 db 510
-mul r10 0.5 r1
-mul r11 0.5 r0
-add r12 r10 r11
-sub r13 r10 r11
-sub r15 r9 r12
-div r14 r15 r13
-max r14 r14 -1
-min r14 r14 1
-acos r15 r14
-div r14 r15 6.283185307179586
+get r8 db 510
+mul r9 0.5 r1
+mul r10 0.5 r0
+add r11 r9 r10
+sub r12 r9 r10
+sub r8 r8 r11
+div r13 r8 r12
+max r13 r13 -1
+min r13 r13 1
+acos r8 r13
+div r13 r8 6.283185307179586
 ble r3 0 86
-sub r14 1 r14
-add r15 r14 0.5
-mod r15 r15 1
-mul r14 r15 1200
-put db 511 r14
+sub r13 1 r13
+add r8 r13 0.5
+mod r8 r8 1
+mul r13 r8 1200
+put db 511 r13
 j ra
-l r14 d0 21
-sub r14 90 r14
-mul r13 r14 0.0174532925199433
-sin r14 r13
-put db 511 r14
+l r13 d0 21
+sub r13 90 r13
+mul r13 r13 0.0174532925199433
+sin r13 r13
+put db 511 r13
 j ra
-# registers: 16
+# registers: 14
 # lines: 97

@@ -24,24 +24,24 @@ hash.number.fast.nibble:
 lbelse5:
   xor r2 r2 $FFFFFFFF
   move r4 1
-  move r5 1
+  move r6 1
 lbwhile8:
-  mul r6 10 r5
-  bgt r6 r3 lbwhile.end8
+  mul r5 10 r6
+  bgt r5 r3 lbwhile.end8
     add r4 r4 1
-    mul r5 r5 10
+    mul r6 r6 10
     j lbwhile8
 lbwhile.end8:
 lbwhile10:
   ble r4 0 lbwhile.end10
     sub r4 r4 1
-    div r8 r3 r5
-    floor r6 r8
-    mul r8 r6 r5
+    div r8 r3 r6
+    floor r5 r8
+    mul r8 r5 r6
     sub r3 r3 r8
-    div r5 r5 10
-    add r6 r6 48
-    xor r2 r2 r6
+    div r6 r6 10
+    add r5 r5 48
+    xor r2 r2 r5
     and r8 r2 15
     add r7 496 r8
     get r8 db r7

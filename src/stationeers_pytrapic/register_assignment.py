@@ -10,6 +10,12 @@ from .utils import CompilerError, get_loop_ancestor, get_scope_name
 def calc_ic10_lifetimes(
     data: CodeData, code: list[IC10Instruction], used_symbols: set[IC10Register]
 ):
+    nodes_with_code = set()
+
+    for line in data.generated_code_with_labels:
+        if line.node:
+            nodes_with_code.add(line.node)
+
     registers = set()
     read_lines = {}
     write_lines = {}
@@ -19,11 +25,12 @@ def calc_ic10_lifetimes(
             write_lines.setdefault(line.output.code_expr, []).append(line.lineno)
         for inp in line.inputs:
             if inp.is_register:
+                registers.add(line.output)
                 registers.add(inp.value)
                 read_lines.setdefault(inp.value.code_expr, []).append(line.lineno)
 
     def get_code_node(node):
-        while node not in data.source_map and node.parent is not None:
+        while node not in nodes_with_code and node.parent is not None:
             node = node.parent
 
         return node
@@ -38,7 +45,7 @@ def calc_ic10_lifetimes(
                 lines.append(0)
                 lines.append(sys.maxsize)
             else:
-                lines += [line.lineno for line in data.source_map[code_node]]
+                lines += data.source_map_with_labels[code_node]
         return range(min(lines), max(lines) + 1)
 
     for reg in used_symbols:
@@ -55,11 +62,19 @@ def calc_ic10_lifetimes(
             reg.lifetime_ic10 = get_range(
                 [get_loop_ancestor(n) for n in reg.nodes_reading + reg.nodes_writing]
             )
+        # print("register", reg.name, reg.code_expr, "lifetime", reg.lifetime_ic10, "intermediate", reg._is_intermediate)
 
 
 def assign_colors(symbols: list[IC10Register]):
     # Sort by start time
-    symbols_sorted = sorted(symbols, key=lambda s: s.lifetime_ic10.start)
+    symbols_sorted = sorted(
+        symbols,
+        key=lambda s: (
+            s.lifetime_ic10.start,
+            s.lifetime_ic10.stop,
+            int(s.code_expr[11:][:-1]) if s.code_expr.startswith("__register.") else 0,
+        ),
+    )
 
     active = []  # list of (end, color) for currently active intervals
     free_colors = []  # pool of reusable colors

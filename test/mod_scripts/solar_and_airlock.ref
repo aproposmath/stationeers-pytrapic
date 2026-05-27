@@ -19,8 +19,8 @@ airlock.init:
 airlock.update:
   lbn r1 HASH("StructureDiodeSlide") HASH("Switch") On Maximum
   ble r1 0 lbelse5
-    lbn r4 HASH("StructureGlassDoor") HASH("In") Open Maximum
-    sgt r1 r4 0
+    lbn r1 HASH("StructureGlassDoor") HASH("In") Open Maximum
+    sgt r1 r1 0
     select r2 r1 HASH("Out") HASH("In")
     select r3 r1 HASH("In") HASH("Out")
     sbn HASH("StructureGlassDoor") r3 Open 0
