@@ -2,6 +2,28 @@
     "sha256:00901f35392ac2fd68638af53a612fe1779e4bc60b739c5543cc4e01715a6ee9": false,
     "sha256:173a7c003aca17dc937fb681c2e341806fe4d8e3ac88bd146d9a9265d4461b84": false,
     "sha256:1c867d9d4854714c9298fd83a9fbd70148abb54327a49827c7aebfc2a1a6c05b": false,
+    "sha256:27a5d274a979c114d3a9ce04fa7857a721565310245ec68915a407a71f031e6e": {
+        "author": "aproposmath",
+        "branch": [],
+        "depends_on": [
+            "3592775931"
+        ],
+        "digest": "sha256:27a5d274a979c114d3a9ce04fa7857a721565310245ec68915a407a71f031e6e",
+        "id": "com.github.aproposmath.stationeers-pytrapic",
+        "name": "PyTrapIC - Python to IC10 Transpiler",
+        "tag": [
+            "IC10",
+            "Python",
+            "Editor",
+            "Code",
+            "BepInEx",
+            "Compiler",
+            "Transpiler",
+            "StationeersLaunchPad"
+        ],
+        "url": "https://github.com/aproposmath/stationeers-pytrapic/releases/download/main/PyTrapIC-main.zip",
+        "version": "0.4.1"
+    },
     "sha256:2824ef65dc4286c09f5949b0e00e978c70bb04af60421b08f6975d8df9efb8a9": false,
     "sha256:324a31040ffa9a9a287af4fc842d251dd210ba1a8e99be4c08e9ec1928690d85": false,
     "sha256:45b03eb55fab3c08301e6aee9e5086b0f40b6f90645f661f8dbf70e60fe3cb76": false,
@@ -162,27 +184,5 @@
         ],
         "url": "https://github.com/aproposmath/stationeers-pytrapic/releases/download/v0.3.4/PyTrapIC-v0.3.4.zip",
         "version": "0.3.4"
-    },
-    "sha256:e6130c9749d19bc6f3e2fe728f7271571414157f65df4ea96ee985fe60b9f03d": {
-        "author": "aproposmath",
-        "branch": [],
-        "depends_on": [
-            "3592775931"
-        ],
-        "digest": "sha256:e6130c9749d19bc6f3e2fe728f7271571414157f65df4ea96ee985fe60b9f03d",
-        "id": "com.github.aproposmath.stationeers-pytrapic",
-        "name": "PyTrapIC - Python to IC10 Transpiler",
-        "tag": [
-            "IC10",
-            "Python",
-            "Editor",
-            "Code",
-            "BepInEx",
-            "Compiler",
-            "Transpiler",
-            "StationeersLaunchPad"
-        ],
-        "url": "https://github.com/aproposmath/stationeers-pytrapic/releases/download/main/PyTrapIC-main.zip",
-        "version": "0.4.1"
     }
 }
