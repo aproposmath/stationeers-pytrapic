@@ -22,12 +22,12 @@ def calc_ic10_lifetimes(
     for line in code:
         if line.output and isinstance(line.output, IC10Register):
             registers.add(line.output)
-            write_lines.setdefault(line.output.code_expr, []).append(line.lineno)
+            write_lines.setdefault(line.output.code_expr, []).append(line.lineno_with_labels)
         for inp in line.inputs:
             if inp.is_register:
                 registers.add(line.output)
                 registers.add(inp.value)
-                read_lines.setdefault(inp.value.code_expr, []).append(line.lineno)
+                read_lines.setdefault(inp.value.code_expr, []).append(line.lineno_with_labels)
 
     def get_code_node(node):
         while node not in nodes_with_code and node.parent is not None:
@@ -54,15 +54,17 @@ def calc_ic10_lifetimes(
         _ = reg.lifetime
         if reg._is_intermediate:
             expr = reg.code_expr
-            if not expr in read_lines or not expr in write_lines:
-                reg.lifetime_ic10 = range(-1, -1)
-            else:
-                reg.lifetime_ic10 = range(min(write_lines[expr]), max(read_lines[expr]))
+            expr_read_lines = read_lines.get(expr, [])
+            expr_write_lines = write_lines.get(expr, [])
+            expr_read_lines = expr_read_lines or expr_write_lines
+            expr_write_lines = expr_write_lines or expr_read_lines
+            reg.lifetime_ic10 = range(min(expr_write_lines), max(expr_read_lines))
         else:
             reg.lifetime_ic10 = get_range(
                 [get_loop_ancestor(n) for n in reg.nodes_reading + reg.nodes_writing]
             )
         # print("register", reg.name, reg.code_expr, "lifetime", reg.lifetime_ic10, "intermediate", reg._is_intermediate)
+        # print("\tnodes reading", [(n.lineno, type(n)) for n in reg.nodes_reading], "nodes writing", [(n.lineno, type(n)) for n in reg.nodes_writing])
 
 
 def assign_colors(symbols: list[IC10Register]):
@@ -81,7 +83,7 @@ def assign_colors(symbols: list[IC10Register]):
     next_color = 0
     # print("symbols_sorted")
     # for s in symbols_sorted:
-    #     print(f"\t{s.name} {s.lifetime} {s._is_intermediate}")
+        # print(f"\t{s.name} {s.code_expr} {s.lifetime} {s._is_intermediate}")
 
     for sym in symbols_sorted:
         lifetime = sym.lifetime_ic10
@@ -102,6 +104,7 @@ def assign_colors(symbols: list[IC10Register]):
         else:
             sym._color = next_color
             next_color += 1
+        # print('assign color', sym._color, 'to', sym.code_expr, sym.name, 'lifetime', lifetime)
 
         # Add to active set
         active.append((end, sym._color))
@@ -210,7 +213,7 @@ def assign_registers(data: CodeData, code: list[IC10Instruction]):
             reg_num = available_registers[col]
             mapping[sym.code_expr] = f"r{reg_num}"
             sym.code_expr = mapping[sym.code_expr]
-            # print('use register', sym.code_expr, 'for', sym.name, 'in scope', scope)
+            # print('use register', reg_num, 'for', sym.code_expr, 'in scope', scope)
             used_registers.add(reg_num)
 
             if (

@@ -8,14 +8,14 @@ move r0 88
 yield
 lbn r1 576516101 $68454E2E 28 3
 ble r1 0 24
-lbn r1 -324331872 HASH("In") 2 3
-sgt r1 r1 0
+lbn r4 -324331872 HASH("In") 2 3
+sgt r1 r4 0
 select r2 r1 HASH("Out") HASH("In")
 select r3 r1 HASH("In") HASH("Out")
 sbn -324331872 r3 2 0
 sbn -1129453144 r3 28 1
-lb r1 -1252983604 5 3
-beq r1 0 19
+lb r4 -1252983604 5 3
+beq r4 0 19
 j 16
 sleep 0.2
 sbn -1129453144 r3 28 0
@@ -30,5 +30,5 @@ sb -2045627372 21 r1
 sub r0 r0 1
 s db Setting r0
 j 7
-# registers: 4
+# registers: 5
 # lines: 32

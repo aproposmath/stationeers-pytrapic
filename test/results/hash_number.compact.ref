@@ -8,17 +8,17 @@ add r2 r2 $100000000
 xor r2 r2 $FFFFFFFF
 move r4 1
 move r5 1
-mul r4 10 r5
-bgt r4 r3 15
+mul r6 10 r5
+bgt r6 r3 15
 add r4 r4 1
 mul r5 r5 10
 j 10
 ble r4 0 34
 sub r4 r4 1
-div r6 r3 r5
-floor r6 r6
-mul r6 r6 r5
-sub r3 r3 r6
+div r8 r3 r5
+floor r6 r8
+mul r8 r6 r5
+sub r3 r3 r8
 div r5 r5 10
 add r6 r6 48
 and r6 r6 255

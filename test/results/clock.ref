@@ -58,8 +58,8 @@ lbelse44:
 get.vertical:
   l r14 d0 Vertical
   sub r14 90 r14
-  mul r14 r14 0.0174532925199433
-  sin r14 r14
+  mul r13 r14 0.0174532925199433
+  sin r14 r13
   put db 511 r14
   j ra
 handle.minmax:
@@ -87,32 +87,32 @@ init:
   push ra
   clr db
   move r9 0
-  move r11 0
+  move r10 0
   jal get.vertical
   get r6 db 511
   sub r9 r9 r6
-  add r11 r11 r6
+  add r10 r10 r6
   sleep 5
   jal get.vertical
   get r6 db 511
   move r2 r6
-  move r10 r6
-  mul r10 2 r6
-  sub r11 r11 r10
+  move r11 r6
+  mul r12 2 r6
+  sub r10 r10 r12
   sleep 5
   jal get.vertical
   get r6 db 511
   add r9 r9 r6
-  add r11 r11 r6
+  add r10 r10 r6
   mul r9 r9 19.09859317102744
-  mul r11 r11 1459.025044449664
+  mul r10 r10 1459.025044449664
   move r3 r9
-  add r7 r10 r11
-  sub r10 r10 r7
-  mul r12 r10 r10
-  mul r13 r9 r9
-  add r13 r12 r13
-  sqrt r8 r13
+  add r7 r11 r10
+  sub r11 r11 r7
+  mul r12 r11 r11
+  mul r11 r9 r9
+  add r11 r12 r11
+  sqrt r8 r11
   sub r0 r7 r8
   add r1 r7 r8
   pop ra

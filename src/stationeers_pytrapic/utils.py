@@ -298,8 +298,14 @@ def is_constant(node, data):
                 return False, None
         elif is_builtin_function(node.func.name):
             from . import symbols
+            from .types import IC10Operand
 
-            return True, getattr(symbols, node.func.name)(node.args[0].value)
+            value = getattr(symbols, node.func.name)(
+                *[node.value for node in node.args]
+            )
+            if node.func.name == "define":
+                value = value.inputs[0]
+            return True, value
         else:
             return False, None
 

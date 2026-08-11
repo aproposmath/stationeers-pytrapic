@@ -6,7 +6,14 @@ from astroid import nodes
 from . import _version, intrinsics, structures_generated, symbols, types
 from .compile_pass import CodeData, CompilerError, CompilerPass, FunctionData
 from .register_assignment import assign_registers
-from .types import IC10, IC10Instruction, IC10Operand, IC10Register, _BaseStructure
+from .types import (
+    IC10,
+    IC10Instruction,
+    IC10Operand,
+    IC10Register,
+    _BaseStructure,
+    to_value,
+)
 from .types_generated import LogicBatchMethod
 from .utils import (
     get_binop_instruction,
@@ -851,15 +858,13 @@ class CompilerPassGenerateCode(CompilerPass):
         if not value_sym.code_expr:
             value_sym.code_expr = self.get_intermediate_symbol(node, True).code_expr
         data = node._ndata
-        data.add(IC10("move", [for_label], value_sym))
         data.add(IC10(f"{for_label}:"))
         for v in values:
             data.add(IC10("move", [v], value_sym))
             data.add(IC10("jal", [body_label]))
-        data.add(IC10("j", [end_label]))
 
         data.add(IC10(f"{body_label}:"))
-        data.add_end(IC10("j", ["ra"], indent=1))
+        data.add_end(IC10("bne", ["ra", body_label, "ra"], indent=1))
         data.add_end(IC10(f"{end_label}:"))
 
         for stmt in node.body:
@@ -909,16 +914,17 @@ class CompilerPassGenerateCode(CompilerPass):
         data.start_label = for_label
         data.end_label = end_label
 
-        iter_sym = self.get_intermediate_symbol(node)
+        iter_sym = self.data.get_sym_data(node.target)
+        iter_sym.nodes_writing.append(node)
+        iter_sym.nodes_reading.append(node)
+
+        if not iter_sym.code_expr:
+            iter_sym.code_expr = self.get_register_name()
+
         data.add(IC10("move", [start], iter_sym))
         data.add(IC10(f"{for_label}:"))
 
         data.add(IC10("bge" if is_increasing else "ble", [iter_sym, end, end_label]))
-        target_sym = self.data.get_sym_data(node.target)
-
-        if not target_sym.code_expr:
-            target_sym.code_expr = iter_sym.code_expr
-
         for stmt in node.body:
             self.compile_node(stmt)
 
@@ -1125,7 +1131,7 @@ class CompilerPassGatherCode(CompilerPass):
 
         source_map = self.data.source_map_with_labels
         for i, line in enumerate(self.data.generated_code_with_labels):
-            line.lineno = i
+            line.lineno_with_labels = i
             if line.node not in source_map:
                 source_map[line.node] = []
             source_map[line.node].append(i)
@@ -1142,7 +1148,7 @@ class CompilerPassGatherCode(CompilerPass):
                 source_map[line.node] = []
             source_map[line.node].append(line)
 
-        self.used_registers = assign_registers(self.data, self.data.generated_code)
+        self.used_registers = assign_registers(self.data, self.data.generated_code_with_labels)
 
         self.get_code()
 

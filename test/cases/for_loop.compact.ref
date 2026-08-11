@@ -1,13 +1,13 @@
 get r0 db 0
 get r1 db 1
 get r2 db 2
+move r11 0
 move r12 0
-move r13 0
-bge r13 r0 9
-add r12 r12 r13
-add r13 r13 1
+bge r12 r0 9
+add r11 r11 r12
+add r12 r12 1
 j 5
-move r3 r12
+move r3 r11
 s db Setting r3
 move r12 0
 move r13 r0
@@ -50,11 +50,11 @@ j 45
 move r8 r10
 s db Setting r8
 move r10 0
-get r10 db 0
-get r11 db 1
-add r11 r11 10
-move r11 r10
-bge r11 r11 60
+get r11 db 0
+get r12 db 1
+add r12 r12 10
+move r11 r11
+bge r11 r12 60
 add r10 r10 r11
 add r11 r11 2
 j 56

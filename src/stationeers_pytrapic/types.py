@@ -126,6 +126,7 @@ class IC10Instruction:
     comment: str = ""
     indent: int = 0
     lineno: int = -1
+    lineno_with_labels: int = -1
     node: nodes.NodeNG = None
 
     def copy(self):
@@ -731,6 +732,17 @@ def constexpr(func):
 
 def emit_code(func):
     return func
+
+
+def to_value(
+    value: float | int | str | IC10Operand | IC10Register,
+) -> float | int | str:
+    if isinstance(value, IC10Operand):
+        value = value.value
+    if isinstance(value, IC10Register):
+        value = value.code_expr
+
+    return value
 
 
 __all__ = [

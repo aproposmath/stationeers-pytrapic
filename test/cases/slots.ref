@@ -3,16 +3,16 @@ lbwhile1:
   jal handle.furnaces
   j lbwhile1
 handle.furnace:
-  ls r0 d0 0 Occupied
-  beqz r0 lbelse2
+  ls r1 d0 0 Occupied
+  beqz r1 lbelse2
     s d0 Activate 1
 lbelse2:
-  ls r1 d0 0 PrefabHash
-  ss d0 1 Occupied r1
+  ls r0 d0 0 PrefabHash
+  ss d0 1 Occupied r0
   j ra
 handle.furnaces:
-  lbs r0 HASH("StructureArcFurnace") 0 Occupied Maximum
-  beqz r0 lbelse5
+  lbs r1 HASH("StructureArcFurnace") 0 Occupied Maximum
+  beqz r1 lbelse5
     sb HASH("StructureArcFurnace") Activate 1
 lbelse5:
   lbs r0 HASH("StructureArcFurnace") 0 PrefabHash Maximum

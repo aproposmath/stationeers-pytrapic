@@ -13,9 +13,9 @@ sleep 5
 jal 91
 get r5 db 511
 move r2 r5
-move r12 r5
-mul r11 2 r5
-sub r10 r10 r11
+move r11 r5
+mul r12 2 r5
+sub r10 r10 r12
 sleep 5
 jal 91
 get r5 db 511
@@ -24,12 +24,12 @@ add r10 r10 r5
 mul r9 r9 19.09859317102744
 mul r10 r10 1459.025044449664
 move r3 r9
-add r7 r12 r10
-sub r12 r12 r7
-mul r11 r12 r12
-mul r10 r9 r9
-add r10 r11 r10
-sqrt r8 r10
+add r7 r11 r10
+sub r11 r11 r7
+mul r12 r11 r11
+mul r11 r9 r9
+add r11 r12 r11
+sqrt r8 r11
 sub r0 r7 r8
 add r1 r7 r8
 sbn -815193061 -811190405 28 1
@@ -65,35 +65,35 @@ jal 73
 get r7 db 511
 bge r7 0 67
 sub r7 1200 r7
-sub r5 r7 r4
-add r5 r5 1200
-mod r7 r5 1200
+sub r8 r7 r4
+add r8 r8 1200
+mod r7 r8 1200
 move r6 r7
 sbn -815193061 -934885189 12 r6
 j 40
-get r8 db 510
-mul r9 0.5 r1
-mul r10 0.5 r0
-add r11 r9 r10
-sub r12 r9 r10
-sub r8 r8 r11
-div r13 r8 r12
-max r13 r13 -1
-min r13 r13 1
-acos r8 r13
-div r13 r8 6.283185307179586
+get r9 db 510
+mul r10 0.5 r1
+mul r11 0.5 r0
+add r12 r10 r11
+sub r13 r10 r11
+sub r15 r9 r12
+div r14 r15 r13
+max r14 r14 -1
+min r14 r14 1
+acos r15 r14
+div r14 r15 6.283185307179586
 ble r3 0 86
-sub r13 1 r13
-add r8 r13 0.5
-mod r8 r8 1
-mul r13 r8 1200
-put db 511 r13
+sub r14 1 r14
+add r15 r14 0.5
+mod r15 r15 1
+mul r14 r15 1200
+put db 511 r14
 j ra
-l r13 d0 21
-sub r13 90 r13
-mul r13 r13 0.0174532925199433
-sin r13 r13
-put db 511 r13
+l r14 d0 21
+sub r14 90 r14
+mul r13 r14 0.0174532925199433
+sin r14 r13
+put db 511 r14
 j ra
-# registers: 14
+# registers: 16
 # lines: 97
