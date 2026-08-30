@@ -3132,6 +3132,10 @@ class _Robots(_BaseStructures, _Errors, _Modes, _Ons):
         return Robot(name=self._name, batch_mode=LogicBatchMethod.Sum)
 
     @property
+    def Count(self) -> Robot:
+        return Robot(name=self._name, batch_mode=LogicBatchMethod.Count)
+
+    @property
     def ForwardX(self) -> _DevicesLogicType:
         return _DevicesLogicType(self, _LT.ForwardX)
 
@@ -3311,6 +3315,10 @@ class _AccessBridges(_BaseStructures, _Activates, _Locks, _Opens, _Powers):
     def Sum(self) -> AccessBridge:
         return AccessBridge(name=self._name, batch_mode=LogicBatchMethod.Sum)
 
+    @property
+    def Count(self) -> AccessBridge:
+        return AccessBridge(name=self._name, batch_mode=LogicBatchMethod.Count)
+
 
 AccessBridges: _AccessBridges = _AccessBridges()
 
@@ -3444,6 +3452,10 @@ class _LiquidDrains(
     @property
     def Sum(self) -> LiquidDrain:
         return LiquidDrain(name=self._name, batch_mode=LogicBatchMethod.Sum)
+
+    @property
+    def Count(self) -> LiquidDrain:
+        return LiquidDrain(name=self._name, batch_mode=LogicBatchMethod.Count)
 
     @property
     def CombustionOutput(self) -> _DevicesLogicType:
@@ -3714,6 +3726,10 @@ class _ActiveVents(
         return ActiveVent(name=self._name, batch_mode=LogicBatchMethod.Sum)
 
     @property
+    def Count(self) -> ActiveVent:
+        return ActiveVent(name=self._name, batch_mode=LogicBatchMethod.Count)
+
+    @property
     def CombustionOutput(self) -> _DevicesLogicType:
         return _DevicesLogicType(self, _LT.CombustionOutput)
 
@@ -3916,6 +3932,10 @@ class _AdvancedComposters(
         return AdvancedComposter(name=self._name, batch_mode=LogicBatchMethod.Sum)
 
     @property
+    def Count(self) -> AdvancedComposter:
+        return AdvancedComposter(name=self._name, batch_mode=LogicBatchMethod.Count)
+
+    @property
     def slot0(self) -> _SlotTypeDataDisks:
         return _SlotTypeDataDisks(self, 0)
 
@@ -4034,6 +4054,10 @@ class _AdvancedFurnaces(
     @property
     def Sum(self) -> AdvancedFurnace:
         return AdvancedFurnace(name=self._name, batch_mode=LogicBatchMethod.Sum)
+
+    @property
+    def Count(self) -> AdvancedFurnace:
+        return AdvancedFurnace(name=self._name, batch_mode=LogicBatchMethod.Count)
 
     @property
     def RecipeHash(self) -> _DevicesLogicType:
@@ -4160,6 +4184,12 @@ class _AdvancedPackagingMachines(
         )
 
     @property
+    def Count(self) -> AdvancedPackagingMachine:
+        return AdvancedPackagingMachine(
+            name=self._name, batch_mode=LogicBatchMethod.Count
+        )
+
+    @property
     def CompletionRatio(self) -> _DevicesLogicType:
         return _DevicesLogicType(self, _LT.CompletionRatio)
 
@@ -4266,6 +4296,10 @@ class _AdvancedTablets(_BaseStructures, _Activates, _Errors, _Modes, _Ons):
     @property
     def Sum(self) -> AdvancedTablet:
         return AdvancedTablet(name=self._name, batch_mode=LogicBatchMethod.Sum)
+
+    @property
+    def Count(self) -> AdvancedTablet:
+        return AdvancedTablet(name=self._name, batch_mode=LogicBatchMethod.Count)
 
     @property
     def Power(self) -> _DevicesLogicType:
@@ -4446,6 +4480,10 @@ class _AirConditioners(
         return AirConditioner(name=self._name, batch_mode=LogicBatchMethod.Sum)
 
     @property
+    def Count(self) -> AirConditioner:
+        return AirConditioner(name=self._name, batch_mode=LogicBatchMethod.Count)
+
+    @property
     def CombustionInput(self) -> _DevicesLogicType:
         return _DevicesLogicType(self, _LT.CombustionInput)
 
@@ -4545,6 +4583,10 @@ class _Airlocks(_BaseStructures, _Idles, _Locks, _Modes, _Opens, _Powers, _Setti
     def Sum(self) -> Airlock:
         return Airlock(name=self._name, batch_mode=LogicBatchMethod.Sum)
 
+    @property
+    def Count(self) -> Airlock:
+        return Airlock(name=self._name, batch_mode=LogicBatchMethod.Count)
+
 
 Airlocks: _Airlocks = _Airlocks()
 
@@ -4578,6 +4620,10 @@ class _AirlockWides(
     @property
     def Sum(self) -> AirlockWide:
         return AirlockWide(name=self._name, batch_mode=LogicBatchMethod.Sum)
+
+    @property
+    def Count(self) -> AirlockWide:
+        return AirlockWide(name=self._name, batch_mode=LogicBatchMethod.Count)
 
 
 AirlockWides: _AirlockWides = _AirlockWides()
@@ -4622,6 +4668,10 @@ class _AngleGrinders(_BaseStructures, _Activates):
     @property
     def Sum(self) -> AngleGrinder:
         return AngleGrinder(name=self._name, batch_mode=LogicBatchMethod.Sum)
+
+    @property
+    def Count(self) -> AngleGrinder:
+        return AngleGrinder(name=self._name, batch_mode=LogicBatchMethod.Count)
 
     @property
     def Power(self) -> _DevicesLogicType:
@@ -4710,6 +4760,10 @@ class _ArcFurnaces(
         return ArcFurnace(name=self._name, batch_mode=LogicBatchMethod.Sum)
 
     @property
+    def Count(self) -> ArcFurnace:
+        return ArcFurnace(name=self._name, batch_mode=LogicBatchMethod.Count)
+
+    @property
     def RecipeHash(self) -> _DevicesLogicType:
         return _DevicesLogicType(self, _LT.RecipeHash)
 
@@ -4772,6 +4826,10 @@ class _ArcWelders(_BaseStructures, _Activates):
     @property
     def Sum(self) -> ArcWelder:
         return ArcWelder(name=self._name, batch_mode=LogicBatchMethod.Sum)
+
+    @property
+    def Count(self) -> ArcWelder:
+        return ArcWelder(name=self._name, batch_mode=LogicBatchMethod.Count)
 
     @property
     def Power(self) -> _DevicesLogicType:
@@ -4852,6 +4910,10 @@ class _AreaPowerControls(
     @property
     def Sum(self) -> AreaPowerControl:
         return AreaPowerControl(name=self._name, batch_mode=LogicBatchMethod.Sum)
+
+    @property
+    def Count(self) -> AreaPowerControl:
+        return AreaPowerControl(name=self._name, batch_mode=LogicBatchMethod.Count)
 
     @property
     def PowerActual(self) -> _DevicesLogicType:
@@ -4951,6 +5013,12 @@ class _AreaPowerControlReverseds(
     def Sum(self) -> AreaPowerControlReversed:
         return AreaPowerControlReversed(
             name=self._name, batch_mode=LogicBatchMethod.Sum
+        )
+
+    @property
+    def Count(self) -> AreaPowerControlReversed:
+        return AreaPowerControlReversed(
+            name=self._name, batch_mode=LogicBatchMethod.Count
         )
 
     @property
@@ -5058,6 +5126,10 @@ class _Autolathes(
         return Autolathe(name=self._name, batch_mode=LogicBatchMethod.Sum)
 
     @property
+    def Count(self) -> Autolathe:
+        return Autolathe(name=self._name, batch_mode=LogicBatchMethod.Count)
+
+    @property
     def CompletionRatio(self) -> _DevicesLogicType:
         return _DevicesLogicType(self, _LT.CompletionRatio)
 
@@ -5162,6 +5234,10 @@ class _AutomatedOvens(
         return AutomatedOven(name=self._name, batch_mode=LogicBatchMethod.Sum)
 
     @property
+    def Count(self) -> AutomatedOven:
+        return AutomatedOven(name=self._name, batch_mode=LogicBatchMethod.Count)
+
+    @property
     def CompletionRatio(self) -> _DevicesLogicType:
         return _DevicesLogicType(self, _LT.CompletionRatio)
 
@@ -5252,6 +5328,10 @@ class _AutoMinerSmalls(
         return AutoMinerSmall(name=self._name, batch_mode=LogicBatchMethod.Sum)
 
     @property
+    def Count(self) -> AutoMinerSmall:
+        return AutoMinerSmall(name=self._name, batch_mode=LogicBatchMethod.Count)
+
+    @property
     def slot0(self) -> _SlotTypeDataDisks:
         return _SlotTypeDataDisks(self, 0)
 
@@ -5312,6 +5392,10 @@ class _BatterySmalls(_BaseStructures, _Charges, _Maximums, _ModeRs, _Ons, _Ratio
         return BatterySmall(name=self._name, batch_mode=LogicBatchMethod.Sum)
 
     @property
+    def Count(self) -> BatterySmall:
+        return BatterySmall(name=self._name, batch_mode=LogicBatchMethod.Count)
+
+    @property
     def Power(self) -> _DevicesLogicType:
         return _DevicesLogicType(self, _LT.Power)
 
@@ -5365,6 +5449,10 @@ class _BackPressureRegulators(
     def Sum(self) -> BackPressureRegulator:
         return BackPressureRegulator(name=self._name, batch_mode=LogicBatchMethod.Sum)
 
+    @property
+    def Count(self) -> BackPressureRegulator:
+        return BackPressureRegulator(name=self._name, batch_mode=LogicBatchMethod.Count)
+
 
 BackPressureRegulators: _BackPressureRegulators = _BackPressureRegulators()
 
@@ -5397,6 +5485,10 @@ class _BasketHoops(_BaseStructures, _Locks, _Powers, _SettingWs):
     def Sum(self) -> BasketHoop:
         return BasketHoop(name=self._name, batch_mode=LogicBatchMethod.Sum)
 
+    @property
+    def Count(self) -> BasketHoop:
+        return BasketHoop(name=self._name, batch_mode=LogicBatchMethod.Count)
+
 
 BasketHoops: _BasketHoops = _BasketHoops()
 
@@ -5428,6 +5520,10 @@ class _LogicBatchReaders(_BaseStructures, _Errors, _Powers, _SettingRs):
     @property
     def Sum(self) -> LogicBatchReader:
         return LogicBatchReader(name=self._name, batch_mode=LogicBatchMethod.Sum)
+
+    @property
+    def Count(self) -> LogicBatchReader:
+        return LogicBatchReader(name=self._name, batch_mode=LogicBatchMethod.Count)
 
 
 LogicBatchReaders: _LogicBatchReaders = _LogicBatchReaders()
@@ -5466,6 +5562,10 @@ class _LogicBatchSlotReaders(_BaseStructures, _Errors, _Powers, _SettingRs):
     @property
     def Sum(self) -> LogicBatchSlotReader:
         return LogicBatchSlotReader(name=self._name, batch_mode=LogicBatchMethod.Sum)
+
+    @property
+    def Count(self) -> LogicBatchSlotReader:
+        return LogicBatchSlotReader(name=self._name, batch_mode=LogicBatchMethod.Count)
 
 
 LogicBatchSlotReaders: _LogicBatchSlotReaders = _LogicBatchSlotReaders()
@@ -5506,6 +5606,10 @@ class _LogicBatchWriters(_BaseStructures, _Errors, _Powers):
     @property
     def Sum(self) -> LogicBatchWriter:
         return LogicBatchWriter(name=self._name, batch_mode=LogicBatchMethod.Sum)
+
+    @property
+    def Count(self) -> LogicBatchWriter:
+        return LogicBatchWriter(name=self._name, batch_mode=LogicBatchMethod.Count)
 
     @property
     def ForceWrite(self) -> _DevicesLogicType:
@@ -5560,6 +5664,10 @@ class _BatteryMediums(_BaseStructures, _Charges, _Maximums, _ModeRs, _Ons, _Rati
         return BatteryMedium(name=self._name, batch_mode=LogicBatchMethod.Sum)
 
     @property
+    def Count(self) -> BatteryMedium:
+        return BatteryMedium(name=self._name, batch_mode=LogicBatchMethod.Count)
+
+    @property
     def Power(self) -> _DevicesLogicType:
         return _DevicesLogicType(self, _LT.Power)
 
@@ -5603,6 +5711,10 @@ class _BatteryCellLarges(_BaseStructures, _Modes):
     def Sum(self) -> BatteryCellLarge:
         return BatteryCellLarge(name=self._name, batch_mode=LogicBatchMethod.Sum)
 
+    @property
+    def Count(self) -> BatteryCellLarge:
+        return BatteryCellLarge(name=self._name, batch_mode=LogicBatchMethod.Count)
+
 
 BatteryCellLarges: _BatteryCellLarges = _BatteryCellLarges()
 
@@ -5635,6 +5747,10 @@ class _BatteryCellNuclears(_BaseStructures, _Modes):
     def Sum(self) -> BatteryCellNuclear:
         return BatteryCellNuclear(name=self._name, batch_mode=LogicBatchMethod.Sum)
 
+    @property
+    def Count(self) -> BatteryCellNuclear:
+        return BatteryCellNuclear(name=self._name, batch_mode=LogicBatchMethod.Count)
+
 
 BatteryCellNuclears: _BatteryCellNuclears = _BatteryCellNuclears()
 
@@ -5666,6 +5782,10 @@ class _BatteryCells(_BaseStructures, _Modes):
     @property
     def Sum(self) -> BatteryCell:
         return BatteryCell(name=self._name, batch_mode=LogicBatchMethod.Sum)
+
+    @property
+    def Count(self) -> BatteryCell:
+        return BatteryCell(name=self._name, batch_mode=LogicBatchMethod.Count)
 
 
 BatteryCells: _BatteryCells = _BatteryCells()
@@ -5718,6 +5838,10 @@ class _BatteryChargers(_BaseStructures, _Activates, _Errors, _Powers):
     @property
     def Sum(self) -> BatteryCharger:
         return BatteryCharger(name=self._name, batch_mode=LogicBatchMethod.Sum)
+
+    @property
+    def Count(self) -> BatteryCharger:
+        return BatteryCharger(name=self._name, batch_mode=LogicBatchMethod.Count)
 
     @property
     def slot0(self) -> _SlotTypeBatteries:
@@ -5780,6 +5904,10 @@ class _BatteryChargerSmalls(_BaseStructures, _Activates, _Errors, _Powers):
         return BatteryChargerSmall(name=self._name, batch_mode=LogicBatchMethod.Sum)
 
     @property
+    def Count(self) -> BatteryChargerSmall:
+        return BatteryChargerSmall(name=self._name, batch_mode=LogicBatchMethod.Count)
+
+    @property
     def slot0(self) -> _SlotTypeBatteries:
         return _SlotTypeBatteries(self, 0)
 
@@ -5825,6 +5953,10 @@ class _Battery_Wireless_cells(_BaseStructures, _Modes):
     def Sum(self) -> Battery_Wireless_cell:
         return Battery_Wireless_cell(name=self._name, batch_mode=LogicBatchMethod.Sum)
 
+    @property
+    def Count(self) -> Battery_Wireless_cell:
+        return Battery_Wireless_cell(name=self._name, batch_mode=LogicBatchMethod.Count)
+
 
 Battery_Wireless_cells: _Battery_Wireless_cells = _Battery_Wireless_cells()
 
@@ -5863,6 +5995,12 @@ class _Battery_Wireless_cell_Bigs(_BaseStructures, _Modes):
     def Sum(self) -> Battery_Wireless_cell_Big:
         return Battery_Wireless_cell_Big(
             name=self._name, batch_mode=LogicBatchMethod.Sum
+        )
+
+    @property
+    def Count(self) -> Battery_Wireless_cell_Big:
+        return Battery_Wireless_cell_Big(
+            name=self._name, batch_mode=LogicBatchMethod.Count
         )
 
 
@@ -5916,6 +6054,10 @@ class _Beacons(_BaseStructures, _Errors, _Locks, _Powers):
     @property
     def Sum(self) -> Beacon:
         return Beacon(name=self._name, batch_mode=LogicBatchMethod.Sum)
+
+    @property
+    def Count(self) -> Beacon:
+        return Beacon(name=self._name, batch_mode=LogicBatchMethod.Count)
 
     @property
     def Color(self) -> _DevicesLogicType:
@@ -5986,6 +6128,10 @@ class _Bench1s(_BaseStructures, _Errors, _Powers):
         return Bench1(name=self._name, batch_mode=LogicBatchMethod.Sum)
 
     @property
+    def Count(self) -> Bench1:
+        return Bench1(name=self._name, batch_mode=LogicBatchMethod.Count)
+
+    @property
     def slot0(self) -> _SlotTypeAppliances:
         return _SlotTypeAppliances(self, 0)
 
@@ -6048,6 +6194,10 @@ class _Bench3s(_BaseStructures, _Errors, _Powers):
     @property
     def Sum(self) -> Bench3:
         return Bench3(name=self._name, batch_mode=LogicBatchMethod.Sum)
+
+    @property
+    def Count(self) -> Bench3:
+        return Bench3(name=self._name, batch_mode=LogicBatchMethod.Count)
 
     @property
     def slot0(self) -> _SlotTypeAppliances:
@@ -6114,6 +6264,10 @@ class _Bench2s(_BaseStructures, _Errors, _Powers):
         return Bench2(name=self._name, batch_mode=LogicBatchMethod.Sum)
 
     @property
+    def Count(self) -> Bench2:
+        return Bench2(name=self._name, batch_mode=LogicBatchMethod.Count)
+
+    @property
     def slot0(self) -> _SlotTypeAppliances:
         return _SlotTypeAppliances(self, 0)
 
@@ -6178,6 +6332,10 @@ class _Bench4s(_BaseStructures, _Errors, _Powers):
         return Bench4(name=self._name, batch_mode=LogicBatchMethod.Sum)
 
     @property
+    def Count(self) -> Bench4:
+        return Bench4(name=self._name, batch_mode=LogicBatchMethod.Count)
+
+    @property
     def slot0(self) -> _SlotTypeAppliances:
         return _SlotTypeAppliances(self, 0)
 
@@ -6225,6 +6383,10 @@ class _BlastDoors(_BaseStructures, _Idles, _Locks, _Modes, _Opens, _Powers, _Set
     def Sum(self) -> BlastDoor:
         return BlastDoor(name=self._name, batch_mode=LogicBatchMethod.Sum)
 
+    @property
+    def Count(self) -> BlastDoor:
+        return BlastDoor(name=self._name, batch_mode=LogicBatchMethod.Count)
+
 
 BlastDoors: _BlastDoors = _BlastDoors()
 
@@ -6266,6 +6428,10 @@ class _BlockBeds(_BaseStructures, _Activates, _Errors, _Powers):
         return BlockBed(name=self._name, batch_mode=LogicBatchMethod.Sum)
 
     @property
+    def Count(self) -> BlockBed:
+        return BlockBed(name=self._name, batch_mode=LogicBatchMethod.Count)
+
+    @property
     def slot0(self) -> _SlotTypeDataDisks:
         return _SlotTypeDataDisks(self, 0)
 
@@ -6304,6 +6470,10 @@ class _LogicButtons(_BaseStructures, _Activates, _Locks, _SettingRs):
     @property
     def Sum(self) -> LogicButton:
         return LogicButton(name=self._name, batch_mode=LogicBatchMethod.Sum)
+
+    @property
+    def Count(self) -> LogicButton:
+        return LogicButton(name=self._name, batch_mode=LogicBatchMethod.Count)
 
 
 LogicButtons: _LogicButtons = _LogicButtons()
@@ -6350,6 +6520,10 @@ class _CableAnalysizers(_BaseStructures):
         return CableAnalysizer(name=self._name, batch_mode=LogicBatchMethod.Sum)
 
     @property
+    def Count(self) -> CableAnalysizer:
+        return CableAnalysizer(name=self._name, batch_mode=LogicBatchMethod.Count)
+
+    @property
     def PowerActual(self) -> _DevicesLogicType:
         return _DevicesLogicType(self, _LT.PowerActual)
 
@@ -6392,6 +6566,10 @@ class _Cameras(_BaseStructures, _Modes, _Ons):
     @property
     def Sum(self) -> Camera:
         return Camera(name=self._name, batch_mode=LogicBatchMethod.Sum)
+
+    @property
+    def Count(self) -> Camera:
+        return Camera(name=self._name, batch_mode=LogicBatchMethod.Count)
 
 
 Cameras: _Cameras = _Cameras()
@@ -6862,6 +7040,10 @@ class _CargoStorageMediums(
     @property
     def Sum(self) -> CargoStorageMedium:
         return CargoStorageMedium(name=self._name, batch_mode=LogicBatchMethod.Sum)
+
+    @property
+    def Count(self) -> CargoStorageMedium:
+        return CargoStorageMedium(name=self._name, batch_mode=LogicBatchMethod.Count)
 
     @property
     def slot0(self) -> _SlotTypeDataDisks:
@@ -7550,6 +7732,10 @@ class _CargoStorageSmalls(
         return CargoStorageSmall(name=self._name, batch_mode=LogicBatchMethod.Sum)
 
     @property
+    def Count(self) -> CargoStorageSmall:
+        return CargoStorageSmall(name=self._name, batch_mode=LogicBatchMethod.Count)
+
+    @property
     def slot0(self) -> _SlotTypeDataDisks:
         return _SlotTypeDataDisks(self, 0)
 
@@ -7832,6 +8018,10 @@ class _Centrifuges(
         return Centrifuge(name=self._name, batch_mode=LogicBatchMethod.Sum)
 
     @property
+    def Count(self) -> Centrifuge:
+        return Centrifuge(name=self._name, batch_mode=LogicBatchMethod.Count)
+
+    @property
     def slot0(self) -> _SlotTypeDataDisks:
         return _SlotTypeDataDisks(self, 0)
 
@@ -7911,6 +8101,12 @@ class _ChuteDigitalFlipFlopSplitterLefts(_BaseStructures, _Modes, _Powers, _Sett
     def Sum(self) -> ChuteDigitalFlipFlopSplitterLeft:
         return ChuteDigitalFlipFlopSplitterLeft(
             name=self._name, batch_mode=LogicBatchMethod.Sum
+        )
+
+    @property
+    def Count(self) -> ChuteDigitalFlipFlopSplitterLeft:
+        return ChuteDigitalFlipFlopSplitterLeft(
+            name=self._name, batch_mode=LogicBatchMethod.Count
         )
 
     @property
@@ -8006,6 +8202,12 @@ class _ChuteDigitalFlipFlopSplitterRights(_BaseStructures, _Modes, _Powers, _Set
         )
 
     @property
+    def Count(self) -> ChuteDigitalFlipFlopSplitterRight:
+        return ChuteDigitalFlipFlopSplitterRight(
+            name=self._name, batch_mode=LogicBatchMethod.Count
+        )
+
+    @property
     def Quantity(self) -> _DevicesLogicType:
         return _DevicesLogicType(self, _LT.Quantity)
 
@@ -8086,6 +8288,10 @@ class _ChuteDigitalValveLefts(_BaseStructures, _Locks, _Opens, _Powers, _Setting
         return ChuteDigitalValveLeft(name=self._name, batch_mode=LogicBatchMethod.Sum)
 
     @property
+    def Count(self) -> ChuteDigitalValveLeft:
+        return ChuteDigitalValveLeft(name=self._name, batch_mode=LogicBatchMethod.Count)
+
+    @property
     def Quantity(self) -> _DevicesLogicType:
         return _DevicesLogicType(self, _LT.Quantity)
 
@@ -8156,6 +8362,12 @@ class _ChuteDigitalValveRights(_BaseStructures, _Locks, _Opens, _Powers, _Settin
         return ChuteDigitalValveRight(name=self._name, batch_mode=LogicBatchMethod.Sum)
 
     @property
+    def Count(self) -> ChuteDigitalValveRight:
+        return ChuteDigitalValveRight(
+            name=self._name, batch_mode=LogicBatchMethod.Count
+        )
+
+    @property
     def Quantity(self) -> _DevicesLogicType:
         return _DevicesLogicType(self, _LT.Quantity)
 
@@ -8212,6 +8424,10 @@ class _ChuteExportBins(_BaseStructures, _Errors, _Locks, _Opens, _Powers):
         return ChuteExportBin(name=self._name, batch_mode=LogicBatchMethod.Sum)
 
     @property
+    def Count(self) -> ChuteExportBin:
+        return ChuteExportBin(name=self._name, batch_mode=LogicBatchMethod.Count)
+
+    @property
     def slot0(self) -> _SlotTypeDataDisks:
         return _SlotTypeDataDisks(self, 0)
 
@@ -8258,6 +8474,10 @@ class _ChuteBins(_BaseStructures, _Errors, _Locks, _Opens, _Powers):
     @property
     def Sum(self) -> ChuteBin:
         return ChuteBin(name=self._name, batch_mode=LogicBatchMethod.Sum)
+
+    @property
+    def Count(self) -> ChuteBin:
+        return ChuteBin(name=self._name, batch_mode=LogicBatchMethod.Count)
 
     @property
     def slot0(self) -> _SlotTypeDataDisks:
@@ -8308,6 +8528,10 @@ class _ChuteInlets(_BaseStructures, _ClearMemories, _ImportCounts, _Locks):
         return ChuteInlet(name=self._name, batch_mode=LogicBatchMethod.Sum)
 
     @property
+    def Count(self) -> ChuteInlet:
+        return ChuteInlet(name=self._name, batch_mode=LogicBatchMethod.Count)
+
+    @property
     def slot0(self) -> _SlotTypeDataDisks:
         return _SlotTypeDataDisks(self, 0)
 
@@ -8356,6 +8580,10 @@ class _ChuteOutlets(
     @property
     def Sum(self) -> ChuteOutlet:
         return ChuteOutlet(name=self._name, batch_mode=LogicBatchMethod.Sum)
+
+    @property
+    def Count(self) -> ChuteOutlet:
+        return ChuteOutlet(name=self._name, batch_mode=LogicBatchMethod.Count)
 
     @property
     def slot0(self) -> _SlotTypeDataDisks:
@@ -8512,6 +8740,10 @@ class _CombustionCentrifuges(
     @property
     def Sum(self) -> CombustionCentrifuge:
         return CombustionCentrifuge(name=self._name, batch_mode=LogicBatchMethod.Sum)
+
+    @property
+    def Count(self) -> CombustionCentrifuge:
+        return CombustionCentrifuge(name=self._name, batch_mode=LogicBatchMethod.Count)
 
     @property
     def CombustionInput(self) -> _DevicesLogicType:
@@ -8726,6 +8958,10 @@ class _CombustionDeepMiners(
         return CombustionDeepMiner(name=self._name, batch_mode=LogicBatchMethod.Sum)
 
     @property
+    def Count(self) -> CombustionDeepMiner:
+        return CombustionDeepMiner(name=self._name, batch_mode=LogicBatchMethod.Count)
+
+    @property
     def CombustionInput(self) -> _DevicesLogicType:
         return _DevicesLogicType(self, _LT.CombustionInput)
 
@@ -8902,6 +9138,10 @@ class _H2Combustors(
         return H2Combustor(name=self._name, batch_mode=LogicBatchMethod.Sum)
 
     @property
+    def Count(self) -> H2Combustor:
+        return H2Combustor(name=self._name, batch_mode=LogicBatchMethod.Count)
+
+    @property
     def CombustionInput(self) -> _DevicesLogicType:
         return _DevicesLogicType(self, _LT.CombustionInput)
 
@@ -8975,6 +9215,10 @@ class _CompositeDoors(
     def Sum(self) -> CompositeDoor:
         return CompositeDoor(name=self._name, batch_mode=LogicBatchMethod.Sum)
 
+    @property
+    def Count(self) -> CompositeDoor:
+        return CompositeDoor(name=self._name, batch_mode=LogicBatchMethod.Count)
+
 
 CompositeDoors: _CompositeDoors = _CompositeDoors()
 
@@ -9008,6 +9252,10 @@ class _CompositeRollCovers(
     @property
     def Sum(self) -> CompositeRollCover:
         return CompositeRollCover(name=self._name, batch_mode=LogicBatchMethod.Sum)
+
+    @property
+    def Count(self) -> CompositeRollCover:
+        return CompositeRollCover(name=self._name, batch_mode=LogicBatchMethod.Count)
 
 
 CompositeRollCovers: _CompositeRollCovers = _CompositeRollCovers()
@@ -9051,6 +9299,12 @@ class _CompositeWindowShutterControllers(
     def Sum(self) -> CompositeWindowShutterController:
         return CompositeWindowShutterController(
             name=self._name, batch_mode=LogicBatchMethod.Sum
+        )
+
+    @property
+    def Count(self) -> CompositeWindowShutterController:
+        return CompositeWindowShutterController(
+            name=self._name, batch_mode=LogicBatchMethod.Count
         )
 
 
@@ -9104,6 +9358,12 @@ class _ComputerBigScreenWallMounteds(_BaseStructures, _Errors, _Locks, _Opens, _
         )
 
     @property
+    def Count(self) -> ComputerBigScreenWallMounted:
+        return ComputerBigScreenWallMounted(
+            name=self._name, batch_mode=LogicBatchMethod.Count
+        )
+
+    @property
     def slot0(self) -> _SlotTypeDataDisks:
         return _SlotTypeDataDisks(self, 0)
 
@@ -9152,6 +9412,10 @@ class _ComputerBigScreens(_BaseStructures, _Errors, _Locks, _Opens, _Powers):
     @property
     def Sum(self) -> ComputerBigScreen:
         return ComputerBigScreen(name=self._name, batch_mode=LogicBatchMethod.Sum)
+
+    @property
+    def Count(self) -> ComputerBigScreen:
+        return ComputerBigScreen(name=self._name, batch_mode=LogicBatchMethod.Count)
 
     @property
     def slot0(self) -> _SlotTypeDataDisks:
@@ -9208,6 +9472,10 @@ class _Computers(_BaseStructures, _Errors, _Locks, _Opens, _Powers):
     @property
     def Sum(self) -> Computer:
         return Computer(name=self._name, batch_mode=LogicBatchMethod.Sum)
+
+    @property
+    def Count(self) -> Computer:
+        return Computer(name=self._name, batch_mode=LogicBatchMethod.Count)
 
     @property
     def slot0(self) -> _SlotTypeDataDisks:
@@ -9272,6 +9540,10 @@ class _ComputerUprights(_BaseStructures, _Errors, _Locks, _Opens, _Powers):
     @property
     def Sum(self) -> ComputerUpright:
         return ComputerUpright(name=self._name, batch_mode=LogicBatchMethod.Sum)
+
+    @property
+    def Count(self) -> ComputerUpright:
+        return ComputerUpright(name=self._name, batch_mode=LogicBatchMethod.Count)
 
     @property
     def slot0(self) -> _SlotTypeDataDisks:
@@ -9345,6 +9617,10 @@ class _CondensationChambers(
     def Sum(self) -> CondensationChamber:
         return CondensationChamber(name=self._name, batch_mode=LogicBatchMethod.Sum)
 
+    @property
+    def Count(self) -> CondensationChamber:
+        return CondensationChamber(name=self._name, batch_mode=LogicBatchMethod.Count)
+
 
 CondensationChambers: _CondensationChambers = _CondensationChambers()
 
@@ -9376,6 +9652,10 @@ class _CondensationValves(_BaseStructures, _Maximums, _Ons, _Ratios, _SettingWs)
     @property
     def Sum(self) -> CondensationValve:
         return CondensationValve(name=self._name, batch_mode=LogicBatchMethod.Sum)
+
+    @property
+    def Count(self) -> CondensationValve:
+        return CondensationValve(name=self._name, batch_mode=LogicBatchMethod.Count)
 
 
 CondensationValves: _CondensationValves = _CondensationValves()
@@ -9416,6 +9696,10 @@ class _Consoles(_BaseStructures, _Activates, _Errors, _Opens, _Powers, _SettingR
     @property
     def Sum(self) -> Console:
         return Console(name=self._name, batch_mode=LogicBatchMethod.Sum)
+
+    @property
+    def Count(self) -> Console:
+        return Console(name=self._name, batch_mode=LogicBatchMethod.Count)
 
     @property
     def slot0(self) -> _SlotTypeCircuitboards:
@@ -9466,6 +9750,10 @@ class _ConsoleDuals(_BaseStructures, _Activates, _Errors, _Opens, _Powers, _Sett
         return ConsoleDual(name=self._name, batch_mode=LogicBatchMethod.Sum)
 
     @property
+    def Count(self) -> ConsoleDual:
+        return ConsoleDual(name=self._name, batch_mode=LogicBatchMethod.Count)
+
+    @property
     def slot0(self) -> _SlotTypeCircuitboards:
         return _SlotTypeCircuitboards(self, 0)
 
@@ -9514,6 +9802,10 @@ class _ConsoleMonitors(
     @property
     def Sum(self) -> ConsoleMonitor:
         return ConsoleMonitor(name=self._name, batch_mode=LogicBatchMethod.Sum)
+
+    @property
+    def Count(self) -> ConsoleMonitor:
+        return ConsoleMonitor(name=self._name, batch_mode=LogicBatchMethod.Count)
 
     @property
     def slot0(self) -> _SlotTypeCircuitboards:
@@ -9578,6 +9870,10 @@ class _CornerLockers(_BaseStructures, _Locks, _Opens):
     @property
     def Sum(self) -> CornerLocker:
         return CornerLocker(name=self._name, batch_mode=LogicBatchMethod.Sum)
+
+    @property
+    def Count(self) -> CornerLocker:
+        return CornerLocker(name=self._name, batch_mode=LogicBatchMethod.Count)
 
     @property
     def slot0(self) -> _SlotTypeDataDisks:
@@ -9647,6 +9943,12 @@ class _PassthroughHeatExchangerGasToGass(
             name=self._name, batch_mode=LogicBatchMethod.Sum
         )
 
+    @property
+    def Count(self) -> PassthroughHeatExchangerGasToGas:
+        return PassthroughHeatExchangerGasToGas(
+            name=self._name, batch_mode=LogicBatchMethod.Count
+        )
+
 
 PassthroughHeatExchangerGasToGass: _PassthroughHeatExchangerGasToGass = (
     _PassthroughHeatExchangerGasToGass()
@@ -9691,6 +9993,12 @@ class _PassthroughHeatExchangerGasToLiquids(
     def Sum(self) -> PassthroughHeatExchangerGasToLiquid:
         return PassthroughHeatExchangerGasToLiquid(
             name=self._name, batch_mode=LogicBatchMethod.Sum
+        )
+
+    @property
+    def Count(self) -> PassthroughHeatExchangerGasToLiquid:
+        return PassthroughHeatExchangerGasToLiquid(
+            name=self._name, batch_mode=LogicBatchMethod.Count
         )
 
 
@@ -9739,6 +10047,12 @@ class _PassthroughHeatExchangerLiquidToLiquids(
     def Sum(self) -> PassthroughHeatExchangerLiquidToLiquid:
         return PassthroughHeatExchangerLiquidToLiquid(
             name=self._name, batch_mode=LogicBatchMethod.Sum
+        )
+
+    @property
+    def Count(self) -> PassthroughHeatExchangerLiquidToLiquid:
+        return PassthroughHeatExchangerLiquidToLiquid(
+            name=self._name, batch_mode=LogicBatchMethod.Count
         )
 
 
@@ -9818,6 +10132,10 @@ class _CryoTubeHorizontals(
     @property
     def Sum(self) -> CryoTubeHorizontal:
         return CryoTubeHorizontal(name=self._name, batch_mode=LogicBatchMethod.Sum)
+
+    @property
+    def Count(self) -> CryoTubeHorizontal:
+        return CryoTubeHorizontal(name=self._name, batch_mode=LogicBatchMethod.Count)
 
     @property
     def EntityState(self) -> _DevicesLogicType:
@@ -9916,6 +10234,10 @@ class _CryoTubeVerticals(
         return CryoTubeVertical(name=self._name, batch_mode=LogicBatchMethod.Sum)
 
     @property
+    def Count(self) -> CryoTubeVertical:
+        return CryoTubeVertical(name=self._name, batch_mode=LogicBatchMethod.Count)
+
+    @property
     def EntityState(self) -> _DevicesLogicType:
         return _DevicesLogicType(self, _LT.EntityState)
 
@@ -9974,6 +10296,10 @@ class _DaylightSensors(_BaseStructures, _Activates, _Modes, _Ons, _Verticals):
     @property
     def Sum(self) -> DaylightSensor:
         return DaylightSensor(name=self._name, batch_mode=LogicBatchMethod.Sum)
+
+    @property
+    def Count(self) -> DaylightSensor:
+        return DaylightSensor(name=self._name, batch_mode=LogicBatchMethod.Count)
 
     @property
     def SolarAngle(self) -> _DevicesLogicType:
@@ -10044,6 +10370,10 @@ class _DeepMiners(
         return DeepMiner(name=self._name, batch_mode=LogicBatchMethod.Sum)
 
     @property
+    def Count(self) -> DeepMiner:
+        return DeepMiner(name=self._name, batch_mode=LogicBatchMethod.Count)
+
+    @property
     def slot0(self) -> _SlotTypeDataDisks:
         return _SlotTypeDataDisks(self, 0)
 
@@ -10092,6 +10422,10 @@ class _DeviceStepUnits(_BaseStructures, _Activates, _Errors, _Modes, _Powers):
         return DeviceStepUnit(name=self._name, batch_mode=LogicBatchMethod.Sum)
 
     @property
+    def Count(self) -> DeviceStepUnit:
+        return DeviceStepUnit(name=self._name, batch_mode=LogicBatchMethod.Count)
+
+    @property
     def Volume(self) -> _DevicesLogicType:
         return _DevicesLogicType(self, _LT.Volume)
 
@@ -10131,6 +10465,10 @@ class _LogicDials(_BaseStructures, _Modes, _Ratios, _SettingWs):
     def Sum(self) -> LogicDial:
         return LogicDial(name=self._name, batch_mode=LogicBatchMethod.Sum)
 
+    @property
+    def Count(self) -> LogicDial:
+        return LogicDial(name=self._name, batch_mode=LogicBatchMethod.Count)
+
 
 LogicDials: _LogicDials = _LogicDials()
 
@@ -10165,6 +10503,10 @@ class _DigitalValves(
     def Sum(self) -> DigitalValve:
         return DigitalValve(name=self._name, batch_mode=LogicBatchMethod.Sum)
 
+    @property
+    def Count(self) -> DigitalValve:
+        return DigitalValve(name=self._name, batch_mode=LogicBatchMethod.Count)
+
 
 DigitalValves: _DigitalValves = _DigitalValves()
 
@@ -10197,6 +10539,10 @@ class _DiodeSlides(_BaseStructures, _Locks, _Powers, _SettingWs):
     def Sum(self) -> DiodeSlide:
         return DiodeSlide(name=self._name, batch_mode=LogicBatchMethod.Sum)
 
+    @property
+    def Count(self) -> DiodeSlide:
+        return DiodeSlide(name=self._name, batch_mode=LogicBatchMethod.Count)
+
 
 DiodeSlides: _DiodeSlides = _DiodeSlides()
 
@@ -10228,6 +10574,10 @@ class _DrinkingFountain2x1s(_BaseStructures, _Errors, _Powers):
     @property
     def Sum(self) -> DrinkingFountain2x1:
         return DrinkingFountain2x1(name=self._name, batch_mode=LogicBatchMethod.Sum)
+
+    @property
+    def Count(self) -> DrinkingFountain2x1:
+        return DrinkingFountain2x1(name=self._name, batch_mode=LogicBatchMethod.Count)
 
 
 DrinkingFountain2x1s: _DrinkingFountain2x1s = _DrinkingFountain2x1s()
@@ -10276,6 +10626,10 @@ class _SleeperVerticalDroids(
     @property
     def Sum(self) -> SleeperVerticalDroid:
         return SleeperVerticalDroid(name=self._name, batch_mode=LogicBatchMethod.Sum)
+
+    @property
+    def Count(self) -> SleeperVerticalDroid:
+        return SleeperVerticalDroid(name=self._name, batch_mode=LogicBatchMethod.Count)
 
     @property
     def slot0(self) -> _SlotTypeDataDisks:
@@ -10328,6 +10682,10 @@ class _DynamicGPRs(_BaseStructures, _Activates, _Ons):
     @property
     def Sum(self) -> DynamicGPR:
         return DynamicGPR(name=self._name, batch_mode=LogicBatchMethod.Sum)
+
+    @property
+    def Count(self) -> DynamicGPR:
+        return DynamicGPR(name=self._name, batch_mode=LogicBatchMethod.Count)
 
     @property
     def Power(self) -> _DevicesLogicType:
@@ -10438,6 +10796,10 @@ class _Electrolyzers(
     @property
     def Sum(self) -> Electrolyzer:
         return Electrolyzer(name=self._name, batch_mode=LogicBatchMethod.Sum)
+
+    @property
+    def Count(self) -> Electrolyzer:
+        return Electrolyzer(name=self._name, batch_mode=LogicBatchMethod.Count)
 
     @property
     def CombustionInput(self) -> _DevicesLogicType:
@@ -10560,6 +10922,10 @@ class _ElectronicsPrinters(
         return ElectronicsPrinter(name=self._name, batch_mode=LogicBatchMethod.Sum)
 
     @property
+    def Count(self) -> ElectronicsPrinter:
+        return ElectronicsPrinter(name=self._name, batch_mode=LogicBatchMethod.Count)
+
+    @property
     def CompletionRatio(self) -> _DevicesLogicType:
         return _DevicesLogicType(self, _LT.CompletionRatio)
 
@@ -10640,6 +11006,12 @@ class _ElevatorLevelIndustrials(
         return ElevatorLevelIndustrial(name=self._name, batch_mode=LogicBatchMethod.Sum)
 
     @property
+    def Count(self) -> ElevatorLevelIndustrial:
+        return ElevatorLevelIndustrial(
+            name=self._name, batch_mode=LogicBatchMethod.Count
+        )
+
+    @property
     def ElevatorLevel(self) -> _DevicesLogicType:
         return _DevicesLogicType(self, _LT.ElevatorLevel)
 
@@ -10704,6 +11076,10 @@ class _ElevatorLevelFronts(
     @property
     def Sum(self) -> ElevatorLevelFront:
         return ElevatorLevelFront(name=self._name, batch_mode=LogicBatchMethod.Sum)
+
+    @property
+    def Count(self) -> ElevatorLevelFront:
+        return ElevatorLevelFront(name=self._name, batch_mode=LogicBatchMethod.Count)
 
     @property
     def ElevatorLevel(self) -> _DevicesLogicType:
@@ -10776,6 +11152,12 @@ class _ElevatorShaftIndustrials(_BaseStructures):
         return ElevatorShaftIndustrial(name=self._name, batch_mode=LogicBatchMethod.Sum)
 
     @property
+    def Count(self) -> ElevatorShaftIndustrial:
+        return ElevatorShaftIndustrial(
+            name=self._name, batch_mode=LogicBatchMethod.Count
+        )
+
+    @property
     def ElevatorLevel(self) -> _DevicesLogicType:
         return _DevicesLogicType(self, _LT.ElevatorLevel)
 
@@ -10838,6 +11220,10 @@ class _ElevatorShafts(_BaseStructures, _Powers):
     @property
     def Sum(self) -> ElevatorShaft:
         return ElevatorShaft(name=self._name, batch_mode=LogicBatchMethod.Sum)
+
+    @property
+    def Count(self) -> ElevatorShaft:
+        return ElevatorShaft(name=self._name, batch_mode=LogicBatchMethod.Count)
 
     @property
     def ElevatorLevel(self) -> _DevicesLogicType:
@@ -10906,6 +11292,10 @@ class _EmergencyAngleGrinders(_BaseStructures, _Activates):
         return EmergencyAngleGrinder(name=self._name, batch_mode=LogicBatchMethod.Sum)
 
     @property
+    def Count(self) -> EmergencyAngleGrinder:
+        return EmergencyAngleGrinder(name=self._name, batch_mode=LogicBatchMethod.Count)
+
+    @property
     def Power(self) -> _DevicesLogicType:
         return _DevicesLogicType(self, _LT.Power)
 
@@ -10962,6 +11352,10 @@ class _EmergencyArcWelders(_BaseStructures, _Activates):
         return EmergencyArcWelder(name=self._name, batch_mode=LogicBatchMethod.Sum)
 
     @property
+    def Count(self) -> EmergencyArcWelder:
+        return EmergencyArcWelder(name=self._name, batch_mode=LogicBatchMethod.Count)
+
+    @property
     def Power(self) -> _DevicesLogicType:
         return _DevicesLogicType(self, _LT.Power)
 
@@ -11016,6 +11410,10 @@ class _EmergencyDrills(_BaseStructures, _Activates):
     @property
     def Sum(self) -> EmergencyDrill:
         return EmergencyDrill(name=self._name, batch_mode=LogicBatchMethod.Sum)
+
+    @property
+    def Count(self) -> EmergencyDrill:
+        return EmergencyDrill(name=self._name, batch_mode=LogicBatchMethod.Count)
 
     @property
     def Power(self) -> _DevicesLogicType:
@@ -11098,6 +11496,10 @@ class _EmergencySpaceHelmets(
     @property
     def Sum(self) -> EmergencySpaceHelmet:
         return EmergencySpaceHelmet(name=self._name, batch_mode=LogicBatchMethod.Sum)
+
+    @property
+    def Count(self) -> EmergencySpaceHelmet:
+        return EmergencySpaceHelmet(name=self._name, batch_mode=LogicBatchMethod.Count)
 
     @property
     def Flush(self) -> _DevicesLogicType:
@@ -11183,6 +11585,10 @@ class _EvaporationChambers(
     def Sum(self) -> EvaporationChamber:
         return EvaporationChamber(name=self._name, batch_mode=LogicBatchMethod.Sum)
 
+    @property
+    def Count(self) -> EvaporationChamber:
+        return EvaporationChamber(name=self._name, batch_mode=LogicBatchMethod.Count)
+
 
 EvaporationChambers: _EvaporationChambers = _EvaporationChambers()
 
@@ -11214,6 +11620,10 @@ class _ExpansionValves(_BaseStructures, _Maximums, _Ons, _Ratios, _SettingWs):
     @property
     def Sum(self) -> ExpansionValve:
         return ExpansionValve(name=self._name, batch_mode=LogicBatchMethod.Sum)
+
+    @property
+    def Count(self) -> ExpansionValve:
+        return ExpansionValve(name=self._name, batch_mode=LogicBatchMethod.Count)
 
 
 ExpansionValves: _ExpansionValves = _ExpansionValves()
@@ -11454,6 +11864,10 @@ class _Fermenters(
     @property
     def Sum(self) -> Fermenter:
         return Fermenter(name=self._name, batch_mode=LogicBatchMethod.Sum)
+
+    @property
+    def Count(self) -> Fermenter:
+        return Fermenter(name=self._name, batch_mode=LogicBatchMethod.Count)
 
     @property
     def CombustionInput(self) -> _DevicesLogicType:
@@ -11758,6 +12172,10 @@ class _Filtrations(
         return Filtration(name=self._name, batch_mode=LogicBatchMethod.Sum)
 
     @property
+    def Count(self) -> Filtration:
+        return Filtration(name=self._name, batch_mode=LogicBatchMethod.Count)
+
+    @property
     def CombustionInput(self) -> _DevicesLogicType:
         return _DevicesLogicType(self, _LT.CombustionInput)
 
@@ -11944,6 +12362,10 @@ class _FiltrationLiquids(
         return FiltrationLiquid(name=self._name, batch_mode=LogicBatchMethod.Sum)
 
     @property
+    def Count(self) -> FiltrationLiquid:
+        return FiltrationLiquid(name=self._name, batch_mode=LogicBatchMethod.Count)
+
+    @property
     def CombustionInput(self) -> _DevicesLogicType:
         return _DevicesLogicType(self, _LT.CombustionInput)
 
@@ -12039,6 +12461,10 @@ class _FlashingLights(_BaseStructures, _Locks, _Powers):
     def Sum(self) -> FlashingLight:
         return FlashingLight(name=self._name, batch_mode=LogicBatchMethod.Sum)
 
+    @property
+    def Count(self) -> FlashingLight:
+        return FlashingLight(name=self._name, batch_mode=LogicBatchMethod.Count)
+
 
 FlashingLights: _FlashingLights = _FlashingLights()
 
@@ -12082,6 +12508,10 @@ class _Flashlights(_BaseStructures, _Modes, _Ons):
     @property
     def Sum(self) -> Flashlight:
         return Flashlight(name=self._name, batch_mode=LogicBatchMethod.Sum)
+
+    @property
+    def Count(self) -> Flashlight:
+        return Flashlight(name=self._name, batch_mode=LogicBatchMethod.Count)
 
     @property
     def Power(self) -> _DevicesLogicType:
@@ -12308,6 +12738,10 @@ class _FridgeBigs(
     @property
     def Sum(self) -> FridgeBig:
         return FridgeBig(name=self._name, batch_mode=LogicBatchMethod.Sum)
+
+    @property
+    def Count(self) -> FridgeBig:
+        return FridgeBig(name=self._name, batch_mode=LogicBatchMethod.Count)
 
     @property
     def CombustionOutput(self) -> _DevicesLogicType:
@@ -12628,6 +13062,10 @@ class _FridgeSmalls(
         return FridgeSmall(name=self._name, batch_mode=LogicBatchMethod.Sum)
 
     @property
+    def Count(self) -> FridgeSmall:
+        return FridgeSmall(name=self._name, batch_mode=LogicBatchMethod.Count)
+
+    @property
     def CombustionOutput(self) -> _DevicesLogicType:
         return _DevicesLogicType(self, _LT.CombustionOutput)
 
@@ -12820,6 +13258,10 @@ class _Furnaces(
         return Furnace(name=self._name, batch_mode=LogicBatchMethod.Sum)
 
     @property
+    def Count(self) -> Furnace:
+        return Furnace(name=self._name, batch_mode=LogicBatchMethod.Count)
+
+    @property
     def RecipeHash(self) -> _DevicesLogicType:
         return _DevicesLogicType(self, _LT.RecipeHash)
 
@@ -12994,6 +13436,12 @@ class _LargeRocketGasFuelTanks(
     @property
     def Sum(self) -> LargeRocketGasFuelTank:
         return LargeRocketGasFuelTank(name=self._name, batch_mode=LogicBatchMethod.Sum)
+
+    @property
+    def Count(self) -> LargeRocketGasFuelTank:
+        return LargeRocketGasFuelTank(
+            name=self._name, batch_mode=LogicBatchMethod.Count
+        )
 
     @property
     def CombustionOutput(self) -> _DevicesLogicType:
@@ -13252,6 +13700,12 @@ class _MediumRocketGasFuelTanks(
         return MediumRocketGasFuelTank(name=self._name, batch_mode=LogicBatchMethod.Sum)
 
     @property
+    def Count(self) -> MediumRocketGasFuelTank:
+        return MediumRocketGasFuelTank(
+            name=self._name, batch_mode=LogicBatchMethod.Count
+        )
+
+    @property
     def CombustionOutput(self) -> _DevicesLogicType:
         return _DevicesLogicType(self, _LT.CombustionOutput)
 
@@ -13502,6 +13956,10 @@ class _CapsuleTankGass(
         return CapsuleTankGas(name=self._name, batch_mode=LogicBatchMethod.Sum)
 
     @property
+    def Count(self) -> CapsuleTankGas:
+        return CapsuleTankGas(name=self._name, batch_mode=LogicBatchMethod.Count)
+
+    @property
     def CombustionOutput(self) -> _DevicesLogicType:
         return _DevicesLogicType(self, _LT.CombustionOutput)
 
@@ -13658,6 +14116,10 @@ class _GasGenerators(
         return GasGenerator(name=self._name, batch_mode=LogicBatchMethod.Sum)
 
     @property
+    def Count(self) -> GasGenerator:
+        return GasGenerator(name=self._name, batch_mode=LogicBatchMethod.Count)
+
+    @property
     def PowerGeneration(self) -> _DevicesLogicType:
         return _DevicesLogicType(self, _LT.PowerGeneration)
 
@@ -13726,6 +14188,10 @@ class _GasMasks(_BaseStructures, _BaseGass, _Combustions, _Temperatures):
         return GasMask(name=self._name, batch_mode=LogicBatchMethod.Sum)
 
     @property
+    def Count(self) -> GasMask:
+        return GasMask(name=self._name, batch_mode=LogicBatchMethod.Count)
+
+    @property
     def Flush(self) -> _DevicesLogicType:
         return _DevicesLogicType(self, _LT.Flush)
 
@@ -13791,6 +14257,10 @@ class _GasMixers(
     def Sum(self) -> GasMixer:
         return GasMixer(name=self._name, batch_mode=LogicBatchMethod.Sum)
 
+    @property
+    def Count(self) -> GasMixer:
+        return GasMixer(name=self._name, batch_mode=LogicBatchMethod.Count)
+
 
 GasMixers: _GasMixers = _GasMixers()
 
@@ -13826,6 +14296,10 @@ class _GasSensors(_BaseStructures, _BaseGass, _Combustions, _Temperatures):
     @property
     def Sum(self) -> GasSensor:
         return GasSensor(name=self._name, batch_mode=LogicBatchMethod.Sum)
+
+    @property
+    def Count(self) -> GasSensor:
+        return GasSensor(name=self._name, batch_mode=LogicBatchMethod.Count)
 
     @property
     def VolumeOfLiquid(self) -> _DevicesLogicType:
@@ -13870,6 +14344,10 @@ class _GasTankStorages(_BaseStructures, _BaseGass, _Quantities, _Temperatures):
     @property
     def Sum(self) -> GasTankStorage:
         return GasTankStorage(name=self._name, batch_mode=LogicBatchMethod.Sum)
+
+    @property
+    def Count(self) -> GasTankStorage:
+        return GasTankStorage(name=self._name, batch_mode=LogicBatchMethod.Count)
 
     @property
     def slot0(self) -> _SlotTypeGasCanisters:
@@ -13926,6 +14404,10 @@ class _SolidFuelGenerators(
         return SolidFuelGenerator(name=self._name, batch_mode=LogicBatchMethod.Sum)
 
     @property
+    def Count(self) -> SolidFuelGenerator:
+        return SolidFuelGenerator(name=self._name, batch_mode=LogicBatchMethod.Count)
+
+    @property
     def PowerGeneration(self) -> _DevicesLogicType:
         return _DevicesLogicType(self, _LT.PowerGeneration)
 
@@ -13969,6 +14451,10 @@ class _GlassDoors(_BaseStructures, _Idles, _Locks, _Modes, _Opens, _Powers, _Set
     def Sum(self) -> GlassDoor:
         return GlassDoor(name=self._name, batch_mode=LogicBatchMethod.Sum)
 
+    @property
+    def Count(self) -> GlassDoor:
+        return GlassDoor(name=self._name, batch_mode=LogicBatchMethod.Count)
+
 
 GlassDoors: _GlassDoors = _GlassDoors()
 
@@ -14000,6 +14486,10 @@ class _GrowLights(_BaseStructures, _Locks, _Powers):
     @property
     def Sum(self) -> GrowLight:
         return GrowLight(name=self._name, batch_mode=LogicBatchMethod.Sum)
+
+    @property
+    def Count(self) -> GrowLight:
+        return GrowLight(name=self._name, batch_mode=LogicBatchMethod.Count)
 
 
 GrowLights: _GrowLights = _GrowLights()
@@ -14064,6 +14554,10 @@ class _SuitHelmetHARMs(
     @property
     def Sum(self) -> SuitHelmetHARM:
         return SuitHelmetHARM(name=self._name, batch_mode=LogicBatchMethod.Sum)
+
+    @property
+    def Count(self) -> SuitHelmetHARM:
+        return SuitHelmetHARM(name=self._name, batch_mode=LogicBatchMethod.Count)
 
     @property
     def Flush(self) -> _DevicesLogicType:
@@ -14352,6 +14846,10 @@ class _SuitHARMs(
         return SuitHARM(name=self._name, batch_mode=LogicBatchMethod.Sum)
 
     @property
+    def Count(self) -> SuitHARM:
+        return SuitHARM(name=self._name, batch_mode=LogicBatchMethod.Count)
+
+    @property
     def AirRelease(self) -> _DevicesLogicType:
         return _DevicesLogicType(self, _LT.AirRelease)
 
@@ -14604,6 +15102,10 @@ class _Drills(_BaseStructures, _Activates):
         return Drill(name=self._name, batch_mode=LogicBatchMethod.Sum)
 
     @property
+    def Count(self) -> Drill:
+        return Drill(name=self._name, batch_mode=LogicBatchMethod.Count)
+
+    @property
     def Power(self) -> _DevicesLogicType:
         return _DevicesLogicType(self, _LT.Power)
 
@@ -14668,6 +15170,10 @@ class _Tablets(_BaseStructures, _Errors, _Ons):
         return Tablet(name=self._name, batch_mode=LogicBatchMethod.Sum)
 
     @property
+    def Count(self) -> Tablet:
+        return Tablet(name=self._name, batch_mode=LogicBatchMethod.Count)
+
+    @property
     def Power(self) -> _DevicesLogicType:
         return _DevicesLogicType(self, _LT.Power)
 
@@ -14730,6 +15236,10 @@ class _HardHats(_BaseStructures, _Ons):
     @property
     def Sum(self) -> HardHat:
         return HardHat(name=self._name, batch_mode=LogicBatchMethod.Sum)
+
+    @property
+    def Count(self) -> HardHat:
+        return HardHat(name=self._name, batch_mode=LogicBatchMethod.Count)
 
     @property
     def Power(self) -> _DevicesLogicType:
@@ -14968,6 +15478,10 @@ class _HardSuits(
     @property
     def Sum(self) -> HardSuit:
         return HardSuit(name=self._name, batch_mode=LogicBatchMethod.Sum)
+
+    @property
+    def Count(self) -> HardSuit:
+        return HardSuit(name=self._name, batch_mode=LogicBatchMethod.Count)
 
     @property
     def AirRelease(self) -> _DevicesLogicType:
@@ -15210,6 +15724,10 @@ class _HardsuitHelmets(
         return HardsuitHelmet(name=self._name, batch_mode=LogicBatchMethod.Sum)
 
     @property
+    def Count(self) -> HardsuitHelmet:
+        return HardsuitHelmet(name=self._name, batch_mode=LogicBatchMethod.Count)
+
+    @property
     def Flush(self) -> _DevicesLogicType:
         return _DevicesLogicType(self, _LT.Flush)
 
@@ -15332,6 +15850,10 @@ class _HardJetpacks(_BaseStructures, _Activates, _Ons):
     @property
     def Sum(self) -> HardJetpack:
         return HardJetpack(name=self._name, batch_mode=LogicBatchMethod.Sum)
+
+    @property
+    def Count(self) -> HardJetpack:
+        return HardJetpack(name=self._name, batch_mode=LogicBatchMethod.Count)
 
     @property
     def slot0(self) -> _SlotTypeAirTanks:
@@ -15490,6 +16012,10 @@ class _Harvies(
         return Harvie(name=self._name, batch_mode=LogicBatchMethod.Sum)
 
     @property
+    def Count(self) -> Harvie:
+        return Harvie(name=self._name, batch_mode=LogicBatchMethod.Count)
+
+    @property
     def Harvest(self) -> _DevicesLogicType:
         return _DevicesLogicType(self, _LT.Harvest)
 
@@ -15574,6 +16100,10 @@ class _WearLamps(_BaseStructures, _Ons):
         return WearLamp(name=self._name, batch_mode=LogicBatchMethod.Sum)
 
     @property
+    def Count(self) -> WearLamp:
+        return WearLamp(name=self._name, batch_mode=LogicBatchMethod.Count)
+
+    @property
     def Power(self) -> _DevicesLogicType:
         return _DevicesLogicType(self, _LT.Power)
 
@@ -15639,6 +16169,12 @@ class _PressureFedGasEngineHeavies(
     def Sum(self) -> PressureFedGasEngineHeavy:
         return PressureFedGasEngineHeavy(
             name=self._name, batch_mode=LogicBatchMethod.Sum
+        )
+
+    @property
+    def Count(self) -> PressureFedGasEngineHeavy:
+        return PressureFedGasEngineHeavy(
+            name=self._name, batch_mode=LogicBatchMethod.Count
         )
 
     @property
@@ -15725,6 +16261,12 @@ class _PressureFedLiquidEngineHeavies(
     def Sum(self) -> PressureFedLiquidEngineHeavy:
         return PressureFedLiquidEngineHeavy(
             name=self._name, batch_mode=LogicBatchMethod.Sum
+        )
+
+    @property
+    def Count(self) -> PressureFedLiquidEngineHeavy:
+        return PressureFedLiquidEngineHeavy(
+            name=self._name, batch_mode=LogicBatchMethod.Count
         )
 
     @property
@@ -15822,6 +16364,10 @@ class _HydraulicPipeBenders(
         return HydraulicPipeBender(name=self._name, batch_mode=LogicBatchMethod.Sum)
 
     @property
+    def Count(self) -> HydraulicPipeBender:
+        return HydraulicPipeBender(name=self._name, batch_mode=LogicBatchMethod.Count)
+
+    @property
     def CompletionRatio(self) -> _DevicesLogicType:
         return _DevicesLogicType(self, _LT.CompletionRatio)
 
@@ -15892,6 +16438,10 @@ class _HydroponicsTrayDatas(_BaseStructures, _BaseGass, _Combustions, _Temperatu
     @property
     def Sum(self) -> HydroponicsTrayData:
         return HydroponicsTrayData(name=self._name, batch_mode=LogicBatchMethod.Sum)
+
+    @property
+    def Count(self) -> HydroponicsTrayData:
+        return HydroponicsTrayData(name=self._name, batch_mode=LogicBatchMethod.Count)
 
     @property
     def slot0(self) -> _SlotTypePlants:
@@ -16094,6 +16644,10 @@ class _HydroponicsStations(
         return HydroponicsStation(name=self._name, batch_mode=LogicBatchMethod.Sum)
 
     @property
+    def Count(self) -> HydroponicsStation:
+        return HydroponicsStation(name=self._name, batch_mode=LogicBatchMethod.Count)
+
+    @property
     def CombustionOutput(self) -> _DevicesLogicType:
         return _DevicesLogicType(self, _LT.CombustionOutput)
 
@@ -16278,6 +16832,10 @@ class _CircuitHousings(_BaseStructures, _Errors, _Modes, _Powers, _SettingWs):
         return CircuitHousing(name=self._name, batch_mode=LogicBatchMethod.Sum)
 
     @property
+    def Count(self) -> CircuitHousing:
+        return CircuitHousing(name=self._name, batch_mode=LogicBatchMethod.Count)
+
+    @property
     def LineNumber(self) -> _DevicesLogicType:
         return _DevicesLogicType(self, _LT.LineNumber)
 
@@ -16354,6 +16912,10 @@ class _CircuitHousingCompacts(_BaseStructures, _Errors, _Modes, _Powers, _Settin
     @property
     def Sum(self) -> CircuitHousingCompact:
         return CircuitHousingCompact(name=self._name, batch_mode=LogicBatchMethod.Sum)
+
+    @property
+    def Count(self) -> CircuitHousingCompact:
+        return CircuitHousingCompact(name=self._name, batch_mode=LogicBatchMethod.Count)
 
     @property
     def LineNumber(self) -> _DevicesLogicType:
@@ -16438,6 +17000,10 @@ class _IcarusHelmets(
     @property
     def Sum(self) -> IcarusHelmet:
         return IcarusHelmet(name=self._name, batch_mode=LogicBatchMethod.Sum)
+
+    @property
+    def Count(self) -> IcarusHelmet:
+        return IcarusHelmet(name=self._name, batch_mode=LogicBatchMethod.Count)
 
     @property
     def Flush(self) -> _DevicesLogicType:
@@ -16530,6 +17096,10 @@ class _IceCrushers(
         return IceCrusher(name=self._name, batch_mode=LogicBatchMethod.Sum)
 
     @property
+    def Count(self) -> IceCrusher:
+        return IceCrusher(name=self._name, batch_mode=LogicBatchMethod.Count)
+
+    @property
     def slot0(self) -> _SlotTypeDataDisks:
         return _SlotTypeDataDisks(self, 0)
 
@@ -16569,6 +17139,10 @@ class _Igniters(_BaseStructures, _Ons):
     def Sum(self) -> Igniter:
         return Igniter(name=self._name, batch_mode=LogicBatchMethod.Sum)
 
+    @property
+    def Count(self) -> Igniter:
+        return Igniter(name=self._name, batch_mode=LogicBatchMethod.Count)
+
 
 Igniters: _Igniters = _Igniters()
 
@@ -16605,6 +17179,10 @@ class _EmergencyButtons(
     def Sum(self) -> EmergencyButton:
         return EmergencyButton(name=self._name, batch_mode=LogicBatchMethod.Sum)
 
+    @property
+    def Count(self) -> EmergencyButton:
+        return EmergencyButton(name=self._name, batch_mode=LogicBatchMethod.Count)
+
 
 EmergencyButtons: _EmergencyButtons = _EmergencyButtons()
 
@@ -16640,6 +17218,10 @@ class _IntegratedCircuit10s(_BaseStructures):
     @property
     def Sum(self) -> IntegratedCircuit10:
         return IntegratedCircuit10(name=self._name, batch_mode=LogicBatchMethod.Sum)
+
+    @property
+    def Count(self) -> IntegratedCircuit10:
+        return IntegratedCircuit10(name=self._name, batch_mode=LogicBatchMethod.Count)
 
     @property
     def LineNumber(self) -> _DevicesLogicType:
@@ -16679,6 +17261,10 @@ class _InteriorDoorGlasss(
     def Sum(self) -> InteriorDoorGlass:
         return InteriorDoorGlass(name=self._name, batch_mode=LogicBatchMethod.Sum)
 
+    @property
+    def Count(self) -> InteriorDoorGlass:
+        return InteriorDoorGlass(name=self._name, batch_mode=LogicBatchMethod.Count)
+
 
 InteriorDoorGlasss: _InteriorDoorGlasss = _InteriorDoorGlasss()
 
@@ -16712,6 +17298,10 @@ class _InteriorDoorPaddeds(
     @property
     def Sum(self) -> InteriorDoorPadded:
         return InteriorDoorPadded(name=self._name, batch_mode=LogicBatchMethod.Sum)
+
+    @property
+    def Count(self) -> InteriorDoorPadded:
+        return InteriorDoorPadded(name=self._name, batch_mode=LogicBatchMethod.Count)
 
 
 InteriorDoorPaddeds: _InteriorDoorPaddeds = _InteriorDoorPaddeds()
@@ -16755,6 +17345,12 @@ class _InteriorDoorPaddedThins(
     def Sum(self) -> InteriorDoorPaddedThin:
         return InteriorDoorPaddedThin(name=self._name, batch_mode=LogicBatchMethod.Sum)
 
+    @property
+    def Count(self) -> InteriorDoorPaddedThin:
+        return InteriorDoorPaddedThin(
+            name=self._name, batch_mode=LogicBatchMethod.Count
+        )
+
 
 InteriorDoorPaddedThins: _InteriorDoorPaddedThins = _InteriorDoorPaddedThins()
 
@@ -16796,6 +17392,10 @@ class _InteriorDoorTriangles(
     @property
     def Sum(self) -> InteriorDoorTriangle:
         return InteriorDoorTriangle(name=self._name, batch_mode=LogicBatchMethod.Sum)
+
+    @property
+    def Count(self) -> InteriorDoorTriangle:
+        return InteriorDoorTriangle(name=self._name, batch_mode=LogicBatchMethod.Count)
 
 
 InteriorDoorTriangles: _InteriorDoorTriangles = _InteriorDoorTriangles()
@@ -16872,6 +17472,10 @@ class _JetpackBasics(_BaseStructures, _Activates, _Ons):
     @property
     def Sum(self) -> JetpackBasic:
         return JetpackBasic(name=self._name, batch_mode=LogicBatchMethod.Sum)
+
+    @property
+    def Count(self) -> JetpackBasic:
+        return JetpackBasic(name=self._name, batch_mode=LogicBatchMethod.Count)
 
     @property
     def slot0(self) -> _SlotTypeAirTanks:
@@ -16966,6 +17570,10 @@ class _Klaxons(_BaseStructures, _Modes, _Powers):
         return Klaxon(name=self._name, batch_mode=LogicBatchMethod.Sum)
 
     @property
+    def Count(self) -> Klaxon:
+        return Klaxon(name=self._name, batch_mode=LogicBatchMethod.Count)
+
+    @property
     def SoundAlert(self) -> _DevicesLogicType:
         return _DevicesLogicType(self, _LT.SoundAlert)
 
@@ -17030,6 +17638,10 @@ class _RoboticArmDocks(
     @property
     def Sum(self) -> RoboticArmDock:
         return RoboticArmDock(name=self._name, batch_mode=LogicBatchMethod.Sum)
+
+    @property
+    def Count(self) -> RoboticArmDock:
+        return RoboticArmDock(name=self._name, batch_mode=LogicBatchMethod.Count)
 
     @property
     def Extended(self) -> _DevicesLogicType:
@@ -17208,6 +17820,10 @@ class _LarreDockAtmoss(
         return LarreDockAtmos(name=self._name, batch_mode=LogicBatchMethod.Sum)
 
     @property
+    def Count(self) -> LarreDockAtmos:
+        return LarreDockAtmos(name=self._name, batch_mode=LogicBatchMethod.Count)
+
+    @property
     def CombustionInput(self) -> _DevicesLogicType:
         return _DevicesLogicType(self, _LT.CombustionInput)
 
@@ -17343,6 +17959,10 @@ class _LarreDockBypasss(_BaseStructures, _Opens, _Powers):
     def Sum(self) -> LarreDockBypass:
         return LarreDockBypass(name=self._name, batch_mode=LogicBatchMethod.Sum)
 
+    @property
+    def Count(self) -> LarreDockBypass:
+        return LarreDockBypass(name=self._name, batch_mode=LogicBatchMethod.Count)
+
 
 LarreDockBypasss: _LarreDockBypasss = _LarreDockBypasss()
 
@@ -17414,6 +18034,10 @@ class _LarreDockCargos(
     @property
     def Sum(self) -> LarreDockCargo:
         return LarreDockCargo(name=self._name, batch_mode=LogicBatchMethod.Sum)
+
+    @property
+    def Count(self) -> LarreDockCargo:
+        return LarreDockCargo(name=self._name, batch_mode=LogicBatchMethod.Count)
 
     @property
     def Extended(self) -> _DevicesLogicType:
@@ -17594,6 +18218,10 @@ class _LarreDockCollectors(
         return LarreDockCollector(name=self._name, batch_mode=LogicBatchMethod.Sum)
 
     @property
+    def Count(self) -> LarreDockCollector:
+        return LarreDockCollector(name=self._name, batch_mode=LogicBatchMethod.Count)
+
+    @property
     def Extended(self) -> _DevicesLogicType:
         return _DevicesLogicType(self, _LT.Extended)
 
@@ -17764,6 +18392,10 @@ class _LarreDockHydroponicss(
         return LarreDockHydroponics(name=self._name, batch_mode=LogicBatchMethod.Sum)
 
     @property
+    def Count(self) -> LarreDockHydroponics:
+        return LarreDockHydroponics(name=self._name, batch_mode=LogicBatchMethod.Count)
+
+    @property
     def Extended(self) -> _DevicesLogicType:
         return _DevicesLogicType(self, _LT.Extended)
 
@@ -17844,6 +18476,10 @@ class _Diodes(_BaseStructures, _Locks, _Powers):
         return Diode(name=self._name, batch_mode=LogicBatchMethod.Sum)
 
     @property
+    def Count(self) -> Diode:
+        return Diode(name=self._name, batch_mode=LogicBatchMethod.Count)
+
+    @property
     def Color(self) -> _DevicesLogicType:
         return _DevicesLogicType(self, _LT.Color)
 
@@ -17890,6 +18526,10 @@ class _ConsoleLED1x3s(_BaseStructures, _Errors, _Modes, _Powers, _SettingWs):
     @property
     def Sum(self) -> ConsoleLED1x3:
         return ConsoleLED1x3(name=self._name, batch_mode=LogicBatchMethod.Sum)
+
+    @property
+    def Count(self) -> ConsoleLED1x3:
+        return ConsoleLED1x3(name=self._name, batch_mode=LogicBatchMethod.Count)
 
     @property
     def Color(self) -> _DevicesLogicType:
@@ -17940,6 +18580,10 @@ class _ConsoleLED1x2s(_BaseStructures, _Errors, _Modes, _Powers, _SettingWs):
         return ConsoleLED1x2(name=self._name, batch_mode=LogicBatchMethod.Sum)
 
     @property
+    def Count(self) -> ConsoleLED1x2:
+        return ConsoleLED1x2(name=self._name, batch_mode=LogicBatchMethod.Count)
+
+    @property
     def Color(self) -> _DevicesLogicType:
         return _DevicesLogicType(self, _LT.Color)
 
@@ -17986,6 +18630,10 @@ class _ConsoleLED5s(_BaseStructures, _Errors, _Modes, _Powers, _SettingWs):
     @property
     def Sum(self) -> ConsoleLED5:
         return ConsoleLED5(name=self._name, batch_mode=LogicBatchMethod.Sum)
+
+    @property
+    def Count(self) -> ConsoleLED5:
+        return ConsoleLED5(name=self._name, batch_mode=LogicBatchMethod.Count)
 
     @property
     def Color(self) -> _DevicesLogicType:
@@ -18038,6 +18686,10 @@ class _Labellers(_BaseStructures, _Errors, _Ons):
     @property
     def Sum(self) -> Labeller:
         return Labeller(name=self._name, batch_mode=LogicBatchMethod.Sum)
+
+    @property
+    def Count(self) -> Labeller:
+        return Labeller(name=self._name, batch_mode=LogicBatchMethod.Count)
 
     @property
     def Power(self) -> _DevicesLogicType:
@@ -18124,6 +18776,12 @@ class _Landingpad_DataConnectionPieces(
         )
 
     @property
+    def Count(self) -> Landingpad_DataConnectionPiece:
+        return Landingpad_DataConnectionPiece(
+            name=self._name, batch_mode=LogicBatchMethod.Count
+        )
+
+    @property
     def ContactTypeId(self) -> _DevicesLogicType:
         return _DevicesLogicType(self, _LT.ContactTypeId)
 
@@ -18199,6 +18857,12 @@ class _Landingpad_GasConnectorInwardPieces(
             name=self._name, batch_mode=LogicBatchMethod.Sum
         )
 
+    @property
+    def Count(self) -> Landingpad_GasConnectorInwardPiece:
+        return Landingpad_GasConnectorInwardPiece(
+            name=self._name, batch_mode=LogicBatchMethod.Count
+        )
+
 
 Landingpad_GasConnectorInwardPieces: _Landingpad_GasConnectorInwardPieces = (
     _Landingpad_GasConnectorInwardPieces()
@@ -18261,6 +18925,12 @@ class _Landingpad_GasConnectorOutwardPieces(
     def Sum(self) -> Landingpad_GasConnectorOutwardPiece:
         return Landingpad_GasConnectorOutwardPiece(
             name=self._name, batch_mode=LogicBatchMethod.Sum
+        )
+
+    @property
+    def Count(self) -> Landingpad_GasConnectorOutwardPiece:
+        return Landingpad_GasConnectorOutwardPiece(
+            name=self._name, batch_mode=LogicBatchMethod.Count
         )
 
 
@@ -18327,6 +18997,12 @@ class _Landingpad_LiquidConnectorInwardPieces(
             name=self._name, batch_mode=LogicBatchMethod.Sum
         )
 
+    @property
+    def Count(self) -> Landingpad_LiquidConnectorInwardPiece:
+        return Landingpad_LiquidConnectorInwardPiece(
+            name=self._name, batch_mode=LogicBatchMethod.Count
+        )
+
 
 Landingpad_LiquidConnectorInwardPieces: _Landingpad_LiquidConnectorInwardPieces = (
     _Landingpad_LiquidConnectorInwardPieces()
@@ -18391,6 +19067,12 @@ class _Landingpad_LiquidConnectorOutwardPieces(
             name=self._name, batch_mode=LogicBatchMethod.Sum
         )
 
+    @property
+    def Count(self) -> Landingpad_LiquidConnectorOutwardPiece:
+        return Landingpad_LiquidConnectorOutwardPiece(
+            name=self._name, batch_mode=LogicBatchMethod.Count
+        )
+
 
 Landingpad_LiquidConnectorOutwardPieces: _Landingpad_LiquidConnectorOutwardPieces = (
     _Landingpad_LiquidConnectorOutwardPieces()
@@ -18441,6 +19123,12 @@ class _Landingpad_GasTankConnectorPieces(_BaseStructures, _Errors, _Modes, _Powe
     def Sum(self) -> Landingpad_GasTankConnectorPiece:
         return Landingpad_GasTankConnectorPiece(
             name=self._name, batch_mode=LogicBatchMethod.Sum
+        )
+
+    @property
+    def Count(self) -> Landingpad_GasTankConnectorPiece:
+        return Landingpad_GasTankConnectorPiece(
+            name=self._name, batch_mode=LogicBatchMethod.Count
         )
 
     @property
@@ -18504,6 +19192,12 @@ class _Landingpad_LiquidTankConnectorPieces(_BaseStructures, _Errors, _Modes, _P
         )
 
     @property
+    def Count(self) -> Landingpad_LiquidTankConnectorPiece:
+        return Landingpad_LiquidTankConnectorPiece(
+            name=self._name, batch_mode=LogicBatchMethod.Count
+        )
+
+    @property
     def slot0(self) -> _SlotTypeDataDisks:
         return _SlotTypeDataDisks(self, 0)
 
@@ -18551,6 +19245,12 @@ class _Landingpad_ThreshholdPieces(_BaseStructures, _Powers):
     def Sum(self) -> Landingpad_ThreshholdPiece:
         return Landingpad_ThreshholdPiece(
             name=self._name, batch_mode=LogicBatchMethod.Sum
+        )
+
+    @property
+    def Count(self) -> Landingpad_ThreshholdPiece:
+        return Landingpad_ThreshholdPiece(
+            name=self._name, batch_mode=LogicBatchMethod.Count
         )
 
 
@@ -18634,6 +19334,10 @@ class _Laptops(_BaseStructures, _Errors, _Ons):
     @property
     def Sum(self) -> Laptop:
         return Laptop(name=self._name, batch_mode=LogicBatchMethod.Sum)
+
+    @property
+    def Count(self) -> Laptop:
+        return Laptop(name=self._name, batch_mode=LogicBatchMethod.Count)
 
     @property
     def PositionX(self) -> _DevicesLogicType:
@@ -18729,6 +19433,12 @@ class _LargeDirectHeatExchangeLiquidtoLiquids(
             name=self._name, batch_mode=LogicBatchMethod.Sum
         )
 
+    @property
+    def Count(self) -> LargeDirectHeatExchangeLiquidtoLiquid:
+        return LargeDirectHeatExchangeLiquidtoLiquid(
+            name=self._name, batch_mode=LogicBatchMethod.Count
+        )
+
 
 LargeDirectHeatExchangeLiquidtoLiquids: _LargeDirectHeatExchangeLiquidtoLiquids = (
     _LargeDirectHeatExchangeLiquidtoLiquids()
@@ -18775,6 +19485,12 @@ class _LargeDirectHeatExchangeGastoGass(
             name=self._name, batch_mode=LogicBatchMethod.Sum
         )
 
+    @property
+    def Count(self) -> LargeDirectHeatExchangeGastoGas:
+        return LargeDirectHeatExchangeGastoGas(
+            name=self._name, batch_mode=LogicBatchMethod.Count
+        )
+
 
 LargeDirectHeatExchangeGastoGass: _LargeDirectHeatExchangeGastoGass = (
     _LargeDirectHeatExchangeGastoGass()
@@ -18819,6 +19535,12 @@ class _LargeDirectHeatExchangeGastoLiquids(
     def Sum(self) -> LargeDirectHeatExchangeGastoLiquid:
         return LargeDirectHeatExchangeGastoLiquid(
             name=self._name, batch_mode=LogicBatchMethod.Sum
+        )
+
+    @property
+    def Count(self) -> LargeDirectHeatExchangeGastoLiquid:
+        return LargeDirectHeatExchangeGastoLiquid(
+            name=self._name, batch_mode=LogicBatchMethod.Count
         )
 
 
@@ -18874,6 +19596,12 @@ class _LargeExtendableRadiators(
         return LargeExtendableRadiator(name=self._name, batch_mode=LogicBatchMethod.Sum)
 
     @property
+    def Count(self) -> LargeExtendableRadiator:
+        return LargeExtendableRadiator(
+            name=self._name, batch_mode=LogicBatchMethod.Count
+        )
+
+    @property
     def Horizontal(self) -> _DevicesLogicType:
         return _DevicesLogicType(self, _LT.Horizontal)
 
@@ -18914,6 +19642,10 @@ class _LargeHangerDoors(
     @property
     def Sum(self) -> LargeHangerDoor:
         return LargeHangerDoor(name=self._name, batch_mode=LogicBatchMethod.Sum)
+
+    @property
+    def Count(self) -> LargeHangerDoor:
+        return LargeHangerDoor(name=self._name, batch_mode=LogicBatchMethod.Count)
 
 
 LargeHangerDoors: _LargeHangerDoors = _LargeHangerDoors()
@@ -19004,6 +19736,10 @@ class _LargeSatelliteDishs(
         return LargeSatelliteDish(name=self._name, batch_mode=LogicBatchMethod.Sum)
 
     @property
+    def Count(self) -> LargeSatelliteDish:
+        return LargeSatelliteDish(name=self._name, batch_mode=LogicBatchMethod.Count)
+
+    @property
     def BestContactFilter(self) -> _DevicesLogicType:
         return _DevicesLogicType(self, _LT.BestContactFilter)
 
@@ -19087,6 +19823,10 @@ class _LogicSwitchs(_BaseStructures, _Locks, _Opens, _SettingRs):
     def Sum(self) -> LogicSwitch:
         return LogicSwitch(name=self._name, batch_mode=LogicBatchMethod.Sum)
 
+    @property
+    def Count(self) -> LogicSwitch:
+        return LogicSwitch(name=self._name, batch_mode=LogicBatchMethod.Count)
+
 
 LogicSwitchs: _LogicSwitchs = _LogicSwitchs()
 
@@ -19118,6 +19858,10 @@ class _LightRounds(_BaseStructures, _Locks, _Powers):
     @property
     def Sum(self) -> LightRound:
         return LightRound(name=self._name, batch_mode=LogicBatchMethod.Sum)
+
+    @property
+    def Count(self) -> LightRound:
+        return LightRound(name=self._name, batch_mode=LogicBatchMethod.Count)
 
 
 LightRounds: _LightRounds = _LightRounds()
@@ -19151,6 +19895,10 @@ class _LightRoundAngleds(_BaseStructures, _Locks, _Powers):
     def Sum(self) -> LightRoundAngled:
         return LightRoundAngled(name=self._name, batch_mode=LogicBatchMethod.Sum)
 
+    @property
+    def Count(self) -> LightRoundAngled:
+        return LightRoundAngled(name=self._name, batch_mode=LogicBatchMethod.Count)
+
 
 LightRoundAngleds: _LightRoundAngleds = _LightRoundAngleds()
 
@@ -19182,6 +19930,10 @@ class _LightRoundSmalls(_BaseStructures, _Locks, _Powers):
     @property
     def Sum(self) -> LightRoundSmall:
         return LightRoundSmall(name=self._name, batch_mode=LogicBatchMethod.Sum)
+
+    @property
+    def Count(self) -> LightRoundSmall:
+        return LightRoundSmall(name=self._name, batch_mode=LogicBatchMethod.Count)
 
 
 LightRoundSmalls: _LightRoundSmalls = _LightRoundSmalls()
@@ -19222,6 +19974,10 @@ class _RobotArmDoors(_BaseStructures, _Opens):
     @property
     def Sum(self) -> RobotArmDoor:
         return RobotArmDoor(name=self._name, batch_mode=LogicBatchMethod.Sum)
+
+    @property
+    def Count(self) -> RobotArmDoor:
+        return RobotArmDoor(name=self._name, batch_mode=LogicBatchMethod.Count)
 
     @property
     def Power(self) -> _DevicesLogicType:
@@ -19273,6 +20029,12 @@ class _BackLiquidPressureRegulators(
     def Sum(self) -> BackLiquidPressureRegulator:
         return BackLiquidPressureRegulator(
             name=self._name, batch_mode=LogicBatchMethod.Sum
+        )
+
+    @property
+    def Count(self) -> BackLiquidPressureRegulator:
+        return BackLiquidPressureRegulator(
+            name=self._name, batch_mode=LogicBatchMethod.Count
         )
 
 
@@ -19433,6 +20195,12 @@ class _LargeRocketLiquidFuelTanks(
     def Sum(self) -> LargeRocketLiquidFuelTank:
         return LargeRocketLiquidFuelTank(
             name=self._name, batch_mode=LogicBatchMethod.Sum
+        )
+
+    @property
+    def Count(self) -> LargeRocketLiquidFuelTank:
+        return LargeRocketLiquidFuelTank(
+            name=self._name, batch_mode=LogicBatchMethod.Count
         )
 
     @property
@@ -19694,6 +20462,12 @@ class _MediumRocketLiquidFuelTanks(
         )
 
     @property
+    def Count(self) -> MediumRocketLiquidFuelTank:
+        return MediumRocketLiquidFuelTank(
+            name=self._name, batch_mode=LogicBatchMethod.Count
+        )
+
+    @property
     def CombustionOutput(self) -> _DevicesLogicType:
         return _DevicesLogicType(self, _LT.CombustionOutput)
 
@@ -19946,6 +20720,10 @@ class _CapsuleTankLiquids(
         return CapsuleTankLiquid(name=self._name, batch_mode=LogicBatchMethod.Sum)
 
     @property
+    def Count(self) -> CapsuleTankLiquid:
+        return CapsuleTankLiquid(name=self._name, batch_mode=LogicBatchMethod.Count)
+
+    @property
     def CombustionOutput(self) -> _DevicesLogicType:
         return _DevicesLogicType(self, _LT.CombustionOutput)
 
@@ -20081,6 +20859,10 @@ class _WaterDigitalValves(
     def Sum(self) -> WaterDigitalValve:
         return WaterDigitalValve(name=self._name, batch_mode=LogicBatchMethod.Sum)
 
+    @property
+    def Count(self) -> WaterDigitalValve:
+        return WaterDigitalValve(name=self._name, batch_mode=LogicBatchMethod.Count)
+
 
 WaterDigitalValves: _WaterDigitalValves = _WaterDigitalValves()
 
@@ -20129,6 +20911,10 @@ class _LiquidPipeAnalyzers(
         return LiquidPipeAnalyzer(name=self._name, batch_mode=LogicBatchMethod.Sum)
 
     @property
+    def Count(self) -> LiquidPipeAnalyzer:
+        return LiquidPipeAnalyzer(name=self._name, batch_mode=LogicBatchMethod.Count)
+
+    @property
     def NetworkFault(self) -> _DevicesLogicType:
         return _DevicesLogicType(self, _LT.NetworkFault)
 
@@ -20171,6 +20957,10 @@ class _LiquidTankStorages(_BaseStructures, _BaseGass, _Quantities, _Temperatures
     @property
     def Sum(self) -> LiquidTankStorage:
         return LiquidTankStorage(name=self._name, batch_mode=LogicBatchMethod.Sum)
+
+    @property
+    def Count(self) -> LiquidTankStorage:
+        return LiquidTankStorage(name=self._name, batch_mode=LogicBatchMethod.Count)
 
     @property
     def slot0(self) -> _SlotTypeGasCanisters:
@@ -20225,6 +21015,10 @@ class _LiquidVacuums(_BaseStructures, _Activates, _Errors, _Modes, _Ons):
         return LiquidVacuum(name=self._name, batch_mode=LogicBatchMethod.Sum)
 
     @property
+    def Count(self) -> LiquidVacuum:
+        return LiquidVacuum(name=self._name, batch_mode=LogicBatchMethod.Count)
+
+    @property
     def Power(self) -> _DevicesLogicType:
         return _DevicesLogicType(self, _LT.Power)
 
@@ -20272,6 +21066,10 @@ class _LiquidVolumePumps(
     def Sum(self) -> LiquidVolumePump:
         return LiquidVolumePump(name=self._name, batch_mode=LogicBatchMethod.Sum)
 
+    @property
+    def Count(self) -> LiquidVolumePump:
+        return LiquidVolumePump(name=self._name, batch_mode=LogicBatchMethod.Count)
+
 
 LiquidVolumePumps: _LiquidVolumePumps = _LiquidVolumePumps()
 
@@ -20313,6 +21111,12 @@ class _LiquidPressureRegulators(
     @property
     def Sum(self) -> LiquidPressureRegulator:
         return LiquidPressureRegulator(name=self._name, batch_mode=LogicBatchMethod.Sum)
+
+    @property
+    def Count(self) -> LiquidPressureRegulator:
+        return LiquidPressureRegulator(
+            name=self._name, batch_mode=LogicBatchMethod.Count
+        )
 
 
 LiquidPressureRegulators: _LiquidPressureRegulators = _LiquidPressureRegulators()
@@ -20457,6 +21261,10 @@ class _WaterWallCoolers(
     @property
     def Sum(self) -> WaterWallCooler:
         return WaterWallCooler(name=self._name, batch_mode=LogicBatchMethod.Sum)
+
+    @property
+    def Count(self) -> WaterWallCooler:
+        return WaterWallCooler(name=self._name, batch_mode=LogicBatchMethod.Count)
 
     @property
     def CombustionOutput(self) -> _DevicesLogicType:
@@ -20621,6 +21429,10 @@ class _Packers(_BaseStructures, _Errors, _Locks, _Modes, _Opens, _Powers):
     @property
     def Sum(self) -> Packer:
         return Packer(name=self._name, batch_mode=LogicBatchMethod.Sum)
+
+    @property
+    def Count(self) -> Packer:
+        return Packer(name=self._name, batch_mode=LogicBatchMethod.Count)
 
     @property
     def slot0(self) -> _SlotTypeDataDisks:
@@ -20799,6 +21611,10 @@ class _StorageLockers(_BaseStructures, _Locks, _Opens):
         return StorageLocker(name=self._name, batch_mode=LogicBatchMethod.Sum)
 
     @property
+    def Count(self) -> StorageLocker:
+        return StorageLocker(name=self._name, batch_mode=LogicBatchMethod.Count)
+
+    @property
     def slot0(self) -> _SlotTypeDataDisks:
         return _SlotTypeDataDisks(self, 0)
 
@@ -20967,6 +21783,10 @@ class _LockerSmalls(_BaseStructures, _Locks, _Opens):
         return LockerSmall(name=self._name, batch_mode=LogicBatchMethod.Sum)
 
     @property
+    def Count(self) -> LockerSmall:
+        return LockerSmall(name=self._name, batch_mode=LogicBatchMethod.Count)
+
+    @property
     def slot0(self) -> _SlotTypeDataDisks:
         return _SlotTypeDataDisks(self, 0)
 
@@ -21014,6 +21834,10 @@ class _LogicCompares(_BaseStructures, _Errors, _Modes, _Powers, _SettingRs):
     def Sum(self) -> LogicCompare:
         return LogicCompare(name=self._name, batch_mode=LogicBatchMethod.Sum)
 
+    @property
+    def Count(self) -> LogicCompare:
+        return LogicCompare(name=self._name, batch_mode=LogicBatchMethod.Count)
+
 
 LogicCompares: _LogicCompares = _LogicCompares()
 
@@ -21045,6 +21869,10 @@ class _LogicGates(_BaseStructures, _Errors, _Modes, _Powers, _SettingRs):
     @property
     def Sum(self) -> LogicGate:
         return LogicGate(name=self._name, batch_mode=LogicBatchMethod.Sum)
+
+    @property
+    def Count(self) -> LogicGate:
+        return LogicGate(name=self._name, batch_mode=LogicBatchMethod.Count)
 
 
 LogicGates: _LogicGates = _LogicGates()
@@ -21078,6 +21906,10 @@ class _LogicHashGens(_BaseStructures, _SettingRs):
     def Sum(self) -> LogicHashGen:
         return LogicHashGen(name=self._name, batch_mode=LogicBatchMethod.Sum)
 
+    @property
+    def Count(self) -> LogicHashGen:
+        return LogicHashGen(name=self._name, batch_mode=LogicBatchMethod.Count)
+
 
 LogicHashGens: _LogicHashGens = _LogicHashGens()
 
@@ -21109,6 +21941,10 @@ class _LogicMaths(_BaseStructures, _Errors, _Modes, _Powers, _SettingRs):
     @property
     def Sum(self) -> LogicMath:
         return LogicMath(name=self._name, batch_mode=LogicBatchMethod.Sum)
+
+    @property
+    def Count(self) -> LogicMath:
+        return LogicMath(name=self._name, batch_mode=LogicBatchMethod.Count)
 
 
 LogicMaths: _LogicMaths = _LogicMaths()
@@ -21142,6 +21978,10 @@ class _LogicMemories(_BaseStructures, _SettingWs):
     def Sum(self) -> LogicMemory:
         return LogicMemory(name=self._name, batch_mode=LogicBatchMethod.Sum)
 
+    @property
+    def Count(self) -> LogicMemory:
+        return LogicMemory(name=self._name, batch_mode=LogicBatchMethod.Count)
+
 
 LogicMemories: _LogicMemories = _LogicMemories()
 
@@ -21174,6 +22014,10 @@ class _LogicMinMaxs(_BaseStructures, _Errors, _Modes, _Powers, _SettingRs):
     def Sum(self) -> LogicMinMax:
         return LogicMinMax(name=self._name, batch_mode=LogicBatchMethod.Sum)
 
+    @property
+    def Count(self) -> LogicMinMax:
+        return LogicMinMax(name=self._name, batch_mode=LogicBatchMethod.Count)
+
 
 LogicMinMaxs: _LogicMinMaxs = _LogicMinMaxs()
 
@@ -21205,6 +22049,10 @@ class _LogicReaders(_BaseStructures, _Errors, _Powers, _SettingRs):
     @property
     def Sum(self) -> LogicReader:
         return LogicReader(name=self._name, batch_mode=LogicBatchMethod.Sum)
+
+    @property
+    def Count(self) -> LogicReader:
+        return LogicReader(name=self._name, batch_mode=LogicBatchMethod.Count)
 
 
 LogicReaders: _LogicReaders = _LogicReaders()
@@ -21247,6 +22095,10 @@ class _LogicRocketDownlinks(_BaseStructures):
         return LogicRocketDownlink(name=self._name, batch_mode=LogicBatchMethod.Sum)
 
     @property
+    def Count(self) -> LogicRocketDownlink:
+        return LogicRocketDownlink(name=self._name, batch_mode=LogicBatchMethod.Count)
+
+    @property
     def Power(self) -> _DevicesLogicType:
         return _DevicesLogicType(self, _LT.Power)
 
@@ -21285,6 +22137,10 @@ class _LogicSelects(_BaseStructures, _Errors, _Modes, _Powers, _SettingRs):
     @property
     def Sum(self) -> LogicSelect:
         return LogicSelect(name=self._name, batch_mode=LogicBatchMethod.Sum)
+
+    @property
+    def Count(self) -> LogicSelect:
+        return LogicSelect(name=self._name, batch_mode=LogicBatchMethod.Count)
 
 
 LogicSelects: _LogicSelects = _LogicSelects()
@@ -21363,6 +22219,10 @@ class _LogicSorters(
     @property
     def Sum(self) -> LogicSorter:
         return LogicSorter(name=self._name, batch_mode=LogicBatchMethod.Sum)
+
+    @property
+    def Count(self) -> LogicSorter:
+        return LogicSorter(name=self._name, batch_mode=LogicBatchMethod.Count)
 
     @property
     def StackSize(self) -> _DevicesLogicType:
@@ -21449,6 +22309,10 @@ class _LogicStepSequencer8s(_BaseStructures, _Activates, _Errors, _Modes, _Power
         return LogicStepSequencer8(name=self._name, batch_mode=LogicBatchMethod.Sum)
 
     @property
+    def Count(self) -> LogicStepSequencer8:
+        return LogicStepSequencer8(name=self._name, batch_mode=LogicBatchMethod.Count)
+
+    @property
     def Bpm(self) -> _DevicesLogicType:
         return _DevicesLogicType(self, _LT.Bpm)
 
@@ -21504,6 +22368,10 @@ class _LogicRocketUplinks(_BaseStructures, _Errors, _Powers):
     def Sum(self) -> LogicRocketUplink:
         return LogicRocketUplink(name=self._name, batch_mode=LogicBatchMethod.Sum)
 
+    @property
+    def Count(self) -> LogicRocketUplink:
+        return LogicRocketUplink(name=self._name, batch_mode=LogicBatchMethod.Count)
+
 
 LogicRocketUplinks: _LogicRocketUplinks = _LogicRocketUplinks()
 
@@ -21543,6 +22411,10 @@ class _LogicWriters(_BaseStructures, _Errors, _Powers):
     @property
     def Sum(self) -> LogicWriter:
         return LogicWriter(name=self._name, batch_mode=LogicBatchMethod.Sum)
+
+    @property
+    def Count(self) -> LogicWriter:
+        return LogicWriter(name=self._name, batch_mode=LogicBatchMethod.Count)
 
     @property
     def ForceWrite(self) -> _DevicesLogicType:
@@ -21591,6 +22463,10 @@ class _LogicWriterSwitchs(_BaseStructures, _Activates, _Errors, _Powers):
     @property
     def Sum(self) -> LogicWriterSwitch:
         return LogicWriterSwitch(name=self._name, batch_mode=LogicBatchMethod.Sum)
+
+    @property
+    def Count(self) -> LogicWriterSwitch:
+        return LogicWriterSwitch(name=self._name, batch_mode=LogicBatchMethod.Count)
 
     @property
     def ForceWrite(self) -> _DevicesLogicType:
@@ -21649,6 +22525,10 @@ class _DeviceLfoVolumes(_BaseStructures, _Activates, _Errors, _Modes, _Powers):
         return DeviceLfoVolume(name=self._name, batch_mode=LogicBatchMethod.Sum)
 
     @property
+    def Count(self) -> DeviceLfoVolume:
+        return DeviceLfoVolume(name=self._name, batch_mode=LogicBatchMethod.Count)
+
+    @property
     def Bpm(self) -> _DevicesLogicType:
         return _DevicesLogicType(self, _LT.Bpm)
 
@@ -21696,6 +22576,10 @@ class _ManualFloorHatchs(_BaseStructures, _Idles, _Locks, _Opens, _SettingWs):
     def Sum(self) -> ManualFloorHatch:
         return ManualFloorHatch(name=self._name, batch_mode=LogicBatchMethod.Sum)
 
+    @property
+    def Count(self) -> ManualFloorHatch:
+        return ManualFloorHatch(name=self._name, batch_mode=LogicBatchMethod.Count)
+
 
 ManualFloorHatchs: _ManualFloorHatchs = _ManualFloorHatchs()
 
@@ -21730,6 +22614,10 @@ class _ManualHatchs(
     def Sum(self) -> ManualHatch:
         return ManualHatch(name=self._name, batch_mode=LogicBatchMethod.Sum)
 
+    @property
+    def Count(self) -> ManualHatch:
+        return ManualHatch(name=self._name, batch_mode=LogicBatchMethod.Count)
+
 
 ManualHatchs: _ManualHatchs = _ManualHatchs()
 
@@ -21761,6 +22649,10 @@ class _LogicMathUnaries(_BaseStructures, _Errors, _Modes, _Powers, _SettingRs):
     @property
     def Sum(self) -> LogicMathUnary:
         return LogicMathUnary(name=self._name, batch_mode=LogicBatchMethod.Sum)
+
+    @property
+    def Count(self) -> LogicMathUnary:
+        return LogicMathUnary(name=self._name, batch_mode=LogicBatchMethod.Count)
 
 
 LogicMathUnaries: _LogicMathUnaries = _LogicMathUnaries()
@@ -21802,6 +22694,12 @@ class _MediumConvectionRadiators(_BaseStructures, _Maximums, _Ratios, _SettingWs
             name=self._name, batch_mode=LogicBatchMethod.Sum
         )
 
+    @property
+    def Count(self) -> MediumConvectionRadiator:
+        return MediumConvectionRadiator(
+            name=self._name, batch_mode=LogicBatchMethod.Count
+        )
+
 
 MediumConvectionRadiators: _MediumConvectionRadiators = _MediumConvectionRadiators()
 
@@ -21839,6 +22737,12 @@ class _PassiveLargeRadiatorGass(_BaseStructures, _Maximums, _Ratios, _SettingWs)
     @property
     def Sum(self) -> PassiveLargeRadiatorGas:
         return PassiveLargeRadiatorGas(name=self._name, batch_mode=LogicBatchMethod.Sum)
+
+    @property
+    def Count(self) -> PassiveLargeRadiatorGas:
+        return PassiveLargeRadiatorGas(
+            name=self._name, batch_mode=LogicBatchMethod.Count
+        )
 
 
 PassiveLargeRadiatorGass: _PassiveLargeRadiatorGass = _PassiveLargeRadiatorGass()
@@ -21878,6 +22782,12 @@ class _PassiveLargeRadiatorLiquids(_BaseStructures, _Maximums, _Ratios, _Setting
     def Sum(self) -> PassiveLargeRadiatorLiquid:
         return PassiveLargeRadiatorLiquid(
             name=self._name, batch_mode=LogicBatchMethod.Sum
+        )
+
+    @property
+    def Count(self) -> PassiveLargeRadiatorLiquid:
+        return PassiveLargeRadiatorLiquid(
+            name=self._name, batch_mode=LogicBatchMethod.Count
         )
 
 
@@ -21924,6 +22834,12 @@ class _MediumConvectionRadiatorLiquids(_BaseStructures, _Maximums, _Ratios, _Set
             name=self._name, batch_mode=LogicBatchMethod.Sum
         )
 
+    @property
+    def Count(self) -> MediumConvectionRadiatorLiquid:
+        return MediumConvectionRadiatorLiquid(
+            name=self._name, batch_mode=LogicBatchMethod.Count
+        )
+
 
 MediumConvectionRadiatorLiquids: _MediumConvectionRadiatorLiquids = (
     _MediumConvectionRadiatorLiquids()
@@ -21960,6 +22876,10 @@ class _MediumHangerDoors(
     def Sum(self) -> MediumHangerDoor:
         return MediumHangerDoor(name=self._name, batch_mode=LogicBatchMethod.Sum)
 
+    @property
+    def Count(self) -> MediumHangerDoor:
+        return MediumHangerDoor(name=self._name, batch_mode=LogicBatchMethod.Count)
+
 
 MediumHangerDoors: _MediumHangerDoors = _MediumHangerDoors()
 
@@ -21991,6 +22911,10 @@ class _MediumRadiators(_BaseStructures, _Maximums, _Ratios, _SettingWs):
     @property
     def Sum(self) -> MediumRadiator:
         return MediumRadiator(name=self._name, batch_mode=LogicBatchMethod.Sum)
+
+    @property
+    def Count(self) -> MediumRadiator:
+        return MediumRadiator(name=self._name, batch_mode=LogicBatchMethod.Count)
 
 
 MediumRadiators: _MediumRadiators = _MediumRadiators()
@@ -22029,6 +22953,10 @@ class _MediumRadiatorLiquids(_BaseStructures, _Maximums, _Ratios, _SettingWs):
     @property
     def Sum(self) -> MediumRadiatorLiquid:
         return MediumRadiatorLiquid(name=self._name, batch_mode=LogicBatchMethod.Sum)
+
+    @property
+    def Count(self) -> MediumRadiatorLiquid:
+        return MediumRadiatorLiquid(name=self._name, batch_mode=LogicBatchMethod.Count)
 
 
 MediumRadiatorLiquids: _MediumRadiatorLiquids = _MediumRadiatorLiquids()
@@ -22121,6 +23049,10 @@ class _SatelliteDishs(
     @property
     def Sum(self) -> SatelliteDish:
         return SatelliteDish(name=self._name, batch_mode=LogicBatchMethod.Sum)
+
+    @property
+    def Count(self) -> SatelliteDish:
+        return SatelliteDish(name=self._name, batch_mode=LogicBatchMethod.Count)
 
     @property
     def BestContactFilter(self) -> _DevicesLogicType:
@@ -22243,6 +23175,12 @@ class _PowerTransmitterReceivers(
         )
 
     @property
+    def Count(self) -> PowerTransmitterReceiver:
+        return PowerTransmitterReceiver(
+            name=self._name, batch_mode=LogicBatchMethod.Count
+        )
+
+    @property
     def PositionX(self) -> _DevicesLogicType:
         return _DevicesLogicType(self, _LT.PositionX)
 
@@ -22317,6 +23255,10 @@ class _PowerTransmitters(
         return PowerTransmitter(name=self._name, batch_mode=LogicBatchMethod.Sum)
 
     @property
+    def Count(self) -> PowerTransmitter:
+        return PowerTransmitter(name=self._name, batch_mode=LogicBatchMethod.Count)
+
+    @property
     def PositionX(self) -> _DevicesLogicType:
         return _DevicesLogicType(self, _LT.PositionX)
 
@@ -22381,6 +23323,10 @@ class _MiningDrills(_BaseStructures, _Activates, _Errors, _Modes, _Ons):
         return MiningDrill(name=self._name, batch_mode=LogicBatchMethod.Sum)
 
     @property
+    def Count(self) -> MiningDrill:
+        return MiningDrill(name=self._name, batch_mode=LogicBatchMethod.Count)
+
+    @property
     def Power(self) -> _DevicesLogicType:
         return _DevicesLogicType(self, _LT.Power)
 
@@ -22435,6 +23381,10 @@ class _MiningDrillHeavies(_BaseStructures, _Activates, _Errors, _Modes, _Ons):
     @property
     def Sum(self) -> MiningDrillHeavy:
         return MiningDrillHeavy(name=self._name, batch_mode=LogicBatchMethod.Sum)
+
+    @property
+    def Count(self) -> MiningDrillHeavy:
+        return MiningDrillHeavy(name=self._name, batch_mode=LogicBatchMethod.Count)
 
     @property
     def Power(self) -> _DevicesLogicType:
@@ -22493,6 +23443,10 @@ class _MKIIAngleGrinders(_BaseStructures, _Activates):
         return MKIIAngleGrinder(name=self._name, batch_mode=LogicBatchMethod.Sum)
 
     @property
+    def Count(self) -> MKIIAngleGrinder:
+        return MKIIAngleGrinder(name=self._name, batch_mode=LogicBatchMethod.Count)
+
+    @property
     def Power(self) -> _DevicesLogicType:
         return _DevicesLogicType(self, _LT.Power)
 
@@ -22547,6 +23501,10 @@ class _MKIIArcWelders(_BaseStructures, _Activates):
     @property
     def Sum(self) -> MKIIArcWelder:
         return MKIIArcWelder(name=self._name, batch_mode=LogicBatchMethod.Sum)
+
+    @property
+    def Count(self) -> MKIIArcWelder:
+        return MKIIArcWelder(name=self._name, batch_mode=LogicBatchMethod.Count)
 
     @property
     def Power(self) -> _DevicesLogicType:
@@ -22605,6 +23563,10 @@ class _MKIIDrills(_BaseStructures, _Activates):
         return MKIIDrill(name=self._name, batch_mode=LogicBatchMethod.Sum)
 
     @property
+    def Count(self) -> MKIIDrill:
+        return MKIIDrill(name=self._name, batch_mode=LogicBatchMethod.Count)
+
+    @property
     def Power(self) -> _DevicesLogicType:
         return _DevicesLogicType(self, _LT.Power)
 
@@ -22661,6 +23623,10 @@ class _MKIIMiningDrills(_BaseStructures, _Activates, _Errors, _Modes, _Ons):
         return MKIIMiningDrill(name=self._name, batch_mode=LogicBatchMethod.Sum)
 
     @property
+    def Count(self) -> MKIIMiningDrill:
+        return MKIIMiningDrill(name=self._name, batch_mode=LogicBatchMethod.Count)
+
+    @property
     def Power(self) -> _DevicesLogicType:
         return _DevicesLogicType(self, _LT.Power)
 
@@ -22703,6 +23669,10 @@ class _MotionSensors(_BaseStructures, _Activates, _Ons, _Quantities):
     @property
     def Sum(self) -> MotionSensor:
         return MotionSensor(name=self._name, batch_mode=LogicBatchMethod.Sum)
+
+    @property
+    def Count(self) -> MotionSensor:
+        return MotionSensor(name=self._name, batch_mode=LogicBatchMethod.Count)
 
 
 MotionSensors: _MotionSensors = _MotionSensors()
@@ -22747,6 +23717,10 @@ class _NVGs(_BaseStructures, _Locks, _Ons):
     @property
     def Sum(self) -> NVG:
         return NVG(name=self._name, batch_mode=LogicBatchMethod.Sum)
+
+    @property
+    def Count(self) -> NVG:
+        return NVG(name=self._name, batch_mode=LogicBatchMethod.Count)
 
     @property
     def Power(self) -> _DevicesLogicType:
@@ -22991,6 +23965,10 @@ class _Nitrolyzers(
         return Nitrolyzer(name=self._name, batch_mode=LogicBatchMethod.Sum)
 
     @property
+    def Count(self) -> Nitrolyzer:
+        return Nitrolyzer(name=self._name, batch_mode=LogicBatchMethod.Count)
+
+    @property
     def CombustionInput(self) -> _DevicesLogicType:
         return _DevicesLogicType(self, _LT.CombustionInput)
 
@@ -23227,6 +24205,10 @@ class _HorizontalAutoMiners(
         return HorizontalAutoMiner(name=self._name, batch_mode=LogicBatchMethod.Sum)
 
     @property
+    def Count(self) -> HorizontalAutoMiner:
+        return HorizontalAutoMiner(name=self._name, batch_mode=LogicBatchMethod.Count)
+
+    @property
     def slot0(self) -> _SlotTypeDataDisks:
         return _SlotTypeDataDisks(self, 0)
 
@@ -23283,6 +24265,10 @@ class _OccupancySensors(_BaseStructures, _Quantities):
         return OccupancySensor(name=self._name, batch_mode=LogicBatchMethod.Sum)
 
     @property
+    def Count(self) -> OccupancySensor:
+        return OccupancySensor(name=self._name, batch_mode=LogicBatchMethod.Count)
+
+    @property
     def Activate(self) -> _DevicesLogicType:
         return _DevicesLogicType(self, _LT.Activate)
 
@@ -23328,6 +24314,10 @@ class _PipeOneWayValveLevers(_BaseStructures, _Maximums, _Ons, _Ratios, _Setting
     def Sum(self) -> PipeOneWayValveLever:
         return PipeOneWayValveLever(name=self._name, batch_mode=LogicBatchMethod.Sum)
 
+    @property
+    def Count(self) -> PipeOneWayValveLever:
+        return PipeOneWayValveLever(name=self._name, batch_mode=LogicBatchMethod.Count)
+
 
 PipeOneWayValveLevers: _PipeOneWayValveLevers = _PipeOneWayValveLevers()
 
@@ -23368,6 +24358,12 @@ class _PipeLiquidOneWayValveLevers(
     def Sum(self) -> PipeLiquidOneWayValveLever:
         return PipeLiquidOneWayValveLever(
             name=self._name, batch_mode=LogicBatchMethod.Sum
+        )
+
+    @property
+    def Count(self) -> PipeLiquidOneWayValveLever:
+        return PipeLiquidOneWayValveLever(
+            name=self._name, batch_mode=LogicBatchMethod.Count
         )
 
 
@@ -23415,6 +24411,10 @@ class _OreDetectors(_BaseStructures, _Errors, _Modes, _Ons):
     @property
     def Sum(self) -> OreDetector:
         return OreDetector(name=self._name, batch_mode=LogicBatchMethod.Sum)
+
+    @property
+    def Count(self) -> OreDetector:
+        return OreDetector(name=self._name, batch_mode=LogicBatchMethod.Count)
 
     @property
     def Power(self) -> _DevicesLogicType:
@@ -23474,6 +24474,12 @@ class _OverheadShortCornerLockers(_BaseStructures, _Locks, _Opens):
     def Sum(self) -> OverheadShortCornerLocker:
         return OverheadShortCornerLocker(
             name=self._name, batch_mode=LogicBatchMethod.Sum
+        )
+
+    @property
+    def Count(self) -> OverheadShortCornerLocker:
+        return OverheadShortCornerLocker(
+            name=self._name, batch_mode=LogicBatchMethod.Count
         )
 
     @property
@@ -23555,6 +24561,10 @@ class _OverheadShortLockers(_BaseStructures, _Locks, _Opens):
     @property
     def Sum(self) -> OverheadShortLocker:
         return OverheadShortLocker(name=self._name, batch_mode=LogicBatchMethod.Sum)
+
+    @property
+    def Count(self) -> OverheadShortLocker:
+        return OverheadShortLocker(name=self._name, batch_mode=LogicBatchMethod.Count)
 
     @property
     def slot0(self) -> _SlotTypeDataDisks:
@@ -23685,6 +24695,10 @@ class _LogicPidControllers(_BaseStructures, _Errors, _Powers, _SettingRs):
         return LogicPidController(name=self._name, batch_mode=LogicBatchMethod.Sum)
 
     @property
+    def Count(self) -> LogicPidController:
+        return LogicPidController(name=self._name, batch_mode=LogicBatchMethod.Count)
+
+    @property
     def DerivativeGain(self) -> _DevicesLogicType:
         return _DevicesLogicType(self, _LT.DerivativeGain)
 
@@ -23789,6 +24803,10 @@ class _PassiveSpeakers(_BaseStructures):
         return PassiveSpeaker(name=self._name, batch_mode=LogicBatchMethod.Sum)
 
     @property
+    def Count(self) -> PassiveSpeaker:
+        return PassiveSpeaker(name=self._name, batch_mode=LogicBatchMethod.Count)
+
+    @property
     def SoundAlert(self) -> _DevicesLogicType:
         return _DevicesLogicType(self, _LT.SoundAlert)
 
@@ -23852,6 +24870,10 @@ class _PipeAnalysizers(
         return PipeAnalysizer(name=self._name, batch_mode=LogicBatchMethod.Sum)
 
     @property
+    def Count(self) -> PipeAnalysizer:
+        return PipeAnalysizer(name=self._name, batch_mode=LogicBatchMethod.Count)
+
+    @property
     def NetworkFault(self) -> _DevicesLogicType:
         return _DevicesLogicType(self, _LT.NetworkFault)
 
@@ -23887,6 +24909,10 @@ class _PipeHeaters(_BaseStructures, _Errors, _Locks, _Powers):
     def Sum(self) -> PipeHeater:
         return PipeHeater(name=self._name, batch_mode=LogicBatchMethod.Sum)
 
+    @property
+    def Count(self) -> PipeHeater:
+        return PipeHeater(name=self._name, batch_mode=LogicBatchMethod.Count)
+
 
 PipeHeaters: _PipeHeaters = _PipeHeaters()
 
@@ -23918,6 +24944,10 @@ class _LiquidPipeHeaters(_BaseStructures, _Errors, _Locks, _Powers):
     @property
     def Sum(self) -> LiquidPipeHeater:
         return LiquidPipeHeater(name=self._name, batch_mode=LogicBatchMethod.Sum)
+
+    @property
+    def Count(self) -> LiquidPipeHeater:
+        return LiquidPipeHeater(name=self._name, batch_mode=LogicBatchMethod.Count)
 
 
 LiquidPipeHeaters: _LiquidPipeHeaters = _LiquidPipeHeaters()
@@ -23958,6 +24988,10 @@ class _PipeIgniters(_BaseStructures, _Activates, _Errors):
     @property
     def Sum(self) -> PipeIgniter:
         return PipeIgniter(name=self._name, batch_mode=LogicBatchMethod.Sum)
+
+    @property
+    def Count(self) -> PipeIgniter:
+        return PipeIgniter(name=self._name, batch_mode=LogicBatchMethod.Count)
 
     @property
     def Power(self) -> _DevicesLogicType:
@@ -24010,6 +25044,10 @@ class _PlantSamplers(_BaseStructures, _Activates, _Modes, _Ons):
     @property
     def Sum(self) -> PlantSampler:
         return PlantSampler(name=self._name, batch_mode=LogicBatchMethod.Sum)
+
+    @property
+    def Count(self) -> PlantSampler:
+        return PlantSampler(name=self._name, batch_mode=LogicBatchMethod.Count)
 
     @property
     def Power(self) -> _DevicesLogicType:
@@ -24068,6 +25106,10 @@ class _DynamicLights(_BaseStructures, _Locks, _Ons, _Opens):
         return DynamicLight(name=self._name, batch_mode=LogicBatchMethod.Sum)
 
     @property
+    def Count(self) -> DynamicLight:
+        return DynamicLight(name=self._name, batch_mode=LogicBatchMethod.Count)
+
+    @property
     def Power(self) -> _DevicesLogicType:
         return _DevicesLogicType(self, _LT.Power)
 
@@ -24120,6 +25162,10 @@ class _PortableSolarPanels(_BaseStructures, _Opens):
         return PortableSolarPanel(name=self._name, batch_mode=LogicBatchMethod.Sum)
 
     @property
+    def Count(self) -> PortableSolarPanel:
+        return PortableSolarPanel(name=self._name, batch_mode=LogicBatchMethod.Count)
+
+    @property
     def slot0(self) -> _SlotTypeBatteries:
         return _SlotTypeBatteries(self, 0)
 
@@ -24166,6 +25212,10 @@ class _PortablesConnectors(_BaseStructures, _Maximums, _Opens, _Ratios, _Setting
     @property
     def Sum(self) -> PortablesConnector:
         return PortablesConnector(name=self._name, batch_mode=LogicBatchMethod.Sum)
+
+    @property
+    def Count(self) -> PortablesConnector:
+        return PortablesConnector(name=self._name, batch_mode=LogicBatchMethod.Count)
 
     @property
     def slot0(self) -> _SlotTypeDataDisks:
@@ -24216,6 +25266,10 @@ class _PowerConnectors(_BaseStructures, _Opens):
         return PowerConnector(name=self._name, batch_mode=LogicBatchMethod.Sum)
 
     @property
+    def Count(self) -> PowerConnector:
+        return PowerConnector(name=self._name, batch_mode=LogicBatchMethod.Count)
+
+    @property
     def slot0(self) -> _SlotTypeDataDisks:
         return _SlotTypeDataDisks(self, 0)
 
@@ -24260,6 +25314,10 @@ class _PowerTransmitterOmnis(_BaseStructures, _Errors, _Powers):
     @property
     def Sum(self) -> PowerTransmitterOmni:
         return PowerTransmitterOmni(name=self._name, batch_mode=LogicBatchMethod.Sum)
+
+    @property
+    def Count(self) -> PowerTransmitterOmni:
+        return PowerTransmitterOmni(name=self._name, batch_mode=LogicBatchMethod.Count)
 
 
 PowerTransmitterOmnis: _PowerTransmitterOmnis = _PowerTransmitterOmnis()
@@ -24308,6 +25366,10 @@ class _Benchs(_BaseStructures, _Errors, _Powers):
     @property
     def Sum(self) -> Bench:
         return Bench(name=self._name, batch_mode=LogicBatchMethod.Sum)
+
+    @property
+    def Count(self) -> Bench:
+        return Bench(name=self._name, batch_mode=LogicBatchMethod.Count)
 
     @property
     def slot0(self) -> _SlotTypeAppliances:
@@ -24464,6 +25526,10 @@ class _PoweredVents(_BaseStructures, _Errors, _Locks, _Modes, _Powers):
     @property
     def Sum(self) -> PoweredVent:
         return PoweredVent(name=self._name, batch_mode=LogicBatchMethod.Sum)
+
+    @property
+    def Count(self) -> PoweredVent:
+        return PoweredVent(name=self._name, batch_mode=LogicBatchMethod.Count)
 
     @property
     def CombustionOutput(self) -> _DevicesLogicType:
@@ -24714,6 +25780,10 @@ class _PoweredVentLarges(_BaseStructures, _Errors, _Locks, _Modes, _Powers):
         return PoweredVentLarge(name=self._name, batch_mode=LogicBatchMethod.Sum)
 
     @property
+    def Count(self) -> PoweredVentLarge:
+        return PoweredVentLarge(name=self._name, batch_mode=LogicBatchMethod.Count)
+
+    @property
     def CombustionOutput(self) -> _DevicesLogicType:
         return _DevicesLogicType(self, _LT.CombustionOutput)
 
@@ -24857,6 +25927,10 @@ class _PressurantValves(
     def Sum(self) -> PressurantValve:
         return PressurantValve(name=self._name, batch_mode=LogicBatchMethod.Sum)
 
+    @property
+    def Count(self) -> PressurantValve:
+        return PressurantValve(name=self._name, batch_mode=LogicBatchMethod.Count)
+
 
 PressurantValves: _PressurantValves = _PressurantValves()
 
@@ -24910,6 +25984,10 @@ class _PressureFedGasEngines(
     @property
     def Sum(self) -> PressureFedGasEngine:
         return PressureFedGasEngine(name=self._name, batch_mode=LogicBatchMethod.Sum)
+
+    @property
+    def Count(self) -> PressureFedGasEngine:
+        return PressureFedGasEngine(name=self._name, batch_mode=LogicBatchMethod.Count)
 
     @property
     def PassedMoles(self) -> _DevicesLogicType:
@@ -24994,6 +26072,12 @@ class _PressureFedLiquidEngines(
         return PressureFedLiquidEngine(name=self._name, batch_mode=LogicBatchMethod.Sum)
 
     @property
+    def Count(self) -> PressureFedLiquidEngine:
+        return PressureFedLiquidEngine(
+            name=self._name, batch_mode=LogicBatchMethod.Count
+        )
+
+    @property
     def PassedMoles(self) -> _DevicesLogicType:
         return _DevicesLogicType(self, _LT.PassedMoles)
 
@@ -25041,6 +26125,10 @@ class _PressureRegulators(
     def Sum(self) -> PressureRegulator:
         return PressureRegulator(name=self._name, batch_mode=LogicBatchMethod.Sum)
 
+    @property
+    def Count(self) -> PressureRegulator:
+        return PressureRegulator(name=self._name, batch_mode=LogicBatchMethod.Count)
+
 
 PressureRegulators: _PressureRegulators = _PressureRegulators()
 
@@ -25076,6 +26164,10 @@ class _ProximitySensors(_BaseStructures, _Quantities, _SettingWs):
     @property
     def Sum(self) -> ProximitySensor:
         return ProximitySensor(name=self._name, batch_mode=LogicBatchMethod.Sum)
+
+    @property
+    def Count(self) -> ProximitySensor:
+        return ProximitySensor(name=self._name, batch_mode=LogicBatchMethod.Count)
 
     @property
     def Activate(self) -> _DevicesLogicType:
@@ -25128,6 +26220,10 @@ class _GovernedGasEngines(
     @property
     def Sum(self) -> GovernedGasEngine:
         return GovernedGasEngine(name=self._name, batch_mode=LogicBatchMethod.Sum)
+
+    @property
+    def Count(self) -> GovernedGasEngine:
+        return GovernedGasEngine(name=self._name, batch_mode=LogicBatchMethod.Count)
 
     @property
     def PassedMoles(self) -> _DevicesLogicType:
@@ -25206,6 +26302,10 @@ class _PumpedLiquidEngines(
         return PumpedLiquidEngine(name=self._name, batch_mode=LogicBatchMethod.Sum)
 
     @property
+    def Count(self) -> PumpedLiquidEngine:
+        return PumpedLiquidEngine(name=self._name, batch_mode=LogicBatchMethod.Count)
+
+    @property
     def PassedMoles(self) -> _DevicesLogicType:
         return _DevicesLogicType(self, _LT.PassedMoles)
 
@@ -25251,6 +26351,10 @@ class _PurgeValves(
     def Sum(self) -> PurgeValve:
         return PurgeValve(name=self._name, batch_mode=LogicBatchMethod.Sum)
 
+    @property
+    def Count(self) -> PurgeValve:
+        return PurgeValve(name=self._name, batch_mode=LogicBatchMethod.Count)
+
 
 PurgeValves: _PurgeValves = _PurgeValves()
 
@@ -25282,6 +26386,10 @@ class _LogicReagentReaders(_BaseStructures, _Errors, _Powers, _SettingRs):
     @property
     def Sum(self) -> LogicReagentReader:
         return LogicReagentReader(name=self._name, batch_mode=LogicBatchMethod.Sum)
+
+    @property
+    def Count(self) -> LogicReagentReader:
+        return LogicReagentReader(name=self._name, batch_mode=LogicBatchMethod.Count)
 
 
 LogicReagentReaders: _LogicReagentReaders = _LogicReagentReaders()
@@ -25348,6 +26456,10 @@ class _Recyclers(
     @property
     def Sum(self) -> Recycler:
         return Recycler(name=self._name, batch_mode=LogicBatchMethod.Sum)
+
+    @property
+    def Count(self) -> Recycler:
+        return Recycler(name=self._name, batch_mode=LogicBatchMethod.Count)
 
     @property
     def slot0(self) -> _SlotTypeDataDisks:
@@ -25868,6 +26980,12 @@ class _RefrigeratedVendingMachines(
         )
 
     @property
+    def Count(self) -> RefrigeratedVendingMachine:
+        return RefrigeratedVendingMachine(
+            name=self._name, batch_mode=LogicBatchMethod.Count
+        )
+
+    @property
     def RequestHash(self) -> _DevicesLogicType:
         return _DevicesLogicType(self, _LT.RequestHash)
 
@@ -26346,6 +27464,10 @@ class _RemoteDetonators(_BaseStructures, _Activates, _Errors, _Locks, _Modes, _O
         return RemoteDetonator(name=self._name, batch_mode=LogicBatchMethod.Sum)
 
     @property
+    def Count(self) -> RemoteDetonator:
+        return RemoteDetonator(name=self._name, batch_mode=LogicBatchMethod.Count)
+
+    @property
     def Power(self) -> _DevicesLogicType:
         return _DevicesLogicType(self, _LT.Power)
 
@@ -26532,6 +27654,10 @@ class _RocketAvionicss(
     @property
     def Sum(self) -> RocketAvionics:
         return RocketAvionics(name=self._name, batch_mode=LogicBatchMethod.Sum)
+
+    @property
+    def Count(self) -> RocketAvionics:
+        return RocketAvionics(name=self._name, batch_mode=LogicBatchMethod.Count)
 
     @property
     def Acceleration(self) -> _DevicesLogicType:
@@ -26728,6 +27854,12 @@ class _RocketCelestialTrackers(_BaseStructures, _Errors, _Powers, _Verticals):
         return RocketCelestialTracker(name=self._name, batch_mode=LogicBatchMethod.Sum)
 
     @property
+    def Count(self) -> RocketCelestialTracker:
+        return RocketCelestialTracker(
+            name=self._name, batch_mode=LogicBatchMethod.Count
+        )
+
+    @property
     def CelestialHash(self) -> _DevicesLogicType:
         return _DevicesLogicType(self, _LT.CelestialHash)
 
@@ -26800,6 +27932,10 @@ class _RocketCircuitHousings(_BaseStructures, _Errors, _Modes, _Powers, _Setting
     @property
     def Sum(self) -> RocketCircuitHousing:
         return RocketCircuitHousing(name=self._name, batch_mode=LogicBatchMethod.Sum)
+
+    @property
+    def Count(self) -> RocketCircuitHousing:
+        return RocketCircuitHousing(name=self._name, batch_mode=LogicBatchMethod.Count)
 
     @property
     def LineNumber(self) -> _DevicesLogicType:
@@ -26958,6 +28094,10 @@ class _RocketEngineTinies(
         return RocketEngineTiny(name=self._name, batch_mode=LogicBatchMethod.Sum)
 
     @property
+    def Count(self) -> RocketEngineTiny:
+        return RocketEngineTiny(name=self._name, batch_mode=LogicBatchMethod.Count)
+
+    @property
     def CombustionOutput(self) -> _DevicesLogicType:
         return _DevicesLogicType(self, _LT.CombustionOutput)
 
@@ -27093,6 +28233,10 @@ class _RocketGasCollectors(
     def Sum(self) -> RocketGasCollector:
         return RocketGasCollector(name=self._name, batch_mode=LogicBatchMethod.Sum)
 
+    @property
+    def Count(self) -> RocketGasCollector:
+        return RocketGasCollector(name=self._name, batch_mode=LogicBatchMethod.Count)
+
 
 RocketGasCollectors: _RocketGasCollectors = _RocketGasCollectors()
 
@@ -27204,6 +28348,10 @@ class _RocketFiltrationGass(
     @property
     def Sum(self) -> RocketFiltrationGas:
         return RocketFiltrationGas(name=self._name, batch_mode=LogicBatchMethod.Sum)
+
+    @property
+    def Count(self) -> RocketFiltrationGas:
+        return RocketFiltrationGas(name=self._name, batch_mode=LogicBatchMethod.Count)
 
     @property
     def CombustionInput(self) -> _DevicesLogicType:
@@ -27342,6 +28490,10 @@ class _RocketManufactories(
         return RocketManufactory(name=self._name, batch_mode=LogicBatchMethod.Sum)
 
     @property
+    def Count(self) -> RocketManufactory:
+        return RocketManufactory(name=self._name, batch_mode=LogicBatchMethod.Count)
+
+    @property
     def CompletionRatio(self) -> _DevicesLogicType:
         return _DevicesLogicType(self, _LT.CompletionRatio)
 
@@ -27436,6 +28588,10 @@ class _RocketMiners(
         return RocketMiner(name=self._name, batch_mode=LogicBatchMethod.Sum)
 
     @property
+    def Count(self) -> RocketMiner:
+        return RocketMiner(name=self._name, batch_mode=LogicBatchMethod.Count)
+
+    @property
     def DrillCondition(self) -> _DevicesLogicType:
         return _DevicesLogicType(self, _LT.DrillCondition)
 
@@ -27494,6 +28650,10 @@ class _RocketScanners(_BaseStructures, _Errors, _Locks, _Powers):
     @property
     def Sum(self) -> RocketScanner:
         return RocketScanner(name=self._name, batch_mode=LogicBatchMethod.Sum)
+
+    @property
+    def Count(self) -> RocketScanner:
+        return RocketScanner(name=self._name, batch_mode=LogicBatchMethod.Count)
 
     @property
     def slot0(self) -> _SlotTypeDataDisks:
@@ -27584,6 +28744,10 @@ class _Rover_MkIs(_BaseStructures, _Ons):
         return Rover_MkI(name=self._name, batch_mode=LogicBatchMethod.Sum)
 
     @property
+    def Count(self) -> Rover_MkI:
+        return Rover_MkI(name=self._name, batch_mode=LogicBatchMethod.Count)
+
+    @property
     def Power(self) -> _DevicesLogicType:
         return _DevicesLogicType(self, _LT.Power)
 
@@ -27672,6 +28836,10 @@ class _SDBHoppers(_BaseStructures, _ClearMemories, _ImportCounts, _Opens):
         return SDBHopper(name=self._name, batch_mode=LogicBatchMethod.Sum)
 
     @property
+    def Count(self) -> SDBHopper:
+        return SDBHopper(name=self._name, batch_mode=LogicBatchMethod.Count)
+
+    @property
     def slot0(self) -> _SlotTypeDataDisks:
         return _SlotTypeDataDisks(self, 0)
 
@@ -27720,6 +28888,10 @@ class _SDBHopperAdvanceds(
     @property
     def Sum(self) -> SDBHopperAdvanced:
         return SDBHopperAdvanced(name=self._name, batch_mode=LogicBatchMethod.Sum)
+
+    @property
+    def Count(self) -> SDBHopperAdvanced:
+        return SDBHopperAdvanced(name=self._name, batch_mode=LogicBatchMethod.Count)
 
     @property
     def slot0(self) -> _SlotTypeDataDisks:
@@ -27800,6 +28972,10 @@ class _SDBSilos(
     @property
     def Sum(self) -> SDBSilo:
         return SDBSilo(name=self._name, batch_mode=LogicBatchMethod.Sum)
+
+    @property
+    def Count(self) -> SDBSilo:
+        return SDBSilo(name=self._name, batch_mode=LogicBatchMethod.Count)
 
     @property
     def slot0(self) -> _SlotTypeDataDisks:
@@ -27898,6 +29074,10 @@ class _SecurityPrinters(
         return SecurityPrinter(name=self._name, batch_mode=LogicBatchMethod.Sum)
 
     @property
+    def Count(self) -> SecurityPrinter:
+        return SecurityPrinter(name=self._name, batch_mode=LogicBatchMethod.Count)
+
+    @property
     def CompletionRatio(self) -> _DevicesLogicType:
         return _DevicesLogicType(self, _LT.CompletionRatio)
 
@@ -27972,6 +29152,10 @@ class _SensorLensess(_BaseStructures, _Ons):
     @property
     def Sum(self) -> SensorLenses:
         return SensorLenses(name=self._name, batch_mode=LogicBatchMethod.Sum)
+
+    @property
+    def Count(self) -> SensorLenses:
+        return SensorLenses(name=self._name, batch_mode=LogicBatchMethod.Count)
 
     @property
     def Power(self) -> _DevicesLogicType:
@@ -28086,6 +29270,10 @@ class _ShelfMediums(_BaseStructures, _Opens):
         return ShelfMedium(name=self._name, batch_mode=LogicBatchMethod.Sum)
 
     @property
+    def Count(self) -> ShelfMedium:
+        return ShelfMedium(name=self._name, batch_mode=LogicBatchMethod.Count)
+
+    @property
     def slot0(self) -> _SlotTypeDataDisks:
         return _SlotTypeDataDisks(self, 0)
 
@@ -28186,6 +29374,10 @@ class _ShortCornerLockers(_BaseStructures, _Locks, _Opens):
         return ShortCornerLocker(name=self._name, batch_mode=LogicBatchMethod.Sum)
 
     @property
+    def Count(self) -> ShortCornerLocker:
+        return ShortCornerLocker(name=self._name, batch_mode=LogicBatchMethod.Count)
+
+    @property
     def slot0(self) -> _SlotTypeDataDisks:
         return _SlotTypeDataDisks(self, 0)
 
@@ -28266,6 +29458,10 @@ class _ShortLockers(_BaseStructures, _Locks, _Opens):
         return ShortLocker(name=self._name, batch_mode=LogicBatchMethod.Sum)
 
     @property
+    def Count(self) -> ShortLocker:
+        return ShortLocker(name=self._name, batch_mode=LogicBatchMethod.Count)
+
+    @property
     def slot0(self) -> _SlotTypeDataDisks:
         return _SlotTypeDataDisks(self, 0)
 
@@ -28337,6 +29533,10 @@ class _Showers(_BaseStructures, _Activates, _Maximums, _Opens, _Ratios, _Setting
     def Sum(self) -> Shower:
         return Shower(name=self._name, batch_mode=LogicBatchMethod.Sum)
 
+    @property
+    def Count(self) -> Shower:
+        return Shower(name=self._name, batch_mode=LogicBatchMethod.Count)
+
 
 Showers: _Showers = _Showers()
 
@@ -28368,6 +29568,10 @@ class _ShowerPowereds(_BaseStructures, _Errors, _Opens, _Powers):
     @property
     def Sum(self) -> ShowerPowered:
         return ShowerPowered(name=self._name, batch_mode=LogicBatchMethod.Sum)
+
+    @property
+    def Count(self) -> ShowerPowered:
+        return ShowerPowered(name=self._name, batch_mode=LogicBatchMethod.Count)
 
 
 ShowerPowereds: _ShowerPowereds = _ShowerPowereds()
@@ -28424,6 +29628,10 @@ class _Sleepers(
     @property
     def Sum(self) -> Sleeper:
         return Sleeper(name=self._name, batch_mode=LogicBatchMethod.Sum)
+
+    @property
+    def Count(self) -> Sleeper:
+        return Sleeper(name=self._name, batch_mode=LogicBatchMethod.Count)
 
     @property
     def EntityState(self) -> _DevicesLogicType:
@@ -28504,6 +29712,10 @@ class _SleeperLefts(
         return SleeperLeft(name=self._name, batch_mode=LogicBatchMethod.Sum)
 
     @property
+    def Count(self) -> SleeperLeft:
+        return SleeperLeft(name=self._name, batch_mode=LogicBatchMethod.Count)
+
+    @property
     def EntityState(self) -> _DevicesLogicType:
         return _DevicesLogicType(self, _LT.EntityState)
 
@@ -28580,6 +29792,10 @@ class _SleeperRights(
     @property
     def Sum(self) -> SleeperRight:
         return SleeperRight(name=self._name, batch_mode=LogicBatchMethod.Sum)
+
+    @property
+    def Count(self) -> SleeperRight:
+        return SleeperRight(name=self._name, batch_mode=LogicBatchMethod.Count)
 
     @property
     def EntityState(self) -> _DevicesLogicType:
@@ -28660,6 +29876,10 @@ class _SleeperVerticals(
         return SleeperVertical(name=self._name, batch_mode=LogicBatchMethod.Sum)
 
     @property
+    def Count(self) -> SleeperVertical:
+        return SleeperVertical(name=self._name, batch_mode=LogicBatchMethod.Count)
+
+    @property
     def EntityState(self) -> _DevicesLogicType:
         return _DevicesLogicType(self, _LT.EntityState)
 
@@ -28703,6 +29923,10 @@ class _LogicSlotReaders(_BaseStructures, _Errors, _Powers, _SettingRs):
     def Sum(self) -> LogicSlotReader:
         return LogicSlotReader(name=self._name, batch_mode=LogicBatchMethod.Sum)
 
+    @property
+    def Count(self) -> LogicSlotReader:
+        return LogicSlotReader(name=self._name, batch_mode=LogicBatchMethod.Count)
+
 
 LogicSlotReaders: _LogicSlotReaders = _LogicSlotReaders()
 
@@ -28745,6 +29969,12 @@ class _SmallDirectHeatExchangeGastoGass(
     def Sum(self) -> SmallDirectHeatExchangeGastoGas:
         return SmallDirectHeatExchangeGastoGas(
             name=self._name, batch_mode=LogicBatchMethod.Sum
+        )
+
+    @property
+    def Count(self) -> SmallDirectHeatExchangeGastoGas:
+        return SmallDirectHeatExchangeGastoGas(
+            name=self._name, batch_mode=LogicBatchMethod.Count
         )
 
 
@@ -28791,6 +30021,12 @@ class _SmallDirectHeatExchangeLiquidtoGass(
     def Sum(self) -> SmallDirectHeatExchangeLiquidtoGas:
         return SmallDirectHeatExchangeLiquidtoGas(
             name=self._name, batch_mode=LogicBatchMethod.Sum
+        )
+
+    @property
+    def Count(self) -> SmallDirectHeatExchangeLiquidtoGas:
+        return SmallDirectHeatExchangeLiquidtoGas(
+            name=self._name, batch_mode=LogicBatchMethod.Count
         )
 
 
@@ -28841,6 +30077,12 @@ class _SmallDirectHeatExchangeLiquidtoLiquids(
             name=self._name, batch_mode=LogicBatchMethod.Sum
         )
 
+    @property
+    def Count(self) -> SmallDirectHeatExchangeLiquidtoLiquid:
+        return SmallDirectHeatExchangeLiquidtoLiquid(
+            name=self._name, batch_mode=LogicBatchMethod.Count
+        )
+
 
 SmallDirectHeatExchangeLiquidtoLiquids: _SmallDirectHeatExchangeLiquidtoLiquids = (
     _SmallDirectHeatExchangeLiquidtoLiquids()
@@ -28876,6 +30118,10 @@ class _AirlockGates(
     @property
     def Sum(self) -> AirlockGate:
         return AirlockGate(name=self._name, batch_mode=LogicBatchMethod.Sum)
+
+    @property
+    def Count(self) -> AirlockGate:
+        return AirlockGate(name=self._name, batch_mode=LogicBatchMethod.Count)
 
 
 AirlockGates: _AirlockGates = _AirlockGates()
@@ -28966,6 +30212,10 @@ class _SmallSatelliteDishs(
         return SmallSatelliteDish(name=self._name, batch_mode=LogicBatchMethod.Sum)
 
     @property
+    def Count(self) -> SmallSatelliteDish:
+        return SmallSatelliteDish(name=self._name, batch_mode=LogicBatchMethod.Count)
+
+    @property
     def BestContactFilter(self) -> _DevicesLogicType:
         return _DevicesLogicType(self, _LT.BestContactFilter)
 
@@ -29049,6 +30299,10 @@ class _SolarPanels(_BaseStructures, _Charges, _Maximums, _Ratios, _VerticalWs):
     def Sum(self) -> SolarPanel:
         return SolarPanel(name=self._name, batch_mode=LogicBatchMethod.Sum)
 
+    @property
+    def Count(self) -> SolarPanel:
+        return SolarPanel(name=self._name, batch_mode=LogicBatchMethod.Count)
+
 
 SolarPanels: _SolarPanels = _SolarPanels()
 
@@ -29080,6 +30334,10 @@ class _SolarPanel45s(_BaseStructures, _Charges, _Maximums, _Ratios, _VerticalWs)
     @property
     def Sum(self) -> SolarPanel45:
         return SolarPanel45(name=self._name, batch_mode=LogicBatchMethod.Sum)
+
+    @property
+    def Count(self) -> SolarPanel45:
+        return SolarPanel45(name=self._name, batch_mode=LogicBatchMethod.Count)
 
 
 SolarPanel45s: _SolarPanel45s = _SolarPanel45s()
@@ -29113,6 +30371,10 @@ class _SolarPanelDuals(_BaseStructures, _Charges, _Maximums, _Ratios, _VerticalW
     def Sum(self) -> SolarPanelDual:
         return SolarPanelDual(name=self._name, batch_mode=LogicBatchMethod.Sum)
 
+    @property
+    def Count(self) -> SolarPanelDual:
+        return SolarPanelDual(name=self._name, batch_mode=LogicBatchMethod.Count)
+
 
 SolarPanelDuals: _SolarPanelDuals = _SolarPanelDuals()
 
@@ -29144,6 +30406,10 @@ class _SolarPanelFlats(_BaseStructures, _Charges, _Maximums, _Ratios, _VerticalW
     @property
     def Sum(self) -> SolarPanelFlat:
         return SolarPanelFlat(name=self._name, batch_mode=LogicBatchMethod.Sum)
+
+    @property
+    def Count(self) -> SolarPanelFlat:
+        return SolarPanelFlat(name=self._name, batch_mode=LogicBatchMethod.Count)
 
 
 SolarPanelFlats: _SolarPanelFlats = _SolarPanelFlats()
@@ -29185,6 +30451,12 @@ class _SolarPanel45Reinforceds(
     def Sum(self) -> SolarPanel45Reinforced:
         return SolarPanel45Reinforced(name=self._name, batch_mode=LogicBatchMethod.Sum)
 
+    @property
+    def Count(self) -> SolarPanel45Reinforced:
+        return SolarPanel45Reinforced(
+            name=self._name, batch_mode=LogicBatchMethod.Count
+        )
+
 
 SolarPanel45Reinforceds: _SolarPanel45Reinforceds = _SolarPanel45Reinforceds()
 
@@ -29225,6 +30497,12 @@ class _SolarPanelDualReinforceds(
     def Sum(self) -> SolarPanelDualReinforced:
         return SolarPanelDualReinforced(
             name=self._name, batch_mode=LogicBatchMethod.Sum
+        )
+
+    @property
+    def Count(self) -> SolarPanelDualReinforced:
+        return SolarPanelDualReinforced(
+            name=self._name, batch_mode=LogicBatchMethod.Count
         )
 
 
@@ -29269,6 +30547,12 @@ class _SolarPanelFlatReinforceds(
             name=self._name, batch_mode=LogicBatchMethod.Sum
         )
 
+    @property
+    def Count(self) -> SolarPanelFlatReinforced:
+        return SolarPanelFlatReinforced(
+            name=self._name, batch_mode=LogicBatchMethod.Count
+        )
+
 
 SolarPanelFlatReinforceds: _SolarPanelFlatReinforceds = _SolarPanelFlatReinforceds()
 
@@ -29308,6 +30592,10 @@ class _SolarPanelReinforceds(
     @property
     def Sum(self) -> SolarPanelReinforced:
         return SolarPanelReinforced(name=self._name, batch_mode=LogicBatchMethod.Sum)
+
+    @property
+    def Count(self) -> SolarPanelReinforced:
+        return SolarPanelReinforced(name=self._name, batch_mode=LogicBatchMethod.Count)
 
 
 SolarPanelReinforceds: _SolarPanelReinforceds = _SolarPanelReinforceds()
@@ -29390,6 +30678,10 @@ class _Sorters(
     @property
     def Sum(self) -> Sorter:
         return Sorter(name=self._name, batch_mode=LogicBatchMethod.Sum)
+
+    @property
+    def Count(self) -> Sorter:
+        return Sorter(name=self._name, batch_mode=LogicBatchMethod.Count)
 
     @property
     def Output(self) -> _DevicesLogicType:
@@ -29486,6 +30778,10 @@ class _SpaceHelmets(
     @property
     def Sum(self) -> SpaceHelmet:
         return SpaceHelmet(name=self._name, batch_mode=LogicBatchMethod.Sum)
+
+    @property
+    def Count(self) -> SpaceHelmet:
+        return SpaceHelmet(name=self._name, batch_mode=LogicBatchMethod.Count)
 
     @property
     def Flush(self) -> _DevicesLogicType:
@@ -29590,6 +30886,10 @@ class _Spacepacks(_BaseStructures, _Activates, _Ons):
     @property
     def Sum(self) -> Spacepack:
         return Spacepack(name=self._name, batch_mode=LogicBatchMethod.Sum)
+
+    @property
+    def Count(self) -> Spacepack:
+        return Spacepack(name=self._name, batch_mode=LogicBatchMethod.Count)
 
     @property
     def slot0(self) -> _SlotTypeAirTanks:
@@ -29722,6 +31022,10 @@ class _StackerReverses(
         return StackerReverse(name=self._name, batch_mode=LogicBatchMethod.Sum)
 
     @property
+    def Count(self) -> StackerReverse:
+        return StackerReverse(name=self._name, batch_mode=LogicBatchMethod.Count)
+
+    @property
     def Output(self) -> _DevicesLogicType:
         return _DevicesLogicType(self, _LT.Output)
 
@@ -29840,6 +31144,10 @@ class _Stackers(
         return Stacker(name=self._name, batch_mode=LogicBatchMethod.Sum)
 
     @property
+    def Count(self) -> Stacker:
+        return Stacker(name=self._name, batch_mode=LogicBatchMethod.Count)
+
+    @property
     def Output(self) -> _DevicesLogicType:
         return _DevicesLogicType(self, _LT.Output)
 
@@ -29918,6 +31226,10 @@ class _Batteries(
         return Battery(name=self._name, batch_mode=LogicBatchMethod.Sum)
 
     @property
+    def Count(self) -> Battery:
+        return Battery(name=self._name, batch_mode=LogicBatchMethod.Count)
+
+    @property
     def Power(self) -> _DevicesLogicType:
         return _DevicesLogicType(self, _LT.Power)
 
@@ -29976,6 +31288,10 @@ class _BatteryLarges(
     @property
     def Sum(self) -> BatteryLarge:
         return BatteryLarge(name=self._name, batch_mode=LogicBatchMethod.Sum)
+
+    @property
+    def Count(self) -> BatteryLarge:
+        return BatteryLarge(name=self._name, batch_mode=LogicBatchMethod.Count)
 
     @property
     def Power(self) -> _DevicesLogicType:
@@ -30068,6 +31384,10 @@ class _StirlingEngines(
         return StirlingEngine(name=self._name, batch_mode=LogicBatchMethod.Sum)
 
     @property
+    def Count(self) -> StirlingEngine:
+        return StirlingEngine(name=self._name, batch_mode=LogicBatchMethod.Count)
+
+    @property
     def EnvironmentEfficiency(self) -> _DevicesLogicType:
         return _DevicesLogicType(self, _LT.EnvironmentEfficiency)
 
@@ -30128,6 +31448,10 @@ class _StopWatchs(_BaseStructures, _Activates, _Errors, _Powers):
         return StopWatch(name=self._name, batch_mode=LogicBatchMethod.Sum)
 
     @property
+    def Count(self) -> StopWatch:
+        return StopWatch(name=self._name, batch_mode=LogicBatchMethod.Count)
+
+    @property
     def Time(self) -> _DevicesLogicType:
         return _DevicesLogicType(self, _LT.Time)
 
@@ -30186,6 +31510,10 @@ class _SuitStorages(_BaseStructures, _Errors, _Maximums, _Powers, _Ratios, _Sett
     @property
     def Sum(self) -> SuitStorage:
         return SuitStorage(name=self._name, batch_mode=LogicBatchMethod.Sum)
+
+    @property
+    def Count(self) -> SuitStorage:
+        return SuitStorage(name=self._name, batch_mode=LogicBatchMethod.Count)
 
     @property
     def slot0(self) -> _SlotTypeHelmets:
@@ -30270,6 +31598,10 @@ class _SuitStorageFrames(
         return SuitStorageFrame(name=self._name, batch_mode=LogicBatchMethod.Sum)
 
     @property
+    def Count(self) -> SuitStorageFrame:
+        return SuitStorageFrame(name=self._name, batch_mode=LogicBatchMethod.Count)
+
+    @property
     def slot0(self) -> _SlotTypeHelmets:
         return _SlotTypeHelmets(self, 0)
 
@@ -30352,6 +31684,10 @@ class _SuitStorageLockers(
         return SuitStorageLocker(name=self._name, batch_mode=LogicBatchMethod.Sum)
 
     @property
+    def Count(self) -> SuitStorageLocker:
+        return SuitStorageLocker(name=self._name, batch_mode=LogicBatchMethod.Count)
+
+    @property
     def slot0(self) -> _SlotTypeHelmets:
         return _SlotTypeHelmets(self, 0)
 
@@ -30421,6 +31757,12 @@ class _SuperLargeDirectHeatExchangeGastoLiquids(
             name=self._name, batch_mode=LogicBatchMethod.Sum
         )
 
+    @property
+    def Count(self) -> SuperLargeDirectHeatExchangeGastoLiquid:
+        return SuperLargeDirectHeatExchangeGastoLiquid(
+            name=self._name, batch_mode=LogicBatchMethod.Count
+        )
+
 
 SuperLargeDirectHeatExchangeGastoLiquids: _SuperLargeDirectHeatExchangeGastoLiquids = (
     _SuperLargeDirectHeatExchangeGastoLiquids()
@@ -30465,6 +31807,12 @@ class _SuperLargeDirectHeatExchangeGastoGass(
     def Sum(self) -> SuperLargeDirectHeatExchangeGastoGas:
         return SuperLargeDirectHeatExchangeGastoGas(
             name=self._name, batch_mode=LogicBatchMethod.Sum
+        )
+
+    @property
+    def Count(self) -> SuperLargeDirectHeatExchangeGastoGas:
+        return SuperLargeDirectHeatExchangeGastoGas(
+            name=self._name, batch_mode=LogicBatchMethod.Count
         )
 
 
@@ -30515,6 +31863,12 @@ class _SuperLargeDirectHeatExchangeLiquidToLiquids(
             name=self._name, batch_mode=LogicBatchMethod.Sum
         )
 
+    @property
+    def Count(self) -> SuperLargeDirectHeatExchangeLiquidToLiquid:
+        return SuperLargeDirectHeatExchangeLiquidToLiquid(
+            name=self._name, batch_mode=LogicBatchMethod.Count
+        )
+
 
 SuperLargeDirectHeatExchangeLiquidToLiquids: (
     _SuperLargeDirectHeatExchangeLiquidToLiquids
@@ -30548,6 +31902,10 @@ class _LogicSwitch2s(_BaseStructures, _Locks, _Opens, _SettingRs):
     @property
     def Sum(self) -> LogicSwitch2:
         return LogicSwitch2(name=self._name, batch_mode=LogicBatchMethod.Sum)
+
+    @property
+    def Count(self) -> LogicSwitch2:
+        return LogicSwitch2(name=self._name, batch_mode=LogicBatchMethod.Count)
 
 
 LogicSwitch2s: _LogicSwitch2s = _LogicSwitch2s()
@@ -30646,6 +32004,10 @@ class _GroundBasedTelescopes(
     @property
     def Sum(self) -> GroundBasedTelescope:
         return GroundBasedTelescope(name=self._name, batch_mode=LogicBatchMethod.Sum)
+
+    @property
+    def Count(self) -> GroundBasedTelescope:
+        return GroundBasedTelescope(name=self._name, batch_mode=LogicBatchMethod.Count)
 
     @property
     def AlignmentError(self) -> _DevicesLogicType:
@@ -30756,6 +32118,10 @@ class _TerrainManipulators(_BaseStructures, _Activates, _Errors, _Modes, _Ons):
         return TerrainManipulator(name=self._name, batch_mode=LogicBatchMethod.Sum)
 
     @property
+    def Count(self) -> TerrainManipulator:
+        return TerrainManipulator(name=self._name, batch_mode=LogicBatchMethod.Count)
+
+    @property
     def Power(self) -> _DevicesLogicType:
         return _DevicesLogicType(self, _LT.Power)
 
@@ -30856,6 +32222,10 @@ class _ToolManufactories(
         return ToolManufactory(name=self._name, batch_mode=LogicBatchMethod.Sum)
 
     @property
+    def Count(self) -> ToolManufactory:
+        return ToolManufactory(name=self._name, batch_mode=LogicBatchMethod.Count)
+
+    @property
     def CompletionRatio(self) -> _DevicesLogicType:
         return _DevicesLogicType(self, _LT.CompletionRatio)
 
@@ -30924,6 +32294,10 @@ class _TrackingBeacons(_BaseStructures, _Errors, _Ons):
         return TrackingBeacon(name=self._name, batch_mode=LogicBatchMethod.Sum)
 
     @property
+    def Count(self) -> TrackingBeacon:
+        return TrackingBeacon(name=self._name, batch_mode=LogicBatchMethod.Count)
+
+    @property
     def Power(self) -> _DevicesLogicType:
         return _DevicesLogicType(self, _LT.Power)
 
@@ -30967,6 +32341,10 @@ class _TraderWaypoints(_BaseStructures, _Errors, _Powers):
     def Sum(self) -> TraderWaypoint:
         return TraderWaypoint(name=self._name, batch_mode=LogicBatchMethod.Sum)
 
+    @property
+    def Count(self) -> TraderWaypoint:
+        return TraderWaypoint(name=self._name, batch_mode=LogicBatchMethod.Count)
+
 
 TraderWaypoints: _TraderWaypoints = _TraderWaypoints()
 
@@ -31000,6 +32378,10 @@ class _Transformers(
     @property
     def Sum(self) -> Transformer:
         return Transformer(name=self._name, batch_mode=LogicBatchMethod.Sum)
+
+    @property
+    def Count(self) -> Transformer:
+        return Transformer(name=self._name, batch_mode=LogicBatchMethod.Count)
 
 
 Transformers: _Transformers = _Transformers()
@@ -31037,6 +32419,10 @@ class _TransformerMediums(
     def Sum(self) -> TransformerMedium:
         return TransformerMedium(name=self._name, batch_mode=LogicBatchMethod.Sum)
 
+    @property
+    def Count(self) -> TransformerMedium:
+        return TransformerMedium(name=self._name, batch_mode=LogicBatchMethod.Count)
+
 
 TransformerMediums: _TransformerMediums = _TransformerMediums()
 
@@ -31072,6 +32458,10 @@ class _TransformerSmalls(
     @property
     def Sum(self) -> TransformerSmall:
         return TransformerSmall(name=self._name, batch_mode=LogicBatchMethod.Sum)
+
+    @property
+    def Count(self) -> TransformerSmall:
+        return TransformerSmall(name=self._name, batch_mode=LogicBatchMethod.Count)
 
 
 TransformerSmalls: _TransformerSmalls = _TransformerSmalls()
@@ -31115,6 +32505,12 @@ class _TransformerMedium_Reverseds(
     def Sum(self) -> TransformerMedium_Reversed:
         return TransformerMedium_Reversed(
             name=self._name, batch_mode=LogicBatchMethod.Sum
+        )
+
+    @property
+    def Count(self) -> TransformerMedium_Reversed:
+        return TransformerMedium_Reversed(
+            name=self._name, batch_mode=LogicBatchMethod.Count
         )
 
 
@@ -31163,6 +32559,12 @@ class _TransformerSmallReverseds(
             name=self._name, batch_mode=LogicBatchMethod.Sum
         )
 
+    @property
+    def Count(self) -> TransformerSmallReversed:
+        return TransformerSmallReversed(
+            name=self._name, batch_mode=LogicBatchMethod.Count
+        )
+
 
 TransformerSmallReverseds: _TransformerSmallReverseds = _TransformerSmallReverseds()
 
@@ -31205,6 +32607,12 @@ class _RocketTransformerSmalls(
     def Sum(self) -> RocketTransformerSmall:
         return RocketTransformerSmall(name=self._name, batch_mode=LogicBatchMethod.Sum)
 
+    @property
+    def Count(self) -> RocketTransformerSmall:
+        return RocketTransformerSmall(
+            name=self._name, batch_mode=LogicBatchMethod.Count
+        )
+
 
 RocketTransformerSmalls: _RocketTransformerSmalls = _RocketTransformerSmalls()
 
@@ -31236,6 +32644,10 @@ class _PressurePlateLarges(_BaseStructures, _SettingRs):
     @property
     def Sum(self) -> PressurePlateLarge:
         return PressurePlateLarge(name=self._name, batch_mode=LogicBatchMethod.Sum)
+
+    @property
+    def Count(self) -> PressurePlateLarge:
+        return PressurePlateLarge(name=self._name, batch_mode=LogicBatchMethod.Count)
 
 
 PressurePlateLarges: _PressurePlateLarges = _PressurePlateLarges()
@@ -31269,6 +32681,10 @@ class _PressurePlateMediums(_BaseStructures, _SettingRs):
     def Sum(self) -> PressurePlateMedium:
         return PressurePlateMedium(name=self._name, batch_mode=LogicBatchMethod.Sum)
 
+    @property
+    def Count(self) -> PressurePlateMedium:
+        return PressurePlateMedium(name=self._name, batch_mode=LogicBatchMethod.Count)
+
 
 PressurePlateMediums: _PressurePlateMediums = _PressurePlateMediums()
 
@@ -31300,6 +32716,10 @@ class _PressurePlateSmalls(_BaseStructures, _SettingRs):
     @property
     def Sum(self) -> PressurePlateSmall:
         return PressurePlateSmall(name=self._name, batch_mode=LogicBatchMethod.Sum)
+
+    @property
+    def Count(self) -> PressurePlateSmall:
+        return PressurePlateSmall(name=self._name, batch_mode=LogicBatchMethod.Count)
 
 
 PressurePlateSmalls: _PressurePlateSmalls = _PressurePlateSmalls()
@@ -31336,6 +32756,10 @@ class _TurboVolumePumps(
     @property
     def Sum(self) -> TurboVolumePump:
         return TurboVolumePump(name=self._name, batch_mode=LogicBatchMethod.Sum)
+
+    @property
+    def Count(self) -> TurboVolumePump:
+        return TurboVolumePump(name=self._name, batch_mode=LogicBatchMethod.Count)
 
 
 TurboVolumePumps: _TurboVolumePumps = _TurboVolumePumps()
@@ -31379,6 +32803,10 @@ class _LiquidTurboVolumePumps(
     def Sum(self) -> LiquidTurboVolumePump:
         return LiquidTurboVolumePump(name=self._name, batch_mode=LogicBatchMethod.Sum)
 
+    @property
+    def Count(self) -> LiquidTurboVolumePump:
+        return LiquidTurboVolumePump(name=self._name, batch_mode=LogicBatchMethod.Count)
+
 
 LiquidTurboVolumePumps: _LiquidTurboVolumePumps = _LiquidTurboVolumePumps()
 
@@ -31420,6 +32848,10 @@ class _ChuteUmbilicalMales(_BaseStructures, _Errors, _Locks, _ModeRs, _Opens, _P
         return ChuteUmbilicalMale(name=self._name, batch_mode=LogicBatchMethod.Sum)
 
     @property
+    def Count(self) -> ChuteUmbilicalMale:
+        return ChuteUmbilicalMale(name=self._name, batch_mode=LogicBatchMethod.Count)
+
+    @property
     def slot0(self) -> _SlotTypeDataDisks:
         return _SlotTypeDataDisks(self, 0)
 
@@ -31458,6 +32890,10 @@ class _CrewUmbilicals(_BaseStructures, _Errors, _Locks, _Modes, _Opens, _Powers)
     @property
     def Sum(self) -> CrewUmbilical:
         return CrewUmbilical(name=self._name, batch_mode=LogicBatchMethod.Sum)
+
+    @property
+    def Count(self) -> CrewUmbilical:
+        return CrewUmbilical(name=self._name, batch_mode=LogicBatchMethod.Count)
 
 
 CrewUmbilicals: _CrewUmbilicals = _CrewUmbilicals()
@@ -31503,6 +32939,10 @@ class _GasUmbilicalMales(
     def Sum(self) -> GasUmbilicalMale:
         return GasUmbilicalMale(name=self._name, batch_mode=LogicBatchMethod.Sum)
 
+    @property
+    def Count(self) -> GasUmbilicalMale:
+        return GasUmbilicalMale(name=self._name, batch_mode=LogicBatchMethod.Count)
+
 
 GasUmbilicalMales: _GasUmbilicalMales = _GasUmbilicalMales()
 
@@ -31547,6 +32987,10 @@ class _LiquidUmbilicalMales(
     def Sum(self) -> LiquidUmbilicalMale:
         return LiquidUmbilicalMale(name=self._name, batch_mode=LogicBatchMethod.Sum)
 
+    @property
+    def Count(self) -> LiquidUmbilicalMale:
+        return LiquidUmbilicalMale(name=self._name, batch_mode=LogicBatchMethod.Count)
+
 
 LiquidUmbilicalMales: _LiquidUmbilicalMales = _LiquidUmbilicalMales()
 
@@ -31579,6 +33023,10 @@ class _PowerUmbilicalMales(_BaseStructures, _Errors, _Locks, _ModeRs, _Opens, _P
     def Sum(self) -> PowerUmbilicalMale:
         return PowerUmbilicalMale(name=self._name, batch_mode=LogicBatchMethod.Sum)
 
+    @property
+    def Count(self) -> PowerUmbilicalMale:
+        return PowerUmbilicalMale(name=self._name, batch_mode=LogicBatchMethod.Count)
+
 
 PowerUmbilicalMales: _PowerUmbilicalMales = _PowerUmbilicalMales()
 
@@ -31610,6 +33058,10 @@ class _GasUmbilicalFemales(_BaseStructures, _Maximums, _Ratios, _SettingWs):
     @property
     def Sum(self) -> GasUmbilicalFemale:
         return GasUmbilicalFemale(name=self._name, batch_mode=LogicBatchMethod.Sum)
+
+    @property
+    def Count(self) -> GasUmbilicalFemale:
+        return GasUmbilicalFemale(name=self._name, batch_mode=LogicBatchMethod.Count)
 
 
 GasUmbilicalFemales: _GasUmbilicalFemales = _GasUmbilicalFemales()
@@ -31649,6 +33101,10 @@ class _LiquidUmbilicalFemales(_BaseStructures, _Maximums, _Ratios, _SettingWs):
     def Sum(self) -> LiquidUmbilicalFemale:
         return LiquidUmbilicalFemale(name=self._name, batch_mode=LogicBatchMethod.Sum)
 
+    @property
+    def Count(self) -> LiquidUmbilicalFemale:
+        return LiquidUmbilicalFemale(name=self._name, batch_mode=LogicBatchMethod.Count)
+
 
 LiquidUmbilicalFemales: _LiquidUmbilicalFemales = _LiquidUmbilicalFemales()
 
@@ -31686,6 +33142,12 @@ class _GasUmbilicalFemaleSides(_BaseStructures, _Maximums, _Ratios, _SettingWs):
     @property
     def Sum(self) -> GasUmbilicalFemaleSide:
         return GasUmbilicalFemaleSide(name=self._name, batch_mode=LogicBatchMethod.Sum)
+
+    @property
+    def Count(self) -> GasUmbilicalFemaleSide:
+        return GasUmbilicalFemaleSide(
+            name=self._name, batch_mode=LogicBatchMethod.Count
+        )
 
 
 GasUmbilicalFemaleSides: _GasUmbilicalFemaleSides = _GasUmbilicalFemaleSides()
@@ -31725,6 +33187,12 @@ class _LiquidUmbilicalFemaleSides(_BaseStructures, _Maximums, _Ratios, _SettingW
     def Sum(self) -> LiquidUmbilicalFemaleSide:
         return LiquidUmbilicalFemaleSide(
             name=self._name, batch_mode=LogicBatchMethod.Sum
+        )
+
+    @property
+    def Count(self) -> LiquidUmbilicalFemaleSide:
+        return LiquidUmbilicalFemaleSide(
+            name=self._name, batch_mode=LogicBatchMethod.Count
         )
 
 
@@ -31802,6 +33270,10 @@ class _Unloaders(
         return Unloader(name=self._name, batch_mode=LogicBatchMethod.Sum)
 
     @property
+    def Count(self) -> Unloader:
+        return Unloader(name=self._name, batch_mode=LogicBatchMethod.Count)
+
+    @property
     def Output(self) -> _DevicesLogicType:
         return _DevicesLogicType(self, _LT.Output)
 
@@ -31862,6 +33334,10 @@ class _UprightWindTurbines(_BaseStructures):
         return UprightWindTurbine(name=self._name, batch_mode=LogicBatchMethod.Sum)
 
     @property
+    def Count(self) -> UprightWindTurbine:
+        return UprightWindTurbine(name=self._name, batch_mode=LogicBatchMethod.Count)
+
+    @property
     def PowerGeneration(self) -> _DevicesLogicType:
         return _DevicesLogicType(self, _LT.PowerGeneration)
 
@@ -31897,6 +33373,10 @@ class _Valves(_BaseStructures, _Maximums, _Ons, _Ratios, _SettingWs):
     def Sum(self) -> Valve:
         return Valve(name=self._name, batch_mode=LogicBatchMethod.Sum)
 
+    @property
+    def Count(self) -> Valve:
+        return Valve(name=self._name, batch_mode=LogicBatchMethod.Count)
+
 
 Valves: _Valves = _Valves()
 
@@ -31928,6 +33408,10 @@ class _LiquidValves(_BaseStructures, _Maximums, _Ons, _Ratios, _SettingWs):
     @property
     def Sum(self) -> LiquidValve:
         return LiquidValve(name=self._name, batch_mode=LogicBatchMethod.Sum)
+
+    @property
+    def Count(self) -> LiquidValve:
+        return LiquidValve(name=self._name, batch_mode=LogicBatchMethod.Count)
 
 
 LiquidValves: _LiquidValves = _LiquidValves()
@@ -32414,6 +33898,10 @@ class _VendingMachines(
     @property
     def Sum(self) -> VendingMachine:
         return VendingMachine(name=self._name, batch_mode=LogicBatchMethod.Sum)
+
+    @property
+    def Count(self) -> VendingMachine:
+        return VendingMachine(name=self._name, batch_mode=LogicBatchMethod.Count)
 
     @property
     def RequestHash(self) -> _DevicesLogicType:
@@ -32974,6 +34462,10 @@ class _VendingMachineSmalls(
         return VendingMachineSmall(name=self._name, batch_mode=LogicBatchMethod.Sum)
 
     @property
+    def Count(self) -> VendingMachineSmall:
+        return VendingMachineSmall(name=self._name, batch_mode=LogicBatchMethod.Count)
+
+    @property
     def RequestHash(self) -> _DevicesLogicType:
         return _DevicesLogicType(self, _LT.RequestHash)
 
@@ -33078,6 +34570,10 @@ class _VolumePumps(
     @property
     def Sum(self) -> VolumePump:
         return VolumePump(name=self._name, batch_mode=LogicBatchMethod.Sum)
+
+    @property
+    def Count(self) -> VolumePump:
+        return VolumePump(name=self._name, batch_mode=LogicBatchMethod.Count)
 
 
 VolumePumps: _VolumePumps = _VolumePumps()
@@ -33220,6 +34716,10 @@ class _WallCoolers(
     @property
     def Sum(self) -> WallCooler:
         return WallCooler(name=self._name, batch_mode=LogicBatchMethod.Sum)
+
+    @property
+    def Count(self) -> WallCooler:
+        return WallCooler(name=self._name, batch_mode=LogicBatchMethod.Count)
 
     @property
     def CombustionOutput(self) -> _DevicesLogicType:
@@ -33370,6 +34870,10 @@ class _WallHeaters(_BaseStructures, _Errors, _Locks, _Powers):
         return WallHeater(name=self._name, batch_mode=LogicBatchMethod.Sum)
 
     @property
+    def Count(self) -> WallHeater:
+        return WallHeater(name=self._name, batch_mode=LogicBatchMethod.Count)
+
+    @property
     def slot0(self) -> _SlotTypeDataDisks:
         return _SlotTypeDataDisks(self, 0)
 
@@ -33408,6 +34912,10 @@ class _WallLights(_BaseStructures, _Locks, _Powers):
     @property
     def Sum(self) -> WallLight:
         return WallLight(name=self._name, batch_mode=LogicBatchMethod.Sum)
+
+    @property
+    def Count(self) -> WallLight:
+        return WallLight(name=self._name, batch_mode=LogicBatchMethod.Count)
 
 
 WallLights: _WallLights = _WallLights()
@@ -33450,6 +34958,10 @@ class _WallLightBatteries(_BaseStructures, _Locks, _Powers):
         return WallLightBattery(name=self._name, batch_mode=LogicBatchMethod.Sum)
 
     @property
+    def Count(self) -> WallLightBattery:
+        return WallLightBattery(name=self._name, batch_mode=LogicBatchMethod.Count)
+
+    @property
     def slot0(self) -> _SlotTypeBatteries:
         return _SlotTypeBatteries(self, 0)
 
@@ -33489,6 +35001,10 @@ class _LightLongAngleds(_BaseStructures, _Locks, _Powers):
     def Sum(self) -> LightLongAngled:
         return LightLongAngled(name=self._name, batch_mode=LogicBatchMethod.Sum)
 
+    @property
+    def Count(self) -> LightLongAngled:
+        return LightLongAngled(name=self._name, batch_mode=LogicBatchMethod.Count)
+
 
 LightLongAngleds: _LightLongAngleds = _LightLongAngleds()
 
@@ -33521,6 +35037,10 @@ class _LightLongWides(_BaseStructures, _Locks, _Powers):
     def Sum(self) -> LightLongWide:
         return LightLongWide(name=self._name, batch_mode=LogicBatchMethod.Sum)
 
+    @property
+    def Count(self) -> LightLongWide:
+        return LightLongWide(name=self._name, batch_mode=LogicBatchMethod.Count)
+
 
 LightLongWides: _LightLongWides = _LightLongWides()
 
@@ -33552,6 +35072,10 @@ class _LightLongs(_BaseStructures, _Locks, _Powers):
     @property
     def Sum(self) -> LightLong:
         return LightLong(name=self._name, batch_mode=LogicBatchMethod.Sum)
+
+    @property
+    def Count(self) -> LightLong:
+        return LightLong(name=self._name, batch_mode=LogicBatchMethod.Count)
 
 
 LightLongs: _LightLongs = _LightLongs()
@@ -33594,6 +35118,10 @@ class _WaterPurifiers(
     @property
     def Sum(self) -> WaterPurifier:
         return WaterPurifier(name=self._name, batch_mode=LogicBatchMethod.Sum)
+
+    @property
+    def Count(self) -> WaterPurifier:
+        return WaterPurifier(name=self._name, batch_mode=LogicBatchMethod.Count)
 
     @property
     def slot0(self) -> _SlotTypeDataDisks:
@@ -33649,6 +35177,12 @@ class _WaterBottleFillerPowereds(_BaseStructures, _Activates, _Errors, _Powers):
     def Sum(self) -> WaterBottleFillerPowered:
         return WaterBottleFillerPowered(
             name=self._name, batch_mode=LogicBatchMethod.Sum
+        )
+
+    @property
+    def Count(self) -> WaterBottleFillerPowered:
+        return WaterBottleFillerPowered(
+            name=self._name, batch_mode=LogicBatchMethod.Count
         )
 
     @property
@@ -33710,6 +35244,12 @@ class _WaterBottleFillerPoweredBottoms(_BaseStructures, _Activates, _Errors, _Po
         )
 
     @property
+    def Count(self) -> WaterBottleFillerPoweredBottom:
+        return WaterBottleFillerPoweredBottom(
+            name=self._name, batch_mode=LogicBatchMethod.Count
+        )
+
+    @property
     def slot0(self) -> _SlotTypeGasCanisters:
         return _SlotTypeGasCanisters(self, 0)
 
@@ -33760,6 +35300,10 @@ class _WeatherStations(_BaseStructures, _Activates, _Errors, _Locks, _ModeRs, _P
         return WeatherStation(name=self._name, batch_mode=LogicBatchMethod.Sum)
 
     @property
+    def Count(self) -> WeatherStation:
+        return WeatherStation(name=self._name, batch_mode=LogicBatchMethod.Count)
+
+    @property
     def NextWeatherEventTime(self) -> _DevicesLogicType:
         return _DevicesLogicType(self, _LT.NextWeatherEventTime)
 
@@ -33804,6 +35348,10 @@ class _WindTurbines(_BaseStructures):
         return WindTurbine(name=self._name, batch_mode=LogicBatchMethod.Sum)
 
     @property
+    def Count(self) -> WindTurbine:
+        return WindTurbine(name=self._name, batch_mode=LogicBatchMethod.Count)
+
+    @property
     def PowerGeneration(self) -> _DevicesLogicType:
         return _DevicesLogicType(self, _LT.PowerGeneration)
 
@@ -33845,6 +35393,12 @@ class _WirelessBatteryCellExtraLarges(_BaseStructures, _Modes):
     def Sum(self) -> WirelessBatteryCellExtraLarge:
         return WirelessBatteryCellExtraLarge(
             name=self._name, batch_mode=LogicBatchMethod.Sum
+        )
+
+    @property
+    def Count(self) -> WirelessBatteryCellExtraLarge:
+        return WirelessBatteryCellExtraLarge(
+            name=self._name, batch_mode=LogicBatchMethod.Count
         )
 
 
