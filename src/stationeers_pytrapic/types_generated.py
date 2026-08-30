@@ -401,6 +401,7 @@ class LogicBatchMethod(_IntEnum):
     Sum = 1
     Minimum = 2
     Maximum = 3
+    Count = 4
 
 
 class Sound(_IntEnum):

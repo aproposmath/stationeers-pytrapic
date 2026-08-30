@@ -1,0 +1,16 @@
+lb r0 -1535893860 84 4
+lb r1 -400115994 11 4
+lb r2 -400115994 11 4
+lbn r3 -400115994 $1F1A625A 11 4
+lbs r4 336213101 1 1 4
+lb r5 -400115994 11 0
+lb r6 -400115994 11 1
+add r7 r0 r1
+add r7 r7 r2
+add r7 r7 r3
+add r7 r7 r4
+add r7 r7 r5
+add r7 r7 r6
+s db Setting r7
+# registers: 8
+# lines: 14

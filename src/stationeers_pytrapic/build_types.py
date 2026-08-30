@@ -140,7 +140,7 @@ def generate_generic_structure(struct: Structure, multiple: bool = False) -> str
         code += f"  def __getitem__(self, name: str | int | float) -> '{classname}':\n"
         code += f"      return {classname}(name)\n"
 
-        for mode in ["Average", "Minimum", "Maximum", "Sum"]:
+        for mode in ["Average", "Minimum", "Maximum", "Sum", "Count"]:
             code += f"  @property\n"
             code += f"  def {mode}(self) -> {struct.name}:\n"
             code += f"      return {struct.name}(name=self._name, batch_mode=LogicBatchMethod.{mode})\n"

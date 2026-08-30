@@ -1,0 +1,16 @@
+lb r0 HASH("StructureFlashingLight") PrefabHash Count
+lb r1 HASH("StructureBattery") Charge Count
+lb r2 HASH("StructureBattery") Charge Count
+lbn r3 HASH("StructureBattery") HASH("Main") Charge Count
+lbs r4 HASH("StructureAutolathe") 1 Occupied Count
+lb r5 HASH("StructureBattery") Charge Average
+lb r6 HASH("StructureBattery") Charge Sum
+add r7 r0 r1
+add r7 r7 r2
+add r7 r7 r3
+add r7 r7 r4
+add r7 r7 r5
+add r7 r7 r6
+s db Setting r7
+# registers: 8
+# lines: 14

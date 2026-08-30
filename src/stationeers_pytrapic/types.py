@@ -413,6 +413,13 @@ class _DevicesSlotType(_BaseBatchAccess):
     def Sum(self) -> float:
         return self._load(LogicBatchMethod.Sum)
 
+    @property
+    def Count(self) -> float:
+        """Number of matching devices on the network. The slot index and slot type are
+        still required by the instruction and still validated, but are ignored when
+        computing the result."""
+        return self._load(LogicBatchMethod.Count)
+
     def _set(self, value: float | _Register):
         return IC10Instruction(
             "sbs", [self._device_hash, self._slot_index, self._slot_type, value]
@@ -480,6 +487,14 @@ class _DevicesLogicType(_BaseBatchAccess):
     def Sum(self) -> float:
         obj = copy.deepcopy(self._obj)
         obj._batch_mode = LogicBatchMethod.Sum
+        return _DeviceLogicType(obj, self._logic_type)
+
+    @property
+    def Count(self) -> float:
+        """Number of matching devices on the network. The logic type is still required by
+        the instruction and still validated, but is ignored when computing the result."""
+        obj = copy.deepcopy(self._obj)
+        obj._batch_mode = LogicBatchMethod.Count
         return _DeviceLogicType(obj, self._logic_type)
 
     def _set(self, value: float | _Register):
@@ -637,6 +652,12 @@ class Devices(_BaseStructures, _GenericStructures):
     @property
     def Sum(self) -> _DeviceLogicType:
         return self._get_batch_device(LogicBatchMethod.Sum)
+
+    @property
+    def Count(self) -> _DeviceLogicType:
+        """Number of matching devices on the network. The logic type is still required by
+        the instruction and still validated, but is ignored when computing the result."""
+        return self._get_batch_device(LogicBatchMethod.Count)
 
     def __str__(self):
         return f"Device({self._dev_id})"
